@@ -74,4 +74,4 @@ function ToolbarLayout1(props) {
 	);
 }
 
-export default ToolbarLayout1;
+export default React.memo(ToolbarLayout1);

@@ -24,4 +24,4 @@ function FooterLayout3(props) {
 	);
 }
 
-export default FooterLayout3;
+export default React.memo(FooterLayout3);

@@ -80,4 +80,4 @@ function ToolbarLayout3(props) {
 	);
 }
 
-export default ToolbarLayout3;
+export default React.memo(ToolbarLayout3);

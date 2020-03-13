@@ -9,4 +9,4 @@ function RightSideLayout2() {
 	);
 }
 
-export default RightSideLayout2;
+export default React.memo(RightSideLayout2);

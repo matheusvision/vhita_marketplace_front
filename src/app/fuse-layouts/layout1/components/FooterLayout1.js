@@ -19,4 +19,4 @@ function FooterLayout1(props) {
 	);
 }
 
-export default FooterLayout1;
+export default React.memo(FooterLayout1);
