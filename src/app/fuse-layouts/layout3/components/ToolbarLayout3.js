@@ -3,7 +3,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import ChatPanelToggleButton from 'app/fuse-layouts/shared-components/chatPanel/ChatPanelToggleButton';
 import Logo from 'app/fuse-layouts/shared-components/Logo';
 import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
 import QuickPanelToggleButton from 'app/fuse-layouts/shared-components/quickPanel/QuickPanelToggleButton';
@@ -55,10 +54,6 @@ function ToolbarLayout3(props) {
 					<div className="flex">
 						<Hidden smUp>
 							<FuseSearch />
-						</Hidden>
-
-						<Hidden lgUp>
-							<ChatPanelToggleButton />
 						</Hidden>
 
 						<LanguageSwitcher />
