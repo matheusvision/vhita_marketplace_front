@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Logo from 'app/fuse-layouts/shared-components/Logo';
 import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
 import QuickPanelToggleButton from 'app/fuse-layouts/shared-components/quickPanel/QuickPanelToggleButton';
-import UserMenu from 'app/fuse-layouts/shared-components/UserMenu';
 import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -59,8 +58,6 @@ function ToolbarLayout3(props) {
 						<LanguageSwitcher />
 
 						<QuickPanelToggleButton />
-
-						<UserMenu />
 					</div>
 				</Toolbar>
 			</AppBar>
