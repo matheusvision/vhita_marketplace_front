@@ -1,5 +1,5 @@
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import { memo } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -69,7 +69,7 @@ function SchemePreview({ theme, className, id, onSelect }) {
 					<span className="text-12 opacity-75">Background</span>
 				</div>
 			</button>
-			<Typography className="font-bold w-full text-center mt-12">{id}</Typography>
+			<Typography className="font-semibold w-full text-center mt-12">{id}</Typography>
 		</div>
 	);
 }
@@ -115,4 +115,4 @@ function FuseThemeSchemes(props) {
 	);
 }
 
-export default React.memo(FuseThemeSchemes);
+export default memo(FuseThemeSchemes);

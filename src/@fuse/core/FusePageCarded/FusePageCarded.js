@@ -2,7 +2,7 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import * as PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import { forwardRef, useImperativeHandle, memo, useRef } from 'react';
 import FusePageCardedHeader from './FusePageCardedHeader';
 import FusePageCardedSidebar from './FusePageCardedSidebar';
 
@@ -12,17 +12,22 @@ const toolbarHeight = 64;
 const headerContentHeight = headerHeight - toolbarHeight;
 
 const useStyles = makeStyles(theme => ({
+	'@global': {
+		'#fuse-main': {
+			height: props => props.innerScroll && '100vh'
+		}
+	},
 	root: {
 		display: 'flex',
 		flexDirection: 'row',
+		minWidth: 0,
 		minHeight: '100%',
 		position: 'relative',
-		flex: '1 0 auto',
+		flex: '1 1 auto',
 		height: 'auto',
 		backgroundColor: theme.palette.background.default
 	},
 	innerScroll: {
-		flex: '1 1 auto',
 		height: '100%'
 	},
 	topBg: {
@@ -31,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 		right: 0,
 		top: 0,
 		height: headerHeight,
-		background: `linear-gradient(to left, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
+		background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
 		backgroundSize: 'cover',
 		pointerEvents: 'none'
 	},
@@ -65,7 +70,7 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
 		minHeight: 0,
-		borderRadius: '8px 8px 0 0'
+		borderRadius: '20px 20px 0 0'
 	},
 	toolbar: {
 		height: toolbarHeight,
@@ -134,7 +139,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const FusePageCarded = React.forwardRef((props, ref) => {
+const FusePageCarded = forwardRef((props, ref) => {
 	const leftSidebarRef = useRef(null);
 	const rightSidebarRef = useRef(null);
 	const rootRef = useRef(null);
@@ -142,7 +147,7 @@ const FusePageCarded = React.forwardRef((props, ref) => {
 	const isRightSidebar = props.rightSidebarHeader || props.rightSidebarContent;
 	const isLeftSidebar = props.leftSidebarHeader || props.leftSidebarContent;
 
-	React.useImperativeHandle(ref, () => ({
+	useImperativeHandle(ref, () => ({
 		rootRef,
 		toggleLeftSidebar: () => {
 			leftSidebarRef.current.toggleSidebar();
@@ -230,4 +235,4 @@ FusePageCarded.propTypes = {
 
 FusePageCarded.defaultProps = {};
 
-export default React.memo(FusePageCarded);
+export default memo(FusePageCarded);

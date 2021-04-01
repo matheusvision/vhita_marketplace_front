@@ -9,11 +9,11 @@ import Slide from '@material-ui/core/Slide';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import { forwardRef, memo, useState } from 'react';
 import FuseThemeSchemes from '@fuse/core/FuseThemeSchemes';
 import { useSwipeable } from 'react-swipeable';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props, ref) {
 	const theme = useTheme();
 	return <Slide direction={theme.direction === 'ltr' ? 'left' : 'right'} ref={ref} {...props} />;
 });
@@ -21,12 +21,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const useStyles = makeStyles(theme => ({
 	buttonWrapper: {
 		position: 'absolute',
+		height: 80,
 		right: 0,
 		top: 160,
 		display: 'flex',
 		flexDirection: 'column',
-		items: 'center',
-		justify: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
 		overflow: 'hidden',
 		opacity: 0.9,
 		padding: 0,
@@ -146,7 +147,7 @@ function SettingsPanel() {
 						<Icon>close</Icon>
 					</IconButton>
 
-					<Typography className="mb-32" variant="h6">
+					<Typography className="mb-32 font-semibold" variant="h6">
 						Theme Settings
 					</Typography>
 
@@ -188,4 +189,4 @@ function SettingsPanel() {
 	);
 }
 
-export default React.memo(SettingsPanel);
+export default memo(SettingsPanel);

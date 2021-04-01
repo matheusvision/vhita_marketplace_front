@@ -1,13 +1,15 @@
 const config = {
 	title: 'Layout 2 - Horizontal',
 	defaults: {
-		mode: 'fullwidth',
-		scroll: 'content',
+		mode: 'container',
+		containerWidth: 1120,
 		navbar: {
-			display: true
+			display: true,
+			style: 'fixed'
 		},
 		toolbar: {
 			display: true,
+			style: 'static',
 			position: 'below'
 		},
 		footer: {
@@ -40,6 +42,10 @@ const config = {
 				}
 			]
 		},
+		containerWidth: {
+			title: 'Container Width (px)',
+			type: 'number'
+		},
 		navbar: {
 			type: 'group',
 			title: 'Navbar',
@@ -47,6 +53,20 @@ const config = {
 				display: {
 					title: 'Display',
 					type: 'switch'
+				},
+				style: {
+					title: 'Style',
+					type: 'radio',
+					options: [
+						{
+							name: 'Fixed',
+							value: 'fixed'
+						},
+						{
+							name: 'Static',
+							value: 'static'
+						}
+					]
 				}
 			}
 		},
@@ -69,6 +89,20 @@ const config = {
 						{
 							name: 'Below',
 							value: 'below'
+						}
+					]
+				},
+				style: {
+					title: 'Style',
+					type: 'radio',
+					options: [
+						{
+							name: 'Fixed',
+							value: 'fixed'
+						},
+						{
+							name: 'Static',
+							value: 'static'
 						}
 					]
 				}

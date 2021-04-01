@@ -23,7 +23,7 @@ Chart.pluginService.register({
 					ctx.fillStyle = chart.options.plugins.xLabelsOnTop.fontColor || 'rgba(0, 0, 0, 0.87)';
 					const fontSize = 13;
 					const fontStyle = 'normal';
-					const fontFamily = 'Muli, Roboto, Helvetica Neue, Arial, sans-serif';
+					const fontFamily = 'Poppins, Roboto, Helvetica Neue, Arial, sans-serif';
 					ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
 
 					// Just naively convert to string for now
@@ -40,7 +40,7 @@ Chart.pluginService.register({
 					ctx.save();
 
 					ctx.beginPath();
-					ctx.setLineDash([5, 3]);
+					ctx.setLineDash([3, 5]);
 					ctx.moveTo(position.x, startY + padding);
 					ctx.lineTo(position.x, position.y - padding);
 					ctx.strokeStyle = chart.options.plugins.xLabelsOnTop.borderColor || 'rgba(0, 0, 0, 0.87)';

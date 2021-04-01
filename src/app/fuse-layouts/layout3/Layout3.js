@@ -1,12 +1,11 @@
 import FuseDialog from '@fuse/core/FuseDialog';
 import FuseMessage from '@fuse/core/FuseMessage';
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import { makeStyles } from '@material-ui/core/styles';
 import AppContext from 'app/AppContext';
 import SettingsPanel from 'app/fuse-layouts/shared-components/SettingsPanel';
 import clsx from 'clsx';
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import FooterLayout3 from './components/FooterLayout3';
@@ -17,91 +16,69 @@ import ToolbarLayout3 from './components/ToolbarLayout3';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		position: 'relative',
-		display: 'flex',
-		flexDirection: 'row',
-		width: '100%',
-		height: '100%',
-		overflow: 'hidden',
 		'&.boxed': {
-			maxWidth: 1120,
+			clipPath: 'inset(0)',
+			maxWidth: props => `${props.config.containerWidth}px`,
 			margin: '0 auto',
 			boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
 		},
 		'&.container': {
 			'& .container': {
-				maxWidth: 1120,
+				maxWidth: props => `${props.config.containerWidth}px`,
 				width: '100%',
 				margin: '0 auto'
-			},
-			'& .navigation': {}
+			}
 		}
-	},
-	content: {
-		display: 'flex',
-		overflow: 'auto',
-		flex: '1 1 auto',
-		flexDirection: 'column',
-		width: '100%',
-		'-webkit-overflow-scrolling': 'touch',
-		zIndex: 4
-	},
-	toolbarWrapper: {
-		display: 'flex',
-		position: 'relative',
-		zIndex: 5
-	},
-	toolbar: {
-		display: 'flex',
-		flex: '1 0 auto'
-	},
-	footerWrapper: {
-		position: 'relative',
-		zIndex: 5
-	},
-	footer: {
-		display: 'flex',
-		flex: '1 0 auto'
 	}
 }));
 
 function Layout3(props) {
 	const config = useSelector(({ fuse }) => fuse.settings.current.layout.config);
 
-	const classes = useStyles(props);
+	const classes = useStyles({ ...props, config });
 
 	return (
 		<AppContext.Consumer>
 			{({ routes }) => (
-				<div id="fuse-layout" className={clsx(classes.root, config.mode)}>
+				<div id="fuse-layout" className={clsx(classes.root, config.mode, 'w-full flex flex')}>
 					{config.leftSidePanel.display && <LeftSideLayout3 />}
 
-					<div className="flex flex-1 flex-col overflow-hidden relative">
-						{config.toolbar.display && config.toolbar.position === 'above' && <ToolbarLayout3 />}
+					<div className="flex flex-col flex-auto min-w-0">
+						<main id="fuse-main" className="flex flex-col flex-auto min-h-screen min-w-0 relative">
+							{config.navbar.display && (
+								<NavbarWrapperLayout3
+									className={clsx(config.navbar.style === 'fixed' && 'sticky top-0 z-50')}
+								/>
+							)}
 
-						{config.navbar.display && <NavbarWrapperLayout3 />}
+							{config.toolbar.display && (
+								<ToolbarLayout3
+									className={clsx(
+										config.toolbar.style === 'fixed' && 'sticky top-0',
+										config.toolbar.position === 'above' && 'order-first z-40'
+									)}
+								/>
+							)}
 
-						{config.toolbar.display && config.toolbar.position === 'below' && <ToolbarLayout3 />}
+							<div className="sticky top-0 z-99">
+								<SettingsPanel />
+							</div>
 
-						<FuseScrollbars className={clsx(classes.content)} scrollToTopOnRouteChange>
-							<FuseDialog />
+							<div className="flex flex-col flex-auto min-h-0 relative z-10">
+								<FuseDialog />
 
-							<div className="flex flex-auto flex-col relative h-full">
 								<FuseSuspense>{renderRoutes(routes)}</FuseSuspense>
 
 								{props.children}
-
-								{config.footer.display && config.footer.style === 'static' && <FooterLayout3 />}
 							</div>
-						</FuseScrollbars>
 
-						{config.footer.display && config.footer.style === 'fixed' && <FooterLayout3 />}
-
-						<SettingsPanel />
+							{config.footer.display && (
+								<FooterLayout3 className={config.footer.style === 'fixed' && 'sticky bottom-0'} />
+							)}
+						</main>
 					</div>
 
 					{config.rightSidePanel.display && <RightSideLayout3 />}
-
 					<FuseMessage />
 				</div>
 			)}
@@ -109,4 +86,4 @@ function Layout3(props) {
 	);
 }
 
-export default React.memo(Layout3);
+export default memo(Layout3);

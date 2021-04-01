@@ -1,20 +1,28 @@
-import FuseAnimateGroup from '@fuse/core/FuseAnimateGroup';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import React from 'react';
+import { motion } from 'framer-motion';
 
 function PoweredByLinks() {
+	const container = {
+		show: {
+			transition: {
+				staggerChildren: 0.1
+			}
+		}
+	};
+
+	const item = {
+		hidden: { opacity: 0, scale: 0.6 },
+		show: { opacity: 1, scale: 1 }
+	};
+
 	return (
-		<FuseAnimateGroup
-			enter={{
-				animation: 'transition.expandIn'
-			}}
-			className="flex items-center"
-		>
+		<motion.div variants={container} initial="hidden" animate="show" className="flex items-center">
 			<Tooltip title="React" placement="top">
 				<IconButton
 					className="w-48 h-48 px-4"
-					component="a"
+					component={motion.a}
+					variants={item}
 					href="https://reactjs.org/"
 					target="_blank"
 					rel="noreferrer noopener"
@@ -27,10 +35,11 @@ function PoweredByLinks() {
 					/>
 				</IconButton>
 			</Tooltip>
-			<Tooltip title="React Redux" placement="top">
+			<Tooltip variants={item} title="React Redux" placement="top">
 				<IconButton
 					className="w-48 h-48 px-4"
-					component="a"
+					component={motion.a}
+					variants={item}
 					href="https://github.com/reactjs/react-redux"
 					target="_blank"
 					rel="noreferrer noopener"
@@ -43,10 +52,11 @@ function PoweredByLinks() {
 					/>
 				</IconButton>
 			</Tooltip>
-			<Tooltip title="Material UI" placement="top">
+			<Tooltip variants={item} title="Material UI" placement="top">
 				<IconButton
 					className="w-48 h-48 px-4"
-					component="a"
+					component={motion.a}
+					variants={item}
 					href="https://material-ui-next.com/"
 					target="_blank"
 					rel="noreferrer noopener"
@@ -59,10 +69,11 @@ function PoweredByLinks() {
 					/>
 				</IconButton>
 			</Tooltip>
-			<Tooltip title="Tailwind" placement="top">
+			<Tooltip variants={item} title="Tailwind" placement="top">
 				<IconButton
 					className="w-48 h-48 px-4"
-					component="a"
+					component={motion.a}
+					variants={item}
 					href="https://tailwindcss.com"
 					target="_blank"
 					rel="noreferrer noopener"
@@ -85,7 +96,7 @@ function PoweredByLinks() {
 					/>
 				</IconButton>
 			</Tooltip>
-		</FuseAnimateGroup>
+		</motion.div>
 	);
 }
 

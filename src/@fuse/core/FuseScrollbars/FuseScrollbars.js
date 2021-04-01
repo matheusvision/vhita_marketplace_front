@@ -4,7 +4,7 @@ import MobileDetect from 'mobile-detect';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import PropTypes from 'prop-types';
-import React, { createRef, useCallback, useEffect, useRef } from 'react';
+import { createRef, useCallback, useEffect, useRef, forwardRef } from 'react';
 import { connect } from 'react-redux';
 import withRouterAndRef from '../withRouterAndRef/withRouterAndRef';
 
@@ -26,10 +26,12 @@ const handlerNameByEvent = {
 Object.freeze(handlerNameByEvent);
 
 const useStyles = makeStyles(theme => ({
-	root: {}
+	root: {
+		overscrollBehavior: 'contain'
+	}
 }));
 
-const FuseScrollbars = React.forwardRef((props, ref) => {
+const FuseScrollbars = forwardRef((props, ref) => {
 	ref = ref || createRef();
 	const ps = useRef(null);
 	const handlerByEvent = useRef(new Map());
@@ -138,7 +140,7 @@ const FuseScrollbars = React.forwardRef((props, ref) => {
 				props.customScrollbars && (props.enable || true) && !isMobile
 					? {
 							position: 'relative',
-							overflow: 'hidden'
+							overflow: 'hidden!important'
 					  }
 					: {}
 			}

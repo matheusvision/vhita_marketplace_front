@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Tooltip from '@material-ui/core/Tooltip';
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
 	paper: {
@@ -21,7 +21,9 @@ const useStyles = makeStyles(theme => ({
 			duration: theme.transitions.duration.shorter
 		}),
 		paddingBottom: 64,
-		position: 'relative',
+		maxHeight: '100vh',
+		position: 'sticky',
+		top: 0,
 		zIndex: 999,
 		'&.left': {
 			'& $buttonWrapper': {
@@ -237,4 +239,4 @@ FuseSidePanel.defaultProps = {
 	opened: true
 };
 
-export default React.memo(FuseSidePanel);
+export default memo(FuseSidePanel);

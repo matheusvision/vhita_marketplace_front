@@ -1,16 +1,13 @@
 import DemoContent from '@fuse/core/DemoContent';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
 	layoutRoot: {}
-}));
+});
 
-function ExamplePage(props) {
-	const classes = useStyles(props);
-	const { t } = useTranslation('examplePage');
+function SimpleFullWidthSample() {
+	const classes = useStyles();
 
 	return (
 		<FusePageSimple
@@ -19,7 +16,7 @@ function ExamplePage(props) {
 			}}
 			header={
 				<div className="p-24">
-					<h4>{t('TITLE')}</h4>
+					<h4>Header</h4>
 				</div>
 			}
 			contentToolbar={
@@ -38,4 +35,4 @@ function ExamplePage(props) {
 	);
 }
 
-export default ExamplePage;
+export default SimpleFullWidthSample;

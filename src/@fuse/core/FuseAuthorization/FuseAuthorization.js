@@ -1,6 +1,6 @@
 import FuseUtils from '@fuse/utils';
 import AppContext from 'app/AppContext';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { matchRoutes } from 'react-router-config';
 import { withRouter } from 'react-router-dom';
@@ -69,7 +69,7 @@ class FuseAuthorization extends Component {
 	}
 
 	render() {
-		// console.info('Fuse Authorization rendered', accessGranted);
+		// console.info('Fuse Authorization rendered', this.state.accessGranted);
 		return this.state.accessGranted ? <>{this.props.children}</> : null;
 	}
 }

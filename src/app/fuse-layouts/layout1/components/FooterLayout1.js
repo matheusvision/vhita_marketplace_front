@@ -1,10 +1,11 @@
 import AppBar from '@material-ui/core/AppBar';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
+import { memo } from 'react';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
+import clsx from 'clsx';
 
 function FooterLayout1(props) {
 	const footerTheme = useSelector(selectFooterTheme);
@@ -13,7 +14,7 @@ function FooterLayout1(props) {
 		<ThemeProvider theme={footerTheme}>
 			<AppBar
 				id="fuse-footer"
-				className="relative z-10 shadow-md"
+				className={clsx('relative z-20 shadow-md', props.className)}
 				color="default"
 				style={{ backgroundColor: footerTheme.palette.background.paper }}
 			>
@@ -25,4 +26,4 @@ function FooterLayout1(props) {
 	);
 }
 
-export default React.memo(FooterLayout1);
+export default memo(FooterLayout1);

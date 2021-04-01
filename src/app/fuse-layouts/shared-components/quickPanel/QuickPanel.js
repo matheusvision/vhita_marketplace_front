@@ -3,7 +3,6 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withReducer from 'app/store/withReducer';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleQuickPanel } from './store/stateSlice';
 import reducer from './store';

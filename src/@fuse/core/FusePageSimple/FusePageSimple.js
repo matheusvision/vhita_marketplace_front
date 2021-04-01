@@ -2,7 +2,7 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import * as PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import { forwardRef, useImperativeHandle, memo, useRef } from 'react';
 import FusePageSimpleHeader from './FusePageSimpleHeader';
 import FusePageSimpleSidebar from './FusePageSimpleSidebar';
 
@@ -11,17 +11,22 @@ const toolbarHeight = 64;
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+	'@global': {
+		'#fuse-main': {
+			height: props => props.innerScroll && '100vh'
+		}
+	},
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
+		minWidth: 0,
 		minHeight: '100%',
 		position: 'relative',
-		flex: '1 0 auto',
+		flex: '1 1 auto',
 		height: 'auto',
 		backgroundColor: theme.palette.background.default
 	},
 	innerScroll: {
-		flex: '1 1 auto',
 		height: '100%'
 	},
 	wrapper: {
@@ -38,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 		height: headerHeight,
 		minHeight: headerHeight,
 		display: 'flex',
-		background: `linear-gradient(to left, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
+		background: `linear-gradient(to right, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
 		color: theme.palette.primary.contrastText,
 		backgroundSize: 'cover',
 		backgroundColor: theme.palette.primary.dark
@@ -140,14 +145,14 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const FusePageSimple = React.forwardRef((props, ref) => {
+const FusePageSimple = forwardRef((props, ref) => {
 	// console.info("render::FusePageSimple");
 	const leftSidebarRef = useRef(null);
 	const rightSidebarRef = useRef(null);
 	const rootRef = useRef(null);
 	const classes = useStyles(props);
 
-	React.useImperativeHandle(ref, () => ({
+	useImperativeHandle(ref, () => ({
 		rootRef,
 		toggleLeftSidebar: () => {
 			leftSidebarRef.current.toggleSidebar();
@@ -232,4 +237,4 @@ FusePageSimple.propTypes = {
 
 FusePageSimple.defaultProps = {};
 
-export default React.memo(FusePageSimple);
+export default memo(FusePageSimple);
