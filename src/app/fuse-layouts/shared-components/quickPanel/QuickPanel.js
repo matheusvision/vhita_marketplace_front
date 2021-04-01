@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withReducer from 'app/store/withReducer';
 import { useDispatch, useSelector } from 'react-redux';
+import { memo } from 'react';
 import { toggleQuickPanel } from './store/stateSlice';
 import reducer from './store';
 
@@ -35,4 +36,4 @@ function QuickPanel(props) {
 	);
 }
 
-export default withReducer('quickPanel', reducer)(React.memo(QuickPanel));
+export default withReducer('quickPanel', reducer)(memo(QuickPanel));
