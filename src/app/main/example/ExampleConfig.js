@@ -9,17 +9,17 @@ i18next.addResourceBundle('tr', 'examplePage', tr);
 i18next.addResourceBundle('ar', 'examplePage', ar);
 
 const ExampleConfig = {
-	settings: {
-		layout: {
-			config: {}
-		}
-	},
-	routes: [
-		{
-			path: '/example',
-			component: Example
-		}
-	]
+  settings: {
+    layout: {
+      config: {},
+    },
+  },
+  routes: [
+    {
+      path: '/example',
+      component: Example,
+    },
+  ],
 };
 
 export default ExampleConfig;
