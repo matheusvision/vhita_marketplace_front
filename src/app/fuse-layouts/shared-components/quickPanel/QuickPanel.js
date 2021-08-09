@@ -8,32 +8,32 @@ import { memo } from 'react';
 import { toggleQuickPanel } from './store/stateSlice';
 import reducer from './store';
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		width: 280
-	}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: 280,
+  },
 }));
 
 function QuickPanel(props) {
-	const dispatch = useDispatch();
-	const state = useSelector(({ quickPanel }) => quickPanel.state);
+  const dispatch = useDispatch();
+  const state = useSelector(({ quickPanel }) => quickPanel.state);
 
-	const classes = useStyles();
+  const classes = useStyles();
 
-	return (
-		<SwipeableDrawer
-			classes={{ paper: classes.root }}
-			open={state}
-			anchor="right"
-			onOpen={ev => {}}
-			onClose={ev => dispatch(toggleQuickPanel())}
-			disableSwipeToOpen
-		>
-			<FuseScrollbars>
-				<Typography>Quick Panel</Typography>
-			</FuseScrollbars>
-		</SwipeableDrawer>
-	);
+  return (
+    <SwipeableDrawer
+      classes={{ paper: classes.root }}
+      open={state}
+      anchor="right"
+      onOpen={(ev) => {}}
+      onClose={(ev) => dispatch(toggleQuickPanel())}
+      disableSwipeToOpen
+    >
+      <FuseScrollbars>
+        <Typography>Quick Panel</Typography>
+      </FuseScrollbars>
+    </SwipeableDrawer>
+  );
 }
 
 export default withReducer('quickPanel', reducer)(memo(QuickPanel));
