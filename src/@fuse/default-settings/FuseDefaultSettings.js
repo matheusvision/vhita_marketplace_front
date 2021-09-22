@@ -1,7 +1,7 @@
 import { fuseDark } from '@fuse/colors';
 import _ from '@lodash';
-import { lightBlue, red } from '@material-ui/core/colors';
-import { createTheme } from '@material-ui/core/styles';
+import { lightBlue, red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 import qs from 'qs';
 
 /**
@@ -42,59 +42,101 @@ export const defaultThemeOptions = {
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
-    useNextVariants: true,
-    suppressDeprecationWarnings: true,
   },
-  overrides: {
+  components: {
+    MuiAppBar: {
+      defaultProps: {
+        enableColorOnDark: true,
+      },
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+        },
+      },
+    },
     MuiButton: {
-      root: {
-        textTransform: 'none',
-        borderRadius: '18px',
-      },
-      sizeSmall: {
-        borderRadius: '15px',
-      },
-      sizeLarge: {
-        borderRadius: '21px',
-      },
-      contained: {
-        boxShadow: 'none',
-        '&:hover, &:focus': {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: '18px',
+        },
+        sizeSmall: {
+          borderRadius: '15px',
+        },
+        sizeLarge: {
+          borderRadius: '21px',
+        },
+        contained: {
           boxShadow: 'none',
+          '&:hover, &:focus': {
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
+    MuiButtonGroup: {
+      styleOverrides: {
+        contained: {
+          borderRadius: 18,
         },
       },
     },
     MuiTab: {
-      root: {
-        textTransform: 'none',
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
       },
     },
-    // MuiMenu: {
-    // 	paper: {
-    // 		borderRadius: 12
-    // 	}
-    // },
     MuiDialog: {
-      paper: {
-        borderRadius: 16,
+      styleOverrides: {
+        paper: {
+          borderRadius: 16,
+        },
       },
     },
     MuiPaper: {
-      rounded: {
-        borderRadius: 16,
+      styleOverrides: {
+        rounded: {
+          borderRadius: 16,
+        },
       },
     },
     MuiPopover: {
-      paper: {
-        borderRadius: 8,
+      styleOverrides: {
+        paper: {
+          borderRadius: 8,
+        },
       },
     },
     MuiFilledInput: {
-      root: {
-        borderRadius: 4,
-        '&:before, &:after': {
-          display: 'none',
+      styleOverrides: {
+        root: {
+          borderRadius: 4,
+          '&:before, &:after': {
+            display: 'none',
+          },
         },
+      },
+    },
+    MuiSlider: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    MuiCheckbox: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    MuiRadio: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    MuiSwitch: {
+      defaultProps: {
+        color: 'secondary',
       },
     },
   },
@@ -116,7 +158,7 @@ export const mustHaveThemeOptions = {
 export const defaultThemes = {
   default: {
     palette: {
-      type: 'light',
+      mode: 'light',
       primary: fuseDark,
       secondary: {
         light: lightBlue[400],
@@ -131,7 +173,7 @@ export const defaultThemes = {
   },
   defaultDark: {
     palette: {
-      type: 'dark',
+      mode: 'dark',
       primary: fuseDark,
       secondary: {
         light: lightBlue[400],
@@ -181,7 +223,7 @@ export function mainThemeVariations(theme) {
   return {
     mainThemeDark: _.merge({}, theme, {
       palette: {
-        type: 'dark',
+        mode: 'dark',
         background: {
           paper: '#1E2125',
           default: '#121212',
@@ -195,7 +237,7 @@ export function mainThemeVariations(theme) {
     }),
     mainThemeLight: _.merge({}, theme, {
       palette: {
-        type: 'light',
+        mode: 'light',
         background: {
           paper: '#FFFFFF',
           default: '#F7F7F7',

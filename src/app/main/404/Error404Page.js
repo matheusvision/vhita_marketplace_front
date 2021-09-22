@@ -1,5 +1,9 @@
-import Typography from '@material-ui/core/Typography';
+import Icon from '@mui/material/Icon';
+import Input from '@mui/material/Input';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function Error404Page() {
   return (
@@ -22,6 +26,23 @@ function Error404Page() {
             Sorry but we could not find the page you are looking for
           </Typography>
         </motion.div>
+
+        <Paper className="flex items-center w-full h-56 p-16 mt-48 mb-16 shadow">
+          <Icon color="action">search</Icon>
+          <Input
+            placeholder="Search for anything"
+            className="px-16"
+            disableUnderline
+            fullWidth
+            inputProps={{
+              'aria-label': 'Search',
+            }}
+          />
+        </Paper>
+
+        <Link className="font-normal" to="/apps/dashboards/project">
+          Go back to dashboard
+        </Link>
       </div>
     </div>
   );

@@ -1,40 +1,19 @@
 import { useState } from 'react';
-import Slider from '@material-ui/core/Slider';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Menu from '@material-ui/core/Menu';
+import Slider from '@mui/material/Slider';
+import Icon from '@mui/material/Icon';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
 import clsx from 'clsx';
 
 const marks = [
-  {
-    value: 0.7,
-    label: '70%',
-  },
-  {
-    value: 0.8,
-    label: '80%',
-  },
-  {
-    value: 0.9,
-    label: '90%',
-  },
-  {
-    value: 1,
-    label: '100%',
-  },
-  {
-    value: 1.1,
-    label: '110%',
-  },
-  {
-    value: 1.2,
-    label: '120%',
-  },
-  {
-    value: 1.3,
-    label: '130%',
-  },
+  { value: 0.7, label: '70%' },
+  { value: 0.8, label: '80%' },
+  { value: 0.9, label: '90%' },
+  { value: 1, label: '100%' },
+  { value: 1.1, label: '110%' },
+  { value: 1.2, label: '120%' },
+  { value: 1.3, label: '130%' },
 ];
 
 function AdjustFontSize(props) {
@@ -61,6 +40,7 @@ function AdjustFontSize(props) {
         aria-controls="font-size-menu"
         aria-haspopup="true"
         onClick={handleClick}
+        size="large"
       >
         <Icon>format_size</Icon>
       </IconButton>

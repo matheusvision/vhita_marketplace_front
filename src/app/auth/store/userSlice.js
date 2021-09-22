@@ -1,6 +1,6 @@
 /* eslint import/no-extraneous-dependencies: off */
 import { createSlice } from '@reduxjs/toolkit';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import history from '@history';
 import _ from '@lodash';
@@ -110,7 +110,7 @@ export const updateUserShortcuts = (shortcuts) => async (dispatch, getState) => 
     },
   };
 
-  dispatch(updateUserData(user));
+  dispatch(updateUserData(newUser));
 
   return dispatch(setUserData(newUser));
 };
