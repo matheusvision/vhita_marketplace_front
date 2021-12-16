@@ -24,6 +24,7 @@ const routes = [
     element: <Error404Page />,
   },
   {
+    path: '*',
     element: <Navigate to="404" />,
   },
 ];

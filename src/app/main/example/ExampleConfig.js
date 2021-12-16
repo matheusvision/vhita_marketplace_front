@@ -16,8 +16,8 @@ const ExampleConfig = {
   },
   routes: [
     {
-      path: '/example',
-      component: Example,
+      path: 'example',
+      element: <Example />,
     },
   ],
 };
@@ -29,6 +29,7 @@ export default ExampleConfig;
  */
 /*
 import React from 'react';
+const Example = React.lazy(() => import('./Example'));
 
 const ExampleConfig = {
     settings: {
@@ -38,8 +39,8 @@ const ExampleConfig = {
     },
     routes  : [
         {
-            path     : '/example',
-            component: React.lazy(() => import('./Example'))
+            path     : 'example',
+            element: <Example/>
         }
     ]
 };
