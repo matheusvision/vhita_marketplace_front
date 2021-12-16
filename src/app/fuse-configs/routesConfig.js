@@ -1,4 +1,4 @@
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import FuseUtils from '@fuse/utils';
 import ExampleConfig from 'app/main/example/ExampleConfig';
 import FuseLoading from '@fuse/core/FuseLoading';
@@ -12,21 +12,19 @@ const routes = [
   // The individual route configs which has auth option won't be overridden.
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, null),
   {
-    exact: true,
     path: '/',
-    component: () => <Redirect to="/example" />,
+    element: <Navigate to="example" />,
   },
   {
-    path: '/loading',
-    exact: true,
-    component: () => <FuseLoading />,
+    path: 'loading',
+    element: <FuseLoading />,
   },
   {
-    path: '/404',
-    component: () => <Error404Page />,
+    path: '404',
+    element: <Error404Page />,
   },
   {
-    component: () => <Redirect to="/404" />,
+    element: <Navigate to="404" />,
   },
 ];
 

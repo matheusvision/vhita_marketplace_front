@@ -59,13 +59,13 @@ function FuseNavVerticalItem(props) {
         activeClassName="active"
         className="fuse-list-item"
         onClick={() => onItemClick && onItemClick(item)}
-        exact={item.exact}
+        end={item.end}
         itempadding={itempadding}
         role="button"
       >
         {item.icon && (
           <Icon
-            className={clsx('fuse-list-item-icon text-20 flex-shrink-0', item.iconClass)}
+            className={clsx('fuse-list-item-icon text-20 shrink-0', item.iconClass)}
             color="action"
           >
             {item.icon}

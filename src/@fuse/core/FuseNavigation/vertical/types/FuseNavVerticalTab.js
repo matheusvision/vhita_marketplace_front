@@ -76,6 +76,7 @@ function FuseNavVerticalTab(props) {
           button
           component={item.url && NavLinkAdapter}
           to={item.url}
+          end={item.end}
           className={clsx(
             `type-${item.type}`,
             dense && 'dense',
@@ -83,7 +84,6 @@ function FuseNavVerticalTab(props) {
             'fuse-list-item flex flex-col items-center justify-center p-12'
           )}
           onClick={() => onItemClick && onItemClick(item)}
-          exact={item.exact}
           role="button"
         >
           {dense ? (
@@ -129,7 +129,7 @@ function FuseNavVerticalTab(props) {
               </div>
 
               <ListItemText
-                className="fuse-list-item-text flex-grow-0 w-full m-0"
+                className="fuse-list-item-text grow-0 w-full m-0"
                 primary={item.title}
                 classes={{
                   primary: 'text-12 font-medium fuse-list-item-text-primary truncate text-center',

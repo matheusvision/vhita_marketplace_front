@@ -1,8 +1,7 @@
+import BrowserRouter from '@fuse/core/BrowserRouter';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import FuseLayout from '@fuse/core/FuseLayout';
 import FuseTheme from '@fuse/core/FuseTheme';
-import history from '@history';
-import { Router } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { useSelector } from 'react-redux';
 import rtlPlugin from 'stylis-plugin-rtl';
@@ -24,12 +23,12 @@ const emotionCacheOptions = {
   rtl: {
     key: 'muirtl',
     stylisPlugins: [rtlPlugin],
-    prepend: true,
+    insertionPoint: document.getElementById('emotion-insertion-point'),
   },
   ltr: {
     key: 'muiltr',
     stylisPlugins: [],
-    prepend: true,
+    insertionPoint: document.getElementById('emotion-insertion-point'),
   },
 };
 
@@ -39,7 +38,7 @@ const App = () => {
   return (
     <CacheProvider value={createCache(emotionCacheOptions[langDirection])}>
       <Auth>
-        <Router history={history}>
+        <BrowserRouter>
           <FuseAuthorization>
             <FuseTheme>
               <SnackbarProvider
@@ -56,7 +55,7 @@ const App = () => {
               </SnackbarProvider>
             </FuseTheme>
           </FuseAuthorization>
-        </Router>
+        </BrowserRouter>
       </Auth>
     </CacheProvider>
   );

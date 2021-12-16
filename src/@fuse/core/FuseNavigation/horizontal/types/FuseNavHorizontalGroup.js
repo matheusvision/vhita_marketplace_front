@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { memo, useState, useMemo } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
-import { withRouter } from 'react-router-dom';
+import withRouter from '@fuse/core/withRouter';
 import FuseNavItem from '../../FuseNavItem';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -96,12 +96,13 @@ function FuseNavHorizontalGroup(props) {
                 aria-haspopup="true"
                 component={item.url ? NavLinkAdapter : 'li'}
                 to={item.url}
+                end={item.end}
                 role="button"
               >
                 {item.icon && (
                   <Icon
                     color="action"
-                    className={clsx('fuse-list-item-icon text-16 flex-shrink-0', item.iconClass)}
+                    className={clsx('fuse-list-item-icon text-16 shrink-0', item.iconClass)}
                   >
                     {item.icon}
                   </Icon>
