@@ -1,25 +1,22 @@
-import { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import history from '@history';
-import { Router } from 'react-router-dom';
+import { BrowserRouterProps, Router } from 'react-router-dom';
 
-function BrowserRouter({ basename, children, window }) {
-  const [state, setState] = useState({
-    action: history.action,
-    location: history.location,
-  });
+function BrowserRouter(props: BrowserRouterProps): JSX.Element {
+	const { basename, children } = props;
 
-  useLayoutEffect(() => history.listen(setState), [history]);
+	const [state, setState] = useState({
+		action: history.action,
+		location: history.location
+	});
 
-  return (
-    <Router
-      basename={basename}
-      location={state.location}
-      navigationType={state.action}
-      navigator={history}
-    >
-      {children}
-    </Router>
-  );
+	useLayoutEffect(() => history.listen(setState), [history]);
+
+	return (
+		<Router basename={basename} location={state.location} navigationType={state.action} navigator={history}>
+			{children}
+		</Router>
+	);
 }
 
 export default BrowserRouter;

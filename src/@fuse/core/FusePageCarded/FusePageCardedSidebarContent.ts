@@ -4,7 +4,7 @@ import { ThemeProvider, useTheme } from '@mui/material/styles';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import clsx from 'clsx';
 
-function FusePageCardedSidebarContent(props) {
+function FusePageCardedSidebarContent(props: any) {
   const theme = useTheme();
   const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.main));
 

@@ -6,15 +6,15 @@ const SRC = `./src`;
 const aliases = alias(SRC);
 
 const resolvedAliases = Object.fromEntries(
-  Object.entries(aliases).map(([key, value]) => [key, path.resolve(__dirname, value)])
+	Object.entries(aliases).map(([key, value]) => [key, path.resolve(__dirname, value)])
 );
 
 const options = {
-  alias: resolvedAliases,
+	alias: resolvedAliases
 };
 
 module.exports = function override(config) {
-  config.ignoreWarnings = [{ message: /Failed to parse source map/ }];
+	config.ignoreWarnings = [{ message: /Failed to parse source map/ }];
 
-  return aliasWebpack(options)(config);
+	return aliasWebpack(options)(config);
 };

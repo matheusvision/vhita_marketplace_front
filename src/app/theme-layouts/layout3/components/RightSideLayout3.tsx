@@ -3,13 +3,12 @@ import NotificationPanel from '../../shared-components/notificationPanel/Notific
 import QuickPanel from '../../shared-components/quickPanel/QuickPanel';
 
 function RightSideLayout3() {
-  return (
-    <>
-      <QuickPanel />
-
-      <NotificationPanel />
-    </>
-  );
+	return (
+		<>
+			<QuickPanel />
+			<NotificationPanel />
+		</>
+	);
 }
 
 export default memo(RightSideLayout3);

@@ -6,11 +6,11 @@ import state from './stateSlice';
 import user from './userSlice';
 
 const reducer = combineReducers({
-  user,
-  contacts,
-  chat,
-  chats,
-  state,
+	user,
+	contacts,
+	chat,
+	chats,
+	state
 });
 
 export default reducer;
