@@ -44,7 +44,7 @@ const variantIcon = {
 	info: 'info'
 };
 
-const FuseMessage: React.FC<Props> = (props) => {
+function FuseMessage() {
 	const dispatch = useAppDispatch();
 	const state = useAppSelector(selectFuseMessageState);
 	const options = useAppSelector(selectFuseMessageOptions);
@@ -86,6 +86,6 @@ const FuseMessage: React.FC<Props> = (props) => {
 			/>
 		</StyledSnackbar>
 	);
-};
+}
 
 export default memo(FuseMessage);

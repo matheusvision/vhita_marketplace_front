@@ -5,15 +5,17 @@ import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import List from '@mui/material/List';
+import List, { ListProps } from '@mui/material/List';
+import { FuseNavComponentProps, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
+import type { Location } from 'history';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const Root = styled(List)(({ theme, ...props }) => ({
+const Root = styled(List)<ListProps & { itempadding: number }>(({ theme, ...props }) => ({
 	padding: 0,
 	'&.open': {},
 	'& > .fuse-list-item': {
@@ -36,58 +38,48 @@ const Root = styled(List)(({ theme, ...props }) => ({
 	}
 }));
 
-function needsToBeOpened(location: any, item: any) {
+function needsToBeOpened(location: Location, item: FuseNavItemProps) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
-function isUrlInChildren(parent: any, url: any) {
-	if (!parent.children) {
-		return false;
-	}
-
-	for (let i = 0; i < parent.children.length; i += 1) {
-		if (parent.children[i].children) {
-			if (isUrlInChildren(parent.children[i], url)) {
-				return true;
-			}
-		}
-
-		if (parent.children[i].url === url || url.includes(parent.children[i].url)) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-function FuseNavVerticalCollapse(props: any) {
-	const [open, setOpen] = useState(() => needsToBeOpened(props.location, props.item));
+function FuseNavVerticalCollapse(props: FuseNavComponentProps) {
+	const location = useLocation();
 	const { item, nestedLevel, onItemClick } = props;
+
+	const [open, setOpen] = useState(() => needsToBeOpened(location, item));
+
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
 
-	const location = useLocation();
-
 	useEffect(() => {
-		if (needsToBeOpened(location, props.item)) {
+		if (needsToBeOpened(location, item)) {
 			if (!open) {
 				setOpen(true);
 			}
 		}
 		// eslint-disable-next-line
-	}, [location, props.item]);
+	}, [location, item]);
+
+	const component = item.url ? NavLinkAdapter : 'li';
+
+	let itemProps;
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			to: item.url,
+			end: item.end,
+			role: 'button'
+		};
+	}
 
 	return useMemo(
 		() => (
 			<Root className={clsx(open && 'open')} itempadding={itempadding} sx={item.sx}>
 				<ListItem
-					component={item.url ? NavLinkAdapter : 'li'}
-					button
+					component={component}
 					className="fuse-list-item"
 					onClick={() => setOpen(!open)}
-					to={item.url}
-					end={item.end}
-					role="button"
-					disabled={item.disabled}
+					{...itemProps}
 				>
 					{item.icon && (
 						<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
@@ -148,16 +140,6 @@ function FuseNavVerticalCollapse(props: any) {
 		]
 	);
 }
-
-FuseNavVerticalCollapse.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		children: PropTypes.array
-	})
-};
-FuseNavVerticalCollapse.defaultProps = {};
 
 const NavVerticalCollapse = FuseNavVerticalCollapse;
 

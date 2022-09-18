@@ -1,14 +1,13 @@
 import { styled } from '@mui/material/styles';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const Root = styled(ListItem)(({ theme, ...props }) => ({
+const Root = styled(ListItemButton)<ListItemButtonProps & { itempadding: number }>(({ theme, ...props }) => ({
 	minHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -37,25 +36,33 @@ const Root = styled(ListItem)(({ theme, ...props }) => ({
 	textDecoration: 'none!important'
 }));
 
-function FuseNavVerticalLink(props: any) {
-	const dispatch = useDispatch();
+function FuseNavVerticalLink(props: FuseNavComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
 
+	let itemProps;
+
+	const component = item.url ? Link : 'li';
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			href: item.url,
+			role: 'button',
+			target: item.target ? item.target : '_blank'
+		};
+	}
+
 	return useMemo(
 		() => (
 			<Root
-				button
-				component="a"
-				href={item.url}
-				target={item.target ? item.target : '_blank'}
+				component={component}
 				className="fuse-list-item"
 				onClick={() => onItemClick && onItemClick(item)}
-				role="button"
 				itempadding={itempadding}
 				sx={item.sx}
-				disabled={item.disabled}
+				{...itemProps}
 			>
 				{item.icon && (
 					<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
@@ -79,17 +86,6 @@ function FuseNavVerticalLink(props: any) {
 		[item, itempadding, onItemClick]
 	);
 }
-
-FuseNavVerticalLink.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		url: PropTypes.string,
-		target: PropTypes.string
-	})
-};
-FuseNavVerticalLink.defaultProps = {};
 
 const NavVerticalLink = FuseNavVerticalLink;
 

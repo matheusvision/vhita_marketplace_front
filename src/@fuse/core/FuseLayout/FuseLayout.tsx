@@ -85,7 +85,7 @@ interface Props {
 	layouts: any;
 }
 
-const FuseLayout: React.FC<Props> = (props) => {
+function FuseLayout(props: Props) {
 	const { layouts } = props;
 	const dispatch = useDispatch();
 	const settings = useSelector(selectFuseCurrentSettings);
@@ -149,6 +149,6 @@ const FuseLayout: React.FC<Props> = (props) => {
 			<Layout {...props} />
 		</>
 	) : null;
-};
+}
 
 export default memo(FuseLayout);

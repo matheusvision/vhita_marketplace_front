@@ -1,20 +1,19 @@
 import clsx from 'clsx';
-import { forwardRef, ReactNode, SVGProps } from 'react';
-import { styled, Theme } from '@mui/material/styles';
-import { Box, SxProps } from '@mui/system';
+import { forwardRef } from 'react';
+import { styled } from '@mui/material/styles';
+import { Box, BoxProps } from '@mui/system';
 import Icon from '@mui/material/Icon';
+import * as React from 'react';
 
 export type Ref = HTMLElement;
 
-interface Props extends SVGProps<HTMLElement> {
+interface Props extends BoxProps {
 	children: string;
-	className?: string;
 	size?: number | string;
-	sx?: SxProps<Theme>;
 	color?: 'inherit' | 'disabled' | 'primary' | 'secondary' | 'action' | 'error' | 'info' | 'success' | 'warning';
 }
 
-const Root = styled(Box)<Props>(({ theme, ...props }) => ({
+const Root = styled(Box)<Props & { children: JSX.Element }>(({ theme, ...props }) => ({
 	width: props.size,
 	height: props.size,
 	minWidth: props.size,
@@ -37,8 +36,12 @@ const Root = styled(Box)<Props>(({ theme, ...props }) => ({
 const FuseSvgIcon = forwardRef<Ref, Props>((props, ref) => {
 	const { children, className, color } = props;
 
+	if (typeof children !== 'string') {
+		return null;
+	}
+
 	if (!children.includes(':')) {
-		return <Icon ref={ref} {...props} />;
+		return <Box component={Icon} ref={ref} {...props} />;
 	}
 
 	const iconPath = children.replace(':', '.svg#');
@@ -63,7 +66,6 @@ const FuseSvgIcon = forwardRef<Ref, Props>((props, ref) => {
 
 FuseSvgIcon.defaultProps = {
 	size: 24,
-	sx: {},
 	color: 'inherit'
 };
 

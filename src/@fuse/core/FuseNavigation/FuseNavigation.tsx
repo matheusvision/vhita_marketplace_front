@@ -1,7 +1,5 @@
 import Divider from '@mui/material/Divider';
-import PropTypes from 'prop-types';
 import { memo } from 'react';
-import _ from '@lodash';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import FuseNavHorizontalLayout1 from './horizontal/FuseNavHorizontalLayout1';
 import FuseNavVerticalLayout1 from './vertical/FuseNavVerticalLayout1';
@@ -15,6 +13,7 @@ import FuseNavVerticalGroup from './vertical/types/FuseNavVerticalGroup';
 import FuseNavVerticalItem from './vertical/types/FuseNavVerticalItem';
 import FuseNavVerticalLink from './vertical/types/FuseNavVerticalLink';
 import { registerComponent } from './FuseNavItem';
+import { FuseNavigationProps } from '.';
 
 const inputGlobalStyles = (
 	<GlobalStyles
@@ -56,36 +55,31 @@ registerComponent('horizontal-link', FuseNavHorizontalLink);
 registerComponent('vertical-divider', () => <Divider className="my-16" />);
 registerComponent('horizontal-divider', () => <Divider className="my-16" />);
 
-function FuseNavigation(props: any) {
-	const options = _.pick(props, [
-		'navigation',
-		'layout',
-		'active',
-		'dense',
-		'className',
-		'onItemClick',
-		'firstLevel',
-		'selectedId'
-	]);
-	if (props.navigation.length > 0) {
-		return (
-			<>
-				{inputGlobalStyles}
-				{props.layout === 'horizontal' && <FuseNavHorizontalLayout1 {...options} />}
-				{props.layout === 'vertical' && <FuseNavVerticalLayout1 {...options} />}
-				{props.layout === 'vertical-2' && <FuseNavVerticalLayout2 {...options} />}
-			</>
-		);
+function FuseNavigation(props: FuseNavigationProps) {
+	const { navigation, layout = 'vertical' } = props;
+	// const options = _.pick(props, [
+	// 	'navigation',
+	// 	'layout',
+	// 	'active',
+	// 	'dense',
+	// 	'className',
+	// 	'onItemClick',
+	// 	'firstLevel',
+	// 	'selectedId'
+	// ]);
+
+	if (!navigation || navigation.length === 0) {
+		return null;
 	}
-	return null;
+
+	return (
+		<>
+			{inputGlobalStyles}
+			{layout === 'horizontal' && <FuseNavHorizontalLayout1 {...props} />}
+			{layout === 'vertical' && <FuseNavVerticalLayout1 {...props} />}
+			{layout === 'vertical-2' && <FuseNavVerticalLayout2 {...props} />}
+		</>
+	);
 }
-
-FuseNavigation.propTypes = {
-	navigation: PropTypes.array.isRequired
-};
-
-FuseNavigation.defaultProps = {
-	layout: 'vertical'
-};
 
 export default memo(FuseNavigation);

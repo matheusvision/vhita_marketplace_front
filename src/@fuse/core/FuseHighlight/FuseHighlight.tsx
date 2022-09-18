@@ -7,11 +7,11 @@ import clsx from 'clsx';
 interface Props {
 	async?: boolean;
 	children: string | { default: string };
-	component: React.ElementType;
+	component?: React.ElementType;
 	className: string;
 }
 
-const FuseHighlight: React.FC<Props> = (props) => {
+function FuseHighlight(props: Props) {
 	const { async, children, className, component: Wrapper } = props;
 
 	const highlight = useCallback(() => {
@@ -75,7 +75,7 @@ const FuseHighlight: React.FC<Props> = (props) => {
 			{source}
 		</Wrapper>
 	);
-};
+}
 
 FuseHighlight.defaultProps = {
 	component: 'code',

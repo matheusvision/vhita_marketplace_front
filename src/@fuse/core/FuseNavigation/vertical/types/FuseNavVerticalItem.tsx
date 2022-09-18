@@ -1,14 +1,14 @@
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { alpha, styled } from '@mui/material/styles';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
+import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const Root = styled(ListItem)(({ theme, ...props }) => ({
+const Root = styled(ListItemButton)<ListItemButtonProps & { itempadding: number }>(({ theme, ...props }) => ({
 	minHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -43,25 +43,33 @@ const Root = styled(ListItem)(({ theme, ...props }) => ({
 	'& > .fuse-list-item-text': {}
 }));
 
-function FuseNavVerticalItem(props: any) {
+function FuseNavVerticalItem(props: FuseNavComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
 
+	const component = item.url ? NavLinkAdapter : 'li';
+
+	let itemProps;
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			to: item.url || '',
+			end: item.end,
+			role: 'button'
+		};
+	}
+
 	return useMemo(
 		() => (
 			<Root
-				button
-				component={NavLinkAdapter}
-				to={item.url || ''}
-				activeClassName={item.url ? 'active' : ''}
+				component={component}
 				className={clsx('fuse-list-item', item.active && 'active')}
 				onClick={() => onItemClick && onItemClick(item)}
-				end={item.end}
 				itempadding={itempadding}
-				role="button"
 				sx={item.sx}
-				disabled={item.disabled}
+				{...itemProps}
 			>
 				{item.icon && (
 					<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
@@ -84,17 +92,6 @@ function FuseNavVerticalItem(props: any) {
 		[item, itempadding, onItemClick]
 	);
 }
-
-FuseNavVerticalItem.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		url: PropTypes.string
-	})
-};
-
-FuseNavVerticalItem.defaultProps = {};
 
 const NavVerticalItem = FuseNavVerticalItem;
 

@@ -10,7 +10,7 @@ interface Props {
 	className?: string;
 }
 
-const FuseCountdown: React.FC<Props> = (props) => {
+function FuseCountdown(props: Props) {
 	const { onComplete, endDate: propsEndDate, className } = props;
 	const [endDate] = useState(moment.isMoment(propsEndDate) ? propsEndDate : moment(propsEndDate));
 	const [countdown, setCountdown] = useState({
@@ -91,7 +91,7 @@ const FuseCountdown: React.FC<Props> = (props) => {
 			</div>
 		</div>
 	);
-};
+}
 
 FuseCountdown.defaultProps = {
 	endDate: moment().add(15, 'days')

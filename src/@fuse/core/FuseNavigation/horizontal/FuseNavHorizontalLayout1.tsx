@@ -1,6 +1,7 @@
 import List from '@mui/material/List';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
+import { FuseNavLayoutProps } from '@fuse/core/FuseNavigation';
 import FuseNavItem from '../FuseNavItem';
 
 const StyledList = styled(List)(({ theme }) => ({
@@ -29,8 +30,8 @@ const StyledList = styled(List)(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalLayout1(props: any) {
-	const { navigation, layout, active, dense, className } = props;
+function FuseNavHorizontalLayout1(props: FuseNavLayoutProps) {
+	const { navigation, active, dense, className } = props;
 
 	return (
 		<StyledList

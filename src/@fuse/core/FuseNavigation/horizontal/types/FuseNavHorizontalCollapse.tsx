@@ -3,20 +3,22 @@ import { styled, useTheme } from '@mui/material/styles';
 import { useDebounce } from '@fuse/hooks';
 import Grow from '@mui/material/Grow';
 import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { memo, useMemo, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
 import withRouter from '@fuse/core/withRouter';
+import { ListItemButton, ListItemButtonProps } from '@mui/material';
+import { FuseNavComponentProps, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { Location, Pathname } from 'history';
+import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const StyledListItem = styled(ListItem)(({ theme }) => ({
+const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	color: theme.palette.text.primary,
 	minHeight: 48,
 	'&.active, &.active:hover, &.active:focus': {
@@ -37,34 +39,27 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 	}
 }));
 
-function isUrlInChildren(parent: any, url: any) {
-	if (!parent.children) {
-		return false;
-	}
-
-	for (let i = 0; i < parent.children.length; i += 1) {
-		if (parent.children[i].children) {
-			if (isUrlInChildren(parent.children[i], url)) {
-				return true;
-			}
-		}
-
-		if (parent.children[i].url === url || url.includes(parent.children[i].url)) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-function FuseNavHorizontalCollapse(props: any) {
+function FuseNavHorizontalCollapse(props: FuseNavComponentProps & { location: Location }) {
 	const [opened, setOpened] = useState(false);
-	const { item, nestedLevel, dense } = props;
+	const { item, nestedLevel, dense, location } = props;
 	const theme = useTheme();
 
-	const handleToggle = useDebounce((open: any) => {
+	const handleToggle = useDebounce((open: boolean) => {
 		setOpened(open);
 	}, 150);
+
+	const component = item.url ? NavLinkAdapter : 'li';
+
+	let itemProps;
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			to: item.url,
+			end: item.end,
+			role: 'button'
+		};
+	}
 
 	return useMemo(
 		() => (
@@ -73,23 +68,19 @@ function FuseNavHorizontalCollapse(props: any) {
 					<Reference>
 						{({ ref }) => (
 							<div ref={ref}>
-								<StyledListItem
-									button
+								<Root
+									component={component}
 									className={clsx(
 										'fuse-list-item',
 										opened && 'open',
-										isUrlInChildren(item, props.location.pathname) && 'active'
+										isUrlInChildren(item, location.pathname) && 'active'
 									)}
 									onMouseEnter={() => handleToggle(true)}
 									onMouseLeave={() => handleToggle(false)}
 									aria-owns={opened ? 'menu-fuse-list-grow' : null}
 									aria-haspopup="true"
-									component={item.url ? NavLinkAdapter : 'li'}
-									to={item.url}
-									end={item.end}
-									role="button"
 									sx={item.sx}
-									disabled={item.disabled}
+									{...itemProps}
 								>
 									{item.icon && (
 										<FuseSvgIcon
@@ -119,16 +110,12 @@ function FuseNavHorizontalCollapse(props: any) {
 												: 'heroicons-outline:arrow-sm-left'}
 										</FuseSvgIcon>
 									</IconButton>
-								</StyledListItem>
+								</Root>
 							</div>
 						)}
 					</Reference>
 					{ReactDOM.createPortal(
-						<Popper
-							placement={theme.direction === 'ltr' ? 'right' : 'left'}
-							eventsEnabled={opened}
-							positionFixed
-						>
+						<Popper placement={theme.direction === 'ltr' ? 'right' : 'left'}>
 							{({ ref, style, placement, arrowProps }) =>
 								opened && (
 									<div
@@ -154,7 +141,7 @@ function FuseNavHorizontalCollapse(props: any) {
 															'px-0'
 														)}
 													>
-														{item.children.map((_item: any) => (
+														{item.children.map((_item) => (
 															<FuseNavItem
 																key={_item.id}
 																type={`horizontal-${_item.type}`}
@@ -168,8 +155,7 @@ function FuseNavHorizontalCollapse(props: any) {
 											</Paper>
 										</Grow>
 									</div>
-								)
-							}
+								)}
 						</Popper>,
 						document.querySelector('#root')
 					)}
@@ -179,15 +165,6 @@ function FuseNavHorizontalCollapse(props: any) {
 		[dense, handleToggle, item, nestedLevel, opened, props.location.pathname, theme.direction]
 	);
 }
-
-FuseNavHorizontalCollapse.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		children: PropTypes.array
-	})
-};
 
 FuseNavHorizontalCollapse.defaultProps = {};
 

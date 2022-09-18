@@ -17,7 +17,7 @@ const Frame = styled('iframe')(({ theme }) => ({
 	boxShadow: theme.shadows[1]
 }));
 
-const DemoFrame: React.FC<Props> = (props) => {
+function DemoFrame(props: Props) {
 	const { children, name, ...other } = props;
 	const title = `${name} demo`;
 	/**
@@ -51,6 +51,6 @@ const DemoFrame: React.FC<Props> = (props) => {
 				: null}
 		</>
 	);
-};
+}
 
 export default React.memo(DemoFrame);

@@ -1,13 +1,12 @@
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { alpha, styled } from '@mui/material/styles';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import ListItem from '@mui/material/ListItem';
-import { ListItemText } from '@mui/material';
+import { ListItemButton, ListItemButtonProps, ListItemText } from '@mui/material';
+import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
 import FuseNavItem from '../../FuseNavItem';
 
-const Root = styled(ListItem)(({ theme, itempadding, ...props }) => ({
+const Root = styled(ListItemButton)<ListItemButtonProps & { itempadding: number }>(({ theme, ...props }) => ({
 	minminHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -21,24 +20,34 @@ const Root = styled(ListItem)(({ theme, itempadding, ...props }) => ({
 	letterSpacing: '0.025em'
 }));
 
-function FuseNavVerticalGroup(props: any) {
+function FuseNavVerticalGroup(props: FuseNavComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
+
+	const component = item.url ? NavLinkAdapter : 'li';
+
+	let itemProps;
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			to: item.url,
+			end: item.end,
+			role: 'button'
+		};
+	}
 
 	return useMemo(
 		() => (
 			<>
 				<Root
-					component={item.url ? NavLinkAdapter : 'li'}
+					component={component}
 					itempadding={itempadding}
 					className={clsx('fuse-list-subheader flex items-center  py-10', !item.url && 'cursor-default')}
 					onClick={() => onItemClick && onItemClick(item)}
-					to={item.url}
-					end={item.end}
-					role="button"
 					sx={item.sx}
-					disabled={item.disabled}
+					{...itemProps}
 				>
 					<ListItemText
 						className="fuse-list-subheader-text"
@@ -67,7 +76,7 @@ function FuseNavVerticalGroup(props: any) {
 				</Root>
 				{item.children && (
 					<>
-						{item.children.map((_item: any) => (
+						{item.children.map((_item) => (
 							<FuseNavItem
 								key={_item.id}
 								type={`vertical-${_item.type}`}
@@ -83,16 +92,6 @@ function FuseNavVerticalGroup(props: any) {
 		[item, itempadding, nestedLevel, onItemClick]
 	);
 }
-
-FuseNavVerticalGroup.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		children: PropTypes.array
-	})
-};
-
-FuseNavVerticalGroup.defaultProps = {};
 
 const NavVerticalGroup = FuseNavVerticalGroup;
 

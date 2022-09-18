@@ -3,19 +3,21 @@ import { styled, useTheme } from '@mui/material/styles';
 import { useDebounce } from '@fuse/hooks';
 import Grow from '@mui/material/Grow';
 import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { memo, useMemo, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
 import withRouter from '@fuse/core/withRouter';
+import { ListItemButton, ListItemButtonProps } from '@mui/material';
+import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import type { Location } from 'history';
+import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const StyledListItem = styled(ListItem)(({ theme }) => ({
+const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	color: theme.palette.text.primary,
 	'&.active, &.active:hover, &.active:focus': {
 		backgroundColor: `${theme.palette.secondary.main}!important`,
@@ -39,37 +41,17 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 	}
 }));
 
-function isUrlInChildren(parent: any, url: any) {
-	if (!parent.children) {
-		return false;
-	}
-
-	for (let i = 0; i < parent.children.length; i += 1) {
-		if (parent.children[i].children) {
-			if (isUrlInChildren(parent.children[i], url)) {
-				return true;
-			}
-		}
-
-		if (parent.children[i].url === url || url.includes(parent.children[i].url)) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-function FuseNavHorizontalGroup(props: any) {
+function FuseNavHorizontalGroup(props: FuseNavComponentProps & { location: Location }) {
 	const [opened, setOpened] = useState(false);
-	const { item, nestedLevel, dense } = props;
+	const { item, nestedLevel, dense, location } = props;
 	const theme = useTheme();
 
-	const handleToggle = useDebounce((open: any) => {
+	const handleToggle = useDebounce((open) => {
 		setOpened(open);
 	}, 150);
 
 	return useMemo(() => {
-		let popperPlacement = 'left';
+		let popperPlacement;
 
 		if (nestedLevel === 0) {
 			popperPlacement = theme.direction === 'ltr' ? 'bottom-start' : 'bottom-end';
@@ -77,29 +59,38 @@ function FuseNavHorizontalGroup(props: any) {
 			popperPlacement = theme.direction === 'ltr' ? 'right' : 'left';
 		}
 
+		const component = item.url ? NavLinkAdapter : 'li';
+
+		let itemProps;
+
+		if (typeof component !== 'string') {
+			itemProps = {
+				disabled: item.disabled,
+				to: item.url,
+				end: item.end,
+				role: 'button'
+			};
+		}
+
 		return (
 			<Manager>
 				<Reference>
 					{({ ref }) => (
 						<div ref={ref}>
-							<StyledListItem
-								button
+							<Root
+								component={component}
 								className={clsx(
 									'fuse-list-item',
 									'relative',
 									`level-${nestedLevel}`,
-									isUrlInChildren(item, props.location.pathname) && 'active'
+									isUrlInChildren(item, location.pathname) && 'active'
 								)}
 								onMouseEnter={() => handleToggle(true)}
 								onMouseLeave={() => handleToggle(false)}
 								aria-owns={opened ? 'menu-fuse-list-grow' : null}
 								aria-haspopup="true"
-								component={item.url ? NavLinkAdapter : 'li'}
-								to={item.url}
-								end={item.end}
-								role="button"
 								sx={item.sx}
-								disabled={item.disabled}
+								{...itemProps}
 							>
 								{item.icon && (
 									<FuseSvgIcon
@@ -130,12 +121,12 @@ function FuseNavHorizontalGroup(props: any) {
 										</FuseSvgIcon>
 									</IconButton>
 								)}
-							</StyledListItem>
+							</Root>
 						</div>
 					)}
 				</Reference>
 				{ReactDOM.createPortal(
-					<Popper placement={popperPlacement} eventsEnabled={opened} positionFixed>
+					<Popper placement={popperPlacement}>
 						{({ ref, style, placement, arrowProps }) =>
 							opened && (
 								<div
@@ -157,7 +148,7 @@ function FuseNavHorizontalGroup(props: any) {
 												<ul
 													className={clsx('popper-navigation-list', dense && 'dense', 'px-0')}
 												>
-													{item.children.map((_item: any) => (
+													{item.children.map((_item) => (
 														<FuseNavItem
 															key={_item.id}
 															type={`horizontal-${_item.type}`}
@@ -171,8 +162,7 @@ function FuseNavHorizontalGroup(props: any) {
 										</Paper>
 									</Grow>
 								</div>
-							)
-						}
+							)}
 					</Popper>,
 					document.querySelector('#root')
 				)}
@@ -180,14 +170,6 @@ function FuseNavHorizontalGroup(props: any) {
 		);
 	}, [dense, handleToggle, item, nestedLevel, opened, props.location.pathname, theme.direction]);
 }
-
-FuseNavHorizontalGroup.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		children: PropTypes.array
-	})
-};
 
 FuseNavHorizontalGroup.defaultProps = {};
 

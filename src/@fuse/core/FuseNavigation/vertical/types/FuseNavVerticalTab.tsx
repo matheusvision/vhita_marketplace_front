@@ -4,11 +4,10 @@ import Tooltip from '@mui/material/Tooltip';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { Box } from '@mui/system';
+import { FuseNavVerticalTabProps } from '@fuse/core/FuseNavigation';
+import { ListItemButton } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
@@ -60,20 +59,27 @@ const Root = styled(Box)(({ theme }) => ({
 	}
 }));
 
-function FuseNavVerticalTab(props: any) {
-	const dispatch = useDispatch();
-	const location = useLocation();
-
+function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 	const { item, onItemClick, firstLevel, dense, selectedId } = props;
+
+	const component = item.url ? NavLinkAdapter : '';
+
+	let itemProps;
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			to: item.url,
+			end: item.end,
+			role: 'button'
+		};
+	}
 
 	return useMemo(
 		() => (
 			<Root sx={item.sx}>
-				<ListItem
-					button
-					component={item.url && NavLinkAdapter}
-					to={item.url}
-					end={item.end}
+				<ListItemButton
+					component={component}
 					className={clsx(
 						`type-${item.type}`,
 						dense && 'dense',
@@ -81,8 +87,7 @@ function FuseNavVerticalTab(props: any) {
 						'fuse-list-item flex flex-col items-center justify-center p-12'
 					)}
 					onClick={() => onItemClick && onItemClick(item)}
-					role="button"
-					disabled={item.disabled}
+					{...itemProps}
 				>
 					{dense ? (
 						<Tooltip title={item.title || ''} placement="right">
@@ -134,10 +139,10 @@ function FuseNavVerticalTab(props: any) {
 							/>
 						</>
 					)}
-				</ListItem>
+				</ListItemButton>
 				{!firstLevel &&
 					item.children &&
-					item.children.map((_item: any) => (
+					item.children.map((_item) => (
 						<NavVerticalTab
 							key={_item.id}
 							type={`vertical-${_item.type}`}
@@ -153,17 +158,6 @@ function FuseNavVerticalTab(props: any) {
 		[firstLevel, item, onItemClick, dense, selectedId]
 	);
 }
-
-FuseNavVerticalTab.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		url: PropTypes.string
-	})
-};
-
-FuseNavVerticalTab.defaultProps = {};
 
 const NavVerticalTab = FuseNavVerticalTab;
 

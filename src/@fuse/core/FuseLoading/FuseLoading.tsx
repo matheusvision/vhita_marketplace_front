@@ -8,7 +8,7 @@ interface Props {
 	delay?: boolean | number;
 }
 
-const FuseLoading: React.FC<Props> = (props) => {
+function FuseLoading(props: Props) {
 	const { delay } = props;
 	const [showLoading, setShowLoading] = useState(!delay);
 
@@ -35,7 +35,7 @@ const FuseLoading: React.FC<Props> = (props) => {
 			</Box>
 		</div>
 	);
-};
+}
 
 FuseLoading.defaultProps = {
 	delay: false

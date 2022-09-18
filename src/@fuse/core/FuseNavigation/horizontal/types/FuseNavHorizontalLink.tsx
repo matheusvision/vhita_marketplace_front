@@ -1,14 +1,14 @@
 import { styled } from '@mui/material/styles';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { memo, useMemo } from 'react';
 import withRouter from '@fuse/core/withRouter';
+import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
+import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const StyledListItem = styled(ListItem)(({ theme }) => ({
+const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	color: theme.palette.text.primary,
 	textDecoration: 'none!important',
 	minHeight: 48,
@@ -29,21 +29,24 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalLink(props: any) {
+function FuseNavHorizontalLink(props: FuseNavComponentProps) {
 	const { item } = props;
+	let itemProps;
+
+	const component = item.url ? Link : 'li';
+
+	if (typeof component !== 'string') {
+		itemProps = {
+			disabled: item.disabled,
+			href: item.url,
+			role: 'button',
+			target: item.target ? item.target : '_blank'
+		};
+	}
 
 	return useMemo(
 		() => (
-			<StyledListItem
-				button
-				component="a"
-				href={item.url}
-				target={item.target ? item.target : '_blank'}
-				className={clsx('fuse-list-item')}
-				role="button"
-				sx={item.sx}
-				disabled={item.disabled}
-			>
+			<Root component={component} className={clsx('fuse-list-item')} sx={item.sx} {...itemProps}>
 				{item.icon && (
 					<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
 						{item.icon}
@@ -57,23 +60,11 @@ function FuseNavHorizontalLink(props: any) {
 				/>
 
 				{item.badge && <FuseNavBadge className="ltr:ml-8 rtl:mr-8" badge={item.badge} />}
-			</StyledListItem>
+			</Root>
 		),
 		[item.badge, item.icon, item.iconClass, item.target, item.title, item.url]
 	);
 }
-
-FuseNavHorizontalLink.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		url: PropTypes.string,
-		target: PropTypes.string
-	})
-};
-
-FuseNavHorizontalLink.defaultProps = {};
 
 const NavHorizontalLink = withRouter(memo(FuseNavHorizontalLink));
 

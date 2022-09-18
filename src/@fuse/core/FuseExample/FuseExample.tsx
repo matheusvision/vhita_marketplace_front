@@ -18,7 +18,7 @@ interface Props {
 	className: string;
 }
 
-const FuseExample: React.FC<Props> = (props) => {
+function FuseExample(props: Props) {
 	const { component: Component, raw, iframe, className, name, currentTabIndex } = props;
 
 	const [currentTab, setCurrentTab] = useState(currentTabIndex);
@@ -88,7 +88,7 @@ const FuseExample: React.FC<Props> = (props) => {
 			</div>
 		</Card>
 	);
-};
+}
 
 FuseExample.defaultProps = {
 	name: '',

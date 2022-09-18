@@ -11,8 +11,7 @@ interface Props {
 	children?: JSX.Element;
 }
 
-// const FramedDemo = (props: Parameters<Props>): ReturnType<React.FC> {
-const FramedDemo: React.FC<Props> = (props) => {
+function FramedDemo(props: Props) {
 	const { children, document } = props;
 
 	const theme = useTheme();
@@ -49,6 +48,6 @@ const FramedDemo: React.FC<Props> = (props) => {
 			</CacheProvider>
 		</StyleSheetManager>
 	);
-};
+}
 
 export default FramedDemo;

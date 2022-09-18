@@ -4,12 +4,14 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import clsx from 'clsx';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FuseNavigation from '@fuse/core/FuseNavigation';
+import FuseNavigation, { FuseNavItemProps } from '@fuse/core/FuseNavigation';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import { useLocation } from 'react-router-dom';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { selectNavigation } from 'app/store/fuse/navigationSlice';
+import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
+import { Location } from 'history';
 
 const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
@@ -31,27 +33,8 @@ const StyledPanel = styled(FuseScrollbars)(({ theme, opened }) => ({
 	})
 }));
 
-function needsToBeOpened(location: any, item: any) {
+function needsToBeOpened(location: Location, item: FuseNavItemProps) {
 	return location && isUrlInChildren(item, location.pathname);
-}
-
-function isUrlInChildren(parent: any, url: any) {
-	if (!parent.children) {
-		return false;
-	}
-
-	for (let i = 0; i < parent.children.length; i += 1) {
-		if (parent.children[i].children) {
-			if (isUrlInChildren(parent.children[i], url)) {
-				return true;
-			}
-		}
-		if (parent.children[i].url === url || url.includes(parent.children[i].url)) {
-			return true;
-		}
-	}
-
-	return false;
 }
 
 function NavbarStyle3Content(props: any) {

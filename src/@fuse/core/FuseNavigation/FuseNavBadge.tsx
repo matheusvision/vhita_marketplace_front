@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { memo } from 'react';
+import { FuseNavBadgeProps } from '@fuse/core/FuseNavigation/index';
 
 const Root = styled('div')(({ theme }) => ({
 	padding: '0 7px',
@@ -16,12 +16,18 @@ const Root = styled('div')(({ theme }) => ({
 	color: theme.palette.secondary.contrastText
 }));
 
-function FuseNavBadge(props: any) {
-	const { className, badge } = props;
+interface Props {
+	className?: string;
+	classes?: string;
+	badge: FuseNavBadgeProps;
+}
+
+function FuseNavBadge(props: Props) {
+	const { className = '', classes = '', badge } = props;
 
 	return (
 		<Root
-			className={clsx('item-badge', className, badge?.classes)}
+			className={clsx('item-badge', className, classes)}
 			style={{
 				backgroundColor: badge.bg,
 				color: badge.fg
@@ -31,14 +37,5 @@ function FuseNavBadge(props: any) {
 		</Root>
 	);
 }
-
-FuseNavBadge.propTypes = {
-	badge: PropTypes.shape({
-		title: PropTypes.node,
-		bg: PropTypes.string,
-		fg: PropTypes.string
-	})
-};
-FuseNavBadge.defaultProps = {};
 
 export default memo(FuseNavBadge);

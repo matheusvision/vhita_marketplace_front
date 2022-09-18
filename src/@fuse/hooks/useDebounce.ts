@@ -1,7 +1,8 @@
 import _ from '@lodash';
+import { DebounceSettingsLeading } from 'lodash';
 import { useRef } from 'react';
 
-function useDebounce(func: any, wait: any, options: any) {
+function useDebounce(func: (T) => void, wait: number | undefined, options?: DebounceSettingsLeading) {
 	return useRef(_.debounce(func, wait, options)).current;
 }
 
