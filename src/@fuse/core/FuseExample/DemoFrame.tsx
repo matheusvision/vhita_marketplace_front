@@ -1,56 +1,13 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import rtlPlugin from 'stylis-plugin-rtl';
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
-import { StyleSheetManager } from 'styled-components';
-import { styled, useTheme } from '@mui/material/styles';
-import GlobalStyles from '@mui/material/GlobalStyles';
+import { styled } from '@mui/material/styles';
+import FramedDemo from './FramedDemo';
 
-function FramedDemo(props: any) {
-	const { children, document } = props;
-
-	const theme = useTheme();
-	React.useEffect(() => {
-		document.body.dir = theme.direction;
-	}, [document, theme.direction]);
-
-	const cache = React.useMemo(
-		() =>
-			createCache({
-				key: `iframe-demo-${theme.direction}`,
-				prepend: true,
-				container: document.head,
-				stylisPlugins: theme.direction === 'rtl' ? [rtlPlugin] : []
-			}),
-		[document, theme.direction]
-	);
-
-	const getWindow = React.useCallback(() => document.defaultView, [document]);
-
-	return (
-		<StyleSheetManager target={document.head} stylisPlugins={theme.direction === 'rtl' ? [rtlPlugin] : []}>
-			<CacheProvider value={cache}>
-				<GlobalStyles
-					styles={() => ({
-						html: {
-							fontSize: '62.5%'
-						}
-					})}
-				/>
-				{React.cloneElement(children, {
-					window: getWindow
-				})}
-			</CacheProvider>
-		</StyleSheetManager>
-	);
+interface Props {
+	name: string;
+	children: React.ReactElement;
+	other?: React.HTMLAttributes<HTMLElement>;
 }
-
-FramedDemo.propTypes = {
-	children: PropTypes.node,
-	document: PropTypes.object.isRequired
-};
 
 const Frame = styled('iframe')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
@@ -60,7 +17,7 @@ const Frame = styled('iframe')(({ theme }) => ({
 	boxShadow: theme.shadows[1]
 }));
 
-function DemoFrame(props: any) {
+const DemoFrame: React.FC<Props> = (props) => {
 	const { children, name, ...other } = props;
 	const title = `${name} demo`;
 	/**
@@ -68,7 +25,7 @@ function DemoFrame(props: any) {
 	 */
 	const frameRef = React.useRef(null);
 
-	// If we portal content into the iframe before the load event then that content
+	// If we load portal content into the iframe before the load event then that content
 	// is dropped in firefox.
 	const [iframeLoaded, onLoad] = React.useReducer(() => true, false);
 
@@ -85,7 +42,7 @@ function DemoFrame(props: any) {
 			onLoad();
 		}
 	}, [iframeLoaded]);
-	const document = frameRef.current?.contentDocument;
+	const document: Document = frameRef.current?.contentDocument;
 	return (
 		<>
 			<Frame onLoad={onLoad} ref={frameRef} title={title} {...other} />
@@ -94,11 +51,6 @@ function DemoFrame(props: any) {
 				: null}
 		</>
 	);
-}
-
-DemoFrame.propTypes = {
-	children: PropTypes.node.isRequired,
-	name: PropTypes.string.isRequired
 };
 
 export default React.memo(DemoFrame);

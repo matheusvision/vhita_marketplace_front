@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { matchRoutes, useLocation } from 'react-router-dom';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha } from '@mui/material/styles';
+import { FuseRouteMatch } from '@fuse/fuse';
 
 const inputGlobalStyles = (
 	<GlobalStyles
@@ -80,7 +81,11 @@ const inputGlobalStyles = (
 	/>
 );
 
-function FuseLayout(props: any) {
+interface Props {
+	layouts: any;
+}
+
+const FuseLayout: React.FC<Props> = (props) => {
 	const { layouts } = props;
 	const dispatch = useDispatch();
 	const settings = useSelector(selectFuseCurrentSettings);
@@ -93,7 +98,8 @@ function FuseLayout(props: any) {
 	const { pathname } = location;
 
 	const matchedRoutes = matchRoutes(routes, pathname);
-	const matched = matchedRoutes ? matchedRoutes[0] : false;
+
+	const matched: FuseRouteMatch | boolean = matchedRoutes ? matchedRoutes[0] : false;
 
 	const newSettings = useRef(null);
 
@@ -103,7 +109,7 @@ function FuseLayout(props: any) {
 		 * On Path changed
 		 */
 		// if (prevPathname !== pathname) {
-		if (matched && matched.route.settings) {
+		if (typeof matched !== 'boolean') {
 			/**
 			 * if matched route has settings
 			 */
@@ -143,6 +149,6 @@ function FuseLayout(props: any) {
 			<Layout {...props} />
 		</>
 	) : null;
-}
+};
 
 export default memo(FuseLayout);

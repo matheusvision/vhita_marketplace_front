@@ -1,11 +1,20 @@
 import clsx from 'clsx';
-import { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
-import { Box } from '@mui/system';
+import { forwardRef, ReactNode, SVGProps } from 'react';
+import { styled, Theme } from '@mui/material/styles';
+import { Box, SxProps } from '@mui/system';
 import Icon from '@mui/material/Icon';
 
-const Root = styled(Box)(({ theme, ...props }) => ({
+export type Ref = HTMLElement;
+
+interface Props extends SVGProps<HTMLElement> {
+	children: string;
+	className?: string;
+	size?: number | string;
+	sx?: SxProps<Theme>;
+	color?: 'inherit' | 'disabled' | 'primary' | 'secondary' | 'action' | 'error' | 'info' | 'success' | 'warning';
+}
+
+const Root = styled(Box)<Props>(({ theme, ...props }) => ({
 	width: props.size,
 	height: props.size,
 	minWidth: props.size,
@@ -25,12 +34,14 @@ const Root = styled(Box)(({ theme, ...props }) => ({
 	}[props.color]
 }));
 
-const FuseSvgIcon = forwardRef((props, ref) => {
-	if (!props.children.includes(':')) {
+const FuseSvgIcon = forwardRef<Ref, Props>((props, ref) => {
+	const { children, className, color } = props;
+
+	if (!children.includes(':')) {
 		return <Icon ref={ref} {...props} />;
 	}
 
-	const iconPath = props.children.replace(':', '.svg#');
+	const iconPath = children.replace(':', '.svg#');
 
 	return (
 		<Root
@@ -39,36 +50,18 @@ const FuseSvgIcon = forwardRef((props, ref) => {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 100 100"
-			className={clsx('shrink-0 fill-current ', props.className)}
+			className={clsx('shrink-0 fill-current ', className)}
 			ref={ref}
 			size={props.size}
 			sx={props.sx}
-			color={props.color}
+			color={color}
 		>
 			<use xlinkHref={`assets/icons/${iconPath}`} />
 		</Root>
 	);
 });
 
-FuseSvgIcon.propTypes = {
-	children: PropTypes.string,
-	size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	sx: PropTypes.object,
-	color: PropTypes.oneOf([
-		'inherit',
-		'disabled',
-		'primary',
-		'secondary',
-		'action',
-		'error',
-		'info',
-		'success',
-		'warning'
-	])
-};
-
 FuseSvgIcon.defaultProps = {
-	children: '',
 	size: 24,
 	sx: {},
 	color: 'inherit'

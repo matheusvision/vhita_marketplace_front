@@ -1,16 +1,17 @@
 import Dialog from '@mui/material/Dialog';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { closeDialog, selectFuseDialogOptions, selectFuseDialogState } from 'app/store/fuse/dialogSlice';
+import { useAppDispatch } from 'app/store/index';
 
-function FuseDialog(props: any) {
-	const dispatch = useDispatch();
+const FuseDialog: React.FC = () => {
+	const dispatch = useAppDispatch();
 	const state = useSelector(selectFuseDialogState);
 	const options = useSelector(selectFuseDialogOptions);
 
 	return (
 		<Dialog
 			open={state}
-			onClose={(ev) => dispatch(closeDialog())}
+			onClose={() => dispatch(closeDialog())}
 			aria-labelledby="fuse-dialog-title"
 			classes={{
 				paper: 'rounded-8'
@@ -18,6 +19,6 @@ function FuseDialog(props: any) {
 			{...options}
 		/>
 	);
-}
+};
 
 export default FuseDialog;

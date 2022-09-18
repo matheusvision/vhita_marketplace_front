@@ -4,7 +4,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { cloneElement, memo } from 'react';
 
-function DemoSidebarContent(): JSX.Element {
+const DemoSidebarContent: React.FC = () => {
 	function generate(element: JSX.Element) {
 		return _(30).times((value) =>
 			cloneElement(element, {
@@ -24,6 +24,6 @@ function DemoSidebarContent(): JSX.Element {
 			</List>
 		</div>
 	);
-}
+};
 
 export default memo(DemoSidebarContent);

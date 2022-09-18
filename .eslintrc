@@ -89,6 +89,10 @@
         "comma-dangle": ["error", "never"],
         "react/prop-types": "off",
         "react/require-default-props": "off",
-        "react/no-unescaped-entities": "off"
+        "react/no-unescaped-entities": "off",
+        "no-underscore-dangle": "off",
+        "react/jsx-no-bind": "off",
+        "react/jsx-props-no-spreading": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
     }
 }

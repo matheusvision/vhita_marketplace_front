@@ -3,29 +3,27 @@ import Card from '@mui/material/Card';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { darken } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import DemoFrame from './DemoFrame';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-const propTypes = {
-	name: PropTypes.string,
-	raw: PropTypes.object,
-	currentTabIndex: PropTypes.number
-};
+interface Props {
+	name?: string;
+	raw?: { default: string };
+	currentTabIndex?: number;
+	component: React.ElementType;
+	iframe: JSX.Element;
+	className: string;
+}
 
-const defaultProps = {
-	name: '',
-	currentTabIndex: 0
-};
+const FuseExample: React.FC<Props> = (props) => {
+	const { component: Component, raw, iframe, className, name, currentTabIndex } = props;
 
-function FuseExample(props: any) {
-	const [currentTab, setCurrentTab] = useState(props.currentTabIndex);
-	const { component: Component, raw, iframe, className, name } = props;
+	const [currentTab, setCurrentTab] = useState(currentTabIndex);
 
-	function handleChange(event: any, value: any) {
+	function handleChange(event: React.SyntheticEvent, value: number) {
 		setCurrentTab(value);
 	}
 
@@ -90,9 +88,11 @@ function FuseExample(props: any) {
 			</div>
 		</Card>
 	);
-}
+};
 
-FuseExample.propTypes = propTypes;
-FuseExample.defaultProps = defaultProps;
+FuseExample.defaultProps = {
+	name: '',
+	currentTabIndex: 0
+};
 
 export default FuseExample;

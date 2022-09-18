@@ -5,11 +5,15 @@ import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from 'app/store/fuse/messageSlice';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-const StyledSnackbar = styled(Snackbar)(({ theme, variant }) => ({
+interface Props {
+	variant: string;
+}
+
+const StyledSnackbar = styled(Snackbar)<Props>(({ theme, variant }) => ({
 	'& .FuseMessage-content': {
 		...(variant === 'success' && {
 			backgroundColor: green[600],
@@ -40,10 +44,10 @@ const variantIcon = {
 	info: 'info'
 };
 
-function FuseMessage(props: any) {
-	const dispatch = useDispatch();
-	const state = useSelector(selectFuseMessageState);
-	const options = useSelector(selectFuseMessageOptions);
+const FuseMessage: React.FC<Props> = (props) => {
+	const dispatch = useAppDispatch();
+	const state = useAppSelector(selectFuseMessageState);
+	const options = useAppSelector(selectFuseMessageOptions);
 
 	return (
 		<StyledSnackbar
@@ -82,6 +86,6 @@ function FuseMessage(props: any) {
 			/>
 		</StyledSnackbar>
 	);
-}
+};
 
 export default memo(FuseMessage);

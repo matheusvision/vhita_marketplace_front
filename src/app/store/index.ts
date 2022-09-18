@@ -1,8 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import type { TypedUseSelectorHook } from 'react-redux';
 import createReducer from './rootReducer';
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
 	module.hot.accept('./rootReducer', () => {
+		// eslint-disable-next-line global-require
 		const newRootReducer = require('./rootReducer').default;
 		store.replaceReducer(newRootReducer.createReducer());
 	});
@@ -11,6 +14,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 const middlewares: any = [];
 
 if (process.env.NODE_ENV === 'development') {
+	// eslint-disable-next-line global-require
 	const { createLogger } = require(`redux-logger`);
 	const logger = createLogger({ collapsed: (getState: any, action: any, logEntry: any) => !logEntry.error });
 
@@ -18,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const store = configureStore({
-	reducer: createReducer(),
+	reducer: createReducer({}),
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			immutableCheck: false,
@@ -27,15 +31,22 @@ const store = configureStore({
 	devTools: process.env.NODE_ENV === 'development'
 });
 
-store.asyncReducers = {};
+const asyncReducers = {};
 
 export const injectReducer = (key: any, reducer: any) => {
-	if (store.asyncReducers[key]) {
+	if (asyncReducers[key]) {
 		return false;
 	}
-	store.asyncReducers[key] = reducer;
-	store.replaceReducer(createReducer(store.asyncReducers));
+	asyncReducers[key] = reducer;
+	store.replaceReducer(createReducer(asyncReducers));
 	return store;
 };
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default store;

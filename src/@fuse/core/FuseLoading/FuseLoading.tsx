@@ -1,16 +1,20 @@
 import { useTimeout } from '@fuse/hooks';
 import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import clsx from 'clsx';
 import Box from '@mui/material/Box';
 
-function FuseLoading(props: any) {
-	const [showLoading, setShowLoading] = useState(!props.delay);
+interface Props {
+	delay?: boolean | number;
+}
+
+const FuseLoading: React.FC<Props> = (props) => {
+	const { delay } = props;
+	const [showLoading, setShowLoading] = useState(!delay);
 
 	useTimeout(() => {
 		setShowLoading(true);
-	}, props.delay);
+	}, delay);
 
 	return (
 		<div className={clsx('flex flex-1 flex-col items-center justify-center p-24', !showLoading && 'hidden')}>
@@ -31,10 +35,6 @@ function FuseLoading(props: any) {
 			</Box>
 		</div>
 	);
-}
-
-FuseLoading.propTypes = {
-	delay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
 };
 
 FuseLoading.defaultProps = {

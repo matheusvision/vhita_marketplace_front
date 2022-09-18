@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import moment from 'moment';
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { Moment } from 'moment/moment';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 	className?: string;
 }
 
-function FuseCountdown(props: Props): JSX.Element {
+const FuseCountdown: React.FC<Props> = (props) => {
 	const { onComplete, endDate: propsEndDate, className } = props;
 	const [endDate] = useState(moment.isMoment(propsEndDate) ? propsEndDate : moment(propsEndDate));
 	const [countdown, setCountdown] = useState({
@@ -91,7 +91,7 @@ function FuseCountdown(props: Props): JSX.Element {
 			</div>
 		</div>
 	);
-}
+};
 
 FuseCountdown.defaultProps = {
 	endDate: moment().add(15, 'days')
