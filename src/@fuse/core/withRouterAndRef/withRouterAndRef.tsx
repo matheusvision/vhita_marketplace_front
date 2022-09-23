@@ -1,16 +1,25 @@
-import { Component, forwardRef } from 'react';
-import withRouter from '@fuse/core/withRouter';
+import { forwardRef, ComponentType } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-const withRouterAndRef = (WrappedComponent: any) => {
-	class InnerComponentWithRef extends Component {
-		render() {
-			const { forwardRef: _forwardRef, ...rest } = this.props;
-			return <WrappedComponent {...rest} ref={_forwardRef} />;
-		}
-	}
+export interface WithRouterProps {
+	location: ReturnType<typeof useLocation>;
+	params: Record<string, string>;
+	navigate: ReturnType<typeof useNavigate>;
+}
 
-	const ComponentWithRouter = withRouter(InnerComponentWithRef, { withRef: true });
-	return forwardRef((props, ref) => <ComponentWithRouter {...props} forwardRef={ref} />);
-};
+const withRouterAndRef =
+	<Props extends WithRouterProps>(Component: ComponentType<Props>) =>
+	(props: Omit<Props, keyof WithRouterProps>) => {
+		const location = useLocation();
+		const params = useParams();
+		const navigate = useNavigate();
+		const WithRouterAndRef = forwardRef((props, ref) => (
+			<Component {...(props as Props)} location={location} params={params} navigate={navigate} forwardRef={ref} />
+		));
+
+		const name = Component.displayName || Component.name;
+		WithRouterAndRef.displayName = `withRouterAndRef(${name})`;
+		return WithRouterAndRef;
+	};
 
 export default withRouterAndRef;

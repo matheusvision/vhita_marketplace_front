@@ -1,13 +1,34 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
-import * as PropTypes from 'prop-types';
-import { forwardRef, memo, useImperativeHandle, useRef } from 'react';
+import { forwardRef, memo, ReactNode, useImperativeHandle, useRef } from 'react';
 import GlobalStyles from '@mui/material/GlobalStyles';
+import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx';
+import { Theme } from '@mui/system';
 import FusePageSimpleHeader from './FusePageSimpleHeader';
 import FusePageSimpleSidebar from './FusePageSimpleSidebar';
 
-const Root = styled('div')(({ theme, ...props }) => ({
+const headerHeight = 120;
+const toolbarHeight = 64;
+
+interface Props {
+	className?: string;
+	leftSidebarContent?: ReactNode;
+	leftSidebarVariant?: 'permanent' | 'persistent' | 'temporary';
+	rightSidebarContent?: ReactNode;
+	rightSidebarVariant?: 'permanent' | 'persistent' | 'temporary';
+	header?: ReactNode;
+	content?: ReactNode;
+	scroll?: 'normal' | 'page' | 'content';
+	leftSidebarOpen?: boolean;
+	rightSidebarOpen?: boolean;
+	leftSidebarWidth?: number;
+	rightSidebarWidth?: number;
+	rightSidebarOnClose?: () => void;
+	leftSidebarOnClose?: () => void;
+}
+
+const Root = styled('div')<SystemStyleObject<Theme> & Props>(({ theme, ...props }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	minWidth: 0,
@@ -101,10 +122,10 @@ const Root = styled('div')(({ theme, ...props }) => ({
 					}),
 
 					'&.FusePageSimple-leftSidebar': {
-						marginLeft: -props.leftsidebarwidth
+						marginLeft: -props.leftSidebarWidth
 					},
 					'&.FusePageSimple-rightSidebar': {
-						marginRight: -props.rightsidebarwidth
+						marginRight: -props.rightSidebarWidth
 					}
 				}
 			}
@@ -126,7 +147,7 @@ const Root = styled('div')(({ theme, ...props }) => ({
 	},
 
 	'& .FusePageSimple-leftSidebar': {
-		width: props.leftsidebarwidth,
+		width: props.leftSidebarWidth,
 
 		[theme.breakpoints.up('lg')]: {
 			borderRight: `1px solid ${theme.palette.divider}`,
@@ -135,7 +156,7 @@ const Root = styled('div')(({ theme, ...props }) => ({
 	},
 
 	'& .FusePageSimple-rightSidebar': {
-		width: props.rightsidebarwidth,
+		width: props.rightSidebarWidth,
 
 		[theme.breakpoints.up('lg')]: {
 			borderLeft: `1px solid ${theme.palette.divider}`,
@@ -168,10 +189,24 @@ const Root = styled('div')(({ theme, ...props }) => ({
 	}
 }));
 
-const headerHeight = 120;
-const toolbarHeight = 64;
+const FusePageSimple = forwardRef((props: Props, ref) => {
+	const {
+		scroll = 'page',
+		className,
+		header,
+		content,
+		leftSidebarContent,
+		rightSidebarContent,
+		leftSidebarOpen = false,
+		rightSidebarOpen = false,
+		rightSidebarWidth = 240,
+		leftSidebarWidth = 240,
+		leftSidebarVariant = 'permanent',
+		rightSidebarVariant = 'permanent',
+		rightSidebarOnClose,
+		leftSidebarOnClose
+	} = props;
 
-const FusePageSimple = forwardRef((props, ref) => {
 	// console.info("render::FusePageSimple");
 	const leftSidebarRef = useRef(null);
 	const rightSidebarRef = useRef(null);
@@ -179,10 +214,10 @@ const FusePageSimple = forwardRef((props, ref) => {
 
 	useImperativeHandle(ref, () => ({
 		rootRef,
-		toggleLeftSidebar: (val: any) => {
+		toggleLeftSidebar: (val: boolean) => {
 			leftSidebarRef.current.toggleSidebar(val);
 		},
-		toggleRightSidebar: (val: any) => {
+		toggleRightSidebar: (val: boolean) => {
 			rightSidebarRef.current.toggleSidebar(val);
 		}
 	}));
@@ -191,7 +226,7 @@ const FusePageSimple = forwardRef((props, ref) => {
 		<>
 			<GlobalStyles
 				styles={(theme) => ({
-					...(props.scroll !== 'page' && {
+					...(scroll !== 'page' && {
 						'#fuse-toolbar': {
 							position: 'static'
 						},
@@ -199,7 +234,7 @@ const FusePageSimple = forwardRef((props, ref) => {
 							position: 'static'
 						}
 					}),
-					...(props.scroll === 'page' && {
+					...(scroll === 'page' && {
 						'#fuse-toolbar': {
 							position: 'sticky',
 							top: 0
@@ -212,50 +247,50 @@ const FusePageSimple = forwardRef((props, ref) => {
 				})}
 			/>
 			<Root
-				className={clsx('FusePageSimple-root', `FusePageSimple-scroll-${props.scroll}`, props.className)}
+				className={clsx('FusePageSimple-root', `FusePageSimple-scroll-${scroll}`, className)}
 				ref={rootRef}
-				scroll={props.scroll}
-				leftsidebarwidth={props.leftSidebarWidth}
-				rightsidebarwidth={props.rightSidebarWidth}
+				scroll={scroll}
+				leftSidebarWidth={leftSidebarWidth}
+				rightSidebarWidth={rightSidebarWidth}
 			>
 				<div className="flex flex-auto flex-col z-10 h-full">
 					<div className="FusePageSimple-wrapper">
-						{props.leftSidebarContent && (
+						{leftSidebarContent && (
 							<FusePageSimpleSidebar
 								position="left"
-								content={props.leftSidebarContent}
-								variant={props.leftSidebarVariant || 'permanent'}
+								variant={leftSidebarVariant || 'permanent'}
 								ref={leftSidebarRef}
-								rootRef={rootRef}
-								open={props.leftSidebarOpen}
-								onClose={props.leftSidebarOnClose}
-							/>
+								open={leftSidebarOpen}
+								onClose={leftSidebarOnClose}
+							>
+								{leftSidebarContent}
+							</FusePageSimpleSidebar>
 						)}
 						<div
 							className="FusePageSimple-contentWrapper"
-							// enable={props.scroll === 'page'}
+							// enable={scroll === 'page'}
 						>
-							{props.header && <FusePageSimpleHeader header={props.header} />}
+							{header && <FusePageSimpleHeader header={header} />}
 
-							{props.content && (
+							{content && (
 								<FuseScrollbars
-									enable={props.scroll === 'content'}
+									enable={scroll === 'content'}
 									className={clsx('FusePageSimple-content container')}
 								>
-									{props.content}
+									{content}
 								</FuseScrollbars>
 							)}
 						</div>
-						{props.rightSidebarContent && (
+						{rightSidebarContent && (
 							<FusePageSimpleSidebar
 								position="right"
-								content={props.rightSidebarContent}
-								variant={props.rightSidebarVariant || 'permanent'}
+								variant={rightSidebarVariant || 'permanent'}
 								ref={rightSidebarRef}
-								rootRef={rootRef}
-								open={props.rightSidebarOpen}
-								onClose={props.rightSidebarOnClose}
-							/>
+								open={rightSidebarOpen}
+								onClose={rightSidebarOnClose}
+							>
+								{rightSidebarContent}
+							</FusePageSimpleSidebar>
 						)}
 					</div>
 				</div>
@@ -263,30 +298,5 @@ const FusePageSimple = forwardRef((props, ref) => {
 		</>
 	);
 });
-
-FusePageSimple.propTypes = {
-	leftSidebarContent: PropTypes.node,
-	leftSidebarVariant: PropTypes.node,
-	rightSidebarContent: PropTypes.node,
-	rightSidebarVariant: PropTypes.node,
-	header: PropTypes.node,
-	content: PropTypes.node,
-	scroll: PropTypes.oneOf(['normal', 'page', 'content']),
-	leftSidebarOpen: PropTypes.bool,
-	rightSidebarOpen: PropTypes.bool,
-	leftSidebarWidth: PropTypes.number,
-	rightSidebarWidth: PropTypes.number,
-	rightSidebarOnClose: PropTypes.func,
-	leftSidebarOnClose: PropTypes.func
-};
-
-FusePageSimple.defaultProps = {
-	classes: {},
-	scroll: 'page',
-	leftSidebarOpen: false,
-	rightSidebarOpen: false,
-	rightSidebarWidth: 240,
-	leftSidebarWidth: 240
-};
 
 export default memo(styled(FusePageSimple)``);

@@ -2,21 +2,34 @@ import Drawer from '@mui/material/Drawer';
 import Hidden from '@mui/material/Hidden';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import clsx from 'clsx';
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useState, ForwardedRef, ReactNode } from 'react';
+import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer/SwipeableDrawer';
 import FusePageCardedSidebarContent from './FusePageCardedSidebarContent';
 
-const FusePageCardedSidebar = forwardRef((props, ref) => {
-	const { open, position, variant, rootRef } = props;
+interface Props {
+	open?: boolean;
+	position?: SwipeableDrawerProps['anchor'];
+	variant?: SwipeableDrawerProps['variant'];
+	onClose?: () => void;
+	children?: ReactNode;
+}
+
+interface useImperativeRef {
+	toggleSidebar: (boolean) => void;
+}
+
+const FusePageCardedSidebar = forwardRef<useImperativeRef, Props>((props, ref) => {
+	const { open = true, position, variant, onClose = () => {} } = props;
 
 	const [isOpen, setIsOpen] = useState(open);
+
+	const handleToggleDrawer = useCallback((val: boolean) => {
+		setIsOpen(val);
+	}, []);
 
 	useImperativeHandle(ref, () => ({
 		toggleSidebar: handleToggleDrawer
 	}));
-
-	const handleToggleDrawer = useCallback((val: any) => {
-		setIsOpen(val);
-	}, []);
 
 	useEffect(() => {
 		handleToggleDrawer(open);
@@ -30,7 +43,7 @@ const FusePageCardedSidebar = forwardRef((props, ref) => {
 					anchor={position}
 					open={isOpen}
 					onOpen={(ev) => {}}
-					onClose={() => props?.onClose()}
+					onClose={() => onClose()}
 					disableSwipeToOpen
 					classes={{
 						root: clsx('FusePageCarded-sidebarWrapper', variant),
@@ -43,7 +56,6 @@ const FusePageCardedSidebar = forwardRef((props, ref) => {
 					ModalProps={{
 						keepMounted: true // Better open performance on mobile.
 					}}
-					// container={rootRef.current}
 					BackdropProps={{
 						classes: {
 							root: 'FusePageCarded-backdrop'
@@ -66,7 +78,7 @@ const FusePageCardedSidebar = forwardRef((props, ref) => {
 							position === 'left' ? 'FusePageCarded-leftSidebar' : 'FusePageCarded-rightSidebar'
 						)}
 						open={isOpen}
-						onClose={props?.onClose}
+						onClose={onClose}
 						classes={{
 							paper: clsx('FusePageCarded-sidebar', variant)
 						}}
@@ -78,9 +90,5 @@ const FusePageCardedSidebar = forwardRef((props, ref) => {
 		</>
 	);
 });
-
-FusePageCardedSidebar.defaultProps = {
-	open: true
-};
 
 export default FusePageCardedSidebar;

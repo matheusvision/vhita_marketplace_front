@@ -2,11 +2,24 @@ import Drawer from '@mui/material/Drawer';
 import Hidden from '@mui/material/Hidden';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import clsx from 'clsx';
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, ReactNode, useCallback, useEffect, useImperativeHandle, useState } from 'react';
+import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer/SwipeableDrawer';
 import FusePageSimpleSidebarContent from './FusePageSimpleSidebarContent';
 
-const FusePageSimpleSidebar = forwardRef((props, ref) => {
-	const { open, position, variant, rootRef } = props;
+interface Props {
+	open?: boolean;
+	position?: SwipeableDrawerProps['anchor'];
+	variant?: SwipeableDrawerProps['variant'];
+	onClose?: () => void;
+	children?: ReactNode;
+}
+
+interface useImperativeRef {
+	toggleSidebar: (boolean) => void;
+}
+
+const FusePageSimpleSidebar = forwardRef<useImperativeRef, Props>((props, ref) => {
+	const { open = true, position, variant, onClose = () => {} } = props;
 
 	const [isOpen, setIsOpen] = useState(open);
 
@@ -30,7 +43,7 @@ const FusePageSimpleSidebar = forwardRef((props, ref) => {
 					anchor={position}
 					open={isOpen}
 					onOpen={(ev) => {}}
-					onClose={() => props?.onClose()}
+					onClose={() => onClose()}
 					disableSwipeToOpen
 					classes={{
 						root: clsx('FusePageSimple-sidebarWrapper', variant),
@@ -67,7 +80,7 @@ const FusePageSimpleSidebar = forwardRef((props, ref) => {
 							position === 'left' ? 'FusePageSimple-leftSidebar' : 'FusePageSimple-rightSidebar'
 						)}
 						open={isOpen}
-						onClose={props?.onClose}
+						onClose={onClose}
 						classes={{
 							paper: clsx('FusePageSimple-sidebar border-0', variant)
 						}}
@@ -79,9 +92,5 @@ const FusePageSimpleSidebar = forwardRef((props, ref) => {
 		</>
 	);
 });
-
-FusePageSimpleSidebar.defaultProps = {
-	open: true
-};
 
 export default FusePageSimpleSidebar;

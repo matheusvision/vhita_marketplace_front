@@ -1,22 +1,18 @@
 import FuseLoading from '@fuse/core/FuseLoading';
-import PropTypes from 'prop-types';
-import { Suspense } from 'react';
+import { ReactNode, Suspense } from 'react';
+import { FuseLoadingProps } from '@fuse/core/FuseLoading/FuseLoading';
 
+interface Props {
+	loadingProps: FuseLoadingProps;
+	children: ReactNode;
+}
 /**
  * React Suspense defaults
  * For to Avoid Repetition
- */ function FuseSuspense(props: any) {
-	return <Suspense fallback={<FuseLoading {...props.loadingProps} />}>{props.children}</Suspense>;
+ */
+function FuseSuspense(props: Props) {
+	const { children, loadingProps = { delay: true } } = props;
+	return <Suspense fallback={<FuseLoading {...loadingProps} />}>{children}</Suspense>;
 }
-
-FuseSuspense.propTypes = {
-	loadingProps: PropTypes.object
-};
-
-FuseSuspense.defaultProps = {
-	loadingProps: {
-		delay: 0
-	}
-};
 
 export default FuseSuspense;

@@ -6,7 +6,7 @@ interface Props {
 	children?: ReactNode;
 }
 
-function FusePageSimpleSidebarContent(props: Props) {
+function FusePageCardedSidebarContent(props: Props) {
 	const { innerScroll, children } = props;
 
 	if (!children) {
@@ -15,9 +15,9 @@ function FusePageSimpleSidebarContent(props: Props) {
 
 	return (
 		<FuseScrollbars enable={innerScroll}>
-			<div className="FusePageSimple-sidebarContent">{children}</div>
+			<div className="FusePageCarded-sidebarContent">{children}</div>
 		</FuseScrollbars>
 	);
 }
 
-export default FusePageSimpleSidebarContent;
+export default FusePageCardedSidebarContent;

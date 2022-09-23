@@ -1,11 +1,9 @@
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/system';
 import Icon from '@mui/material/Icon';
 import * as React from 'react';
-
-export type Ref = HTMLElement;
 
 interface Props extends BoxProps {
 	children: string;
@@ -33,7 +31,7 @@ const Root = styled(Box)<Props & { children: JSX.Element }>(({ theme, ...props }
 	}[props.color]
 }));
 
-const FuseSvgIcon = forwardRef<Ref, Props>((props, ref) => {
+const FuseSvgIcon = forwardRef<ForwardedRef<HTMLElement>, Props>((props, ref) => {
 	const { children, className, color } = props;
 
 	if (typeof children !== 'string') {
