@@ -7,8 +7,15 @@ import Paper from '@mui/material/Paper';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Tooltip from '@mui/material/Tooltip';
 import clsx from 'clsx';
-import { memo, useState } from 'react';
+import { memo, ReactNode, useState } from 'react';
 import FuseSvgIcon from '../FuseSvgIcon';
+
+interface Props {
+	position?: 'left';
+	opened?: true;
+	className?: string;
+	children?: ReactNode;
+}
 
 const Root = styled('div')(({ theme }) => ({
 	'& .FuseSidePanel-paper': {
@@ -169,12 +176,14 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function FuseSidePanel(props: any) {
-	const [opened, setOpened] = useState(props.opened);
+function FuseSidePanel(props: Props) {
+	const { position = 'left', opened = true, className, children } = props;
+
+	const [panelOpened, setPanelOpened] = useState(Boolean(opened));
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	function toggleOpened() {
-		setOpened(!opened);
+		setPanelOpened(!panelOpened);
 	}
 
 	function toggleMobileDrawer() {
@@ -187,19 +196,17 @@ function FuseSidePanel(props: any) {
 				<Paper
 					className={clsx(
 						'FuseSidePanel-paper',
-						props.className,
-						opened ? 'opened' : 'closed',
-						props.position,
+						className,
+						panelOpened ? 'opened' : 'closed',
+						position,
 						'shadow-lg'
 					)}
 					square
 				>
-					<FuseScrollbars className={clsx('content', 'FuseSidePanel-content')}>
-						{props.children}
-					</FuseScrollbars>
+					<FuseScrollbars className={clsx('content', 'FuseSidePanel-content')}>{children}</FuseScrollbars>
 
 					<div className="FuseSidePanel-buttonWrapper">
-						<Tooltip title="Toggle side panel" placement={props.position === 'left' ? 'right' : 'right'}>
+						<Tooltip title="Toggle side panel" placement={position === 'left' ? 'right' : 'right'}>
 							<IconButton
 								className="FuseSidePanel-button"
 								onClick={toggleOpened}
@@ -217,22 +224,20 @@ function FuseSidePanel(props: any) {
 			<Hidden lgUp>
 				<SwipeableDrawer
 					classes={{
-						paper: clsx('FuseSidePanel-paper', props.className)
+						paper: clsx('FuseSidePanel-paper', className)
 					}}
-					anchor={props.position}
+					anchor={position}
 					open={mobileOpen}
 					onOpen={(ev) => {}}
 					onClose={toggleMobileDrawer}
 					disableSwipeToOpen
 				>
-					<FuseScrollbars className={clsx('content', 'FuseSidePanel-content')}>
-						{props.children}
-					</FuseScrollbars>
+					<FuseScrollbars className={clsx('content', 'FuseSidePanel-content')}>{children}</FuseScrollbars>
 				</SwipeableDrawer>
 
-				<Tooltip title="Hide side panel" placement={props.position === 'left' ? 'right' : 'right'}>
+				<Tooltip title="Hide side panel" placement={position === 'left' ? 'right' : 'right'}>
 					<Fab
-						className={clsx('FuseSidePanel-mobileButton', props.position)}
+						className={clsx('FuseSidePanel-mobileButton', position)}
 						onClick={toggleMobileDrawer}
 						disableRipple
 					>
@@ -243,11 +248,5 @@ function FuseSidePanel(props: any) {
 		</Root>
 	);
 }
-
-FuseSidePanel.propTypes = {};
-FuseSidePanel.defaultProps = {
-	position: 'left',
-	opened: true
-};
 
 export default memo(FuseSidePanel);
