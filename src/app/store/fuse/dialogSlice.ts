@@ -4,7 +4,7 @@ import { RootState } from 'app/store/index';
 
 interface DialogState {
 	state: boolean;
-	options?: DialogProps;
+	options?: Pick<DialogProps, 'open' | 'children'>;
 }
 
 const initialState: DialogState = {

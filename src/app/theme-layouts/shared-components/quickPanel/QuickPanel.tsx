@@ -13,7 +13,8 @@ import Typography from '@mui/material/Typography';
 import withReducer from 'app/store/withReducer';
 import format from 'date-fns/format';
 import { memo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectQuickPanelData } from './store/dataSlice';
 import reducer from './store';
@@ -26,7 +27,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 }));
 
 function QuickPanel(props: any) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const data = useSelector(selectQuickPanelData);
 	const state = useSelector(selectQuickPanelState);

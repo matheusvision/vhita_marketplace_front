@@ -1,10 +1,11 @@
 import IconButton from '@mui/material/IconButton';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
+
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { toggleChatPanel } from './store/stateSlice';
 
 const ChatPanelToggleButton = (props: any) => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<IconButton className="w-40 h-40" onClick={(ev) => dispatch(toggleChatPanel())} size="large">

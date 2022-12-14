@@ -3,7 +3,8 @@ import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import clsx from 'clsx';
 import { memo, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
+import { useSelector } from 'react-redux';
 import FuseNavigation, { FuseNavItemProps } from '@fuse/core/FuseNavigation';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
@@ -43,7 +44,7 @@ function NavbarStyle3Content(props: any) {
 	const [selectedNavigation, setSelectedNavigation] = useState([]);
 	const [panelOpen, setPanelOpen] = useState(false);
 	const theme = useTheme();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.main));
 	const location = useLocation();
 

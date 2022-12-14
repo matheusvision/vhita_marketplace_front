@@ -3,7 +3,8 @@ import { styled, ThemeProvider } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { memo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from 'app/store/fuse/settingsSlice';
 import NavbarLayout2 from './NavbarLayout2';
 import NavbarMobileLayout2 from './NavbarMobileLayout2';
@@ -24,7 +25,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 }));
 
 function NavbarWrapperLayout2(props: any) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 	const navbarTheme = useSelector(selectNavbarTheme);
 	const navbar = useSelector(selectFuseNavbar);

@@ -13,7 +13,7 @@ import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import themesConfig from 'app/configs/themesConfig';
 import { changeFuseTheme } from 'app/store/fuse/settingsSlice';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import FuseSettingsViewerDialog from './FuseSettingsViewerDialog';
 
 const Root = styled('div')(({ theme }) => ({
@@ -79,7 +79,7 @@ const Transition = forwardRef((props, ref) => {
 function SettingsPanel() {
 	const theme = useTheme();
 	const [open, setOpen] = useState(false);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const handlerOptions = {
 		onSwipedLeft: () => open && theme.direction === 'rtl' && handleClose(),

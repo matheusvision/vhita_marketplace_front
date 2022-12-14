@@ -3,7 +3,8 @@ import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import { motion } from 'framer-motion';
 import { memo, useMemo, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { getChat } from './store/chatSlice';
 import { selectContacts, selectSelectedContactId } from './store/contactsSlice';
 import { openChatPanel } from './store/stateSlice';
@@ -15,7 +16,7 @@ const Root = styled(FuseScrollbars)(({ theme }) => ({
 }));
 
 function ContactList(props: any) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const contacts = useSelector(selectContacts);
 	const selectedContactId = useSelector(selectSelectedContactId);
 	const chats = useSelector(selectChats);

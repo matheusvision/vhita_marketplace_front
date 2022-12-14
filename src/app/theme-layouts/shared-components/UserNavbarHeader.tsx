@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'app/store/userSlice';
+import { selectUser } from 'app/store/user/userSlice';
 
 const Root = styled('div')(({ theme }) => ({
 	'& .username, & .email': {

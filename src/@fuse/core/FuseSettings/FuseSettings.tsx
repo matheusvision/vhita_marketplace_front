@@ -14,9 +14,11 @@ import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback, useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectFuseCurrentSettings, selectFuseThemesSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
-import { selectUser } from 'app/store/userSlice';
+import { selectUser } from 'app/store/user/userSlice';
+import { FuseSettingsProps } from '@fuse/core/FuseSettings/index';
+import { useAppDispatch } from 'app/store/index';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
 
@@ -52,8 +54,8 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function FuseSettings(props: any) {
-	const dispatch = useDispatch();
+function FuseSettings() {
+	const dispatch = useAppDispatch();
 	const user = useSelector(selectUser);
 	const themes = useSelector(selectFuseThemesSettings);
 	const settings = useSelector(selectFuseCurrentSettings);
@@ -68,7 +70,7 @@ function FuseSettings(props: any) {
 	const formChanged = !_.isEqual(form, prevForm);
 	const settingsChanged = !_.isEqual(settings, prevSettings);
 
-	const handleUpdate = useDebounce((newSettings: any) => {
+	const handleUpdate = useDebounce((newSettings: FuseSettingsProps) => {
 		dispatch(setDefaultSettings(newSettings));
 	}, 300);
 
@@ -100,7 +102,7 @@ function FuseSettings(props: any) {
 		}
 	}, [dispatch, form, formChanged, handleUpdate, prevForm, prevSettings, reset, settings, settingsChanged, user]);
 
-	const ThemeSelect = ({ value, name, handleThemeChange }: any) => (
+	const ThemeSelect = ({ value, name, handleThemeChange }: props) => (
 		<Select
 			className="w-full rounded-8 h-40 overflow-hidden my-8"
 			value={value}

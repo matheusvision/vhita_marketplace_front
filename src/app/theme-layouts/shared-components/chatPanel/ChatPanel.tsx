@@ -8,9 +8,10 @@ import Typography from '@mui/material/Typography';
 import withReducer from 'app/store/withReducer';
 import keycode from 'keycode';
 import { memo, useCallback, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useAppDispatch } from 'app/store/index';
 import Chat from './Chat';
 import ContactList from './ContactList';
 import reducer from './store';
@@ -101,7 +102,7 @@ const Root = styled('div')(({ theme, opened }) => ({
 }));
 
 function ChatPanel(props: any) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const contacts = useSelector(selectContacts);
 	const selectedContactId = useSelector(selectSelectedContactId);
 	const state = useSelector(selectChatPanelState);

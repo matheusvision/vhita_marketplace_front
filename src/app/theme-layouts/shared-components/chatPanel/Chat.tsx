@@ -6,9 +6,10 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import InputBase from '@mui/material/InputBase';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useAppDispatch } from 'app/store/index';
 import { selectSelectedContactId } from './store/contactsSlice';
 import { selectChat, sendMessage } from './store/chatSlice';
 import { selectUser } from './store/userSlice';
@@ -88,7 +89,7 @@ const StyledMessageRow = styled('div')(({ theme }) => ({
 }));
 
 function Chat(props: any) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const selectedContactId = useSelector(selectSelectedContactId);
 	const chat = useSelector(selectChat);
 	const user = useSelector(selectUser);

@@ -4,10 +4,10 @@ import { SnackbarProps } from '@mui/material/Snackbar/Snackbar';
 
 interface MessageState {
 	state: boolean;
-	options?: SnackbarProps;
+	options?: Pick<SnackbarProps, 'anchorOrigin' | 'autoHideDuration' | 'message'>;
 }
 
-const initialState = {
+const initialState: MessageState = {
 	state: null,
 	options: {
 		anchorOrigin: {
@@ -15,8 +15,7 @@ const initialState = {
 			horizontal: 'center'
 		},
 		autoHideDuration: 2000,
-		message: 'Hi',
-		variant: null
+		message: 'Hi'
 	}
 };
 

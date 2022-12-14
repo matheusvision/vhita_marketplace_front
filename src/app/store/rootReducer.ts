@@ -1,9 +1,10 @@
-import { combineReducers } from '@reduxjs/toolkit';
+import { Action, combineReducers, ReducersMapObject } from '@reduxjs/toolkit';
+import { RootState } from 'app/store/index';
 import fuse from './fuse';
 import i18n from './i18nSlice';
-import user from './userSlice';
+import user from './user/userSlice';
 
-const createReducer = (asyncReducers: any) => (state: any, action: any) => {
+const createReducer = (asyncReducers: ReducersMapObject) => (state: RootState, action: Action) => {
 	const combinedReducer = combineReducers({
 		fuse,
 		i18n,

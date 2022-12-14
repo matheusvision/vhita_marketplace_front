@@ -1,4 +1,4 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action, Reducer } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import createReducer from './rootReducer';
@@ -33,7 +33,7 @@ const store = configureStore({
 
 const asyncReducers = {};
 
-export const injectReducer = (key: any, reducer: any) => {
+export const injectReducer = (key: string, reducer: Reducer) => {
 	if (asyncReducers[key]) {
 		return false;
 	}

@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
-import { selectUserShortcuts, updateUserShortcuts } from 'app/store/userSlice';
+import { selectUserShortcuts, updateUserShortcuts } from 'app/store/user/userSlice';
 
 function NavigationShortcuts(props: any) {
 	const { variant, className } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const shortcuts = useSelector(selectUserShortcuts) || [];
 	const navigation = useSelector(selectFlatNavigation);
 

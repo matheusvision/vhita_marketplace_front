@@ -4,7 +4,8 @@ import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import { navbarToggle, navbarToggleMobile } from 'app/store/fuse/navbarSlice';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
@@ -60,7 +61,7 @@ function NavbarToggleFab(props: any) {
 	const isMobile = useThemeMediaQuery((theme: any) => theme.breakpoints.down('lg'));
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<Root

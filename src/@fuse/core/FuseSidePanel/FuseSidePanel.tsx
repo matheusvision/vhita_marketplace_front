@@ -228,7 +228,7 @@ function FuseSidePanel(props: Props) {
 					}}
 					anchor={position}
 					open={mobileOpen}
-					onOpen={(ev) => {}}
+					onOpen={() => {}}
 					onClose={toggleMobileDrawer}
 					disableSwipeToOpen
 				>

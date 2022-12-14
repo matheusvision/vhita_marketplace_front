@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectUser } from 'app/store/userSlice';
+import { selectUser } from 'app/store/user/userSlice';
 
 function UserMenu(props: any) {
 	const user = useSelector(selectUser);

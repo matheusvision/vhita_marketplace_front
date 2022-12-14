@@ -1,6 +1,7 @@
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import withReducer from 'app/store/withReducer';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import reducer from './store';
@@ -10,7 +11,7 @@ import { toggleNotificationPanel } from './store/stateSlice';
 function NotificationPanelToggleButton(props: any) {
 	const notifications = useSelector(selectNotifications);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<IconButton className="w-40 h-40" onClick={(ev) => dispatch(toggleNotificationPanel())} size="large">

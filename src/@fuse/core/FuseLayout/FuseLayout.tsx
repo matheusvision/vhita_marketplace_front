@@ -8,7 +8,8 @@ import {
 	setSettings
 } from 'app/store/fuse/settingsSlice';
 import { memo, useCallback, useContext, useMemo, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
+import { useSelector } from 'react-redux';
 import { matchRoutes, useLocation } from 'react-router-dom';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha } from '@mui/material/styles';
@@ -87,7 +88,7 @@ interface Props {
 
 function FuseLayout(props: Props) {
 	const { layouts } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const settings = useSelector(selectFuseCurrentSettings);
 	const defaultSettings = useSelector(selectFuseDefaultSettings);
 

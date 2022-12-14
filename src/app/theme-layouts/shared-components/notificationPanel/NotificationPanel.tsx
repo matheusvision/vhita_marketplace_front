@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 import withReducer from 'app/store/withReducer';
 import { useSnackbar } from 'notistack';
 import { memo, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
@@ -26,7 +27,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 
 function NotificationPanel(props: any) {
 	const location = useLocation();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const state = useSelector(selectNotificationPanelState);
 	const notifications = useSelector(selectNotifications);
 
