@@ -1,4 +1,3 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
@@ -119,11 +118,7 @@ function Chat(props) {
       className={clsx('flex flex-col relative pb-64 shadow', props.className)}
       sx={{ background: (theme) => theme.palette.background.default }}
     >
-      <FuseScrollbars
-        ref={chatScroll}
-        className="flex flex-1 flex-col overflow-y-auto overscroll-contain"
-        option={{ suppressScrollX: true, wheelPropagation: false }}
-      >
+      <div ref={chatScroll} className="flex flex-1 flex-col overflow-y-auto overscroll-contain">
         <div className="flex flex-col pt-16">
           {useMemo(() => {
             function isFirstMessageOfGroup(item, i) {
@@ -177,7 +172,7 @@ function Chat(props) {
             </Typography>
           </div>
         )}
-      </FuseScrollbars>
+      </div>
 
       {useMemo(() => {
         const onMessageSubmit = (ev) => {
