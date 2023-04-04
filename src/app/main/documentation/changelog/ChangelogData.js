@@ -2,6 +2,38 @@ import Typography from '@mui/material/Typography';
 
 const changelogData = [
   {
+    version: '8.3.5',
+    date: '2023-04-04',
+    newChanges: [
+      'material-ui updated to v5.11.15',
+      'react-router updated to v6.10',
+      'tailwindcss updated to v3.3.1',
+      '@reduxjs/toolkit updated to v1.9.3',
+      'axios updated to v1.3.4',
+      'fullcalendar updated to v6.1.5',
+      'All dependency packages updated.',
+    ],
+    fixedChanges: [
+      'Chat Panel, custom scrollbars of messages are disabled due to scroll Bottom not works',
+      'Chat App, custom scrollbars of messages are disabled due to scroll Bottom not works.',
+    ],
+    breakingChanges: [
+      <span className="flex flex-col space-y-8">
+        <Typography component="span">DateTimePicker migrated to v6</Typography>
+        <Typography component="span">
+          Please follow the migration guide at{' '}
+          <a
+            href="https://mui.com/x/migration/migration-pickers-v5/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://mui.com/x/migration/migration-pickers-v5/
+          </a>
+        </Typography>
+      </span>,
+    ],
+  },
+  {
     version: '8.3.0',
     date: '2022-12-30',
     newChanges: ['Crypto Dashboard created.'],
