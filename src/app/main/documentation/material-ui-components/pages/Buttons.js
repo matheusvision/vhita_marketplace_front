@@ -282,33 +282,6 @@ function ButtonsDoc(props) {
         .
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
-        Loading button
-      </Typography>
-      <Typography className="mb-40" component="div">
-        The loading buttons can show loading state and disable interactions.
-      </Typography>
-      <Typography className="mb-40" component="div">
-        <FuseExample
-          name="LoadingButtons.js"
-          className="my-24"
-          iframe={false}
-          component={require('../components/buttons/LoadingButtons.js').default}
-          raw={require('!raw-loader!../components/buttons/LoadingButtons.js')}
-        />
-      </Typography>
-      <Typography className="mb-40" component="div">
-        Toggle the loading switch to see the transition between the different states.
-      </Typography>
-      <Typography className="mb-40" component="div">
-        <FuseExample
-          name="LoadingButtonsTransition.js"
-          className="my-24"
-          iframe={false}
-          component={require('../components/buttons/LoadingButtonsTransition.js').default}
-          raw={require('!raw-loader!../components/buttons/LoadingButtonsTransition.js')}
-        />
-      </Typography>
-      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Complex button
       </Typography>
       <Typography className="mb-40" component="div">
@@ -394,6 +367,81 @@ function ButtonsDoc(props) {
         This has the advantage of supporting any element, for instance, a link <code>{`<a>`}</code>{' '}
         element.
       </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Experimental API
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Loading button
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <a href="/material-ui/about-the-lab/">
+          <code>@mui/lab</code>
+        </a>{' '}
+        offers loading buttons that can show loading state and disable interactions.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="LoadingButtons.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/buttons/LoadingButtons.js').default}
+          raw={require('!raw-loader!../components/buttons/LoadingButtons.js')}
+        />
+      </Typography>
+      <Typography className="mb-40" component="div">
+        Toggle the loading switch to see the transition between the different states.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="LoadingButtonsTransition.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/buttons/LoadingButtonsTransition.js').default}
+          raw={require('!raw-loader!../components/buttons/LoadingButtonsTransition.js')}
+        />
+      </Typography>
+      <Typography className="mb-40" component="div">
+        :::warning There is a{' '}
+        <a href="https://github.com/mui/material-ui/issues/27853">known issue</a> with translating a
+        page using Chrome tools when a Loading Button is present. After the page is translated, the
+        application crashes when the loading state of a Button changes. To prevent this, ensure that
+        the contents of the Loading Button are nested inside any HTML element, such as a{' '}
+        <code>{`<span>`}</code>:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-jsx">
+        {` 
+<LoadingButton loading variant="outlined">
+  <span>Submit</span>
+</LoadingButton>
+`}
+      </FuseHighlight>
+     {/*  <Typography className="mb-40" component="div">
+        :::
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Material You version
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The default Button component follows the Material Design 2 specs. For the Material Design 3
+        (<a href="https://m3.material.io/">Material You</a>) version, you can use the new
+        experimental <code>@mui/material-next</code> package:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-js">
+        {`
+import Button from '@mui/material-next/Button';
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="ButtonMaterialYouPlayground.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/buttons/ButtonMaterialYouPlayground.js').default}
+          raw={require('!raw-loader!../components/buttons/ButtonMaterialYouPlayground.js')}
+        />
+      </Typography> */}
     </>
   );
 }

@@ -337,8 +337,8 @@ function SliderDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         (WAI-ARIA:{' '}
-        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb/">
-          https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb/
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/">
+          https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/
         </a>
         )
       </Typography>

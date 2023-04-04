@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 /* eslint no-unused-vars: off */
 /* eslint-disable jsx-a11y/accessible-emoji */
 
-function TablesDoc(props) {
+function TableDoc(props) {
   return (
     <>
       <div className="flex flex-1 grow-0 items-center justify-end">
@@ -17,7 +17,7 @@ function TablesDoc(props) {
           variant="contained"
           color="secondary"
           component="a"
-          href="https://mui.com/components/tables"
+          href="https://mui.com/components/table"
           target="_blank"
           role="button"
           startIcon={<FuseSvgIcon>heroicons-outline:external-link</FuseSvgIcon>}
@@ -53,8 +53,8 @@ function TablesDoc(props) {
           name="BasicTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/BasicTable.js').default}
-          raw={require('!raw-loader!../components/tables/BasicTable.js')}
+          component={require('../components/table/BasicTable.js').default}
+          raw={require('!raw-loader!../components/table/BasicTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -77,8 +77,8 @@ function TablesDoc(props) {
           name="DataTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/DataTable.js').default}
-          raw={require('!raw-loader!../components/tables/DataTable.js')}
+          component={require('../components/table/DataTable.js').default}
+          raw={require('!raw-loader!../components/table/DataTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -92,8 +92,8 @@ function TablesDoc(props) {
           name="DenseTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/DenseTable.js').default}
-          raw={require('!raw-loader!../components/tables/DenseTable.js')}
+          component={require('../components/table/DenseTable.js').default}
+          raw={require('!raw-loader!../components/table/DenseTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -116,8 +116,8 @@ function TablesDoc(props) {
           name="EnhancedTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/EnhancedTable.js').default}
-          raw={require('!raw-loader!../components/tables/EnhancedTable.js')}
+          component={require('../components/table/EnhancedTable.js').default}
+          raw={require('!raw-loader!../components/table/EnhancedTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -132,8 +132,8 @@ function TablesDoc(props) {
           name="CustomizedTables.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/CustomizedTables.js').default}
-          raw={require('!raw-loader!../components/tables/CustomizedTables.js')}
+          component={require('../components/table/CustomizedTables.js').default}
+          raw={require('!raw-loader!../components/table/CustomizedTables.js')}
         />
       </Typography>
       <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
@@ -181,8 +181,8 @@ function TablesDoc(props) {
           name="CustomPaginationActionsTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/CustomPaginationActionsTable.js').default}
-          raw={require('!raw-loader!../components/tables/CustomPaginationActionsTable.js')}
+          component={require('../components/table/CustomPaginationActionsTable.js').default}
+          raw={require('!raw-loader!../components/table/CustomPaginationActionsTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -197,8 +197,8 @@ function TablesDoc(props) {
           name="StickyHeadTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/StickyHeadTable.js').default}
-          raw={require('!raw-loader!../components/tables/StickyHeadTable.js')}
+          component={require('../components/table/StickyHeadTable.js').default}
+          raw={require('!raw-loader!../components/table/StickyHeadTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -221,8 +221,8 @@ function TablesDoc(props) {
           name="ColumnGroupingTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/ColumnGroupingTable.js').default}
-          raw={require('!raw-loader!../components/tables/ColumnGroupingTable.js')}
+          component={require('../components/table/ColumnGroupingTable.js').default}
+          raw={require('!raw-loader!../components/table/ColumnGroupingTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -240,8 +240,8 @@ function TablesDoc(props) {
           name="CollapsibleTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/CollapsibleTable.js').default}
-          raw={require('!raw-loader!../components/tables/CollapsibleTable.js')}
+          component={require('../components/table/CollapsibleTable.js').default}
+          raw={require('!raw-loader!../components/table/CollapsibleTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -255,8 +255,8 @@ function TablesDoc(props) {
           name="SpanningTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/SpanningTable.js').default}
-          raw={require('!raw-loader!../components/tables/SpanningTable.js')}
+          component={require('../components/table/SpanningTable.js').default}
+          raw={require('!raw-loader!../components/table/SpanningTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -264,7 +264,7 @@ function TablesDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         In the following example, we demonstrate how to use{' '}
-        <a href="https://github.com/bvaughn/react-virtualized">react-virtualized</a> with the{' '}
+        <a href="https://github.com/petyosi/react-virtuoso">react-virtuoso</a> with the{' '}
         <code>Table</code> component. It renders 200 rows and can easily handle more. Virtualization
         helps with performance issues.
       </Typography>
@@ -273,8 +273,8 @@ function TablesDoc(props) {
           name="ReactVirtualizedTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/ReactVirtualizedTable.js').default}
-          raw={require('!raw-loader!../components/tables/ReactVirtualizedTable.js')}
+          component={require('../components/table/ReactVirtualizedTable.js').default}
+          raw={require('!raw-loader!../components/table/ReactVirtualizedTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -297,11 +297,11 @@ function TablesDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
-          name="AcccessibleTable.js"
+          name="AccessibleTable.js"
           className="my-24"
           iframe={false}
-          component={require('../components/tables/AcccessibleTable.js').default}
-          raw={require('!raw-loader!../components/tables/AcccessibleTable.js')}
+          component={require('../components/table/AccessibleTable.js').default}
+          raw={require('!raw-loader!../components/table/AccessibleTable.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -316,4 +316,4 @@ function TablesDoc(props) {
   );
 }
 
-export default TablesDoc;
+export default TableDoc;

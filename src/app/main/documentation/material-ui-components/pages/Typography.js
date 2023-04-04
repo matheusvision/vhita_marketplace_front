@@ -163,7 +163,7 @@ import '@fontsource/roboto/700.css';
       <ul>
         <li>
           You can change the mapping{' '}
-          <a href="/material-ui/customization/theme-components/#default-props">
+          <a href="/material-ui/customization/typography/#adding-amp-disabling-variants">
             globally using the theme
           </a>
           :

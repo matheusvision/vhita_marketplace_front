@@ -317,6 +317,79 @@ function SelectsDoc(props) {
           raw={require('!raw-loader!../components/selects/GroupedSelect.js')}
         />
       </Typography>
+      <Typography className="mb-40" component="div">
+        :::warning If you wish to wrap the ListSubheader in a custom component, you&#39;ll have to
+        annotate it so Material UI can handle it properly when determining focusable elements.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        You have two options for solving this: Option 1: Define a static boolean field called{' '}
+        <code>muiSkipListHighlight</code> on your component function, and set it to{' '}
+        <code>true</code>:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-tsx">
+        {` 
+function MyListSubheader(props: ListSubheaderProps) {
+  return <ListSubheader {...props} />;
+}
+
+MyListSubheader.muiSkipListHighlight = true;
+export default MyListSubheader;
+
+// elsewhere:
+
+return (
+  <Select>
+    <MyListSubheader>Group 1</MyListSubheader>
+    <MenuItem value={1}>Option 1</MenuItem>
+    <MenuItem value={2}>Option 2</MenuItem>
+    <MyListSubheader>Group 2</MyListSubheader>
+    <MenuItem value={3}>Option 3</MenuItem>
+    <MenuItem value={4}>Option 4</MenuItem>
+    {/* ... */}
+  </Select>
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        Option 2: Place a <code>muiSkipListHighlight</code> prop on each instance of your component.
+        The prop doesn&#39;t have to be forwarded to the ListSubheader, nor present in the
+        underlying DOM element. It just has to be placed on a component that&#39;s used as a
+        subheader.
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-tsx">
+        {` 
+export default function MyListSubheader(
+  props: ListSubheaderProps & { muiSkipListHighlight: boolean },
+) {
+  const { muiSkipListHighlight, ...other } = props;
+  return <ListSubheader {...other} />;
+}
+
+// elsewhere:
+
+return (
+  <Select>
+    <MyListSubheader muiSkipListHighlight>Group 1</MyListSubheader>
+    <MenuItem value={1}>Option 1</MenuItem>
+    <MenuItem value={2}>Option 2</MenuItem>
+    <MyListSubheader muiSkipListHighlight>Group 2</MyListSubheader>
+    <MenuItem value={3}>Option 3</MenuItem>
+    <MenuItem value={4}>Option 4</MenuItem>
+    {/* ... */}
+  </Select>
+);
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        We recommend the first option as it doesn&#39;t require updating all the usage sites of the
+        component.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        Keep in mind this is <strong>only necessary</strong> if you wrap the ListSubheader in a
+        custom component. If you use the ListSubheader directly,{' '}
+        <strong>no additional code is required</strong>. :::
+      </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Accessibility
       </Typography>

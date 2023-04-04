@@ -186,7 +186,7 @@ function ModalDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         React <a href="https://github.com/facebook/react/issues/13097">doesn&#39;t support</a> the{' '}
-        <a href="https://reactjs.org/docs/portals.html">
+        <a href="https://react.dev/reference/react-dom/createPortal">
           <code>createPortal()</code>
         </a>{' '}
         API on the server. In order to display the modal, you need to disable the portal feature
@@ -226,8 +226,8 @@ function ModalDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         (WAI-ARIA:{' '}
-        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/">
-          https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">
+          https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
         </a>
         )
       </Typography>
@@ -251,7 +251,7 @@ function ModalDoc(props) {
         <li>
           <Typography className="mb-40" component="div">
             The{' '}
-            <a href="https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog.html">
+            <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/">
               WAI-ARIA authoring practices
             </a>{' '}
             can help you set the initial focus on the most relevant element, based on your modal

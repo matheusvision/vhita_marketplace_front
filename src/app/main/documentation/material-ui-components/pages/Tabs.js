@@ -57,10 +57,7 @@ function TabsDoc(props) {
       <Typography className="mb-40" component="div">
         <code>@mui/lab</code> offers utility components that inject props to implement accessible
         tabs following{' '}
-        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/">
-          WAI-ARIA authoring practices
-        </a>
-        .
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">WAI-ARIA authoring practices</a>.
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
@@ -338,8 +335,8 @@ function TabsDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         (WAI-ARIA:{' '}
-        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/">
-          https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">
+          https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
         </a>
         )
       </Typography>

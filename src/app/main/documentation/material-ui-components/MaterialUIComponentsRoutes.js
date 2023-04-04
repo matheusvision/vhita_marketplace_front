@@ -47,7 +47,7 @@ const SpeedDial = lazy(() => import('./pages/SpeedDial'));
 const Stack = lazy(() => import('./pages/Stack'));
 const Steppers = lazy(() => import('./pages/Steppers'));
 const Switches = lazy(() => import('./pages/Switches'));
-const Tables = lazy(() => import('./pages/Tables'));
+const Table = lazy(() => import('./pages/Table'));
 const Tabs = lazy(() => import('./pages/Tabs'));
 const TextFields = lazy(() => import('./pages/TextFields'));
 const TextareaAutosize = lazy(() => import('./pages/TextareaAutosize'));
@@ -249,8 +249,8 @@ const MaterialUIComponentsRoutes = [
     element: <Switches />,
   },
   {
-    path: 'material-ui-components/tables',
-    element: <Tables />,
+    path: 'material-ui-components/table',
+    element: <Table />,
   },
   {
     path: 'material-ui-components/tabs',

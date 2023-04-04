@@ -194,6 +194,23 @@ function ChipsDoc(props) {
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Multiline chip
+      </Typography>
+      <Typography className="mb-40" component="div">
+        By default, Chips displays labels only in a single line. To have them support multiline
+        content, use the <code>sx</code> prop to add <code>height:auto</code> to the Chip component,
+        and <code>whiteSpace: normal</code> to the <code>label</code> styles.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="MultilineChips.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/chips/MultilineChips.js').default}
+          raw={require('!raw-loader!../components/chips/MultilineChips.js')}
+        />
+      </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Chip array
       </Typography>
       <Typography className="mb-40" component="div">

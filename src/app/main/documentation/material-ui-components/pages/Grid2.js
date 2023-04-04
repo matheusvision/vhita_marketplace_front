@@ -337,8 +337,28 @@ import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
         from the top level. It will also inherit the props of the top-level grid if it receives
         those props.
       </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Inheriting columns
+      </Typography>
       <Typography className="mb-40" component="div">
-        Check out the demo below to see what this looks like:
+        A nested grid container will inherits the columns from its parent unless the{' '}
+        <code>columns</code> prop is specified to the instance.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="NestedGridColumns.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/grid2/NestedGridColumns.js').default}
+          raw={require('!raw-loader!../components/grid2/NestedGridColumns.js')}
+        />
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Inheriting spacing
+      </Typography>
+      <Typography className="mb-40" component="div">
+        A nested grid container will inherits the row and column spacing from its parent unless the{' '}
+        <code>spacing</code> prop is specified to the instance.
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample

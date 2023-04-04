@@ -33,8 +33,9 @@ function AlertDoc(props) {
       </Typography>
 
       <Typography className="mb-40" component="div">
-        <strong>Note:</strong> This component is not documented in the{' '}
-        <a href="https://m2.material.io/">Material Design guidelines</a>, but MUI supports it.
+        :::info This component is not documented in the{' '}
+        <a href="https://m2.material.io/">Material Design guidelines</a>, but it is available in
+        Material UI. :::
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Basic alerts
@@ -114,7 +115,9 @@ function AlertDoc(props) {
       <Typography className="mb-40" component="div">
         You can change the default severity to icon mapping with the <code>iconMapping</code> prop.
         This can be defined globally using{' '}
-        <a href="/material-ui/customization/theme-components/#default-props">theme customization</a>
+        <a href="/material-ui/customization/theme-components/#theme-default-props">
+          theme customization
+        </a>
         .
       </Typography>
       <Typography className="mb-40" component="div">

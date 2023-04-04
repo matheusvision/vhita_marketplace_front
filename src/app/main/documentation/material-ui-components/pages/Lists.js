@@ -252,8 +252,7 @@ function ListsDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         The use of <a href="https://github.com/bvaughn/react-window">react-window</a> when possible
-        is encouraged. If this library doesn&#39;t cover your use case, you should consider using{' '}
-        <a href="https://github.com/bvaughn/react-virtualized">react-virtualized</a>, then
+        is encouraged. If this library doesn&#39;t cover your use case, you should consider using
         alternatives like <a href="https://github.com/petyosi/react-virtuoso">react-virtuoso</a>.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">

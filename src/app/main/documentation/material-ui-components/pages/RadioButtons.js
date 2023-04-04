@@ -240,22 +240,26 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
       </Typography>
       <Typography className="mb-40" component="div">
         (WAI-ARIA:{' '}
-        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/radiobutton/">
-          https://www.w3.org/WAI/ARIA/apg/patterns/radiobutton/
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">
+          https://www.w3.org/WAI/ARIA/apg/patterns/radio/
         </a>
         )
       </Typography>
       <ul>
         <li>
-          All form controls should have labels, and this includes radio buttons, checkboxes, and
-          switches. In most cases, this is done by using the <code>{`<label>`}</code> element (
-          <a href="/material-ui/api/form-control-label/">FormControlLabel</a>).
+          <Typography className="mb-40" component="div">
+            All form controls should have labels, and this includes radio buttons, checkboxes, and
+            switches. In most cases, this is done by using the <code>{`<label>`}</code> element (
+            <a href="/material-ui/api/form-control-label/">FormControlLabel</a>).
+          </Typography>
         </li>
         <li>
-          When a label can&#39;t be used, it&#39;s necessary to add an attribute directly to the
-          input component. In this case, you can apply the additional attribute (e.g.{' '}
-          <code>aria-label</code>, <code>aria-labelledby</code>, <code>title</code>) via the{' '}
-          <code>inputProps</code> property.
+          <Typography className="mb-40" component="div">
+            When a label can&#39;t be used, it&#39;s necessary to add an attribute directly to the
+            input component. In this case, you can apply the additional attribute (e.g.{' '}
+            <code>aria-label</code>, <code>aria-labelledby</code>, <code>title</code>) via the{' '}
+            <code>inputProps</code> property.
+          </Typography>
         </li>
       </ul>
 

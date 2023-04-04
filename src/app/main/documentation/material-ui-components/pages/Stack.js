@@ -140,6 +140,128 @@ function StackDoc(props) {
 <Stack mt={2}>
 `}
       </FuseHighlight>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Flexbox gap
+      </Typography>
+      <Typography className="mb-40" component="div">
+        To use{' '}
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">
+          flexbox <code>gap</code>
+        </a>{' '}
+        for the spacing implementation, set <code>useFlexGap</code> prop to true.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        It removes the <a href="#limitations">known limitations</a> of the default implementation
+        that uses CSS nested selector. However, CSS flexbox gap is not fully supported in some
+        browsers.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        We recommend checking the{' '}
+        <a href="https://caniuse.com/?search=flex%20gap">support percentage</a> before using it.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="FlexboxGapStack.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/stack/FlexboxGapStack.js').default}
+          raw={require('!raw-loader!../components/stack/FlexboxGapStack.js')}
+        />
+      </Typography>
+      <Typography className="mb-40" component="div">
+        To set the prop to all stack instances, create a theme with default props:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-js">
+        {` 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+
+const theme = createTheme({
+  components: {
+    MuiStack: {
+      defaultProps: {
+        useFlexGap: true,
+      },
+    },
+  },
+});
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Stack>…</Stack> {/* uses flexbox gap by default */}
+    </ThemeProvider>
+  );
+}
+`}
+      </FuseHighlight>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Limitations
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Margin on the children
+      </Typography>
+      <Typography className="mb-40" component="div">
+        Customizing the margin on the children is not supported by default.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        For instance, the top-margin on the <code>Button</code> component below will be ignored.
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-jsx">
+        {` 
+<Stack>
+  <Button sx={{ marginTop: '30px' }}>...</Button>
+</Stack>
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        :::success To overcome this limitation, set{' '}
+        <a href="#flexbox-gap">
+          <code>useFlexGap</code>
+        </a>{' '}
+        prop to true to switch to CSS flexbox gap implementation.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        You can learn more about this limitation by visiting this{' '}
+        <a href="https://github.com/mui/material-ui/issues/33754">RFC</a>. :::
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        white-space: nowrap
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The initial setting on flex items is <code>min-width: auto</code>. This causes a positioning
+        conflict when children use <code>white-space: nowrap;</code>. You can reproduce the issue
+        with:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-jsx">
+        {` 
+<Stack direction="row">
+  <Typography noWrap>
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        In order for the item to stay within the container you need to set <code>min-width: 0</code>
+        .
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-jsx">
+        {` 
+<Stack direction="row" sx={{ minWidth: 0 }}>
+  <Typography noWrap>
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="ZeroWidthStack.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/stack/ZeroWidthStack.js').default}
+          raw={require('!raw-loader!../components/stack/ZeroWidthStack.js')}
+        />
+      </Typography>
     </>
   );
 }

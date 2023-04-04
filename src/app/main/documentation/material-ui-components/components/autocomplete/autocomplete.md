@@ -136,7 +136,7 @@ related to the rendering of JSX.
 The Autocomplete component is built on this hook.
 
 ```tsx
-import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
+import useAutocomplete from '@mui/base/useAutocomplete';
 ```
 
 The `useAutocomplete` hook is also reexported from @mui/material for convenience and backward compatibility.
@@ -188,7 +188,7 @@ For this demo, we need to load the [Google Maps JavaScript](https://developers.g
 {{"demo": "GoogleMaps.js"}}
 
 :::error
-Before you can start using the Google Maps JavaScript API and Places API, you must sign up and create a billing account.
+Before you can start using the Google Maps JavaScript API and Places API, you need to get your own [API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
 :::
 
 ## Multiple values

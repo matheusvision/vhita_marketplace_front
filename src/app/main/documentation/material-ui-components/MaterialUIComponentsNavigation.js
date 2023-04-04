@@ -287,10 +287,10 @@ const MaterialUIComponentsNavigation = {
       url: '/documentation/material-ui-components/switches',
     },
     {
-      id: 'tables',
-      title: 'Tables',
+      id: 'table',
+      title: 'Table',
       type: 'item',
-      url: '/documentation/material-ui-components/tables',
+      url: '/documentation/material-ui-components/table',
     },
     {
       id: 'tabs',

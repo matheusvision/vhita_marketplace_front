@@ -51,12 +51,12 @@ function TextFieldsDoc(props) {
         />
       </Typography>
       <Typography className="mb-40" component="div">
-        <strong>Note:</strong> The standard variant of the <code>TextField</code> is no longer
-        documented in the <a href="https://m2.material.io/">Material Design guidelines</a>(
+        :::info The standard variant of the Text Field is no longer documented in the{' '}
+        <a href="https://m2.material.io/">Material Design guidelines</a>(
         <a href="https://medium.com/google-design/the-evolution-of-material-designs-text-fields-603688b3fe03">
-          here&#39;s why
+          this article explains why
         </a>
-        ), but MUI will continue to support it.
+        ), but Material UI will continue to support it. :::
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Form props
@@ -689,7 +689,7 @@ const MyInputComponent = React.forwardRef((props, ref) => {
           <a href="https://github.com/ui-schema/ui-schema">UI Schema</a>. JSON Schema compatible.
         </li>
         <li>
-          <a href="https://data-driven-forms.org/provided-mappers/mui-component-mapper">
+          <a href="https://www.data-driven-forms.org/provided-mappers/mui-component-mapper">
             @data-driven-forms/mui-component-mapper
           </a>
           : Bindings for using Material UI with{' '}
