@@ -15,7 +15,6 @@ const Buttons = lazy(() => import('./pages/Buttons'));
 const Cards = lazy(() => import('./pages/Cards'));
 const Checkboxes = lazy(() => import('./pages/Checkboxes'));
 const Chips = lazy(() => import('./pages/Chips'));
-const ClickAwayListener = lazy(() => import('./pages/ClickAwayListener'));
 const Container = lazy(() => import('./pages/Container'));
 const CssBaseline = lazy(() => import('./pages/CssBaseline'));
 const Dialogs = lazy(() => import('./pages/Dialogs'));
@@ -119,10 +118,6 @@ const MaterialUIComponentsRoutes = [
   {
     path: 'material-ui-components/chips',
     element: <Chips />,
-  },
-  {
-    path: 'material-ui-components/click-away-listener',
-    element: <ClickAwayListener />,
   },
   {
     path: 'material-ui-components/container',

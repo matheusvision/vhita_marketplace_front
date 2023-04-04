@@ -437,6 +437,9 @@ function removeExcludedComponents() {
     path.resolve(examplesDirectory, './material-icons'),
     path.resolve(examplesDirectory, './icons'),
     path.resolve(examplesDirectory, './pickers'),
+    path.resolve(examplesDirectory, './click-away-listener'),
+    path.resolve(examplesDirectory, './portal'),
+    path.resolve(examplesDirectory, './textarea-autosize'),
   ];
 
   excludedComponents.forEach((_path) => rmDir(_path));
