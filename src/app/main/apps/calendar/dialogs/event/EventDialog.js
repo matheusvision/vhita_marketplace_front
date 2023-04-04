@@ -172,12 +172,15 @@ function EventDialog(props) {
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <DateTimePicker
-                    value={value}
-                    onChange={onChange}
-                    renderInput={(_props) => (
-                      <TextField label="Start" className="mt-8 mb-16 w-full" {..._props} />
-                    )}
                     className="mt-8 mb-16 w-full"
+                    value={new Date(value)}
+                    onChange={onChange}
+                    slotProps={{
+                      textField: {
+                        label: 'Start',
+                        variant: 'outlined',
+                      },
+                    }}
                     maxDate={end}
                   />
                 )}
@@ -189,11 +192,15 @@ function EventDialog(props) {
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
                   <DateTimePicker
-                    value={value}
+                    className="mt-8 mb-16 w-full"
+                    value={new Date(value)}
                     onChange={onChange}
-                    renderInput={(_props) => (
-                      <TextField label="End" className="mt-8 mb-16 w-full" {..._props} />
-                    )}
+                    slotProps={{
+                      textField: {
+                        label: 'End',
+                        variant: 'outlined',
+                      },
+                    }}
                     minDate={start}
                   />
                 )}

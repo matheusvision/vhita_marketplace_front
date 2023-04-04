@@ -14,7 +14,6 @@ import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import * as yup from 'yup';
 import format from 'date-fns/format';
-import { useDispatch } from 'react-redux';
 import NoteFormList from './tasks/NoteFormList';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormReminder from './NoteFormReminder';
@@ -27,26 +26,26 @@ import NoteLabel from '../NoteLabel';
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  title: yup.string(),
+  title: yup.string().nullable(),
   content: yup.string(),
-  image: yup.string(),
-  tasks: yup.array(),
+  image: yup.string().nullable(),
+  tasks: yup.array().nullable(),
   oneOfThemRequired: yup.bool().when(['title', 'content', 'image', 'tasks'], {
     is: (a, b, c, d) => (!a && !b && !c && !d) || (!!a && !!b && !!c && !!d),
-    then: yup.bool().required(''),
-    otherwise: yup.bool(),
+    then: (_schema) => _schema.required(''),
+    otherwise: (_schema) => _schema.nullable(),
   }),
 });
 
 function NoteForm(props) {
   const [showList, setShowList] = useState(false);
   const routeParams = useParams();
-  const dispatch = useDispatch();
+  const { note, variant, onChange: onFormChange, onCreate } = props;
 
   const defaultValues = _.merge(
     {},
     NoteModel(),
-    props.note,
+    note,
     routeParams.labelId ? { labels: [routeParams.labelId] } : null,
     routeParams.id === 'archive' ? { archived: true } : null
   );
@@ -64,13 +63,10 @@ function NoteForm(props) {
    * Update Note
    */
   useEffect(() => {
-    if (!props.note || props.variant === 'new' || !props.onChange) {
-      return;
+    if (note && variant !== 'new' && onFormChange && !_.isEqual(note, noteForm)) {
+      onFormChange(noteForm);
     }
-    if (!_.isEqual(props.note, noteForm)) {
-      props.onChange(noteForm);
-    }
-  }, [noteForm, props, defaultValues]);
+  }, [noteForm, note, variant, onFormChange, defaultValues]);
 
   function handleRemoveLabel(id) {
     setValue(
@@ -82,11 +78,11 @@ function NoteForm(props) {
   /**
    * Create New Note
    */
-  function onCreate(data) {
-    if (!props.onCreate) {
+  function onSubmitNewNote(data) {
+    if (!onCreate) {
       return;
     }
-    props.onCreate(data);
+    onCreate(data);
   }
 
   return (
@@ -217,9 +213,8 @@ function NoteForm(props) {
               <Controller
                 name="reminder"
                 control={control}
-                defaultValue={[]}
                 render={({ field: { onChange, value } }) => (
-                  <NoteFormReminder reminder={value} onChange={(val) => onChange(val)} />
+                  <NoteFormReminder reminder={value} onChange={onChange} />
                 )}
               />
             </div>
@@ -268,7 +263,7 @@ function NoteForm(props) {
                       onChange(!value);
 
                       if (props.variant === 'new') {
-                        setTimeout(() => onCreate(getValues()));
+                        setTimeout(() => onSubmitNewNote(getValues()));
                       }
                     }}
                     size="large"
@@ -291,7 +286,7 @@ function NoteForm(props) {
               variant="contained"
               color="secondary"
               size="small"
-              onClick={handleSubmit(onCreate)}
+              onClick={handleSubmit(onSubmitNewNote)}
               disabled={_.isEmpty(dirtyFields) || !isValid}
             >
               Create

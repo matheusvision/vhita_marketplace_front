@@ -37,7 +37,7 @@ const schema = yup.object().shape({
   name: yup.string().required('You must enter a name'),
 });
 
-const ContactForm = (props) => {
+function ContactForm(props) {
   const contact = useSelector(selectContact);
   const countries = useSelector(selectCountries);
   const tags = useSelector(selectTags);
@@ -329,33 +329,29 @@ const ContactForm = (props) => {
         <Controller
           control={control}
           name="birthday"
-          render={({ field }) => (
+          render={({ field: { value, onChange } }) => (
             <DateTimePicker
-              {...field}
-              className="mt-8 mb-16 w-full"
+              value={new Date(value)}
+              onChange={onChange}
+              className="mt-32 mb-16 w-full"
               clearable
-              showTodayButton
-              renderInput={(_props) => (
-                <TextField
-                  {..._props}
-                  className="mt-32"
-                  id="birthday"
-                  label="Birthday"
-                  type="date"
-                  InputLabelProps={{
+              slotProps={{
+                textField: {
+                  id: 'birthday',
+                  label: 'Birthday',
+                  InputLabelProps: {
                     shrink: true,
-                  }}
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <FuseSvgIcon size={20}>heroicons-solid:cake</FuseSvgIcon>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              )}
+                  },
+                  fullWidth: true,
+                  variant: 'outlined',
+                },
+                actionBar: {
+                  actions: ['clear', 'today'],
+                },
+              }}
+              slots={{
+                openPickerIcon: () => <FuseSvgIcon size={20}>heroicons-solid:cake</FuseSvgIcon>,
+              }}
             />
           )}
         />
@@ -413,6 +409,6 @@ const ContactForm = (props) => {
       </Box>
     </>
   );
-};
+}
 
 export default ContactForm;

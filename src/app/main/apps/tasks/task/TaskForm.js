@@ -29,7 +29,7 @@ const schema = yup.object().shape({
   title: yup.string().required('You must enter a name'),
 });
 
-const TaskForm = (props) => {
+function TaskForm(props) {
   const task = useSelector(selectTask);
   const tags = useSelector(selectTags);
   const routeParams = useParams();
@@ -175,21 +175,20 @@ const TaskForm = (props) => {
                 {...field}
                 className="w-full"
                 clearable
-                showTodayButton
-                renderInput={(_props) => (
-                  <TextField
-                    className=""
-                    id="due-date"
-                    label="Due date"
-                    type="date"
-                    InputLabelProps={{
+                slotProps={{
+                  textField: {
+                    id: 'due-date',
+                    label: 'Due date',
+                    InputLabelProps: {
                       shrink: true,
-                    }}
-                    variant="outlined"
-                    fullWidth
-                    {..._props}
-                  />
-                )}
+                    },
+                    fullWidth: true,
+                    variant: 'outlined',
+                  },
+                  actionBar: {
+                    actions: ['clear', 'today'],
+                  },
+                }}
               />
             )}
           />
@@ -245,6 +244,6 @@ const TaskForm = (props) => {
       )}
     </>
   );
-};
+}
 
 export default TaskForm;

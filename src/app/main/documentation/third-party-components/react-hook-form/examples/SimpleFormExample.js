@@ -18,6 +18,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import { DateTimePicker } from '@mui/x-date-pickers';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 let renderCount = 0;
 
@@ -245,21 +246,26 @@ function SimpleFormExample() {
             control={control}
             render={({ field: { onChange, value, onBlur } }) => (
               <DateTimePicker
-                value={value}
+                value={new Date(value)}
                 onChange={onChange}
                 required
-                renderInput={(_props) => (
-                  <TextField
-                    className="w-full"
-                    {..._props}
-                    onBlur={onBlur}
-                    error={!!errors.DateTimePicker}
-                    helperText={errors?.DateTimePicker?.message}
-                  />
-                )}
-                className="w-full"
-              />
-            )}
+                slotProps={{
+                  textField: {
+                    id: 'birthday',
+                    label: 'Birthday',
+                    InputLabelProps: {
+                      shrink: true,
+                    },
+                    fullWidth: true,
+                    variant: 'outlined',
+                    error:!!errors.DateTimePicker,
+                    helperText:errors?.DateTimePicker?.message
+                  },
+                  inputAdornment: {
+                    position: 'start',
+                    children: <FuseSvgIcon size={20}>heroicons-solid:cake</FuseSvgIcon>,
+                  }}}
+          />)}
           />
         </div>
 
