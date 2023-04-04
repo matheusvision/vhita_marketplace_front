@@ -1,4 +1,3 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { lighten, styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -198,7 +197,7 @@ function Chat(props) {
 
       <div className="flex flex-auto h-full min-h-0 w-full">
         <div className={clsx('flex flex-1 z-10 flex-col relative', props.className)}>
-          <FuseScrollbars ref={chatRef} className="flex flex-1 flex-col overflow-y-auto">
+          <div ref={chatRef} className="flex flex-1 flex-col overflow-y-auto">
             {chat?.length > 0 && (
               <div className="flex flex-col pt-16 px-16 pb-40">
                 {chat.map((item, i) => {
@@ -227,7 +226,7 @@ function Chat(props) {
                 })}
               </div>
             )}
-          </FuseScrollbars>
+          </div>
           {chat && (
             <Paper
               square
