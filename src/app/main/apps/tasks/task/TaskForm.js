@@ -170,10 +170,11 @@ function TaskForm(props) {
           <Controller
             control={control}
             name="dueDate"
-            render={({ field }) => (
+            render={({ field: { value, onChange } }) => (
               <DateTimePicker
-                {...field}
                 className="w-full"
+                value={new Date(value)}
+                onChange={onChange}
                 clearable
                 slotProps={{
                   textField: {
