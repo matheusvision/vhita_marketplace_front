@@ -2,6 +2,11 @@ import Typography from '@mui/material/Typography';
 
 const changelogData = [
   {
+    version: '8.3.6',
+    date: '2023-04-07',
+    fixedChanges: ['Tasks App: dueDate input field fixed.'],
+  },
+  {
     version: '8.3.5',
     date: '2023-04-04',
     newChanges: [
