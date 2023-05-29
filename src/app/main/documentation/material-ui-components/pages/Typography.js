@@ -41,9 +41,9 @@ function TypographyDoc(props) {
         General
       </Typography>
       <Typography className="mb-40" component="div">
-        The <em>Roboto</em> font will <strong>not</strong> be automatically loaded by MUI. You are
-        responsible for loading any fonts used in your application. Roboto Font has a few easy ways
-        to get started. For more advanced configuration, check out
+        The <em>Roboto</em> font will <strong>not</strong> be automatically loaded by Material UI.
+        You are responsible for loading any fonts used in your application. Roboto Font has a few
+        easy ways to get started. For more advanced configuration, check out
         <a href="/material-ui/customization/typography/">the theme customization section</a>.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -96,8 +96,8 @@ import '@fontsource/roboto/700.css';
         For more info check out <a href="https://github.com/fontsource/fontsource">Fontsource</a>.
       </Typography>
       <Typography className="mb-40" component="div">
-        Fontsource can be configured to load specific subsets, weights and styles. MUI default
-        typography configuration only relies on 300, 400, 500, and 700 font weights.
+        Fontsource can be configured to load specific subsets, weights and styles. Material UI
+        default typography configuration only relies on 300, 400, 500, and 700 font weights.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Component

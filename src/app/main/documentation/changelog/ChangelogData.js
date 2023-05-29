@@ -2,6 +2,20 @@ import Typography from '@mui/material/Typography';
 
 const changelogData = [
   {
+    version: '8.3.7',
+    date: '2023-05-29',
+    newChanges: [
+      'material-ui updated to v5.13.12',
+      'react-router updated to v6.11.2',
+      'tailwindcss updated to v3.3.2',
+      '@reduxjs/toolkit updated to v1.9.5',
+      'axios updated to v1.4.0',
+      'fullcalendar updated to v6.1.8',
+      'All dependency packages updated.',
+    ],
+    fixedChanges: ['User role specific redirectUrl issue fixed.'],
+  },
+  {
     version: '8.3.6',
     date: '2023-04-07',
     fixedChanges: ['Tasks App: dueDate input field fixed.'],

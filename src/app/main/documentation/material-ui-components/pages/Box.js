@@ -63,7 +63,7 @@ function BoxDoc(props) {
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
-        Overriding MUI components
+        Overriding Material UI components
       </Typography>
       <Typography className="mb-40" component="div">
         The Box component wraps your component. It creates a new DOM element, a{' '}
@@ -90,7 +90,7 @@ function BoxDoc(props) {
         <a href="/system/getting-started/the-sx-prop/">
           <code>sx</code>
         </a>{' '}
-        prop directly on the child if it is a MUI component.
+        prop directly on the child if it is a Material UI component.
       </Typography>
 
       <FuseHighlight component="pre" className="language-diff">
@@ -102,7 +102,7 @@ function BoxDoc(props) {
 `}
       </FuseHighlight>
       <Typography className="mb-40" component="div">
-        For non-MUI components, use the <code>component</code> prop.
+        For non-Material UI components, use the <code>component</code> prop.
       </Typography>
 
       <FuseHighlight component="pre" className="language-diff">

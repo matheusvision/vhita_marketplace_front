@@ -60,9 +60,9 @@ export default function MyApp() {
         Scoping on children
       </Typography>
       <Typography className="mb-40" component="div">
-        However, you might be progressively migrating a website to MUI, using a global reset might
-        not be an option. It&#39;s possible to apply the baseline only to the children by using the{' '}
-        <code>ScopedCssBaseline</code> component.
+        However, you might be progressively migrating a website to Material UI, using a global reset
+        might not be an option. It&#39;s possible to apply the baseline only to the children by
+        using the <code>ScopedCssBaseline</code> component.
       </Typography>
 
       <FuseHighlight component="pre" className="language-jsx">

@@ -314,13 +314,36 @@ function TextFieldsDoc(props) {
         Here are some examples of customizing the component. You can learn more about this in the{' '}
         <a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
       </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Using the styled API
+      </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
-          name="CustomizedInputs.js"
+          name="CustomizedInputsStyled.js"
           className="my-24"
           iframe={false}
-          component={require('../components/text-fields/CustomizedInputs.js').default}
-          raw={require('!raw-loader!../components/text-fields/CustomizedInputs.js')}
+          component={require('../components/text-fields/CustomizedInputsStyled.js').default}
+          raw={require('!raw-loader!../components/text-fields/CustomizedInputsStyled.js')}
+        />
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Using the theme style overrides API
+      </Typography>
+      <Typography className="mb-40" component="div">
+        Use the <code>styleOverrides</code> key to change any style injected by Material UI into the
+        DOM. See the{' '}
+        <a href="/material-ui/customization/theme-components/#theme-style-overrides">
+          theme style overrides
+        </a>{' '}
+        documentation for further details.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="CustomizedInputsStyleOverrides.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/text-fields/CustomizedInputsStyleOverrides.js').default}
+          raw={require('!raw-loader!../components/text-fields/CustomizedInputsStyleOverrides.js')}
         />
       </Typography>
       <Typography className="mb-40" component="div">
@@ -668,20 +691,20 @@ const MyInputComponent = React.forwardRef((props, ref) => {
           validation.
         </li>
         <li>
-          <a href="https://github.com/dohomi/react-hook-form-mui">react-hook-form-mui</a>: MUI and
-          react-hook-form combined.
+          <a href="https://github.com/dohomi/react-hook-form-mui">react-hook-form-mui</a>: Material
+          UI and react-hook-form combined.
         </li>
         <li>
           <a href="https://github.com/stackworx/formik-mui">formik-material-ui</a>: Bindings for
-          using MUI with <a href="https://formik.org/">formik</a>.
+          using Material UI with <a href="https://formik.org/">formik</a>.
         </li>
         <li>
           <a href="https://github.com/erikras/redux-form-material-ui">redux-form-material-ui</a>:
-          Bindings for using MUI with <a href="https://redux-form.com/">Redux Form</a>.
+          Bindings for using Material UI with <a href="https://redux-form.com/">Redux Form</a>.
         </li>
         <li>
-          <a href="https://github.com/lookfirst/mui-rff">mui-rff</a>: Bindings for using MUI with{' '}
-          <a href="https://final-form.org/react">React Final Form</a>.
+          <a href="https://github.com/lookfirst/mui-rff">mui-rff</a>: Bindings for using Material UI
+          with <a href="https://final-form.org/react">React Final Form</a>.
         </li>
         <li>
           <a href="https://www.npmjs.com/package/@ui-schema/ds-material">@ui-schema/ds-material</a>{' '}

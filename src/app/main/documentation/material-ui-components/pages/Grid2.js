@@ -76,7 +76,7 @@ function Grid2Doc(props) {
       <FuseHighlight component="pre" className="language-js">
         {` 
 import Grid from '@mui/material/Grid'; // Grid version 1
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 `}
       </FuseHighlight>
       <Typography className="mb-40" component="div">
@@ -325,8 +325,8 @@ import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
         Nested grid
       </Typography>
       <Typography className="mb-40" component="div">
-        The grid container that renders inside another grid container is a nested grid that inherits
-        its{' '}
+        The grid container that renders as a <strong>direct child</strong> inside another grid
+        container is a nested grid that inherits its{' '}
         <a href="#columns">
           <code>columns</code>
         </a>{' '}
@@ -337,21 +337,25 @@ import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
         from the top level. It will also inherit the props of the top-level grid if it receives
         those props.
       </Typography>
-      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
-        Inheriting columns
+      <Typography className="mb-40" component="div">
+        :::success
       </Typography>
       <Typography className="mb-40" component="div">
-        A nested grid container will inherits the columns from its parent unless the{' '}
-        <code>columns</code> prop is specified to the instance.
+        Note that a nested grid container should be a direct child of another grid container. If
+        there are non-grid elements in between, the grid container will start as the new root
+        container.
       </Typography>
+
+      <FuseHighlight component="pre" className="language-js">
+        {` 
+<Grid container>
+  <Grid container> // A nested grid container that inherits columns and spacing from above.
+    <div>
+      <Grid container> // A new root grid container with its own variables scope.
+`}
+      </FuseHighlight>
       <Typography className="mb-40" component="div">
-        <FuseExample
-          name="NestedGridColumns.js"
-          className="my-24"
-          iframe={false}
-          component={require('../components/grid2/NestedGridColumns.js').default}
-          raw={require('!raw-loader!../components/grid2/NestedGridColumns.js')}
-        />
+        :::
       </Typography>
       <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
         Inheriting spacing
@@ -367,6 +371,22 @@ import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
           iframe={false}
           component={require('../components/grid2/NestedGrid.js').default}
           raw={require('!raw-loader!../components/grid2/NestedGrid.js')}
+        />
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Inheriting columns
+      </Typography>
+      <Typography className="mb-40" component="div">
+        A nested grid container will inherits the columns from its parent unless the{' '}
+        <code>columns</code> prop is specified to the instance.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="NestedGridColumns.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/grid2/NestedGridColumns.js').default}
+          raw={require('!raw-loader!../components/grid2/NestedGridColumns.js')}
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">

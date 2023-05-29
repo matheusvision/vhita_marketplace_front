@@ -302,16 +302,24 @@ function MyComponent() {
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Complementary projects
       </Typography>
+      <Typography className="mb-40" component="div">
+        For more advanced use cases you might be able to take advantage of:
+      </Typography>
       <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
-        Material UI Confirm
+        material-ui-confirm
       </Typography>
       <Typography className="mb-40" component="div">
         {' '}
-        src="https://img.shields.io/github/stars/jonatanklosko/material-ui-confirm" alt="stars/>
-        src="https://img.shields.io/npm/dm/material-ui-confirm.svg" alt="npm downloads/>
+        src="https://img.shields.io/github/stars/jonatanklosko/material-ui-confirm?style=social&label=Star"
+        alt="stars/> src="https://img.shields.io/npm/dm/material-ui-confirm.svg" alt="npm
+        downloads/>
       </Typography>
       <Typography className="mb-40" component="div">
-        This package provides dialogs for confirming user actions without writing boilerplate code.
+        The package{' '}
+        <a href="https://github.com/jonatanklosko/material-ui-confirm/">
+          <code>material-ui-confirm</code>
+        </a>{' '}
+        provides dialogs for confirming user actions without writing boilerplate code.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Accessibility

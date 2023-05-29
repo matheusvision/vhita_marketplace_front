@@ -264,10 +264,16 @@ function MenusDoc(props) {
         For more advanced use cases you might be able to take advantage of:
       </Typography>
       <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
-        PopupState helper
+        material-ui-popup-state
       </Typography>
       <Typography className="mb-40" component="div">
-        There is a 3rd party package{' '}
+        {' '}
+        src="https://img.shields.io/github/stars/jcoreio/material-ui-popup-state?style=social&label=Star"
+        alt="stars/> src="https://img.shields.io/npm/dm/material-ui-popup-state.svg" alt="npm
+        downloads/>
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The package{' '}
         <a href="https://github.com/jcoreio/material-ui-popup-state">
           <code>material-ui-popup-state</code>
         </a>{' '}

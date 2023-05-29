@@ -209,12 +209,6 @@ const MaterialUIComponentsNavigation = {
       url: '/documentation/material-ui-components/popper',
     },
     {
-      id: 'portal',
-      title: 'Portal',
-      type: 'item',
-      url: '/documentation/material-ui-components/portal',
-    },
-    {
       id: 'progress',
       title: 'Progress',
       type: 'item',
@@ -297,12 +291,6 @@ const MaterialUIComponentsNavigation = {
       title: 'Text Fields',
       type: 'item',
       url: '/documentation/material-ui-components/text-fields',
-    },
-    {
-      id: 'textareaAutosize',
-      title: 'Textarea Autosize',
-      type: 'item',
-      url: '/documentation/material-ui-components/textarea-autosize',
     },
     {
       id: 'timeline',

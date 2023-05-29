@@ -33,7 +33,7 @@ function TransitionsDoc(props) {
       </Typography>
 
       <Typography className="mb-40" component="div">
-        MUI provides transitions that can be used to introduce some basic{' '}
+        Material UI provides transitions that can be used to introduce some basic{' '}
         <a href="https://m2.material.io/design/motion/">motion</a> to your applications.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -150,10 +150,10 @@ function TransitionsDoc(props) {
       </Typography>
       <ul>
         <li>
-          <strong>Forward the style</strong>: To better support server rendering, MUI provides a{' '}
-          <code>style</code> prop to the children of some transition components (Fade, Grow, Zoom,
-          Slide). The <code>style</code> prop must be applied to the DOM for the animation to work
-          as expected.
+          <strong>Forward the style</strong>: To better support server rendering, Material UI
+          provides a <code>style</code> prop to the children of some transition components (Fade,
+          Grow, Zoom, Slide). The <code>style</code> prop must be applied to the DOM for the
+          animation to work as expected.
         </li>
         <li>
           <strong>Forward the ref</strong>: The transition components require the first child
@@ -170,15 +170,15 @@ function TransitionsDoc(props) {
         {` 
 // The \`props\` object contains a \`style\` prop.
 // You need to provide it to the \`div\` element as shown here.
-const MyComponent = React.forwardRef((props, ref) {
+const MyComponent = React.forwardRef(function (props, ref) {
   return (
     <div ref={ref} {...props}>
       Fade
     </div>
   );
-})
+});
 
-export default Main() {
+export default function Main() {
   return (
     <Fade>
       {/* MyComponent must be the only child */}
@@ -212,7 +212,7 @@ export default Main() {
         TransitionComponent prop
       </Typography>
       <Typography className="mb-40" component="div">
-        Some MUI components use these transitions internally. These accept a{' '}
+        Some Material UI components use these transitions internally. These accept a{' '}
         <code>TransitionComponent</code> prop to customize the default transition. You can use any
         of the above components or your own. It should respect the following conditions:
       </Typography>

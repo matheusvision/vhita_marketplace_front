@@ -29,17 +29,41 @@ function StackDoc(props) {
         Stack
       </Typography>
       <Typography className="description">
-        The Stack component manages layout of immediate children along the vertical or horizontal
-        axis with optional spacing and/or dividers between each child.
+        Stack is a container component for arranging elements vertically or horizontally.
       </Typography>
 
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
-        Usage
+        Introduction
       </Typography>
       <Typography className="mb-40" component="div">
-        <code>Stack</code> is concerned with one-dimensional layouts, while{' '}
-        <a href="/material-ui/react-grid/">Grid</a> handles two-dimensional layouts. The default
-        direction is <code>column</code> which stacks children vertically.
+        The Stack component manages the layout of its immediate children along the vertical or
+        horizontal axis, with optional spacing and dividers between each child.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        :::info Stack is ideal for one-dimensional layouts, while Grid is preferable when you need
+        both vertical <em>and</em> hortizontal arrangement. :::
+      </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Basics
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-jsx">
+        {` 
+import Stack from '@mui/material/Stack';
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        The Stack component acts as a generic container, wrapping around the elements to be
+        arranged.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        Use the <code>spacing</code> prop to control the space between children. The spacing value
+        can be any number, including decimals, or a string. (The prop is converted into a CSS
+        property using the{' '}
+        <a href="/material-ui/customization/spacing/">
+          <code>theme.spacing()</code>
+        </a>{' '}
+        helper.)
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
@@ -50,22 +74,20 @@ function StackDoc(props) {
           raw={require('!raw-loader!../components/stack/BasicStack.js')}
         />
       </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Stack vs. Grid
+      </Typography>
       <Typography className="mb-40" component="div">
-        To control space between children, use the <code>spacing</code> prop. The spacing value can
-        be any number, including decimals and any string. The prop is converted into a CSS property
-        using the{' '}
-        <a href="/material-ui/customization/spacing/">
-          <code>theme.spacing()</code>
-        </a>{' '}
-        helper.
+        <code>Stack</code> is concerned with one-dimensional layouts, while{' '}
+        <a href="/material-ui/react-grid/">Grid</a> handles two-dimensional layouts. The default
+        direction is <code>column</code> which stacks children vertically.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Direction
       </Typography>
       <Typography className="mb-40" component="div">
-        By default, <code>Stack</code> arranges items vertically in a <code>column</code>. However,
-        the <code>direction</code> prop can be used to position items horizontally in a{' '}
-        <code>row</code> as well.
+        By default, Stack arranges items vertically in a column. Use the <code>direction</code> prop
+        to position items horizontally in a row:
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
@@ -81,7 +103,8 @@ function StackDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         Use the <code>divider</code> prop to insert an element between each child. This works
-        particularly well with the <a href="/material-ui/react-divider/">Divider</a> component.
+        particularly well with the <a href="/material-ui/react-divider/">Divider</a> component, as
+        shown below:
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
@@ -109,38 +132,6 @@ function StackDoc(props) {
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
-        Interactive
-      </Typography>
-      <Typography className="mb-40" component="div">
-        Below is an interactive demo that lets you explore the visual results of the different
-        settings:
-      </Typography>
-      <Typography className="mb-40" component="div">
-        <FuseExample
-          name="InteractiveStack.js"
-          className="my-24"
-          iframe={false}
-          component={require('../components/stack/InteractiveStack.js').default}
-          raw={require('!raw-loader!../components/stack/InteractiveStack.js')}
-        />
-      </Typography>
-      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
-        System props
-      </Typography>
-      <Typography className="mb-40" component="div">
-        As a CSS utility component, the <code>Stack</code> supports all{' '}
-        <a href="/system/properties/">
-          <code>system</code>
-        </a>{' '}
-        properties. You can use them as props directly on the component. For instance, a margin-top:
-      </Typography>
-
-      <FuseHighlight component="pre" className="language-jsx">
-        {` 
-<Stack mt={2}>
-`}
-      </FuseHighlight>
-      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Flexbox gap
       </Typography>
       <Typography className="mb-40" component="div">
@@ -148,7 +139,7 @@ function StackDoc(props) {
         <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">
           flexbox <code>gap</code>
         </a>{' '}
-        for the spacing implementation, set <code>useFlexGap</code> prop to true.
+        for the spacing implementation, set the <code>useFlexGap</code> prop to true.
       </Typography>
       <Typography className="mb-40" component="div">
         It removes the <a href="#limitations">known limitations</a> of the default implementation
@@ -194,6 +185,38 @@ function App() {
     </ThemeProvider>
   );
 }
+`}
+      </FuseHighlight>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Interactive demo
+      </Typography>
+      <Typography className="mb-40" component="div">
+        Below is an interactive demo that lets you explore the visual results of the different
+        settings:
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="InteractiveStack.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/stack/InteractiveStack.js').default}
+          raw={require('!raw-loader!../components/stack/InteractiveStack.js')}
+        />
+      </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        System props
+      </Typography>
+      <Typography className="mb-40" component="div">
+        As a CSS utility component, the <code>Stack</code> supports all{' '}
+        <a href="/system/properties/">
+          <code>system</code>
+        </a>{' '}
+        properties. You can use them as props directly on the component. For instance, a margin-top:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-jsx">
+        {` 
+<Stack mt={2}>
 `}
       </FuseHighlight>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
@@ -262,6 +285,20 @@ function App() {
           raw={require('!raw-loader!../components/stack/ZeroWidthStack.js')}
         />
       </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Anatomy
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The Stack component is composed of a single root <code>{`<div>`}</code> element:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-html">
+        {` 
+<div className="MuiStack-root">
+  <!-- Stack contents -->
+</div>
+`}
+      </FuseHighlight>
     </>
   );
 }

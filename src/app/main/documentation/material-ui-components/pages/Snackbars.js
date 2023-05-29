@@ -204,7 +204,7 @@ export default function MyComponent() {
       </Typography>
       <Typography className="mb-40" component="div">
         {' '}
-        src="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Stars"
+        src="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Star"
         alt="stars/> src="https://img.shields.io/npm/dm/notistack.svg" alt="npm downloads/>
       </Typography>
       <Typography className="mb-40" component="div">

@@ -28,16 +28,21 @@ function BackdropDoc(props) {
         Backdrop
       </Typography>
       <Typography className="description">
-        The backdrop component is used to provide emphasis on a particular element or parts of it.
+        The Backdrop component narrows the user's focus to a particular element on the screen.
       </Typography>
 
       <Typography className="mb-40" component="div">
-        The backdrop signals to the user of a state change within the application and can be used
-        for creating loaders, dialogs, and more. In its simplest form, the backdrop component will
-        add a dimmed layer over your application.
+        The Backdrop signals a state change within the application and can be used for creating
+        loaders, dialogs, and more. In its simplest form, the Backdrop component will add a dimmed
+        layer over your application.
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Example
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The demo below shows a basic Backdrop with a Circular Progress component in the foreground
+        to indicate a loading state. After clicking <strong>Show Backdrop</strong>, you can click
+        anywhere on the page to close it.
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample

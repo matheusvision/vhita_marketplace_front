@@ -116,8 +116,8 @@ function PaginationDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         You can specify how many digits to display either side of current page with the{' '}
-        <code>siblingRange</code> prop, and adjacent to the start and end page number with the{' '}
-        <code>boundaryRange</code> prop.
+        <code>siblingCount</code> prop, and adjacent to the start and end page number with the{' '}
+        <code>boundaryCount</code> prop.
       </Typography>
       <Typography className="mb-40" component="div">
         <FuseExample
@@ -140,7 +140,7 @@ function PaginationDoc(props) {
           raw={require('!raw-loader!../components/pagination/PaginationControlled.js')}
         />
       </Typography>
-      {/*  <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+      {/*   <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Router integration
       </Typography>
       <Typography className="mb-40" component="div">
@@ -151,8 +151,7 @@ function PaginationDoc(props) {
           component={require('../components/pagination/PaginationLink.js').default}
           raw={require('!raw-loader!../components/pagination/PaginationLink.js')}
         />
-      </Typography>
-      */}
+      </Typography> */}
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         <code>usePagination</code>
       </Typography>

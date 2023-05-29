@@ -254,7 +254,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
         />
       </Typography>
       <Typography className="mb-40" component="div">
-        :::warning If you&#39;re not wrapping a MUI component that inherits from{' '}
+        :::warning If you&#39;re not wrapping a Material UI component that inherits from{' '}
         <code>ButtonBase</code>, for instance, a native <code>{`<button>`}</code> element, you
         should also add the CSS property <em>pointer-events: none;</em> to your element when
         disabled: :::

@@ -364,8 +364,8 @@ function SliderDoc(props) {
         IE 11
       </Typography>
       <Typography className="mb-40" component="div">
-        The slider&#39;s value label is not centered in IE 11. The alignement is not handled to make
-        customizations easier with the lastest browsers. You can solve the issue with:
+        The slider&#39;s value label is not centered in IE 11. The alignment is not handled to make
+        customizations easier with the latest browsers. You can solve the issue with:
       </Typography>
 
       <FuseHighlight component="pre" className="language-css">

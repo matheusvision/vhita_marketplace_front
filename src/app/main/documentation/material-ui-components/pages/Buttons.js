@@ -181,18 +181,6 @@ function ButtonsDoc(props) {
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
-        Upload button
-      </Typography>
-      <Typography className="mb-40" component="div">
-        <FuseExample
-          name="UploadButtons.js"
-          className="my-24"
-          iframe={false}
-          component={require('../components/buttons/UploadButtons.js').default}
-          raw={require('!raw-loader!../components/buttons/UploadButtons.js')}
-        />
-      </Typography>
-      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Buttons with icons and label
       </Typography>
       <Typography className="mb-40" component="div">
@@ -416,7 +404,7 @@ function ButtonsDoc(props) {
 </LoadingButton>
 `}
       </FuseHighlight>
-     {/*  <Typography className="mb-40" component="div">
+      {/*  <Typography className="mb-40" component="div">
         :::
       </Typography>
       <Typography className="text-20 mt-20 mb-10 font-700" component="h3">

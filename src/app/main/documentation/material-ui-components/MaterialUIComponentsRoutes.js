@@ -34,7 +34,6 @@ const Pagination = lazy(() => import('./pages/Pagination'));
 const Paper = lazy(() => import('./pages/Paper'));
 const Popover = lazy(() => import('./pages/Popover'));
 const Popper = lazy(() => import('./pages/Popper'));
-const Portal = lazy(() => import('./pages/Portal'));
 const Progress = lazy(() => import('./pages/Progress'));
 const RadioButtons = lazy(() => import('./pages/RadioButtons'));
 const Rating = lazy(() => import('./pages/Rating'));
@@ -49,7 +48,6 @@ const Switches = lazy(() => import('./pages/Switches'));
 const Table = lazy(() => import('./pages/Table'));
 const Tabs = lazy(() => import('./pages/Tabs'));
 const TextFields = lazy(() => import('./pages/TextFields'));
-const TextareaAutosize = lazy(() => import('./pages/TextareaAutosize'));
 const Timeline = lazy(() => import('./pages/Timeline'));
 const ToggleButton = lazy(() => import('./pages/ToggleButton'));
 const Tooltips = lazy(() => import('./pages/Tooltips'));
@@ -196,10 +194,6 @@ const MaterialUIComponentsRoutes = [
     element: <Popper />,
   },
   {
-    path: 'material-ui-components/portal',
-    element: <Portal />,
-  },
-  {
     path: 'material-ui-components/progress',
     element: <Progress />,
   },
@@ -254,10 +248,6 @@ const MaterialUIComponentsRoutes = [
   {
     path: 'material-ui-components/text-fields',
     element: <TextFields />,
-  },
-  {
-    path: 'material-ui-components/textarea-autosize',
-    element: <TextareaAutosize />,
   },
   {
     path: 'material-ui-components/timeline',
