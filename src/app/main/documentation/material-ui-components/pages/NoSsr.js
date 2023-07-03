@@ -35,11 +35,11 @@ function NoSsrDoc(props) {
         This document has moved
       </Typography>
       <Typography className="mb-40" component="div">
-        :::warning Please refer to the <a href="/base/react-no-ssr/">No-SSR</a> component page in
+        :::warning Please refer to the <a href="/base-ui/react-no-ssr/">No-SSR</a> component page in
         the Base UI docs for demos and details on usage.
       </Typography>
       <Typography className="mb-40" component="div">
-        No-SSR is a part of the standalone <a href="/base/getting-started/overview/">Base UI</a>{' '}
+        No-SSR is a part of the standalone <a href="/base-ui/getting-started/overview/">Base UI</a>{' '}
         component library. It is currently re-exported from <code>@mui/material</code> for your
         convenience, but it will be removed from this package in a future major version, after{' '}
         <code>@mui/base</code> gets a stable release. :::

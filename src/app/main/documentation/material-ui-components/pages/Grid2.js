@@ -131,7 +131,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
           It does <em>not</em> automatically place children. It will try to fit the children one by
           one, and if there is not enough space, the rest of the children will start on the next
           line, and so on. If you need auto-placement, we recommend using{' '}
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Auto-placement_in_CSS_Grid_Layout">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Auto-placement_in_grid_layout">
             CSS Grid
           </a>{' '}
           instead.

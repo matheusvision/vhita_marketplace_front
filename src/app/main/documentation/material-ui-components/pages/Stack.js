@@ -41,7 +41,7 @@ function StackDoc(props) {
       </Typography>
       <Typography className="mb-40" component="div">
         :::info Stack is ideal for one-dimensional layouts, while Grid is preferable when you need
-        both vertical <em>and</em> hortizontal arrangement. :::
+        both vertical <em>and</em> horizontal arrangement. :::
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Basics

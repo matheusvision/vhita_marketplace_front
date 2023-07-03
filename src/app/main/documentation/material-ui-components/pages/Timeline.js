@@ -83,6 +83,21 @@ function TimelineDoc(props) {
         />
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Reverse Alternating timeline
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The timeline can display the events on alternating sides in reverse order.
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="AlternateReverseTimeline.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/timeline/AlternateReverseTimeline.js').default}
+          raw={require('!raw-loader!../components/timeline/AlternateReverseTimeline.js')}
+        />
+      </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Color
       </Typography>
       <Typography className="mb-40" component="div">

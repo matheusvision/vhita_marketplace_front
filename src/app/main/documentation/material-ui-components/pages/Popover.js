@@ -1,4 +1,5 @@
 import FuseExample from '@fuse/core/FuseExample';
+import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -96,6 +97,62 @@ function PopoverDoc(props) {
           component={require('../components/popover/MouseOverPopover.js').default}
           raw={require('!raw-loader!../components/popover/MouseOverPopover.js')}
         />
+      </Typography>
+      <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Virtual element
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The value of the <code>anchorEl</code> prop can be a reference to a fake DOM element. You
+        need to provide an object with the following interface:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-ts">
+        {` 
+interface PopoverVirtualElement {
+  nodeType: 1;
+  getBoundingClientRect: () => DOMRect;
+}
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        Highlight part of the text to see the popover:
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="VirtualElementPopover.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/popover/VirtualElementPopover.js').default}
+          raw={require('!raw-loader!../components/popover/VirtualElementPopover.js')}
+        />
+      </Typography>
+      <Typography className="mb-40" component="div">
+        For more information on the virtual element&#39;s properties, see the following resources:
+      </Typography>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">
+            getBoundingClientRect
+          </a>
+        </li>
+        <li>
+          <a href="https://drafts.fxtf.org/geometry-1/#domrectreadonly">DOMRect</a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType">Node types</a>
+        </li>
+      </ul>
+      <Typography className="mb-40" component="div">
+        :::warning The usage of a virtual element for the Popover component requires the{' '}
+        <code>nodeType</code> property. This is different from virtual elements used for the{' '}
+        <a href="/material-ui/react-popper/#virtual-element">
+          <code>Popper</code>
+        </a>{' '}
+        or{' '}
+        <a href="/material-ui/react-tooltip/#virtual-element">
+          <code>Tooltip</code>
+        </a>{' '}
+        components, both of which don&#39;t require the property. :::
       </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Complementary projects

@@ -375,6 +375,32 @@ function SliderDoc(props) {
 }
 `}
       </FuseHighlight>
+      {/*  <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
+        Experimental API
+      </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Material You version
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The default Slider component follows the Material Design 2 specs. For the Material Design 3
+        (<a href="https://m3.material.io/">Material You</a>) version, you can use the new
+        experimental <code>@mui/material-next</code> package:
+      </Typography>
+
+      <FuseHighlight component="pre" className="language-js">
+        {`
+import Slider from '@mui/material-next/Slider';
+`}
+      </FuseHighlight>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="SliderMaterialYouPlayground.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/slider/SliderMaterialYouPlayground.js').default}
+          raw={require('!raw-loader!../components/slider/SliderMaterialYouPlayground.js')}
+        />
+      </Typography> */}
     </>
   );
 }

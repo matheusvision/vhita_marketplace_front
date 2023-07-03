@@ -28,8 +28,8 @@ function BreadcrumbsDoc(props) {
         Breadcrumbs
       </Typography>
       <Typography className="description">
-        Breadcrumbs consist of a list of links that help a user visualize a page's location within
-        the hierarchical structure of a website, and allow navigation up to any of its "ancestors".
+        A breadcrumbs is a list of links that help visualize a page's location within a site's
+        hierarchical structure, it allows navigation up to any of the ancestors.
       </Typography>
 
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">

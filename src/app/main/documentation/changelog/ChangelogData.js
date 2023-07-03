@@ -2,6 +2,17 @@ import Typography from '@mui/material/Typography';
 
 const changelogData = [
   {
+    version: '8.3.8',
+    date: '2023-07-03',
+    newChanges: [
+      'material-ui updated to v5.13.6',
+      'react-router updated to v6.14.1',
+      'react-redux updated to v8.1.1',
+      'react-hook-form updated to v7.45.1',
+      'All dependency packages updated.',
+    ],
+  },
+  {
     version: '8.3.7',
     date: '2023-05-29',
     newChanges: [

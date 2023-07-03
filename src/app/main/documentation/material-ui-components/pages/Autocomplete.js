@@ -532,6 +532,22 @@ import useAutocomplete from '@mui/material/useAutocomplete';
         Head to the <a href="#customized-hook">Customized hook</a> section for a customization
         example with the <code>useAutocomplete</code> hook instead of the component.
       </Typography>
+      <Typography className="text-20 mt-20 mb-10 font-700" component="h3">
+        Hint
+      </Typography>
+      <Typography className="mb-40" component="div">
+        The following demo shows how to add a hint feature to the Autocomplete using the{' '}
+        <code>renderInput</code> and <code>filterOptions</code> props:
+      </Typography>
+      <Typography className="mb-40" component="div">
+        <FuseExample
+          name="AutocompleteHint.js"
+          className="my-24"
+          iframe={false}
+          component={require('../components/autocomplete/AutocompleteHint.js').default}
+          raw={require('!raw-loader!../components/autocomplete/AutocompleteHint.js')}
+        />
+      </Typography>
       <Typography className="text-32 mt-40 mb-10 font-700" component="h2">
         Highlights
       </Typography>

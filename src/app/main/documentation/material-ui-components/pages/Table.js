@@ -310,7 +310,7 @@ function TableDoc(props) {
       <Typography className="mb-40" component="div">
         If you would like to use an unstyled Table, you can use the primitive HTML elements and
         enhance the table with the TablePaginationUnstyled component. See the demos in the{' '}
-        <a href="/base/react-table-pagination/">unstyled table pagination docs</a>
+        <a href="/base-ui/react-table-pagination/">unstyled table pagination docs</a>
       </Typography>
     </>
   );
