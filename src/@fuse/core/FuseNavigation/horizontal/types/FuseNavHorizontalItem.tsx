@@ -1,6 +1,5 @@
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { styled } from '@mui/material/styles';
-import ListItem, { ListItemProps } from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -44,7 +43,7 @@ function FuseNavHorizontalItem(props: FuseNavComponentProps) {
 			disabled: item.disabled,
 			to: item.url || '',
 			end: item.end,
-			role: 'button',
+			role: 'button'
 		};
 	}
 

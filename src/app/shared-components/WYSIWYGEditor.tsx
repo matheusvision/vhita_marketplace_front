@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { convertToRaw, EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -20,20 +20,30 @@ const Root = styled('div')({
 	}
 });
 
-const WYSIWYGEditor = forwardRef((props, ref) => {
-	const [editorState, setEditorState] = useState(EditorState.createEmpty());
+const WYSIWYGEditor = forwardRef(
+	(
+		props: {
+			className?: string;
+			onChange: (value: string) => void;
+		},
+		ref?: ForwardedRef<HTMLDivElement>
+	) => {
+		const { onChange } = props;
 
-	function onEditorStateChange(_editorState: any) {
-		setEditorState(_editorState);
+		const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-		return props.onChange(draftToHtml(convertToRaw(_editorState.getCurrentContent())));
+		function onEditorStateChange(_editorState) {
+			setEditorState(_editorState);
+
+			return onChange(draftToHtml(convertToRaw(_editorState.getCurrentContent())));
+		}
+
+		return (
+			<Root className={clsx('rounded-4 border-1 overflow-hidden w-full', props.className)} ref={ref}>
+				<Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
+			</Root>
+		);
 	}
-
-	return (
-		<Root className={clsx('rounded-4 border-1 overflow-hidden w-full', props.className)} ref={ref}>
-			<Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
-		</Root>
-	);
-});
+);
 
 export default WYSIWYGEditor;

@@ -4,13 +4,7 @@ import { Theme } from '@mui/material/styles/createTheme';
 
 const useEnhancedEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-interface Props {
-	children: ReactNode;
-	direction: string;
-	theme: Theme;
-}
-
-function FuseTheme(props: Props) {
+function FuseTheme(props: { children: ReactNode; direction: 'rtl' | 'ltr'; theme: Theme }) {
 	const { direction, theme, children } = props;
 	const { mode } = theme.palette;
 

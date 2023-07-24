@@ -48,14 +48,15 @@ function SignInPage() {
 		setValue('password', 'admin', { shouldDirty: true, shouldValidate: true });
 	}, [setValue]);
 
-	function onSubmit({ email, password }: any) {
+	function onSubmit({ email, password }: { email: string; password: string }) {
 		jwtService
 			.signInWithEmailAndPassword(email, password)
 			.then((user) => {
+				console.info(user);
 				// No need to do anything, user data will be set at app/auth/AuthContext
 			})
 			.catch((_errors) => {
-				_errors.forEach((error: any) => {
+				_errors.forEach((error) => {
 					setError(error.type, {
 						type: 'manual',
 						message: error.message

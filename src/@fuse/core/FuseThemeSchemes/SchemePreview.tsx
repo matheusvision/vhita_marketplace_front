@@ -3,14 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 
-interface Props {
-	id: string;
-	className?: string;
-	onSelect: (Theme) => void;
-	theme: Theme;
-}
-
-function SchemePreview(props: Props) {
+function SchemePreview(props: { id: string; className?: string; onSelect: (Theme) => void; theme: Theme }) {
 	const { theme, className, id, onSelect = () => {} } = props;
 
 	const _theme = useTheme();

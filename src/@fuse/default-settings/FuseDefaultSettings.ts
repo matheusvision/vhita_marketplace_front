@@ -2,6 +2,7 @@ import { fuseDark } from '@fuse/colors';
 import { lightBlue, red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 import qs from 'qs';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
 
 const defaultTheme = {
 	palette: {
@@ -281,7 +282,7 @@ export const defaultThemes = {
 	}
 };
 
-export function extendThemeWithMixins(obj: any) {
+export function extendThemeWithMixins(obj: ThemeOptions) {
 	const theme = createTheme(obj);
 	return {
 		border: (width = 1) => ({

@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DialogProps } from '@mui/material/Dialog/Dialog';
 import { RootState } from 'app/store/index';
 
-interface DialogState {
+type DialogStateProps = {
 	state: boolean;
 	options?: Pick<DialogProps, 'open' | 'children'>;
-}
+};
 
-const initialState: DialogState = {
+const initialState: DialogStateProps = {
 	state: false,
 	options: {
 		open: false,
@@ -19,7 +19,7 @@ const dialogSlice = createSlice({
 	name: 'dialog',
 	initialState,
 	reducers: {
-		openDialog: (state, action: PayloadAction<DialogState['options']>) => {
+		openDialog: (state, action: PayloadAction<DialogStateProps['options']>) => {
 			state.state = true;
 			state.options = action.payload;
 		},

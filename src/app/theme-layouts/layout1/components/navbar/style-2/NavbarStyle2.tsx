@@ -93,7 +93,7 @@ const StyledNavbar = styled('div')(({ theme, position, folded, foldedandopened, 
 	})
 }));
 
-const StyledNavbarMobile = styled(SwipeableDrawer)(({ theme, position }) => ({
+const StyledNavbarMobile = styled(SwipeableDrawer)(({ theme }) => ({
 	'& > .MuiDrawer-paper': {
 		minWidth: navbarWidth,
 		width: navbarWidth,
@@ -106,7 +106,7 @@ const StyledNavbarMobile = styled(SwipeableDrawer)(({ theme, position }) => ({
 	}
 }));
 
-function NavbarStyle2(props: any) {
+function NavbarStyle2() {
 	const dispatch = useAppDispatch();
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);

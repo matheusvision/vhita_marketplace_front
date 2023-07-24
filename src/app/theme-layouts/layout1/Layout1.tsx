@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import AppContext from 'app/AppContext';
-import { memo, useContext } from 'react';
+import { memo, ReactNode, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
@@ -13,8 +13,9 @@ import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1';
 import RightSideLayout1 from './components/RightSideLayout1';
 import ToolbarLayout1 from './components/ToolbarLayout1';
 import SettingsPanel from '../shared-components/SettingsPanel';
+import configProps from './Layout1Config';
 
-const Root = styled('div')(({ theme, config }) => ({
+const Root = styled('div')(({ config }: { config: (typeof configProps)['defaults'] }) => ({
 	...(config.mode === 'boxed' && {
 		clipPath: 'inset(0)',
 		maxWidth: `${config.containerWidth}px`,
@@ -30,7 +31,12 @@ const Root = styled('div')(({ theme, config }) => ({
 	})
 }));
 
-function Layout1(props: any) {
+interface Props {
+	children?: ReactNode;
+}
+
+function Layout1(props: Props) {
+	const { children } = props;
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
@@ -54,7 +60,7 @@ function Layout1(props: any) {
 					<div className="flex flex-col flex-auto min-h-0 relative z-10">
 						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
-						{props.children}
+						{children}
 					</div>
 
 					{config.footer.display && (

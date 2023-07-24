@@ -8,7 +8,7 @@ import NavbarStyle2 from './navbar/style-2/NavbarStyle2';
 import NavbarStyle3 from './navbar/style-3/NavbarStyle3';
 import NavbarToggleFab from '../../shared-components/NavbarToggleFab';
 
-function NavbarWrapperLayout1(props: any) {
+function NavbarWrapperLayout1() {
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);
 

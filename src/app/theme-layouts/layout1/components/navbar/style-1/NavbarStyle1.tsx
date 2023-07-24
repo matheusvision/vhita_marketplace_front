@@ -33,7 +33,7 @@ const StyledNavBar = styled('div')(({ theme, open, position }) => ({
 	})
 }));
 
-const StyledNavBarMobile = styled(SwipeableDrawer)(({ theme }) => ({
+const StyledNavBarMobile = styled(SwipeableDrawer)(() => ({
 	'& .MuiDrawer-paper': {
 		minWidth: navbarWidth,
 		width: navbarWidth,
@@ -41,7 +41,7 @@ const StyledNavBarMobile = styled(SwipeableDrawer)(({ theme }) => ({
 	}
 }));
 
-function NavbarStyle1(props: any) {
+function NavbarStyle1() {
 	const dispatch = useAppDispatch();
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);

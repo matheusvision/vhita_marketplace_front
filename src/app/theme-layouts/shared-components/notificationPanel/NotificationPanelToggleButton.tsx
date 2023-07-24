@@ -4,26 +4,25 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store/index';
 import withReducer from 'app/store/withReducer';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { ReactNode } from 'react';
 import reducer from './store';
 import { selectNotifications } from './store/dataSlice';
 import { toggleNotificationPanel } from './store/stateSlice';
 
-function NotificationPanelToggleButton(props: any) {
+function NotificationPanelToggleButton(props: { children?: ReactNode }) {
+	const { children = <FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon> } = props;
+
 	const notifications = useSelector(selectNotifications);
 
 	const dispatch = useAppDispatch();
 
 	return (
-		<IconButton className="w-40 h-40" onClick={(ev) => dispatch(toggleNotificationPanel())} size="large">
+		<IconButton className="w-40 h-40" onClick={() => dispatch(toggleNotificationPanel())} size="large">
 			<Badge color="secondary" variant="dot" invisible={notifications.length === 0}>
-				{props.children}
+				{children}
 			</Badge>
 		</IconButton>
 	);
 }
-
-NotificationPanelToggleButton.defaultProps = {
-	children: <FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon>
-};
 
 export default withReducer('notificationPanel', reducer)(NotificationPanelToggleButton);

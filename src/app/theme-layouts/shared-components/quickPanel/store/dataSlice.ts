@@ -42,6 +42,6 @@ const dataSlice = createSlice({
 	reducers: {}
 });
 
-export const selectQuickPanelData = ({ quickPanel }: any) => quickPanel.data;
+export const selectQuickPanelData = ({ quickPanel }) => quickPanel.data;
 
 export default dataSlice.reducer;

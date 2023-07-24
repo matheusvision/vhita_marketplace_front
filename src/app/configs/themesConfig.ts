@@ -13,7 +13,7 @@ export const darkPaletteText = {
 	disabled: 'rgb(156, 163, 175)'
 };
 
-const themesConfig = {
+export const themesConfig = {
 	default: {
 		palette: {
 			mode: 'light',

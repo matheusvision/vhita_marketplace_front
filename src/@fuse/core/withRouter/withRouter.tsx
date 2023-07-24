@@ -1,4 +1,5 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { ComponentType } from 'react';
 
 export interface WithRouterProps {
 	location: ReturnType<typeof useLocation>;
@@ -6,9 +7,8 @@ export interface WithRouterProps {
 	navigate: ReturnType<typeof useNavigate>;
 }
 
-const withRouter =
-	<Props extends WithRouterProps>(Component: React.ComponentType<Props>) =>
-	(props: Omit<Props, keyof WithRouterProps>) => {
+const withRouter = <Props extends WithRouterProps>(Component: ComponentType<Props>) =>
+	function (props: Omit<Props, keyof WithRouterProps>) {
 		const location = useLocation();
 		const params = useParams();
 		const navigate = useNavigate();

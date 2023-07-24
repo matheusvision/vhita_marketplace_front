@@ -1,17 +1,15 @@
 import * as Prism from 'prismjs';
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { ElementType, memo, useCallback, useEffect, useRef, useState } from 'react';
 import './prism-languages';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 
-interface Props {
+function FuseHighlight(props: {
 	async?: boolean;
 	children: string | { default: string };
-	component?: React.ElementType;
+	component?: ElementType;
 	className: string;
-}
-
-function FuseHighlight(props: Props) {
+}) {
 	const { async, children, className, component: Wrapper } = props;
 
 	const highlight = useCallback(() => {
@@ -44,7 +42,7 @@ function FuseHighlight(props: Props) {
 		let sourceRaw = '';
 
 		// Iterate through all the lines
-		sourceLines.forEach((line: any, index: any) => {
+		sourceLines.forEach((line: string[], index: number) => {
 			// Trim the beginning white space depending on the index
 			// and concat the source code
 			sourceRaw += line.substr(indexOfFirstChar, line.length);

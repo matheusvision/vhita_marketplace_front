@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
@@ -10,19 +10,34 @@ import { Dialog, DialogActions, DialogContent, Icon, TextField } from '@mui/mate
 import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
 import SectionPreview from './SectionPreview';
 import PalettePreview from './PalettePreview';
 
-function isDark(color: any) {
+function isDark(color: 'string') {
 	return getContrastRatio(color, '#ffffff') >= 3;
 }
 
-function PaletteSelector(props: any) {
-	const { value } = props;
+function PaletteSelector(props: {
+	triggerElement: ReactNode;
+	value: ThemeOptions;
+	onChange: (value: ThemeOptions) => void;
+}) {
+	const {
+		value,
+		onChange,
+		triggerElement = (
+			<div className="flex flex-col items-center space-y-8 w-128 m-8">
+				<SectionPreview />
+				<Typography className="flex-1 text-16 font-bold mb-24">Edit Palette</Typography>
+			</div>
+		)
+	} = props;
 	const [openDialog, setOpenDialog] = useState(false);
-	const theme = useTheme();
 
-	const methods = useForm({
+	const theme = useTheme() as ThemeOptions;
+
+	const methods = useForm<ThemeOptions>({
 		defaultValues: {},
 		mode: 'onChange'
 	});
@@ -77,7 +92,7 @@ function PaletteSelector(props: any) {
 	}
 
 	function onSubmit(formData: any) {
-		props.onChange(formData);
+		onChange(formData);
 		handleCloseDialog();
 	}
 
@@ -85,7 +100,7 @@ function PaletteSelector(props: any) {
 		<>
 			{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
 			<div onClick={handleOpenDialog} role="button">
-				{props.trigger}
+				{triggerElement}
 			</div>
 			<Dialog
 				container={document.body}
@@ -248,7 +263,7 @@ function PaletteSelector(props: any) {
 							<Typography className="text-16 font-semibold mb-16 -mt-48" color="text.secondary">
 								Preview
 							</Typography>
-							<PalettePreview className="" palette={form.palette} />
+							<PalettePreview palette={form.palette} />
 						</div>
 					</div>
 				</DialogContent>
@@ -271,12 +286,4 @@ function PaletteSelector(props: any) {
 	);
 }
 
-PaletteSelector.defaultProps = {
-	trigger: (
-		<div className="flex flex-col items-center space-y-8 w-128 m-8">
-			<SectionPreview section="" />
-			<Typography className="flex-1 text-16 font-bold mb-24">Edit Palette</Typography>
-		</div>
-	)
-};
 export default PaletteSelector;

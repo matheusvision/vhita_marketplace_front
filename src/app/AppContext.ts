@@ -1,9 +1,8 @@
 import { createContext } from 'react';
+import { routesType } from 'app/configs/routesConfig';
 
-interface AppContextInterface {
-	routes?: [];
-}
-
-const AppContext = createContext<AppContextInterface>({});
+const AppContext = createContext<{
+	routes?: routesType;
+}>({});
 
 export default AppContext;

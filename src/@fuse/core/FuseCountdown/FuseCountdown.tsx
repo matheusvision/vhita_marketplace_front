@@ -4,15 +4,9 @@ import moment from 'moment';
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { Moment } from 'moment/moment';
 
-interface Props {
-	onComplete?: () => void;
-	endDate?: Moment | Date | string;
-	className?: string;
-}
-
-function FuseCountdown(props: Props) {
-	const { onComplete, endDate: propsEndDate, className } = props;
-	const [endDate] = useState(moment.isMoment(propsEndDate) ? propsEndDate : moment(propsEndDate));
+function FuseCountdown(props: { onComplete?: () => void; endDate?: Moment | Date | string; className?: string }) {
+	const { onComplete, endDate = moment().add(15, 'days'), className } = props;
+	const [endDateVal] = useState(moment.isMoment(endDate) ? endDate : moment(endDate));
 	const [countdown, setCountdown] = useState({
 		days: 0,
 		hours: 0,
@@ -32,7 +26,7 @@ function FuseCountdown(props: Props) {
 
 	const tick = useCallback(() => {
 		const currDate = moment();
-		const diff = endDate.diff(currDate, 'seconds');
+		const diff = endDateVal.diff(currDate, 'seconds');
 		if (diff < 0) {
 			complete();
 			return;
@@ -44,7 +38,7 @@ function FuseCountdown(props: Props) {
 			minutes: timeLeft.minutes(),
 			seconds: timeLeft.seconds()
 		});
-	}, [complete, endDate]);
+	}, [complete, endDateVal]);
 
 	useEffect(() => {
 		intervalRef.current = window.setInterval(tick, 1000);
@@ -92,9 +86,5 @@ function FuseCountdown(props: Props) {
 		</div>
 	);
 }
-
-FuseCountdown.defaultProps = {
-	endDate: moment().add(15, 'days')
-};
 
 export default memo(FuseCountdown);

@@ -25,7 +25,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 	}
 }));
 
-function NotificationPanel(props: any) {
+function NotificationPanel() {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
 	const state = useSelector(selectNotificationPanelState);
@@ -81,8 +81,8 @@ function NotificationPanel(props: any) {
 		<StyledSwipeableDrawer
 			open={state}
 			anchor="right"
-			onOpen={(ev) => {}}
-			onClose={(ev) => dispatch(toggleNotificationPanel())}
+			onOpen={() => {}}
+			onClose={() => dispatch(toggleNotificationPanel())}
 			disableSwipeToOpen
 		>
 			<IconButton className="m-4 absolute top-0 right-0 z-999" onClick={handleClose} size="large">

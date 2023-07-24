@@ -155,7 +155,8 @@ function FuseNavHorizontalCollapse(props: FuseNavComponentProps & { location: Lo
 											</Paper>
 										</Grow>
 									</div>
-								)}
+								)
+							}
 						</Popper>,
 						document.querySelector('#root')
 					)}

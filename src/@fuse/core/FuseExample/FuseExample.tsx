@@ -3,23 +3,21 @@ import Card from '@mui/material/Card';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { ElementType, ReactNode, useState } from 'react';
 import { darken } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import DemoFrame from './DemoFrame';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-interface Props {
+function FuseExample(props: {
 	name?: string;
 	raw?: { default: string };
 	currentTabIndex?: number;
-	component: React.ElementType;
-	iframe: JSX.Element;
+	component: ElementType;
+	iframe: ReactNode;
 	className: string;
-}
-
-function FuseExample(props: Props) {
-	const { component: Component, raw, iframe, className, name, currentTabIndex } = props;
+}) {
+	const { component: Component, raw, iframe, className, name = '', currentTabIndex = 0 } = props;
 
 	const [currentTab, setCurrentTab] = useState(currentTabIndex);
 
@@ -89,10 +87,5 @@ function FuseExample(props: Props) {
 		</Card>
 	);
 }
-
-FuseExample.defaultProps = {
-	name: '',
-	currentTabIndex: 0
-};
 
 export default FuseExample;

@@ -55,6 +55,7 @@ const Root = styled('div')(({ theme }) => ({
 
 function renderInputComponent(inputProps) {
 	const { variant, inputRef = () => {}, ref, ...other } = inputProps;
+
 	return (
 		<div className="w-full relative">
 			{variant === 'basic' ? (
@@ -227,16 +228,14 @@ function reducer(state: initialStateTypes, action: { type: string; value?: strin
 	}
 }
 
-interface Props {
+function FuseSearch(props: {
 	className?: string;
 	navigation: FuseNavItemProps[] | [];
 	variant?: 'basic' | 'full';
-	trigger: ReactNode;
+	trigger?: ReactNode;
 	placeholder?: string;
 	noResults?: string;
-}
-
-function FuseSearch(props: Props) {
+}) {
 	const {
 		navigation = [],
 		className,

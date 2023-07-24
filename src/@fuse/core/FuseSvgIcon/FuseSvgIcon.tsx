@@ -1,17 +1,17 @@
 import clsx from 'clsx';
-import { ForwardedRef, forwardRef } from 'react';
+import { ForwardedRef, forwardRef, ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/system';
 import Icon from '@mui/material/Icon';
 import * as React from 'react';
 
 interface Props extends BoxProps {
-	children: string;
+	children: ReactNode;
 	size?: number | string;
 	color?: 'inherit' | 'disabled' | 'primary' | 'secondary' | 'action' | 'error' | 'info' | 'success' | 'warning';
 }
 
-const Root = styled(Box)<Props & { children: JSX.Element }>(({ theme, ...props }) => ({
+const Root = styled(Box)<Props>(({ theme, ...props }) => ({
 	width: props.size,
 	height: props.size,
 	minWidth: props.size,

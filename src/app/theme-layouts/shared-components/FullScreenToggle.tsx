@@ -6,7 +6,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-const HeaderFullScreenToggle = (props: any) => {
+function HeaderFullScreenToggle(props: any) {
 	const [isFullScreen, setIsFullScreen] = useState(false);
 
 	useEnhancedEffect(() => {
@@ -82,6 +82,6 @@ const HeaderFullScreenToggle = (props: any) => {
 			</IconButton>
 		</Tooltip>
 	);
-};
+}
 
 export default HeaderFullScreenToggle;

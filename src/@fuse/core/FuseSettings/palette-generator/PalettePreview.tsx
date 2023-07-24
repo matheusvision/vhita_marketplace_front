@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Box } from '@mui/system';
 
-function PalettePreview(props: any) {
-	const { palette, className } = props;
+function PalettePreview(props) {
+	const { palette, className }: { className: string } = props;
 
 	return (
 		<Box
@@ -12,12 +12,13 @@ function PalettePreview(props: any) {
 				color: palette.text.primary
 			}}
 			type="button"
+			component="button"
 		>
 			<Box
 				className="w-full h-56 px-8 pt-8 relative"
 				sx={{
 					backgroundColor: palette.primary.main,
-					color: (theme: any) =>
+					color: (theme) =>
 						palette.primary.contrastText || theme.palette.getContrastText(palette.primary.main)
 				}}
 			>
@@ -27,7 +28,7 @@ function PalettePreview(props: any) {
 					className="flex items-center justify-center w-20 h-20 rounded-full absolute bottom-0 right-0 -mb-10 shadow text-10 mr-4"
 					sx={{
 						backgroundColor: palette.secondary.main,
-						color: (theme: any) =>
+						color: (theme) =>
 							palette.secondary.contrastText || theme.palette.getContrastText(palette.secondary.main)
 					}}
 				>

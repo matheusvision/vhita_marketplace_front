@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
 
-function useThemeMediaQuery(themeCallbackFunc: any) {
+function useThemeMediaQuery(themeCallbackFunc: (theme: ThemeOptions) => void) {
 	const theme = useTheme();
 
 	const query = themeCallbackFunc(theme).replace('@media ', '');
 
 	const [matches, setMatches] = useState(getMatches(query));
 
-	function getMatches(q: any) {
+	function getMatches(q: string) {
 		return window.matchMedia(q).matches;
 	}
 
@@ -18,7 +19,7 @@ function useThemeMediaQuery(themeCallbackFunc: any) {
 			// Update the state with the current value
 			setMatches(getMatches(query));
 			// Create an event listener
-			const handler = (event: any) => setMatches(event.matches);
+			const handler = (event) => setMatches(event.matches);
 			// Attach the event listener to know when the matches value changes
 			mediaQuery.addEventListener('change', handler);
 			// Remove the event listener on cleanup

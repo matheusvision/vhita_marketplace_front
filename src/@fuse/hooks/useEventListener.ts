@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 /**
  * https://usehooks.com/useEventListener/
  */
-function useEventListener(eventName: any, handler: any, element = window) {
+function useEventListener(eventName: string, handler: () => void, element = window) {
 	// Create a ref that stores handler
 	const savedHandler = useRef();
 
@@ -25,7 +25,7 @@ function useEventListener(eventName: any, handler: any, element = window) {
 			}
 
 			// Create event listener that calls handler function stored in ref
-			const eventListener = (event: any) => savedHandler.current(event);
+			const eventListener = (event) => savedHandler.current(event);
 
 			// Add event listener
 			element.addEventListener(eventName, eventListener);

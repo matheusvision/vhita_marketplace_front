@@ -4,7 +4,7 @@ import deepEqual from 'lodash/isEqual';
 /**
  * https://github.com/kentcdodds/use-deep-compare-effect
  */
-function checkDeps(deps: any) {
+function checkDeps(deps?: { any }[]) {
 	if (!deps || !deps.length) {
 		throw new Error('useDeepCompareEffect should not be used with no dependencies. Use React.useEffect instead.');
 	}
@@ -15,11 +15,11 @@ function checkDeps(deps: any) {
 	}
 }
 
-function isPrimitive(val: any) {
+function isPrimitive(val) {
 	return val == null || /^[sbn]/.test(typeof val);
 }
 
-function useDeepCompareMemoize(value: any) {
+function useDeepCompareMemoize(value: { any }[]) {
 	const ref = useRef();
 
 	if (!deepEqual(value, ref.current)) {
@@ -29,7 +29,7 @@ function useDeepCompareMemoize(value: any) {
 	return ref.current;
 }
 
-function useDeepCompareEffect(callback: any, dependencies: any) {
+function useDeepCompareEffect(callback: () => void, dependencies: { any }[]) {
 	if (process.env.NODE_ENV !== 'production') {
 		checkDeps(dependencies);
 	}

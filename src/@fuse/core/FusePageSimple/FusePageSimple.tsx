@@ -225,7 +225,7 @@ const FusePageSimple = forwardRef((props: Props, ref) => {
 	return (
 		<>
 			<GlobalStyles
-				styles={(theme) => ({
+				styles={() => ({
 					...(scroll !== 'page' && {
 						'#fuse-toolbar': {
 							position: 'static'

@@ -3,34 +3,34 @@ import _ from '@lodash';
 import * as colors from '@mui/material/colors';
 
 class EventEmitter {
-	events: any;
+	events;
 
 	constructor() {
 		this.events = {};
 	}
 
-	_getEventListByName(eventName: any) {
+	_getEventListByName(eventName: string) {
 		if (typeof this.events[eventName] === 'undefined') {
 			this.events[eventName] = new Set();
 		}
 		return this.events[eventName];
 	}
 
-	on(eventName: any, fn: any) {
+	on(eventName, fn) {
 		this._getEventListByName(eventName).add(fn);
 	}
 
-	once(eventName: any, fn: any) {
+	once(eventName: string, fn: () => void) {
 		const self = this;
 
-		const onceFn = (...args: any[]) => {
+		const onceFn = (...args) => {
 			self.removeListener(eventName, onceFn);
 			fn.apply(self, args);
 		};
 		this.on(eventName, onceFn);
 	}
 
-	emit(eventName: any, ...args: any[]) {
+	emit(eventName: string, ...args) {
 		this._getEventListByName(eventName).forEach(
 			// eslint-disable-next-line func-names
 			(fn) => {
@@ -39,23 +39,23 @@ class EventEmitter {
 		);
 	}
 
-	removeListener(eventName: any, fn: any) {
+	removeListener(eventName, fn) {
 		this._getEventListByName(eventName).delete(fn);
 	}
 }
 
 class FuseUtils {
-	static filterArrayByString(mainArr: any, searchText: any) {
+	static filterArrayByString(mainArr, searchText) {
 		if (searchText === '') {
 			return mainArr;
 		}
 
 		searchText = searchText.toLowerCase();
 
-		return mainArr.filter((itemObj: any) => this.searchInObj(itemObj, searchText));
+		return mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
 	}
 
-	static searchInObj(itemObj: any, searchText: any) {
+	static searchInObj(itemObj, searchText) {
 		if (!itemObj) {
 			return false;
 		}
@@ -85,8 +85,8 @@ class FuseUtils {
 		return false;
 	}
 
-	static searchInArray(arr: any, searchText: any) {
-		arr.forEach((value: any) => {
+	static searchInArray(arr, searchText) {
+		arr.forEach((value) => {
 			if (typeof value === 'string') {
 				if (this.searchInString(value, searchText)) {
 					return true;
@@ -103,7 +103,7 @@ class FuseUtils {
 		return false;
 	}
 
-	static searchInString(value: any, searchText: any) {
+	static searchInString(value, searchText) {
 		return value.toLowerCase().includes(searchText);
 	}
 
@@ -117,7 +117,7 @@ class FuseUtils {
 		return S4() + S4();
 	}
 
-	static toggleInArray(item: any, array: any) {
+	static toggleInArray(item, array) {
 		if (array.indexOf(item) === -1) {
 			array.push(item);
 		} else {
@@ -125,7 +125,7 @@ class FuseUtils {
 		}
 	}
 
-	static handleize(text: any) {
+	static handleize(text: string) {
 		return text
 			.toString()
 			.toLowerCase()
@@ -136,7 +136,7 @@ class FuseUtils {
 			.replace(/-+$/, ''); // Trim - from end of text
 	}
 
-	static setRoutes(config: any, defaultAuth: any) {
+	static setRoutes(config, defaultAuth) {
 		let routes = [...config.routes];
 
 		routes = routes.map((route) => {
@@ -154,15 +154,15 @@ class FuseUtils {
 		return [...routes];
 	}
 
-	static generateRoutesFromConfigs(configs: any, defaultAuth: any) {
-		let allRoutes: any = [];
-		configs.forEach((config: any) => {
+	static generateRoutesFromConfigs(configs, defaultAuth) {
+		let allRoutes = [];
+		configs.forEach((config) => {
 			allRoutes = [...allRoutes, ...this.setRoutes(config, defaultAuth)];
 		});
 		return allRoutes;
 	}
 
-	static findById(obj: any, id: any) {
+	static findById(obj, id) {
 		let i;
 		let childObj;
 		let result;
@@ -184,7 +184,7 @@ class FuseUtils {
 		return false;
 	}
 
-	static getFlatNavigation(navigationItems: any, flatNavigation = []) {
+	static getFlatNavigation(navigationItems = [], flatNavigation = []) {
 		for (let i = 0; i < navigationItems.length; i += 1) {
 			const navItem = navigationItems[i];
 
@@ -208,7 +208,7 @@ class FuseUtils {
 		return flatNavigation;
 	}
 
-	static randomMatColor(hue: any) {
+	static randomMatColor(hue) {
 		hue = hue || '400';
 		const mainColors = [
 			'red',
@@ -232,8 +232,8 @@ class FuseUtils {
 		return colors[randomColor][hue];
 	}
 
-	static difference(object: any, base: any) {
-		function changes(_object: any, _base: any) {
+	static difference(object, base) {
+		function changes(_object, _base) {
 			return _.transform(_object, (result, value, key) => {
 				if (!_.isEqual(value, _base[key])) {
 					result[key] = _.isObject(value) && _.isObject(_base[key]) ? changes(value, _base[key]) : value;
@@ -246,8 +246,8 @@ class FuseUtils {
 
 	static EventEmitter = EventEmitter;
 
-	static updateNavItem(nav: any, id: any, item: any) {
-		return nav.map((_item: any) => {
+	static updateNavItem(nav, id, item) {
+		return nav.map((_item) => {
 			if (_item.id === id) {
 				return _.merge({}, _item, item);
 			}
@@ -262,9 +262,9 @@ class FuseUtils {
 		});
 	}
 
-	static removeNavItem(nav: any, id: any) {
+	static removeNavItem(nav, id) {
 		return nav
-			.map((_item: any) => {
+			.map((_item) => {
 				if (_item.id === id) {
 					return null;
 				}
@@ -277,15 +277,15 @@ class FuseUtils {
 
 				return _.merge({}, _item);
 			})
-			.filter((s: any) => s);
+			.filter((s) => s);
 	}
 
-	static prependNavItem(nav: any, item: any, parentId: any) {
+	static prependNavItem(nav, item, parentId) {
 		if (!parentId) {
 			return [item, ...nav];
 		}
 
-		return nav.map((_item: any) => {
+		return nav.map((_item) => {
 			if (_item.id === parentId && _item.children) {
 				return {
 					..._item,
@@ -303,12 +303,12 @@ class FuseUtils {
 		});
 	}
 
-	static appendNavItem(nav: any, item: any, parentId: any) {
+	static appendNavItem(nav, item, parentId) {
 		if (!parentId) {
 			return [...nav, item];
 		}
 
-		return nav.map((_item: any) => {
+		return nav.map((_item) => {
 			if (_item.id === parentId && _item.children) {
 				return {
 					..._item,
@@ -326,7 +326,7 @@ class FuseUtils {
 		});
 	}
 
-	static hasPermission(authArr: any, userRole: any) {
+	static hasPermission(authArr, userRole) {
 		/**
 		 * If auth array is not defined
 		 * Pass and allow
@@ -351,7 +351,7 @@ class FuseUtils {
             Check if user role is array,
             */
 		if (userRole && Array.isArray(userRole)) {
-			return authArr.some((r: any) => userRole.indexOf(r) >= 0);
+			return authArr.some((r) => userRole.indexOf(r) >= 0);
 		}
 
 		/*
@@ -360,11 +360,11 @@ class FuseUtils {
 		return authArr.includes(userRole);
 	}
 
-	static filterRecursive(data: any, predicate: any) {
+	static filterRecursive(data, predicate) {
 		// if no data is sent in, return null, otherwise transform the data
 		return !data
 			? null
-			: data.reduce((list: any, entry: any) => {
+			: data.reduce((list, entry) => {
 					let clone = null;
 					if (predicate(entry)) {
 						// if the object matches the filter, clone it as it is

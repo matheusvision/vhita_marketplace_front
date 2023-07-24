@@ -10,13 +10,6 @@ import clsx from 'clsx';
 import { memo, ReactNode, useState } from 'react';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-interface Props {
-	position?: 'left';
-	opened?: true;
-	className?: string;
-	children?: ReactNode;
-}
-
 const Root = styled('div')(({ theme }) => ({
 	'& .FuseSidePanel-paper': {
 		display: 'flex',
@@ -176,7 +169,7 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function FuseSidePanel(props: Props) {
+function FuseSidePanel(props: { position?: 'left'; opened?: true; className?: string; children?: ReactNode }) {
 	const { position = 'left', opened = true, className, children } = props;
 
 	const [panelOpened, setPanelOpened] = useState(Boolean(opened));

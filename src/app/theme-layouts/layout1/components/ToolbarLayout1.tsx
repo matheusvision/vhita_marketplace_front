@@ -18,7 +18,12 @@ import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
 import ChatPanelToggleButton from '../../shared-components/chatPanel/ChatPanelToggleButton';
 
-function ToolbarLayout1(props: any) {
+interface Props {
+	className?: string;
+}
+
+function ToolbarLayout1(props: Props) {
+	const { className } = props;
 	const config = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);
 	const toolbarTheme = useSelector(selectToolbarTheme);
@@ -27,7 +32,7 @@ function ToolbarLayout1(props: any) {
 		<ThemeProvider theme={toolbarTheme}>
 			<AppBar
 				id="fuse-toolbar"
-				className={clsx('flex relative z-20 shadow-md', props.className)}
+				className={clsx('flex relative z-20 shadow-md', className)}
 				color="default"
 				sx={{
 					backgroundColor: (theme) =>

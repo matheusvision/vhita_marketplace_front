@@ -1,14 +1,8 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { styled } from '@mui/material/styles';
-import FramedDemo from './FramedDemo';
 import { useRef } from 'react';
-
-interface Props {
-	name: string;
-	children: React.ReactElement;
-	other?: React.HTMLAttributes<HTMLElement>;
-}
+import FramedDemo from './FramedDemo';
 
 const Frame = styled('iframe')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
@@ -18,13 +12,13 @@ const Frame = styled('iframe')(({ theme }) => ({
 	boxShadow: theme.shadows[1]
 }));
 
-function DemoFrame(props: Props) {
+function DemoFrame(props: { name: string; children: React.ReactElement; other?: React.HTMLAttributes<HTMLElement> }) {
 	const { children, name, ...other } = props;
 	const title = `${name} demo`;
 	/**
 	 * @type {import('react').Ref<HTMLIFrameElement>}
 	 */
-	const frameRef = React.useRef(null);
+	const frameRef = useRef(null);
 
 	// If we load portal content into the iframe before the load event then that content
 	// is dropped in firefox.

@@ -6,19 +6,18 @@ import { forwardRef, ReactNode, useCallback, useEffect, useImperativeHandle, use
 import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer/SwipeableDrawer';
 import FusePageSimpleSidebarContent from './FusePageSimpleSidebarContent';
 
-interface Props {
-	open?: boolean;
-	position?: SwipeableDrawerProps['anchor'];
-	variant?: SwipeableDrawerProps['variant'];
-	onClose?: () => void;
-	children?: ReactNode;
-}
-
-interface useImperativeRef {
-	toggleSidebar: (boolean) => void;
-}
-
-const FusePageSimpleSidebar = forwardRef<useImperativeRef, Props>((props, ref) => {
+const FusePageSimpleSidebar = forwardRef<
+	{
+		toggleSidebar: (boolean) => void;
+	},
+	{
+		open?: boolean;
+		position?: SwipeableDrawerProps['anchor'];
+		variant?: SwipeableDrawerProps['variant'];
+		onClose?: () => void;
+		children?: ReactNode;
+	}
+>((props, ref) => {
 	const { open = true, position, variant, onClose = () => {} } = props;
 
 	const [isOpen, setIsOpen] = useState(open);
@@ -27,7 +26,7 @@ const FusePageSimpleSidebar = forwardRef<useImperativeRef, Props>((props, ref) =
 		toggleSidebar: handleToggleDrawer
 	}));
 
-	const handleToggleDrawer = useCallback((val: any) => {
+	const handleToggleDrawer = useCallback((val: boolean) => {
 		setIsOpen(val);
 	}, []);
 
@@ -42,7 +41,7 @@ const FusePageSimpleSidebar = forwardRef<useImperativeRef, Props>((props, ref) =
 					variant="temporary"
 					anchor={position}
 					open={isOpen}
-					onOpen={(ev) => {}}
+					onOpen={() => {}}
 					onClose={() => onClose()}
 					disableSwipeToOpen
 					classes={{

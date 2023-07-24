@@ -2,7 +2,7 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import clsx from 'clsx';
-import { memo, useEffect, useState } from 'react';
+import { memo, ReactNode, useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
 import FuseNavigation, { FuseNavItemProps } from '@fuse/core/FuseNavigation';
@@ -38,8 +38,9 @@ function needsToBeOpened(location: Location, item: FuseNavItemProps) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
-function NavbarStyle3Content(props: any) {
-	const isMobile = useThemeMediaQuery((theme: any) => theme.breakpoints.down('lg'));
+function NavbarStyle3Content(props: { className?: string; dense?: boolean }) {
+	const { className = '', dense = false } = props;
+	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const navigation = useSelector(selectNavigation);
 	const [selectedNavigation, setSelectedNavigation] = useState([]);
 	const [panelOpen, setPanelOpen] = useState(false);
@@ -49,14 +50,14 @@ function NavbarStyle3Content(props: any) {
 	const location = useLocation();
 
 	useEffect(() => {
-		navigation?.forEach((item: any) => {
+		navigation?.forEach((item) => {
 			if (needsToBeOpened(location, item)) {
 				setSelectedNavigation([item]);
 			}
 		});
 	}, [navigation, location]);
 
-	function handleParentItemClick(selected: any) {
+	function handleParentItemClick(selected: ReactNode) {
 		/** if there is no child item do not set/open panel
 		 */
 		if (!selected.children) {
@@ -79,7 +80,7 @@ function NavbarStyle3Content(props: any) {
 		}
 	}
 
-	function handleChildItemClick(selected: any) {
+	function handleChildItemClick() {
 		setPanelOpen(false);
 		if (isMobile) {
 			dispatch(navbarCloseMobile());
@@ -88,7 +89,7 @@ function NavbarStyle3Content(props: any) {
 
 	return (
 		<ClickAwayListener onClickAway={() => setPanelOpen(false)}>
-			<Root className={clsx('flex flex-auto flex h-full', props.className)}>
+			<Root className={clsx('flex flex-auto flex h-full', className)}>
 				<ThemeProvider theme={contrastTheme}>
 					<div id="fuse-navbar-side-panel" className="flex shrink-0 flex-col items-center">
 						<img className="w-44 my-32" src="assets/images/logo/logo.svg" alt="logo" />
@@ -104,7 +105,7 @@ function NavbarStyle3Content(props: any) {
 								onItemClick={handleParentItemClick}
 								firstLevel
 								selectedId={selectedNavigation[0]?.id}
-								dense={props.dense}
+								dense={dense}
 							/>
 						</FuseScrollbars>
 					</div>

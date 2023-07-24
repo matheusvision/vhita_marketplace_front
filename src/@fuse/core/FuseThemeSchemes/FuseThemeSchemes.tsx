@@ -1,13 +1,8 @@
 import { memo } from 'react';
-import { Theme } from '@mui/material/styles/createTheme';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
 import SchemePreview from './SchemePreview';
 
-interface Props {
-	themes: Theme[] | [];
-	onSelect?: (Theme) => void;
-}
-
-function FuseThemeSchemes(props: Props) {
+function FuseThemeSchemes(props: { themes: { [key: string]: ThemeOptions }; onSelect?: (ThemeOptions) => void }) {
 	const { themes, onSelect = () => {} } = props;
 
 	return (

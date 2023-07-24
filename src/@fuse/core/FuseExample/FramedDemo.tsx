@@ -5,14 +5,10 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import { CacheProvider } from '@emotion/react';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { StyleSheetManager } from 'styled-components';
+import { ReactElement } from 'react';
 
-interface Props {
-	document: Document;
-	children?: JSX.Element;
-}
-
-function FramedDemo(props: Props) {
-	const { children, document } = props;
+function FramedDemo(props) {
+	const { children, document }: { document: Document; children: ReactElement } = props;
 
 	const theme = useTheme();
 	React.useEffect(() => {

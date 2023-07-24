@@ -1,7 +1,8 @@
 import themesConfig from 'app/configs/themesConfig';
+import { SettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 import i18n from '../../i18n';
 
-const settingsConfig = {
+const settingsConfig: SettingsConfigProps = {
 	layout: {
 		style: 'layout1', // layout1 layout2 layout3
 		config: {} // checkout default layout configs at app/theme-layouts for example  app/theme-layouts/layout1/Layout1Config.js

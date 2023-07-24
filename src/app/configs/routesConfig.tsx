@@ -2,6 +2,7 @@ import FuseUtils from '@fuse/utils';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { Navigate } from 'react-router-dom';
 import settingsConfig from 'app/configs/settingsConfig';
+import { ReactNode } from 'react';
 import SignInConfig from '../main/sign-in/SignInConfig';
 import SignUpConfig from '../main/sign-up/SignUpConfig';
 import SignOutConfig from '../main/sign-out/SignOutConfig';
@@ -10,7 +11,15 @@ import ExampleConfig from '../main/example/ExampleConfig';
 
 const routeConfigs = [ExampleConfig, SignOutConfig, SignInConfig, SignUpConfig];
 
-const routes = [
+export interface routeItemType {
+	path: string;
+	element: ReactNode;
+	auth?: string[];
+}
+
+export type routesType = routeItemType[];
+
+const routes: routesType = [
 	...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
 	{
 		path: '/',

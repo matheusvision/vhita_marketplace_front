@@ -4,7 +4,7 @@ import { useAppDispatch } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { toggleChatPanel } from './store/stateSlice';
 
-const ChatPanelToggleButton = (props: any) => {
+function ChatPanelToggleButton(props: any) {
 	const dispatch = useAppDispatch();
 
 	return (
@@ -12,7 +12,7 @@ const ChatPanelToggleButton = (props: any) => {
 			{props.children}
 		</IconButton>
 	);
-};
+}
 
 ChatPanelToggleButton.defaultProps = {
 	children: <FuseSvgIcon>heroicons-outline:chat</FuseSvgIcon>

@@ -29,20 +29,21 @@ const handlerNameByEvent = {
 };
 Object.freeze(handlerNameByEvent);
 
-interface Props {
-	id?: string;
-	className?: string;
-	enable?: boolean;
-	customScrollbars?: boolean;
-	option?: {
-		wheelPropagation: boolean;
-	};
-	scrollToTopOnChildChange?: () => void;
-	scrollToTopOnRouteChange?: () => void;
-	children?: ReactNode;
-}
-
-const FuseScrollbars = forwardRef<ForwardedRef<HTMLElement>, Props>((props, ref) => {
+const FuseScrollbars = forwardRef<
+	ForwardedRef<HTMLElement>,
+	{
+		id?: string;
+		className?: string;
+		enable?: boolean;
+		customScrollbars?: boolean;
+		option?: {
+			wheelPropagation: boolean;
+		};
+		scrollToTopOnChildChange?: () => void;
+		scrollToTopOnRouteChange?: () => void;
+		children?: ReactNode;
+	}
+>((props, ref) => {
 	const { customScrollbars, scrollToTopOnChildChange, scrollToTopOnRouteChange, id, enable = true, children } = props;
 
 	let elRef;

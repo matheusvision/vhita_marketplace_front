@@ -8,27 +8,30 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StyledEngineProvider } from '@mui/material/styles';
 import routes from 'app/configs/routesConfig';
+import { useMemo } from 'react';
 import store from './store';
 import AppContext from './AppContext';
 
-const withAppProviders = (Component: any) => (props: any) => {
-	const WrapperComponent = () => (
-		<AppContext.Provider
-			value={{
+const withAppProviders = (Component) => (props) =>
+	function () {
+		const val = useMemo(
+			() => ({
 				routes
-			}}
-		>
-			<LocalizationProvider dateAdapter={AdapterDateFns}>
-				<Provider store={store}>
-					<StyledEngineProvider injectFirst>
-						<Component {...props} />
-					</StyledEngineProvider>
-				</Provider>
-			</LocalizationProvider>
-		</AppContext.Provider>
-	);
+			}),
+			[routes]
+		);
 
-	return WrapperComponent;
-};
+		return (
+			<AppContext.Provider value={val}>
+				<LocalizationProvider dateAdapter={AdapterDateFns}>
+					<Provider store={store}>
+						<StyledEngineProvider injectFirst>
+							<Component {...props} />
+						</StyledEngineProvider>
+					</Provider>
+				</LocalizationProvider>
+			</AppContext.Provider>
+		);
+	};
 
 export default withAppProviders;

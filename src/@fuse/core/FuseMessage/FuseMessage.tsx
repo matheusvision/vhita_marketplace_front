@@ -9,11 +9,9 @@ import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from 'a
 import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-interface Props {
+const StyledSnackbar = styled(Snackbar)<{
 	variant: string;
-}
-
-const StyledSnackbar = styled(Snackbar)<Props>(({ theme, variant }) => ({
+}>(({ theme, variant }) => ({
 	'& .FuseMessage-content': {
 		...(variant === 'success' && {
 			backgroundColor: green[600],

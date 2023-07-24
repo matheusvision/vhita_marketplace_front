@@ -6,17 +6,18 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import NotificationModel from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
 
-function NotificationCard(props: any) {
-	const { item, className } = props;
+function NotificationCard(props: { item: typeof NotificationModel; className?: string; onClose: () => void }) {
+	const { item, className, onClose } = props;
 	const variant = item?.variant || '';
 
-	const handleClose = (ev: any) => {
+	const handleClose = (ev) => {
 		ev.preventDefault();
 		ev.stopPropagation();
 
-		if (props.onClose) {
-			props.onClose(item.id);
+		if (onClose) {
+			onClose(item.id);
 		}
 	};
 

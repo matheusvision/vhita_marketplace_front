@@ -7,20 +7,36 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
-import { memo, useCallback, useEffect, useMemo } from 'react';
+import { memo, ReactNode, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFuseCurrentSettings, selectFuseThemesSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
+import { selectFuseCurrentSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
 import { selectUser } from 'app/store/user/userSlice';
 import { FuseSettingsProps } from '@fuse/core/FuseSettings/index';
 import { useAppDispatch } from 'app/store/index';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
+
+export interface SettingsConfigProps {
+	layout?: {
+		style: string;
+		config: (typeof themeLayoutConfigs)['string']['defaults'];
+	};
+	customScrollbars?: boolean;
+	direction?: 'rtl' | 'ltr';
+	theme?: {
+		main: { ['string']: ThemeOptions };
+		navbar: { ['string']: ThemeOptions };
+		toolbar: { ['string']: ThemeOptions };
+		footer: { ['string']: ThemeOptions };
+	};
+	defaultAuth?: string[];
+	loginRedirectUrl?: string;
+}
 
 const Root = styled('div')(({ theme }) => ({
 	'& .FuseSettings-formControl': {
@@ -57,9 +73,8 @@ const Root = styled('div')(({ theme }) => ({
 function FuseSettings() {
 	const dispatch = useAppDispatch();
 	const user = useSelector(selectUser);
-	const themes = useSelector(selectFuseThemesSettings);
 	const settings = useSelector(selectFuseCurrentSettings);
-	const { reset, watch, control } = useForm({
+	const { reset, watch, control } = useForm<SettingsConfigProps>({
 		mode: 'onChange',
 		defaultValues: settings
 	});
@@ -75,7 +90,7 @@ function FuseSettings() {
 	}, 300);
 
 	useEffect(() => {
-		// Skip inital changes
+		// Skip initial changes
 		if (!prevForm && !prevSettings) {
 			return;
 		}
@@ -102,77 +117,90 @@ function FuseSettings() {
 		}
 	}, [dispatch, form, formChanged, handleUpdate, prevForm, prevSettings, reset, settings, settingsChanged, user]);
 
-	const ThemeSelect = ({ value, name, handleThemeChange }: props) => (
-		<Select
-			className="w-full rounded-8 h-40 overflow-hidden my-8"
-			value={value}
-			onChange={handleThemeChange}
-			name={name}
-			variant="outlined"
-			style={{
-				backgroundColor: themes[value].palette.background.default,
-				color: themes[value].palette.mode === 'light' ? '#000000' : '#ffffff'
-			}}
-		>
-			{Object.entries(themes)
-				.filter(
-					([key, val]) => !(name === 'theme.main' && (key === 'mainThemeDark' || key === 'mainThemeLight'))
-				)
-				.map(([key, val]) => (
-					<MenuItem
-						key={key}
-						value={key}
-						className="m-8 mt-0 rounded-lg"
-						style={{
-							backgroundColor: val.palette.background.default,
-							color: val.palette.mode === 'light' ? '#000000' : '#FFFFFF',
-							border: `1px solid ${
-								val.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)'
-							}`
-						}}
-					>
-						{_.startCase(key)}
-						<div
-							className="flex w-full h-8 block absolute bottom-0 left-0 right-0"
+	/* function ThemeSelect({
+		value,
+		name,
+		handleThemeChange
+	}: {
+		value: ThemeProps;
+		name: string;
+		handleThemeChange: (Theme) => void;
+	}) {
+		return (
+			<Select
+				className="w-full rounded-8 h-40 overflow-hidden my-8"
+				value={value}
+				onChange={handleThemeChange}
+				name={name}
+				variant="outlined"
+				style={{
+					backgroundColor: themes[value].palette.background.default,
+					color: themes[value].palette.mode === 'light' ? '#000000' : '#ffffff'
+				}}
+			>
+				{Object.entries(themes)
+					.filter(
+						([key, val]) =>
+							!(name === 'theme.main' && (key === 'mainThemeDark' || key === 'mainThemeLight'))
+					)
+					.map(([key, val]) => (
+						<MenuItem
+							key={key}
+							value={key}
+							className="m-8 mt-0 rounded-lg"
 							style={{
-								borderTop: `1px solid ${
+								backgroundColor: val.palette.background.default,
+								color: val.palette.mode === 'light' ? '#000000' : '#FFFFFF',
+								border: `1px solid ${
 									val.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)'
 								}`
 							}}
 						>
+							{_.startCase(key)}
 							<div
-								className="w-1/4 h-8"
+								className="flex w-full h-8 block absolute bottom-0 left-0 right-0"
 								style={{
-									backgroundColor: val.palette.primary.main
-										? val.palette.primary.main
-										: val.palette.primary[500]
+									borderTop: `1px solid ${
+										val.palette.mode === 'light'
+											? 'rgba(0, 0, 0, 0.12)'
+											: 'rgba(255, 255, 255, 0.12)'
+									}`
 								}}
-							/>
-							<div
-								className="w-1/4 h-8"
-								style={{
-									backgroundColor: val.palette.secondary.main
-										? val.palette.secondary.main
-										: val.palette.secondary[500]
-								}}
-							/>
-							<div
-								className="w-1/4 h-8"
-								style={{
-									backgroundColor: val.palette.error.main
-										? val.palette.error.main
-										: val.palette.error[500]
-								}}
-							/>
-							<div className="w-1/4 h-8" style={{ backgroundColor: val.palette.background.paper }} />
-						</div>
-					</MenuItem>
-				))}
-		</Select>
-	);
+							>
+								<div
+									className="w-1/4 h-8"
+									style={{
+										backgroundColor: val.palette.primary.main
+											? val.palette.primary.main
+											: val.palette.primary[500]
+									}}
+								/>
+								<div
+									className="w-1/4 h-8"
+									style={{
+										backgroundColor: val.palette.secondary.main
+											? val.palette.secondary.main
+											: val.palette.secondary[500]
+									}}
+								/>
+								<div
+									className="w-1/4 h-8"
+									style={{
+										backgroundColor: val.palette.error.main
+											? val.palette.error.main
+											: val.palette.error[500]
+									}}
+								/>
+								<div className="w-1/4 h-8" style={{ backgroundColor: val.palette.background.paper }} />
+							</div>
+						</MenuItem>
+					))}
+			</Select>
+		);
+	} */
 
 	const getForm = useCallback(
-		(_formConfigs: any, prefix: any) =>
+		(_formConfigs: ReactNode, prefix: 'string') =>
 			Object.entries(_formConfigs).map(([key, formControl]) => {
 				const target = prefix ? `${prefix}.${key}` : key;
 				switch (formControl.type) {
@@ -193,7 +221,7 @@ function FuseSettings() {
 											className="FuseSettings-group"
 											row={formControl.options.length < 4}
 										>
-											{formControl.options.map((opt: any) => (
+											{formControl.options.map((opt: { value: string; name: string }) => (
 												<FormControlLabel
 													key={opt.value}
 													value={opt.value}
@@ -311,7 +339,7 @@ function FuseSettings() {
 							<PaletteSelector
 								value={value}
 								onChange={onChange}
-								trigger={
+								triggerElement={
 									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
 										<SectionPreview
 											className="group-hover:shadow-lg transition-shadow"
@@ -333,7 +361,7 @@ function FuseSettings() {
 							<PaletteSelector
 								value={value}
 								onChange={onChange}
-								trigger={
+								triggerElement={
 									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
 										<SectionPreview
 											className="group-hover:shadow-lg transition-shadow"
@@ -355,7 +383,7 @@ function FuseSettings() {
 							<PaletteSelector
 								value={value}
 								onChange={onChange}
-								trigger={
+								triggerElement={
 									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
 										<SectionPreview
 											className="group-hover:shadow-lg transition-shadow"
@@ -377,7 +405,7 @@ function FuseSettings() {
 							<PaletteSelector
 								value={value}
 								onChange={onChange}
-								trigger={
+								triggerElement={
 									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
 										<SectionPreview
 											className="group-hover:shadow-lg transition-shadow"

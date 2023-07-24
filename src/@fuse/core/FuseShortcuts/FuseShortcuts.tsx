@@ -15,15 +15,13 @@ import { Link } from 'react-router-dom';
 import { FuseNavItemProps } from '@fuse/core/FuseNavigation';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-interface Props {
+function FuseShortcuts(props: {
 	className?: string;
 	navigation: FuseNavItemProps[] | [];
 	onChange: (T) => void;
 	shortcuts?: FuseNavItemProps['id'][] | [];
 	variant?: 'horizontal' | 'vertical';
-}
-
-function FuseShortcuts(props: Props) {
+}) {
 	const { navigation = [], shortcuts = [], onChange, variant = 'horizontal', className = '' } = props;
 
 	const searchInputRef = useRef(null);
@@ -58,41 +56,6 @@ function FuseShortcuts(props: Props) {
 		let newShortcuts = [...shortcuts];
 		newShortcuts = newShortcuts.includes(id) ? newShortcuts.filter((_id) => id !== _id) : [...newShortcuts, id];
 		onChange(newShortcuts);
-	}
-
-	function ShortcutMenuItem(props) {
-		const { item, onToggle }: { item: FuseNavItemProps | null; onToggle: (string) => void } = props;
-
-		if (!item || !item.id) {
-			return null;
-		}
-
-		return (
-			<Link to={item.url || ''} role="button">
-				<MenuItem key={item.id}>
-					<ListItemIcon className="min-w-40">
-						{item.icon ? (
-							<FuseSvgIcon>{item.icon}</FuseSvgIcon>
-						) : (
-							<span className="text-20 font-semibold uppercase text-center">{item.title[0]}</span>
-						)}
-					</ListItemIcon>
-					<ListItemText primary={item.title} />
-					<IconButton
-						onClick={(ev) => {
-							ev.preventDefault();
-							ev.stopPropagation();
-							onToggle(item.id);
-						}}
-						size="large"
-					>
-						<FuseSvgIcon color="action">
-							{shortcuts.includes(item.id) ? 'heroicons-solid:star' : 'heroicons-outline:star'}
-						</FuseSvgIcon>
-					</IconButton>
-				</MenuItem>
-			</Link>
-		);
 	}
 
 	return (
@@ -222,6 +185,41 @@ function FuseShortcuts(props: Props) {
 					)}
 			</Menu>
 		</div>
+	);
+}
+
+function ShortcutMenuItem(props) {
+	const { item, onToggle }: { item: FuseNavItemProps | null; onToggle: (string) => void } = props;
+
+	if (!item || !item.id) {
+		return null;
+	}
+
+	return (
+		<Link to={item.url || ''} role="button">
+			<MenuItem key={item.id}>
+				<ListItemIcon className="min-w-40">
+					{item.icon ? (
+						<FuseSvgIcon>{item.icon}</FuseSvgIcon>
+					) : (
+						<span className="text-20 font-semibold uppercase text-center">{item.title[0]}</span>
+					)}
+				</ListItemIcon>
+				<ListItemText primary={item.title} />
+				<IconButton
+					onClick={(ev) => {
+						ev.preventDefault();
+						ev.stopPropagation();
+						onToggle(item.id);
+					}}
+					size="large"
+				>
+					<FuseSvgIcon color="action">
+						{shortcuts.includes(item.id) ? 'heroicons-solid:star' : 'heroicons-outline:star'}
+					</FuseSvgIcon>
+				</IconButton>
+			</MenuItem>
+		</Link>
 	);
 }
 

@@ -2,7 +2,6 @@ import { styled } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import DemoContent from '@fuse/core/DemoContent';
-import FusePageCarded from '@fuse/core/FusePageCarded';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {

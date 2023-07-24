@@ -4,11 +4,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import Box from '@mui/material/Box';
 
-export interface FuseLoadingProps {
-	delay?: boolean | number;
-}
-
-function FuseLoading(props: FuseLoadingProps) {
+function FuseLoading(props: { delay?: boolean | number }) {
 	const { delay } = props;
 	const [showLoading, setShowLoading] = useState(!delay);
 

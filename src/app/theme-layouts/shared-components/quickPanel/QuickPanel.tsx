@@ -26,7 +26,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 	}
 }));
 
-function QuickPanel(props: any) {
+function QuickPanel() {
 	const dispatch = useAppDispatch();
 
 	const data = useSelector(selectQuickPanelData);
@@ -51,8 +51,8 @@ function QuickPanel(props: any) {
 		<StyledSwipeableDrawer
 			open={state}
 			anchor="right"
-			onOpen={(ev) => {}}
-			onClose={(ev) => dispatch(toggleQuickPanel())}
+			onOpen={() => {}}
+			onClose={() => dispatch(toggleQuickPanel())}
 			disableSwipeToOpen
 		>
 			<FuseScrollbars>
@@ -88,7 +88,7 @@ function QuickPanel(props: any) {
 				<List>
 					<ListSubheader component="div">Notes</ListSubheader>
 					{data &&
-						data.notes.map((note: any) => (
+						data.notes.map((note) => (
 							<ListItem key={note.id}>
 								<ListItemText primary={note.title} secondary={note.detail} />
 							</ListItem>

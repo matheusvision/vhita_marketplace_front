@@ -1,7 +1,7 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 
-function NotificationModel(data: any) {
+function NotificationModel(data) {
 	data = data || {};
 
 	return _.defaults(data, {

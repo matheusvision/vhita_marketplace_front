@@ -13,7 +13,15 @@ import { useSelector } from 'react-redux';
 import { matchRoutes, useLocation } from 'react-router-dom';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha } from '@mui/material/styles';
-import { FuseRouteMatch } from '@fuse/fuse';
+import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
+import { SettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+
+export interface FuseRouteObject extends RouteObject {
+	settings?: SettingsConfigProps;
+}
+export interface FuseRouteMatch extends RouteMatch {
+	route: FuseRouteObject;
+}
 
 const inputGlobalStyles = (
 	<GlobalStyles
@@ -82,11 +90,7 @@ const inputGlobalStyles = (
 	/>
 );
 
-interface Props {
-	layouts: any;
-}
-
-function FuseLayout(props: Props) {
+function FuseLayout(props: { layouts: typeof themeLayoutConfigs }) {
 	const { layouts } = props;
 	const dispatch = useAppDispatch();
 	const settings = useSelector(selectFuseCurrentSettings);

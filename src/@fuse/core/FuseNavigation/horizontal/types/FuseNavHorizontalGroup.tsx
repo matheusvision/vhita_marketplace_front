@@ -12,8 +12,8 @@ import { Manager, Popper, Reference } from 'react-popper';
 import withRouter from '@fuse/core/withRouter';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
-import type { Location } from 'history';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
+import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
@@ -41,7 +41,7 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalGroup(props: FuseNavComponentProps & { location: Location }) {
+function FuseNavHorizontalGroup(props: FuseNavComponentProps & WithRouterProps) {
 	const [opened, setOpened] = useState(false);
 	const { item, nestedLevel, dense, location } = props;
 	const theme = useTheme();
@@ -162,7 +162,8 @@ function FuseNavHorizontalGroup(props: FuseNavComponentProps & { location: Locat
 										</Paper>
 									</Grow>
 								</div>
-							)}
+							)
+						}
 					</Popper>,
 					document.querySelector('#root')
 				)}

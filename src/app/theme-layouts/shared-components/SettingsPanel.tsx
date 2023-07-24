@@ -7,7 +7,7 @@ import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
 import Slide from '@mui/material/Slide';
 import Typography from '@mui/material/Typography';
-import { forwardRef, memo, useState } from 'react';
+import { forwardRef, memo, ReactNode, useState } from 'react';
 import FuseThemeSchemes from '@fuse/core/FuseThemeSchemes';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -73,7 +73,11 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 
 const Transition = forwardRef((props, ref) => {
 	const theme = useTheme();
-	return <Slide direction={theme.direction === 'ltr' ? 'left' : 'right'} ref={ref} {...props} />;
+	return (
+		<Slide direction={theme.direction === 'ltr' ? 'left' : 'right'} ref={ref} {...props}>
+			{props.children}
+		</Slide>
+	);
 });
 
 function SettingsPanel() {
@@ -126,7 +130,7 @@ function SettingsPanel() {
 				TransitionComponent={Transition}
 				aria-labelledby="settings-panel"
 				aria-describedby="settings"
-				open={open === 'settings'}
+				open={Boolean(open === 'settings')}
 				onClose={handleClose}
 				BackdropProps={{ invisible: true }}
 				classes={{
@@ -152,7 +156,7 @@ function SettingsPanel() {
 				TransitionComponent={Transition}
 				aria-labelledby="schemes-panel"
 				aria-describedby="schemes"
-				open={open === 'schemes'}
+				open={Boolean(open === 'schemes')}
 				onClose={handleClose}
 				BackdropProps={{ invisible: true }}
 				classes={{
@@ -176,7 +180,7 @@ function SettingsPanel() {
 
 					<FuseThemeSchemes
 						themes={themesConfig}
-						onSelect={(_theme: any) => {
+						onSelect={(_theme) => {
 							dispatch(changeFuseTheme(_theme));
 						}}
 					/>

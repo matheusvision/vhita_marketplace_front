@@ -1,8 +1,9 @@
 import { forwardRef } from 'react';
 import { SnackbarContent } from 'notistack';
+import NotificationModel from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
 import NotificationCard from './NotificationCard';
 
-const NotificationTemplate = forwardRef((props, ref) => {
+const NotificationTemplate = forwardRef((props: { item: typeof NotificationModel; onClose: () => void }, ref) => {
 	const { item } = props;
 
 	return (

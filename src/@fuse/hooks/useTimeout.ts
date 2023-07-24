@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-function useTimeout(callback: any, delay: any) {
+function useTimeout(callback: () => void, delay: number) {
 	const callbackRef = useRef(callback);
 
 	useEffect(() => {
@@ -8,7 +8,7 @@ function useTimeout(callback: any, delay: any) {
 	}, [callback]);
 
 	useEffect(() => {
-		let timer: any;
+		let timer;
 
 		if (delay && callback && typeof callback === 'function') {
 			timer = setTimeout(callbackRef.current, delay || 0);
