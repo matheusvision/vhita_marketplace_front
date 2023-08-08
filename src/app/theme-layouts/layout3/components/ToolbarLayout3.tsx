@@ -13,19 +13,24 @@ import NotificationPanelToggleButton from '../../shared-components/notificationP
 import NavigationSearch from '../../shared-components/NavigationSearch';
 import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
-import ChatPanelToggleButton from '../../shared-components/chatPanel/ChatPanelToggleButton';
 import Logo from '../../shared-components/Logo';
 import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
+import { Layout3ConfigDefaultsType } from '../Layout3Config';
 
-function ToolbarLayout3(props: any) {
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+type Props = {
+	className?: string;
+};
+function ToolbarLayout3(props: Props) {
+	const { className = '' } = props;
+
+	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const toolbarTheme = useSelector(selectToolbarTheme);
 
 	return (
 		<ThemeProvider theme={toolbarTheme}>
 			<AppBar
 				id="fuse-toolbar"
-				className={clsx('flex relative z-20 shadow-md', props.className)}
+				className={clsx('flex relative z-20 shadow-md', className)}
 				color="default"
 				style={{ backgroundColor: toolbarTheme.palette.background.paper }}
 			>
@@ -44,16 +49,16 @@ function ToolbarLayout3(props: any) {
 
 					<div className="flex flex-1">
 						<Hidden smDown>
-							<NavigationSearch className="mx-16 lg:mx-24" variant="basic" />
+							<NavigationSearch
+								className="mx-16 lg:mx-24"
+								variant="basic"
+							/>
 						</Hidden>
 					</div>
 
 					<div className="flex items-center px-8 md:px-0 h-full overflow-x-auto">
 						<Hidden smUp>
 							<NavigationSearch />
-						</Hidden>
-						<Hidden lgUp>
-							<ChatPanelToggleButton />
 						</Hidden>
 						<LanguageSwitcher />
 						<AdjustFontSize />

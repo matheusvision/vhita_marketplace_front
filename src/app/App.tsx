@@ -44,10 +44,16 @@ function App() {
 
 	return (
 		<CacheProvider value={createCache(emotionCacheOptions[langDirection])}>
-			<FuseTheme theme={mainTheme} direction={langDirection}>
+			<FuseTheme
+				theme={mainTheme}
+				direction={langDirection}
+			>
 				<AuthProvider>
 					<BrowserRouter>
-						<FuseAuthorization userRole={user.role} loginRedirectUrl={settingsConfig.loginRedirectUrl}>
+						<FuseAuthorization
+							userRole={user.role}
+							loginRedirectUrl={settingsConfig.loginRedirectUrl}
+						>
 							<SnackbarProvider
 								maxSnack={5}
 								anchorOrigin={{

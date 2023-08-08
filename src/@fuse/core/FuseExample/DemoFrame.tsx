@@ -12,13 +12,17 @@ const Frame = styled('iframe')(({ theme }) => ({
 	boxShadow: theme.shadows[1]
 }));
 
-function DemoFrame(props: { name: string; children: React.ReactElement; other?: React.HTMLAttributes<HTMLElement> }) {
+type Props = {
+	name: string;
+	children: React.ReactElement;
+	other?: React.HTMLAttributes<HTMLElement>;
+};
+
+function DemoFrame(props: Props) {
 	const { children, name, ...other } = props;
 	const title = `${name} demo`;
-	/**
-	 * @type {import('react').Ref<HTMLIFrameElement>}
-	 */
-	const frameRef = useRef(null);
+
+	const frameRef = useRef<HTMLIFrameElement>(null);
 
 	// If we load portal content into the iframe before the load event then that content
 	// is dropped in firefox.
@@ -37,10 +41,17 @@ function DemoFrame(props: { name: string; children: React.ReactElement; other?: 
 			onLoad();
 		}
 	}, [iframeLoaded]);
-	const document: Document = frameRef.current?.contentDocument;
+
+	const document = frameRef.current?.contentDocument;
+
 	return (
 		<>
-			<Frame onLoad={onLoad} ref={frameRef} title={title} {...other} />
+			<Frame
+				onLoad={onLoad}
+				ref={frameRef}
+				title={title}
+				{...other}
+			/>
 			{iframeLoaded !== false
 				? ReactDOM.createPortal(<FramedDemo document={document}>{children}</FramedDemo>, document.body)
 				: null}

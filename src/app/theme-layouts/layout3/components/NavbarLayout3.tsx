@@ -9,12 +9,21 @@ const Root = styled('div')(({ theme }) => ({
 	color: theme.palette.text.primary
 }));
 
-function NavbarLayout3(props: any) {
+type Props = {
+	className?: string;
+};
+function NavbarLayout3(props: Props) {
+	const { className = '' } = props;
+
 	return (
-		<Root className={clsx('w-full h-64 min-h-64 max-h-64 shadow-md', props.className)}>
+		<Root className={clsx('w-full h-64 min-h-64 max-h-64 shadow-md', className)}>
 			<div className="flex flex-auto items-center w-full h-full container px-16 lg:px-24">
 				<FuseScrollbars className="flex h-full items-center">
-					<Navigation className="w-full" layout="horizontal" dense />
+					<Navigation
+						className="w-full"
+						layout="horizontal"
+						dense
+					/>
 				</FuseScrollbars>
 			</div>
 		</Root>

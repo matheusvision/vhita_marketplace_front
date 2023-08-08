@@ -10,18 +10,18 @@ import {
 import { memo, useCallback, useContext, useMemo, useRef } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
-import { matchRoutes, useLocation } from 'react-router-dom';
+import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha } from '@mui/material/styles';
-import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
-import { SettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 
-export interface FuseRouteObject extends RouteObject {
-	settings?: SettingsConfigProps;
-}
-export interface FuseRouteMatch extends RouteMatch {
+export type FuseRouteObject = RouteObject & {
+	settings?: FuseSettingsConfigProps;
+};
+export type FuseRouteMatch = RouteMatch & {
 	route: FuseRouteObject;
-}
+};
 
 const inputGlobalStyles = (
 	<GlobalStyles
@@ -90,8 +90,12 @@ const inputGlobalStyles = (
 	/>
 );
 
-function FuseLayout(props: { layouts: typeof themeLayoutConfigs }) {
-	const { layouts } = props;
+type Props = {
+	layouts: themeLayoutsType;
+};
+
+function FuseLayout(props: Props) {
+	const { layouts, ...restProps } = props;
 	const dispatch = useAppDispatch();
 	const settings = useSelector(selectFuseCurrentSettings);
 	const defaultSettings = useSelector(selectFuseDefaultSettings);
@@ -102,14 +106,14 @@ function FuseLayout(props: { layouts: typeof themeLayoutConfigs }) {
 	const location = useLocation();
 	const { pathname } = location;
 
-	const matchedRoutes = matchRoutes(routes, pathname);
+	const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatch[] | null;
 
-	const matched: FuseRouteMatch | boolean = matchedRoutes ? matchedRoutes[0] : false;
+	const matched = matchedRoutes?.[0] || false;
 
-	const newSettings = useRef(null);
+	const newSettings = useRef<FuseSettingsConfigProps>(null);
 
 	const shouldAwaitRender = useCallback(() => {
-		let _newSettings;
+		let _newSettings: FuseSettingsConfigProps;
 		/**
 		 * On Path changed
 		 */
@@ -145,13 +149,12 @@ function FuseLayout(props: { layouts: typeof themeLayoutConfigs }) {
 	}, [dispatch, newSettings.current, settings]);
 
 	// console.warn('::FuseLayout:: rendered');
-
 	const Layout = useMemo(() => layouts[settings.layout.style], [layouts, settings.layout.style]);
 
 	return _.isEqual(newSettings.current, settings) ? (
 		<>
 			{inputGlobalStyles}
-			<Layout {...props} />
+			<Layout {...restProps} />
 		</>
 	) : null;
 }

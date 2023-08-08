@@ -23,7 +23,7 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-const StyledContent = styled(FuseScrollbars)(({ theme }) => ({
+const StyledContent = styled(FuseScrollbars)(() => ({
 	overscrollBehavior: 'contain',
 	overflowX: 'hidden',
 	overflowY: 'auto',
@@ -33,9 +33,14 @@ const StyledContent = styled(FuseScrollbars)(({ theme }) => ({
 	backgroundAttachment: 'local, scroll'
 }));
 
-function NavbarMobileLayout2(props: any) {
+type Props = {
+	className?: string;
+};
+function NavbarMobileLayout2(props: Props) {
+	const { className = '' } = props;
+
 	return (
-		<Root className={clsx('flex flex-col h-full overflow-hidden', props.className)}>
+		<Root className={clsx('flex flex-col h-full overflow-hidden', className)}>
 			<div className="flex flex-row items-center shrink-0 h-48 md:h-72 px-20">
 				<div className="flex flex-1 mx-4">
 					<Logo />
@@ -53,7 +58,11 @@ function NavbarMobileLayout2(props: any) {
 				<Navigation layout="vertical" />
 
 				<div className="flex flex-0 items-center justify-center py-48 opacity-10">
-					<img className="w-full max-w-64" src="assets/images/logo/logo.svg" alt="footer logo" />
+					<img
+						className="w-full max-w-64"
+						src="assets/images/logo/logo.svg"
+						alt="footer logo"
+					/>
 				</div>
 			</StyledContent>
 		</Root>

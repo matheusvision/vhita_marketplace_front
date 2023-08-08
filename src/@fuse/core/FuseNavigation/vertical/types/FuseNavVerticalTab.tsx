@@ -1,7 +1,6 @@
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { alpha, styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useMemo } from 'react';
@@ -90,10 +89,16 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 					{...itemProps}
 				>
 					{dense ? (
-						<Tooltip title={item.title || ''} placement="right">
+						<Tooltip
+							title={item.title || ''}
+							placement="right"
+						>
 							<div className="w-32 h-32 min-h-32 flex items-center justify-center relative">
 								{item.icon ? (
-									<FuseSvgIcon className={clsx('fuse-list-item-icon', item.iconClass)} color="action">
+									<FuseSvgIcon
+										className={clsx('fuse-list-item-icon', item.iconClass)}
+										color="action"
+									>
 										{item.icon}
 									</FuseSvgIcon>
 								) : (

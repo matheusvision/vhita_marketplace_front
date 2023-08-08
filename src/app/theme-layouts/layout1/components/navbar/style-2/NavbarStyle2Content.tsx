@@ -21,7 +21,7 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-const StyledContent = styled(FuseScrollbars)(({ theme }) => ({
+const StyledContent = styled(FuseScrollbars)(() => ({
 	overscrollBehavior: 'contain',
 	overflowX: 'hidden',
 	overflowY: 'auto',
@@ -33,9 +33,13 @@ const StyledContent = styled(FuseScrollbars)(({ theme }) => ({
 	backgroundAttachment: 'local, scroll'
 }));
 
-function NavbarStyle2Content(props: any) {
+type Props = { className?: string };
+
+function NavbarStyle2Content(props: Props) {
+	const { className = '' } = props;
+
 	return (
-		<Root className={clsx('flex flex-auto flex-col overflow-hidden h-full', props.className)}>
+		<Root className={clsx('flex flex-auto flex-col overflow-hidden h-full', className)}>
 			<div className="flex flex-row items-center shrink-0 h-48 md:h-76 px-12">
 				<div className="flex flex-1 mx-4">
 					<Logo />

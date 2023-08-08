@@ -1,14 +1,17 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": true,
+        "tsconfigRootDir": __dirname
+    },
     "plugins": [
         "prettier",
         "@typescript-eslint"
     ],
     "extends": [
         "airbnb",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "prettier"
     ],
     "settings": {
@@ -38,7 +41,8 @@
                 "singleQuote": true,
                 "tabWidth": 4,
                 "trailingComma": "none",
-                "useTabs": true
+                "useTabs": true,
+                "singleAttributePerLine": true
             }
         ],
         "quotes": [
@@ -74,13 +78,21 @@
         "max-classes-per-file": "off",
         "react/jsx-filename-extension": "off",
         "import/extensions": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/ban-ts-ignore": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-use-before-define": "off",
-        "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-misused-promises": [2, {
+            "checksVoidReturn": {
+                "attributes": false
+            }
+        }],
+        "no-useless-constructor": "off",
         "no-tabs": "off",
         "react/jsx-indent": "off",
         "react/jsx-indent-props": "off",
@@ -88,13 +100,13 @@
         "react/jsx-uses-react": "off",
         "react/jsx-wrap-multilines": "off",
         "comma-dangle": ["error", "never"],
-        "react/prop-types": "off",
+//        "react/prop-types": "off",
         "react/require-default-props": "off",
         "react/no-unescaped-entities": "off",
         "no-underscore-dangle": "off",
         "react/jsx-no-bind": "off",
         "react/jsx-props-no-spreading": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "react/no-array-index-key": "off"
+        "react/no-array-index-key": "off",
+        "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }]
     }
 }

@@ -1,4 +1,6 @@
-const config = {
+import { themeLayoutProps } from 'app/theme-layouts/themeLayoutConfigs';
+
+const Layout2Config = {
 	title: 'Layout 2 - Horizontal',
 	defaults: {
 		mode: 'container',
@@ -135,4 +137,6 @@ const config = {
 	}
 };
 
-export default config;
+export type Layout2ConfigDefaultsType = Partial<(typeof Layout2Config)['defaults']>;
+
+export default Layout2Config;

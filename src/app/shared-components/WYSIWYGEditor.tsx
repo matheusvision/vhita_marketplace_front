@@ -1,4 +1,6 @@
-import { ForwardedRef, forwardRef, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-argument */
+
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { convertToRaw, EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -20,30 +22,35 @@ const Root = styled('div')({
 	}
 });
 
-const WYSIWYGEditor = forwardRef(
-	(
-		props: {
-			className?: string;
-			onChange: (value: string) => void;
-		},
-		ref?: ForwardedRef<HTMLDivElement>
-	) => {
-		const { onChange } = props;
+type Props = {
+	className?: string;
+	onChange: (T: string) => void;
+};
 
-		const [editorState, setEditorState] = useState(EditorState.createEmpty());
+function WYSIWYGEditorComponent(props: Props, ref: React.ForwardedRef<HTMLDivElement>) {
+	const { onChange, className = '' } = props;
 
-		function onEditorStateChange(_editorState) {
-			setEditorState(_editorState);
+	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-			return onChange(draftToHtml(convertToRaw(_editorState.getCurrentContent())));
-		}
+	function onEditorStateChange(_editorState) {
+		setEditorState(_editorState);
 
-		return (
-			<Root className={clsx('rounded-4 border-1 overflow-hidden w-full', props.className)} ref={ref}>
-				<Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
-			</Root>
-		);
+		return onChange(draftToHtml(convertToRaw(_editorState.getCurrentContent())));
 	}
-);
+
+	return (
+		<Root
+			className={clsx('rounded-4 border-1 overflow-hidden w-full', className)}
+			ref={ref}
+		>
+			<Editor
+				editorState={editorState}
+				onEditorStateChange={onEditorStateChange}
+			/>
+		</Root>
+	);
+}
+
+const WYSIWYGEditor = React.forwardRef(WYSIWYGEditorComponent);
 
 export default WYSIWYGEditor;

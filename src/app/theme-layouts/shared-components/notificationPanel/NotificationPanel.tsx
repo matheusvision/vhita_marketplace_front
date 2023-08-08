@@ -51,7 +51,7 @@ function NotificationPanel() {
 		dispatch(closeNotificationPanel());
 	}
 
-	function handleDismiss(id) {
+	function handleDismiss(id: string) {
 		dispatch(dismissItem(id));
 	}
 	function handleDismissAll() {
@@ -64,7 +64,7 @@ function NotificationPanel() {
 		enqueueSnackbar(item.title, {
 			key: item.id,
 			// autoHideDuration: 3000,
-			content: () => (
+			content: (
 				<NotificationTemplate
 					item={item}
 					onClose={() => {
@@ -85,7 +85,11 @@ function NotificationPanel() {
 			onClose={() => dispatch(toggleNotificationPanel())}
 			disableSwipeToOpen
 		>
-			<IconButton className="m-4 absolute top-0 right-0 z-999" onClick={handleClose} size="large">
+			<IconButton
+				className="m-4 absolute top-0 right-0 z-999"
+				onClick={handleClose}
+				size="large"
+			>
 				<FuseSvgIcon color="action">heroicons-outline:x</FuseSvgIcon>
 			</IconButton>
 			{notifications.length > 0 ? (
@@ -102,19 +106,31 @@ function NotificationPanel() {
 							</Typography>
 						</div>
 						{notifications.map((item) => (
-							<NotificationCard key={item.id} className="mb-16" item={item} onClose={handleDismiss} />
+							<NotificationCard
+								key={item.id}
+								className="mb-16"
+								item={item}
+								onClose={handleDismiss}
+							/>
 						))}
 					</div>
 				</FuseScrollbars>
 			) : (
 				<div className="flex flex-1 items-center justify-center p-16">
-					<Typography className="text-24 text-center" color="text.secondary">
+					<Typography
+						className="text-24 text-center"
+						color="text.secondary"
+					>
 						There are no notifications for now.
 					</Typography>
 				</div>
 			)}
 			<div className="flex items-center justify-center py-16">
-				<Button size="small" variant="outlined" onClick={demoNotification}>
+				<Button
+					size="small"
+					variant="outlined"
+					onClick={demoNotification}
+				>
 					Create a notification example
 				</Button>
 			</div>

@@ -9,8 +9,11 @@ import { useAppDispatch } from 'app/store/index';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
+import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
+import { themeLayoutDefaultsProps } from 'app/theme-layouts/themeLayoutConfigs';
 
-const Root = styled(Tooltip)(({ theme, position }) => ({
+const Root = styled(Tooltip)<{ position: 'left' | 'right' }>(({ theme, position }) => ({
 	'& > .button': {
 		height: 40,
 		position: 'absolute',
@@ -57,24 +60,30 @@ const Root = styled(Tooltip)(({ theme, position }) => ({
 	}
 }));
 
-function NavbarToggleFab(props: any) {
-	const isMobile = useThemeMediaQuery((theme: any) => theme.breakpoints.down('lg'));
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+type Props = {
+	className?: string;
+	position?: string;
+	onClick?: () => void;
+};
 
-	const dispatch = useAppDispatch();
+function NavbarToggleFab(props: Props) {
+	const { className = '', position = 'left', onClick } = props;
 
 	return (
 		<Root
 			title="Show Navigation"
-			placement={config.navbar.position === 'left' ? 'right' : 'left'}
-			position={config.navbar.position}
+			placement={position === 'left' ? 'right' : 'left'}
+			position={position as 'left' | 'right'}
 		>
 			<Fab
-				className={clsx('button', props.className)}
-				onClick={(ev) => dispatch(isMobile ? navbarToggleMobile() : navbarToggle())}
+				className={clsx('button', className)}
+				onClick={onClick}
 				disableRipple
 			>
-				<FuseSvgIcon color="action" className="button-icon">
+				<FuseSvgIcon
+					color="action"
+					className="button-icon"
+				>
 					heroicons-outline:view-list
 				</FuseSvgIcon>
 			</Fab>

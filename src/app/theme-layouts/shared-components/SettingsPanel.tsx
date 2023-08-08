@@ -7,7 +7,7 @@ import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
 import Slide from '@mui/material/Slide';
 import Typography from '@mui/material/Typography';
-import { forwardRef, memo, ReactNode, useState } from 'react';
+import { forwardRef, memo, useState } from 'react';
 import FuseThemeSchemes from '@fuse/core/FuseThemeSchemes';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -71,39 +71,53 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 	}
 }));
 
-const Transition = forwardRef((props, ref) => {
+type TransitionProps = {
+	children?: React.ReactElement;
+};
+
+const Transition = forwardRef((props: TransitionProps, ref) => {
+	const { children, ...other } = props;
+
 	const theme = useTheme();
+
 	return (
-		<Slide direction={theme.direction === 'ltr' ? 'left' : 'right'} ref={ref} {...props}>
-			{props.children}
+		<Slide
+			direction={theme.direction === 'ltr' ? 'left' : 'right'}
+			ref={ref}
+			{...other}
+		>
+			{children}
 		</Slide>
 	);
 });
 
 function SettingsPanel() {
 	const theme = useTheme();
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState('');
 	const dispatch = useAppDispatch();
 
 	const handlerOptions = {
-		onSwipedLeft: () => open && theme.direction === 'rtl' && handleClose(),
-		onSwipedRight: () => open && theme.direction === 'ltr' && handleClose()
+		onSwipedLeft: () => Boolean(open) && theme.direction === 'rtl' && handleClose(),
+		onSwipedRight: () => Boolean(open) && theme.direction === 'ltr' && handleClose()
 	};
 
 	const settingsHandlers = useSwipeable(handlerOptions);
-	const shemesHandlers = useSwipeable(handlerOptions);
+	const schemesHandlers = useSwipeable(handlerOptions);
 
-	const handleOpen = (panelId: any) => {
+	const handleOpen = (panelId: string) => {
 		setOpen(panelId);
 	};
 
 	const handleClose = () => {
-		setOpen(false);
+		setOpen('');
 	};
 
 	return (
 		<>
-			<Root id="fuse-settings-schemes" className="buttonWrapper">
+			<Root
+				id="fuse-settings-schemes"
+				className="buttonWrapper"
+			>
 				<Button
 					className="settingsButton min-w-40 w-40 h-40 m-0"
 					onClick={() => handleOpen('settings')}
@@ -139,11 +153,18 @@ function SettingsPanel() {
 				{...settingsHandlers}
 			>
 				<FuseScrollbars className="p-16 sm:p-32">
-					<IconButton className="fixed top-0 ltr:right-0 rtl:left-0 z-10" onClick={handleClose} size="large">
+					<IconButton
+						className="fixed top-0 ltr:right-0 rtl:left-0 z-10"
+						onClick={handleClose}
+						size="large"
+					>
 						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
 					</IconButton>
 
-					<Typography className="mb-32 font-semibold" variant="h6">
+					<Typography
+						className="mb-32 font-semibold"
+						variant="h6"
+					>
 						Theme Settings
 					</Typography>
 
@@ -162,18 +183,28 @@ function SettingsPanel() {
 				classes={{
 					paper: 'shadow-lg'
 				}}
-				{...shemesHandlers}
+				{...schemesHandlers}
 			>
 				<FuseScrollbars className="p-16 sm:p-32">
-					<IconButton className="fixed top-0 ltr:right-0 rtl:left-0 z-10" onClick={handleClose} size="large">
+					<IconButton
+						className="fixed top-0 ltr:right-0 rtl:left-0 z-10"
+						onClick={handleClose}
+						size="large"
+					>
 						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
 					</IconButton>
 
-					<Typography className="mb-32" variant="h6">
+					<Typography
+						className="mb-32"
+						variant="h6"
+					>
 						Theme Color Schemes
 					</Typography>
 
-					<Typography className="mb-24 text-12 italic text-justify" color="text.secondary">
+					<Typography
+						className="mb-24 text-12 italic text-justify"
+						color="text.secondary"
+					>
 						* Selected color scheme will be applied to all theme layout elements (navbar, toolbar, etc.).
 						You can also select a different color scheme for each layout element at theme settings.
 					</Typography>

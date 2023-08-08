@@ -1,16 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 
-const useUpdateEffect = (effect, deps) => {
+const useUpdateEffect = (effect: EffectCallback, deps?: DependencyList) => {
 	const isInitialMount = useRef(true);
-	// eslint-disable-next-line
-	useEffect(
-		isInitialMount.current
-			? () => {
-					isInitialMount.current = false;
-			  }
-			: effect,
-		deps
-	);
+
+	useEffect(() => {
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+		}
+		return effect();
+	}, deps);
 };
 
 export default useUpdateEffect;

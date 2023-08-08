@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState, RootStateWith } from 'app/store/index';
 
 const dataSlice = createSlice({
 	name: 'quickPanel/data',
@@ -42,6 +43,6 @@ const dataSlice = createSlice({
 	reducers: {}
 });
 
-export const selectQuickPanelData = ({ quickPanel }) => quickPanel.data;
+export const selectQuickPanelData = (state: RootStateWith<typeof dataSlice>) => state.quickPanel.data;
 
 export default dataSlice.reducer;

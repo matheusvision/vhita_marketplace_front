@@ -9,7 +9,11 @@ import reducer from './store';
 import { selectNotifications } from './store/dataSlice';
 import { toggleNotificationPanel } from './store/stateSlice';
 
-function NotificationPanelToggleButton(props: { children?: ReactNode }) {
+type Props = {
+	children?: ReactNode;
+};
+
+function NotificationPanelToggleButton(props: Props) {
 	const { children = <FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon> } = props;
 
 	const notifications = useSelector(selectNotifications);
@@ -17,8 +21,16 @@ function NotificationPanelToggleButton(props: { children?: ReactNode }) {
 	const dispatch = useAppDispatch();
 
 	return (
-		<IconButton className="w-40 h-40" onClick={() => dispatch(toggleNotificationPanel())} size="large">
-			<Badge color="secondary" variant="dot" invisible={notifications.length === 0}>
+		<IconButton
+			className="w-40 h-40"
+			onClick={() => dispatch(toggleNotificationPanel())}
+			size="large"
+		>
+			<Badge
+				color="secondary"
+				variant="dot"
+				invisible={notifications.length === 0}
+			>
 				{children}
 			</Badge>
 		</IconButton>

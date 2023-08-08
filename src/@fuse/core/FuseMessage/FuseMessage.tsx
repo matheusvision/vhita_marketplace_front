@@ -9,9 +9,13 @@ import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from 'a
 import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-const StyledSnackbar = styled(Snackbar)<{
-	variant: string;
-}>(({ theme, variant }) => ({
+export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info' | undefined;
+
+type Props = {
+	variant?: FuseMessageVariantType;
+};
+
+const StyledSnackbar = styled(Snackbar)<Props>(({ theme, variant }) => ({
 	'& .FuseMessage-content': {
 		...(variant === 'success' && {
 			backgroundColor: green[600],
@@ -52,13 +56,6 @@ function FuseMessage() {
 			{...options}
 			open={state}
 			onClose={() => dispatch(hideMessage())}
-			ContentProps={{
-				variant: 'body2',
-				headlineMapping: {
-					body1: 'div',
-					body2: 'div'
-				}
-			}}
 		>
 			<SnackbarContent
 				className="FuseMessage-content"

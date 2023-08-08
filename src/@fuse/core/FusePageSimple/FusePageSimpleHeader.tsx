@@ -1,7 +1,11 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
-function FusePageSimpleHeader(props: { className?: string; header?: ReactNode }) {
+type Props = {
+	className?: string;
+	header?: ReactNode;
+};
+function FusePageSimpleHeader(props: Props) {
 	const { header = null, className } = props;
 	return (
 		<div className={clsx('FusePageSimple-header', className)}>

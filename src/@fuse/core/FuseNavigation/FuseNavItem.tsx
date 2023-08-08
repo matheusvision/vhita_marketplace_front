@@ -1,6 +1,7 @@
 import { FuseNavComponentProps } from '@fuse/core/FuseNavigation/index';
+import { FC } from 'react';
 
-const components = {};
+const components: { [key: string]: FC<FuseNavComponentProps> } = {};
 
 export function registerComponent(name: string, Component: React.FC) {
 	components[name] = Component;

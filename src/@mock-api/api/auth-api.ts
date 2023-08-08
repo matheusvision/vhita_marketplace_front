@@ -1,19 +1,25 @@
+/*
+eslint-disable camelcase
+ */
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import Base64 from 'crypto-js/enc-base64';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Utf8 from 'crypto-js/enc-utf8';
 import jwtDecode from 'jwt-decode';
+import UserModel, { UserModelProps } from 'app/store/user/model/UserModel';
 import mock from '../mock';
 import mockApi from '../mock-api.json';
 
-let usersApi = mockApi.components.examples.auth_users.value;
+type UserType = UserModelProps & { password: string };
 
-/* eslint-disable camelcase */
+let usersApi = mockApi.components.examples.auth_users.value as UserType[];
 
-mock.onGet('/api/auth/sign-in').reply(async (config: any) => {
-	const data = JSON.parse(config.data);
+mock.onGet('/api/auth/sign-in').reply((config: { data: string }) => {
+	const data = JSON.parse(config.data) as { email: string; password: string };
+
 	const { email, password } = data;
+
 	const user = _.cloneDeep(usersApi.find((_user) => _user.data.email === email));
 
 	const error = [];
@@ -48,12 +54,13 @@ mock.onGet('/api/auth/sign-in').reply(async (config: any) => {
 	return [200, { error }];
 });
 
-mock.onGet('/api/auth/access-token').reply((config: any) => {
-	const data = JSON.parse(config.data);
+mock.onGet('/api/auth/access-token').reply((config: { data: string }) => {
+	const data = JSON.parse(config.data) as { access_token: string };
+
 	const { access_token } = data;
 
 	if (verifyJWTToken(access_token)) {
-		const { id } = jwtDecode(access_token);
+		const { id }: { id: string } = jwtDecode(access_token);
 
 		const user = _.cloneDeep(usersApi.find((_user) => _user.uuid === id));
 
@@ -68,12 +75,14 @@ mock.onGet('/api/auth/access-token').reply((config: any) => {
 
 		return [200, response];
 	}
+
 	const error = 'Invalid access token detected';
+
 	return [401, { error }];
 });
 
-mock.onPost('/api/auth/sign-up').reply((request: any) => {
-	const data = JSON.parse(request.data);
+mock.onPost('/api/auth/sign-up').reply((request: { data: string }) => {
+	const data = JSON.parse(request.data) as { displayName: string; password: string; email: string };
 	const { displayName, password, email } = data;
 	const isEmailExists = usersApi.find((_user) => _user.data.email === email);
 	const error = [];
@@ -86,11 +95,10 @@ mock.onPost('/api/auth/sign-up').reply((request: any) => {
 	}
 
 	if (error.length === 0) {
-		const newUser = {
+		const newUser = UserModel({
 			uuid: FuseUtils.generateGUID(),
-			from: 'custom-db',
-			password,
 			role: 'admin',
+			password,
 			data: {
 				displayName,
 				photoURL: 'assets/images/avatars/Abbott.jpg',
@@ -98,7 +106,7 @@ mock.onPost('/api/auth/sign-up').reply((request: any) => {
 				settings: {},
 				shortcuts: []
 			}
-		};
+		} as UserType) as UserType;
 
 		usersApi = [...usersApi, newUser];
 
@@ -118,12 +126,12 @@ mock.onPost('/api/auth/sign-up').reply((request: any) => {
 	return [200, { error }];
 });
 
-mock.onPost('/api/auth/user/update').reply((config: any) => {
-	const data = JSON.parse(config.data);
+mock.onPost('/api/auth/user/update').reply((config: { data: string }) => {
+	const data = JSON.parse(config.data) as { user: UserType };
 	const { user } = data;
 
 	usersApi = usersApi.map((_user) => {
-		if (user.uuid === user.id) {
+		if (user.uuid === _user.uuid) {
 			return _.merge(_user, user);
 		}
 		return _user;
@@ -139,7 +147,9 @@ mock.onPost('/api/auth/user/update').reply((config: any) => {
 
 const jwtSecret = 'some-secret-code-goes-here';
 
-function base64url(source: any) {
+/* eslint-disable */
+
+function base64url(source: CryptoJS.lib.WordArray) {
 	// Encode in classical base64
 	let encodedSource = Base64.stringify(source);
 
@@ -154,7 +164,7 @@ function base64url(source: any) {
 	return encodedSource;
 }
 
-function generateJWTToken(tokenPayload: any) {
+function generateJWTToken(tokenPayload) {
 	// Define token header
 	const header = {
 		alg: 'HS256',
@@ -167,7 +177,7 @@ function generateJWTToken(tokenPayload: any) {
 	const exp = Math.floor(date.setDate(date.getDate() + 7) / 1000);
 
 	// Define token payload
-	const payload = {
+	const payload: unknown = {
 		iat,
 		iss: 'Fuse',
 		exp,
@@ -184,14 +194,16 @@ function generateJWTToken(tokenPayload: any) {
 
 	// Sign the encoded header and mock-api
 	let signature = `${encodedHeader}.${encodedPayload}`;
+	// @ts-ignore
 	signature = HmacSHA256(signature, jwtSecret);
+	// @ts-ignore
 	signature = base64url(signature);
 
 	// Build and return the token
 	return `${encodedHeader}.${encodedPayload}.${signature}`;
 }
 
-function verifyJWTToken(token: any) {
+function verifyJWTToken(token: string) {
 	// Split the token into parts
 	const parts = token.split('.');
 	const header = parts[0];

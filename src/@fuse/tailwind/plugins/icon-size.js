@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 const plugin = require('tailwindcss/plugin');
 
 const iconSize = plugin(

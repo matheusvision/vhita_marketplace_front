@@ -1,26 +1,32 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
+import NotificationModel, {
+	NotificationModelProps
+} from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 
-let notificationsDB = mockApi.components.examples.notifications.value;
+let notificationsDB: NotificationModelProps[] = mockApi.components.examples.notifications.value;
 
-mock.onGet('/api/notifications').reply((config: any) => [200, notificationsDB]);
+mock.onGet('/api/notifications').reply(() => [200, notificationsDB]);
 
-mock.onDelete('/api/notifications').reply((config: any) => {
+mock.onDelete('/api/notifications').reply(() => {
 	notificationsDB = [];
 	return [200];
 });
 
-mock.onPost('/api/notifications').reply(({ data }: any) => {
-	const newNotification = { id: FuseUtils.generateGUID(), ...JSON.parse(data) };
+mock.onPost('/api/notifications').reply(({ data }: { data: string }) => {
+	const newNotification = NotificationModel({
+		id: FuseUtils.generateGUID(),
+		...JSON.parse(data)
+	} as NotificationModelProps);
 
 	notificationsDB.push(newNotification);
 
 	return [200, newNotification];
 });
 
-mock.onDelete(/\/api\/notifications\/[^/]+/).reply((config: any) => {
+mock.onDelete(/\/api\/notifications\/[^/]+/).reply((config) => {
 	const { id } = config.url.match(/\/api\/notifications\/(?<id>[^/]+)/).groups;
 
 	_.remove(notificationsDB, { id });

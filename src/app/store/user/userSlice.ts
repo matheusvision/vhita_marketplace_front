@@ -5,12 +5,13 @@ import _ from '@lodash';
 import { setInitialSettings } from 'app/store/fuse/settingsSlice';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import settingsConfig from 'app/configs/settingsConfig';
-import { FuseSettingsProps } from '@fuse/core/FuseSettings';
+import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 import { AppDispatch, RootState } from 'app/store/index';
 import { UserProps } from 'app/store/user/index';
 import jwtService from '../../auth/services/jwtService';
+import createAppAsyncThunk from '../createAppAsyncThunk';
 
-export const setUser = createAsyncThunk('user/setUser', async (user?: UserProps) => {
+export const setUser = createAsyncThunk('user/setUser', (user?: UserProps) => {
 	/*
     You can redirect the logged-in user to a specific route depending on his role
     */
@@ -18,37 +19,41 @@ export const setUser = createAsyncThunk('user/setUser', async (user?: UserProps)
 		settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
 	}
 
-	return user;
+	return Promise.resolve(user);
 });
 
-export const updateUserSettings = createAsyncThunk(
+export const updateUserSettings = createAppAsyncThunk(
 	'user/updateSettings',
-	async (settings: FuseSettingsProps, thunkApi) => {
-		const { dispatch, getState }: { dispatch: AppDispatch; getState: () => RootState } = thunkApi;
+	async (settings: FuseSettingsConfigProps, thunkApi) => {
+		const { dispatch, getState } = thunkApi;
 		const { user } = getState();
-		const newUser = _.merge({}, user, { data: { settings } });
 
-		dispatch(updateUserData(newUser));
+		const newUser = _.merge({}, user, { data: { settings } }) as UserProps;
+
+		await dispatch(updateUserData(newUser));
+
+		return Promise.resolve(newUser);
+	}
+);
+
+export const updateUserShortcuts = createAppAsyncThunk(
+	'user/updateShortucts',
+	async (shortcuts: string[], thunkApi) => {
+		const { dispatch, getState } = thunkApi;
+		const { user } = getState();
+		const newUser = {
+			...user,
+			data: {
+				...user.data,
+				shortcuts
+			}
+		};
+
+		await dispatch(updateUserData(newUser));
 
 		return newUser;
 	}
 );
-
-export const updateUserShortcuts = createAsyncThunk('user/updateShortucts', async (shortcuts: string[], thunkApi) => {
-	const { dispatch, getState }: { dispatch: AppDispatch; getState: () => RootState } = thunkApi;
-	const { user } = getState();
-	const newUser = {
-		...user,
-		data: {
-			...user.data,
-			shortcuts
-		}
-	};
-
-	dispatch(updateUserData(newUser));
-
-	return newUser;
-});
 
 export const logoutUser = () => async (dispatch: AppDispatch, getState: () => RootState) => {
 	const { user } = getState();
@@ -64,21 +69,21 @@ export const logoutUser = () => async (dispatch: AppDispatch, getState: () => Ro
 
 	dispatch(setInitialSettings());
 
-	return dispatch(userLoggedOut());
+	return Promise.resolve(dispatch(userLoggedOut()));
 };
 
-export const updateUserData = (user: UserProps) => async (dispatch) => {
+export const updateUserData = (user: UserProps) => async (dispatch: AppDispatch) => {
 	if (!user.role || user.role.length === 0) {
 		// is guest
 		return;
 	}
 
-	jwtService
+	await jwtService
 		.updateUserData(user)
 		.then(() => {
 			dispatch(showMessage({ message: 'User data saved with api' }));
 		})
-		.catch((error) => {
+		.catch((error: Error) => {
 			dispatch(showMessage({ message: error.message }));
 		});
 };

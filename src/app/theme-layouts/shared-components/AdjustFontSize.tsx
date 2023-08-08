@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import Slider from '@mui/material/Slider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -16,8 +16,13 @@ const marks = [
 	{ value: 1.3, label: '130%' }
 ];
 
-function AdjustFontSize(props: any) {
-	const [anchorEl, setAnchorEl] = useState(null);
+type Props = {
+	className?: string;
+};
+function AdjustFontSize(props: Props) {
+	const { className = '' } = props;
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [fontSize, setFontSize] = useState(1);
 
 	function changeHtmlFontSize() {
@@ -25,7 +30,7 @@ function AdjustFontSize(props: any) {
 		html.style.fontSize = `${fontSize * 62.5}%`;
 	}
 
-	const handleClick = (event: any) => {
+	const handleClick = (event: MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
 
@@ -36,7 +41,7 @@ function AdjustFontSize(props: any) {
 	return (
 		<div>
 			<IconButton
-				className={clsx('w-40 h-40', props.className)}
+				className={clsx('w-40 h-40', className)}
 				aria-controls="font-size-menu"
 				aria-haspopup="true"
 				onClick={handleClick}
@@ -62,7 +67,10 @@ function AdjustFontSize(props: any) {
 			>
 				<div className="py-12 px-24">
 					<Typography className="flex items-center justify-center text-16 font-semibold mb-8">
-						<FuseSvgIcon color="action" className="mr-4">
+						<FuseSvgIcon
+							color="action"
+							className="mr-4"
+						>
 							material-outline:format_size
 						</FuseSvgIcon>
 						Font Size
@@ -77,7 +85,7 @@ function AdjustFontSize(props: any) {
 						min={0.7}
 						max={1.3}
 						valueLabelDisplay="off"
-						onChange={(ev, value) => setFontSize(value)}
+						onChange={(ev, value) => setFontSize(value as number)}
 						onChangeCommitted={changeHtmlFontSize}
 					/>
 				</div>

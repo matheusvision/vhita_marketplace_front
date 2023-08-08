@@ -4,12 +4,17 @@ import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import { logoutUser, setUser } from 'app/store/user/userSlice';
 import { useAppDispatch } from 'app/store/index';
+import { AxiosError } from 'axios';
+import { UserProps } from 'app/store/user';
 import jwtService from './services/jwtService';
 
 const AuthContext = React.createContext({});
 
-function AuthProvider({ children }: { children: ReactNode }) {
-	const [isAuthenticated, setIsAuthenticated] = useState(undefined);
+type Props = { children: ReactNode };
+
+function AuthProvider(props: Props) {
+	const { children } = props;
+	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(undefined);
 	const [waitAuthCheck, setWaitAuthCheck] = useState(true);
 	const dispatch = useAppDispatch();
 	const val = useMemo(() => ({ isAuthenticated }), [isAuthenticated]);
@@ -26,12 +31,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
 				.then((user) => {
 					success(user, 'Signed in with JWT');
 				})
-				.catch((error) => {
+				.catch((error: AxiosError) => {
 					pass(error.message);
 				});
 		});
 
-		jwtService.on('onLogin', (user) => {
+		jwtService.on('onLogin', (user: UserProps) => {
 			success(user, 'Signed in');
 		});
 
@@ -53,7 +58,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
 		jwtService.init();
 
-		function success(user, message) {
+		function success(user: UserProps, message: string) {
 			if (message) {
 				dispatch(showMessage({ message }));
 			}

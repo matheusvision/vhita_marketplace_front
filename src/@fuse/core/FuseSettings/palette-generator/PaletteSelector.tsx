@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { MouseEvent, ReactNode, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
-import { darken, getContrastRatio, lighten } from '@mui/material/styles';
+import { Theme, darken, getContrastRatio, lighten } from '@mui/material/styles';
 import { useTheme } from '@mui/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,19 +10,21 @@ import { Dialog, DialogActions, DialogContent, Icon, TextField } from '@mui/mate
 import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
-import { ThemeOptions } from '@mui/material/styles/createTheme';
-import SectionPreview from './SectionPreview';
 import PalettePreview from './PalettePreview';
+import SectionPreview from './SectionPreview';
+import { FuseThemeType } from '../FuseSettings';
 
-function isDark(color: 'string') {
+function isDark(color: string) {
 	return getContrastRatio(color, '#ffffff') >= 3;
 }
 
-function PaletteSelector(props: {
+type Props = {
 	triggerElement: ReactNode;
-	value: ThemeOptions;
-	onChange: (value: ThemeOptions) => void;
-}) {
+	value: FuseThemeType;
+	onChange: (value: FuseThemeType) => void;
+};
+
+function PaletteSelector(props: Props) {
 	const {
 		value,
 		onChange,
@@ -35,9 +37,9 @@ function PaletteSelector(props: {
 	} = props;
 	const [openDialog, setOpenDialog] = useState(false);
 
-	const theme = useTheme() as ThemeOptions;
+	const theme: Theme = useTheme();
 
-	const methods = useForm<ThemeOptions>({
+	const methods = useForm<FuseThemeType>({
 		defaultValues: {},
 		mode: 'onChange'
 	});
@@ -51,6 +53,7 @@ function PaletteSelector(props: {
 	}, [value, reset]);
 
 	const form = watch();
+
 	const formType = watch('palette.mode');
 
 	useEffect(() => {
@@ -62,14 +65,16 @@ function PaletteSelector(props: {
 			return;
 		}
 
-		setTimeout(() => trigger(['palette.background.paper', 'palette.background.default']));
+		setTimeout(() => {
+			trigger(['palette.background.paper', 'palette.background.default']);
+		});
 	}, [formType, openDialog, trigger]);
 
-	const backgroundColorValidation = (v: any) => {
-		if (formType === 'light' && isDark(v)) {
+	const backgroundColorValidation = (colorVal: string) => {
+		if (formType === 'light' && isDark(colorVal)) {
 			return 'Must be a light color';
 		}
-		if (formType === 'dark' && !isDark(v)) {
+		if (formType === 'dark' && !isDark(colorVal)) {
 			return 'Must be a dark color';
 		}
 		return true;
@@ -78,7 +83,7 @@ function PaletteSelector(props: {
 	/**
 	 * Open Dialog
 	 */
-	function handleOpenDialog(ev: any) {
+	function handleOpenDialog(ev: MouseEvent<HTMLDivElement>) {
 		ev.preventDefault();
 		ev.stopPropagation();
 		setOpenDialog(true);
@@ -91,7 +96,7 @@ function PaletteSelector(props: {
 		setOpenDialog(false);
 	}
 
-	function onSubmit(formData: any) {
+	function onSubmit(formData: FuseThemeType) {
 		onChange(formData);
 		handleCloseDialog();
 	}
@@ -99,7 +104,10 @@ function PaletteSelector(props: {
 	return (
 		<>
 			{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
-			<div onClick={handleOpenDialog} role="button">
+			<div
+				onClick={handleOpenDialog}
+				role="button"
+			>
 				{triggerElement}
 			</div>
 			<Dialog
@@ -111,10 +119,16 @@ function PaletteSelector(props: {
 					paper: 'rounded-5 w-full'
 				}}
 			>
-				<AppBar elevation={0} position="static">
+				<AppBar
+					elevation={0}
+					position="static"
+				>
 					<Toolbar className="flex w-full">
 						<Icon className="mr-12">palette</Icon>
-						<Typography variant="subtitle1" color="inherit">
+						<Typography
+							variant="subtitle1"
+							color="inherit"
+						>
 							Edit palette
 						</Typography>
 					</Toolbar>
@@ -134,7 +148,7 @@ function PaletteSelector(props: {
 										className="mb-32"
 									>
 										<Button
-											onClick={async () => {
+											onClick={() => {
 												_onChange('light');
 												setValue('palette.text', lightPaletteText, { shouldDirty: true });
 											}}
@@ -144,7 +158,7 @@ function PaletteSelector(props: {
 										</Button>
 
 										<Button
-											onClick={async () => {
+											onClick={() => {
 												_onChange('dark');
 												setValue('palette.text', darkPaletteText, { shouldDirty: true });
 											}}
@@ -260,7 +274,10 @@ function PaletteSelector(props: {
 						</div>
 
 						<div className="flex flex-col items-center justify-center p-48">
-							<Typography className="text-16 font-semibold mb-16 -mt-48" color="text.secondary">
+							<Typography
+								className="text-16 font-semibold mb-16 -mt-48"
+								color="text.secondary"
+							>
 								Preview
 							</Typography>
 							<PalettePreview palette={form.palette} />
@@ -268,7 +285,10 @@ function PaletteSelector(props: {
 					</div>
 				</DialogContent>
 				<DialogActions className="flex justify-between p-16">
-					<Button onClick={handleCloseDialog} color="primary">
+					<Button
+						onClick={handleCloseDialog}
+						color="primary"
+					>
 						Cancel
 					</Button>
 					<Button

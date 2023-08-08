@@ -6,7 +6,28 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-function HeaderFullScreenToggle(props: any) {
+interface FullScreenDocument extends Document {
+	mozFullScreenElement?: Element;
+	msFullscreenElement?: Element;
+	webkitFullscreenElement?: Element;
+	mozCancelFullScreen?: () => void;
+	msExitFullscreen?: () => void;
+	webkitExitFullscreen?: () => void;
+}
+
+interface FullScreenHTMLElement extends HTMLElement {
+	mozRequestFullScreen?: () => void;
+	webkitRequestFullscreen?: () => void;
+	msRequestFullscreen?: () => void;
+}
+
+type Props = {
+	className?: string;
+};
+
+function HeaderFullScreenToggle(props: Props) {
+	const { className = '' } = props;
+
 	const [isFullScreen, setIsFullScreen] = useState(false);
 
 	useEnhancedEffect(() => {
@@ -18,16 +39,18 @@ function HeaderFullScreenToggle(props: any) {
 	});
 
 	function getBrowserFullscreenElementProp() {
-		if (typeof document.fullscreenElement !== 'undefined') {
+		const doc: FullScreenDocument = document;
+
+		if (typeof doc.fullscreenElement !== 'undefined') {
 			return 'fullscreenElement';
 		}
-		if (typeof document.mozFullScreenElement !== 'undefined') {
+		if (typeof doc.mozFullScreenElement !== 'undefined') {
 			return 'mozFullScreenElement';
 		}
-		if (typeof document.msFullscreenElement !== 'undefined') {
+		if (typeof doc.msFullscreenElement !== 'undefined') {
 			return 'msFullscreenElement';
 		}
-		if (typeof document.webkitFullscreenElement !== 'undefined') {
+		if (typeof doc.webkitFullscreenElement !== 'undefined') {
 			return 'webkitFullscreenElement';
 		}
 		throw new Error('fullscreenElement is not supported by this browser');
@@ -35,7 +58,7 @@ function HeaderFullScreenToggle(props: any) {
 
 	/* View in fullscreen */
 	function openFullscreen() {
-		const elem = document.documentElement;
+		const elem: FullScreenHTMLElement = document.documentElement;
 
 		if (elem.requestFullscreen) {
 			elem.requestFullscreen();
@@ -53,22 +76,26 @@ function HeaderFullScreenToggle(props: any) {
 
 	/* Close fullscreen */
 	function closeFullscreen() {
-		if (document.exitFullscreen) {
-			document.exitFullscreen();
-		} else if (document.mozCancelFullScreen) {
+		const doc: FullScreenDocument = document;
+
+		if (doc.exitFullscreen) {
+			doc.exitFullscreen();
+		} else if (doc.mozCancelFullScreen) {
 			/* Firefox */
-			document.mozCancelFullScreen();
-		} else if (document.webkitExitFullscreen) {
+			doc.mozCancelFullScreen();
+		} else if (doc.webkitExitFullscreen) {
 			/* Chrome, Safari and Opera */
-			document.webkitExitFullscreen();
-		} else if (document.msExitFullscreen) {
+			doc.webkitExitFullscreen();
+		} else if (doc.msExitFullscreen) {
 			/* IE/Edge */
-			document.msExitFullscreen();
+			doc.msExitFullscreen();
 		}
 	}
 
 	function toggleFullScreen() {
-		if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
+		const doc: FullScreenDocument = document;
+
+		if (doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement) {
 			closeFullscreen();
 		} else {
 			openFullscreen();
@@ -76,8 +103,15 @@ function HeaderFullScreenToggle(props: any) {
 	}
 
 	return (
-		<Tooltip title="Fullscreen toggle" placement="bottom">
-			<IconButton onClick={toggleFullScreen} className={clsx('w-40 h-40', props.className)} size="large">
+		<Tooltip
+			title="Fullscreen toggle"
+			placement="bottom"
+		>
+			<IconButton
+				onClick={toggleFullScreen}
+				className={clsx('w-40 h-40', className, isFullScreen && 'text-red-500')}
+				size="large"
+			>
 				<FuseSvgIcon>heroicons-outline:arrows-expand</FuseSvgIcon>
 			</IconButton>
 		</Tooltip>

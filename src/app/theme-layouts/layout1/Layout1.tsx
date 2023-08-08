@@ -7,15 +7,16 @@ import { memo, ReactNode, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
+import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
+import { RouteObject } from 'react-router/dist/lib/context';
 import FooterLayout1 from './components/FooterLayout1';
 import LeftSideLayout1 from './components/LeftSideLayout1';
 import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1';
 import RightSideLayout1 from './components/RightSideLayout1';
 import ToolbarLayout1 from './components/ToolbarLayout1';
 import SettingsPanel from '../shared-components/SettingsPanel';
-import configProps from './Layout1Config';
 
-const Root = styled('div')(({ config }: { config: (typeof configProps)['defaults'] }) => ({
+const Root = styled('div')(({ config }: { config: Layout1ConfigDefaultsType }) => ({
 	...(config.mode === 'boxed' && {
 		clipPath: 'inset(0)',
 		maxWidth: `${config.containerWidth}px`,
@@ -31,24 +32,31 @@ const Root = styled('div')(({ config }: { config: (typeof configProps)['defaults
 	})
 }));
 
-interface Props {
+type Props = {
 	children?: ReactNode;
-}
+};
 
 function Layout1(props: Props) {
 	const { children } = props;
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 
 	return (
-		<Root id="fuse-layout" config={config} className="w-full flex">
+		<Root
+			id="fuse-layout"
+			config={config}
+			className="w-full flex"
+		>
 			{config.leftSidePanel.display && <LeftSideLayout1 />}
 
 			<div className="flex flex-auto min-w-0">
 				{config.navbar.display && config.navbar.position === 'left' && <NavbarWrapperLayout1 />}
 
-				<main id="fuse-main" className="flex flex-col flex-auto min-h-full min-w-0 relative z-10">
+				<main
+					id="fuse-main"
+					className="flex flex-col flex-auto min-h-full min-w-0 relative z-10"
+				>
 					{config.toolbar.display && (
 						<ToolbarLayout1 className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
 					)}

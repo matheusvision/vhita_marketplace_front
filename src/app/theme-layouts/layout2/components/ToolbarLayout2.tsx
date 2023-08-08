@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from 'app/store/fuse/settingsSlice';
+import { Layout2ConfigDefaultsType } from 'app/theme-layouts/layout2/Layout2Config';
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
@@ -15,17 +16,21 @@ import NavigationSearch from '../../shared-components/NavigationSearch';
 import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
 import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
-import ChatPanelToggleButton from '../../shared-components/chatPanel/ChatPanelToggleButton';
 
-function ToolbarLayout2(props: any) {
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+type Props = {
+	className?: string;
+};
+function ToolbarLayout2(props: Props) {
+	const { className = '' } = props;
+
+	const config: Layout2ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const toolbarTheme = useSelector(selectToolbarTheme);
 
 	return (
 		<ThemeProvider theme={toolbarTheme}>
 			<AppBar
 				id="fuse-toolbar"
-				className={clsx('flex relative z-20 shadow-md', props.className)}
+				className={clsx('flex relative z-20 shadow-md', className)}
 				color="default"
 				style={{ backgroundColor: toolbarTheme.palette.background.paper }}
 			>
@@ -47,9 +52,6 @@ function ToolbarLayout2(props: any) {
 						<AdjustFontSize />
 						<FullScreenToggle />
 						<NavigationSearch />
-						<Hidden lgUp>
-							<ChatPanelToggleButton />
-						</Hidden>
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
 						<UserMenu />

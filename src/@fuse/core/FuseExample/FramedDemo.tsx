@@ -7,8 +7,13 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import { StyleSheetManager } from 'styled-components';
 import { ReactElement } from 'react';
 
-function FramedDemo(props) {
-	const { children, document }: { document: Document; children: ReactElement } = props;
+type Props = {
+	document: Document;
+	children: ReactElement;
+};
+
+function FramedDemo(props: Props) {
+	const { children, document } = props;
 
 	const theme = useTheme();
 	React.useEffect(() => {
@@ -29,7 +34,10 @@ function FramedDemo(props) {
 	const getWindow = React.useCallback(() => document.defaultView, [document]);
 
 	return (
-		<StyleSheetManager target={document.head} stylisPlugins={theme.direction === 'rtl' ? [rtlPlugin] : []}>
+		<StyleSheetManager
+			target={document.head}
+			stylisPlugins={theme.direction === 'rtl' ? [rtlPlugin] : []}
+		>
 			<CacheProvider value={cache}>
 				<GlobalStyles
 					styles={() => ({

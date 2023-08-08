@@ -2,11 +2,11 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { styled } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { memo, useMemo } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
+import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
@@ -31,7 +31,9 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalItem(props: FuseNavComponentProps) {
+type Props = FuseNavComponentProps & WithRouterProps;
+
+function FuseNavHorizontalItem(props: Props) {
 	const { item } = props;
 
 	const component = item.url ? NavLinkAdapter : 'li';
@@ -56,7 +58,10 @@ function FuseNavHorizontalItem(props: FuseNavComponentProps) {
 				{...itemProps}
 			>
 				{item.icon && (
-					<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
+					<FuseSvgIcon
+						className={clsx('fuse-list-item-icon shrink-0', item.iconClass)}
+						color="action"
+					>
 						{item.icon}
 					</FuseSvgIcon>
 				)}
@@ -67,23 +72,17 @@ function FuseNavHorizontalItem(props: FuseNavComponentProps) {
 					classes={{ primary: 'text-13 fuse-list-item-text-primary truncate' }}
 				/>
 
-				{item.badge && <FuseNavBadge className="ltr:ml-8 rtl:mr-8" badge={item.badge} />}
+				{item.badge && (
+					<FuseNavBadge
+						className="ltr:ml-8 rtl:mr-8"
+						badge={item.badge}
+					/>
+				)}
 			</Root>
 		),
 		[item.badge, item.exact, item.icon, item.iconClass, item.title, item.url]
 	);
 }
-
-FuseNavHorizontalItem.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		icon: PropTypes.string,
-		url: PropTypes.string
-	})
-};
-
-FuseNavHorizontalItem.defaultProps = {};
 
 const NavHorizontalItem = withRouter(memo(FuseNavHorizontalItem));
 

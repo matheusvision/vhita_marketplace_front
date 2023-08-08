@@ -2,14 +2,27 @@ import { Theme } from '@mui/material/styles/createTheme';
 import { useTheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
+import { FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 
-function SchemePreview(props: { id: string; className?: string; onSelect: (Theme) => void; theme: Theme }) {
+type Props = {
+	id: string;
+	className?: string;
+	onSelect: (T: FuseThemeType) => void;
+	theme: FuseThemeType;
+};
+
+function SchemePreview(props: Props) {
 	const { theme, className, id, onSelect = () => {} } = props;
 
 	const _theme = useTheme();
-	const primaryColor = theme.palette.primary[500] ? theme.palette.primary[500] : theme.palette.primary.main;
+
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	const primaryColor: string = theme.palette.primary[500] ? theme.palette.primary[500] : theme.palette.primary.main;
 	const primaryColorContrast = theme.palette.primary.contrastText || _theme.palette.getContrastText(primaryColor);
-	const secondaryColor = theme.palette.secondary[500] ? theme.palette.secondary[500] : theme.palette.secondary.main;
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	const secondaryColor: string = theme.palette.secondary[500]
+		? theme.palette.secondary[500]
+		: theme.palette.secondary.main;
 	const secondaryColorContrast =
 		theme.palette.secondary.contrastText || _theme.palette.getContrastText(secondaryColor);
 	const backgroundColor = theme.palette.background.default;

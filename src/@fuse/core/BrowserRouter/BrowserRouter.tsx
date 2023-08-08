@@ -13,7 +13,12 @@ function BrowserRouter(props: BrowserRouterProps) {
 	useLayoutEffect(() => history.listen(setState), [history]);
 
 	return (
-		<Router basename={basename} location={state.location} navigationType={state.action} navigator={history}>
+		<Router
+			basename={basename}
+			location={state.location}
+			navigationType={state.action}
+			navigator={history}
+		>
 			{children}
 		</Router>
 	);

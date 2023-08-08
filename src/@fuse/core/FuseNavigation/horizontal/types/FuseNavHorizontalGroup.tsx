@@ -14,6 +14,7 @@ import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
+import * as PopperJS from '@popperjs/core';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
@@ -41,17 +42,19 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalGroup(props: FuseNavComponentProps & WithRouterProps) {
+type Props = FuseNavComponentProps & WithRouterProps;
+
+function FuseNavHorizontalGroup(props: Props) {
 	const [opened, setOpened] = useState(false);
 	const { item, nestedLevel, dense, location } = props;
 	const theme = useTheme();
 
-	const handleToggle = useDebounce((open) => {
+	const handleToggle = useDebounce((open: boolean) => {
 		setOpened(open);
 	}, 150);
 
 	return useMemo(() => {
-		let popperPlacement;
+		let popperPlacement: PopperJS.Placement;
 
 		if (nestedLevel === 0) {
 			popperPlacement = theme.direction === 'ltr' ? 'bottom-start' : 'bottom-end';
@@ -114,7 +117,10 @@ function FuseNavHorizontalGroup(props: FuseNavComponentProps & WithRouterProps) 
 										color="inherit"
 										size="large"
 									>
-										<FuseSvgIcon size={16} className="arrow-icon">
+										<FuseSvgIcon
+											size={16}
+											className="arrow-icon"
+										>
 											{theme.direction === 'ltr'
 												? 'heroicons-outline:arrow-sm-right'
 												: 'heroicons-outline:arrow-sm-left'}
@@ -127,7 +133,7 @@ function FuseNavHorizontalGroup(props: FuseNavComponentProps & WithRouterProps) 
 				</Reference>
 				{ReactDOM.createPortal(
 					<Popper placement={popperPlacement}>
-						{({ ref, style, placement, arrowProps }) =>
+						{({ ref, style, placement }) =>
 							opened && (
 								<div
 									ref={ref}
@@ -138,7 +144,11 @@ function FuseNavHorizontalGroup(props: FuseNavComponentProps & WithRouterProps) 
 									data-placement={placement}
 									className={clsx('z-999', !opened && 'pointer-events-none')}
 								>
-									<Grow in={opened} id="menu-fuse-list-grow" style={{ transformOrigin: '0 0 0' }}>
+									<Grow
+										in={opened}
+										id="menu-fuse-list-grow"
+										style={{ transformOrigin: '0 0 0' }}
+									>
 										<Paper
 											className="rounded-8"
 											onMouseEnter={() => handleToggle(true)}
@@ -171,8 +181,6 @@ function FuseNavHorizontalGroup(props: FuseNavComponentProps & WithRouterProps) 
 		);
 	}, [dense, handleToggle, item, nestedLevel, opened, props.location.pathname, theme.direction]);
 }
-
-FuseNavHorizontalGroup.defaultProps = {};
 
 const NavHorizontalGroup = withRouter(memo(FuseNavHorizontalGroup));
 

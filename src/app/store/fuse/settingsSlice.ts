@@ -1,5 +1,5 @@
 import { createTheme, getContrastRatio } from '@mui/material/styles';
-import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import _ from '@lodash';
 import {
 	defaultSettings,
@@ -12,38 +12,48 @@ import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
 import { setUser, updateUserSettings } from 'app/store/user/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
-import { AppDispatch, RootState } from 'app/store/index';
+import { AppThunk, RootState } from 'app/store/index';
 import { Theme } from '@mui/material/styles/createTheme';
-import { FuseSettingsProps } from '@fuse/core/FuseSettings';
+import { FuseSettingsConfigProps, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 
-export const changeFuseTheme = (theme: Theme) => (dispatch: AppDispatch, getState: () => RootState) => {
-	const { fuse } = getState();
-	const { settings } = fuse;
+export const changeFuseTheme =
+	(theme: FuseThemeType): AppThunk<void> =>
+	(dispatch, getState) => {
+		const { fuse } = getState();
+		const { settings } = fuse;
 
-	const newSettings = {
-		...settings.current,
-		theme: {
-			main: theme,
-			navbar: theme,
-			toolbar: theme,
-			footer: theme
-		}
+		const newSettings = {
+			...settings.current,
+			theme: {
+				main: theme,
+				navbar: theme,
+				toolbar: theme,
+				footer: theme
+			}
+		};
+
+		return dispatch(setDefaultSettings(newSettings));
 	};
 
-	dispatch(setDefaultSettings(newSettings));
+type layoutProps = {
+	style: string;
+	config: unknown;
 };
 
-function getInitialSettings() {
+function getInitialSettings(): FuseSettingsConfigProps {
 	const defaultLayoutStyle =
 		settingsConfig.layout && settingsConfig.layout.style ? settingsConfig.layout.style : 'layout1';
-	const layout = {
+
+	const layout: layoutProps = {
 		style: defaultLayoutStyle,
 		config: themeLayoutConfigs[defaultLayoutStyle].defaults
 	};
+
 	return _.merge({}, defaultSettings, { layout }, settingsConfig, getParsedQuerySettings());
 }
 
-export function generateSettings(_defaultSettings: FuseSettingsProps, _newSettings: FuseSettingsProps) {
+export function generateSettings(_defaultSettings: FuseSettingsConfigProps, _newSettings: FuseSettingsConfigProps) {
 	return _.merge(
 		{},
 		_defaultSettings,
@@ -53,11 +63,12 @@ export function generateSettings(_defaultSettings: FuseSettingsProps, _newSettin
 }
 
 const initialSettings = getInitialSettings();
-interface initialStateProps {
-	initial: FuseSettingsProps;
-	defaults: FuseSettingsProps;
-	current: FuseSettingsProps;
-}
+
+type initialStateProps = {
+	initial: FuseSettingsConfigProps;
+	defaults: FuseSettingsConfigProps;
+	current: FuseSettingsConfigProps;
+};
 
 const initialState: initialStateProps = {
 	initial: initialSettings,
@@ -65,15 +76,15 @@ const initialState: initialStateProps = {
 	current: _.merge({}, initialSettings)
 };
 
-export const setDefaultSettings = createAsyncThunk(
+export const setDefaultSettings = createAppAsyncThunk(
 	'fuse/settings/setDefaultSettings',
-	async (val: FuseSettingsProps, { dispatch, getState }: { dispatch: AppDispatch; getState: () => RootState }) => {
+	async (val: FuseSettingsConfigProps, { dispatch, getState }) => {
 		const { fuse } = getState();
 		const { settings } = fuse;
 
 		const defaults = generateSettings(settings.defaults, val);
 
-		dispatch(updateUserSettings(defaults));
+		await dispatch(updateUserSettings(defaults));
 
 		return {
 			...settings,
@@ -87,7 +98,7 @@ const settingsSlice = createSlice({
 	name: 'settings',
 	initialState,
 	reducers: {
-		setSettings: (state, action) => {
+		setSettings: (state, action: PayloadAction<FuseSettingsConfigProps>) => {
 			const current = generateSettings(state.defaults, action.payload);
 
 			return {
@@ -117,13 +128,15 @@ const settingsSlice = createSlice({
 	}
 });
 
-const getDirection = (state: RootState) => state.fuse.settings.current.direction;
-const getMainTheme = (state: RootState) => state.fuse.settings.current.theme.main;
-const getNavbarTheme = (state: RootState) => state.fuse.settings.current.theme.navbar;
-const getToolbarTheme = (state: RootState) => state.fuse.settings.current.theme.toolbar;
-const getFooterTheme = (state: RootState) => state.fuse.settings.current.theme.footer;
+type directionType = 'ltr' | 'rtl';
 
-function generateMuiTheme(theme: Theme, direction: 'ltr' | 'rtl') {
+const getDirection = (state: RootState): directionType => state.fuse.settings.current.direction;
+const getMainTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.main;
+const getNavbarTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.navbar;
+const getToolbarTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.toolbar;
+const getFooterTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.footer;
+
+function generateMuiTheme(theme: Partial<Theme>, direction: directionType) {
 	const data = _.merge({}, defaultThemeOptions, theme, mustHaveThemeOptions);
 
 	return createTheme(
@@ -141,7 +154,7 @@ export const selectContrastMainTheme = (bgColor: string) => {
 	return isDark(bgColor) ? selectMainThemeDark : selectMainThemeLight;
 };
 
-function changeThemeMode(theme: Theme, mode: 'dark' | 'light') {
+function changeThemeMode(theme: Partial<Theme>, mode: 'dark' | 'light') {
 	const modes = {
 		dark: {
 			palette: {
@@ -224,7 +237,7 @@ export const selectFuseCurrentLayoutConfig = (state: RootState) => state.fuse.se
 
 export const selectFuseDefaultSettings = (state: RootState) => state.fuse.settings.defaults;
 
-export const selectFuseThemesSettings = (state: RootState) => state.fuse.settings.themes;
+// export const selectFuseThemesSettings = (state: RootState) => state.fuse.settings.themes;
 
 export const { resetSettings, setInitialSettings, setSettings } = settingsSlice.actions;
 

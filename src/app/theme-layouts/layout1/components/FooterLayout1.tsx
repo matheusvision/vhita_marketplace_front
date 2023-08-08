@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
 import clsx from 'clsx';
 
-function FooterLayout1(props: { className?: string }) {
+type Props = { className?: string };
+function FooterLayout1(props: Props) {
 	const { className } = props;
 
 	const footerTheme = useSelector(selectFooterTheme);

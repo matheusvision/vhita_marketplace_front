@@ -2,7 +2,13 @@ import Button from '@mui/material/Button';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
-function PurchaseButton({ className }: any) {
+type Props = {
+	className?: string;
+};
+
+function PurchaseButton(props: Props) {
+	const { className = '' } = props;
+
 	return (
 		<Button
 			component="a"

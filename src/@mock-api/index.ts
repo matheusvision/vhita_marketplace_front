@@ -1,7 +1,8 @@
-import './api/auth-api';
-import './api/notifications-api';
+/* eslint-disable import/no-import-module-exports */
 import history from '@history';
 import mock from './mock';
+import './api/auth-api';
+import './api/notifications-api';
 
 mock.onAny().passThrough();
 

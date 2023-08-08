@@ -1,37 +1,47 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from 'app/store/index';
+
+type initialStateProps = {
+	open: boolean;
+	mobileOpen: boolean;
+	foldedOpen: boolean;
+};
+
+const initialState: initialStateProps = {
+	open: true,
+	mobileOpen: false,
+	foldedOpen: false
+};
 
 const navbarSlice = createSlice({
 	name: 'navbar',
-	initialState: {
-		open: true,
-		mobileOpen: false
-	},
+	initialState,
 	reducers: {
-		navbarToggleFolded: (state, action) => {
+		navbarToggleFolded: (state) => {
 			state.foldedOpen = !state.foldedOpen;
 		},
-		navbarOpenFolded: (state, action) => {
+		navbarOpenFolded: (state) => {
 			state.foldedOpen = true;
 		},
-		navbarCloseFolded: (state, action) => {
+		navbarCloseFolded: (state) => {
 			state.foldedOpen = false;
 		},
-		navbarToggleMobile: (state, action) => {
+		navbarToggleMobile: (state) => {
 			state.mobileOpen = !state.mobileOpen;
 		},
-		navbarOpenMobile: (state, action) => {
+		navbarOpenMobile: (state) => {
 			state.mobileOpen = true;
 		},
-		navbarCloseMobile: (state, action) => {
+		navbarCloseMobile: (state) => {
 			state.mobileOpen = false;
 		},
-		navbarClose: (state, action) => {
+		navbarClose: (state) => {
 			state.open = false;
 		},
-		navbarOpen: (state, action) => {
+		navbarOpen: (state) => {
 			state.open = true;
 		},
-		navbarToggle: (state, action) => {
+		navbarToggle: (state) => {
 			state.open = !state.open;
 		}
 	}
@@ -49,6 +59,6 @@ export const {
 	navbarToggleMobile
 } = navbarSlice.actions;
 
-export const selectFuseNavbar = ({ fuse }: any) => fuse.navbar;
+export const selectFuseNavbar = ({ fuse }: RootState) => fuse.navbar;
 
 export default navbarSlice.reducer;

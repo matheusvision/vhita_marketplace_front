@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store/index';
 import { SnackbarProps } from '@mui/material/Snackbar/Snackbar';
+import { FuseMessageVariantType } from '@fuse/core/FuseMessage/FuseMessage';
 
-interface MessageState {
+type initialStateProps = {
 	state: boolean;
-	options?: Pick<SnackbarProps, 'anchorOrigin' | 'autoHideDuration' | 'message'>;
-}
+	options?: Pick<SnackbarProps, 'anchorOrigin' | 'autoHideDuration' | 'message'> & {
+		variant?: FuseMessageVariantType;
+	};
+};
 
-const initialState: MessageState = {
+const initialState: initialStateProps = {
 	state: null,
 	options: {
+		variant: 'info',
 		anchorOrigin: {
 			vertical: 'top',
 			horizontal: 'center'
@@ -23,7 +27,7 @@ const messageSlice = createSlice({
 	name: 'message',
 	initialState,
 	reducers: {
-		showMessage: (state, action: PayloadAction<MessageState['options']>) => {
+		showMessage: (state, action: PayloadAction<initialStateProps['options']>) => {
 			state.state = true;
 			state.options = {
 				...initialState.options,

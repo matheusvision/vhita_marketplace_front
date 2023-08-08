@@ -32,7 +32,10 @@ const StyledContent = styled(FuseScrollbars)(() => ({
 	backgroundAttachment: 'local, scroll'
 }));
 
-function NavbarStyle1Content(props: { className?: string }) {
+type Props = {
+	className?: string;
+};
+function NavbarStyle1Content(props: Props) {
 	const { className = '' } = props;
 
 	return (
@@ -54,7 +57,11 @@ function NavbarStyle1Content(props: { className?: string }) {
 				<Navigation layout="vertical" />
 
 				<div className="flex flex-0 items-center justify-center py-48 opacity-10">
-					<img className="w-full max-w-64" src="assets/images/logo/logo.svg" alt="footer logo" />
+					<img
+						className="w-full max-w-64"
+						src="assets/images/logo/logo.svg"
+						alt="footer logo"
+					/>
 				</div>
 			</StyledContent>
 		</Root>

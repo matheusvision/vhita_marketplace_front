@@ -1,7 +1,8 @@
+import { FuseRouteConfigType } from '@fuse/utils/FuseUtils';
 import SignUpPage from './SignUpPage';
 import authRoles from '../../auth/authRoles';
 
-const SignUpConfig = {
+const SignUpConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {
 			config: {

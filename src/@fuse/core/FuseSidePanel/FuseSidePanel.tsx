@@ -169,7 +169,14 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function FuseSidePanel(props: { position?: 'left'; opened?: true; className?: string; children?: ReactNode }) {
+type Props = {
+	position?: 'left';
+	opened?: true;
+	className?: string;
+	children?: ReactNode;
+};
+
+function FuseSidePanel(props: Props) {
 	const { position = 'left', opened = true, className, children } = props;
 
 	const [panelOpened, setPanelOpened] = useState(Boolean(opened));
@@ -199,7 +206,10 @@ function FuseSidePanel(props: { position?: 'left'; opened?: true; className?: st
 					<FuseScrollbars className={clsx('content', 'FuseSidePanel-content')}>{children}</FuseScrollbars>
 
 					<div className="FuseSidePanel-buttonWrapper">
-						<Tooltip title="Toggle side panel" placement={position === 'left' ? 'right' : 'right'}>
+						<Tooltip
+							title="Toggle side panel"
+							placement={position === 'left' ? 'right' : 'right'}
+						>
 							<IconButton
 								className="FuseSidePanel-button"
 								onClick={toggleOpened}
@@ -228,7 +238,10 @@ function FuseSidePanel(props: { position?: 'left'; opened?: true; className?: st
 					<FuseScrollbars className={clsx('content', 'FuseSidePanel-content')}>{children}</FuseScrollbars>
 				</SwipeableDrawer>
 
-				<Tooltip title="Hide side panel" placement={position === 'left' ? 'right' : 'right'}>
+				<Tooltip
+					title="Hide side panel"
+					placement={position === 'left' ? 'right' : 'right'}
+				>
 					<Fab
 						className={clsx('FuseSidePanel-mobileButton', position)}
 						onClick={toggleMobileDrawer}

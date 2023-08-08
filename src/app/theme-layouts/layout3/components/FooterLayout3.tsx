@@ -6,14 +6,19 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
 
-function FooterLayout3(props: any) {
+type Props = {
+	className?: string;
+};
+function FooterLayout3(props: Props) {
+	const { className = '' } = props;
+
 	const footerTheme = useSelector(selectFooterTheme);
 
 	return (
 		<ThemeProvider theme={footerTheme}>
 			<AppBar
 				id="fuse-footer"
-				className={clsx('relative z-20 shadow-md', props.className)}
+				className={clsx('relative z-20 shadow-md', className)}
 				color="default"
 				style={{ backgroundColor: footerTheme.palette.background.paper }}
 			>

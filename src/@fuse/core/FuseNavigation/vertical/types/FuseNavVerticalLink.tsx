@@ -7,7 +7,11 @@ import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const Root = styled(ListItemButton)<ListItemButtonProps & { itempadding: number }>(({ theme, ...props }) => ({
+type Props = ListItemButtonProps & {
+	itempadding: number;
+};
+
+const Root = styled(ListItemButton)<Props>(({ theme, ...props }) => ({
 	minHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -65,7 +69,10 @@ function FuseNavVerticalLink(props: FuseNavComponentProps) {
 				{...itemProps}
 			>
 				{item.icon && (
-					<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
+					<FuseSvgIcon
+						className={clsx('fuse-list-item-icon shrink-0', item.iconClass)}
+						color="action"
+					>
 						{item.icon}
 					</FuseSvgIcon>
 				)}

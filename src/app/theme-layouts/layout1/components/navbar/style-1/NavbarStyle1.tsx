@@ -1,15 +1,23 @@
 import Hidden from '@mui/material/Hidden';
+import { Theme } from '@mui/system/createTheme';
 import { styled } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useSelector } from 'react-redux';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
 import { useAppDispatch } from 'app/store/index';
+import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NavbarStyle1Content from './NavbarStyle1Content';
 
 const navbarWidth = 280;
 
-const StyledNavBar = styled('div')(({ theme, open, position }) => ({
+type StyledNavBarProps = {
+	theme?: Theme;
+	open: boolean;
+	position: string;
+};
+
+const StyledNavBar = styled('div')<StyledNavBarProps>(({ theme, open, position }) => ({
 	minWidth: navbarWidth,
 	width: navbarWidth,
 	maxWidth: navbarWidth,
@@ -43,7 +51,7 @@ const StyledNavBarMobile = styled(SwipeableDrawer)(() => ({
 
 function NavbarStyle1() {
 	const dispatch = useAppDispatch();
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);
 
 	return (
@@ -63,7 +71,7 @@ function NavbarStyle1() {
 					classes={{
 						paper: 'flex-col flex-auto h-full'
 					}}
-					anchor={config.navbar.position}
+					anchor={config.navbar.position as 'left' | 'top' | 'right' | 'bottom'}
 					variant="temporary"
 					open={navbar.mobileOpen}
 					onClose={() => dispatch(navbarCloseMobile())}

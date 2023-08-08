@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import clsx from 'clsx';
-import { memo, useContext } from 'react';
+import { memo, ReactNode, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import AppContext from 'app/AppContext';
@@ -14,8 +14,9 @@ import NavbarWrapperLayout3 from './components/NavbarWrapperLayout3';
 import RightSideLayout3 from './components/RightSideLayout3';
 import ToolbarLayout3 from './components/ToolbarLayout3';
 import SettingsPanel from '../shared-components/SettingsPanel';
+import { Layout3ConfigDefaultsType } from './Layout3Config';
 
-const Root = styled('div')(({ theme, config }) => ({
+const Root = styled('div')<{ config: Layout3ConfigDefaultsType }>(({ config }) => ({
 	...(config.mode === 'boxed' && {
 		clipPath: 'inset(0)',
 		maxWidth: `${config.containerWidth}px`,
@@ -31,16 +32,29 @@ const Root = styled('div')(({ theme, config }) => ({
 	})
 }));
 
-function Layout3(props: any) {
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+type Props = {
+	children?: ReactNode;
+};
+
+function Layout3(props: Props) {
+	const { children } = props;
+
+	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 	return (
-		<Root id="fuse-layout" className="w-full flex" config={config}>
+		<Root
+			id="fuse-layout"
+			className="w-full flex"
+			config={config}
+		>
 			{config.leftSidePanel.display && <LeftSideLayout3 />}
 
 			<div className="flex flex-col flex-auto min-w-0">
-				<main id="fuse-main" className="flex flex-col flex-auto min-h-full min-w-0 relative">
+				<main
+					id="fuse-main"
+					className="flex flex-col flex-auto min-h-full min-w-0 relative"
+				>
 					{config.navbar.display && (
 						<NavbarWrapperLayout3
 							className={clsx(config.navbar.style === 'fixed' && 'sticky top-0 z-50')}
@@ -63,7 +77,7 @@ function Layout3(props: any) {
 					<div className="flex flex-col flex-auto min-h-0 relative z-10">
 						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
-						{props.children}
+						{children}
 					</div>
 
 					{config.footer.display && (

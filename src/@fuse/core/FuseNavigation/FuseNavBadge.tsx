@@ -16,11 +16,11 @@ const Root = styled('div')(({ theme }) => ({
 	color: theme.palette.secondary.contrastText
 }));
 
-interface Props {
+type Props = {
 	className?: string;
 	classes?: string;
 	badge: FuseNavBadgeProps;
-}
+};
 
 function FuseNavBadge(props: Props) {
 	const { className = '', classes = '', badge } = props;

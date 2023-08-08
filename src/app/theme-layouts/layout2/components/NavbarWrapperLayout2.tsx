@@ -6,9 +6,10 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store/index';
 import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from 'app/store/fuse/settingsSlice';
+import { Layout2ConfigDefaultsType } from 'app/theme-layouts/layout2/Layout2Config';
+import NavbarToggleFabLayout2 from 'app/theme-layouts/layout2/components/NavbarToggleFabLayout2';
 import NavbarLayout2 from './NavbarLayout2';
 import NavbarMobileLayout2 from './NavbarMobileLayout2';
-import NavbarToggleFab from '../../shared-components/NavbarToggleFab';
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 	'& > .MuiDrawer-paper': {
@@ -23,10 +24,13 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 		})
 	}
 }));
-
-function NavbarWrapperLayout2(props: any) {
+type Props = {
+	className?: string;
+};
+function NavbarWrapperLayout2(props: Props) {
+	const { className = '' } = props;
 	const dispatch = useAppDispatch();
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout2ConfigDefaultsType;
 	const navbarTheme = useSelector(selectNavbarTheme);
 	const navbar = useSelector(selectFuseNavbar);
 
@@ -45,6 +49,7 @@ function NavbarWrapperLayout2(props: any) {
 						onClose={() => dispatch(navbarCloseMobile())}
 						onOpen={() => {}}
 						disableSwipeToOpen
+						className={className}
 						ModalProps={{
 							keepMounted: true // Better open performance on mobile.
 						}}
@@ -55,7 +60,7 @@ function NavbarWrapperLayout2(props: any) {
 			</ThemeProvider>
 			{config.navbar.display && !config.toolbar.display && (
 				<Hidden lgUp>
-					<NavbarToggleFab />
+					<NavbarToggleFabLayout2 />
 				</Hidden>
 			)}
 		</>

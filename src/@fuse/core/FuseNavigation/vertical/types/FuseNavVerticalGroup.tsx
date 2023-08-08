@@ -6,7 +6,11 @@ import { ListItemButton, ListItemButtonProps, ListItemText } from '@mui/material
 import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
 import FuseNavItem from '../../FuseNavItem';
 
-const Root = styled(ListItemButton)<ListItemButtonProps & { itempadding: number }>(({ theme, ...props }) => ({
+type Props = ListItemButtonProps & {
+	itempadding: number;
+};
+
+const Root = styled(ListItemButton)<Props>(({ theme, ...props }) => ({
 	minminHeight: 44,
 	width: '100%',
 	borderRadius: '6px',

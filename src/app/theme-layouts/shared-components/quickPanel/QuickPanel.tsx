@@ -20,7 +20,7 @@ import { selectQuickPanelData } from './store/dataSlice';
 import reducer from './store';
 import { selectQuickPanelState, toggleQuickPanel } from './store/stateSlice';
 
-const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
+const StyledSwipeableDrawer = styled(SwipeableDrawer)(() => ({
 	'& .MuiDrawer-paper': {
 		width: 280
 	}
@@ -32,9 +32,9 @@ function QuickPanel() {
 	const data = useSelector(selectQuickPanelData);
 	const state = useSelector(selectQuickPanelState);
 
-	const [checked, setChecked] = useState('notifications');
+	const [checked, setChecked] = useState<string[]>(['notifications']);
 
-	const handleToggle = (value: any) => () => {
+	const handleToggle = (value: string) => () => {
 		const currentIndex = checked.indexOf(value);
 		const newChecked = [...checked];
 
@@ -59,17 +59,29 @@ function QuickPanel() {
 				<ListSubheader component="div">Today</ListSubheader>
 
 				<div className="mb-0 py-16 px-24">
-					<Typography className="mb-12 text-32" color="text.secondary">
+					<Typography
+						className="mb-12 text-32"
+						color="text.secondary"
+					>
 						{format(new Date(), 'eeee')}
 					</Typography>
 					<div className="flex">
-						<Typography className="leading-none text-32" color="text.secondary">
+						<Typography
+							className="leading-none text-32"
+							color="text.secondary"
+						>
 							{format(new Date(), 'dd')}
 						</Typography>
-						<Typography className="leading-none text-16" color="text.secondary">
+						<Typography
+							className="leading-none text-16"
+							color="text.secondary"
+						>
 							th
 						</Typography>
-						<Typography className="leading-none text-32" color="text.secondary">
+						<Typography
+							className="leading-none text-32"
+							color="text.secondary"
+						>
 							{format(new Date(), 'MMMM')}
 						</Typography>
 					</div>
@@ -78,9 +90,12 @@ function QuickPanel() {
 				<List>
 					<ListSubheader component="div">Events</ListSubheader>
 					{data &&
-						data.events.map((event: any) => (
+						data.events.map((event) => (
 							<ListItem key={event.id}>
-								<ListItemText primary={event.title} secondary={event.detail} />
+								<ListItemText
+									primary={event.title}
+									secondary={event.detail}
+								/>
 							</ListItem>
 						))}
 				</List>
@@ -90,7 +105,10 @@ function QuickPanel() {
 					{data &&
 						data.notes.map((note) => (
 							<ListItem key={note.id}>
-								<ListItemText primary={note.title} secondary={note.detail} />
+								<ListItemText
+									primary={note.title}
+									secondary={note.detail}
+								/>
 							</ListItem>
 						))}
 				</List>

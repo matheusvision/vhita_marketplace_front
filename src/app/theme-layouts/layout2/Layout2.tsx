@@ -4,10 +4,11 @@ import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import AppContext from 'app/AppContext';
 import clsx from 'clsx';
-import { memo, useContext } from 'react';
+import { ReactNode, memo, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
+import { Layout2ConfigDefaultsType } from 'app/theme-layouts/layout2/Layout2Config';
 import FooterLayout2 from './components/FooterLayout2';
 import LeftSideLayout2 from './components/LeftSideLayout2';
 import NavbarWrapperLayout2 from './components/NavbarWrapperLayout2';
@@ -15,7 +16,7 @@ import RightSideLayout2 from './components/RightSideLayout2';
 import ToolbarLayout2 from './components/ToolbarLayout2';
 import SettingsPanel from '../shared-components/SettingsPanel';
 
-const Root = styled('div')(({ theme, config }) => ({
+const Root = styled('div')<{ config: Layout2ConfigDefaultsType }>(({ config }) => ({
 	...(config.mode === 'boxed' && {
 		clipPath: 'inset(0)',
 		maxWidth: `${config.containerWidth}px`,
@@ -31,17 +32,30 @@ const Root = styled('div')(({ theme, config }) => ({
 	})
 }));
 
-function Layout2(props: any) {
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+type Props = {
+	children?: ReactNode;
+};
+
+function Layout2(props: Props) {
+	const { children } = props;
+
+	const config: Layout2ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 
 	return (
-		<Root id="fuse-layout" className="w-full flex" config={config}>
+		<Root
+			id="fuse-layout"
+			className="w-full flex"
+			config={config}
+		>
 			{config.leftSidePanel.display && <LeftSideLayout2 />}
 
 			<div className="flex flex-col flex-auto min-w-0">
-				<main id="fuse-main" className="flex flex-col flex-auto min-h-full min-w-0 relative">
+				<main
+					id="fuse-main"
+					className="flex flex-col flex-auto min-h-full min-w-0 relative"
+				>
 					{config.navbar.display && (
 						<NavbarWrapperLayout2
 							className={clsx(config.navbar.style === 'fixed' && 'sticky top-0 z-50')}
@@ -64,7 +78,7 @@ function Layout2(props: any) {
 					<div className="flex flex-col flex-auto min-h-0 relative z-10">
 						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
-						{props.children}
+						{children}
 					</div>
 
 					{config.footer.display && (

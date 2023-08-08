@@ -1,24 +1,27 @@
-import clsx from 'clsx';
-import { ForwardedRef, forwardRef, ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/system';
 import Icon from '@mui/material/Icon';
-import * as React from 'react';
+import clsx from 'clsx';
+import { forwardRef } from 'react';
 
-interface Props extends BoxProps {
-	children: ReactNode;
+type FuseSvgIconProps = BoxProps & {
+	fill?: string;
+	xmlns?: string;
+	viewBox?: string;
 	size?: number | string;
 	color?: 'inherit' | 'disabled' | 'primary' | 'secondary' | 'action' | 'error' | 'info' | 'success' | 'warning';
-}
+};
 
-const Root = styled(Box)<Props>(({ theme, ...props }) => ({
-	width: props.size,
-	height: props.size,
-	minWidth: props.size,
-	minHeight: props.size,
-	fontSize: props.size,
-	lineHeight: props.size,
+const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit' }) => ({
+	width: size,
+	height: size,
+	minWidth: size,
+	minHeight: size,
+	fontSize: size,
+	lineHeight: size,
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	color: {
+		// Use fill instead of color for SVGs
 		primary: theme.palette.primary.main,
 		secondary: theme.palette.secondary.main,
 		info: theme.palette.info.main,
@@ -27,19 +30,25 @@ const Root = styled(Box)<Props>(({ theme, ...props }) => ({
 		action: theme.palette.action.active,
 		error: theme.palette.error.main,
 		disabled: theme.palette.action.disabled,
-		inherit: undefined
-	}[props.color]
+		inherit: 'currentColor'
+	}[color]
 }));
 
-const FuseSvgIcon = forwardRef<ForwardedRef<HTMLElement>, Props>((props, ref) => {
-	const { children, className, color } = props;
+const FuseSvgIcon = forwardRef<SVGSVGElement, FuseSvgIconProps>((props, ref) => {
+	const { children, className = '', color } = props; // Destructure fill from props
 
 	if (typeof children !== 'string') {
 		return null;
 	}
 
 	if (!children.includes(':')) {
-		return <Box component={Icon} ref={ref} {...props} />;
+		return (
+			<Box
+				component={Icon}
+				ref={ref}
+				{...props}
+			/>
+		);
 	}
 
 	const iconPath = children.replace(':', '.svg#');
@@ -51,10 +60,8 @@ const FuseSvgIcon = forwardRef<ForwardedRef<HTMLElement>, Props>((props, ref) =>
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 100 100"
-			className={clsx('shrink-0 fill-current ', className)}
+			className={clsx('shrink-0 fill-current', className)}
 			ref={ref}
-			size={props.size}
-			sx={props.sx}
 			color={color}
 		>
 			<use xlinkHref={`assets/icons/${iconPath}`} />

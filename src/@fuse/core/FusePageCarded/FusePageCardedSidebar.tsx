@@ -6,18 +6,15 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useState, Reac
 import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer/SwipeableDrawer';
 import FusePageCardedSidebarContent from './FusePageCardedSidebarContent';
 
-const FusePageCardedSidebar = forwardRef<
-	{
-		toggleSidebar: (boolean) => void;
-	},
-	{
-		open?: boolean;
-		position?: SwipeableDrawerProps['anchor'];
-		variant?: SwipeableDrawerProps['variant'];
-		onClose?: () => void;
-		children?: ReactNode;
-	}
->((props, ref) => {
+type Props = {
+	open?: boolean;
+	position?: SwipeableDrawerProps['anchor'];
+	variant?: SwipeableDrawerProps['variant'];
+	onClose?: () => void;
+	children?: ReactNode;
+};
+
+const FusePageCardedSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }, Props>((props, ref) => {
 	const { open = true, position, variant, onClose = () => {} } = props;
 
 	const [isOpen, setIsOpen] = useState(open);

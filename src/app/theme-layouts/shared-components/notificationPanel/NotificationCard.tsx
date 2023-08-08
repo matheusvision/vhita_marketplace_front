@@ -6,13 +6,21 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import NotificationModel from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
+import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
+import { MouseEvent } from 'react';
 
-function NotificationCard(props: { item: typeof NotificationModel; className?: string; onClose: () => void }) {
+type Props = {
+	item: NotificationModelProps;
+	className?: string;
+	onClose: (T: string) => void;
+};
+
+function NotificationCard(props: Props) {
 	const { item, className, onClose } = props;
+
 	const variant = item?.variant || '';
 
-	const handleClose = (ev) => {
+	const handleClose = (ev: MouseEvent<HTMLButtonElement>) => {
 		ev.preventDefault();
 		ev.stopPropagation();
 
@@ -41,7 +49,10 @@ function NotificationCard(props: { item: typeof NotificationModel; className?: s
 					sx={{ backgroundColor: 'background.default' }}
 					className="flex shrink-0 items-center justify-center w-32 h-32 mr-12 rounded-full"
 				>
-					<FuseSvgIcon className="opacity-75" color="inherit">
+					<FuseSvgIcon
+						className="opacity-75"
+						color="inherit"
+					>
 						{item.icon}
 					</FuseSvgIcon>
 				</Box>
@@ -59,11 +70,17 @@ function NotificationCard(props: { item: typeof NotificationModel; className?: s
 				{item.title && <Typography className="font-semibold line-clamp-1">{item.title}</Typography>}
 
 				{item.description && (
-					<div className="line-clamp-2" dangerouslySetInnerHTML={{ __html: item.description }} />
+					<div
+						className="line-clamp-2"
+						dangerouslySetInnerHTML={{ __html: item.description }}
+					/>
 				)}
 
-				{item.item && (
-					<Typography className="mt-8 text-sm leading-none " color="text.secondary">
+				{item.time && (
+					<Typography
+						className="mt-8 text-sm leading-none "
+						color="text.secondary"
+					>
 						{formatDistanceToNow(new Date(item.time), { addSuffix: true })}
 					</Typography>
 				)}
@@ -76,7 +93,11 @@ function NotificationCard(props: { item: typeof NotificationModel; className?: s
 				size="small"
 				onClick={handleClose}
 			>
-				<FuseSvgIcon size={12} className="opacity-75" color="inherit">
+				<FuseSvgIcon
+					size={12}
+					className="opacity-75"
+					color="inherit"
+				>
 					heroicons-solid:x
 				</FuseSvgIcon>
 			</IconButton>

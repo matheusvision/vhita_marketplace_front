@@ -1,14 +1,24 @@
-import { forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import { SnackbarContent } from 'notistack';
-import NotificationModel from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
+import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
 import NotificationCard from './NotificationCard';
 
-const NotificationTemplate = forwardRef((props: { item: typeof NotificationModel; onClose: () => void }, ref) => {
+type Props = {
+	item: NotificationModelProps;
+	onClose: () => void;
+};
+const NotificationTemplate = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
 	const { item } = props;
 
 	return (
-		<SnackbarContent ref={ref} className="mx-auto max-w-320 w-full relative pointer-events-auto py-4">
-			<NotificationCard item={item} onClose={props.onClose} />
+		<SnackbarContent
+			ref={ref}
+			className="mx-auto max-w-320 w-full relative pointer-events-auto py-4"
+		>
+			<NotificationCard
+				item={item}
+				onClose={props.onClose}
+			/>
 		</SnackbarContent>
 	);
 });

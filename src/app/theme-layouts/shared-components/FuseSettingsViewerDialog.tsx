@@ -12,10 +12,20 @@ import DialogContent from '@mui/material/DialogContent';
 import qs from 'qs';
 import Typography from '@mui/material/Typography';
 
-function FuseSettingsViewerDialog(props: any) {
-	const { className } = props;
+type Props = {
+	className?: string;
+};
+function FuseSettingsViewerDialog(props: Props) {
+	const { className = '' } = props;
+
 	const [openDialog, setOpenDialog] = useState(false);
 	const settings = useSelector(selectFuseCurrentSettings);
+
+	const jsonStringifiedSettings = JSON.stringify(settings);
+	const queryString = qs.stringify({
+		defaultSettings: jsonStringifiedSettings,
+		strictNullHandling: true
+	});
 
 	function handleOpenDialog() {
 		setOpenDialog(true);
@@ -37,23 +47,32 @@ function FuseSettingsViewerDialog(props: any) {
 				View settings as json/query params
 			</Button>
 
-			<Dialog open={openDialog} onClose={handleCloseDialog} aria-labelledby="form-dialog-title">
+			<Dialog
+				open={openDialog}
+				onClose={handleCloseDialog}
+				aria-labelledby="form-dialog-title"
+			>
 				<DialogTitle className="">Fuse Settings Viewer</DialogTitle>
 				<DialogContent className="">
 					<Typography className="text-16 font-bold mt-24 mb-16">JSON</Typography>
 
-					<FuseHighlight component="pre" className="language-json">
+					<FuseHighlight
+						component="pre"
+						className="language-json"
+					>
 						{JSON.stringify(settings, null, 2)}
 					</FuseHighlight>
 
 					<Typography className="text-16 font-bold mt-24 mb-16">Query Params</Typography>
 
-					{qs.stringify({
-						defaultSettings: JSON.stringify(settings, { strictNullHandling: true })
-					})}
+					{queryString}
 				</DialogContent>
 				<DialogActions>
-					<Button color="secondary" variant="contained" onClick={handleCloseDialog}>
+					<Button
+						color="secondary"
+						variant="contained"
+						onClick={handleCloseDialog}
+					>
 						Close
 					</Button>
 				</DialogActions>

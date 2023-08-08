@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import MobileDetect from 'mobile-detect';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import { createRef, forwardRef, useCallback, useEffect, useRef, ReactNode, ForwardedRef } from 'react';
+import { createRef, forwardRef, useCallback, useEffect, useRef, ReactNode, RefObject, RefCallback } from 'react';
 import { connect } from 'react-redux';
 import history from '@history';
 import { RootState } from 'app/store/index';
@@ -15,7 +15,9 @@ const Root = styled('div')(() => ({
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
 
-const handlerNameByEvent = {
+type EventHandlerMap = { [key: string]: string };
+
+const handlerNameByEvent: EventHandlerMap = {
 	'ps-scroll-y': 'onScrollY',
 	'ps-scroll-x': 'onScrollX',
 	'ps-scroll-up': 'onScrollUp',
@@ -27,43 +29,43 @@ const handlerNameByEvent = {
 	'ps-x-reach-start': 'onXReachStart',
 	'ps-x-reach-end': 'onXReachEnd'
 };
+
 Object.freeze(handlerNameByEvent);
 
-const FuseScrollbars = forwardRef<
-	ForwardedRef<HTMLElement>,
-	{
-		id?: string;
-		className?: string;
-		enable?: boolean;
-		customScrollbars?: boolean;
-		option?: {
-			wheelPropagation: boolean;
-		};
-		scrollToTopOnChildChange?: () => void;
-		scrollToTopOnRouteChange?: () => void;
-		children?: ReactNode;
-	}
->((props, ref) => {
+type Props = {
+	id?: string;
+	className?: string;
+	enable?: boolean;
+	customScrollbars?: boolean;
+	option?: {
+		wheelPropagation?: boolean;
+		suppressScrollX?: boolean;
+	};
+	scrollToTopOnChildChange?: () => void;
+	scrollToTopOnRouteChange?: () => void;
+	children?: ReactNode;
+};
+
+const FuseScrollbars = forwardRef<HTMLDivElement, Props>((props, ref) => {
 	const { customScrollbars, scrollToTopOnChildChange, scrollToTopOnRouteChange, id, enable = true, children } = props;
+	const elRef = useRef<HTMLDivElement | null>(null);
 
-	let elRef;
+	// const elRef: RefObject<HTMLElement> | RefCallback<HTMLElement> = ref || createRef<HTMLElement>();
 
-	if (!ref) {
-		elRef = createRef();
-	} else {
-		elRef = ref;
-	}
-
-	const ps = useRef(null);
-	const handlerByEvent = useRef(new Map());
+	const ps = useRef<PerfectScrollbar>(null); // Replace 'any' with an appropriate type if possible
+	const handlerByEvent = useRef<Map<string, EventListener>>(new Map());
 
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {
-			const callback = props[handlerNameByEvent[key]];
+			const callback = props[handlerNameByEvent[key]] as (T: HTMLDivElement) => void;
+
 			if (callback) {
-				const handler = () => callback(elRef.current);
+				const handler: EventListener = () => callback(elRef.current);
 				handlerByEvent.current.set(key, handler);
-				elRef.current.addEventListener(key, handler, false);
+
+				if ('current' in elRef && elRef.current instanceof HTMLDivElement) {
+					elRef.current.addEventListener(key, handler, false);
+				}
 			}
 		});
 		// eslint-disable-next-line
@@ -71,7 +73,7 @@ const FuseScrollbars = forwardRef<
 
 	const unHookUpEvents = useCallback(() => {
 		handlerByEvent.current.forEach((value, key) => {
-			if (elRef.current) {
+			if ('current' in elRef && elRef.current instanceof HTMLDivElement) {
 				elRef.current.removeEventListener(key, value, false);
 			}
 		});
@@ -160,7 +162,12 @@ const FuseScrollbars = forwardRef<
 
 	// console.info('render::ps');
 	return (
-		<Root id={id} className={props.className} style={style} ref={elRef}>
+		<Root
+			id={id}
+			className={props.className}
+			style={style}
+			ref={elRef}
+		>
 			{children}
 		</Root>
 	);

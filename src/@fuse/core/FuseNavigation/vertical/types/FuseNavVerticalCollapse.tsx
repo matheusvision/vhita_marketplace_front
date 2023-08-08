@@ -15,7 +15,11 @@ import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-const Root = styled(List)<ListProps & { itempadding: number }>(({ theme, ...props }) => ({
+type Props = ListProps & {
+	itempadding: number;
+};
+
+const Root = styled(List)<Props>(({ theme, ...props }) => ({
 	padding: 0,
 	'&.open': {},
 	'& > .fuse-list-item': {
@@ -74,7 +78,11 @@ function FuseNavVerticalCollapse(props: FuseNavComponentProps) {
 
 	return useMemo(
 		() => (
-			<Root className={clsx(open && 'open')} itempadding={itempadding} sx={item.sx}>
+			<Root
+				className={clsx(open && 'open')}
+				itempadding={itempadding}
+				sx={item.sx}
+			>
 				<ListItem
 					component={component}
 					className="fuse-list-item"
@@ -82,7 +90,10 @@ function FuseNavVerticalCollapse(props: FuseNavComponentProps) {
 					{...itemProps}
 				>
 					{item.icon && (
-						<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
+						<FuseSvgIcon
+							className={clsx('fuse-list-item-icon shrink-0', item.iconClass)}
+							color="action"
+						>
 							{item.icon}
 						</FuseSvgIcon>
 					)}
@@ -97,7 +108,12 @@ function FuseNavVerticalCollapse(props: FuseNavComponentProps) {
 						}}
 					/>
 
-					{item.badge && <FuseNavBadge className="mx-4" badge={item.badge} />}
+					{item.badge && (
+						<FuseNavBadge
+							className="mx-4"
+							badge={item.badge}
+						/>
+					)}
 
 					<IconButton
 						disableRipple
@@ -105,14 +121,21 @@ function FuseNavVerticalCollapse(props: FuseNavComponentProps) {
 						onClick={(ev) => ev.preventDefault()}
 						size="large"
 					>
-						<FuseSvgIcon size={16} className="arrow-icon" color="inherit">
+						<FuseSvgIcon
+							size={16}
+							className="arrow-icon"
+							color="inherit"
+						>
 							{open ? 'heroicons-solid:chevron-down' : 'heroicons-solid:chevron-right'}
 						</FuseSvgIcon>
 					</IconButton>
 				</ListItem>
 
 				{item.children && (
-					<Collapse in={open} className="collapse-children">
+					<Collapse
+						in={open}
+						className="collapse-children"
+					>
 						{item.children.map((_item) => (
 							<FuseNavItem
 								key={_item.id}

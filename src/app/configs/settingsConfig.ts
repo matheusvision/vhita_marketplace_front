@@ -1,13 +1,14 @@
 import themesConfig from 'app/configs/themesConfig';
-import { SettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+
 import i18n from '../../i18n';
 
-const settingsConfig: SettingsConfigProps = {
+const settingsConfig: FuseSettingsConfigProps = {
 	layout: {
 		style: 'layout1', // layout1 layout2 layout3
 		config: {} // checkout default layout configs at app/theme-layouts for example  app/theme-layouts/layout1/Layout1Config.js
 	},
-	customScrollbars: true,
+	customScrollbars: false,
 	direction: i18n.dir(i18n.options.lng) || 'ltr', // rtl, ltr
 	theme: {
 		main: themesConfig.default,

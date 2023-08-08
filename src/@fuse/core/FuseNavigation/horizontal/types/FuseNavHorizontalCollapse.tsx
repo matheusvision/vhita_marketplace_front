@@ -11,8 +11,8 @@ import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
 import withRouter from '@fuse/core/withRouter';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
-import { FuseNavComponentProps, FuseNavItemProps } from '@fuse/core/FuseNavigation';
-import { Location, Pathname } from 'history';
+import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { Location } from 'history';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem from '../../FuseNavItem';
@@ -39,7 +39,11 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalCollapse(props: FuseNavComponentProps & { location: Location }) {
+type Props = FuseNavComponentProps & {
+	location: Location;
+};
+
+function FuseNavHorizontalCollapse(props: Props) {
 	const [opened, setOpened] = useState(false);
 	const { item, nestedLevel, dense, location } = props;
 	const theme = useTheme();
@@ -97,14 +101,22 @@ function FuseNavHorizontalCollapse(props: FuseNavComponentProps & { location: Lo
 										classes={{ primary: 'text-13 truncate' }}
 									/>
 
-									{item.badge && <FuseNavBadge className="mx-4" badge={item.badge} />}
+									{item.badge && (
+										<FuseNavBadge
+											className="mx-4"
+											badge={item.badge}
+										/>
+									)}
 									<IconButton
 										disableRipple
 										className="w-16 h-16 ltr:ml-4 rtl:mr-4 p-0"
 										color="inherit"
 										size="large"
 									>
-										<FuseSvgIcon size={16} className="arrow-icon">
+										<FuseSvgIcon
+											size={16}
+											className="arrow-icon"
+										>
 											{theme.direction === 'ltr'
 												? 'heroicons-outline:arrow-sm-right'
 												: 'heroicons-outline:arrow-sm-left'}
@@ -116,7 +128,7 @@ function FuseNavHorizontalCollapse(props: FuseNavComponentProps & { location: Lo
 					</Reference>
 					{ReactDOM.createPortal(
 						<Popper placement={theme.direction === 'ltr' ? 'right' : 'left'}>
-							{({ ref, style, placement, arrowProps }) =>
+							{({ ref, style, placement }) =>
 								opened && (
 									<div
 										ref={ref}
@@ -127,7 +139,11 @@ function FuseNavHorizontalCollapse(props: FuseNavComponentProps & { location: Lo
 										data-placement={placement}
 										className={clsx('z-999', !opened && 'pointer-events-none')}
 									>
-										<Grow in={opened} id="menu-fuse-list-grow" style={{ transformOrigin: '0 0 0' }}>
+										<Grow
+											in={opened}
+											id="menu-fuse-list-grow"
+											style={{ transformOrigin: '0 0 0' }}
+										>
 											<Paper
 												className="rounded-8"
 												onMouseEnter={() => handleToggle(true)}

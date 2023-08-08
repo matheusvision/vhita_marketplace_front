@@ -25,7 +25,7 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function UserNavbarHeader(props: any) {
+function UserNavbarHeader() {
 	const user = useSelector(selectUser);
 
 	return (
@@ -44,7 +44,10 @@ function UserNavbarHeader(props: any) {
 				</Avatar>
 			</div>
 			<Typography className="username text-14 whitespace-nowrap font-medium">{user.data.displayName}</Typography>
-			<Typography className="email text-13 whitespace-nowrap font-medium" color="text.secondary">
+			<Typography
+				className="email text-13 whitespace-nowrap font-medium"
+				color="text.secondary"
+			>
 				{user.data.email}
 			</Typography>
 		</Root>

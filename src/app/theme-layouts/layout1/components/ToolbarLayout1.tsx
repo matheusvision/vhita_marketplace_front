@@ -7,6 +7,7 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from 'app/store/fuse/settingsSlice';
 import { selectFuseNavbar } from 'app/store/fuse/navbarSlice';
+import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
@@ -16,15 +17,13 @@ import NavigationSearch from '../../shared-components/NavigationSearch';
 import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
 import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
-import ChatPanelToggleButton from '../../shared-components/chatPanel/ChatPanelToggleButton';
 
-interface Props {
+type Props = {
 	className?: string;
-}
-
+};
 function ToolbarLayout1(props: Props) {
 	const { className } = props;
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);
 	const toolbarTheme = useSelector(selectToolbarTheme);
 
@@ -72,9 +71,6 @@ function ToolbarLayout1(props: Props) {
 						<AdjustFontSize />
 						<FullScreenToggle />
 						<NavigationSearch />
-						<Hidden lgUp>
-							<ChatPanelToggleButton />
-						</Hidden>
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
 						<UserMenu />

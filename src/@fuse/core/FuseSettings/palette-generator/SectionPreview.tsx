@@ -2,9 +2,12 @@ import clsx from 'clsx';
 import Box from '@mui/material/Box';
 import { darken, lighten } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import { Theme } from '@mui/system';
 
-function SectionPreview(props: { className?: string; section?: 'main' | 'navbar' | 'toolbar' | 'footer' }) {
+type Props = {
+	className?: string;
+	section?: 'main' | 'navbar' | 'toolbar' | 'footer';
+};
+function SectionPreview(props: Props) {
 	const { section, className } = props;
 	return (
 		<div className={clsx('flex w-128 h-80 rounded-md overflow-hidden border-1 hover:opacity-80', className)}>
@@ -41,7 +44,7 @@ function SectionPreview(props: { className?: string; section?: 'main' | 'navbar'
 						backgroundColor:
 							section === 'toolbar'
 								? red['100']
-								: (theme: Theme) =>
+								: (theme) =>
 										theme.palette.mode === 'light'
 											? lighten(theme.palette.background.default, 0.4)
 											: lighten(theme.palette.background.default, 0.02),
@@ -49,7 +52,7 @@ function SectionPreview(props: { className?: string; section?: 'main' | 'navbar'
 							backgroundColor:
 								section === 'toolbar'
 									? red['200']
-									: (theme: Theme) =>
+									: (theme) =>
 											theme.palette.mode === 'light'
 												? darken(theme.palette.background.default, 0.1)
 												: lighten(theme.palette.background.default, 0.1)
@@ -66,7 +69,7 @@ function SectionPreview(props: { className?: string; section?: 'main' | 'navbar'
 						backgroundColor:
 							section === 'main'
 								? red['100']
-								: (theme: Theme) =>
+								: (theme) =>
 										theme.palette.mode === 'light'
 											? lighten(theme.palette.background.default, 0.4)
 											: lighten(theme.palette.background.default, 0.02)
@@ -78,7 +81,7 @@ function SectionPreview(props: { className?: string; section?: 'main' | 'navbar'
 						backgroundColor:
 							section === 'footer'
 								? red['100']
-								: (theme: Theme) =>
+								: (theme) =>
 										theme.palette.mode === 'light'
 											? lighten(theme.palette.background.default, 0.4)
 											: lighten(theme.palette.background.default, 0.02),
@@ -86,7 +89,7 @@ function SectionPreview(props: { className?: string; section?: 'main' | 'navbar'
 							backgroundColor:
 								section === 'footer'
 									? red['200']
-									: (theme: Theme) =>
+									: (theme) =>
 											theme.palette.mode === 'light'
 												? darken(theme.palette.background.default, 0.1)
 												: lighten(theme.palette.background.default, 0.1)

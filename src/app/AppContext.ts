@@ -1,8 +1,12 @@
 import { createContext } from 'react';
-import { routesType } from 'app/configs/routesConfig';
+import { RouteObject } from 'react-router/dist/lib/context';
+// import { FuseRoutesType } from '@fuse/utils/FuseUtils';
 
-const AppContext = createContext<{
-	routes?: routesType;
-}>({});
+export type AppContextType = {
+	routes?: RouteObject[];
+	// routes?: FuseRoutesType;
+};
+
+const AppContext = createContext<AppContextType>({});
 
 export default AppContext;

@@ -2,10 +2,10 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import clsx from 'clsx';
-import { memo, ReactNode, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
-import FuseNavigation, { FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import FuseNavigation, { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import { useLocation } from 'react-router-dom';
@@ -13,13 +13,17 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { selectNavigation } from 'app/store/fuse/navigationSlice';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import { Location } from 'history';
+import { Theme } from '@mui/system';
 
 const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
 	color: theme.palette.text.primary
 }));
-
-const StyledPanel = styled(FuseScrollbars)(({ theme, opened }) => ({
+type StyledNavBarType = {
+	theme?: Theme;
+	opened?: boolean;
+};
+const StyledPanel = styled(FuseScrollbars)<StyledNavBarType>(({ theme, opened }) => ({
 	backgroundColor: theme.palette.background.default,
 	color: theme.palette.text.primary,
 	transition: theme.transitions.create(['opacity'], {
@@ -38,11 +42,13 @@ function needsToBeOpened(location: Location, item: FuseNavItemProps) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
-function NavbarStyle3Content(props: { className?: string; dense?: boolean }) {
+type Props = { className?: string; dense?: number };
+
+function NavbarStyle3Content(props: Props) {
 	const { className = '', dense = false } = props;
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const navigation = useSelector(selectNavigation);
-	const [selectedNavigation, setSelectedNavigation] = useState([]);
+	const [selectedNavigation, setSelectedNavigation] = useState<FuseNavigationType>([]);
 	const [panelOpen, setPanelOpen] = useState(false);
 	const theme = useTheme();
 	const dispatch = useAppDispatch();
@@ -57,7 +63,7 @@ function NavbarStyle3Content(props: { className?: string; dense?: boolean }) {
 		});
 	}, [navigation, location]);
 
-	function handleParentItemClick(selected: ReactNode) {
+	function handleParentItemClick(selected: FuseNavItemProps) {
 		/** if there is no child item do not set/open panel
 		 */
 		if (!selected.children) {
@@ -91,8 +97,15 @@ function NavbarStyle3Content(props: { className?: string; dense?: boolean }) {
 		<ClickAwayListener onClickAway={() => setPanelOpen(false)}>
 			<Root className={clsx('flex flex-auto flex h-full', className)}>
 				<ThemeProvider theme={contrastTheme}>
-					<div id="fuse-navbar-side-panel" className="flex shrink-0 flex-col items-center">
-						<img className="w-44 my-32" src="assets/images/logo/logo.svg" alt="logo" />
+					<div
+						id="fuse-navbar-side-panel"
+						className="flex shrink-0 flex-col items-center"
+					>
+						<img
+							className="w-44 my-32"
+							src="assets/images/logo/logo.svg"
+							alt="logo"
+						/>
 
 						<FuseScrollbars
 							className="flex flex-1 min-h-0 justify-center w-full overflow-y-auto overflow-x-hidden"
@@ -105,7 +118,7 @@ function NavbarStyle3Content(props: { className?: string; dense?: boolean }) {
 								onItemClick={handleParentItemClick}
 								firstLevel
 								selectedId={selectedNavigation[0]?.id}
-								dense={dense}
+								dense={Boolean(dense)}
 							/>
 						</FuseScrollbars>
 					</div>

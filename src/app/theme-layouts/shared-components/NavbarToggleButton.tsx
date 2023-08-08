@@ -6,19 +6,38 @@ import _ from '@lodash';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { navbarToggle, navbarToggleMobile } from 'app/store/fuse/navbarSlice';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { ThemeOptions } from '@mui/material/styles/createTheme';
+import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 
-function NavbarToggleButton(props: any) {
+type Props = {
+	className?: string;
+	children?: React.ReactNode;
+};
+
+function NavbarToggleButton(props: Props) {
+	const {
+		className = '',
+		children = (
+			<FuseSvgIcon
+				size={20}
+				color="action"
+			>
+				heroicons-outline:view-list
+			</FuseSvgIcon>
+		)
+	} = props;
+
 	const dispatch = useAppDispatch();
-	const isMobile = useThemeMediaQuery((theme: any) => theme.breakpoints.down('lg'));
-	const settings = useSelector(selectFuseCurrentSettings);
+	const isMobile = useThemeMediaQuery((theme: ThemeOptions) => theme.breakpoints.down('lg'));
+	const settings: FuseSettingsConfigProps = useSelector(selectFuseCurrentSettings);
 	const { config } = settings.layout;
 
 	return (
 		<IconButton
-			className={props.className}
+			className={className}
 			color="inherit"
 			size="small"
-			onClick={(ev) => {
+			onClick={() => {
 				if (isMobile) {
 					dispatch(navbarToggleMobile());
 				} else if (config.navbar.style === 'style-2') {
@@ -32,17 +51,9 @@ function NavbarToggleButton(props: any) {
 				}
 			}}
 		>
-			{props.children}
+			{children}
 		</IconButton>
 	);
 }
-
-NavbarToggleButton.defaultProps = {
-	children: (
-		<FuseSvgIcon size={20} color="action">
-			heroicons-outline:view-list
-		</FuseSvgIcon>
-	)
-};
 
 export default NavbarToggleButton;

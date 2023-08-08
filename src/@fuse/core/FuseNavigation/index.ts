@@ -7,10 +7,13 @@ export interface FuseNavBadgeProps {
 	fg: string;
 	title: string;
 }
+export type FuseNavigationType = FuseNavItemProps[];
 
-export interface FuseNavItemProps {
+export type FuseNavItemProps = {
 	id: string;
 	title?: string;
+	translate?: string;
+	auth?: string[] | string;
 	subtitle?: string;
 	icon?: string;
 	iconClass?: string;
@@ -23,20 +26,18 @@ export interface FuseNavItemProps {
 	exact?: boolean;
 	end?: boolean;
 	badge?: FuseNavBadgeProps;
-	children?: FuseNavItemProps[];
-}
+	children?: FuseNavigationType;
+};
 
 export interface FuseNavigationProps {
-	navigation: FuseNavItemProps[];
-	layout?: 'horizontal' | 'vertical' | 'vertical-2';
-}
-export interface FuseNavLayoutProps extends FuseNavigationProps {
-	firstLevel?: boolean;
-	active?: boolean;
-	dense?: boolean;
 	className?: string;
+	dense?: boolean;
+	active?: boolean;
+	onItemClick?: (T: FuseNavItemProps) => void;
+	navigation: FuseNavigationType;
+	layout?: 'horizontal' | 'vertical' | 'vertical-2';
+	firstLevel?: boolean;
 	selectedId?: string;
-	onItemClick?: (FuseNavItemProps) => void;
 }
 
 export interface FuseNavComponentProps {
@@ -44,7 +45,7 @@ export interface FuseNavComponentProps {
 	item: FuseNavItemProps;
 	dense?: boolean;
 	nestedLevel?: number;
-	onItemClick?: (FuseNavItemProps) => void;
+	onItemClick?: (T: FuseNavItemProps) => void;
 }
 
-export interface FuseNavVerticalTabProps extends Omit<FuseNavLayoutProps, 'navigation'>, FuseNavComponentProps {}
+export interface FuseNavVerticalTabProps extends Omit<FuseNavigationProps, 'navigation'>, FuseNavComponentProps {}

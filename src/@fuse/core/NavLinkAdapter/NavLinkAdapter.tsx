@@ -1,10 +1,10 @@
 import { CSSProperties, forwardRef } from 'react';
 import { NavLink as BaseNavLink, NavLinkProps as BaseNavLinkProps } from 'react-router-dom';
 
-interface NavLinkProps extends BaseNavLinkProps {
+type NavLinkProps = BaseNavLinkProps & {
 	activeClassName?: string;
 	activeStyle?: CSSProperties;
-}
+};
 
 const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkProps>(
 	({ activeClassName = 'active', activeStyle, ...props }: NavLinkProps, ref) => (

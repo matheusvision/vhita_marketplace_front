@@ -11,7 +11,7 @@ import FusePageSimpleSidebar from './FusePageSimpleSidebar';
 const headerHeight = 120;
 const toolbarHeight = 64;
 
-interface Props {
+type Props = SystemStyleObject<Theme> & {
 	className?: string;
 	leftSidebarContent?: ReactNode;
 	leftSidebarVariant?: 'permanent' | 'persistent' | 'temporary';
@@ -26,9 +26,9 @@ interface Props {
 	rightSidebarWidth?: number;
 	rightSidebarOnClose?: () => void;
 	leftSidebarOnClose?: () => void;
-}
+};
 
-const Root = styled('div')<SystemStyleObject<Theme> & Props>(({ theme, ...props }) => ({
+const Root = styled('div')<Props>(({ theme, ...props }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	minWidth: 0,
@@ -189,7 +189,10 @@ const Root = styled('div')<SystemStyleObject<Theme> & Props>(({ theme, ...props 
 	}
 }));
 
-const FusePageSimple = forwardRef((props: Props, ref) => {
+const FusePageSimple = forwardRef<
+	{ toggleLeftSidebar: (T: boolean) => void; toggleRightSidebar: (T: boolean) => void },
+	Props
+>((props, ref) => {
 	const {
 		scroll = 'page',
 		className,
@@ -208,8 +211,8 @@ const FusePageSimple = forwardRef((props: Props, ref) => {
 	} = props;
 
 	// console.info("render::FusePageSimple");
-	const leftSidebarRef = useRef(null);
-	const rightSidebarRef = useRef(null);
+	const leftSidebarRef = useRef<{ toggleSidebar: (T: boolean) => void }>(null);
+	const rightSidebarRef = useRef<{ toggleSidebar: (T: boolean) => void }>(null);
 	const rootRef = useRef(null);
 
 	useImperativeHandle(ref, () => ({

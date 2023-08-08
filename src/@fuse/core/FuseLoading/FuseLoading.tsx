@@ -4,7 +4,11 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import Box from '@mui/material/Box';
 
-function FuseLoading(props: { delay?: boolean | number }) {
+export type FuseLoadingProps = {
+	delay?: number;
+};
+
+function FuseLoading(props: FuseLoadingProps) {
 	const { delay } = props;
 	const [showLoading, setShowLoading] = useState(!delay);
 
@@ -14,7 +18,10 @@ function FuseLoading(props: { delay?: boolean | number }) {
 
 	return (
 		<div className={clsx('flex flex-1 flex-col items-center justify-center p-24', !showLoading && 'hidden')}>
-			<Typography className="text-13 sm:text-20 font-medium -mb-16" color="text.secondary">
+			<Typography
+				className="text-13 sm:text-20 font-medium -mb-16"
+				color="text.secondary"
+			>
 				Loading
 			</Typography>
 			<Box

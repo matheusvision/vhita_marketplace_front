@@ -1,4 +1,4 @@
-const config = {
+const Layout1Config = {
 	title: 'Layout 1 - Vertical',
 	defaults: {
 		mode: 'container',
@@ -7,7 +7,8 @@ const config = {
 			display: true,
 			style: 'style-1',
 			folded: true,
-			position: 'left'
+			position: 'left',
+			open: true
 		},
 		toolbar: {
 			display: true,
@@ -149,4 +150,6 @@ const config = {
 	}
 };
 
-export default config;
+export type Layout1ConfigDefaultsType = Partial<(typeof Layout1Config)['defaults']>;
+
+export default Layout1Config;

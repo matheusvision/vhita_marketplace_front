@@ -1,13 +1,13 @@
-import { FuseSettingsProps } from '@fuse/core/FuseSettings';
+import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 
-export interface UserProps {
+export type UserProps = {
 	role?: string[];
 	data?: {
 		displayName?: string;
 		photoURL?: string;
 		email?: string;
 		shortcuts?: string[];
-		settings?: Partial<FuseSettingsProps>;
+		settings?: Partial<FuseSettingsConfigProps>;
 	};
 	loginRedirectUrl?: string;
-}
+};

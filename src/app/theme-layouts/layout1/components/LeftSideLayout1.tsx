@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 function LeftSideLayout1() {
-	return <></>;
+	return <div />;
 }
 
 export default memo(LeftSideLayout1);

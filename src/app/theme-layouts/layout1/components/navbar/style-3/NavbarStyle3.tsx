@@ -6,13 +6,26 @@ import { useSelector } from 'react-redux';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
+import { Theme } from '@mui/system/createTheme';
+import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
+import clsx from 'clsx';
 import NavbarStyle3Content from './NavbarStyle3Content';
 
 const navbarWidth = 120;
 const navbarWidthDense = 64;
 const panelWidth = 280;
 
-const StyledNavBar = styled('div')(({ theme, dense, open, folded, position }) => ({
+type StyledNavBarProps = {
+	theme?: Theme;
+	open?: boolean;
+	folded?: number;
+	dense?: number;
+	position?: string;
+	className?: string;
+	anchor?: string;
+};
+
+const StyledNavBar = styled('div')<StyledNavBarProps>(({ theme, dense, open, folded, position }) => ({
 	minWidth: navbarWidth,
 	width: navbarWidth,
 	maxWidth: navbarWidth,
@@ -76,7 +89,7 @@ const StyledNavBar = styled('div')(({ theme, dense, open, folded, position }) =>
 	})
 }));
 
-const StyledNavBarMobile = styled(SwipeableDrawer)(({ theme }) => ({
+const StyledNavBarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(() => ({
 	'& .MuiDrawer-paper': {
 		'& #fuse-navbar-side-panel': {
 			minWidth: 'auto',
@@ -89,9 +102,16 @@ const StyledNavBarMobile = styled(SwipeableDrawer)(({ theme }) => ({
 	}
 }));
 
-function NavbarStyle3(props: any) {
+type Props = {
+	className?: string;
+	dense?: boolean;
+};
+
+function NavbarStyle3(props: Props) {
+	const { className = '', dense = false } = props;
+
 	const dispatch = useAppDispatch();
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);
 	const { folded } = config.navbar;
 
@@ -100,9 +120,9 @@ function NavbarStyle3(props: any) {
 			<GlobalStyles
 				styles={(theme) => ({
 					'& #fuse-navbar-side-panel': {
-						width: props.dense ? navbarWidthDense : navbarWidth,
-						minWidth: props.dense ? navbarWidthDense : navbarWidth,
-						maxWidth: props.dense ? navbarWidthDense : navbarWidth
+						width: dense ? navbarWidthDense : navbarWidth,
+						minWidth: dense ? navbarWidthDense : navbarWidth,
+						maxWidth: dense ? navbarWidthDense : navbarWidth
 					},
 					'& #fuse-navbar-panel': {
 						maxWidth: '100%',
@@ -117,20 +137,23 @@ function NavbarStyle3(props: any) {
 			<Hidden lgDown>
 				<StyledNavBar
 					open={navbar.open}
-					dense={props.dense ? 1 : 0}
+					dense={dense ? 1 : 0}
 					folded={folded ? 1 : 0}
 					position={config.navbar.position}
-					className="flex-col flex-auto sticky top-0 h-screen shrink-0 z-20 shadow-5"
+					className={clsx('flex-col flex-auto sticky top-0 h-screen shrink-0 z-20 shadow-5', className)}
 				>
-					<NavbarStyle3Content dense={props.dense ? 1 : 0} folded={folded ? 1 : 0} />
+					<NavbarStyle3Content
+						dense={dense ? 1 : 0}
+						folded={folded ? 1 : 0}
+					/>
 				</StyledNavBar>
 			</Hidden>
 			<Hidden lgUp>
 				<StyledNavBarMobile
 					classes={{
-						paper: 'flex-col flex-auto h-screen max-w-full w-auto overflow-hidden'
+						paper: clsx('flex-col flex-auto h-screen max-w-full w-auto overflow-hidden', className)
 					}}
-					anchor={config.navbar.position}
+					anchor={config.navbar.position as 'left' | 'right'}
 					variant="temporary"
 					open={navbar.mobileOpen}
 					onClose={() => dispatch(navbarCloseMobile())}
@@ -140,7 +163,10 @@ function NavbarStyle3(props: any) {
 						keepMounted: true // Better open performance on mobile.
 					}}
 				>
-					<NavbarStyle3Content dense={props.dense ? 1 : 0} folded={folded ? 1 : 0} />
+					<NavbarStyle3Content
+						dense={dense ? 1 : 0}
+						folded={folded ? 1 : 0}
+					/>
 				</StyledNavBarMobile>
 			</Hidden>
 		</>

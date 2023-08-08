@@ -9,14 +9,16 @@ import Box from '@mui/material/Box';
 import DemoFrame from './DemoFrame';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-function FuseExample(props: {
+type Props = {
 	name?: string;
 	raw?: { default: string };
 	currentTabIndex?: number;
 	component: ElementType;
 	iframe: ReactNode;
 	className: string;
-}) {
+};
+
+function FuseExample(props: Props) {
 	const { component: Component, raw, iframe, className, name = '', currentTabIndex = 0 } = props;
 
 	const [currentTab, setCurrentTab] = useState(currentTabIndex);
@@ -50,10 +52,16 @@ function FuseExample(props: {
 					indicatorColor="secondary"
 				>
 					{Component && (
-						<Tab classes={{ root: 'min-w-64' }} icon={<FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon>} />
+						<Tab
+							classes={{ root: 'min-w-64' }}
+							icon={<FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon>}
+						/>
 					)}
 					{raw && (
-						<Tab classes={{ root: 'min-w-64' }} icon={<FuseSvgIcon>heroicons-outline:code</FuseSvgIcon>} />
+						<Tab
+							classes={{ root: 'min-w-64' }}
+							icon={<FuseSvgIcon>heroicons-outline:code</FuseSvgIcon>}
+						/>
 					)}
 				</Tabs>
 			</Box>

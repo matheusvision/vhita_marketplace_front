@@ -1,6 +1,7 @@
+import { FuseRouteConfigType } from '@fuse/utils/FuseUtils';
 import SignOutPage from './SignOutPage';
 
-const SignOutConfig = {
+const SignOutConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {
 			config: {

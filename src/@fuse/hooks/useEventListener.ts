@@ -1,42 +1,30 @@
 import { useEffect, useRef } from 'react';
 
-/**
- * https://usehooks.com/useEventListener/
- */
-function useEventListener(eventName: string, handler: () => void, element = window) {
+function useEventListener<T extends Event>(
+	eventName: string,
+	handler: (event: T) => void,
+	element: HTMLElement | Window = window
+) {
 	// Create a ref that stores handler
-	const savedHandler = useRef();
+	const savedHandler = useRef<(event: T) => void | null>(null);
 
 	// Update ref.current value if handler changes.
-	// This allows our effect below to always get latest handler ...
-	// ... without us needing to pass it in effect deps array ...
-	// ... and potentially cause effect to re-run every render.
 	useEffect(() => {
 		savedHandler.current = handler;
 	}, [handler]);
 
-	useEffect(
-		() => {
-			// Make sure element supports addEventListener
-			// On
-			const isSupported = element && element.addEventListener;
-			if (!isSupported) {
-				return false;
-			}
+	useEffect(() => {
+		// Create event listener that calls handler function stored in ref
+		const eventListener = (event: T) => savedHandler.current?.(event);
 
-			// Create event listener that calls handler function stored in ref
-			const eventListener = (event) => savedHandler.current(event);
+		// Add event listener
+		element.addEventListener(eventName, eventListener);
 
-			// Add event listener
-			element.addEventListener(eventName, eventListener);
-
-			// Remove event listener on cleanup
-			return () => {
-				element.removeEventListener(eventName, eventListener);
-			};
-		},
-		[eventName, element] // Re-run if eventName or element changes
-	);
+		// Clean up event listener on component unmount
+		return () => {
+			element.removeEventListener(eventName, eventListener);
+		};
+	}, [eventName, element]);
 }
 
 export default useEventListener;

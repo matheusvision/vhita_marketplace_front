@@ -1,51 +1,44 @@
-// eslint-disable-next-line max-classes-per-file
 import _ from '@lodash';
 import * as colors from '@mui/material/colors';
+import { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { PathRouteProps, RouteProps } from 'react-router/dist/lib/components';
+import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { RouteObject } from 'react-router-dom';
+import EventEmitter from './EventEmitter';
 
-class EventEmitter {
-	events;
+export type FuseRouteItemType = RouteObject & {
+	auth?: string[] | [];
+	settings?: unknown;
+};
 
-	constructor() {
-		this.events = {};
-	}
+export type FuseRoutesType = FuseRouteItemType[];
 
-	_getEventListByName(eventName: string) {
-		if (typeof this.events[eventName] === 'undefined') {
-			this.events[eventName] = new Set();
-		}
-		return this.events[eventName];
-	}
+export type FuseRouteConfigType = Partial<{
+	routes?: FuseRoutesType;
+	settings?: unknown;
+	auth?: string[] | [];
+}>;
 
-	on(eventName, fn) {
-		this._getEventListByName(eventName).add(fn);
-	}
+export type FuseRouteConfigsType = FuseRouteConfigType[] | [];
 
-	once(eventName: string, fn: () => void) {
-		const self = this;
-
-		const onceFn = (...args) => {
-			self.removeListener(eventName, onceFn);
-			fn.apply(self, args);
-		};
-		this.on(eventName, onceFn);
-	}
-
-	emit(eventName: string, ...args) {
-		this._getEventListByName(eventName).forEach(
-			// eslint-disable-next-line func-names
-			(fn) => {
-				fn.apply(this, args);
-			}
-		);
-	}
-
-	removeListener(eventName, fn) {
-		this._getEventListByName(eventName).delete(fn);
-	}
-}
+type hueTypes =
+	| '50'
+	| '100'
+	| '200'
+	| '300'
+	| '400'
+	| '500'
+	| '600'
+	| '700'
+	| '800'
+	| '900'
+	| 'A100'
+	| 'A200'
+	| 'A400'
+	| 'A700';
 
 class FuseUtils {
-	static filterArrayByString(mainArr, searchText) {
+	static filterArrayByString(mainArr: unknown[], searchText: string) {
 		if (searchText === '') {
 			return mainArr;
 		}
@@ -55,7 +48,7 @@ class FuseUtils {
 		return mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
 	}
 
-	static searchInObj(itemObj, searchText) {
+	static searchInObj(itemObj: unknown, searchText: string) {
 		if (!itemObj) {
 			return false;
 		}
@@ -64,7 +57,7 @@ class FuseUtils {
 
 		for (let i = 0; i < propArray.length; i += 1) {
 			const prop = propArray[i];
-			const value = itemObj[prop];
+			const value: unknown = itemObj[prop];
 
 			if (typeof value === 'string') {
 				if (this.searchInString(value, searchText)) {
@@ -85,7 +78,7 @@ class FuseUtils {
 		return false;
 	}
 
-	static searchInArray(arr, searchText) {
+	static searchInArray(arr: unknown[], searchText: string) {
 		arr.forEach((value) => {
 			if (typeof value === 'string') {
 				if (this.searchInString(value, searchText)) {
@@ -103,7 +96,7 @@ class FuseUtils {
 		return false;
 	}
 
-	static searchInString(value, searchText) {
+	static searchInString(value: string, searchText: string) {
 		return value.toLowerCase().includes(searchText);
 	}
 
@@ -117,7 +110,7 @@ class FuseUtils {
 		return S4() + S4();
 	}
 
-	static toggleInArray(item, array) {
+	static toggleInArray(item: unknown, array: unknown[]) {
 		if (array.indexOf(item) === -1) {
 			array.push(item);
 		} else {
@@ -136,12 +129,14 @@ class FuseUtils {
 			.replace(/-+$/, ''); // Trim - from end of text
 	}
 
-	static setRoutes(config, defaultAuth) {
+	static setRoutes(config?: FuseRouteConfigType, defaultAuth: FuseSettingsConfigProps['defaultAuth'] = null) {
 		let routes = [...config.routes];
 
 		routes = routes.map((route) => {
 			let auth = config.auth || config.auth === null ? config.auth : defaultAuth || null;
+
 			auth = route.auth || route.auth === null ? route.auth : auth;
+
 			const settings = _.merge({}, config.settings, route.settings);
 
 			return {
@@ -154,18 +149,21 @@ class FuseUtils {
 		return [...routes];
 	}
 
-	static generateRoutesFromConfigs(configs, defaultAuth) {
-		let allRoutes = [];
-		configs.forEach((config) => {
+	static generateRoutesFromConfigs(
+		configs: FuseRouteConfigsType,
+		defaultAuth: FuseSettingsConfigProps['defaultAuth']
+	) {
+		let allRoutes: FuseRouteConfigsType = [];
+		configs.forEach((config: FuseRouteConfigType) => {
 			allRoutes = [...allRoutes, ...this.setRoutes(config, defaultAuth)];
 		});
 		return allRoutes;
 	}
 
-	static findById(obj, id) {
-		let i;
-		let childObj;
-		let result;
+	static findById(obj: { id?: string }, id: string) {
+		let i: number;
+		let childObj: unknown;
+		let result: unknown;
 
 		if (id === obj.id) {
 			return obj;
@@ -184,7 +182,7 @@ class FuseUtils {
 		return false;
 	}
 
-	static getFlatNavigation(navigationItems = [], flatNavigation = []) {
+	static getFlatNavigation(navigationItems: FuseNavigationType = [], flatNavigation = []) {
 		for (let i = 0; i < navigationItems.length; i += 1) {
 			const navItem = navigationItems[i];
 
@@ -205,11 +203,10 @@ class FuseUtils {
 				}
 			}
 		}
-		return flatNavigation;
+		return flatNavigation as FuseNavigationType | [];
 	}
 
-	static randomMatColor(hue) {
-		hue = hue || '400';
+	static randomMatColor(hue: hueTypes = '400') {
 		const mainColors = [
 			'red',
 			'pink',
@@ -229,11 +226,14 @@ class FuseUtils {
 			'deepOrange'
 		];
 		const randomColor = mainColors[Math.floor(Math.random() * mainColors.length)];
+		// eslint-disable-next-line
 		return colors[randomColor][hue];
 	}
 
-	static difference(object, base) {
-		function changes(_object, _base) {
+	static difference(object: unknown, base: unknown) {
+		function changes(_object: unknown, _base: unknown) {
+			// eslint-disable-next-line
+			// @ts-ignore
 			return _.transform(_object, (result, value, key) => {
 				if (!_.isEqual(value, _base[key])) {
 					result[key] = _.isObject(value) && _.isObject(_base[key]) ? changes(value, _base[key]) : value;
@@ -246,7 +246,7 @@ class FuseUtils {
 
 	static EventEmitter = EventEmitter;
 
-	static updateNavItem(nav, id, item) {
+	static updateNavItem(nav: FuseNavigationType, id: string, item: FuseNavItemProps): FuseNavigationType {
 		return nav.map((_item) => {
 			if (_item.id === id) {
 				return _.merge({}, _item, item);
@@ -262,7 +262,7 @@ class FuseUtils {
 		});
 	}
 
-	static removeNavItem(nav, id) {
+	static removeNavItem(nav: FuseNavigationType, id: string): FuseNavigationType {
 		return nav
 			.map((_item) => {
 				if (_item.id === id) {
@@ -280,7 +280,7 @@ class FuseUtils {
 			.filter((s) => s);
 	}
 
-	static prependNavItem(nav, item, parentId) {
+	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemProps, parentId: string): FuseNavigationType {
 		if (!parentId) {
 			return [item, ...nav];
 		}
@@ -303,7 +303,7 @@ class FuseUtils {
 		});
 	}
 
-	static appendNavItem(nav, item, parentId) {
+	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemProps, parentId: string): FuseNavigationType {
 		if (!parentId) {
 			return [...nav, item];
 		}
@@ -326,7 +326,7 @@ class FuseUtils {
 		});
 	}
 
-	static hasPermission(authArr, userRole) {
+	static hasPermission(authArr: string[], userRole: string | string[]): boolean {
 		/**
 		 * If auth array is not defined
 		 * Pass and allow
@@ -335,6 +335,7 @@ class FuseUtils {
 			// console.info("auth is null || undefined:", authArr);
 			return true;
 		}
+
 		if (authArr.length === 0) {
 			/**
 			 * if auth array is empty means,
@@ -357,15 +358,15 @@ class FuseUtils {
 		/*
             Check if user role is string,
             */
-		return authArr.includes(userRole);
+		return authArr.includes(userRole as string);
 	}
 
-	static filterRecursive(data, predicate) {
+	static filterRecursive(data: [] | null, predicate: (arg0: unknown) => boolean) {
 		// if no data is sent in, return null, otherwise transform the data
 		return !data
 			? null
-			: data.reduce((list, entry) => {
-					let clone = null;
+			: data.reduce((list: unknown[], entry: { children?: [] }) => {
+					let clone: unknown = null;
 					if (predicate(entry)) {
 						// if the object matches the filter, clone it as it is
 						clone = { ...entry };

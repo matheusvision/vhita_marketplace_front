@@ -9,17 +9,24 @@ const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
 	color: theme.palette.text.primary
 }));
+type Props = {
+	className?: string;
+};
+function NavbarLayout2(props: Props) {
+	const { className = '' } = props;
 
-function NavbarLayout2(props: any) {
 	return (
-		<Root className={clsx('w-full h-64 min-h-64 max-h-64 shadow-md', props.className)}>
+		<Root className={clsx('w-full h-64 min-h-64 max-h-64 shadow-md', className)}>
 			<div className="flex flex-auto justify-between items-center w-full h-full container p-0 lg:px-24 z-20">
 				<div className="flex shrink-0 items-center px-8">
 					<Logo />
 				</div>
 
 				<FuseScrollbars className="flex h-full items-center">
-					<Navigation className="w-full" layout="horizontal" />
+					<Navigation
+						className="w-full"
+						layout="horizontal"
+					/>
 				</FuseScrollbars>
 			</div>
 		</Root>

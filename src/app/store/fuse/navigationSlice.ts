@@ -1,62 +1,76 @@
-import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import navigationConfig from 'app/configs/navigationConfig';
 import FuseUtils from '@fuse/utils';
 import i18next from 'i18next';
 import _ from '@lodash';
+import { AppThunk, RootState } from 'app/store/index';
+import { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { selectCurrentLanguageId } from 'app/store/i18nSlice';
 
-const navigationAdapter = createEntityAdapter();
+const navigationAdapter = createEntityAdapter<FuseNavItemProps>();
+
 const emptyInitialState = navigationAdapter.getInitialState();
+
 const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationConfig);
 
-export const appendNavigationItem = (item: any, parentId: any) => (dispatch: any, getState: any) => {
-	const navigation = selectNavigationAll(getState());
+export const appendNavigationItem =
+	(item: FuseNavItemProps, parentId: string): AppThunk =>
+	(dispatch, getState) => {
+		const navigation = selectNavigationAll(getState());
 
-	return dispatch(setNavigation(FuseUtils.appendNavItem(navigation, item, parentId)));
-};
+		return dispatch(setNavigation(FuseUtils.appendNavItem(navigation, item, parentId)));
+	};
 
-export const prependNavigationItem = (item: any, parentId: any) => (dispatch: any, getState: any) => {
-	const navigation = selectNavigationAll(getState());
+export const prependNavigationItem =
+	(item: FuseNavItemProps, parentId: string): AppThunk =>
+	(dispatch, getState) => {
+		const navigation = selectNavigationAll(getState());
 
-	return dispatch(setNavigation(FuseUtils.prependNavItem(navigation, item, parentId)));
-};
+		return dispatch(setNavigation(FuseUtils.prependNavItem(navigation, item, parentId)));
+	};
 
-export const updateNavigationItem = (id: any, item: any) => (dispatch: any, getState: any) => {
-	const navigation = selectNavigationAll(getState());
+export const updateNavigationItem =
+	(id: string, item: FuseNavItemProps): AppThunk =>
+	(dispatch, getState) => {
+		const navigation = selectNavigationAll(getState());
 
-	return dispatch(setNavigation(FuseUtils.updateNavItem(navigation, id, item)));
-};
+		return dispatch(setNavigation(FuseUtils.updateNavItem(navigation, id, item)));
+	};
 
-export const removeNavigationItem = (id: any) => (dispatch: any, getState: any) => {
-	const navigation = selectNavigationAll(getState());
+export const removeNavigationItem =
+	(id: string): AppThunk =>
+	(dispatch, getState) => {
+		const navigation = selectNavigationAll(getState());
 
-	return dispatch(setNavigation(FuseUtils.removeNavItem(navigation, id)));
-};
+		return dispatch(setNavigation(FuseUtils.removeNavItem(navigation, id)));
+	};
 
 export const {
 	selectAll: selectNavigationAll,
 	selectIds: selectNavigationIds,
 	selectById: selectNavigationItemById
-} = navigationAdapter.getSelectors((state) => state.fuse.navigation);
+} = navigationAdapter.getSelectors((state: RootState) => state.fuse.navigation);
 
 const navigationSlice = createSlice({
 	name: 'navigation',
 	initialState,
 	reducers: {
-		setNavigation: navigationAdapter.setAll,
-		resetNavigation: (state, action) => initialState
+		setNavigation: (state, action: PayloadAction<FuseNavigationType>) =>
+			navigationAdapter.setAll(state, action.payload),
+		resetNavigation: () => initialState
 	}
 });
 
 export const { setNavigation, resetNavigation } = navigationSlice.actions;
 
-const getUserRole = (state: any) => state.user.role;
+const getUserRole = (state: RootState) => state.user.role;
 
 export const selectNavigation = createSelector(
-	[selectNavigationAll, ({ i18n }) => i18n.language, getUserRole],
+	[selectNavigationAll, selectCurrentLanguageId, getUserRole],
 	(navigation, language, userRole) => {
-		function setTranslationValues(data: any) {
+		function setTranslationValues(data: FuseNavigationType) {
 			// loop through every object in the array
-			return data.map((item: any) => {
+			return data.map((item) => {
 				if (item.translate && item.title) {
 					item.title = i18next.t(`navigation:${item.translate}`);
 				}
@@ -73,14 +87,14 @@ export const selectNavigation = createSelector(
 		return setTranslationValues(
 			_.merge(
 				[],
-				filterRecursively(navigation, (item: any) => FuseUtils.hasPermission(item.auth, userRole))
+				filterRecursively(navigation, (item) => FuseUtils.hasPermission(item.auth, userRole))
 			)
 		);
 	}
 );
 
-function filterRecursively(arr: any, predicate: any) {
-	return arr.filter(predicate).map((item: any) => {
+function filterRecursively(arr: FuseNavigationType, predicate: (item: FuseNavItemProps) => boolean) {
+	return arr.filter(predicate).map((item) => {
 		item = { ...item };
 		if (item.children) {
 			item.children = filterRecursively(item.children, predicate);

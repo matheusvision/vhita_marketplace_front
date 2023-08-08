@@ -7,16 +7,16 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changeLanguage, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
+import { changeLanguage, LanguageType, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
 import { useAppDispatch } from 'app/store/index';
 
-function LanguageSwitcher(props: any) {
+function LanguageSwitcher() {
 	const currentLanguage = useSelector(selectCurrentLanguage);
 	const languages = useSelector(selectLanguages);
-	const [menu, setMenu] = useState(null);
+	const [menu, setMenu] = useState<null | HTMLElement>(null);
 	const dispatch = useAppDispatch();
 
-	const langMenuClick = (event: any) => {
+	const langMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		setMenu(event.currentTarget);
 	};
 
@@ -24,7 +24,7 @@ function LanguageSwitcher(props: any) {
 		setMenu(null);
 	};
 
-	function handleLanguageChange(lng: any) {
+	function handleLanguageChange(lng: LanguageType) {
 		dispatch(changeLanguage(lng.id));
 
 		langMenuClose();
@@ -32,14 +32,20 @@ function LanguageSwitcher(props: any) {
 
 	return (
 		<>
-			<Button className="h-40 w-64" onClick={langMenuClick}>
+			<Button
+				className="h-40 w-64"
+				onClick={langMenuClick}
+			>
 				<img
 					className="mx-4 min-w-20"
 					src={`assets/images/flags/${currentLanguage.flag}.svg`}
 					alt={currentLanguage.title}
 				/>
 
-				<Typography className="mx-4 font-semibold uppercase" color="text.secondary">
+				<Typography
+					className="mx-4 font-semibold uppercase"
+					color="text.secondary"
+				>
 					{currentLanguage.id}
 				</Typography>
 			</Button>
@@ -61,9 +67,16 @@ function LanguageSwitcher(props: any) {
 				}}
 			>
 				{languages.map((lng) => (
-					<MenuItem key={lng.id} onClick={() => handleLanguageChange(lng)}>
+					<MenuItem
+						key={lng.id}
+						onClick={() => handleLanguageChange(lng)}
+					>
 						<ListItemIcon className="min-w-40">
-							<img className="min-w-20" src={`assets/images/flags/${lng.flag}.svg`} alt={lng.title} />
+							<img
+								className="min-w-20"
+								src={`assets/images/flags/${lng.flag}.svg`}
+								alt={lng.title}
+							/>
 						</ListItemIcon>
 						<ListItemText primary={lng.title} />
 					</MenuItem>

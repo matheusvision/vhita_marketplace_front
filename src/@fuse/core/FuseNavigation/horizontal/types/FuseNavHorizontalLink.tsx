@@ -5,6 +5,7 @@ import { memo, useMemo } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
 import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
@@ -29,8 +30,11 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-function FuseNavHorizontalLink(props: FuseNavComponentProps) {
+type Props = FuseNavComponentProps & WithRouterProps;
+
+function FuseNavHorizontalLink(props: Props) {
 	const { item } = props;
+
 	let itemProps;
 
 	const component = item.url ? Link : 'li';
@@ -46,9 +50,17 @@ function FuseNavHorizontalLink(props: FuseNavComponentProps) {
 
 	return useMemo(
 		() => (
-			<Root component={component} className={clsx('fuse-list-item')} sx={item.sx} {...itemProps}>
+			<Root
+				component={component}
+				className={clsx('fuse-list-item')}
+				sx={item.sx}
+				{...itemProps}
+			>
 				{item.icon && (
-					<FuseSvgIcon className={clsx('fuse-list-item-icon shrink-0', item.iconClass)} color="action">
+					<FuseSvgIcon
+						className={clsx('fuse-list-item-icon shrink-0', item.iconClass)}
+						color="action"
+					>
 						{item.icon}
 					</FuseSvgIcon>
 				)}
@@ -59,7 +71,12 @@ function FuseNavHorizontalLink(props: FuseNavComponentProps) {
 					classes={{ primary: 'text-13 fuse-list-item-text-primary truncate' }}
 				/>
 
-				{item.badge && <FuseNavBadge className="ltr:ml-8 rtl:mr-8" badge={item.badge} />}
+				{item.badge && (
+					<FuseNavBadge
+						className="ltr:ml-8 rtl:mr-8"
+						badge={item.badge}
+					/>
+				)}
 			</Root>
 		),
 		[item.badge, item.icon, item.iconClass, item.target, item.title, item.url]

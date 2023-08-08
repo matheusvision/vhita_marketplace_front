@@ -5,11 +5,19 @@ import { navbarCloseFolded, navbarCloseMobile, navbarOpenFolded, selectFuseNavba
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
+import { Theme } from '@mui/system/createTheme';
+import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NavbarStyle2Content from './NavbarStyle2Content';
 
 const navbarWidth = 280;
 
-const Root = styled('div')(({ theme, folded }) => ({
+type Props = {
+	theme?: Theme;
+	folded: number;
+	open: boolean;
+};
+
+const Root = styled('div')<Props>(({ theme, folded }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	zIndex: 4,
@@ -26,74 +34,86 @@ const Root = styled('div')(({ theme, folded }) => ({
 	})
 }));
 
-const StyledNavbar = styled('div')(({ theme, position, folded, foldedandopened, foldedandclosed }) => ({
-	minWidth: navbarWidth,
-	width: navbarWidth,
-	maxWidth: navbarWidth,
-	maxHeight: '100%',
-	transition: theme.transitions.create(['width', 'min-width'], {
-		easing: theme.transitions.easing.sharp,
-		duration: theme.transitions.duration.shorter
-	}),
+type StyledNavBarProps = {
+	theme?: Theme;
+	open?: boolean;
+	folded: number;
+	foldedandopened: number;
+	foldedandclosed: number;
+	position?: string;
+	anchor?: string;
+};
 
-	...(position === 'left' && {
-		left: 0
-	}),
-
-	...(position === 'right' && {
-		right: 0
-	}),
-
-	...(folded && {
-		position: 'absolute',
-		width: 76,
-		minWidth: 76,
-		top: 0,
-		bottom: 0
-	}),
-
-	...(foldedandopened && {
+const StyledNavbar = styled('div')<StyledNavBarProps>(
+	({ theme, position, folded, foldedandopened, foldedandclosed }) => ({
+		minWidth: navbarWidth,
 		width: navbarWidth,
-		minWidth: navbarWidth
-	}),
+		maxWidth: navbarWidth,
+		maxHeight: '100%',
+		transition: theme.transitions.create(['width', 'min-width'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.shorter
+		}),
 
-	...(foldedandclosed && {
-		'& .NavbarStyle2-content': {
-			'& .logo-icon': {
-				width: 44,
-				height: 44
-			},
-			'& .logo-text': {
-				opacity: 0
-			},
-			'& .react-badge': {
-				opacity: 0
-			},
-			'& .fuse-list-item': {
-				width: 56
-			},
-			'& .fuse-list-item-text, & .arrow-icon, & .item-badge': {
-				opacity: 0
-			},
-			'& .fuse-list-subheader .fuse-list-subheader-text': {
-				opacity: 0
-			},
-			'& .fuse-list-subheader:before': {
-				content: '""',
-				display: 'block',
-				position: 'absolute',
-				minWidth: 16,
-				borderTop: '2px solid',
-				opacity: 0.2
-			},
-			'& .collapse-children': {
-				display: 'none'
+		...(position === 'left' && {
+			left: 0
+		}),
+
+		...(position === 'right' && {
+			right: 0
+		}),
+
+		...(folded && {
+			position: 'absolute',
+			width: 76,
+			minWidth: 76,
+			top: 0,
+			bottom: 0
+		}),
+
+		...(foldedandopened && {
+			width: navbarWidth,
+			minWidth: navbarWidth
+		}),
+
+		...(foldedandclosed && {
+			'& .NavbarStyle2-content': {
+				'& .logo-icon': {
+					width: 44,
+					height: 44
+				},
+				'& .logo-text': {
+					opacity: 0
+				},
+				'& .react-badge': {
+					opacity: 0
+				},
+				'& .fuse-list-item': {
+					width: 56
+				},
+				'& .fuse-list-item-text, & .arrow-icon, & .item-badge': {
+					opacity: 0
+				},
+				'& .fuse-list-subheader .fuse-list-subheader-text': {
+					opacity: 0
+				},
+				'& .fuse-list-subheader:before': {
+					content: '""',
+					display: 'block',
+					position: 'absolute',
+					minWidth: 16,
+					borderTop: '2px solid',
+					opacity: 0.2
+				},
+				'& .collapse-children': {
+					display: 'none'
+				}
 			}
-		}
+		})
 	})
-}));
+);
 
-const StyledNavbarMobile = styled(SwipeableDrawer)(({ theme }) => ({
+const StyledNavbarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(({ theme }) => ({
 	'& > .MuiDrawer-paper': {
 		minWidth: navbarWidth,
 		width: navbarWidth,
@@ -108,7 +128,7 @@ const StyledNavbarMobile = styled(SwipeableDrawer)(({ theme }) => ({
 
 function NavbarStyle2() {
 	const dispatch = useAppDispatch();
-	const config = useSelector(selectFuseCurrentLayoutConfig);
+	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);
 
 	// const folded = !navbar.open;
@@ -145,7 +165,7 @@ function NavbarStyle2() {
 					folded={folded ? 1 : 0}
 					foldedandopened={foldedandopened ? 1 : 0}
 					foldedandclosed={foldedandclosed ? 1 : 0}
-					anchor={config.navbar.position}
+					anchor={config.navbar.position as 'left' | 'top' | 'right' | 'bottom'}
 					variant="temporary"
 					open={navbar.mobileOpen}
 					onClose={() => dispatch(navbarCloseMobile())}
