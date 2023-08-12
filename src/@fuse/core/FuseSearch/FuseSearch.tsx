@@ -175,14 +175,14 @@ function getSuggestionValue(suggestion: FuseNavItemProps) {
 	return suggestion.title;
 }
 
-interface initialStateTypes {
+type initialStateTypes = {
 	searchText: string;
 	search: boolean;
 	navigation?: FuseNavigationType;
 	suggestions: [];
 	noSuggestions: boolean;
 	opened: boolean;
-}
+};
 
 const initialState: initialStateTypes = {
 	searchText: '',

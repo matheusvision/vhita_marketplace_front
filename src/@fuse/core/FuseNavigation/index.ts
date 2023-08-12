@@ -2,11 +2,12 @@ import { SxProps } from '@mui/system';
 
 export { default } from './FuseNavigation';
 
-export interface FuseNavBadgeProps {
+export type FuseNavBadgeProps = {
 	bg: string;
 	fg: string;
 	title: string;
-}
+};
+
 export type FuseNavigationType = FuseNavItemProps[];
 
 export type FuseNavItemProps = {
@@ -29,7 +30,7 @@ export type FuseNavItemProps = {
 	children?: FuseNavigationType;
 };
 
-export interface FuseNavigationProps {
+export type FuseNavigationProps = {
 	className?: string;
 	dense?: boolean;
 	active?: boolean;
@@ -38,14 +39,14 @@ export interface FuseNavigationProps {
 	layout?: 'horizontal' | 'vertical' | 'vertical-2';
 	firstLevel?: boolean;
 	selectedId?: string;
-}
+};
 
-export interface FuseNavComponentProps {
+export type FuseNavComponentProps = {
 	type: string;
 	item: FuseNavItemProps;
 	dense?: boolean;
 	nestedLevel?: number;
 	onItemClick?: (T: FuseNavItemProps) => void;
-}
+};
 
-export interface FuseNavVerticalTabProps extends Omit<FuseNavigationProps, 'navigation'>, FuseNavComponentProps {}
+export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & FuseNavComponentProps;

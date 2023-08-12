@@ -6,20 +6,20 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-interface FullScreenDocument extends Document {
+type FullScreenDocument = Document & {
 	mozFullScreenElement?: Element;
 	msFullscreenElement?: Element;
 	webkitFullscreenElement?: Element;
 	mozCancelFullScreen?: () => void;
 	msExitFullscreen?: () => void;
 	webkitExitFullscreen?: () => void;
-}
+};
 
-interface FullScreenHTMLElement extends HTMLElement {
+type FullScreenHTMLElement = HTMLElement & {
 	mozRequestFullScreen?: () => void;
 	webkitRequestFullscreen?: () => void;
 	msRequestFullscreen?: () => void;
-}
+};
 
 type Props = {
 	className?: string;

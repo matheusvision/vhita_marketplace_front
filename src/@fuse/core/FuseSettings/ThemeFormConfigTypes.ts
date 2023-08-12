@@ -1,38 +1,38 @@
-interface RadioOption {
+type RadioOption = {
 	name: string;
 	value: string;
-}
+};
 
-interface FormFieldBase {
+type FormFieldBase = {
 	title: string;
-}
+};
 
-interface RadioField extends FormFieldBase {
+type RadioField = FormFieldBase & {
 	type: 'radio';
 	options: RadioOption[];
-}
+};
 
-interface NumberField extends FormFieldBase {
+type NumberField = FormFieldBase & {
 	type: 'number';
-}
+};
 
-interface SwitchField extends FormFieldBase {
+type SwitchField = FormFieldBase & {
 	type: 'switch';
-}
+};
 
-interface GroupFieldChildren {
+type GroupFieldChildren = {
 	[key: string]: RadioField | SwitchField | NumberField | GroupField;
-}
+};
 
-interface GroupField extends FormFieldBase {
+type GroupField = FormFieldBase & {
 	type: 'group';
 	children: GroupFieldChildren;
-}
+};
 
 type AnyFormField = RadioField | SwitchField | NumberField | GroupField;
 
-interface ThemeFormConfigTypes {
+type ThemeFormConfigTypes = {
 	[key: string]: AnyFormField;
-}
+};
 
 export default ThemeFormConfigTypes;
