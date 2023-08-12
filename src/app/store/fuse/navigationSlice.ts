@@ -4,17 +4,17 @@ import FuseUtils from '@fuse/utils';
 import i18next from 'i18next';
 import _ from '@lodash';
 import { AppThunk, RootState } from 'app/store/index';
-import { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { selectCurrentLanguageId } from 'app/store/i18nSlice';
 
-const navigationAdapter = createEntityAdapter<FuseNavItemProps>();
+const navigationAdapter = createEntityAdapter<FuseNavItemType>();
 
 const emptyInitialState = navigationAdapter.getInitialState();
 
 const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationConfig);
 
 export const appendNavigationItem =
-	(item: FuseNavItemProps, parentId: string): AppThunk =>
+	(item: FuseNavItemType, parentId: string): AppThunk =>
 	(dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
@@ -22,7 +22,7 @@ export const appendNavigationItem =
 	};
 
 export const prependNavigationItem =
-	(item: FuseNavItemProps, parentId: string): AppThunk =>
+	(item: FuseNavItemType, parentId: string): AppThunk =>
 	(dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
@@ -30,7 +30,7 @@ export const prependNavigationItem =
 	};
 
 export const updateNavigationItem =
-	(id: string, item: FuseNavItemProps): AppThunk =>
+	(id: string, item: FuseNavItemType): AppThunk =>
 	(dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
@@ -93,7 +93,7 @@ export const selectNavigation = createSelector(
 	}
 );
 
-function filterRecursively(arr: FuseNavigationType, predicate: (item: FuseNavItemProps) => boolean) {
+function filterRecursively(arr: FuseNavigationType, predicate: (item: FuseNavItemType) => boolean) {
 	return arr.filter(predicate).map((item) => {
 		item = { ...item };
 		if (item.children) {

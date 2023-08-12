@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import DemoFrame from './DemoFrame';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-type Props = {
+type FuseExampleProps = {
 	name?: string;
 	raw?: { default: string };
 	currentTabIndex?: number;
@@ -18,7 +18,7 @@ type Props = {
 	className: string;
 };
 
-function FuseExample(props: Props) {
+function FuseExample(props: FuseExampleProps) {
 	const { component: Component, raw, iframe, className, name = '', currentTabIndex = 0 } = props;
 
 	const [currentTab, setCurrentTab] = useState(currentTabIndex);

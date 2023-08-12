@@ -12,13 +12,13 @@ const Frame = styled('iframe')(({ theme }) => ({
 	boxShadow: theme.shadows[1]
 }));
 
-type Props = {
+type DemoFrameProps = {
 	name: string;
 	children: React.ReactElement;
 	other?: React.HTMLAttributes<HTMLElement>;
 };
 
-function DemoFrame(props: Props) {
+function DemoFrame(props: DemoFrameProps) {
 	const { children, name, ...other } = props;
 	const title = `${name} demo`;
 

@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
-type Props = {
+type FusePageCardedHeaderProps = {
 	header?: ReactNode;
 };
-function FusePageCardedHeader(props: Props) {
+function FusePageCardedHeader(props: FusePageCardedHeaderProps) {
 	const { header = null } = props;
 
 	return <div className={clsx('FusePageCarded-header', 'container')}>{header}</div>;

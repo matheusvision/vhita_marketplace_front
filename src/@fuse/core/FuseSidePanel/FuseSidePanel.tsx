@@ -169,14 +169,14 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-type Props = {
+type FuseSidePanelProps = {
 	position?: 'left';
 	opened?: true;
 	className?: string;
 	children?: ReactNode;
 };
 
-function FuseSidePanel(props: Props) {
+function FuseSidePanel(props: FuseSidePanelProps) {
 	const { position = 'left', opened = true, className, children } = props;
 
 	const [panelOpened, setPanelOpened] = useState(Boolean(opened));

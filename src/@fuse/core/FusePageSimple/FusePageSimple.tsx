@@ -11,7 +11,7 @@ import FusePageSimpleSidebar from './FusePageSimpleSidebar';
 const headerHeight = 120;
 const toolbarHeight = 64;
 
-type Props = SystemStyleObject<Theme> & {
+type FusePageSimpleProps = SystemStyleObject<Theme> & {
 	className?: string;
 	leftSidebarContent?: ReactNode;
 	leftSidebarVariant?: 'permanent' | 'persistent' | 'temporary';
@@ -28,7 +28,7 @@ type Props = SystemStyleObject<Theme> & {
 	leftSidebarOnClose?: () => void;
 };
 
-const Root = styled('div')<Props>(({ theme, ...props }) => ({
+const Root = styled('div')<FusePageSimpleProps>(({ theme, ...props }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	minWidth: 0,
@@ -191,7 +191,7 @@ const Root = styled('div')<Props>(({ theme, ...props }) => ({
 
 const FusePageSimple = forwardRef<
 	{ toggleLeftSidebar: (T: boolean) => void; toggleRightSidebar: (T: boolean) => void },
-	Props
+	FusePageSimpleProps
 >((props, ref) => {
 	const {
 		scroll = 'page',

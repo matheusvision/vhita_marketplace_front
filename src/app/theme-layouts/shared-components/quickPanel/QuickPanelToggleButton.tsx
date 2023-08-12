@@ -3,11 +3,11 @@ import { useAppDispatch } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { toggleQuickPanel } from './store/stateSlice';
 
-type Props = {
+type QuickPanelToggleButtonProps = {
 	children?: React.ReactNode;
 };
 
-function QuickPanelToggleButton(props: Props) {
+function QuickPanelToggleButton(props: QuickPanelToggleButtonProps) {
 	const { children = <FuseSvgIcon>heroicons-outline:bookmark</FuseSvgIcon> } = props;
 	const dispatch = useAppDispatch();
 

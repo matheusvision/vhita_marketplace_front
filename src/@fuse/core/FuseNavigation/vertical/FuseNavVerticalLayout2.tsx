@@ -1,7 +1,7 @@
 import List from '@mui/material/List';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
-import { FuseNavigationProps, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { FuseNavigationProps, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import FuseNavVerticalTab from './types/FuseNavVerticalTab';
 
 const StyledList = styled(List)(({ theme }) => ({
@@ -28,7 +28,7 @@ const StyledList = styled(List)(({ theme }) => ({
 function FuseNavVerticalLayout2(props: FuseNavigationProps) {
 	const { navigation, active, dense, className, onItemClick, firstLevel, selectedId } = props;
 
-	function handleItemClick(item: FuseNavItemProps) {
+	function handleItemClick(item: FuseNavItemType) {
 		onItemClick?.(item);
 	}
 

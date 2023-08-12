@@ -9,10 +9,12 @@ const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
 	color: theme.palette.text.primary
 }));
-type Props = {
+
+type NavbarLayout2Props = {
 	className?: string;
 };
-function NavbarLayout2(props: Props) {
+
+function NavbarLayout2(props: NavbarLayout2Props) {
 	const { className = '' } = props;
 
 	return (

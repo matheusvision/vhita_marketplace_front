@@ -8,18 +8,18 @@ import clsx from 'clsx';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import List, { ListProps } from '@mui/material/List';
-import { FuseNavComponentProps, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { FuseNavItemComponentProps, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import type { Location } from 'history';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-type Props = ListProps & {
+type ListComponentProps = ListProps & {
 	itempadding: number;
 };
 
-const Root = styled(List)<Props>(({ theme, ...props }) => ({
+const Root = styled(List)<ListComponentProps>(({ theme, ...props }) => ({
 	padding: 0,
 	'&.open': {},
 	'& > .fuse-list-item': {
@@ -42,11 +42,11 @@ const Root = styled(List)<Props>(({ theme, ...props }) => ({
 	}
 }));
 
-function needsToBeOpened(location: Location, item: FuseNavItemProps) {
+function needsToBeOpened(location: Location, item: FuseNavItemType) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
-function FuseNavVerticalCollapse(props: FuseNavComponentProps) {
+function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 	const location = useLocation();
 	const { item, nestedLevel, onItemClick } = props;
 

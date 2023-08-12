@@ -3,11 +3,12 @@ import Box from '@mui/material/Box';
 import { darken, lighten } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
-type Props = {
+type SectionPreviewProps = {
 	className?: string;
 	section?: 'main' | 'navbar' | 'toolbar' | 'footer';
 };
-function SectionPreview(props: Props) {
+
+function SectionPreview(props: SectionPreviewProps) {
 	const { section, className } = props;
 	return (
 		<div className={clsx('flex w-128 h-80 rounded-md overflow-hidden border-1 hover:opacity-80', className)}>

@@ -1,11 +1,12 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { ReactNode } from 'react';
 
-type Props = {
+type FusePageSimpleSidebarContentProps = {
 	innerScroll?: boolean;
 	children?: ReactNode;
 };
-function FusePageSimpleSidebarContent(props: Props) {
+
+function FusePageSimpleSidebarContent(props: FusePageSimpleSidebarContentProps) {
 	const { innerScroll, children } = props;
 
 	if (!children) {

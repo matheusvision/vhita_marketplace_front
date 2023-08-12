@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { memo, useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
-import FuseNavigation, { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import FuseNavigation, { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import { useLocation } from 'react-router-dom';
@@ -19,11 +19,13 @@ const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
 	color: theme.palette.text.primary
 }));
-type StyledNavBarType = {
+
+type StyledPanelProps = {
 	theme?: Theme;
 	opened?: boolean;
 };
-const StyledPanel = styled(FuseScrollbars)<StyledNavBarType>(({ theme, opened }) => ({
+
+const StyledPanel = styled(FuseScrollbars)<StyledPanelProps>(({ theme, opened }) => ({
 	backgroundColor: theme.palette.background.default,
 	color: theme.palette.text.primary,
 	transition: theme.transitions.create(['opacity'], {
@@ -38,13 +40,13 @@ const StyledPanel = styled(FuseScrollbars)<StyledNavBarType>(({ theme, opened })
 	})
 }));
 
-function needsToBeOpened(location: Location, item: FuseNavItemProps) {
+function needsToBeOpened(location: Location, item: FuseNavItemType) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
-type Props = { className?: string; dense?: number };
+type NavbarStyle3ContentProps = { className?: string; dense?: number; folded?: number };
 
-function NavbarStyle3Content(props: Props) {
+function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 	const { className = '', dense = false } = props;
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const navigation = useSelector(selectNavigation);
@@ -63,7 +65,7 @@ function NavbarStyle3Content(props: Props) {
 		});
 	}, [navigation, location]);
 
-	function handleParentItemClick(selected: FuseNavItemProps) {
+	function handleParentItemClick(selected: FuseNavItemType) {
 		/** if there is no child item do not set/open panel
 		 */
 		if (!selected.children) {

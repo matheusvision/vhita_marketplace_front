@@ -25,10 +25,12 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 		})
 	}
 }));
-type Props = {
+
+type NavbarWrapperLayout3Props = {
 	className?: string;
 };
-function NavbarWrapperLayout3(props: Props) {
+
+function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	const { className = '' } = props;
 
 	const dispatch = useAppDispatch();

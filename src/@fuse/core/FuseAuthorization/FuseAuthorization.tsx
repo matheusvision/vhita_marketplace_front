@@ -9,7 +9,7 @@ import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 
 let loginRedirectUrl: string = null;
 
-type Props = {
+type FuseAuthorizationProps = {
 	children: ReactNode;
 	location: Location;
 	userRole: string[] | string;
@@ -20,11 +20,12 @@ type State = AppContextType & {
 	accessGranted: boolean;
 };
 
-class FuseAuthorization extends Component<Props, State> {
+class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 	defaultLoginRedirectUrl: string;
 
-	constructor(props: Props, context: AppContextType) {
+	constructor(props: FuseAuthorizationProps, context: AppContextType) {
 		super(props);
+
 		const { routes } = context;
 
 		this.state = {
@@ -43,7 +44,7 @@ class FuseAuthorization extends Component<Props, State> {
 		}
 	}
 
-	shouldComponentUpdate(nextProps: Props, nextState: State) {
+	shouldComponentUpdate(nextProps: FuseAuthorizationProps, nextState: State) {
 		const { accessGranted } = this.state;
 
 		return nextState.accessGranted !== accessGranted;
@@ -57,7 +58,7 @@ class FuseAuthorization extends Component<Props, State> {
 		}
 	}
 
-	static getDerivedStateFromProps(props: Props, state: State) {
+	static getDerivedStateFromProps(props: FuseAuthorizationProps, state: State) {
 		const { location, userRole } = props;
 		const { pathname } = location;
 		const matchedRoutes = matchRoutes(state.routes, pathname);

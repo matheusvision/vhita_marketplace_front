@@ -11,7 +11,7 @@ import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
 import withRouter from '@fuse/core/withRouter';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
-import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import { Location } from 'history';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import FuseNavBadge from '../../FuseNavBadge';
@@ -39,11 +39,11 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-type Props = FuseNavComponentProps & {
+type FuseNavHorizontalCollapseProps = FuseNavItemComponentProps & {
 	location: Location;
 };
 
-function FuseNavHorizontalCollapse(props: Props) {
+function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 	const [opened, setOpened] = useState(false);
 	const { item, nestedLevel, dense, location } = props;
 	const theme = useTheme();

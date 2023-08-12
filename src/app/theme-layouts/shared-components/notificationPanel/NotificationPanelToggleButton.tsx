@@ -9,11 +9,11 @@ import reducer from './store';
 import { selectNotifications } from './store/dataSlice';
 import { toggleNotificationPanel } from './store/stateSlice';
 
-type Props = {
+type NotificationPanelToggleButtonProps = {
 	children?: ReactNode;
 };
 
-function NotificationPanelToggleButton(props: Props) {
+function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps) {
 	const { children = <FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon> } = props;
 
 	const notifications = useSelector(selectNotifications);

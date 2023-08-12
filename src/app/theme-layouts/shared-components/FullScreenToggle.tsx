@@ -6,7 +6,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-type FullScreenDocument = Document & {
+type FullScreenDocumentType = Document & {
 	mozFullScreenElement?: Element;
 	msFullscreenElement?: Element;
 	webkitFullscreenElement?: Element;
@@ -15,17 +15,17 @@ type FullScreenDocument = Document & {
 	webkitExitFullscreen?: () => void;
 };
 
-type FullScreenHTMLElement = HTMLElement & {
+type FullScreenHTMLElementType = HTMLElement & {
 	mozRequestFullScreen?: () => void;
 	webkitRequestFullscreen?: () => void;
 	msRequestFullscreen?: () => void;
 };
 
-type Props = {
+type HeaderFullScreenToggleProps = {
 	className?: string;
 };
 
-function HeaderFullScreenToggle(props: Props) {
+function HeaderFullScreenToggle(props: HeaderFullScreenToggleProps) {
 	const { className = '' } = props;
 
 	const [isFullScreen, setIsFullScreen] = useState(false);
@@ -39,7 +39,7 @@ function HeaderFullScreenToggle(props: Props) {
 	});
 
 	function getBrowserFullscreenElementProp() {
-		const doc: FullScreenDocument = document;
+		const doc: FullScreenDocumentType = document;
 
 		if (typeof doc.fullscreenElement !== 'undefined') {
 			return 'fullscreenElement';
@@ -58,7 +58,7 @@ function HeaderFullScreenToggle(props: Props) {
 
 	/* View in fullscreen */
 	function openFullscreen() {
-		const elem: FullScreenHTMLElement = document.documentElement;
+		const elem: FullScreenHTMLElementType = document.documentElement;
 
 		if (elem.requestFullscreen) {
 			elem.requestFullscreen();
@@ -76,7 +76,7 @@ function HeaderFullScreenToggle(props: Props) {
 
 	/* Close fullscreen */
 	function closeFullscreen() {
-		const doc: FullScreenDocument = document;
+		const doc: FullScreenDocumentType = document;
 
 		if (doc.exitFullscreen) {
 			doc.exitFullscreen();
@@ -93,7 +93,7 @@ function HeaderFullScreenToggle(props: Props) {
 	}
 
 	function toggleFullScreen() {
-		const doc: FullScreenDocument = document;
+		const doc: FullScreenDocumentType = document;
 
 		if (doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement) {
 			closeFullscreen();

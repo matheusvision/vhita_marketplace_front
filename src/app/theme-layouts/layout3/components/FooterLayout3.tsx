@@ -6,10 +6,10 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
 
-type Props = {
+type FooterLayout3Props = {
 	className?: string;
 };
-function FooterLayout3(props: Props) {
+function FooterLayout3(props: FooterLayout3Props) {
 	const { className = '' } = props;
 
 	const footerTheme = useSelector(selectFooterTheme);

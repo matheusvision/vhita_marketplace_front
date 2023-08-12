@@ -3,11 +3,12 @@ import { SnackbarContent } from 'notistack';
 import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
 import NotificationCard from './NotificationCard';
 
-type Props = {
+type NotificationTemplateProps = {
 	item: NotificationModelProps;
 	onClose: () => void;
 };
-const NotificationTemplate = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
+
+const NotificationTemplate = forwardRef((props: NotificationTemplateProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { item } = props;
 
 	return (

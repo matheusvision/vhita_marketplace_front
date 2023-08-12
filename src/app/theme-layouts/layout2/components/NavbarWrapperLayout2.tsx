@@ -24,10 +24,12 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 		})
 	}
 }));
-type Props = {
+
+type NavbarWrapperLayout2Props = {
 	className?: string;
 };
-function NavbarWrapperLayout2(props: Props) {
+
+function NavbarWrapperLayout2(props: NavbarWrapperLayout2Props) {
 	const { className = '' } = props;
 	const dispatch = useAppDispatch();
 	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout2ConfigDefaultsType;

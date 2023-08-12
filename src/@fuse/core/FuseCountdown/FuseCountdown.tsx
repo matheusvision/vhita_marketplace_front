@@ -4,13 +4,13 @@ import moment from 'moment';
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { Moment } from 'moment/moment';
 
-type Props = {
+type FuseCountdownProps = {
 	onComplete?: () => void;
 	endDate?: Moment | Date | string;
 	className?: string;
 };
 
-function FuseCountdown(props: Props) {
+function FuseCountdown(props: FuseCountdownProps) {
 	const { onComplete, endDate = moment().add(15, 'days'), className } = props;
 
 	const [endDateVal] = useState(moment.isMoment(endDate) ? endDate : moment(endDate));

@@ -33,9 +33,9 @@ const StyledContent = styled(FuseScrollbars)(() => ({
 	backgroundAttachment: 'local, scroll'
 }));
 
-type Props = { className?: string };
+type NavbarStyle2ContentProps = { className?: string };
 
-function NavbarStyle2Content(props: Props) {
+function NavbarStyle2Content(props: NavbarStyle2ContentProps) {
 	const { className = '' } = props;
 
 	return (

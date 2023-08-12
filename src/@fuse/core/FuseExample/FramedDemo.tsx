@@ -7,12 +7,12 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import { StyleSheetManager } from 'styled-components';
 import { ReactElement } from 'react';
 
-type Props = {
+type FramedDemoProps = {
 	document: Document;
 	children: ReactElement;
 };
 
-function FramedDemo(props: Props) {
+function FramedDemo(props: FramedDemoProps) {
 	const { children, document } = props;
 
 	const theme = useTheme();

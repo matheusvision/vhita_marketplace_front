@@ -60,13 +60,13 @@ const Root = styled(Tooltip)<{ position: 'left' | 'right' }>(({ theme, position 
 	}
 }));
 
-type Props = {
+type NavbarToggleFabProps = {
 	className?: string;
 	position?: string;
 	onClick?: () => void;
 };
 
-function NavbarToggleFab(props: Props) {
+function NavbarToggleFab(props: NavbarToggleFabProps) {
 	const { className = '', position = 'left', onClick } = props;
 
 	return (

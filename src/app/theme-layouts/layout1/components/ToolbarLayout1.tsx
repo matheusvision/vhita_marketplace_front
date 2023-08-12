@@ -18,10 +18,11 @@ import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
 import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
 
-type Props = {
+type ToolbarLayout1Props = {
 	className?: string;
 };
-function ToolbarLayout1(props: Props) {
+
+function ToolbarLayout1(props: ToolbarLayout1Props) {
 	const { className } = props;
 	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);

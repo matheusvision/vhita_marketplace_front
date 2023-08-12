@@ -30,11 +30,11 @@ const store = configureStore({
 	devTools: process.env.NODE_ENV === 'development'
 });
 
-type AsyncReducers = {
+type AsyncReducersType = {
 	[key: string]: Reducer;
 };
 
-const asyncReducers: AsyncReducers = {};
+const asyncReducers: AsyncReducersType = {};
 
 export const injectReducer = (key: string, reducer: Reducer) => {
 	if (asyncReducers[key]) {

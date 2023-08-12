@@ -3,12 +3,12 @@ import { Box } from '@mui/system';
 import { Palette } from '@mui/material/styles/createPalette';
 import { PartialDeep } from 'type-fest';
 
-type Props = {
+type PalettePreviewProps = {
 	className?: string;
 	palette: PartialDeep<Palette>;
 };
 
-function PalettePreview(props: Props) {
+function PalettePreview(props: PalettePreviewProps) {
 	const { palette, className } = props;
 
 	return (

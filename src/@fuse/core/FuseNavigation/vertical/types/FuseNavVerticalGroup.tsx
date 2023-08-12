@@ -3,14 +3,14 @@ import { alpha, styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 import { ListItemButton, ListItemButtonProps, ListItemText } from '@mui/material';
-import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import FuseNavItem from '../../FuseNavItem';
 
-type Props = ListItemButtonProps & {
+type ListItemButtonComponentProps = ListItemButtonProps & {
 	itempadding: number;
 };
 
-const Root = styled(ListItemButton)<Props>(({ theme, ...props }) => ({
+const Root = styled(ListItemButton)<ListItemButtonComponentProps>(({ theme, ...props }) => ({
 	minminHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -24,7 +24,7 @@ const Root = styled(ListItemButton)<Props>(({ theme, ...props }) => ({
 	letterSpacing: '0.025em'
 }));
 
-function FuseNavVerticalGroup(props: FuseNavComponentProps) {
+function FuseNavVerticalGroup(props: FuseNavItemComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;

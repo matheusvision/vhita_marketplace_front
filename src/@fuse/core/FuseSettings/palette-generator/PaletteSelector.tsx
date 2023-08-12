@@ -18,13 +18,13 @@ function isDark(color: string) {
 	return getContrastRatio(color, '#ffffff') >= 3;
 }
 
-type Props = {
+type PaletteSelectorProps = {
 	triggerElement: ReactNode;
 	value: FuseThemeType;
 	onChange: (value: FuseThemeType) => void;
 };
 
-function PaletteSelector(props: Props) {
+function PaletteSelector(props: PaletteSelectorProps) {
 	const {
 		value,
 		onChange,

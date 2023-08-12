@@ -7,11 +7,11 @@ import { FuseLoadingProps } from '@fuse/core/FuseLoading/FuseLoading';
  * For to Avoid Repetition
  */
 
-type Props = {
+type FuseSuspenseProps = {
 	loadingProps?: FuseLoadingProps;
 	children: ReactNode;
 };
-function FuseSuspense(props: Props) {
+function FuseSuspense(props: FuseSuspenseProps) {
 	const { children, loadingProps } = props;
 	return <Suspense fallback={<FuseLoading {...loadingProps} />}>{children}</Suspense>;
 }

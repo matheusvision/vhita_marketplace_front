@@ -12,11 +12,11 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { memo, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import _ from '@lodash';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-type Props = {
+type FuseShortcutsProps = {
 	className?: string;
 	navigation: FuseNavigationType;
 	onChange: (T) => void;
@@ -24,7 +24,7 @@ type Props = {
 	variant?: 'horizontal' | 'vertical';
 };
 
-function FuseShortcuts(props: Props) {
+function FuseShortcuts(props: FuseShortcutsProps) {
 	const { navigation = [], shortcuts = [], onChange, variant = 'horizontal', className = '' } = props;
 
 	const searchInputRef = useRef<HTMLInputElement>(null);
@@ -209,8 +209,8 @@ function FuseShortcuts(props: Props) {
 }
 
 function ShortcutMenuItem(props: {
-	shortcuts: Props['shortcuts'];
-	item: FuseNavItemProps;
+	shortcuts: FuseShortcutsProps['shortcuts'];
+	item: FuseNavItemType;
 	onToggle: (T: string) => void;
 }) {
 	const { item, onToggle, shortcuts } = props;

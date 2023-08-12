@@ -11,11 +11,11 @@ import FuseSvgIcon from '../FuseSvgIcon';
 
 export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info' | undefined;
 
-type Props = {
+type StyledSnackbarProps = {
 	variant?: FuseMessageVariantType;
 };
 
-const StyledSnackbar = styled(Snackbar)<Props>(({ theme, variant }) => ({
+const StyledSnackbar = styled(Snackbar)<StyledSnackbarProps>(({ theme, variant }) => ({
 	'& .FuseMessage-content': {
 		...(variant === 'success' && {
 			backgroundColor: green[600],

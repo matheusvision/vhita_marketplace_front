@@ -2,12 +2,12 @@ import { useSelector } from 'react-redux';
 import FuseSearch from '@fuse/core/FuseSearch';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 
-type Props = {
+type NavigationSearchProps = {
 	className?: string;
 	variant?: 'basic' | 'full';
 };
 
-function NavigationSearch(props: Props) {
+function NavigationSearch(props: NavigationSearchProps) {
 	const { variant, className } = props;
 
 	const navigation = useSelector(selectFlatNavigation);

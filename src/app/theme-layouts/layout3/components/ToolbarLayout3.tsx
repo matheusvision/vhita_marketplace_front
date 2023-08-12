@@ -17,12 +17,11 @@ import Logo from '../../shared-components/Logo';
 import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
 import { Layout3ConfigDefaultsType } from '../Layout3Config';
 
-type Props = {
+type ToolbarLayout3Props = {
 	className?: string;
 };
-function ToolbarLayout3(props: Props) {
+function ToolbarLayout3(props: ToolbarLayout3Props) {
 	const { className = '' } = props;
-
 	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const toolbarTheme = useSelector(selectToolbarTheme);
 

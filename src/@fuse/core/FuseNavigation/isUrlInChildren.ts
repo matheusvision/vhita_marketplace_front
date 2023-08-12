@@ -1,7 +1,7 @@
-import { FuseNavItemProps } from '@fuse/core/FuseNavigation/index';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/index';
 import { Pathname } from 'history';
 
-const isUrlInChildren = (parent: FuseNavItemProps, url: Pathname) => {
+const isUrlInChildren = (parent: FuseNavItemType, url: Pathname) => {
 	if (!parent.children) {
 		return false;
 	}

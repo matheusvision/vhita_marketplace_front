@@ -9,13 +9,13 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
 import { MouseEvent } from 'react';
 
-type Props = {
+type NotificationCardProps = {
 	item: NotificationModelProps;
 	className?: string;
 	onClose: (T: string) => void;
 };
 
-function NotificationCard(props: Props) {
+function NotificationCard(props: NotificationCardProps) {
 	const { item, className, onClose } = props;
 
 	const variant = item?.variant || '';

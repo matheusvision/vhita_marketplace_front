@@ -6,6 +6,7 @@ import { createRef, forwardRef, useCallback, useEffect, useRef, ReactNode, RefOb
 import { connect } from 'react-redux';
 import history from '@history';
 import { RootState } from 'app/store/index';
+import FusePageSimpleSidebarContent from '@fuse/core/FusePageSimple/FusePageSimpleSidebarContent';
 
 const Root = styled('div')(() => ({
 	overscrollBehavior: 'contain',
@@ -32,7 +33,7 @@ const handlerNameByEvent: EventHandlerMap = {
 
 Object.freeze(handlerNameByEvent);
 
-type Props = {
+type FusePageSimpleSidebarContentProps = {
 	id?: string;
 	className?: string;
 	enable?: boolean;
@@ -46,7 +47,7 @@ type Props = {
 	children?: ReactNode;
 };
 
-const FuseScrollbars = forwardRef<HTMLDivElement, Props>((props, ref) => {
+const FuseScrollbars = forwardRef<HTMLDivElement, FusePageSimpleSidebarContentProps>((props, ref) => {
 	const { customScrollbars, scrollToTopOnChildChange, scrollToTopOnRouteChange, id, enable = true, children } = props;
 	const elRef = useRef<HTMLDivElement | null>(null);
 

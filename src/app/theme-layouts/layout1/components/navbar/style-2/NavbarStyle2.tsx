@@ -11,13 +11,13 @@ import NavbarStyle2Content from './NavbarStyle2Content';
 
 const navbarWidth = 280;
 
-type Props = {
+type StyledNavBarPropsProps = {
 	theme?: Theme;
 	folded: number;
 	open: boolean;
 };
 
-const Root = styled('div')<Props>(({ theme, folded }) => ({
+const Root = styled('div')<StyledNavBarPropsProps>(({ theme, folded }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	zIndex: 4,

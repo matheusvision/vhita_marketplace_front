@@ -10,9 +10,9 @@ import jwtService from './services/jwtService';
 
 const AuthContext = React.createContext({});
 
-type Props = { children: ReactNode };
+type AuthProviderProps = { children: ReactNode };
 
-function AuthProvider(props: Props) {
+function AuthProvider(props: AuthProviderProps) {
 	const { children } = props;
 	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(undefined);
 	const [waitAuthCheck, setWaitAuthCheck] = useState(true);

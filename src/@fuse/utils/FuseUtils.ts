@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import * as colors from '@mui/material/colors';
-import { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { PathRouteProps, RouteProps } from 'react-router/dist/lib/components';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
@@ -246,7 +246,7 @@ class FuseUtils {
 
 	static EventEmitter = EventEmitter;
 
-	static updateNavItem(nav: FuseNavigationType, id: string, item: FuseNavItemProps): FuseNavigationType {
+	static updateNavItem(nav: FuseNavigationType, id: string, item: FuseNavItemType): FuseNavigationType {
 		return nav.map((_item) => {
 			if (_item.id === id) {
 				return _.merge({}, _item, item);
@@ -280,7 +280,7 @@ class FuseUtils {
 			.filter((s) => s);
 	}
 
-	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemProps, parentId: string): FuseNavigationType {
+	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
 		if (!parentId) {
 			return [item, ...nav];
 		}
@@ -303,7 +303,7 @@ class FuseUtils {
 		});
 	}
 
-	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemProps, parentId: string): FuseNavigationType {
+	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
 		if (!parentId) {
 			return [...nav, item];
 		}

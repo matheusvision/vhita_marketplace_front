@@ -3,12 +3,12 @@ import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { FuseThemesType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import SchemePreview from './SchemePreview';
 
-type Props = {
+type FuseThemeSchemesProps = {
 	themes: FuseThemesType;
 	onSelect?: (t: FuseThemeType) => void;
 };
 
-function FuseThemeSchemes(props: Props) {
+function FuseThemeSchemes(props: FuseThemeSchemesProps) {
 	const { themes, onSelect = () => {} } = props;
 
 	return (

@@ -7,11 +7,11 @@ import Base64 from 'crypto-js/enc-base64';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Utf8 from 'crypto-js/enc-utf8';
 import jwtDecode from 'jwt-decode';
-import UserModel, { UserModelProps } from 'app/store/user/model/UserModel';
+import UserModel, { UserModelType } from 'app/store/user/model/UserModel';
 import mock from '../mock';
 import mockApi from '../mock-api.json';
 
-type UserType = UserModelProps & { password: string };
+type UserType = UserModelType & { password: string };
 
 let usersApi = mockApi.components.examples.auth_users.value as UserType[];
 

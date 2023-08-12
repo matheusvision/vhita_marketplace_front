@@ -3,7 +3,7 @@ import FuseUtils from '@fuse/utils';
 import { ReactNode } from 'react';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 
-export type UserModelProps = {
+export type UserModelType = {
 	uuid?: string;
 	role?: string[] | string;
 	from?: string;
@@ -16,7 +16,7 @@ export type UserModelProps = {
 	};
 };
 
-function UserModel(data: UserModelProps) {
+function UserModel(data: UserModelType) {
 	data = data || {};
 
 	return _.defaults(data, {
@@ -28,7 +28,7 @@ function UserModel(data: UserModelProps) {
 			shortcuts: ['apps.calendar', 'apps.mailbox', 'apps.contacts', 'apps.tasks'],
 			settings: {}
 		}
-	}) as UserModelProps;
+	}) as UserModelType;
 }
 
 export default UserModel;

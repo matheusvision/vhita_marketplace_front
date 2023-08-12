@@ -4,14 +4,14 @@ import './prism-languages';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 
-type Props = {
+type FuseHighlightProps = {
 	async?: boolean;
 	children: string | { default?: string };
 	component?: ElementType;
 	className: string;
 };
 
-function FuseHighlight(props: Props) {
+function FuseHighlight(props: FuseHighlightProps) {
 	const { async = false, children, className, component: Wrapper = 'code' } = props;
 	const domNode = useRef<HTMLElement>(null);
 
@@ -39,7 +39,7 @@ function FuseHighlight(props: Props) {
 	);
 }
 
-function trimCode(children: Props['children']) {
+function trimCode(children: FuseHighlightProps['children']) {
 	const sourceString = typeof children === 'string' ? children : children?.default;
 
 	// Split the source into lines

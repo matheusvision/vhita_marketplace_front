@@ -15,7 +15,7 @@ import clsx from 'clsx';
 import _ from '@lodash';
 import { memo, useEffect, useReducer, useRef, ReactNode, ChangeEvent } from 'react';
 import Autosuggest, { RenderInputComponentProps } from 'react-autosuggest';
-import { FuseNavigationType, FuseNavItemProps } from '@fuse/core/FuseNavigation';
+import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { PopperOwnProps } from '@mui/base/Popper';
@@ -112,7 +112,7 @@ function renderInputComponent(props) {
 	);
 }
 
-function renderSuggestion(suggestion: FuseNavItemProps, { query, isHighlighted }) {
+function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted }) {
 	const matches = match(suggestion.title, query as string);
 	const parts = parse(suggestion.title, matches);
 
@@ -171,7 +171,7 @@ function getSuggestions(value: string, data: FuseNavigationType) {
 	});
 }
 
-function getSuggestionValue(suggestion: FuseNavItemProps) {
+function getSuggestionValue(suggestion: FuseNavItemType) {
 	return suggestion.title;
 }
 
@@ -308,7 +308,7 @@ function FuseSearch(props: {
 
 	function handleSuggestionSelected(
 		event: React.FormEvent<unknown>,
-		{ suggestion }: { suggestion: FuseNavItemProps }
+		{ suggestion }: { suggestion: FuseNavItemType }
 	) {
 		event.preventDefault();
 		event.stopPropagation();

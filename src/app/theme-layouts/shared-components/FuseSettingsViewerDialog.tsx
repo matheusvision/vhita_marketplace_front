@@ -12,10 +12,11 @@ import DialogContent from '@mui/material/DialogContent';
 import qs from 'qs';
 import Typography from '@mui/material/Typography';
 
-type Props = {
+type FuseSettingsViewerDialogProps = {
 	className?: string;
 };
-function FuseSettingsViewerDialog(props: Props) {
+
+function FuseSettingsViewerDialog(props: FuseSettingsViewerDialogProps) {
 	const { className = '' } = props;
 
 	const [openDialog, setOpenDialog] = useState(false);

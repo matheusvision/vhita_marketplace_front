@@ -2,10 +2,10 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
-type Props = {
+type DocumentationButtonProps = {
 	className?: string;
 };
-function DocumentationButton(props: Props) {
+function DocumentationButton(props: DocumentationButtonProps) {
 	const { className = '' } = props;
 
 	return (

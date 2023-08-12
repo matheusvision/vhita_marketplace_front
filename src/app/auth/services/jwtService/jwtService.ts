@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import jwtDecode from 'jwt-decode';
 import { UserProps } from 'app/store/user';
 import { number, string } from 'yup';
-import { UserModelProps } from 'app/store/user/model/UserModel';
+import { UserModelType } from 'app/store/user/model/UserModel';
 import jwtServiceConfig from './jwtServiceConfig';
 /* eslint-disable camelcase, class-methods-use-this */
 class JwtService extends FuseUtils.EventEmitter {
@@ -45,7 +45,7 @@ class JwtService extends FuseUtils.EventEmitter {
 		}
 	};
 
-	createUser = (data: UserModelProps) =>
+	createUser = (data: UserModelType) =>
 		new Promise((resolve, reject) => {
 			axios.post(jwtServiceConfig.signUp, data).then(
 				(
@@ -108,7 +108,7 @@ class JwtService extends FuseUtils.EventEmitter {
 						access_token: getAccessToken()
 					}
 				})
-				.then((response: AxiosResponse<{ user: UserModelProps; access_token: string }>) => {
+				.then((response: AxiosResponse<{ user: UserModelType; access_token: string }>) => {
 					if (response.data.user) {
 						_setSession(response.data.access_token);
 						resolve(response.data.user);
@@ -123,7 +123,7 @@ class JwtService extends FuseUtils.EventEmitter {
 				});
 		});
 
-	updateUserData = (user: UserModelProps) =>
+	updateUserData = (user: UserModelType) =>
 		axios.post(jwtServiceConfig.updateUser, {
 			user
 		});

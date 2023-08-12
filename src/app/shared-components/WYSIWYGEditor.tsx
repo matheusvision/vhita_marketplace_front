@@ -22,12 +22,12 @@ const Root = styled('div')({
 	}
 });
 
-type Props = {
+type WYSIWYGEditorComponentProps = {
 	className?: string;
 	onChange: (T: string) => void;
 };
 
-function WYSIWYGEditorComponent(props: Props, ref: React.ForwardedRef<HTMLDivElement>) {
+function WYSIWYGEditorComponent(props: WYSIWYGEditorComponentProps, ref: React.ForwardedRef<HTMLDivElement>) {
 	const { onChange, className = '' } = props;
 
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());

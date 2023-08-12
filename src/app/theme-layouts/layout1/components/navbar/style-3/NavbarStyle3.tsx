@@ -102,14 +102,13 @@ const StyledNavBarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(() => ({
 	}
 }));
 
-type Props = {
+type NavbarStyle3Props = {
 	className?: string;
 	dense?: boolean;
 };
 
-function NavbarStyle3(props: Props) {
+function NavbarStyle3(props: NavbarStyle3Props) {
 	const { className = '', dense = false } = props;
-
 	const dispatch = useAppDispatch();
 	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbar = useSelector(selectFuseNavbar);

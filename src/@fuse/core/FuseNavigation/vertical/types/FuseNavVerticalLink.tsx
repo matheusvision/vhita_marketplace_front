@@ -2,16 +2,16 @@ import { styled } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
-type Props = ListItemButtonProps & {
+type ListItemButtonStyleProps = ListItemButtonProps & {
 	itempadding: number;
 };
 
-const Root = styled(ListItemButton)<Props>(({ theme, ...props }) => ({
+const Root = styled(ListItemButton)<ListItemButtonStyleProps>(({ theme, ...props }) => ({
 	minHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -40,7 +40,7 @@ const Root = styled(ListItemButton)<Props>(({ theme, ...props }) => ({
 	textDecoration: 'none!important'
 }));
 
-function FuseNavVerticalLink(props: FuseNavComponentProps) {
+function FuseNavVerticalLink(props: FuseNavItemComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;

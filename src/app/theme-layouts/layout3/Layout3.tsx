@@ -32,14 +32,15 @@ const Root = styled('div')<{ config: Layout3ConfigDefaultsType }>(({ config }) =
 	})
 }));
 
-type Props = {
+type Layout3Props = {
 	children?: ReactNode;
 };
 
-function Layout3(props: Props) {
+function Layout3(props: Layout3Props) {
 	const { children } = props;
 
 	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 	return (

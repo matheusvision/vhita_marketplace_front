@@ -1,14 +1,14 @@
 import React from 'react';
 import deepEqual from 'lodash/isEqual';
 
-type UseEffectParams = Parameters<typeof React.useEffect>;
-type EffectCallback = UseEffectParams[0];
-type DependencyList = UseEffectParams[1];
+type UseEffectParamsType = Parameters<typeof React.useEffect>;
+type EffectCallbackType = UseEffectParamsType[0];
+type DependencyListType = UseEffectParamsType[1];
 // yes, I know it's void, but I like what this communicates about
 // the intent of these functions: It's just like useEffect
 type UseEffectReturn = ReturnType<typeof React.useEffect>;
 
-function checkDeps(deps: DependencyList) {
+function checkDeps(deps: DependencyListType) {
 	if (!deps || !deps.length) {
 		throw new Error('useDeepCompareEffect should not be used with no dependencies. Use React.useEffect instead.');
 	}
@@ -39,7 +39,7 @@ export function useDeepCompareMemoize<T>(value: T) {
 	return React.useMemo(() => ref.current, [signalRef.current]);
 }
 
-function useDeepCompareEffect(callback: EffectCallback, dependencies: DependencyList): UseEffectReturn {
+function useDeepCompareEffect(callback: EffectCallbackType, dependencies: DependencyListType): UseEffectReturn {
 	if (process.env.NODE_ENV !== 'production') {
 		checkDeps(dependencies);
 	}
@@ -47,7 +47,10 @@ function useDeepCompareEffect(callback: EffectCallback, dependencies: Dependency
 	return React.useEffect(callback, useDeepCompareMemoize(dependencies));
 }
 
-export function useDeepCompareEffectNoCheck(callback: EffectCallback, dependencies: DependencyList): UseEffectReturn {
+export function useDeepCompareEffectNoCheck(
+	callback: EffectCallbackType,
+	dependencies: DependencyListType
+): UseEffectReturn {
 	return React.useEffect(callback, useDeepCompareMemoize(dependencies));
 }
 

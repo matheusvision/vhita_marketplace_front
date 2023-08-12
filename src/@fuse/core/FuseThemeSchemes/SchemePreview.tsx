@@ -4,14 +4,14 @@ import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import { FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 
-type Props = {
+type SchemePreviewProps = {
 	id: string;
 	className?: string;
 	onSelect: (T: FuseThemeType) => void;
 	theme: FuseThemeType;
 };
 
-function SchemePreview(props: Props) {
+function SchemePreview(props: SchemePreviewProps) {
 	const { theme, className, id, onSelect = () => {} } = props;
 
 	const _theme = useTheme();

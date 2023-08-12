@@ -7,11 +7,11 @@ import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NavbarToggleFab from 'app/theme-layouts/shared-components/NavbarToggleFab';
 
-type Props = {
+type NavbarToggleFabLayout1Props = {
 	className?: string;
 };
 
-function NavbarToggleFabLayout1(props: Props) {
+function NavbarToggleFabLayout1(props: NavbarToggleFabLayout1Props) {
 	const { className } = props;
 
 	const isMobile = useThemeMediaQuery((theme: ThemeOptions) => theme.breakpoints.down('lg'));

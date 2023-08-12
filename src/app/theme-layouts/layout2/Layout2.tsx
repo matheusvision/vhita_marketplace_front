@@ -32,11 +32,11 @@ const Root = styled('div')<{ config: Layout2ConfigDefaultsType }>(({ config }) =
 	})
 }));
 
-type Props = {
+type Layout2Props = {
 	children?: ReactNode;
 };
 
-function Layout2(props: Props) {
+function Layout2(props: Layout2Props) {
 	const { children } = props;
 
 	const config: Layout2ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);

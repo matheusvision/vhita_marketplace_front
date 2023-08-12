@@ -4,7 +4,7 @@ import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { memo, useMemo } from 'react';
 import withRouter from '@fuse/core/withRouter';
-import { FuseNavComponentProps } from '@fuse/core/FuseNavigation';
+import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import FuseNavBadge from '../../FuseNavBadge';
@@ -31,9 +31,9 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	}
 }));
 
-type Props = FuseNavComponentProps & WithRouterProps;
+type FuseNavHorizontalItemProps = FuseNavItemComponentProps & WithRouterProps;
 
-function FuseNavHorizontalItem(props: Props) {
+function FuseNavHorizontalItem(props: FuseNavHorizontalItemProps) {
 	const { item } = props;
 
 	const component = item.url ? NavLinkAdapter : 'li';

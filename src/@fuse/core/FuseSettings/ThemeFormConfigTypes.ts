@@ -1,38 +1,38 @@
-type RadioOption = {
+type RadioOptionType = {
 	name: string;
 	value: string;
 };
 
-type FormFieldBase = {
+type FormFieldBaseType = {
 	title: string;
 };
 
-type RadioField = FormFieldBase & {
+type RadioFieldType = FormFieldBaseType & {
 	type: 'radio';
-	options: RadioOption[];
+	options: RadioOptionType[];
 };
 
-type NumberField = FormFieldBase & {
+type NumberFieldType = FormFieldBaseType & {
 	type: 'number';
 };
 
-type SwitchField = FormFieldBase & {
+type SwitchFieldType = FormFieldBaseType & {
 	type: 'switch';
 };
 
-type GroupFieldChildren = {
-	[key: string]: RadioField | SwitchField | NumberField | GroupField;
+type GroupFieldChildrenType = {
+	[key: string]: RadioFieldType | SwitchFieldType | NumberFieldType | GroupFieldType;
 };
 
-type GroupField = FormFieldBase & {
+type GroupFieldType = FormFieldBaseType & {
 	type: 'group';
-	children: GroupFieldChildren;
+	children: GroupFieldChildrenType;
 };
 
-type AnyFormField = RadioField | SwitchField | NumberField | GroupField;
+type AnyFormFieldType = RadioFieldType | SwitchFieldType | NumberFieldType | GroupFieldType;
 
 type ThemeFormConfigTypes = {
-	[key: string]: AnyFormField;
+	[key: string]: AnyFormFieldType;
 };
 
 export default ThemeFormConfigTypes;

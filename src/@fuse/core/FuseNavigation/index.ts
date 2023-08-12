@@ -2,15 +2,15 @@ import { SxProps } from '@mui/system';
 
 export { default } from './FuseNavigation';
 
-export type FuseNavBadgeProps = {
+export type FuseNavBadgeType = {
 	bg: string;
 	fg: string;
 	title: string;
 };
 
-export type FuseNavigationType = FuseNavItemProps[];
+export type FuseNavigationType = FuseNavItemType[];
 
-export type FuseNavItemProps = {
+export type FuseNavItemType = {
 	id: string;
 	title?: string;
 	translate?: string;
@@ -26,7 +26,7 @@ export type FuseNavItemProps = {
 	active?: boolean;
 	exact?: boolean;
 	end?: boolean;
-	badge?: FuseNavBadgeProps;
+	badge?: FuseNavBadgeType;
 	children?: FuseNavigationType;
 };
 
@@ -34,19 +34,19 @@ export type FuseNavigationProps = {
 	className?: string;
 	dense?: boolean;
 	active?: boolean;
-	onItemClick?: (T: FuseNavItemProps) => void;
+	onItemClick?: (T: FuseNavItemType) => void;
 	navigation: FuseNavigationType;
 	layout?: 'horizontal' | 'vertical' | 'vertical-2';
 	firstLevel?: boolean;
 	selectedId?: string;
 };
 
-export type FuseNavComponentProps = {
+export type FuseNavItemComponentProps = {
 	type: string;
-	item: FuseNavItemProps;
+	item: FuseNavItemType;
 	dense?: boolean;
 	nestedLevel?: number;
-	onItemClick?: (T: FuseNavItemProps) => void;
+	onItemClick?: (T: FuseNavItemType) => void;
 };
 
-export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & FuseNavComponentProps;
+export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & FuseNavItemComponentProps;

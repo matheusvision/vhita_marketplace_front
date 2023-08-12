@@ -90,11 +90,11 @@ const inputGlobalStyles = (
 	/>
 );
 
-type Props = {
+type FuseLayoutProps = {
 	layouts: themeLayoutsType;
 };
 
-function FuseLayout(props: Props) {
+function FuseLayout(props: FuseLayoutProps) {
 	const { layouts, ...restProps } = props;
 	const dispatch = useAppDispatch();
 	const settings = useSelector(selectFuseCurrentSettings);

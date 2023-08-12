@@ -1,9 +1,10 @@
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
-type Props = {
+type NotificationIconProps = {
 	value?: string;
 };
-function NotificationIcon(props: Props) {
+
+function NotificationIcon(props: NotificationIconProps) {
 	const { value } = props;
 
 	switch (value) {

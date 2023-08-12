@@ -16,10 +16,11 @@ const marks = [
 	{ value: 1.3, label: '130%' }
 ];
 
-type Props = {
+type AdjustFontSizeProps = {
 	className?: string;
 };
-function AdjustFontSize(props: Props) {
+
+function AdjustFontSize(props: AdjustFontSizeProps) {
 	const { className = '' } = props;
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

@@ -9,12 +9,12 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 
-type Props = {
+type NavbarToggleButtonProps = {
 	className?: string;
 	children?: React.ReactNode;
 };
 
-function NavbarToggleButton(props: Props) {
+function NavbarToggleButton(props: NavbarToggleButtonProps) {
 	const {
 		className = '',
 		children = (
