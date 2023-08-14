@@ -42,7 +42,7 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 	return (
 		<div>
 			<IconButton
-				className={clsx('w-40 h-40', className)}
+				className={clsx('h-40 w-40', className)}
 				aria-controls="font-size-menu"
 				aria-haspopup="true"
 				onClick={handleClick}
@@ -66,8 +66,8 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 					horizontal: 'center'
 				}}
 			>
-				<div className="py-12 px-24">
-					<Typography className="flex items-center justify-center text-16 font-semibold mb-8">
+				<div className="px-24 py-12">
+					<Typography className="text-16 mb-8 flex items-center justify-center font-semibold">
 						<FuseSvgIcon
 							color="action"
 							className="mr-4"

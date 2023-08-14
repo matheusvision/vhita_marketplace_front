@@ -12,7 +12,7 @@ function FuseThemeSchemes(props: FuseThemeSchemesProps) {
 
 	return (
 		<div>
-			<div className="flex flex-wrap w-full -mx-8">
+			<div className="-mx-8 flex w-full flex-wrap">
 				{Object.entries(themes)
 					.filter(([key]) => !(key === 'mainThemeDark' || key === 'mainThemeLight'))
 					.map(([key, val]) => (

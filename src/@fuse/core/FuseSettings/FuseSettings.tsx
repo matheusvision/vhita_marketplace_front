@@ -373,7 +373,7 @@ function FuseSettings() {
 				{useMemo(() => getForm(formConfigs, 'layout.config'), [formConfigs, getForm])}
 
 				<Typography
-					className="my-16 text-12 italic"
+					className="text-12 my-16 italic"
 					color="text.secondary"
 				>
 					*Not all option combinations are available
@@ -388,7 +388,7 @@ function FuseSettings() {
 					Theme
 				</Typography>
 
-				<div className="flex flex-wrap -mx-8">
+				<div className="-mx-8 flex flex-wrap">
 					<Controller
 						name="theme.main"
 						control={control}
@@ -397,12 +397,12 @@ function FuseSettings() {
 								value={value as FuseThemeType}
 								onChange={onChange}
 								triggerElement={
-									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
+									<div className="w-128 group m-8 flex cursor-pointer flex-col items-center space-y-8">
 										<SectionPreview
-											className="group-hover:shadow-lg transition-shadow"
+											className="transition-shadow group-hover:shadow-lg"
 											section="main"
 										/>
-										<Typography className="flex-1 text-14 font-semibold mb-24 opacity-80 group-hover:opacity-100">
+										<Typography className="text-14 mb-24 flex-1 font-semibold opacity-80 group-hover:opacity-100">
 											Main Palette
 										</Typography>
 									</div>
@@ -419,12 +419,12 @@ function FuseSettings() {
 								value={value as FuseThemeType}
 								onChange={onChange}
 								triggerElement={
-									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
+									<div className="w-128 group m-8 flex cursor-pointer flex-col items-center space-y-8">
 										<SectionPreview
-											className="group-hover:shadow-lg transition-shadow"
+											className="transition-shadow group-hover:shadow-lg"
 											section="navbar"
 										/>
-										<Typography className="flex-1 text-14 font-semibold mb-24 opacity-80 group-hover:opacity-100">
+										<Typography className="text-14 mb-24 flex-1 font-semibold opacity-80 group-hover:opacity-100">
 											Navbar Palette
 										</Typography>
 									</div>
@@ -441,12 +441,12 @@ function FuseSettings() {
 								value={value as FuseThemeType}
 								onChange={onChange}
 								triggerElement={
-									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
+									<div className="w-128 group m-8 flex cursor-pointer flex-col items-center space-y-8">
 										<SectionPreview
-											className="group-hover:shadow-lg transition-shadow"
+											className="transition-shadow group-hover:shadow-lg"
 											section="toolbar"
 										/>
-										<Typography className="flex-1 text-14 font-semibold mb-24 opacity-80 group-hover:opacity-100">
+										<Typography className="text-14 mb-24 flex-1 font-semibold opacity-80 group-hover:opacity-100">
 											Toolbar Palette
 										</Typography>
 									</div>
@@ -463,12 +463,12 @@ function FuseSettings() {
 								value={value as FuseThemeType}
 								onChange={onChange}
 								triggerElement={
-									<div className="flex flex-col items-center space-y-8 w-128 m-8 cursor-pointer group">
+									<div className="w-128 group m-8 flex cursor-pointer flex-col items-center space-y-8">
 										<SectionPreview
-											className="group-hover:shadow-lg transition-shadow"
+											className="transition-shadow group-hover:shadow-lg"
 											section="footer"
 										/>
-										<Typography className="flex-1 text-14 font-semibold mb-24 opacity-80 group-hover:opacity-100">
+										<Typography className="text-14 mb-24 flex-1 font-semibold opacity-80 group-hover:opacity-100">
 											Footer Palette
 										</Typography>
 									</div>

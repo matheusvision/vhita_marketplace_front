@@ -46,15 +46,15 @@ function Layout2(props: Layout2Props) {
 	return (
 		<Root
 			id="fuse-layout"
-			className="w-full flex"
+			className="flex w-full"
 			config={config}
 		>
 			{config.leftSidePanel.display && <LeftSideLayout2 />}
 
-			<div className="flex flex-col flex-auto min-w-0">
+			<div className="flex min-w-0 flex-auto flex-col">
 				<main
 					id="fuse-main"
-					className="flex flex-col flex-auto min-h-full min-w-0 relative"
+					className="relative flex min-h-full min-w-0 flex-auto flex-col"
 				>
 					{config.navbar.display && (
 						<NavbarWrapperLayout2
@@ -66,16 +66,16 @@ function Layout2(props: Layout2Props) {
 						<ToolbarLayout2
 							className={clsx(
 								config.toolbar.style === 'fixed' && 'sticky top-0',
-								config.toolbar.position === 'above' && 'order-first z-40'
+								config.toolbar.position === 'above' && 'z-40 order-first'
 							)}
 						/>
 					)}
 
-					<div className="sticky top-0 z-99">
+					<div className="z-99 sticky top-0">
 						<SettingsPanel />
 					</div>
 
-					<div className="flex flex-col flex-auto min-h-0 relative z-10">
+					<div className="relative z-10 flex min-h-0 flex-auto flex-col">
 						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
 						{children}

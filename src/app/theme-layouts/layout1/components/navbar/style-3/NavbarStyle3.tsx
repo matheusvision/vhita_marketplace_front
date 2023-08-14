@@ -139,7 +139,7 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 					dense={dense ? 1 : 0}
 					folded={folded ? 1 : 0}
 					position={config.navbar.position}
-					className={clsx('flex-col flex-auto sticky top-0 h-screen shrink-0 z-20 shadow-5', className)}
+					className={clsx('shadow-5 sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col', className)}
 				>
 					<NavbarStyle3Content
 						dense={dense ? 1 : 0}
@@ -150,7 +150,7 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 			<Hidden lgUp>
 				<StyledNavBarMobile
 					classes={{
-						paper: clsx('flex-col flex-auto h-screen max-w-full w-auto overflow-hidden', className)
+						paper: clsx('h-screen w-auto max-w-full flex-auto flex-col overflow-hidden', className)
 					}}
 					anchor={config.navbar.position as 'left' | 'right'}
 					variant="temporary"

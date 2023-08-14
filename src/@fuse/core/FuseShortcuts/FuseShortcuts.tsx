@@ -64,7 +64,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	}
 
 	return (
-		<div className={clsx('flex flex-1', variant === 'vertical' && 'flex-col grow-0 shrink', className)}>
+		<div className={clsx('flex flex-1', variant === 'vertical' && 'shrink grow-0 flex-col', className)}>
 			{useMemo(() => {
 				const container = {
 					show: {
@@ -98,7 +98,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 												placement={variant === 'horizontal' ? 'bottom' : 'left'}
 											>
 												<IconButton
-													className="w-40 h-40 p-0"
+													className="h-40 w-40 p-0"
 													component={motion.div}
 													variants={item}
 													size="large"
@@ -123,7 +123,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 								<IconButton
 									component={motion.div}
 									variants={item}
-									className="w-40 h-40 p-0"
+									className="h-40 w-40 p-0"
 									aria-owns={addMenu ? 'add-menu' : null}
 									aria-haspopup="true"
 									onClick={addMenuClick}
@@ -229,7 +229,7 @@ function ShortcutMenuItem(props: {
 					{item.icon ? (
 						<FuseSvgIcon>{item.icon}</FuseSvgIcon>
 					) : (
-						<span className="text-20 font-semibold uppercase text-center">{item.title[0]}</span>
+						<span className="text-20 text-center font-semibold uppercase">{item.title[0]}</span>
 					)}
 				</ListItemIcon>
 				<ListItemText primary={item.title} />

@@ -256,7 +256,7 @@ const FusePageSimple = forwardRef<
 				leftSidebarWidth={leftSidebarWidth}
 				rightSidebarWidth={rightSidebarWidth}
 			>
-				<div className="flex flex-auto flex-col z-10 h-full">
+				<div className="z-10 flex h-full flex-auto flex-col">
 					<div className="FusePageSimple-wrapper">
 						{leftSidebarContent && (
 							<FusePageSimpleSidebar

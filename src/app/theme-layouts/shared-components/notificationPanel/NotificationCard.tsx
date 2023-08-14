@@ -32,7 +32,7 @@ function NotificationCard(props: NotificationCardProps) {
 	return (
 		<Card
 			className={clsx(
-				'flex items-center relative w-full rounded-16 p-20 min-h-64 shadow space-x-8',
+				'rounded-16 min-h-64 relative flex w-full items-center space-x-8 p-20 shadow',
 				variant === 'success' && 'bg-green-600 text-white',
 				variant === 'info' && 'bg-blue-700 text-white',
 				variant === 'error' && 'bg-red-600 text-white',
@@ -47,7 +47,7 @@ function NotificationCard(props: NotificationCardProps) {
 			{item.icon && !item.image && (
 				<Box
 					sx={{ backgroundColor: 'background.default' }}
-					className="flex shrink-0 items-center justify-center w-32 h-32 mr-12 rounded-full"
+					className="mr-12 flex h-32 w-32 shrink-0 items-center justify-center rounded-full"
 				>
 					<FuseSvgIcon
 						className="opacity-75"
@@ -60,14 +60,14 @@ function NotificationCard(props: NotificationCardProps) {
 
 			{item.image && (
 				<img
-					className="shrink-0 w-32 h-32 mr-12 rounded-full overflow-hidden object-cover object-center"
+					className="mr-12 h-32 w-32 shrink-0 overflow-hidden rounded-full object-cover object-center"
 					src={item.image}
 					alt="Notification"
 				/>
 			)}
 
-			<div className="flex flex-col flex-auto">
-				{item.title && <Typography className="font-semibold line-clamp-1">{item.title}</Typography>}
+			<div className="flex flex-auto flex-col">
+				{item.title && <Typography className="line-clamp-1 font-semibold">{item.title}</Typography>}
 
 				{item.description && (
 					<div
@@ -89,7 +89,7 @@ function NotificationCard(props: NotificationCardProps) {
 
 			<IconButton
 				disableRipple
-				className="top-0 right-0 absolute p-8"
+				className="absolute right-0 top-0 p-8"
 				color="inherit"
 				size="small"
 				onClick={handleClose}

@@ -32,7 +32,7 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 		<ThemeProvider theme={toolbarTheme}>
 			<AppBar
 				id="fuse-toolbar"
-				className={clsx('flex relative z-20 shadow-md', className)}
+				className={clsx('relative z-20 flex shadow-md', className)}
 				color="default"
 				sx={{
 					backgroundColor: (theme) =>
@@ -42,22 +42,22 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 				}}
 				position="static"
 			>
-				<Toolbar className="p-0 min-h-48 md:min-h-64">
+				<Toolbar className="min-h-48 md:min-h-64 p-0">
 					<div className="flex flex-1 px-16">
 						{config.navbar.display && config.navbar.position === 'left' && (
 							<>
 								<Hidden lgDown>
 									{(config.navbar.style === 'style-3' || config.navbar.style === 'style-3-dense') && (
-										<NavbarToggleButton className="w-40 h-40 p-0 mx-0" />
+										<NavbarToggleButton className="mx-0 h-40 w-40 p-0" />
 									)}
 
 									{config.navbar.style === 'style-1' && !navbar.open && (
-										<NavbarToggleButton className="w-40 h-40 p-0 mx-0" />
+										<NavbarToggleButton className="mx-0 h-40 w-40 p-0" />
 									)}
 								</Hidden>
 
 								<Hidden lgUp>
-									<NavbarToggleButton className="w-40 h-40 p-0 mx-0 sm:mx-8" />
+									<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
 								</Hidden>
 							</>
 						)}
@@ -67,7 +67,7 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 						</Hidden>
 					</div>
 
-					<div className="flex items-center px-8 h-full overflow-x-auto">
+					<div className="flex h-full items-center overflow-x-auto px-8">
 						<LanguageSwitcher />
 						<AdjustFontSize />
 						<FullScreenToggle />
@@ -80,11 +80,11 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 					{config.navbar.display && config.navbar.position === 'right' && (
 						<>
 							<Hidden lgDown>
-								{!navbar.open && <NavbarToggleButton className="w-40 h-40 p-0 mx-0" />}
+								{!navbar.open && <NavbarToggleButton className="mx-0 h-40 w-40 p-0" />}
 							</Hidden>
 
 							<Hidden lgUp>
-								<NavbarToggleButton className="w-40 h-40 p-0 mx-0 sm:mx-8" />
+								<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
 							</Hidden>
 						</>
 					)}

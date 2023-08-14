@@ -45,26 +45,26 @@ function Layout1(props: Layout1Props) {
 		<Root
 			id="fuse-layout"
 			config={config}
-			className="w-full flex"
+			className="flex w-full"
 		>
 			{config.leftSidePanel.display && <LeftSideLayout1 />}
 
-			<div className="flex flex-auto min-w-0">
+			<div className="flex min-w-0 flex-auto">
 				{config.navbar.display && config.navbar.position === 'left' && <NavbarWrapperLayout1 />}
 
 				<main
 					id="fuse-main"
-					className="flex flex-col flex-auto min-h-full min-w-0 relative z-10"
+					className="relative z-10 flex min-h-full min-w-0 flex-auto flex-col"
 				>
 					{config.toolbar.display && (
 						<ToolbarLayout1 className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
 					)}
 
-					<div className="sticky top-0 z-99">
+					<div className="z-99 sticky top-0">
 						<SettingsPanel />
 					</div>
 
-					<div className="flex flex-col flex-auto min-h-0 relative z-10">
+					<div className="relative z-10 flex min-h-0 flex-auto flex-col">
 						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
 						{children}

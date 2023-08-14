@@ -65,19 +65,19 @@ function SignUpPage() {
 	}
 
 	return (
-		<div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-1 min-w-0">
-			<Paper className="h-full sm:h-auto md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-16 sm:p-48 md:p-64 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none ltr:border-r-1 rtl:border-l-1">
-				<div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
+		<div className="flex min-w-0 flex-1 flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">
+			<Paper className="ltr:border-r-1 rtl:border-l-1 h-full w-full px-16 py-8 sm:h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:justify-end md:rounded-none md:p-64 md:shadow-none">
+				<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
 					<img
 						className="w-48"
 						src="assets/images/logo/logo.svg"
 						alt="logo"
 					/>
 
-					<Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight">
+					<Typography className="mt-32 text-4xl font-extrabold leading-tight tracking-tight">
 						Sign up
 					</Typography>
-					<div className="flex items-baseline mt-2 font-medium">
+					<div className="mt-2 flex items-baseline font-medium">
 						<Typography>Already have an account?</Typography>
 						<Link
 							className="ml-4"
@@ -90,7 +90,7 @@ function SignUpPage() {
 					<form
 						name="registerForm"
 						noValidate
-						className="flex flex-col justify-center w-full mt-32"
+						className="mt-32 flex w-full flex-col justify-center"
 						onSubmit={handleSubmit(onSubmit)}
 					>
 						<Controller
@@ -191,7 +191,7 @@ function SignUpPage() {
 						<Button
 							variant="contained"
 							color="secondary"
-							className="w-full mt-24"
+							className="mt-24 w-full"
 							aria-label="Register"
 							disabled={_.isEmpty(dirtyFields) || !isValid}
 							type="submit"
@@ -204,11 +204,11 @@ function SignUpPage() {
 			</Paper>
 
 			<Box
-				className="relative hidden md:flex flex-auto items-center justify-center h-full p-64 lg:px-112 overflow-hidden"
+				className="lg:px-112 relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex"
 				sx={{ backgroundColor: 'primary.main' }}
 			>
 				<svg
-					className="absolute inset-0 pointer-events-none"
+					className="pointer-events-none absolute inset-0"
 					viewBox="0 0 960 540"
 					width="100%"
 					height="100%"
@@ -237,7 +237,7 @@ function SignUpPage() {
 				</svg>
 				<Box
 					component="svg"
-					className="absolute -top-64 -right-64 opacity-20"
+					className="absolute -right-64 -top-64 opacity-20"
 					sx={{ color: 'primary.light' }}
 					viewBox="0 0 220 192"
 					width="220px"
@@ -269,16 +269,16 @@ function SignUpPage() {
 					/>
 				</Box>
 
-				<div className="z-10 relative w-full max-w-2xl">
+				<div className="relative z-10 w-full max-w-2xl">
 					<div className="text-7xl font-bold leading-none text-gray-100">
 						<div>Welcome to</div>
 						<div>our community</div>
 					</div>
-					<div className="mt-24 text-lg tracking-tight leading-6 text-gray-400">
+					<div className="mt-24 text-lg leading-6 tracking-tight text-gray-400">
 						Fuse helps developers to build organized and well coded dashboards full of beautiful and rich
 						modules. Join us and start building your application today.
 					</div>
-					<div className="flex items-center mt-32">
+					<div className="mt-32 flex items-center">
 						<AvatarGroup
 							sx={{
 								'& .MuiAvatar-root': {

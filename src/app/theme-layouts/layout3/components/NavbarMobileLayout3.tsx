@@ -41,26 +41,26 @@ function NavbarMobileLayout3(props: NavbarMobileLayout3Props) {
 	const { className = '' } = props;
 
 	return (
-		<Root className={clsx('flex flex-col h-full overflow-hidden', className)}>
-			<div className="flex flex-row items-center shrink-0 h-48 md:h-72 px-20">
-				<div className="flex flex-1 mx-4">
+		<Root className={clsx('flex h-full flex-col overflow-hidden', className)}>
+			<div className="flex h-48 shrink-0 flex-row items-center px-20 md:h-72">
+				<div className="mx-4 flex flex-1">
 					<Logo />
 				</div>
 
-				<NavbarToggleButton className="w-40 h-40 p-0" />
+				<NavbarToggleButton className="h-40 w-40 p-0" />
 			</div>
 
 			<StyledContent
-				className="flex flex-1 flex-col min-h-0"
+				className="flex min-h-0 flex-1 flex-col"
 				option={{ suppressScrollX: true, wheelPropagation: false }}
 			>
 				<UserNavbarHeader />
 
 				<Navigation layout="vertical" />
 
-				<div className="flex flex-0 items-center justify-center py-48 opacity-10">
+				<div className="flex-0 flex items-center justify-center py-48 opacity-10">
 					<img
-						className="w-full max-w-64"
+						className="max-w-64 w-full"
 						src="assets/images/logo/logo.svg"
 						alt="footer logo"
 					/>

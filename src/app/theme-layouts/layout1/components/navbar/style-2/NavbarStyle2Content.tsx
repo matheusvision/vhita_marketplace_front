@@ -39,13 +39,13 @@ function NavbarStyle2Content(props: NavbarStyle2ContentProps) {
 	const { className = '' } = props;
 
 	return (
-		<Root className={clsx('flex flex-auto flex-col overflow-hidden h-full', className)}>
-			<div className="flex flex-row items-center shrink-0 h-48 md:h-76 px-12">
-				<div className="flex flex-1 mx-4">
+		<Root className={clsx('flex h-full flex-auto flex-col overflow-hidden', className)}>
+			<div className="md:h-76 flex h-48 shrink-0 flex-row items-center px-12">
+				<div className="mx-4 flex flex-1">
 					<Logo />
 				</div>
 
-				<NavbarToggleButton className="w-40 h-40 p-0" />
+				<NavbarToggleButton className="h-40 w-40 p-0" />
 			</div>
 
 			<StyledContent option={{ suppressScrollX: true, wheelPropagation: false }}>

@@ -29,9 +29,9 @@ function PaletteSelector(props: PaletteSelectorProps) {
 		value,
 		onChange,
 		triggerElement = (
-			<div className="flex flex-col items-center space-y-8 w-128 m-8">
+			<div className="w-128 m-8 flex flex-col items-center space-y-8">
 				<SectionPreview />
-				<Typography className="flex-1 text-16 font-bold mb-24">Edit Palette</Typography>
+				<Typography className="text-16 mb-24 flex-1 font-bold">Edit Palette</Typography>
 			</div>
 		)
 	} = props;
@@ -136,7 +136,7 @@ function PaletteSelector(props: PaletteSelectorProps) {
 
 				<DialogContent>
 					<div className="flex w-full">
-						<div className="flex flex-col items-center justify-center p-24 flex-1">
+						<div className="flex flex-1 flex-col items-center justify-center p-24">
 							<Controller
 								name="palette.mode"
 								control={control}
@@ -275,7 +275,7 @@ function PaletteSelector(props: PaletteSelectorProps) {
 
 						<div className="flex flex-col items-center justify-center p-48">
 							<Typography
-								className="text-16 font-semibold mb-16 -mt-48"
+								className="text-16 -mt-48 mb-16 font-semibold"
 								color="text.secondary"
 							>
 								Preview

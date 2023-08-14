@@ -11,16 +11,16 @@ function SignOutPage() {
 	}, []);
 
 	return (
-		<div className="flex flex-col flex-auto items-center sm:justify-center min-w-0">
-			<Paper className="flex items-center w-full sm:w-auto min-h-full sm:min-h-auto rounded-0 py-32 px-16 sm:p-48 sm:rounded-2xl sm:shadow">
-				<div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
+		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center">
+			<Paper className="sm:min-h-auto rounded-0 flex min-h-full w-full items-center px-16 py-32 sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow">
+				<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
 					<img
-						className="w-48 mx-auto"
+						className="mx-auto w-48"
 						src="assets/images/logo/logo.svg"
 						alt="logo"
 					/>
 
-					<Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight text-center">
+					<Typography className="mt-32 text-center text-4xl font-extrabold leading-tight tracking-tight">
 						You have signed out!
 					</Typography>
 				</div>

@@ -93,7 +93,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 							title={item.title || ''}
 							placement="right"
 						>
-							<div className="w-32 h-32 min-h-32 flex items-center justify-center relative">
+							<div className="min-h-32 relative flex h-32 w-32 items-center justify-center">
 								{item.icon ? (
 									<FuseSvgIcon
 										className={clsx('fuse-list-item-icon', item.iconClass)}
@@ -102,19 +102,19 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="font-bold text-16">{item.title[0]}</div>
+									item.title && <div className="text-16 font-bold">{item.title[0]}</div>
 								)}
 								{item.badge && (
 									<FuseNavBadge
 										badge={item.badge}
-										className="absolute top-0 ltr:right-0 rtl:left-0 min-w-16 h-16 p-4 justify-center"
+										className="min-w-16 absolute top-0 h-16 justify-center p-4 ltr:right-0 rtl:left-0"
 									/>
 								)}
 							</div>
 						</Tooltip>
 					) : (
 						<>
-							<div className="w-32 h-32 min-h-32 flex items-center justify-center relative mb-8">
+							<div className="min-h-32 relative mb-8 flex h-32 w-32 items-center justify-center">
 								{item.icon ? (
 									<FuseSvgIcon
 										size={32}
@@ -124,18 +124,18 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="font-bold text-20">{item.title[0]}</div>
+									item.title && <div className="text-20 font-bold">{item.title[0]}</div>
 								)}
 								{item.badge && (
 									<FuseNavBadge
 										badge={item.badge}
-										className="absolute top-0 ltr:right-0 rtl:left-0 min-w-16 h-16 p-4 justify-center"
+										className="min-w-16 absolute top-0 h-16 justify-center p-4 ltr:right-0 rtl:left-0"
 									/>
 								)}
 							</div>
 
 							<ListItemText
-								className="fuse-list-item-text grow-0 w-full"
+								className="fuse-list-item-text w-full grow-0"
 								primary={item.title}
 								classes={{
 									primary:

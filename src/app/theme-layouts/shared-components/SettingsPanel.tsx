@@ -119,7 +119,7 @@ function SettingsPanel() {
 				className="buttonWrapper"
 			>
 				<Button
-					className="settingsButton min-w-40 w-40 h-40 m-0"
+					className="settingsButton min-w-40 m-0 h-40 w-40"
 					onClick={() => handleOpen('settings')}
 					variant="text"
 					color="inherit"
@@ -131,7 +131,7 @@ function SettingsPanel() {
 				</Button>
 
 				<Button
-					className="min-w-40 w-40 h-40 m-0"
+					className="min-w-40 m-0 h-40 w-40"
 					onClick={() => handleOpen('schemes')}
 					variant="text"
 					color="inherit"
@@ -154,7 +154,7 @@ function SettingsPanel() {
 			>
 				<FuseScrollbars className="p-16 sm:p-32">
 					<IconButton
-						className="fixed top-0 ltr:right-0 rtl:left-0 z-10"
+						className="fixed top-0 z-10 ltr:right-0 rtl:left-0"
 						onClick={handleClose}
 						size="large"
 					>
@@ -187,7 +187,7 @@ function SettingsPanel() {
 			>
 				<FuseScrollbars className="p-16 sm:p-32">
 					<IconButton
-						className="fixed top-0 ltr:right-0 rtl:left-0 z-10"
+						className="fixed top-0 z-10 ltr:right-0 rtl:left-0"
 						onClick={handleClose}
 						size="large"
 					>
@@ -202,7 +202,7 @@ function SettingsPanel() {
 					</Typography>
 
 					<Typography
-						className="mb-24 text-12 italic text-justify"
+						className="text-12 mb-24 text-justify italic"
 						color="text.secondary"
 					>
 						* Selected color scheme will be applied to all theme layout elements (navbar, toolbar, etc.).

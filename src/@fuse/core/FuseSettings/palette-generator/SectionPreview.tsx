@@ -11,7 +11,7 @@ type SectionPreviewProps = {
 function SectionPreview(props: SectionPreviewProps) {
 	const { section, className } = props;
 	return (
-		<div className={clsx('flex w-128 h-80 rounded-md overflow-hidden border-1 hover:opacity-80', className)}>
+		<div className={clsx('w-128 border-1 flex h-80 overflow-hidden rounded-md hover:opacity-80', className)}>
 			<Box
 				sx={{
 					backgroundColor:
@@ -31,7 +31,7 @@ function SectionPreview(props: SectionPreviewProps) {
 											: lighten(theme.palette.background.default, 0.1)
 					}
 				}}
-				className="w-32 pt-12 px-6 space-y-1"
+				className="w-32 space-y-1 px-6 pt-12"
 			>
 				<div className="h-4 rounded-sm" />
 				<div className="h-4 rounded-sm" />
@@ -39,7 +39,7 @@ function SectionPreview(props: SectionPreviewProps) {
 				<div className="h-4 rounded-sm" />
 				<div className="h-4 rounded-sm" />
 			</Box>
-			<div className="flex flex-col flex-auto border-l">
+			<div className="flex flex-auto flex-col border-l">
 				<Box
 					sx={{
 						backgroundColor:
@@ -59,11 +59,11 @@ function SectionPreview(props: SectionPreviewProps) {
 												: lighten(theme.palette.background.default, 0.1)
 						}
 					}}
-					className={clsx('h-12 flex items-center justify-end h-full pr-6')}
+					className={clsx('flex h-12 h-full items-center justify-end pr-6')}
 				>
-					<div className="w-4 h-4 ml-4 rounded-full" />
-					<div className="w-4 h-4 ml-4 rounded-full" />
-					<div className="w-4 h-4 ml-4 rounded-full" />
+					<div className="ml-4 h-4 w-4 rounded-full" />
+					<div className="ml-4 h-4 w-4 rounded-full" />
+					<div className="ml-4 h-4 w-4 rounded-full" />
 				</Box>
 				<Box
 					sx={{
@@ -75,7 +75,7 @@ function SectionPreview(props: SectionPreviewProps) {
 											? lighten(theme.palette.background.default, 0.4)
 											: lighten(theme.palette.background.default, 0.02)
 					}}
-					className={clsx('flex flex-auto border-t border-b')}
+					className={clsx('flex flex-auto border-y')}
 				/>
 				<Box
 					sx={{
@@ -96,11 +96,11 @@ function SectionPreview(props: SectionPreviewProps) {
 												: lighten(theme.palette.background.default, 0.1)
 						}
 					}}
-					className={clsx('h-12 flex items-center pr-6')}
+					className={clsx('flex h-12 items-center pr-6')}
 				>
-					<div className="w-4 h-4 ml-4 rounded-full" />
-					<div className="w-4 h-4 ml-4 rounded-full" />
-					<div className="w-4 h-4 ml-4 rounded-full" />
+					<div className="ml-4 h-4 w-4 rounded-full" />
+					<div className="ml-4 h-4 w-4 rounded-full" />
+					<div className="ml-4 h-4 w-4 rounded-full" />
 				</Box>
 			</div>
 		</div>

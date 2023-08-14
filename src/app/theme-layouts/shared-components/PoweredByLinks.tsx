@@ -28,7 +28,7 @@ function PoweredByLinks() {
 				placement="top"
 			>
 				<IconButton
-					className="w-48 h-48 px-4"
+					className="h-48 w-48 px-4"
 					component={motion.a}
 					variants={item}
 					href="https://reactjs.org/"
@@ -49,7 +49,7 @@ function PoweredByLinks() {
 				placement="top"
 			>
 				<IconButton
-					className="w-48 h-48 px-4"
+					className="h-48 w-48 px-4"
 					component={motion.a}
 					variants={item}
 					href="https://github.com/reactjs/react-redux"
@@ -70,7 +70,7 @@ function PoweredByLinks() {
 				placement="top"
 			>
 				<IconButton
-					className="w-48 h-48 px-4"
+					className="h-48 w-48 px-4"
 					component={motion.a}
 					variants={item}
 					href="https://mui.com"
@@ -92,7 +92,7 @@ function PoweredByLinks() {
 				placement="top"
 			>
 				<IconButton
-					className="w-48 h-48 px-4"
+					className="h-48 w-48 px-4"
 					component={motion.a}
 					variants={item}
 					href="https://tailwindcss.com"

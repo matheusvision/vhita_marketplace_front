@@ -65,15 +65,15 @@ function FuseExample(props: FuseExampleProps) {
 					)}
 				</Tabs>
 			</Box>
-			<div className="flex justify-center max-w-full relative">
-				<div className={currentTab === 0 ? 'flex flex-1 max-w-full' : 'hidden'}>
+			<div className="relative flex max-w-full justify-center">
+				<div className={currentTab === 0 ? 'flex max-w-full flex-1' : 'hidden'}>
 					{Component &&
 						(iframe ? (
 							<DemoFrame name={name}>
 								<Component />
 							</DemoFrame>
 						) : (
-							<div className="p-24 flex flex-1 justify-center max-w-full">
+							<div className="flex max-w-full flex-1 justify-center p-24">
 								<Component />
 							</div>
 						))}

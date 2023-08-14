@@ -141,11 +141,11 @@ function NavbarStyle2() {
 			folded={folded ? 1 : 0}
 			open={navbar.open}
 			id="fuse-navbar"
-			className="sticky top-0 h-screen shrink-0 z-20 shadow-5"
+			className="shadow-5 sticky top-0 z-20 h-screen shrink-0"
 		>
 			<Hidden lgDown>
 				<StyledNavbar
-					className="flex-col flex-auto"
+					className="flex-auto flex-col"
 					position={config.navbar.position}
 					folded={folded ? 1 : 0}
 					foldedandopened={foldedandopened ? 1 : 0}

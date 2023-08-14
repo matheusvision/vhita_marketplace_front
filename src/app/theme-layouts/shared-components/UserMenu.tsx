@@ -27,14 +27,14 @@ function UserMenu() {
 	return (
 		<>
 			<Button
-				className="min-h-40 min-w-40 px-0 md:px-16 py-0 md:py-6"
+				className="min-h-40 min-w-40 p-0 md:px-16 md:py-6"
 				onClick={userMenuClick}
 				color="inherit"
 			>
-				<div className="hidden md:flex flex-col mx-4 items-end">
+				<div className="mx-4 hidden flex-col items-end md:flex">
 					<Typography
 						component="span"
-						className="font-semibold flex"
+						className="flex font-semibold"
 					>
 						{user.data.displayName}
 					</Typography>

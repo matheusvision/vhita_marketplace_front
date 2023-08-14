@@ -13,7 +13,7 @@ function PalettePreview(props: PalettePreviewProps) {
 
 	return (
 		<Box
-			className={clsx('w-200 text-left rounded-6 relative font-bold shadow overflow-hidden', className)}
+			className={clsx('w-200 rounded-6 relative overflow-hidden text-left font-bold shadow', className)}
 			sx={{
 				backgroundColor: palette.background.default,
 				color: palette.text.primary
@@ -22,7 +22,7 @@ function PalettePreview(props: PalettePreviewProps) {
 			component="button"
 		>
 			<Box
-				className="w-full h-56 px-8 pt-8 relative"
+				className="relative h-56 w-full px-8 pt-8"
 				sx={{
 					backgroundColor: palette.primary.main,
 					color: ({ palette: Palette }) =>
@@ -32,7 +32,7 @@ function PalettePreview(props: PalettePreviewProps) {
 				<span className="text-12">Header (Primary)</span>
 
 				<Box
-					className="flex items-center justify-center w-20 h-20 rounded-full absolute bottom-0 right-0 -mb-10 shadow text-10 mr-4"
+					className="text-10 absolute bottom-0 right-0 -mb-10 mr-4 flex h-20 w-20 items-center justify-center rounded-full shadow"
 					sx={{
 						backgroundColor: palette.secondary.main,
 						color: ({ palette: Palette }) =>
@@ -42,9 +42,9 @@ function PalettePreview(props: PalettePreviewProps) {
 					<span className="">S</span>
 				</Box>
 			</Box>
-			<div className="pl-8 pr-28 -mt-24 w-full">
+			<div className="-mt-24 w-full pl-8 pr-28">
 				<Box
-					className="w-full h-96 rounded-4 relative shadow p-8"
+					className="rounded-4 relative h-96 w-full p-8 shadow"
 					sx={{
 						backgroundColor: palette.background.paper,
 						color: palette.text.primary
@@ -54,7 +54,7 @@ function PalettePreview(props: PalettePreviewProps) {
 				</Box>
 			</div>
 
-			<div className="px-8 py-8 w-full">
+			<div className="w-full p-8">
 				<span className="text-12 opacity-75">Background</span>
 			</div>
 

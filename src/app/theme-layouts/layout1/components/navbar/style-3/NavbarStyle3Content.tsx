@@ -97,20 +97,20 @@ function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 
 	return (
 		<ClickAwayListener onClickAway={() => setPanelOpen(false)}>
-			<Root className={clsx('flex flex-auto flex h-full', className)}>
+			<Root className={clsx('flex h-full flex-auto', className)}>
 				<ThemeProvider theme={contrastTheme}>
 					<div
 						id="fuse-navbar-side-panel"
 						className="flex shrink-0 flex-col items-center"
 					>
 						<img
-							className="w-44 my-32"
+							className="my-32 w-44"
 							src="assets/images/logo/logo.svg"
 							alt="logo"
 						/>
 
 						<FuseScrollbars
-							className="flex flex-1 min-h-0 justify-center w-full overflow-y-auto overflow-x-hidden"
+							className="flex min-h-0 w-full flex-1 justify-center overflow-y-auto overflow-x-hidden"
 							option={{ suppressScrollX: true, wheelPropagation: false }}
 						>
 							<FuseNavigation

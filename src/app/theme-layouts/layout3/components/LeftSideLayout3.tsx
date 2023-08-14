@@ -6,7 +6,7 @@ function LeftSideLayout3() {
 	return (
 		<FuseSidePanel>
 			<NavigationShortcuts
-				className="py-16 px-8"
+				className="px-8 py-16"
 				variant="vertical"
 			/>
 		</FuseSidePanel>

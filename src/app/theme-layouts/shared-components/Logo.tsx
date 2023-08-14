@@ -19,12 +19,12 @@ function Logo() {
 	return (
 		<Root className="flex items-center">
 			<img
-				className="logo-icon w-32 h-32"
+				className="logo-icon h-32 w-32"
 				src="assets/images/logo/logo.svg"
 				alt="logo"
 			/>
 			<div
-				className="badge flex items-center py-4 px-8 mx-8 rounded"
+				className="badge mx-8 flex items-center rounded px-8 py-4"
 				style={{ backgroundColor: '#121212', color: '#61DAFB' }}
 			>
 				<img

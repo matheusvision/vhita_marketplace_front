@@ -33,7 +33,7 @@ function SchemePreview(props: SchemePreviewProps) {
 		<div className={clsx(className, 'mb-8')}>
 			<button
 				className={clsx(
-					'w-full text-left rounded-6 relative font-500 shadow hover:shadow-md transition-shadow cursor-pointer overflow-hidden'
+					'rounded-6 font-500 relative w-full cursor-pointer overflow-hidden text-left shadow transition-shadow hover:shadow-md'
 				)}
 				style={{
 					backgroundColor,
@@ -43,7 +43,7 @@ function SchemePreview(props: SchemePreviewProps) {
 				type="button"
 			>
 				<div
-					className="w-full h-56 px-8 pt-8 relative"
+					className="relative h-56 w-full px-8 pt-8"
 					style={{
 						backgroundColor: primaryColor,
 						color: primaryColorContrast
@@ -52,7 +52,7 @@ function SchemePreview(props: SchemePreviewProps) {
 					<span className="text-12 opacity-75">Header (Primary)</span>
 
 					<div
-						className="flex items-center justify-center w-20 h-20 rounded-full absolute bottom-0 right-0 -mb-10 shadow text-10 mr-4"
+						className="text-10 absolute bottom-0 right-0 -mb-10 mr-4 flex h-20 w-20 items-center justify-center rounded-full shadow"
 						style={{
 							backgroundColor: secondaryColor,
 							color: secondaryColorContrast
@@ -61,9 +61,9 @@ function SchemePreview(props: SchemePreviewProps) {
 						<span className="opacity-75">S</span>
 					</div>
 				</div>
-				<div className="pl-8 pr-28 -mt-24 w-full">
+				<div className="-mt-24 w-full pl-8 pr-28">
 					<div
-						className="w-full h-96 rounded-4 relative shadow p-8"
+						className="rounded-4 relative h-96 w-full p-8 shadow"
 						style={{
 							backgroundColor: paperColor,
 							color: paperColorContrast
@@ -73,11 +73,11 @@ function SchemePreview(props: SchemePreviewProps) {
 					</div>
 				</div>
 
-				<div className="px-8 py-8 w-full">
+				<div className="w-full p-8">
 					<span className="text-12 opacity-75">Background</span>
 				</div>
 			</button>
-			<Typography className="font-semibold w-full text-center mt-12">{id}</Typography>
+			<Typography className="mt-12 w-full text-center font-semibold">{id}</Typography>
 		</div>
 	);
 }

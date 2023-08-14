@@ -64,7 +64,7 @@ type RenderInputComponentType = {
 function renderInputComponent(props) {
 	const { variant, ref, inputRef = () => {}, ...other } = props as RenderInputComponentType;
 	return (
-		<div className="w-full relative">
+		<div className="relative w-full">
 			{variant === 'basic' ? (
 				// Outlined
 				<>
@@ -84,7 +84,7 @@ function renderInputComponent(props) {
 						{...other}
 					/>
 					<FuseSvgIcon
-						className="absolute top-0 ltr:right-0 rtl:left-0 h-40 md:h-48 w-48 p-12 pointer-events-none"
+						className="pointer-events-none absolute top-0 h-40 w-48 p-12 ltr:right-0 rtl:left-0 md:h-48"
 						color="action"
 					>
 						heroicons-outline:search
@@ -125,7 +125,7 @@ function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted })
 				{suggestion.icon ? (
 					<FuseSvgIcon>{suggestion.icon}</FuseSvgIcon>
 				) : (
-					<span className="text-20 w-24 font-semibold uppercase text-center">{suggestion.title[0]}</span>
+					<span className="text-20 w-24 text-center font-semibold uppercase">{suggestion.title[0]}</span>
 				)}
 			</ListItemIcon>
 			<ListItemText
@@ -260,7 +260,7 @@ function FuseSearch(props: {
 		noResults = 'No results..',
 		trigger = (
 			<IconButton
-				className="w-40 h-40"
+				className="h-40 w-40"
 				size="large"
 			>
 				<FuseSvgIcon>heroicons-outline:search</FuseSvgIcon>
@@ -346,7 +346,7 @@ function FuseSearch(props: {
 		case 'basic': {
 			return (
 				<div
-					className={clsx('flex items-center w-full', className)}
+					className={clsx('flex w-full items-center', className)}
 					ref={popperNode}
 				>
 					<Autosuggest
@@ -384,7 +384,7 @@ function FuseSearch(props: {
 							>
 								<div ref={suggestionsNode}>
 									<Paper
-										className="shadow-lg rounded-8 overflow-hidden"
+										className="rounded-8 overflow-hidden shadow-lg"
 										{...options.containerProps}
 										style={{
 											width: popperNode.current ? popperNode.current.clientWidth : ''
@@ -423,11 +423,11 @@ function FuseSearch(props: {
 					{state.opened && (
 						<ClickAwayListener onClickAway={handleClickAway}>
 							<Paper
-								className="absolute left-0 right-0 top-0 h-full z-9999 shadow-0"
+								className="z-9999 shadow-0 absolute inset-x-0 top-0 h-full"
 								square
 							>
 								<div
-									className="flex items-center w-full h-full"
+									className="flex h-full w-full items-center"
 									ref={popperNode}
 								>
 									<Autosuggest

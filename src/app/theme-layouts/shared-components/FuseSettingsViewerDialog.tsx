@@ -55,7 +55,7 @@ function FuseSettingsViewerDialog(props: FuseSettingsViewerDialogProps) {
 			>
 				<DialogTitle className="">Fuse Settings Viewer</DialogTitle>
 				<DialogContent className="">
-					<Typography className="text-16 font-bold mt-24 mb-16">JSON</Typography>
+					<Typography className="text-16 mb-16 mt-24 font-bold">JSON</Typography>
 
 					<FuseHighlight
 						component="pre"
@@ -64,7 +64,7 @@ function FuseSettingsViewerDialog(props: FuseSettingsViewerDialogProps) {
 						{JSON.stringify(settings, null, 2)}
 					</FuseHighlight>
 
-					<Typography className="text-16 font-bold mt-24 mb-16">Query Params</Typography>
+					<Typography className="text-16 mb-16 mt-24 font-bold">Query Params</Typography>
 
 					{queryString}
 				</DialogContent>

@@ -58,28 +58,28 @@ function QuickPanel() {
 			<FuseScrollbars>
 				<ListSubheader component="div">Today</ListSubheader>
 
-				<div className="mb-0 py-16 px-24">
+				<div className="mb-0 px-24 py-16">
 					<Typography
-						className="mb-12 text-32"
+						className="text-32 mb-12"
 						color="text.secondary"
 					>
 						{format(new Date(), 'eeee')}
 					</Typography>
 					<div className="flex">
 						<Typography
-							className="leading-none text-32"
+							className="text-32 leading-none"
 							color="text.secondary"
 						>
 							{format(new Date(), 'dd')}
 						</Typography>
 						<Typography
-							className="leading-none text-16"
+							className="text-16 leading-none"
 							color="text.secondary"
 						>
 							th
 						</Typography>
 						<Typography
-							className="leading-none text-32"
+							className="text-32 leading-none"
 							color="text.secondary"
 						>
 							{format(new Date(), 'MMMM')}

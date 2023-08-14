@@ -31,14 +31,14 @@ function ToolbarLayout2(props: ToolbarLayout2Props) {
 		<ThemeProvider theme={toolbarTheme}>
 			<AppBar
 				id="fuse-toolbar"
-				className={clsx('flex relative z-20 shadow-md', className)}
+				className={clsx('relative z-20 flex shadow-md', className)}
 				color="default"
 				style={{ backgroundColor: toolbarTheme.palette.background.paper }}
 			>
-				<Toolbar className="container p-0 lg:px-24 min-h-48 md:min-h-64">
+				<Toolbar className="min-h-48 md:min-h-64 container p-0 lg:px-24">
 					{config.navbar.display && (
 						<Hidden lgUp>
-							<NavbarToggleButton className="w-40 h-40 p-0 mx-0 sm:mx-8" />
+							<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
 						</Hidden>
 					)}
 
@@ -48,7 +48,7 @@ function ToolbarLayout2(props: ToolbarLayout2Props) {
 						</Hidden>
 					</div>
 
-					<div className="flex items-center px-8 h-full overflow-x-auto">
+					<div className="flex h-full items-center overflow-x-auto px-8">
 						<LanguageSwitcher />
 						<AdjustFontSize />
 						<FullScreenToggle />

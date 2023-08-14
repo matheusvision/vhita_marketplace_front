@@ -74,19 +74,19 @@ function SignInPage() {
 	}
 
 	return (
-		<div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-1 min-w-0">
-			<Paper className="h-full sm:h-auto md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-16 sm:p-48 md:p-64 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none ltr:border-r-1 rtl:border-l-1">
-				<div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
+		<div className="flex min-w-0 flex-1 flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">
+			<Paper className="ltr:border-r-1 rtl:border-l-1 h-full w-full px-16 py-8 sm:h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:justify-end md:rounded-none md:p-64 md:shadow-none">
+				<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
 					<img
 						className="w-48"
 						src="assets/images/logo/logo.svg"
 						alt="logo"
 					/>
 
-					<Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight">
+					<Typography className="mt-32 text-4xl font-extrabold leading-tight tracking-tight">
 						Sign in
 					</Typography>
-					<div className="flex items-baseline mt-2 font-medium">
+					<div className="mt-2 flex items-baseline font-medium">
 						<Typography>Don't have an account?</Typography>
 						<Link
 							className="ml-4"
@@ -99,7 +99,7 @@ function SignInPage() {
 					<form
 						name="loginForm"
 						noValidate
-						className="flex flex-col justify-center w-full mt-32"
+						className="mt-32 flex w-full flex-col justify-center"
 						onSubmit={handleSubmit(onSubmit)}
 					>
 						<Controller
@@ -139,7 +139,7 @@ function SignInPage() {
 							)}
 						/>
 
-						<div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between">
+						<div className="flex flex-col items-center justify-center sm:flex-row sm:justify-between">
 							<Controller
 								name="remember"
 								control={control}
@@ -169,7 +169,7 @@ function SignInPage() {
 						<Button
 							variant="contained"
 							color="secondary"
-							className=" w-full mt-16"
+							className=" mt-16 w-full"
 							aria-label="Sign in"
 							disabled={_.isEmpty(dirtyFields) || !isValid}
 							type="submit"
@@ -178,18 +178,18 @@ function SignInPage() {
 							Sign in
 						</Button>
 
-						<div className="flex items-center mt-32">
-							<div className="flex-auto mt-px border-t" />
+						<div className="mt-32 flex items-center">
+							<div className="mt-px flex-auto border-t" />
 							<Typography
 								className="mx-8"
 								color="text.secondary"
 							>
 								Or continue with
 							</Typography>
-							<div className="flex-auto mt-px border-t" />
+							<div className="mt-px flex-auto border-t" />
 						</div>
 
-						<div className="flex items-center mt-32 space-x-16">
+						<div className="mt-32 flex items-center space-x-16">
 							<Button
 								variant="outlined"
 								className="flex-auto"
@@ -229,11 +229,11 @@ function SignInPage() {
 			</Paper>
 
 			<Box
-				className="relative hidden md:flex flex-auto items-center justify-center h-full p-64 lg:px-112 overflow-hidden"
+				className="lg:px-112 relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex"
 				sx={{ backgroundColor: 'primary.main' }}
 			>
 				<svg
-					className="absolute inset-0 pointer-events-none"
+					className="pointer-events-none absolute inset-0"
 					viewBox="0 0 960 540"
 					width="100%"
 					height="100%"
@@ -262,7 +262,7 @@ function SignInPage() {
 				</svg>
 				<Box
 					component="svg"
-					className="absolute -top-64 -right-64 opacity-20"
+					className="absolute -right-64 -top-64 opacity-20"
 					sx={{ color: 'primary.light' }}
 					viewBox="0 0 220 192"
 					width="220px"
@@ -294,16 +294,16 @@ function SignInPage() {
 					/>
 				</Box>
 
-				<div className="z-10 relative w-full max-w-2xl">
+				<div className="relative z-10 w-full max-w-2xl">
 					<div className="text-7xl font-bold leading-none text-gray-100">
 						<div>Welcome to</div>
 						<div>our community</div>
 					</div>
-					<div className="mt-24 text-lg tracking-tight leading-6 text-gray-400">
+					<div className="mt-24 text-lg leading-6 tracking-tight text-gray-400">
 						Fuse helps developers to build organized and well coded dashboards full of beautiful and rich
 						modules. Join us and start building your application today.
 					</div>
-					<div className="flex items-center mt-32">
+					<div className="mt-32 flex items-center">
 						<AvatarGroup
 							sx={{
 								'& .MuiAvatar-root': {

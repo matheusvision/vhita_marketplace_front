@@ -113,7 +113,7 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 								{nestedLevel > 0 && (
 									<IconButton
 										disableRipple
-										className="w-16 h-16 ltr:ml-4 rtl:mr-4 p-0"
+										className="h-16 w-16 p-0 ltr:ml-4 rtl:mr-4"
 										color="inherit"
 										size="large"
 									>

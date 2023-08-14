@@ -29,14 +29,14 @@ function UserNavbarHeader() {
 	const user = useSelector(selectUser);
 
 	return (
-		<Root className="user relative flex flex-col items-center justify-center p-16 pb-14 shadow-0">
-			<div className="flex items-center justify-center mb-24">
+		<Root className="user shadow-0 relative flex flex-col items-center justify-center p-16 pb-14">
+			<div className="mb-24 flex items-center justify-center">
 				<Avatar
 					sx={{
 						backgroundColor: 'background.paper',
 						color: 'text.secondary'
 					}}
-					className="avatar text-32 font-bold w-96 h-96"
+					className="avatar text-32 h-96 w-96 font-bold"
 					src={user.data.photoURL}
 					alt={user.data.displayName}
 				>

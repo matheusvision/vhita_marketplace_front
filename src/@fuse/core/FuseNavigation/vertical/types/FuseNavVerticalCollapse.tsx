@@ -117,7 +117,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 
 					<IconButton
 						disableRipple
-						className="w-20 h-20 -mx-12 p-0 focus:bg-transparent hover:bg-transparent"
+						className="-mx-12 h-20 w-20 p-0 hover:bg-transparent focus:bg-transparent"
 						onClick={(ev) => ev.preventDefault()}
 						size="large"
 					>

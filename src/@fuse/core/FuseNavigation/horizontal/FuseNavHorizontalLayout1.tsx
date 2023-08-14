@@ -36,7 +36,7 @@ function FuseNavHorizontalLayout1(props: FuseNavigationProps) {
 	return (
 		<StyledList
 			className={clsx(
-				'navigation whitespace-nowrap flex p-0',
+				'navigation flex whitespace-nowrap p-0',
 				`active-${active}-list`,
 				dense && 'dense',
 				className
