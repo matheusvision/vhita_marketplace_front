@@ -12,8 +12,12 @@ import { useMemo } from 'react';
 import store from './store';
 import AppContext from './AppContext';
 
-const withAppProviders = (Component) => (props) =>
-	function () {
+type ComponentProps = {
+	name?: string;
+};
+
+function withAppProviders(Component: React.ComponentType<ComponentProps>) {
+	function WithAppProviders(props: React.PropsWithChildren<ComponentProps>) {
 		const val = useMemo(
 			() => ({
 				routes
@@ -32,6 +36,9 @@ const withAppProviders = (Component) => (props) =>
 				</LocalizationProvider>
 			</AppContext.Provider>
 		);
-	};
+	}
+
+	return WithAppProviders;
+}
 
 export default withAppProviders;

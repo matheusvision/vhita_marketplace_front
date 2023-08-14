@@ -6,7 +6,7 @@ const withReducer =
 	(WrappedComponent: React.FC<P>) => {
 		injectReducer(key, reducer);
 
-		return function (props: P) {
+		return function WithInjectedReducer(props: P) {
 			return <WrappedComponent {...props} />;
 		};
 	};

@@ -49,7 +49,7 @@ type FusePageSimpleSidebarContentProps = {
 
 const FuseScrollbars = forwardRef<HTMLDivElement, FusePageSimpleSidebarContentProps>((props, ref) => {
 	const { customScrollbars, scrollToTopOnChildChange, scrollToTopOnRouteChange, id, enable = true, children } = props;
-	const elRef = useRef<HTMLDivElement | null>(null);
+	const elRef = useRef<HTMLDivElement>(null);
 
 	// const elRef: RefObject<HTMLElement> | RefCallback<HTMLElement> = ref || createRef<HTMLElement>();
 

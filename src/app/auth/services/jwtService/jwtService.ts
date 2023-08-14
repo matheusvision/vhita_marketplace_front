@@ -152,6 +152,7 @@ function isAuthTokenValid(access_token: string) {
 	const currentTime = Date.now() / 1000;
 
 	if (decoded.exp < currentTime) {
+		// eslint-disable-next-line no-console
 		console.warn('access token expired');
 		return false;
 	}

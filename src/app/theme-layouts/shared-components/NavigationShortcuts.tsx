@@ -4,11 +4,11 @@ import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 import { selectUserShortcuts, updateUserShortcuts } from 'app/store/user/userSlice';
 
-type NavigationShortcutsProps = {
+type Props = {
 	className?: string;
 	variant?: 'horizontal' | 'vertical';
 };
-function NavigationShortcuts(props: NavigationShortcutsProps) {
+function NavigationShortcuts(props: Props) {
 	const { variant, className } = props;
 	const dispatch = useAppDispatch();
 	const shortcuts = useSelector(selectUserShortcuts) || [];

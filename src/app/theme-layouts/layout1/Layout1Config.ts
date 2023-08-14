@@ -1,3 +1,5 @@
+import { DeepPartial } from 'react-hook-form';
+
 const Layout1Config = {
 	title: 'Layout 1 - Vertical',
 	defaults: {
@@ -150,6 +152,6 @@ const Layout1Config = {
 	}
 };
 
-export type Layout1ConfigDefaultsType = Partial<(typeof Layout1Config)['defaults']>;
+export type Layout1ConfigDefaultsType = DeepPartial<(typeof Layout1Config)['defaults']>;
 
 export default Layout1Config;

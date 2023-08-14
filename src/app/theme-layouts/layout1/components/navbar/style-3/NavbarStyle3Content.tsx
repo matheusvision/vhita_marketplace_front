@@ -44,7 +44,7 @@ function needsToBeOpened(location: Location, item: FuseNavItemType) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
-type NavbarStyle3ContentProps = { className?: string; dense?: number; folded?: number };
+type NavbarStyle3ContentProps = { className?: string; dense?: number };
 
 function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 	const { className = '', dense = false } = props;

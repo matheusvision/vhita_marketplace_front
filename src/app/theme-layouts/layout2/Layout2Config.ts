@@ -1,4 +1,4 @@
-import { themeLayoutProps } from 'app/theme-layouts/themeLayoutConfigs';
+import { DeepPartial } from 'react-hook-form';
 
 const Layout2Config = {
 	title: 'Layout 2 - Horizontal',
@@ -137,6 +137,6 @@ const Layout2Config = {
 	}
 };
 
-export type Layout2ConfigDefaultsType = Partial<(typeof Layout2Config)['defaults']>;
+export type Layout2ConfigDefaultsType = DeepPartial<(typeof Layout2Config)['defaults']>;
 
 export default Layout2Config;
