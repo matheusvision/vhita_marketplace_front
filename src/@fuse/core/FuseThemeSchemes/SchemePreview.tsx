@@ -1,4 +1,3 @@
-import { Theme } from '@mui/material/styles/createTheme';
 import { useTheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';

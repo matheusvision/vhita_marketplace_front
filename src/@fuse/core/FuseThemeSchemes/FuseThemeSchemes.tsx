@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { FuseThemesType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import SchemePreview from './SchemePreview';
 

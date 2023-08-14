@@ -1,7 +1,6 @@
 import _ from '@lodash';
 import * as colors from '@mui/material/colors';
 import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
-import { PathRouteProps, RouteProps } from 'react-router/dist/lib/components';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
 import EventEmitter from './EventEmitter';

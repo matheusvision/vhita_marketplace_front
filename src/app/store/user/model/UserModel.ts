@@ -1,6 +1,4 @@
 import _ from '@lodash';
-import FuseUtils from '@fuse/utils';
-import { ReactNode } from 'react';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 
 export type UserModelType = {

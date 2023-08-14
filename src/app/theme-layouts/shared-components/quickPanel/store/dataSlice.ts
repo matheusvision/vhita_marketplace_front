@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState, RootStateWith } from 'app/store/index';
+import { RootStateWith } from 'app/store/index';
 
 const dataSlice = createSlice({
 	name: 'quickPanel/data',

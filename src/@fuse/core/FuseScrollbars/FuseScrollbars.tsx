@@ -2,11 +2,10 @@ import { styled } from '@mui/material/styles';
 import MobileDetect from 'mobile-detect';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import { createRef, forwardRef, useCallback, useEffect, useRef, ReactNode, RefObject, RefCallback } from 'react';
+import { forwardRef, useCallback, useEffect, useRef, ReactNode } from 'react';
 import { connect } from 'react-redux';
 import history from '@history';
 import { RootState } from 'app/store/index';
-import FusePageSimpleSidebarContent from '@fuse/core/FusePageSimple/FusePageSimpleSidebarContent';
 
 const Root = styled('div')(() => ({
 	overscrollBehavior: 'contain',

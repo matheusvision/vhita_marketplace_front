@@ -14,7 +14,7 @@ import parse from 'autosuggest-highlight/parse';
 import clsx from 'clsx';
 import _ from '@lodash';
 import { memo, useEffect, useReducer, useRef, ReactNode, ChangeEvent } from 'react';
-import Autosuggest, { RenderInputComponentProps } from 'react-autosuggest';
+import Autosuggest from 'react-autosuggest';
 import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';

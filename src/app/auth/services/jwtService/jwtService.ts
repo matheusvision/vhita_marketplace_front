@@ -2,7 +2,6 @@ import FuseUtils from '@fuse/utils/FuseUtils';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import jwtDecode from 'jwt-decode';
 import { UserProps } from 'app/store/user';
-import { number, string } from 'yup';
 import { UserModelType } from 'app/store/user/model/UserModel';
 import jwtServiceConfig from './jwtServiceConfig';
 /* eslint-disable camelcase, class-methods-use-this */

@@ -2,16 +2,8 @@ import Fab from '@mui/material/Fab';
 import { styled } from '@mui/material/styles';
 
 import Tooltip from '@mui/material/Tooltip';
-import { navbarToggle, navbarToggleMobile } from 'app/store/fuse/navbarSlice';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/index';
-import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
-import { ThemeOptions } from '@mui/material/styles/createTheme';
-import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
-import { themeLayoutDefaultsProps } from 'app/theme-layouts/themeLayoutConfigs';
 
 const Root = styled(Tooltip)<{ position: 'left' | 'right' }>(({ theme, position }) => ({
 	'& > .button': {

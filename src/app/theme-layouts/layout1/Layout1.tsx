@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
-import { RouteObject } from 'react-router/dist/lib/context';
 import FooterLayout1 from './components/FooterLayout1';
 import LeftSideLayout1 from './components/LeftSideLayout1';
 import NavbarWrapperLayout1 from './components/NavbarWrapperLayout1';
