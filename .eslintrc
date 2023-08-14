@@ -8,12 +8,14 @@
     "plugins": [
         "prettier",
         "@typescript-eslint",
-        "unused-imports"
+        "unused-imports",
+        "tailwindcss"
     ],
     "extends": [
         "airbnb",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier"
+        "prettier",
+        "plugin:tailwindcss/recommended"
     ],
     "settings": {
         "import/resolver": {
@@ -115,5 +117,5 @@
         "react/jsx-props-no-spreading": "off",
         "react/no-array-index-key": "off",
         "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }]
-    }
+    },
 }
