@@ -59,7 +59,7 @@ function SectionPreview(props: SectionPreviewProps) {
 												: lighten(theme.palette.background.default, 0.1)
 						}
 					}}
-					className={clsx('flex h-12 h-full items-center justify-end pr-6')}
+					className={clsx('flex h-12 items-center justify-end pr-6')}
 				>
 					<div className="ml-4 h-4 w-4 rounded-full" />
 					<div className="ml-4 h-4 w-4 rounded-full" />

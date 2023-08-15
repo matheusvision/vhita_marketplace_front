@@ -12,7 +12,7 @@ function SignOutPage() {
 
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center">
-			<Paper className="sm:min-h-auto rounded-0 flex min-h-full w-full items-center px-16 py-32 sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow">
+			<Paper className="rounded-0 sm:min-h-auto flex min-h-full w-full items-center px-16 py-32 sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow">
 				<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
 					<img
 						className="mx-auto w-48"

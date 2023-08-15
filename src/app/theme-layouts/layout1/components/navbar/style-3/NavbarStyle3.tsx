@@ -141,10 +141,7 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 					position={config.navbar.position}
 					className={clsx('shadow-5 sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col', className)}
 				>
-					<NavbarStyle3Content
-						dense={dense ? 1 : 0}
-						folded={folded ? 1 : 0}
-					/>
+					<NavbarStyle3Content dense={dense ? 1 : 0} />
 				</StyledNavBar>
 			</Hidden>
 			<Hidden lgUp>
@@ -162,10 +159,7 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 						keepMounted: true // Better open performance on mobile.
 					}}
 				>
-					<NavbarStyle3Content
-						dense={dense ? 1 : 0}
-						folded={folded ? 1 : 0}
-					/>
+					<NavbarStyle3Content dense={dense ? 1 : 0} />
 				</StyledNavBarMobile>
 			</Hidden>
 		</>

@@ -25,8 +25,7 @@ function PalettePreview(props: PalettePreviewProps) {
 				className="relative h-56 w-full px-8 pt-8"
 				sx={{
 					backgroundColor: palette.primary.main,
-					color: ({ palette: Palette }) =>
-						palette.primary.contrastText || palette.getContrastText(palette.primary.main)
+					color: () => palette.primary.contrastText || palette.getContrastText(palette.primary.main)
 				}}
 			>
 				<span className="text-12">Header (Primary)</span>
@@ -35,8 +34,7 @@ function PalettePreview(props: PalettePreviewProps) {
 					className="text-10 absolute bottom-0 right-0 -mb-10 mr-4 flex h-20 w-20 items-center justify-center rounded-full shadow"
 					sx={{
 						backgroundColor: palette.secondary.main,
-						color: ({ palette: Palette }) =>
-							palette.secondary.contrastText || palette.getContrastText(palette.secondary.main)
+						color: () => palette.secondary.contrastText || palette.getContrastText(palette.secondary.main)
 					}}
 				>
 					<span className="">S</span>

@@ -60,7 +60,7 @@ const dataSlice = createSlice({
 		builder.addCase(dismissItem.fulfilled, (state, action) =>
 			notificationsAdapter.removeOne(state, action.payload)
 		);
-		builder.addCase(dismissAll.fulfilled, (state, action) => notificationsAdapter.removeAll(state));
+		builder.addCase(dismissAll.fulfilled, (state) => notificationsAdapter.removeAll(state));
 		builder.addCase(getNotifications.fulfilled, (state, action) =>
 			notificationsAdapter.addMany(notificationsAdapter.getInitialState(), action.payload)
 		);

@@ -15,3 +15,6 @@ src/app/main/documentation/third-party-components/*/examples/*
 
 src/@fake-db/db/*
 **/*.{js,jsx}
+
+.eslintrc.js
+tailwind.config.js

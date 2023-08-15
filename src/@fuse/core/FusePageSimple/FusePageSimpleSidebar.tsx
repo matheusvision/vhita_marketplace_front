@@ -14,8 +14,6 @@ type FusePageSimpleSidebarProps = {
 	children?: ReactNode;
 };
 
-type CombinedRef = HTMLElement & { toggleSidebar: (val: boolean) => void };
-
 const FusePageSimpleSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }, FusePageSimpleSidebarProps>(
 	(props, ref) => {
 		const { open = true, position, variant, onClose = () => {} } = props;

@@ -15,34 +15,39 @@ const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationC
 
 export const appendNavigationItem =
 	(item: FuseNavItemType, parentId: string): AppThunk =>
-	(dispatch, getState) => {
+	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
-
-		return dispatch(setNavigation(FuseUtils.appendNavItem(navigation, item, parentId)));
+		dispatch(setNavigation(FuseUtils.appendNavItem(navigation, item, parentId)));
 	};
 
 export const prependNavigationItem =
 	(item: FuseNavItemType, parentId: string): AppThunk =>
-	(dispatch, getState) => {
+	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
-		return dispatch(setNavigation(FuseUtils.prependNavItem(navigation, item, parentId)));
+		dispatch(setNavigation(FuseUtils.prependNavItem(navigation, item, parentId)));
+
+		return Promise.resolve();
 	};
 
 export const updateNavigationItem =
 	(id: string, item: FuseNavItemType): AppThunk =>
-	(dispatch, getState) => {
+	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
-		return dispatch(setNavigation(FuseUtils.updateNavItem(navigation, id, item)));
+		dispatch(setNavigation(FuseUtils.updateNavItem(navigation, id, item)));
+
+		return Promise.resolve();
 	};
 
 export const removeNavigationItem =
 	(id: string): AppThunk =>
-	(dispatch, getState) => {
+	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
-		return dispatch(setNavigation(FuseUtils.removeNavItem(navigation, id)));
+		dispatch(setNavigation(FuseUtils.removeNavItem(navigation, id)));
+
+		return Promise.resolve();
 	};
 
 export const {
@@ -87,7 +92,7 @@ export const selectNavigation = createSelector(
 		return setTranslationValues(
 			_.merge(
 				[],
-				filterRecursively(navigation, (item) => FuseUtils.hasPermission(item.auth, userRole))
+				filterRecursively(navigation, (item) => FuseUtils.hasPermission(item?.auth, userRole))
 			)
 		);
 	}

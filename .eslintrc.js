@@ -1,13 +1,14 @@
-{
-    "root": true,
-    "parser": "@typescript-eslint/parser",
+module.exports = {
+    "parser": '@typescript-eslint/parser',
     "parserOptions": {
-        "project": true,
-        "tsconfigRootDir": __dirname
+        "tsconfigRootDir": __dirname,
+        "project": ['./tsconfig.json'],
+
     },
+    "root": true,
     "plugins": [
-        "prettier",
         "@typescript-eslint",
+        "prettier",
         "unused-imports",
         "tailwindcss"
     ],
@@ -101,6 +102,7 @@
                 "attributes": false
             }
         }],
+        "@typescript-eslint/require-await": "off",
         "no-useless-constructor": "off",
         "no-tabs": "off",
         "react/jsx-indent": "off",
@@ -116,6 +118,7 @@
         "react/jsx-no-bind": "off",
         "react/jsx-props-no-spreading": "off",
         "react/no-array-index-key": "off",
-        "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }]
+        "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }],
+        "tailwindcss/no-custom-classname": "off"
     },
 }

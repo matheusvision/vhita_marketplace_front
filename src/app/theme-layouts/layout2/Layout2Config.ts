@@ -7,7 +7,8 @@ const Layout2Config = {
 		containerWidth: 1120,
 		navbar: {
 			display: true,
-			style: 'fixed'
+			style: 'fixed',
+			folded: true
 		},
 		toolbar: {
 			display: true,

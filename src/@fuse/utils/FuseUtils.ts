@@ -325,7 +325,7 @@ class FuseUtils {
 		});
 	}
 
-	static hasPermission(authArr: string[], userRole: string | string[]): boolean {
+	static hasPermission(authArr: string[] | string, userRole: string | string[]): boolean {
 		/**
 		 * If auth array is not defined
 		 * Pass and allow
@@ -350,8 +350,8 @@ class FuseUtils {
 		/*
             Check if user role is array,
             */
-		if (userRole && Array.isArray(userRole)) {
-			return authArr.some((r) => userRole.indexOf(r) >= 0);
+		if (userRole && Array.isArray(authArr) && Array.isArray(userRole)) {
+			return authArr.some((r: string) => userRole.indexOf(r) >= 0);
 		}
 
 		/*

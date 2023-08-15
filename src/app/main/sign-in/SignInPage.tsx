@@ -7,6 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { InferType } from 'yup';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -26,14 +27,9 @@ const schema = yup.object().shape({
 	password: yup
 		.string()
 		.required('Please enter your password.')
-		.min(4, 'Password is too short - must be at least 4 chars.')
+		.min(4, 'Password is too short - must be at least 4 chars.'),
+	remember: yup.boolean()
 });
-
-type FormType = {
-	email: string;
-	password: string;
-	remember?: boolean;
-};
 
 const defaultValues = {
 	email: '',
@@ -42,7 +38,7 @@ const defaultValues = {
 };
 
 function SignInPage() {
-	const { control, formState, handleSubmit, setError, setValue } = useForm<FormType>({
+	const { control, formState, handleSubmit, setError, setValue } = useForm({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -55,7 +51,7 @@ function SignInPage() {
 		setValue('password', 'admin', { shouldDirty: true, shouldValidate: true });
 	}, [setValue]);
 
-	function onSubmit({ email, password }: FormType) {
+	function onSubmit({ email, password }: InferType<typeof schema>) {
 		jwtService
 			.signInWithEmailAndPassword(email, password)
 			.then((user: UserProps) => {
