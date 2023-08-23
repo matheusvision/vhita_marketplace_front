@@ -42,7 +42,7 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 				}}
 				position="static"
 			>
-				<Toolbar className="min-h-48 md:min-h-64 p-0">
+				<Toolbar className="min-h-48 p-0 md:min-h-64">
 					<div className="flex flex-1 px-16">
 						{config.navbar.display && config.navbar.position === 'left' && (
 							<>

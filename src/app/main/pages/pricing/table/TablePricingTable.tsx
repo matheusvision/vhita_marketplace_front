@@ -118,7 +118,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</Box>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Unlimited projects
 						</Typography>
 
@@ -133,7 +133,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</div>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Unlimited storage
 						</Typography>
 
@@ -148,7 +148,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</div>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Custom domain support
 						</Typography>
 
@@ -163,7 +163,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</div>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Dedicated hardware
 						</Typography>
 
@@ -185,7 +185,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</Box>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Fraud analysis
 						</Typography>
 
@@ -200,7 +200,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</div>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Rates for in-house payment systems
 						</Typography>
 
@@ -215,7 +215,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</div>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Rates for other payment systems
 						</Typography>
 
@@ -230,7 +230,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 					</div>
 
 					<div className="grid grid-flow-row auto-rows-fr divide-y lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0">
-						<Typography className="max-w-128 flex items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
+						<Typography className="flex max-w-128 items-center p-16 text-center font-medium lg:max-w-none lg:items-start lg:text-left lg:font-normal">
 							Additional fees using other payment systems
 						</Typography>
 

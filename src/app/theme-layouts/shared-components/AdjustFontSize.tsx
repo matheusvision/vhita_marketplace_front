@@ -67,7 +67,7 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 				}}
 			>
 				<div className="px-24 py-12">
-					<Typography className="text-16 mb-8 flex items-center justify-center font-semibold">
+					<Typography className="mb-8 flex items-center justify-center text-16 font-semibold">
 						<FuseSvgIcon
 							color="action"
 							className="mr-4"

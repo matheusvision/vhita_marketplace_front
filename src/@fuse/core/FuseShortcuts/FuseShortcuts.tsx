@@ -229,7 +229,7 @@ function ShortcutMenuItem(props: {
 					{item.icon ? (
 						<FuseSvgIcon>{item.icon}</FuseSvgIcon>
 					) : (
-						<span className="text-20 text-center font-semibold uppercase">{item.title[0]}</span>
+						<span className="text-center text-20 font-semibold uppercase">{item.title[0]}</span>
 					)}
 				</ListItemIcon>
 				<ListItemText primary={item.title} />

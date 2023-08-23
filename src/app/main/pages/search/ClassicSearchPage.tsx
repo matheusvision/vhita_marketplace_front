@@ -36,7 +36,7 @@ function ClassicSearchPage() {
 		<FusePageSimple
 			header={
 				<div className="flex w-full max-w-md flex-1 items-center p-24 sm:p-32">
-					<Paper className="rounded-16 flex h-44 w-full items-center px-16 shadow">
+					<Paper className="flex h-44 w-full items-center rounded-16 px-16 shadow">
 						<Input
 							placeholder="Search..."
 							disableUnderline
@@ -61,7 +61,7 @@ function ClassicSearchPage() {
 								<motion.div variants={item}>
 									<Typography
 										color="text.secondary"
-										className="text-13 mb-24"
+										className="mb-24 text-13"
 									>
 										{data.length} results
 									</Typography>
@@ -74,7 +74,7 @@ function ClassicSearchPage() {
 										key={_item.id}
 									>
 										<Typography
-											className="text-18 cursor-pointer"
+											className="cursor-pointer text-18"
 											sx={{
 												color: blue[800]
 											}}

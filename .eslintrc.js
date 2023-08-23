@@ -1,22 +1,19 @@
 module.exports = {
+    "root": true,
     "parser": '@typescript-eslint/parser',
     "parserOptions": {
         "tsconfigRootDir": __dirname,
-        "project": ['./tsconfig.json'],
-
+        "project": ['./tsconfig.json']
     },
-    "root": true,
     "plugins": [
         "@typescript-eslint",
         "prettier",
         "unused-imports",
-        "tailwindcss"
     ],
     "extends": [
         "airbnb",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier",
-        "plugin:tailwindcss/recommended"
+        "plugin:prettier/recommended"
     ],
     "settings": {
         "import/resolver": {
@@ -110,7 +107,6 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "off",
         "react/jsx-wrap-multilines": "off",
-        "comma-dangle": ["error", "never"],
 //        "react/prop-types": "off",
         "react/require-default-props": "off",
         "react/no-unescaped-entities": "off",
@@ -119,6 +115,5 @@ module.exports = {
         "react/jsx-props-no-spreading": "off",
         "react/no-array-index-key": "off",
         "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }],
-        "tailwindcss/no-custom-classname": "off"
     },
 }

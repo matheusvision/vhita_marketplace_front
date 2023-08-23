@@ -14,7 +14,7 @@ const NotificationTemplate = forwardRef((props: NotificationTemplateProps, ref: 
 	return (
 		<SnackbarContent
 			ref={ref}
-			className="max-w-320 pointer-events-auto relative mx-auto w-full py-4"
+			className="pointer-events-auto relative mx-auto w-full max-w-320 py-4"
 		>
 			<NotificationCard
 				item={item}

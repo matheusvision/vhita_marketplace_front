@@ -53,9 +53,9 @@ function ModernReversedSignInPage() {
 
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center md:p-32">
-			<Paper className="rounded-0 sm:min-h-auto flex min-h-full w-full overflow-hidden sm:w-auto sm:rounded-2xl sm:shadow md:w-full md:max-w-6xl">
+			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-2xl sm:shadow md:w-full md:max-w-6xl">
 				<Box
-					className="lg:px-112 relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex"
+					className="relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex lg:px-112"
 					sx={{ backgroundColor: 'primary.main' }}
 				>
 					<svg
@@ -150,8 +150,8 @@ function ModernReversedSignInPage() {
 					</div>
 				</Box>
 
-				<div className="ltr:border-l-1 rtl:border-r-1 w-full px-16 py-32 sm:w-auto sm:p-48 md:p-64">
-					<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
+				<div className="w-full px-16 py-32 ltr:border-l-1 rtl:border-r-1 sm:w-auto sm:p-48 md:p-64">
+					<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 						<img
 							className="w-48"
 							src="assets/images/logo/logo.svg"

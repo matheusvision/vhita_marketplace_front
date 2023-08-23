@@ -35,7 +35,7 @@ function ToolbarLayout2(props: ToolbarLayout2Props) {
 				color="default"
 				style={{ backgroundColor: toolbarTheme.palette.background.paper }}
 			>
-				<Toolbar className="min-h-48 md:min-h-64 container p-0 lg:px-24">
+				<Toolbar className="container min-h-48 p-0 md:min-h-64 lg:px-24">
 					{config.navbar.display && (
 						<Hidden lgUp>
 							<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />

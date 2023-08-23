@@ -93,7 +93,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 							title={item.title || ''}
 							placement="right"
 						>
-							<div className="min-h-32 relative flex h-32 w-32 items-center justify-center">
+							<div className="relative flex h-32 min-h-32 w-32 items-center justify-center">
 								{item.icon ? (
 									<FuseSvgIcon
 										className={clsx('fuse-list-item-icon', item.iconClass)}
@@ -107,14 +107,14 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 								{item.badge && (
 									<FuseNavBadge
 										badge={item.badge}
-										className="min-w-16 absolute top-0 h-16 justify-center p-4 ltr:right-0 rtl:left-0"
+										className="absolute top-0 h-16 min-w-16 justify-center p-4 ltr:right-0 rtl:left-0"
 									/>
 								)}
 							</div>
 						</Tooltip>
 					) : (
 						<>
-							<div className="min-h-32 relative mb-8 flex h-32 w-32 items-center justify-center">
+							<div className="relative mb-8 flex h-32 min-h-32 w-32 items-center justify-center">
 								{item.icon ? (
 									<FuseSvgIcon
 										size={32}
@@ -129,7 +129,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 								{item.badge && (
 									<FuseNavBadge
 										badge={item.badge}
-										className="min-w-16 absolute top-0 h-16 justify-center p-4 ltr:right-0 rtl:left-0"
+										className="absolute top-0 h-16 min-w-16 justify-center p-4 ltr:right-0 rtl:left-0"
 									/>
 								)}
 							</div>

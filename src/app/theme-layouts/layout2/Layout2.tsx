@@ -71,7 +71,7 @@ function Layout2(props: Layout2Props) {
 						/>
 					)}
 
-					<div className="z-99 sticky top-0">
+					<div className="sticky top-0 z-99">
 						<SettingsPanel />
 					</div>
 

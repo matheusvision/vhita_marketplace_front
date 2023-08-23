@@ -125,7 +125,7 @@ function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted })
 				{suggestion.icon ? (
 					<FuseSvgIcon>{suggestion.icon}</FuseSvgIcon>
 				) : (
-					<span className="text-20 w-24 text-center font-semibold uppercase">{suggestion.title[0]}</span>
+					<span className="w-24 text-center text-20 font-semibold uppercase">{suggestion.title[0]}</span>
 				)}
 			</ListItemIcon>
 			<ListItemText
@@ -384,7 +384,7 @@ function FuseSearch(props: {
 							>
 								<div ref={suggestionsNode}>
 									<Paper
-										className="rounded-8 overflow-hidden shadow-lg"
+										className="overflow-hidden rounded-8 shadow-lg"
 										{...options.containerProps}
 										style={{
 											width: popperNode.current ? popperNode.current.clientWidth : ''
@@ -423,7 +423,7 @@ function FuseSearch(props: {
 					{state.opened && (
 						<ClickAwayListener onClickAway={handleClickAway}>
 							<Paper
-								className="z-9999 shadow-0 absolute inset-x-0 top-0 h-full"
+								className="absolute inset-x-0 top-0 z-9999 h-full shadow-0"
 								square
 							>
 								<div

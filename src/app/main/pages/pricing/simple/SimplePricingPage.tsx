@@ -30,7 +30,7 @@ function SimplePricingPage() {
 		<div className="relative flex min-w-0 flex-auto flex-col overflow-hidden">
 			<div className="relative overflow-hidden px-24 pb-48 pt-32 sm:px-64 sm:pb-96 sm:pt-80">
 				<svg
-					className="-z-1 pointer-events-none absolute inset-0"
+					className="pointer-events-none absolute inset-0 -z-1"
 					viewBox="0 0 960 540"
 					width="100%"
 					height="100%"

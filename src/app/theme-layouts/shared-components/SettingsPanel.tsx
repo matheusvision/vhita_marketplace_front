@@ -119,7 +119,7 @@ function SettingsPanel() {
 				className="buttonWrapper"
 			>
 				<Button
-					className="settingsButton min-w-40 m-0 h-40 w-40"
+					className="settingsButton m-0 h-40 w-40 min-w-40"
 					onClick={() => handleOpen('settings')}
 					variant="text"
 					color="inherit"
@@ -131,7 +131,7 @@ function SettingsPanel() {
 				</Button>
 
 				<Button
-					className="min-w-40 m-0 h-40 w-40"
+					className="m-0 h-40 w-40 min-w-40"
 					onClick={() => handleOpen('schemes')}
 					variant="text"
 					color="inherit"
@@ -202,7 +202,7 @@ function SettingsPanel() {
 					</Typography>
 
 					<Typography
-						className="text-12 mb-24 text-justify italic"
+						className="mb-24 text-justify text-12 italic"
 						color="text.secondary"
 					>
 						* Selected color scheme will be applied to all theme layout elements (navbar, toolbar, etc.).

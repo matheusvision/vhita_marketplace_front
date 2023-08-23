@@ -58,7 +58,7 @@ function NavbarStyle1() {
 		<>
 			<Hidden lgDown>
 				<StyledNavBar
-					className="shadow-5 sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col overflow-hidden"
+					className="sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col overflow-hidden shadow-5"
 					open={navbar.open}
 					position={config.navbar.position}
 				>

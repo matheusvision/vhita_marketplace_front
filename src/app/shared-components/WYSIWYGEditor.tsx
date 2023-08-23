@@ -40,7 +40,7 @@ function WYSIWYGEditorComponent(props: WYSIWYGEditorComponentProps, ref: React.F
 
 	return (
 		<Root
-			className={clsx('rounded-4 border-1 w-full overflow-hidden', className)}
+			className={clsx('w-full overflow-hidden rounded-4 border-1', className)}
 			ref={ref}
 		>
 			<Editor

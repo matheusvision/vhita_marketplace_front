@@ -32,7 +32,7 @@ function NotificationCard(props: NotificationCardProps) {
 	return (
 		<Card
 			className={clsx(
-				'rounded-16 min-h-64 relative flex w-full items-center space-x-8 p-20 shadow',
+				'relative flex min-h-64 w-full items-center space-x-8 rounded-16 p-20 shadow',
 				variant === 'success' && 'bg-green-600 text-white',
 				variant === 'info' && 'bg-blue-700 text-white',
 				variant === 'error' && 'bg-red-600 text-white',

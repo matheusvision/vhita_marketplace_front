@@ -60,7 +60,7 @@ function QuickPanel() {
 
 				<div className="mb-0 px-24 py-16">
 					<Typography
-						className="text-32 mb-12"
+						className="mb-12 text-32"
 						color="text.secondary"
 					>
 						{format(new Date(), 'eeee')}

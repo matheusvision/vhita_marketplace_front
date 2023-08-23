@@ -26,7 +26,7 @@ function FooterLayout1(props: FooterLayout1Props) {
 							: footerTheme.palette.background.default
 				}}
 			>
-				<Toolbar className="min-h-48 md:min-h-64 flex items-center overflow-x-auto px-8 py-0 sm:px-12">
+				<Toolbar className="flex min-h-48 items-center overflow-x-auto px-8 py-0 sm:px-12 md:min-h-64">
 					Footer
 				</Toolbar>
 			</AppBar>

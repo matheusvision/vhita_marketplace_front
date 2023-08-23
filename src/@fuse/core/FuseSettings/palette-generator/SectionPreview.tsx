@@ -11,7 +11,7 @@ type SectionPreviewProps = {
 function SectionPreview(props: SectionPreviewProps) {
 	const { section, className } = props;
 	return (
-		<div className={clsx('w-128 border-1 flex h-80 overflow-hidden rounded-md hover:opacity-80', className)}>
+		<div className={clsx('flex h-80 w-128 overflow-hidden rounded-md border-1 hover:opacity-80', className)}>
 			<Box
 				sx={{
 					backgroundColor:

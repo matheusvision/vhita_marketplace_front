@@ -22,7 +22,7 @@ function FooterLayout3(props: FooterLayout3Props) {
 				color="default"
 				style={{ backgroundColor: footerTheme.palette.background.paper }}
 			>
-				<Toolbar className="min-h-48 md:min-h-64 container flex items-center overflow-x-auto px-8 py-0 sm:px-12 lg:px-20">
+				<Toolbar className="container flex min-h-48 items-center overflow-x-auto px-8 py-0 sm:px-12 md:min-h-64 lg:px-20">
 					Footer
 				</Toolbar>
 			</AppBar>

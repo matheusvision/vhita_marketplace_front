@@ -34,7 +34,7 @@ function ActivityTimelineItem(props: ActivityTimelineItemProps) {
 				{/* eslint-disable-next-line react/no-danger */}
 				{item.description && <div dangerouslySetInnerHTML={{ __html: item.description }} />}
 
-				<div className="text-md mt-8 flex flex-col leading-5 sm:mt-4 sm:flex-row sm:items-center sm:space-x-8">
+				<div className="mt-8 flex flex-col text-md leading-5 sm:mt-4 sm:flex-row sm:items-center sm:space-x-8">
 					<Typography
 						className="text-13"
 						color="text.secondary"

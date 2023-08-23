@@ -33,7 +33,7 @@ function Logo() {
 					alt="react"
 					width="16"
 				/>
-				<span className="react-text text-12 mx-4">React</span>
+				<span className="react-text mx-4 text-12">React</span>
 			</div>
 		</Root>
 	);

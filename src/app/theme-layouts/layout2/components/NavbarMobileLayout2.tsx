@@ -60,7 +60,7 @@ function NavbarMobileLayout2(props: NavbarMobileLayout2Props) {
 
 				<div className="flex-0 flex items-center justify-center py-48 opacity-10">
 					<img
-						className="max-w-64 w-full"
+						className="w-full max-w-64"
 						src="assets/images/logo/logo.svg"
 						alt="footer logo"
 					/>

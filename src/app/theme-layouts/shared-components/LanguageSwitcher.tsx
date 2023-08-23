@@ -37,7 +37,7 @@ function LanguageSwitcher() {
 				onClick={langMenuClick}
 			>
 				<img
-					className="min-w-20 mx-4"
+					className="mx-4 min-w-20"
 					src={`assets/images/flags/${currentLanguage.flag}.svg`}
 					alt={currentLanguage.title}
 				/>

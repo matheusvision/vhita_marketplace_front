@@ -33,7 +33,7 @@ function SchemePreview(props: SchemePreviewProps) {
 		<div className={clsx(className, 'mb-8')}>
 			<button
 				className={clsx(
-					'rounded-6 font-500 relative w-full cursor-pointer overflow-hidden text-left shadow transition-shadow hover:shadow-md'
+					'relative w-full cursor-pointer overflow-hidden rounded-6 text-left font-500 shadow transition-shadow hover:shadow-md'
 				)}
 				style={{
 					backgroundColor,
@@ -52,7 +52,7 @@ function SchemePreview(props: SchemePreviewProps) {
 					<span className="text-12 opacity-75">Header (Primary)</span>
 
 					<div
-						className="text-10 absolute bottom-0 right-0 -mb-10 mr-4 flex h-20 w-20 items-center justify-center rounded-full shadow"
+						className="absolute bottom-0 right-0 -mb-10 mr-4 flex h-20 w-20 items-center justify-center rounded-full text-10 shadow"
 						style={{
 							backgroundColor: secondaryColor,
 							color: secondaryColorContrast
@@ -63,7 +63,7 @@ function SchemePreview(props: SchemePreviewProps) {
 				</div>
 				<div className="-mt-24 w-full pl-8 pr-28">
 					<div
-						className="rounded-4 relative h-96 w-full p-8 shadow"
+						className="relative h-96 w-full rounded-4 p-8 shadow"
 						style={{
 							backgroundColor: paperColor,
 							color: paperColorContrast

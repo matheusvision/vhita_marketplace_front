@@ -86,7 +86,7 @@ function NotificationPanel() {
 			disableSwipeToOpen
 		>
 			<IconButton
-				className="z-999 absolute right-0 top-0 m-4"
+				className="absolute right-0 top-0 z-999 m-4"
 				onClick={handleClose}
 				size="large"
 			>
@@ -95,10 +95,10 @@ function NotificationPanel() {
 			{notifications.length > 0 ? (
 				<FuseScrollbars className="p-16">
 					<div className="flex flex-col">
-						<div className="pt-136 mb-36 flex items-end justify-between">
+						<div className="mb-36 flex items-end justify-between pt-136">
 							<Typography className="text-28 font-semibold leading-none">Notifications</Typography>
 							<Typography
-								className="text-12 cursor-pointer underline"
+								className="cursor-pointer text-12 underline"
 								color="secondary"
 								onClick={handleDismissAll}
 							>
@@ -118,7 +118,7 @@ function NotificationPanel() {
 			) : (
 				<div className="flex flex-1 items-center justify-center p-16">
 					<Typography
-						className="text-24 text-center"
+						className="text-center text-24"
 						color="text.secondary"
 					>
 						There are no notifications for now.

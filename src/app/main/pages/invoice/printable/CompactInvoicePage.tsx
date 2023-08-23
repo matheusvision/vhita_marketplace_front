@@ -7,13 +7,13 @@ import { alpha } from '@mui/material/styles';
 
 function CompactInvoicePage() {
 	return (
-		<div className="inline-block w-full overflow-auto p-24 text-left print:p-0 sm:p-40">
+		<div className="inline-block w-full overflow-auto p-24 text-left sm:p-40 print:p-0">
 			<motion.div
 				initial={{ opacity: 0, y: 200 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ bounceDamping: 0 }}
 			>
-				<Card className="w-xl mx-auto rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
+				<Card className="mx-auto w-xl rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
 					<CardContent className="">
 						<div className="flex items-start justify-between">
 							<div className="grid grid-cols-2 gap-x-16 gap-y-1">
@@ -62,7 +62,7 @@ function CompactInvoicePage() {
 									/>
 								</div>
 								<Box
-									className="text-md border-l pl-40"
+									className="border-l pl-40 text-md"
 									sx={{
 										borderColor: (theme) =>
 											alpha(theme.palette.getContrastText(theme.palette.primary.dark), 0.25)
@@ -87,25 +87,25 @@ function CompactInvoicePage() {
 
 						<div className="mt-48 grid grid-cols-12 gap-x-4">
 							<div
-								className="text-md col-span-8 font-medium"
+								className="col-span-8 text-md font-medium"
 								color="text.secondary"
 							>
 								SERVICE
 							</div>
 							<div
-								className="text-md text-right font-medium"
+								className="text-right text-md font-medium"
 								color="text.secondary"
 							>
 								RATE
 							</div>
 							<div
-								className="text-md text-right font-medium"
+								className="text-right text-md font-medium"
 								color="text.secondary"
 							>
 								QTY
 							</div>
 							<div
-								className="text-md col-span-2 text-right font-medium"
+								className="col-span-2 text-right text-md font-medium"
 								color="text.secondary"
 							>
 								TOTAL

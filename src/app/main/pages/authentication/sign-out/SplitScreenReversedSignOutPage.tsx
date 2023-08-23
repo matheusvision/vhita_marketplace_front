@@ -9,7 +9,7 @@ function SplitScreenReversedSignOutPage() {
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">
 			<Box
-				className="lg:px-112 relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex"
+				className="relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex lg:px-112"
 				sx={{ backgroundColor: 'primary.main' }}
 			>
 				<svg
@@ -104,8 +104,8 @@ function SplitScreenReversedSignOutPage() {
 				</div>
 			</Box>
 
-			<Paper className="ltr:border-l-1 rtl:border-r-1 flex h-full w-full items-center px-16 py-8 sm:h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:rounded-none md:p-64 md:shadow-none">
-				<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
+			<Paper className="flex h-full w-full items-center px-16 py-8 ltr:border-l-1 rtl:border-r-1 sm:h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:rounded-none md:p-64 md:shadow-none">
+				<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 					<img
 						className="mx-auto w-48"
 						src="assets/images/logo/logo.svg"
@@ -118,7 +118,7 @@ function SplitScreenReversedSignOutPage() {
 					<Typography className="mt-2 flex justify-center font-medium">Redirecting in 5 seconds</Typography>
 
 					<Typography
-						className="text-md mt-32 text-center font-medium"
+						className="mt-32 text-center text-md font-medium"
 						color="text.secondary"
 					>
 						<span>Go to</span>

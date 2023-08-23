@@ -71,7 +71,7 @@ function SinglePricingCard() {
 
 			<Box
 				sx={{ backgroundColor: 'primary.main' }}
-				className="lg:min-w-320 flex flex-col items-center p-8 lg:px-40 lg:py-48"
+				className="flex flex-col items-center p-8 lg:min-w-320 lg:px-40 lg:py-48"
 			>
 				<div className="flex items-center whitespace-nowrap">
 					<Typography

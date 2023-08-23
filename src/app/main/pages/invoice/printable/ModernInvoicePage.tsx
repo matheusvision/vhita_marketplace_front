@@ -5,13 +5,13 @@ import Typography from '@mui/material/Typography';
 
 function ModernInvoicePage() {
 	return (
-		<div className="inline-block w-full overflow-auto p-24 text-left print:p-0 sm:p-40">
+		<div className="inline-block w-full overflow-auto p-24 text-left sm:p-40 print:p-0">
 			<motion.div
 				initial={{ opacity: 0, y: 200 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ bounceDamping: 0 }}
 			>
-				<Card className="w-xl mx-auto rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
+				<Card className="mx-auto w-xl rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
 					<CardContent className="">
 						<div className="flex items-start">
 							<div className="grid grid-rows-2 place-items-start gap-y-48">
@@ -23,7 +23,7 @@ function ModernInvoicePage() {
 											alt="lozgo"
 										/>
 									</div>
-									<div className="text-md border-l pl-40">
+									<div className="border-l pl-40 text-md">
 										<Typography className="font-medium">Fuse Inc.</Typography>
 										<Typography>2810 Country Club Road</Typography>
 										<Typography>Cranford, NJ 07016</Typography>
@@ -39,7 +39,7 @@ function ModernInvoicePage() {
 									>
 										Bill To
 									</Typography>
-									<div className="text-md border-l pl-40">
+									<div className="border-l pl-40 text-md">
 										<Typography className="font-medium">Brian Hughes</Typography>
 										<Typography>9301 Wood Street</Typography>
 										<Typography>Philadelphia, PA 19111</Typography>
@@ -82,25 +82,25 @@ function ModernInvoicePage() {
 
 						<div className="mt-16 grid grid-cols-12 gap-x-4">
 							<Typography
-								className="text-md col-span-8 font-medium"
+								className="col-span-8 text-md font-medium"
 								color="text.secondary"
 							>
 								SERVICE
 							</Typography>
 							<Typography
-								className="text-md text-right font-medium"
+								className="text-right text-md font-medium"
 								color="text.secondary"
 							>
 								RATE
 							</Typography>
 							<Typography
-								className="text-md text-right font-medium"
+								className="text-right text-md font-medium"
 								color="text.secondary"
 							>
 								QTY
 							</Typography>
 							<Typography
-								className="text-md col-span-2 text-right font-medium"
+								className="col-span-2 text-right text-md font-medium"
 								color="text.secondary"
 							>
 								TOTAL
@@ -111,7 +111,7 @@ function ModernInvoicePage() {
 							<div className="col-span-8">
 								<Typography className="text-lg font-medium">Prototype & Design</Typography>
 								<Typography
-									className="text-md mt-8"
+									className="mt-8 text-md"
 									color="text.secondary"
 								>
 									Prototyping of the application's general workflow and the detailed design of its 72
@@ -127,7 +127,7 @@ function ModernInvoicePage() {
 							<div className="col-span-8">
 								<Typography className="text-lg font-medium">Development</Typography>
 								<Typography
-									className="text-md mt-8"
+									className="mt-8 text-md"
 									color="text.secondary"
 								>
 									The web and mobile development of the application using appropriate tools and
@@ -143,7 +143,7 @@ function ModernInvoicePage() {
 							<div className="col-span-8">
 								<Typography className="text-lg font-medium">Testing</Typography>
 								<Typography
-									className="text-md mt-8"
+									className="mt-8 text-md"
 									color="text.secondary"
 								>
 									Extensive testing of the application using various mobile and desktop devices with
@@ -159,7 +159,7 @@ function ModernInvoicePage() {
 							<div className="col-span-8">
 								<Typography className="text-lg font-medium">Documentation & Training</Typography>
 								<Typography
-									className="text-md mt-8"
+									className="mt-8 text-md"
 									color="text.secondary"
 								>
 									Development of the detailed documentation, preparing guides and instructional videos

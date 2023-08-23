@@ -29,23 +29,23 @@ function UserNavbarHeader() {
 	const user = useSelector(selectUser);
 
 	return (
-		<Root className="user shadow-0 relative flex flex-col items-center justify-center p-16 pb-14">
+		<Root className="user relative flex flex-col items-center justify-center p-16 pb-14 shadow-0">
 			<div className="mb-24 flex items-center justify-center">
 				<Avatar
 					sx={{
 						backgroundColor: 'background.paper',
 						color: 'text.secondary'
 					}}
-					className="avatar text-32 h-96 w-96 font-bold"
+					className="avatar h-96 w-96 text-32 font-bold"
 					src={user.data.photoURL}
 					alt={user.data.displayName}
 				>
 					{user.data.displayName.charAt(0)}
 				</Avatar>
 			</div>
-			<Typography className="username text-14 whitespace-nowrap font-medium">{user.data.displayName}</Typography>
+			<Typography className="username whitespace-nowrap text-14 font-medium">{user.data.displayName}</Typography>
 			<Typography
-				className="email text-13 whitespace-nowrap font-medium"
+				className="email whitespace-nowrap text-13 font-medium"
 				color="text.secondary"
 			>
 				{user.data.email}

@@ -19,7 +19,7 @@ function FuseLoading(props: FuseLoadingProps) {
 	return (
 		<div className={clsx('flex flex-1 flex-col items-center justify-center p-24', !showLoading && 'hidden')}>
 			<Typography
-				className="text-13 sm:text-20 -mb-16 font-medium"
+				className="-mb-16 text-13 font-medium sm:text-20"
 				color="text.secondary"
 			>
 				Loading

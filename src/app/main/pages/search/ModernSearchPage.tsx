@@ -36,7 +36,7 @@ function ModernSearchPage() {
 		<FusePageSimple
 			header={
 				<div className="flex w-full max-w-md flex-1 items-center p-24 sm:p-32">
-					<Paper className="rounded-16 flex h-44 w-full items-center px-16 shadow">
+					<Paper className="flex h-44 w-full items-center rounded-16 px-16 shadow">
 						<Input
 							placeholder="Search..."
 							disableUnderline
@@ -61,7 +61,7 @@ function ModernSearchPage() {
 								<motion.div variants={item}>
 									<Typography
 										color="text.secondary"
-										className="text-13 mx-16 mb-24"
+										className="mx-16 mb-24 text-13"
 									>
 										{data.length} results
 									</Typography>
@@ -71,11 +71,11 @@ function ModernSearchPage() {
 									<Paper
 										component={motion.div}
 										variants={item}
-										className="rounded-16 mb-16 overflow-hidden p-16 shadow"
+										className="mb-16 overflow-hidden rounded-16 p-16 shadow"
 										key={_item.id}
 									>
 										<Typography
-											className="text-18 cursor-pointer font-medium"
+											className="cursor-pointer text-18 font-medium"
 											sx={{
 												color: blue[800]
 											}}

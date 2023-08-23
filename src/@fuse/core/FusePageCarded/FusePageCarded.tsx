@@ -243,7 +243,7 @@ const FusePageCarded = forwardRef<
 			>
 				{header && <FusePageCardedHeader header={header} />}
 
-				<div className="shadow-1 rounded-t-16 container relative z-10 flex h-full flex-auto flex-col overflow-hidden">
+				<div className="container relative z-10 flex h-full flex-auto flex-col overflow-hidden rounded-t-16 shadow-1">
 					<div className="FusePageCarded-wrapper">
 						{leftSidebarContent && (
 							<FusePageCardedSidebar
