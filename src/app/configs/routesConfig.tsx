@@ -9,13 +9,15 @@ import SignOutConfig from '../main/sign-out/SignOutConfig';
 import Error404Page from '../main/404/Error404Page';
 import PagesConfigs from '../main/pages/pagesConfigs';
 import DashboardsConfigs from '../main/dashboards/dashboardsConfigs';
+import AppsConfigs from '../main/apps/appsConfigs';
 
 const routeConfigs: FuseRouteConfigsType = [
 	SignOutConfig,
 	SignInConfig,
 	SignUpConfig,
 	...PagesConfigs,
-	...DashboardsConfigs
+	...DashboardsConfigs,
+	...AppsConfigs
 ];
 
 const routes: FuseRoutesType = [
