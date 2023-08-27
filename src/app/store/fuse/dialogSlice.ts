@@ -1,38 +1,29 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DialogProps } from '@mui/material/Dialog/Dialog';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'app/store/index';
+import { DialogProps } from '@mui/material';
+import { ReactNode } from 'react';
 
-type initialStateProps = {
-	state: boolean;
-	options?: Pick<DialogProps, 'open' | 'children'>;
-};
-
-const initialState: initialStateProps = {
-	state: false,
-	options: {
-		open: false,
-		children: 'Hi'
-	}
+const initialState: DialogProps = {
+	open: false,
+	children: null
 };
 
 const dialogSlice = createSlice({
 	name: 'dialog',
 	initialState,
 	reducers: {
-		openDialog: (state, action: PayloadAction<initialStateProps['options']>) => {
-			state.state = true;
-			state.options = action.payload;
+		openDialog: (state, action) => {
+			state.open = true;
+			state.children = action.payload as ReactNode;
 		},
-		closeDialog: (state) => {
-			state.state = false;
-		}
+		closeDialog: () => initialState
 	}
 });
 
-export const { closeDialog } = dialogSlice.actions;
+export const { closeDialog, openDialog } = dialogSlice.actions;
 
-export const selectFuseDialogState = (state: RootState) => state.fuse.dialog.state;
+export const selectFuseDialogState = (state: RootState) => state.fuse.dialog.open;
 
-export const selectFuseDialogOptions = (state: RootState) => state.fuse.dialog.options;
+export const selectFuseDialogProps = (state: RootState) => state.fuse.dialog;
 
 export default dialogSlice.reducer;

@@ -47,7 +47,9 @@ export const injectReducer = (key: string, reducer: Reducer) => {
 	return store;
 };
 
-export type RootState = ReturnType<typeof store.getState>;
+type BaseRootState = ReturnType<typeof store.getState>;
+
+type ExtendedRootState<T extends string, State> = BaseRootState & { [K in T]: State };
 
 export type AppDispatch = typeof store.dispatch;
 
@@ -69,13 +71,27 @@ export type AppThunkDispatch<E = unknown> = ThunkDispatch<RootState, E, Action<s
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
 type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Rest}`
 	? { [P in Start as P]: PathToType<Rest, T> }
 	: { [P in Str]: T };
 
-export type RootStateWith<SliceType extends { name: string; getInitialState: () => unknown }> = RootState &
+export type RootStateWithSlice<SliceType extends { name: string; getInitialState: () => unknown }> = BaseRootState &
 	PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;
+
+/**
+ * If no variable is provided, it should return BaseRootState.
+ * If one variable is provided (a slice object), it should return RootStateWithSlice.
+ * If two variables are provided, it should return DynamicRootState
+ */
+export type RootState<
+	T extends string | { name: string; getInitialState: () => unknown } = null,
+	State = never
+> = T extends string
+	? ExtendedRootState<T, State>
+	: T extends { name: string; getInitialState: () => unknown }
+	? RootStateWithSlice<T>
+	: BaseRootState;
+
+export const useAppSelector: TypedUseSelectorHook<BaseRootState> = useSelector;
 
 export default store;
