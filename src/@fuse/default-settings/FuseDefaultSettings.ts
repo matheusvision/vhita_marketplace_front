@@ -94,6 +94,13 @@ export const defaultThemeOptions = {
 				}
 			}
 		},
+		MuiPickersPopper: {
+			styleOverrides: {
+				root: {
+					zIndex: 99999
+				}
+			}
+		},
 		MuiButtonBase: {
 			defaultProps: {
 				disableRipple: true
