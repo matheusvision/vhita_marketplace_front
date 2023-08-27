@@ -16,14 +16,6 @@ type WidgetsType = {
 	accountBalance?: AccountBalanceWidgetType;
 };
 
-type FinanceDashboardAppState = {
-	widgets?: WidgetsType;
-};
-
-type ExtendedRootState = RootState & {
-	financeDashboardApp: FinanceDashboardAppState;
-};
-
 export const getWidgets = createAppAsyncThunk('financeDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/finance/widgets');
 
@@ -32,15 +24,19 @@ export const getWidgets = createAppAsyncThunk('financeDashboardApp/widgets/getWi
 	return data;
 });
 
+const initialState: WidgetsType = {};
+
 const widgetsSlice = createSlice({
 	name: 'financeDashboardApp/widgets',
-	initialState: null,
+	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getWidgets.fulfilled, (state, action) => action.payload);
 	}
 });
 
-export const selectWidgets = (state: ExtendedRootState) => state.financeDashboardApp.widgets;
+type AppRootState = RootState<typeof widgetsSlice>;
+
+export const selectWidgets = (state: AppRootState) => state.financeDashboardApp.widgets;
 
 export default widgetsSlice.reducer;

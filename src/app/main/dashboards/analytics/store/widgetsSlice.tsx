@@ -24,14 +24,6 @@ export type WidgetsType = {
 	visits?: VisitsWidgetType;
 };
 
-type AnalyticsDashboardAppState = {
-	widgets?: WidgetsType;
-};
-
-type ExtendedRootState = RootState & {
-	analyticsDashboardApp: AnalyticsDashboardAppState;
-};
-
 export const getWidgets = createAppAsyncThunk('analyticsDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/analytics/widgets');
 
@@ -51,6 +43,8 @@ const widgetsSlice = createSlice({
 	}
 });
 
-export const selectWidgets = (state: ExtendedRootState) => state.analyticsDashboardApp.widgets;
+type DynamicRootState = RootState<typeof widgetsSlice>;
+
+export const selectWidgets = (state: DynamicRootState) => state.analyticsDashboardApp.widgets;
 
 export default widgetsSlice.reducer;

@@ -8,14 +8,6 @@ type ProjectType = {
 	name: string;
 };
 
-type ProjectDashboardAppState = {
-	projects?: ReturnType<typeof projectsAdapter.getInitialState>;
-};
-
-type ExtendedRootState = RootState & {
-	projectDashboardApp: ProjectDashboardAppState;
-};
-
 export const getProjects = createAppAsyncThunk('projectDashboardApp/projects/getProjects', async () => {
 	const response = await axios.get('/api/dashboards/project/projects');
 
@@ -32,7 +24,7 @@ export const {
 	selectAll: selectProjects,
 	selectEntities: selectProjectsEntities,
 	selectById: selectProjectById
-} = projectsAdapter.getSelectors((state: ExtendedRootState) => state.projectDashboardApp.projects);
+} = projectsAdapter.getSelectors((state: AppRootState) => state.projectDashboardApp.projects);
 
 const projectsSlice = createSlice({
 	name: 'projectDashboardApp/projects',
@@ -42,5 +34,7 @@ const projectsSlice = createSlice({
 		builder.addCase(getProjects.fulfilled, (state, action) => projectsAdapter.setAll(state, action.payload));
 	}
 });
+
+type AppRootState = RootState<typeof projectsSlice>;
 
 export default projectsSlice.reducer;

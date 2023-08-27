@@ -27,14 +27,6 @@ type WidgetsType = {
 	teamMembers: TeamMemberType[];
 };
 
-type ProjectDashboardAppState = {
-	widgets?: WidgetsType; //
-};
-
-type ExtendedRootState = RootState & {
-	projectDashboardApp: ProjectDashboardAppState;
-};
-
 export const getWidgets = createAppAsyncThunk('projectDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/project/widgets');
 	const data = (await response.data) as WidgetsType;
@@ -42,15 +34,19 @@ export const getWidgets = createAppAsyncThunk('projectDashboardApp/widgets/getWi
 	return data;
 });
 
+const initialState: WidgetsType = null;
+
 const widgetsSlice = createSlice({
 	name: 'projectDashboardApp/widgets',
-	initialState: null,
+	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getWidgets.fulfilled, (state, action) => action.payload);
 	}
 });
 
-export const selectWidgets = (state: ExtendedRootState) => state.projectDashboardApp.widgets;
+type AppRootState = RootState<typeof widgetsSlice>;
+
+export const selectWidgets = (state: AppRootState) => state.projectDashboardApp.widgets;
 
 export default widgetsSlice.reducer;
