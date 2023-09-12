@@ -37,14 +37,14 @@ type hueTypes =
 	| 'A700';
 
 class FuseUtils {
-	static filterArrayByString(mainArr: unknown[], searchText: string) {
+	static filterArrayByString<T>(mainArr: T[], searchText: string): T[] {
 		if (searchText === '') {
 			return mainArr;
 		}
 
 		searchText = searchText.toLowerCase();
 
-		return mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
+		return mainArr.filter((itemObj: unknown) => this.searchInObj(itemObj, searchText));
 	}
 
 	static searchInObj(itemObj: unknown, searchText: string) {
