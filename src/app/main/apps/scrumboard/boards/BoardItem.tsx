@@ -1,4 +1,4 @@
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Card from '@mui/material/Card';

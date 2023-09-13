@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import Paper from '@mui/material/Paper';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectLabelsEntities } from '../store/labelsSlice';

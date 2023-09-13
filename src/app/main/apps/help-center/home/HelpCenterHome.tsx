@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { useDispatch, useSelector } from 'react-redux';
 import { lighten, ThemeProvider } from '@mui/material/styles';
 import { selectMainThemeDark } from 'app/store/fuse/settingsSlice';

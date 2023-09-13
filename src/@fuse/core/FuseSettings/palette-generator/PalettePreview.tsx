@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { Palette } from '@mui/material/styles/createPalette';
 import { PartialDeep } from 'type-fest';
 

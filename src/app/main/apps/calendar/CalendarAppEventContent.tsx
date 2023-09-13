@@ -1,7 +1,7 @@
 import { useTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
 import _ from '@lodash';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import { EventContentArg } from '@fullcalendar/core';

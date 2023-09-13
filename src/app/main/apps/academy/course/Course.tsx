@@ -15,7 +15,7 @@ import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
 import reducer from '../store';

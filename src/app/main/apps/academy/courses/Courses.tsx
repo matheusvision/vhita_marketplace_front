@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import { FormControlLabel } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple';

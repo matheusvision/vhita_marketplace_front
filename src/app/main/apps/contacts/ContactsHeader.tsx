@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { ChangeEvent } from 'react';
 import { selectFilteredContacts, selectSearchText, setContactsSearchText } from './store/contactsSlice';

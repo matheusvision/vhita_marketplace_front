@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import _ from '@lodash';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { darken } from '@mui/material/styles';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { removeList, updateList } from '../../store/listsSlice';

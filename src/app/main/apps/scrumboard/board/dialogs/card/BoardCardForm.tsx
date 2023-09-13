@@ -19,7 +19,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { closeCardDialog, removeCard, selectCardData, updateCard } from '../../../store/cardSlice';
 import CardActivity from './activity/CardActivity';
 import CardAttachment from './attachment/CardAttachment';

@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { FuseNavVerticalTabProps } from '@fuse/core/FuseNavigation';
 import { ListItemButton } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';

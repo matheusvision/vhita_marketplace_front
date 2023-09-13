@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 
 function MailAttachment(props) {
 	const { attachment } = props;

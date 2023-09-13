@@ -2,7 +2,7 @@ import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import withRouter from '@fuse/core/withRouter';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';

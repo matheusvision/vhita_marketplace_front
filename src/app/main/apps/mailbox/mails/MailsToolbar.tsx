@@ -5,7 +5,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';

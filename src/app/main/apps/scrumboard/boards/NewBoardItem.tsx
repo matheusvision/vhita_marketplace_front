@@ -1,5 +1,5 @@
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
 import { newBoard } from '../store/boardsSlice';
 
