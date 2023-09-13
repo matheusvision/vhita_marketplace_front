@@ -1,7 +1,7 @@
 import AcademyAppConfig from './academy/AcademyAppConfig';
 import CalendarAppConfig from './calendar/CalendarAppConfig';
 import ChatAppConfig from './chat/ChatAppConfig';
-// import ContactsAppConfig from './contacts/ContactsAppConfig';
+import ContactsAppConfig from './contacts/ContactsAppConfig';
 // import ECommerceAppConfig from './e-commerce/ECommerceAppConfig';
 // import FileManagerAppConfig from './file-manager/FileManagerAppConfig';
 // import MailboxAppConfig from './mailbox/MailboxAppConfig';
@@ -14,7 +14,7 @@ import ChatAppConfig from './chat/ChatAppConfig';
 const appsConfigs = [
 	// MailboxAppConfig,
 	// FileManagerAppConfig,
-	// ContactsAppConfig,
+	ContactsAppConfig,
 	CalendarAppConfig,
 	ChatAppConfig,
 	// ECommerceAppConfig,
