@@ -101,6 +101,13 @@ export const defaultThemeOptions = {
 				}
 			}
 		},
+		MuiAutocomplete: {
+			styleOverrides: {
+				popper: {
+					zIndex: 99999
+				}
+			}
+		},
 		MuiButtonBase: {
 			defaultProps: {
 				disableRipple: true
