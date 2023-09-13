@@ -1,18 +1,18 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { selectItemById, setSelectedItem } from './store/itemsSlice';
+import { selectSelectedItem, setSelectedItem } from './store/itemsSlice';
 import ItemIcon from './ItemIcon';
 
-function DetailSidebarContent(props) {
-	const dispatch = useDispatch();
+function DetailSidebarContent() {
+	const dispatch = useAppDispatch();
 
-	const item = useSelector((state) => selectItemById(state, state.fileManagerApp.items.selectedItemId));
+	const item = useAppSelector(selectSelectedItem);
 
 	if (!item) {
 		return null;

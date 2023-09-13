@@ -1,19 +1,23 @@
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { amber, blue, green, grey, red } from '@mui/material/colors';
 
-const TypeBadge = styled(Box)(({ theme, ...props }) => ({
+const TypeBadge = styled(Box)(({ ...props }) => ({
 	backgroundColor: {
 		PDF: red[600],
 		DOC: blue[600],
 		XLS: green[600],
 		TXT: grey[600],
 		JPG: amber[600]
-	}[props.color]
+	}[props.color as string]
 }));
 
-function ItemIcon(props) {
+type ItemIconProps = {
+	type: string;
+};
+
+function ItemIcon(props: ItemIconProps) {
 	const { type } = props;
 
 	if (type === 'folder') {

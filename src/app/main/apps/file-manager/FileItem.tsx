@@ -1,12 +1,18 @@
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import ItemIcon from './ItemIcon';
 import { setSelectedItem } from './store/itemsSlice';
+import { FileManagerItemType } from './model/FileManagerItemModel';
 
-function FileItem(props) {
+type FileItemProps = {
+	item: FileManagerItemType;
+};
+
+function FileItem(props: FileItemProps) {
 	const { item } = props;
-	const dispatch = useDispatch();
+
+	const dispatch = useAppDispatch();
 
 	if (!item) {
 		return null;

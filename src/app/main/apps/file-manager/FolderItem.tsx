@@ -2,14 +2,19 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { Box } from '@mui/system';
-import { useDispatch } from 'react-redux';
+import Box from '@mui/material/Box';
+import { useAppDispatch } from 'app/store/index';
 import { setSelectedItem } from './store/itemsSlice';
 import ItemIcon from './ItemIcon';
+import { FileManagerItemType } from './model/FileManagerItemModel';
 
-function FolderItem(props) {
+type FolderItemProps = {
+	item: FileManagerItemType;
+};
+
+function FolderItem(props: FolderItemProps) {
 	const { item } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	if (!item) {
 		return null;

@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 import { lighten } from '@mui/material/styles';
 import { selectFiles, selectFolders } from './store/itemsSlice';
 import FolderItem from './FolderItem';
 import FileItem from './FileItem';
 
 function FileManagerList() {
-	const folders = useSelector(selectFolders);
-	const files = useSelector(selectFiles);
+	const folders = useAppSelector(selectFolders);
+	const files = useAppSelector(selectFiles);
 
 	return (
 		<div className="p-32">
