@@ -1,7 +1,7 @@
 import withReducer from 'app/store/withReducer';
 import { useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
@@ -19,8 +19,8 @@ import { getLabels } from '../store/labelsSlice';
 import BoardHeader from './BoardHeader';
 
 function Board(props) {
-	const dispatch = useDispatch();
-	const board = useSelector(selectBoard);
+	const dispatch = useAppDispatch();
+	const board = useAppSelector(selectBoard);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();

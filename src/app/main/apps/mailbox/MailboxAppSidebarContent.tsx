@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';
@@ -9,9 +9,9 @@ import { selectFolders } from './store/foldersSlice';
 import { selectLabels } from './store/labelsSlice';
 
 function MailboxAppSidebarContent(props) {
-	const folders = useSelector(selectFolders);
-	const labels = useSelector(selectLabels);
-	const filters = useSelector(selectFilters);
+	const folders = useAppSelector(selectFolders);
+	const labels = useAppSelector(selectLabels);
+	const filters = useAppSelector(selectFilters);
 
 	const { t } = useTranslation('mailboxApp');
 

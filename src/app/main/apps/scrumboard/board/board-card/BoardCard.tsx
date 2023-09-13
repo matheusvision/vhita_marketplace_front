@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { Draggable } from 'react-beautiful-dnd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { AvatarGroup } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { openCardDialog } from '../../store/cardSlice';
@@ -25,10 +25,10 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 function BoardCard(props) {
 	const { cardId, index } = props;
-	const dispatch = useDispatch();
-	const board = useSelector(selectBoard);
-	const card = useSelector((state) => selectCardById(state, cardId));
-	const members = useSelector(selectMembers);
+	const dispatch = useAppDispatch();
+	const board = useAppSelector(selectBoard);
+	const card = useAppSelector((state) => selectCardById(state, cardId));
+	const members = useAppSelector(selectMembers);
 	const commentsCount = getCommentsCount(card);
 	const cardCoverImage = _.find(card.attachments, { id: card.attachmentCoverId });
 

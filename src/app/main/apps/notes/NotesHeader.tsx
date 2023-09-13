@@ -3,14 +3,14 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NotesSearch from './NotesSearch';
 import { selectVariateDescSize, toggleVariateDescSize } from './store/notesSlice';
 
 function NotesHeader(props) {
-	const dispatch = useDispatch();
-	const variateDescSize = useSelector(selectVariateDescSize);
+	const dispatch = useAppDispatch();
+	const variateDescSize = useAppSelector(selectVariateDescSize);
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between p-8 sm:p-24 sm:px-32 relative">

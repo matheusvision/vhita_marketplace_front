@@ -6,12 +6,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Popover from '@mui/material/Popover';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectLabels } from '../store/labelsSlice';
 
 function NoteFormLabelMenu(props) {
-	const labels = useSelector(selectLabels);
+	const labels = useAppSelector(selectLabels);
 
 	const [anchorEl, setAnchorEl] = useState(null);
 

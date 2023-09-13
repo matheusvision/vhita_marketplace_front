@@ -2,16 +2,16 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
 import NoteListItem from './NoteListItem';
 import { selectNotes, selectSearchText, selectVariateDescSize } from './store/notesSlice';
 
 function NoteList(props) {
-	const notes = useSelector(selectNotes);
-	const variateDescSize = useSelector(selectVariateDescSize);
-	const searchText = useSelector(selectSearchText);
+	const notes = useAppSelector(selectNotes);
+	const variateDescSize = useAppSelector(selectVariateDescSize);
+	const searchText = useAppSelector(selectSearchText);
 	const params = useParams();
 	const [filteredData, setFilteredData] = useState(null);
 

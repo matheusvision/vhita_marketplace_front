@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
@@ -13,9 +13,9 @@ import { getMails, selectMails, selectSearchText } from '../store/mailsSlice';
 import MailListItem from './MailListItem';
 
 function MailList(props) {
-	const dispatch = useDispatch();
-	const mails = useSelector(selectMails);
-	const searchText = useSelector(selectSearchText);
+	const dispatch = useAppDispatch();
+	const mails = useAppSelector(selectMails);
+	const searchText = useAppSelector(selectSearchText);
 
 	const routeParams = useParams();
 	const [filteredData, setFilteredData] = useState(null);

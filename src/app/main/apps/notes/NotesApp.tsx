@@ -1,6 +1,6 @@
 import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import { lighten, styled } from '@mui/material/styles';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -23,7 +23,7 @@ const Root = styled(FusePageCarded)(({ theme }) => ({
 }));
 
 function NotesApp(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 	const routeParams = useParams();

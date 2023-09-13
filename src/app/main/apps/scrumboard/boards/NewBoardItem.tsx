@@ -1,10 +1,10 @@
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import { newBoard } from '../store/boardsSlice';
 
 function NewBoardItem(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<Box

@@ -1,5 +1,5 @@
 import Dialog from '@mui/material/Dialog';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { closeLabelsDialog, selectLabels, selectLabelsDialogOpen } from '../../store/labelsSlice';
@@ -7,9 +7,9 @@ import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
 
 function LabelsDialog(props) {
-	const dispatch = useDispatch();
-	const labelsDialogOpen = useSelector(selectLabelsDialogOpen);
-	const labels = useSelector(selectLabels);
+	const dispatch = useAppDispatch();
+	const labelsDialogOpen = useAppSelector(selectLabelsDialogOpen);
+	const labels = useAppSelector(selectLabels);
 
 	return (
 		<Dialog

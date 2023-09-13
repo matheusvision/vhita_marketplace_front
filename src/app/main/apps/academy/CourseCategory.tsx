@@ -1,6 +1,6 @@
 import { darken, lighten } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import _ from '@lodash';
 import { selectCategories } from './store/categoriesSlice';
 import CourseType from './types/CourseType';
@@ -12,7 +12,7 @@ type CourseCategoryProps = {
 function CourseCategory(props: CourseCategoryProps) {
 	const { slug } = props;
 
-	const categories = useSelector(selectCategories);
+	const categories = useAppSelector(selectCategories);
 
 	const category = _.find(categories, { slug });
 

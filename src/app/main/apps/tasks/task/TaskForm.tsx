@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
@@ -30,10 +30,10 @@ const schema = yup.object().shape({
 });
 
 function TaskForm(props) {
-	const task = useSelector(selectTask);
-	const tags = useSelector(selectTags);
+	const task = useAppSelector(selectTask);
+	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const { control, watch, reset, handleSubmit, formState, getValues } = useForm({

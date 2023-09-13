@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material/styles';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
 import clsx from 'clsx';
@@ -15,7 +15,7 @@ type CalendarAppEventContentProps = {
 function CalendarAppEventContent(props: CalendarAppEventContentProps) {
 	const { eventInfo } = props;
 	const theme = useTheme();
-	const labels = useSelector(selectLabels);
+	const labels = useAppSelector(selectLabels);
 
 	const labelId = eventInfo.event.extendedProps.label;
 	const label = _.find(labels, { id: labelId });

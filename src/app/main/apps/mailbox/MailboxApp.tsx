@@ -1,6 +1,6 @@
 import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
@@ -27,7 +27,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 }));
 
 function MailboxApp(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 	const [rightSidebarOpen, setRightSidebarOpen] = useState(!isMobile);

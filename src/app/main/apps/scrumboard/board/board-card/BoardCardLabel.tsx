@@ -1,12 +1,12 @@
 import Tooltip from '@mui/material/Tooltip';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import Chip from '@mui/material/Chip';
 import { selectLabelById } from '../../store/labelsSlice';
 
 function BoardCardLabel(props) {
 	const { id } = props;
 
-	const label = useSelector((state) => selectLabelById(state, id));
+	const label = useAppSelector((state) => selectLabelById(state, id));
 
 	if (!label) {
 		return null;

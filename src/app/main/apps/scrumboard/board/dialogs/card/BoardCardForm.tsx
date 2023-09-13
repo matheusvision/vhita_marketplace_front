@@ -17,7 +17,7 @@ import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { closeCardDialog, removeCard, selectCardData, updateCard } from '../../../store/cardSlice';
@@ -36,12 +36,12 @@ import CheckListMenu from './toolbar/CheckListMenu';
 import OptionsMenu from './toolbar/OptionsMenu';
 
 function BoardCardForm(props) {
-	const dispatch = useDispatch();
-	const board = useSelector(selectBoard);
-	const labels = useSelector(selectLabels);
-	const members = useSelector(selectMembers);
-	const card = useSelector(selectCardData);
-	const list = useSelector((state) => selectListById(state, card?.listId));
+	const dispatch = useAppDispatch();
+	const board = useAppSelector(selectBoard);
+	const labels = useAppSelector(selectLabels);
+	const members = useAppSelector(selectMembers);
+	const card = useAppSelector(selectCardData);
+	const list = useAppSelector((state) => selectListById(state, card?.listId));
 
 	const { register, watch, control, setValue } = useForm({ mode: 'onChange', defaultValues: card });
 

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import _ from '@lodash';
 import * as React from 'react';
 import { ForwardedRef, forwardRef, MouseEvent, useState } from 'react';
@@ -18,7 +18,7 @@ type CountryCodeSelectorProps = {
 const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className } = props;
 
-	const countries = useSelector(selectCountries);
+	const countries = useAppSelector(selectCountries);
 	const country = _.find(countries, { iso: value });
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);

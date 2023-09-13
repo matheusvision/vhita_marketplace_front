@@ -7,7 +7,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -21,8 +21,8 @@ const schema = yup.object().shape({
 });
 
 function BoardTitle(props) {
-	const dispatch = useDispatch();
-	const board = useSelector(selectBoard);
+	const dispatch = useAppDispatch();
+	const board = useAppSelector(selectBoard);
 
 	const [formOpen, setFormOpen] = useState(false);
 

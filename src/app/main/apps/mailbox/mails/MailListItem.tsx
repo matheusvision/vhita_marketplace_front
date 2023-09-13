@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import Checkbox from '@mui/material/Checkbox';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import withRouter from '@fuse/core/withRouter';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -34,8 +34,8 @@ const StyledListItem = styled(ListItem)(({ theme, unread, selected }) => ({
 }));
 
 function MailListItem(props) {
-	const dispatch = useDispatch();
-	const selectedMailIds = useSelector(selectSelectedMailIds);
+	const dispatch = useAppDispatch();
+	const selectedMailIds = useAppSelector(selectSelectedMailIds);
 	const { mail } = props;
 	const checked = selectedMailIds.length > 0 && selectedMailIds.find((id) => id === props.mail.id) !== undefined;
 

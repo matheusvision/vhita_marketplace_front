@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import BoardAddCard from '../board-card/BoardAddCard';
 import BoardCard from '../board-card/BoardCard';
 import BoardListHeader from './BoardListHeader';
@@ -19,7 +19,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 function BoardList(props) {
 	const { listId, cardIds } = props;
 	const contentScrollEl = useRef(null);
-	const list = useSelector((state) => selectListById(state, listId));
+	const list = useAppSelector((state) => selectListById(state, listId));
 
 	function handleCardAdded() {
 		contentScrollEl.current.scrollTop = contentScrollEl.current.scrollHeight;

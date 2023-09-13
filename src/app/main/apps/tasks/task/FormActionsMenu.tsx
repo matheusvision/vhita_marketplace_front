@@ -4,14 +4,14 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { removeTask } from '../store/taskSlice';
 
 function FormActionsMenu(props) {
 	const { taskId } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const [anchorEl, setAnchorEl] = React.useState(null);

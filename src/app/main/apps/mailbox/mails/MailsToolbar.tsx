@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -27,14 +27,14 @@ import MailListTitle from './MailListTitle';
 
 function MailToolbar(props) {
 	const { onToggleLeftSidebar } = props;
-	const dispatch = useDispatch();
-	const mails = useSelector(selectMails);
-	const labels = useSelector(selectLabels);
-	const folders = useSelector(selectFolders);
-	const searchText = useSelector(selectSearchText);
+	const dispatch = useAppDispatch();
+	const mails = useAppSelector(selectMails);
+	const labels = useAppSelector(selectLabels);
+	const folders = useAppSelector(selectFolders);
+	const searchText = useAppSelector(selectSearchText);
 	const { t } = useTranslation('mailboxApp');
-	const selectedMailIds = useSelector(selectSelectedMailIds);
-	const trashFolderId = useSelector(selectTrashFolderId);
+	const selectedMailIds = useAppSelector(selectSelectedMailIds);
+	const trashFolderId = useAppSelector(selectTrashFolderId);
 	const [menu, setMenu] = useState({
 		selectMenu: null,
 		foldersMenu: null,

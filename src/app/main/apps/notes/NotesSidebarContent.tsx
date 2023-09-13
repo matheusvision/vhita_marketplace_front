@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { motion } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { openLabelsDialog, selectLabels } from './store/labelsSlice';
 
@@ -32,8 +32,8 @@ const StyledListItem = styled(ListItem)(({ theme, active }) => ({
 }));
 
 function NotesSidebarContent(props) {
-	const dispatch = useDispatch();
-	const labels = useSelector(selectLabels);
+	const dispatch = useAppDispatch();
+	const labels = useAppSelector(selectLabels);
 
 	return (
 		<div className="px-16 py-24">

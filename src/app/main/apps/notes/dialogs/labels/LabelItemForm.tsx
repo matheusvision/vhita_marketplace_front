@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 
 function NewLabelForm(props) {
 	const { label } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const { control, formState, handleSubmit, reset, watch } = useForm({
 		mode: 'onChange',

@@ -3,10 +3,9 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import { motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FullCalendar from '@fullcalendar/react';
-import { useAppSelector } from 'app/store/index';
 import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
 import { MutableRefObject } from 'react';
 import { openNewEventDialog } from './store/eventsSlice';
@@ -23,7 +22,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 
 	const mainTheme = useAppSelector(selectMainTheme);
 	const calendarApi = () => calendarRef.current?.getApi();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<div className="flex flex-col md:flex-row w-full p-12 justify-between z-10 container">

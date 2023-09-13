@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -18,8 +18,8 @@ import Box from '@mui/material/Box';
 import { deleteBoard, selectBoard, updateBoard } from '../../../store/boardSlice';
 
 function BoardSettingsSidebar(props) {
-	const dispatch = useDispatch();
-	const board = useSelector(selectBoard);
+	const dispatch = useAppDispatch();
+	const board = useAppSelector(selectBoard);
 
 	const { watch, control, reset } = useForm({
 		mode: 'onChange',

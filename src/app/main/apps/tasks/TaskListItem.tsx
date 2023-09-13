@@ -7,14 +7,14 @@ import { IconButton } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import format from 'date-fns/format';
 import Typography from '@mui/material/Typography';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import { Draggable } from 'react-beautiful-dnd';
 import clsx from 'clsx';
 import { updateTask } from './store/taskSlice';
 
 function TaskListItem(props) {
 	const { data, index } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<Draggable

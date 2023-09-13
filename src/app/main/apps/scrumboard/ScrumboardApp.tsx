@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import withReducer from 'app/store/withReducer';
 import { getMembers } from './store/membersSlice';
 import reducer from './store';
 
 function ScrumboardApp() {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		dispatch(getMembers());

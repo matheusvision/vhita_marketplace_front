@@ -1,6 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import withRouter from '@fuse/core/withRouter';
 import Box from '@mui/material/Box';
 import { NavLink } from 'react-router-dom';
@@ -13,8 +13,8 @@ import { selectMail } from '../store/mailSlice';
 import { setActionToMails } from '../store/mailsSlice';
 
 function MailToolbar(props) {
-	const dispatch = useDispatch();
-	const mail = useSelector(selectMail);
+	const dispatch = useAppDispatch();
+	const mail = useAppSelector(selectMail);
 	const theme = useTheme();
 
 	if (!mail) {

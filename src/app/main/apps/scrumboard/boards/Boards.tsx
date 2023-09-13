@@ -1,14 +1,14 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { getBoards, resetBoards, selectBoards } from '../store/boardsSlice';
 import BoardItem from './BoardItem';
 import NewBoardItem from './NewBoardItem';
 
 function Boards(props) {
-	const dispatch = useDispatch();
-	const boards = useSelector(selectBoards);
+	const dispatch = useAppDispatch();
+	const boards = useAppSelector(selectBoards);
 
 	useEffect(() => {
 		dispatch(getBoards());

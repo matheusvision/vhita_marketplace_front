@@ -1,7 +1,7 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import withReducer from 'app/store/withReducer';
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import { styled } from '@mui/material/styles';
@@ -20,7 +20,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 }));
 
 function TasksApp(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const pageLayout = useRef(null);
 	const routeParams = useParams();
 	const [rightSidebarOpen, setRightSidebarOpen] = useState(false);

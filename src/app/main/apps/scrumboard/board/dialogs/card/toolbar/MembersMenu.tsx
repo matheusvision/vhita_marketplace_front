@@ -4,14 +4,14 @@ import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
 import { selectMembers } from '../../../../store/membersSlice';
 
 function MembersMenu(props) {
 	const [anchorEl, setAnchorEl] = useState(null);
-	const members = useSelector(selectMembers);
+	const members = useAppSelector(selectMembers);
 
 	function handleMenuOpen(event) {
 		setAnchorEl(event.currentTarget);

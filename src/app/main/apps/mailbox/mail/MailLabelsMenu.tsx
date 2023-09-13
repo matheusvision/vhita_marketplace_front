@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Menu } from '@mui/material';
 import _ from '@lodash';
@@ -15,7 +15,7 @@ import { labelColorDefs } from './labelColors';
 function MailLabelsMenu(props) {
 	const { className, onChange, labels } = props;
 	const [selectedLabels, setSelectedLabels] = useState(labels);
-	const labelsAll = useSelector(selectLabels);
+	const labelsAll = useAppSelector(selectLabels);
 
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);

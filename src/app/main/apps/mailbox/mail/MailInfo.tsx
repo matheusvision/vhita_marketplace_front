@@ -4,12 +4,12 @@ import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import format from 'date-fns/format';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import { selectMail } from '../store/mailSlice';
 
 function MailInfo(props) {
 	const { className } = props;
-	const mail = useSelector(selectMail);
+	const mail = useAppSelector(selectMail);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 

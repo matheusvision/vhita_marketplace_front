@@ -4,11 +4,11 @@ import Typography from '@mui/material/Typography';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Box from '@mui/material/Box';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import { selectMemberById } from '../../../../store/membersSlice';
 
 function CardActivity(props) {
-	const user = useSelector((state) => selectMemberById(state, props.item.idMember));
+	const user = useAppSelector((state) => selectMemberById(state, props.item.idMember));
 
 	switch (props.item.type) {
 		case 'comment': {

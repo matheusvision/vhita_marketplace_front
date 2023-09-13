@@ -2,7 +2,7 @@ import { useDebounce } from '@fuse/hooks';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { forwardRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { closeNoteDialog, getNotes, removeNote, selectDialogNote, updateNote } from '../../store/notesSlice';
 import NoteForm from '../../note-form/NoteForm';
@@ -18,9 +18,9 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 function NoteDialog(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const routeParams = useParams();
-	const note = useSelector(selectDialogNote);
+	const note = useAppSelector(selectDialogNote);
 
 	const handleOnChange = useDebounce((_note) => {
 		dispatch(updateNote(_note)).then(() => {

@@ -1,9 +1,9 @@
 import Typography from '@mui/material/Typography';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 function SelectMailMessage() {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-24">

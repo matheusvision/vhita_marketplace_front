@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useNavigate } from 'react-router-dom';
 import { selectMail } from '../store/mailSlice';
@@ -13,12 +13,12 @@ import { setActionToMails } from '../store/mailsSlice';
 
 function MailActionsMenu(props) {
 	const { className } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
-	const mail = useSelector(selectMail);
-	const spamFolderId = useSelector(selectSpamFolderId);
-	const trashFolderId = useSelector(selectTrashFolderId);
+	const mail = useAppSelector(selectMail);
+	const spamFolderId = useAppSelector(selectSpamFolderId);
+	const trashFolderId = useAppSelector(selectTrashFolderId);
 	const navigate = useNavigate();
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);

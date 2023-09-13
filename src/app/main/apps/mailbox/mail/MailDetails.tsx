@@ -1,7 +1,7 @@
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
@@ -17,9 +17,9 @@ import MailAttachment from './MailAttachment';
 import MailInfo from './MailInfo';
 
 function MailDetails(props) {
-	const dispatch = useDispatch();
-	const mail = useSelector(selectMail);
-	const labels = useSelector(selectLabelsEntities);
+	const dispatch = useAppDispatch();
+	const mail = useAppSelector(selectMail);
+	const labels = useAppSelector(selectLabelsEntities);
 
 	const routeParams = useParams();
 	const [showDetails, setShowDetails] = useState(false);

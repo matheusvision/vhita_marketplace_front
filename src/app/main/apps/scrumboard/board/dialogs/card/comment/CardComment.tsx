@@ -5,7 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import { selectMemberById } from '../../../../store/membersSlice';
 import CommentModel from '../../../../model/CommentModel';
 
@@ -22,7 +22,7 @@ const defaultValues = {
 };
 
 function CardComment(props) {
-	const user = useSelector((state) => selectMemberById(state, defaultValues.idMember));
+	const user = useAppSelector((state) => selectMemberById(state, defaultValues.idMember));
 
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

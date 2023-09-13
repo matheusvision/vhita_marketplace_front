@@ -4,13 +4,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
 import { selectLabels } from '../../../../store/labelsSlice';
 
 function LabelsMenu(props) {
-	const labels = useSelector(selectLabels);
+	const labels = useAppSelector(selectLabels);
 
 	const [anchorEl, setAnchorEl] = useState(null);
 

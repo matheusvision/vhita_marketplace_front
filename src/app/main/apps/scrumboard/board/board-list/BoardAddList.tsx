@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 });
 
 function BoardAddList(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
 	const { control, formState, handleSubmit, reset } = useForm({

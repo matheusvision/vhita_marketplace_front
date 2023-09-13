@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
@@ -7,8 +7,8 @@ import TaskListItem from './TaskListItem';
 import SectionListItem from './SectionListItem';
 
 function TasksList(props) {
-	const dispatch = useDispatch();
-	const tasks = useSelector(selectTasks);
+	const dispatch = useAppDispatch();
+	const tasks = useAppSelector(selectTasks);
 
 	if (!tasks) {
 		return null;

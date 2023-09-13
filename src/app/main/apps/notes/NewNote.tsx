@@ -2,12 +2,12 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'react-redux';
 import NoteForm from './note-form/NoteForm';
 import { createNote } from './store/notesSlice';
 
 function NewNote(props) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
 
