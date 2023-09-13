@@ -54,7 +54,7 @@ export const selectGroupedFilteredContacts = createSelector([selectFilteredConta
 			return r;
 		}, {});
 
-	return Object.values(groupedObject);
+	return groupedObject;
 });
 
 const initialState = contactsAdapter.getInitialState({
