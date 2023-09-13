@@ -139,7 +139,6 @@ function ProductImagesTab() {
 										/>
 									</div>
 								))}
-								;
 							</>
 						);
 					}}
