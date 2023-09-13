@@ -9,26 +9,36 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { Many } from 'lodash';
+import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { getProducts, selectProducts, selectProductsSearchText } from '../store/productsSlice';
 import ProductsTableHead from './ProductsTableHead';
+import { ProductType } from '../product/model/ProductModel';
 
-function ProductsTable(props) {
-	const dispatch = useDispatch();
-	const products = useSelector(selectProducts);
-	const searchText = useSelector(selectProductsSearchText);
+type ProductsTableProps = WithRouterProps & {
+	navigate: (path: string) => void;
+};
+
+function ProductsTable(props: ProductsTableProps) {
+	const { navigate } = props;
+	const dispatch = useAppDispatch();
+	const products = useAppSelector(selectProducts);
+	const searchText = useAppSelector(selectProductsSearchText);
 
 	const [loading, setLoading] = useState(true);
 	const [selected, setSelected] = useState([]);
 	const [data, setData] = useState(products);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
-	const [order, setOrder] = useState({
+	const [tableOrder, setTableOrder] = useState<{
+		direction: 'asc' | 'desc';
+		id: string;
+	}>({
 		direction: 'asc',
 		id: null
 	});
@@ -46,25 +56,25 @@ function ProductsTable(props) {
 		}
 	}, [products, searchText]);
 
-	function handleRequestSort(event, property) {
-		const id = property;
-		let direction = 'desc';
+	function handleRequestSort(event: MouseEvent<HTMLSpanElement>, property: string) {
+		const newOrder: {
+			direction: 'asc' | 'desc';
+			id: string;
+		} = { id: property, direction: 'desc' };
 
-		if (order.id === property && order.direction === 'desc') {
-			direction = 'asc';
+		if (tableOrder.id === property && tableOrder.direction === 'desc') {
+			newOrder.direction = 'asc';
 		}
 
-		setOrder({
-			direction,
-			id
-		});
+		setTableOrder(newOrder);
 	}
 
-	function handleSelectAllClick(event) {
+	function handleSelectAllClick(event: ChangeEvent<HTMLInputElement>) {
 		if (event.target.checked) {
 			setSelected(data.map((n) => n.id));
 			return;
 		}
+
 		setSelected([]);
 	}
 
@@ -72,11 +82,11 @@ function ProductsTable(props) {
 		setSelected([]);
 	}
 
-	function handleClick(item) {
-		props.navigate(`/apps/e-commerce/products/${item.id}/${item.handle}`);
+	function handleClick(item: ProductType) {
+		navigate(`/apps/e-commerce/products/${item.id}/${item.handle}`);
 	}
 
-	function handleCheck(event, id) {
+	function handleCheck(event: ChangeEvent<HTMLInputElement>, id: string) {
 		const selectedIndex = selected.indexOf(id);
 		let newSelected = [];
 
@@ -93,12 +103,12 @@ function ProductsTable(props) {
 		setSelected(newSelected);
 	}
 
-	function handleChangePage(event, value) {
-		setPage(value);
+	function handleChangePage(event, value: number) {
+		setPage(+value);
 	}
 
-	function handleChangeRowsPerPage(event) {
-		setRowsPerPage(event.target.value);
+	function handleChangeRowsPerPage(event: React.ChangeEvent<HTMLInputElement>) {
+		setRowsPerPage(+event.target.value);
 	}
 
 	if (loading) {
@@ -136,7 +146,7 @@ function ProductsTable(props) {
 				>
 					<ProductsTableHead
 						selectedProductIds={selected}
-						order={order}
+						tableOrder={tableOrder}
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
 						rowCount={data.length}
@@ -148,17 +158,17 @@ function ProductsTable(props) {
 							data,
 							[
 								(o) => {
-									switch (order.id) {
+									switch (o.id) {
 										case 'categories': {
 											return o.categories[0];
 										}
 										default: {
-											return o[order.id];
+											return o.id;
 										}
 									}
 								}
 							],
-							[order.direction]
+							[tableOrder.direction] as Many<boolean | 'asc' | 'desc'>
 						)
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((n) => {
@@ -172,7 +182,7 @@ function ProductsTable(props) {
 										tabIndex={-1}
 										key={n.id}
 										selected={isSelected}
-										onClick={(event) => handleClick(n)}
+										onClick={() => handleClick(n)}
 									>
 										<TableCell
 											className="w-40 md:w-64 text-center"

@@ -7,14 +7,15 @@ import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import withReducer from 'app/store/withReducer';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { SyntheticEvent, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { Link, useParams } from 'react-router-dom';
 import _ from '@lodash';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import * as React from 'react';
 import { getProduct, newProduct, resetProduct, selectProduct } from '../store/productSlice';
 import reducer from '../store';
 import ProductHeader from './ProductHeader';
@@ -34,9 +35,9 @@ const schema = yup.object().shape({
 		.min(5, 'The product name must be at least 5 characters')
 });
 
-function Product(props) {
-	const dispatch = useDispatch();
-	const product = useSelector(selectProduct);
+function Product() {
+	const dispatch = useAppDispatch();
+	const product = useAppSelector(selectProduct);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();
@@ -47,7 +48,7 @@ function Product(props) {
 		defaultValues: {},
 		resolver: yupResolver(schema)
 	});
-	const { reset, watch, control, onChange, formState } = methods;
+	const { reset, watch } = methods;
 	const form = watch();
 
 	useDeepCompareEffect(() => {
@@ -100,7 +101,7 @@ function Product(props) {
 	/**
 	 * Tab Change
 	 */
-	function handleTabChange(event, value) {
+	function handleTabChange(event: SyntheticEvent, value: number) {
 		setTabValue(value);
 	}
 

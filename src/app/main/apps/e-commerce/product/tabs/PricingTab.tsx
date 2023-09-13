@@ -2,7 +2,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { Controller, useFormContext } from 'react-hook-form';
 
-function PricingTab(props) {
+function PricingTab() {
 	const methods = useFormContext();
 	const { control } = methods;
 

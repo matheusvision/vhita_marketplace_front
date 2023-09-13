@@ -1,7 +1,8 @@
 import _ from '@lodash';
 import clsx from 'clsx';
+import { OrderStatus } from './model/OrderModel';
 
-export const orderStatuses = [
+export const orderStatuses: OrderStatus[] = [
 	{
 		id: 1,
 		name: 'Awaiting check payment',
@@ -74,15 +75,21 @@ export const orderStatuses = [
 	}
 ];
 
-function OrdersStatus(props) {
+type OrdersStatusProps = {
+	name: string;
+};
+
+function OrdersStatus(props: OrdersStatusProps) {
+	const { name } = props;
+
 	return (
 		<div
 			className={clsx(
 				'inline text-12 font-semibold py-4 px-12 rounded-full truncate',
-				_.find(orderStatuses, { name: props.name }).color
+				_.find(orderStatuses, { name }).color
 			)}
 		>
-			{props.name}
+			{name}
 		</div>
 	);
 }

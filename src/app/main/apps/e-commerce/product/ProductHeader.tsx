@@ -3,25 +3,26 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useFormContext } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { Link, useNavigate } from 'react-router-dom';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { removeProduct, saveProduct } from '../store/productSlice';
+import { ProductType } from './model/ProductModel';
 
-function ProductHeader(props) {
-	const dispatch = useDispatch();
+function ProductHeader() {
+	const dispatch = useAppDispatch();
 	const methods = useFormContext();
 	const { formState, watch, getValues } = methods;
 	const { isValid, dirtyFields } = formState;
-	const featuredImageId = watch('featuredImageId');
-	const images = watch('images');
-	const name = watch('name');
+
 	const theme = useTheme();
 	const navigate = useNavigate();
 
+	const { name, images, featuredImageId } = watch() as ProductType;
+
 	function handleSaveProduct() {
-		dispatch(saveProduct(getValues()));
+		dispatch(saveProduct(getValues() as ProductType));
 	}
 
 	function handleRemoveProduct() {
@@ -59,7 +60,7 @@ function ProductHeader(props) {
 						initial={{ scale: 0 }}
 						animate={{ scale: 1, transition: { delay: 0.3 } }}
 					>
-						{images.length > 0 && featuredImageId ? (
+						{images && images.length > 0 && featuredImageId ? (
 							<img
 								className="w-32 sm:w-48 rounded"
 								src={_.find(images, { id: featuredImageId }).url}

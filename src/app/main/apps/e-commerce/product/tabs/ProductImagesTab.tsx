@@ -5,6 +5,7 @@ import FuseUtils from '@fuse/utils';
 import { Controller, useFormContext } from 'react-hook-form';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
+import { ProductType } from '../model/ProductModel';
 
 const Root = styled('div')(({ theme }) => ({
 	'& .productImageFeaturedStar': {
@@ -43,11 +44,11 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function ProductImagesTab(props) {
+function ProductImagesTab() {
 	const methods = useFormContext();
 	const { control, watch } = methods;
 
-	const images = watch('images');
+	const images = watch('images') as ProductType['images'];
 
 	return (
 		<Root>
@@ -84,7 +85,7 @@ function ProductImagesTab(props) {
 											reader.onload = () => {
 												resolve({
 													id: FuseUtils.generateGUID(),
-													url: `data:${file.type};base64,${btoa(reader.result)}`,
+													url: `data:${file.type};base64,${btoa(reader.result as string)}`,
 													type: 'image'
 												});
 											};
@@ -97,7 +98,7 @@ function ProductImagesTab(props) {
 
 									const newImage = await readFileAsync();
 
-									onChange([newImage, ...value]);
+									onChange([newImage, ...(value as ProductType['images'])]);
 								}}
 							/>
 							<FuseSvgIcon
@@ -113,28 +114,35 @@ function ProductImagesTab(props) {
 					name="featuredImageId"
 					control={control}
 					defaultValue=""
-					render={({ field: { onChange, value } }) =>
-						images.map((media) => (
-							<div
-								onClick={() => onChange(media.id)}
-								onKeyDown={() => onChange(media.id)}
-								role="button"
-								tabIndex={0}
-								className={clsx(
-									'productImageItem flex items-center justify-center relative w-128 h-128 rounded-16 mx-12 mb-24 overflow-hidden cursor-pointer outline-none shadow hover:shadow-lg',
-									media.id === value && 'featured'
-								)}
-								key={media.id}
-							>
-								<FuseSvgIcon className="productImageFeaturedStar">heroicons-solid:star</FuseSvgIcon>
-								<img
-									className="max-w-none w-auto h-full"
-									src={media.url}
-									alt="product"
-								/>
-							</div>
-						))
-					}
+					render={({ field: { onChange, value } }) => {
+						return (
+							<>
+								{images.map((media) => (
+									<div
+										onClick={() => onChange(media.id)}
+										onKeyDown={() => onChange(media.id)}
+										role="button"
+										tabIndex={0}
+										className={clsx(
+											'productImageItem flex items-center justify-center relative w-128 h-128 rounded-16 mx-12 mb-24 overflow-hidden cursor-pointer outline-none shadow hover:shadow-lg',
+											media.id === value && 'featured'
+										)}
+										key={media.id}
+									>
+										<FuseSvgIcon className="productImageFeaturedStar">
+											heroicons-solid:star
+										</FuseSvgIcon>
+										<img
+											className="max-w-none w-auto h-full"
+											src={media.url}
+											alt="product"
+										/>
+									</div>
+								))}
+								;
+							</>
+						);
+					}}
 				/>
 			</div>
 		</Root>

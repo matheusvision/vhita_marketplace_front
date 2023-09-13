@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField';
 import { Controller, useFormContext } from 'react-hook-form';
 
-function InventoryTab(props) {
+function InventoryTab() {
 	const methods = useFormContext();
 	const { control } = methods;
 

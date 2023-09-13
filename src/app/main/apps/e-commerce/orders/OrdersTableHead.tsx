@@ -9,15 +9,23 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Tooltip from '@mui/material/Tooltip';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Box } from '@mui/system';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import TableHead from '@mui/material/TableHead';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { darken, lighten } from '@mui/material/styles';
+import { useAppDispatch } from 'app/store/index';
+import Box from '@mui/material/Box';
 import { removeOrders } from '../store/ordersSlice';
 
-const rows = [
+type rowType = {
+	id: string;
+	align: 'left' | 'center' | 'right';
+	disablePadding: boolean;
+	label: string;
+	sort: boolean;
+};
+
+const rows: rowType[] = [
 	{
 		id: 'id',
 		align: 'left',
@@ -69,19 +77,31 @@ const rows = [
 	}
 ];
 
-function OrdersTableHead(props) {
-	const { selectedOrderIds } = props;
+type OrdersTableHeadProps = {
+	onRequestSort: (event: MouseEvent<HTMLSpanElement>, property: string) => void;
+	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	tableOrder: {
+		direction: 'asc' | 'desc';
+		id: string;
+	};
+	selectedOrderIds: string[];
+	rowCount: number;
+	onMenuItemClick: () => void;
+};
+
+function OrdersTableHead(props: OrdersTableHeadProps) {
+	const { selectedOrderIds, onRequestSort, onSelectAllClick, tableOrder, rowCount, onMenuItemClick } = props;
 	const numSelected = selectedOrderIds.length;
 
-	const [selectedOrdersMenu, setSelectedOrdersMenu] = useState(null);
+	const [selectedOrdersMenu, setSelectedOrdersMenu] = useState<HTMLButtonElement>(null);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
-	const createSortHandler = (property) => (event) => {
-		props.onRequestSort(event, property);
+	const createSortHandler = (event: MouseEvent<HTMLSpanElement>, property: string) => {
+		onRequestSort(event, property);
 	};
 
-	function openSelectedOrdersMenu(event) {
+	function openSelectedOrdersMenu(event: MouseEvent<HTMLButtonElement>) {
 		setSelectedOrdersMenu(event.currentTarget);
 	}
 
@@ -103,9 +123,9 @@ function OrdersTableHead(props) {
 					}}
 				>
 					<Checkbox
-						indeterminate={numSelected > 0 && numSelected < props.rowCount}
-						checked={props.rowCount !== 0 && numSelected === props.rowCount}
-						onChange={props.onSelectAllClick}
+						indeterminate={numSelected > 0 && numSelected < rowCount}
+						checked={rowCount !== 0 && numSelected === rowCount}
+						onChange={onSelectAllClick}
 					/>
 					{numSelected > 0 && (
 						<Box
@@ -135,7 +155,7 @@ function OrdersTableHead(props) {
 									<MenuItem
 										onClick={() => {
 											dispatch(removeOrders(selectedOrderIds));
-											props.onMenuItemClick();
+											onMenuItemClick();
 											closeSelectedOrdersMenu();
 										}}
 									>
@@ -162,7 +182,7 @@ function OrdersTableHead(props) {
 							key={row.id}
 							align={row.align}
 							padding={row.disablePadding ? 'none' : 'normal'}
-							sortDirection={props.order.id === row.id ? props.order.direction : false}
+							sortDirection={tableOrder.id === row.id ? tableOrder.direction : false}
 						>
 							{row.sort && (
 								<Tooltip
@@ -171,9 +191,9 @@ function OrdersTableHead(props) {
 									enterDelay={300}
 								>
 									<TableSortLabel
-										active={props.order.id === row.id}
-										direction={props.order.direction}
-										onClick={createSortHandler(row.id)}
+										active={tableOrder.id === row.id}
+										direction={tableOrder.direction}
+										onClick={(ev: MouseEvent<HTMLSpanElement>) => createSortHandler(ev, row.id)}
 										className="font-semibold"
 									>
 										{row.label}

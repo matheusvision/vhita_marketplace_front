@@ -2,25 +2,22 @@ import Input from '@mui/material/Input';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { selectOrdersSearchText, setOrdersSearchText } from '../store/ordersSlice';
 
-function OrdersHeader(props) {
-	const dispatch = useDispatch();
-	const searchText = useSelector(selectOrdersSearchText);
+function OrdersHeader() {
+	const dispatch = useAppDispatch();
+	const searchText = useAppSelector(selectOrdersSearchText);
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 w-full space-y-8 sm:space-y-0 items-center justify-between py-32 px-24 md:px-32">
-			<Typography
-				component={motion.span}
+			<motion.span
 				initial={{ x: -20 }}
 				animate={{ x: 0, transition: { delay: 0.2 } }}
-				delay={300}
-				className="flex text-24 md:text-32 font-extrabold tracking-tight"
 			>
-				Orders
-			</Typography>
+				<Typography className="flex text-24 md:text-32 font-extrabold tracking-tight">Orders</Typography>
+			</motion.span>
 
 			<div className="flex flex-1 items-center justify-end space-x-8 w-full sm:w-auto">
 				<Paper
@@ -40,7 +37,9 @@ function OrdersHeader(props) {
 						inputProps={{
 							'aria-label': 'Search Orders'
 						}}
-						onChange={(ev) => dispatch(setOrdersSearchText(ev))}
+						onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
+							dispatch(setOrdersSearchText(ev.target.value))
+						}
 					/>
 				</Paper>
 			</div>

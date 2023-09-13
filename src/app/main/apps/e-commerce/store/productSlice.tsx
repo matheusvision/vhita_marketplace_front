@@ -1,77 +1,69 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import FuseUtils from '@fuse/utils';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import { RootState } from 'app/store/index';
+import ProductModel, { ProductType } from '../product/model/ProductModel';
 
-export const getProduct = createAsyncThunk('eCommerceApp/product/getProduct', async (productId) => {
-	const response = await axios.get(`/api/ecommerce/products/${productId}`);
-	const data = await response.data;
+export const getProduct = createAppAsyncThunk<ProductType, string>(
+	'eCommerceApp/product/getProduct',
+	async (productId) => {
+		const response = await axios.get(`/api/ecommerce/products/${productId}`);
 
-	return data === undefined ? null : data;
-});
-
-export const removeProduct = createAsyncThunk(
-	'eCommerceApp/product/removeProduct',
-	async (val, { dispatch, getState }) => {
-		const { id } = getState().eCommerceApp.product;
-		await axios.delete(`/api/ecommerce/products/${id}`);
-		return id;
-	}
-);
-
-export const saveProduct = createAsyncThunk(
-	'eCommerceApp/product/saveProduct',
-	async (productData, { dispatch, getState }) => {
-		const { id } = getState().eCommerceApp;
-
-		const response = await axios.put(`/api/ecommerce/products/${id}`, productData);
-
-		const data = await response.data;
+		const data = (await response.data) as ProductType;
 
 		return data;
 	}
 );
 
+export const removeProduct = createAppAsyncThunk<string, null>(
+	'eCommerceApp/product/removeProduct',
+	async (_, { getState }) => {
+		const AppState = getState() as AppRootState;
+
+		const { id } = AppState.eCommerceApp.product;
+
+		await axios.delete(`/api/ecommerce/products/${id}`);
+
+		return id;
+	}
+);
+
+export const saveProduct = createAppAsyncThunk<ProductType, ProductType>(
+	'eCommerceApp/product/saveProduct',
+	async (productData, { getState }) => {
+		const AppState = getState() as AppRootState;
+
+		const { id } = AppState.eCommerceApp.product;
+
+		const response = await axios.put(`/api/ecommerce/products/${id}`, productData);
+
+		const data = (await response.data) as ProductType;
+
+		return data;
+	}
+);
+
+const initialState: ProductType = null;
+
 const productSlice = createSlice({
 	name: 'eCommerceApp/product',
-	initialState: null,
+	initialState,
 	reducers: {
 		resetProduct: () => null,
-		newProduct: {
-			reducer: (state, action) => action.payload,
-			prepare: (event) => ({
-				payload: {
-					id: FuseUtils.generateGUID(),
-					name: '',
-					handle: '',
-					description: '',
-					categories: [],
-					tags: [],
-					images: [],
-					priceTaxExcl: 0,
-					priceTaxIncl: 0,
-					taxRate: 0,
-					comparedPrice: 0,
-					quantity: 0,
-					sku: '',
-					width: '',
-					height: '',
-					depth: '',
-					weight: '',
-					extraShippingFee: 0,
-					active: true
-				}
-			})
-		}
+		newProduct: () => ProductModel({})
 	},
-	extraReducers: {
-		[getProduct.fulfilled]: (state, action) => action.payload,
-		[saveProduct.fulfilled]: (state, action) => action.payload,
-		[removeProduct.fulfilled]: (state, action) => null
+	extraReducers: (builder) => {
+		builder
+			.addCase(getProduct.fulfilled, (state, action) => action.payload)
+			.addCase(saveProduct.fulfilled, (state, action) => action.payload)
+			.addCase(removeProduct.fulfilled, () => null);
 	}
 });
 
-export const { newProduct, resetProduct } = productSlice.actions;
+export type AppRootState = RootState<typeof productSlice>;
 
-export const selectProduct = ({ eCommerceApp }) => eCommerceApp.product;
+export const selectProduct = (state: AppRootState) => state.eCommerceApp.product;
+
+export const { newProduct, resetProduct } = productSlice.actions;
 
 export default productSlice.reducer;

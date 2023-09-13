@@ -6,6 +6,7 @@ import { OrderType } from '../order/model/OrderModel';
 
 export const getOrder = createAppAsyncThunk('eCommerceApp/order/getOrder', async (orderId: string) => {
 	const response = await axios.get(`/api/ecommerce/orders/${orderId}`);
+
 	const data = (await response.data) as OrderType;
 
 	return data || null;
@@ -13,6 +14,7 @@ export const getOrder = createAppAsyncThunk('eCommerceApp/order/getOrder', async
 
 export const saveOrder = createAppAsyncThunk('eCommerceApp/order/saveOrder', async (order: OrderType) => {
 	const response = await axios.put('/api/ecommerce/orders', order);
+
 	const data = (await response.data) as OrderType;
 
 	return data;
@@ -31,7 +33,7 @@ const orderSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof orderSlice>; // Define AppRootState based on the slice
+export type AppRootState = RootState<typeof orderSlice>;
 
 export const { resetOrder } = orderSlice.actions;
 

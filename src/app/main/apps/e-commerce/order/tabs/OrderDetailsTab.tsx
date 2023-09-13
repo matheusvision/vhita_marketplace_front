@@ -7,15 +7,28 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GoogleMap from 'google-map-react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useAppSelector } from 'app/store/index';
 import OrdersStatus from '../OrdersStatus';
 import { selectOrder } from '../../store/orderSlice';
 
-function Marker(props) {
+type MarkerPropsType = {
+	text: string;
+	lat: number;
+	lng: number;
+};
+
+function Marker(props: MarkerPropsType) {
+	const { text, lat, lng } = props;
 	return (
 		<Tooltip
-			title={props.text}
+			title={
+				<div>
+					{text}
+					<br />
+					{lat}, {lng}
+				</div>
+			}
 			placement="top"
 		>
 			<FuseSvgIcon className="text-red">heroicons-outline:location-marker</FuseSvgIcon>
@@ -24,8 +37,8 @@ function Marker(props) {
 }
 
 function OrderDetailsTab() {
-	const order = useSelector(selectOrder);
-	const [map, setMap] = useState('shipping');
+	const order = useAppSelector(selectOrder);
+	const [map, setMap] = useState<string>('shipping');
 
 	return (
 		<div>
@@ -86,7 +99,7 @@ function OrderDetailsTab() {
 					<Accordion
 						className="border-0 shadow-0 overflow-hidden"
 						expanded={map === 'shipping'}
-						onChange={() => setMap(map !== 'shipping' ? 'shipping' : false)}
+						onChange={() => setMap(map !== 'shipping' ? 'shipping' : '')}
 					>
 						<AccordionSummary
 							expandIcon={<ExpandMoreIcon />}
@@ -122,7 +135,7 @@ function OrderDetailsTab() {
 					<Accordion
 						className="shadow-0 border-0 overflow-hidden"
 						expanded={map === 'invoice'}
-						onChange={() => setMap(map !== 'invoice' ? 'invoice' : false)}
+						onChange={() => setMap(map !== 'invoice' ? 'invoice' : '')}
 					>
 						<AccordionSummary
 							expandIcon={<ExpandMoreIcon />}

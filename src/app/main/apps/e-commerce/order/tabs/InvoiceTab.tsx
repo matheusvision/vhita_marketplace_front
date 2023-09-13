@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
+import { OrderType } from '../model/OrderModel';
 
 const Root = styled('div')(({ theme }) => ({
 	'& table ': {
@@ -38,7 +39,13 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
-function InvoiceTab(props) {
+type InvoiceTabProps = {
+	order: OrderType;
+};
+
+function InvoiceTab(props: InvoiceTabProps) {
+	const { order } = props;
+
 	const formatter = new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'USD',
@@ -47,14 +54,14 @@ function InvoiceTab(props) {
 
 	return (
 		<Root className="grow shrink-0 p-0">
-			{props.order && (
+			{order && (
 				<Card className="w-xl mx-auto shadow-0">
 					<CardContent className="p-88 print:p-0">
 						<Typography
 							color="text.secondary"
 							className="mb-32"
 						>
-							{props.order.date}
+							{order.date}
 						</Typography>
 
 						<div className="flex justify-between">
@@ -77,7 +84,7 @@ function InvoiceTab(props) {
 													variant="h6"
 													color="inherit"
 												>
-													{props.order.reference}
+													{order.reference}
 												</Typography>
 											</td>
 										</tr>
@@ -85,19 +92,19 @@ function InvoiceTab(props) {
 								</table>
 
 								<Typography color="text.secondary">
-									{`${props.order.customer.firstName} ${props.order.customer.lastName}`}
+									{`${order.customer.firstName} ${order.customer.lastName}`}
 								</Typography>
 
-								{props.order.customer.invoiceAddress.address && (
+								{order.customer.invoiceAddress.address && (
 									<Typography color="text.secondary">
-										{props.order.customer.invoiceAddress.address}
+										{order.customer.invoiceAddress.address}
 									</Typography>
 								)}
-								{props.order.customer.phone && (
-									<Typography color="text.secondary">{props.order.customer.phone}</Typography>
+								{order.customer.phone && (
+									<Typography color="text.secondary">{order.customer.phone}</Typography>
 								)}
-								{props.order.customer.email && (
-									<Typography color="text.secondary">{props.order.customer.email}</Typography>
+								{order.customer.email && (
+									<Typography color="text.secondary">{order.customer.email}</Typography>
 								)}
 							</div>
 
@@ -132,7 +139,7 @@ function InvoiceTab(props) {
 									</TableRow>
 								</TableHead>
 								<TableBody>
-									{props.order.products.map((product) => (
+									{order.products.map((product) => (
 										<TableRow key={product.id}>
 											<TableCell>
 												<Typography variant="subtitle1">{product.name}</Typography>
@@ -165,7 +172,7 @@ function InvoiceTab(props) {
 												variant="subtitle1"
 												color="text.secondary"
 											>
-												{formatter.format(props.order.subtotal)}
+												{formatter.format(order.subtotal)}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -185,7 +192,7 @@ function InvoiceTab(props) {
 												variant="subtitle1"
 												color="text.secondary"
 											>
-												{formatter.format(props.order.tax)}
+												{formatter.format(order.tax)}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -205,7 +212,7 @@ function InvoiceTab(props) {
 												variant="subtitle1"
 												color="text.secondary"
 											>
-												{formatter.format(props.order.discount)}
+												{formatter.format(order.discount)}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -225,7 +232,7 @@ function InvoiceTab(props) {
 												variant="h4"
 												color="text.secondary"
 											>
-												{formatter.format(props.order.total)}
+												{formatter.format(order.total)}
 											</Typography>
 										</TableCell>
 									</TableRow>

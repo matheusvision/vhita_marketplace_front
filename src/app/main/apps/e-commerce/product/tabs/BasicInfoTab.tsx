@@ -1,8 +1,9 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useFormContext } from 'react-hook-form';
+import { ProductType } from '../model/ProductModel';
 
-function BasicInfoTab(props) {
+function BasicInfoTab() {
 	const methods = useFormContext();
 	const { control, formState } = methods;
 	const { errors } = formState;
@@ -16,14 +17,14 @@ function BasicInfoTab(props) {
 					<TextField
 						{...field}
 						className="mt-8 mb-16"
-						error={!!errors.name}
 						required
-						helperText={errors?.name?.message}
 						label="Name"
 						autoFocus
 						id="name"
 						variant="outlined"
 						fullWidth
+						error={!!errors.name}
+						helperText={errors?.name?.message as string}
 					/>
 				)}
 			/>
@@ -56,7 +57,7 @@ function BasicInfoTab(props) {
 						multiple
 						freeSolo
 						options={[]}
-						value={value}
+						value={value as ProductType['categories']}
 						onChange={(event, newValue) => {
 							onChange(newValue);
 						}}
@@ -85,7 +86,7 @@ function BasicInfoTab(props) {
 						multiple
 						freeSolo
 						options={[]}
-						value={value}
+						value={value as ProductType['tags']}
 						onChange={(event, newValue) => {
 							onChange(newValue);
 						}}

@@ -6,21 +6,21 @@ import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import withReducer from 'app/store/withReducer';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import reducer from '../store';
 import { getOrder, resetOrder, selectOrder } from '../store/orderSlice';
 import InvoiceTab from './tabs/InvoiceTab';
 import OrderDetailsTab from './tabs/OrderDetailsTab';
 import ProductsTab from './tabs/ProductsTab';
 
-function Order(props) {
-	const dispatch = useDispatch();
-	const order = useSelector(selectOrder);
+function Order() {
+	const dispatch = useAppDispatch();
+	const order = useAppSelector(selectOrder);
 	const theme = useTheme();
 	const isMobile = useThemeMediaQuery((_theme) => _theme.breakpoints.down('lg'));
 
@@ -44,7 +44,7 @@ function Order(props) {
 		};
 	}, [dispatch]);
 
-	function handleTabChange(event, value) {
+	function handleTabChange(event: ChangeEvent, value: number) {
 		setTabValue(value);
 	}
 
