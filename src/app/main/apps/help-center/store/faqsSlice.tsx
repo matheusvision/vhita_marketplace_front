@@ -1,29 +1,36 @@
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
+import { RootState } from 'app/store/index';
 import { selectFaqCategories } from './faqCategoriesSlice';
+import { FaqModelType, FaqsModelType } from '../model/FaqModel';
 
-export const getFaqs = createAsyncThunk('helpCenterApp/faqs/getFaqs', async () => {
+export const getFaqs = createAsyncThunk<FaqsModelType>('helpCenterApp/faqs/getFaqs', async () => {
 	const response = await axios.get('api/help-center/faqs');
-	const data = await response.data;
+
+	const data = (await response.data) as FaqsModelType;
 
 	return data;
 });
 
-const faqsAdapter = createEntityAdapter({});
+const faqsAdapter = createEntityAdapter<FaqModelType>({});
 
 export const { selectAll: selectFaqs, selectById: selectFaqById } = faqsAdapter.getSelectors(
-	(state) => state.helpCenterApp.faqs
+	(state: AppRootState) => state.helpCenterApp.faqs
 );
+
+const initialState = faqsAdapter.getInitialState();
 
 const faqsSlice = createSlice({
 	name: 'helpCenterApp/faqs',
-	initialState: faqsAdapter.getInitialState({}),
+	initialState,
 	reducers: {},
-	extraReducers: {
-		[getFaqs.fulfilled]: faqsAdapter.setAll
+	extraReducers: (builder) => {
+		builder.addCase(getFaqs.fulfilled, (state, action) => faqsAdapter.setAll(state, action.payload));
 	}
 });
+
+export type AppRootState = RootState<typeof faqsSlice>;
 
 export const selectGroupedFaqs = createSelector([selectFaqs, selectFaqCategories], (faqs, categories) => {
 	return categories.map((category) => ({

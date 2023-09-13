@@ -4,9 +4,17 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import { darken } from '@mui/material/styles';
+import { GuidesModelType } from '../model/GuideModel';
 
-function GuideListMenu(props) {
-	const { list, className, categorySlug, maxItems } = props;
+type GuideListMenuProps = {
+	list: GuidesModelType;
+	className?: string;
+	categorySlug?: string;
+	maxItems?: number;
+};
+
+function GuideListMenu(props: GuideListMenuProps) {
+	const { list = [], className, categorySlug = '', maxItems = 999 } = props;
 
 	if (list?.length === 0) {
 		return null;
@@ -47,11 +55,5 @@ function GuideListMenu(props) {
 		</div>
 	);
 }
-
-GuideListMenu.defaultProps = {
-	items: [],
-	categorySlug: '',
-	maxItems: 9999
-};
 
 export default GuideListMenu;

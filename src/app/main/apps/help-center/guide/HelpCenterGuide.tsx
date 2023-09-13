@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useEffect } from 'react';
 import Button from '@mui/material/Button';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -10,15 +10,20 @@ import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
 import { getGuide, selectGuide } from '../store/guideSlice';
 
 function HelpCenterGuide() {
-	const dispatch = useDispatch();
-	const guide = useSelector(selectGuide);
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
+	const guide = useAppSelector(selectGuide);
 	const routeParams = useParams();
-	const category = useSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
+	const category = useAppSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
 
 	useEffect(() => {
 		const { categorySlug, guideSlug } = routeParams;
 		dispatch(getGuide({ categorySlug, guideSlug }));
 	}, [dispatch, routeParams]);
+
+	const handleGoBack = () => {
+		navigate(-1);
+	};
 
 	if (!guide) {
 		return null;
@@ -29,8 +34,7 @@ function HelpCenterGuide() {
 			<div className="flex flex-col w-full max-w-4xl">
 				<div className="sm:mt-32">
 					<Button
-						component={Link}
-						to={-1}
+						onClick={handleGoBack}
 						color="secondary"
 						startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
 					>
@@ -51,6 +55,7 @@ function HelpCenterGuide() {
 
 				<div
 					className="mt-32 sm:mt-48 max-w-none prose dark:prose-invert"
+					// eslint-disable-next-line react/no-danger
 					dangerouslySetInnerHTML={{ __html: guide.content }}
 				/>
 

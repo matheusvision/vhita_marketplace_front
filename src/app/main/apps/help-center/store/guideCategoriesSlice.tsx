@@ -1,28 +1,40 @@
 import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
+import { RootState } from 'app/store/index';
+import { GuideCategoriesType, GuideCategoryType } from '../model/GuideCategoryModel';
 
-export const getGuideCategories = createAsyncThunk('helpCenterApp/guideCategories/get', async () => {
-	const response = await axios.get('api/help-center/guides/categories');
-	const data = await response.data;
+export const getGuideCategories = createAsyncThunk<GuideCategoriesType>(
+	'helpCenterApp/guideCategories/get',
+	async () => {
+		const response = await axios.get('api/help-center/guides/categories');
+		const data = (await response.data) as GuideCategoriesType;
 
-	return data;
-});
+		return data;
+	}
+);
 
-const guideCategoriesAdapter = createEntityAdapter({});
+const guideCategoriesAdapter = createEntityAdapter<GuideCategoryType>({});
 
 export const { selectAll: selectGuideCategories, selectById: selectGuideCategorieseById } =
-	guideCategoriesAdapter.getSelectors((state) => state.helpCenterApp.guideCategories);
+	guideCategoriesAdapter.getSelectors((state: AppRootState) => state.helpCenterApp.guideCategories);
+
+const initialState = guideCategoriesAdapter.getInitialState();
 
 const guideCategoriesSlice = createSlice({
 	name: 'helpCenterApp/guideCategories',
-	initialState: guideCategoriesAdapter.getInitialState(),
-	extraReducers: {
-		[getGuideCategories.fulfilled]: guideCategoriesAdapter.setAll
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder.addCase(getGuideCategories.fulfilled, (state, action) =>
+			guideCategoriesAdapter.setAll(state, action.payload)
+		);
 	}
 });
 
-export const selectGuideCategorieseBySlug = (slug) =>
+export type AppRootState = RootState<typeof guideCategoriesSlice>;
+
+export const selectGuideCategorieseBySlug = (slug: GuideCategoryType['slug']) =>
 	createSelector([selectGuideCategories], (categories) => {
 		return _.find(categories, { slug });
 	});

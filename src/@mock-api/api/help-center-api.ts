@@ -9,39 +9,37 @@ const guidesDB = mockApi.components.examples.help_center_guides.value;
 const guideCategoriesDB = mockApi.components.examples.help_center_guide_categories.value;
 const guideContent = mockApi.components.examples.help_center_guide_content.value;
 
-mock.onGet('/api/help-center/faqs').reply((config) => {
-  return [200, faqsDB];
+mock.onGet('/api/help-center/faqs').reply(() => {
+	return [200, faqsDB];
 });
-mock.onGet(/\/api\/help-center\/faqs\/[^]+/).reply(({ url, data }) => {
-  const { categorySlug } = url.match(/\/api\/help-center\/faqs\/(?<categorySlug>[^/]+)/).groups;
-  const category = _.find(faqCategoriesDB, { slug: categorySlug });
+mock.onGet(/\/api\/help-center\/faqs\/[^]+/).reply(({ url }) => {
+	const { categorySlug } = url.match(/\/api\/help-center\/faqs\/(?<categorySlug>[^/]+)/).groups;
+	const category = _.find(faqCategoriesDB, { slug: categorySlug });
 
-  return [200, _.filter(faqsDB, { categoryId: category.id })];
-});
-
-mock.onGet('/api/help-center/faqs/categories').reply((config) => {
-  return [200, faqCategoriesDB];
+	return [200, _.filter(faqsDB, { categoryId: category.id })];
 });
 
-mock.onGet('/api/help-center/guides').reply((config) => {
-  return [200, guidesDB];
+mock.onGet('/api/help-center/faqs/categories').reply(() => {
+	return [200, faqCategoriesDB];
 });
 
-mock.onGet(/\/api\/help-center\/guides\/[^/]+(?!.)/).reply(({ url, data }) => {
-  const { categorySlug } = url.match(/\/api\/help-center\/guides\/(?<categorySlug>[^/]+)/).groups;
-  const category = _.find(guideCategoriesDB, { slug: categorySlug });
-
-  return [200, _.filter(guidesDB, { categoryId: category.id })];
+mock.onGet('/api/help-center/guides').reply(() => {
+	return [200, guidesDB];
 });
 
-mock.onGet(/\/api\/help-center\/guides\/[^/]+\/[^/]+/).reply(({ url, data }) => {
-  const { categorySlug, guideSlug } = url.match(
-    /\/api\/help-center\/guides\/(?<categorySlug>[^/]+)\/(?<guideSlug>[^/]+)/
-  ).groups;
+mock.onGet(/\/api\/help-center\/guides\/[^/]+(?!.)/).reply(({ url }) => {
+	const { categorySlug } = url.match(/\/api\/help-center\/guides\/(?<categorySlug>[^/]+)/).groups;
+	const category = _.find(guideCategoriesDB, { slug: categorySlug });
 
-  return [200, { ..._.find(guidesDB, { slug: guideSlug }), content: guideContent }];
+	return [200, _.filter(guidesDB, { categoryId: category.id })];
 });
 
-mock.onGet('/api/help-center/guides/categories').reply((config) => {
-  return [200, guideCategoriesDB];
+mock.onGet(/\/api\/help-center\/guides\/[^/]+\/[^/]+/).reply(({ url }) => {
+	const { guideSlug } = url.match(/\/api\/help-center\/guides\/(?<categorySlug>[^/]+)\/(?<guideSlug>[^/]+)/).groups;
+
+	return [200, { ..._.find(guidesDB, { slug: guideSlug }), content: guideContent }];
+});
+
+mock.onGet('/api/help-center/guides/categories').reply(() => {
+	return [200, guideCategoriesDB];
 });

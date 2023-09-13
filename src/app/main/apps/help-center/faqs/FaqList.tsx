@@ -3,10 +3,11 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import clsx from 'clsx';
 import { styled } from '@mui/material/styles';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { FaqsModelType } from '../model/FaqModel';
 
 const container = {
 	show: {
@@ -21,25 +22,25 @@ const item = {
 	show: { opacity: 1, y: 0 }
 };
 
-const StyledAccordion = styled(Accordion)(({ theme }) => ({
-	margin: 0,
+const StyledAccordion = styled(Accordion)(() => ({
 	border: 'none!important',
 	borderRadius: '8px!important',
-	marginBottom: 24,
 	'&:before': {
 		display: 'none'
-	},
-	'&:first-of-type': {},
-	'&:last-of-type': {
-		marginBottom: 0
 	}
 }));
 
-function FaqList(props) {
-	const { list, className } = props;
-	const [expanded, setExpanded] = useState(null);
+type FaqListProps = {
+	list: FaqsModelType;
+	className?: string;
+};
 
-	const toggleAccordion = (panel) => (event, _expanded) => {
+function FaqList(props: FaqListProps) {
+	const { list, className } = props;
+
+	const [expanded, setExpanded] = useState<string | boolean>(false);
+
+	const toggleAccordion = (panel: string) => (_: SyntheticEvent, _expanded: boolean) => {
 		setExpanded(_expanded ? panel : false);
 	};
 
@@ -49,30 +50,32 @@ function FaqList(props) {
 				variants={container}
 				initial="hidden"
 				animate="show"
-				className={clsx('', className)}
+				className={clsx('space-y-24', className)}
 			>
 				{list.map((faq) => (
-					<StyledAccordion
-						component={motion.div}
+					<motion.div
 						variants={item}
 						key={faq.id}
-						classes={{
-							root: 'FaqPage-panel shadow'
-						}}
-						expanded={expanded === faq.id}
-						onChange={toggleAccordion(faq.id)}
 					>
-						<AccordionSummary expandIcon={<FuseSvgIcon>heroicons-outline:chevron-down</FuseSvgIcon>}>
-							<div className="flex items-center py-4">
-								<FuseSvgIcon color="action">heroicons-outline:question-mark-circle</FuseSvgIcon>
-								<Typography className="px-12 font-medium">{faq.question}</Typography>
-							</div>
-						</AccordionSummary>
+						<StyledAccordion
+							classes={{
+								root: 'FaqPage-panel shadow'
+							}}
+							expanded={expanded === faq.id}
+							onChange={toggleAccordion(faq.id)}
+						>
+							<AccordionSummary expandIcon={<FuseSvgIcon>heroicons-outline:chevron-down</FuseSvgIcon>}>
+								<div className="flex items-center py-4">
+									<FuseSvgIcon color="action">heroicons-outline:question-mark-circle</FuseSvgIcon>
+									<Typography className="px-12 font-medium">{faq.question}</Typography>
+								</div>
+							</AccordionSummary>
 
-						<AccordionDetails>
-							<Typography className="text-14 px-32 pb-8 -mt-8">{faq.answer}</Typography>
-						</AccordionDetails>
-					</StyledAccordion>
+							<AccordionDetails>
+								<Typography className="text-14 px-32 pb-8 -mt-8">{faq.answer}</Typography>
+							</AccordionDetails>
+						</StyledAccordion>
+					</motion.div>
 				))}
 			</motion.div>
 		)

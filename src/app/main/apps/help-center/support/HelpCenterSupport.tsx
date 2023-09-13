@@ -9,7 +9,10 @@ import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 
+type formValuesType = { name: string; email: string; subject: string; message: string };
+
 const defaultValues = { name: '', email: '', subject: '', message: '' };
+
 const schema = yup.object().shape({
 	name: yup.string().required('You must enter a name'),
 	subject: yup.string().required('You must enter a subject'),
@@ -24,9 +27,11 @@ function HelpCenterSupport() {
 		resolver: yupResolver(schema)
 	});
 	const { isValid, dirtyFields, errors } = formState;
+
 	const form = watch();
 
-	function onSubmit(data) {
+	function onSubmit(data: formValuesType) {
+		// eslint-disable-next-line no-console
 		console.log(data);
 	}
 
@@ -137,19 +142,19 @@ function HelpCenterSupport() {
 								)}
 							/>
 						</div>
+						<div className="flex items-center justify-end mt-32">
+							<Button className="mx-8">Cancel</Button>
+							<Button
+								className="mx-8"
+								variant="contained"
+								color="secondary"
+								disabled={_.isEmpty(dirtyFields) || !isValid}
+								type="submit"
+							>
+								Save
+							</Button>
+						</div>
 					</form>
-					<div className="flex items-center justify-end mt-32">
-						<Button className="mx-8">Cancel</Button>
-						<Button
-							className="mx-8"
-							variant="contained"
-							color="secondary"
-							disabled={_.isEmpty(dirtyFields) || !isValid}
-							onClick={handleSubmit(onSubmit)}
-						>
-							Save
-						</Button>
-					</div>
 				</Paper>
 			</div>
 		</div>

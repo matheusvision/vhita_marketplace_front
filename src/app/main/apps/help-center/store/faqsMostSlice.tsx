@@ -1,26 +1,31 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { RootState } from 'app/store/index';
+import { FaqModelType, FaqsModelType } from '../model/FaqModel';
 
-export const getFaqsMost = createAsyncThunk('helpCenterApp/faqsMost/get', async () => {
+export const getFaqsMost = createAsyncThunk<FaqsModelType>('helpCenterApp/faqsMost/get', async () => {
 	const response = await axios.get('/api/help-center/faqs/most-asked');
-	const data = await response.data;
+
+	const data = (await response.data) as FaqsModelType;
 
 	return data;
 });
 
-const faqsMostAdapter = createEntityAdapter({});
+const faqsMostAdapter = createEntityAdapter<FaqModelType>({});
 
 export const { selectAll: selectFaqsMost, selectById: selectFaqsMostById } = faqsMostAdapter.getSelectors(
-	(state) => state.helpCenterApp.faqsMost
+	(state: AppRootState) => state.helpCenterApp.faqsMost
 );
 
 const faqsMostSlice = createSlice({
 	name: 'helpCenterApp/faqsMost',
 	initialState: faqsMostAdapter.getInitialState({}),
 	reducers: {},
-	extraReducers: {
-		[getFaqsMost.fulfilled]: faqsMostAdapter.setAll
+	extraReducers: (builder) => {
+		builder.addCase(getFaqsMost.fulfilled, (state, action) => faqsMostAdapter.setAll(state, action.payload));
 	}
 });
+
+export type AppRootState = RootState<typeof faqsMostSlice>;
 
 export default faqsMostSlice.reducer;

@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import Box from '@mui/material/Box';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { lighten, ThemeProvider } from '@mui/material/styles';
 import { selectMainThemeDark } from 'app/store/fuse/settingsSlice';
 import { OutlinedInput } from '@mui/material';
@@ -14,9 +14,9 @@ import { getFaqsMost, selectFaqsMost } from '../store/faqsMostSlice';
 import FaqList from '../faqs/FaqList';
 
 function HelpCenterHome() {
-	const mainThemeDark = useSelector(selectMainThemeDark);
-	const dispatch = useDispatch();
-	const faqsMost = useSelector(selectFaqsMost);
+	const mainThemeDark = useAppSelector(selectMainThemeDark);
+	const dispatch = useAppDispatch();
+	const faqsMost = useAppSelector(selectFaqsMost);
 
 	useEffect(() => {
 		dispatch(getFaqsMost());
@@ -64,23 +64,24 @@ function HelpCenterHome() {
 								support
 							</Typography>
 						</motion.div>
-						<OutlinedInput
-							component={motion.div}
+						<motion.div
 							initial={{ y: -20, opacity: 0 }}
 							animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
-							className="flex flex-1 items-center px-16 mx-8 rounded-full h-44 w-full max-w-320 sm:max-w-480 mt-40 sm:mt-80"
-							placeholder="Enter a question, topic or keyword"
-							variant="outlined"
-							fullWidth
-							startAdornment={
-								<InputAdornment position="start">
-									<FuseSvgIcon color="disabled">heroicons-solid:search</FuseSvgIcon>
-								</InputAdornment>
-							}
-							inputProps={{
-								'aria-label': 'Search'
-							}}
-						/>
+						>
+							<OutlinedInput
+								className="flex flex-1 items-center px-16 mx-8 rounded-full h-44 w-full max-w-320 sm:max-w-480 mt-40 sm:mt-80"
+								placeholder="Enter a question, topic or keyword"
+								fullWidth
+								startAdornment={
+									<InputAdornment position="start">
+										<FuseSvgIcon color="disabled">heroicons-solid:search</FuseSvgIcon>
+									</InputAdornment>
+								}
+								inputProps={{
+									'aria-label': 'Search'
+								}}
+							/>
+						</motion.div>
 					</div>
 
 					<svg

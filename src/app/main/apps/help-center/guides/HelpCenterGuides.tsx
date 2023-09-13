@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { getGuideCategories } from '../store/guideCategoriesSlice';
 
 function HelpCenterGuides() {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		dispatch(getGuideCategories());

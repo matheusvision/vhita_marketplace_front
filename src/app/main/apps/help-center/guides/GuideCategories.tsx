@@ -1,27 +1,31 @@
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useEffect } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getGuides, selectGroupedGuides } from '../store/guidesSlice';
 import GuideListMenu from './GuideListMenu';
 
 function GuideCategories() {
-	const dispatch = useDispatch();
-	const groupedGuides = useSelector(selectGroupedGuides);
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
+	const groupedGuides = useAppSelector(selectGroupedGuides);
 
 	useEffect(() => {
 		dispatch(getGuides());
 	}, [dispatch]);
+
+	const handleGoBack = () => {
+		navigate(-1);
+	};
 
 	return (
 		<div className="flex flex-col items-center p-24 sm:p-40 container">
 			<div className="flex flex-col w-full max-w-4xl">
 				<div className="sm:mt-32">
 					<Button
-						component={Link}
-						to={-1}
+						onClick={handleGoBack}
 						color="secondary"
 						startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
 					>
