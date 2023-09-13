@@ -1,56 +1,55 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
+import CourseType from '../../app/main/apps/academy/types/CourseType';
 
 const demoCourseContent = mockApi.components.examples.academy_demo_course_content.value;
 const exampleCourseSteps = mockApi.components.examples.academy_demo_course_steps.value;
+
 const steps = exampleCourseSteps.map((item) => ({
-  ...item,
-  content: `${item.content} ${demoCourseContent}`,
+	...item,
+	content: `${item.content} ${demoCourseContent}`
 }));
 const courses = mockApi.components.examples.academy_courses.value;
 const categoriesDB = mockApi.components.examples.academy_categories.value;
 
 const coursesDB = courses.map((course) => ({
-  ...course,
-  steps,
+	...course,
+	steps
 }));
 
-mock.onGet('/api/academy/courses').reply((config) => {
-  return [200, coursesDB];
+mock.onGet('/api/academy/courses').reply(() => {
+	return [200, coursesDB];
 });
 
-mock.onGet(/\/api\/academy\/courses\/[^/]+/).reply(({ url, data: value }) => {
-  const { courseId } = url.match(/\/api\/academy\/courses\/(?<courseId>[^/]+)/).groups;
-  const course = _.find(coursesDB, { id: courseId });
+mock.onGet(/\/api\/academy\/courses\/[^/]+/).reply(({ url }) => {
+	const { courseId } = url.match(/\/api\/academy\/courses\/(?<courseId>[^/]+)/).groups;
+	const course = _.find(coursesDB, { id: courseId });
 
-  if (!course) {
-    return [404, 'Requested data do not exist.'];
-  }
-  return [200, course];
+	if (!course) {
+		return [404, 'Requested data do not exist.'];
+	}
+	return [200, course];
 });
 
-mock.onPut(/\/api\/academy\/courses\/[^/]+/).reply(({ url, data: value }) => {
-  const { courseId } = url.match(/\/api\/academy\/courses\/(?<courseId>[^/]+)/).groups;
-  const course = _.find(coursesDB, { id: courseId });
-  const newData = JSON.parse(value);
+mock.onPut(/\/api\/academy\/courses\/[^/]+/).reply(({ url, data: value }: { url: string; data: string }) => {
+	const { courseId } = url.match(/\/api\/academy\/courses\/(?<courseId>[^/]+)/).groups;
+	const course = _.find(coursesDB, { id: courseId });
+	const newData = JSON.parse(value) as CourseType;
 
-  if (!course) {
-    return [404, 'Requested data do not exist.'];
-  }
+	if (!course) {
+		return [404, 'Requested data do not exist.'];
+	}
 
-  _.assign(course, _.merge({}, course, newData));
+	_.assign(course, _.merge({}, course, newData));
 
-  if (newData?.progress?.currentStep === course?.totalSteps) {
-    _.assign(
-      course,
-      _.merge({}, course, { progress: { completed: course.progress.completed + 1 } })
-    );
-  }
+	if (newData?.progress?.currentStep === course?.totalSteps) {
+		_.assign(course, _.merge({}, course, { progress: { completed: course.progress.completed + 1 } }));
+	}
 
-  return [200, course];
+	return [200, course];
 });
 
-mock.onGet('/api/academy/categories').reply((config) => {
-  return [200, categoriesDB];
+mock.onGet('/api/academy/categories').reply(() => {
+	return [200, categoriesDB];
 });
