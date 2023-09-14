@@ -4,23 +4,30 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useNavigate } from 'react-router-dom';
+import { MouseEvent, useState } from 'react';
 import { selectMail } from '../store/mailSlice';
 import { selectSpamFolderId, selectTrashFolderId } from '../store/foldersSlice';
 import { setActionToMails } from '../store/mailsSlice';
 
-function MailActionsMenu(props) {
+type MailActionsMenuProps = {
+	className?: string;
+};
+
+function MailActionsMenu(props: MailActionsMenuProps) {
 	const { className } = props;
+
 	const dispatch = useAppDispatch();
-	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const mail = useAppSelector(selectMail);
 	const spamFolderId = useAppSelector(selectSpamFolderId);
 	const trashFolderId = useAppSelector(selectTrashFolderId);
 	const navigate = useNavigate();
-	const handleClick = (event) => {
+
+	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
 
@@ -74,11 +81,11 @@ function MailActionsMenu(props) {
 
 				<MenuItem
 					onClick={() => {
-						dispatch(setActionToMails({ type: 'folder', value: trashFolderId, ids: [mail.id] })).then(
-							() => {
-								navigate(-1);
-							}
-						);
+						dispatch(
+							setActionToMails({ type: 'folder', value: Boolean(trashFolderId), ids: [mail.id] })
+						).then(() => {
+							navigate(-1);
+						});
 						handleClose();
 					}}
 				>

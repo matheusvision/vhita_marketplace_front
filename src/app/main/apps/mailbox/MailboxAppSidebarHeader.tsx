@@ -3,7 +3,7 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -12,11 +12,11 @@ const accounts = {
 	withinpixels: 'johndoe@withinpixels.com'
 };
 
-function MailboxAppSidebarHeader(props) {
+function MailboxAppSidebarHeader() {
 	const [selectedAccount, setSelectedCount] = useState('creapond');
 	const { t } = useTranslation('mailboxApp');
 
-	function handleAccountChange(ev) {
+	function handleAccountChange(ev: ChangeEvent<HTMLInputElement>) {
 		setSelectedCount(ev.target.value);
 	}
 
@@ -31,15 +31,12 @@ function MailboxAppSidebarHeader(props) {
 				>
 					mail
 				</Icon>
-				<Typography
-					component={motion.span}
+				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
-					delay={300}
-					className="text-16 md:text-24 mx-12 font-semibold"
 				>
-					{t('APP_TITLE')}
-				</Typography>
+					<Typography className="text-16 md:text-24 mx-12 font-semibold">{t('APP_TITLE')}</Typography>
+				</motion.span>
 			</div>
 
 			<motion.div
@@ -57,7 +54,7 @@ function MailboxAppSidebarHeader(props) {
 					margin="normal"
 					variant="filled"
 				>
-					{Object.keys(accounts).map((key, value) => (
+					{Object.keys(accounts).map((key) => (
 						<MenuItem
 							key={key}
 							value={key}

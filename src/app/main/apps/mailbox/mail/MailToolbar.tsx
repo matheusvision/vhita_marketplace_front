@@ -1,9 +1,9 @@
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import withRouter from '@fuse/core/withRouter';
 import Box from '@mui/material/Box';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Tooltip from '@mui/material/Tooltip';
@@ -12,10 +12,15 @@ import MailLabelsMenu from './MailLabelsMenu';
 import { selectMail } from '../store/mailSlice';
 import { setActionToMails } from '../store/mailsSlice';
 
-function MailToolbar(props) {
+function MailToolbar() {
 	const dispatch = useAppDispatch();
 	const mail = useAppSelector(selectMail);
 	const theme = useTheme();
+	const navigate = useNavigate();
+
+	function handleGoBack() {
+		navigate(-1);
+	}
 
 	if (!mail) {
 		return null;
@@ -27,9 +32,8 @@ function MailToolbar(props) {
 			className="flex items-center justify-between w-full min-h-64 px-8 border-b"
 		>
 			<IconButton
-				component={NavLink}
+				onClick={handleGoBack}
 				className="lg:hidden md:-mx-8"
-				to={-1}
 			>
 				<FuseSvgIcon>
 					{theme.direction === 'ltr'

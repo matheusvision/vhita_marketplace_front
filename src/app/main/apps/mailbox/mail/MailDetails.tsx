@@ -1,7 +1,6 @@
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
@@ -9,20 +8,16 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectLabelsEntities } from '../store/labelsSlice';
 import { getMail, selectMail } from '../store/mailSlice';
 import MailLabel from './MailLabel';
 import MailToolbar from './MailToolbar';
 import MailAttachment from './MailAttachment';
 import MailInfo from './MailInfo';
 
-function MailDetails(props) {
+function MailDetails() {
 	const dispatch = useAppDispatch();
 	const mail = useAppSelector(selectMail);
-	const labels = useAppSelector(selectLabelsEntities);
-
 	const routeParams = useParams();
-	const [showDetails, setShowDetails] = useState(false);
 
 	useDeepCompareEffect(() => {
 		dispatch(getMail(routeParams));
@@ -70,18 +65,19 @@ function MailDetails(props) {
 								<div className="flex items-center mt-8 leading-5">
 									<div>to</div>
 									<div className="mx-4 font-semibold">me</div>
-									{mail.cc?.length + mail.bcc?.length > 0 && (
+									{(mail.cc?.length ?? 0) + (mail.bcc?.length ?? 0) > 0 && (
 										<div>
 											<span className="mx-4">and</span>
 											<span className="mx-4 font-semibold">
-												{mail.cc.length + mail.bcc.length}
+												{(mail.cc?.length ?? 0) + (mail.bcc?.length ?? 0)}
 											</span>
 											<span className="mx-4 font-semibold">
-												{mail.cc.length + mail.bcc.length === 1 ? 'other' : 'others'}
+												{(mail.cc?.length ?? 0) + (mail.bcc?.length ?? 0) === 1
+													? 'other'
+													: 'others'}
 											</span>
 										</div>
 									)}
-
 									<MailInfo />
 								</div>
 							</div>
@@ -92,7 +88,7 @@ function MailDetails(props) {
 							dangerouslySetInnerHTML={{ __html: mail.content }}
 						/>
 
-						{mail.attachments && mail.attachments.length > 0 && (
+						{mail.attachments && mail.attachments?.length > 0 && (
 							<div className="flex flex-col w-full">
 								<div className="flex items-center mt-48">
 									<FuseSvgIcon size={20}>heroicons-solid:paper-clip</FuseSvgIcon>

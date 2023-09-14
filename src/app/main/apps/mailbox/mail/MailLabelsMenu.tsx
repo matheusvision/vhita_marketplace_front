@@ -3,8 +3,8 @@ import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
-import { useEffect, useState } from 'react';
-import { useAppSelector } from 'react-redux';
+import { MouseEvent, useEffect, useState } from 'react';
+import { useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Menu } from '@mui/material';
 import _ from '@lodash';
@@ -12,19 +12,24 @@ import Tooltip from '@mui/material/Tooltip';
 import { selectLabels } from '../store/labelsSlice';
 import { labelColorDefs } from './labelColors';
 
-function MailLabelsMenu(props) {
+type MailLabelsMenuProps = {
+	className?: string;
+	onChange: (labels: string[]) => void;
+	labels: string[];
+};
+function MailLabelsMenu(props: MailLabelsMenuProps) {
 	const { className, onChange, labels } = props;
 	const [selectedLabels, setSelectedLabels] = useState(labels);
 	const labelsAll = useAppSelector(selectLabels);
 
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 
 	useEffect(() => {
 		setSelectedLabels(labels);
 	}, [labels]);
 
-	function handleMenuOpen(event) {
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -57,7 +62,7 @@ function MailLabelsMenu(props) {
 							<MenuItem
 								className="px-8"
 								key={label.id}
-								onClick={(ev) => {
+								onClick={() => {
 									onChange(_.xor(selectedLabels, [label.id]));
 								}}
 							>

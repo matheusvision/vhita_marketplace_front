@@ -1,6 +1,26 @@
+export type LabelColorsType =
+	| 'gray'
+	| 'red'
+	| 'orange'
+	| 'yellow'
+	| 'green'
+	| 'teal'
+	| 'blue'
+	| 'indigo'
+	| 'purple'
+	| 'pink';
+
 export const labelColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
 
-export const labelColorDefs = {
+type LabelColorDefsType = {
+	[key in LabelColorsType]: {
+		text: string;
+		bg: string;
+		combined: string;
+	};
+};
+
+export const labelColorDefs: LabelColorDefsType = {
 	gray: {
 		text: 'text-gray-500',
 		bg: 'bg-gray-500',

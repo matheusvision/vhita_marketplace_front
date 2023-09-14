@@ -1,7 +1,12 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import MailAttachmentType from '../type/MailAttachmentType';
 
-function MailAttachment(props) {
+type MailAttachmentProps = {
+	attachment: MailAttachmentType;
+};
+
+function MailAttachment(props: MailAttachmentProps) {
 	const { attachment } = props;
 	return (
 		<div className="flex items-center m-12">

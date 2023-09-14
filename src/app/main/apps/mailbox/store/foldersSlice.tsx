@@ -1,28 +1,36 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import { RootState } from 'app/store/index';
+import { FolderType, FoldersType } from '../model/FolderModel';
 
-export const getFolders = createAsyncThunk('mailboxApp/folders/getFolders', async () => {
+export const getFolders = createAppAsyncThunk<FoldersType>('mailboxApp/folders/getFolders', async () => {
 	const response = await axios.get('/api/mailbox/folders');
-	const data = await response.data;
+
+	const data = (await response.data) as FoldersType;
 
 	return data;
 });
 
-const foldersAdapter = createEntityAdapter({});
+const foldersAdapter = createEntityAdapter<FolderType>({});
 
 export const { selectAll: selectFolders, selectById: selectFolderById } = foldersAdapter.getSelectors(
-	(state) => state.mailboxApp.folders
+	(state: AppRootState) => state.mailboxApp.folders
 );
+
+const initialState = foldersAdapter.getInitialState();
 
 const foldersSlice = createSlice({
 	name: 'mailboxApp/folders',
-	initialState: foldersAdapter.getInitialState({}),
+	initialState,
 	reducers: {},
-	extraReducers: {
-		[getFolders.fulfilled]: foldersAdapter.setAll
+	extraReducers: (builder) => {
+		builder.addCase(getFolders.fulfilled, (state, action) => foldersAdapter.setAll(state, action.payload));
 	}
 });
+
+export type AppRootState = RootState<typeof foldersSlice>;
 
 export const selectSpamFolderId = createSelector([selectFolders], (folders) => {
 	return _.find(folders, { slug: 'spam' })?.id;

@@ -1,10 +1,7 @@
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 function SelectMailMessage() {
-	const dispatch = useAppDispatch();
-
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-24">
 			<FuseSvgIcon

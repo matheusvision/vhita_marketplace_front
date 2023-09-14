@@ -1,104 +1,130 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import { RootState } from 'app/store/index';
+import { ChangeEvent } from 'react';
 import { selectFolders } from './foldersSlice';
 import { selectLabels } from './labelsSlice';
 import { selectFilters } from './filtersSlice';
+import { MailsType, MailType } from '../model/MailModel';
+import RouteParamsType from '../type/RouteParamsType';
+import ItemType from '../type/ItemType';
 
-export const getMails = createAsyncThunk('mailboxApp/mails/getMails', async (routeParams, { getState }) => {
-	routeParams = routeParams || getState().mailboxApp.mails.routeParams;
+export const getMails = createAppAsyncThunk<{ data: MailsType; routeParams: RouteParamsType }, RouteParamsType | void>(
+	'mailboxApp/mails/getMails',
+	async (_routeParams, { getState }) => {
+		const AppState = getState() as AppRootState;
+		const routeParams: RouteParamsType = _routeParams || AppState.mailboxApp.mails.routeParams;
 
-	let url = '/api/mailbox/mails/';
-	if (routeParams.folderHandle) {
-		url += routeParams.folderHandle;
-	}
+		let url = '/api/mailbox/mails/';
+		if (routeParams) {
+			if (routeParams.folderHandle) {
+				url += routeParams.folderHandle;
+			}
 
-	if (routeParams.labelHandle) {
-		url += `labels/${routeParams.labelHandle}`;
-	}
+			if (routeParams.labelHandle) {
+				url += `labels/${routeParams.labelHandle}`;
+			}
 
-	if (routeParams.filterHandle) {
-		url += `filters/${routeParams.filterHandle}`;
-	}
-	const response = await axios.get(url);
-	const data = await response.data;
+			if (routeParams.filterHandle) {
+				url += `filters/${routeParams.filterHandle}`;
+			}
+		}
 
-	return { data, routeParams };
-});
+		const response = await axios.get(url);
 
-export const setActionToMails = createAsyncThunk(
-	'mailboxApp/mails/setActionToMails',
-	async ({ type, value, ids }, { dispatch, getState }) => {
-		const { mails } = getState().mailboxApp;
-		const { selectedMailIds } = mails;
+		const data = (await response.data) as MailsType;
 
-		const response = await axios.post('/api/mailbox/actions', {
-			type,
-			value,
-			ids
-		});
-
-		const data = await response.data;
-
-		dispatch(getMails());
-
-		return data;
+		return { data, routeParams };
 	}
 );
 
-const mailsAdapter = createEntityAdapter({});
+export const setActionToMails = createAppAsyncThunk<
+	boolean,
+	{ type: ItemType; value: boolean | string | string[]; ids: string[] }
+>('mailboxApp/mails/setActionToMails', async ({ type, value, ids }, { dispatch }) => {
+	const response = await axios.post('/api/mailbox/actions', {
+		type,
+		value,
+		ids
+	});
+
+	const data = (await response.data) as boolean;
+
+	dispatch(getMails());
+
+	return data;
+});
+
+const mailsAdapter = createEntityAdapter<MailType>({});
+
+const initialState = mailsAdapter.getInitialState<{
+	searchText: string;
+	routeParams: RouteParamsType;
+	selectedMailIds: string[];
+}>({
+	searchText: '',
+	routeParams: {},
+	selectedMailIds: []
+});
 
 export const { selectAll: selectMails, selectById: selectMailById } = mailsAdapter.getSelectors(
-	(state) => state.mailboxApp.mails
+	(state: AppRootState) => state.mailboxApp.mails
 );
 
 const mailsSlice = createSlice({
 	name: 'mailboxApp/mails',
-	initialState: mailsAdapter.getInitialState({
-		searchText: '',
-		routeParams: {},
-		selectedMailIds: []
-	}),
+	initialState,
 	reducers: {
 		setMailsSearchText: {
 			reducer: (state, action) => {
-				state.searchText = action.payload;
+				state.searchText = action.payload as string;
 			},
-			prepare: (event) => ({ payload: event.target.value || '' })
+			prepare: (event: ChangeEvent<HTMLInputElement>) => ({
+				payload: event.target.value || '',
+				meta: undefined,
+				error: null
+			})
 		},
-		selectAllMails: (state, action) => {
-			state.selectedMailIds = state.ids;
+		selectAllMails: (state) => {
+			state.selectedMailIds = state.ids as string[];
 		},
-		deselectAllMails: (state, action) => {
+		deselectAllMails: (state) => {
 			state.selectedMailIds = [];
 		},
 		selectMailsByParameter: (state, action) => {
-			const [parameter, value] = action.payload;
-			state.selectedMailIds = state.ids.filter((id) => state.entities[id][parameter] === value);
+			const [parameter, value] = action.payload as [string, string];
+
+			state.selectedMailIds = state.ids.filter((id) => state.entities[id][parameter] === value) as string[];
 		},
 		toggleInSelectedMails: (state, action) => {
-			const mailId = action.payload;
+			const mailId = action.payload as string;
+
 			state.selectedMailIds = state.selectedMailIds.includes(mailId)
 				? state.selectedMailIds.filter((id) => id !== mailId)
-				: [...state.selectedMailIds, mailId];
+				: ([...state.selectedMailIds, mailId] as string[]);
 		}
 	},
-	extraReducers: {
-		[getMails.fulfilled]: (state, action) => {
+	extraReducers: (builder) => {
+		builder.addCase(getMails.fulfilled, (state, action) => {
 			const { data, routeParams } = action.payload;
 			mailsAdapter.setAll(state, data);
 			state.routeParams = routeParams;
 			state.selectedMailIds = [];
-		}
+		});
 	}
 });
+
+export type AppRootState = RootState<typeof mailsSlice>;
 
 export const { setMailsSearchText, selectAllMails, deselectAllMails, selectMailsByParameter, toggleInSelectedMails } =
 	mailsSlice.actions;
 
-export const selectMailsTitle = (routeParams) =>
+export const selectMailsTitle = (routeParams: RouteParamsType) =>
 	createSelector([selectFolders, selectLabels, selectFilters], (folders, labels, filters) => {
-		let title;
+		let title = '';
+
 		if (routeParams.folderHandle) {
 			title = _.find(folders, { slug: routeParams.folderHandle })?.title;
 		}
@@ -113,8 +139,8 @@ export const selectMailsTitle = (routeParams) =>
 		return title;
 	});
 
-export const selectSearchText = ({ mailboxApp }) => mailboxApp.mails.searchText;
+export const selectSearchText = (state: AppRootState) => state.mailboxApp.mails.searchText;
 
-export const selectSelectedMailIds = ({ mailboxApp }) => mailboxApp.mails.selectedMailIds;
+export const selectSelectedMailIds = (state: AppRootState) => state.mailboxApp.mails.selectedMailIds;
 
 export default mailsSlice.reducer;

@@ -1,12 +1,18 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import { useAppSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import { selectLabelById } from '../store/labelsSlice';
 import { labelColorDefs } from './labelColors';
 
-function MailLabel(props) {
-	const { labelId } = props;
-	const label = useAppSelector((state) => selectLabelById(state, labelId));
+type MailLabelProps = {
+	className?: string;
+	labelId?: string;
+};
+
+function MailLabel(props: MailLabelProps) {
+	const { labelId, className = '' } = props;
+	const label = useAppSelector(selectLabelById(labelId));
+
 	if (!label) {
 		return null;
 	}
@@ -14,7 +20,7 @@ function MailLabel(props) {
 		<Chip
 			label={label.title}
 			classes={{
-				root: clsx('h-24 border-0', props.className, labelColorDefs[label.color].combined),
+				root: clsx('h-24 border-0', className, labelColorDefs[label.color]?.combined),
 				label: 'px-12 py-4 text-12 font-medium leading-none'
 			}}
 		/>

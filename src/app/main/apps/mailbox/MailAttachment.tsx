@@ -21,22 +21,28 @@ const Root = styled('div')({
 		fontWeight: 300
 	}
 });
+type MailAttachmentProps = {
+	className?: string;
+	fileName: string;
+	size: string;
+};
+function MailAttachment(props: MailAttachmentProps) {
+	const { className, fileName, size } = props;
 
-function MailAttachment(props) {
 	return (
-		<Root className={props.className}>
+		<Root className={className}>
 			<div className="flex">
 				<Typography
 					variant="caption"
 					className="filename"
 				>
-					{props.fileName}
+					{fileName}
 				</Typography>
 				<Typography
 					variant="caption"
 					className="size"
 				>
-					({props.size})
+					({size})
 				</Typography>
 			</div>
 			<IconButton size="large">

@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 
-const Root = styled('div')(({ theme, color }) => ({
+const Root = styled('div')(({ color }) => ({
 	display: 'flex',
 	alignItems: 'center',
 	height: 20,
@@ -17,14 +17,21 @@ const Root = styled('div')(({ theme, color }) => ({
 	}
 }));
 
-function MailChip(props) {
+type MailChipProps = {
+	className?: string;
+	color: string;
+	title: string;
+};
+
+function MailChip(props: MailChipProps) {
+	const { className, color, title } = props;
 	return (
 		<Root
-			className={props.className}
-			color={props.color}
+			className={className}
+			color={color}
 		>
 			<span />
-			<div>{props.title}</div>
+			<div>{title}</div>
 		</Root>
 	);
 }

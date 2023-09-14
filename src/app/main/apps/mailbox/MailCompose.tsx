@@ -22,10 +22,19 @@ import MailAttachment from './MailAttachment';
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-	to: yup.string().required('You must enter an e-mail').email('You must enter a valid e-mail.')
+	from: yup.string(),
+	to: yup.string().required('You must enter an e-mail').email('You must enter a valid e-mail.'),
+	cc: yup.string(),
+	bcc: yup.string(),
+	subject: yup.string(),
+	message: yup.string()
 });
 
-function MailCompose(props) {
+type MailComposeProps = {
+	className?: string;
+};
+
+function MailCompose(props: MailComposeProps) {
 	const { className } = props;
 	const [openDialog, setOpenDialog] = useState(false);
 	const { handleSubmit, formState, control } = useForm({
@@ -57,7 +66,8 @@ function MailCompose(props) {
 		setOpenDialog(false);
 	}
 
-	function onSubmit(data) {
+	function onSubmit(data: FormDataEvent) {
+		// eslint-disable-next-line no-console
 		console.info(data);
 		setOpenDialog(false);
 	}
@@ -184,8 +194,12 @@ function MailCompose(props) {
 						/>
 
 						<Controller
-							className="mt-8 mb-16"
-							render={({ field }) => <WYSIWYGEditor {...field} />}
+							render={({ field }) => (
+								<WYSIWYGEditor
+									className="mt-8 mb-16"
+									{...field}
+								/>
+							)}
 							name="message"
 							control={control}
 						/>

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';
@@ -8,7 +8,7 @@ import { selectFilters } from './store/filtersSlice';
 import { selectFolders } from './store/foldersSlice';
 import { selectLabels } from './store/labelsSlice';
 
-function MailboxAppSidebarContent(props) {
+function MailboxAppSidebarContent() {
 	const folders = useAppSelector(selectFolders);
 	const labels = useAppSelector(selectLabels);
 	const filters = useAppSelector(selectFilters);
@@ -22,15 +22,12 @@ function MailboxAppSidebarContent(props) {
 			className="flex-auto border-l-1"
 		>
 			<div className="mb-24 mt-40 mx-24">
-				<Typography
-					component={motion.span}
+				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
-					delay={300}
-					className="text-4xl font-extrabold tracking-tight leading-none"
 				>
-					Mailbox
-				</Typography>
+					<Typography className="text-4xl font-extrabold tracking-tight leading-none">Mailbox</Typography>
+				</motion.span>
 
 				<MailCompose className="mt-32" />
 			</div>

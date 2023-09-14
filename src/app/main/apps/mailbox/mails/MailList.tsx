@@ -4,21 +4,22 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getMails, selectMails, selectSearchText } from '../store/mailsSlice';
 import MailListItem from './MailListItem';
+import { MailsType } from '../model/MailModel';
 
-function MailList(props) {
+function MailList() {
 	const dispatch = useAppDispatch();
 	const mails = useAppSelector(selectMails);
 	const searchText = useAppSelector(selectSearchText);
 
 	const routeParams = useParams();
-	const [filteredData, setFilteredData] = useState(null);
+	const [filteredData, setFilteredData] = useState<MailsType>(null);
 	const { t } = useTranslation('mailboxApp');
 
 	useDeepCompareEffect(() => {
