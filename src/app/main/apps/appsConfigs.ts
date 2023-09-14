@@ -6,7 +6,7 @@ import ECommerceAppConfig from './e-commerce/ECommerceAppConfig';
 import FileManagerAppConfig from './file-manager/FileManagerAppConfig';
 import HelpCenterAppConfig from './help-center/HelpCenterAppConfig';
 import MailboxAppConfig from './mailbox/MailboxAppConfig';
-// import NotesAppConfig from './notes/NotesAppConfig';
+import NotesAppConfig from './notes/NotesAppConfig';
 // import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 // import TasksAppConfig from './tasks/TasksAppConfig';
 // import ProfileAppConfig from './profile/profileAppConfig';
@@ -19,9 +19,9 @@ const appsConfigs = [
 	ECommerceAppConfig,
 	FileManagerAppConfig,
 	HelpCenterAppConfig,
-	MailboxAppConfig
+	MailboxAppConfig,
+	NotesAppConfig
 	// ScrumboardAppConfig,
-	// NotesAppConfig,
 	// TasksAppConfig,
 	// ProfileAppConfig
 ];

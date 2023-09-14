@@ -2,16 +2,17 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useAppDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import NoteForm from './note-form/NoteForm';
 import { createNote } from './store/notesSlice';
+import { NoteType } from './model/NoteModel';
 
-function NewNote(props) {
+function NewNote() {
 	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
 
-	function handleFormOpen(ev) {
+	function handleFormOpen(ev: React.MouseEvent<HTMLDivElement>) {
 		ev.stopPropagation();
 		setFormOpen(true);
 		document.addEventListener('keydown', escFunction, false);
@@ -25,20 +26,20 @@ function NewNote(props) {
 		document.removeEventListener('keydown', escFunction, false);
 	}
 
-	function handleCreate(note) {
+	function handleCreate(note: NoteType) {
 		dispatch(createNote(note));
 		handleFormClose();
 	}
 
-	function escFunction(event) {
-		if (event.keyCode === 27) {
+	function escFunction(event: KeyboardEvent) {
+		if (event.key === 'Escape') {
 			handleFormClose();
 		}
 	}
 
-	function handleClickAway(ev) {
+	function handleClickAway(event: MouseEvent | TouchEvent) {
 		const preventCloseElements = document.querySelector('.prevent-add-close');
-		const preventClose = preventCloseElements ? preventCloseElements.contains(ev.target) : false;
+		const preventClose = preventCloseElements ? preventCloseElements.contains(event.target as Node) : false;
 		if (preventClose) {
 			return;
 		}
@@ -58,7 +59,7 @@ function NewNote(props) {
 				</ClickAwayListener>
 			) : (
 				<Typography
-					className="w-full px-16 py-12 text-16 w-full"
+					className="px-16 py-12 text-16 w-full"
 					color="text.secondary"
 					onClick={handleFormOpen}
 				>

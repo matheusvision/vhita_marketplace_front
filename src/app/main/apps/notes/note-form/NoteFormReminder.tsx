@@ -1,15 +1,22 @@
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useMemo } from 'react';
+import { NoteType } from '../model/NoteModel';
 
-function NoteFormReminder(props) {
+type NoteFormReminderProps = {
+	reminder: NoteType['reminder'];
+	onChange: (T: NoteType['reminder']) => void;
+};
+
+function NoteFormReminder(props: NoteFormReminderProps) {
+	const { reminder, onChange } = props;
+
 	return useMemo(
 		() => (
 			<DateTimePicker
 				disablePast
-				value={props.reminder ? new Date(props.reminder) : null}
-				onChange={(val) => props.onChange(val.toString())}
-				showToolbar
+				value={reminder ? new Date(reminder) : null}
+				onChange={(val) => onChange(val.toString())}
 				defaultValue={new Date(Date.now())}
 				sx={{
 					'& .MuiInputAdornment-root': {
@@ -39,7 +46,7 @@ function NoteFormReminder(props) {
 				}}
 			/>
 		),
-		[props.reminder]
+		[reminder]
 	);
 }
 

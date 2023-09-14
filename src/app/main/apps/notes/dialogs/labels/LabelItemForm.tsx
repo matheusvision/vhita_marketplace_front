@@ -5,33 +5,39 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import { useAppDispatch } from 'react-redux';
 import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
 import { useDebounce } from '@fuse/hooks';
 import _ from '@lodash';
+import { useAppDispatch } from 'app/store/index';
 import { removeLabel, updateLabel } from '../../store/labelsSlice';
+import { LabelType } from '../../model/LabelModel';
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
+	id: yup.string(),
 	title: yup.string().required('You must enter a label title')
 });
 
-function NewLabelForm(props) {
+type LabelFormProps = {
+	label: LabelType;
+};
+
+function NewLabelForm(props: LabelFormProps) {
 	const { label } = props;
 	const dispatch = useAppDispatch();
 
-	const { control, formState, handleSubmit, reset, watch } = useForm({
+	const { control, formState, reset, watch } = useForm({
 		mode: 'onChange',
 		defaultValues: label,
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
-	const form = watch();
+	const { errors } = formState;
+	const form: LabelType = watch();
 
 	useEffect(() => {
 		reset(label);

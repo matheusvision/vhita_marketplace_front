@@ -5,31 +5,41 @@ import Input from '@mui/material/Input';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { ChangeEvent } from 'react';
+import { NoteListItemType } from '../../model/NoteListItemModel';
 
-function NoteFormListItem(props) {
-	function handleChange(event) {
-		props.onListItemChange(
+type NoteFormListItemProps = {
+	onListItemRemove: (id: string) => void;
+	onListItemChange: (T: NoteListItemType) => void;
+	item: NoteListItemType;
+};
+
+function NoteFormListItem(props: NoteFormListItemProps) {
+	const { onListItemChange, item, onListItemRemove } = props;
+
+	function handleChange(event: ChangeEvent<HTMLInputElement>) {
+		onListItemChange(
 			_.setIn(
-				props.item,
+				item,
 				event.target.name,
 				event.target.type === 'checkbox' ? event.target.checked : event.target.value
-			)
+			) as NoteListItemType
 		);
 	}
 
-	if (!props.item) {
+	if (!item) {
 		return null;
 	}
 
 	return (
 		<ListItem
 			className="p-0"
-			key={props.item.id}
+			key={item.id}
 			dense
 		>
 			<Checkbox
 				className="p-0"
-				checked={props.item.completed}
+				checked={item.completed}
 				tabIndex={-1}
 				disableRipple
 				name="completed"
@@ -37,16 +47,16 @@ function NoteFormListItem(props) {
 				color="default"
 			/>
 			<Input
-				className={clsx('flex flex-1 mx-8', props.item.completed && 'line-through opacity-50')}
+				className={clsx('flex flex-1 mx-8', item.completed && 'line-through opacity-50')}
 				name="text"
-				value={props.item.content}
+				value={item.content}
 				onChange={handleChange}
 				disableUnderline
 			/>
 			<IconButton
 				className="w-32 h-32 mx-4 p-0"
 				aria-label="Delete"
-				onClick={() => props.onListItemRemove(props.item.id)}
+				onClick={() => onListItemRemove(item.id)}
 				size="large"
 			>
 				<FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>

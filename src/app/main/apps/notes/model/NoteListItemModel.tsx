@@ -1,7 +1,16 @@
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
+import { PartialDeep } from 'type-fest';
 
-function NoteListItemModel(data) {
+export type NoteListItemType = {
+	id: string;
+	content: string;
+	completed: boolean;
+};
+
+export type NoteListItemsType = NoteListItemType[];
+
+function NoteListItemModel(data: PartialDeep<NoteListItemType>) {
 	data = data || {};
 
 	return _.defaults(data, {

@@ -7,7 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import NoteListItemModel from '../../model/NoteListItemModel';
+import NoteListItemModel, { NoteListItemType } from '../../model/NoteListItemModel';
 
 const defaultValues = {
 	content: ''
@@ -20,7 +20,13 @@ const schema = yup.object().shape({
 	content: yup.string().required('You must enter a label title')
 });
 
-function NoteFormAddListItem(props) {
+type NoteFormAddListItemProps = {
+	onListItemAdd: (noteListItem: NoteListItemType) => void;
+};
+
+function NoteFormAddListItem(props: NoteFormAddListItemProps) {
+	const { onListItemAdd } = props;
+
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues,
@@ -29,8 +35,8 @@ function NoteFormAddListItem(props) {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data) {
-		props.onListItemAdd(NoteListItemModel(data));
+	function onSubmit(data: NoteListItemType) {
+		onListItemAdd(NoteListItemModel(data));
 		reset(defaultValues);
 	}
 

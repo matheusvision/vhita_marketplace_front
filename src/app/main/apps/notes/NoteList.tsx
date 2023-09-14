@@ -2,23 +2,22 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { useAppSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
 import NoteListItem from './NoteListItem';
 import { selectNotes, selectSearchText, selectVariateDescSize } from './store/notesSlice';
+import { NotesType } from './model/NoteModel';
 
-function NoteList(props) {
+function NoteList() {
 	const notes = useAppSelector(selectNotes);
 	const variateDescSize = useAppSelector(selectVariateDescSize);
 	const searchText = useAppSelector(selectSearchText);
-	const params = useParams();
-	const [filteredData, setFilteredData] = useState(null);
+	const params = useParams<{ id: string; labelId: string }>();
+	const [filteredData, setFilteredData] = useState<NotesType>(null);
 
 	useEffect(() => {
 		function filterData() {
-			const { id, labelId } = params;
-
 			let data = notes;
 
 			if (searchText.length === 0) {

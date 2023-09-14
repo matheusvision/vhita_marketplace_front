@@ -2,14 +2,22 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NoteLabel from './NoteLabel';
 import NoteReminderLabel from './NoteReminderLabel';
 import setDescriptionStyle from './setDescriptionStyle';
 import { openNoteDialog } from './store/notesSlice';
+import { NoteType } from './model/NoteModel';
 
-function NoteListItem(props) {
+type NoteListItemProps = {
+	note: NoteType;
+	className?: string;
+	variateDescSize?: boolean;
+};
+
+function NoteListItem(props: NoteListItemProps) {
+	const { note, className, variateDescSize } = props;
 	const dispatch = useAppDispatch();
 
 	return (
@@ -18,40 +26,40 @@ function NoteListItem(props) {
 			animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
 		>
 			<Card
-				className={clsx('cursor-pointer', props.className)}
-				onClick={() => dispatch(openNoteDialog(props.note.id))}
+				className={clsx('cursor-pointer', className)}
+				onClick={() => dispatch(openNoteDialog(note.id))}
 			>
-				{props.note.image && props.note.image !== '' && (
+				{note.image && note.image !== '' && (
 					<img
-						src={props.note.image}
+						src={note.image}
 						className="w-full block"
 						alt="note"
 					/>
 				)}
 
-				{props.note.title && props.note.title !== '' && (
-					<Typography className="px-20 my-16 text-14 font-semibold">{props.note.title}</Typography>
+				{note.title && note.title !== '' && (
+					<Typography className="px-20 my-16 text-14 font-semibold">{note.title}</Typography>
 				)}
 
-				{props.note.content && props.note.content !== '' && (
+				{note.content && note.content !== '' && (
 					<Typography
 						className="px-20 my-16 "
 						component="div"
 					>
 						<div
-							className={clsx('w-full break-words', props.variateDescSize ? 'font-500' : 'text-14')}
+							className={clsx('w-full break-words', variateDescSize ? 'font-500' : 'text-14')}
 							ref={(el) => {
-								setTimeout(() => setDescriptionStyle(props.note.content, el, props.variateDescSize));
+								setTimeout(() => setDescriptionStyle(note.content, el, variateDescSize));
 							}}
 						>
-							{props.note.content}
+							{note.content}
 						</div>
 					</Typography>
 				)}
 
-				{props.note.tasks && props.note.tasks.length > 0 && (
+				{note.tasks && note.tasks.length > 0 && (
 					<ul className="px-20 my-16 flex flex-wrap list-reset">
-						{props.note.tasks.map((item) => (
+						{note.tasks.map((item) => (
 							<li
 								key={item.id}
 								className="flex items-center w-full"
@@ -73,15 +81,15 @@ function NoteListItem(props) {
 					</ul>
 				)}
 
-				{(props.note.labels.length > 0 || props.note.reminder) && (
+				{(note.labels.length > 0 || note.reminder) && (
 					<div className="px-20 my-16 flex flex-wrap w-full -mx-2">
-						{props.note.reminder && (
+						{note.reminder && (
 							<NoteReminderLabel
 								className="mt-4 mx-2 max-w-full"
-								date={props.note.reminder}
+								date={note.reminder}
 							/>
 						)}
-						{props.note.labels.map((id) => (
+						{note.labels.map((id) => (
 							<NoteLabel
 								id={id}
 								key={id}

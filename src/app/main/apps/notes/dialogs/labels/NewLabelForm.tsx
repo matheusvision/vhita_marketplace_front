@@ -6,11 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import { useAppDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { createLabel } from '../../store/labelsSlice';
-import LabelModel from '../../model/LabelModel';
+import LabelModel, { LabelType } from '../../model/LabelModel';
 
 const defaultValues = {
 	title: ''
@@ -23,7 +23,7 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a label title')
 });
 
-function NewLabelForm(props) {
+function NewLabelForm() {
 	const dispatch = useAppDispatch();
 
 	const { control, formState, handleSubmit, reset } = useForm({
@@ -34,7 +34,7 @@ function NewLabelForm(props) {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data) {
+	function onSubmit(data: LabelType) {
 		const newLabel = LabelModel(data);
 		dispatch(createLabel(newLabel));
 		reset(defaultValues);

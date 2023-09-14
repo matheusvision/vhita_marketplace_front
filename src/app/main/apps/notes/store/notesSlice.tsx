@@ -1,107 +1,143 @@
-import { createAppAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
+import { PartialDeep } from 'type-fest';
+import { RootState } from 'app/store/index';
+import { ChangeEvent } from 'react';
+import { NotesType, NoteType } from '../model/NoteModel';
 
-export const getNotes = createAppAsyncThunk('notesApp/notes/getNotes', async (routeParams) => {
-	const { filter, id } = routeParams;
+export type RouteParamsType = {
+	filter: string;
+	id: string;
+};
 
-	let url;
+export const getNotes = createAppAsyncThunk<NotesType, RouteParamsType>(
+	'notesApp/notes/getNotes',
+	async (routeParams) => {
+		const { filter, id } = routeParams;
 
-	if (routeParams.filter === 'labels') {
-		url = `/api/notes/labels/${id}`;
+		let url = '';
+
+		if (filter === 'labels') {
+			url = `/api/notes/labels/${id}`;
+		}
+
+		if (filter === 'archive') {
+			url = `/api/notes/archive`;
+		}
+
+		if (filter === 'reminders') {
+			url = `/api/notes/reminders`;
+		}
+
+		if (!filter) {
+			url = `/api/notes`;
+		}
+
+		const response = await axios.get(url);
+
+		const data = (await response.data) as NotesType;
+
+		return data;
 	}
+);
 
-	if (routeParams.filter === 'archive') {
-		url = `/api/notes/archive`;
+export const createNote = createAppAsyncThunk<NoteType, PartialDeep<NoteType>>(
+	'notesApp/notes/createNote',
+	async (note) => {
+		const response = await axios.post('/api/notes', note);
+
+		const data = (await response.data) as NoteType;
+
+		return data;
 	}
+);
 
-	if (routeParams.filter === 'reminders') {
-		url = `/api/notes/reminders`;
+export const updateNote = createAppAsyncThunk<NoteType, PartialDeep<NoteType>>(
+	'notesApp/notes/updateNote',
+	async (note) => {
+		const response = await axios.put(`/api/notes/${note.id}`, note);
+
+		const data = (await response.data) as NoteType;
+
+		return data;
 	}
+);
 
-	if (!routeParams.filter) {
-		url = `/api/notes`;
-	}
-
-	const response = await axios.get(url);
-	const data = await response.data;
-
-	return data;
-});
-
-export const createNote = createAppAsyncThunk('notesApp/notes/createNote', async (note) => {
-	const response = await axios.post('/api/notes', note);
-	const data = await response.data;
-
-	return data;
-});
-
-export const updateNote = createAppAsyncThunk('notesApp/notes/updateNote', async (note) => {
-	const response = await axios.put(`/api/notes/${note.id}`, note);
-	const data = await response.data;
-
-	return data;
-});
-
-export const removeNote = createAppAsyncThunk('notesApp/notes/removeNote', async (id, { dispatch, getState }) => {
+export const removeNote = createAppAsyncThunk<string, string>('notesApp/notes/removeNote', async (id, { dispatch }) => {
 	const response = await axios.delete(`/api/notes/${id}`);
-	const data = await response.data;
+
+	const data = (await response.data) as string;
 
 	dispatch(closeNoteDialog());
 
 	return data;
 });
 
-const notesAdapter = createEntityAdapter({});
+const notesAdapter = createEntityAdapter<NoteType>({});
 
 export const {
 	selectAll: selectNotes,
 	selectEntities: selectNotesEntities,
 	selectById: selectNoteById
-} = notesAdapter.getSelectors((state) => state.notesApp.notes);
+} = notesAdapter.getSelectors((state: AppRootState) => state.notesApp.notes);
+
+const initialState = notesAdapter.getInitialState<{
+	searchText: string;
+	noteDialogId: string | null;
+	variateDescSize: boolean;
+}>({
+	searchText: '',
+	noteDialogId: null,
+	variateDescSize: true
+});
 
 const notesSlice = createSlice({
 	name: 'notesApp/notes',
-	initialState: notesAdapter.getInitialState({
-		searchText: '',
-		noteDialogId: null,
-		variateDescSize: true
-	}),
+	initialState,
 	reducers: {
 		setNotesSearchText: {
 			reducer: (state, action) => {
-				state.searchText = action.payload;
+				state.searchText = action.payload as string;
 			},
-			prepare: (event) => ({ payload: event.target.value || '' })
+			prepare: (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => ({
+				payload: event.target.value || '',
+				meta: undefined,
+				error: null
+			})
 		},
-		resetNotesSearchText: (state, action) => {
+		resetNotesSearchText: (state) => {
 			state.searchText = '';
 		},
-		toggleVariateDescSize: (state, action) => {
+		toggleVariateDescSize: (state) => {
 			state.variateDescSize = !state.variateDescSize;
 		},
 		openNoteDialog: (state, action) => {
-			state.noteDialogId = action.payload;
+			state.noteDialogId = action.payload as string;
 		},
-		closeNoteDialog: (state, action) => {
-			state.noteDialogId = action.null;
+		closeNoteDialog: (state) => {
+			state.noteDialogId = null;
 		}
 	},
-	extraReducers: {
-		[getNotes.fulfilled]: notesAdapter.setAll,
-		[createNote.fulfilled]: notesAdapter.addOne,
-		[updateNote.fulfilled]: notesAdapter.upsertOne,
-		[removeNote.fulfilled]: notesAdapter.removeOne
+	extraReducers: (builder) => {
+		builder
+			.addCase(getNotes.fulfilled, (state, action) => notesAdapter.setAll(state, action.payload))
+			.addCase(createNote.fulfilled, (state, action) => notesAdapter.addOne(state, action.payload))
+			.addCase(updateNote.fulfilled, (state, action) => notesAdapter.upsertOne(state, action.payload))
+			.addCase(removeNote.fulfilled, (state, action) => notesAdapter.removeOne(state, action.payload));
 	}
 });
+
+export type AppRootState = RootState<typeof notesSlice>;
 
 export const { setNotesSearchText, resetNotesSearchText, toggleVariateDescSize, openNoteDialog, closeNoteDialog } =
 	notesSlice.actions;
 
-export const selectVariateDescSize = ({ notesApp }) => notesApp.notes.variateDescSize;
+export const selectVariateDescSize = (state: AppRootState) => state.notesApp.notes.variateDescSize;
 
-export const selectSearchText = ({ notesApp }) => notesApp.notes.searchText;
+export const selectSearchText = (state: AppRootState) => state.notesApp.notes.searchText;
 
-export const selectDialogNoteId = ({ notesApp }) => notesApp.notes.noteDialogId;
+export const selectDialogNoteId = (state: AppRootState) => state.notesApp.notes.noteDialogId;
 
 export const selectDialogNote = createSelector([selectDialogNoteId, selectNotesEntities], (noteId, notesEntities) => {
 	return notesEntities[noteId];

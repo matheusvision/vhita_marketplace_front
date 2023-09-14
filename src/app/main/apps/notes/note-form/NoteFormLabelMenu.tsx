@@ -2,20 +2,27 @@ import _ from '@lodash';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Popover from '@mui/material/Popover';
-import { useState } from 'react';
-import { useAppSelector } from 'react-redux';
+import { useState, MouseEvent } from 'react';
+import { useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import ListItemButton from '@mui/material/ListItemButton';
 import { selectLabels } from '../store/labelsSlice';
+import { NoteType } from '../model/NoteModel';
 
-function NoteFormLabelMenu(props) {
+type NoteFormLabelMenuProps = {
+	note: NoteType;
+	onChange: (T: NoteType['labels']) => void;
+};
+
+function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
+	const { note, onChange } = props;
 	const labels = useAppSelector(selectLabels);
 
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
 
-	function handleMenuClick(event) {
+	function handleMenuClick(event: MouseEvent<HTMLElement>) {
 		event.stopPropagation();
 		setAnchorEl(event.currentTarget);
 	}
@@ -24,8 +31,8 @@ function NoteFormLabelMenu(props) {
 		setAnchorEl(null);
 	}
 
-	function handleToggleLabel(id) {
-		props.onChange(_.xor(props.note.labels, [id]));
+	function handleToggleLabel(id: string) {
+		onChange(_.xor(note.labels, [id]));
 	}
 
 	return (
@@ -58,9 +65,8 @@ function NoteFormLabelMenu(props) {
 				<ClickAwayListener onClickAway={handleMenuClose}>
 					<List className="p-0">
 						{labels.map((label) => (
-							<ListItem
+							<ListItemButton
 								key={label.id}
-								button
 								dense
 								onClick={() => handleToggleLabel(label.id)}
 							>
@@ -69,7 +75,7 @@ function NoteFormLabelMenu(props) {
 									size={20}
 									color="action"
 								>
-									{props.note.labels.includes(label.id)
+									{note.labels.includes(label.id)
 										? 'heroicons-outline:check-circle'
 										: 'heroicons-outline:minus-circle'}
 								</FuseSvgIcon>
@@ -78,7 +84,7 @@ function NoteFormLabelMenu(props) {
 									primary={label.title}
 									disableTypography
 								/>
-							</ListItem>
+							</ListItemButton>
 						))}
 					</List>
 				</ClickAwayListener>

@@ -1,8 +1,15 @@
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { ChangeEvent } from 'react';
 
-function NoteFormUploadImage(props) {
-	function handleChange(e) {
+type NoteFormUploadImageProps = {
+	onChange: (T: string) => void;
+};
+
+function NoteFormUploadImage(props: NoteFormUploadImageProps) {
+	const { onChange } = props;
+
+	function handleChange(e: ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files[0];
 		if (!file) {
 			return;
@@ -12,12 +19,13 @@ function NoteFormUploadImage(props) {
 		reader.readAsBinaryString(file);
 
 		reader.onload = () => {
-			if (props.onChange) {
-				props.onChange(`data:${file.type};base64,${btoa(reader.result)}`);
+			if (onChange) {
+				onChange(`data:${file.type};base64,${btoa(reader.result as string)}`);
 			}
 		};
 
 		reader.onerror = () => {
+			// eslint-disable-next-line no-console
 			console.log('error on load image');
 		};
 	}

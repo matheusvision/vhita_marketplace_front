@@ -1,30 +1,41 @@
 import { useDebounce } from '@fuse/hooks';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
-import { forwardRef } from 'react';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { forwardRef, ReactElement, ReactNode } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useParams } from 'react-router-dom';
-import { closeNoteDialog, getNotes, removeNote, selectDialogNote, updateNote } from '../../store/notesSlice';
+import {
+	closeNoteDialog,
+	getNotes,
+	removeNote,
+	RouteParamsType,
+	selectDialogNote,
+	updateNote
+} from '../../store/notesSlice';
 import NoteForm from '../../note-form/NoteForm';
 
-const Transition = forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props: { children: ReactElement<ReactNode> }, ref) {
+	const { children, ...other } = props;
+
 	return (
 		<Slide
 			direction="up"
 			ref={ref}
-			{...props}
-		/>
+			{...other}
+		>
+			{children}
+		</Slide>
 	);
 });
 
-function NoteDialog(props) {
+function NoteDialog() {
 	const dispatch = useAppDispatch();
 	const routeParams = useParams();
 	const note = useAppSelector(selectDialogNote);
 
 	const handleOnChange = useDebounce((_note) => {
 		dispatch(updateNote(_note)).then(() => {
-			dispatch(getNotes(routeParams));
+			dispatch(getNotes(routeParams as RouteParamsType));
 		});
 	}, 600);
 
@@ -42,13 +53,13 @@ function NoteDialog(props) {
 				paper: 'w-full m-24'
 			}}
 			TransitionComponent={Transition}
-			onClose={(ev) => dispatch(closeNoteDialog())}
+			onClose={() => dispatch(closeNoteDialog())}
 			open={Boolean(note?.id)}
 		>
 			<NoteForm
 				note={note}
 				onChange={handleOnChange}
-				onClose={(ev) => dispatch(closeNoteDialog())}
+				onClose={() => dispatch(closeNoteDialog())}
 				onRemove={handleOnRemove}
 			/>
 		</Dialog>

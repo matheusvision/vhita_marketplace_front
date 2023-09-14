@@ -1,9 +1,18 @@
 import _ from '@lodash';
+import { PartialDeep } from 'type-fest';
 
-function LabelModel(data) {
+export type LabelType = {
+	id: string;
+	title: string;
+};
+
+export type LabelsType = LabelType[];
+
+function LabelModel(data: PartialDeep<LabelType>) {
 	data = data || {};
 
 	return _.defaults(data, {
+		id: _.uniqueId(),
 		title: ''
 	});
 }

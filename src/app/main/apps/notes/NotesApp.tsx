@@ -1,6 +1,6 @@
 import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { lighten, styled } from '@mui/material/styles';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -14,22 +14,22 @@ import NotesHeader from './NotesHeader';
 import NotesSidebarContent from './NotesSidebarContent';
 import reducer from './store';
 import { getLabels } from './store/labelsSlice';
-import { getNotes } from './store/notesSlice';
+import { getNotes, RouteParamsType } from './store/notesSlice';
 
-const Root = styled(FusePageCarded)(({ theme }) => ({
+const Root = styled(FusePageCarded)(() => ({
 	'& .FusePageCarded-header': {},
 	'& .FusePageCarded-sidebar': {},
 	'& .FusePageCarded-leftSidebar': {}
 }));
 
-function NotesApp(props) {
+function NotesApp() {
 	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-	const routeParams = useParams();
+	const routeParams = useParams<RouteParamsType>();
 
 	useEffect(() => {
-		dispatch(getNotes(routeParams));
+		dispatch(getNotes(routeParams as RouteParamsType));
 		dispatch(getLabels());
 	}, [dispatch, routeParams]);
 

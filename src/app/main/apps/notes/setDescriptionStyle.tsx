@@ -1,4 +1,15 @@
-const fontSizes = {
+// 1. Types
+type FontSizeMapping = {
+	[key: number]: {
+		fontSize: number;
+		lineHeight: number;
+	};
+};
+
+type setDescriptionStyleType = (sentence: string, refEl: HTMLElement | null, enabled: boolean) => void;
+
+// 2. Constants and Implementations
+const fontSizes: FontSizeMapping = {
 	1: {
 		fontSize: 14,
 		lineHeight: 19
@@ -21,7 +32,7 @@ const fontSizes = {
 	}
 };
 
-function setDescriptionStyle(sentence, refEl, enabled) {
+const setDescriptionStyle: setDescriptionStyleType = (sentence, refEl, enabled) => {
 	if (!refEl) {
 		return;
 	}
@@ -74,7 +85,7 @@ function setDescriptionStyle(sentence, refEl, enabled) {
 		size = 5;
 	}
 
-	let { lineHeight, fontSize } = fontSizes[size];
+	let { lineHeight, fontSize } = fontSizes[size as number];
 
 	tmp.textContent = sentence;
 	tmp.style.width = `${refElWidth}px`;
@@ -95,10 +106,10 @@ function setDescriptionStyle(sentence, refEl, enabled) {
 
 	document.body.removeChild(tmp);
 
-	lineHeight = fontSizes[size].lineHeight;
-	fontSize = fontSizes[size].fontSize;
+	lineHeight = fontSizes[size as number].lineHeight;
+	fontSize = fontSizes[size as number].fontSize;
 	refEl.style.fontSize = `${fontSize}px`;
 	refEl.style.lineHeight = `${lineHeight}px`;
-}
+};
 
 export default setDescriptionStyle;

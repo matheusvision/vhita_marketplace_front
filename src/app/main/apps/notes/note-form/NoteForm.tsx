@@ -14,48 +14,75 @@ import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import * as yup from 'yup';
 import format from 'date-fns/format';
+import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import NoteFormList from './tasks/NoteFormList';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormReminder from './NoteFormReminder';
 import NoteFormUploadImage from './NoteFormUploadImage';
-import NoteModel from '../model/NoteModel';
+import NoteModel, { NoteType } from '../model/NoteModel';
 import NoteReminderLabel from '../NoteReminderLabel';
 import NoteLabel from '../NoteLabel';
+import { NoteListItemsType } from '../model/NoteListItemModel';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().nullable(),
-	content: yup.string(),
-	image: yup.string().nullable(),
-	tasks: yup.array().nullable(),
-	oneOfThemRequired: yup.bool().when(['title', 'content', 'image', 'tasks'], {
-		is: (a, b, c, d) => (!a && !b && !c && !d) || (!!a && !!b && !!c && !!d),
-		then: (_schema) => _schema.required(''),
-		otherwise: (_schema) => _schema.nullable()
-	})
+const tasksSchema = yup.object().shape({
+	id: yup.string().required('ID is required'),
+	content: yup.string().required('Content is required'),
+	completed: yup.boolean().required('Completed status is required')
 });
 
-function NoteForm(props) {
+const schema = yup.object().shape({
+	id: yup.string(),
+	title: yup.string(),
+	content: yup.string(),
+	tasks: yup.array().of(tasksSchema).default([]).notRequired(),
+	labels: yup.array().of(yup.string()).default([]).notRequired(),
+	image: yup.string(),
+	reminder: yup.string(),
+	archived: yup.boolean(),
+	createdAt: yup.string(),
+	updatedAt: yup.string(),
+	oneOfThemRequired: yup
+		.bool()
+		.default(undefined)
+		.when(['title', 'content', 'image', 'tasks'], {
+			is: (a, b, c, d) => (!a && !b && !c && !d) || (!!a && !!b && !!c && !!d),
+			then: (_schema) => _schema.required('At least one of the fields is required.'),
+			otherwise: (_schema) => _schema.nullable()
+		})
+});
+
+type NoteFormProps = WithRouterProps & {
+	variant?: 'new' | 'edit';
+	note?: NoteType;
+	onChange?: (note: NoteType) => void;
+	onCreate?: (note: NoteType) => void;
+	onRemove?: () => void;
+	onClose?: () => void;
+};
+
+function NoteForm(props: NoteFormProps) {
+	const { note = null, variant = 'edit', onChange: onFormChange, onCreate, onRemove, onClose } = props;
 	const [showList, setShowList] = useState(false);
 	const routeParams = useParams();
-	const { note, variant, onChange: onFormChange, onCreate } = props;
 
 	const defaultValues = _.merge(
-		{},
-		NoteModel(),
+		{ oneOfThemRequired: true },
+		NoteModel({}),
 		note,
 		routeParams.labelId ? { labels: [routeParams.labelId] } : null,
 		routeParams.id === 'archive' ? { archived: true } : null
 	);
-	const { formState, handleSubmit, getValues, reset, watch, setValue, control } = useForm({
+
+	const { formState, handleSubmit, getValues, watch, setValue, control } = useForm({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	const noteForm = watch();
 
@@ -64,21 +91,14 @@ function NoteForm(props) {
 	 */
 	useEffect(() => {
 		if (note && variant !== 'new' && onFormChange && !_.isEqual(note, noteForm)) {
-			onFormChange(noteForm);
+			onFormChange(noteForm as NoteType);
 		}
 	}, [noteForm, note, variant, onFormChange, defaultValues]);
-
-	function handleRemoveLabel(id) {
-		setValue(
-			`labels`,
-			noteForm.labels.filter((_id) => _id !== id)
-		);
-	}
 
 	/**
 	 * Create New Note
 	 */
-	function onSubmitNewNote(data) {
+	function onSubmitNewNote(data: NoteType) {
 		if (!onCreate) {
 			return;
 		}
@@ -164,7 +184,7 @@ function NoteForm(props) {
 							return (
 								<div className="px-16">
 									<NoteFormList
-										tasks={value || []}
+										tasks={(value as NoteListItemsType) || []}
 										onCheckListChange={(val) => onChange(val)}
 									/>
 								</div>
@@ -192,14 +212,18 @@ function NoteForm(props) {
 									if (!value) {
 										return null;
 									}
-									return value.map((id) => (
-										<NoteLabel
-											id={id}
-											key={id}
-											className="mt-4 mx-4"
-											onDelete={() => onChange(value.filter((_id) => _id !== id))}
-										/>
-									));
+									return (
+										<>
+											{value.map((id) => (
+												<NoteLabel
+													id={id}
+													key={id}
+													className="mt-4 mx-4"
+													onDelete={() => onChange(value.filter((_id) => _id !== id))}
+												/>
+											))}
+										</>
+									);
 								}}
 							/>
 
@@ -242,7 +266,9 @@ function NoteForm(props) {
 					>
 						<div>
 							<NoteFormUploadImage
-								onChange={(val) => setValue('image', val, { shouldDirty: true, shouldValidate: true })}
+								onChange={(val: string) =>
+									setValue('image', val, { shouldDirty: true, shouldValidate: true })
+								}
 							/>
 						</div>
 					</Tooltip>
@@ -267,7 +293,7 @@ function NoteForm(props) {
 						<div>
 							<NoteFormLabelMenu
 								note={noteForm}
-								onChange={(labels) => setValue('labels', labels)}
+								onChange={(labels: string[]) => setValue('labels', labels)}
 							/>
 						</div>
 					</Tooltip>
@@ -288,8 +314,8 @@ function NoteForm(props) {
 										onClick={() => {
 											onChange(!value);
 
-											if (props.variant === 'new') {
-												setTimeout(() => onSubmitNewNote(getValues()));
+											if (variant === 'new') {
+												setTimeout(() => onSubmitNewNote(getValues() as NoteType));
 											}
 										}}
 										size="large"
@@ -305,7 +331,7 @@ function NoteForm(props) {
 				</div>
 
 				<div className="flex items-center">
-					{props.variant === 'new' ? (
+					{variant === 'new' ? (
 						<Button
 							className="m-4 p-8"
 							type="submit"
@@ -325,7 +351,7 @@ function NoteForm(props) {
 							>
 								<IconButton
 									className="w-32 h-32 mx-4 p-0"
-									onClick={props.onRemove}
+									onClick={onRemove}
 									size="large"
 								>
 									<FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>
@@ -333,8 +359,8 @@ function NoteForm(props) {
 							</Tooltip>
 							<Button
 								className="m-4"
-								onClick={props.onClose}
-								variant="default"
+								onClick={onClose}
+								variant="text"
 							>
 								Close
 							</Button>
@@ -345,11 +371,5 @@ function NoteForm(props) {
 		</div>
 	);
 }
-
-NoteForm.propTypes = {};
-NoteForm.defaultProps = {
-	variant: 'edit',
-	note: null
-};
 
 export default withRouter(NoteForm);

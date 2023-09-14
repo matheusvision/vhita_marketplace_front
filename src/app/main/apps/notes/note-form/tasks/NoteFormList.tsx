@@ -1,28 +1,37 @@
 import List from '@mui/material/List';
 import NoteFormAddListItem from './NoteFormAddListItem';
 import NoteFormListItem from './NoteFormListItem';
+import { NoteListItemType, NoteListItemsType } from '../../model/NoteListItemModel';
 
-function NoteFormList(props) {
-	function handleListItemChange(item) {
-		props.onCheckListChange(props.tasks.map((_item) => (_item.id === item.id ? item : _item)));
+type NoteFormListProps = {
+	className?: string;
+	tasks: NoteListItemsType;
+	onCheckListChange: (tasks: NoteListItemsType) => void;
+};
+
+function NoteFormList(props: NoteFormListProps) {
+	const { tasks, onCheckListChange, className } = props;
+
+	function handleListItemChange(item: NoteListItemType) {
+		onCheckListChange(tasks.map((_item) => (_item.id === item.id ? item : _item)) as NoteListItemsType);
 	}
 
-	function handleListItemRemove(id) {
-		props.onCheckListChange(props.tasks.filter((_item) => _item.id !== id));
+	function handleListItemRemove(id: string) {
+		onCheckListChange(tasks.filter((_item) => _item.id !== id) as NoteListItemsType);
 	}
 
-	function handleListItemAdd(item) {
-		props.onCheckListChange([...props.tasks, item]);
+	function handleListItemAdd(item: NoteListItemType) {
+		onCheckListChange([...tasks, item]);
 	}
 
-	if (!props.tasks) {
+	if (!tasks) {
 		return null;
 	}
 
 	return (
-		<div className={props.className}>
+		<div className={className}>
 			<List dense>
-				{props.tasks.map((item) => (
+				{tasks.map((item) => (
 					<NoteFormListItem
 						item={item}
 						key={item.id}

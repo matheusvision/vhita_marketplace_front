@@ -1,12 +1,12 @@
 import Dialog from '@mui/material/Dialog';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { closeLabelsDialog, selectLabels, selectLabelsDialogOpen } from '../../store/labelsSlice';
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
 
-function LabelsDialog(props) {
+function LabelsDialog() {
 	const dispatch = useAppDispatch();
 	const labelsDialogOpen = useAppSelector(selectLabelsDialogOpen);
 	const labels = useAppSelector(selectLabels);
@@ -16,7 +16,7 @@ function LabelsDialog(props) {
 			classes={{
 				paper: 'w-full max-w-320 p-24 md:p-40 m-24'
 			}}
-			onClose={(ev) => dispatch(closeLabelsDialog())}
+			onClose={() => dispatch(closeLabelsDialog())}
 			open={labelsDialogOpen}
 		>
 			<Typography className="text-20 mb-24 font-semibold">Edit Labels</Typography>

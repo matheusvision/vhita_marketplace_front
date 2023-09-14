@@ -1,14 +1,14 @@
+import ListItemButton from '@mui/material/ListItemButton';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { styled } from '@mui/material/styles';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { openLabelsDialog, selectLabels } from './store/labelsSlice';
 
-const StyledListItem = styled(ListItem)(({ theme, active }) => ({
+const StyledListItem = styled(ListItemButton)(({ theme }) => ({
 	color: 'inherit!important',
 	textDecoration: 'none!important',
 	height: 40,
@@ -31,23 +31,20 @@ const StyledListItem = styled(ListItem)(({ theme, active }) => ({
 	}
 }));
 
-function NotesSidebarContent(props) {
+function NotesSidebarContent() {
 	const dispatch = useAppDispatch();
 	const labels = useAppSelector(selectLabels);
 
 	return (
 		<div className="px-16 py-24">
-			<div
-				component={motion.div}
+			<motion.div
 				initial={{ y: 20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 			>
 				<List className="">
-					<StyledListItem
-						button
-						component={NavLinkAdapter}
+					<NavLinkAdapter
+						component={StyledListItem}
 						to="/apps/notes"
-						end
 						activeClassName="active"
 					>
 						<FuseSvgIcon
@@ -61,12 +58,10 @@ function NotesSidebarContent(props) {
 							primary="Notes"
 							disableTypography
 						/>
-					</StyledListItem>
-					<StyledListItem
-						button
-						component={NavLinkAdapter}
+					</NavLinkAdapter>
+					<NavLinkAdapter
+						component={StyledListItem}
 						to="/apps/notes/reminders"
-						end
 						activeClassName="active"
 					>
 						<FuseSvgIcon
@@ -80,11 +75,10 @@ function NotesSidebarContent(props) {
 							primary="Reminders"
 							disableTypography
 						/>
-					</StyledListItem>
+					</NavLinkAdapter>
 
-					<StyledListItem
-						button
-						component={NavLinkAdapter}
+					<NavLinkAdapter
+						component={StyledListItem}
 						to="/apps/notes/archive"
 						activeClassName="active"
 					>
@@ -99,15 +93,13 @@ function NotesSidebarContent(props) {
 							primary="Archive"
 							disableTypography
 						/>
-					</StyledListItem>
+					</NavLinkAdapter>
 
 					{labels.map((label) => (
-						<StyledListItem
+						<NavLinkAdapter
 							key={label.id}
-							button
-							component={NavLinkAdapter}
+							component={StyledListItem}
 							to={`/apps/notes/labels/${label.id}`}
-							end
 							activeClassName="active"
 						>
 							<FuseSvgIcon
@@ -121,11 +113,12 @@ function NotesSidebarContent(props) {
 								primary={label.title}
 								disableTypography
 							/>
-						</StyledListItem>
+						</NavLinkAdapter>
 					))}
-					<StyledListItem
-						button
-						onClick={(ev) => dispatch(openLabelsDialog())}
+					<NavLinkAdapter
+						to=""
+						component={StyledListItem}
+						onClick={() => dispatch(openLabelsDialog())}
 					>
 						<FuseSvgIcon
 							className="list-item-icon"
@@ -138,9 +131,9 @@ function NotesSidebarContent(props) {
 							primary="Edit Labels"
 							disableTypography
 						/>
-					</StyledListItem>
+					</NavLinkAdapter>
 				</List>
-			</div>
+			</motion.div>
 		</div>
 	);
 }
