@@ -1,9 +1,9 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import { addTask, removeTask, updateTask } from './taskSlice';
 
-export const getTasks = createAsyncThunk('tasksApp/tasks/getTasks', async (params, { getState }) => {
+export const getTasks = createAppAsyncThunk('tasksApp/tasks/getTasks', async (params, { getState }) => {
 	const response = await axios.get('/api/tasks');
 
 	const data = await response.data;
@@ -11,7 +11,7 @@ export const getTasks = createAsyncThunk('tasksApp/tasks/getTasks', async (param
 	return data;
 });
 
-export const reorderList = createAsyncThunk(
+export const reorderList = createAppAsyncThunk(
 	'tasksApp/tasks/reorder',
 	async ({ startIndex, endIndex }, { dispatch, getState }) => {
 		const response = await axios.post('/api/tasks/reorder', { startIndex, endIndex });

@@ -1,11 +1,12 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
 import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { selectGuideCategories } from './guideCategoriesSlice';
 import { GuideModelType, GuidesModelType } from '../model/GuideModel';
 
-export const getGuides = createAsyncThunk<GuidesModelType, string | void>(
+export const getGuides = createAppAsyncThunk<GuidesModelType, string | void>(
 	'helpCenterApp/guides/getGuides',
 	async (categorySlug) => {
 		const url = categorySlug ? `/api/help-center/guides/${categorySlug}` : '/api/help-center/guides';

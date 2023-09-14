@@ -1,10 +1,11 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
 import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { GuideCategoriesType, GuideCategoryType } from '../model/GuideCategoryModel';
 
-export const getGuideCategories = createAsyncThunk<GuideCategoriesType>(
+export const getGuideCategories = createAppAsyncThunk<GuideCategoriesType>(
 	'helpCenterApp/guideCategories/get',
 	async () => {
 		const response = await axios.get('api/help-center/guides/categories');

@@ -1,9 +1,10 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { FaqCategoriesType, FaqCategoryType } from '../model/FaqCategoryModel';
 
-export const getFaqCategories = createAsyncThunk<FaqCategoriesType>('helpCenterApp/faqCategories/get', async () => {
+export const getFaqCategories = createAppAsyncThunk<FaqCategoriesType>('helpCenterApp/faqCategories/get', async () => {
 	const response = await axios.get('api/help-center/faqs/categories');
 
 	const data = (await response.data) as FaqCategoriesType;

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import history from '@history';
 import _ from '@lodash';
@@ -11,7 +11,7 @@ import { newCard } from './cardsSlice';
 /**
  * Get Board
  */
-export const getBoard = createAsyncThunk('scrumboardApp/board/get', async (boardId, { dispatch }) => {
+export const getBoard = createAppAsyncThunk('scrumboardApp/board/get', async (boardId, { dispatch }) => {
 	try {
 		const response = await axios.get(`/api/scrumboard/boards/${boardId}`);
 		const data = await response.data;
@@ -38,20 +38,23 @@ export const getBoard = createAsyncThunk('scrumboardApp/board/get', async (board
 /**
  * Update Board
  */
-export const updateBoard = createAsyncThunk('scrumboardApp/board/update', async (newData, { dispatch, getState }) => {
-	const { board } = getState().scrumboardApp;
+export const updateBoard = createAppAsyncThunk(
+	'scrumboardApp/board/update',
+	async (newData, { dispatch, getState }) => {
+		const { board } = getState().scrumboardApp;
 
-	const response = await axios.put(`/api/scrumboard/boards/${board.id}`, newData);
+		const response = await axios.put(`/api/scrumboard/boards/${board.id}`, newData);
 
-	const data = await response.data;
+		const data = await response.data;
 
-	return data;
-});
+		return data;
+	}
+);
 
 /**
  * Reorder Board List
  */
-export const reorderList = createAsyncThunk(
+export const reorderList = createAppAsyncThunk(
 	'scrumboardApp/board/reorderList',
 	async (result, { dispatch, getState }) => {
 		const { board } = getState().scrumboardApp;
@@ -81,7 +84,7 @@ export const reorderList = createAsyncThunk(
 /**
  * Reorder Board Card
  */
-export const reorderCard = createAsyncThunk(
+export const reorderCard = createAppAsyncThunk(
 	'scrumboardApp/board/reorderCard',
 	async ({ source, destination }, { dispatch, getState }) => {
 		const { board } = getState().scrumboardApp;
@@ -111,7 +114,7 @@ export const reorderCard = createAsyncThunk(
 /**
  * Delete Board
  */
-export const deleteBoard = createAsyncThunk('scrumboardApp/board/delete', async (params, { dispatch, getState }) => {
+export const deleteBoard = createAppAsyncThunk('scrumboardApp/board/delete', async (params, { dispatch, getState }) => {
 	const { board } = getState().scrumboardApp;
 
 	const response = await axios.delete(`/api/scrumboard/boards/${board.id}`);

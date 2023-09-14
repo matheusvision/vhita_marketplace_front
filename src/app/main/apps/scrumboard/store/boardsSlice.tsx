@@ -1,4 +1,4 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import history from '@history';
 import BoardModel from '../model/BoardModel';
@@ -6,7 +6,7 @@ import BoardModel from '../model/BoardModel';
 /**
  * Get Boards
  */
-export const getBoards = createAsyncThunk('scrumboardApp/boards/getBoards', async () => {
+export const getBoards = createAppAsyncThunk('scrumboardApp/boards/getBoards', async () => {
 	const response = await axios.get('/api/scrumboard/boards');
 	const data = await response.data;
 
@@ -16,7 +16,7 @@ export const getBoards = createAsyncThunk('scrumboardApp/boards/getBoards', asyn
 /**
  * Create New Board
  */
-export const newBoard = createAsyncThunk('scrumboardApp/boards/newBoard', async (board, { dispatch }) => {
+export const newBoard = createAppAsyncThunk('scrumboardApp/boards/newBoard', async (board, { dispatch }) => {
 	const response = await axios.post('/api/scrumboard/boards', BoardModel(board));
 	const data = await response.data;
 

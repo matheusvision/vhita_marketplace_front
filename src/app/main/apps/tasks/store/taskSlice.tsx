@@ -1,10 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import history from '@history';
 import SectionModel from '../model/SectionModel';
 import TaskModel from '../model/TaskModel';
 
-export const getTask = createAsyncThunk('tasksApp/task/getTask', async (id, { dispatch, getState }) => {
+export const getTask = createAppAsyncThunk('tasksApp/task/getTask', async (id, { dispatch, getState }) => {
 	try {
 		const response = await axios.get(`/api/tasks/${id}`);
 
@@ -18,7 +18,7 @@ export const getTask = createAsyncThunk('tasksApp/task/getTask', async (id, { di
 	}
 });
 
-export const addTask = createAsyncThunk('tasksApp/tasks/addTask', async (task, { dispatch, getState }) => {
+export const addTask = createAppAsyncThunk('tasksApp/tasks/addTask', async (task, { dispatch, getState }) => {
 	const response = await axios.post('/api/tasks', task);
 
 	const data = await response.data;
@@ -26,7 +26,7 @@ export const addTask = createAsyncThunk('tasksApp/tasks/addTask', async (task, {
 	return data;
 });
 
-export const updateTask = createAsyncThunk('tasksApp/tasks/updateTask', async (task, { dispatch, getState }) => {
+export const updateTask = createAppAsyncThunk('tasksApp/tasks/updateTask', async (task, { dispatch, getState }) => {
 	const response = await axios.put(`/api/tasks/${task.id}`, task);
 
 	const data = await response.data;
@@ -34,7 +34,7 @@ export const updateTask = createAsyncThunk('tasksApp/tasks/updateTask', async (t
 	return data;
 });
 
-export const removeTask = createAsyncThunk('tasksApp/tasks/removeTask', async (id, { dispatch, getState }) => {
+export const removeTask = createAppAsyncThunk('tasksApp/tasks/removeTask', async (id, { dispatch, getState }) => {
 	const response = await axios.delete(`/api/tasks/${id}`);
 
 	await response.data;

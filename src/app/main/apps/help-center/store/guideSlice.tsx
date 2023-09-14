@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { GuideModelType } from '../model/GuideModel';
 
-export const getGuide = createAsyncThunk<GuideModelType, { categorySlug: string; guideSlug: string }>(
+export const getGuide = createAppAsyncThunk<GuideModelType, { categorySlug: string; guideSlug: string }>(
 	'helpCenterApp/guide/get',
 	async ({ categorySlug, guideSlug }) => {
 		const response = await axios.get(`/api/help-center/guides/${categorySlug}/${guideSlug}`);

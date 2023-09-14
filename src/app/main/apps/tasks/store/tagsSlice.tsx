@@ -1,7 +1,7 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getTags = createAsyncThunk('tasksApp/tags/getTags', async (params, { getState }) => {
+export const getTags = createAppAsyncThunk('tasksApp/tags/getTags', async (params, { getState }) => {
 	const response = await axios.get('/api/tasks/tags');
 
 	const data = await response.data;

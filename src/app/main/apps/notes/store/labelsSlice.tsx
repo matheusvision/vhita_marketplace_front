@@ -1,28 +1,28 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getLabels = createAsyncThunk('notesApp/labels/getLabels', async () => {
+export const getLabels = createAppAsyncThunk('notesApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/notes/labels');
 	const data = await response.data;
 
 	return data;
 });
 
-export const createLabel = createAsyncThunk('notesApp/labels/createLabel', async (label) => {
+export const createLabel = createAppAsyncThunk('notesApp/labels/createLabel', async (label) => {
 	const response = await axios.post(`/api/notes/labels`, label);
 	const data = await response.data;
 
 	return data;
 });
 
-export const updateLabel = createAsyncThunk('notesApp/labels/updateLabel', async (label) => {
+export const updateLabel = createAppAsyncThunk('notesApp/labels/updateLabel', async (label) => {
 	const response = await axios.put(`/api/notes/labels/${label.id}`, label);
 	const data = await response.data;
 
 	return data;
 });
 
-export const removeLabel = createAsyncThunk('notesApp/labels/removeLabel', async (id) => {
+export const removeLabel = createAppAsyncThunk('notesApp/labels/removeLabel', async (id) => {
 	const response = await axios.delete(`/api/notes/labels/${id}`);
 	const data = await response.data;
 

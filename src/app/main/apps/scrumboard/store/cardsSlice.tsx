@@ -1,18 +1,18 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
 import { removeList } from './listsSlice';
 import { removeCard, updateCard } from './cardSlice';
 import CardModel from '../model/CardModel';
 
-export const getCards = createAsyncThunk('scrumboardApp/cards/getCards', async (boardId) => {
+export const getCards = createAppAsyncThunk('scrumboardApp/cards/getCards', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/cards`);
 	const data = await response.data;
 
 	return data;
 });
 
-export const newCard = createAsyncThunk(
+export const newCard = createAppAsyncThunk(
 	'scrumboardApp/cards/newCard',
 	async ({ listId, newData }, { dispatch, getState }) => {
 		const { board } = getState().scrumboardApp;

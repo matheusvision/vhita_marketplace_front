@@ -1,7 +1,7 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getNotes = createAsyncThunk('notesApp/notes/getNotes', async (routeParams) => {
+export const getNotes = createAppAsyncThunk('notesApp/notes/getNotes', async (routeParams) => {
 	const { filter, id } = routeParams;
 
 	let url;
@@ -28,21 +28,21 @@ export const getNotes = createAsyncThunk('notesApp/notes/getNotes', async (route
 	return data;
 });
 
-export const createNote = createAsyncThunk('notesApp/notes/createNote', async (note) => {
+export const createNote = createAppAsyncThunk('notesApp/notes/createNote', async (note) => {
 	const response = await axios.post('/api/notes', note);
 	const data = await response.data;
 
 	return data;
 });
 
-export const updateNote = createAsyncThunk('notesApp/notes/updateNote', async (note) => {
+export const updateNote = createAppAsyncThunk('notesApp/notes/updateNote', async (note) => {
 	const response = await axios.put(`/api/notes/${note.id}`, note);
 	const data = await response.data;
 
 	return data;
 });
 
-export const removeNote = createAsyncThunk('notesApp/notes/removeNote', async (id, { dispatch, getState }) => {
+export const removeNote = createAppAsyncThunk('notesApp/notes/removeNote', async (id, { dispatch, getState }) => {
 	const response = await axios.delete(`/api/notes/${id}`);
 	const data = await response.data;
 

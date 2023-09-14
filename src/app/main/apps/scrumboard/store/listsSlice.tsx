@@ -1,11 +1,11 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import ListModel from '../model/ListModel';
 
 /**
  * Get Board Lists
  */
-export const getLists = createAsyncThunk('scrumboardApp/lists/get', async (boardId) => {
+export const getLists = createAppAsyncThunk('scrumboardApp/lists/get', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/lists`);
 
 	const data = await response.data;
@@ -16,7 +16,7 @@ export const getLists = createAsyncThunk('scrumboardApp/lists/get', async (board
 /**
  * Create List
  */
-export const newList = createAsyncThunk('scrumboardApp/lists/new', async (list, { dispatch, getState }) => {
+export const newList = createAppAsyncThunk('scrumboardApp/lists/new', async (list, { dispatch, getState }) => {
 	const { board } = getState().scrumboardApp;
 
 	const response = await axios.post(`/api/scrumboard/boards/${board.id}/lists`, ListModel(list));
@@ -29,7 +29,7 @@ export const newList = createAsyncThunk('scrumboardApp/lists/new', async (list, 
 /**
  * Update list
  */
-export const updateList = createAsyncThunk(
+export const updateList = createAppAsyncThunk(
 	'scrumboardApp/lists/update',
 	async ({ id, newData }, { dispatch, getState }) => {
 		const { board } = getState().scrumboardApp;
@@ -45,7 +45,7 @@ export const updateList = createAsyncThunk(
 /**
  * Remove list
  */
-export const removeList = createAsyncThunk('scrumboardApp/lists/remove', async (id, { dispatch, getState }) => {
+export const removeList = createAppAsyncThunk('scrumboardApp/lists/remove', async (id, { dispatch, getState }) => {
 	const { board } = getState().scrumboardApp;
 
 	const response = await axios.delete(`/api/scrumboard/boards/${board.id}/lists/${id}`);

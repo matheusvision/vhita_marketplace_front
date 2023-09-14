@@ -1,9 +1,10 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { FaqModelType, FaqsModelType } from '../model/FaqModel';
 
-export const getFaqsMost = createAsyncThunk<FaqsModelType>('helpCenterApp/faqsMost/get', async () => {
+export const getFaqsMost = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faqsMost/get', async () => {
 	const response = await axios.get('/api/help-center/faqs/most-asked');
 
 	const data = (await response.data) as FaqsModelType;

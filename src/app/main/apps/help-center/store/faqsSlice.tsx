@@ -1,11 +1,12 @@
-import { createAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
 import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { selectFaqCategories } from './faqCategoriesSlice';
 import { FaqModelType, FaqsModelType } from '../model/FaqModel';
 
-export const getFaqs = createAsyncThunk<FaqsModelType>('helpCenterApp/faqs/getFaqs', async () => {
+export const getFaqs = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faqs/getFaqs', async () => {
 	const response = await axios.get('api/help-center/faqs');
 
 	const data = (await response.data) as FaqsModelType;
