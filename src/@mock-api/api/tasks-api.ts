@@ -2,62 +2,64 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
+import { TasksType, TaskType } from '../../app/main/apps/tasks/model/TaskModel';
+import { TagsType } from '../../app/main/apps/tasks/model/TagModel';
 
-let tasksDB = mockApi.components.examples.tasks.value;
-const tagsDB = mockApi.components.examples.tasks_tags.value;
+let tasksDB = mockApi.components.examples.tasks.value as TasksType;
+const tagsDB = mockApi.components.examples.tasks_tags.value as TagsType;
 
-mock.onGet('/api/tasks').reply((config) => {
-  return [200, tasksDB];
+mock.onGet('/api/tasks').reply(() => {
+	return [200, tasksDB];
 });
 
 mock.onPost('/api/tasks').reply(({ data }) => {
-  const newtask = { id: FuseUtils.generateGUID(), ...JSON.parse(data) };
+	const newtask = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as TaskType;
 
-  tasksDB.push(newtask);
+	tasksDB.push(newtask);
 
-  return [200, newtask];
+	return [200, newtask];
 });
 
 mock.onPost('/api/tasks/reorder').reply(({ data }) => {
-  const { startIndex, endIndex } = JSON.parse(data);
-  const ordered = _.merge([], tasksDB);
+	const { startIndex, endIndex } = JSON.parse(data as string) as { startIndex: number; endIndex: number };
+	const ordered = _.merge([], tasksDB);
 
-  const [removed] = ordered.splice(startIndex, 1);
+	const [removed] = ordered.splice(startIndex, 1) as TaskType[];
 
-  ordered.splice(endIndex, 0, removed);
+	ordered.splice(endIndex, 0, removed);
 
-  tasksDB = ordered;
+	tasksDB = ordered;
 
-  return [200, tasksDB];
+	return [200, tasksDB];
 });
 
 mock.onGet(/\/api\/tasks\/(?!tags)[^/]+/).reply((config) => {
-  const { id } = config.url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
-  const task = _.find(tasksDB, { id });
+	const { id } = config.url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
+	const task = _.find(tasksDB, { id });
 
-  if (task) {
-    return [200, task];
-  }
+	if (task) {
+		return [200, task];
+	}
 
-  return [404, 'Requested task do not exist.'];
+	return [404, 'Requested task do not exist.'];
 });
 
 mock.onPut(/\/api\/tasks\/[^/]+/).reply(({ url, data }) => {
-  const { id } = url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
+	const { id } = url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
 
-  _.assign(_.find(tasksDB, { id }), JSON.parse(data));
+	_.assign(_.find(tasksDB, { id }), JSON.parse(data as string));
 
-  return [200, _.find(tasksDB, { id })];
+	return [200, _.find(tasksDB, { id })];
 });
 
 mock.onDelete(/\/api\/tasks\/[^/]+/).reply((config) => {
-  const { id } = config.url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
+	const { id } = config.url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
 
-  _.remove(tasksDB, { id });
+	_.remove(tasksDB, { id });
 
-  return [200, id];
+	return [200, id];
 });
 
-mock.onGet('/api/tasks/tags').reply((config) => {
-  return [200, tagsDB];
+mock.onGet('/api/tasks/tags').reply(() => {
+	return [200, tagsDB];
 });

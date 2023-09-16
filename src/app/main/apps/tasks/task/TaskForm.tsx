@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
@@ -21,22 +21,41 @@ import TaskPrioritySelector from './TaskPrioritySelector';
 import FormActionsMenu from './FormActionsMenu';
 import { addTask, getTask, newTask, selectTask, updateTask } from '../store/taskSlice';
 import { selectTags } from '../store/tagsSlice';
+import { TaskType } from '../model/TaskModel';
+import { TagType } from '../model/TagModel';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a name')
+
+const subTaskSchema = yup.object().shape({
+	id: yup.string(),
+	title: yup.string(),
+	completed: yup.boolean()
 });
 
-function TaskForm(props) {
+const schema = yup.object().shape({
+	id: yup.string(),
+	type: yup.string(),
+	title: yup.string().required('You must enter a name'),
+	notes: yup.string(),
+	completed: yup.boolean(),
+	dueDate: yup.string().nullable(),
+	priority: yup.number(),
+	tags: yup.array(yup.string()),
+	assignedTo: yup.string().nullable(),
+	subTasks: yup.array(subTaskSchema),
+	order: yup.number()
+});
+
+function TaskForm() {
 	const task = useAppSelector(selectTask);
 	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const { control, watch, reset, handleSubmit, formState, getValues } = useForm({
+	const { control, watch, reset, handleSubmit, formState } = useForm({
 		mode: 'onChange',
 		resolver: yupResolver(schema)
 	});
@@ -54,7 +73,7 @@ function TaskForm(props) {
 		}
 
 		if (!_.isEqual(task, form)) {
-			onSubmit(form);
+			onSubmit(form as TaskType);
 		}
 	}, [form, isValid]);
 
@@ -73,13 +92,15 @@ function TaskForm(props) {
 	/**
 	 * Form Submit
 	 */
-	function onSubmit(data) {
+	function onSubmit(data: TaskType) {
 		dispatch(updateTask(data));
 	}
 
-	function onSubmitNew(data) {
+	function onSubmitNew(data: TaskType) {
 		dispatch(addTask(data)).then(({ payload }) => {
-			navigate(`/apps/tasks/${payload.id}`);
+			const { id } = payload as TaskType;
+
+			navigate(`/apps/tasks/${id}`);
 		});
 	}
 
@@ -152,8 +173,8 @@ function TaskForm(props) {
 							className="mt-32"
 							options={tags}
 							disableCloseOnSelect
-							getOptionLabel={(option) => option.title}
-							renderOption={(_props, option, { selected }) => (
+							getOptionLabel={(option: TagType) => option.title}
+							renderOption={(_props, option: TagType, { selected }) => (
 								<li {..._props}>
 									<Checkbox
 										style={{ marginRight: 8 }}
@@ -164,7 +185,7 @@ function TaskForm(props) {
 							)}
 							value={value ? value.map((id) => _.find(tags, { id })) : []}
 							onChange={(event, newValue) => {
-								onChange(newValue.map((item) => item.id));
+								onChange(newValue.map((item: TagType) => item.id));
 							}}
 							fullWidth
 							renderInput={(params) => (
@@ -192,7 +213,6 @@ function TaskForm(props) {
 								className="w-full"
 								value={new Date(value)}
 								onChange={onChange}
-								clearable
 								slotProps={{
 									textField: {
 										id: 'due-date',
@@ -250,9 +270,10 @@ function TaskForm(props) {
 					sx={{ backgroundColor: 'background.default' }}
 				>
 					<Button
+						onClick={() => {
+							navigate(-1);
+						}}
 						className="ml-auto"
-						component={NavLinkAdapter}
-						to={-1}
 					>
 						Cancel
 					</Button>

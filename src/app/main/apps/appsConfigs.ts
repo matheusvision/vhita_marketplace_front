@@ -9,7 +9,7 @@ import MailboxAppConfig from './mailbox/MailboxAppConfig';
 import NotesAppConfig from './notes/NotesAppConfig';
 import ProfileAppConfig from './profile/profileAppConfig';
 // import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
-// import TasksAppConfig from './tasks/TasksAppConfig';
+import TasksAppConfig from './tasks/TasksAppConfig';
 
 const appsConfigs = [
 	AcademyAppConfig,
@@ -21,9 +21,9 @@ const appsConfigs = [
 	HelpCenterAppConfig,
 	MailboxAppConfig,
 	NotesAppConfig,
-	ProfileAppConfig
+	ProfileAppConfig,
 	// ScrumboardAppConfig,
-	// TasksAppConfig,
+	TasksAppConfig
 ];
 
 export default appsConfigs;

@@ -1,7 +1,7 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import withReducer from 'app/store/withReducer';
-import { useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from 'app/store/index';
 import { useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import { styled } from '@mui/material/styles';
@@ -19,9 +19,8 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
-function TasksApp(props) {
+function TasksApp() {
 	const dispatch = useAppDispatch();
-	const pageLayout = useRef(null);
 	const routeParams = useParams();
 	const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
@@ -37,9 +36,8 @@ function TasksApp(props) {
 
 	return (
 		<Root
-			header={<TasksHeader pageLayout={pageLayout} />}
+			header={<TasksHeader />}
 			content={<TasksList />}
-			ref={pageLayout}
 			rightSidebarContent={<TasksSidebarContent />}
 			rightSidebarOpen={rightSidebarOpen}
 			rightSidebarOnClose={() => setRightSidebarOpen(false)}

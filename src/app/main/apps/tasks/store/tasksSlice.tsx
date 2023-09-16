@@ -1,22 +1,26 @@
-import { createAppAsyncThunk, createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { showMessage } from 'app/store/fuse/messageSlice';
-import { addTask, removeTask, updateTask } from './taskSlice';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import { RootState } from 'app/store/index';
+import { addTask, updateTask } from './taskSlice';
+import { TasksType, TaskType } from '../model/TaskModel';
+import { removeLabel } from '../../notes/store/labelsSlice';
 
-export const getTasks = createAppAsyncThunk('tasksApp/tasks/getTasks', async (params, { getState }) => {
+export const getTasks = createAppAsyncThunk<TasksType>('tasksApp/tasks/getTasks', async () => {
 	const response = await axios.get('/api/tasks');
 
-	const data = await response.data;
+	const data = (await response.data) as TasksType;
 
 	return data;
 });
 
-export const reorderList = createAppAsyncThunk(
+export const reorderList = createAppAsyncThunk<TasksType, { startIndex: number; endIndex: number }>(
 	'tasksApp/tasks/reorder',
-	async ({ startIndex, endIndex }, { dispatch, getState }) => {
+	async ({ startIndex, endIndex }, { dispatch }) => {
 		const response = await axios.post('/api/tasks/reorder', { startIndex, endIndex });
 
-		const data = await response.data;
+		const data = (await response.data) as TasksType;
 
 		dispatch(
 			showMessage({
@@ -33,10 +37,12 @@ export const reorderList = createAppAsyncThunk(
 	}
 );
 
-const tasksAdapter = createEntityAdapter({});
+const tasksAdapter = createEntityAdapter<TaskType>({});
+
+const initialState = tasksAdapter.getInitialState([]);
 
 export const { selectAll: selectTasks, selectById: selectTasksById } = tasksAdapter.getSelectors(
-	(state) => state.tasksApp.tasks
+	(state: AppRootState) => state.tasksApp.tasks
 );
 
 export const selectRemainingTasks = createSelector([selectTasks], (tasks) => {
@@ -45,16 +51,22 @@ export const selectRemainingTasks = createSelector([selectTasks], (tasks) => {
 
 const tasksSlice = createSlice({
 	name: 'tasksApp/tasks',
-	initialState: tasksAdapter.getInitialState(),
-	extraReducers: {
-		[reorderList.fulfilled]: tasksAdapter.setAll,
-		[updateTask.fulfilled]: tasksAdapter.upsertOne,
-		[addTask.fulfilled]: tasksAdapter.addOne,
-		[removeTask.fulfilled]: (state, action) => tasksAdapter.removeOne(state, action.payload),
-		[getTasks.fulfilled]: tasksAdapter.setAll
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(reorderList.fulfilled, (state, action) => {
+				tasksAdapter.setAll(state, action.payload);
+			})
+			.addCase(getTasks.fulfilled, (state, action) => {
+				tasksAdapter.setAll(state, action.payload);
+			})
+			.addCase(updateTask.fulfilled, (state, action) => tasksAdapter.upsertOne(state, action.payload))
+			.addCase(addTask.fulfilled, (state, action) => tasksAdapter.addOne(state, action.payload))
+			.addCase(removeLabel.fulfilled, (state, action) => tasksAdapter.removeOne(state, action.payload));
 	}
 });
 
-export const { setTasksSearchText } = tasksSlice.actions;
+export type AppRootState = RootState<typeof tasksSlice>;
 
 export default tasksSlice.reducer;

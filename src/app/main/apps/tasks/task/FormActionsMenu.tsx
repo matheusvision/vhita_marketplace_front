@@ -1,24 +1,29 @@
-import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useAppDispatch } from 'react-redux';
+import { useAppDispatch } from 'app/store/index';
 import { useNavigate } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useState, MouseEvent } from 'react';
 import { removeTask } from '../store/taskSlice';
 
-function FormActionsMenu(props) {
+type FormActionsMenuProps = {
+	taskId: string;
+};
+function FormActionsMenu(props: FormActionsMenuProps) {
 	const { taskId } = props;
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const open = Boolean(anchorEl);
-	const handleClick = (event) => {
+
+	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
+
 	const handleClose = () => {
 		setAnchorEl(null);
 	};

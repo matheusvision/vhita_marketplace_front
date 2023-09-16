@@ -5,15 +5,23 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { Draggable } from 'react-beautiful-dnd';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
-function SectionListItem(props) {
+type SectionListItemProps = {
+	data: {
+		id: string;
+		title: string;
+	};
+	index: number;
+};
+
+function SectionListItem(props: SectionListItemProps) {
 	const { data, index } = props;
+
 	return (
 		<Draggable
 			draggableId={data.id}
 			index={index}
-			type="list"
 		>
-			{(provided, snapshot) => (
+			{(provided) => (
 				<>
 					<ListItem
 						className="px-40 py-12 group"

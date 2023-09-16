@@ -1,12 +1,12 @@
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react-beautiful-dnd';
 import { reorderList, selectTasks } from './store/tasksSlice';
 import TaskListItem from './TaskListItem';
 import SectionListItem from './SectionListItem';
 
-function TasksList(props) {
+function TasksList() {
 	const dispatch = useAppDispatch();
 	const tasks = useAppSelector(selectTasks);
 
@@ -27,20 +27,24 @@ function TasksList(props) {
 		);
 	}
 
-	function onDragEnd(result) {
-		if (!result.destination) {
+	function onDragEnd(result: DropResult) {
+		const { source, destination } = result;
+
+		if (!destination) {
 			return;
 		}
 
-		if (result.destination.index === result.source.index) {
+		const { index: destinationIndex } = destination;
+		const { index: sourceIndex } = source;
+
+		if (destinationIndex === sourceIndex) {
 			return;
 		}
 
 		dispatch(
 			reorderList({
-				arr: tasks,
-				startIndex: result.source.index,
-				endIndex: result.destination.index
+				startIndex: sourceIndex,
+				endIndex: destinationIndex
 			})
 		);
 	}
@@ -52,7 +56,7 @@ function TasksList(props) {
 					type="list"
 					direction="vertical"
 				>
-					{(provided) => (
+					{(provided: DroppableProvided) => (
 						<>
 							<div ref={provided.innerRef}>
 								{tasks.map((item, index) => {

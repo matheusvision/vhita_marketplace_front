@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, MouseEvent, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -33,19 +33,25 @@ const priorityList = [
 	}
 ];
 
-const TaskPrioritySelector = forwardRef((props, ref) => {
-	const { value, onChange, className } = props;
+type TaskPrioritySelectorProps = {
+	value: number;
+	onChange: (val: number) => void;
+	className?: string;
+};
 
-	const [anchorEl, setAnchorEl] = React.useState(null);
+const TaskPrioritySelector = forwardRef<HTMLButtonElement, TaskPrioritySelectorProps>((props, ref) => {
+	const { value = 0, onChange, className } = props;
+
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const open = Boolean(anchorEl);
 
 	const selectedOption = _.find(priorityList, { value });
 
-	const handleClick = (event) => {
+	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleSelect = (val, event) => {
+	const handleSelect = (val: number) => {
 		onChange(val);
 		handleClose();
 	};
@@ -85,7 +91,7 @@ const TaskPrioritySelector = forwardRef((props, ref) => {
 			>
 				{priorityList.map((item) => (
 					<MenuItem
-						onClick={(ev) => handleSelect(item.value, ev)}
+						onClick={() => handleSelect(item.value)}
 						key={item.value}
 					>
 						<ListItemText primary={item.title} />
@@ -101,9 +107,5 @@ const TaskPrioritySelector = forwardRef((props, ref) => {
 		</>
 	);
 });
-
-TaskPrioritySelector.defaultProps = {
-	value: 0
-};
 
 export default TaskPrioritySelector;

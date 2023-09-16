@@ -3,9 +3,10 @@ import { SxProps } from '@mui/system';
 export { default } from './FuseNavigation';
 
 export type FuseNavBadgeType = {
-	bg: string;
-	fg: string;
+	bg?: string;
+	fg?: string;
 	title: string;
+	classes?: string;
 };
 
 export type FuseNavigationType = FuseNavItemType[];
