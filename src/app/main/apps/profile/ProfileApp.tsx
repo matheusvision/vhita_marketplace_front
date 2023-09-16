@@ -7,9 +7,9 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { SyntheticEvent, useState } from 'react';
 import Box from '@mui/material/Box';
-import AboutTab from './tabs/AboutTab';
-import PhotosVideosTab from './tabs/PhotosVideosTab';
-import TimelineTab from './tabs/TimelineTab';
+import AboutTab from './tabs/about/AboutTab';
+import PhotosVideosTab from './tabs/photos-videos/PhotosVideosTab';
+import TimelineTab from './tabs/timeline/TimelineTab';
 import useThemeMediaQuery from '../../../../@fuse/hooks/useThemeMediaQuery';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
