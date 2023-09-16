@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import Box from '@mui/material/Box';
 import AboutTab from './tabs/AboutTab';
 import PhotosVideosTab from './tabs/PhotosVideosTab';
@@ -28,7 +28,7 @@ function ProfileApp() {
 	const [selectedTab, setSelectedTab] = useState(0);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	function handleTabChange(event, value) {
+	function handleTabChange(event: SyntheticEvent, value: number) {
 		setSelectedTab(value);
 	}
 

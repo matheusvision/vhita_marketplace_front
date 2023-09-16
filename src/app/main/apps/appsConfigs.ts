@@ -7,9 +7,9 @@ import FileManagerAppConfig from './file-manager/FileManagerAppConfig';
 import HelpCenterAppConfig from './help-center/HelpCenterAppConfig';
 import MailboxAppConfig from './mailbox/MailboxAppConfig';
 import NotesAppConfig from './notes/NotesAppConfig';
+import ProfileAppConfig from './profile/profileAppConfig';
 // import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 // import TasksAppConfig from './tasks/TasksAppConfig';
-// import ProfileAppConfig from './profile/profileAppConfig';
 
 const appsConfigs = [
 	AcademyAppConfig,
@@ -20,10 +20,10 @@ const appsConfigs = [
 	FileManagerAppConfig,
 	HelpCenterAppConfig,
 	MailboxAppConfig,
-	NotesAppConfig
+	NotesAppConfig,
+	ProfileAppConfig
 	// ScrumboardAppConfig,
 	// TasksAppConfig,
-	// ProfileAppConfig
 ];
 
 export default appsConfigs;

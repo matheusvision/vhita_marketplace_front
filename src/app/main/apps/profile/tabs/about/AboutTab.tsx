@@ -12,22 +12,22 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { ProfileType } from '../../types/ProfileModel';
 
 function AboutTab() {
-	const [data, setData] = useState(null);
-	const test = (x) => x + 1;
+	const [profile, setProfile] = useState<ProfileType>();
 
 	useEffect(() => {
 		axios.get('/api/profile/about').then((res) => {
-			setData(res.data);
+			setProfile(res.data as ProfileType);
 		});
 	}, []);
 
-	if (!data) {
+	if (!profile) {
 		return null;
 	}
 
-	const { general, work, contact, groups, friends } = data;
+	const { general, work, contact, groups, friends } = profile;
 
 	const container = {
 		show: {

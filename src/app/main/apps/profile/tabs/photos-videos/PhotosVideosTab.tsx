@@ -7,13 +7,14 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { AlbumsType } from '../../types/AlbumModel';
 
 function PhotosVideosTab() {
-	const [data, setData] = useState(null);
+	const [data, setData] = useState<AlbumsType>(null);
 
 	useEffect(() => {
 		axios.get('/api/profile/photos-videos').then((res) => {
-			setData(res.data);
+			setData(res.data as AlbumsType);
 		});
 	}, []);
 
