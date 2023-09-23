@@ -75,21 +75,28 @@ type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Res
 	? { [P in Start as P]: PathToType<Rest, T> }
 	: { [P in Str]: T };
 
+// Process an array of slice names
+type MultiplePathsToType<Slices extends unknown[], T = unknown> = Slices extends [infer First, ...infer Rest]
+	? First extends { name: string; getInitialState: () => unknown }
+		? PathToType<First['name'], ReturnType<First['getInitialState']>> & MultiplePathsToType<Rest>
+		: Record<string, never>
+	: Record<string, never>;
+
 export type RootStateWithSlice<SliceType extends { name: string; getInitialState: () => unknown }> = BaseRootState &
 	PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;
 
-/**
- * If no variable is provided, it should return BaseRootState.
- * If one variable is provided (a slice object), it should return RootStateWithSlice.
- * If two variables are provided, it should return DynamicRootState
- */
 export type RootState<
-	T extends string | { name: string; getInitialState: () => unknown } = null,
+	T extends
+		| string
+		| { name: string; getInitialState: () => unknown }
+		| Array<{ name: string; getInitialState: () => unknown }> = null,
 	State = never
 > = T extends string
 	? ExtendedRootState<T, State>
 	: T extends { name: string; getInitialState: () => unknown }
 	? RootStateWithSlice<T>
+	: T extends Array<{ name: string; getInitialState: () => unknown }>
+	? BaseRootState & MultiplePathsToType<T>
 	: BaseRootState;
 
 export const useAppSelector: TypedUseSelectorHook<BaseRootState> = useSelector;
