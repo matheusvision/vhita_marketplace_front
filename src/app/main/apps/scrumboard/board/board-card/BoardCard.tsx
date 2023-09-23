@@ -6,9 +6,10 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { Draggable } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { AvatarGroup } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { MouseEvent } from 'react';
 import { openCardDialog } from '../../store/cardSlice';
 import { selectCardById } from '../../store/cardsSlice';
 import BoardCardLabel from './BoardCardLabel';
@@ -16,28 +17,38 @@ import { selectMembers } from '../../store/membersSlice';
 import BoardCardDueDate from './BoardCardDueDate';
 import BoardCardCheckItems from './BoardCardCheckItems';
 import { selectBoard } from '../../store/boardSlice';
+import { CardType } from '../../model/CardModel';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-	transitionProperty: 'box-shadow',
-	transitionDuration: theme.transitions.duration.short,
-	transitionTimingFunction: theme.transitions.easing.easeInOut
+	'& ': {
+		transitionProperty: 'box-shadow',
+		transitionDuration: theme.transitions.duration.short,
+		transitionTimingFunction: theme.transitions.easing.easeInOut
+	}
 }));
 
-function BoardCard(props) {
+type BoardCardProps = {
+	cardId: string;
+	index: number;
+};
+
+function BoardCard(props: BoardCardProps) {
 	const { cardId, index } = props;
+
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);
-	const card = useAppSelector((state) => selectCardById(state, cardId));
+	const card = useAppSelector(selectCardById(cardId));
 	const members = useAppSelector(selectMembers);
 	const commentsCount = getCommentsCount(card);
 	const cardCoverImage = _.find(card.attachments, { id: card.attachmentCoverId });
 
-	function handleCardClick(ev, _card) {
+	function handleCardClick(ev: MouseEvent<HTMLDivElement>, _card: CardType) {
 		ev.preventDefault();
+
 		dispatch(openCardDialog(_card));
 	}
 
-	function getCommentsCount(_card) {
+	function getCommentsCount(_card: CardType) {
 		return _.sum(_card.activities.map((x) => (x.type === 'comment' ? 1 : 0)));
 	}
 
@@ -45,7 +56,6 @@ function BoardCard(props) {
 		<Draggable
 			draggableId={cardId}
 			index={index}
-			type="card"
 		>
 			{(provided, snapshot) => (
 				<div

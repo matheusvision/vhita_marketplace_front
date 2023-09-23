@@ -3,17 +3,24 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
-import { useAppSelector } from 'react-redux';
+import { useState, MouseEvent } from 'react';
+import { useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
 import { selectMembers } from '../../../../store/membersSlice';
 
-function MembersMenu(props) {
-	const [anchorEl, setAnchorEl] = useState(null);
+type MembersMenuProps = {
+	memberIds: string[];
+	onToggleMember: (memberId: string) => void;
+};
+
+function MembersMenu(props: MembersMenuProps) {
+	const { memberIds, onToggleMember } = props;
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 	const members = useAppSelector(selectMembers);
 
-	function handleMenuOpen(event) {
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -39,11 +46,11 @@ function MembersMenu(props) {
 							<MenuItem
 								className="px-8"
 								key={member.id}
-								onClick={(ev) => {
-									props.onToggleMember(member.id);
+								onClick={() => {
+									onToggleMember(member.id);
 								}}
 							>
-								<Checkbox checked={props.memberIds.includes(member.id)} />
+								<Checkbox checked={memberIds.includes(member.id)} />
 								<Avatar
 									className="w-32 h-32"
 									src={member.avatar}

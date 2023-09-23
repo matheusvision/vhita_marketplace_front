@@ -8,7 +8,7 @@ import HelpCenterAppConfig from './help-center/HelpCenterAppConfig';
 import MailboxAppConfig from './mailbox/MailboxAppConfig';
 import NotesAppConfig from './notes/NotesAppConfig';
 import ProfileAppConfig from './profile/profileAppConfig';
-// import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
+import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 import TasksAppConfig from './tasks/TasksAppConfig';
 
 const appsConfigs = [
@@ -22,7 +22,7 @@ const appsConfigs = [
 	MailboxAppConfig,
 	NotesAppConfig,
 	ProfileAppConfig,
-	// ScrumboardAppConfig,
+	ScrumboardAppConfig,
 	TasksAppConfig
 ];
 

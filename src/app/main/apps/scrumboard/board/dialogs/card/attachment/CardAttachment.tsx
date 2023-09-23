@@ -5,13 +5,24 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { AttachmentType, CardType } from '../../../../model/CardModel';
 
-function CardAttachment(props) {
-	const [anchorEl, setAnchorEl] = useState(null);
+type CardAttachmentProps = {
+	item: AttachmentType;
+	card: CardType;
+	makeCover: (id: string) => void;
+	removeCover: () => void;
+	removeAttachment: (id: string) => void;
+};
 
-	function handleMenuOpen(event) {
+function CardAttachment(props: CardAttachmentProps) {
+	const { item, card, makeCover, removeCover, removeAttachment } = props;
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -19,26 +30,26 @@ function CardAttachment(props) {
 		setAnchorEl(null);
 	}
 
-	switch (props.item.type) {
+	switch (item.type) {
 		case 'image': {
 			return (
 				<div
 					className="flex w-full sm:w-1/2 mb-16 px-16"
-					key={props.item.id}
+					key={item.id}
 				>
 					<div className="flex items-center justify-center min-w-128 w-128 h-128">
 						<Paper className="overflow-hidden shadow">
 							<img
 								className="block max-h-full max-h-full"
-								src={props.item.src}
+								src={item.src}
 								alt="attachment"
 							/>
 						</Paper>
 					</div>
 					<div className="flex flex-auto flex-col justify-center items-start min-w-0 px-16">
 						<div className="flex items-center w-full">
-							<Typography className="text-16 font-semibold truncate shrink">{props.item.name}</Typography>
-							{props.card.attachmentCoverId === props.item.id && (
+							<Typography className="text-16 font-semibold truncate shrink">{item.name}</Typography>
+							{card.attachmentCoverId === item.id && (
 								<FuseSvgIcon
 									className="text-orange-300 mx-4"
 									size={20}
@@ -51,7 +62,7 @@ function CardAttachment(props) {
 							className="truncate w-full mb-12"
 							color="text.secondary"
 						>
-							{format(fromUnixTime(props.item.time), 'Pp')}
+							{format(fromUnixTime(item.time), 'Pp')}
 						</Typography>
 						<Button
 							aria-owns={anchorEl ? 'actions-menu' : null}
@@ -69,11 +80,11 @@ function CardAttachment(props) {
 							open={Boolean(anchorEl)}
 							onClose={handleMenuClose}
 						>
-							{props.card.attachmentCoverId !== props.item.id ? (
+							{card.attachmentCoverId !== item.id ? (
 								<MenuItem
 									onClick={() => {
 										handleMenuClose();
-										props.makeCover(props.item.id);
+										makeCover(item.id);
 									}}
 								>
 									Make Cover
@@ -82,7 +93,7 @@ function CardAttachment(props) {
 								<MenuItem
 									onClick={() => {
 										handleMenuClose();
-										props.removeCover();
+										removeCover();
 									}}
 								>
 									Remove Cover
@@ -91,7 +102,7 @@ function CardAttachment(props) {
 							<MenuItem
 								onClick={() => {
 									handleMenuClose();
-									props.removeAttachment(props.item.id);
+									removeAttachment(item.id);
 								}}
 							>
 								Remove Attachment
@@ -105,18 +116,18 @@ function CardAttachment(props) {
 			return (
 				<div
 					className="flex w-full sm:w-1/2 mb-16 px-16"
-					key={props.item.id}
+					key={item.id}
 				>
 					<Paper className="min-w-128 w-128 h-128 flex items-center justify-center rounded-4 overflow-hidden shadow">
 						<Typography className="font-semibold">LINK</Typography>
 					</Paper>
 					<div className="flex flex-auto flex-col justify-center items-start min-w-0 px-16">
-						<Typography className="text-16 font-semibold truncate w-full">{props.item.url}</Typography>
+						<Typography className="text-16 font-semibold truncate w-full">{item.url}</Typography>
 						<Typography
 							className="truncate w-full mb-12"
 							color="text.secondary"
 						>
-							{props.item.time}
+							{item.time}
 						</Typography>
 						<Button
 							aria-owns={anchorEl ? 'actions-menu' : null}
@@ -137,7 +148,7 @@ function CardAttachment(props) {
 							<MenuItem
 								onClick={() => {
 									handleMenuClose();
-									props.removeAttachment(props.item.id);
+									removeAttachment(item.id);
 								}}
 							>
 								Remove Attachment

@@ -1,8 +1,19 @@
 import FuseUtils from '@fuse/utils';
 import getUnixTime from 'date-fns/getUnixTime';
 import _ from '@lodash';
+import { PartialDeep } from 'type-fest';
 
-function CommentModel(data) {
+export type CommentType = {
+	id: string;
+	type: string;
+	idMember: string;
+	message: string;
+	time: number;
+};
+
+export type CommentsType = CommentType[];
+
+function CommentModel(data: PartialDeep<CommentType>) {
 	data = data || {};
 
 	return _.defaults(data, {

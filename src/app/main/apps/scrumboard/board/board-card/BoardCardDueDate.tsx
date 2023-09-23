@@ -5,7 +5,12 @@ import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
-function BoardCardDueDate({ dueDate }) {
+type BoardCardDueDateProps = {
+	dueDate: number;
+};
+function BoardCardDueDate(props: BoardCardDueDateProps) {
+	const { dueDate } = props;
+
 	if (!dueDate) {
 		return null;
 	}

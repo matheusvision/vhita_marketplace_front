@@ -4,13 +4,20 @@ import Typography from '@mui/material/Typography';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Box from '@mui/material/Box';
-import { useAppSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import { selectMemberById } from '../../../../store/membersSlice';
+import { CommentType } from '../../../../model/CommentModel';
 
-function CardActivity(props) {
-	const user = useAppSelector((state) => selectMemberById(state, props.item.idMember));
+type CardActivityProps = {
+	item: CommentType;
+};
 
-	switch (props.item.type) {
+function CardActivity(props: CardActivityProps) {
+	const { item } = props;
+
+	const user = useAppSelector(selectMemberById(item.idMember));
+
+	switch (item.type) {
 		case 'comment': {
 			return (
 				<ListItem
@@ -35,10 +42,10 @@ function CardActivity(props) {
 								className="mx-8 text-12"
 								color="text.secondary"
 							>
-								{formatDistanceToNow(fromUnixTime(props.item.time), { addSuffix: true })}
+								{formatDistanceToNow(fromUnixTime(item.time), { addSuffix: true })}
 							</Typography>
 						</div>
-						<Typography>{props.item.message}</Typography>
+						<Typography>{item.message}</Typography>
 					</Box>
 				</ListItem>
 			);
@@ -56,12 +63,12 @@ function CardActivity(props) {
 					/>
 					<div className="flex items-center mx-16">
 						<Typography>{user?.name},</Typography>
-						<Typography className="mx-8">{props.item.message}</Typography>
+						<Typography className="mx-8">{item.message}</Typography>
 						<Typography
 							className="text-12"
 							color="text.secondary"
 						>
-							{formatDistanceToNow(fromUnixTime(props.item.time), { addSuffix: true })}
+							{formatDistanceToNow(fromUnixTime(item.time), { addSuffix: true })}
 						</Typography>
 					</div>
 				</ListItem>

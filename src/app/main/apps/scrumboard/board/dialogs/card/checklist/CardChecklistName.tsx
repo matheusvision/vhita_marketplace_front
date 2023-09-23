@@ -1,16 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState, MouseEvent } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { ChecklistType } from '../../../../model/ChecklistModel';
 
 /**
  * Form Validation Schema
@@ -19,33 +18,44 @@ const schema = yup.object().shape({
 	name: yup.string().required('You must enter a title')
 });
 
-const CardChecklistName = forwardRef(function CardChecklistName(props, ref) {
+export type CardChecklistHandle = {
+	openForm: (ev: React.MouseEvent<HTMLElement>) => void;
+};
+
+type CardChecklistNameProps = {
+	name: string;
+	onNameChange: (name: string) => void;
+};
+
+const CardChecklistName = forwardRef<CardChecklistHandle, CardChecklistNameProps>((props, ref) => {
+	const { name, onNameChange } = props;
+
 	const [formOpen, setFormOpen] = useState(false);
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues: {
-			name: props.name
+			name
 		},
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	useEffect(() => {
 		if (!formOpen) {
 			reset({
-				name: props.name
+				name
 			});
 		}
-	}, [formOpen, reset, props.name]);
+	}, [formOpen, reset, name]);
 
 	useImperativeHandle(ref, () => {
 		return {
-			openForm: handleOpenForm
+			openForm: (ev) => handleOpenForm(ev)
 		};
 	});
 
-	function handleOpenForm(ev) {
+	function handleOpenForm(ev: React.MouseEvent<HTMLElement>) {
 		ev.stopPropagation();
 		setFormOpen(true);
 	}
@@ -54,8 +64,8 @@ const CardChecklistName = forwardRef(function CardChecklistName(props, ref) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(data) {
-		props.onNameChange(data.name);
+	function onSubmit(data: ChecklistType) {
+		onNameChange(data.name);
 		handleCloseForm();
 	}
 
@@ -94,7 +104,7 @@ const CardChecklistName = forwardRef(function CardChecklistName(props, ref) {
 			className="text-16 font-semibold cursor-pointer mx-8"
 			onClick={handleOpenForm}
 		>
-			{props.name}
+			{name}
 		</Typography>
 	);
 });

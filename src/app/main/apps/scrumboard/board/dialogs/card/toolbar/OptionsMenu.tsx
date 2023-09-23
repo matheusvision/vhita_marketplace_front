@@ -1,13 +1,19 @@
 import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
 
-function OptionsMenu(props) {
-	const [anchorEl, setAnchorEl] = useState(null);
+type OptionsMenuProps = {
+	onRemoveCard: () => void;
+};
 
-	function handleMenuOpen(event) {
+function OptionsMenu(props: OptionsMenuProps) {
+	const { onRemoveCard } = props;
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
+
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -27,7 +33,7 @@ function OptionsMenu(props) {
 				state={anchorEl}
 				onClose={handleMenuClose}
 			>
-				<MenuItem onClick={props.onRemoveCard}>Remove Card</MenuItem>
+				<MenuItem onClick={onRemoveCard}>Remove Card</MenuItem>
 			</ToolbarMenu>
 		</div>
 	);

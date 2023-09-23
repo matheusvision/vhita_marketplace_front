@@ -5,12 +5,13 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'react-redux';
+import { MouseEvent, useEffect, useState } from 'react';
+import { useAppDispatch } from 'app/store/index';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { newCard } from '../../store/cardsSlice';
+import { CardType } from '../../model/CardModel';
 
 const defaultValues = {
 	title: ''
@@ -23,7 +24,13 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a title')
 });
 
-function BoardAddCard(props) {
+type BoardAddCardProps = {
+	listId: string;
+	onCardAdded: () => void;
+};
+
+function BoardAddCard(props: BoardAddCardProps) {
+	const { listId, onCardAdded } = props;
 	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
@@ -33,7 +40,7 @@ function BoardAddCard(props) {
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	useEffect(() => {
 		if (!formOpen) {
@@ -41,7 +48,7 @@ function BoardAddCard(props) {
 		}
 	}, [formOpen, reset]);
 
-	function handleOpenForm(ev) {
+	function handleOpenForm(ev: MouseEvent<HTMLButtonElement>) {
 		ev.stopPropagation();
 		setFormOpen(true);
 	}
@@ -50,10 +57,11 @@ function BoardAddCard(props) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(newData) {
-		dispatch(newCard({ listId: props.listId, newData })).then(() => {
-			props.onCardAdded();
+	function onSubmit(newData: CardType) {
+		dispatch(newCard({ listId, newData })).then(() => {
+			onCardAdded();
 		});
+
 		handleCloseForm();
 	}
 

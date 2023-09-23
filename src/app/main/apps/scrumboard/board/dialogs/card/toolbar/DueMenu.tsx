@@ -4,15 +4,23 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import getUnixTime from 'date-fns/getUnixTime';
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
 
-function DueMenu(props) {
-	const [anchorEl, setAnchorEl] = useState(null);
-	const dueDate = props.dueDate ? format(fromUnixTime(props.dueDate), 'Pp') : format(new Date(), 'Pp');
+type DueMenuProps = {
+	dueDate: number;
+	onDueChange: (dueDate: number) => void;
+	onRemoveDue: () => void;
+};
+function DueMenu(props: DueMenuProps) {
+	const { dueDate, onDueChange, onRemoveDue } = props;
 
-	function handleMenuOpen(event) {
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
+
+	const formatteddueDate = dueDate ? format(fromUnixTime(dueDate), 'Pp') : format(new Date(), 'Pp');
+
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -33,22 +41,22 @@ function DueMenu(props) {
 				onClose={handleMenuClose}
 			>
 				<div className="p-16 max-w-192">
-					{props.dueDate ? (
+					{formatteddueDate ? (
 						<MenuItem
-							onClick={(ev) => {
-								props.onRemoveDue();
-								handleMenuClose(ev);
+							onClick={() => {
+								onRemoveDue();
+								handleMenuClose();
 							}}
 						>
 							Remove Due Date
 						</MenuItem>
 					) : (
 						<DateTimePicker
-							value={new Date(dueDate)}
+							value={new Date(formatteddueDate)}
 							format="Pp"
-							onChange={(val, ev) => {
-								props.onDueChange(getUnixTime(val));
-								handleMenuClose(ev);
+							onChange={(val) => {
+								onDueChange(getUnixTime(val));
+								handleMenuClose();
 							}}
 							slotProps={{
 								textField: {

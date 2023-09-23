@@ -3,12 +3,12 @@ import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, MouseEvent } from 'react';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
-import ChecklistModel from '../../../../model/ChecklistModel';
+import ChecklistModel, { ChecklistType } from '../../../../model/ChecklistModel';
 
 /**
  * Form Validation Schema
@@ -17,12 +17,20 @@ const schema = yup.object().shape({
 	name: yup.string().required('You must enter a title')
 });
 
-function CheckListMenu(props) {
-	const [anchorEl, setAnchorEl] = useState(null);
+type CheckListMenuProps = {
+	name?: string;
+	onAddCheckList: (checklist: ChecklistType) => void;
+};
+
+function CheckListMenu(props: CheckListMenuProps) {
+	const { onAddCheckList, name } = props;
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
+
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues: {
-			name: props.name
+			name
 		},
 		resolver: yupResolver(schema)
 	});
@@ -32,12 +40,12 @@ function CheckListMenu(props) {
 	useEffect(() => {
 		if (!anchorEl) {
 			reset({
-				name: props.name
+				name
 			});
 		}
-	}, [anchorEl, reset, props.name]);
+	}, [anchorEl, reset, name]);
 
-	function handleMenuOpen(event) {
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -45,8 +53,8 @@ function CheckListMenu(props) {
 		setAnchorEl(null);
 	}
 
-	function onSubmit(data) {
-		props.onAddCheckList(ChecklistModel(data));
+	function onSubmit(data: ChecklistType) {
+		onAddCheckList(ChecklistModel(data));
 		handleMenuClose();
 	}
 

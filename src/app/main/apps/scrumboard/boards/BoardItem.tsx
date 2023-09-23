@@ -5,20 +5,27 @@ import Card from '@mui/material/Card';
 import { AvatarGroup } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
 import { formatDistance } from 'date-fns';
-import { useAppSelector } from 'react-redux';
 import _ from '@lodash';
+import { useAppSelector } from 'app/store/index';
+import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { selectMembers } from '../store/membersSlice';
+import { BoardType } from '../model/BoardModel';
 
-function BoardItem(props) {
+type BoardItemProps = {
+	board: BoardType;
+};
+
+function BoardItem(props: BoardItemProps) {
 	const { board } = props;
+
 	const members = useAppSelector(selectMembers);
+
 	const boardMembers = board.members.map((id) => _.find(members, { id }));
 
 	return (
 		<Card
-			component={Link}
+			component={NavLinkAdapter}
 			to={board.id}
 			role="button"
 			className="flex flex-col items-start w-full h-full p-24 rounded-lg shadow rounded-lg hover:shadow-xl transition-shadow duration-150 ease-in-out"

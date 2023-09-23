@@ -1,13 +1,11 @@
-import withReducer from 'app/store/withReducer';
 import { useState } from 'react';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import reducer from '../store';
 import { getBoard, reorderCard, reorderList, resetBoard, selectBoard } from '../store/boardSlice';
 import BoardAddList from './board-list/BoardAddList';
 import BoardList from './board-list/BoardList';
@@ -18,7 +16,7 @@ import { getLists } from '../store/listsSlice';
 import { getLabels } from '../store/labelsSlice';
 import BoardHeader from './BoardHeader';
 
-function Board(props) {
+function Board() {
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
@@ -37,7 +35,7 @@ function Board(props) {
 		};
 	}, [dispatch, routeParams]);
 
-	function onDragEnd(result) {
+	function onDragEnd(result: DropResult) {
 		const { source, destination } = result;
 
 		// dropped nowhere
@@ -70,39 +68,37 @@ function Board(props) {
 			<FusePageSimple
 				header={<BoardHeader onSetSidebarOpen={setSidebarOpen} />}
 				content={
-					<>
-						{board?.lists && (
-							<div className="flex flex-1 overflow-x-auto overflow-y-hidden h-full">
-								<DragDropContext onDragEnd={onDragEnd}>
-									<Droppable
-										droppableId="list"
-										type="list"
-										direction="horizontal"
-									>
-										{(provided) => (
-											<div
-												ref={provided.innerRef}
-												className="flex py-16 md:py-24 px-8 md:px-12"
-											>
-												{board?.lists.map((list, index) => (
-													<BoardList
-														key={list.id}
-														listId={list.id}
-														cardIds={list.cards}
-														index={index}
-													/>
-												))}
+					board?.lists ? (
+						<div className="flex flex-1 overflow-x-auto overflow-y-hidden h-full">
+							<DragDropContext onDragEnd={onDragEnd}>
+								<Droppable
+									droppableId="list"
+									type="list"
+									direction="horizontal"
+								>
+									{(provided) => (
+										<div
+											ref={provided.innerRef}
+											className="flex py-16 md:py-24 px-8 md:px-12"
+										>
+											{board?.lists.map((list, index) => (
+												<BoardList
+													key={list.id}
+													listId={list.id}
+													cardIds={list.cards}
+													index={index}
+												/>
+											))}
 
-												{provided.placeholder}
+											{provided.placeholder}
 
-												<BoardAddList />
-											</div>
-										)}
-									</Droppable>
-								</DragDropContext>
-							</div>
-						)}
-					</>
+											<BoardAddList />
+										</div>
+									)}
+								</Droppable>
+							</DragDropContext>
+						</div>
+					) : null
 				}
 				rightSidebarOpen={sidebarOpen}
 				rightSidebarContent={<BoardSettingsSidebar onSetSidebarOpen={setSidebarOpen} />}
@@ -115,4 +111,4 @@ function Board(props) {
 	);
 }
 
-export default withReducer('scrumboardApp', reducer)(withRouter(Board));
+export default withRouter(Board);

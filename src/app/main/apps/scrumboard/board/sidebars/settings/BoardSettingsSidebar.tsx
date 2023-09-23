@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -15,9 +15,17 @@ import _ from '@lodash';
 import { useDebounce, useDeepCompareEffect } from '@fuse/hooks';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import { PartialDeep } from 'type-fest';
 import { deleteBoard, selectBoard, updateBoard } from '../../../store/boardSlice';
+import { BoardType } from '../../../model/BoardModel';
 
-function BoardSettingsSidebar(props) {
+type BoardSettingsSidebarProps = {
+	onSetSidebarOpen: (open: boolean) => void;
+};
+
+function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
+	const { onSetSidebarOpen } = props;
+
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);
 
@@ -28,7 +36,7 @@ function BoardSettingsSidebar(props) {
 
 	const boardSettingsForm = watch();
 
-	const updateBoardData = useDebounce((data) => {
+	const updateBoardData = useDebounce((data: PartialDeep<BoardType>) => {
 		dispatch(updateBoard(data));
 	}, 600);
 
@@ -65,7 +73,7 @@ function BoardSettingsSidebar(props) {
 			>
 				<Toolbar className="flex items-center px-4">
 					<IconButton
-						onClick={() => props.onSetSidebarOpen(false)}
+						onClick={() => onSetSidebarOpen(false)}
 						color="inherit"
 						size="large"
 					>

@@ -5,9 +5,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
-import { useAppSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import { selectMemberById } from '../../../../store/membersSlice';
-import CommentModel from '../../../../model/CommentModel';
+import CommentModel, { CommentType } from '../../../../model/CommentModel';
 
 /**
  * Form Validation Schema
@@ -21,8 +21,14 @@ const defaultValues = {
 	message: ''
 };
 
-function CardComment(props) {
-	const user = useAppSelector((state) => selectMemberById(state, defaultValues.idMember));
+type CardCommentProps = {
+	onCommentAdd: (comment: CommentType) => void;
+};
+
+function CardComment(props: CardCommentProps) {
+	const { onCommentAdd } = props;
+
+	const user = useAppSelector(selectMemberById(defaultValues.idMember));
 
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
@@ -32,8 +38,8 @@ function CardComment(props) {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data) {
-		props.onCommentAdd(CommentModel({ ...defaultValues, ...data }));
+	function onSubmit(data: CommentType) {
+		onCommentAdd(CommentModel({ ...defaultValues, ...data }));
 		reset(defaultValues);
 	}
 
@@ -62,7 +68,7 @@ function CardComment(props) {
 							fullWidth
 							error={!!errors.message}
 							helperText={errors?.message?.message}
-							row={3}
+							rows={3}
 							variant="outlined"
 							label="Add comment"
 							placeholder="Write a comment..."

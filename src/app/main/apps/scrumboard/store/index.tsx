@@ -1,20 +1,11 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import board from './boardSlice';
-import boards from './boardsSlice';
-import card from './cardSlice';
-import cards from './cardsSlice';
-import lists from './listsSlice';
-import labels from './labelsSlice';
-import members from './membersSlice';
+import boardSlice from './boardSlice';
+import boardsSlice from './boardsSlice';
+import cardSlice from './cardSlice';
+import cardsSlice from './cardsSlice';
+import listsSlice from './listsSlice';
+import labelsSlice from './labelsSlice';
+import membersSlice from './membersSlice';
 
-const scrumboardAppReducers = combineReducers({
-	boards,
-	board,
-	card,
-	cards,
-	lists,
-	labels,
-	members
-});
+const slices = [boardSlice, boardsSlice, cardSlice, cardsSlice, listsSlice, labelsSlice, membersSlice];
 
-export default scrumboardAppReducers;
+export default slices;

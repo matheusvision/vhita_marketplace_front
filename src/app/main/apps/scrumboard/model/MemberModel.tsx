@@ -2,20 +2,23 @@ import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 
-export type CheckListItemType = {
-	id: number;
+export type MemberType = {
+	id?: string;
 	name: string;
-	checked: boolean;
+	avatar: string;
+	class?: string;
 };
 
-function ChecklistItemModel(data: PartialDeep<CheckListItemType>) {
+export type MembersType = MemberType[];
+
+function MemberModel(data: PartialDeep<MemberType>) {
 	data = data || {};
 
 	return _.defaults(data, {
 		id: FuseUtils.generateGUID(),
 		name: '',
-		checked: false
+		avatar: ''
 	});
 }
 
-export default ChecklistItemModel;
+export default MemberModel;

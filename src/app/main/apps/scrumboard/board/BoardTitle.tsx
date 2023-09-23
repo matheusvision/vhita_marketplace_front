@@ -6,12 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useEffect, useState, MouseEvent } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectBoard, updateBoard } from '../store/boardSlice';
+import { BoardType } from '../model/BoardModel';
 
 /**
  * Form Validation Schema
@@ -20,7 +21,7 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a title')
 });
 
-function BoardTitle(props) {
+function BoardTitle() {
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);
 
@@ -34,7 +35,7 @@ function BoardTitle(props) {
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	useEffect(() => {
 		if (!formOpen) {
@@ -44,7 +45,7 @@ function BoardTitle(props) {
 		}
 	}, [formOpen, reset, board.title]);
 
-	function handleOpenForm(ev) {
+	function handleOpenForm(ev: MouseEvent<HTMLDivElement>) {
 		ev.stopPropagation();
 		setFormOpen(true);
 	}
@@ -53,7 +54,7 @@ function BoardTitle(props) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(data) {
+	function onSubmit(data: BoardType) {
 		dispatch(updateBoard(data));
 		handleCloseForm();
 	}

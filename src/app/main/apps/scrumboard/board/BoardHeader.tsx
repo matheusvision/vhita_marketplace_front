@@ -3,7 +3,13 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import BoardTitle from './BoardTitle';
 
-function BoardHeader(props) {
+type BoardHeaderProps = {
+	onSetSidebarOpen: (open: boolean) => void;
+};
+
+function BoardHeader(props: BoardHeaderProps) {
+	const { onSetSidebarOpen } = props;
+
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1 flex flex-col sm:flex-row items-center justify-between container">
 			<div className="flex items-center mb-12 sm:mb-0">
@@ -24,7 +30,7 @@ function BoardHeader(props) {
 					className="whitespace-nowrap"
 					variant="contained"
 					color="secondary"
-					onClick={() => props.onSetSidebarOpen(true)}
+					onClick={() => onSetSidebarOpen(true)}
 					startIcon={<FuseSvgIcon size={20}>heroicons-outline:cog</FuseSvgIcon>}
 				>
 					Settings

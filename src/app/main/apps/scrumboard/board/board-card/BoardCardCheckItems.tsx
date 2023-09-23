@@ -2,16 +2,23 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Chip from '@mui/material/Chip';
 import _ from '@lodash';
+import { CardType } from '../../model/CardModel';
 
-function BoardCardCheckItems({ card }) {
+type BoardCardCheckItemsProps = {
+	card: CardType;
+};
+
+function BoardCardCheckItems(props: BoardCardCheckItemsProps) {
+	const { card } = props;
+
 	const checkItemsChecked = getCheckItemsChecked(card);
 	const checkItems = getCheckItems(card);
 
-	function getCheckItemsChecked(_card) {
+	function getCheckItemsChecked(_card: CardType) {
 		return _.sum(_card.checklists.map((list) => _.sum(list.checkItems.map((x) => (x.checked ? 1 : 0)))));
 	}
 
-	function getCheckItems(_card) {
+	function getCheckItems(_card: CardType) {
 		return _.sum(_card.checklists.map((x) => x.checkItems.length));
 	}
 

@@ -1,59 +1,73 @@
-import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import { RootState } from 'app/store/index';
 import { removeList } from './listsSlice';
 import { removeCard, updateCard } from './cardSlice';
-import CardModel from '../model/CardModel';
+import CardModel, { CardsType, CardType } from '../model/CardModel';
+import { BoardSliceType } from './boardSlice';
 
-export const getCards = createAppAsyncThunk('scrumboardApp/cards/getCards', async (boardId) => {
+type DynamicAppRootState = RootState<[CardsSliceType, BoardSliceType]>;
+
+export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/cards/getCards', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/cards`);
-	const data = await response.data;
+
+	const data = (await response.data) as CardsType;
 
 	return data;
 });
 
-export const newCard = createAppAsyncThunk(
+export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: CardType }>(
 	'scrumboardApp/cards/newCard',
-	async ({ listId, newData }, { dispatch, getState }) => {
-		const { board } = getState().scrumboardApp;
+	async ({ listId, newData }, { getState }) => {
+		const AppState = getState() as DynamicAppRootState;
+
+		const { board } = AppState.scrumboardApp;
 
 		const response = await axios.post(
 			`/api/scrumboard/boards/${board.id}/lists/${listId}/cards`,
 			CardModel(newData)
 		);
-		const data = await response.data;
+
+		const data = (await response.data) as CardType;
 
 		return data;
 	}
 );
 
-const cardsAdapter = createEntityAdapter({});
+const cardsAdapter = createEntityAdapter<CardType>({});
 
-export const { selectAll: selectCards, selectById: selectCardById } = cardsAdapter.getSelectors(
-	(state) => state.scrumboardApp.cards
+export const { selectAll: selectCards, selectById } = cardsAdapter.getSelectors(
+	(state: DynamicAppRootState) => state.scrumboardApp.cards
 );
 
 const cardsSlice = createSlice({
 	name: 'scrumboardApp/cards',
 	initialState: cardsAdapter.getInitialState({}),
 	reducers: {
-		resetCards: (state, action) => {}
+		resetCards: () => {}
 	},
-	extraReducers: {
-		[getCards.fulfilled]: cardsAdapter.setAll,
-		[removeList.fulfilled]: (state, action) => {
-			const listId = action.payload;
-			const { selectAll } = cardsAdapter.getSelectors();
-			const cards = selectAll(state);
-			const removedCardIds = _.map(_.filter(cards, { listId }), 'id');
-			return cardsAdapter.removeMany(state, removedCardIds);
-		},
-		[newCard.fulfilled]: cardsAdapter.addOne,
-		[updateCard.fulfilled]: cardsAdapter.setOne,
-		[removeCard.fulfilled]: cardsAdapter.removeOne
+	extraReducers: (builder) => {
+		builder
+			.addCase(getCards.fulfilled, (state, action) => cardsAdapter.setAll(state, action.payload))
+			.addCase(removeList.fulfilled, (state, action) => {
+				const listId = action.payload;
+				const { selectAll } = cardsAdapter.getSelectors();
+				const cards = selectAll(state);
+				const removedCardIds = _.map(_.filter(cards, { listId }), 'id');
+				return cardsAdapter.removeMany(state, removedCardIds);
+			})
+			.addCase(newCard.fulfilled, (state, action) => cardsAdapter.addOne(state, action.payload))
+			.addCase(updateCard.fulfilled, (state, action) => cardsAdapter.setOne(state, action.payload))
+			.addCase(removeCard.fulfilled, (state, action) => cardsAdapter.removeOne(state, action.payload));
 	}
 });
 
 export const { resetCards } = cardsSlice.actions;
 
-export default cardsSlice.reducer;
+export const selectCardById = (id: CardType['id']) => (state: DynamicAppRootState) => selectById(state, id);
+
+export type CardsSliceType = typeof cardsSlice;
+
+export default cardsSlice;

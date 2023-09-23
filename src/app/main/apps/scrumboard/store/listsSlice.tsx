@@ -1,14 +1,20 @@
-import { createAppAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import ListModel from '../model/ListModel';
+import { RootState } from 'app/store/index';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import ListModel, { ListsType, ListType } from '../model/ListModel';
+import { BoardType } from '../model/BoardModel';
+import { BoardSliceType } from './boardSlice';
+
+type DynamicAppRootState = RootState<[ListsSliceType, BoardSliceType]>;
 
 /**
  * Get Board Lists
  */
-export const getLists = createAppAsyncThunk('scrumboardApp/lists/get', async (boardId) => {
+export const getLists = createAppAsyncThunk<ListsType, string>('scrumboardApp/lists/get', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/lists`);
 
-	const data = await response.data;
+	const data = (await response.data) as ListsType;
 
 	return data;
 });
@@ -16,27 +22,32 @@ export const getLists = createAppAsyncThunk('scrumboardApp/lists/get', async (bo
 /**
  * Create List
  */
-export const newList = createAppAsyncThunk('scrumboardApp/lists/new', async (list, { dispatch, getState }) => {
-	const { board } = getState().scrumboardApp;
+export const newList = createAppAsyncThunk<ListType, ListType>(
+	'scrumboardApp/lists/new',
+	async (list, { getState }) => {
+		const AppState = getState() as DynamicAppRootState;
+		const board = AppState.scrumboardApp.board as BoardType;
 
-	const response = await axios.post(`/api/scrumboard/boards/${board.id}/lists`, ListModel(list));
+		const response = await axios.post(`/api/scrumboard/boards/${board.id}/lists`, ListModel(list));
 
-	const data = await response.data;
+		const data = (await response.data) as ListType;
 
-	return data;
-});
+		return data;
+	}
+);
 
 /**
  * Update list
  */
-export const updateList = createAppAsyncThunk(
+export const updateList = createAppAsyncThunk<ListType, { id: string; newData: ListType }>(
 	'scrumboardApp/lists/update',
-	async ({ id, newData }, { dispatch, getState }) => {
-		const { board } = getState().scrumboardApp;
+	async ({ id, newData }, { getState }) => {
+		const AppState = getState() as DynamicAppRootState;
+		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}/lists/${id}`, newData);
 
-		const data = await response.data;
+		const data = (await response.data) as ListType;
 
 		return data;
 	}
@@ -45,35 +56,46 @@ export const updateList = createAppAsyncThunk(
 /**
  * Remove list
  */
-export const removeList = createAppAsyncThunk('scrumboardApp/lists/remove', async (id, { dispatch, getState }) => {
-	const { board } = getState().scrumboardApp;
+export const removeList = createAppAsyncThunk<string, string>(
+	'scrumboardApp/lists/remove',
+	async (id, { getState }) => {
+		const AppState = getState() as DynamicAppRootState;
+		const board = AppState.scrumboardApp.board as BoardType;
 
-	const response = await axios.delete(`/api/scrumboard/boards/${board.id}/lists/${id}`);
+		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/lists/${id}`);
 
-	await response.data;
+		(await response.data) as string;
 
-	return id;
-});
-const listsAdapter = createEntityAdapter({});
+		return id;
+	}
+);
 
-export const { selectAll: selectLists, selectById: selectListById } = listsAdapter.getSelectors(
-	(state) => state.scrumboardApp.lists
+const listsAdapter = createEntityAdapter<ListType>({});
+const initialState = listsAdapter.getInitialState({});
+
+export const { selectAll: selectLists, selectById } = listsAdapter.getSelectors(
+	(state: DynamicAppRootState) => state.scrumboardApp.lists
 );
 
 const listsSlice = createSlice({
 	name: 'scrumboardApp/lists',
-	initialState: listsAdapter.getInitialState({}),
+	initialState,
 	reducers: {
-		resetLists: (state, action) => {}
+		resetLists: () => initialState
 	},
-	extraReducers: {
-		[getLists.fulfilled]: listsAdapter.setAll,
-		[updateList.fulfilled]: listsAdapter.setOne,
-		[removeList.fulfilled]: listsAdapter.removeOne,
-		[newList.fulfilled]: listsAdapter.addOne
+	extraReducers: (builder) => {
+		builder
+			.addCase(getLists.fulfilled, (state, action) => listsAdapter.setAll(state, action.payload))
+			.addCase(newList.fulfilled, (state, action) => listsAdapter.addOne(state, action.payload))
+			.addCase(updateList.fulfilled, (state, action) => listsAdapter.upsertOne(state, action.payload))
+			.addCase(removeList.fulfilled, (state, action) => listsAdapter.removeOne(state, action.payload));
 	}
 });
 
 export const { resetLists } = listsSlice.actions;
 
-export default listsSlice.reducer;
+export const selectListById = (id: ListType['id']) => (state: DynamicAppRootState) => selectById(state, id);
+
+export type ListsSliceType = typeof listsSlice;
+
+export default listsSlice;

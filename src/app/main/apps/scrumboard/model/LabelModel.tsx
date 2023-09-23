@@ -1,12 +1,20 @@
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 
-function LabelModel(data) {
+export type LabelType = {
+	id: string;
+	boardId: string;
+	title: string;
+};
+
+export type LabelsType = LabelType[];
+
+function LabelModel(data: Partial<LabelType>) {
 	data = data || {};
 	return _.defaults(data, {
 		id: FuseUtils.generateGUID(),
-		name: '',
-		class: 'bg-blue text-white'
+		boardId: '',
+		title: ''
 	});
 }
 

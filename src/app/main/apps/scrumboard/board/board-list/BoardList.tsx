@@ -4,22 +4,30 @@ import CardContent from '@mui/material/CardContent';
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { useAppSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/index';
 import BoardAddCard from '../board-card/BoardAddCard';
 import BoardCard from '../board-card/BoardCard';
 import BoardListHeader from './BoardListHeader';
 import { selectListById } from '../../store/listsSlice';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-	transitionProperty: 'box-shadow',
-	transitionDuration: theme.transitions.duration.short,
-	transitionTimingFunction: theme.transitions.easing.easeInOut
+	'&': {
+		transitionProperty: 'box-shadow',
+		transitionDuration: theme.transitions.duration.short,
+		transitionTimingFunction: theme.transitions.easing.easeInOut
+	}
 }));
 
-function BoardList(props) {
-	const { listId, cardIds } = props;
-	const contentScrollEl = useRef(null);
-	const list = useAppSelector((state) => selectListById(state, listId));
+type BoardListProps = {
+	listId: string;
+	cardIds: string[];
+	index: number;
+};
+
+function BoardList(props: BoardListProps) {
+	const { listId, cardIds, index } = props;
+	const contentScrollEl = useRef<null | HTMLDivElement>(null);
+	const list = useAppSelector(selectListById(listId));
 
 	function handleCardAdded() {
 		contentScrollEl.current.scrollTop = contentScrollEl.current.scrollHeight;
@@ -32,13 +40,13 @@ function BoardList(props) {
 	return (
 		<Draggable
 			draggableId={listId}
-			index={props.index}
-			type="list"
+			index={index}
 		>
 			{(provided, snapshot) => (
 				<div
 					ref={provided.innerRef}
 					{...provided.draggableProps}
+					{...provided.dragHandleProps}
 				>
 					<StyledCard
 						sx={{
@@ -60,35 +68,32 @@ function BoardList(props) {
 							handleProps={provided.dragHandleProps}
 						/>
 
-						<>
-							<CardContent
-								className="flex flex-col flex-1 flex-auto h-full min-h-0 w-full p-0 overflow-auto"
-								ref={contentScrollEl}
+						<CardContent
+							className="flex flex-col flex-1 flex-auto h-full min-h-0 w-full p-0 overflow-auto"
+							ref={contentScrollEl}
+						>
+							<Droppable
+								droppableId={listId}
+								direction="vertical"
+								type="card"
 							>
-								<Droppable
-									droppableId={listId}
-									type="card"
-									direction="vertical"
-								>
-									{(_provided) => (
-										<div
-											ref={_provided.innerRef}
-											className="flex flex-col w-full h-full px-12 min-h-1"
-										>
-											{cardIds.map((cardId, index) => (
-												<BoardCard
-													key={cardId}
-													cardId={cardId}
-													index={index}
-													list={list}
-												/>
-											))}
-											{_provided.placeholder}
-										</div>
-									)}
-								</Droppable>
-							</CardContent>
-						</>
+								{(_provided) => (
+									<div
+										ref={_provided.innerRef}
+										className="flex flex-col w-full h-full p-12 min-h-1"
+									>
+										{cardIds.map((cardId, index) => (
+											<BoardCard
+												key={cardId}
+												cardId={cardId}
+												index={index}
+											/>
+										))}
+										{_provided.placeholder}
+									</div>
+								)}
+							</Droppable>
+						</CardContent>
 
 						<div className="p-12">
 							<BoardAddCard

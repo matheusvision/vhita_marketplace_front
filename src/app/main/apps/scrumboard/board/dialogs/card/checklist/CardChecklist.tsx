@@ -8,16 +8,25 @@ import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import CardAddChecklistItem from './CardAddChecklistItem';
 import CardChecklistItem from './CardChecklistItem';
-import CardChecklistName from './CardChecklistName';
+import CardChecklistName, { CardChecklistHandle } from './CardChecklistName';
+import { ChecklistType } from '../../../../model/ChecklistModel';
 
-function CardChecklist(props) {
-	const { onCheckListChange, checklist, index } = props;
-	const [anchorEl, setAnchorEl] = useState(null);
-	const checkListNameRef = useRef();
+type CardChecklistProps = {
+	onCheckListChange: (checklist: ChecklistType, index: number) => void;
+	checklist: ChecklistType;
+	index: number;
+	onRemoveCheckList: () => void;
+};
+
+function CardChecklist(props: CardChecklistProps) {
+	const { onCheckListChange, checklist, index, onRemoveCheckList } = props;
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const checkListNameRef = useRef<CardChecklistHandle | null>(null);
+
 	const { watch, control } = useForm({ mode: 'onChange', defaultValues: checklist });
 	const form = watch();
 
@@ -27,12 +36,14 @@ function CardChecklist(props) {
 		}
 	}, [form, index, onCheckListChange, checklist]);
 
-	function handleOpenNameForm(ev) {
+	function handleOpenNameForm(ev: React.MouseEvent<HTMLElement>) {
 		handleMenuClose();
-		checkListNameRef.current.openForm(ev);
+		if (checkListNameRef.current) {
+			checkListNameRef.current.openForm(ev);
+		}
 	}
 
-	function handleMenuOpen(event) {
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -70,7 +81,6 @@ function CardChecklist(props) {
 						aria-owns={anchorEl ? 'actions-menu' : null}
 						aria-haspopup="true"
 						onClick={handleMenuOpen}
-						variant="outlined"
 						size="small"
 					>
 						<FuseSvgIcon size={20}>heroicons-outline:dots-vertical</FuseSvgIcon>
@@ -81,7 +91,7 @@ function CardChecklist(props) {
 						open={Boolean(anchorEl)}
 						onClose={handleMenuClose}
 					>
-						<MenuItem onClick={props.onRemoveCheckList}>
+						<MenuItem onClick={onRemoveCheckList}>
 							<ListItemIcon className="min-w-40">
 								<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 							</ListItemIcon>

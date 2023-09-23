@@ -1,9 +1,9 @@
 import Dialog from '@mui/material/Dialog';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { closeCardDialog, selectCardDialogOpen } from '../../../store/cardSlice';
 import BoardCardForm from './BoardCardForm';
 
-function BoardCardDialog(props) {
+function BoardCardDialog() {
 	const dispatch = useAppDispatch();
 	const cardDialogOpen = useAppSelector(selectCardDialogOpen);
 
@@ -12,7 +12,7 @@ function BoardCardDialog(props) {
 			classes={{
 				paper: 'max-w-lg w-full m-8 sm:m-24'
 			}}
-			onClose={(ev) => dispatch(closeCardDialog())}
+			onClose={() => dispatch(closeCardDialog())}
 			open={cardDialogOpen}
 		>
 			<BoardCardForm />

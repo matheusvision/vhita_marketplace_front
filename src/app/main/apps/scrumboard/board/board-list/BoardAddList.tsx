@@ -9,12 +9,13 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'react-redux';
+import { useEffect, useState, MouseEvent } from 'react';
+import { useAppDispatch } from 'app/store/index';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { newList } from '../../store/listsSlice';
+import { ListType } from '../../model/ListModel';
 
 const defaultValues = {
 	title: ''
@@ -27,7 +28,7 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a title')
 });
 
-function BoardAddList(props) {
+function BoardAddList() {
 	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
@@ -37,7 +38,7 @@ function BoardAddList(props) {
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	useEffect(() => {
 		if (!formOpen) {
@@ -45,7 +46,7 @@ function BoardAddList(props) {
 		}
 	}, [formOpen, reset]);
 
-	function handleOpenForm(ev) {
+	function handleOpenForm(ev: MouseEvent<HTMLButtonElement>) {
 		ev.stopPropagation();
 		setFormOpen(true);
 	}
@@ -54,7 +55,7 @@ function BoardAddList(props) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(data) {
+	function onSubmit(data: ListType) {
 		dispatch(newList(data));
 		handleCloseForm();
 	}

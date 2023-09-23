@@ -7,7 +7,7 @@ import * as yup from 'yup';
 
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import ChecklistItemModel from '../../../../model/ChecklistItemModel';
+import ChecklistItemModel, { CheckListItemType } from '../../../../model/ChecklistItemModel';
 
 /**
  * Form Validation Schema
@@ -16,21 +16,27 @@ const schema = yup.object().shape({
 	name: yup.string().required('You must enter a title')
 });
 
-function CardAddChecklistItem(props) {
+type CardAddChecklistItemProps = {
+	name?: string;
+	onListItemAdd: (item: CheckListItemType) => void;
+};
+
+function CardAddChecklistItem(props: CardAddChecklistItemProps) {
+	const { name, onListItemAdd } = props;
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues: {
-			name: props.name
+			name
 		},
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
-	function onSubmit(data) {
-		props.onListItemAdd(ChecklistItemModel(data));
+	function onSubmit(data: CheckListItemType) {
+		onListItemAdd(ChecklistItemModel(data));
 		reset({
-			name: props.name
+			name
 		});
 	}
 

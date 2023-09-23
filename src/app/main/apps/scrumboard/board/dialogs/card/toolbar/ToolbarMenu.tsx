@@ -1,11 +1,17 @@
 import Popover from '@mui/material/Popover';
 
-function ToolbarMenu(props) {
+type ToolbarMenuProps = {
+	state: null | HTMLButtonElement;
+	onClose: () => void;
+	children: React.ReactNode;
+};
+function ToolbarMenu(props: ToolbarMenuProps) {
+	const { state, onClose, children } = props;
 	return (
 		<Popover
-			open={Boolean(props.state)}
-			anchorEl={props.state}
-			onClose={props.onClose}
+			open={Boolean(state)}
+			anchorEl={state}
+			onClose={onClose}
 			anchorOrigin={{
 				vertical: 'bottom',
 				horizontal: 'center'
@@ -15,7 +21,7 @@ function ToolbarMenu(props) {
 				horizontal: 'center'
 			}}
 		>
-			<>{props.children}</>
+			{children}
 		</Popover>
 	);
 }

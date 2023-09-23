@@ -3,18 +3,24 @@ import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
-import { useAppSelector } from 'react-redux';
+import { useState, MouseEvent } from 'react';
+import { useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
 import { selectLabels } from '../../../../store/labelsSlice';
 
-function LabelsMenu(props) {
-	const labels = useAppSelector(selectLabels);
+type LabelsMenuProps = {
+	labels: string[];
+	onToggleLabel: (labelId: string) => void;
+};
+function LabelsMenu(props: LabelsMenuProps) {
+	const { labels, onToggleLabel } = props;
 
-	const [anchorEl, setAnchorEl] = useState(null);
+	const labelsArr = useAppSelector(selectLabels);
 
-	function handleMenuOpen(event) {
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
+
+	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -35,16 +41,16 @@ function LabelsMenu(props) {
 				onClose={handleMenuClose}
 			>
 				<div className="">
-					{labels.map((label) => {
+					{labelsArr.map((label) => {
 						return (
 							<MenuItem
 								className="px-8"
 								key={label.id}
-								onClick={(ev) => {
-									props.onToggleLabel(label.id);
+								onClick={() => {
+									onToggleLabel(label.id);
 								}}
 							>
-								<Checkbox checked={props.labels.includes(label.id)} />
+								<Checkbox checked={labels.includes(label.id)} />
 								<ListItemText className="mx-8">{label.title}</ListItemText>
 								<ListItemIcon className="min-w-24">
 									<FuseSvgIcon>heroicons-outline:tag</FuseSvgIcon>

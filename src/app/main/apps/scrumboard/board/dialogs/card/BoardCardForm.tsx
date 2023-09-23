@@ -17,7 +17,7 @@ import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { closeCardDialog, removeCard, selectCardData, updateCard } from '../../../store/cardSlice';
@@ -34,20 +34,25 @@ import LabelsMenu from './toolbar/LabelsMenu';
 import MembersMenu from './toolbar/MembersMenu';
 import CheckListMenu from './toolbar/CheckListMenu';
 import OptionsMenu from './toolbar/OptionsMenu';
+import { CardType } from '../../../model/CardModel';
+import { LabelsType, LabelType } from '../../../model/LabelModel';
+import { MembersType, MemberType } from '../../../model/MemberModel';
+import { ChecklistsType } from '../../../model/ChecklistModel';
+import { CommentsType } from '../../../model/CommentModel';
 
-function BoardCardForm(props) {
+function BoardCardForm() {
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);
 	const labels = useAppSelector(selectLabels);
 	const members = useAppSelector(selectMembers);
 	const card = useAppSelector(selectCardData);
-	const list = useAppSelector((state) => selectListById(state, card?.listId));
+	const list = useAppSelector(selectListById(card?.listId));
 
 	const { register, watch, control, setValue } = useForm({ mode: 'onChange', defaultValues: card });
 
 	const cardForm = watch();
 
-	const updateCardData = useDebounce((newCard) => {
+	const updateCardData = useDebounce((newCard: CardType) => {
 		dispatch(updateCard(newCard));
 	}, 600);
 
@@ -160,11 +165,11 @@ function BoardCardForm(props) {
 							multiple
 							freeSolo
 							options={labels}
-							getOptionLabel={(label) => {
+							getOptionLabel={(label: LabelType) => {
 								return label.title;
 							}}
 							value={cardForm.labels.map((id) => _.find(labels, { id }))}
-							onChange={(event, newValue) => {
+							onChange={(event, newValue: LabelsType) => {
 								setValue(
 									'labels',
 									newValue.map((item) => item.id)
@@ -207,11 +212,11 @@ function BoardCardForm(props) {
 							multiple
 							freeSolo
 							options={members}
-							getOptionLabel={(member) => {
+							getOptionLabel={(member: MemberType) => {
 								return member.name;
 							}}
 							value={cardForm.memberIds.map((id) => _.find(members, { id }))}
-							onChange={(event, newValue) => {
+							onChange={(event, newValue: MembersType) => {
 								setValue(
 									'memberIds',
 									newValue.map((item) => item.id)
@@ -282,7 +287,10 @@ function BoardCardForm(props) {
 							checklist={checklist}
 							index={index}
 							onCheckListChange={(item, itemIndex) => {
-								setValue('checklists', _.setIn(cardForm.checklists, `[${itemIndex}]`, item));
+								setValue(
+									'checklists',
+									_.setIn(cardForm.checklists, `[${itemIndex}]`, item) as ChecklistsType
+								);
 							}}
 							onRemoveCheckList={() => {
 								setValue('checklists', _.reject(cardForm.checklists, { id: checklist.id }));
@@ -297,7 +305,9 @@ function BoardCardForm(props) {
 					</div>
 					<div>
 						<CardComment
-							onCommentAdd={(comment) => setValue('activities', [comment, ...cardForm.activities])}
+							onCommentAdd={(comment) =>
+								setValue('activities', [comment, ...cardForm.activities] as CommentsType)
+							}
 						/>
 					</div>
 				</div>
@@ -306,7 +316,7 @@ function BoardCardForm(props) {
 					name="activities"
 					control={control}
 					defaultValue={[]}
-					render={({ field: { onChange, value } }) => (
+					render={({ field: { value } }) => (
 						<div>
 							{value.length > 0 && (
 								<div className="mb-24">
@@ -337,7 +347,7 @@ function BoardCardForm(props) {
 					<IconButton
 						className="order-last sm:order-first"
 						color="inherit"
-						onClick={(ev) => dispatch(closeCardDialog())}
+						onClick={() => dispatch(closeCardDialog())}
 						size="large"
 					>
 						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
@@ -384,7 +394,7 @@ function BoardCardForm(props) {
 							name="attachments"
 							control={control}
 							defaultValue={[]}
-							render={({ field: { onChange, value } }) => (
+							render={() => (
 								<IconButton size="large">
 									<FuseSvgIcon>heroicons-outline:paper-clip</FuseSvgIcon>
 								</IconButton>
@@ -395,7 +405,7 @@ function BoardCardForm(props) {
 							name="checklists"
 							control={control}
 							defaultValue={[]}
-							render={({ field: { onChange, value } }) => (
+							render={({ field: { onChange } }) => (
 								<CheckListMenu
 									onAddCheckList={(newList) => onChange([...cardForm.checklists, newList])}
 								/>

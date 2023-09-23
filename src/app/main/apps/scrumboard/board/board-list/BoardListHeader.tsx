@@ -1,5 +1,4 @@
 import { Controller, useForm } from 'react-hook-form';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
@@ -10,14 +9,17 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'react-redux';
+import { useEffect, useState, MouseEvent } from 'react';
+import { useAppDispatch } from 'app/store/index';
 import * as yup from 'yup';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
 import { darken } from '@mui/material/styles';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import clsx from 'clsx';
+import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import { removeList, updateList } from '../../store/listsSlice';
+import { ListType } from '../../model/ListModel';
 
 /**
  * Form Validation Schema
@@ -26,11 +28,18 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a title')
 });
 
-function BoardListHeader(props) {
-	const { list, cardIds } = props;
+type BoardListHeaderProps = {
+	list: ListType;
+	cardIds: string[];
+	handleProps: DraggableProvidedDragHandleProps;
+	className?: string;
+};
+
+function BoardListHeader(props: BoardListHeaderProps) {
+	const { list, cardIds, className, handleProps } = props;
 	const dispatch = useAppDispatch();
 
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 	const [formOpen, setFormOpen] = useState(false);
 
 	const { control, formState, handleSubmit, reset } = useForm({
@@ -41,7 +50,7 @@ function BoardListHeader(props) {
 		resolver: yupResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	useEffect(() => {
 		if (!formOpen) {
@@ -57,7 +66,7 @@ function BoardListHeader(props) {
 		}
 	}, [anchorEl, formOpen]);
 
-	function handleMenuClick(event) {
+	function handleMenuClick(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);
 	}
 
@@ -65,7 +74,7 @@ function BoardListHeader(props) {
 		setAnchorEl(null);
 	}
 
-	function handleOpenForm(ev) {
+	function handleOpenForm(ev: MouseEvent<HTMLAnchorElement | HTMLLIElement>) {
 		ev.stopPropagation();
 		setFormOpen(true);
 	}
@@ -74,14 +83,14 @@ function BoardListHeader(props) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(newData) {
+	function onSubmit(newData: ListType) {
 		dispatch(updateList({ id: list.id, newData }));
 		handleCloseForm();
 	}
 
 	return (
-		<div {...props.handleProps}>
-			<div className="flex items-center justify-between h-48 sm:h-56 px-12">
+		<div {...handleProps}>
+			<div className={clsx('flex items-center justify-between h-48 sm:h-56 px-12', className)}>
 				<div className="flex items-center min-w-0">
 					{formOpen ? (
 						<ClickAwayListener onClickAway={handleCloseForm}>
@@ -141,7 +150,6 @@ function BoardListHeader(props) {
 						aria-owns={anchorEl ? 'actions-menu' : null}
 						aria-haspopup="true"
 						onClick={handleMenuClick}
-						variant="outlined"
 						size="small"
 					>
 						<FuseSvgIcon size={20}>heroicons-outline:dots-vertical</FuseSvgIcon>

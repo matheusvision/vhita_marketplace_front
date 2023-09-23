@@ -6,9 +6,17 @@ import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { CheckListItemType } from '../../../../model/ChecklistItemModel';
 
-function CardChecklistItem(props) {
-	const { item, onListItemChange, index } = props;
+type CardChecklistItemProps = {
+	item: CheckListItemType;
+	onListItemChange: (item: CheckListItemType, index: number) => void;
+	index: number;
+	onListItemRemove: () => void;
+};
+function CardChecklistItem(props: CardChecklistItemProps) {
+	const { item, onListItemChange, index, onListItemRemove } = props;
+
 	const { control, watch } = useForm({ mode: 'onChange', defaultValues: item });
 	const form = watch();
 
@@ -52,7 +60,7 @@ function CardChecklistItem(props) {
 
 			<IconButton
 				aria-label="Delete"
-				onClick={props.onListItemRemove}
+				onClick={onListItemRemove}
 				size="large"
 			>
 				<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>

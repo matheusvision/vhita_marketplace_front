@@ -1,13 +1,14 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/index';
 import { getBoards, resetBoards, selectBoards } from '../store/boardsSlice';
 import BoardItem from './BoardItem';
 import NewBoardItem from './NewBoardItem';
 
-function Boards(props) {
+function Boards() {
 	const dispatch = useAppDispatch();
+	// const boards = [];
 	const boards = useAppSelector(selectBoards);
 
 	useEffect(() => {
@@ -30,6 +31,11 @@ function Boards(props) {
 		show: { opacity: 1, y: 0 }
 	};
 
+	if (!boards) {
+		// handle the "loading" state or return null
+		return null;
+	}
+
 	return (
 		<div className="flex grow shrink-0 flex-col items-center container p-24 sm:p-40">
 			<motion.div
@@ -47,7 +53,7 @@ function Boards(props) {
 				animate="show"
 				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 mt-32 md:mt-64"
 			>
-				{boards.map((board) => (
+				{boards?.map((board) => (
 					<motion.div
 						variants={item}
 						className="min-w-full sm:min-w-224 min-h-360"

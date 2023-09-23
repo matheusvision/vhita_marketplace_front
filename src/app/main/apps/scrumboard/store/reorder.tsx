@@ -1,7 +1,9 @@
 import _ from '@lodash';
+import { DropResult } from 'react-beautiful-dnd';
+import { BoardListsType } from '../model/BoardModel';
 
 // a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
+const reorder = (list: string[], startIndex: number, endIndex: number) => {
 	const result = Array.from(list);
 	const [removed] = result.splice(startIndex, 1);
 	result.splice(endIndex, 0, removed);
@@ -11,7 +13,11 @@ const reorder = (list, startIndex, endIndex) => {
 
 export default reorder;
 
-export const reorderQuoteMap = (lists, source, destination) => {
+export const reorderQuoteMap = (
+	lists: BoardListsType,
+	source: DropResult['source'],
+	destination: DropResult['destination']
+) => {
 	const current = _.find(lists, { id: source.droppableId });
 	const next = _.find(lists, { id: destination.droppableId });
 	const target = current.cards[source.index];

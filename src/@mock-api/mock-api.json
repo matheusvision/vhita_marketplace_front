@@ -6552,7 +6552,7 @@
             ],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22188,7 +22188,7 @@
             ],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22236,21 +22236,21 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "0d1eb062-13d5-4286-b8d4-e0bea15f3d56",
                 "message": "We should be able to add date-fns without any problems",
                 "time": 1642766737
               },
               {
-                "id": 2,
+                "id": "2",
                 "type": "comment",
                 "idMember": "d1f612e6-3e3b-481f-a8a9-f917e243b06e",
                 "message": "I added a link for a page that might help us deciding the colors",
                 "time": 1642766137
               },
               {
-                "id": 3,
+                "id": "3",
                 "type": "attachment",
                 "idMember": "8af617d7-898e-4992-beda-d5ac1d7ceda4",
                 "message": "attached a link",
@@ -22290,7 +22290,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22334,7 +22334,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22409,7 +22409,7 @@
             ],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22449,14 +22449,14 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "0d1eb062-13d5-4286-b8d4-e0bea15f3d56",
                 "message": "We should be able to add date-fns without any problems",
                 "time": 1642766737
               },
               {
-                "id": 2,
+                "id": "2",
                 "type": "comment",
                 "idMember": "d1f612e6-3e3b-481f-a8a9-f917e243b06e",
                 "message": "I added a link for a page that might help us deciding the colors",
@@ -22503,7 +22503,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22541,7 +22541,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22579,7 +22579,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22622,7 +22622,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22707,7 +22707,7 @@
             ],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
@@ -22750,7 +22750,7 @@
             "checklists": [],
             "activities": [
               {
-                "id": 1,
+                "id": "1",
                 "type": "comment",
                 "idMember": "6726643d-e8dc-42fa-83a6-b4ec06921a6b",
                 "message": "AngularCLI could be a nice alternative.",
