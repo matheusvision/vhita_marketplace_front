@@ -5,6 +5,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { LabelModelType } from '../model/LabelModel';
 
+type AppRootState = RootState<labelsSliceType>;
+
 export const getLabels = createAppAsyncThunk('calendarApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/calendar/labels');
 	const data = (await response.data) as LabelModelType[];
@@ -83,12 +85,12 @@ const labelsSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof labelsSlice>;
-
-export const selectSelectedLabels = (state: AppRootState) => state.calendarApp.labels.selectedLabels;
-export const selectFirstLabelId = (state: AppRootState) => state.calendarApp.labels.ids[0];
-export const selectLabelsDialogOpen = (state: AppRootState) => state.calendarApp.labels.labelsDialogOpen;
+export const selectSelectedLabels = (state: AppRootState) => state.calendarApp.labels?.selectedLabels;
+export const selectFirstLabelId = (state: AppRootState) => state.calendarApp.labels?.ids[0];
+export const selectLabelsDialogOpen = (state: AppRootState) => state.calendarApp.labels?.labelsDialogOpen;
 
 export const { toggleSelectedLabels, openLabelsDialog, closeLabelsDialog } = labelsSlice.actions;
 
-export default labelsSlice.reducer;
+export type labelsSliceType = typeof labelsSlice;
+
+export default labelsSlice;

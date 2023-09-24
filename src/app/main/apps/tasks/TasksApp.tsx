@@ -1,5 +1,4 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
-import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useParams } from 'react-router-dom';
@@ -9,7 +8,6 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import TasksSidebarContent from './TasksSidebarContent';
 import TasksHeader from './TasksHeader';
 import TasksList from './TasksList';
-import reducer from './store';
 import { getTags } from './store/tagsSlice';
 import { getTasks } from './store/tasksSlice';
 
@@ -47,4 +45,4 @@ function TasksApp() {
 	);
 }
 
-export default withReducer('tasksApp', reducer)(TasksApp);
+export default TasksApp;

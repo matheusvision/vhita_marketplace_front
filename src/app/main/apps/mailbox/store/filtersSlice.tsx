@@ -4,6 +4,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootState } from 'app/store/index';
 import { FilterType, FiltersType } from '../model/FilterModel';
 
+export type AppRootState = RootState<filtersSliceType>;
+
 export const getFilters = createAppAsyncThunk<FiltersType>('mailboxApp/filters/getFilters', async () => {
 	const response = await axios.get('/api/mailbox/filters');
 
@@ -27,6 +29,6 @@ const filtersSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof filtersSlice>;
+export type filtersSliceType = typeof filtersSlice;
 
-export default filtersSlice.reducer;
+export default filtersSlice;

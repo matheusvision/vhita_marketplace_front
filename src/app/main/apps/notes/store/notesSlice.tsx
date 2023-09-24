@@ -6,6 +6,8 @@ import { RootState } from 'app/store/index';
 import { ChangeEvent } from 'react';
 import { NotesType, NoteType } from '../model/NoteModel';
 
+export type AppRootState = RootState<notesSliceType>;
+
 export type RouteParamsType = {
 	filter: string;
 	id: string;
@@ -128,19 +130,19 @@ const notesSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof notesSlice>;
-
 export const { setNotesSearchText, resetNotesSearchText, toggleVariateDescSize, openNoteDialog, closeNoteDialog } =
 	notesSlice.actions;
 
-export const selectVariateDescSize = (state: AppRootState) => state.notesApp.notes.variateDescSize;
+export const selectVariateDescSize = (state: AppRootState) => state.notesApp?.notes.variateDescSize;
 
-export const selectSearchText = (state: AppRootState) => state.notesApp.notes.searchText;
+export const selectSearchText = (state: AppRootState) => state.notesApp?.notes.searchText;
 
-export const selectDialogNoteId = (state: AppRootState) => state.notesApp.notes.noteDialogId;
+export const selectDialogNoteId = (state: AppRootState) => state.notesApp?.notes.noteDialogId;
 
 export const selectDialogNote = createSelector([selectDialogNoteId, selectNotesEntities], (noteId, notesEntities) => {
 	return notesEntities[noteId];
 });
 
-export default notesSlice.reducer;
+export type notesSliceType = typeof notesSlice;
+
+export default notesSlice;

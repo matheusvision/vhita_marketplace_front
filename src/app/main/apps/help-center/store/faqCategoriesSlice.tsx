@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { FaqCategoriesType, FaqCategoryType } from '../model/FaqCategoryModel';
 
+export type AppRootState = RootState<faqCategoriesSliceType>;
+
 export const getFaqCategories = createAppAsyncThunk<FaqCategoriesType>('helpCenterApp/faqCategories/get', async () => {
 	const response = await axios.get('api/help-center/faqs/categories');
 
@@ -30,6 +32,6 @@ const faqCategoriesSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof faqCategoriesSlice>;
+export type faqCategoriesSliceType = typeof faqCategoriesSlice;
 
-export default faqCategoriesSlice.reducer;
+export default faqCategoriesSlice;

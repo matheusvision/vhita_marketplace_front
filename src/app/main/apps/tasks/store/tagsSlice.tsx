@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { TagsType } from '../model/TagModel';
 
+export type AppRootState = RootState<tagsSliceType>;
+
 export const getTags = createAppAsyncThunk('tasksApp/tags/getTags', async () => {
 	const response = await axios.get('/api/tasks/tags');
 
@@ -30,6 +32,6 @@ const tagsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof tagsSlice>;
+export type tagsSliceType = typeof tagsSlice;
 
-export default tagsSlice.reducer;
+export default tagsSlice;

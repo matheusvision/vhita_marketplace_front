@@ -7,6 +7,8 @@ import PricesType from '../types/PricesType';
 import WalletsType from '../types/WalletsType';
 import WatchlistType from '../types/WatchlistType';
 
+type AppRootState = RootState<widgetsSliceType>;
+
 type WidgetsType = {
 	btc?: BTCWidgetType;
 	prices?: PricesType;
@@ -16,10 +18,6 @@ type WidgetsType = {
 
 type CryptoDashboardAppState = {
 	widgets?: WidgetsType;
-};
-
-type ExtendedRootState = RootState & {
-	cryptoDashboardApp: CryptoDashboardAppState;
 };
 
 export const getWidgets = createAppAsyncThunk('cryptoDashboardApp/widgets/getWidgets', async () => {
@@ -41,6 +39,8 @@ const widgetsSlice = createSlice({
 	}
 });
 
-export const selectWidgets = (state: ExtendedRootState) => state.cryptoDashboardApp.widgets;
+export const selectWidgets = (state: AppRootState) => state.cryptoDashboardApp.widgets;
 
-export default widgetsSlice.reducer;
+export type widgetsSliceType = typeof widgetsSlice;
+
+export default widgetsSlice;

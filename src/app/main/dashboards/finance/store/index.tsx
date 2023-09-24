@@ -1,8 +1,5 @@
-import { combineReducers } from '@reduxjs/toolkit';
 import widgets from './widgetsSlice';
 
-const reducer = combineReducers({
-	widgets
-});
+const slices = [widgets];
 
-export default reducer;
+export default slices;

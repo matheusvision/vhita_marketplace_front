@@ -5,6 +5,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { GuideCategoriesType, GuideCategoryType } from '../model/GuideCategoryModel';
 
+export type AppRootState = RootState<guideCategoriesSliceType>;
+
 export const getGuideCategories = createAppAsyncThunk<GuideCategoriesType>(
 	'helpCenterApp/guideCategories/get',
 	async () => {
@@ -33,11 +35,11 @@ const guideCategoriesSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof guideCategoriesSlice>;
-
 export const selectGuideCategorieseBySlug = (slug: GuideCategoryType['slug']) =>
 	createSelector([selectGuideCategories], (categories) => {
 		return _.find(categories, { slug });
 	});
 
-export default guideCategoriesSlice.reducer;
+export type guideCategoriesSliceType = typeof guideCategoriesSlice;
+
+export default guideCategoriesSlice;

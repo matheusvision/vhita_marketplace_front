@@ -4,6 +4,8 @@ import axios from 'axios';
 import { RootState } from 'app/store/index';
 import { FileManagerItemType, FileManagerItemsType } from '../model/FileManagerItemModel';
 
+export type AppRootState = RootState<itemsSliceType>;
+
 type ItemResponseType = { items: FileManagerItemsType; path: ItemPathType };
 
 export const getItems = createAppAsyncThunk<ItemResponseType, string>(
@@ -53,8 +55,6 @@ const itemsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof itemsSlice>;
-
 export const selectFolders = createSelector([selectItems], (items) => {
 	return items.filter((item) => item.type === 'folder');
 });
@@ -73,4 +73,6 @@ export const { setSelectedItem } = itemsSlice.actions;
 
 export const selectItemByIds = (id: FileManagerItemType['id']) => (state: AppRootState) => selectById(state, id);
 
-export default itemsSlice.reducer;
+export type itemsSliceType = typeof itemsSlice;
+
+export default itemsSlice;

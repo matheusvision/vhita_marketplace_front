@@ -1,8 +1,9 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
 import ContactView from './contact/ContactView';
 import ContactForm from './contact/ContactForm';
+import slices from './store';
 
-const ContactsApp = lazy(() => import('./ContactsApp'));
+const ContactsApp = lazyWithSlices(() => import('./ContactsApp'), slices);
 
 const ContactsAppConfig = {
 	settings: {

@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import axios from 'axios';
 import { OrderType } from '../order/model/OrderModel';
 
+export type AppRootState = RootState<orderSliceType>;
+
 export const getOrder = createAppAsyncThunk('eCommerceApp/order/getOrder', async (orderId: string) => {
 	const response = await axios.get(`/api/ecommerce/orders/${orderId}`);
 
@@ -33,10 +35,10 @@ const orderSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof orderSlice>;
-
 export const { resetOrder } = orderSlice.actions;
 
 export const selectOrder = (state: AppRootState) => state.eCommerceApp.order;
 
-export default orderSlice.reducer;
+export type orderSliceType = typeof orderSlice;
+
+export default orderSlice;

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-function HelpCenterApp() {
+function ECommerceApp() {
 	return <Outlet />;
 }
 
-export default HelpCenterApp;
+export default ECommerceApp;

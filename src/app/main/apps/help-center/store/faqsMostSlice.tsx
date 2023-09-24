@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { FaqModelType, FaqsModelType } from '../model/FaqModel';
 
+export type AppRootState = RootState<faqsMostSliceType>;
+
 export const getFaqsMost = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faqsMost/get', async () => {
 	const response = await axios.get('/api/help-center/faqs/most-asked');
 
@@ -15,7 +17,7 @@ export const getFaqsMost = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faq
 const faqsMostAdapter = createEntityAdapter<FaqModelType>({});
 
 export const { selectAll: selectFaqsMost, selectById: selectFaqsMostById } = faqsMostAdapter.getSelectors(
-	(state: AppRootState) => state.helpCenterApp.faqsMost
+	(state: AppRootState) => state.helpCenterApp?.faqsMost
 );
 
 const faqsMostSlice = createSlice({
@@ -27,6 +29,6 @@ const faqsMostSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof faqsMostSlice>;
+export type faqsMostSliceType = typeof faqsMostSlice;
 
-export default faqsMostSlice.reducer;
+export default faqsMostSlice;

@@ -6,6 +6,8 @@ import { getChatList } from './chatListSlice';
 import { ChatMessagesModelType, ChatMessageModelType } from '../model/ChatMessageModel';
 import { ContactModelType } from '../model/ContactModel';
 
+type AppRootState = RootState<chatMessagesSliceType>;
+
 export const getChat = createAppAsyncThunk<ChatMessagesModelType, ChatMessageModelType['contactId']>(
 	'chatApp/chat/getChat',
 	async (contactId) => {
@@ -45,8 +47,8 @@ const chatMessagesSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof chatMessagesSlice>;
-
 export const selectChat = (state: AppRootState) => state.chatApp.chat;
 
-export default chatMessagesSlice.reducer;
+export type chatMessagesSliceType = typeof chatMessagesSlice;
+
+export default chatMessagesSlice;

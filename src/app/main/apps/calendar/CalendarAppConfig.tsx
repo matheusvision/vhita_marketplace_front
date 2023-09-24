@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
-const CalendarApp = lazy(() => import('./CalendarApp'));
+const CalendarApp = lazyWithSlices(() => import('./CalendarApp'), slices);
 
 const CalendarAppConfig = {
 	settings: {

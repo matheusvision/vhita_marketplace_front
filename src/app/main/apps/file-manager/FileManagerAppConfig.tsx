@@ -1,6 +1,10 @@
 import { lazy } from 'react';
+import withSlices from 'app/store/withSlices';
+import slices from './store';
 
 const FileManagerApp = lazy(() => import('./FileManagerApp'));
+
+const FileManagerAppWithSlices = withSlices(slices)(FileManagerApp);
 
 const FileManagerAppConfig = {
 	settings: {
@@ -11,11 +15,12 @@ const FileManagerAppConfig = {
 	routes: [
 		{
 			path: 'apps/file-manager',
-			element: <FileManagerApp />
-		},
-		{
-			path: 'apps/file-manager/:folderId',
-			element: <FileManagerApp />
+			element: <FileManagerAppWithSlices />,
+			children: [
+				{
+					path: ':folderId'
+				}
+			]
 		}
 	]
 };

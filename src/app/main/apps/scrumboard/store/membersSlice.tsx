@@ -4,7 +4,7 @@ import axios from 'axios';
 import { RootState } from 'app/store/index';
 import { MembersType, MemberType } from '../model/MemberModel';
 
-type DynamicAppRootState = RootState<MembersSliceType>;
+type AppRootState = RootState<MembersSliceType>;
 
 /**
  * Get Members
@@ -20,7 +20,7 @@ export const getMembers = createAppAsyncThunk<MembersType>('scrumboardApp/member
 const membersAdapter = createEntityAdapter<MemberType>({});
 
 export const { selectAll: selectMembers, selectById } = membersAdapter.getSelectors(
-	(state: DynamicAppRootState) => state.scrumboardApp.members
+	(state: AppRootState) => state.scrumboardApp.members
 );
 
 const membersSlice = createSlice({
@@ -37,7 +37,7 @@ const membersSlice = createSlice({
 
 export const { resetMembers } = membersSlice.actions;
 
-export const selectMemberById = (id: MemberType['id']) => (state: DynamicAppRootState) => selectById(state, id);
+export const selectMemberById = (id: MemberType['id']) => (state: AppRootState) => selectById(state, id);
 
 export type MembersSliceType = typeof membersSlice;
 

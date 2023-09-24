@@ -7,7 +7,7 @@ import { RootState } from 'app/store/index';
 import history from '@history';
 import BoardModel, { BoardType, BoardsType } from '../model/BoardModel';
 
-type DynamicAppRootState = RootState<BoardsSliceType>;
+type AppRootState = RootState<BoardsSliceType>;
 
 /**
  * Get Boards
@@ -44,7 +44,7 @@ export const {
 	selectAll: selectBoards,
 	selectEntities: selectBoardEntities,
 	selectById: selectBoardById
-} = boardsAdapter.getSelectors((state: DynamicAppRootState) => state.scrumboardApp.boards);
+} = boardsAdapter.getSelectors((state: AppRootState) => state.scrumboardApp.boards);
 
 const boardsSlice = createSlice({
 	name: 'scrumboardApp/boards',

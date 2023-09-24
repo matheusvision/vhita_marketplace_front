@@ -1,5 +1,4 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
-import withReducer from 'app/store/withReducer';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
@@ -9,7 +8,6 @@ import { useAppDispatch } from 'app/store/index';
 import ContactsSidebarContent from './ContactsSidebarContent';
 import ContactsHeader from './ContactsHeader';
 import ContactsList from './ContactsList';
-import reducer from './store';
 import { getTags } from './store/tagsSlice';
 import { getCountries } from './store/countriesSlice';
 import { getContacts } from './store/contactsSlice';
@@ -52,4 +50,4 @@ function ContactsApp() {
 	);
 }
 
-export default withReducer('contactsApp', reducer)(ContactsApp);
+export default ContactsApp;

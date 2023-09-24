@@ -4,6 +4,8 @@ import axios from 'axios';
 import { RootState } from 'app/store/index';
 import { LabelType, LabelsType } from '../model/LabelModel';
 
+export type AppRootState = RootState<labelsSliceType>;
+
 export const getLabels = createAppAsyncThunk<LabelsType>('mailboxApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/mailbox/labels');
 
@@ -33,6 +35,6 @@ const labelsSlice = createSlice({
 
 export const selectLabelById = (id: string) => (state: AppRootState) => selectById(state, id);
 
-export type AppRootState = RootState<typeof labelsSlice>;
+export type labelsSliceType = typeof labelsSlice;
 
-export default labelsSlice.reducer;
+export default labelsSlice;

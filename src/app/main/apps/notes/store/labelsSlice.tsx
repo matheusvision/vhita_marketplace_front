@@ -5,6 +5,8 @@ import { PartialDeep } from 'type-fest';
 import { RootState } from 'app/store/index';
 import { LabelsType, LabelType } from '../model/LabelModel';
 
+export type AppRootState = RootState<labelsSliceType>;
+
 export const getLabels = createAppAsyncThunk<LabelsType>('notesApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/notes/labels');
 
@@ -45,7 +47,7 @@ export const {
 	selectAll: selectLabels,
 	selectEntities: selectLabelsEntities,
 	selectById: selectLabelById
-} = labelsAdapter.getSelectors((state: AppRootState) => state.notesApp.labels);
+} = labelsAdapter.getSelectors((state: AppRootState) => state.notesApp?.labels);
 
 const labelsSlice = createSlice({
 	name: 'notesApp/labels',
@@ -69,10 +71,10 @@ const labelsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof labelsSlice>;
-
 export const { openLabelsDialog, closeLabelsDialog } = labelsSlice.actions;
 
-export const selectLabelsDialogOpen = (state: AppRootState) => state.notesApp.labels.labelsDialogOpen;
+export const selectLabelsDialogOpen = (state: AppRootState) => state.notesApp?.labels.labelsDialogOpen;
 
-export default labelsSlice.reducer;
+export type labelsSliceType = typeof labelsSlice;
+
+export default labelsSlice;

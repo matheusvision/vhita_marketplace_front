@@ -1,14 +1,12 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
 import ProjectDashboardAppHeader from './ProjectDashboardAppHeader';
-import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import HomeTab from './tabs/home/HomeTab';
 import TeamTab from './tabs/team/TeamTab';
@@ -87,4 +85,4 @@ function ProjectDashboardApp() {
 	);
 }
 
-export default withReducer('projectDashboardApp', reducer)(ProjectDashboardApp);
+export default ProjectDashboardApp;

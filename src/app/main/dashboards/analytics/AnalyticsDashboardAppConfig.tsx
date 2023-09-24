@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
-const AnalyticsDashboardApp = lazy(() => import('./AnalyticsDashboardApp'));
+const AnalyticsDashboardApp = lazyWithSlices(() => import('./AnalyticsDashboardApp'), slices);
 
 const AnalyticsDashboardAppConfig = {
 	settings: {

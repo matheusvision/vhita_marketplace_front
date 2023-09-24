@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
-import withReducer from 'app/store/withReducer';
 import { motion } from 'framer-motion';
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
@@ -17,7 +16,6 @@ import * as yup from 'yup';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import * as React from 'react';
 import { getProduct, newProduct, resetProduct, selectProduct } from '../store/productSlice';
-import reducer from '../store';
 import ProductHeader from './ProductHeader';
 import BasicInfoTab from './tabs/BasicInfoTab';
 import InventoryTab from './tabs/InventoryTab';
@@ -206,4 +204,4 @@ function Product() {
 	);
 }
 
-export default withReducer('eCommerceApp', reducer)(Product);
+export default Product;

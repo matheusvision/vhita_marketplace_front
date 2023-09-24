@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import CategoryType from '../types/CategoryType';
 
+type AppRootState = RootState<CategorySliceType>;
+
 export const getCategories = createAppAsyncThunk('academyApp/categories/getCategories', async () => {
 	const response = await axios.get('/api/academy/categories');
 
@@ -29,6 +31,6 @@ const categorySlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof categorySlice>;
+export type CategorySliceType = typeof categorySlice;
 
-export default categorySlice.reducer;
+export default categorySlice;

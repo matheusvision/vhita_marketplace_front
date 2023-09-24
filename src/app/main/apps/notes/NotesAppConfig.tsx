@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
-const NotesApp = lazy(() => import('./NotesApp'));
+const NotesApp = lazyWithSlices(() => import('./NotesApp'), slices);
 
 const NotesAppConfig = {
 	settings: {
@@ -15,11 +16,9 @@ const NotesAppConfig = {
 			children: [
 				{
 					path: ':filter',
-					element: <NotesApp />,
 					children: [
 						{
-							path: ':id',
-							element: <NotesApp />
+							path: ':id'
 						}
 					]
 				}

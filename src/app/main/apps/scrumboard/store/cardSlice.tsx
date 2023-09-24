@@ -6,7 +6,7 @@ import { showMessage } from 'app/store/fuse/messageSlice';
 import { BoardSliceType } from './boardSlice';
 import { CardType } from '../model/CardModel';
 
-type DynamicAppRootState = RootState<[CardSliceType, BoardSliceType]>;
+type AppRootState = RootState<[CardSliceType, BoardSliceType]>;
 
 /**
  * Update Card
@@ -14,7 +14,7 @@ type DynamicAppRootState = RootState<[CardSliceType, BoardSliceType]>;
 export const updateCard = createAppAsyncThunk<CardType, CardType>(
 	'scrumboardApp/card/update',
 	async (newData, { dispatch, getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const { card, board } = AppState.scrumboardApp;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}/cards/${card.data.id}`, newData);
@@ -42,7 +42,7 @@ export const updateCard = createAppAsyncThunk<CardType, CardType>(
 export const removeCard = createAppAsyncThunk<string>(
 	'scrumboardApp/card/removeCard',
 	async (_params, { dispatch, getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const { card, board } = AppState.scrumboardApp;
 
 		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/cards/${card.data.id}`);
@@ -83,13 +83,13 @@ const cardSlice = createSlice({
 	}
 });
 
-export const data = (state: DynamicAppRootState) => state.scrumboardApp.card.data;
+export const data = (state: AppRootState) => state.scrumboardApp.card.data;
 
 export const { openCardDialog, closeCardDialog } = cardSlice.actions;
 
-export const selectCardDialogOpen = (state: DynamicAppRootState) => state.scrumboardApp.card.dialogOpen;
+export const selectCardDialogOpen = (state: AppRootState) => state.scrumboardApp.card.dialogOpen;
 
-export const selectCardData = (state: DynamicAppRootState) => state.scrumboardApp.card.data;
+export const selectCardData = (state: AppRootState) => state.scrumboardApp.card.data;
 
 export type CardSliceType = typeof cardSlice;
 

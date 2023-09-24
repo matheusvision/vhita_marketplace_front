@@ -1,5 +1,4 @@
 import { styled } from '@mui/material/styles';
-import withReducer from 'app/store/withReducer';
 import { useEffect, useRef, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -20,7 +19,6 @@ import {
 } from '@fullcalendar/core';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
-import reducer from './store';
 import {
 	getEvents,
 	openEditEventDialog,
@@ -224,4 +222,4 @@ function CalendarApp() {
 	);
 }
 
-export default withReducer('calendarApp', reducer)(CalendarApp);
+export default CalendarApp;

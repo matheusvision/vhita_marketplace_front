@@ -2,9 +2,9 @@ import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolk
 import axios from 'axios';
 import FuseUtils from '@fuse/utils';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
 import { addContact, removeContact, updateContact } from './contactSlice';
 import { ContactType, ContactsType } from '../model/ContactModel';
+import { AppRootState } from '.';
 
 export const getContacts = createAppAsyncThunk<ContactsType>('contactsApp/contacts/getContacts', async () => {
 	const response = await axios.get('/api/contacts');
@@ -16,10 +16,10 @@ export const getContacts = createAppAsyncThunk<ContactsType>('contactsApp/contac
 
 const contactsAdapter = createEntityAdapter<ContactType>({});
 
-export const selectSearchText = (state: AppRootState) => state.contactsApp.contacts.searchText;
+export const selectSearchText = (state: AppRootState) => state.contactsApp?.contacts?.searchText;
 
 export const { selectAll: selectContacts, selectById: selectContactsById } = contactsAdapter.getSelectors(
-	(state: AppRootState) => state.contactsApp.contacts
+	(state: AppRootState) => state.contactsApp?.contacts
 );
 
 export const selectFilteredContacts = createSelector([selectContacts, selectSearchText], (contacts, searchText) => {
@@ -88,8 +88,8 @@ const contactsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof contactsSlice>;
-
 export const { setContactsSearchText } = contactsSlice.actions;
 
-export default contactsSlice.reducer;
+export type contactsSliceType = typeof contactsSlice;
+
+export default contactsSlice;

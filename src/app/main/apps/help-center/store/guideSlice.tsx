@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { GuideModelType } from '../model/GuideModel';
 
+export type AppRootState = RootState<guideSliceType>;
+
 export const getGuide = createAppAsyncThunk<GuideModelType, { categorySlug: string; guideSlug: string }>(
 	'helpCenterApp/guide/get',
 	async ({ categorySlug, guideSlug }) => {
@@ -26,8 +28,8 @@ const guideSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof guideSlice>;
-
 export const selectGuide = (state: AppRootState) => state.helpCenterApp.guide;
 
-export default guideSlice.reducer;
+export type guideSliceType = typeof guideSlice;
+
+export default guideSlice;

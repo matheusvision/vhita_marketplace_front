@@ -7,6 +7,8 @@ import { addTask, updateTask } from './taskSlice';
 import { TasksType, TaskType } from '../model/TaskModel';
 import { removeLabel } from '../../notes/store/labelsSlice';
 
+export type AppRootState = RootState<tasksSliceType>;
+
 export const getTasks = createAppAsyncThunk<TasksType>('tasksApp/tasks/getTasks', async () => {
 	const response = await axios.get('/api/tasks');
 
@@ -67,6 +69,6 @@ const tasksSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof tasksSlice>;
+export type tasksSliceType = typeof tasksSlice;
 
-export default tasksSlice.reducer;
+export default tasksSlice;

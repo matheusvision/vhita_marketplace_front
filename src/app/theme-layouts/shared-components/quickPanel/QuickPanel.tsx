@@ -10,14 +10,14 @@ import ListSubheader from '@mui/material/ListSubheader';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
-import withReducer from 'app/store/withReducer';
 import format from 'date-fns/format';
 import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import withSlices from 'app/store/withSlices';
+import slices from './store';
 import { selectQuickPanelData } from './store/dataSlice';
-import reducer from './store';
 import { selectQuickPanelState, toggleQuickPanel } from './store/stateSlice';
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(() => ({
@@ -160,4 +160,4 @@ function QuickPanel() {
 	);
 }
 
-export default withReducer('quickPanel', reducer)(memo(QuickPanel));
+export default withSlices(slices)(memo(QuickPanel));

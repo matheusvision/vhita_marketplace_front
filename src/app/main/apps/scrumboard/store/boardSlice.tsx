@@ -14,7 +14,7 @@ import { BoardType } from '../model/BoardModel';
 import { LabelType, LabelsType } from '../model/LabelModel';
 import { removeCard } from './cardSlice';
 
-type DynamicAppRootState = RootState<[BoardSliceType]>;
+type AppRootState = RootState<[BoardSliceType]>;
 
 /**
  * Get Board
@@ -57,7 +57,7 @@ export const getBoard = createAppAsyncThunk<BoardType, string>(
 export const updateBoard = createAppAsyncThunk<BoardType, PartialDeep<BoardType>>(
 	'scrumboardApp/board/update',
 	async (newData, { getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const { board } = AppState.scrumboardApp;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}`, newData);
@@ -74,7 +74,7 @@ export const updateBoard = createAppAsyncThunk<BoardType, PartialDeep<BoardType>
 export const reorderList = createAppAsyncThunk<BoardType, DropResult>(
 	'scrumboardApp/board/reorderList',
 	async ({ source, destination }, { dispatch, getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const { board } = AppState.scrumboardApp;
 		const ordered = reorder(_.merge([], board.lists), source.index, destination.index);
 
@@ -103,7 +103,7 @@ export const reorderList = createAppAsyncThunk<BoardType, DropResult>(
 export const reorderCard = createAppAsyncThunk<BoardType, DropResult>(
 	'scrumboardApp/board/reorderCard',
 	async ({ source, destination }, { dispatch, getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const { board } = AppState.scrumboardApp;
 
 		const ordered = reorderQuoteMap(_.merge([], board.lists), source, destination);
@@ -133,7 +133,7 @@ export const reorderCard = createAppAsyncThunk<BoardType, DropResult>(
 export const deleteBoard = createAppAsyncThunk<string, string>(
 	'scrumboardApp/board/delete',
 	async (params, { getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 
 		const board = AppState.scrumboardApp.board as BoardType;
 
@@ -197,7 +197,7 @@ const boardSlice = createSlice({
 
 export const { resetBoard, addLabel } = boardSlice.actions;
 
-export const selectBoard = (state: DynamicAppRootState) => state.scrumboardApp.board;
+export const selectBoard = (state: AppRootState) => state.scrumboardApp.board;
 
 export type BoardSliceType = typeof boardSlice;
 

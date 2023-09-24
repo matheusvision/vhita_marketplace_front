@@ -4,6 +4,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootState } from 'app/store/index';
 import { ProductType, ProductsType } from '../product/model/ProductModel';
 
+export type AppRootState = RootState<productsSliceType>;
+
 export const getProducts = createAppAsyncThunk<ProductsType>('eCommerceApp/products/getProducts', async () => {
 	const response = await axios.get('/api/ecommerce/products');
 	const data = (await response.data) as ProductsType;
@@ -18,8 +20,6 @@ export const removeProducts = createAppAsyncThunk<string[], string[]>('eCommerce
 });
 
 const productsAdapter = createEntityAdapter<ProductType>({});
-
-export type AppRootState = RootState<typeof productsSlice>;
 
 export const { selectAll: selectProducts, selectById: selectProductById } = productsAdapter.getSelectors(
 	(state: AppRootState) => state.eCommerceApp.products
@@ -52,6 +52,8 @@ const productsSlice = createSlice({
 
 export const { setProductsSearchText } = productsSlice.actions;
 
-export const selectProductsSearchText = (state: AppRootState) => state.eCommerceApp.products.searchText;
+export const selectProductsSearchText = (state: AppRootState) => state.eCommerceApp?.products?.searchText;
 
-export default productsSlice.reducer;
+export type productsSliceType = typeof productsSlice;
+
+export default productsSlice;

@@ -1,11 +1,9 @@
-import withReducer from 'app/store/withReducer';
 import { useEffect, useMemo } from 'react';
 import _ from '@lodash';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
-import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import AnalyticsDashboardAppHeader from './AnalyticsDashboardAppHeader';
 import VisitorsOverviewWidget from './widgets/VisitorsOverviewWidget';
@@ -133,4 +131,4 @@ function AnalyticsDashboardApp() {
 	);
 }
 
-export default withReducer('analyticsDashboardApp', reducer)(AnalyticsDashboardApp);
+export default AnalyticsDashboardApp;

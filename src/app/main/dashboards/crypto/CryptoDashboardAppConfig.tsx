@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
-const CryptoDashboardApp = lazy(() => import('./CryptoDashboardApp'));
+const CryptoDashboardApp = lazyWithSlices(() => import('./CryptoDashboardApp'), slices);
 
 const CryptoDashboardAppConfig = {
 	settings: {

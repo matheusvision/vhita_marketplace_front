@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import withReducer from 'app/store/withReducer';
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import FusePageSimple from '@fuse/core/FusePageSimple';
@@ -8,7 +7,6 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useAppDispatch } from 'app/store/index';
 import MainSidebar from './sidebars/main/MainSidebar';
 import ContactSidebar from './sidebars/contact/ContactSidebar';
-import reducer from './store';
 import { getUserData } from './store/userSlice';
 import { getContacts } from './store/contactsSlice';
 import UserSidebar from './sidebars/user/UserSidebar';
@@ -125,4 +123,4 @@ function ChatApp() {
 	);
 }
 
-export default withReducer('chatApp', reducer)(ChatApp);
+export default ChatApp;

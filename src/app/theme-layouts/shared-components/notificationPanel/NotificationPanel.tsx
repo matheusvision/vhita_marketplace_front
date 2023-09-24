@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Typography from '@mui/material/Typography';
-import withReducer from 'app/store/withReducer';
 import { useSnackbar } from 'notistack';
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -12,11 +11,12 @@ import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import NotificationTemplate from 'app/theme-layouts/shared-components/notificationPanel/NotificationTemplate';
+import withSlices from 'app/store/withSlices';
 import NotificationModel from './model/NotificationModel';
 import NotificationCard from './NotificationCard';
 import { addNotification, dismissAll, dismissItem, getNotifications, selectNotifications } from './store/dataSlice';
-import reducer from './store';
 import { closeNotificationPanel, selectNotificationPanelState, toggleNotificationPanel } from './store/stateSlice';
+import slices from './store';
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 	'& .MuiDrawer-paper': {
@@ -138,4 +138,4 @@ function NotificationPanel() {
 	);
 }
 
-export default withReducer('notificationPanel', reducer)(memo(NotificationPanel));
+export default withSlices(slices)(memo(NotificationPanel));

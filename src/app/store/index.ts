@@ -1,7 +1,16 @@
-import { configureStore, ThunkAction, ThunkDispatch, Action, Reducer, Middleware } from '@reduxjs/toolkit';
+import {
+	configureStore,
+	ThunkAction,
+	ThunkDispatch,
+	Action,
+	Reducer,
+	Middleware,
+	ReducersMapObject
+} from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { createLogger } from 'redux-logger';
+import _ from '@lodash';
 import createReducer from './rootReducer';
 
 /* if (process.env.NODE_ENV === 'development' && module.hot) {
@@ -40,9 +49,16 @@ export const injectReducer = (key: string, reducer: Reducer) => {
 	if (asyncReducers[key]) {
 		return false;
 	}
+
 	asyncReducers[key] = reducer;
 
 	store.replaceReducer(createReducer(asyncReducers));
+
+	return store;
+};
+
+export const injectReducers = (reducers: ReducersMapObject) => {
+	store.replaceReducer(createReducer(_.merge(asyncReducers, reducers)));
 
 	return store;
 };

@@ -8,7 +8,7 @@ import { removeCard, updateCard } from './cardSlice';
 import CardModel, { CardsType, CardType } from '../model/CardModel';
 import { BoardSliceType } from './boardSlice';
 
-type DynamicAppRootState = RootState<[CardsSliceType, BoardSliceType]>;
+type AppRootState = RootState<[CardsSliceType, BoardSliceType]>;
 
 export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/cards/getCards', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/cards`);
@@ -21,7 +21,7 @@ export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/ca
 export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: CardType }>(
 	'scrumboardApp/cards/newCard',
 	async ({ listId, newData }, { getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 
 		const { board } = AppState.scrumboardApp;
 
@@ -39,7 +39,7 @@ export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: 
 const cardsAdapter = createEntityAdapter<CardType>({});
 
 export const { selectAll: selectCards, selectById } = cardsAdapter.getSelectors(
-	(state: DynamicAppRootState) => state.scrumboardApp.cards
+	(state: AppRootState) => state.scrumboardApp.cards
 );
 
 const cardsSlice = createSlice({
@@ -66,7 +66,7 @@ const cardsSlice = createSlice({
 
 export const { resetCards } = cardsSlice.actions;
 
-export const selectCardById = (id: CardType['id']) => (state: DynamicAppRootState) => selectById(state, id);
+export const selectCardById = (id: CardType['id']) => (state: AppRootState) => selectById(state, id);
 
 export type CardsSliceType = typeof cardsSlice;
 

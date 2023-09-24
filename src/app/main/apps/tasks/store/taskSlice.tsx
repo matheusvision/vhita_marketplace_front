@@ -7,6 +7,8 @@ import { PartialDeep } from 'type-fest';
 import SectionModel from '../model/SectionModel';
 import TaskModel, { TaskType } from '../model/TaskModel';
 
+export type AppRootState = RootState<taskSliceType>;
+
 export const getTask = createAppAsyncThunk<TaskType, string>('tasksApp/task/getTask', async (id) => {
 	try {
 		const response = await axios.get(`/api/tasks/${id}`);
@@ -75,10 +77,10 @@ const taskSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof taskSlice>;
-
 export const selectTask = (state: AppRootState) => state.tasksApp.task;
 
 export const { resetTask, newTask } = taskSlice.actions;
 
-export default taskSlice.reducer;
+export type taskSliceType = typeof taskSlice;
+
+export default taskSlice;

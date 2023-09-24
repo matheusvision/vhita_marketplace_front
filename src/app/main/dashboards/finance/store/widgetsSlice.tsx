@@ -8,6 +8,8 @@ import PreviousStatementWidgetType from '../types/PreviousStatementWidgetType';
 import BudgetWidgetType from '../types/BudgetWidgetType';
 import AccountBalanceWidgetType from '../types/AccountBalanceWidgetType';
 
+type AppRootState = RootState<widgetsSliceType>;
+
 type WidgetsType = {
 	recentTransactions?: RecentTransactionsWidgetType;
 	currentStatement?: CurrentStatementWidgetType;
@@ -35,8 +37,8 @@ const widgetsSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof widgetsSlice>;
-
 export const selectWidgets = (state: AppRootState) => state.financeDashboardApp.widgets;
 
-export default widgetsSlice.reducer;
+export type widgetsSliceType = typeof widgetsSlice;
+
+export default widgetsSlice;

@@ -8,6 +8,8 @@ import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import { selectSelectedLabels } from './labelsSlice';
 import { EventModelType } from '../model/EventModel';
 
+type AppRootState = RootState<eventsSliceType>;
+
 export const dateFormat = 'YYYY-MM-DDTHH:mm:ss.sssZ';
 
 export const getEvents = createAppAsyncThunk('calendarApp/events/getEvents', async () => {
@@ -156,8 +158,6 @@ const eventsSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof eventsSlice>;
-
 export const { openNewEventDialog, closeNewEventDialog, openEditEventDialog, closeEditEventDialog } =
 	eventsSlice.actions;
 
@@ -167,4 +167,6 @@ export const selectFilteredEvents = createSelector([selectSelectedLabels, select
 
 export const selectEventDialog = (state: AppRootState) => state.calendarApp.events.eventDialog;
 
-export default eventsSlice.reducer;
+export type eventsSliceType = typeof eventsSlice;
+
+export default eventsSlice;

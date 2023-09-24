@@ -1,8 +1,9 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
 import Chat from './chat/Chat';
 import ChatFirstScreen from './ChatFirstScreen';
+import slices from './store';
 
-const ChatApp = lazy(() => import('./ChatApp'));
+const ChatApp = lazyWithSlices(() => import('./ChatApp'), slices);
 
 const ChatAppConfig = {
 	settings: {

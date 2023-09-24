@@ -1,8 +1,5 @@
-import { combineReducers } from '@reduxjs/toolkit';
 import items from './itemsSlice';
 
-const reducer = combineReducers({
-	items
-});
+const slices = [items];
 
-export default reducer;
+export default slices;

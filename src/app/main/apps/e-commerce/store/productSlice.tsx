@@ -4,6 +4,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootState } from 'app/store/index';
 import ProductModel, { ProductType } from '../product/model/ProductModel';
 
+export type AppRootState = RootState<productSliceType>;
+
 export const getProduct = createAppAsyncThunk<ProductType, string>(
 	'eCommerceApp/product/getProduct',
 	async (productId) => {
@@ -60,10 +62,10 @@ const productSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof productSlice>;
-
 export const selectProduct = (state: AppRootState) => state.eCommerceApp.product;
 
 export const { newProduct, resetProduct } = productSlice.actions;
 
-export default productSlice.reducer;
+export type productSliceType = typeof productSlice;
+
+export default productSlice;

@@ -1,4 +1,3 @@
-import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
@@ -6,7 +5,6 @@ import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import MailboxAppSidebarContent from './MailboxAppSidebarContent';
-import reducer from './store';
 import { getFilters } from './store/filtersSlice';
 import { getFolders } from './store/foldersSlice';
 import { getLabels } from './store/labelsSlice';
@@ -74,4 +72,4 @@ function MailboxApp() {
 	);
 }
 
-export default withReducer('mailboxApp', reducer)(MailboxApp);
+export default MailboxApp;

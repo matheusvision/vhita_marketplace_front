@@ -1,6 +1,9 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
+const ECommerceApp = lazyWithSlices(() => import('./ECommerceApp'), slices);
 const Product = lazy(() => import('./product/Product'));
 const Products = lazy(() => import('./products/Products'));
 const Order = lazy(() => import('./order/Order'));
@@ -12,24 +15,30 @@ const ECommerceAppConfig = {
 	},
 	routes: [
 		{
-			path: 'apps/e-commerce/products',
-			element: <Products />
-		},
-		{
-			path: 'apps/e-commerce/products/:productId/*',
-			element: <Product />
-		},
-		{
-			path: 'apps/e-commerce/orders',
-			element: <Orders />
-		},
-		{
-			path: 'apps/e-commerce/orders/:orderId',
-			element: <Order />
-		},
-		{
 			path: 'apps/e-commerce',
-			element: <Navigate to="products" />
+			element: <ECommerceApp />,
+			children: [
+				{
+					path: '',
+					element: <Navigate to="products" />
+				},
+				{
+					path: 'products',
+					element: <Products />
+				},
+				{
+					path: 'products/:productId/*',
+					element: <Product />
+				},
+				{
+					path: 'orders',
+					element: <Orders />
+				},
+				{
+					path: 'orders/:orderId',
+					element: <Order />
+				}
+			]
 		}
 	]
 };

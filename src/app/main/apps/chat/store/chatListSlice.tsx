@@ -4,6 +4,8 @@ import axios from 'axios';
 import { RootState } from 'app/store/index';
 import { ChatListItemType, ChatListType } from '../model/ChatListItemModel';
 
+type AppRootState = RootState<chatListSliceType>;
+
 export const getChatList = createAppAsyncThunk<ChatListType>('chatApp/chatList/get', async () => {
 	const response = await axios.get('/api/chat/chats');
 
@@ -29,6 +31,6 @@ const chatListSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof chatListSlice>;
+export type chatListSliceType = typeof chatListSlice;
 
-export default chatListSlice.reducer;
+export default chatListSlice;

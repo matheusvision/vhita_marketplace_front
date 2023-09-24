@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
-const ProjectDashboardApp = lazy(() => import('./ProjectDashboardApp'));
+const ProjectDashboardApp = lazyWithSlices(() => import('./ProjectDashboardApp'), slices);
 
 const ProjectDashboardAppConfig = {
 	settings: {

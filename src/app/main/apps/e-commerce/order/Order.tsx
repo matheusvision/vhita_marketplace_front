@@ -4,7 +4,6 @@ import { useTheme } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
-import withReducer from 'app/store/withReducer';
 import { motion } from 'framer-motion';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -12,7 +11,6 @@ import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
-import reducer from '../store';
 import { getOrder, resetOrder, selectOrder } from '../store/orderSlice';
 import InvoiceTab from './tabs/InvoiceTab';
 import OrderDetailsTab from './tabs/OrderDetailsTab';
@@ -155,4 +153,4 @@ function Order() {
 	);
 }
 
-export default withReducer('eCommerceApp', reducer)(Order);
+export default Order;

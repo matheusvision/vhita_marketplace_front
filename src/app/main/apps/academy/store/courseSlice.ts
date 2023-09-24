@@ -6,6 +6,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { PartialDeep } from 'type-fest';
 import CourseType from '../types/CourseType';
 
+type AppRootState = RootState<CourseSliceType>;
+
 export const getCourse = createAppAsyncThunk('academyApp/course/getCourse', async (courseId: string) => {
 	const response = await axios.get(`/api/academy/courses/${courseId}`);
 
@@ -42,8 +44,8 @@ const courseSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof courseSlice>;
-
 export const selectCourse = (state: AppRootState) => state.academyApp.course;
 
-export default courseSlice.reducer;
+export type CourseSliceType = typeof courseSlice;
+
+export default courseSlice;

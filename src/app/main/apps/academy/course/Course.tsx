@@ -4,7 +4,6 @@ import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import Stepper from '@mui/material/Stepper';
-import withReducer from 'app/store/withReducer';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
@@ -18,7 +17,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
-import reducer from '../store';
 import { getCourse, selectCourse, updateCourse } from '../store/courseSlice';
 import CourseInfo from '../CourseInfo';
 import CourseProgress from '../CourseProgress';
@@ -285,4 +283,4 @@ function Course() {
 	);
 }
 
-export default withReducer('academyApp', reducer)(Course);
+export default Course;

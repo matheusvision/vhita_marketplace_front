@@ -6,6 +6,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { selectFaqCategories } from './faqCategoriesSlice';
 import { FaqModelType, FaqsModelType } from '../model/FaqModel';
 
+export type AppRootState = RootState<faqsSliceType>;
+
 export const getFaqs = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faqs/getFaqs', async () => {
 	const response = await axios.get('api/help-center/faqs');
 
@@ -31,8 +33,6 @@ const faqsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof faqsSlice>;
-
 export const selectGroupedFaqs = createSelector([selectFaqs, selectFaqCategories], (faqs, categories) => {
 	return categories.map((category) => ({
 		...category,
@@ -40,4 +40,6 @@ export const selectGroupedFaqs = createSelector([selectFaqs, selectFaqCategories
 	}));
 });
 
-export default faqsSlice.reducer;
+export type faqsSliceType = typeof faqsSlice;
+
+export default faqsSlice;

@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import DynamicSliceProvider from 'app/store/DynamicSliceProvider';
-import ScrumboardApp from './ScrumboardApp';
+import lazyWithSlices from 'app/store/lazyWithSlices';
 import slices from './store';
 
+const ScrumboardApp = lazyWithSlices(() => import('./ScrumboardApp'), slices);
 const Board = lazy(() => import('./board/Board'));
 const Boards = lazy(() => import('./boards/Boards'));
 
@@ -14,11 +14,7 @@ const ScrumboardAppConfig = {
 	routes: [
 		{
 			path: 'apps/scrumboard',
-			element: (
-				<DynamicSliceProvider slices={slices}>
-					<ScrumboardApp />
-				</DynamicSliceProvider>
-			),
+			element: <ScrumboardApp />,
 			children: [
 				{
 					path: '',

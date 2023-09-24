@@ -1,8 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
 import { TagsType, TagType } from '../model/TagModel';
+import { AppRootState } from '.';
 
 export const getTags = createAppAsyncThunk<TagsType>('contactsApp/tags/getTags', async () => {
 	const response = await axios.get('/api/contacts/tags');
@@ -17,7 +17,7 @@ const tagsAdapter = createEntityAdapter<TagType>({});
 const initialState = tagsAdapter.getInitialState([]);
 
 export const { selectAll: selectTags, selectById: selectTagsById } = tagsAdapter.getSelectors(
-	(state: AppRootState) => state.contactsApp.tags
+	(state: AppRootState) => state.contactsApp?.tags
 );
 
 const tagsSlice = createSlice({
@@ -29,6 +29,6 @@ const tagsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof tagsSlice>;
+export type tagsSliceType = typeof tagsSlice;
 
-export default tagsSlice.reducer;
+export default tagsSlice;

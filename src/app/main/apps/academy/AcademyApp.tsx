@@ -1,9 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
-import withReducer from 'app/store/withReducer';
 import { useAppDispatch } from 'app/store/index';
 import { getCategories } from './store/categoriesSlice';
-import reducer from './store';
 
 function AcademyApp() {
 	const dispatch = useAppDispatch();
@@ -15,4 +13,4 @@ function AcademyApp() {
 	return <Outlet />;
 }
 
-export default withReducer('academyApp', reducer)(AcademyApp);
+export default AcademyApp;

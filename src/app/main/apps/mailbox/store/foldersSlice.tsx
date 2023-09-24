@@ -5,6 +5,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootState } from 'app/store/index';
 import { FolderType, FoldersType } from '../model/FolderModel';
 
+export type AppRootState = RootState<foldersSliceType>;
+
 export const getFolders = createAppAsyncThunk<FoldersType>('mailboxApp/folders/getFolders', async () => {
 	const response = await axios.get('/api/mailbox/folders');
 
@@ -30,8 +32,6 @@ const foldersSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof foldersSlice>;
-
 export const selectSpamFolderId = createSelector([selectFolders], (folders) => {
 	return _.find(folders, { slug: 'spam' })?.id;
 });
@@ -40,4 +40,6 @@ export const selectTrashFolderId = createSelector([selectFolders], (folders) => 
 	return _.find(folders, { slug: 'trash' })?.id;
 });
 
-export default foldersSlice.reducer;
+export type foldersSliceType = typeof foldersSlice;
+
+export default foldersSlice;

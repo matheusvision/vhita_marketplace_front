@@ -11,6 +11,8 @@ import { MailsType, MailType } from '../model/MailModel';
 import RouteParamsType from '../type/RouteParamsType';
 import ItemType from '../type/ItemType';
 
+export type AppRootState = RootState<mailsSliceType>;
+
 export const getMails = createAppAsyncThunk<{ data: MailsType; routeParams: RouteParamsType }, RouteParamsType | void>(
 	'mailboxApp/mails/getMails',
 	async (_routeParams, { getState }) => {
@@ -116,8 +118,6 @@ const mailsSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof mailsSlice>;
-
 export const { setMailsSearchText, selectAllMails, deselectAllMails, selectMailsByParameter, toggleInSelectedMails } =
 	mailsSlice.actions;
 
@@ -139,8 +139,10 @@ export const selectMailsTitle = (routeParams: RouteParamsType) =>
 		return title;
 	});
 
-export const selectSearchText = (state: AppRootState) => state.mailboxApp.mails.searchText;
+export const selectSearchText = (state: AppRootState) => state.mailboxApp?.mails.searchText;
 
-export const selectSelectedMailIds = (state: AppRootState) => state.mailboxApp.mails.selectedMailIds;
+export const selectSelectedMailIds = (state: AppRootState) => state.mailboxApp?.mails.selectedMailIds;
 
-export default mailsSlice.reducer;
+export type mailsSliceType = typeof mailsSlice;
+
+export default mailsSlice;

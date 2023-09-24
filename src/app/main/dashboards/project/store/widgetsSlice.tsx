@@ -11,6 +11,8 @@ import ExpensesDataType from '../types/ExpensesDataType';
 import BudgetDetailsDataType from '../types/BudgetDetailsDataType';
 import TeamMemberType from '../types/TeamMemberType';
 
+type AppRootState = RootState<widgetsSliceType>;
+
 type WidgetsType = {
 	summary: WidgetDataType;
 	overdue: WidgetDataType;
@@ -45,8 +47,8 @@ const widgetsSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof widgetsSlice>;
-
 export const selectWidgets = (state: AppRootState) => state.projectDashboardApp.widgets;
 
-export default widgetsSlice.reducer;
+export type widgetsSliceType = typeof widgetsSlice;
+
+export default widgetsSlice;

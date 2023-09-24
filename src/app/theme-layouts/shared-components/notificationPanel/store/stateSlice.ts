@@ -21,4 +21,4 @@ type AppRootState = RootState<typeof stateSlice>;
 
 export const selectNotificationPanelState = (state: AppRootState) => state.notificationPanel.state;
 
-export default stateSlice.reducer;
+export default stateSlice;

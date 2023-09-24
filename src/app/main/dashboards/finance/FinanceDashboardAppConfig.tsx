@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
+import slices from './store';
 
-const FinanceDashboardApp = lazy(() => import('./FinanceDashboardApp'));
+const FinanceDashboardApp = lazyWithSlices(() => import('./FinanceDashboardApp'), slices);
 
 const FinanceDashboardAppConfig = {
 	settings: {

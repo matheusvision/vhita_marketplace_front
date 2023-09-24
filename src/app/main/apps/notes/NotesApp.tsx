@@ -1,4 +1,3 @@
-import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { lighten, styled } from '@mui/material/styles';
@@ -12,7 +11,6 @@ import NewNote from './NewNote';
 import NoteList from './NoteList';
 import NotesHeader from './NotesHeader';
 import NotesSidebarContent from './NotesSidebarContent';
-import reducer from './store';
 import { getLabels } from './store/labelsSlice';
 import { getNotes, RouteParamsType } from './store/notesSlice';
 
@@ -64,4 +62,4 @@ function NotesApp() {
 	);
 }
 
-export default withReducer('notesApp', reducer)(NotesApp);
+export default NotesApp;

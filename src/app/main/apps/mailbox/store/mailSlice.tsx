@@ -8,6 +8,8 @@ import { getMails } from './mailsSlice';
 import { MailType } from '../model/MailModel';
 import RouteParamsType from '../type/RouteParamsType';
 
+export type AppRootState = RootState<mailSliceType>;
+
 export const getMail = createAppAsyncThunk<MailType, RouteParamsType>(
 	'mailboxApp/mail/getMail',
 	async (routeParams) => {
@@ -61,8 +63,8 @@ const mailSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof mailSlice>;
-
 export const selectMail = (state: AppRootState) => state.mailboxApp.mail;
 
-export default mailSlice.reducer;
+export type mailSliceType = typeof mailSlice;
+
+export default mailSlice;

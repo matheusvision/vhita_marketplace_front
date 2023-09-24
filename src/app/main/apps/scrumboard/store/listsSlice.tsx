@@ -6,7 +6,7 @@ import ListModel, { ListsType, ListType } from '../model/ListModel';
 import { BoardType } from '../model/BoardModel';
 import { BoardSliceType } from './boardSlice';
 
-type DynamicAppRootState = RootState<[ListsSliceType, BoardSliceType]>;
+type AppRootState = RootState<[ListsSliceType, BoardSliceType]>;
 
 /**
  * Get Board Lists
@@ -25,7 +25,7 @@ export const getLists = createAppAsyncThunk<ListsType, string>('scrumboardApp/li
 export const newList = createAppAsyncThunk<ListType, ListType>(
 	'scrumboardApp/lists/new',
 	async (list, { getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.post(`/api/scrumboard/boards/${board.id}/lists`, ListModel(list));
@@ -42,7 +42,7 @@ export const newList = createAppAsyncThunk<ListType, ListType>(
 export const updateList = createAppAsyncThunk<ListType, { id: string; newData: ListType }>(
 	'scrumboardApp/lists/update',
 	async ({ id, newData }, { getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}/lists/${id}`, newData);
@@ -59,7 +59,7 @@ export const updateList = createAppAsyncThunk<ListType, { id: string; newData: L
 export const removeList = createAppAsyncThunk<string, string>(
 	'scrumboardApp/lists/remove',
 	async (id, { getState }) => {
-		const AppState = getState() as DynamicAppRootState;
+		const AppState = getState() as AppRootState;
 		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/lists/${id}`);
@@ -74,7 +74,7 @@ const listsAdapter = createEntityAdapter<ListType>({});
 const initialState = listsAdapter.getInitialState({});
 
 export const { selectAll: selectLists, selectById } = listsAdapter.getSelectors(
-	(state: DynamicAppRootState) => state.scrumboardApp.lists
+	(state: AppRootState) => state.scrumboardApp.lists
 );
 
 const listsSlice = createSlice({
@@ -94,7 +94,7 @@ const listsSlice = createSlice({
 
 export const { resetLists } = listsSlice.actions;
 
-export const selectListById = (id: ListType['id']) => (state: DynamicAppRootState) => selectById(state, id);
+export const selectListById = (id: ListType['id']) => (state: AppRootState) => selectById(state, id);
 
 export type ListsSliceType = typeof listsSlice;
 

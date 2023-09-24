@@ -1,7 +1,5 @@
 import FusePageCarded from '@fuse/core/FusePageCarded';
-import withReducer from 'app/store/withReducer';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import reducer from '../store';
 import OrdersHeader from './OrdersHeader';
 import OrdersTable from './OrdersTable';
 
@@ -17,4 +15,4 @@ function Orders() {
 	);
 }
 
-export default withReducer('eCommerceApp', reducer)(Orders);
+export default Orders;

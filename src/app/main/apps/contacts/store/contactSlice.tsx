@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
 import { DeepPartial } from 'react-hook-form';
 import ContactModel, { ContactType } from '../model/ContactModel';
+import { AppRootState } from '.';
 
 export const getContact = createAppAsyncThunk<ContactType, string>('contactsApp/task/getContact', async (id) => {
 	try {
@@ -68,10 +68,10 @@ const contactSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof contactSlice>;
-
 export const selectContact = (state: AppRootState) => state.contactsApp.contact;
 
 export const { resetContact, newContact } = contactSlice.actions;
 
-export default contactSlice.reducer;
+export type contactSliceType = typeof contactSlice;
+
+export default contactSlice;

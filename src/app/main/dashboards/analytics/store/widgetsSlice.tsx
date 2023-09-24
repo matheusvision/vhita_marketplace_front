@@ -12,6 +12,8 @@ import VisitorsVsPageViewsType from '../types/VisitorsVsPageViewsType';
 import VisitsWidgetType from '../types/VisitsWidgetType';
 import AgeWidgetType from '../types/AgeWidgetType';
 
+type AppRootState = RootState<widgetsSliceType>;
+
 export type WidgetsType = {
 	age?: AgeWidgetType;
 	conversions?: ConversionsWidgetType;
@@ -43,8 +45,8 @@ const widgetsSlice = createSlice({
 	}
 });
 
-type DynamicRootState = RootState<typeof widgetsSlice>;
+export const selectWidgets = (state: AppRootState) => state.analyticsDashboardApp.widgets;
 
-export const selectWidgets = (state: DynamicRootState) => state.analyticsDashboardApp.widgets;
+export type widgetsSliceType = typeof widgetsSlice;
 
-export default widgetsSlice.reducer;
+export default widgetsSlice;

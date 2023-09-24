@@ -70,4 +70,4 @@ const dataSlice = createSlice({
 	}
 });
 
-export default dataSlice.reducer;
+export default dataSlice;

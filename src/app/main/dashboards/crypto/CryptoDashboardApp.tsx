@@ -1,9 +1,7 @@
-import withReducer from 'app/store/withReducer';
 import { useEffect, useState } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { styled } from '@mui/material/styles';
 import { useAppDispatch } from 'app/store/index';
-import reducer from './store';
 import { getWidgets } from './store/widgetsSlice';
 import CryptoDashboardAppHeader from './CryptoDashboardAppHeader';
 import CryptoDashboardAppSidebar from './CryptoDashboardAppSidebar';
@@ -50,4 +48,4 @@ function CryptoDashboardApp() {
 	);
 }
 
-export default withReducer('cryptoDashboardApp', reducer)(CryptoDashboardApp);
+export default CryptoDashboardApp;

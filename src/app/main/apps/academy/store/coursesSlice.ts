@@ -4,6 +4,8 @@ import { RootState } from 'app/store/index';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import CourseType from '../types/CourseType';
 
+type AppRootState = RootState<CoursesSliceType>;
+
 export const getCourses = createAppAsyncThunk('academyApp/courses/getCourses', async () => {
 	const response = await axios.get('/api/academy/courses');
 
@@ -29,6 +31,6 @@ const coursesSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof coursesSlice>;
+export type CoursesSliceType = typeof coursesSlice;
 
-export default coursesSlice.reducer;
+export default coursesSlice;

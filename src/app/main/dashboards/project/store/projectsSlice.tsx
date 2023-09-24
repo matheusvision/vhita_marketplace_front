@@ -3,6 +3,8 @@ import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootState } from 'app/store/index';
 
+type AppRootState = RootState<projectsSliceType>;
+
 type ProjectType = {
 	id: number;
 	name: string;
@@ -35,6 +37,6 @@ const projectsSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof projectsSlice>;
+export type projectsSliceType = typeof projectsSlice;
 
-export default projectsSlice.reducer;
+export default projectsSlice;

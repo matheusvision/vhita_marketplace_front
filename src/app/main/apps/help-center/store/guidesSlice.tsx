@@ -6,6 +6,8 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { selectGuideCategories } from './guideCategoriesSlice';
 import { GuideModelType, GuidesModelType } from '../model/GuideModel';
 
+export type DynammicAppRootState = RootState<guidesSliceType>;
+
 export const getGuides = createAppAsyncThunk<GuidesModelType, string | void>(
 	'helpCenterApp/guides/getGuides',
 	async (categorySlug) => {
@@ -22,7 +24,7 @@ export const getGuides = createAppAsyncThunk<GuidesModelType, string | void>(
 const guidesAdapter = createEntityAdapter<GuideModelType>({});
 
 export const { selectAll: selectGuides, selectById: selectGuideById } = guidesAdapter.getSelectors(
-	(state: AppRootState) => state.helpCenterApp.guides
+	(state: DynammicAppRootState) => state.helpCenterApp.guides
 );
 
 const guidesSlice = createSlice({
@@ -34,8 +36,6 @@ const guidesSlice = createSlice({
 	}
 });
 
-export type AppRootState = RootState<typeof guidesSlice>;
-
 export const selectGroupedGuides = createSelector([selectGuides, selectGuideCategories], (guides, categories) => {
 	return categories.map((category) => ({
 		...category,
@@ -43,4 +43,6 @@ export const selectGroupedGuides = createSelector([selectGuides, selectGuideCate
 	}));
 });
 
-export default guidesSlice.reducer;
+export type guidesSliceType = typeof guidesSlice;
+
+export default guidesSlice;

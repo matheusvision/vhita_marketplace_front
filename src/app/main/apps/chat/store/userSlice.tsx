@@ -6,6 +6,8 @@ import { RootState } from 'app/store/index';
 import { PartialDeep } from 'type-fest';
 import { UserModelType } from '../model/UserModel';
 
+type AppRootState = RootState<userSliceType>;
+
 export const getUserData = createAppAsyncThunk<UserModelType>('chatApp/user/getUserData', async () => {
 	const response = await axios.get('/api/chat/user');
 
@@ -38,8 +40,8 @@ const userSlice = createSlice({
 	}
 });
 
-type AppRootState = RootState<typeof userSlice>;
-
 export const selectUser = (state: AppRootState) => state.chatApp.user;
 
-export default userSlice.reducer;
+export type userSliceType = typeof userSlice;
+
+export default userSlice;

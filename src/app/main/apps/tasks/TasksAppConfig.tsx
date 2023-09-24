@@ -1,7 +1,8 @@
-import { lazy } from 'react';
+import lazyWithSlices from 'app/store/lazyWithSlices';
 import TaskForm from './task/TaskForm';
+import slices from './store';
 
-const TasksApp = lazy(() => import('./TasksApp'));
+const TasksApp = lazyWithSlices(() => import('./TasksApp'), slices);
 
 const TasksAppConfig = {
 	settings: {

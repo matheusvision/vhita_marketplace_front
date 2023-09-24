@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'app/store/index';
 
+type AppRootState = RootState<stateSliceType>;
+
 const stateSlice = createSlice({
 	name: 'quickPanel/state',
 	initialState: false,
@@ -13,8 +15,9 @@ const stateSlice = createSlice({
 
 export const { toggleQuickPanel, openQuickPanel, closeQuickPanel } = stateSlice.actions;
 
-type AppRootState = RootState<typeof stateSlice>;
 
 export const selectQuickPanelState = (state: AppRootState) => state.quickPanel.state;
 
-export default stateSlice.reducer;
+export type stateSliceType = typeof stateSlice;
+
+export default stateSlice;
