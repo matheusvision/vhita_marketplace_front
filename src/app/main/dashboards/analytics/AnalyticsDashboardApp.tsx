@@ -89,28 +89,16 @@ function AnalyticsDashboardApp() {
 					</div>
 
 					<div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-32 w-full">
-						<motion.div
-							variants={item}
-							className=""
-						>
+						<motion.div variants={item}>
 							<NewVsReturningWidget />
 						</motion.div>
-						<motion.div
-							variants={item}
-							className=""
-						>
+						<motion.div variants={item}>
 							<GenderWidget />
 						</motion.div>
-						<motion.div
-							variants={item}
-							className=""
-						>
+						<motion.div variants={item}>
 							<AgeWidget />
 						</motion.div>
-						<motion.div
-							variants={item}
-							className=""
-						>
+						<motion.div variants={item}>
 							<LanguageWidget />
 						</motion.div>
 					</div>

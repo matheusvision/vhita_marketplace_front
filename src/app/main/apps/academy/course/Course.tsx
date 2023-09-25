@@ -98,7 +98,6 @@ function Course() {
 							<IconButton
 								to="/apps/academy/courses"
 								component={Link}
-								className=""
 							>
 								<FuseSvgIcon>
 									{theme.direction === 'ltr'

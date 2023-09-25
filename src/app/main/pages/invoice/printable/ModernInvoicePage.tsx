@@ -12,7 +12,7 @@ function ModernInvoicePage() {
 				transition={{ bounceDamping: 0 }}
 			>
 				<Card className="mx-auto w-xl rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
-					<CardContent className="">
+					<CardContent>
 						<div className="flex items-start">
 							<div className="grid grid-rows-2 place-items-start gap-y-48">
 								<div className="grid auto-cols-max grid-flow-col gap-x-32">

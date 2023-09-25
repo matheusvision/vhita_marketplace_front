@@ -1,39 +1,20 @@
-import { NavLink as BaseNavLink, NavLinkProps as BaseNavLinkProps, useNavigate } from 'react-router-dom';
+import { NavLink, NavLinkProps, useNavigate } from 'react-router-dom';
 import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 
-export type NavLinkAdapterPropsType = BaseNavLinkProps & {
+export type NavLinkAdapterPropsType = NavLinkProps & {
 	activeClassName?: string;
 	activeStyle?: CSSProperties;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	component?: React.ElementType<any>;
 	children?: ReactNode;
 };
 
 const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((props, ref) => {
-	const { activeClassName = 'active', activeStyle, component: Component, ..._props } = props;
+	const { activeClassName = 'active', activeStyle, role = 'button', ..._props } = props;
 	const navigate = useNavigate();
 
-	if (Component) {
-		const { className, ...restOfProps } = _props;
-		const finalClassName =
-			typeof className === 'function' ? className({ isActive: false, isPending: false }) : className;
-		return (
-			<Component
-				className={finalClassName}
-				{...restOfProps}
-				onClick={(e: MouseEvent) => {
-					e.preventDefault();
-					navigate(_props.to);
-				}}
-			>
-				{props.children}
-			</Component>
-		);
-	}
-
 	return (
-		<BaseNavLink
+		<NavLink
 			ref={ref}
+			role={role}
 			{..._props}
 			onClick={(e) => {
 				e.preventDefault();
@@ -48,7 +29,7 @@ const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((p
 			})}
 		>
 			{props.children}
-		</BaseNavLink>
+		</NavLink>
 	);
 });
 

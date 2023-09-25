@@ -26,7 +26,6 @@ function DetailSidebarContent() {
 		>
 			<div className="flex items-center justify-end w-full">
 				<IconButton
-					className=""
 					size="large"
 					onClick={() => dispatch(setSelectedItem(null))}
 				>
@@ -47,10 +46,7 @@ function DetailSidebarContent() {
 					initial={{ scale: 0 }}
 					animate={{ scale: 1, transition: { delay: 0.3 } }}
 				>
-					<ItemIcon
-						className=""
-						type={item.type}
-					/>
+					<ItemIcon type={item.type} />
 				</motion.div>
 			</Box>
 

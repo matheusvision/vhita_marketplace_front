@@ -129,12 +129,7 @@ function BoardCard(props: BoardCardProps) {
 										>
 											heroicons-outline:paper-clip
 										</FuseSvgIcon>
-										<Typography
-											className=""
-											color="text.secondary"
-										>
-											{card.attachments.length}
-										</Typography>
+										<Typography color="text.secondary">{card.attachments.length}</Typography>
 									</span>
 								)}
 								{commentsCount > 0 && (
@@ -146,12 +141,7 @@ function BoardCard(props: BoardCardProps) {
 											heroicons-outline:chat
 										</FuseSvgIcon>
 
-										<Typography
-											className=""
-											color="text.secondary"
-										>
-											{commentsCount}
-										</Typography>
+										<Typography color="text.secondary">{commentsCount}</Typography>
 									</span>
 								)}
 							</div>

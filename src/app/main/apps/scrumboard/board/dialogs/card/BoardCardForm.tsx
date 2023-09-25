@@ -324,7 +324,7 @@ function BoardCardForm() {
 										<FuseSvgIcon size={20}>heroicons-outline:clipboard-list</FuseSvgIcon>
 										<Typography className="font-semibold text-16 mx-8">Activity</Typography>
 									</div>
-									<List className="">
+									<List>
 										{value.map((item) => (
 											<CardActivity
 												item={item}

@@ -258,7 +258,6 @@ function Chat(props: ChatPropsType) {
 						>
 							<div className="flex items-center relative">
 								<IconButton
-									className=""
 									type="submit"
 									size="large"
 								>
@@ -271,7 +270,6 @@ function Chat(props: ChatPropsType) {
 								</IconButton>
 
 								<IconButton
-									className=""
 									type="submit"
 									size="large"
 								>
@@ -293,7 +291,6 @@ function Chat(props: ChatPropsType) {
 									sx={{ backgroundColor: 'background.paper' }}
 								/>
 								<IconButton
-									className=""
 									type="submit"
 									size="large"
 								>

@@ -6,6 +6,8 @@ import _ from '@lodash';
 import { AppThunk, RootState } from 'app/store/index';
 import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { selectCurrentLanguageId } from 'app/store/i18nSlice';
+import { PartialDeep } from 'type-fest';
+import FuseNavItemModel from '@fuse/core/FuseNavigation/model/FuseNavItemModel';
 
 const navigationAdapter = createEntityAdapter<FuseNavItemType>();
 
@@ -14,24 +16,24 @@ const emptyInitialState = navigationAdapter.getInitialState();
 const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationConfig);
 
 export const appendNavigationItem =
-	(item: FuseNavItemType, parentId: string): AppThunk =>
+	(item: FuseNavItemType, parentId?: string): AppThunk =>
 	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
-		dispatch(setNavigation(FuseUtils.appendNavItem(navigation, item, parentId)));
+		dispatch(setNavigation(FuseUtils.appendNavItem(navigation, FuseNavItemModel(item), parentId)));
 	};
 
 export const prependNavigationItem =
-	(item: FuseNavItemType, parentId: string): AppThunk =>
+	(item: FuseNavItemType, parentId?: string): AppThunk =>
 	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 
-		dispatch(setNavigation(FuseUtils.prependNavItem(navigation, item, parentId)));
+		dispatch(setNavigation(FuseUtils.prependNavItem(navigation, FuseNavItemModel(item), parentId)));
 
 		return Promise.resolve();
 	};
 
 export const updateNavigationItem =
-	(id: string, item: FuseNavItemType): AppThunk =>
+	(id: string, item: PartialDeep<FuseNavItemType>): AppThunk =>
 	async (dispatch, getState) => {
 		const navigation = selectNavigationAll(getState());
 

@@ -7,8 +7,13 @@ type Slice<State = unknown> = {
 	name: string;
 };
 
+type KnownAction = {
+	type: string;
+	payload: unknown;
+};
+
 export const injectReducersGroupedByCommonKey = async (slices: Slice[]) => {
-	const groupedReducers: Record<string, Record<string, Reducer<unknown, any>>> = {};
+	const groupedReducers: Record<string, Record<string, Reducer<unknown, KnownAction>>> = {};
 	const allCombinedReducers: Record<string, Reducer> = {};
 
 	// Group slices by their common key and prepare for combineReducers

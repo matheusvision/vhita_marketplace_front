@@ -10,12 +10,16 @@ import Error404Page from '../main/404/Error404Page';
 import PagesConfigs from '../main/pages/pagesConfigs';
 import DashboardsConfigs from '../main/dashboards/dashboardsConfigs';
 import AppsConfigs from '../main/apps/appsConfigs';
+import UserInterfaceConfigs from '../main/user-interface/UserInterfaceConfigs';
+import DocumentationConfig from '../main/documentation/DocumentationConfig';
 
 const routeConfigs: FuseRouteConfigsType = [
 	SignOutConfig,
 	SignInConfig,
 	SignUpConfig,
+	DocumentationConfig,
 	...PagesConfigs,
+	...UserInterfaceConfigs,
 	...DashboardsConfigs,
 	...AppsConfigs
 ];

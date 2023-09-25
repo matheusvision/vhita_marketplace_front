@@ -49,7 +49,6 @@ function ProductsHeader() {
 					animate={{ opacity: 1, x: 0, transition: { delay: 0.2 } }}
 				>
 					<Button
-						className=""
 						component={Link}
 						to="/apps/e-commerce/products/new"
 						variant="contained"

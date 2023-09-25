@@ -292,7 +292,7 @@ function NoteForm(props: NoteFormProps) {
 					>
 						<div>
 							<NoteFormLabelMenu
-								note={noteForm}
+								note={noteForm as NoteType}
 								onChange={(labels: string[]) => setValue('labels', labels)}
 							/>
 						</div>

@@ -37,7 +37,7 @@ function PalettePreview(props: PalettePreviewProps) {
 						color: () => palette.secondary.contrastText || palette.getContrastText(palette.secondary.main)
 					}}
 				>
-					<span className="">S</span>
+					<span>S</span>
 				</Box>
 			</Box>
 			<div className="-mt-24 w-full pl-8 pr-28">

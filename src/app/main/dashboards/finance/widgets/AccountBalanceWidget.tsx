@@ -70,7 +70,7 @@ function AccountBalanceWidget() {
 						</Typography>
 					</div>
 
-					<div className="">
+					<div>
 						<Chip
 							size="small"
 							className="font-medium text-sm"

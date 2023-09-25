@@ -23,7 +23,6 @@ function ItemIcon(props: ItemIconProps) {
 	if (type === 'folder') {
 		return (
 			<FuseSvgIcon
-				className=""
 				size={56}
 				color="disabled"
 			>
@@ -35,7 +34,6 @@ function ItemIcon(props: ItemIconProps) {
 	return (
 		<div className="relative">
 			<FuseSvgIcon
-				className=""
 				size={56}
 				color="disabled"
 			>

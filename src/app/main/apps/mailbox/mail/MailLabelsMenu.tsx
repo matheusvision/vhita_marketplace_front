@@ -56,7 +56,7 @@ function MailLabelsMenu(props: MailLabelsMenuProps) {
 					'aria-labelledby': 'labels'
 				}}
 			>
-				<div className="">
+				<div>
 					{labelsAll.map((label) => {
 						return (
 							<MenuItem

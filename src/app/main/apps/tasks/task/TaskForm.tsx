@@ -132,7 +132,6 @@ function TaskForm() {
 					<div className="flex items-center">
 						{routeParams.id !== 'new' && <FormActionsMenu taskId={task.id} />}
 						<IconButton
-							className=""
 							component={NavLinkAdapter}
 							to="/apps/tasks"
 							size="large"

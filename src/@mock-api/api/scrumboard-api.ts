@@ -88,9 +88,7 @@ mock.onPost(/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/lists\/(?<listId>[^/]
  * PUT api/scrumboard/boards/{boardId}/cards/{cardId}
  */
 mock.onPut(/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/cards\/(?<cardId>[^/]+)/).reply(({ url, data }) => {
-	const { boardId, cardId } = url.match(
-		/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/cards\/(?<cardId>[^/]+)/
-	).groups;
+	const { cardId } = url.match(/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/cards\/(?<cardId>[^/]+)/).groups;
 
 	const card = _.find(cardsDB, { id: cardId });
 
@@ -138,9 +136,7 @@ mock.onGet(/\/api\/scrumboard\/boards\/(?<id>[^/]+)\/lists/).reply((config) => {
  * PUT api/scrumboard/boards/{boardId}/lists/{listId}
  */
 mock.onPut(/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/lists\/(?<listId>[^/]+)/).reply(({ url, data }) => {
-	const { boardId, listId } = url.match(
-		/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/lists\/(?<listId>[^/]+)/
-	).groups;
+	const { listId } = url.match(/\/api\/scrumboard\/boards\/(?<boardId>[^/]+)\/lists\/(?<listId>[^/]+)/).groups;
 
 	const list = _.find(listsDB, { id: listId });
 
@@ -252,6 +248,6 @@ mock.onDelete(/\/api\/scrumboard\/boards\/[^/]+/).reply(({ url }) => {
  * GET ALL MEMBERS
  * GET api/scrumboard/members
  */
-mock.onGet('/api/scrumboard/members').reply(({ data }) => {
+mock.onGet('/api/scrumboard/members').reply(() => {
 	return [200, membersDB];
 });

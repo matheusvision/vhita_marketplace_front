@@ -56,7 +56,6 @@ function EmailInput(props: EmailInputProps) {
 				render={({ field }) => (
 					<TextField
 						{...field}
-						className=""
 						label="Email"
 						placeholder="Email"
 						variant="outlined"
@@ -79,7 +78,6 @@ function EmailInput(props: EmailInputProps) {
 				render={({ field }) => (
 					<TextField
 						{...field}
-						className=""
 						label="Label"
 						placeholder="Label"
 						variant="outlined"

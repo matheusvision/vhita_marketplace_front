@@ -25,10 +25,7 @@ function FileItem(props: FileItemProps) {
 			onClick={() => dispatch(setSelectedItem(item.id))}
 		>
 			<div className="flex flex-auto w-full items-center justify-center">
-				<ItemIcon
-					className=""
-					type={item.type}
-				/>
+				<ItemIcon type={item.type} />
 			</div>
 			<div className="flex shrink flex-col justify-center text-center">
 				<Typography className="truncate text-12 font-medium">{item.name}</Typography>

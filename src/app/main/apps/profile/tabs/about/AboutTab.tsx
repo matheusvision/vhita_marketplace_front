@@ -122,7 +122,7 @@ function AboutTab() {
 
 							<div className="mb-24">
 								<Typography className="font-semibold mb-4 text-15">Jobs</Typography>
-								<table className="">
+								<table>
 									<tbody>
 										{work.jobs.map((job) => (
 											<tr key={job.company}>
@@ -253,12 +253,7 @@ function AboutTab() {
 										key={group.id}
 										className="px-0 space-x-8"
 									>
-										<Avatar
-											className=""
-											alt={group.name}
-										>
-											{group.name[0]}
-										</Avatar>
+										<Avatar alt={group.name}>{group.name[0]}</Avatar>
 										<ListItemText
 											primary={
 												<div className="flex">

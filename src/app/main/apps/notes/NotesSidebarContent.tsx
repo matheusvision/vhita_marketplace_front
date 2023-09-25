@@ -1,4 +1,4 @@
-import ListItemButton from '@mui/material/ListItemButton';
+import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { styled } from '@mui/material/styles';
 import List from '@mui/material/List';
@@ -6,30 +6,34 @@ import ListItemText from '@mui/material/ListItemText';
 import { motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from 'app/store/index';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
+import { PartialDeep } from 'type-fest';
 import { openLabelsDialog, selectLabels } from './store/labelsSlice';
 
-const StyledListItem = styled(ListItemButton)(({ theme }) => ({
-	color: 'inherit!important',
-	textDecoration: 'none!important',
-	height: 40,
-	width: '100%',
-	borderRadius: 20,
-	paddingLeft: 16,
-	paddingRight: 16,
-	marginBottom: 8,
-	fontWeight: 500,
-	'&.active': {
-		backgroundColor:
-			theme.palette.mode === 'light' ? 'rgba(0, 0, 0, .05)!important' : 'rgba(255, 255, 255, .1)!important',
-		pointerEvents: 'none',
+const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & PartialDeep<NavLinkAdapterPropsType>>(
+	({ theme }) => ({
+		color: 'inherit!important',
+		textDecoration: 'none!important',
+		height: 40,
+		width: '100%',
+		borderRadius: 20,
+		paddingLeft: 16,
+		paddingRight: 16,
+		marginBottom: 8,
+		fontWeight: 500,
+		'&.active': {
+			backgroundColor:
+				theme.palette.mode === 'light' ? 'rgba(0, 0, 0, .05)!important' : 'rgba(255, 255, 255, .1)!important',
+			pointerEvents: 'none',
+			'& .list-item-icon': {
+				color: theme.palette.secondary.main
+			}
+		},
 		'& .list-item-icon': {
-			color: theme.palette.secondary.main
+			marginRight: 16
 		}
-	},
-	'& .list-item-icon': {
-		marginRight: 16
-	}
-}));
+	})
+);
 
 function NotesSidebarContent() {
 	const dispatch = useAppDispatch();
@@ -41,9 +45,10 @@ function NotesSidebarContent() {
 				initial={{ y: 20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 			>
-				<List className="">
-					<NavLinkAdapter
-						component={StyledListItem}
+				<List>
+					<StyledListItemButton
+						component={NavLinkAdapter}
+						end
 						to="/apps/notes"
 						activeClassName="active"
 					>
@@ -58,9 +63,9 @@ function NotesSidebarContent() {
 							primary="Notes"
 							disableTypography
 						/>
-					</NavLinkAdapter>
-					<NavLinkAdapter
-						component={StyledListItem}
+					</StyledListItemButton>
+					<StyledListItemButton
+						component={NavLinkAdapter}
 						to="/apps/notes/reminders"
 						activeClassName="active"
 					>
@@ -75,10 +80,10 @@ function NotesSidebarContent() {
 							primary="Reminders"
 							disableTypography
 						/>
-					</NavLinkAdapter>
+					</StyledListItemButton>
 
-					<NavLinkAdapter
-						component={StyledListItem}
+					<StyledListItemButton
+						component={NavLinkAdapter}
 						to="/apps/notes/archive"
 						activeClassName="active"
 					>
@@ -93,12 +98,12 @@ function NotesSidebarContent() {
 							primary="Archive"
 							disableTypography
 						/>
-					</NavLinkAdapter>
+					</StyledListItemButton>
 
 					{labels.map((label) => (
-						<NavLinkAdapter
+						<StyledListItemButton
 							key={label.id}
-							component={StyledListItem}
+							component={NavLinkAdapter}
 							to={`/apps/notes/labels/${label.id}`}
 							activeClassName="active"
 						>
@@ -113,13 +118,9 @@ function NotesSidebarContent() {
 								primary={label.title}
 								disableTypography
 							/>
-						</NavLinkAdapter>
+						</StyledListItemButton>
 					))}
-					<NavLinkAdapter
-						to=""
-						component={StyledListItem}
-						onClick={() => dispatch(openLabelsDialog())}
-					>
+					<StyledListItemButton onClick={() => dispatch(openLabelsDialog())}>
 						<FuseSvgIcon
 							className="list-item-icon"
 							color="disabled"
@@ -131,7 +132,7 @@ function NotesSidebarContent() {
 							primary="Edit Labels"
 							disableTypography
 						/>
-					</NavLinkAdapter>
+					</StyledListItemButton>
 				</List>
 			</motion.div>
 		</div>

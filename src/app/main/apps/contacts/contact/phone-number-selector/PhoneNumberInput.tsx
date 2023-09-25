@@ -87,7 +87,6 @@ function PhoneNumberInput(props: PhoneNumberInputProps) {
 				render={({ field }) => (
 					<TextField
 						{...field}
-						className=""
 						label="Label"
 						placeholder="Label"
 						variant="outlined"

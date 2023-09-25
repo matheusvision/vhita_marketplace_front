@@ -78,7 +78,7 @@ function BuySellForm() {
 			className="w-full p-24 space-y-24"
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<div className="">
+			<div>
 				<Controller
 					render={({ field }) => (
 						<FormControl
@@ -113,7 +113,7 @@ function BuySellForm() {
 					control={control}
 				/>
 			</div>
-			<div className="">
+			<div>
 				<Controller
 					name="wallet"
 					control={control}
@@ -169,7 +169,7 @@ function BuySellForm() {
 					)}
 				/>
 			</div>
-			<div className="">
+			<div>
 				<Controller
 					name="amount"
 					control={control}

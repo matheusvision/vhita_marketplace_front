@@ -5,6 +5,7 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
 import clsx from 'clsx';
+import DemoLayoutFooterContent from 'app/theme-layouts/shared-components/DemoLayoutFooterContent';
 
 type FooterLayout1Props = { className?: string };
 
@@ -26,8 +27,8 @@ function FooterLayout1(props: FooterLayout1Props) {
 							: footerTheme.palette.background.default
 				}}
 			>
-				<Toolbar className="flex min-h-48 items-center overflow-x-auto px-8 py-0 sm:px-12 md:min-h-64">
-					Footer
+				<Toolbar className="min-h-48 md:min-h-64 px-8 sm:px-12 py-0 flex items-center overflow-x-auto">
+					<DemoLayoutFooterContent />
 				</Toolbar>
 			</AppBar>
 		</ThemeProvider>

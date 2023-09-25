@@ -76,7 +76,7 @@ function CardChecklist(props: CardChecklistProps) {
 						)}
 					/>
 				</div>
-				<div className="">
+				<div>
 					<IconButton
 						aria-owns={anchorEl ? 'actions-menu' : null}
 						aria-haspopup="true"
@@ -107,7 +107,7 @@ function CardChecklist(props: CardChecklistProps) {
 				</div>
 			</div>
 
-			<div className="">
+			<div>
 				<div className="flex items-center -mx-6">
 					<Typography className="flex font-semibold mx-6">
 						{`${checkItemsChecked()} / ${form.checkItems.length}`}
@@ -124,7 +124,7 @@ function CardChecklist(props: CardChecklistProps) {
 					control={control}
 					defaultValue={[]}
 					render={({ field: { onChange, value } }) => (
-						<List className="">
+						<List>
 							{value.map((checkItem, _index) => (
 								<CardChecklistItem
 									item={checkItem}

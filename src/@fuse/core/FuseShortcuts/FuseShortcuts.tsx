@@ -160,7 +160,6 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 						value={searchText}
 						onChange={search}
 						placeholder="Search for an app or page"
-						className=""
 						fullWidth
 						inputProps={{
 							'aria-label': 'Search'

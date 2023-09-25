@@ -18,7 +18,7 @@ function RecentTransactionsWidget() {
 
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">
-			<div className="">
+			<div>
 				<Typography className="mr-16 text-lg font-medium tracking-tight leading-6 truncate">
 					Recent transactions
 				</Typography>
@@ -59,12 +59,7 @@ function RecentTransactionsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography
-														className=""
-														color="text.secondary"
-													>
-														{value}
-													</Typography>
+													<Typography color="text.secondary">{value}</Typography>
 												</TableCell>
 											);
 										}
@@ -75,9 +70,7 @@ function RecentTransactionsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography className="">
-														{format(new Date(value), 'MMM dd, y')}
-													</Typography>
+													<Typography>{format(new Date(value), 'MMM dd, y')}</Typography>
 												</TableCell>
 											);
 										}
@@ -88,7 +81,7 @@ function RecentTransactionsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography className="">
+													<Typography>
 														{value.toLocaleString('en-US', {
 															style: 'currency',
 															currency: 'USD'
@@ -125,7 +118,7 @@ function RecentTransactionsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography className="">{value}</Typography>
+													<Typography>{value}</Typography>
 												</TableCell>
 											);
 										}

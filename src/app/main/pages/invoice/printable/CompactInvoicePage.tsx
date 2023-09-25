@@ -14,7 +14,7 @@ function CompactInvoicePage() {
 				transition={{ bounceDamping: 0 }}
 			>
 				<Card className="mx-auto w-xl rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
-					<CardContent className="">
+					<CardContent>
 						<div className="flex items-start justify-between">
 							<div className="grid grid-cols-2 gap-x-16 gap-y-1">
 								<Typography

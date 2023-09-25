@@ -40,7 +40,7 @@ function LabelsMenu(props: LabelsMenuProps) {
 				state={anchorEl}
 				onClose={handleMenuClose}
 			>
-				<div className="">
+				<div>
 					{labelsArr.map((label) => {
 						return (
 							<MenuItem

@@ -9,6 +9,7 @@ import MailDetails from './mail/MailDetails';
 import slices from './store';
 
 const MailboxApp = lazyWithSlices(() => import('./MailboxApp'), slices);
+
 i18next.addResourceBundle('en', 'mailboxApp', en);
 i18next.addResourceBundle('tr', 'mailboxApp', tr);
 i18next.addResourceBundle('ar', 'mailboxApp', ar);
@@ -20,7 +21,6 @@ const MailboxAppConfig = {
 	routes: [
 		{
 			path: '/apps/mailbox',
-			element: <MailboxApp />,
 			children: [
 				{
 					path: '',
@@ -28,6 +28,8 @@ const MailboxAppConfig = {
 				},
 				{
 					path: ':folderHandle',
+					element: <MailboxApp />,
+
 					children: [
 						{ path: '', element: <SelectMailMessage /> },
 						{ path: ':mailId', element: <MailDetails /> }
@@ -35,6 +37,8 @@ const MailboxAppConfig = {
 				},
 				{
 					path: 'label/:labelHandle',
+					element: <MailboxApp />,
+
 					children: [
 						{ path: '', element: <SelectMailMessage /> },
 						{ path: ':mailId', element: <MailDetails /> }
@@ -42,6 +46,8 @@ const MailboxAppConfig = {
 				},
 				{
 					path: 'filter/:filterHandle',
+					element: <MailboxApp />,
+
 					children: [
 						{ path: '', element: <SelectMailMessage /> },
 						{ path: ':mailId', element: <MailDetails /> }

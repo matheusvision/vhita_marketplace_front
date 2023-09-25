@@ -237,7 +237,6 @@ function MailCompose(props: MailComposeProps) {
 
 						<div className="flex items-center space-x-8 mt-16 sm:mt-0">
 							<Button
-								className=""
 								variant="outlined"
 								color="secondary"
 								onClick={handleDiscard}
@@ -245,7 +244,6 @@ function MailCompose(props: MailComposeProps) {
 								Discard
 							</Button>
 							<Button
-								className=""
 								variant="outlined"
 								color="secondary"
 							>
@@ -253,7 +251,6 @@ function MailCompose(props: MailComposeProps) {
 							</Button>
 
 							<Button
-								className=""
 								variant="contained"
 								color="secondary"
 								type="submit"

@@ -47,7 +47,7 @@ function NewLabelForm(props: NewLabelFormProps) {
 	});
 
 	const { errors } = formState;
-	const form = watch();
+	const form = watch() as LabelModelType;
 
 	useEffect(() => {
 		reset(label);

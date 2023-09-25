@@ -134,7 +134,7 @@ function PostItem(props: PostProps) {
 				}}
 			>
 				{item.comments && item.comments.length > 0 && (
-					<div className="">
+					<div>
 						<div className="flex items-center">
 							<Typography>{item.comments.length} comments</Typography>
 							<FuseSvgIcon

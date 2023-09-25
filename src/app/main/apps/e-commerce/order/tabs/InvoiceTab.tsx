@@ -144,10 +144,10 @@ function InvoiceTab(props: InvoiceTabProps) {
 											<TableCell>
 												<Typography variant="subtitle1">{product.name}</Typography>
 											</TableCell>
-											<TableCell align="right">{formatter.format(product.price)}</TableCell>
+											<TableCell align="right">{formatter.format(+product.price)}</TableCell>
 											<TableCell align="right">{product.quantity}</TableCell>
 											<TableCell align="right">
-												{formatter.format(product.price * product.quantity)}
+												{formatter.format(+product.price * product.quantity)}
 											</TableCell>
 										</TableRow>
 									))}
@@ -172,7 +172,7 @@ function InvoiceTab(props: InvoiceTabProps) {
 												variant="subtitle1"
 												color="text.secondary"
 											>
-												{formatter.format(order.subtotal)}
+												{formatter.format(+order.subtotal)}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -192,7 +192,7 @@ function InvoiceTab(props: InvoiceTabProps) {
 												variant="subtitle1"
 												color="text.secondary"
 											>
-												{formatter.format(order.tax)}
+												{formatter.format(+order.tax)}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -212,7 +212,7 @@ function InvoiceTab(props: InvoiceTabProps) {
 												variant="subtitle1"
 												color="text.secondary"
 											>
-												{formatter.format(order.discount)}
+												{formatter.format(+order.discount)}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -232,7 +232,7 @@ function InvoiceTab(props: InvoiceTabProps) {
 												variant="h4"
 												color="text.secondary"
 											>
-												{formatter.format(order.total)}
+												{formatter.format(+order.total)}
 											</Typography>
 										</TableCell>
 									</TableRow>

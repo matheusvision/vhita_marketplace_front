@@ -2,16 +2,18 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
+import { EventModelType } from '../../app/main/apps/calendar/model/EventModel';
+import { LabelModelType } from '../../app/main/apps/calendar/model/LabelModel';
 
-const eventsDB = mockApi.components.examples.calendar_events.value;
-const labelsDB = mockApi.components.examples.calendar_labels.value;
+const eventsDB = mockApi.components.examples.calendar_events.value as EventModelType[];
+const labelsDB = mockApi.components.examples.calendar_labels.value as LabelModelType[];
 
-mock.onGet('/api/calendar/labels').reply((config) => {
+mock.onGet('/api/calendar/labels').reply(() => {
 	return [200, labelsDB];
 });
 
 mock.onPost('/api/calendar/labels').reply(({ data }) => {
-	const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data) };
+	const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as LabelModelType;
 	labelsDB.push(newLabel);
 
 	return [200, newLabel];
@@ -20,7 +22,7 @@ mock.onPost('/api/calendar/labels').reply(({ data }) => {
 mock.onPut(/\/api\/calendar\/labels\/[^/]+/).reply(({ url, data }) => {
 	const { id } = url.match(/\/api\/calendar\/labels\/(?<id>[^/]+)/).groups;
 
-	_.assign(_.find(labelsDB, { id }), JSON.parse(data));
+	_.assign(_.find(labelsDB, { id }), JSON.parse(data as string));
 
 	return [200, _.find(labelsDB, { id })];
 });
@@ -56,12 +58,12 @@ mock.onDelete(/\/api\/calendar\/labels\/[^/]+/).reply((config) => {
 	return [200, id];
 });
 
-mock.onGet('/api/calendar/events').reply((config) => {
+mock.onGet('/api/calendar/events').reply(() => {
 	return [200, eventsDB];
 });
 
 mock.onPost('/api/calendar/events').reply(({ data }) => {
-	const newEvent = { id: FuseUtils.generateGUID(), ...JSON.parse(data) };
+	const newEvent = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as EventModelType;
 	eventsDB.push(newEvent);
 
 	return [200, newEvent];
@@ -70,7 +72,7 @@ mock.onPost('/api/calendar/events').reply(({ data }) => {
 mock.onPut(/\/api\/calendar\/events\/[^/]+/).reply(({ url, data }) => {
 	const { id } = url.match(/\/api\/calendar\/events\/(?<id>[^/]+)/).groups;
 
-	_.assign(_.find(eventsDB, { id }), JSON.parse(data));
+	_.assign(_.find(eventsDB, { id }), JSON.parse(data as string)) as EventModelType;
 
 	return [200, _.find(eventsDB, { id })];
 });

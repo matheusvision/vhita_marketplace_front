@@ -92,7 +92,7 @@ type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Res
 	: { [P in Str]: T };
 
 // Process an array of slice names
-type MultiplePathsToType<Slices extends unknown[], T = unknown> = Slices extends [infer First, ...infer Rest]
+type MultiplePathsToType<Slices extends unknown[], _T = unknown> = Slices extends [infer First, ...infer Rest]
 	? First extends { name: string; getInitialState: () => unknown }
 		? PathToType<First['name'], ReturnType<First['getInitialState']>> & MultiplePathsToType<Rest>
 		: Record<string, never>

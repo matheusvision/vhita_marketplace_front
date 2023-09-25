@@ -12,10 +12,15 @@ const NotesAppConfig = {
 	routes: [
 		{
 			path: 'apps/notes',
-			element: <NotesApp />,
 			children: [
 				{
+					path: '',
+					element: <NotesApp />,
+					exact: true
+				},
+				{
 					path: ':filter',
+					element: <NotesApp />,
 					children: [
 						{
 							path: ':id'

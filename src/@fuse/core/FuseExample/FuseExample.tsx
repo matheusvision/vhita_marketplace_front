@@ -14,7 +14,7 @@ type FuseExampleProps = {
 	raw?: { default: string };
 	currentTabIndex?: number;
 	component: ElementType;
-	iframe: ReactNode;
+	iframe?: ReactNode;
 	className: string;
 };
 

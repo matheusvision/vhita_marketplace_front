@@ -165,7 +165,7 @@ function BudgetWidget() {
 				</div>
 			</div>
 
-			<div className="">
+			<div>
 				<Button variant="outlined">Download Summary</Button>
 			</div>
 		</Paper>

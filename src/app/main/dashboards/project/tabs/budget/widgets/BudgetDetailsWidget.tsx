@@ -63,7 +63,7 @@ function BudgetDetailsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography className="">
+													<Typography>
 														{value.toLocaleString('en-US', {
 															style: 'currency',
 															currency: 'USD'
@@ -80,7 +80,7 @@ function BudgetDetailsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography className="">{`${value}%`}</Typography>
+													<Typography>{`${value}%`}</Typography>
 												</TableCell>
 											);
 										}
@@ -91,7 +91,7 @@ function BudgetDetailsWidget() {
 													component="th"
 													scope="row"
 												>
-													<Typography className="">{value}</Typography>
+													<Typography>{value}</Typography>
 												</TableCell>
 											);
 										}

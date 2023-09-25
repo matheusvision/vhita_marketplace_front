@@ -263,7 +263,6 @@ function PaletteSelector(props: PaletteSelectorProps) {
 										{...field}
 										type="color"
 										variant="outlined"
-										className=""
 										label="Background default"
 										InputProps={{ className: 'w-200 h-32' }}
 										error={!!errors?.palette?.background?.default}

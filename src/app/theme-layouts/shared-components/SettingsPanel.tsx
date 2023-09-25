@@ -152,7 +152,7 @@ function SettingsPanel() {
 				}}
 				{...settingsHandlers}
 			>
-				<FuseScrollbars className="p-16 sm:p-32">
+				<FuseScrollbars className="p-16 sm:p-32 space-y-32">
 					<IconButton
 						className="fixed top-0 z-10 ltr:right-0 rtl:left-0"
 						onClick={handleClose}
@@ -162,7 +162,7 @@ function SettingsPanel() {
 					</IconButton>
 
 					<Typography
-						className="mb-32 font-semibold"
+						className="font-semibold"
 						variant="h6"
 					>
 						Theme Settings
@@ -170,7 +170,9 @@ function SettingsPanel() {
 
 					<FuseSettings />
 
-					<FuseSettingsViewerDialog className="mt-32" />
+					<div className="py-32">
+						<FuseSettingsViewerDialog />
+					</div>
 				</FuseScrollbars>
 			</StyledDialog>
 			<StyledDialog

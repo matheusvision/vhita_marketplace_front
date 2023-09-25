@@ -119,7 +119,6 @@ function MailToolbar(props: MailToolbarProps) {
 				/>
 
 				<IconButton
-					className=""
 					size="small"
 					aria-label="More"
 					aria-owns={menu.select ? 'select-menu' : null}
@@ -304,7 +303,7 @@ function MailToolbar(props: MailToolbarProps) {
 								aria-label="Mark as unread"
 								size="small"
 							>
-								<FuseSvgIcon className="">heroicons-outline:mail</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:mail</FuseSvgIcon>
 							</IconButton>
 						</Tooltip>
 

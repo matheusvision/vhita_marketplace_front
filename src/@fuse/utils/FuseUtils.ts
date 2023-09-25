@@ -3,6 +3,7 @@ import * as colors from '@mui/material/colors';
 import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
+import { PartialDeep } from 'type-fest';
 import EventEmitter from './EventEmitter';
 
 export type FuseRouteItemType = RouteObject & {
@@ -245,7 +246,7 @@ class FuseUtils {
 
 	static EventEmitter = EventEmitter;
 
-	static updateNavItem(nav: FuseNavigationType, id: string, item: FuseNavItemType): FuseNavigationType {
+	static updateNavItem(nav: FuseNavigationType, id: string, item: PartialDeep<FuseNavItemType>): FuseNavigationType {
 		return nav.map((_item) => {
 			if (_item.id === id) {
 				return _.merge({}, _item, item);

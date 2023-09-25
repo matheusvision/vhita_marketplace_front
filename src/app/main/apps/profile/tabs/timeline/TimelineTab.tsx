@@ -121,7 +121,7 @@ function TimelineTab() {
 								</IconButton>
 							</div>
 
-							<div className="">
+							<div>
 								<Button
 									variant="contained"
 									color="secondary"

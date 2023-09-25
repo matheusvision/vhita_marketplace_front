@@ -16,19 +16,15 @@ type WidgetsType = {
 	watchlist?: WatchlistType;
 };
 
-type CryptoDashboardAppState = {
-	widgets?: WidgetsType;
-};
-
-export const getWidgets = createAppAsyncThunk('cryptoDashboardApp/widgets/getWidgets', async () => {
+export const getWidgets = createAppAsyncThunk<WidgetsType>('cryptoDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/crypto/widgets');
 
-	const data = (await response.data) as CryptoDashboardAppState;
+	const data = (await response.data) as WidgetsType;
 
 	return data;
 });
 
-const initialState: CryptoDashboardAppState = null;
+const initialState: WidgetsType = null;
 
 const widgetsSlice = createSlice({
 	name: 'cryptoDashboardApp/widgets',

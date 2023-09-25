@@ -17,7 +17,6 @@ function ActivityItem(props: ActivityItemProps) {
 			className="px-0 space-x-12"
 		>
 			<Avatar
-				className=""
 				alt={item.user.name}
 				src={item.user.avatar}
 			/>

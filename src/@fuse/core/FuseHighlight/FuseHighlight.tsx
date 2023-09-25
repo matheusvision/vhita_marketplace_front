@@ -1,5 +1,5 @@
 import * as Prism from 'prismjs';
-import { ElementType, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { ElementType, forwardRef, memo, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import './prism-languages';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
@@ -11,14 +11,15 @@ type FuseHighlightProps = {
 	className: string;
 };
 
-function FuseHighlight(props: FuseHighlightProps) {
+const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref) => {
 	const { async = false, children, className, component: Wrapper = 'code' } = props;
-	const domNode = useRef<HTMLElement>(null);
+	const innerRef = useRef<HTMLDivElement>(null);
+	useImperativeHandle(ref, () => innerRef.current, [innerRef]);
 
 	const [source, setSource] = useState(trimCode(children));
 
 	const highlight = useCallback(() => {
-		Prism.highlightElement(domNode.current, async);
+		Prism.highlightElement(innerRef.current, async);
 	}, [async]);
 
 	useEffect(() => {
@@ -31,13 +32,13 @@ function FuseHighlight(props: FuseHighlightProps) {
 
 	return (
 		<Wrapper
-			ref={domNode}
+			ref={innerRef}
 			className={clsx('border', className)}
 		>
 			{source}
 		</Wrapper>
 	);
-}
+});
 
 function trimCode(children: FuseHighlightProps['children']) {
 	const sourceString = typeof children === 'string' ? children : children?.default;

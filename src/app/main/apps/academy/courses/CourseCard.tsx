@@ -30,15 +30,9 @@ function CourseCard(props: CourseCardProps) {
 	return (
 		<Card className="flex flex-col h-384 shadow">
 			<CardContent className="flex flex-col flex-auto p-24">
-				<CourseInfo
-					course={course}
-					className=""
-				/>
+				<CourseInfo course={course} />
 			</CardContent>
-			<CourseProgress
-				className=""
-				course={course}
-			/>
+			<CourseProgress course={course} />
 			<CardActions
 				className="items-center justify-end py-16 px-24"
 				sx={{
@@ -54,14 +48,7 @@ function CourseCard(props: CourseCardProps) {
 					className="px-16 min-w-128"
 					color="secondary"
 					variant="contained"
-					endIcon={
-						<FuseSvgIcon
-							className=""
-							size={20}
-						>
-							heroicons-solid:arrow-sm-right
-						</FuseSvgIcon>
-					}
+					endIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-sm-right</FuseSvgIcon>}
 				>
 					{buttonStatus()}
 				</Button>

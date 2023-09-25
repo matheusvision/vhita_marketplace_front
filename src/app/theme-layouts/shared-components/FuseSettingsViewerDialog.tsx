@@ -53,8 +53,8 @@ function FuseSettingsViewerDialog(props: FuseSettingsViewerDialogProps) {
 				onClose={handleCloseDialog}
 				aria-labelledby="form-dialog-title"
 			>
-				<DialogTitle className="">Fuse Settings Viewer</DialogTitle>
-				<DialogContent className="">
+				<DialogTitle>Fuse Settings Viewer</DialogTitle>
+				<DialogContent>
 					<Typography className="mb-16 mt-24 text-16 font-bold">JSON</Typography>
 
 					<FuseHighlight

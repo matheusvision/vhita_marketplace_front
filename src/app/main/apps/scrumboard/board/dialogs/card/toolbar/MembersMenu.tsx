@@ -40,7 +40,7 @@ function MembersMenu(props: MembersMenuProps) {
 				state={anchorEl}
 				onClose={handleMenuClose}
 			>
-				<div className="">
+				<div>
 					{members.map((member) => {
 						return (
 							<MenuItem
