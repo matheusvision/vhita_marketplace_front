@@ -22,7 +22,7 @@ function CryptoDashboardAppSidebar() {
 					/>
 				))}
 			</Paper>
-			<BuySellForm />z
+			<BuySellForm />
 		</>
 	);
 }
