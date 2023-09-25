@@ -17,8 +17,8 @@ function MailboxAppSidebarContent() {
 
 	return (
 		<motion.div
-			initial={{ y: 50, opacity: 0 }}
-			animate={{ y: 0, opacity: 1, transition: { delay: 0.4 } }}
+			initial={{ y: 20, opacity: 0 }}
+			animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 			className="flex-auto border-l-1"
 		>
 			<div className="mb-24 mt-40 mx-24">
