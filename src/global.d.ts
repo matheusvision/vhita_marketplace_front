@@ -5,12 +5,20 @@ declare module '*.css' {
 }
 
 // In a .d.ts file in your project
-interface Process {
-	browser: boolean;
-	env: {
-		[key: string]: string | undefined;
-	};
-}
+// interface Process {
+// 	browser: boolean;
+// 	env: {
+// 		[key: string]: string | undefined;
+// 	};
+// }
 
 // Make it a global variable
 declare let process: Process;
+
+interface HotModule {
+	hot?: {
+		status: () => string;
+	};
+}
+
+declare const module: HotModule;
