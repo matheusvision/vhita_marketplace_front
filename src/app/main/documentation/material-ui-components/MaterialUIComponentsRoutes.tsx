@@ -29,7 +29,6 @@ const Lists = lazy(() => import('./pages/Lists'));
 const Masonry = lazy(() => import('./pages/Masonry'));
 const Menus = lazy(() => import('./pages/Menus'));
 const Modal = lazy(() => import('./pages/Modal'));
-const NoSsr = lazy(() => import('./pages/NoSsr'));
 const Pagination = lazy(() => import('./pages/Pagination'));
 const Paper = lazy(() => import('./pages/Paper'));
 const Popover = lazy(() => import('./pages/Popover'));
@@ -86,7 +85,6 @@ const MaterialUIComponentsRoutes = [
 	{ path: 'material-ui-components/masonry', element: <Masonry /> },
 	{ path: 'material-ui-components/menus', element: <Menus /> },
 	{ path: 'material-ui-components/modal', element: <Modal /> },
-	{ path: 'material-ui-components/no-ssr', element: <NoSsr /> },
 	{ path: 'material-ui-components/pagination', element: <Pagination /> },
 	{ path: 'material-ui-components/paper', element: <Paper /> },
 	{ path: 'material-ui-components/popover', element: <Popover /> },

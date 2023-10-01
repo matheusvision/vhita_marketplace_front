@@ -8,7 +8,6 @@ import { styled } from '@mui/material/styles';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import DocumentationPageBreadcrumb from './DocumentationPageBreadcrumb';
 import DocumentationNavigation from './DocumentationNavigation';
 
 const Root = styled(FusePageCarded)(() => ({
@@ -16,8 +15,8 @@ const Root = styled(FusePageCarded)(() => ({
 	'& .FusePageCarded-wrapper': {},
 	'& .FusePageCarded-leftSidebar': {},
 	'& .description': {
-		fontSize: 20,
-		marginBottom: 40
+		fontSize: 16,
+		marginBottom: 24
 	}
 }));
 
@@ -62,7 +61,6 @@ function DocumentationPageLayout() {
 			}
 			content={
 				<div className="p-16 md:p-24 max-w-3xl min-h-full flex flex-auto flex-col">
-					<DocumentationPageBreadcrumb />
 					<div className="flex flex-col flex-1 relative py-32">
 						<FuseSuspense>
 							<Outlet />

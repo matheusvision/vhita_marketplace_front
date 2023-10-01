@@ -55,23 +55,23 @@ renderer.heading = (text, level) => {
 	let className = '';
 	switch (level) {
 		case 1:
-			className = 'text-40 my-16 font-700';
+			className = 'text-32 my-16 font-700';
 			break;
 		case 2:
-			className = 'text-32 mt-40 mb-10 font-700';
+			className = 'text-24 mt-24 mb-10 font-700';
 			break;
 		case 3:
-			className = 'text-20 mt-20 mb-10 font-700';
+			className = 'text-16 mt-20 mb-10 font-700';
 			break;
 		default:
-			className = 'text-16 mt-16 mb-10';
+			className = 'text-14 mt-12 mb-10';
 	}
 
 	return `<Typography className="${className}" component="h${level}">${text}</Typography>\n`;
 };
 
 renderer.paragraph = (text) => {
-	return `<Typography className="mb-40" component="div">${text}</Typography>\n`;
+	return `<Typography className="text-14 mb-32" component="div">${text}</Typography>\n`;
 };
 
 renderer.code = (code, lang) => {
@@ -154,6 +154,16 @@ function getContents(markdown: string) {
 }
 
 function getHtmlCode(markdownSource: string, fileDir: string) {
+	const folderName = path.basename(fileDir); // example: simple-zoom
+
+	markdownSource = eraseMdSection(markdownSource, folderName, 'breadcrumbs', 'Integration with react-router');
+	markdownSource = eraseMdSection(markdownSource, folderName, 'pagination', 'Router integration');
+
+	markdownSource = markdownSource.replace(
+		/:::info([\s\S]*?):::/g,
+		'<div className="border border-1 p-16 rounded-16 my-12">\n$1\n</div>'
+	);
+
 	let contentsArr = getContents(markdownSource);
 	contentsArr = contentsArr.map((content) => {
 		const match = content.match(demoRegexp);
@@ -162,7 +172,6 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 			const demoOptions = JSON.parse(`{${content}}`);
 			const name = demoOptions.demo as string; // example: SimpleZoom.js
 			const nameWithoutExt = path.basename(name, path.extname(name)); // example: SimpleZoom
-			const folderName = path.basename(fileDir); // example: simple-zoom
 			let filePath = path.resolve(fileDir, name);
 
 			const potentialTSX = path.resolve(fileDir, `${nameWithoutExt}.tsx`);
@@ -182,7 +191,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 			const iframe = !!demoOptions.iframe;
 			return `\n<FuseExample
                     name="${name}"
-                    className="my-24"
+                    className="my-16"
                     iframe={${iframe}}
                     component="{require('${importPath}').default}" 
                     raw="{require('!raw-loader!${importPath}')}"
@@ -197,6 +206,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 		return content;
 	});
+
 	const response = marked(contentsArr.join(''))
 		.replace(/"{/g, '{')
 		.replace(/}"/g, '}')
@@ -206,9 +216,19 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		.replace(/<br>/g, '<br/>')
 		.replace(/\/static\//g, '/material-ui-static/')
 		.replace(/<!-- #default-branch-switch -->/g, '')
-		.replace(/<ul start="(\d+)">/g, '<ul start={$1}>')
+		.replace(/<ul>/g, '<ul className="space-y-16">')
+		.replace(/<ul start="(\d+)">/g, '<ul className="space-y-16" start={$1}>')
 		.replace(/<ol start="(\d+)">/g, '<ol start={$1}>');
+
 	return response;
+}
+
+function eraseMdSection(content, folderName, requestedDir, title) {
+	if (folderName !== requestedDir) {
+		return content;
+	}
+	const regex = new RegExp(`## ${title}[\\s\\S]*?(?=##)`, 'g');
+	return content.replace(regex, '');
 }
 
 function readDir(dir: string) {
@@ -258,7 +278,8 @@ function writePage(fileDir: string) {
 
 	const contentJSX = `
                 <>
-					<div className="flex flex-1 grow-0 items-center justify-end">
+					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
+					  <DocumentationPageBreadcrumb />
 					  <Button 
 							className="normal-case"
 							variant="contained"
@@ -267,7 +288,8 @@ function writePage(fileDir: string) {
 							href="https://mui.com/components/${path.basename(fileDir)}" 
 							target="_blank"
 							role="button"
-							startIcon={<FuseSvgIcon>heroicons-outline:external-link</FuseSvgIcon>}
+							size="small"
+							startIcon={<FuseSvgIcon size={20}>heroicons-outline:external-link</FuseSvgIcon>}
 							>
 							Reference
 						</Button>
@@ -284,6 +306,7 @@ function writePage(fileDir: string) {
                    import Button from '@mui/material/Button';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
+				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
                   
                    function ${fileName}Doc(props) {
                      return (
@@ -448,7 +471,8 @@ function removeExcludedComponents() {
 		path.resolve(examplesDirectory, './pickers'),
 		path.resolve(examplesDirectory, './click-away-listener'),
 		path.resolve(examplesDirectory, './portal'),
-		path.resolve(examplesDirectory, './textarea-autosize')
+		path.resolve(examplesDirectory, './textarea-autosize'),
+		path.resolve(examplesDirectory, './no-ssr')
 	];
 
 	excludedComponents.forEach((_path) => rmDir(_path));

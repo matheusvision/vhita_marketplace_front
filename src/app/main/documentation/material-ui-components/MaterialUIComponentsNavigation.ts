@@ -68,7 +68,6 @@ const MaterialUIComponentsNavigation = {
 		{ id: 'masonry', title: 'Masonry', type: 'item', url: '/documentation/material-ui-components/masonry' },
 		{ id: 'menus', title: 'Menus', type: 'item', url: '/documentation/material-ui-components/menus' },
 		{ id: 'modal', title: 'Modal', type: 'item', url: '/documentation/material-ui-components/modal' },
-		{ id: 'noSsr', title: 'No Ssr', type: 'item', url: '/documentation/material-ui-components/no-ssr' },
 		{
 			id: 'pagination',
 			title: 'Pagination',
