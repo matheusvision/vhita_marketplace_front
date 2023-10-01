@@ -5,10 +5,11 @@ import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 import Box from '@mui/material/Box';
-import { FuseNavVerticalTabProps } from '@fuse/core/FuseNavigation';
 import { ListItemButton } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
+import { FuseNavigationProps } from '../../FuseNavigation';
+import { FuseNavItemComponentProps } from '../../FuseNavItem';
 
 const Root = styled(Box)(({ theme }) => ({
 	'& > .fuse-list-item': {
@@ -57,6 +58,8 @@ const Root = styled(Box)(({ theme }) => ({
 		'& .fuse-list-item-text': {}
 	}
 }));
+
+export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & FuseNavItemComponentProps;
 
 function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 	const { item, onItemClick, firstLevel, dense, selectedId } = props;

@@ -27,6 +27,10 @@ module.exports = {
             }
         }
     },
+    "ignorePatterns": [
+        "src/app/main/documentation/material-ui-components/components/**",
+        "src/app/main/documentation/material-ui-components/pages/**"
+    ],
     "rules": {
         "prettier/prettier": [
             "warn",

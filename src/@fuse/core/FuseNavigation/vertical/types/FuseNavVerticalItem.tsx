@@ -3,10 +3,10 @@ import { alpha, styled } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
+import { FuseNavItemComponentProps } from '../../FuseNavItem';
 
 type ListItemButtonStyleProps = ListItemButtonProps & {
 	itempadding: number;

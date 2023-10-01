@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { memo } from 'react';
-import { FuseNavBadgeType } from '@fuse/core/FuseNavigation/index';
+import { FuseNavBadgeType } from './types/FuseNavBadgeType';
 
 const Root = styled('div')(({ theme }) => ({
 	padding: '0 7px',

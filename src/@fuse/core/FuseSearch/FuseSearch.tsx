@@ -15,11 +15,12 @@ import clsx from 'clsx';
 import _ from '@lodash';
 import { memo, useEffect, useReducer, useRef, ReactNode, ChangeEvent } from 'react';
 import Autosuggest from 'react-autosuggest';
-import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { PopperOwnProps } from '@mui/base/Popper';
 import FuseSvgIcon from '../FuseSvgIcon';
+import { FuseNavItemType } from '../FuseNavigation/types/FuseNavItemType';
+import { FuseNavigationType } from '../FuseNavigation/types/FuseNavigationType';
 
 const Root = styled('div')(({ theme }) => ({
 	'& .FuseSearch-container': {

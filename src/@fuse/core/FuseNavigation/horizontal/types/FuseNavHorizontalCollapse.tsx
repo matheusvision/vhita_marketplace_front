@@ -11,11 +11,10 @@ import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
 import withRouter from '@fuse/core/withRouter';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
-import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import { Location } from 'history';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import FuseNavBadge from '../../FuseNavBadge';
-import FuseNavItem from '../../FuseNavItem';
+import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
 const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({

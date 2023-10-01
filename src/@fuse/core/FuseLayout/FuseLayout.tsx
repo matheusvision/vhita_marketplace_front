@@ -7,7 +7,7 @@ import {
 	selectFuseDefaultSettings,
 	setSettings
 } from 'app/store/fuse/settingsSlice';
-import { memo, useCallback, useContext, useMemo, useRef } from 'react';
+import { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
@@ -141,6 +141,10 @@ function FuseLayout(props: FuseLayoutProps) {
 	}, [defaultSettings, matched]);
 
 	shouldAwaitRender();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
 
 	useDeepCompareEffect(() => {
 		if (!_.isEqual(newSettings.current, settings)) {

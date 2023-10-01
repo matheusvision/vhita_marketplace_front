@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { FuseNavItemType } from '@fuse/core/FuseNavigation';
+import { FuseNavItemType } from '../types/FuseNavItemType';
 
 function FuseNavItemModel(data?: PartialDeep<FuseNavItemType>) {
 	data = data || {};

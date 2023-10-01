@@ -8,12 +8,12 @@ import clsx from 'clsx';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import List, { ListProps } from '@mui/material/List';
-import { FuseNavItemComponentProps, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import type { Location } from 'history';
 import FuseNavBadge from '../../FuseNavBadge';
-import FuseNavItem from '../../FuseNavItem';
+import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
+import { FuseNavItemType } from '../../types/FuseNavItemType';
 
 type ListComponentProps = ListProps & {
 	itempadding: number;

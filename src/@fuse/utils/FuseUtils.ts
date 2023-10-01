@@ -1,9 +1,10 @@
 import _ from '@lodash';
 import * as colors from '@mui/material/colors';
-import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
 import { PartialDeep } from 'type-fest';
+import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import EventEmitter from './EventEmitter';
 
 export type FuseRouteItemType = RouteObject & {

@@ -13,7 +13,8 @@ import FuseNavVerticalGroup from './vertical/types/FuseNavVerticalGroup';
 import FuseNavVerticalItem from './vertical/types/FuseNavVerticalItem';
 import FuseNavVerticalLink from './vertical/types/FuseNavVerticalLink';
 import { registerComponent } from './FuseNavItem';
-import { FuseNavigationProps } from '.';
+import { FuseNavigationType } from './types/FuseNavigationType';
+import { FuseNavItemType } from './types/FuseNavItemType';
 
 const inputGlobalStyles = (
 	<GlobalStyles
@@ -54,6 +55,17 @@ registerComponent('horizontal-item', FuseNavHorizontalItem);
 registerComponent('horizontal-link', FuseNavHorizontalLink);
 registerComponent('vertical-divider', () => <Divider className="my-16" />);
 registerComponent('horizontal-divider', () => <Divider className="my-16" />);
+
+export type FuseNavigationProps = {
+	className?: string;
+	dense?: boolean;
+	active?: boolean;
+	onItemClick?: (T: FuseNavItemType) => void;
+	navigation: FuseNavigationType;
+	layout?: 'horizontal' | 'vertical' | 'vertical-2';
+	firstLevel?: boolean;
+	selectedId?: string;
+};
 
 function FuseNavigation(props: FuseNavigationProps) {
 	const { navigation, layout = 'vertical' } = props;

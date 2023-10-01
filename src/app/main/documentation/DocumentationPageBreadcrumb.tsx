@@ -2,7 +2,7 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { Link, useLocation } from 'react-router-dom';
-import { FuseNavItemType } from '@fuse/core/FuseNavigation';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import DocumentationNavigation from './DocumentationNavigation';
 
 const getPathTree = (departmentTree: FuseNavItemType, url: string) => {

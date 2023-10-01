@@ -4,10 +4,11 @@ import FuseUtils from '@fuse/utils';
 import i18next from 'i18next';
 import _ from '@lodash';
 import { AppThunk, RootState } from 'app/store/index';
-import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import { selectCurrentLanguageId } from 'app/store/i18nSlice';
 import { PartialDeep } from 'type-fest';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/model/FuseNavItemModel';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
+import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
 
 const navigationAdapter = createEntityAdapter<FuseNavItemType>();
 

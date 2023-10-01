@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { memo, useEffect, useState } from 'react';
 import { useAppDispatch } from 'app/store/index';
 import { useSelector } from 'react-redux';
-import FuseNavigation, { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
+import FuseNavigation from '@fuse/core/FuseNavigation';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import { useLocation } from 'react-router-dom';
@@ -14,6 +14,8 @@ import { selectNavigation } from 'app/store/fuse/navigationSlice';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import { Location } from 'history';
 import { Theme } from '@mui/system';
+import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 
 const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,

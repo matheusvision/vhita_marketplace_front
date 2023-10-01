@@ -1,4 +1,4 @@
-import { FuseNavItemType } from '@fuse/core/FuseNavigation';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import { fuseReactLatestVersion } from './changelog/ChangelogDoc';
 import FuseComponentsNavigation from './fuse-components/FuseComponentsNavigation';
 import MaterialUIComponentsNavigation from './material-ui-components/MaterialUIComponentsNavigation';

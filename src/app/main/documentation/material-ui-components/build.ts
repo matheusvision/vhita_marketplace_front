@@ -384,9 +384,6 @@ function writeNavigationFile(pages: string[]) {
 	fs.writeFileSync(path.resolve(navigationFilePath), content);
 }
 
-// eslint-disable-next-line no-unused-vars
-type DoneCallback = (error: NodeJS.ErrnoException | null, results?: string[]) => void;
-
 function filewalker(dir: string) {
 	return new Promise((resolve, reject) => {
 		let results: string[] = [];
@@ -455,7 +452,7 @@ async function replaceInExamples() {
 			try {
 				fsp.writeFile(file, result, 'utf8');
 			} catch (writeErr) {
-				console.error(writeErr);
+				// console.error(writeErr);
 			}
 		});
 	});
@@ -475,6 +472,7 @@ function removeExcludedComponents() {
 		path.resolve(examplesDirectory, './no-ssr')
 	];
 
+	// eslint-disable-next-line @typescript-eslint/no-misused-promises
 	excludedComponents.forEach((_path) => rmDir(_path));
 }
 
@@ -540,11 +538,11 @@ async function build() {
 
 			Promise.all(promises)
 				.then(() => {
-					console.log(`Done`);
+					// console.log(`Done`);
 				})
 				.catch((err) => {
 					if (err) {
-						console.error(err);
+						// console.error(err);
 					}
 				});
 		});

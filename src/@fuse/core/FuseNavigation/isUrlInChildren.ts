@@ -1,5 +1,5 @@
-import { FuseNavItemType } from '@fuse/core/FuseNavigation/index';
 import { Pathname } from 'history';
+import { FuseNavItemType } from './types/FuseNavItemType';
 
 const isUrlInChildren = (parent: FuseNavItemType, url: Pathname) => {
 	if (!parent.children) {

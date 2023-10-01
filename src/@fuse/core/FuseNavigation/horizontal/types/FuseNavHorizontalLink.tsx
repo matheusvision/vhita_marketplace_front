@@ -4,10 +4,10 @@ import clsx from 'clsx';
 import { memo, useMemo } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
-import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
+import { FuseNavItemComponentProps } from '../../FuseNavItem';
 
 const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	color: theme.palette.text.primary,

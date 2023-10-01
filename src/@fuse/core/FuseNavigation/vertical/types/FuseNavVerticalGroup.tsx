@@ -3,8 +3,7 @@ import { alpha, styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 import { ListItemButton, ListItemButtonProps, ListItemText } from '@mui/material';
-import { FuseNavItemComponentProps } from '@fuse/core/FuseNavigation';
-import FuseNavItem from '../../FuseNavItem';
+import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 
 type ListItemButtonComponentProps = ListItemButtonProps & {
 	itempadding: number;

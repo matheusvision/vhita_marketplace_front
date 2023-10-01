@@ -12,9 +12,10 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { memo, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FuseNavigationType, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import _ from '@lodash';
 import FuseSvgIcon from '../FuseSvgIcon';
+import { FuseNavigationType } from '../FuseNavigation/types/FuseNavigationType';
+import { FuseNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 
 type FuseShortcutsProps = {
 	className?: string;

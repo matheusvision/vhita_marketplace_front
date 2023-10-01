@@ -1,8 +1,9 @@
 import List from '@mui/material/List';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
-import { FuseNavigationProps, FuseNavItemType } from '@fuse/core/FuseNavigation';
 import FuseNavVerticalTab from './types/FuseNavVerticalTab';
+import { FuseNavigationProps } from '../FuseNavigation';
+import { FuseNavItemType } from '../types/FuseNavItemType';
 
 const StyledList = styled(List)(({ theme }) => ({
 	'& .fuse-list-item': {
