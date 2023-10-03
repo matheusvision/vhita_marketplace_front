@@ -8,7 +8,7 @@ import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
 const Root = styled(Paper)(({ theme }) => ({

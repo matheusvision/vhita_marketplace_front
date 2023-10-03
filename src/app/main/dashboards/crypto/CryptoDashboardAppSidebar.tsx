@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import WatchlistItem from './widgets/WatchlistItem';
 import { selectWidgets } from './store/widgetsSlice';
 import BuySellForm from './widgets/BuySellForm';

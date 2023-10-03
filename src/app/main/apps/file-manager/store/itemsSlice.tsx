@@ -1,12 +1,12 @@
 import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
-import { FileManagerItemType, FileManagerItemsType } from '../model/FileManagerItemModel';
+import { RootStateType } from 'app/store/types';
+import { ItemResponseType } from '../types/ItemResponseType';
+import { FileManagerItemType } from '../types/FileManagerItemType';
+import { ItemPathType } from '../types/ItemPathType';
 
-export type AppRootState = RootState<itemsSliceType>;
-
-type ItemResponseType = { items: FileManagerItemsType; path: ItemPathType };
+export type AppRootStateType = RootStateType<itemsSliceType>;
 
 export const getItems = createAppAsyncThunk<ItemResponseType, string>(
 	'fileManagerApp/items/getItems',
@@ -21,8 +21,6 @@ export const getItems = createAppAsyncThunk<ItemResponseType, string>(
 
 const itemsAdapter = createEntityAdapter<FileManagerItemType>({});
 
-type ItemPathType = { id: string; name: string }[];
-
 const initialState = itemsAdapter.getInitialState<{
 	selectedItemId: string | null;
 	path: ItemPathType;
@@ -35,7 +33,7 @@ export const {
 	selectAll: selectItems,
 	selectEntities: selectItemsEntities,
 	selectById
-} = itemsAdapter.getSelectors((state: AppRootState) => state.fileManagerApp.items);
+} = itemsAdapter.getSelectors((state: AppRootStateType) => state.fileManagerApp.items);
 
 const itemsSlice = createSlice({
 	name: 'fileManagerApp/items',
@@ -63,15 +61,16 @@ export const selectFiles = createSelector([selectItems], (items) => {
 	return items.filter((item) => item.type !== 'folder');
 });
 
-export const selectSelectedItemId = (state: AppRootState) => state.fileManagerApp.items.selectedItemId;
+export const selectSelectedItemId = (state: AppRootStateType) => state.fileManagerApp.items.selectedItemId;
 
-export const selectSelectedItem = (state: AppRootState) => selectById(state, state.fileManagerApp.items.selectedItemId);
+export const selectSelectedItem = (state: AppRootStateType) =>
+	selectById(state, state.fileManagerApp.items.selectedItemId);
 
-export const selectPath = (state: AppRootState) => state.fileManagerApp.items.path;
+export const selectPath = (state: AppRootStateType) => state.fileManagerApp.items.path;
 
 export const { setSelectedItem } = itemsSlice.actions;
 
-export const selectItemByIds = (id: FileManagerItemType['id']) => (state: AppRootState) => selectById(state, id);
+export const selectItemByIds = (id: FileManagerItemType['id']) => (state: AppRootStateType) => selectById(state, id);
 
 export type itemsSliceType = typeof itemsSlice;
 

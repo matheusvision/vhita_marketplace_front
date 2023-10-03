@@ -3,10 +3,10 @@ import Typography from '@mui/material/Typography';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { setSelectedItem } from './store/itemsSlice';
 import ItemIcon from './ItemIcon';
-import { FileManagerItemType } from './model/FileManagerItemModel';
+import { FileManagerItemType } from './types/FileManagerItemType';
 
 type FolderItemProps = {
 	item: FileManagerItemType;

@@ -6,7 +6,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Tooltip } from '@mui/material';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
 function VisitorsVsPageViewsWidget() {

@@ -2,21 +2,21 @@ import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolk
 import axios from 'axios';
 import _ from '@lodash';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { ChangeEvent } from 'react';
 import { selectFolders } from './foldersSlice';
 import { selectLabels } from './labelsSlice';
 import { selectFilters } from './filtersSlice';
-import { MailsType, MailType } from '../model/MailModel';
-import RouteParamsType from '../type/RouteParamsType';
-import ItemType from '../type/ItemType';
+import { MailsType, MailType } from '../types/MailType';
+import RouteParamsType from '../types/RouteParamsType';
+import ItemType from '../types/ItemType';
 
-export type AppRootState = RootState<mailsSliceType>;
+export type AppRootStateType = RootStateType<mailsSliceType>;
 
 export const getMails = createAppAsyncThunk<{ data: MailsType; routeParams: RouteParamsType }, RouteParamsType | void>(
 	'mailboxApp/mails/getMails',
 	async (_routeParams, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const routeParams: RouteParamsType = _routeParams || AppState.mailboxApp.mails.routeParams;
 
 		let url = '/api/mailbox/mails/';
@@ -72,7 +72,7 @@ const initialState = mailsAdapter.getInitialState<{
 });
 
 export const { selectAll: selectMails, selectById: selectMailById } = mailsAdapter.getSelectors(
-	(state: AppRootState) => state.mailboxApp.mails
+	(state: AppRootStateType) => state.mailboxApp.mails
 );
 
 const mailsSlice = createSlice({
@@ -139,9 +139,9 @@ export const selectMailsTitle = (routeParams: RouteParamsType) =>
 		return title;
 	});
 
-export const selectSearchText = (state: AppRootState) => state.mailboxApp?.mails.searchText;
+export const selectSearchText = (state: AppRootStateType) => state.mailboxApp?.mails.searchText;
 
-export const selectSelectedMailIds = (state: AppRootState) => state.mailboxApp?.mails.selectedMailIds;
+export const selectSelectedMailIds = (state: AppRootStateType) => state.mailboxApp?.mails.selectedMailIds;
 
 export type mailsSliceType = typeof mailsSlice;
 

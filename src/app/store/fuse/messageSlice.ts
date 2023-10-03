@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { SnackbarProps } from '@mui/material/Snackbar/Snackbar';
 import { FuseMessageVariantType } from '@fuse/core/FuseMessage/FuseMessage';
 
@@ -42,8 +42,8 @@ const messageSlice = createSlice({
 
 export const { hideMessage, showMessage } = messageSlice.actions;
 
-export const selectFuseMessageState = (state: RootState) => state.fuse.message.state;
+export const selectFuseMessageState = (state: RootStateType) => state.fuse.message.state;
 
-export const selectFuseMessageOptions = (state: RootState) => state.fuse.message.options;
+export const selectFuseMessageOptions = (state: RootStateType) => state.fuse.message.options;
 
 export default messageSlice.reducer;

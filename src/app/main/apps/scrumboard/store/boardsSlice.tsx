@@ -2,12 +2,12 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
 import { PartialDeep } from 'type-fest';
-import { RootState } from 'app/store/index';
-
+import { RootStateType } from 'app/store/types';
 import history from '@history';
-import BoardModel, { BoardType, BoardsType } from '../model/BoardModel';
+import BoardModel from '../models/BoardModel';
+import { BoardType, BoardsType } from '../types/BoardType';
 
-type AppRootState = RootState<BoardsSliceType>;
+type AppRootStateType = RootStateType<BoardsSliceType>;
 
 /**
  * Get Boards
@@ -44,7 +44,7 @@ export const {
 	selectAll: selectBoards,
 	selectEntities: selectBoardEntities,
 	selectById: selectBoardById
-} = boardsAdapter.getSelectors((state: AppRootState) => state.scrumboardApp.boards);
+} = boardsAdapter.getSelectors((state: AppRootStateType) => state.scrumboardApp.boards);
 
 const boardsSlice = createSlice({
 	name: 'scrumboardApp/boards',

@@ -8,19 +8,20 @@ import {
 	setSettings
 } from 'app/store/fuse/settingsSlice';
 import { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { useSelector } from 'react-redux';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha } from '@mui/material/styles';
-import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 
-export type FuseRouteObject = RouteObject & {
-	settings?: FuseSettingsConfigProps;
+export type FuseRouteObjectType = RouteObject & {
+	settings?: FuseSettingsConfigType;
 };
-export type FuseRouteMatch = RouteMatch & {
-	route: FuseRouteObject;
+
+export type FuseRouteMatchType = RouteMatch & {
+	route: FuseRouteObjectType;
 };
 
 const inputGlobalStyles = (
@@ -106,14 +107,14 @@ function FuseLayout(props: FuseLayoutProps) {
 	const location = useLocation();
 	const { pathname } = location;
 
-	const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatch[] | null;
+	const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatchType[] | null;
 
 	const matched = matchedRoutes?.[0] || false;
 
-	const newSettings = useRef<FuseSettingsConfigProps>(null);
+	const newSettings = useRef<FuseSettingsConfigType>(null);
 
 	const shouldAwaitRender = useCallback(() => {
-		let _newSettings: FuseSettingsConfigProps;
+		let _newSettings: FuseSettingsConfigType;
 		/**
 		 * On Path changed
 		 */

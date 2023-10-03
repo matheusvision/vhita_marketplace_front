@@ -1,10 +1,10 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import i18n from 'src/i18n';
-import { AppThunk, RootState } from 'app/store/index';
+import { AppThunkType, RootStateType } from 'app/store/types';
 import { setDefaultSettings } from './fuse/settingsSlice';
 
 export const changeLanguage =
-	(languageId: string): AppThunk =>
+	(languageId: string): AppThunkType =>
 	async (dispatch, getState) => {
 		const { direction } = getState().fuse.settings.defaults;
 
@@ -53,9 +53,9 @@ const i18nSlice = createSlice({
 	}
 });
 
-export const selectCurrentLanguageId = ({ i18n: _i18n }: RootState) => _i18n.language;
+export const selectCurrentLanguageId = ({ i18n: _i18n }: RootStateType) => _i18n.language;
 
-export const selectLanguages = ({ i18n: _i18n }: RootState) => _i18n.languages;
+export const selectLanguages = ({ i18n: _i18n }: RootStateType) => _i18n.languages;
 
 export const selectCurrentLanguageDirection = createSelector([selectCurrentLanguageId], (id) => i18n.dir(id));
 

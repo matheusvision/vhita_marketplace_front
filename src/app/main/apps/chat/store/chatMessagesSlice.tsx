@@ -1,38 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { getChatList } from './chatListSlice';
-import { ChatMessagesModelType, ChatMessageModelType } from '../model/ChatMessageModel';
-import { ContactModelType } from '../model/ContactModel';
+import { ChatMessagesType, ChatMessageType } from '../types/ChatMessageType';
+import { ContactType } from '../types/ContactType';
 
-type AppRootState = RootState<chatMessagesSliceType>;
+type AppRootStateType = RootStateType<chatMessagesSliceType>;
 
-export const getChat = createAppAsyncThunk<ChatMessagesModelType, ChatMessageModelType['contactId']>(
+export const getChat = createAppAsyncThunk<ChatMessagesType, ChatMessageType['contactId']>(
 	'chatApp/chat/getChat',
 	async (contactId) => {
 		const response = await axios.get(`/api/chat/chats/${contactId}`);
 
-		const data = (await response.data) as ChatMessagesModelType;
+		const data = (await response.data) as ChatMessagesType;
 
 		return data;
 	}
 );
 
-export const sendMessage = createAppAsyncThunk<
-	ChatMessageModelType,
-	{ messageText: string; contactId: ContactModelType['id'] }
->('chatApp/chat/sendMessage', async ({ messageText, contactId }, { dispatch }) => {
-	const response = await axios.post(`/api/chat/chats/${contactId}`, messageText);
+export const sendMessage = createAppAsyncThunk<ChatMessageType, { messageText: string; contactId: ContactType['id'] }>(
+	'chatApp/chat/sendMessage',
+	async ({ messageText, contactId }, { dispatch }) => {
+		const response = await axios.post(`/api/chat/chats/${contactId}`, messageText);
 
-	const data = (await response.data) as ChatMessageModelType;
+		const data = (await response.data) as ChatMessageType;
 
-	dispatch(getChatList());
+		dispatch(getChatList());
 
-	return data;
-});
+		return data;
+	}
+);
 
-const initialState: ChatMessagesModelType = [];
+const initialState: ChatMessagesType = [];
 
 const chatMessagesSlice = createSlice({
 	name: 'chatApp/chat',
@@ -47,7 +47,7 @@ const chatMessagesSlice = createSlice({
 	}
 });
 
-export const selectChat = (state: AppRootState) => state.chatApp.chat;
+export const selectChat = (state: AppRootStateType) => state.chatApp.chat;
 
 export type chatMessagesSliceType = typeof chatMessagesSlice;
 

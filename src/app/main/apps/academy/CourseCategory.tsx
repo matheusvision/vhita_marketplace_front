@@ -1,6 +1,6 @@
 import { darken, lighten } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import _ from '@lodash';
 import { selectCategories } from './store/categoriesSlice';
 import CourseType from './types/CourseType';

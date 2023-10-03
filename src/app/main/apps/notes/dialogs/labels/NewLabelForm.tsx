@@ -6,11 +6,12 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { createLabel } from '../../store/labelsSlice';
-import LabelModel, { LabelType } from '../../model/LabelModel';
+import LabelModel from '../../models/LabelModel';
+import { LabelType } from '../../types/LabelType';
 
 const defaultValues = {
 	title: ''

@@ -10,12 +10,12 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState, MouseEvent } from 'react';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { newList } from '../../store/listsSlice';
-import { ListType } from '../../model/ListModel';
+import { ListType } from '../../types/ListType';
 
 const defaultValues = {
 	title: ''

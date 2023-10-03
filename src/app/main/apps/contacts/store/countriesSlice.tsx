@@ -1,8 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { CountriesType, CountryType } from '../model/CountryModel';
-import { AppRootState } from '.';
+import { CountriesType, CountryType } from '../types/CountryType';
+import { AppRootStateType } from '.';
 
 export const getCountries = createAppAsyncThunk('contactsApp/countries/getCountries', async () => {
 	const response = await axios.get('/api/countries');
@@ -15,7 +15,7 @@ export const getCountries = createAppAsyncThunk('contactsApp/countries/getCountr
 const countriesAdapter = createEntityAdapter<CountryType>({});
 
 export const { selectAll: selectCountries, selectById: selectCountriesById } = countriesAdapter.getSelectors(
-	(state: AppRootState) => state.contactsApp?.countries
+	(state: AppRootStateType) => state.contactsApp?.countries
 );
 
 const countriesSlice = createSlice({

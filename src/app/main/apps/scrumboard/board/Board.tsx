@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';

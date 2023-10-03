@@ -13,7 +13,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import CardAddChecklistItem from './CardAddChecklistItem';
 import CardChecklistItem from './CardChecklistItem';
 import CardChecklistName, { CardChecklistHandle } from './CardChecklistName';
-import { ChecklistType } from '../../../../model/ChecklistModel';
+import { ChecklistType } from '../../../../types/ChecklistType';
 
 type CardChecklistProps = {
 	onCheckListChange: (checklist: ChecklistType, index: number) => void;

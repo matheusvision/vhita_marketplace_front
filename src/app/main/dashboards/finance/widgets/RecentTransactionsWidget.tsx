@@ -9,7 +9,7 @@ import { memo } from 'react';
 import format from 'date-fns/format';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
 function RecentTransactionsWidget() {

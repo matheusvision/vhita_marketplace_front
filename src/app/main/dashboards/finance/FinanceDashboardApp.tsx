@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import _ from '@lodash';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import FinanceDashboardAppHeader from './FinanceDashboardAppHeader';
 import PreviousStatementWidget from './widgets/PreviousStatementWidget';

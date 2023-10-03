@@ -1,17 +1,10 @@
-import {
-	configureStore,
-	ThunkAction,
-	ThunkDispatch,
-	Action,
-	Reducer,
-	Middleware,
-	ReducersMapObject
-} from '@reduxjs/toolkit';
+import { configureStore, Reducer, Middleware, ReducersMapObject } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import _ from '@lodash';
 import createReducer from './rootReducer';
+import { AppDispatchType, AsyncReducersType, BaseRootStateType } from './types';
 
 /* if (process.env.NODE_ENV === 'development' && module.hot) {
 	module.hot.accept('./rootReducer', () => {
@@ -39,10 +32,6 @@ const store = configureStore({
 	devTools: process.env.NODE_ENV === 'development'
 });
 
-type AsyncReducersType = {
-	[key: string]: Reducer;
-};
-
 const asyncReducers: AsyncReducersType = {};
 
 export const injectReducer = (key: string, reducer: Reducer) => {
@@ -63,58 +52,8 @@ export const injectReducers = (reducers: ReducersMapObject) => {
 	return store;
 };
 
-type BaseRootState = ReturnType<typeof store.getState>;
+export const useAppDispatch: () => AppDispatchType = useDispatch;
 
-type ExtendedRootState<T extends string, State> = BaseRootState & { [K in T]: State };
-
-export type AppDispatch = typeof store.dispatch;
-
-/**
- * Type to return from async actions (redux-thunk).
- * `R` describes the return value of the thunk.
- * `E` describes the extra argument type given to the action thunk, e.g.
- * `(dispatch, getState, extraArgument) => {}`
- */
-export type AppThunk<R = Promise<void>, E = unknown> = ThunkAction<R, RootState, E, Action<string>>;
-// export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
-
-/**
- * Dispatch function for this application (AppState).
- * `E` describes the extra argument type given to the action thunk, e.g.
- * `(dispatch, getState, extraArgument) => {}`
- */
-export type AppThunkDispatch<E = unknown> = ThunkDispatch<RootState, E, Action<string>>;
-
-export const useAppDispatch: () => AppDispatch = useDispatch;
-
-type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Rest}`
-	? { [P in Start as P]: PathToType<Rest, T> }
-	: { [P in Str]: T };
-
-// Process an array of slice names
-type MultiplePathsToType<Slices extends unknown[], _T = unknown> = Slices extends [infer First, ...infer Rest]
-	? First extends { name: string; getInitialState: () => unknown }
-		? PathToType<First['name'], ReturnType<First['getInitialState']>> & MultiplePathsToType<Rest>
-		: Record<string, never>
-	: Record<string, never>;
-
-export type RootStateWithSlice<SliceType extends { name: string; getInitialState: () => unknown }> = BaseRootState &
-	PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;
-
-export type RootState<
-	T extends
-		| string
-		| { name: string; getInitialState: () => unknown }
-		| Array<{ name: string; getInitialState: () => unknown }> = null,
-	State = never
-> = T extends string
-	? ExtendedRootState<T, State>
-	: T extends { name: string; getInitialState: () => unknown }
-	? RootStateWithSlice<T>
-	: T extends Array<{ name: string; getInitialState: () => unknown }>
-	? BaseRootState & MultiplePathsToType<T>
-	: BaseRootState;
-
-export const useAppSelector: TypedUseSelectorHook<BaseRootState> = useSelector;
+export const useAppSelector: TypedUseSelectorHook<BaseRootStateType> = useSelector;
 
 export default store;

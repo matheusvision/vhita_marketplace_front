@@ -15,12 +15,12 @@ import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import InputAdornment from '@mui/material/InputAdornment';
 import { lighten } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import Statuses from '../../Statuses';
 import UserAvatar from '../../UserAvatar';
 import { selectUser, updateUserData } from '../../store/userSlice';
 import { ChatAppContext } from '../../ChatApp';
-import { UserModelType } from '../../model/UserModel';
+import { UserType } from '../../types/UserType';
 
 function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
@@ -34,7 +34,7 @@ function UserSidebar() {
 		reset(user);
 	}, [reset, user]);
 
-	function onSubmit(data: UserModelType) {
+	function onSubmit(data: UserType) {
 		dispatch(updateUserData(data));
 	}
 

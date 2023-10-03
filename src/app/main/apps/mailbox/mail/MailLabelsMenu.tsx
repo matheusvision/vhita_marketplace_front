@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { MouseEvent, useEffect, useState } from 'react';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Menu } from '@mui/material';
 import _ from '@lodash';

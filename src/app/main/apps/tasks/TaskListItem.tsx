@@ -7,11 +7,11 @@ import { IconButton } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import format from 'date-fns/format';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { Draggable } from 'react-beautiful-dnd';
 import clsx from 'clsx';
 import { updateTask } from './store/taskSlice';
-import { TaskType } from './model/TaskModel';
+import { TaskType } from './types/TaskType';
 
 type TaskListItemProps = {
 	data: TaskType;

@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import BTCWidgetType from '../types/BTCWidgetType';
 import PricesType from '../types/PricesType';
 import WalletsType from '../types/WalletsType';
 import WatchlistType from '../types/WatchlistType';
 
-type AppRootState = RootState<widgetsSliceType>;
+type AppRootStateType = RootStateType<widgetsSliceType>;
 
 type WidgetsType = {
 	btc?: BTCWidgetType;
@@ -35,7 +35,7 @@ const widgetsSlice = createSlice({
 	}
 });
 
-export const selectWidgets = (state: AppRootState) => state.cryptoDashboardApp.widgets;
+export const selectWidgets = (state: AppRootStateType) => state.cryptoDashboardApp.widgets;
 
 export type widgetsSliceType = typeof widgetsSlice;
 

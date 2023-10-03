@@ -1,25 +1,25 @@
 import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { selectFaqCategories } from './faqCategoriesSlice';
-import { FaqModelType, FaqsModelType } from '../model/FaqModel';
+import { FaqsType, FaqType } from '../types/FaqType';
 
-export type AppRootState = RootState<faqsSliceType>;
+export type AppRootStateType = RootStateType<faqsSliceType>;
 
-export const getFaqs = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faqs/getFaqs', async () => {
+export const getFaqs = createAppAsyncThunk<FaqsType>('helpCenterApp/faqs/getFaqs', async () => {
 	const response = await axios.get('api/help-center/faqs');
 
-	const data = (await response.data) as FaqsModelType;
+	const data = (await response.data) as FaqsType;
 
 	return data;
 });
 
-const faqsAdapter = createEntityAdapter<FaqModelType>({});
+const faqsAdapter = createEntityAdapter<FaqType>({});
 
 export const { selectAll: selectFaqs, selectById: selectFaqById } = faqsAdapter.getSelectors(
-	(state: AppRootState) => state.helpCenterApp.faqs
+	(state: AppRootStateType) => state.helpCenterApp.faqs
 );
 
 const initialState = faqsAdapter.getInitialState();

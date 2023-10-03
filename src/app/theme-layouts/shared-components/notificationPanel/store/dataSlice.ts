@@ -1,8 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
-import { RootState } from 'app/store/index';
+import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
+import { RootStateType } from 'app/store/types';
 
 export const getNotifications = createAppAsyncThunk('notificationPanel/getData', async () => {
 	const response = await axios.get('/api/notifications');
@@ -45,7 +45,7 @@ type NotificationPanelState = {
 	data: ReturnType<typeof notificationsAdapter.getInitialState>;
 };
 
-type ExtendedRootState = RootState & {
+type ExtendedRootState = RootStateType & {
 	notificationPanel: NotificationPanelState;
 };
 

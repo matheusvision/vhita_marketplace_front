@@ -3,7 +3,7 @@ import { Checkbox, IconButton } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { openLabelsDialog, selectLabels, selectSelectedLabels, toggleSelectedLabels } from './store/labelsSlice';
 
 function CalendarAppSidebar() {

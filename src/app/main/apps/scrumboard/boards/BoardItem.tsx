@@ -7,10 +7,10 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { formatDistance } from 'date-fns';
 import _ from '@lodash';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { selectMembers } from '../store/membersSlice';
-import { BoardType } from '../model/BoardModel';
+import { BoardType } from '../types/BoardType';
 
 type BoardItemProps = {
 	board: BoardType;

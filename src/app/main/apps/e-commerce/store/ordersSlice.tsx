@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
-import { OrderType, OrdersType } from '../order/model/OrderModel';
+import { RootStateType } from 'app/store/types';
+import { OrderType, OrdersType } from '../types/OrderType';
 
-export type AppRootState = RootState<ordersSliceType>;
+export type AppRootStateType = RootStateType<ordersSliceType>;
 
 export const getOrders = createAppAsyncThunk<OrdersType>('eCommerceApp/orders/getOrders', async () => {
 	const response = await axios.get('/api/ecommerce/orders');
@@ -26,7 +26,7 @@ export const removeOrders = createAppAsyncThunk<string[], string[]>(
 const ordersAdapter = createEntityAdapter<OrderType>({});
 
 export const { selectAll: selectOrders, selectById: selectOrderById } = ordersAdapter.getSelectors(
-	(state: AppRootState) => state.eCommerceApp.orders
+	(state: AppRootStateType) => state.eCommerceApp.orders
 );
 
 const initialState = ordersAdapter.getInitialState({
@@ -50,7 +50,7 @@ const ordersSlice = createSlice({
 
 export const { setOrdersSearchText } = ordersSlice.actions;
 
-export const selectOrdersSearchText = (state: AppRootState) => state.eCommerceApp.orders.searchText;
+export const selectOrdersSearchText = (state: AppRootStateType) => state.eCommerceApp.orders.searchText;
 
 export type ordersSliceType = typeof ordersSlice;
 

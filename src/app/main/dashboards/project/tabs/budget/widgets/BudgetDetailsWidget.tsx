@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import Chip from '@mui/material/Chip';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
 function BudgetDetailsWidget() {

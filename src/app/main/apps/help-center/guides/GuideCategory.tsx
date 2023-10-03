@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useEffect } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getGuides, selectGuides } from '../store/guidesSlice';

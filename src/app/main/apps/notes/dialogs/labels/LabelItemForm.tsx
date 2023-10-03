@@ -10,9 +10,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
 import { useDebounce } from '@fuse/hooks';
 import _ from '@lodash';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { removeLabel, updateLabel } from '../../store/labelsSlice';
-import { LabelType } from '../../model/LabelModel';
+import { LabelType } from '../../types/LabelType';
 
 /**
  * Form Validation Schema

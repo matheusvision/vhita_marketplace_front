@@ -4,9 +4,9 @@ import Typography from '@mui/material/Typography';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Box from '@mui/material/Box';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectMemberById } from '../../../../store/membersSlice';
-import { CommentType } from '../../../../model/CommentModel';
+import { CommentType } from '../../../../types/CommentType';
 
 type CardActivityProps = {
 	item: CommentType;

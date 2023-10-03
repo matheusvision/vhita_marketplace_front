@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GoogleMap from 'google-map-react';
 import { useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import OrdersStatus from '../OrdersStatus';
 import { selectOrder } from '../../store/orderSlice';
 

@@ -10,14 +10,14 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Toolbar from '@mui/material/Toolbar';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { getChat, selectChat, sendMessage } from '../store/chatMessagesSlice';
 import { selectContactById } from '../store/contactsSlice';
 import { selectUser } from '../store/userSlice';
 import UserAvatar from '../UserAvatar';
 import ChatMoreMenu from './ChatMoreMenu';
 import { ChatAppContext } from '../ChatApp';
-import { ChatMessageModelType } from '../model/ChatMessageModel';
+import { ChatMessageType } from '../types/ChatMessageType';
 
 const StyledMessageRow = styled('div')(({ theme }) => ({
 	'&.contact': {
@@ -130,11 +130,11 @@ function Chat(props: ChatPropsType) {
 		});
 	}
 
-	function isFirstMessageOfGroup(item: ChatMessageModelType, i: number) {
+	function isFirstMessageOfGroup(item: ChatMessageType, i: number) {
 		return i === 0 || (chat[i - 1] && chat[i - 1].contactId !== item.contactId);
 	}
 
-	function isLastMessageOfGroup(item: ChatMessageModelType, i: number) {
+	function isLastMessageOfGroup(item: ChatMessageType, i: number) {
 		return i === chat.length - 1 || (chat[i + 1] && chat[i + 1].contactId !== item.contactId);
 	}
 

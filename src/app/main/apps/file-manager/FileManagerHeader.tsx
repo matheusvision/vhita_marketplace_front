@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectMailsTitle } from '../store/mailsSlice';
 
 function MailListTitle() {

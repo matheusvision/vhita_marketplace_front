@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { DialogProps } from '@mui/material';
 import { ReactNode } from 'react';
 
@@ -22,8 +22,8 @@ const dialogSlice = createSlice({
 
 export const { closeDialog, openDialog } = dialogSlice.actions;
 
-export const selectFuseDialogState = (state: RootState) => state.fuse.dialog.open;
+export const selectFuseDialogState = (state: RootStateType) => state.fuse.dialog.open;
 
-export const selectFuseDialogProps = (state: RootState) => state.fuse.dialog;
+export const selectFuseDialogProps = (state: RootStateType) => state.fuse.dialog;
 
 export default dialogSlice.reducer;

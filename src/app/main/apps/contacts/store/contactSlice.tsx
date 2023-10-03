@@ -3,8 +3,9 @@ import axios from 'axios';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { DeepPartial } from 'react-hook-form';
-import ContactModel, { ContactType } from '../model/ContactModel';
-import { AppRootState } from '.';
+import { ContactType } from '../types/ContactType';
+import ContactModel from '../models/ContactModel';
+import { AppRootStateType } from '.';
 
 export const getContact = createAppAsyncThunk<ContactType, string>('contactsApp/task/getContact', async (id) => {
 	try {
@@ -68,7 +69,7 @@ const contactSlice = createSlice({
 	}
 });
 
-export const selectContact = (state: AppRootState) => state.contactsApp.contact;
+export const selectContact = (state: AppRootStateType) => state.contactsApp.contact;
 
 export const { resetContact, newContact } = contactSlice.actions;
 

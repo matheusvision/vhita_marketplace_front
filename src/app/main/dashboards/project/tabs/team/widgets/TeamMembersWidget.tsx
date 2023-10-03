@@ -3,7 +3,7 @@ import { memo } from 'react';
 import Paper from '@mui/material/Paper';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
 function TeamMembersWidget() {

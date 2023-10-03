@@ -10,7 +10,7 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { lighten } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import ContactListItem from './ContactListItem';
 import { selectContacts } from '../../store/contactsSlice';
 import { selectChats } from '../../store/chatListSlice';

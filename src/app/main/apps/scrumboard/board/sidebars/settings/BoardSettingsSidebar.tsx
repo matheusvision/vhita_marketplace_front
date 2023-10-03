@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -17,7 +17,7 @@ import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { PartialDeep } from 'type-fest';
 import { deleteBoard, selectBoard, updateBoard } from '../../../store/boardSlice';
-import { BoardType } from '../../../model/BoardModel';
+import { BoardType } from '../../../types/BoardType';
 
 type BoardSettingsSidebarProps = {
 	onSetSidebarOpen: (open: boolean) => void;

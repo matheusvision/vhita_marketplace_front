@@ -5,7 +5,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useSelector } from 'react-redux';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NavbarStyle1Content from './NavbarStyle1Content';
 

@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import Input from '@mui/material/Input';
 import Card from '@mui/material/Card';
-import { PostType } from '../../types/PostModel';
+import { PostType } from '../../types/PostType';
 
 type PostProps = {
 	item: PostType;

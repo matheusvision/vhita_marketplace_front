@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import { styled } from '@mui/material/styles';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import ContactsSidebarContent from './ContactsSidebarContent';
 import ContactsHeader from './ContactsHeader';
 import ContactsList from './ContactsList';

@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import axios from 'axios';
-import { OrderType } from '../order/model/OrderModel';
+import { OrderType } from '../types/OrderType';
 
-export type AppRootState = RootState<orderSliceType>;
+export type AppRootStateType = RootStateType<orderSliceType>;
 
 export const getOrder = createAppAsyncThunk('eCommerceApp/order/getOrder', async (orderId: string) => {
 	const response = await axios.get(`/api/ecommerce/orders/${orderId}`);
@@ -37,7 +37,7 @@ const orderSlice = createSlice({
 
 export const { resetOrder } = orderSlice.actions;
 
-export const selectOrder = (state: AppRootState) => state.eCommerceApp.order;
+export const selectOrder = (state: AppRootStateType) => state.eCommerceApp.order;
 
 export type orderSliceType = typeof orderSlice;
 

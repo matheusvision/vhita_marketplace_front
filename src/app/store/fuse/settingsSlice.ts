@@ -12,13 +12,13 @@ import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
 import { setUser, updateUserSettings } from 'app/store/user/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
-import { AppThunk, RootState } from 'app/store/index';
+import { AppThunkType, RootStateType } from 'app/store/types';
 import { Theme } from '@mui/material/styles/createTheme';
-import { FuseSettingsConfigProps, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 
 export const changeFuseTheme =
-	(theme: FuseThemeType): AppThunk<void> =>
+	(theme: FuseThemeType): AppThunkType<void> =>
 	(dispatch, getState) => {
 		const { fuse } = getState();
 		const { settings } = fuse;
@@ -41,7 +41,7 @@ type layoutProps = {
 	config: unknown;
 };
 
-function getInitialSettings(): FuseSettingsConfigProps {
+function getInitialSettings(): FuseSettingsConfigType {
 	const defaultLayoutStyle =
 		settingsConfig.layout && settingsConfig.layout.style ? settingsConfig.layout.style : 'layout1';
 
@@ -53,7 +53,7 @@ function getInitialSettings(): FuseSettingsConfigProps {
 	return _.merge({}, defaultSettings, { layout }, settingsConfig, getParsedQuerySettings());
 }
 
-export function generateSettings(_defaultSettings: FuseSettingsConfigProps, _newSettings: FuseSettingsConfigProps) {
+export function generateSettings(_defaultSettings: FuseSettingsConfigType, _newSettings: FuseSettingsConfigType) {
 	return _.merge(
 		{},
 		_defaultSettings,
@@ -65,9 +65,9 @@ export function generateSettings(_defaultSettings: FuseSettingsConfigProps, _new
 const initialSettings = getInitialSettings();
 
 type initialStateProps = {
-	initial: FuseSettingsConfigProps;
-	defaults: FuseSettingsConfigProps;
-	current: FuseSettingsConfigProps;
+	initial: FuseSettingsConfigType;
+	defaults: FuseSettingsConfigType;
+	current: FuseSettingsConfigType;
 };
 
 const initialState: initialStateProps = {
@@ -78,7 +78,7 @@ const initialState: initialStateProps = {
 
 export const setDefaultSettings = createAppAsyncThunk(
 	'fuse/settings/setDefaultSettings',
-	async (val: FuseSettingsConfigProps, { dispatch, getState }) => {
+	async (val: FuseSettingsConfigType, { dispatch, getState }) => {
 		const { fuse } = getState();
 		const { settings } = fuse;
 
@@ -98,7 +98,7 @@ const settingsSlice = createSlice({
 	name: 'settings',
 	initialState,
 	reducers: {
-		setSettings: (state, action: PayloadAction<FuseSettingsConfigProps>) => {
+		setSettings: (state, action: PayloadAction<FuseSettingsConfigType>) => {
 			const current = generateSettings(state.defaults, action.payload);
 
 			return {
@@ -130,11 +130,11 @@ const settingsSlice = createSlice({
 
 type directionType = 'ltr' | 'rtl';
 
-const getDirection = (state: RootState): directionType => state.fuse.settings.current.direction;
-const getMainTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.main;
-const getNavbarTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.navbar;
-const getToolbarTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.toolbar;
-const getFooterTheme = (state: RootState): Partial<Theme> => state.fuse.settings.current.theme.footer;
+const getDirection = (state: RootStateType): directionType => state.fuse.settings.current.direction;
+const getMainTheme = (state: RootStateType): Partial<Theme> => state.fuse.settings.current.theme.main;
+const getNavbarTheme = (state: RootStateType): Partial<Theme> => state.fuse.settings.current.theme.navbar;
+const getToolbarTheme = (state: RootStateType): Partial<Theme> => state.fuse.settings.current.theme.toolbar;
+const getFooterTheme = (state: RootStateType): Partial<Theme> => state.fuse.settings.current.theme.footer;
 
 function generateMuiTheme(theme: Partial<Theme>, direction: directionType) {
 	const data = _.merge({}, defaultThemeOptions, theme, mustHaveThemeOptions);
@@ -231,11 +231,11 @@ export const selectFooterThemeLight = createSelector([getFooterTheme, getDirecti
 	generateMuiTheme(changeThemeMode(theme, 'light'), direction)
 );
 
-export const selectFuseCurrentSettings = (state: RootState) => state.fuse.settings.current;
+export const selectFuseCurrentSettings = (state: RootStateType) => state.fuse.settings.current;
 
-export const selectFuseCurrentLayoutConfig = (state: RootState) => state.fuse.settings.current.layout.config;
+export const selectFuseCurrentLayoutConfig = (state: RootStateType) => state.fuse.settings.current.layout.config;
 
-export const selectFuseDefaultSettings = (state: RootState) => state.fuse.settings.defaults;
+export const selectFuseDefaultSettings = (state: RootStateType) => state.fuse.settings.defaults;
 
 // export const selectFuseThemesSettings = (state: RootState) => state.fuse.settings.themes;
 

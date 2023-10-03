@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -18,7 +18,7 @@ import { Many } from 'lodash';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { getProducts, selectProducts, selectProductsSearchText } from '../store/productsSlice';
 import ProductsTableHead from './ProductsTableHead';
-import { ProductType } from '../product/model/ProductModel';
+import { ProductType } from '../types/ProductType';
 
 type ProductsTableProps = WithRouterProps & {
 	navigate: (path: string) => void;

@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import ItemIcon from './ItemIcon';
 import { setSelectedItem } from './store/itemsSlice';
-import { FileManagerItemType } from './model/FileManagerItemModel';
+import { FileManagerItemType } from './types/FileManagerItemType';
 
 type FileItemProps = {
 	item: FileManagerItemType;

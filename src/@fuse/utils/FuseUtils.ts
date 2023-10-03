@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import * as colors from '@mui/material/colors';
-import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
 import { PartialDeep } from 'type-fest';
 import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
@@ -130,7 +130,7 @@ class FuseUtils {
 			.replace(/-+$/, ''); // Trim - from end of text
 	}
 
-	static setRoutes(config?: FuseRouteConfigType, defaultAuth: FuseSettingsConfigProps['defaultAuth'] = null) {
+	static setRoutes(config?: FuseRouteConfigType, defaultAuth: FuseSettingsConfigType['defaultAuth'] = null) {
 		let routes = [...config.routes];
 
 		routes = routes.map((route) => {
@@ -152,7 +152,7 @@ class FuseUtils {
 
 	static generateRoutesFromConfigs(
 		configs: FuseRouteConfigsType,
-		defaultAuth: FuseSettingsConfigProps['defaultAuth']
+		defaultAuth: FuseSettingsConfigType['defaultAuth']
 	) {
 		let allRoutes: FuseRouteConfigsType = [];
 		configs.forEach((config: FuseRouteConfigType) => {

@@ -19,10 +19,11 @@ import NoteFormList from './tasks/NoteFormList';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormReminder from './NoteFormReminder';
 import NoteFormUploadImage from './NoteFormUploadImage';
-import NoteModel, { NoteType } from '../model/NoteModel';
+import NoteModel from '../models/NoteModel';
 import NoteReminderLabel from '../NoteReminderLabel';
 import NoteLabel from '../NoteLabel';
-import { NoteListItemsType } from '../model/NoteListItemModel';
+import { NoteListItemsType } from '../types/NoteListItemType';
+import { NoteType } from '../types/NoteType';
 
 /**
  * Form Validation Schema

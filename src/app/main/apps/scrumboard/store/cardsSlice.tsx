@@ -2,13 +2,14 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { removeList } from './listsSlice';
 import { removeCard, updateCard } from './cardSlice';
-import CardModel, { CardsType, CardType } from '../model/CardModel';
+import CardModel from '../models/CardModel';
 import { BoardSliceType } from './boardSlice';
+import { CardsType, CardType } from '../types/CardType';
 
-type AppRootState = RootState<[CardsSliceType, BoardSliceType]>;
+type AppRootStateType = RootStateType<[CardsSliceType, BoardSliceType]>;
 
 export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/cards/getCards', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/cards`);
@@ -21,7 +22,7 @@ export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/ca
 export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: CardType }>(
 	'scrumboardApp/cards/newCard',
 	async ({ listId, newData }, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 
 		const { board } = AppState.scrumboardApp;
 
@@ -39,7 +40,7 @@ export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: 
 const cardsAdapter = createEntityAdapter<CardType>({});
 
 export const { selectAll: selectCards, selectById } = cardsAdapter.getSelectors(
-	(state: AppRootState) => state.scrumboardApp.cards
+	(state: AppRootStateType) => state.scrumboardApp.cards
 );
 
 const cardsSlice = createSlice({
@@ -66,7 +67,7 @@ const cardsSlice = createSlice({
 
 export const { resetCards } = cardsSlice.actions;
 
-export const selectCardById = (id: CardType['id']) => (state: AppRootState) => selectById(state, id);
+export const selectCardById = (id: CardType['id']) => (state: AppRootStateType) => selectById(state, id);
 
 export type CardsSliceType = typeof cardsSlice;
 

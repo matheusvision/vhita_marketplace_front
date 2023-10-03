@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { SyntheticEvent, useState } from 'react';
 import Box from '@mui/material/Box';
+import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import AboutTab from './tabs/about/AboutTab';
 import PhotosVideosTab from './tabs/photos-videos/PhotosVideosTab';
 import TimelineTab from './tabs/timeline/TimelineTab';
-import useThemeMediaQuery from '../../../../@fuse/hooks/useThemeMediaQuery';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {

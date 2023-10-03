@@ -2,13 +2,13 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NoteLabel from './NoteLabel';
 import NoteReminderLabel from './NoteReminderLabel';
 import setDescriptionStyle from './setDescriptionStyle';
 import { openNoteDialog } from './store/notesSlice';
-import { NoteType } from './model/NoteModel';
+import { NoteType } from './types/NoteType';
 
 type NoteListItemProps = {
 	note: NoteType;

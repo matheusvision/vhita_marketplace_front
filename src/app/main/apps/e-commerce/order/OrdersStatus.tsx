@@ -1,8 +1,8 @@
 import _ from '@lodash';
 import clsx from 'clsx';
-import { OrderStatus } from './model/OrderModel';
+import { OrderStatusType } from '../types/OrderStatusType';
 
-export const orderStatuses: OrderStatus[] = [
+export const orderStatuses: OrderStatusType[] = [
 	{
 		id: '1',
 		name: 'Awaiting check payment',

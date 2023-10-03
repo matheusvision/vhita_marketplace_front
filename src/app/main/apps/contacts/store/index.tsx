@@ -1,4 +1,4 @@
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import tags, { tagsSliceType } from './tagsSlice';
 import contacts, { contactsSliceType } from './contactsSlice';
 import countries, { countriesSliceType } from './countriesSlice';
@@ -8,4 +8,4 @@ const slices = [tags, countries, contacts, contact];
 
 export default slices;
 
-export type AppRootState = RootState<[contactsSliceType, tagsSliceType, countriesSliceType, contactSliceType]>;
+export type AppRootStateType = RootStateType<[contactsSliceType, tagsSliceType, countriesSliceType, contactSliceType]>;

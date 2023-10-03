@@ -1,6 +1,6 @@
 import Dialog from '@mui/material/Dialog';
 import { closeDialog, selectFuseDialogProps } from 'app/store/fuse/dialogSlice';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 
 function FuseDialog() {
 	const dispatch = useAppDispatch();

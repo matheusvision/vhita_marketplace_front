@@ -15,13 +15,15 @@ import IconButton from '@mui/material/IconButton';
 import Autocomplete from '@mui/material/Autocomplete/Autocomplete';
 import Checkbox from '@mui/material/Checkbox/Checkbox';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import history from '@history';
 import { addContact, getContact, newContact, removeContact, selectContact, updateContact } from '../store/contactSlice';
 import { selectTags } from '../store/tagsSlice';
 import ContactEmailSelector from './email-selector/ContactEmailSelector';
 import PhoneNumberSelector from './phone-number-selector/PhoneNumberSelector';
-import { ContactEmailsType, ContactPhoneNumbersType, ContactType } from '../model/ContactModel';
+import { ContactEmailsType } from '../types/ContactEmailType';
+import { ContactPhoneNumbersType } from '../types/ContactPhoneNumberType';
+import { ContactType } from '../types/ContactType';
 
 function BirtdayIcon() {
 	return <FuseSvgIcon size={20}>heroicons-solid:cake</FuseSvgIcon>;

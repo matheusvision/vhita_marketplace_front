@@ -6,7 +6,7 @@ import ReactApexChart from 'react-apexcharts';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
 

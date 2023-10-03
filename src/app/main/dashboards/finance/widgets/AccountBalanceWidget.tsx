@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import ReactApexChart from 'react-apexcharts';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../store/widgetsSlice';
 

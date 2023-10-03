@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
-import { ProductType, ProductsType } from '../product/model/ProductModel';
+import { RootStateType } from 'app/store/types';
+import { ProductType, ProductsType } from '../types/ProductType';
 
-export type AppRootState = RootState<productsSliceType>;
+export type AppRootStateType = RootStateType<productsSliceType>;
 
 export const getProducts = createAppAsyncThunk<ProductsType>('eCommerceApp/products/getProducts', async () => {
 	const response = await axios.get('/api/ecommerce/products');
@@ -22,7 +22,7 @@ export const removeProducts = createAppAsyncThunk<string[], string[]>('eCommerce
 const productsAdapter = createEntityAdapter<ProductType>({});
 
 export const { selectAll: selectProducts, selectById: selectProductById } = productsAdapter.getSelectors(
-	(state: AppRootState) => state.eCommerceApp.products
+	(state: AppRootStateType) => state.eCommerceApp.products
 );
 
 const initialState = productsAdapter.getInitialState({
@@ -52,7 +52,7 @@ const productsSlice = createSlice({
 
 export const { setProductsSearchText } = productsSlice.actions;
 
-export const selectProductsSearchText = (state: AppRootState) => state.eCommerceApp?.products?.searchText;
+export const selectProductsSearchText = (state: AppRootStateType) => state.eCommerceApp?.products?.searchText;
 
 export type productsSliceType = typeof productsSlice;
 

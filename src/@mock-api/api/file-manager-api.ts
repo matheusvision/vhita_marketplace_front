@@ -1,7 +1,7 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { FileManagerItemType, FileManagerItemsType } from '../../app/main/apps/file-manager/model/FileManagerItemModel';
+import { FileManagerItemType, FileManagerItemsType } from '../../app/main/apps/file-manager/types/FileManagerItemType';
 
 const itemsApi = mockApi.components.examples.file_manager_items.value as FileManagerItemsType;
 

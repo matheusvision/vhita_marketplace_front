@@ -13,7 +13,7 @@ import { ChangeEvent, MouseEvent, useState } from 'react';
 import TableHead from '@mui/material/TableHead';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { darken, lighten } from '@mui/material/styles';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import Box from '@mui/material/Box';
 import { removeOrders } from '../store/ordersSlice';
 

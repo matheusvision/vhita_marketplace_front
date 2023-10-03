@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { Draggable } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { AvatarGroup } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { MouseEvent } from 'react';
@@ -17,7 +17,7 @@ import { selectMembers } from '../../store/membersSlice';
 import BoardCardDueDate from './BoardCardDueDate';
 import BoardCardCheckItems from './BoardCardCheckItems';
 import { selectBoard } from '../../store/boardSlice';
-import { CardType } from '../../model/CardModel';
+import { CardType } from '../../types/CardType';
 
 const StyledCard = styled(Card)(({ theme }) => ({
 	'& ': {

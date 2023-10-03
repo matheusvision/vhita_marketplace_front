@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { DropResult } from 'react-beautiful-dnd';
-import { BoardListsType } from '../model/BoardModel';
+import { BoardListsType } from '../types/BoardListType';
 
 // a little function to help us with reordering the result
 const reorder = (list: string[], startIndex: number, endIndex: number) => {

@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ChangeEvent } from 'react';
-import { NoteListItemType } from '../../model/NoteListItemModel';
+import { NoteListItemType } from '../../types/NoteListItemType';
 
 type NoteFormListItemProps = {
 	onListItemRemove: (id: string) => void;

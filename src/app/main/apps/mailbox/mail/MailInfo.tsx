@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import format from 'date-fns/format';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { MouseEvent } from 'react';
 import { selectMail } from '../store/mailSlice';
 

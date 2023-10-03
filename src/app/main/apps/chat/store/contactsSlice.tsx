@@ -1,20 +1,20 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
-import { ContactModelType, ContactsModelType } from '../model/ContactModel';
+import { RootStateType } from 'app/store/types';
+import { ContactsType, ContactType } from '../types/ContactType';
 
-export type AppRootState = RootState<contactsSliceType>;
+export type AppRootStateType = RootStateType<contactsSliceType>;
 
-export const getContacts = createAppAsyncThunk<ContactsModelType>('chatApp/contacts/getContacts', async (params) => {
+export const getContacts = createAppAsyncThunk<ContactsType>('chatApp/contacts/getContacts', async (params) => {
 	const response = await axios.get('/api/chat/contacts', { params });
 
-	const data = (await response.data) as ContactsModelType;
+	const data = (await response.data) as ContactsType;
 
 	return data;
 });
 
-const contactsAdapter = createEntityAdapter<ContactModelType>();
+const contactsAdapter = createEntityAdapter<ContactType>();
 
 const initialState = contactsAdapter.getInitialState();
 
@@ -22,7 +22,7 @@ export const {
 	selectAll: selectContacts,
 	selectEntities: selectContactsEntities,
 	selectById
-} = contactsAdapter.getSelectors((state: AppRootState) => state.chatApp.contacts);
+} = contactsAdapter.getSelectors((state: AppRootStateType) => state.chatApp.contacts);
 
 const contactsSlice = createSlice({
 	name: 'chatApp/contacts',
@@ -33,7 +33,7 @@ const contactsSlice = createSlice({
 	}
 });
 
-export const selectContactById = (id: ContactModelType['id']) => (state: AppRootState) => selectById(state, id);
+export const selectContactById = (id: ContactType['id']) => (state: AppRootStateType) => selectById(state, id);
 
 export type contactsSliceType = typeof contactsSlice;
 

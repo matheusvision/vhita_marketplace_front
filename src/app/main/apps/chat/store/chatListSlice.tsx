@@ -1,10 +1,11 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
-import { ChatListItemType, ChatListType } from '../model/ChatListItemModel';
+import { RootStateType } from 'app/store/types';
+import { ChatListItemType } from '../types/ChatListItemType';
+import { ChatListType } from '../types/ChatListType';
 
-type AppRootState = RootState<chatListSliceType>;
+type AppRootStateType = RootStateType<chatListSliceType>;
 
 export const getChatList = createAppAsyncThunk<ChatListType>('chatApp/chatList/get', async () => {
 	const response = await axios.get('/api/chat/chats');
@@ -19,7 +20,7 @@ const chatsAdapter = createEntityAdapter<ChatListItemType>();
 const initialState = chatsAdapter.getInitialState();
 
 export const { selectAll: selectChats, selectById: selectChatById } = chatsAdapter.getSelectors(
-	(state: AppRootState) => state.chatApp.chatList
+	(state: AppRootStateType) => state.chatApp.chatList
 );
 
 const chatListSlice = createSlice({

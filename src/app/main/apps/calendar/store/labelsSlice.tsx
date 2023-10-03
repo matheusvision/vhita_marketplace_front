@@ -1,34 +1,31 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { LabelModelType } from '../model/LabelModel';
+import { LabelType } from '../types/LabelType';
 
-type AppRootState = RootState<labelsSliceType>;
+type AppRootStateType = RootStateType<labelsSliceType>;
 
 export const getLabels = createAppAsyncThunk('calendarApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/calendar/labels');
-	const data = (await response.data) as LabelModelType[];
+	const data = (await response.data) as LabelType[];
 
 	return data;
 });
 
-export const addLabel = createAppAsyncThunk<LabelModelType, LabelModelType>(
-	'calendarApp/labels/addLabel',
-	async (newLabel) => {
-		const response = await axios.post('/api/calendar/labels', newLabel);
-		const data = (await response.data) as LabelModelType;
+export const addLabel = createAppAsyncThunk<LabelType, LabelType>('calendarApp/labels/addLabel', async (newLabel) => {
+	const response = await axios.post('/api/calendar/labels', newLabel);
+	const data = (await response.data) as LabelType;
 
-		return data;
-	}
-);
+	return data;
+});
 
-export const updateLabel = createAppAsyncThunk<LabelModelType, LabelModelType>(
+export const updateLabel = createAppAsyncThunk<LabelType, LabelType>(
 	'calendarApp/labels/updateLabel',
 	async (label) => {
 		const response = await axios.put(`/api/calendar/labels/${label.id}`, label);
-		const data = (await response.data) as LabelModelType;
+		const data = (await response.data) as LabelType;
 
 		return data;
 	}
@@ -41,7 +38,7 @@ export const removeLabel = createAppAsyncThunk<string, string>('calendarApp/labe
 	return data;
 });
 
-const labelsAdapter = createEntityAdapter<LabelModelType>();
+const labelsAdapter = createEntityAdapter<LabelType>();
 
 const initialState = labelsAdapter.getInitialState<{
 	selectedLabels: string[];
@@ -57,7 +54,7 @@ export const {
 	selectAll: selectLabels,
 	selectIds: selectLabelIds,
 	selectById: selectLabelById
-} = labelsAdapter.getSelectors((state: AppRootState) => state.calendarApp.labels);
+} = labelsAdapter.getSelectors((state: AppRootStateType) => state.calendarApp.labels);
 
 const labelsSlice = createSlice({
 	name: 'calendarApp/labels',
@@ -85,9 +82,9 @@ const labelsSlice = createSlice({
 	}
 });
 
-export const selectSelectedLabels = (state: AppRootState) => state.calendarApp.labels?.selectedLabels;
-export const selectFirstLabelId = (state: AppRootState) => state.calendarApp.labels?.ids[0];
-export const selectLabelsDialogOpen = (state: AppRootState) => state.calendarApp.labels?.labelsDialogOpen;
+export const selectSelectedLabels = (state: AppRootStateType) => state.calendarApp.labels?.selectedLabels;
+export const selectFirstLabelId = (state: AppRootStateType) => state.calendarApp.labels?.ids[0];
+export const selectLabelsDialogOpen = (state: AppRootStateType) => state.calendarApp.labels?.labelsDialogOpen;
 
 export const { toggleSelectedLabels, openLabelsDialog, closeLabelsDialog } = labelsSlice.actions;
 

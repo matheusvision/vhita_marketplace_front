@@ -15,7 +15,7 @@ import { memo, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
 import { selectUser } from 'app/store/user/userSlice';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { Palette } from '@mui/material/styles/createPalette';
 import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
 import { PartialDeep } from 'type-fest';
@@ -60,7 +60,7 @@ export type FuseThemeType = {
 
 export type FuseThemesType = { [key: string]: FuseThemeType };
 
-export type FuseSettingsConfigProps = {
+export type FuseSettingsConfigType = {
 	layout?: {
 		style?: string;
 		config?: themeLayoutDefaultsProps;
@@ -92,7 +92,7 @@ function FuseSettings() {
 	const formChanged = !_.isEqual(form, prevForm);
 	const settingsChanged = !_.isEqual(settings, prevSettings);
 
-	const handleUpdate = useDebounce((newSettings: FuseSettingsConfigProps) => {
+	const handleUpdate = useDebounce((newSettings: FuseSettingsConfigType) => {
 		dispatch(setDefaultSettings(newSettings));
 	}, 300);
 

@@ -12,7 +12,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ProfileType } from '../../types/ProfileModel';
+import { ProfileType } from '../../types/ProfileType';
 
 function AboutTab() {
 	const [profile, setProfile] = useState<ProfileType>();

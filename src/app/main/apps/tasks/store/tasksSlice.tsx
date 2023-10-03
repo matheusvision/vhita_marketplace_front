@@ -2,12 +2,12 @@ import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolk
 import axios from 'axios';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { addTask, updateTask } from './taskSlice';
-import { TasksType, TaskType } from '../model/TaskModel';
 import { removeLabel } from '../../notes/store/labelsSlice';
+import { TaskType, TasksType } from '../types/TaskType';
 
-export type AppRootState = RootState<tasksSliceType>;
+export type AppRootStateType = RootStateType<tasksSliceType>;
 
 export const getTasks = createAppAsyncThunk<TasksType>('tasksApp/tasks/getTasks', async () => {
 	const response = await axios.get('/api/tasks');
@@ -44,7 +44,7 @@ const tasksAdapter = createEntityAdapter<TaskType>({});
 const initialState = tasksAdapter.getInitialState([]);
 
 export const { selectAll: selectTasks, selectById: selectTasksById } = tasksAdapter.getSelectors(
-	(state: AppRootState) => state.tasksApp.tasks
+	(state: AppRootStateType) => state.tasksApp.tasks
 );
 
 export const selectRemainingTasks = createSelector([selectTasks], (tasks) => {

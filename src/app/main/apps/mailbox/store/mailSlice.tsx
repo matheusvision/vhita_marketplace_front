@@ -3,12 +3,12 @@ import axios from 'axios';
 import _ from '@lodash';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { getMails } from './mailsSlice';
-import { MailType } from '../model/MailModel';
-import RouteParamsType from '../type/RouteParamsType';
+import { MailType } from '../types/MailType';
+import RouteParamsType from '../types/RouteParamsType';
 
-export type AppRootState = RootState<mailSliceType>;
+export type AppRootStateType = RootStateType<mailSliceType>;
 
 export const getMail = createAppAsyncThunk<MailType, RouteParamsType>(
 	'mailboxApp/mail/getMail',
@@ -63,7 +63,7 @@ const mailSlice = createSlice({
 	}
 });
 
-export const selectMail = (state: AppRootState) => state.mailboxApp.mail;
+export const selectMail = (state: AppRootStateType) => state.mailboxApp.mail;
 
 export type mailSliceType = typeof mailSlice;
 

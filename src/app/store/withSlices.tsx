@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnyAction, combineReducers, Reducer } from '@reduxjs/toolkit';
-import { injectReducers } from 'app/store/index';
+import { injectReducers } from 'app/store';
 
 type Slice<State = unknown> = {
 	reducer: Reducer<State, AnyAction>;

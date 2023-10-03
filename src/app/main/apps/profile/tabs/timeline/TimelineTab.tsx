@@ -12,8 +12,8 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ActivityItem from './ActivityItem';
-import { ActivitiesType } from '../../types/ActivityModel';
-import { PostsType } from '../../types/PostModel';
+import { ActivitiesType } from '../../types/ActivityType';
+import { PostsType } from '../../types/PostType';
 import PostItem from './PostItem';
 
 export type TimelineResponseDataType = {

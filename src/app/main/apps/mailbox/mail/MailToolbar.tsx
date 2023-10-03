@@ -1,6 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectLabelById } from '../store/labelsSlice';
 import { labelColorDefs } from './labelColors';
 

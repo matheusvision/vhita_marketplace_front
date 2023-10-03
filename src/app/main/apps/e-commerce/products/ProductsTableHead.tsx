@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import TableHead from '@mui/material/TableHead';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { removeProducts } from '../store/productsSlice';
 
 type rowType = {

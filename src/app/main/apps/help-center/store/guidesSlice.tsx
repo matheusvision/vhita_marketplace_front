@@ -1,30 +1,30 @@
 import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { selectGuideCategories } from './guideCategoriesSlice';
-import { GuideModelType, GuidesModelType } from '../model/GuideModel';
+import { GuideType, GuidesType } from '../types/GuideType';
 
-export type DynammicAppRootState = RootState<guidesSliceType>;
+export type DynammicAppRootStateType = RootStateType<guidesSliceType>;
 
-export const getGuides = createAppAsyncThunk<GuidesModelType, string | void>(
+export const getGuides = createAppAsyncThunk<GuidesType, string | void>(
 	'helpCenterApp/guides/getGuides',
 	async (categorySlug) => {
 		const url = categorySlug ? `/api/help-center/guides/${categorySlug}` : '/api/help-center/guides';
 
 		const response = await axios.get(url);
 
-		const data = (await response.data) as GuidesModelType;
+		const data = (await response.data) as GuidesType;
 
 		return data;
 	}
 );
 
-const guidesAdapter = createEntityAdapter<GuideModelType>({});
+const guidesAdapter = createEntityAdapter<GuideType>({});
 
 export const { selectAll: selectGuides, selectById: selectGuideById } = guidesAdapter.getSelectors(
-	(state: DynammicAppRootState) => state.helpCenterApp.guides
+	(state: DynammicAppRootStateType) => state.helpCenterApp.guides
 );
 
 const guidesSlice = createSlice({

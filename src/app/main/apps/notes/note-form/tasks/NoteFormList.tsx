@@ -1,7 +1,7 @@
 import List from '@mui/material/List';
 import NoteFormAddListItem from './NoteFormAddListItem';
 import NoteFormListItem from './NoteFormListItem';
-import { NoteListItemType, NoteListItemsType } from '../../model/NoteListItemModel';
+import { NoteListItemType, NoteListItemsType } from '../../types/NoteListItemType';
 
 type NoteFormListProps = {
 	className?: string;

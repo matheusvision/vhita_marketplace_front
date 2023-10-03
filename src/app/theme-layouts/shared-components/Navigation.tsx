@@ -2,7 +2,7 @@ import FuseNavigation from '@fuse/core/FuseNavigation';
 import clsx from 'clsx';
 import { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { selectNavigation } from 'app/store/fuse/navigationSlice';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';

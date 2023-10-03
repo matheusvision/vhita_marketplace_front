@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';

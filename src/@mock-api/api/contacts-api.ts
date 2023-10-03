@@ -1,9 +1,9 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
-import { PartialDeep } from 'type-fest';
+import ContactModel from 'src/app/main/apps/contacts/models/ContactModel';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import ContactModel, { ContactsType, ContactType } from '../../app/main/apps/contacts/model/ContactModel';
+import { ContactType, ContactsType } from '../../app/main/apps/contacts/types/ContactType';
 
 const contactsDB = mockApi.components.examples.contacts.value as ContactsType;
 const tagsDB = mockApi.components.examples.contacts_tags.value;
@@ -13,7 +13,7 @@ mock.onGet('/api/contacts').reply(() => {
 });
 
 mock.onPost('/api/contacts').reply(({ data }: { data: string }) => {
-	const newContact = ContactModel({ id: FuseUtils.generateGUID(), ...JSON.parse(data) } as PartialDeep<ContactType>);
+	const newContact = ContactModel({ id: FuseUtils.generateGUID(), ...JSON.parse(data) } as ContactType);
 
 	contactsDB.push(newContact);
 

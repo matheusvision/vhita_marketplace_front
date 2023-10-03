@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import ConversionsWidgetType from '../types/ConversionsWidgetType';
 import GenderWidgetType from '../types/GenderWidgetType';
 import ImpressionsWidgetType from '../types/ImpressionsWidgetType';
@@ -12,7 +12,7 @@ import VisitorsVsPageViewsType from '../types/VisitorsVsPageViewsType';
 import VisitsWidgetType from '../types/VisitsWidgetType';
 import AgeWidgetType from '../types/AgeWidgetType';
 
-type AppRootState = RootState<widgetsSliceType>;
+type AppRootStateType = RootStateType<widgetsSliceType>;
 
 export type WidgetsType = {
 	age?: AgeWidgetType;
@@ -45,7 +45,7 @@ const widgetsSlice = createSlice({
 	}
 });
 
-export const selectWidgets = (state: AppRootState) => state.analyticsDashboardApp.widgets;
+export const selectWidgets = (state: AppRootStateType) => state.analyticsDashboardApp.widgets;
 
 export type widgetsSliceType = typeof widgetsSlice;
 

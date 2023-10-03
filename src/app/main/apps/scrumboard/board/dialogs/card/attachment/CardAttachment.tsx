@@ -7,7 +7,8 @@ import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import { MouseEvent, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { AttachmentType, CardType } from '../../../../model/CardModel';
+import { AttachmentType } from '../../../../types/AttachmentType';
+import { CardType } from '../../../../types/CardType';
 
 type CardAttachmentProps = {
 	item: AttachmentType;
@@ -40,7 +41,7 @@ function CardAttachment(props: CardAttachmentProps) {
 					<div className="flex items-center justify-center min-w-128 w-128 h-128">
 						<Paper className="overflow-hidden shadow">
 							<img
-								className="block max-h-full max-h-full"
+								className="block max-h-full"
 								src={item.src}
 								alt="attachment"
 							/>
@@ -80,11 +81,11 @@ function CardAttachment(props: CardAttachmentProps) {
 							open={Boolean(anchorEl)}
 							onClose={handleMenuClose}
 						>
-							{card.attachmentCoverId !== item.id ? (
+							{card.attachmentCoverId !== item?.id ? (
 								<MenuItem
 									onClick={() => {
 										handleMenuClose();
-										makeCover(item.id);
+										makeCover(item?.id);
 									}}
 								>
 									Make Cover

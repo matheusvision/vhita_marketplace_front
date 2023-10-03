@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { selectUser } from 'app/store/user/userSlice';
 import { getProjects, selectProjects } from './store/projectsSlice';
 

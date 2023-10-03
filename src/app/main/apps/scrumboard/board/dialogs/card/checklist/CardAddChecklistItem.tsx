@@ -4,11 +4,10 @@ import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import ChecklistItemModel, { CheckListItemType } from '../../../../model/ChecklistItemModel';
-
+import ChecklistItemModel from '../../../../models/ChecklistItemModel';
+import { CheckListItemType } from '../../../../types/CheckListItemType';
 /**
  * Form Validation Schema
  */

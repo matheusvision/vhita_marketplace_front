@@ -5,13 +5,13 @@ import _ from '@lodash';
 import { setInitialSettings } from 'app/store/fuse/settingsSlice';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import settingsConfig from 'app/configs/settingsConfig';
-import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
-import { AppDispatch, RootState } from 'app/store/index';
-import { UserProps } from 'app/store/user/index';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
+import { AppDispatchType, RootStateType } from 'app/store/types';
+import { UserType } from 'app/store/user';
 import jwtService from '../../auth/services/jwtService';
 import createAppAsyncThunk from '../createAppAsyncThunk';
 
-export const setUser = createAsyncThunk('user/setUser', (user?: UserProps) => {
+export const setUser = createAsyncThunk('user/setUser', (user?: UserType) => {
 	/*
     You can redirect the logged-in user to a specific route depending on his role
     */
@@ -24,11 +24,11 @@ export const setUser = createAsyncThunk('user/setUser', (user?: UserProps) => {
 
 export const updateUserSettings = createAppAsyncThunk(
 	'user/updateSettings',
-	async (settings: FuseSettingsConfigProps, thunkApi) => {
+	async (settings: FuseSettingsConfigType, thunkApi) => {
 		const { dispatch, getState } = thunkApi;
 		const { user } = getState();
 
-		const newUser = _.merge({}, user, { data: { settings } }) as UserProps;
+		const newUser = _.merge({}, user, { data: { settings } }) as UserType;
 
 		await dispatch(updateUserData(newUser));
 
@@ -55,7 +55,7 @@ export const updateUserShortcuts = createAppAsyncThunk(
 	}
 );
 
-export const logoutUser = () => async (dispatch: AppDispatch, getState: () => RootState) => {
+export const logoutUser = () => async (dispatch: AppDispatchType, getState: () => RootStateType) => {
 	const { user } = getState();
 
 	if (!user.role || user.role.length === 0) {
@@ -72,7 +72,7 @@ export const logoutUser = () => async (dispatch: AppDispatch, getState: () => Ro
 	return Promise.resolve(dispatch(userLoggedOut()));
 };
 
-export const updateUserData = (user: UserProps) => async (dispatch: AppDispatch) => {
+export const updateUserData = (user: UserType) => async (dispatch: AppDispatchType) => {
 	if (!user.role || user.role.length === 0) {
 		// is guest
 		return;
@@ -88,7 +88,7 @@ export const updateUserData = (user: UserProps) => async (dispatch: AppDispatch)
 		});
 };
 
-const initialState: UserProps = {
+const initialState: UserType = {
 	role: [], // guest
 	data: {
 		displayName: 'John Doe',
@@ -114,8 +114,8 @@ const userSlice = createSlice({
 
 export const { userLoggedOut } = userSlice.actions;
 
-export const selectUser = (state: RootState) => state.user;
+export const selectUser = (state: RootStateType) => state.user;
 
-export const selectUserShortcuts = (state: RootState) => state.user.data.shortcuts;
+export const selectUserShortcuts = (state: RootStateType) => state.user.data.shortcuts;
 
 export default userSlice.reducer;

@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import IconButton from '@mui/material/IconButton';
 import { useEffect } from 'react';
 import PhoneNumberInput from '../phone-number-selector/PhoneNumberInput';
-import { ContactEmailType } from '../../model/ContactModel';
+import { ContactEmailType } from '../../types/ContactEmailType';
 
 const schema = yup.object().shape({
 	email: yup.string().email('You must enter a valid email').required('You must enter a email'),

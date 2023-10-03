@@ -1,5 +1,5 @@
 import Tooltip from '@mui/material/Tooltip';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import Chip from '@mui/material/Chip';
 import { selectLabelById } from '../../store/labelsSlice';
 

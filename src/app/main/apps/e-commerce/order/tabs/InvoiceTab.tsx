@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
-import { OrderType } from '../model/OrderModel';
+import { OrderType } from '../../types/OrderType';
 
 const Root = styled('div')(({ theme }) => ({
 	'& table ': {

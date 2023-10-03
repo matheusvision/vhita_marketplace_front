@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { styled } from '@mui/material/styles';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { getWidgets } from './store/widgetsSlice';
 import CryptoDashboardAppHeader from './CryptoDashboardAppHeader';
 import CryptoDashboardAppSidebar from './CryptoDashboardAppSidebar';

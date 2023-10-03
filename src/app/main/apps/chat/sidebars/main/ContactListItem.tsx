@@ -4,7 +4,7 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import ListItemButton from '@mui/material/ListItemButton';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import UserAvatar from '../../UserAvatar';
-import { ContactModelType } from '../../model/ContactModel';
+import { ContactType } from '../../types/ContactType';
 
 type ExtendedListItemProps = NavLinkAdapterPropsType & {
 	component: React.ElementType<NavLinkAdapterPropsType>;
@@ -17,7 +17,7 @@ const StyledListItem = styled(ListItemButton)<ExtendedListItemProps>(({ theme })
 }));
 
 type ContactListItemProps = {
-	item: ContactModelType;
+	item: ContactType;
 };
 
 function ContactListItem(props: ContactListItemProps) {

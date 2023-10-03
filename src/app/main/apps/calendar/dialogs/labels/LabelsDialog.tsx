@@ -1,7 +1,7 @@
 import Dialog from '@mui/material/Dialog';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { closeLabelsDialog, selectLabels, selectLabelsDialogOpen } from '../../store/labelsSlice';
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';

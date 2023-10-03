@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import { PartialDeep } from 'type-fest';

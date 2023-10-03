@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState, MouseEvent } from 'react';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import * as yup from 'yup';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
@@ -19,7 +19,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import clsx from 'clsx';
 import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import { removeList, updateList } from '../../store/listsSlice';
-import { ListType } from '../../model/ListModel';
+import { ListType } from '../../types/ListType';
 
 /**
  * Form Validation Schema

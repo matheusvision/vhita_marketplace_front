@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
-import { LabelType, LabelsType } from '../model/LabelModel';
+import { RootStateType } from 'app/store/types';
+import { LabelType, LabelsType } from '../types/LabelType';
 
-export type AppRootState = RootState<labelsSliceType>;
+export type AppRootStateType = RootStateType<labelsSliceType>;
 
 export const getLabels = createAppAsyncThunk<LabelsType>('mailboxApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/mailbox/labels');
@@ -22,7 +22,7 @@ export const {
 	selectAll: selectLabels,
 	selectEntities: selectLabelsEntities,
 	selectById
-} = labelsAdapter.getSelectors((state: AppRootState) => state.mailboxApp.labels);
+} = labelsAdapter.getSelectors((state: AppRootStateType) => state.mailboxApp.labels);
 
 const labelsSlice = createSlice({
 	name: 'mailboxApp/labels',
@@ -33,7 +33,7 @@ const labelsSlice = createSlice({
 	}
 });
 
-export const selectLabelById = (id: string) => (state: AppRootState) => selectById(state, id);
+export const selectLabelById = (id: string) => (state: AppRootStateType) => selectById(state, id);
 
 export type labelsSliceType = typeof labelsSlice;
 

@@ -1,9 +1,9 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
+import { ChatListType } from 'src/app/main/apps/chat/types/ChatListType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { UserModelType } from '../../app/main/apps/chat/model/UserModel';
-import { ChatListType } from '../../app/main/apps/chat/model/ChatListItemModel';
+import { UserType } from '../../app/main/apps/chat/types/UserType';
 
 const contactsDB = mockApi.components.examples.chat_contacts.value;
 let userDB = mockApi.components.examples.chat_profile.value;
@@ -64,11 +64,11 @@ mock.onPost(/\/api\/chat\/chats\/[^/]+/).reply(({ url, data: value }) => {
 });
 
 mock.onGet('/api/chat/user').reply(() => {
-	return [200, userDB as UserModelType];
+	return [200, userDB as UserType];
 });
 
 mock.onPost('/api/chat/user').reply(({ data }: { data: string }) => {
-	const userData = JSON.parse(data) as UserModelType;
+	const userData = JSON.parse(data) as UserType;
 
 	userDB = _.merge({}, userDB, userData);
 

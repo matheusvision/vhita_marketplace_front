@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
-import ProductModel, { ProductType } from '../product/model/ProductModel';
+import { RootStateType } from 'app/store/types';
+import { ProductType } from '../types/ProductType';
+import ProductModel from '../product/models/ProductModel';
 
-export type AppRootState = RootState<productSliceType>;
+export type AppRootStateType = RootStateType<productSliceType>;
 
 export const getProduct = createAppAsyncThunk<ProductType, string>(
 	'eCommerceApp/product/getProduct',
@@ -20,7 +21,7 @@ export const getProduct = createAppAsyncThunk<ProductType, string>(
 export const removeProduct = createAppAsyncThunk<string, null>(
 	'eCommerceApp/product/removeProduct',
 	async (_, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 
 		const { id } = AppState.eCommerceApp.product;
 
@@ -33,7 +34,7 @@ export const removeProduct = createAppAsyncThunk<string, null>(
 export const saveProduct = createAppAsyncThunk<ProductType, ProductType>(
 	'eCommerceApp/product/saveProduct',
 	async (productData, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 
 		const { id } = AppState.eCommerceApp.product;
 
@@ -62,7 +63,7 @@ const productSlice = createSlice({
 	}
 });
 
-export const selectProduct = (state: AppRootState) => state.eCommerceApp.product;
+export const selectProduct = (state: AppRootStateType) => state.eCommerceApp.product;
 
 export const { newProduct, resetProduct } = productSlice.actions;
 

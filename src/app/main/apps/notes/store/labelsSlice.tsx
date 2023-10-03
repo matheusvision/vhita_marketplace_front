@@ -2,10 +2,10 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
 import { PartialDeep } from 'type-fest';
-import { RootState } from 'app/store/index';
-import { LabelsType, LabelType } from '../model/LabelModel';
+import { RootStateType } from 'app/store/types';
+import { LabelType, LabelsType } from '../types/LabelType';
 
-export type AppRootState = RootState<labelsSliceType>;
+export type AppRootStateType = RootStateType<labelsSliceType>;
 
 export const getLabels = createAppAsyncThunk<LabelsType>('notesApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/notes/labels');
@@ -47,7 +47,7 @@ export const {
 	selectAll: selectLabels,
 	selectEntities: selectLabelsEntities,
 	selectById: selectLabelById
-} = labelsAdapter.getSelectors((state: AppRootState) => state.notesApp?.labels);
+} = labelsAdapter.getSelectors((state: AppRootStateType) => state.notesApp?.labels);
 
 const labelsSlice = createSlice({
 	name: 'notesApp/labels',
@@ -73,7 +73,7 @@ const labelsSlice = createSlice({
 
 export const { openLabelsDialog, closeLabelsDialog } = labelsSlice.actions;
 
-export const selectLabelsDialogOpen = (state: AppRootState) => state.notesApp?.labels.labelsDialogOpen;
+export const selectLabelsDialogOpen = (state: AppRootStateType) => state.notesApp?.labels.labelsDialogOpen;
 
 export type labelsSliceType = typeof labelsSlice;
 

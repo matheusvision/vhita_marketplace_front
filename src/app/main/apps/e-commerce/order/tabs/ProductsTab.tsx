@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectOrder } from '../../store/orderSlice';
 
 function ProductsTab() {

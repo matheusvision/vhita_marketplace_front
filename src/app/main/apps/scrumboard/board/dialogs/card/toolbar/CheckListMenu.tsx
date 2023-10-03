@@ -8,7 +8,8 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
-import ChecklistModel, { ChecklistType } from '../../../../model/ChecklistModel';
+import ChecklistModel from '../../../../models/ChecklistModel';
+import { ChecklistType } from '../../../../types/ChecklistType';
 
 /**
  * Form Validation Schema

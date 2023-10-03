@@ -3,14 +3,14 @@ declare module '*.css' {
 	export default content;
 }
 
-type MyProcess = NodeJS.Process & {
+type ProcessType = NodeJS.Process & {
 	browser: boolean;
 	env: {
 		[key: string]: string | undefined;
 	};
 };
 
-declare let process: Process;
+declare let process: ProcessType;
 
 interface HotModule {
 	hot?: {

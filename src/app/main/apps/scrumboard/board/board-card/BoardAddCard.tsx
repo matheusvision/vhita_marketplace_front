@@ -6,12 +6,12 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { MouseEvent, useEffect, useState } from 'react';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { newCard } from '../../store/cardsSlice';
-import { CardType } from '../../model/CardModel';
+import { CardType } from '../../types/CardType';
 
 const defaultValues = {
 	title: ''

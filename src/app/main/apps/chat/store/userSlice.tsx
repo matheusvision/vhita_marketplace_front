@@ -2,32 +2,32 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { DeepPartial } from 'react-hook-form';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { PartialDeep } from 'type-fest';
-import { UserModelType } from '../model/UserModel';
+import { UserType } from '../types/UserType';
 
-type AppRootState = RootState<userSliceType>;
+type AppRootStateType = RootStateType<userSliceType>;
 
-export const getUserData = createAppAsyncThunk<UserModelType>('chatApp/user/getUserData', async () => {
+export const getUserData = createAppAsyncThunk<UserType>('chatApp/user/getUserData', async () => {
 	const response = await axios.get('/api/chat/user');
 
-	const data = (await response.data) as UserModelType;
+	const data = (await response.data) as UserType;
 
 	return data;
 });
 
-export const updateUserData = createAppAsyncThunk<UserModelType, DeepPartial<UserModelType>>(
+export const updateUserData = createAppAsyncThunk<UserType, DeepPartial<UserType>>(
 	'chatApp/user/updateUserData',
 	async (newData) => {
 		const response = await axios.post('/api/chat/user', newData);
 
-		const data = (await response.data) as UserModelType;
+		const data = (await response.data) as UserType;
 
 		return data;
 	}
 );
 
-const initialState: PartialDeep<UserModelType> = {};
+const initialState: PartialDeep<UserType> = {};
 
 const userSlice = createSlice({
 	name: 'chatApp/user',
@@ -40,7 +40,7 @@ const userSlice = createSlice({
 	}
 });
 
-export const selectUser = (state: AppRootState) => state.chatApp.user;
+export const selectUser = (state: AppRootStateType) => state.chatApp.user;
 
 export type userSliceType = typeof userSlice;
 

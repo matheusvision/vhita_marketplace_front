@@ -2,8 +2,8 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { TasksType, TaskType } from '../../app/main/apps/tasks/model/TaskModel';
-import { TagsType } from '../../app/main/apps/tasks/model/TagModel';
+import { TasksType, TaskType } from '../../app/main/apps/tasks/types/TaskType';
+import { TagsType } from '../../app/main/apps/tasks/types/TagType';
 
 let tasksDB = mockApi.components.examples.tasks.value as TasksType;
 const tagsDB = mockApi.components.examples.tasks_tags.value as TagsType;

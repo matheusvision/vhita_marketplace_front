@@ -1,11 +1,11 @@
 import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from '@lodash';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { GuideCategoriesType, GuideCategoryType } from '../model/GuideCategoryModel';
+import { GuideCategoriesType, GuideCategoryType } from '../types/GuideCategoryType';
 
-export type AppRootState = RootState<guideCategoriesSliceType>;
+export type AppRootStateType = RootStateType<guideCategoriesSliceType>;
 
 export const getGuideCategories = createAppAsyncThunk<GuideCategoriesType>(
 	'helpCenterApp/guideCategories/get',
@@ -20,7 +20,7 @@ export const getGuideCategories = createAppAsyncThunk<GuideCategoriesType>(
 const guideCategoriesAdapter = createEntityAdapter<GuideCategoryType>({});
 
 export const { selectAll: selectGuideCategories, selectById: selectGuideCategorieseById } =
-	guideCategoriesAdapter.getSelectors((state: AppRootState) => state.helpCenterApp.guideCategories);
+	guideCategoriesAdapter.getSelectors((state: AppRootStateType) => state.helpCenterApp.guideCategories);
 
 const initialState = guideCategoriesAdapter.getInitialState();
 

@@ -7,7 +7,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { AlbumsType } from '../../types/AlbumModel';
+import { AlbumsType } from '../../types/AlbumType';
 
 function PhotosVideosTab() {
 	const [data, setData] = useState<AlbumsType>(null);

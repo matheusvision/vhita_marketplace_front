@@ -3,9 +3,9 @@ import { ReactNode, useEffect, useMemo, useState } from 'react';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import { logoutUser, setUser } from 'app/store/user/userSlice';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { AxiosError } from 'axios';
-import { UserProps } from 'app/store/user';
+import { UserType } from 'app/store/user';
 import jwtService from './services/jwtService';
 
 const AuthContext = React.createContext({});
@@ -36,7 +36,7 @@ function AuthProvider(props: AuthProviderProps) {
 				});
 		});
 
-		jwtService.on('onLogin', (user: UserProps) => {
+		jwtService.on('onLogin', (user: UserType) => {
 			success(user, 'Signed in');
 		});
 
@@ -58,7 +58,7 @@ function AuthProvider(props: AuthProviderProps) {
 
 		jwtService.init();
 
-		function success(user: UserProps, message: string) {
+		function success(user: UserType, message: string) {
 			if (message) {
 				dispatch(showMessage({ message }));
 			}

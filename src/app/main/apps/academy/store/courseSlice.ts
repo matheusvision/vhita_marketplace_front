@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { showMessage } from 'app/store/fuse/messageSlice';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { PartialDeep } from 'type-fest';
 import CourseType from '../types/CourseType';
 
-type AppRootState = RootState<CourseSliceType>;
+type AppRootStateType = RootStateType<CourseSliceType>;
 
 export const getCourse = createAppAsyncThunk('academyApp/course/getCourse', async (courseId: string) => {
 	const response = await axios.get(`/api/academy/courses/${courseId}`);
@@ -19,7 +19,7 @@ export const getCourse = createAppAsyncThunk('academyApp/course/getCourse', asyn
 export const updateCourse = createAppAsyncThunk<CourseType, PartialDeep<CourseType>>(
 	'academyApp/course/updateCourse',
 	async (_data, { getState, dispatch }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const { id } = AppState.academyApp.course;
 
 		const response = await axios.put(`/api/academy/courses/${id}`, _data);
@@ -44,7 +44,7 @@ const courseSlice = createSlice({
 	}
 });
 
-export const selectCourse = (state: AppRootState) => state.academyApp.course;
+export const selectCourse = (state: AppRootStateType) => state.academyApp.course;
 
 export type CourseSliceType = typeof courseSlice;
 

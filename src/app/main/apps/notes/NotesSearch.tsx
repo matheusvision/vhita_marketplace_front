@@ -1,5 +1,5 @@
 import IconButton from '@mui/material/IconButton';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { OutlinedInput } from '@mui/material';
 import { motion } from 'framer-motion';
 import InputAdornment from '@mui/material/InputAdornment';

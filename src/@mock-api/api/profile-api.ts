@@ -1,8 +1,8 @@
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 import { TimelineResponseDataType } from '../../app/main/apps/profile/tabs/timeline/TimelineTab';
-import { AlbumsType } from '../../app/main/apps/profile/types/AlbumModel';
-import { ProfileType } from '../../app/main/apps/profile/types/ProfileModel';
+import { AlbumsType } from '../../app/main/apps/profile/types/AlbumType';
+import { ProfileType } from '../../app/main/apps/profile/types/ProfileType';
 
 const timelineApi = mockApi.components.examples.profile_timeline.value as TimelineResponseDataType;
 const photosVideosApi = mockApi.components.examples.profile_photos_videos.value as AlbumsType;

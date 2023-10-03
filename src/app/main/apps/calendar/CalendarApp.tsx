@@ -6,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import {
 	DateSelectArg,
 	DatesSetArg,
@@ -30,7 +30,7 @@ import { getLabels } from './store/labelsSlice';
 import LabelsDialog from './dialogs/labels/LabelsDialog';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
-import { EventModelType } from './model/EventModel';
+import { EventType } from './types/EventType';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -132,7 +132,7 @@ function CalendarApp() {
 		dispatch(openNewEventDialog(selectInfo));
 	};
 
-	const handleEventDrop = (eventDropInfo: EventDropArg & { event: EventModelType }) => {
+	const handleEventDrop = (eventDropInfo: EventDropArg & { event: EventType }) => {
 		const { id, title, allDay, start, end, extendedProps } = eventDropInfo.event;
 		dispatch(
 			updateEvent({
@@ -198,7 +198,7 @@ function CalendarApp() {
 						select={handleDateSelect}
 						events={events}
 						// eslint-disable-next-line react/no-unstable-nested-components
-						eventContent={(eventInfo: EventContentArg & { event: EventModelType }) => (
+						eventContent={(eventInfo: EventContentArg & { event: EventType }) => (
 							<CalendarAppEventContent eventInfo={eventInfo} />
 						)}
 						eventClick={handleEventClick}

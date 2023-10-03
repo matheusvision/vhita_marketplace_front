@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
@@ -21,8 +21,8 @@ import TaskPrioritySelector from './TaskPrioritySelector';
 import FormActionsMenu from './FormActionsMenu';
 import { addTask, getTask, newTask, selectTask, updateTask } from '../store/taskSlice';
 import { selectTags } from '../store/tagsSlice';
-import { TaskType } from '../model/TaskModel';
-import { TagType } from '../model/TagModel';
+import { TaskType } from '../types/TaskType';
+import { TagType } from '../types/TagType';
 
 /**
  * Form Validation Schema

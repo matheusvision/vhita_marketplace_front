@@ -1,6 +1,6 @@
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';

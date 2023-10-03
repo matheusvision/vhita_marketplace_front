@@ -2,7 +2,7 @@ import { useDebounce } from '@fuse/hooks';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { forwardRef, ReactElement, ReactNode } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import {
 	closeNoteDialog,

@@ -1,6 +1,6 @@
 import { navbarToggle, navbarToggleMobile } from 'app/store/fuse/navbarSlice';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
 import { ThemeOptions } from '@mui/material/styles/createTheme';

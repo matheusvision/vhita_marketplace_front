@@ -2,12 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { PartialDeep } from 'type-fest';
-import SectionModel from '../model/SectionModel';
-import TaskModel, { TaskType } from '../model/TaskModel';
+import SectionModel from '../models/SectionModel';
+import TaskModel from '../models/TaskModel';
+import { TaskType } from '../types/TaskType';
 
-export type AppRootState = RootState<taskSliceType>;
+export type AppRootStateType = RootStateType<taskSliceType>;
 
 export const getTask = createAppAsyncThunk<TaskType, string>('tasksApp/task/getTask', async (id) => {
 	try {
@@ -77,7 +78,7 @@ const taskSlice = createSlice({
 	}
 });
 
-export const selectTask = (state: AppRootState) => state.tasksApp.task;
+export const selectTask = (state: AppRootStateType) => state.tasksApp.task;
 
 export const { resetTask, newTask } = taskSlice.actions;
 

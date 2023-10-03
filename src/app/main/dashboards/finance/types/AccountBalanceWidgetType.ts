@@ -1,17 +1,17 @@
-type DataPoint = {
+type DataPointType = {
 	x: string;
 	y: number;
 };
 
-type Series = {
+type SeriesType = {
 	name: string;
-	data: DataPoint[];
+	data: DataPointType[];
 };
 
 type AccountBalanceWidgetType = {
 	growRate: number;
 	ami: number;
-	series: Series[];
+	series: SeriesType[];
 };
 
 export default AccountBalanceWidgetType;

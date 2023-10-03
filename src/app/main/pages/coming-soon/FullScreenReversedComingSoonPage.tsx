@@ -150,7 +150,7 @@ function FullScreenReversedComingSoonPage() {
 					</Typography>
 
 					<div className="flex flex-col items-center py-48">
-						<FuseCountdown endDate="2023-07-28" />
+						<FuseCountdown endDate="2071-07-28" />
 					</div>
 
 					<form

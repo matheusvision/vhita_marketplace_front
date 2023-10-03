@@ -5,9 +5,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectMemberById } from '../../../../store/membersSlice';
-import CommentModel, { CommentType } from '../../../../model/CommentModel';
+import CommentModel from '../../../../models/CommentModel';
+import { CommentType } from '../../../../types/CommentType';
 
 /**
  * Form Validation Schema

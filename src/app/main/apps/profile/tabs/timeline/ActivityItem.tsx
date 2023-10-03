@@ -2,7 +2,7 @@ import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
-import { ActivityType } from '../../types/ActivityModel';
+import { ActivityType } from '../../types/ActivityType';
 
 type ActivityItemProps = {
 	item: ActivityType;

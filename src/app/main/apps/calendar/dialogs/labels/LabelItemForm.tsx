@@ -18,10 +18,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { removeLabel, updateLabel } from '../../store/labelsSlice';
 import { getEvents } from '../../store/eventsSlice';
-import { LabelModelType } from '../../model/LabelModel';
+import { LabelType } from '../../types/LabelType';
 
 /**
  * Form Validation Schema
@@ -32,7 +32,7 @@ const schema = yup.object().shape({
 });
 
 type NewLabelFormProps = {
-	label: LabelModelType;
+	label: LabelType;
 	isLast: boolean;
 };
 
@@ -47,13 +47,13 @@ function NewLabelForm(props: NewLabelFormProps) {
 	});
 
 	const { errors } = formState;
-	const form = watch() as LabelModelType;
+	const form = watch();
 
 	useEffect(() => {
 		reset(label);
 	}, [label, reset]);
 
-	const handleOnChange = useDebounce(({ label, form }: { label: LabelModelType; form: LabelModelType }) => {
+	const handleOnChange = useDebounce(({ label, form }: { label: LabelType; form: LabelType }) => {
 		if (!label) {
 			return;
 		}

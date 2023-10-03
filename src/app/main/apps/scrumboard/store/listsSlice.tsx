@@ -1,12 +1,13 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import ListModel, { ListsType, ListType } from '../model/ListModel';
-import { BoardType } from '../model/BoardModel';
+import ListModel from '../models/ListModel';
+import { BoardType } from '../types/BoardType';
+import { ListsType, ListType } from '../types/ListType';
 import { BoardSliceType } from './boardSlice';
 
-type AppRootState = RootState<[ListsSliceType, BoardSliceType]>;
+type AppRootStateType = RootStateType<[ListsSliceType, BoardSliceType]>;
 
 /**
  * Get Board Lists
@@ -25,7 +26,7 @@ export const getLists = createAppAsyncThunk<ListsType, string>('scrumboardApp/li
 export const newList = createAppAsyncThunk<ListType, ListType>(
 	'scrumboardApp/lists/new',
 	async (list, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.post(`/api/scrumboard/boards/${board.id}/lists`, ListModel(list));
@@ -42,7 +43,7 @@ export const newList = createAppAsyncThunk<ListType, ListType>(
 export const updateList = createAppAsyncThunk<ListType, { id: string; newData: ListType }>(
 	'scrumboardApp/lists/update',
 	async ({ id, newData }, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}/lists/${id}`, newData);
@@ -59,7 +60,7 @@ export const updateList = createAppAsyncThunk<ListType, { id: string; newData: L
 export const removeList = createAppAsyncThunk<string, string>(
 	'scrumboardApp/lists/remove',
 	async (id, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const board = AppState.scrumboardApp.board as BoardType;
 
 		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/lists/${id}`);
@@ -74,7 +75,7 @@ const listsAdapter = createEntityAdapter<ListType>({});
 const initialState = listsAdapter.getInitialState({});
 
 export const { selectAll: selectLists, selectById } = listsAdapter.getSelectors(
-	(state: AppRootState) => state.scrumboardApp.lists
+	(state: AppRootStateType) => state.scrumboardApp.lists
 );
 
 const listsSlice = createSlice({
@@ -94,7 +95,7 @@ const listsSlice = createSlice({
 
 export const { resetLists } = listsSlice.actions;
 
-export const selectListById = (id: ListType['id']) => (state: AppRootState) => selectById(state, id);
+export const selectListById = (id: ListType['id']) => (state: AppRootStateType) => selectById(state, id);
 
 export type ListsSliceType = typeof listsSlice;
 

@@ -1,12 +1,12 @@
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
-import { MembersType } from 'src/app/main/apps/scrumboard/model/MemberModel';
+import { MembersType } from '../../app/main/apps/scrumboard/types/MemberType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { BoardType, BoardsType } from '../../app/main/apps/scrumboard/model/BoardModel';
-import { LabelsType } from '../../app/main/apps/scrumboard/model/LabelModel';
-import { CardsType, CardType } from '../../app/main/apps/scrumboard/model/CardModel';
-import { ListType, ListsType } from '../../app/main/apps/scrumboard/model/ListModel';
+import { BoardType, BoardsType } from '../../app/main/apps/scrumboard/types/BoardType';
+import { LabelsType } from '../../app/main/apps/scrumboard/types/LabelType';
+import { CardsType, CardType } from '../../app/main/apps/scrumboard/types/CardType';
+import { ListType, ListsType } from '../../app/main/apps/scrumboard/types/ListType';
 
 const boardsDB = mockApi.components.examples.scrumboard_boards.value as BoardsType;
 const labelsDB = mockApi.components.examples.scrumboard_labels.value as LabelsType;

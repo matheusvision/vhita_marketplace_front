@@ -1,15 +1,15 @@
 import { useTheme } from '@mui/material/styles';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import { EventContentArg } from '@fullcalendar/core';
 import { selectLabels } from './store/labelsSlice';
-import { EventModelType } from './model/EventModel';
+import { EventType } from './types/EventType';
 
 type CalendarAppEventContentProps = {
-	eventInfo: EventContentArg & { event: EventModelType };
+	eventInfo: EventContentArg & { event: EventType };
 };
 
 function CalendarAppEventContent(props: CalendarAppEventContentProps) {

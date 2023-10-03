@@ -5,7 +5,7 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import { forwardRef, useCallback, useEffect, useRef, ReactNode } from 'react';
 import { connect } from 'react-redux';
 import history from '@history';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 
 const Root = styled('div')(() => ({
 	overscrollBehavior: 'contain',
@@ -173,7 +173,7 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FusePageSimpleSidebarContentPr
 	);
 });
 
-function mapStateToProps({ fuse }: RootState) {
+function mapStateToProps({ fuse }: RootStateType) {
 	return {
 		customScrollbars: fuse.settings.current.customScrollbars
 	};

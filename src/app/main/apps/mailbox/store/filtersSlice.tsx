@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
-import { FilterType, FiltersType } from '../model/FilterModel';
+import { RootStateType } from 'app/store/types';
+import { FilterType, FiltersType } from '../types/FilterType';
 
-export type AppRootState = RootState<filtersSliceType>;
+export type AppRootStateType = RootStateType<filtersSliceType>;
 
 export const getFilters = createAppAsyncThunk<FiltersType>('mailboxApp/filters/getFilters', async () => {
 	const response = await axios.get('/api/mailbox/filters');
@@ -17,7 +17,7 @@ export const getFilters = createAppAsyncThunk<FiltersType>('mailboxApp/filters/g
 const filtersAdapter = createEntityAdapter<FilterType>({});
 
 export const { selectAll: selectFilters, selectById: selectFilterById } = filtersAdapter.getSelectors(
-	(state: AppRootState) => state.mailboxApp.filters
+	(state: AppRootStateType) => state.mailboxApp.filters
 );
 
 const filtersSlice = createSlice({

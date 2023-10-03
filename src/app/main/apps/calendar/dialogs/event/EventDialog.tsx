@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import { Popover } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import {
 	addEvent,
 	closeEditEventDialog,
@@ -22,7 +22,7 @@ import {
 	updateEvent
 } from '../../store/eventsSlice';
 import EventLabelSelect from '../../EventLabelSelect';
-import EventModel from '../../model/EventModel';
+import EventModel from '../../models/EventModel';
 import { selectFirstLabelId } from '../../store/labelsSlice';
 
 const defaultValues = EventModel();

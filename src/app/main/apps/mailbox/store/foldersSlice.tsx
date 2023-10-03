@@ -2,10 +2,10 @@ import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolk
 import axios from 'axios';
 import _ from '@lodash';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
-import { FolderType, FoldersType } from '../model/FolderModel';
+import { RootStateType } from 'app/store/types';
+import { FolderType, FoldersType } from '../types/FolderType';
 
-export type AppRootState = RootState<foldersSliceType>;
+export type AppRootStateType = RootStateType<foldersSliceType>;
 
 export const getFolders = createAppAsyncThunk<FoldersType>('mailboxApp/folders/getFolders', async () => {
 	const response = await axios.get('/api/mailbox/folders');
@@ -18,7 +18,7 @@ export const getFolders = createAppAsyncThunk<FoldersType>('mailboxApp/folders/g
 const foldersAdapter = createEntityAdapter<FolderType>({});
 
 export const { selectAll: selectFolders, selectById: selectFolderById } = foldersAdapter.getSelectors(
-	(state: AppRootState) => state.mailboxApp.folders
+	(state: AppRootStateType) => state.mailboxApp.folders
 );
 
 const initialState = foldersAdapter.getInitialState();

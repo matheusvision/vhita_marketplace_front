@@ -1,8 +1,8 @@
 import FuseUtils from '@fuse/utils/FuseUtils';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import jwtDecode from 'jwt-decode';
-import { UserProps } from 'app/store/user';
-import { UserModelType } from 'app/store/user/model/UserModel';
+import { UserType } from 'app/store/user';
+import { UserModelType } from 'app/store/user/models/UserModel';
 import jwtServiceConfig from './jwtServiceConfig';
 /* eslint-disable camelcase, class-methods-use-this */
 class JwtService extends FuseUtils.EventEmitter {
@@ -53,7 +53,7 @@ class JwtService extends FuseUtils.EventEmitter {
 			axios.post(jwtServiceConfig.signUp, data).then(
 				(
 					response: AxiosResponse<{
-						user: UserProps;
+						user: UserType;
 						access_token: string;
 						error?: {
 							type: 'email' | 'password' | `root.${string}` | 'root';
@@ -84,7 +84,7 @@ class JwtService extends FuseUtils.EventEmitter {
 				.then(
 					(
 						response: AxiosResponse<{
-							user: UserProps;
+							user: UserType;
 							access_token: string;
 							error?: {
 								type: 'email' | 'password' | `root.${string}` | 'root';

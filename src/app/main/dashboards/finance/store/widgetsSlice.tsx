@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import RecentTransactionsWidgetType from '../types/RecentTransactionsWidgetType';
 import CurrentStatementWidgetType from '../types/CurrentStatementWidgetType';
@@ -8,7 +8,7 @@ import PreviousStatementWidgetType from '../types/PreviousStatementWidgetType';
 import BudgetWidgetType from '../types/BudgetWidgetType';
 import AccountBalanceWidgetType from '../types/AccountBalanceWidgetType';
 
-type AppRootState = RootState<widgetsSliceType>;
+type AppRootStateType = RootStateType<widgetsSliceType>;
 
 type WidgetsType = {
 	recentTransactions?: RecentTransactionsWidgetType;
@@ -37,7 +37,7 @@ const widgetsSlice = createSlice({
 	}
 });
 
-export const selectWidgets = (state: AppRootState) => state.financeDashboardApp.widgets;
+export const selectWidgets = (state: AppRootStateType) => state.financeDashboardApp.widgets;
 
 export type widgetsSliceType = typeof widgetsSlice;
 

@@ -2,18 +2,18 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { EventModelType } from '../../app/main/apps/calendar/model/EventModel';
-import { LabelModelType } from '../../app/main/apps/calendar/model/LabelModel';
+import { EventType } from '../../app/main/apps/calendar/types/EventType';
+import { LabelType } from '../../app/main/apps/calendar/types/LabelType';
 
-const eventsDB = mockApi.components.examples.calendar_events.value as EventModelType[];
-const labelsDB = mockApi.components.examples.calendar_labels.value as LabelModelType[];
+const eventsDB = mockApi.components.examples.calendar_events.value as EventType[];
+const labelsDB = mockApi.components.examples.calendar_labels.value as LabelType[];
 
 mock.onGet('/api/calendar/labels').reply(() => {
 	return [200, labelsDB];
 });
 
 mock.onPost('/api/calendar/labels').reply(({ data }) => {
-	const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as LabelModelType;
+	const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as LabelType;
 	labelsDB.push(newLabel);
 
 	return [200, newLabel];
@@ -63,7 +63,7 @@ mock.onGet('/api/calendar/events').reply(() => {
 });
 
 mock.onPost('/api/calendar/events').reply(({ data }) => {
-	const newEvent = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as EventModelType;
+	const newEvent = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as EventType;
 	eventsDB.push(newEvent);
 
 	return [200, newEvent];
@@ -72,7 +72,7 @@ mock.onPost('/api/calendar/events').reply(({ data }) => {
 mock.onPut(/\/api\/calendar\/events\/[^/]+/).reply(({ url, data }) => {
 	const { id } = url.match(/\/api\/calendar\/events\/(?<id>[^/]+)/).groups;
 
-	_.assign(_.find(eventsDB, { id }), JSON.parse(data as string)) as EventModelType;
+	_.assign(_.find(eventsDB, { id }), JSON.parse(data as string)) as EventType;
 
 	return [200, _.find(eventsDB, { id })];
 });

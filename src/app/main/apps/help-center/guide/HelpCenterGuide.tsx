@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';

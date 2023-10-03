@@ -5,11 +5,11 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import Popover from '@mui/material/Popover';
 import { useState, MouseEvent } from 'react';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import { selectLabels } from '../store/labelsSlice';
-import { NoteType } from '../model/NoteModel';
+import { NoteType } from '../types/NoteType';
 
 type NoteFormLabelMenuProps = {
 	note: NoteType;

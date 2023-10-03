@@ -2,7 +2,7 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseUtils from '@fuse/utils';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import {
 	appendNavigationItem,
 	prependNavigationItem,

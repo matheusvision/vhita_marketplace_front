@@ -5,7 +5,7 @@ import _ from '@lodash';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import ProjectDashboardAppHeader from './ProjectDashboardAppHeader';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import HomeTab from './tabs/home/HomeTab';

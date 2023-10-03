@@ -4,7 +4,7 @@ import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import clsx from 'clsx';
 import Divider from '@mui/material/Divider';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { MouseEvent } from 'react';
 import { selectWidgets } from './store/widgetsSlice';
 import ValueSectionSmall from './widgets/ValueSectionSmall';

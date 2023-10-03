@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import BoardAddCard from '../board-card/BoardAddCard';
 import BoardCard from '../board-card/BoardCard';
 import BoardListHeader from './BoardListHeader';

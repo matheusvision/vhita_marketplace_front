@@ -1,4 +1,4 @@
-import { injectReducer } from 'app/store/index';
+import { injectReducer } from 'app/store';
 import { Reducer } from '@reduxjs/toolkit';
 
 const withReducer =

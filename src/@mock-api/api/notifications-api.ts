@@ -2,7 +2,7 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import NotificationModel, {
 	NotificationModelProps
-} from 'app/theme-layouts/shared-components/notificationPanel/model/NotificationModel';
+} from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 

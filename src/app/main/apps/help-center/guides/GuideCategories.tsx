@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useEffect } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getGuides, selectGroupedGuides } from '../store/guidesSlice';

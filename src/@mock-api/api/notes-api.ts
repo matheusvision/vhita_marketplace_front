@@ -2,8 +2,8 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { NoteType, NotesType } from '../../app/main/apps/notes/model/NoteModel';
-import { LabelsType, LabelType } from '../../app/main/apps/notes/model/LabelModel';
+import { NoteType, NotesType } from '../../app/main/apps/notes/types/NoteType';
+import { LabelsType, LabelType } from '../../app/main/apps/notes/types/LabelType';
 
 const notesDB = mockApi.components.examples.notes_notes.value as NotesType;
 const labelsDB = mockApi.components.examples.notes_labels.value as LabelsType;

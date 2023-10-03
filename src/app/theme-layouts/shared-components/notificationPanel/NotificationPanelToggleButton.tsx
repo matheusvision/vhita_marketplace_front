@@ -1,7 +1,7 @@
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ReactNode } from 'react';
 import withSlices from 'app/store/withSlices';

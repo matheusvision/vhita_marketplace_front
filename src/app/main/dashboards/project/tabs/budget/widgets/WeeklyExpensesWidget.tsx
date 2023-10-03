@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import ReactApexChart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
 

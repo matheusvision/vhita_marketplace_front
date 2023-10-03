@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react-beautiful-dnd';

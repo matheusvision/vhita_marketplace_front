@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 
 type initialStateProps = {
 	open: boolean;
@@ -59,6 +59,6 @@ export const {
 	navbarToggleMobile
 } = navbarSlice.actions;
 
-export const selectFuseNavbar = ({ fuse }: RootState) => fuse.navbar;
+export const selectFuseNavbar = ({ fuse }: RootStateType) => fuse.navbar;
 
 export default navbarSlice.reducer;

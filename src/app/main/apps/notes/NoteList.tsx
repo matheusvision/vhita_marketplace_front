@@ -2,12 +2,12 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
 import NoteListItem from './NoteListItem';
 import { selectNotes, selectSearchText, selectVariateDescSize } from './store/notesSlice';
-import { NotesType } from './model/NoteModel';
+import { NotesType } from './types/NoteType';
 
 function NoteList() {
 	const notes = useAppSelector(selectNotes);

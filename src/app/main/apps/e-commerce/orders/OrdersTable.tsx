@@ -12,13 +12,13 @@ import { motion } from 'framer-motion';
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { Many } from 'lodash';
 import OrdersStatus from '../order/OrdersStatus';
 import { getOrders, selectOrders, selectOrdersSearchText } from '../store/ordersSlice';
 import OrdersTableHead from './OrdersTableHead';
-import { OrdersType, OrderType } from '../order/model/OrderModel';
+import { OrderType, OrdersType } from '../types/OrderType';
 
 type OrdersTableProps = WithRouterProps & {
 	navigate: (path: string) => void;

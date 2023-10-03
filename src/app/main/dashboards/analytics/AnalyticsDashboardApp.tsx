@@ -3,7 +3,7 @@ import _ from '@lodash';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import AnalyticsDashboardAppHeader from './AnalyticsDashboardAppHeader';
 import VisitorsOverviewWidget from './widgets/VisitorsOverviewWidget';

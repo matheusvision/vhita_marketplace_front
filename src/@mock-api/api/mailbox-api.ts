@@ -1,7 +1,7 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import ItemType from '../../app/main/apps/mailbox/type/ItemType';
+import ItemType from '../../app/main/apps/mailbox/types/ItemType';
 
 const mailsDB = mockApi.components.examples.mailbox_mails.value;
 const labelsDB = mockApi.components.examples.mailbox_labels.value;

@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
-import { MembersType, MemberType } from '../model/MemberModel';
+import { RootStateType } from 'app/store/types';
+import { MembersType, MemberType } from '../types/MemberType';
 
-type AppRootState = RootState<MembersSliceType>;
+type AppRootStateType = RootStateType<MembersSliceType>;
 
 /**
  * Get Members
@@ -20,7 +20,7 @@ export const getMembers = createAppAsyncThunk<MembersType>('scrumboardApp/member
 const membersAdapter = createEntityAdapter<MemberType>({});
 
 export const { selectAll: selectMembers, selectById } = membersAdapter.getSelectors(
-	(state: AppRootState) => state.scrumboardApp.members
+	(state: AppRootStateType) => state.scrumboardApp.members
 );
 
 const membersSlice = createSlice({
@@ -37,7 +37,7 @@ const membersSlice = createSlice({
 
 export const { resetMembers } = membersSlice.actions;
 
-export const selectMemberById = (id: MemberType['id']) => (state: AppRootState) => selectById(state, id);
+export const selectMemberById = (id: MemberType['id']) => (state: AppRootStateType) => selectById(state, id);
 
 export type MembersSliceType = typeof membersSlice;
 

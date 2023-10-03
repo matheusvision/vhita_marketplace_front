@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectFilteredContacts, selectGroupedFilteredContacts } from './store/contactsSlice';
 import ContactListItem from './ContactListItem';
 

@@ -17,7 +17,7 @@ import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { closeCardDialog, removeCard, selectCardData, updateCard } from '../../../store/cardSlice';
@@ -34,11 +34,11 @@ import LabelsMenu from './toolbar/LabelsMenu';
 import MembersMenu from './toolbar/MembersMenu';
 import CheckListMenu from './toolbar/CheckListMenu';
 import OptionsMenu from './toolbar/OptionsMenu';
-import { CardType } from '../../../model/CardModel';
-import { LabelsType, LabelType } from '../../../model/LabelModel';
-import { MembersType, MemberType } from '../../../model/MemberModel';
-import { ChecklistsType } from '../../../model/ChecklistModel';
-import { CommentsType } from '../../../model/CommentModel';
+import { CardType } from '../../../types/CardType';
+import { LabelType, LabelsType } from '../../../types/LabelType';
+import { MemberType, MembersType } from '../../../types/MemberType';
+import { ChecklistsType } from '../../../types/ChecklistType';
+import { CommentsType } from '../../../types/CommentType';
 
 function BoardCardForm() {
 	const dispatch = useAppDispatch();

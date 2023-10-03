@@ -4,17 +4,17 @@ import history from '@history';
 import _ from '@lodash';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { PartialDeep } from 'type-fest';
 import { DropResult } from 'react-beautiful-dnd';
 import reorder, { reorderQuoteMap } from './reorder';
 import { newList, removeList } from './listsSlice';
 import { newCard } from './cardsSlice';
-import { BoardType } from '../model/BoardModel';
-import { LabelType, LabelsType } from '../model/LabelModel';
 import { removeCard } from './cardSlice';
+import { BoardType } from '../types/BoardType';
+import { LabelType, LabelsType } from '../types/LabelType';
 
-type AppRootState = RootState<[BoardSliceType]>;
+type AppRootStateType = RootStateType<[BoardSliceType]>;
 
 /**
  * Get Board
@@ -57,7 +57,7 @@ export const getBoard = createAppAsyncThunk<BoardType, string>(
 export const updateBoard = createAppAsyncThunk<BoardType, PartialDeep<BoardType>>(
 	'scrumboardApp/board/update',
 	async (newData, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const { board } = AppState.scrumboardApp;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}`, newData);
@@ -74,7 +74,7 @@ export const updateBoard = createAppAsyncThunk<BoardType, PartialDeep<BoardType>
 export const reorderList = createAppAsyncThunk<BoardType, DropResult>(
 	'scrumboardApp/board/reorderList',
 	async ({ source, destination }, { dispatch, getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const { board } = AppState.scrumboardApp;
 		const ordered = reorder(_.merge([], board.lists), source.index, destination.index);
 
@@ -103,7 +103,7 @@ export const reorderList = createAppAsyncThunk<BoardType, DropResult>(
 export const reorderCard = createAppAsyncThunk<BoardType, DropResult>(
 	'scrumboardApp/board/reorderCard',
 	async ({ source, destination }, { dispatch, getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 		const { board } = AppState.scrumboardApp;
 
 		const ordered = reorderQuoteMap(_.merge([], board.lists), source, destination);
@@ -133,7 +133,7 @@ export const reorderCard = createAppAsyncThunk<BoardType, DropResult>(
 export const deleteBoard = createAppAsyncThunk<string, string>(
 	'scrumboardApp/board/delete',
 	async (params, { getState }) => {
-		const AppState = getState() as AppRootState;
+		const AppState = getState() as AppRootStateType;
 
 		const board = AppState.scrumboardApp.board as BoardType;
 
@@ -197,7 +197,7 @@ const boardSlice = createSlice({
 
 export const { resetBoard, addLabel } = boardSlice.actions;
 
-export const selectBoard = (state: AppRootState) => state.scrumboardApp.board;
+export const selectBoard = (state: AppRootStateType) => state.scrumboardApp.board;
 
 export type BoardSliceType = typeof boardSlice;
 

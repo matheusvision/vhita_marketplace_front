@@ -7,12 +7,12 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState, MouseEvent } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectBoard, updateBoard } from '../store/boardSlice';
-import { BoardType } from '../model/BoardModel';
+import { BoardType } from '../types/BoardType';
 
 /**
  * Form Validation Schema

@@ -1,6 +1,6 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { Link } from 'react-router-dom';
 import { darken } from '@mui/material/styles';
 import { MouseEvent } from 'react';

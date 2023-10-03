@@ -1,19 +1,19 @@
-type Transaction = {
+type TransactionType = {
 	id: string;
 	date: string;
 	name: string;
 	amount: number;
-	status: TransactionStatus;
+	status: TransactionStatusType;
 };
 
-enum TransactionStatus {
+enum TransactionStatusType {
 	COMPLETED = 'completed',
 	PENDING = 'pending'
 }
 
 type RecentTransactionsWidgetType = {
 	columns: string[];
-	rows: Transaction[];
+	rows: TransactionType[];
 };
 
 export default RecentTransactionsWidgetType;

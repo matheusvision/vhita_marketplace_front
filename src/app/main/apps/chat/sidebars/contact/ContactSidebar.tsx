@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectContactById } from '../../store/contactsSlice';
 import UserAvatar from '../../UserAvatar';
 import { ChatAppContext } from '../../ChatApp';

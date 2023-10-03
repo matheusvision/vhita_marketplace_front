@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { GuideModelType } from '../model/GuideModel';
+import { GuideType } from '../types/GuideType';
 
-export type AppRootState = RootState<guideSliceType>;
+export type AppRootStateType = RootStateType<guideSliceType>;
 
-export const getGuide = createAppAsyncThunk<GuideModelType, { categorySlug: string; guideSlug: string }>(
+export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
 	'helpCenterApp/guide/get',
 	async ({ categorySlug, guideSlug }) => {
 		const response = await axios.get(`/api/help-center/guides/${categorySlug}/${guideSlug}`);
 
-		const data = (await response.data) as GuideModelType;
+		const data = (await response.data) as GuideType;
 
 		return data;
 	}
 );
 
-const initialState: GuideModelType = null;
+const initialState: GuideType = null;
 
 const guideSlice = createSlice({
 	name: 'helpCenterApp/guide',
@@ -28,7 +28,7 @@ const guideSlice = createSlice({
 	}
 });
 
-export const selectGuide = (state: AppRootState) => state.helpCenterApp.guide;
+export const selectGuide = (state: AppRootStateType) => state.helpCenterApp.guide;
 
 export type guideSliceType = typeof guideSlice;
 

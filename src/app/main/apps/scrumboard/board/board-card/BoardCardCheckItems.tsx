@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Chip from '@mui/material/Chip';
 import _ from '@lodash';
-import { CardType } from '../../model/CardModel';
+import { CardType } from '../../types/CardType';
 
 type BoardCardCheckItemsProps = {
 	card: CardType;

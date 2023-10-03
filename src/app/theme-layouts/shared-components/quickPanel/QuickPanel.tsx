@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import format from 'date-fns/format';
 import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import withSlices from 'app/store/withSlices';
 import slices from './store';

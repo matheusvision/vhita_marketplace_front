@@ -1,4 +1,4 @@
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import _ from '@lodash';
 import * as React from 'react';
 import { ForwardedRef, forwardRef, MouseEvent, useState } from 'react';

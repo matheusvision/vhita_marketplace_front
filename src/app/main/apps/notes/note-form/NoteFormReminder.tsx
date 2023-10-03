@@ -1,7 +1,7 @@
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useMemo } from 'react';
-import { NoteType } from '../model/NoteModel';
+import { NoteType } from '../types/NoteType';
 
 type NoteFormReminderProps = {
 	reminder: NoteType['reminder'];

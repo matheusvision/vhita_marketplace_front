@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 import CircularProgress from '@mui/material/CircularProgress';
 import sub from 'date-fns/sub';
 import format from 'date-fns/format';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../store/widgetsSlice';
 

@@ -4,7 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { forwardRef } from 'react';
 import Box from '@mui/material/Box';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectLabels } from './store/labelsSlice';
 
 type EventLabelSelectProps = {

@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import Statuses from './Statuses';
-import { UserModelType } from './model/UserModel';
+import { UserType } from './types/UserType';
 
 const StyledBadge = styled(Badge)<{ statuscolor: string }>(({ theme, ...props }) => ({
 	width: 40,
@@ -31,7 +31,7 @@ const StyledBadge = styled(Badge)<{ statuscolor: string }>(({ theme, ...props })
 }));
 
 type UserAvatarPropsType = {
-	user: PartialDeep<UserModelType>;
+	user: PartialDeep<UserType>;
 	className?: string;
 };
 

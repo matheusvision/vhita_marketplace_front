@@ -11,9 +11,10 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FormLabel from '@mui/material/FormLabel';
 import Input from '@mui/material/Input';
 import { PartialDeep } from 'type-fest';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { addLabel } from '../../store/labelsSlice';
-import LabelModel, { LabelModelType } from '../../model/LabelModel';
+import LabelModel from '../../models/LabelModel';
+import { LabelType } from '../../types/LabelType';
 
 const defaultValues = LabelModel();
 
@@ -36,7 +37,7 @@ function NewLabelForm() {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data: PartialDeep<LabelModelType>) {
+	function onSubmit(data: PartialDeep<LabelType>) {
 		const newLabel = LabelModel(data);
 
 		dispatch(addLabel(newLabel));

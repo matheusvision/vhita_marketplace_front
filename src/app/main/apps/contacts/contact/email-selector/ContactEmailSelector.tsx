@@ -3,7 +3,8 @@ import Button from '@mui/material/Button';
 import { ForwardedRef, forwardRef } from 'react';
 import clsx from 'clsx';
 import EmailInput from './EmailInput';
-import { ContactEmailModel, ContactEmailType, ContactEmailsType } from '../../model/ContactModel';
+import { ContactEmailsType, ContactEmailType } from '../../types/ContactEmailType';
+import { ContactEmailModel } from '../../models/ContactModel';
 
 type ContactEmailSelectorProps = {
 	value: ContactEmailsType;

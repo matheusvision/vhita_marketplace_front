@@ -1,4 +1,4 @@
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { lighten } from '@mui/material/styles';

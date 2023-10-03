@@ -13,7 +13,7 @@ import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import themesConfig from 'app/configs/themesConfig';
 import { changeFuseTheme } from 'app/store/fuse/settingsSlice';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import FuseSettingsViewerDialog from './FuseSettingsViewerDialog';
 
 const Root = styled('div')(({ theme }) => ({

@@ -3,12 +3,12 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useFormContext } from 'react-hook-form';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { Link, useNavigate } from 'react-router-dom';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { removeProduct, saveProduct } from '../store/productSlice';
-import { ProductType } from './model/ProductModel';
+import { ProductType } from '../types/ProductType';
 
 function ProductHeader() {
 	const dispatch = useAppDispatch();

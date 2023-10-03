@@ -7,7 +7,8 @@ import ListItem from '@mui/material/ListItem';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import NoteListItemModel, { NoteListItemType } from '../../model/NoteListItemModel';
+import NoteListItemModel from '../../models/NoteListItemModel';
+import { NoteListItemType } from '../../types/NoteListItemType';
 
 const defaultValues = {
 	content: ''

@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { FaqCategoriesType, FaqCategoryType } from '../model/FaqCategoryModel';
+import { FaqCategoryType, FaqCategoriesType } from '../types/FaqCategoryType';
 
-export type AppRootState = RootState<faqCategoriesSliceType>;
+export type AppRootStateType = RootStateType<faqCategoriesSliceType>;
 
 export const getFaqCategories = createAppAsyncThunk<FaqCategoriesType>('helpCenterApp/faqCategories/get', async () => {
 	const response = await axios.get('api/help-center/faqs/categories');
@@ -17,7 +17,7 @@ export const getFaqCategories = createAppAsyncThunk<FaqCategoriesType>('helpCent
 const faqCategoriesAdapter = createEntityAdapter<FaqCategoryType>({});
 
 export const { selectAll: selectFaqCategories, selectById: selectFaqCategoryById } = faqCategoriesAdapter.getSelectors(
-	(state: AppRootState) => state.helpCenterApp.faqCategories
+	(state: AppRootStateType) => state.helpCenterApp.faqCategories
 );
 const initialState = faqCategoriesAdapter.getInitialState();
 

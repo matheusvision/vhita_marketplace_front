@@ -1,9 +1,9 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
-import { ProductType, ProductsType } from 'src/app/main/apps/e-commerce/product/model/ProductModel';
+import { ProductType, ProductsType } from '../../app/main/apps/e-commerce/types/ProductType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { OrderType, OrdersType } from '../../app/main/apps/e-commerce/order/model/OrderModel';
+import { OrderType, OrdersType } from '../../app/main/apps/e-commerce/types/OrderType';
 
 let productsDB = mockApi.components.examples.ecommerce_products.value as ProductsType;
 let ordersDB = mockApi.components.examples.ecommerce_orders.value as OrdersType;

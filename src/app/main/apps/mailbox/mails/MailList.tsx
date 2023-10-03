@@ -4,14 +4,14 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getMails, selectMails, selectSearchText } from '../store/mailsSlice';
 import MailListItem from './MailListItem';
-import { MailsType } from '../model/MailModel';
+import { MailsType } from '../types/MailType';
 
 function MailList() {
 	const dispatch = useAppDispatch();

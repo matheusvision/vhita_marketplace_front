@@ -1,5 +1,5 @@
 import { navbarToggle, navbarToggleMobile } from 'app/store/fuse/navbarSlice';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import NavbarToggleFab from 'app/theme-layouts/shared-components/NavbarToggleFab';

@@ -1,23 +1,23 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { FaqModelType, FaqsModelType } from '../model/FaqModel';
+import { FaqsType, FaqType } from '../types/FaqType';
 
-export type AppRootState = RootState<faqsMostSliceType>;
+export type AppRootStateType = RootStateType<faqsMostSliceType>;
 
-export const getFaqsMost = createAppAsyncThunk<FaqsModelType>('helpCenterApp/faqsMost/get', async () => {
+export const getFaqsMost = createAppAsyncThunk<FaqsType>('helpCenterApp/faqsMost/get', async () => {
 	const response = await axios.get('/api/help-center/faqs/most-asked');
 
-	const data = (await response.data) as FaqsModelType;
+	const data = (await response.data) as FaqsType;
 
 	return data;
 });
 
-const faqsMostAdapter = createEntityAdapter<FaqModelType>({});
+const faqsMostAdapter = createEntityAdapter<FaqType>({});
 
 export const { selectAll: selectFaqsMost, selectById: selectFaqsMostById } = faqsMostAdapter.getSelectors(
-	(state: AppRootState) => state.helpCenterApp?.faqsMost
+	(state: AppRootStateType) => state.helpCenterApp?.faqsMost
 );
 
 const faqsMostSlice = createSlice({

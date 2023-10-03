@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import _ from '@lodash';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useAppSelector } from 'app/store/index';
+import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
 const actionValues = [

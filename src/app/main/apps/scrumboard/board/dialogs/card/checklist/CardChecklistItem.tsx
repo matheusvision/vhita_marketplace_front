@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { CheckListItemType } from '../../../../model/ChecklistItemModel';
+import { CheckListItemType } from '../../../../types/CheckListItemType';
 
 type CardChecklistItemProps = {
 	item: CheckListItemType;

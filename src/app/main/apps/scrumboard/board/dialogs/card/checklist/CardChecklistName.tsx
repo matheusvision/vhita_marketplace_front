@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ChecklistType } from '../../../../model/ChecklistModel';
+import { ChecklistType } from '../../../../types/ChecklistType';
 
 /**
  * Form Validation Schema

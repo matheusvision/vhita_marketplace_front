@@ -3,7 +3,7 @@ import { lightBlue, red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 import qs from 'qs';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
-import { FuseSettingsConfigProps } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 
 const defaultTheme = {
 	palette: {
@@ -54,14 +54,14 @@ export const defaultSettings = {
 	}
 };
 
-export function getParsedQuerySettings(): FuseSettingsConfigProps {
+export function getParsedQuerySettings(): FuseSettingsConfigType {
 	const parsedQueryString = qs.parse(window.location.search, { ignoreQueryPrefix: true });
 
 	const { defaultSettings = {} } = parsedQueryString;
 
 	if (typeof defaultSettings === 'string') {
 		// Handle the case when defaultSettings is a string
-		return JSON.parse(defaultSettings) as FuseSettingsConfigProps;
+		return JSON.parse(defaultSettings) as FuseSettingsConfigType;
 	}
 
 	return {};

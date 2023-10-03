@@ -1,9 +1,9 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 
-type AppRootState = RootState<projectsSliceType>;
+type AppRootStateType = RootStateType<projectsSliceType>;
 
 type ProjectType = {
 	id: number;
@@ -26,7 +26,7 @@ export const {
 	selectAll: selectProjects,
 	selectEntities: selectProjectsEntities,
 	selectById: selectProjectById
-} = projectsAdapter.getSelectors((state: AppRootState) => state.projectDashboardApp.projects);
+} = projectsAdapter.getSelectors((state: AppRootStateType) => state.projectDashboardApp.projects);
 
 const projectsSlice = createSlice({
 	name: 'projectDashboardApp/projects',

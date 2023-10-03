@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import CategoryType from '../types/CategoryType';
 
-type AppRootState = RootState<CategorySliceType>;
+type AppRootStateType = RootStateType<CategorySliceType>;
 
 export const getCategories = createAppAsyncThunk('academyApp/categories/getCategories', async () => {
 	const response = await axios.get('/api/academy/categories');
@@ -19,7 +19,7 @@ const categoriesAdapter = createEntityAdapter<CategoryType>();
 const initialState = categoriesAdapter.getInitialState();
 
 export const { selectAll: selectCategories, selectById: selectCategoryById } = categoriesAdapter.getSelectors(
-	(state: AppRootState) => state.academyApp.categories
+	(state: AppRootStateType) => state.academyApp.categories
 );
 
 const categorySlice = createSlice({

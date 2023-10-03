@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import IconButton from '@mui/material/IconButton';
 import { useEffect } from 'react';
 import CountryCodeSelector from './CountryCodeSelector';
-import { ContactPhoneNumberType } from '../../../chat/model/ContactModel';
+import { ContactPhoneNumberType } from '../../types/ContactPhoneNumberType';
 
 const schema = yup.object().shape({
 	country: yup.string(),

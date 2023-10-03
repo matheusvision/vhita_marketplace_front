@@ -4,7 +4,8 @@ import { ForwardedRef, forwardRef } from 'react';
 import clsx from 'clsx';
 import FormHelperText from '@mui/material/FormHelperText';
 import PhoneNumberInput from './PhoneNumberInput';
-import { ContactPhoneModel, ContactPhoneNumbersType } from '../../model/ContactModel';
+import { ContactPhoneNumbersType } from '../../types/ContactPhoneNumberType';
+import { ContactPhoneModel } from '../../models/ContactModel';
 
 type PhoneNumberSelectorProps = {
 	value: ContactPhoneNumbersType;

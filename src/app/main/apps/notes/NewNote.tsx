@@ -2,10 +2,10 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import NoteForm from './note-form/NoteForm';
 import { createNote } from './store/notesSlice';
-import { NoteType } from './model/NoteModel';
+import { NoteType } from './types/NoteType';
 
 function NewNote() {
 	const dispatch = useAppDispatch();

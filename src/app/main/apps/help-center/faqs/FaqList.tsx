@@ -7,7 +7,7 @@ import { SyntheticEvent, useState } from 'react';
 import clsx from 'clsx';
 import { styled } from '@mui/material/styles';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { FaqsModelType } from '../model/FaqModel';
+import { FaqsType } from '../types/FaqType';
 
 const container = {
 	show: {
@@ -31,7 +31,7 @@ const StyledAccordion = styled(Accordion)(() => ({
 }));
 
 type FaqListProps = {
-	list: FaqsModelType;
+	list: FaqsType;
 	className?: string;
 };
 

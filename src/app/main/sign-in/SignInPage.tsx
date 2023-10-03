@@ -16,7 +16,7 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { useEffect } from 'react';
-import { UserProps } from 'app/store/user';
+import { UserType } from 'app/store/user';
 import jwtService from '../../auth/services/jwtService';
 
 /**
@@ -54,7 +54,7 @@ function SignInPage() {
 	function onSubmit({ email, password }: InferType<typeof schema>) {
 		jwtService
 			.signInWithEmailAndPassword(email, password)
-			.then((user: UserProps) => {
+			.then((user: UserType) => {
 				// eslint-disable-next-line no-console
 				console.info(user);
 				// No need to do anything, user data will be set at app/auth/AuthContext

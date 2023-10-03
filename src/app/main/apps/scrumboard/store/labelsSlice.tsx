@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { LabelsType, LabelType } from '../model/LabelModel';
+import { LabelType, LabelsType } from '../types/LabelType';
 
-type AppRootState = RootState<LabelsSliceType>;
+type AppRootStateType = RootStateType<LabelsSliceType>;
 
 export const getLabels = createAppAsyncThunk<LabelsType, string>('scrumboardApp/labels/getLabels', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/labels`);
@@ -16,7 +16,7 @@ export const getLabels = createAppAsyncThunk<LabelsType, string>('scrumboardApp/
 const labelsAdapter = createEntityAdapter<LabelType>({});
 
 export const { selectAll: selectLabels, selectById } = labelsAdapter.getSelectors(
-	(state: AppRootState) => state.scrumboardApp.labels
+	(state: AppRootStateType) => state.scrumboardApp.labels
 );
 
 const labelsSlice = createSlice({
@@ -32,7 +32,7 @@ const labelsSlice = createSlice({
 
 export const { resetLabels } = labelsSlice.actions;
 
-export const selectLabelById = (id: LabelType['id']) => (state: AppRootState) => selectById(state, id);
+export const selectLabelById = (id: LabelType['id']) => (state: AppRootStateType) => selectById(state, id);
 
 export type LabelsSliceType = typeof labelsSlice;
 

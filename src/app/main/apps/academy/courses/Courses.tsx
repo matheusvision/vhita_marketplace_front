@@ -12,7 +12,7 @@ import Switch from '@mui/material/Switch';
 import { FormControlLabel } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { Theme } from '@mui/material/styles';
 import { selectCategories } from '../store/categoriesSlice';
 import { getCourses, selectCourses } from '../store/coursesSlice';

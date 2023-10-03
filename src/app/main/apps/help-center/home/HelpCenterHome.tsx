@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store/index';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { lighten, ThemeProvider } from '@mui/material/styles';
 import { selectMainThemeDark } from 'app/store/fuse/settingsSlice';
 import { OutlinedInput } from '@mui/material';

@@ -1,4 +1,4 @@
-import { useAppDispatch } from 'app/store/index';
+import { useAppDispatch } from 'app/store';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { getGuideCategories } from '../store/guideCategoriesSlice';

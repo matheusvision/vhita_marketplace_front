@@ -2,11 +2,11 @@ import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolk
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import axios from 'axios';
 import { PartialDeep } from 'type-fest';
-import { RootState } from 'app/store/index';
+import { RootStateType } from 'app/store/types';
 import { ChangeEvent } from 'react';
-import { NotesType, NoteType } from '../model/NoteModel';
+import { NotesType, NoteType } from '../types/NoteType';
 
-export type AppRootState = RootState<notesSliceType>;
+export type AppRootStateType = RootStateType<notesSliceType>;
 
 export type RouteParamsType = {
 	filter: string;
@@ -82,7 +82,7 @@ export const {
 	selectAll: selectNotes,
 	selectEntities: selectNotesEntities,
 	selectById: selectNoteById
-} = notesAdapter.getSelectors((state: AppRootState) => state.notesApp.notes);
+} = notesAdapter.getSelectors((state: AppRootStateType) => state.notesApp.notes);
 
 const initialState = notesAdapter.getInitialState<{
 	searchText: string;
@@ -133,11 +133,11 @@ const notesSlice = createSlice({
 export const { setNotesSearchText, resetNotesSearchText, toggleVariateDescSize, openNoteDialog, closeNoteDialog } =
 	notesSlice.actions;
 
-export const selectVariateDescSize = (state: AppRootState) => state.notesApp?.notes.variateDescSize;
+export const selectVariateDescSize = (state: AppRootStateType) => state.notesApp?.notes.variateDescSize;
 
-export const selectSearchText = (state: AppRootState) => state.notesApp?.notes.searchText;
+export const selectSearchText = (state: AppRootStateType) => state.notesApp?.notes.searchText;
 
-export const selectDialogNoteId = (state: AppRootState) => state.notesApp?.notes.noteDialogId;
+export const selectDialogNoteId = (state: AppRootStateType) => state.notesApp?.notes.noteDialogId;
 
 export const selectDialogNote = createSelector([selectDialogNoteId, selectNotesEntities], (noteId, notesEntities) => {
 	return notesEntities[noteId];
