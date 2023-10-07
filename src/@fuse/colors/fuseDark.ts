@@ -1,3 +1,6 @@
+/**
+ * The FuseDark object is a color palette for the Fuse application.
+ */
 const fuseDark = {
 	50: '#e5e6e8',
 	100: '#bec1c5',

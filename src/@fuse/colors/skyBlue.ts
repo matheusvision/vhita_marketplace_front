@@ -1,3 +1,6 @@
+/**
+ * The skyBlue object is a color palette for the Fuse application.
+ */
 const skyBlue = {
 	50: '#e4fafd',
 	100: '#bdf2fa',
