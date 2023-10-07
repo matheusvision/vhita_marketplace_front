@@ -8,6 +8,10 @@ type DependencyListType = UseEffectParamsType[1];
 // the intent of these functions: It's just like useEffect
 type UseEffectReturn = ReturnType<typeof React.useEffect>;
 
+/**
+ * The checkDeps function checks if the dependency list is valid for use with useDeepCompareEffect.
+ * It throws an error if the dependency list is empty or contains only primitive values.
+ */
 function checkDeps(deps: DependencyListType) {
 	if (!deps || !deps.length) {
 		throw new Error('useDeepCompareEffect should not be used with no dependencies. Use React.useEffect instead.');
@@ -19,13 +23,23 @@ function checkDeps(deps: DependencyListType) {
 	}
 }
 
+/**
+ * The isPrimitive function checks if a value is a primitive type.
+ * It returns true if the value is null, undefined, a string, a boolean, or a number.
+ *
+ * @param val - The value to check.
+ * @returns True if the value is a primitive type, false otherwise.
+ */
 function isPrimitive(val: unknown) {
 	return val == null || /^[sbn]/.test(typeof val);
 }
 
 /**
- * @param value the value to be memoized (usually a dependency list)
- * @returns a memoized version of the value as long as it remains deeply equal
+ * The isPrimitive function checks if a value is a primitive type.
+ * It returns true if the value is null, undefined, a string, a boolean, or a number.
+ *
+ * @param val - The value to check.
+ * @returns True if the value is a primitive type, false otherwise.
  */
 export function useDeepCompareMemoize<T>(value: T) {
 	const ref = React.useRef<T>(value);
@@ -39,6 +53,13 @@ export function useDeepCompareMemoize<T>(value: T) {
 	return React.useMemo(() => ref.current, [signalRef.current]);
 }
 
+/**
+ * The isPrimitive function checks if a value is a primitive type.
+ * It returns true if the value is null, undefined, a string, a boolean, or a number.
+ *
+ * @param val - The value to check.
+ * @returns True if the value is a primitive type, false otherwise.
+ */
 function useDeepCompareEffect(callback: EffectCallbackType, dependencies: DependencyListType): UseEffectReturn {
 	if (process.env.NODE_ENV !== 'production') {
 		checkDeps(dependencies);

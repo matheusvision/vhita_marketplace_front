@@ -42,6 +42,16 @@ type FuseNavHorizontalCollapseProps = FuseNavItemComponentProps & {
 	location: Location;
 };
 
+/**
+ * FuseNavHorizontalCollapse component helps rendering Horizontal Fuse Navigation Item with children
+ * Used in FuseNavVerticalItems and FuseNavHorizontalItems
+ *
+ * @param props
+ * @param props.item Fuse item object
+ * @param props.nestedLevel Level of nesting of the Fuse Navigation Item
+ * @param props.dense
+ *
+ */
 function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 	const [opened, setOpened] = useState(false);
 	const { item, nestedLevel, dense, location } = props;

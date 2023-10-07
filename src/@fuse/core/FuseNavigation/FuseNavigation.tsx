@@ -67,18 +67,18 @@ export type FuseNavigationProps = {
 	selectedId?: string;
 };
 
+/**
+ * FuseNavigation
+ *
+ * Component for displaying a navigation bar which contains FuseNavItem components
+ * and acts as parent for providing props to its children components
+ *
+ * @param {FuseNavigationProps} props Props of the component
+ *
+ * @returns {React.ReactElement} Navigation bar
+ */
 function FuseNavigation(props: FuseNavigationProps) {
 	const { navigation, layout = 'vertical' } = props;
-	// const options = _.pick(props, [
-	// 	'navigation',
-	// 	'layout',
-	// 	'active',
-	// 	'dense',
-	// 	'className',
-	// 	'onItemClick',
-	// 	'firstLevel',
-	// 	'selectedId'
-	// ]);
 
 	if (!navigation || navigation.length === 0) {
 		return null;

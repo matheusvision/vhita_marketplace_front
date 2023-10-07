@@ -30,6 +30,12 @@ const StyledList = styled(List)(({ theme }) => ({
 	}
 }));
 
+/**
+ * FuseNavHorizontalLayout1 is a react component used for building and
+ * rendering horizontal navigation menus, using the Material UI List component.
+ * @param {FuseNavigationProps} props Component props
+ * @returns {React.ReactElement} FuseNavHorizontalLayout1 react element
+ */
 function FuseNavHorizontalLayout1(props: FuseNavigationProps) {
 	const { navigation, active, dense, className } = props;
 

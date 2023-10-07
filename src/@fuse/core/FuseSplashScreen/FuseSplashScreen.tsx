@@ -1,6 +1,11 @@
 import { memo } from 'react';
 import Box from '@mui/material/Box';
 
+/**
+ * The FuseSplashScreen component is responsible for rendering a splash screen with a logo and a loading spinner.
+ * It uses various MUI components to render the logo and spinner.
+ * The component is memoized to prevent unnecessary re-renders.
+ */
 function FuseSplashScreen() {
 	return (
 		<div id="fuse-splash-screen">

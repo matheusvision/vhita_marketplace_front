@@ -47,6 +47,12 @@ const Root = styled(ListItemButton)<ListItemButtonStyleProps>(({ theme, ...props
 	'& > .fuse-list-item-text': {}
 }));
 
+/**
+ * FuseNavVerticalItem is a React component used to render FuseNavItem as part of the Fuse navigational component.
+ * 
+@param {FuseNavItemComponentProps} props The props used to customize the component.
+@returns {React.ReactNode} React Element.
+ */
 function FuseNavVerticalItem(props: FuseNavItemComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;
 

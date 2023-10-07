@@ -2,6 +2,14 @@ import Dialog from '@mui/material/Dialog';
 import { closeDialog, selectFuseDialogProps } from 'app/store/fuse/dialogSlice';
 import { useAppDispatch, useAppSelector } from 'app/store';
 
+/**
+ * FuseDialog component
+ *
+ * This component renders a material UI ```Dialog``` component
+ * with properties pulled from the redux store
+ *
+ * @see {@link https://material-ui.com/api/dialog}example
+ */
 function FuseDialog() {
 	const dispatch = useAppDispatch();
 	const options = useAppSelector(selectFuseDialogProps);

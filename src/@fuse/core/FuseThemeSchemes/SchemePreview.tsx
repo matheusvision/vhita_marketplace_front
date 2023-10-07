@@ -10,6 +10,11 @@ type SchemePreviewProps = {
 	theme: FuseThemeType;
 };
 
+/**
+ * The SchemePreview component is responsible for rendering a preview of a theme scheme.
+ * It uses various MUI components to render the preview.
+ * The component is memoized to prevent unnecessary re-renders.
+ */
 function SchemePreview(props: SchemePreviewProps) {
 	const { theme, className, id, onSelect = () => {} } = props;
 

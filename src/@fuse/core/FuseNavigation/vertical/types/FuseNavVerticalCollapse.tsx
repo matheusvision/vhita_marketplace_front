@@ -46,6 +46,13 @@ function needsToBeOpened(location: Location, item: FuseNavItemType) {
 	return location && isUrlInChildren(item, location.pathname);
 }
 
+/**
+ * FuseNavVerticalCollapse component used for vertical navigation items with collapsible children.
+ *
+ * @param {FuseNavItemComponentProps} props - props to be used for this component.
+ *
+ * @returns {React.ReactElement} A React element.
+ */
 function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 	const location = useLocation();
 	const { item, nestedLevel, onItemClick } = props;

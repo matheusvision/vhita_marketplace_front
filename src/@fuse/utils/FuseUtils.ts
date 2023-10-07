@@ -7,21 +7,38 @@ import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigati
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import EventEmitter from './EventEmitter';
 
+/**
+ * The FuseRouteItemType type is a custom type that extends the RouteObject type from react-router-dom.
+ * It adds an optional auth property and an optional settings property.
+ */
 export type FuseRouteItemType = RouteObject & {
 	auth?: string[] | [];
 	settings?: unknown;
 };
 
+/**
+ * The FuseRoutesType type is a custom type that is an array of FuseRouteItemType objects.
+ */
 export type FuseRoutesType = FuseRouteItemType[];
 
+/**
+ * The FuseRouteConfigType type is a custom type that defines the configuration for a set of routes.
+ * It includes an optional routes property, an optional settings property, and an optional auth property.
+ */
 export type FuseRouteConfigType = Partial<{
 	routes?: FuseRoutesType;
 	settings?: unknown;
 	auth?: string[] | [];
 }>;
 
+/**
+ * The FuseRouteConfigsType type is a custom type that is an array of FuseRouteConfigType objects.
+ */
 export type FuseRouteConfigsType = FuseRouteConfigType[] | [];
 
+/**
+ * The hueTypes type is a custom type that defines the possible values for a hue.
+ */
 type hueTypes =
 	| '50'
 	| '100'
@@ -38,7 +55,18 @@ type hueTypes =
 	| 'A400'
 	| 'A700';
 
+/**
+ * The FuseUtils class provides utility functions for the Fuse project.
+ */
 class FuseUtils {
+	/**
+	 * The filterArrayByString function filters an array of objects by a search string.
+	 * It takes in an array of objects and a search string as parameters and returns a filtered array of objects.
+	 *
+	 * @param mainArr - The array of objects to filter.
+	 * @param searchText - The search string to filter by.
+	 * @returns A filtered array of objects.
+	 */
 	static filterArrayByString<T>(mainArr: T[], searchText: string): T[] {
 		if (searchText === '') {
 			return mainArr;
@@ -49,6 +77,14 @@ class FuseUtils {
 		return mainArr.filter((itemObj: unknown) => this.searchInObj(itemObj, searchText));
 	}
 
+	/**
+	 * The searchInObj function searches an object for a given search string.
+	 * It takes in an object and a search string as parameters and returns a boolean indicating whether the search string was found in the object.
+	 *
+	 * @param item - The object to search.
+	 * @param searchText - The search string to search for.
+	 * @returns A boolean indicating whether the search string was found in the object.
+	 */
 	static searchInObj(itemObj: unknown, searchText: string) {
 		if (!itemObj) {
 			return false;
@@ -79,6 +115,14 @@ class FuseUtils {
 		return false;
 	}
 
+	/**
+	 * The searchInArray function searches an array for a given search string.
+	 * It takes in an array and a search string as parameters and returns a boolean indicating whether the search string was found in the array.
+	 *
+	 * @param arr - The array to search.
+	 * @param searchText - The search string to search for.
+	 * @returns A boolean indicating whether the search string was found in the array.
+	 */
 	static searchInArray(arr: unknown[], searchText: string) {
 		arr.forEach((value) => {
 			if (typeof value === 'string') {
@@ -97,10 +141,24 @@ class FuseUtils {
 		return false;
 	}
 
+	/**
+	 * The searchInString function searches a string for a given search string.
+	 * It takes in a string and a search string as parameters and returns a boolean indicating whether the search string was found in the string.
+	 *
+	 * @param value - The string to search.
+	 * @param searchText - The search string to search for.
+	 * @returns A boolean indicating whether the search string was found in the string.
+	 */
 	static searchInString(value: string, searchText: string) {
 		return value.toLowerCase().includes(searchText);
 	}
 
+	/**
+	 * The generateGUID function generates a globally unique identifier.
+	 * It returns a string representing the GUID.
+	 *
+	 * @returns A string representing the GUID.
+	 */
 	static generateGUID() {
 		function S4() {
 			return Math.floor((1 + Math.random()) * 0x10000)
@@ -111,6 +169,11 @@ class FuseUtils {
 		return S4() + S4();
 	}
 
+	/**
+	 * The toggleInArray function toggles an item in an array.
+	 * @param item
+	 * @param array
+	 */
 	static toggleInArray(item: unknown, array: unknown[]) {
 		if (array.indexOf(item) === -1) {
 			array.push(item);
@@ -119,6 +182,11 @@ class FuseUtils {
 		}
 	}
 
+	/**
+	 * The handleize function converts a string to a handle.
+	 * @param text
+	 * @returns
+	 */
 	static handleize(text: string) {
 		return text
 			.toString()
@@ -130,6 +198,11 @@ class FuseUtils {
 			.replace(/-+$/, ''); // Trim - from end of text
 	}
 
+	/**
+	 * The setRoutes function sets the routes for the Fuse project.
+	 * @param routes - The routes to set.
+	 * @returns - The updated route configuration.
+	 */
 	static setRoutes(config?: FuseRouteConfigType, defaultAuth: FuseSettingsConfigType['defaultAuth'] = null) {
 		let routes = [...config.routes];
 
@@ -150,6 +223,13 @@ class FuseUtils {
 		return [...routes];
 	}
 
+	/**
+	 * The generateRoutesFromConfigs function generates routes from a set of route configurations.
+	 * It takes in an array of route configurations as a parameter and returns an array of routes.
+	 *
+	 * @param configs - The array of route configurations to generate routes from.
+	 * @returns An array of routes.
+	 */
 	static generateRoutesFromConfigs(
 		configs: FuseRouteConfigsType,
 		defaultAuth: FuseSettingsConfigType['defaultAuth']
@@ -161,6 +241,12 @@ class FuseUtils {
 		return allRoutes;
 	}
 
+	/**
+	 * The findById function finds an object by its id.
+	 * @param obj
+	 * @param id
+	 * @returns
+	 */
 	static findById(obj: { id?: string }, id: string) {
 		let i: number;
 		let childObj: unknown;
@@ -183,6 +269,12 @@ class FuseUtils {
 		return false;
 	}
 
+	/**
+	 *  The updateNavItem function updates a navigation item.
+	 * @param navigationItems
+	 * @param flatNavigation
+	 * @returns
+	 */
 	static getFlatNavigation(navigationItems: FuseNavigationType = [], flatNavigation = []) {
 		for (let i = 0; i < navigationItems.length; i += 1) {
 			const navItem = navigationItems[i];
@@ -207,6 +299,11 @@ class FuseUtils {
 		return flatNavigation as FuseNavigationType | [];
 	}
 
+	/**
+	 * The randomMatColor function generates a random material color.
+	 * @param hue
+	 * @returns
+	 */
 	static randomMatColor(hue: hueTypes = '400') {
 		const mainColors = [
 			'red',
@@ -231,6 +328,12 @@ class FuseUtils {
 		return colors[randomColor][hue];
 	}
 
+	/**
+	 * The findNavItemById function finds a navigation item by its id.
+	 * @param object
+	 * @param base
+	 * @returns
+	 */
 	static difference(object: unknown, base: unknown) {
 		function changes(_object: unknown, _base: unknown) {
 			// eslint-disable-next-line
@@ -245,6 +348,10 @@ class FuseUtils {
 		return changes(object, base);
 	}
 
+	/**
+	 * The EventEmitter class is a custom implementation of an event emitter.
+	 * It provides methods for registering and emitting events.
+	 */
 	static EventEmitter = EventEmitter;
 
 	static updateNavItem(nav: FuseNavigationType, id: string, item: PartialDeep<FuseNavItemType>): FuseNavigationType {
@@ -263,6 +370,12 @@ class FuseUtils {
 		});
 	}
 
+	/**
+	 * The removeNavItem function removes a navigation item.
+	 * @param nav
+	 * @param id
+	 * @returns
+	 */
 	static removeNavItem(nav: FuseNavigationType, id: string): FuseNavigationType {
 		return nav
 			.map((_item) => {
@@ -281,6 +394,13 @@ class FuseUtils {
 			.filter((s) => s);
 	}
 
+	/**
+	 * The prependNavItem function prepends a navigation item.
+	 * @param nav
+	 * @param item
+	 * @param parentId
+	 * @returns
+	 */
 	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
 		if (!parentId) {
 			return [item, ...nav];
@@ -304,6 +424,13 @@ class FuseUtils {
 		});
 	}
 
+	/**
+	 * The appendNavItem function appends a navigation item.
+	 * @param nav
+	 * @param item
+	 * @param parentId
+	 * @returns
+	 */
 	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
 		if (!parentId) {
 			return [...nav, item];
@@ -327,6 +454,12 @@ class FuseUtils {
 		});
 	}
 
+	/**
+	 * The hasPermission function checks if a user has permission to access a resource.
+	 * @param authArr
+	 * @param userRole
+	 * @returns
+	 */
 	static hasPermission(authArr: string[] | string, userRole: string | string[]): boolean {
 		/**
 		 * If auth array is not defined
@@ -362,6 +495,12 @@ class FuseUtils {
 		return authArr.includes(userRole as string);
 	}
 
+	/**
+	 * The filterArrayByString function filters an array of objects by a search string.
+	 * @param data
+	 * @param predicate
+	 * @returns
+	 */
 	static filterRecursive(data: [] | null, predicate: (arg0: unknown) => boolean) {
 		// if no data is sent in, return null, otherwise transform the data
 		return !data

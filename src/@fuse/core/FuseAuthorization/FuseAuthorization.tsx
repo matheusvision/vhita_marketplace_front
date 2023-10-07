@@ -20,6 +20,19 @@ type State = AppContextType & {
 	accessGranted: boolean;
 };
 
+/**
+ * FuseAuthorization is a higher-order component that wraps its child component which handles the authorization logic of the app.
+ * It checks the provided Auth property from FuseRouteItemType (auth property) against the current logged-in user role.
+ *
+ * @exports
+ * @class FuseAuthorization
+ * @extends Component
+ * @param {FuseAuthorizationProps} props
+ * @property {ReactNode} props.children
+ * @property {Location} props.location
+ * @property {UserRole[]|string} props.userRole
+ * @property {string} [props.loginRedirectUrl]
+ */
 class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 	defaultLoginRedirectUrl: string;
 

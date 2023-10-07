@@ -176,6 +176,11 @@ type FuseSidePanelProps = {
 	children?: ReactNode;
 };
 
+/**
+ * The FuseSidePanel component is responsible for rendering a side panel that can be opened and closed.
+ * It uses various MUI components to render the panel and its contents.
+ * The component is memoized to prevent unnecessary re-renders.
+ */
 function FuseSidePanel(props: FuseSidePanelProps) {
 	const { position = 'left', opened = true, className, children } = props;
 

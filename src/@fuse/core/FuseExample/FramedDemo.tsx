@@ -12,6 +12,13 @@ type FramedDemoProps = {
 	children: ReactElement;
 };
 
+/**
+ * @function FramedDemo
+ * @description Renders document wrapped with emotion and styling-components cache providers, and proper direction for rtl theme.
+ * This also add window property to the child with `getWindow` function, which is useful to fetch window property.
+ * @param {FramedDemoProps} props Props object as defined in the type above
+ * @returns {ReactElement} Returns a React element.
+ */
 function FramedDemo(props: FramedDemoProps) {
 	const { children, document } = props;
 

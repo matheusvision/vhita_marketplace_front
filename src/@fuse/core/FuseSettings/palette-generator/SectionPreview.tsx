@@ -3,11 +3,18 @@ import Box from '@mui/material/Box';
 import { darken, lighten } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
+/**
+ * Props for SectionPreview component
+ */
 type SectionPreviewProps = {
 	className?: string;
 	section?: 'main' | 'navbar' | 'toolbar' | 'footer';
 };
 
+/**
+ * SectionPreview component
+ * @param props - Props for SectionPreview component
+ */
 function SectionPreview(props: SectionPreviewProps) {
 	const { section, className } = props;
 	return (

@@ -14,16 +14,28 @@ import PalettePreview from './PalettePreview';
 import SectionPreview from './SectionPreview';
 import { FuseThemeType } from '../FuseSettings';
 
+/**
+ * Check if a color is dark
+ * @param color - Color to check
+ * @returns True if the color is dark, false otherwise
+ */
 function isDark(color: string) {
 	return getContrastRatio(color, '#ffffff') >= 3;
 }
 
+/**
+ * Props for PaletteSelector component
+ */
 type PaletteSelectorProps = {
 	triggerElement: ReactNode;
 	value: FuseThemeType;
 	onChange: (value: FuseThemeType) => void;
 };
 
+/**
+ * PaletteSelector component
+ * @param props - Props for PaletteSelector component
+ */
 function PaletteSelector(props: PaletteSelectorProps) {
 	const {
 		value,

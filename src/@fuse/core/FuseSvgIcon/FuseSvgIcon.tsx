@@ -12,6 +12,10 @@ type FuseSvgIconProps = BoxProps & {
 	color?: 'inherit' | 'disabled' | 'primary' | 'secondary' | 'action' | 'error' | 'info' | 'success' | 'warning';
 };
 
+/**
+ * The Root styled component is used to style the root div of the FuseSvgIcon component.
+ * It uses the styled function from the MUI styles library to create a styled component.
+ */
 const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit' }) => ({
 	width: size,
 	height: size,
@@ -34,8 +38,13 @@ const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit
 	}[color]
 }));
 
+/**
+ * The FuseSvgIcon component is responsible for rendering an SVG icon with a specified size and color.
+ * It uses various MUI components to render the icon.
+ * The component is memoized to prevent unnecessary re-renders.
+ */
 const FuseSvgIcon = forwardRef<SVGSVGElement, FuseSvgIconProps>((props, ref) => {
-	const { children, className = '', color } = props; // Destructure fill from props
+	const { children, className = '', color } = props;
 
 	if (typeof children !== 'string') {
 		return null;

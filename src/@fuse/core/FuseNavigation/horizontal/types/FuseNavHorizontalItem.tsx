@@ -33,6 +33,12 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 
 type FuseNavHorizontalItemProps = FuseNavItemComponentProps & WithRouterProps;
 
+/**
+ * FuseNavHorizontalItem is a component responsible for rendering the navigation element in the horizontal menu in the Fuse theme.
+ *
+ * @param {FuseNavItemComponentProps} props The navigation item element props
+ * @returns {React.ReactElement} The navigation item React element component
+ */
 function FuseNavHorizontalItem(props: FuseNavHorizontalItemProps) {
 	const { item } = props;
 

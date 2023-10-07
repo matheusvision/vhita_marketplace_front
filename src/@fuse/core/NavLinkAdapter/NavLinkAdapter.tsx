@@ -7,6 +7,11 @@ export type NavLinkAdapterPropsType = NavLinkProps & {
 	children?: ReactNode;
 };
 
+/**
+ * The NavLinkAdapter component is a wrapper around the React Router NavLink component.
+ * It adds the ability to navigate programmatically using the useNavigate hook.
+ * The component is memoized to prevent unnecessary re-renders.
+ */
 const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((props, ref) => {
 	const { activeClassName = 'active', activeStyle, role = 'button', ..._props } = props;
 	const navigate = useNavigate();

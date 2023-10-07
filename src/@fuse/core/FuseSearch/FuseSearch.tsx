@@ -245,14 +245,23 @@ function reducer(state: initialStateTypes, action: { type: string; value?: strin
 	}
 }
 
-function FuseSearch(props: {
+/**
+ * Props for FuseSearch component
+ */
+type FuseSearchProps = {
 	className?: string;
 	navigation: FuseNavigationType;
 	variant?: 'basic' | 'full';
 	trigger?: ReactNode;
 	placeholder?: string;
 	noResults?: string;
-}) {
+};
+
+/**
+ * FuseSearch component
+ * @param props - Props for FuseSearch component
+ */
+function FuseSearch(props: FuseSearchProps) {
 	const {
 		navigation = [],
 		className,

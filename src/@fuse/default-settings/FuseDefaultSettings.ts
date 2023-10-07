@@ -5,6 +5,9 @@ import qs from 'qs';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 
+/**
+ * The defaultTheme object defines the default color palette for the application.
+ */
 const defaultTheme = {
 	palette: {
 		mode: 'light',
@@ -41,7 +44,7 @@ const defaultTheme = {
 };
 
 /**
- * SETTINGS DEFAULTS
+ * The defaultSettings object defines the default settings for the Fuse application.
  */
 export const defaultSettings = {
 	customScrollbars: true,
@@ -54,6 +57,11 @@ export const defaultSettings = {
 	}
 };
 
+/**
+ * The getParsedQuerySettings function parses the query string to retrieve the default settings for the Fuse application.
+ * It returns a FuseSettingsConfigType object that can be used to configure the application.
+ * @returns A FuseSettingsConfigType object that can be used to configure the application.
+ */
 export function getParsedQuerySettings(): FuseSettingsConfigType {
 	const parsedQueryString = qs.parse(window.location.search, { ignoreQueryPrefix: true });
 
@@ -74,7 +82,7 @@ export function getParsedQuerySettings(): FuseSettingsConfigType {
 }
 
 /**
- * THEME DEFAULTS
+ * The defaultThemeOptions object defines the default options for the MUI theme.
  */
 export const defaultThemeOptions = {
 	typography: {
@@ -255,6 +263,9 @@ export const defaultThemeOptions = {
 	}
 };
 
+/**
+ * The mustHaveThemeOptions object defines the options that must be present in the MUI theme.
+ */
 export const mustHaveThemeOptions = {
 	typography: {
 		htmlFontSize: 10,
@@ -268,6 +279,9 @@ export const mustHaveThemeOptions = {
 	}
 };
 
+/**
+ * The defaultThemes object defines the default themes for the application.
+ */
 export const defaultThemes = {
 	default: {
 		palette: {
@@ -301,6 +315,11 @@ export const defaultThemes = {
 	}
 };
 
+/**
+ * The extendThemeWithMixins function extends the theme with mixins.
+ * @param obj
+ * @returns
+ */
 export function extendThemeWithMixins(obj: ThemeOptions) {
 	const theme = createTheme(obj);
 	return {

@@ -11,6 +11,9 @@ import FusePageSimpleSidebar from './FusePageSimpleSidebar';
 const headerHeight = 120;
 const toolbarHeight = 64;
 
+/**
+ * Props for the FusePageSimple component.
+ */
 type FusePageSimpleProps = SystemStyleObject<Theme> & {
 	className?: string;
 	leftSidebarContent?: ReactNode;
@@ -28,6 +31,9 @@ type FusePageSimpleProps = SystemStyleObject<Theme> & {
 	leftSidebarOnClose?: () => void;
 };
 
+/**
+ * The Root styled component is the top-level container for the FusePageSimple component.
+ */
 const Root = styled('div')<FusePageSimpleProps>(({ theme, ...props }) => ({
 	display: 'flex',
 	flexDirection: 'column',
@@ -189,6 +195,10 @@ const Root = styled('div')<FusePageSimpleProps>(({ theme, ...props }) => ({
 	}
 }));
 
+/**
+ * The FusePageSimple component is a layout component that provides a simple page layout with a header, left sidebar, right sidebar, and content area.
+ * It is designed to be used as a top-level component for an application or as a sub-component within a larger layout.
+ */
 const FusePageSimple = forwardRef<
 	{ toggleLeftSidebar: (T: boolean) => void; toggleRightSidebar: (T: boolean) => void },
 	FusePageSimpleProps

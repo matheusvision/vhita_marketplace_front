@@ -6,6 +6,9 @@ import { forwardRef, ReactNode, useCallback, useEffect, useImperativeHandle, use
 import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer/SwipeableDrawer';
 import FusePageSimpleSidebarContent from './FusePageSimpleSidebarContent';
 
+/**
+ * Props for the FusePageSimpleSidebar component.
+ */
 type FusePageSimpleSidebarProps = {
 	open?: boolean;
 	position?: SwipeableDrawerProps['anchor'];
@@ -14,6 +17,9 @@ type FusePageSimpleSidebarProps = {
 	children?: ReactNode;
 };
 
+/**
+ * The FusePageSimpleSidebar component.
+ */
 const FusePageSimpleSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }, FusePageSimpleSidebarProps>(
 	(props, ref) => {
 		const { open = true, position, variant, onClose = () => {} } = props;

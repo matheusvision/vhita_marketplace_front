@@ -8,6 +8,10 @@ export type FuseLoadingProps = {
 	delay?: number;
 };
 
+/**
+ * FuseLoading displays a loading state with an optional delay
+ * @param props.delay The optional delay in milliseconds before the loading message is shown
+ */
 function FuseLoading(props: FuseLoadingProps) {
 	const { delay } = props;
 	const [showLoading, setShowLoading] = useState(!delay);

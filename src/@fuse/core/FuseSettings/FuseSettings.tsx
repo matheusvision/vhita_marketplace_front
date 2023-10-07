@@ -22,6 +22,10 @@ import { PartialDeep } from 'type-fest';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
 
+/**
+ * The Root styled component is used to style the root div of the FuseSettings component.
+ * It uses the styled function from the MUI styles library to create a styled component.
+ */
 const Root = styled('div')(({ theme }) => ({
 	'& .FuseSettings-formControl': {
 		margin: '6px 0',
@@ -77,6 +81,12 @@ export type FuseSettingsConfigType = {
 	loginRedirectUrl?: string;
 };
 
+/**
+ * The FuseSettings component is responsible for rendering the settings form for the Fuse React application.
+ * It uses the useForm hook from the react-hook-form library to handle form state and validation.
+ * It also uses various MUI components to render the form fields and sections.
+ * The component is memoized to prevent unnecessary re-renders.
+ */
 function FuseSettings() {
 	const dispatch = useAppDispatch();
 	const user = useSelector(selectUser);
@@ -124,87 +134,6 @@ function FuseSettings() {
 		}
 	}, [dispatch, form, formChanged, handleUpdate, prevForm, prevSettings, reset, settings, settingsChanged, user]);
 
-	/* function ThemeSelect({
-		value,
-		name,
-		handleThemeChange
-	}: {
-		value: ThemeProps;
-		name: string;
-		handleThemeChange: (Theme) => void;
-	}) {
-		return (
-			<Select
-				className="w-full rounded-8 h-40 overflow-hidden my-8"
-				value={value}
-				onChange={handleThemeChange}
-				name={name}
-				variant="outlined"
-				style={{
-					backgroundColor: themes[value].palette.background.default,
-					color: themes[value].palette.mode === 'light' ? '#000000' : '#ffffff'
-				}}
-			>
-				{Object.entries(themes)
-					.filter(
-						([key, val]) =>
-							!(name === 'theme.main' && (key === 'mainThemeDark' || key === 'mainThemeLight'))
-					)
-					.map(([key, val]) => (
-						<MenuItem
-							key={key}
-							value={key}
-							className="m-8 mt-0 rounded-lg"
-							style={{
-								backgroundColor: val.palette.background.default,
-								color: val.palette.mode === 'light' ? '#000000' : '#FFFFFF',
-								border: `1px solid ${
-									val.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)'
-								}`
-							}}
-						>
-							{_.startCase(key)}
-							<div
-								className="flex w-full h-8 block absolute bottom-0 left-0 right-0"
-								style={{
-									borderTop: `1px solid ${
-										val.palette.mode === 'light'
-											? 'rgba(0, 0, 0, 0.12)'
-											: 'rgba(255, 255, 255, 0.12)'
-									}`
-								}}
-							>
-								<div
-									className="w-1/4 h-8"
-									style={{
-										backgroundColor: val.palette.primary.main
-											? val.palette.primary.main
-											: val.palette.primary[500]
-									}}
-								/>
-								<div
-									className="w-1/4 h-8"
-									style={{
-										backgroundColor: val.palette.secondary.main
-											? val.palette.secondary.main
-											: val.palette.secondary[500]
-									}}
-								/>
-								<div
-									className="w-1/4 h-8"
-									style={{
-										backgroundColor: val.palette.error.main
-											? val.palette.error.main
-											: val.palette.error[500]
-									}}
-								/>
-								<div className="w-1/4 h-8" style={{ backgroundColor: val.palette.background.paper }} />
-							</div>
-						</MenuItem>
-					))}
-			</Select>
-		);
-	} */
 	const getForm = useCallback(
 		(_formConfigs: ThemeFormConfigTypes, prefix: string) =>
 			Object.entries(_formConfigs).map(([key, formControl]) => {

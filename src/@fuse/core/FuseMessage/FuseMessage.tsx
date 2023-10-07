@@ -46,6 +46,15 @@ const variantIcon = {
 	info: 'info'
 };
 
+/**
+ * FuseMessage
+ *
+ * The FuseMessage component holds a snackbar that is capable of displaying message with 4 different variant. It uses the @mui/material React packages to create the components.
+ *
+ * @param {type} variant Type of message out of these four, success, warning, error, info
+ *
+ * @return {JSX.Element} Snackbar element to be displayed
+ */
 function FuseMessage() {
 	const dispatch = useAppDispatch();
 	const state = useAppSelector(selectFuseMessageState);

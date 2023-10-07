@@ -11,6 +11,9 @@ import FusePageCardedHeader from './FusePageCardedHeader';
 const headerHeight = 120;
 const toolbarHeight = 64;
 
+/**
+ * Props for the FusePageCarded component.
+ */
 type FusePageCardedProps = SystemStyleObject<Theme> & {
 	className?: string;
 	leftSidebarContent?: ReactNode;
@@ -175,6 +178,9 @@ const Root = styled('div')<FusePageCardedProps>(({ theme, ...props }) => ({
 	}
 }));
 
+/**
+ * The FusePageCarded component is a carded page layout with left and right sidebars.
+ */
 const FusePageCarded = forwardRef<
 	{ toggleLeftSidebar: (T: boolean) => void; toggleRightSidebar: (T: boolean) => void },
 	FusePageCardedProps
