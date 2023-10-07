@@ -22,7 +22,8 @@ function NavigationDoc() {
 				className="mb-16"
 				component="p"
 			>
-				The theme navigation array is located at <code>app/configs/navigationConfig.ts</code>
+				The theme navigation is located in the file <code>app/configs/navigationConfig.ts</code>, which serves
+				as an initial state in the Fuse.navigation redux store.
 			</Typography>
 
 			<Typography
@@ -36,14 +37,15 @@ function NavigationDoc() {
 				className="mb-16"
 				component="p"
 			>
-				The navigation items can be updated, removed, added with redux actions from anywhere of the app.
+				Navigation items can be modified, removed, and added using various redux actions from anywhere within
+				the app.
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				Check out FuseNavigation component details for redux actions, item types, etc. at:{' '}
+				For more information on FuseNavigation components, redux actions, and item types, check out the section
 				<Link to="/documentation/fuse-components/fuse-navigation">FuseNavigation Docs</Link>
 			</Typography>
 		</>

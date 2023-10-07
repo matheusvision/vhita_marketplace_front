@@ -6,6 +6,9 @@ const NavigationDoc = lazy(() => import('./navigation/NavigationDoc'));
 const CodeSplittingDoc = lazy(() => import('./code-splitting/CodeSplittingDoc'));
 const MultiLanguageDoc = lazy(() => import('./multi-language/MultiLanguageDoc'));
 
+/**
+ * The configuration doc routes.
+ */
 const ConfigurationDocRoutes = [
 	{
 		path: 'configuration/settings',

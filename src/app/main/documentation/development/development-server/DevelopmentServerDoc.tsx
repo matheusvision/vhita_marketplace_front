@@ -1,6 +1,9 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 
+/**
+ * Development Server Doc
+ */
 function DevelopmentServerDoc() {
 	return (
 		<>
@@ -15,7 +18,7 @@ function DevelopmentServerDoc() {
 				className="mb-16"
 				component="p"
 			>
-				While still in your work folder, run the following command in the console application:
+				While still in your working directory, execute the following command in the console application:
 			</Typography>
 
 			<FuseHighlight
@@ -29,22 +32,22 @@ function DevelopmentServerDoc() {
 				className="mb-16"
 				component="p"
 			>
-				And that's it. create-react-app will take care of everything and start the Fuse React.
+				And that's it. create-react-app will take care of everything and will initiate the Fuse React server.
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				You can check out your console application to get further information about the server. By default, it
-				will run on <b>http://localhost:3000</b> but it might change depending on your setup.
+				You can check your console application for further information about the server. By default, it will be
+				running on <b>http://localhost:3000</b> although it could change depending on your setup.
 			</Typography>
 
 			<div className="my-24 px-24 py-16 border-1 border-red rounded-16">
 				<Typography className="mb-8 font-500 text-16 text-red">Important:</Typography>
 				<Typography component="div">
-					If you have runtime errors on first run, make sure you are using at least LTS release of Node.js.
-					Remove node_modules and try again.
+					In case of runtime errors on first run, make sure you are running an LTS release of Node.js. Delete
+					node_modules and try again.
 				</Typography>
 			</div>
 		</>

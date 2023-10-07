@@ -17,7 +17,7 @@ function SettingsDoc() {
 				className="mb-16"
 				component="p"
 			>
-				You can set the default layout, theme settings of your app at
+				To set the default layout and theme settings for your app, navigate to the file:
 				<code>app/configs/settingsConfig.ts</code>
 			</Typography>
 

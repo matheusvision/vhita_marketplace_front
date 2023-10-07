@@ -1,6 +1,9 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 
+/**
+ * HeroKu Notes Doc
+ */
 function HerokuNotesDoc() {
 	return (
 		<>

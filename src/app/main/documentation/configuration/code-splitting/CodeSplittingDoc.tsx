@@ -15,10 +15,9 @@ function CodeSplittingDoc() {
 				className="mb-16"
 				component="p"
 			>
-				Code-splitting your app can help you “lazy-load” just the things that are currently needed by the user,
-				which can dramatically improve the performance of your app. While you haven’t reduced the overall amount
-				of code in your app, you’ve avoided loading code that the user may never need, and reduced the amount of
-				code needed during the initial load.
+				By code-splitting your app, you can "lazy-load" only the content that's needed by users at any given
+				moment, significantly boosting your app's performance. In addition to avoiding loading code that the
+				user may never need, you also reduce the amount of code needed for the initial load.
 			</Typography>
 
 			<Typography
@@ -54,27 +53,27 @@ function CodeSplittingDoc() {
 						className="language-jsx my-16"
 					>
 						{`
-              import { lazy } from 'react';
+						import { lazy } from 'react';
 
-              const AnalyticsDashboardApp = lazy(() => import('./AnalyticsDashboardApp'));
-              
-              const AnalyticsDashboardAppConfig = {
-                settings: {
-                  layout: {
-                    config: {}
-                  }
-                },
-                routes: [
-                  {
-                    path: 'apps/dashboards/analytics',
-                    element: <AnalyticsDashboardApp />
-                  }
-                ],
-              };
-              
-              export default AnalyticsDashboardAppConfig;
+						const AnalyticsDashboardApp = lazy(() => import('./AnalyticsDashboardApp'));
+						
+						const AnalyticsDashboardAppConfig = {
+							settings: {
+							layout: {
+								config: {}
+							}
+							},
+							routes: [
+							{
+								path: 'apps/dashboards/analytics',
+								element: <AnalyticsDashboardApp />
+							}
+							],
+						};
+						
+						export default AnalyticsDashboardAppConfig;
 
-            `}
+					`}
 					</FuseHighlight>
 				</div>
 
@@ -91,22 +90,22 @@ function CodeSplittingDoc() {
 						className="language-jsx my-16"
 					>
 						{`
-                import AnalyticsDashboardApp from './AnalyticsDashboardApp';
+						import AnalyticsDashboardApp from './AnalyticsDashboardApp';
 
-                export const AnalyticsDashboardAppConfig = {
-                    settings: {
-                        layout: {
-                            config: {}
-                        }
-                    },
-                    routes  : [
-                        {
-                            path     : '/apps/dashboards/analytics',
-                            element:AnalyticsDashboardApp
-                        }
-                    ]
-                };
-            `}
+						export const AnalyticsDashboardAppConfig = {
+							settings: {
+								layout: {
+									config: {}
+								}
+							},
+							routes  : [
+								{
+									path     : '/apps/dashboards/analytics',
+									element:AnalyticsDashboardApp
+								}
+							]
+						};
+					`}
 					</FuseHighlight>
 				</div>
 			</div>
@@ -133,12 +132,12 @@ function CodeSplittingDoc() {
 				className="language-jsx my-16"
 			>
 				{`
-          import withReducer from 'app/store/withReducer';
-          import reducer from './store';
-          .
-          .
-          export default withReducer('analyticsDashboardApp', reducer)(AnalyticsDashboardApp);
-        `}
+				import withReducer from 'app/store/withReducer';
+				import reducer from './store';
+				.
+				.
+				export default withReducer('analyticsDashboardApp', reducer)(AnalyticsDashboardApp);
+			`}
 			</FuseHighlight>
 		</>
 	);

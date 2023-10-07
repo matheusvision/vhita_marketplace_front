@@ -1,6 +1,9 @@
 import Typography from '@mui/material/Typography';
 import { ReactNode } from 'react';
 
+/**
+ * The changelog item type.
+ */
 export type ChangelogItemType = {
 	version?: string;
 	date?: string;
@@ -10,6 +13,9 @@ export type ChangelogItemType = {
 	notes?: ReactNode;
 };
 
+/**
+ * The changelog data.
+ */
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '8.3.8',

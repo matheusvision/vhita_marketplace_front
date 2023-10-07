@@ -2,6 +2,9 @@ import Typography from '@mui/material/Typography';
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import { Link } from 'react-router-dom';
 
+/**
+ * Api Calls Doc
+ */
 function ApiCallsDoc() {
 	return (
 		<>
@@ -24,29 +27,29 @@ function ApiCallsDoc() {
 				>
 					Axios
 				</a>{' '}
-				for to make API calls.
+				to make all API calls
 			</Typography>
 
 			<Typography
 				className="mt-24 mb-10"
 				variant="h6"
 			>
-				Global Axios defaults
+				Configuring Global Axios Defaults
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				You can config global axios defaults as below. For example you can define baseUrl for the api
-				connection. Check out for more detils at:{' '}
+				You can configure global Axios defaults, such as the base URL for the API connection. Check out
 				<a
 					href="https://github.com/axios/axios#config-defaults"
 					target="_blank"
 					rel="noreferrer noopener"
 				>
 					Global axios defaults
-				</a>
+				</a>{' '}
+				for more details.
 			</Typography>
 
 			<FuseHighlight
@@ -71,33 +74,18 @@ function ApiCallsDoc() {
 				className="mb-16"
 				component="p"
 			>
-				We are using{' '}
+				In order to demonstrate HTTP requests, all of the example backend data is located at src/@mock-api,
+				using
 				<a
 					href="https://github.com/ctimmerm/axios-mock-adapter"
 					target="_blank"
 					rel="noreferrer noopener"
 				>
 					axios-mock-adapter
-				</a>{' '}
-				to demonstrate http requests, all of the example backend data is located at src/@mock-api.
-			</Typography>
-
-			<Typography
-				className="mb-16"
-				component="p"
-			>
-				@mock-api is developed specifically for Fuse React to mock API endpoints and provide data to your app
-				without having to create an actual backend application. This way, you can focus on your frontend app and
-				once you finish with the frontend, you can create your backend application to provide real API endpoints
-				with real data.
-			</Typography>
-
-			<Typography
-				className="mb-16"
-				component="p"
-			>
-				This not only makes you progress faster and put together your app very quickly but you will also know
-				exactly what you will be needing from your API.
+				</a>
+				. This way, developers can focus on the frontend app, and once you finish with the frontend, create your
+				backend application to provide real API endpoints with real data. @mock-api helps you progress faster
+				and know exactly what you will be needing from your API.
 			</Typography>
 
 			<Typography
@@ -105,7 +93,7 @@ function ApiCallsDoc() {
 				component="p"
 			>
 				We have created open api definitions and followed this definitions while generating @mock-api. You can
-				use the definitions as an example while creating your api. Checkout
+				use the definitions as an example while creating your api, check out:
 				<Link
 					className="link mx-8"
 					to="/documentation/mock-api"

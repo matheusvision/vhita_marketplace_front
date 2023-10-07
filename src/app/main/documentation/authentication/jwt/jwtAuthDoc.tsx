@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+/**
+ * The jwt auth doc.
+ * @returns The jsx component.
+ */
 function JwtAuthDoc() {
 	return (
 		<>
@@ -15,32 +19,31 @@ function JwtAuthDoc() {
 				className="mb-16"
 				component="p"
 			>
-				With JWT Authentication Service in Fuse React.
+				The JWT Authentication Service Example in Fuse React provides a secure way to authenticate users and
+				protect sensitive data. With this service, users can sign up and sign in to access protected resources.
+				The service also saves user data, such as user shortcuts, layout, and theme settings, to a database for
+				easy retrieval.
 			</Typography>
 
 			<ul>
 				<li className="mb-12">
-					You can <Link to="/sign-up">sign up</Link>.
+					To sign up, click on the <Link to="/sign-up">sign up</Link> link.
 				</li>
 				<li className="mb-12">
-					You can <Link to="/sign-in">sign in</Link>.
+					To sign in, click on the <Link to="/sign-in">sign in</Link> link.
 				</li>
-				<li className="mb-12">Also saves user data (user shortcuts, layout, and theme settings) to db.</li>
+				<li className="mb-12">
+					The related service folder is located at <code>/src/app/auth/services/jwtService</code>. This folder
+					contains the necessary files to customize the authentication service to fit specific needs.
+				</li>
 			</ul>
 
 			<Typography
 				className="mt-32 mb-16"
 				component="p"
 			>
-				Related Service folder is located at <code>/src/app/auth/services/jwtService</code>
-			</Typography>
-
-			<Typography
-				className="my-24 italic"
-				component="p"
-				color="text.secondary"
-			>
-				Note: Make sure {`<Router>`} component wrapped with {`<AuthProvider>`} in
+				To use the JWT Authentication Service Example in your Fuse React application, make sure to wrap the{' '}
+				<code>&lt;Router&gt;</code> component with the <code>&lt;AuthProvider&gt;</code> component in{' '}
 				<code>src/app/App.tsx</code>. The service initializes in the AuthProvider component.
 			</Typography>
 

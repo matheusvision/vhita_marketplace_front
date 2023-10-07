@@ -4,6 +4,9 @@ import Box from '@mui/material/Box';
 import ChangelogCard from './ChangelogCard';
 import changelogData from './ChangelogData';
 
+/**
+ * The changelog doc page.
+ */
 function ChangelogDoc() {
 	return (
 		<>

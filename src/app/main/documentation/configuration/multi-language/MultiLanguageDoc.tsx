@@ -32,10 +32,11 @@ function MultiLanguageDoc() {
 				className="mb-16 p-16 border-1 bg-yellow-50 rounded-16 text-gray-800"
 				component="p"
 			>
-				Since not everybody need multi-language setup for their apps, we decided NOT to put translations
-				everywhere. If you want to see the translations in action, visit the Mail app, and then change the
-				language from the Toolbar. Mail app is the only app that has translations for demonstration purposes.
-				You can look at its source code to see the usage.
+				Although most people don't require multi-language capabilities for their apps, we have chosen NOT to
+				incorporate translations into every application. To get a glimpse of how translations work in practice,
+				try visiting the Mail app and altering the language in the Toolbar. This is the only app specifically
+				configured with translations for demonstration purposes. If you wish to delve into the details, you can
+				review the source code for an example of how they are used.
 			</Typography>
 
 			<Typography
@@ -49,9 +50,9 @@ function MultiLanguageDoc() {
 				className="mb-16"
 				component="p"
 			>
-				In order to use the translations, create your translation file within the folder you want to use the
-				translations. For example, for the Mail app, create <code>i18n/en.tsx</code> file inside the
-				<code>apps/mail</code> folder.
+				To use the translations, create a translation file called <code>i18n/en.tsx</code> within the folder of
+				the app you would like to use them with. For example, to use the translations in the Mail app, create
+				this file inside the <code>apps/mail</code> folder.
 			</Typography>
 
 			<FuseHighlight
