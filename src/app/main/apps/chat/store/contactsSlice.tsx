@@ -6,6 +6,9 @@ import { ContactsType, ContactType } from '../types/ContactType';
 
 export type AppRootStateType = RootStateType<contactsSliceType>;
 
+/**
+ * Get contacts
+ */
 export const getContacts = createAppAsyncThunk<ContactsType>('chatApp/contacts/getContacts', async (params) => {
 	const response = await axios.get('/api/chat/contacts', { params });
 
@@ -24,6 +27,9 @@ export const {
 	selectById
 } = contactsAdapter.getSelectors((state: AppRootStateType) => state.chatApp.contacts);
 
+/**
+ * Chat App Contacts Slice
+ */
 const contactsSlice = createSlice({
 	name: 'chatApp/contacts',
 	initialState,

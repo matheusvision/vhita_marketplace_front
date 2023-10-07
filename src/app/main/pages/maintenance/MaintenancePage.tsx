@@ -2,6 +2,9 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import Box from '@mui/material/Box';
 
+/**
+ * The maintenance page.
+ */
 function MaintenancePage() {
 	return (
 		<div className="flex flex-1 flex-col items-center justify-center p-16">

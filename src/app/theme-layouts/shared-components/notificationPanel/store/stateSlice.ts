@@ -5,6 +5,9 @@ type initialStateType = boolean;
 
 const initialState: initialStateType = false;
 
+/**
+ * The notificationPanel state slice.
+ */
 const stateSlice = createSlice({
 	name: 'notificationPanel/state',
 	initialState,

@@ -3,6 +3,9 @@ import { FuseRouteConfigType } from '@fuse/utils/FuseUtils';
 
 const MaintenancePage = lazy(() => import('./MaintenancePage'));
 
+/**
+ * The maintenance page config.
+ */
 const maintenancePageConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

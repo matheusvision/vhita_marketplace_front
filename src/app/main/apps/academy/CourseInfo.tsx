@@ -10,6 +10,12 @@ type CourseInfoProps = {
 	className?: string;
 };
 
+/**
+ * The CourseInfo component.
+ *
+ * @param {CourseInfoProps} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function CourseInfo(props: CourseInfoProps) {
 	const { course, className } = props;
 

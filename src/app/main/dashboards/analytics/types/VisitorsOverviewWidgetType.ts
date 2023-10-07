@@ -18,6 +18,9 @@ type Ranges = {
 	[key: string]: string;
 };
 
+/**
+ * Visitors Overview Widget Type
+ */
 type VisitorsOverviewWidgetType = {
 	ranges: Ranges;
 	series: Series;

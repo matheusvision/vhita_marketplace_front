@@ -10,6 +10,11 @@ import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The GithubIssuesWidget widget.
+ *
+ * @returns {JSX.Element} The GithubIssuesWidget widget.
+ */
 function GithubIssuesWidget() {
 	const theme = useTheme();
 	const [awaitRender, setAwaitRender] = useState(true);

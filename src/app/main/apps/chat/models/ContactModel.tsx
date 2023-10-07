@@ -2,6 +2,12 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { ContactType } from '../types/ContactType';
 
+/**
+ * Contact model.
+ *
+ * @param {PartialDeep<ContactType>} data - The data.
+ * @returns {ContactType} The contact model.
+ */
 function ContactModel(data?: PartialDeep<ContactType>) {
 	data = data || {};
 

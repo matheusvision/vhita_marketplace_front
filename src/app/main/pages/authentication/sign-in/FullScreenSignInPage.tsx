@@ -38,6 +38,9 @@ const defaultValues = {
 	remember: true
 };
 
+/**
+ * The full screen sign in page.
+ */
 function FullScreenSignInPage() {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',

@@ -21,11 +21,19 @@ const Root = styled('div')({
 		fontWeight: 300
 	}
 });
+
 type MailAttachmentProps = {
 	className?: string;
 	fileName: string;
 	size: string;
 };
+
+/**
+ * The mail attachment.
+ *
+ * @param {React.PropsWithChildren<MailAttachmentProps>} props
+ * @returns {JSX.Element}
+ */
 function MailAttachment(props: MailAttachmentProps) {
 	const { className, fileName, size } = props;
 

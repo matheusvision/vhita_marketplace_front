@@ -22,6 +22,11 @@ import { selectUser, updateUserData } from '../../store/userSlice';
 import { ChatAppContext } from '../../ChatApp';
 import { UserType } from '../../types/UserType';
 
+/**
+ * The user sidebar.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
 	const dispatch = useAppDispatch();

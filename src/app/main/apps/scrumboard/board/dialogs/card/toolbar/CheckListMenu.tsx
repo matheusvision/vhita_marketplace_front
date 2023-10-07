@@ -23,6 +23,11 @@ type CheckListMenuProps = {
 	onAddCheckList: (checklist: ChecklistType) => void;
 };
 
+/**
+ * The checklist menu component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function CheckListMenu(props: CheckListMenuProps) {
 	const { onAddCheckList, name } = props;
 

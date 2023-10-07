@@ -8,6 +8,9 @@ import { ContactType } from '../types/ContactType';
 
 type AppRootStateType = RootStateType<chatMessagesSliceType>;
 
+/**
+ * Get the chat messages.
+ */
 export const getChat = createAppAsyncThunk<ChatMessagesType, ChatMessageType['contactId']>(
 	'chatPanel/chat/getChat',
 	async (contactId) => {
@@ -19,6 +22,9 @@ export const getChat = createAppAsyncThunk<ChatMessagesType, ChatMessageType['co
 	}
 );
 
+/**
+ * Send a message.
+ */
 export const sendMessage = createAppAsyncThunk<ChatMessageType, { messageText: string; contactId: ContactType['id'] }>(
 	'chatPanel/chat/sendMessage',
 	async ({ messageText, contactId }, { dispatch }) => {
@@ -34,6 +40,9 @@ export const sendMessage = createAppAsyncThunk<ChatMessageType, { messageText: s
 
 const initialState: ChatMessagesType = [];
 
+/**
+ * The slice for the chat messages.
+ */
 const chatMessagesSlice = createSlice({
 	name: 'chatPanel/chat',
 	initialState,

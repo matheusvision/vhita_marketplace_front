@@ -27,6 +27,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The full screen reset password page.
+ */
 function FullScreenReversedResetPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

@@ -14,6 +14,11 @@ type NoteFormListItemProps = {
 	item: NoteListItemType;
 };
 
+/**
+ * The note form list item.
+ * @param props The component props.
+ * @returns The JSX element.
+ */
 function NoteFormListItem(props: NoteFormListItemProps) {
 	const { onListItemChange, item, onListItemRemove } = props;
 

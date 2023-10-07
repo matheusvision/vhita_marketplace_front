@@ -5,6 +5,9 @@ import slices from './store';
 
 const ContactsApp = lazyWithSlices(() => import('./ContactsApp'), slices);
 
+/**
+ * The ContactsApp configuration.
+ */
 const ContactsAppConfig = {
 	settings: {
 		layout: {

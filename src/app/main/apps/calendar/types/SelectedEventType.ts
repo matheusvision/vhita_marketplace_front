@@ -1,3 +1,6 @@
+/**
+ * Selected Event Type
+ */
 export type SelectedEventType = {
 	id: string;
 	title: string;

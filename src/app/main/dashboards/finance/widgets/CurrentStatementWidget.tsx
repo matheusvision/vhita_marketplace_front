@@ -6,6 +6,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * The CurrentStatementWidget widget.
+ *
+ * @returns {JSX.Element} The CurrentStatementWidget widget.
+ */
 function CurrentStatementWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { status, date, limit, spent, minimum } = widgets.currentStatement;

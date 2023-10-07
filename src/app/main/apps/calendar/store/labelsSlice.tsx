@@ -7,6 +7,9 @@ import { LabelType } from '../types/LabelType';
 
 type AppRootStateType = RootStateType<labelsSliceType>;
 
+/**
+ * Get labels from server
+ */
 export const getLabels = createAppAsyncThunk('calendarApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/calendar/labels');
 	const data = (await response.data) as LabelType[];
@@ -14,6 +17,9 @@ export const getLabels = createAppAsyncThunk('calendarApp/labels/getLabels', asy
 	return data;
 });
 
+/**
+ * Add new label
+ */
 export const addLabel = createAppAsyncThunk<LabelType, LabelType>('calendarApp/labels/addLabel', async (newLabel) => {
 	const response = await axios.post('/api/calendar/labels', newLabel);
 	const data = (await response.data) as LabelType;
@@ -21,6 +27,9 @@ export const addLabel = createAppAsyncThunk<LabelType, LabelType>('calendarApp/l
 	return data;
 });
 
+/**
+ * Update label
+ */
 export const updateLabel = createAppAsyncThunk<LabelType, LabelType>(
 	'calendarApp/labels/updateLabel',
 	async (label) => {
@@ -31,6 +40,9 @@ export const updateLabel = createAppAsyncThunk<LabelType, LabelType>(
 	}
 );
 
+/**
+ * Remove label
+ */
 export const removeLabel = createAppAsyncThunk<string, string>('calendarApp/labels/removeLabel', async (labelId) => {
 	const response = await axios.delete(`/api/calendar/labels/${labelId}`);
 	const data = (await response.data) as string;
@@ -56,6 +68,9 @@ export const {
 	selectById: selectLabelById
 } = labelsAdapter.getSelectors((state: AppRootStateType) => state.calendarApp.labels);
 
+/**
+ * The CalendarApp labels slice.
+ */
 const labelsSlice = createSlice({
 	name: 'calendarApp/labels',
 	initialState,

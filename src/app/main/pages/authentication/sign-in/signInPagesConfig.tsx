@@ -10,6 +10,9 @@ const SplitScreenReversedSignInPage = lazy(() => import('./SplitScreenReversedSi
 const FullScreenSignInPage = lazy(() => import('./FullScreenSignInPage'));
 const FullScreenReversedSignInPage = lazy(() => import('./FullScreenReversedSignInPage'));
 
+/**
+ * The sign in pages config.
+ */
 const signInPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

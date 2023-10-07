@@ -1,5 +1,8 @@
 import MailAttachmentType from './MailAttachmentType';
 
+/**
+ * Mail Type
+ */
 export type MailType = {
 	id: string;
 	type: string;
@@ -22,4 +25,7 @@ export type MailType = {
 	labels: string[];
 };
 
+/**
+ * Mails Type
+ */
 export type MailsType = MailType[];

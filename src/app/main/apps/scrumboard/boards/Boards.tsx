@@ -6,6 +6,10 @@ import { getBoards, resetBoards, selectBoards } from '../store/boardsSlice';
 import BoardItem from './BoardItem';
 import NewBoardItem from './NewBoardItem';
 
+/**
+ * The scrumboard boards component.
+ * @returns The jsx component.
+ */
 function Boards() {
 	const dispatch = useAppDispatch();
 	// const boards = [];

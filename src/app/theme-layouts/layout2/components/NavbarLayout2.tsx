@@ -14,6 +14,12 @@ type NavbarLayout2Props = {
 	className?: string;
 };
 
+/**
+ * The navbar layout 2.
+ *
+ * @param {NavbarLayout2Props} props - The props.
+ * @returns {JSX.Element} The navbar layout 2.
+ */
 function NavbarLayout2(props: NavbarLayout2Props) {
 	const { className = '' } = props;
 

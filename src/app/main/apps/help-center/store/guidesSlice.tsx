@@ -8,6 +8,9 @@ import { GuideType, GuidesType } from '../types/GuideType';
 
 export type DynammicAppRootStateType = RootStateType<guidesSliceType>;
 
+/**
+ * Get Guides from server
+ */
 export const getGuides = createAppAsyncThunk<GuidesType, string | void>(
 	'helpCenterApp/guides/getGuides',
 	async (categorySlug) => {
@@ -27,6 +30,9 @@ export const { selectAll: selectGuides, selectById: selectGuideById } = guidesAd
 	(state: DynammicAppRootStateType) => state.helpCenterApp.guides
 );
 
+/**
+ * The Help Center App guides slice.
+ */
 const guidesSlice = createSlice({
 	name: 'helpCenterApp/guides',
 	initialState: guidesAdapter.getInitialState({}),

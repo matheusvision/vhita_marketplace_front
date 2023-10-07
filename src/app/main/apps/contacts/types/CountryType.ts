@@ -1,3 +1,6 @@
+/**
+ * Country Type
+ */
 export type CountryType = {
 	id: string;
 	iso: string;
@@ -6,4 +9,7 @@ export type CountryType = {
 	flagImagePos: string;
 };
 
+/**
+ * Countries Type
+ */
 export type CountriesType = CountryType[];

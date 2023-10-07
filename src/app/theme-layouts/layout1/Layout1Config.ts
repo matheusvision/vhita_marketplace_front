@@ -1,5 +1,8 @@
 import { DeepPartial } from 'react-hook-form';
 
+/**
+ * The Layout1 Config object.
+ */
 const Layout1Config = {
 	title: 'Layout 1 - Vertical',
 	defaults: {

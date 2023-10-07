@@ -10,6 +10,9 @@ const SplitScreenReversedConfirmationRequiredPage = lazy(() => import('./SplitSc
 const FullScreenConfirmationRequiredPage = lazy(() => import('./FullScreenConfirmationRequiredPage'));
 const FullScreenReversedConfirmationRequiredPage = lazy(() => import('./FullScreenReversedConfirmationRequiredPage'));
 
+/**
+ * Route Configuration for Confirmation Required Pages.
+ */
 const confirmationRequiredPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

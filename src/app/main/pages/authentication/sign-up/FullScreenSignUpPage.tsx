@@ -37,6 +37,9 @@ const defaultValues = {
 	acceptTermsConditions: false
 };
 
+/**
+ * The full screen sign up page.
+ */
 function FullScreenSignUpPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

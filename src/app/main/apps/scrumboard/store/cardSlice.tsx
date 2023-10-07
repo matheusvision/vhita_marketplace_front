@@ -63,6 +63,9 @@ const initialState: {
 	data: null
 };
 
+/**
+ * The Scrumboard Card Slice.
+ */
 const cardSlice = createSlice({
 	name: 'scrumboardApp/card',
 	initialState,

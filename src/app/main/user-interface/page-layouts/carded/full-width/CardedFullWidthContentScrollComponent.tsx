@@ -11,6 +11,9 @@ const Root = styled(FusePageCarded)({
 	'& .FusePageCarded-sidebarContent': {}
 });
 
+/**
+ * The CardedFullWidthContentScroll page.
+ */
 function CardedFullWidthContentScrollComponent() {
 	return (
 		<Root

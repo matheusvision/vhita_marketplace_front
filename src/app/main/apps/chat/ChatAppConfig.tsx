@@ -5,6 +5,9 @@ import slices from './store';
 
 const ChatApp = lazyWithSlices(() => import('./ChatApp'), slices);
 
+/**
+ * The chat app config.
+ */
 const ChatAppConfig = {
 	settings: {
 		layout: {

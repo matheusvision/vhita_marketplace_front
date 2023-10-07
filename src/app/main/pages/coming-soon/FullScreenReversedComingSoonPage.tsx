@@ -22,6 +22,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The full screen reversed coming soon page.
+ */
 function FullScreenReversedComingSoonPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

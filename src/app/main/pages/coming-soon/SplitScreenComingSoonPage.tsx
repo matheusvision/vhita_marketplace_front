@@ -22,6 +22,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The modern reversed coming soon page.
+ */
 function SplitScreenComingSoonPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

@@ -8,6 +8,9 @@ import { getItems, selectSelectedItemId } from './store/itemsSlice';
 import FileManagerHeader from './FileManagerHeader';
 import FileManagerList from './FileManagerList';
 
+/**
+ * The file manager app.
+ */
 function FileManagerApp() {
 	const dispatch = useAppDispatch();
 	const selectedItem = useAppSelector(selectSelectedItemId);

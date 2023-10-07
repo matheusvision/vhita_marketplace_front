@@ -8,6 +8,12 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 type BoardCardDueDateProps = {
 	dueDate: number;
 };
+
+/**
+ * The board card due date component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function BoardCardDueDate(props: BoardCardDueDateProps) {
 	const { dueDate } = props;
 

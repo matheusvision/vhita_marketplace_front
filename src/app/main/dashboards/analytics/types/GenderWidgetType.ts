@@ -1,3 +1,6 @@
+/**
+ * Gender Widget Type
+ */
 type GenderWidgetType = {
 	uniqueVisitors: number;
 	series: number[];

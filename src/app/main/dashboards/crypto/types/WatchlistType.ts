@@ -15,6 +15,9 @@ type Series = {
 	data: SeriesData[];
 };
 
+/**
+ * WatchListItemType
+ */
 export type WatchListItemType = {
 	title?: string;
 	iso: string;

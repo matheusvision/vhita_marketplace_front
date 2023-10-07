@@ -7,6 +7,12 @@ type NavigationSearchProps = {
 	variant?: 'basic' | 'full';
 };
 
+/**
+ * The navigation search.
+ *
+ * @param {NavigationSearchProps} props - The component props.
+ * @returns {JSX.Element} The navigation search.
+ */
 function NavigationSearch(props: NavigationSearchProps) {
 	const { variant, className } = props;
 

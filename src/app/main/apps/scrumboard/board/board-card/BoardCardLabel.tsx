@@ -6,6 +6,12 @@ import { selectLabelById } from '../../store/labelsSlice';
 type BoardCardLabelProps = {
 	id: string;
 };
+
+/**
+ * The board card label component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function BoardCardLabel(props: BoardCardLabelProps) {
 	const { id } = props;
 

@@ -25,6 +25,11 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
+/**
+ * The user navbar header.
+ *
+ * @returns The user navbar header.
+ */
 function UserNavbarHeader() {
 	const user = useSelector(selectUser);
 

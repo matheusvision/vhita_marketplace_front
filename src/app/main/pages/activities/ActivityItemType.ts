@@ -1,3 +1,6 @@
+/**
+ * Represents an item in an activity feed.
+ */
 type ActivityItemType = {
 	id: string;
 	icon?: string;

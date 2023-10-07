@@ -43,6 +43,12 @@ type InvoiceTabProps = {
 	order: OrderType;
 };
 
+/**
+ * The invoice tab.
+ *
+ * @param {InvoiceTabProps} props - The component props.
+ * @returns {JSX.Element} The component JSX.
+ */
 function InvoiceTab(props: InvoiceTabProps) {
 	const { order } = props;
 

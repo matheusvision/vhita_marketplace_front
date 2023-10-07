@@ -8,6 +8,12 @@ type NotificationTemplateProps = {
 	onClose: () => void;
 };
 
+/**
+ * The notification template.
+ *
+ * @param {NotificationTemplateProps} props - The component props.
+ * @returns {JSX.Element} The notification template.
+ */
 const NotificationTemplate = forwardRef((props: NotificationTemplateProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { item } = props;
 

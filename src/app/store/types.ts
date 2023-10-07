@@ -1,15 +1,30 @@
 import { Action, Reducer, ThunkAction, ThunkDispatch } from '@reduxjs/toolkit';
 import store from 'app/store';
 
+/**
+ * The type of the dispatch function for this application (AppState).
+ */
 export type AppDispatchType = typeof store.dispatch;
 
+/**
+ * The base type of the root state for this application (AppState).
+ */
 export type BaseRootStateType = ReturnType<typeof store.getState>;
 
+/**
+ * The extended type of the root state for this application (AppState).
+ * @param T - The string key to extend the root state with.
+ * @param State - The state to extend the root state with.
+ */
 type ExtendedRootStateType<T extends string, State> = BaseRootStateType & { [K in T]: State };
 
+/**
+ * The type of the async reducers for this application (AppState).
+ */
 export type AsyncReducersType = {
 	[key: string]: Reducer;
 };
+
 /**
  * Type to return from async actions (redux-thunk).
  * `R` describes the return value of the thunk.
@@ -26,17 +41,30 @@ export type AppThunkType<R = Promise<void>, E = unknown> = ThunkAction<R, RootSt
  */
 export type AppThunkDispatchType<E = unknown> = ThunkDispatch<RootStateType, E, Action<string>>;
 
+/**
+ * The type of a path to a specific type.
+ * @param Str - The string path to the type.
+ * @param T - The type at the end of the path.
+ */
 type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Rest}`
 	? { [P in Start as P]: PathToType<Rest, T> }
 	: { [P in Str]: T };
 
-// Process an array of slice names
+/**
+ * The type of multiple paths to specific types.
+ * @param Slices - The array of slice names to get the types for.
+ * @_T - The type to return.
+ */
 type MultiplePathsToType<Slices extends unknown[], _T = unknown> = Slices extends [infer First, ...infer Rest]
 	? First extends { name: string; getInitialState: () => unknown }
 		? PathToType<First['name'], ReturnType<First['getInitialState']>> & MultiplePathsToType<Rest>
 		: Record<string, never>
 	: Record<string, never>;
 
+/**
+ * The type of the root state for this application (AppState) with a specific slice.
+ * @param SliceType - The slice to add to the root state.
+ */
 export type RootStateWithSliceType<SliceType extends { name: string; getInitialState: () => unknown }> =
 	BaseRootStateType & PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;
 

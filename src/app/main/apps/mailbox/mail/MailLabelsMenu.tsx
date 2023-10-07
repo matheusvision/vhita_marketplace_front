@@ -17,6 +17,12 @@ type MailLabelsMenuProps = {
 	onChange: (labels: string[]) => void;
 	labels: string[];
 };
+
+/**
+ * The mail labels menu.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function MailLabelsMenu(props: MailLabelsMenuProps) {
 	const { className, onChange, labels } = props;
 	const [selectedLabels, setSelectedLabels] = useState(labels);

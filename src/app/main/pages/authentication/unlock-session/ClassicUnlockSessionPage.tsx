@@ -26,6 +26,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The classic unlock session page.
+ */
 function ClassicUnlockSessionPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

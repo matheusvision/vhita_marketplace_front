@@ -23,6 +23,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * IconListPageProps
+ */
 type IconListPageProps = {
 	pageTitle: string;
 	referenceUrl?: string;
@@ -30,6 +33,9 @@ type IconListPageProps = {
 	iconName: string;
 };
 
+/**
+ *  IconListPage component that renders a list of icons.
+ */
 function IconListPage(props: IconListPageProps) {
 	const { pageTitle, referenceUrl, apiUrl, iconName } = props;
 	const [listData, setListData] = useState<string[]>([]);

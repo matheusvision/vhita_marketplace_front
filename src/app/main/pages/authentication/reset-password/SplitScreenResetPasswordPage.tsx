@@ -27,6 +27,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The split screen reset password page.
+ */
 function SplitScreenResetPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

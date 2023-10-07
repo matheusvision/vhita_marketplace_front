@@ -2,6 +2,11 @@ import PoweredByLinks from './PoweredByLinks';
 import DocumentationButton from './DocumentationButton';
 import PurchaseButton from './PurchaseButton';
 
+/**
+ * The demo layout footer content.
+ *
+ * @returns {JSX.Element} The demo layout footer content.
+ */
 function DemoLayoutFooterContent() {
 	return (
 		<>

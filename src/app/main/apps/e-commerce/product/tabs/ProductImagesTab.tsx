@@ -44,6 +44,11 @@ const Root = styled('div')(({ theme }) => ({
 	}
 }));
 
+/**
+ * The product images tab.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function ProductImagesTab() {
 	const methods = useFormContext();
 	const { control, watch } = methods;

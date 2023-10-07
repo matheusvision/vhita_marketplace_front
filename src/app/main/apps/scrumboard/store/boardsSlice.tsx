@@ -46,6 +46,9 @@ export const {
 	selectById: selectBoardById
 } = boardsAdapter.getSelectors((state: AppRootStateType) => state.scrumboardApp.boards);
 
+/**
+ * The Scrumboard Boards Slice.
+ */
 const boardsSlice = createSlice({
 	name: 'scrumboardApp/boards',
 	initialState,

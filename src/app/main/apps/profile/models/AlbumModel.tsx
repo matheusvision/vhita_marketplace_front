@@ -3,6 +3,11 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { AlbumType } from '../types/AlbumType';
 
+/**
+ * The album model.
+ * @param data The album data.
+ * @returns The album model.
+ */
 function AlbumModel(data: PartialDeep<AlbumType>) {
 	data = data || {};
 

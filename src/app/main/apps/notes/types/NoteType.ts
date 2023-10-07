@@ -1,5 +1,8 @@
 import { NoteListItemsType } from './NoteListItemType';
 
+/**
+ * NoteType
+ */
 export type NoteType = {
 	id: string;
 	title: string;
@@ -13,4 +16,7 @@ export type NoteType = {
 	updatedAt: string;
 };
 
+/**
+ * NotesType
+ */
 export type NotesType = NoteType[];

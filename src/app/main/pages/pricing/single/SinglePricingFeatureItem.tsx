@@ -8,6 +8,11 @@ type SinglePricingFeatureItemProps = {
 	icon?: string;
 };
 
+/**
+ * The single pricing feature item component.
+ * @param {SinglePricingFeatureItemProps} props - The component props.
+ * @returns {JSX.Element} The single pricing feature item component.
+ */
 function SinglePricingFeatureItem(props: SinglePricingFeatureItemProps) {
 	const { title = '', subtitle = '', icon = '' } = props;
 

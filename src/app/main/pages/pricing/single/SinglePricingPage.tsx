@@ -6,6 +6,10 @@ import { motion } from 'framer-motion';
 import SinglePricingFeatureItem from './SinglePricingFeatureItem';
 import SinglePricingCard from './SinglePricingCard';
 
+/**
+ * The single pricing page.
+ * @returns {JSX.Element} The single pricing page.
+ */
 function SinglePricingPage() {
 	return (
 		<div className="relative flex min-w-0 flex-auto flex-col overflow-hidden">

@@ -4,6 +4,9 @@ type ScheduleItem = {
 	location?: string;
 };
 
+/**
+ * The type definition for the data used to populate the schedule.
+ */
 type ScheduleDataType = {
 	ranges: Record<string, string>;
 	series: Record<string, ScheduleItem[]>;

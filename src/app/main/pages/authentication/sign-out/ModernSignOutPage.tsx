@@ -5,6 +5,9 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 
+/**
+ * The modern reversed sign out page.
+ */
 function ModernSignOutPage() {
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center md:p-32">

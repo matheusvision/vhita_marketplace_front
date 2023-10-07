@@ -12,6 +12,12 @@ import { removeTask } from '../store/taskSlice';
 type FormActionsMenuProps = {
 	taskId: string;
 };
+
+/**
+ * The form actions menu.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function FormActionsMenu(props: FormActionsMenuProps) {
 	const { taskId } = props;
 	const dispatch = useAppDispatch();

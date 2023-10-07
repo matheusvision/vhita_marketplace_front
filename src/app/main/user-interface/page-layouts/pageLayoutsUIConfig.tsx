@@ -178,6 +178,9 @@ export const overviews = {
 	}
 };
 
+/**
+ * The UI configuration for the page layouts.
+ */
 const pageLayoutsUIConfig = {
 	settings: {
 		layout: {

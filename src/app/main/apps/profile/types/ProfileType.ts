@@ -34,6 +34,9 @@ type ProfileFriend = {
 	avatar: string;
 };
 
+/**
+ * The Profile type definition.
+ */
 export type ProfileType = {
 	general: ProfileGeneral;
 	work: ProfileWork;

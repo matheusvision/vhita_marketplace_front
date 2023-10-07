@@ -6,6 +6,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The TeamMembersWidget widget.
+ *
+ * @returns {JSX.Element} The TeamMembersWidget widget.
+ */
 function TeamMembersWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const members = widgets.teamMembers;

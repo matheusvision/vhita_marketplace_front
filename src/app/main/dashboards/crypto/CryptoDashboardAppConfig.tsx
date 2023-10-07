@@ -3,6 +3,9 @@ import slices from './store';
 
 const CryptoDashboardApp = lazyWithSlices(() => import('./CryptoDashboardApp'), slices);
 
+/**
+ * The CryptoDashboardAppConfig.
+ */
 const CryptoDashboardAppConfig = {
 	settings: {
 		layout: {

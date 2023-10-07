@@ -4,6 +4,11 @@ import { PartialDeep } from 'type-fest';
 import UserModel from './UserModel';
 import { PostType } from '../types/PostType';
 
+/**
+ * The post model.
+ * @param data The post data.
+ * @returns The post model.
+ */
 function PostModel(data: PartialDeep<PostType>) {
 	data = data || {};
 

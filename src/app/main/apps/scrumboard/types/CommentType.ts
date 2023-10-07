@@ -1,3 +1,6 @@
+/**
+ * Comment Type
+ */
 export type CommentType = {
 	id: string;
 	type: string;
@@ -6,4 +9,7 @@ export type CommentType = {
 	time: number;
 };
 
+/**
+ * Comments Type
+ */
 export type CommentsType = CommentType[];

@@ -3,6 +3,11 @@ import IconButton from '@mui/material/IconButton';
 import { Outlet } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
+/**
+ * The contacts sidebar content.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function ContactsSidebarContent() {
 	return (
 		<div className="flex flex-col flex-auto max-w-full w-md">

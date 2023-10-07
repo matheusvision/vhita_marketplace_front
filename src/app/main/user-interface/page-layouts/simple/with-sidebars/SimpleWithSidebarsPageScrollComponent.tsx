@@ -19,6 +19,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-sidebarContent': {}
 }));
 
+/**
+ * The SimpleWithSidebarsPageScroll page.
+ */
 function SimpleWithSidebarsPageScrollComponent() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 

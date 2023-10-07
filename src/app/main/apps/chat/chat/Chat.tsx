@@ -97,6 +97,9 @@ type ChatPropsType = {
 	className?: string;
 };
 
+/**
+ * The Chat App.
+ */
 function Chat(props: ChatPropsType) {
 	const { className } = props;
 

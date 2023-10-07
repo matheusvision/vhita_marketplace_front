@@ -1,3 +1,6 @@
+/**
+ * Search Item Type
+ */
 type SearchItemType = {
 	id: string;
 	title: string;

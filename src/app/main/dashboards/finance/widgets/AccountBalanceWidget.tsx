@@ -7,6 +7,11 @@ import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * The AccountBalanceWidget widget.
+ *
+ * @returns {JSX.Element} The AccountBalanceWidget widget.
+ */
 function AccountBalanceWidget() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);

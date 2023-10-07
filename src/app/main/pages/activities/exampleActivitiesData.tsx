@@ -1,6 +1,9 @@
 import sub from 'date-fns/sub';
 import ActivityItemType from './ActivityItemType';
 
+/**
+ * The example activities data.
+ */
 const exampleActivitiesData: ActivityItemType[] = [
 	{
 		id: '493190c9-5b61-4912-afe5-78c21f1044d7',

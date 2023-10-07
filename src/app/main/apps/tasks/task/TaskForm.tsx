@@ -48,6 +48,10 @@ const schema = yup.object().shape({
 	order: yup.number()
 });
 
+/**
+ * The task form.
+ * @returns The jsx component.
+ */
 function TaskForm() {
 	const task = useAppSelector(selectTask);
 	const tags = useAppSelector(selectTags);

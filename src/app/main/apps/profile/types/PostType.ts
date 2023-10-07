@@ -3,6 +3,9 @@ import { MediaType } from './MediaType';
 import { ArticleType } from './ArticleType';
 import { CommentsType } from './CommentType';
 
+/**
+ * The Post type definition.
+ */
 export type PostType = {
 	id: string;
 	user: UserType;

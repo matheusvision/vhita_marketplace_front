@@ -10,6 +10,9 @@ i18next.addResourceBundle('en', 'navigation', en);
 i18next.addResourceBundle('tr', 'navigation', tr);
 i18next.addResourceBundle('ar', 'navigation', ar);
 
+/**
+ * The navigationConfig object is an array of navigation items for the Fuse application.
+ */
 const navigationConfig: FuseNavigationType = [
 	{
 		id: 'dashboards',

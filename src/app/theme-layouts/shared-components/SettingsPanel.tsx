@@ -91,6 +91,11 @@ const Transition = forwardRef((props: TransitionProps, ref) => {
 	);
 });
 
+/**
+ * The settings panel.
+ *
+ * @returns The settings panel.
+ */
 function SettingsPanel() {
 	const theme = useTheme();
 	const [open, setOpen] = useState('');

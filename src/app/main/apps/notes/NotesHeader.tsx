@@ -12,6 +12,11 @@ type NotesHeaderProps = {
 	onSetSidebarOpen: (open: boolean) => void;
 };
 
+/**
+ * The notes header.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function NotesHeader(props: NotesHeaderProps) {
 	const { onSetSidebarOpen } = props;
 

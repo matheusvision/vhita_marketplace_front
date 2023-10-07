@@ -1,3 +1,6 @@
+/**
+ * ChatMessageType
+ */
 export type ChatMessageType = {
 	id: string;
 	chatId: string;

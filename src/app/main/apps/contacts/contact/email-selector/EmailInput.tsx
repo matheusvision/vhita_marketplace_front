@@ -26,6 +26,12 @@ type EmailInputProps = {
 	hideRemove?: boolean;
 };
 
+/**
+ * The email input.
+ *
+ * @param {EmailInputProps} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function EmailInput(props: EmailInputProps) {
 	const { value, hideRemove, onChange, onRemove } = props;
 

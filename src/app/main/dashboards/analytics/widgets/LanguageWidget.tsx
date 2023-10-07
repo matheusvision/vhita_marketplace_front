@@ -9,6 +9,11 @@ import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * Language widget.
+ *
+ * @returns {JSX.Element} The language widget.
+ */
 function LanguageWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { series, labels, uniqueVisitors } = widgets.language;

@@ -4,6 +4,11 @@ import { PartialDeep } from 'type-fest';
 import UserModel from './UserModel';
 import { ActivityType } from '../types/ActivityType';
 
+/**
+ * The activity model.
+ * @param data The activity data.
+ * @returns The activity model.
+ */
 function ActivityModel(data: PartialDeep<ActivityType>) {
 	data = data || {};
 

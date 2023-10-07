@@ -24,6 +24,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The classic reset password page.
+ */
 function ClassicResetPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

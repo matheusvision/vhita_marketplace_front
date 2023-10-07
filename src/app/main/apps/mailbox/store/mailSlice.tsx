@@ -10,6 +10,9 @@ import RouteParamsType from '../types/RouteParamsType';
 
 export type AppRootStateType = RootStateType<mailSliceType>;
 
+/**
+ * Get mail from server
+ */
 export const getMail = createAppAsyncThunk<MailType, RouteParamsType>(
 	'mailboxApp/mail/getMail',
 	async (routeParams) => {
@@ -42,6 +45,9 @@ export const getMail = createAppAsyncThunk<MailType, RouteParamsType>(
 
 const initialState: MailType = null;
 
+/**
+ * The Mailbox App mail slice.
+ */
 const mailSlice = createSlice({
 	name: 'mailboxApp/mail',
 	initialState,

@@ -16,6 +16,11 @@ import AgeWidget from './widgets/AgeWidget';
 import LanguageWidget from './widgets/LanguageWidget';
 import GenderWidget from './widgets/GenderWidget';
 
+/**
+ * The analytics dashboard app.
+ *
+ * @returns {JSX.Element} The analytics dashboard app.
+ */
 function AnalyticsDashboardApp() {
 	const dispatch = useAppDispatch();
 	const widgets = useAppSelector(selectWidgets);

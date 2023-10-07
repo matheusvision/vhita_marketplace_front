@@ -37,6 +37,9 @@ const defaultValues = {
 	remember: true
 };
 
+/**
+ * The split screen reversed sign in page.
+ */
 function SplitScreenReversedSignInPage() {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',

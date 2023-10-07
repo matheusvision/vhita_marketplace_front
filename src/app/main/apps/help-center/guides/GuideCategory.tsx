@@ -7,6 +7,10 @@ import { getGuides, selectGuides } from '../store/guidesSlice';
 import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
 import GuideListMenu from './GuideListMenu';
 
+/**
+ * The guide category.
+ * @returns The jsx component.
+ */
 function GuideCategory() {
 	const navigate = useNavigate();
 

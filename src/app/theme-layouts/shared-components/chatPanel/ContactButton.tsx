@@ -75,6 +75,10 @@ type ContactButtonProps = {
 	selectedContactId: string;
 	onClick: (id: string) => void;
 };
+
+/**
+ * Contact button component.
+ */
 function ContactButton(props: ContactButtonProps) {
 	const { contact, selectedContactId, onClick } = props;
 

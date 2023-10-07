@@ -12,6 +12,11 @@ import Button from '@mui/material/Button';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * The RecentTransactionsWidget widget.
+ *
+ * @returns {JSX.Element} The RecentTransactionsWidget widget.
+ */
 function RecentTransactionsWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { columns, rows } = widgets.recentTransactions;

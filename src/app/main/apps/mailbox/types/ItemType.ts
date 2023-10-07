@@ -1,3 +1,6 @@
+/**
+ * Item Type
+ */
 type ItemType =
 	| 'important'
 	| 'starred'

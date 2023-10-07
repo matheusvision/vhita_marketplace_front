@@ -8,10 +8,19 @@ import { AxiosError } from 'axios';
 import { UserType } from 'app/store/user';
 import jwtService from './services/jwtService';
 
+/**
+ * The AuthContext object is a React context object that provides authentication information to child components.
+ */
 const AuthContext = React.createContext({});
 
 type AuthProviderProps = { children: ReactNode };
 
+/**
+ * The AuthProvider component is a wrapper component that provides authentication information to child components.
+ * @param props The props for the AuthProvider component.
+ * @param props.children The child components to be wrapped by the AuthProvider component.
+ * @returns A React component that provides authentication information to child components.
+ */
 function AuthProvider(props: AuthProviderProps) {
 	const { children } = props;
 	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(undefined);

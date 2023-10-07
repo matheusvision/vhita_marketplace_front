@@ -3,6 +3,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useFormContext } from 'react-hook-form';
 import { ProductType } from '../../types/ProductType';
 
+/**
+ * The basic info tab.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function BasicInfoTab() {
 	const methods = useFormContext();
 	const { control, formState } = methods;

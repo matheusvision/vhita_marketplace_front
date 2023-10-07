@@ -8,6 +8,9 @@ import { FaqsType, FaqType } from '../types/FaqType';
 
 export type AppRootStateType = RootStateType<faqsSliceType>;
 
+/**
+ * Get Faqs from server
+ */
 export const getFaqs = createAppAsyncThunk<FaqsType>('helpCenterApp/faqs/getFaqs', async () => {
 	const response = await axios.get('api/help-center/faqs');
 
@@ -24,6 +27,9 @@ export const { selectAll: selectFaqs, selectById: selectFaqById } = faqsAdapter.
 
 const initialState = faqsAdapter.getInitialState();
 
+/**
+ * The Help Center App faqs slice.
+ */
 const faqsSlice = createSlice({
 	name: 'helpCenterApp/faqs',
 	initialState,

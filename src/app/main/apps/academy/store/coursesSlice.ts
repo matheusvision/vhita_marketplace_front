@@ -6,6 +6,9 @@ import CourseType from '../types/CourseType';
 
 type AppRootStateType = RootStateType<CoursesSliceType>;
 
+/**
+ * Gets the courses.
+ */
 export const getCourses = createAppAsyncThunk('academyApp/courses/getCourses', async () => {
 	const response = await axios.get('/api/academy/courses');
 
@@ -22,6 +25,9 @@ export const { selectAll: selectCourses, selectById: selectCourseById } = course
 	(state: AppRootStateType) => state.academyApp.courses
 );
 
+/**
+ * The Academy App courses slice.
+ */
 const coursesSlice = createSlice({
 	name: 'academyApp/courses',
 	initialState,

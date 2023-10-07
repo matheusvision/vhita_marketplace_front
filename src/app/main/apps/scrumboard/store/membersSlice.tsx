@@ -23,6 +23,9 @@ export const { selectAll: selectMembers, selectById } = membersAdapter.getSelect
 	(state: AppRootStateType) => state.scrumboardApp.members
 );
 
+/**
+ * The Scrumboard Members Slice.
+ */
 const membersSlice = createSlice({
 	name: 'scrumboardApp/members',
 	initialState: membersAdapter.getInitialState({}),

@@ -1,5 +1,8 @@
 import { ReactNode } from 'react';
 
+/**
+ * The type of the ModernPricingItemType.
+ */
 export type ModernPricingItemType = {
 	period?: 'month' | 'year';
 	title?: string;

@@ -6,6 +6,9 @@ import { ProductType, ProductsType } from '../types/ProductType';
 
 export type AppRootStateType = RootStateType<productsSliceType>;
 
+/**
+ * Get products from server
+ */
 export const getProducts = createAppAsyncThunk<ProductsType>('eCommerceApp/products/getProducts', async () => {
 	const response = await axios.get('/api/ecommerce/products');
 	const data = (await response.data) as ProductsType;
@@ -13,6 +16,9 @@ export const getProducts = createAppAsyncThunk<ProductsType>('eCommerceApp/produ
 	return data;
 });
 
+/**
+ * Remove products
+ */
 export const removeProducts = createAppAsyncThunk<string[], string[]>('eCommerceApp/products', async (productIds) => {
 	await axios.delete('/api/ecommerce/products', { data: productIds });
 
@@ -29,6 +35,9 @@ const initialState = productsAdapter.getInitialState({
 	searchText: ''
 });
 
+/**
+ * The E-Commerce products slice.
+ */
 const productsSlice = createSlice({
 	name: 'eCommerceApp/products',
 	initialState,

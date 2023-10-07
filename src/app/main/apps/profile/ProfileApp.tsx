@@ -24,6 +24,10 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The profile page.
+ *
+ */
 function ProfileApp() {
 	const [selectedTab, setSelectedTab] = useState(0);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));

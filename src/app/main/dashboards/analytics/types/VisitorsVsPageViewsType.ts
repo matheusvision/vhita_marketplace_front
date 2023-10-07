@@ -1,20 +1,23 @@
 type DateString = string;
 
-interface DataPoint {
+type DataPoint = {
 	x: DateString;
 	y: number;
-}
+};
 
-interface Series {
+type Series = {
 	name: string;
 	data: DataPoint[];
-}
+};
 
-interface VisitorsVsPageViewsType {
+/**
+ * Visitors Vs Page Views Type
+ */
+type VisitorsVsPageViewsType = {
 	overallScore: number;
 	averageRatio: number;
 	predictedRatio: number;
 	series: Series[];
-}
+};
 
 export default VisitorsVsPageViewsType;

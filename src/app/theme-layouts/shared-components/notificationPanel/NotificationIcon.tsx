@@ -4,6 +4,12 @@ type NotificationIconProps = {
 	value?: string;
 };
 
+/**
+ * The notification icon.
+ *
+ * @param {NotificationIconProps} props - The component props.
+ * @returns {JSX.Element} The notification icon.
+ */
 function NotificationIcon(props: NotificationIconProps) {
 	const { value } = props;
 

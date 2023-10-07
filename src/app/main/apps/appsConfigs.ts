@@ -11,6 +11,9 @@ import ProfileAppConfig from './profile/profileAppConfig';
 import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 import TasksAppConfig from './tasks/TasksAppConfig';
 
+/**
+ * The list of application configurations.
+ */
 const appsConfigs = [
 	AcademyAppConfig,
 	CalendarAppConfig,

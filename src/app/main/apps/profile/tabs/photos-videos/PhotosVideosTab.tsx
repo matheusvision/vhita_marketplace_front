@@ -9,6 +9,10 @@ import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { AlbumsType } from '../../types/AlbumType';
 
+/**
+ * The photos videos tab.
+ * @returns The jsx component.
+ */
 function PhotosVideosTab() {
 	const [data, setData] = useState<AlbumsType>(null);
 

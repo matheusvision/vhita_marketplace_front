@@ -6,6 +6,9 @@ import CategoryType from '../types/CategoryType';
 
 type AppRootStateType = RootStateType<CategorySliceType>;
 
+/**
+ * Gets the categories.
+ */
 export const getCategories = createAppAsyncThunk('academyApp/categories/getCategories', async () => {
 	const response = await axios.get('/api/academy/categories');
 
@@ -22,6 +25,9 @@ export const { selectAll: selectCategories, selectById: selectCategoryById } = c
 	(state: AppRootStateType) => state.academyApp.categories
 );
 
+/**
+ * The Academy App categories slice.
+ */
 const categorySlice = createSlice({
 	name: 'academyApp/categories',
 	initialState,

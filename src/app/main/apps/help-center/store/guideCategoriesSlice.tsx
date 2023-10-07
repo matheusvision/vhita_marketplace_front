@@ -7,6 +7,9 @@ import { GuideCategoriesType, GuideCategoryType } from '../types/GuideCategoryTy
 
 export type AppRootStateType = RootStateType<guideCategoriesSliceType>;
 
+/**
+ * Get GuideCategories from server
+ */
 export const getGuideCategories = createAppAsyncThunk<GuideCategoriesType>(
 	'helpCenterApp/guideCategories/get',
 	async () => {
@@ -24,6 +27,9 @@ export const { selectAll: selectGuideCategories, selectById: selectGuideCategori
 
 const initialState = guideCategoriesAdapter.getInitialState();
 
+/**
+ * The Help Center App guideCategories slice.
+ */
 const guideCategoriesSlice = createSlice({
 	name: 'helpCenterApp/guideCategories',
 	initialState,

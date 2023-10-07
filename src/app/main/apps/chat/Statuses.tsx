@@ -1,4 +1,16 @@
-const Statuses = [
+/**
+ * The status type.
+ */
+export type StatusType = {
+	title: string;
+	value: string;
+	color: string;
+};
+
+/**
+ * The list of statuses.
+ */
+const Statuses: StatusType[] = [
 	{
 		title: 'Online',
 		value: 'online',

@@ -11,6 +11,12 @@ type FooterLayout2Props = {
 	className?: string;
 };
 
+/**
+ * The footer layout 2.
+ *
+ * @param {FooterLayout2Props} props - The props.
+ * @returns {JSX.Element} The footer layout 2.
+ */
 function FooterLayout2(props: FooterLayout2Props) {
 	const { className = '' } = props;
 	const footerTheme = useSelector(selectFooterTheme);

@@ -42,6 +42,9 @@ const schema = yup.object().shape({
 	})
 });
 
+/**
+ * The event dialog.
+ */
 function EventDialog() {
 	const dispatch = useAppDispatch();
 	const eventDialog = useAppSelector(selectEventDialog);

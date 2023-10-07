@@ -6,6 +6,9 @@ import { OrderType, OrdersType } from '../types/OrderType';
 
 export type AppRootStateType = RootStateType<ordersSliceType>;
 
+/**
+ * Get orders from server
+ */
 export const getOrders = createAppAsyncThunk<OrdersType>('eCommerceApp/orders/getOrders', async () => {
 	const response = await axios.get('/api/ecommerce/orders');
 
@@ -14,6 +17,9 @@ export const getOrders = createAppAsyncThunk<OrdersType>('eCommerceApp/orders/ge
 	return data;
 });
 
+/**
+ * Remove orders
+ */
 export const removeOrders = createAppAsyncThunk<string[], string[]>(
 	'eCommerceApp/orders/removeOrders',
 	async (orderIds) => {
@@ -33,6 +39,9 @@ const initialState = ordersAdapter.getInitialState({
 	searchText: ''
 });
 
+/**
+ * The E-Commerce orders slice.
+ */
 const ordersSlice = createSlice({
 	name: 'eCommerceApp/orders',
 	initialState,

@@ -17,6 +17,9 @@ import { lighten } from '@mui/material/styles';
 import { useAppDispatch } from 'app/store';
 import { removeProducts } from '../store/productsSlice';
 
+/**
+ * The table head row type.
+ */
 type rowType = {
 	id: string;
 	align: 'left' | 'center' | 'right';
@@ -25,6 +28,9 @@ type rowType = {
 	sort: boolean;
 };
 
+/**
+ * The table head rows data.
+ */
 const rows: rowType[] = [
 	{
 		id: 'image',
@@ -82,6 +88,12 @@ type ProductsTableHeadPropsType = {
 	onMenuItemClick: () => void;
 };
 
+/**
+ * The products table head component.
+ *
+ * @param {ProductsTableHeadPropsType} props The props.
+ * @returns {JSX.Element} The component.
+ */
 function ProductsTableHead(props: ProductsTableHeadPropsType) {
 	const { selectedProductIds, tableOrder, onSelectAllClick, onRequestSort, rowCount, onMenuItemClick } = props;
 

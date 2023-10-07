@@ -5,6 +5,12 @@ type ToolbarMenuProps = {
 	onClose: () => void;
 	children: React.ReactNode;
 };
+
+/**
+ * The toolbar menu component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function ToolbarMenu(props: ToolbarMenuProps) {
 	const { state, onClose, children } = props;
 	return (

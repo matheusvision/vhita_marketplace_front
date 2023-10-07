@@ -5,6 +5,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import { NavLink } from 'react-router-dom';
 
+/**
+ * AdminRoleExample component renders the page for admin users.
+ */
 function AdminRoleExample() {
 	return (
 		<FusePageCarded

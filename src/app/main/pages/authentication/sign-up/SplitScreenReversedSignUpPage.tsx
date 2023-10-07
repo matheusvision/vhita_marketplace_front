@@ -37,6 +37,9 @@ const defaultValues = {
 	acceptTermsConditions: false
 };
 
+/**
+ * The split screen reversed sign up page.
+ */
 function SplitScreenReversedSignUpPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

@@ -1,3 +1,6 @@
+/**
+ * Team Member Type
+ */
 type TeamMemberType = {
 	id: string;
 	avatar: string;

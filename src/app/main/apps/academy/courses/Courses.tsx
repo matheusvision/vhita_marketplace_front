@@ -38,6 +38,11 @@ const item = {
 	}
 };
 
+/**
+ * The Courses page.
+ *
+ * @returns {JSX.Element} The Courses page.
+ */
 function Courses() {
 	const dispatch = useAppDispatch();
 	const courses = useAppSelector(selectCourses);

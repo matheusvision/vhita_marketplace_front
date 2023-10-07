@@ -13,6 +13,12 @@ type DueMenuProps = {
 	onDueChange: (dueDate: number) => void;
 	onRemoveDue: () => void;
 };
+
+/**
+ * The due menu component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function DueMenu(props: DueMenuProps) {
 	const { dueDate, onDueChange, onRemoveDue } = props;
 

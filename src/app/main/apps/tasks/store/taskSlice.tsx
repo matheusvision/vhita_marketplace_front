@@ -10,6 +10,9 @@ import { TaskType } from '../types/TaskType';
 
 export type AppRootStateType = RootStateType<taskSliceType>;
 
+/**
+ * Get task from the server.
+ */
 export const getTask = createAppAsyncThunk<TaskType, string>('tasksApp/task/getTask', async (id) => {
 	try {
 		const response = await axios.get(`/api/tasks/${id}`);
@@ -24,6 +27,9 @@ export const getTask = createAppAsyncThunk<TaskType, string>('tasksApp/task/getT
 	}
 });
 
+/**
+ * Add task to the server.
+ */
 export const addTask = createAppAsyncThunk<TaskType, PartialDeep<TaskType>>('tasksApp/tasks/addTask', async (task) => {
 	const response = await axios.post('/api/tasks', task);
 
@@ -32,6 +38,9 @@ export const addTask = createAppAsyncThunk<TaskType, PartialDeep<TaskType>>('tas
 	return data;
 });
 
+/**
+ * Update task on the server.
+ */
 export const updateTask = createAppAsyncThunk<TaskType, TaskType>('tasksApp/tasks/updateTask', async (task) => {
 	const response = await axios.put(`/api/tasks/${task.id}`, task);
 
@@ -40,6 +49,9 @@ export const updateTask = createAppAsyncThunk<TaskType, TaskType>('tasksApp/task
 	return data;
 });
 
+/**
+ * Remove task from the server.
+ */
 export const removeTask = createAppAsyncThunk<string, string>('tasksApp/tasks/removeTask', async (id) => {
 	const response = await axios.delete(`/api/tasks/${id}`);
 
@@ -50,6 +62,9 @@ export const removeTask = createAppAsyncThunk<string, string>('tasksApp/tasks/re
 
 const initialState: TaskType = null;
 
+/**
+ * The Tasks app task slice.
+ */
 const taskSlice = createSlice({
 	name: 'tasksApp/task',
 	initialState,

@@ -34,6 +34,9 @@ type MailComposeProps = {
 	className?: string;
 };
 
+/**
+ * The mail compose.
+ */
 function MailCompose(props: MailComposeProps) {
 	const { className } = props;
 	const [openDialog, setOpenDialog] = useState(false);

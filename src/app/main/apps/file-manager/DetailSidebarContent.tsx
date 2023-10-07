@@ -9,6 +9,9 @@ import Button from '@mui/material/Button';
 import { selectSelectedItem, setSelectedItem } from './store/itemsSlice';
 import ItemIcon from './ItemIcon';
 
+/**
+ * The detail sidebar content.
+ */
 function DetailSidebarContent() {
 	const dispatch = useAppDispatch();
 

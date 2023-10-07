@@ -4,6 +4,9 @@ import slices from './store';
 
 const TasksApp = lazyWithSlices(() => import('./TasksApp'), slices);
 
+/**
+ * The tasks app config.
+ */
 const TasksAppConfig = {
 	settings: {
 		layout: {

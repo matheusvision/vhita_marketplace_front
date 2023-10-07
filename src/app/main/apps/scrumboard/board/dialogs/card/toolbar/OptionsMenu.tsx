@@ -8,6 +8,11 @@ type OptionsMenuProps = {
 	onRemoveCard: () => void;
 };
 
+/**
+ * The options menu component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function OptionsMenu(props: OptionsMenuProps) {
 	const { onRemoveCard } = props;
 

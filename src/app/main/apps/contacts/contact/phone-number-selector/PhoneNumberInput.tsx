@@ -29,6 +29,12 @@ type PhoneNumberInputProps = {
 	error?: boolean;
 };
 
+/**
+ * The phone number input.
+ *
+ * @param {PhoneNumberInputProps} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function PhoneNumberInput(props: PhoneNumberInputProps) {
 	const { value, hideRemove, onChange, onRemove } = props;
 

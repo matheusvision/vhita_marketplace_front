@@ -1,6 +1,9 @@
 import StaffRoleExample from './StaffRoleExample';
 import authRoles from '../../../auth/authRoles';
 
+/**
+ * StaffRoleExampleConfig
+ */
 const StaffRoleExampleConfig = {
 	settings: {
 		layout: {

@@ -19,6 +19,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * THe classic forgot password page.
+ */
 function ClassicForgotPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

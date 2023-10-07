@@ -4,6 +4,11 @@ import { PartialDeep } from 'type-fest';
 import UserModel from './UserModel';
 import { CommentType } from '../types/CommentType';
 
+/**
+ * The comment model.
+ * @param data The comment data.
+ * @returns The comment model.
+ */
 function CommentModel(data: PartialDeep<CommentType>) {
 	data = data || {};
 

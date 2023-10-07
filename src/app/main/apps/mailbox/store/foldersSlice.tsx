@@ -7,6 +7,9 @@ import { FolderType, FoldersType } from '../types/FolderType';
 
 export type AppRootStateType = RootStateType<foldersSliceType>;
 
+/**
+ * Get folders from server
+ */
 export const getFolders = createAppAsyncThunk<FoldersType>('mailboxApp/folders/getFolders', async () => {
 	const response = await axios.get('/api/mailbox/folders');
 
@@ -23,6 +26,9 @@ export const { selectAll: selectFolders, selectById: selectFolderById } = folder
 
 const initialState = foldersAdapter.getInitialState();
 
+/**
+ * The Mailbox App folders slice.
+ */
 const foldersSlice = createSlice({
 	name: 'mailboxApp/folders',
 	initialState,

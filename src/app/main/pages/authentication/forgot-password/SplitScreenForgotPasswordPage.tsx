@@ -22,6 +22,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The modern forgot password page.
+ */
 function SplitScreenForgotPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

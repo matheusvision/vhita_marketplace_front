@@ -29,6 +29,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The split screen reversed unlock session page.
+ */
 function SplitScreenReversedUnlockSessionPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

@@ -47,6 +47,9 @@ type PageLayoutOverviewProps = {
 	layoutOptions: LayoutOptionType;
 };
 
+/**
+ * The PageLayoutOverview page.
+ */
 function PageLayoutOverview(props: PageLayoutOverviewProps) {
 	const { layoutOptions } = props;
 

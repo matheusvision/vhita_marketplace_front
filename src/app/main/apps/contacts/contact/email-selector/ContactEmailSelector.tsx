@@ -12,6 +12,12 @@ type ContactEmailSelectorProps = {
 	className?: string;
 };
 
+/**
+ * The contact email selector.
+ *
+ * @param {ContactEmailSelectorProps} props The props.
+ * @returns {JSX.Element} The component.
+ */
 const ContactEmailSelector = forwardRef((props: ContactEmailSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className } = props;
 

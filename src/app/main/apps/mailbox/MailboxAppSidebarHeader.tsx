@@ -7,11 +7,19 @@ import { ChangeEvent, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+/**
+ * Sample accounts data.
+ */
 const accounts = {
 	creapond: 'johndoe@creapond.com',
 	withinpixels: 'johndoe@withinpixels.com'
 };
 
+/**
+ * The mailbox app sidebar header.
+ *
+ * @returns {JSX.Element}
+ */
 function MailboxAppSidebarHeader() {
 	const [selectedAccount, setSelectedCount] = useState('creapond');
 	const { t } = useTranslation('mailboxApp');

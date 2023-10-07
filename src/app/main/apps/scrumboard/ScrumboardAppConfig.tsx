@@ -7,6 +7,9 @@ const ScrumboardApp = lazyWithSlices(() => import('./ScrumboardApp'), slices);
 const Board = lazy(() => import('./board/Board'));
 const Boards = lazy(() => import('./boards/Boards'));
 
+/**
+ * The scrumboard app config.
+ */
 const ScrumboardAppConfig = {
 	settings: {
 		layout: {}

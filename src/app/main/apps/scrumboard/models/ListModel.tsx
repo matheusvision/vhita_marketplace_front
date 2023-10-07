@@ -1,6 +1,11 @@
 import _ from '@lodash';
 import { ListType } from '../types/ListType';
 
+/**
+ * The list model.
+ * @param data The list data.
+ * @returns The list model.
+ */
 function ListModel(data: Partial<ListType>) {
 	data = data || {};
 

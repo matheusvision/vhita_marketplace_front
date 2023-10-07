@@ -6,6 +6,9 @@ import { FaqCategoryType, FaqCategoriesType } from '../types/FaqCategoryType';
 
 export type AppRootStateType = RootStateType<faqCategoriesSliceType>;
 
+/**
+ * Get FaqCategories from server
+ */
 export const getFaqCategories = createAppAsyncThunk<FaqCategoriesType>('helpCenterApp/faqCategories/get', async () => {
 	const response = await axios.get('api/help-center/faqs/categories');
 
@@ -19,8 +22,12 @@ const faqCategoriesAdapter = createEntityAdapter<FaqCategoryType>({});
 export const { selectAll: selectFaqCategories, selectById: selectFaqCategoryById } = faqCategoriesAdapter.getSelectors(
 	(state: AppRootStateType) => state.helpCenterApp.faqCategories
 );
+
 const initialState = faqCategoriesAdapter.getInitialState();
 
+/**
+ * The Help Center App faqCategories slice.
+ */
 const faqCategoriesSlice = createSlice({
 	name: 'helpCenterApp/faqCategories',
 	initialState,

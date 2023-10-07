@@ -14,6 +14,10 @@ import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ProfileType } from '../../types/ProfileType';
 
+/**
+ * The about tab.
+ * @returns The jsx component.
+ */
 function AboutTab() {
 	const [profile, setProfile] = useState<ProfileType>();
 

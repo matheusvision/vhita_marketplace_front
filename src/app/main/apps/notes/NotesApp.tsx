@@ -20,6 +20,10 @@ const Root = styled(FusePageCarded)(() => ({
 	'& .FusePageCarded-leftSidebar': {}
 }));
 
+/**
+ * The notes app.
+ * @returns The jsx component.
+ */
 function NotesApp() {
 	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));

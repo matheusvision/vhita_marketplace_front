@@ -24,6 +24,12 @@ type ProductsTableProps = WithRouterProps & {
 	navigate: (path: string) => void;
 };
 
+/**
+ * The products table.
+ *
+ * @param {ProductsTableProps} props The props.
+ * @returns {JSX.Element} The component.
+ */
 function ProductsTable(props: ProductsTableProps) {
 	const { navigate } = props;
 	const dispatch = useAppDispatch();

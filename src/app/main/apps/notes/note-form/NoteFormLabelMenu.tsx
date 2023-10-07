@@ -16,6 +16,11 @@ type NoteFormLabelMenuProps = {
 	onChange: (T: NoteType['labels']) => void;
 };
 
+/**
+ * The note form label menu.
+ * @param props The component props.
+ * @returns The JSX element.
+ */
 function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
 	const { note, onChange } = props;
 	const labels = useAppSelector(selectLabels);

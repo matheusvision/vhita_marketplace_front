@@ -17,6 +17,9 @@ import { useAppDispatch } from 'app/store';
 import Box from '@mui/material/Box';
 import { removeOrders } from '../store/ordersSlice';
 
+/**
+ * The row type.
+ */
 type rowType = {
 	id: string;
 	align: 'left' | 'center' | 'right';
@@ -25,6 +28,9 @@ type rowType = {
 	sort: boolean;
 };
 
+/**
+ * The rows.
+ */
 const rows: rowType[] = [
 	{
 		id: 'id',
@@ -89,6 +95,12 @@ type OrdersTableHeadProps = {
 	onMenuItemClick: () => void;
 };
 
+/**
+ * The orders table head.
+ *
+ * @param {OrdersTableHeadProps} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function OrdersTableHead(props: OrdersTableHeadProps) {
 	const { selectedOrderIds, onRequestSort, onSelectAllClick, tableOrder, rowCount, onMenuItemClick } = props;
 	const numSelected = selectedOrderIds.length;

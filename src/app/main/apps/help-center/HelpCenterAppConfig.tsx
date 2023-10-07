@@ -10,6 +10,9 @@ import slices from './store';
 
 const HelpCenterApp = lazyWithSlices(() => import('./HelpCenterApp'), slices);
 
+/**
+ * The help center app config.
+ */
 const HelpCenterAppConfig = {
 	settings: {
 		layout: {}

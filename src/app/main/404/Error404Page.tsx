@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
+/**
+ * The Error404Page component renders a custom 404 error page.
+ * @returns A React JSX element that represents the 404 error page.
+ */
 function Error404Page() {
 	return (
 		<div className="flex flex-1 flex-col items-center justify-center p-16">

@@ -7,6 +7,9 @@ const AcademyApp = lazyWithSlices(() => import('./AcademyApp'), slices);
 const Course = lazy(() => import('./course/Course'));
 const Courses = lazy(() => import('./courses/Courses'));
 
+/**
+ * The Academy app config.
+ */
 const AcademyAppConfig = {
 	settings: {
 		layout: {}

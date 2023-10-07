@@ -6,6 +6,10 @@ import { reorderList, selectTasks } from './store/tasksSlice';
 import TaskListItem from './TaskListItem';
 import SectionListItem from './SectionListItem';
 
+/**
+ * The tasks list.
+ * @returns The jsx component.
+ */
 function TasksList() {
 	const dispatch = useAppDispatch();
 	const tasks = useAppSelector(selectTasks);

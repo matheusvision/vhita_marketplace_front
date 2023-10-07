@@ -6,6 +6,9 @@ import { LabelType, LabelsType } from '../types/LabelType';
 
 export type AppRootStateType = RootStateType<labelsSliceType>;
 
+/**
+ * Get labels from server
+ */
 export const getLabels = createAppAsyncThunk<LabelsType>('mailboxApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/mailbox/labels');
 
@@ -24,6 +27,9 @@ export const {
 	selectById
 } = labelsAdapter.getSelectors((state: AppRootStateType) => state.mailboxApp.labels);
 
+/**
+ * The Mailbox App labels slice.
+ */
 const labelsSlice = createSlice({
 	name: 'mailboxApp/labels',
 	initialState,

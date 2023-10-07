@@ -13,6 +13,10 @@ import { useEffect } from 'react';
 import { getFaqsMost, selectFaqsMost } from '../store/faqsMostSlice';
 import FaqList from '../faqs/FaqList';
 
+/**
+ * The help center home.
+ * @returns The jsx component.
+ */
 function HelpCenterHome() {
 	const mainThemeDark = useAppSelector(selectMainThemeDark);
 	const dispatch = useAppDispatch();

@@ -40,6 +40,10 @@ import { MemberType, MembersType } from '../../../types/MemberType';
 import { ChecklistsType } from '../../../types/ChecklistType';
 import { CommentsType } from '../../../types/CommentType';
 
+/**
+ * The board card form component.
+ * @returns The jsx component.
+ */
 function BoardCardForm() {
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);

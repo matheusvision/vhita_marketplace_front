@@ -8,11 +8,17 @@ import { NotesType, NoteType } from '../types/NoteType';
 
 export type AppRootStateType = RootStateType<notesSliceType>;
 
+/**
+ * Route params type
+ */
 export type RouteParamsType = {
 	filter: string;
 	id: string;
 };
 
+/**
+ * Get notes from server
+ */
 export const getNotes = createAppAsyncThunk<NotesType, RouteParamsType>(
 	'notesApp/notes/getNotes',
 	async (routeParams) => {
@@ -44,6 +50,9 @@ export const getNotes = createAppAsyncThunk<NotesType, RouteParamsType>(
 	}
 );
 
+/**
+ * Create new note
+ */
 export const createNote = createAppAsyncThunk<NoteType, PartialDeep<NoteType>>(
 	'notesApp/notes/createNote',
 	async (note) => {
@@ -55,6 +64,9 @@ export const createNote = createAppAsyncThunk<NoteType, PartialDeep<NoteType>>(
 	}
 );
 
+/**
+ * Update note
+ */
 export const updateNote = createAppAsyncThunk<NoteType, PartialDeep<NoteType>>(
 	'notesApp/notes/updateNote',
 	async (note) => {
@@ -66,6 +78,9 @@ export const updateNote = createAppAsyncThunk<NoteType, PartialDeep<NoteType>>(
 	}
 );
 
+/**
+ * Remove note
+ */
 export const removeNote = createAppAsyncThunk<string, string>('notesApp/notes/removeNote', async (id, { dispatch }) => {
 	const response = await axios.delete(`/api/notes/${id}`);
 
@@ -94,6 +109,9 @@ const initialState = notesAdapter.getInitialState<{
 	variateDescSize: true
 });
 
+/**
+ * The Notes App notes slice.
+ */
 const notesSlice = createSlice({
 	name: 'notesApp/notes',
 	initialState,

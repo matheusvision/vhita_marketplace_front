@@ -6,6 +6,9 @@ import { LabelType, LabelsType } from '../types/LabelType';
 
 type AppRootStateType = RootStateType<LabelsSliceType>;
 
+/**
+ * Get Labels
+ */
 export const getLabels = createAppAsyncThunk<LabelsType, string>('scrumboardApp/labels/getLabels', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/labels`);
 	const data = (await response.data) as LabelsType;
@@ -19,6 +22,9 @@ export const { selectAll: selectLabels, selectById } = labelsAdapter.getSelector
 	(state: AppRootStateType) => state.scrumboardApp.labels
 );
 
+/**
+ * The Scrumboard Labels Slice.
+ */
 const labelsSlice = createSlice({
 	name: 'scrumboardApp/labels',
 	initialState: labelsAdapter.getInitialState({}),

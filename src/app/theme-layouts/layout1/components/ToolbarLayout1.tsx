@@ -22,6 +22,12 @@ type ToolbarLayout1Props = {
 	className?: string;
 };
 
+/**
+ * The toolbar layout 1.
+ *
+ * @param {ToolbarLayout1Props} props - The props.
+ * @returns {JSX.Element} The toolbar layout 1.
+ */
 function ToolbarLayout1(props: ToolbarLayout1Props) {
 	const { className } = props;
 	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);

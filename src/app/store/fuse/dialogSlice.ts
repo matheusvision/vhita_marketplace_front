@@ -3,11 +3,17 @@ import { RootStateType } from 'app/store/types';
 import { DialogProps } from '@mui/material';
 import { ReactNode } from 'react';
 
+/**
+ * The initial state of the dialog slice.
+ */
 const initialState: DialogProps = {
 	open: false,
 	children: null
 };
 
+/**
+ * The Dialog slice
+ */
 const dialogSlice = createSlice({
 	name: 'dialog',
 	initialState,

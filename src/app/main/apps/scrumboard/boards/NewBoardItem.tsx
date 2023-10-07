@@ -3,6 +3,10 @@ import Box from '@mui/material/Box';
 import { useAppDispatch } from 'app/store';
 import { newBoard } from '../store/boardsSlice';
 
+/**
+ * The new board item component.
+ * @returns The jsx component.
+ */
 function NewBoardItem() {
 	const dispatch = useAppDispatch();
 

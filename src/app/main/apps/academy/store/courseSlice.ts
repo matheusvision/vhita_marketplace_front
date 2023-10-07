@@ -8,6 +8,9 @@ import CourseType from '../types/CourseType';
 
 type AppRootStateType = RootStateType<CourseSliceType>;
 
+/**
+ * Gets the course.
+ */
 export const getCourse = createAppAsyncThunk('academyApp/course/getCourse', async (courseId: string) => {
 	const response = await axios.get(`/api/academy/courses/${courseId}`);
 
@@ -16,6 +19,9 @@ export const getCourse = createAppAsyncThunk('academyApp/course/getCourse', asyn
 	return data;
 });
 
+/**
+ * Updates the course.
+ */
 export const updateCourse = createAppAsyncThunk<CourseType, PartialDeep<CourseType>>(
 	'academyApp/course/updateCourse',
 	async (_data, { getState, dispatch }) => {
@@ -34,6 +40,9 @@ export const updateCourse = createAppAsyncThunk<CourseType, PartialDeep<CourseTy
 
 const initialState: CourseType = null;
 
+/**
+ * The Academy App course slice.
+ */
 const courseSlice = createSlice({
 	name: 'academyApp/course',
 	initialState,

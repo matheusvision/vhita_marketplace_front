@@ -3,6 +3,12 @@ import { DeepPartial } from 'react-hook-form';
 import formatISO from 'date-fns/formatISO';
 import { EventType } from '../types/EventType';
 
+/**
+ * The event model.
+ *
+ * @param {DeepPartial<EventType>} data - The data.
+ * @returns {EventType} The event model.
+ */
 const EventModel = (data?: DeepPartial<EventType>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),

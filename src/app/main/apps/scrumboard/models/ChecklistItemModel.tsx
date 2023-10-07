@@ -3,6 +3,11 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { CheckListItemType } from '../types/CheckListItemType';
 
+/**
+ * The checklist item model.
+ * @param data The checklist item data.
+ * @returns The checklist item model.
+ */
 function ChecklistItemModel(data: PartialDeep<CheckListItemType>) {
 	data = data || {};
 

@@ -1,7 +1,9 @@
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
-
+/**
+ * The classic confirmation required page.
+ */
 function ClassicConfirmationRequiredPage() {
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center">

@@ -1,17 +1,18 @@
-// Define the AvailableOption type
-
 type AvailableOption = {
 	value: string;
 	title: string;
 };
 
-// Define the Option type
 type Option = {
 	description: string;
 	link: string;
 	component?: React.ComponentType<unknown>;
 };
 
+/**
+ * LayoutOptionType specifies the interface for customizing options across different
+ * components in the layout.
+ */
 export type LayoutOptionType = {
 	title: string;
 	description: string;

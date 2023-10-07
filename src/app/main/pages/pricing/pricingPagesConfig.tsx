@@ -6,6 +6,9 @@ import SimplePricingPage from './simple/SimplePricingPage';
 import SinglePricingPage from './single/SinglePricingPage';
 import TablePricingPage from './table/TablePricingPage';
 
+/**
+ * The pricing pages config.
+ */
 const pricingPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

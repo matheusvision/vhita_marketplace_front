@@ -1,18 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
 
+/**
+ * The type definition for the initial state of the navbar slice.
+ */
 type initialStateProps = {
 	open: boolean;
 	mobileOpen: boolean;
 	foldedOpen: boolean;
 };
 
+/**
+ * The initial state of the navbar slice.
+ */
 const initialState: initialStateProps = {
 	open: true,
 	mobileOpen: false,
 	foldedOpen: false
 };
 
+/**
+ * The navbar slice.
+ */
 const navbarSlice = createSlice({
 	name: 'navbar',
 	initialState,

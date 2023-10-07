@@ -20,6 +20,10 @@ const schema = yup.object().shape({
 	email: yup.string().email('You must enter a valid email').required('You must enter a email')
 });
 
+/**
+ * The help center support.
+ * @returns The jsx component.
+ */
 function HelpCenterSupport() {
 	const { control, handleSubmit, watch, formState } = useForm({
 		mode: 'onChange',

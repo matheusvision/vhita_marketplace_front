@@ -11,6 +11,11 @@ import { UserType } from 'app/store/user';
 import jwtService from '../../auth/services/jwtService';
 import createAppAsyncThunk from '../createAppAsyncThunk';
 
+/**
+ * Sets the user data in the Redux store and updates the login redirect URL if provided.
+ * @param user - Optional user object to set in the store.
+ * @returns A Promise that resolves with the user object.
+ */
 export const setUser = createAsyncThunk('user/setUser', (user?: UserType) => {
 	/*
     You can redirect the logged-in user to a specific route depending on his role
@@ -22,6 +27,12 @@ export const setUser = createAsyncThunk('user/setUser', (user?: UserType) => {
 	return Promise.resolve(user);
 });
 
+/**
+ * Updates the user's settings in the Redux store and returns the updated user object.
+ * @param settings - The new settings to update for the user.
+ * @param thunkApi - The Redux Thunk API.
+ * @returns A Promise that resolves with the updated user object.
+ */
 export const updateUserSettings = createAppAsyncThunk(
 	'user/updateSettings',
 	async (settings: FuseSettingsConfigType, thunkApi) => {
@@ -36,6 +47,12 @@ export const updateUserSettings = createAppAsyncThunk(
 	}
 );
 
+/**
+ * Updates the user's shortcuts in the Redux store and returns the updated user object.
+ * @param shortcuts - The new shortcuts to update for the user.
+ * @param thunkApi - The Redux Thunk API.
+ * @returns A Promise that resolves with the updated user object.
+ */
 export const updateUserShortcuts = createAppAsyncThunk(
 	'user/updateShortucts',
 	async (shortcuts: string[], thunkApi) => {
@@ -55,6 +72,10 @@ export const updateUserShortcuts = createAppAsyncThunk(
 	}
 );
 
+/**
+ * Logs the user out and resets the Redux store.
+ * @returns A Promise that resolves with the user object.
+ */
 export const logoutUser = () => async (dispatch: AppDispatchType, getState: () => RootStateType) => {
 	const { user } = getState();
 
@@ -72,6 +93,11 @@ export const logoutUser = () => async (dispatch: AppDispatchType, getState: () =
 	return Promise.resolve(dispatch(userLoggedOut()));
 };
 
+/**
+ * Updates the user's data in the Redux store and returns the updated user object.
+ * @param user
+ * @returns
+ */
 export const updateUserData = (user: UserType) => async (dispatch: AppDispatchType) => {
 	if (!user.role || user.role.length === 0) {
 		// is guest
@@ -88,6 +114,9 @@ export const updateUserData = (user: UserType) => async (dispatch: AppDispatchTy
 		});
 };
 
+/**
+ * The initial state of the user slice.
+ */
 const initialState: UserType = {
 	role: [], // guest
 	data: {
@@ -98,6 +127,9 @@ const initialState: UserType = {
 	}
 };
 
+/**
+ * The User slice
+ */
 const userSlice = createSlice({
 	name: 'user',
 	initialState,

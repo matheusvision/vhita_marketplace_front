@@ -2,6 +2,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from 'framer-motion';
 
+/**
+ * The powered by links.
+ *
+ * @returns {JSX.Element} The powered by links.
+ */
 function PoweredByLinks() {
 	const container = {
 		show: {

@@ -7,6 +7,9 @@ import { ContactType } from '../types/ContactType';
 import ContactModel from '../models/ContactModel';
 import { AppRootStateType } from '.';
 
+/**
+ * Get contacts from server
+ */
 export const getContact = createAppAsyncThunk<ContactType, string>('contactsApp/task/getContact', async (id) => {
 	try {
 		const response = await axios.get(`/api/contacts/${id}`);
@@ -21,6 +24,9 @@ export const getContact = createAppAsyncThunk<ContactType, string>('contactsApp/
 	}
 });
 
+/**
+ * Add contact
+ */
 export const addContact = createAppAsyncThunk<ContactType, ContactType>(
 	'contactsApp/contacts/addContact',
 	async (contact) => {
@@ -32,6 +38,9 @@ export const addContact = createAppAsyncThunk<ContactType, ContactType>(
 	}
 );
 
+/**
+ * Update contact
+ */
 export const updateContact = createAppAsyncThunk<ContactType, DeepPartial<ContactType>>(
 	'contactsApp/contacts/updateContact',
 	async (contact) => {
@@ -43,6 +52,9 @@ export const updateContact = createAppAsyncThunk<ContactType, DeepPartial<Contac
 	}
 );
 
+/**
+ * Remove contact
+ */
 export const removeContact = createAppAsyncThunk<string, string>('contactsApp/contacts/removeContact', async (id) => {
 	const response = await axios.delete(`/api/contacts/${id}`);
 
@@ -53,6 +65,9 @@ export const removeContact = createAppAsyncThunk<string, string>('contactsApp/co
 
 const initialState: ContactType = null;
 
+/**
+ * The Contacts App Contact slice.
+ */
 const contactSlice = createSlice({
 	name: 'contactsApp/contact',
 	initialState,

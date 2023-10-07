@@ -2,6 +2,9 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 
+/**
+ * GuestRoleExample component renders the page for guest users.
+ */
 function GuestRoleExample() {
 	return (
 		<FusePageCarded
@@ -26,24 +29,24 @@ function GuestRoleExample() {
 						className="language-js"
 					>
 						{`
-            import {authRoles} from 'auth';
-            import GuestRoleExample from './StaffRoleExample';
+					import {authRoles} from 'auth';
+					import GuestRoleExample from './StaffRoleExample';
 
-            export const GuestRoleExampleConfig = {
-                settings: {
-                    layout: {
-                        config: {}
-                    }
-                },
-                auth    : authRoles.onlyGuest,//['guest']
-                routes  : [
-                    {
-                        path     : '/auth/guest-role-example',
-                        element: <GuestRoleExample/>
-                    }
-                ]
-            };
-            `}
+					export const GuestRoleExampleConfig = {
+						settings: {
+							layout: {
+								config: {}
+							}
+						},
+						auth    : authRoles.onlyGuest,//['guest']
+						routes  : [
+							{
+								path     : '/auth/guest-role-example',
+								element: <GuestRoleExample/>
+							}
+						]
+					};
+					`}
 					</FuseHighlight>
 
 					<Typography className="my-24">
@@ -55,17 +58,17 @@ function GuestRoleExample() {
 						className="language-json"
 					>
 						{`
-                export const fuseNavigationConfig = [
-                   {
-                        'id'   : 'only-staff-navigation-item',
-                        'title': 'Nav item only for Guest',
-                        'type' : 'item',
-                        'auth' : authRoles.onlyGuest,//['guest']
-                        'url'  : '/auth/guest-role-example',
-                        'icon' : 'verified_user'
-                    }
-                ];
-            `}
+						export const fuseNavigationConfig = [
+						{
+								'id'   : 'only-staff-navigation-item',
+								'title': 'Nav item only for Guest',
+								'type' : 'item',
+								'auth' : authRoles.onlyGuest,//['guest']
+								'url'  : '/auth/guest-role-example',
+								'icon' : 'verified_user'
+							}
+						];
+					`}
 					</FuseHighlight>
 				</div>
 			}

@@ -3,6 +3,9 @@ import { lazy } from 'react';
 
 const ActivitiesPage = lazy(() => import('./ActivitiesPage'));
 
+/**
+ * The activities page config.
+ */
 const activitiesPageConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

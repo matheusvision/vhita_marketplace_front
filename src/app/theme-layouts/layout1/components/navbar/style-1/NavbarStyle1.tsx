@@ -49,6 +49,11 @@ const StyledNavBarMobile = styled(SwipeableDrawer)(() => ({
 	}
 }));
 
+/**
+ * The navbar style 1.
+ *
+ * @returns {JSX.Element} The navbar style 1.
+ */
 function NavbarStyle1() {
 	const dispatch = useAppDispatch();
 	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);

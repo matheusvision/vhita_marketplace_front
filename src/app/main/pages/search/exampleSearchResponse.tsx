@@ -1,5 +1,8 @@
 import SearchItemType from './SearchItemType';
 
+/**
+ * This is an example of a search response that you might get from your API.
+ */
 const exampleSearchResponse: SearchItemType[] = [
 	{
 		id: '1',

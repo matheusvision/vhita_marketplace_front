@@ -3,6 +3,9 @@ import slices from './store';
 
 const ProjectDashboardApp = lazyWithSlices(() => import('./ProjectDashboardApp'), slices);
 
+/**
+ * The ProjectDashboardApp configuration.
+ */
 const ProjectDashboardAppConfig = {
 	settings: {
 		layout: {

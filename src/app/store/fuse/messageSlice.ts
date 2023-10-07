@@ -3,6 +3,9 @@ import { RootStateType } from 'app/store/types';
 import { SnackbarProps } from '@mui/material/Snackbar/Snackbar';
 import { FuseMessageVariantType } from '@fuse/core/FuseMessage/FuseMessage';
 
+/**
+ * The type definition for the initial state of the message slice.
+ */
 type initialStateProps = {
 	state: boolean;
 	options?: Pick<SnackbarProps, 'anchorOrigin' | 'autoHideDuration' | 'message'> & {
@@ -10,6 +13,9 @@ type initialStateProps = {
 	};
 };
 
+/**
+ * The initial state of the message slice.
+ */
 const initialState: initialStateProps = {
 	state: null,
 	options: {
@@ -23,6 +29,9 @@ const initialState: initialStateProps = {
 	}
 };
 
+/**
+ * The Message slice.
+ */
 const messageSlice = createSlice({
 	name: 'message',
 	initialState,

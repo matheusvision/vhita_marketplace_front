@@ -8,6 +8,12 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { FuseNavigationProps } from '@fuse/core/FuseNavigation/FuseNavigation';
 
+/**
+ * The navigation.
+ *
+ * @param {FuseNavigationProps} props - The component props.
+ * @returns {JSX.Element} The navigation.
+ */
 function Navigation(props: Partial<FuseNavigationProps>) {
 	const { className = '', layout = 'vertical', dense, active } = props;
 

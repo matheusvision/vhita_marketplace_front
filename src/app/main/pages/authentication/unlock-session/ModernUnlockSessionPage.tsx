@@ -29,6 +29,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The modern unlock session page.
+ */
 function ModernUnlockSessionPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

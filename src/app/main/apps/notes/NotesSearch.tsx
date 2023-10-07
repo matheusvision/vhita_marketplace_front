@@ -1,4 +1,3 @@
-import IconButton from '@mui/material/IconButton';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { OutlinedInput } from '@mui/material';
 import { motion } from 'framer-motion';
@@ -6,6 +5,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectSearchText, setNotesSearchText } from './store/notesSlice';
 
+/**
+ * The notes search.
+ * @returns The jsx component.
+ */
 function NotesSearch() {
 	const dispatch = useAppDispatch();
 	const searchText = useAppSelector(selectSearchText);
@@ -33,17 +36,5 @@ function NotesSearch() {
 		</motion.div>
 	);
 }
-
-NotesSearch.propTypes = {};
-NotesSearch.defaultProps = {
-	trigger: (
-		<IconButton
-			className="w-64 h-64"
-			size="large"
-		>
-			<FuseSvgIcon>heroicons-outline:search</FuseSvgIcon>
-		</IconButton>
-	)
-};
 
 export default NotesSearch;

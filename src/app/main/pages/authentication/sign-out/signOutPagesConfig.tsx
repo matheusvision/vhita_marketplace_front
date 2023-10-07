@@ -10,6 +10,9 @@ const SplitScreenReversedSignOutPage = lazy(() => import('./SplitScreenReversedS
 const FullScreenSignOutPage = lazy(() => import('./FullScreenSignOutPage'));
 const FullScreenReversedSignOutPage = lazy(() => import('./FullScreenReversedSignOutPage'));
 
+/**
+ * The sign out pages config.
+ */
 const signOutPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

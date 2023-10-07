@@ -26,6 +26,11 @@ const schema = yup.object().shape({
 	color: yup.string()
 });
 
+/**
+ * The new label form.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function NewLabelForm() {
 	const dispatch = useAppDispatch();
 

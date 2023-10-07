@@ -4,6 +4,9 @@ import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import TablePricingTableHead from './TablePricingTableHead';
 
+/**
+ * The table data item type.
+ */
 export type TableDataItemType = {
 	title?: string;
 	monthlyPrice?: string;
@@ -25,6 +28,9 @@ export type TableDataItemType = {
 	period?: 'month' | 'year';
 };
 
+/**
+ * The table data.
+ */
 const tableData: TableDataItemType[] = [
 	{
 		title: 'Personal',
@@ -89,6 +95,12 @@ type TablePricingTableProps = {
 	period: TableDataItemType['period'];
 };
 
+/**
+ * The pricing table.
+ *
+ * @param props The component props.
+ * @returns The JSX element.
+ */
 function TablePricingTable(props: TablePricingTableProps) {
 	const { period } = props;
 

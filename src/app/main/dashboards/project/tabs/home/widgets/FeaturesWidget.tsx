@@ -6,6 +6,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The FeaturesWidget widget.
+ *
+ * @returns {JSX.Element} The FeaturesWidget widget.
+ */
 function FeaturesWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { data, title } = widgets.features;

@@ -6,6 +6,11 @@ type MailAttachmentProps = {
 	attachment: MailAttachmentType;
 };
 
+/**
+ * The mail attachment.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function MailAttachment(props: MailAttachmentProps) {
 	const { attachment } = props;
 	return (

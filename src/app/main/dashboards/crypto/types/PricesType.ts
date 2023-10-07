@@ -1,3 +1,6 @@
+/**
+ * PricesType
+ */
 type PricesType = {
 	btc: number;
 	eth: number;

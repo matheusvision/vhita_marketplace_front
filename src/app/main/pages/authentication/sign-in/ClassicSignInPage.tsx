@@ -35,6 +35,9 @@ const defaultValues = {
 	remember: true
 };
 
+/**
+ * The classic sign in page.
+ */
 function ClassicSignInPage() {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',

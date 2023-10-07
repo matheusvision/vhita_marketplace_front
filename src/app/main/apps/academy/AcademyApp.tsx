@@ -3,6 +3,11 @@ import { useEffect } from 'react';
 import { useAppDispatch } from 'app/store';
 import { getCategories } from './store/categoriesSlice';
 
+/**
+ * The Academy app.
+ *
+ * @returns {JSX.Element} The Academy app.
+ */
 function AcademyApp() {
 	const dispatch = useAppDispatch();
 

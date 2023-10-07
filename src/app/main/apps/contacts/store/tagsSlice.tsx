@@ -4,6 +4,9 @@ import axios from 'axios';
 import { TagsType, TagType } from '../types/TagType';
 import { AppRootStateType } from '.';
 
+/**
+ * Get tags from server
+ */
 export const getTags = createAppAsyncThunk<TagsType>('contactsApp/tags/getTags', async () => {
 	const response = await axios.get('/api/contacts/tags');
 
@@ -20,6 +23,9 @@ export const { selectAll: selectTags, selectById: selectTagsById } = tagsAdapter
 	(state: AppRootStateType) => state.contactsApp?.tags
 );
 
+/**
+ * The Contacts App tags slice.
+ */
 const tagsSlice = createSlice({
 	name: 'contactsApp/tags',
 	initialState,

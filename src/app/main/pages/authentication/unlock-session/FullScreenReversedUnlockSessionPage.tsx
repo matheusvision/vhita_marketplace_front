@@ -29,6 +29,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The full screen reversed unlock session page.
+ */
 function FullScreenReversedUnlockSessionPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

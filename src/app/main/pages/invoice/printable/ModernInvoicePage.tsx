@@ -3,6 +3,9 @@ import CardContent from '@mui/material/CardContent';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 
+/**
+ * The modern invoice page.
+ */
 function ModernInvoicePage() {
 	return (
 		<div className="inline-block w-full overflow-auto p-24 text-left sm:p-40 print:p-0">

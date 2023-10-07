@@ -3,6 +3,10 @@ import { useAppDispatch, useAppSelector } from 'app/store';
 import { closeCardDialog, selectCardDialogOpen } from '../../../store/cardSlice';
 import BoardCardForm from './BoardCardForm';
 
+/**
+ * The board card dialog component.
+ * @returns The jsx component.
+ */
 function BoardCardDialog() {
 	const dispatch = useAppDispatch();
 	const cardDialogOpen = useAppSelector(selectCardDialogOpen);

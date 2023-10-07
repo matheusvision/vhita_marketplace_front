@@ -8,6 +8,9 @@ type SeriesType = {
 	data: DataPointType[];
 };
 
+/**
+ * Account Balance Widget Type
+ */
 type AccountBalanceWidgetType = {
 	growRate: number;
 	ami: number;

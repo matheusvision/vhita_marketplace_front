@@ -1,3 +1,6 @@
+/**
+ * Age Widget Type
+ */
 type AgeWidgetType = {
 	uniqueVisitors?: number;
 	series?: number[];

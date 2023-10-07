@@ -14,6 +14,12 @@ type NavbarToggleButtonProps = {
 	children?: React.ReactNode;
 };
 
+/**
+ * The navbar toggle button.
+ *
+ * @param {NavbarToggleButtonProps} props - The component props.
+ * @returns {JSX.Element} The navbar toggle button.
+ */
 function NavbarToggleButton(props: NavbarToggleButtonProps) {
 	const {
 		className = '',

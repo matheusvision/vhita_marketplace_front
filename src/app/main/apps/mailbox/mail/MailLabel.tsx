@@ -9,6 +9,11 @@ type MailLabelProps = {
 	labelId?: string;
 };
 
+/**
+ * The mail label.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function MailLabel(props: MailLabelProps) {
 	const { labelId, className = '' } = props;
 	const label = useAppSelector(selectLabelById(labelId));

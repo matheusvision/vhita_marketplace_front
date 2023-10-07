@@ -3,6 +3,9 @@ import slices from './store';
 
 const FinanceDashboardApp = lazyWithSlices(() => import('./FinanceDashboardApp'), slices);
 
+/**
+ * The finance dashboard app config.
+ */
 const FinanceDashboardAppConfig = {
 	settings: {
 		layout: {

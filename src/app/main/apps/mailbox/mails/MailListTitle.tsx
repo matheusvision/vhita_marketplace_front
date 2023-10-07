@@ -3,6 +3,10 @@ import Typography from '@mui/material/Typography';
 import { useAppSelector } from 'app/store';
 import { selectMailsTitle } from '../store/mailsSlice';
 
+/**
+ * The mail list title.
+ * @returns The jsx component.
+ */
 function MailListTitle() {
 	const routeParams = useParams();
 	const title = useAppSelector(selectMailsTitle(routeParams));

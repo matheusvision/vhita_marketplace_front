@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { selectFiles, selectFolders, selectPath } from './store/itemsSlice';
 
+/**
+ * The file manager header.
+ */
 function FileManagerHeader() {
 	const folders = useAppSelector(selectFolders);
 	const files = useAppSelector(selectFiles);

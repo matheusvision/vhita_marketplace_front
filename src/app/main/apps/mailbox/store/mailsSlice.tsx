@@ -13,6 +13,9 @@ import ItemType from '../types/ItemType';
 
 export type AppRootStateType = RootStateType<mailsSliceType>;
 
+/**
+ * Get mails from server
+ */
 export const getMails = createAppAsyncThunk<{ data: MailsType; routeParams: RouteParamsType }, RouteParamsType | void>(
 	'mailboxApp/mails/getMails',
 	async (_routeParams, { getState }) => {
@@ -75,6 +78,9 @@ export const { selectAll: selectMails, selectById: selectMailById } = mailsAdapt
 	(state: AppRootStateType) => state.mailboxApp.mails
 );
 
+/**
+ * The Mailbox App mails slice.
+ */
 const mailsSlice = createSlice({
 	name: 'mailboxApp/mails',
 	initialState,

@@ -13,6 +13,12 @@ type CourseCardProps = {
 	course: CourseType;
 };
 
+/**
+ * The CourseCard component.
+ *
+ * @param {CourseCardProps} props The props.
+ * @returns {JSX.Element} The CourseCard component.
+ */
 function CourseCard(props: CourseCardProps) {
 	const { course } = props;
 

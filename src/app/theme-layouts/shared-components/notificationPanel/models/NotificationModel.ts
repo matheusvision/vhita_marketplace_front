@@ -2,6 +2,9 @@ import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import { ReactNode } from 'react';
 
+/**
+ * The type of the NotificationModel.
+ */
 export type NotificationModelProps = {
 	id?: string;
 	icon?: string;
@@ -16,6 +19,10 @@ export type NotificationModelProps = {
 	children?: ReactNode;
 };
 
+/**
+ * The NotificationModel class.
+ * Implements NotificationModelProps interface.
+ */
 function NotificationModel(data: NotificationModelProps) {
 	data = data || {};
 

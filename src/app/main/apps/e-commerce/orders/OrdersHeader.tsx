@@ -6,6 +6,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { selectOrdersSearchText, setOrdersSearchText } from '../store/ordersSlice';
 
+/**
+ * The orders header.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function OrdersHeader() {
 	const dispatch = useAppDispatch();
 	const searchText = useAppSelector(selectOrdersSearchText);

@@ -7,6 +7,9 @@ import { ChatListType } from '../types/ChatListType';
 
 type AppRootStateType = RootStateType<chatListSliceType>;
 
+/**
+ * Get the chat list.
+ */
 export const getChatList = createAppAsyncThunk<ChatListType>('chatPanel/chatList/get', async () => {
 	const response = await axios.get('/api/chat/chats');
 
@@ -23,6 +26,9 @@ export const { selectAll: selectChats, selectById: selectChatById } = chatsAdapt
 	(state: AppRootStateType) => state.chatPanel.chatList
 );
 
+/**
+ * The slice for the chat list.
+ */
 const chatListSlice = createSlice({
 	name: 'chatPanel/chatList',
 	initialState,

@@ -14,6 +14,10 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The typography page.
+ *
+ */
 function TypographyUI() {
 	return (
 		<Root

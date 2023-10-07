@@ -9,6 +9,11 @@ type NoteFormListProps = {
 	onCheckListChange: (tasks: NoteListItemsType) => void;
 };
 
+/**
+ * The note form list.
+ * @param props The component props.
+ * @returns The JSX element.
+ */
 function NoteFormList(props: NoteFormListProps) {
 	const { tasks, onCheckListChange, className } = props;
 

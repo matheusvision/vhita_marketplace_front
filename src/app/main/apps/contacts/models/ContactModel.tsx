@@ -4,6 +4,9 @@ import { ContactPhoneNumberType } from '../types/ContactPhoneNumberType';
 import { ContactEmailType } from '../types/ContactEmailType';
 import { ContactType } from '../types/ContactType';
 
+/**
+ * The contact phone number model.
+ */
 export const ContactPhoneModel = (data: PartialDeep<ContactPhoneNumberType> | null): ContactPhoneNumberType =>
 	_.defaults(data || {}, {
 		country: '',
@@ -11,12 +14,18 @@ export const ContactPhoneModel = (data: PartialDeep<ContactPhoneNumberType> | nu
 		label: 'string'
 	});
 
+/**
+ * The contact email model.
+ */
 export const ContactEmailModel = (data: PartialDeep<ContactEmailType> | null): ContactEmailType =>
 	_.defaults(data || {}, {
 		email: '',
 		label: ''
 	});
 
+/**
+ * The contact model.
+ */
 const ContactModel = (data: PartialDeep<ContactType>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),

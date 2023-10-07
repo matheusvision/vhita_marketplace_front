@@ -9,6 +9,11 @@ type TablePricingTableHeadProps = {
 	data?: TableDataItemType;
 };
 
+/**
+ * The table pricing table head component.
+ * @param {TablePricingTableHeadProps} props - The component props.
+ * @returns {JSX.Element} The table pricing table head component.
+ */
 function TablePricingTableHead(props: TablePricingTableHeadProps) {
 	const { period = 'month', data } = props;
 	const { title, yearlyPrice, monthlyPrice, buttonTitle, isPopular } = data;

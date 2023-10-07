@@ -3,6 +3,9 @@ import { RootStateType } from 'app/store/types';
 
 export type AppRootStateType = RootStateType<stateSlice>;
 
+/**
+ * The chat panel state slice.
+ */
 const stateSlice = createSlice({
 	name: 'chatPanel/state',
 	initialState: false,

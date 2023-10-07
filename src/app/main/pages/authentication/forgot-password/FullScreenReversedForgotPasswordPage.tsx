@@ -22,6 +22,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The full screen reversed forgot password page.
+ */
 function FullScreenReversedForgotPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

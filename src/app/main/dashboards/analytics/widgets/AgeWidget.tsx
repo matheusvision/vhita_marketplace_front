@@ -10,6 +10,9 @@ import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 import AgeWidgetModelType from '../types/AgeWidgetType';
 
+/**
+ * The age widget.
+ */
 function AgeWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { series, labels, uniqueVisitors }: AgeWidgetModelType = widgets.age;

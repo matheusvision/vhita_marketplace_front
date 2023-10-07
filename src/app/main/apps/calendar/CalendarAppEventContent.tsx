@@ -12,6 +12,11 @@ type CalendarAppEventContentProps = {
 	eventInfo: EventContentArg & { event: EventType };
 };
 
+/**
+ * The event content for the calendar app.
+ * @param props - The component props.
+ * @returns The JSX element for the component.
+ */
 function CalendarAppEventContent(props: CalendarAppEventContentProps) {
 	const { eventInfo } = props;
 	const theme = useTheme();

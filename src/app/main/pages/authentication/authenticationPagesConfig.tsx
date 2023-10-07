@@ -7,6 +7,9 @@ import forgotPasswordPagesConfig from './forgot-password/forgotPasswordPagesConf
 import resetPasswordPagesConfig from './reset-password/resetPasswordPagesConfig';
 import unlockSessionPagesConfig from './unlock-session/unlockSessionPagesConfig';
 
+/**
+ * The authentication pages config.
+ */
 const authenticationPagesConfigs: FuseRouteConfigsType = [
 	signInPagesConfig,
 	signUpPagesConfig,

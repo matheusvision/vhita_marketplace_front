@@ -1,3 +1,6 @@
+/**
+ * PreviousStatementWidgetType
+ */
 type PreviousStatementWidgetType = {
 	status: string;
 	date: string;

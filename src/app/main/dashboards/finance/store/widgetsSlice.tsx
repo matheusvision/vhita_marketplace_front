@@ -28,6 +28,9 @@ export const getWidgets = createAppAsyncThunk('financeDashboardApp/widgets/getWi
 
 const initialState: WidgetsType = {};
 
+/**
+ * The finance dashboard widgets slice.
+ */
 const widgetsSlice = createSlice({
 	name: 'financeDashboardApp/widgets',
 	initialState,

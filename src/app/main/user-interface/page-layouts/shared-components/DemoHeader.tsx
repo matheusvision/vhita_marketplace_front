@@ -9,6 +9,10 @@ type DemoHeaderProps = {
 	rightSidebarToggle?: () => void;
 };
 
+/**
+ * The DemoHeader component.
+ * @param props
+ */
 function DemoHeader(props: DemoHeaderProps) {
 	const { leftSidebarToggle, rightSidebarToggle } = props;
 

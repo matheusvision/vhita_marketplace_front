@@ -5,6 +5,9 @@ import { FuseRouteConfigType } from '@fuse/utils/FuseUtils';
 const Error404Page = lazy(() => import('./Error404Page'));
 const Error500Page = lazy(() => import('./Error500Page'));
 
+/**
+ * The error pages config.
+ */
 const errorPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

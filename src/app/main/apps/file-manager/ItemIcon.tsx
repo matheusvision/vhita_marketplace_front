@@ -17,6 +17,11 @@ type ItemIconProps = {
 	type: string;
 };
 
+/**
+ * The item icon component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function ItemIcon(props: ItemIconProps) {
 	const { type } = props;
 

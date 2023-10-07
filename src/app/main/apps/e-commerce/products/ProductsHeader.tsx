@@ -9,6 +9,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ChangeEvent } from 'react';
 import { selectProductsSearchText, setProductsSearchText } from '../store/productsSlice';
 
+/**
+ * The products header.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function ProductsHeader() {
 	const dispatch = useAppDispatch();
 	const searchText = useAppSelector(selectProductsSearchText);

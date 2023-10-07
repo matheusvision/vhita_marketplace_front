@@ -7,6 +7,10 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getGuides, selectGroupedGuides } from '../store/guidesSlice';
 import GuideListMenu from './GuideListMenu';
 
+/**
+ * The guide categories.
+ * @returns The jsx component.
+ */
 function GuideCategories() {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();

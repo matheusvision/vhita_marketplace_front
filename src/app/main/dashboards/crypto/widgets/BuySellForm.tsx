@@ -43,6 +43,9 @@ const schema = yup.object().shape({
 	amountType: yup.string()
 });
 
+/**
+ * The buy sell form.
+ */
 function BuySellForm() {
 	const widgets = useAppSelector(selectWidgets);
 	const { wallets, prices } = widgets || {};

@@ -36,6 +36,12 @@ type NewLabelFormProps = {
 	isLast: boolean;
 };
 
+/**
+ * The new label form.
+ *
+ * @param {NewLabelFormProps} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function NewLabelForm(props: NewLabelFormProps) {
 	const { label, isLast } = props;
 	const dispatch = useAppDispatch();

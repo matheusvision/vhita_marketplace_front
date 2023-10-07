@@ -1,3 +1,6 @@
+/**
+ * Folder Type
+ */
 export type FolderType = {
 	id: string;
 	title: string;
@@ -5,4 +8,7 @@ export type FolderType = {
 	icon: string;
 };
 
+/**
+ * Folders Type
+ */
 export type FoldersType = FolderType[];

@@ -9,6 +9,9 @@ type WidgetInnerData = {
 	extra: ExtraData;
 };
 
+/**
+ * The type definition for the data used to populate the widget.
+ */
 type WidgetDataType = {
 	title?: string;
 	ranges?: Record<string, string>;

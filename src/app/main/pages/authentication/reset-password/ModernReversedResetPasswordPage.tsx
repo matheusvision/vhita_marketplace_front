@@ -27,6 +27,9 @@ const defaultValues = {
 	passwordConfirm: ''
 };
 
+/**
+ * The modern reset password page.
+ */
 function ModernReversedResetPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

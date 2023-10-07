@@ -10,6 +10,11 @@ import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The TaskDistributionWidget widget.
+ *
+ * @returns {JSX.Element} The TaskDistributionWidget widget.
+ */
 function TaskDistributionWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { overview, series, labels, ranges } = widgets.taskDistribution;

@@ -20,6 +20,11 @@ type CardAddChecklistItemProps = {
 	onListItemAdd: (item: CheckListItemType) => void;
 };
 
+/**
+ * The card add checklist item component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function CardAddChecklistItem(props: CardAddChecklistItemProps) {
 	const { name, onListItemAdd } = props;
 	const { control, formState, handleSubmit, reset } = useForm({

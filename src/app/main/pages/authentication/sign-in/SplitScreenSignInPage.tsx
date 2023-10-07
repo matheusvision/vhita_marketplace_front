@@ -38,6 +38,9 @@ const defaultValues = {
 	remember: true
 };
 
+/**
+ * The split screen sign in page.
+ */
 function SplitScreenSignInPage() {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',

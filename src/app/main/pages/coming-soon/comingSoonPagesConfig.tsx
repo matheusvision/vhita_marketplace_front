@@ -10,6 +10,9 @@ const SplitScreenReversedComingSoonPage = lazy(() => import('./SplitScreenRevers
 const FullScreenComingSoonPage = lazy(() => import('./FullScreenComingSoonPage'));
 const FullScreenReversedComingSoonPage = lazy(() => import('./FullScreenReversedComingSoonPage'));
 
+/**
+ * The coming soon pages config.
+ */
 const comingSoonPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

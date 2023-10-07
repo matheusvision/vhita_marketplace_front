@@ -35,6 +35,11 @@ type UserAvatarPropsType = {
 	className?: string;
 };
 
+/**
+ * The user avatar component.
+ * @param props - The component props.
+ * @returns The JSX element for the component.
+ */
 function UserAvatar(props: UserAvatarPropsType) {
 	const { user, className } = props;
 

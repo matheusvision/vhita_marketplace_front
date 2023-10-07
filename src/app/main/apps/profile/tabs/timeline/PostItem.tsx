@@ -20,6 +20,11 @@ type PostProps = {
 	item: PostType;
 };
 
+/**
+ * The post item.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function PostItem(props: PostProps) {
 	const { item } = props;
 

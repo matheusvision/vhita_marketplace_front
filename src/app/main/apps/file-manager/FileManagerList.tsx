@@ -6,6 +6,9 @@ import { selectFiles, selectFolders } from './store/itemsSlice';
 import FolderItem from './FolderItem';
 import FileItem from './FileItem';
 
+/**
+ * The file manager list.
+ */
 function FileManagerList() {
 	const folders = useAppSelector(selectFolders);
 	const files = useAppSelector(selectFiles);

@@ -90,6 +90,10 @@ const StyledMessageRow = styled('div')(({ theme }) => ({
 type ChatProps = {
 	className?: string;
 };
+
+/**
+ * The chat component.
+ */
 function Chat(props: ChatProps) {
 	const { className } = props;
 	const dispatch = useAppDispatch();

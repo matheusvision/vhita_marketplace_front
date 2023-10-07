@@ -10,12 +10,18 @@ import App from './app/App';
 // import * as serviceWorker from './serviceWorker';
 // import reportWebVitals from './reportWebVitals';
 
+/**
+ * The root element of the application.
+ */
 const container = document.getElementById('root');
 
 if (!container) {
 	throw new Error('Failed to find the root element');
 }
 
+/**
+ * The root component of the application.
+ */
 const root = createRoot(container);
 
 root.render(<App />);

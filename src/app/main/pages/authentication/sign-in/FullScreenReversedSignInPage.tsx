@@ -38,6 +38,9 @@ const defaultValues = {
 	remember: true
 };
 
+/**
+ * The full screen sign in page.
+ */
 function FullScreenReversedSignInPage() {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',

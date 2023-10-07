@@ -3,6 +3,9 @@ import slices from './store';
 
 const AnalyticsDashboardApp = lazyWithSlices(() => import('./AnalyticsDashboardApp'), slices);
 
+/**
+ * The analytics dashboard app config.
+ */
 const AnalyticsDashboardAppConfig = {
 	settings: {
 		layout: {

@@ -1,3 +1,6 @@
+/**
+ * File Manager Item Type
+ */
 export type FileManagerItemType = {
 	id: string;
 	folderId: string;

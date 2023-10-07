@@ -29,6 +29,11 @@ type BoardAddCardProps = {
 	onCardAdded: () => void;
 };
 
+/**
+ * The board add card component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function BoardAddCard(props: BoardAddCardProps) {
 	const { listId, onCardAdded } = props;
 	const dispatch = useAppDispatch();

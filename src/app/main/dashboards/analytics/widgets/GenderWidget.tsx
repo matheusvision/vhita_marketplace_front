@@ -9,6 +9,9 @@ import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * Gender widget.
+ */
 function GenderWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { series, labels, uniqueVisitors } = widgets.gender;

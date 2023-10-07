@@ -10,6 +10,13 @@ import DemoLayoutFooterContent from 'app/theme-layouts/shared-components/DemoLay
 type FooterLayout3Props = {
 	className?: string;
 };
+
+/**
+ * The footer layout 3.
+ *
+ * @param {FooterLayout3Props} props - The props.
+ * @returns {JSX.Element} The footer layout 3.
+ */
 function FooterLayout3(props: FooterLayout3Props) {
 	const { className = '' } = props;
 

@@ -1,3 +1,6 @@
+/**
+ * CurrentStatementWidgetType
+ */
 type CurrentStatementWidgetType = {
 	status: string;
 	date: string;

@@ -5,6 +5,10 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
+/**
+ * The single pricing card component.
+ * @returns {JSX.Element} The single pricing card component.
+ */
 function SinglePricingCard() {
 	return (
 		<Paper className="flex max-w-sm flex-col overflow-hidden lg:max-w-xl lg:flex-row">

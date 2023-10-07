@@ -19,6 +19,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The ProjectDashboardApp page.
+ */
 function ProjectDashboardApp() {
 	const dispatch = useAppDispatch();
 	const widgets = useAppSelector(selectWidgets);

@@ -7,6 +7,9 @@ import ProductModel from '../product/models/ProductModel';
 
 export type AppRootStateType = RootStateType<productSliceType>;
 
+/**
+ * Get product from server by id
+ */
 export const getProduct = createAppAsyncThunk<ProductType, string>(
 	'eCommerceApp/product/getProduct',
 	async (productId) => {
@@ -18,6 +21,9 @@ export const getProduct = createAppAsyncThunk<ProductType, string>(
 	}
 );
 
+/**
+ * Remove product
+ */
 export const removeProduct = createAppAsyncThunk<string, null>(
 	'eCommerceApp/product/removeProduct',
 	async (_, { getState }) => {
@@ -31,6 +37,9 @@ export const removeProduct = createAppAsyncThunk<string, null>(
 	}
 );
 
+/**
+ * Save product
+ */
 export const saveProduct = createAppAsyncThunk<ProductType, ProductType>(
 	'eCommerceApp/product/saveProduct',
 	async (productData, { getState }) => {
@@ -48,6 +57,9 @@ export const saveProduct = createAppAsyncThunk<ProductType, ProductType>(
 
 const initialState: ProductType = null;
 
+/**
+ * The E-Commerce product slice.
+ */
 const productSlice = createSlice({
 	name: 'eCommerceApp/product',
 	initialState,

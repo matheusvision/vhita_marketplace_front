@@ -6,6 +6,9 @@ import { FilterType, FiltersType } from '../types/FilterType';
 
 export type AppRootStateType = RootStateType<filtersSliceType>;
 
+/**
+ * Get filters from server
+ */
 export const getFilters = createAppAsyncThunk<FiltersType>('mailboxApp/filters/getFilters', async () => {
 	const response = await axios.get('/api/mailbox/filters');
 
@@ -20,6 +23,9 @@ export const { selectAll: selectFilters, selectById: selectFilterById } = filter
 	(state: AppRootStateType) => state.mailboxApp.filters
 );
 
+/**
+ * The Mailbox App filters slice.
+ */
 const filtersSlice = createSlice({
 	name: 'mailboxApp/filters',
 	initialState: filtersAdapter.getInitialState({}),

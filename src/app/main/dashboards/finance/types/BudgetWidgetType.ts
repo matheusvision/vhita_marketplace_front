@@ -1,3 +1,6 @@
+/**
+ * BudgetWidgetType
+ */
 type BudgetWidgetType = {
 	expenses: number;
 	expensesLimit: number;

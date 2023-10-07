@@ -6,6 +6,9 @@ type Label = string;
 
 type MemberId = string;
 
+/**
+ * Card Type
+ */
 export type CardType = {
 	id: string;
 	boardId: string;
@@ -22,4 +25,7 @@ export type CardType = {
 	activities: CommentsType;
 };
 
+/**
+ * Cards Type
+ */
 export type CardsType = CardType[];

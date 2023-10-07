@@ -8,6 +8,9 @@ type GithubIssueSeriesData = {
 	data: number[];
 };
 
+/**
+ * The type definition for the data used to populate the github issues chart.
+ */
 type GithubIssuesDataType = {
 	overview: Record<string, GithubIssueOverviewData>;
 	ranges: Record<string, string>;

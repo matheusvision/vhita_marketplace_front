@@ -1,3 +1,6 @@
+/**
+ * Attachment Type
+ */
 export type AttachmentType = {
 	id: string;
 	name: string;

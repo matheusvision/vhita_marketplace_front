@@ -2,6 +2,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
+/**
+ * The analytics dashboard app header.
+ *
+ * @returns {JSX.Element} The analytics dashboard app header.
+ */
 function AnalyticsDashboardAppHeader() {
 	return (
 		<div className="flex w-full container">

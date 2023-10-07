@@ -23,6 +23,9 @@ type Crypto = {
 	series: Series[];
 };
 
+/**
+ * The type definition for the BTCWidgetType.
+ */
 type BTCWidgetType = Crypto & {
 	marketCap: number;
 	volume: number;

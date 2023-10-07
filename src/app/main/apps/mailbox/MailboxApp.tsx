@@ -24,6 +24,11 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The mailbox app.
+ *
+ * @returns {JSX.Element}
+ */
 function MailboxApp() {
 	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));

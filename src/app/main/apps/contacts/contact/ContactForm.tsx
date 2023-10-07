@@ -58,6 +58,11 @@ const schema = yup.object().shape({
 	tags: yup.array().of(yup.string())
 });
 
+/**
+ * The contact form.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function ContactForm() {
 	const contact = useAppSelector(selectContact);
 	const tags = useAppSelector(selectTags);

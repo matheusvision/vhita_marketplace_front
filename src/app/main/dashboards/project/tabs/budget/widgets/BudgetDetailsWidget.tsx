@@ -10,6 +10,11 @@ import Chip from '@mui/material/Chip';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The BudgetDetailsWidget widget.
+ *
+ * @returns {JSX.Element} The BudgetDetailsWidget widget.
+ */
 function BudgetDetailsWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { columns, rows } = widgets.budgetDetails;

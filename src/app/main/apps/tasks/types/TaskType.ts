@@ -1,9 +1,15 @@
+/**
+ * Sub Task Type
+ */
 type SubTask = {
 	id: string;
 	title: string;
 	completed: boolean;
 };
 
+/**
+ * Task Type
+ */
 export type TaskType = {
 	id: string;
 	type: string;
@@ -18,4 +24,7 @@ export type TaskType = {
 	order: number;
 };
 
+/**
+ * Tasks Type
+ */
 export type TasksType = TaskType[];

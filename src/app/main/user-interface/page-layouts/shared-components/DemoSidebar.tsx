@@ -1,5 +1,8 @@
 import FuseNavigation from '@fuse/core/FuseNavigation';
 
+/**
+ * Navigation data
+ */
 const navigationData = [
 	{
 		id: '1',
@@ -141,6 +144,9 @@ const navigationData = [
 	}
 ];
 
+/**
+ * The DemoSidebar component.
+ */
 function DemoSidebar() {
 	return (
 		<div className="px-12 py-24 min-h-6xl">

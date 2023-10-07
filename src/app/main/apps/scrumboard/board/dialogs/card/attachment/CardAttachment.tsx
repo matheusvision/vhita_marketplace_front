@@ -18,6 +18,11 @@ type CardAttachmentProps = {
 	removeAttachment: (id: string) => void;
 };
 
+/**
+ * The card attachment component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function CardAttachment(props: CardAttachmentProps) {
 	const { item, card, makeCover, removeCover, removeAttachment } = props;
 

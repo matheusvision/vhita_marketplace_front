@@ -7,6 +7,10 @@ import NoteForm from './note-form/NoteForm';
 import { createNote } from './store/notesSlice';
 import { NoteType } from './types/NoteType';
 
+/**
+ * The new note component.
+ * @returns The jsx component.
+ */
 function NewNote() {
 	const dispatch = useAppDispatch();
 

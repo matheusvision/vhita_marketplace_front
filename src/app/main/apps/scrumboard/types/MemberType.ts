@@ -1,3 +1,6 @@
+/**
+ * Member Type
+ */
 export type MemberType = {
 	id?: string;
 	name: string;
@@ -5,4 +8,7 @@ export type MemberType = {
 	class?: string;
 };
 
+/**
+ * Members Type
+ */
 export type MembersType = MemberType[];

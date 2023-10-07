@@ -9,6 +9,11 @@ import NavbarStyle1 from './navbar/style-1/NavbarStyle1';
 import NavbarStyle2 from './navbar/style-2/NavbarStyle2';
 import NavbarStyle3 from './navbar/style-3/NavbarStyle3';
 
+/**
+ * The navbar wrapper layout 1.
+ *
+ * @returns {JSX.Element} The navbar wrapper layout 1.
+ */
 function NavbarWrapperLayout1() {
 	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const navbar = useSelector(selectFuseNavbar);

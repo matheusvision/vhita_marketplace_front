@@ -8,6 +8,11 @@ import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The MonthlyExpensesWidget widget.
+ *
+ * @returns {JSX.Element} The MonthlyExpensesWidget widget.
+ */
 function MonthlyExpensesWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { amount, series, labels } = widgets.monthlyExpenses;

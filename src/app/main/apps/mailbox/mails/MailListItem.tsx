@@ -42,6 +42,11 @@ type MailListItemProps = WithRouterProps & {
 	mail: MailType;
 };
 
+/**
+ * The mail list item.
+ * @param props The properties.
+ * @returns The jsx component.
+ */
 function MailListItem(props: MailListItemProps) {
 	const dispatch = useAppDispatch();
 	const selectedMailIds = useAppSelector(selectSelectedMailIds);

@@ -8,6 +8,11 @@ type BoardCardCheckItemsProps = {
 	card: CardType;
 };
 
+/**
+ * The board card check items component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function BoardCardCheckItems(props: BoardCardCheckItemsProps) {
 	const { card } = props;
 

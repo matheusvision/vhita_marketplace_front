@@ -7,6 +7,12 @@ type CourseProgressProps = {
 	className?: string;
 };
 
+/**
+ * The CourseProgress component.
+ *
+ * @param {CourseProgressProps} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function CourseProgress(props: CourseProgressProps) {
 	const { course, className } = props;
 

@@ -10,6 +10,9 @@ export type LabelColorsType =
 	| 'purple'
 	| 'pink';
 
+/**
+ * The label colors.
+ */
 export const labelColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
 
 type LabelColorDefsType = {
@@ -20,6 +23,9 @@ type LabelColorDefsType = {
 	};
 };
 
+/**
+ * The label color definitions.
+ */
 export const labelColorDefs: LabelColorDefsType = {
 	gray: {
 		text: 'text-gray-500',

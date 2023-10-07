@@ -6,6 +6,9 @@ import { addContact, removeContact, updateContact } from './contactSlice';
 import { ContactType, ContactsType } from '../types/ContactType';
 import { AppRootStateType } from '.';
 
+/**
+ * Get contacts from server
+ */
 export const getContacts = createAppAsyncThunk<ContactsType>('contactsApp/contacts/getContacts', async () => {
 	const response = await axios.get('/api/contacts');
 
@@ -38,6 +41,9 @@ type AccumulatorType = {
 	[key: string]: GroupedContactsType;
 };
 
+/**
+ * Select grouped contacts
+ */
 export const selectGroupedFilteredContacts = createSelector([selectFilteredContacts], (contacts) => {
 	const groupedObject = contacts
 		.sort((a, b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }))
@@ -61,6 +67,9 @@ const initialState = contactsAdapter.getInitialState({
 	searchText: ''
 });
 
+/**
+ * The Contacts App Contacts slice.
+ */
 const contactsSlice = createSlice({
 	name: 'contactsApp/contacts',
 	initialState,

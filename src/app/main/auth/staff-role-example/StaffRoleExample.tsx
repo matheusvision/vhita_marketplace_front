@@ -5,6 +5,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { NavLink } from 'react-router-dom';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 
+/**
+ * StaffRoleExample component renders the page for staff users.
+ */
 function StaffRoleExample() {
 	return (
 		<FusePageCarded

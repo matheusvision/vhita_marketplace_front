@@ -33,6 +33,11 @@ const schema = yup.object().shape({
 		.min(5, 'The product name must be at least 5 characters')
 });
 
+/**
+ * The product page.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function Product() {
 	const dispatch = useAppDispatch();
 	const product = useAppSelector(selectProduct);

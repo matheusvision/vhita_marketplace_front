@@ -35,6 +35,12 @@ const StyledContent = styled(FuseScrollbars)(() => ({
 
 type NavbarStyle2ContentProps = { className?: string };
 
+/**
+ * The navbar style 2 content.
+ *
+ * @param {NavbarStyle2ContentProps} props - The props.
+ * @returns {JSX.Element} The navbar style 2 content.
+ */
 function NavbarStyle2Content(props: NavbarStyle2ContentProps) {
 	const { className = '' } = props;
 

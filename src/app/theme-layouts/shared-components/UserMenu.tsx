@@ -11,6 +11,11 @@ import { Link, NavLink } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectUser } from 'app/store/user/userSlice';
 
+/**
+ * The user menu.
+ *
+ * @returns The user menu.
+ */
 function UserMenu() {
 	const user = useSelector(selectUser);
 

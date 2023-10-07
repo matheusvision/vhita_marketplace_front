@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 import Box from '@mui/material/Box';
 import { alpha } from '@mui/material/styles';
 
+/**
+ * The compact invoice page.
+ */
 function CompactInvoicePage() {
 	return (
 		<div className="inline-block w-full overflow-auto p-24 text-left sm:p-40 print:p-0">

@@ -1,3 +1,6 @@
+/**
+ * Language Widget Type
+ */
 type LanguageWidgetType = {
 	uniqueVisitors: number;
 	series: number[];

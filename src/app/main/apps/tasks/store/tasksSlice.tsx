@@ -9,6 +9,9 @@ import { TaskType, TasksType } from '../types/TaskType';
 
 export type AppRootStateType = RootStateType<tasksSliceType>;
 
+/**
+ * Get tasks from the server.
+ */
 export const getTasks = createAppAsyncThunk<TasksType>('tasksApp/tasks/getTasks', async () => {
 	const response = await axios.get('/api/tasks');
 
@@ -17,6 +20,9 @@ export const getTasks = createAppAsyncThunk<TasksType>('tasksApp/tasks/getTasks'
 	return data;
 });
 
+/**
+ * Reorder tasks on the server.
+ */
 export const reorderList = createAppAsyncThunk<TasksType, { startIndex: number; endIndex: number }>(
 	'tasksApp/tasks/reorder',
 	async ({ startIndex, endIndex }, { dispatch }) => {
@@ -46,11 +52,13 @@ const initialState = tasksAdapter.getInitialState([]);
 export const { selectAll: selectTasks, selectById: selectTasksById } = tasksAdapter.getSelectors(
 	(state: AppRootStateType) => state.tasksApp.tasks
 );
-
 export const selectRemainingTasks = createSelector([selectTasks], (tasks) => {
 	return tasks.filter((item) => item.type === 'task' && !item.completed).length;
 });
 
+/**
+ * The Tasks app tasks slice.
+ */
 const tasksSlice = createSlice({
 	name: 'tasksApp/tasks',
 	initialState,

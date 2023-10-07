@@ -7,6 +7,11 @@ import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * The BTC main chart.
+ *
+ * @returns {JSX.Element} The BTC main chart.
+ */
 function BtcMainChart() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);

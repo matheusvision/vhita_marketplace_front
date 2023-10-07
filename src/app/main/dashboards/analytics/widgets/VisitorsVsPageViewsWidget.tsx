@@ -9,6 +9,11 @@ import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * Visitors vs. Page Views widget.
+ *
+ * @returns {JSX.Element} The visitors vs. page views widget.
+ */
 function VisitorsVsPageViewsWidget() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);

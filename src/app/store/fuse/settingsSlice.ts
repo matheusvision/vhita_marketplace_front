@@ -17,6 +17,11 @@ import { Theme } from '@mui/material/styles/createTheme';
 import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 
+/**
+ * Changes all Fuse Themes.
+ * @param {FuseThemeType} theme The theme to apply to Fuse
+ * @returns {AppThunkType} dispatchFn
+ */
 export const changeFuseTheme =
 	(theme: FuseThemeType): AppThunkType<void> =>
 	(dispatch, getState) => {
@@ -41,6 +46,10 @@ type layoutProps = {
 	config: unknown;
 };
 
+/**
+ * Gets the initial settings for the application.
+ * @returns The initial settings object.
+ */
 function getInitialSettings(): FuseSettingsConfigType {
 	const defaultLayoutStyle =
 		settingsConfig.layout && settingsConfig.layout.style ? settingsConfig.layout.style : 'layout1';
@@ -53,6 +62,12 @@ function getInitialSettings(): FuseSettingsConfigType {
 	return _.merge({}, defaultSettings, { layout }, settingsConfig, getParsedQuerySettings());
 }
 
+/**
+ * Generates the settings object by merging the default settings with the new settings.
+ * @param _defaultSettings - The default settings object.
+ * @param _newSettings - The new settings object.
+ * @returns The merged settings object.
+ */
 export function generateSettings(_defaultSettings: FuseSettingsConfigType, _newSettings: FuseSettingsConfigType) {
 	return _.merge(
 		{},
@@ -64,18 +79,30 @@ export function generateSettings(_defaultSettings: FuseSettingsConfigType, _newS
 
 const initialSettings = getInitialSettings();
 
+/**
+ * The type definition for the initial state.
+ */
 type initialStateProps = {
 	initial: FuseSettingsConfigType;
 	defaults: FuseSettingsConfigType;
 	current: FuseSettingsConfigType;
 };
 
+/**
+ * The initial state.
+ */
 const initialState: initialStateProps = {
 	initial: initialSettings,
 	defaults: _.merge({}, initialSettings),
 	current: _.merge({}, initialSettings)
 };
 
+/**
+ * Sets the default settings for the application.
+ * @param dispatch - The Redux dispatch function.
+ * @param theme - The theme object.
+ * @returns The default settings object.
+ */
 export const setDefaultSettings = createAppAsyncThunk(
 	'fuse/settings/setDefaultSettings',
 	async (val: FuseSettingsConfigType, { dispatch, getState }) => {
@@ -94,6 +121,9 @@ export const setDefaultSettings = createAppAsyncThunk(
 	}
 );
 
+/**
+ * The settings slice.
+ */
 const settingsSlice = createSlice({
 	name: 'settings',
 	initialState,
@@ -136,6 +166,12 @@ const getNavbarTheme = (state: RootStateType): Partial<Theme> => state.fuse.sett
 const getToolbarTheme = (state: RootStateType): Partial<Theme> => state.fuse.settings.current.theme.toolbar;
 const getFooterTheme = (state: RootStateType): Partial<Theme> => state.fuse.settings.current.theme.footer;
 
+/**
+ * Generates the MUI theme object.
+ * @param theme
+ * @param direction
+ * @returns
+ */
 function generateMuiTheme(theme: Partial<Theme>, direction: directionType) {
 	const data = _.merge({}, defaultThemeOptions, theme, mustHaveThemeOptions);
 
@@ -147,6 +183,11 @@ function generateMuiTheme(theme: Partial<Theme>, direction: directionType) {
 	);
 }
 
+/**
+ * Selects the contrast theme based on the background color.
+ * @param bgColor
+ * @returns
+ */
 export const selectContrastMainTheme = (bgColor: string) => {
 	function isDark(color: string) {
 		return getContrastRatio(color, '#ffffff') >= 3;
@@ -154,6 +195,12 @@ export const selectContrastMainTheme = (bgColor: string) => {
 	return isDark(bgColor) ? selectMainThemeDark : selectMainThemeLight;
 };
 
+/**
+ * Changes the theme mode.
+ * @param theme
+ * @param mode
+ * @returns
+ */
 function changeThemeMode(theme: Partial<Theme>, mode: 'dark' | 'light') {
 	const modes = {
 		dark: {

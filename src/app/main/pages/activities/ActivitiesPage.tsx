@@ -4,7 +4,9 @@ import Timeline from '@mui/lab/Timeline';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import exampleActivitiesData from './exampleActivitiesData';
 import ActivityTimelineItem from './ActivityTimelineItem';
-
+/**
+ * The activities page.
+ */
 function ActivitiesPage() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 

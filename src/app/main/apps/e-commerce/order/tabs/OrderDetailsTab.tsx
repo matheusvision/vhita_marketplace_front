@@ -18,6 +18,12 @@ type MarkerPropsType = {
 	lng: number;
 };
 
+/**
+ * The marker.
+ *
+ * @param {MarkerPropsType} props - The props.
+ * @returns {JSX.Element} The component.
+ */
 function Marker(props: MarkerPropsType) {
 	const { text, lat, lng } = props;
 	return (
@@ -36,6 +42,11 @@ function Marker(props: MarkerPropsType) {
 	);
 }
 
+/**
+ * The order details tab.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function OrderDetailsTab() {
 	const order = useAppSelector(selectOrder);
 	const [map, setMap] = useState<string>('shipping');

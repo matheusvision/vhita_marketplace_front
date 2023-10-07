@@ -2,6 +2,12 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { ProductType } from '../../types/ProductType';
 
+/**
+ * The product model.
+ *
+ * @param {PartialDeep<ProductType>} data - The data.
+ * @returns {ProductType} The product.
+ */
 const ProductModel = (data: PartialDeep<ProductType>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId('product-'),

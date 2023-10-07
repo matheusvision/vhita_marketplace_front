@@ -16,6 +16,9 @@ type WidgetsType = {
 	watchlist?: WatchlistType;
 };
 
+/**
+ * Get the widgets data.
+ */
 export const getWidgets = createAppAsyncThunk<WidgetsType>('cryptoDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/crypto/widgets');
 
@@ -26,6 +29,9 @@ export const getWidgets = createAppAsyncThunk<WidgetsType>('cryptoDashboardApp/w
 
 const initialState: WidgetsType = null;
 
+/**
+ * the crypto dashboard widgets slice.
+ */
 const widgetsSlice = createSlice({
 	name: 'cryptoDashboardApp/widgets',
 	initialState,

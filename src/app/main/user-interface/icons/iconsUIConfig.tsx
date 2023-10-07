@@ -3,6 +3,9 @@ import { Navigate } from 'react-router-dom';
 
 const IconListPage = lazy(() => import('./IconListPage'));
 
+/**
+ * Route Configuration for Icons UI.
+ */
 const iconsUIConfig = {
 	settings: {
 		layout: {

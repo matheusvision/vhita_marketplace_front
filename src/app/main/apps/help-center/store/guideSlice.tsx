@@ -6,6 +6,9 @@ import { GuideType } from '../types/GuideType';
 
 export type AppRootStateType = RootStateType<guideSliceType>;
 
+/**
+ * Get Guide from server
+ */
 export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
 	'helpCenterApp/guide/get',
 	async ({ categorySlug, guideSlug }) => {
@@ -19,6 +22,9 @@ export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; g
 
 const initialState: GuideType = null;
 
+/**
+ * The Help Center App guide slice.
+ */
 const guideSlice = createSlice({
 	name: 'helpCenterApp/guide',
 	initialState,

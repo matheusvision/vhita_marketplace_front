@@ -38,6 +38,9 @@ export const getWidgets = createAppAsyncThunk('projectDashboardApp/widgets/getWi
 
 const initialState: WidgetsType = null;
 
+/**
+ * The project dashboard widgets slice.
+ */
 const widgetsSlice = createSlice({
 	name: 'projectDashboardApp/widgets',
 	initialState,

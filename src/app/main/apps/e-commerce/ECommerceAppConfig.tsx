@@ -9,6 +9,9 @@ const Products = lazy(() => import('./products/Products'));
 const Order = lazy(() => import('./order/Order'));
 const Orders = lazy(() => import('./orders/Orders'));
 
+/**
+ * The E-Commerce app configuration.
+ */
 const ECommerceAppConfig = {
 	settings: {
 		layout: {}

@@ -13,6 +13,9 @@ type ActivityTimelineItemProps = {
 	item: ActivityItemType;
 };
 
+/**
+ * The ActivityTimelineItem component.
+ */
 function ActivityTimelineItem(props: ActivityTimelineItemProps) {
 	const { item, last } = props;
 

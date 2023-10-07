@@ -5,6 +5,9 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
+/**
+ * The full screen reversed sign out page.
+ */
 function FullScreenReversedSignOutPage() {
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">

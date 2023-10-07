@@ -6,6 +6,11 @@ import { useAppSelector } from 'app/store';
 import { selectFilteredContacts, selectGroupedFilteredContacts } from './store/contactsSlice';
 import ContactListItem from './ContactListItem';
 
+/**
+ * The contacts list.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function ContactsList() {
 	const filteredData = useAppSelector(selectFilteredContacts);
 	const groupedFilteredContacts = useAppSelector(selectGroupedFilteredContacts);

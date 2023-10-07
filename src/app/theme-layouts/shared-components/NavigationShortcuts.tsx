@@ -4,11 +4,18 @@ import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 import { selectUserShortcuts, updateUserShortcuts } from 'app/store/user/userSlice';
 
-type Props = {
+type NavigationShortcutsProps = {
 	className?: string;
 	variant?: 'horizontal' | 'vertical';
 };
-function NavigationShortcuts(props: Props) {
+
+/**
+ * The navigation shortcuts.
+ *
+ * @param {NavigationShortcutsProps} props - The component props.
+ * @returns {JSX.Element} The navigation shortcuts.
+ */
+function NavigationShortcuts(props: NavigationShortcutsProps) {
 	const { variant, className } = props;
 	const dispatch = useAppDispatch();
 	const shortcuts = useSelector(selectUserShortcuts) || [];

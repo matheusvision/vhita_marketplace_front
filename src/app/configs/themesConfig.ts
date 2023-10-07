@@ -2,18 +2,27 @@ import { fuseDark, skyBlue } from '@fuse/colors';
 import { blueGrey } from '@mui/material/colors';
 import { FuseThemesType } from '@fuse/core/FuseSettings/FuseSettings';
 
+/**
+ * The lightPaletteText object defines the text color palette for the light theme.
+ */
 export const lightPaletteText = {
 	primary: 'rgb(17, 24, 39)',
 	secondary: 'rgb(107, 114, 128)',
 	disabled: 'rgb(149, 156, 169)'
 };
 
+/**
+ * The darkPaletteText object defines the text color palette for the dark theme.
+ */
 export const darkPaletteText = {
 	primary: 'rgb(255,255,255)',
 	secondary: 'rgb(148, 163, 184)',
 	disabled: 'rgb(156, 163, 175)'
 };
 
+/**
+ * The themesConfig object is a configuration object for the color themes of the Fuse application.
+ */
 export const themesConfig: FuseThemesType = {
 	default: {
 		palette: {

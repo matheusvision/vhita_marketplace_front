@@ -37,6 +37,9 @@ const defaultValues = {
 	acceptTermsConditions: false
 };
 
+/**
+ * The full screen reversed sign up page.
+ */
 function FullScreenReversedSignUpPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

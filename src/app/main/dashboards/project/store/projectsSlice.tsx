@@ -28,6 +28,9 @@ export const {
 	selectById: selectProjectById
 } = projectsAdapter.getSelectors((state: AppRootStateType) => state.projectDashboardApp.projects);
 
+/**
+ * The project dashboard projects slice.
+ */
 const projectsSlice = createSlice({
 	name: 'projectDashboardApp/projects',
 	initialState,

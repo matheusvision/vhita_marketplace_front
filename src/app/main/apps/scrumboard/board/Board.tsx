@@ -16,6 +16,10 @@ import { getLists } from '../store/listsSlice';
 import { getLabels } from '../store/labelsSlice';
 import BoardHeader from './BoardHeader';
 
+/**
+ * The board component.
+ * @returns The jsx component.
+ */
 function Board() {
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);

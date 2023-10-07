@@ -26,6 +26,9 @@ export type WidgetsType = {
 	visits?: VisitsWidgetType;
 };
 
+/**
+ * Get the widgets data.
+ */
 export const getWidgets = createAppAsyncThunk('analyticsDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/analytics/widgets');
 
@@ -36,6 +39,9 @@ export const getWidgets = createAppAsyncThunk('analyticsDashboardApp/widgets/get
 
 const initialState: WidgetsType = {};
 
+/**
+ * The analytics dashboard widgets slice.
+ */
 const widgetsSlice = createSlice({
 	name: 'analyticsDashboardApp/widgets',
 	initialState,

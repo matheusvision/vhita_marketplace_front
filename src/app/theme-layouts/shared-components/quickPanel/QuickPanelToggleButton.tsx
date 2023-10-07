@@ -7,6 +7,12 @@ type QuickPanelToggleButtonProps = {
 	children?: React.ReactNode;
 };
 
+/**
+ * The quick panel toggle button.
+ *
+ * @param {QuickPanelToggleButtonProps} props - The component props.
+ * @returns {JSX.Element} The quick panel toggle button.
+ */
 function QuickPanelToggleButton(props: QuickPanelToggleButtonProps) {
 	const { children = <FuseSvgIcon>heroicons-outline:bookmark</FuseSvgIcon> } = props;
 	const dispatch = useAppDispatch();

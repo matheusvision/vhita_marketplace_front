@@ -35,6 +35,12 @@ type Layout1Props = {
 	children?: ReactNode;
 };
 
+/**
+ * The layout 1.
+ *
+ * @param {Layout1Props} props - The props.
+ * @returns {JSX.Element} The layout 1.
+ */
 function Layout1(props: Layout1Props) {
 	const { children } = props;
 	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);

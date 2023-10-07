@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
+/**
+ * The error 404 page.
+ */
 function Error404Page() {
 	return (
 		<div className="flex flex-1 flex-col items-center justify-center p-16">

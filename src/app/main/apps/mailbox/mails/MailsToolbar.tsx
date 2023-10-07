@@ -35,6 +35,11 @@ type MenuType = {
 	labels: null | HTMLElement;
 };
 
+/**
+ * The mail toolbar.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function MailToolbar(props: MailToolbarProps) {
 	const { onToggleLeftSidebar } = props;
 	const dispatch = useAppDispatch();

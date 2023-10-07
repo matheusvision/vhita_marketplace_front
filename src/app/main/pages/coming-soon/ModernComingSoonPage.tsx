@@ -22,6 +22,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The modern coming soon page.
+ */
 function ModernComingSoonPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

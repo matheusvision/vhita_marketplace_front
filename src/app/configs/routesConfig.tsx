@@ -24,6 +24,9 @@ const routeConfigs: FuseRouteConfigsType = [
 	...AppsConfigs
 ];
 
+/**
+ * The routes of the application.
+ */
 const routes: FuseRoutesType = [
 	...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
 	{

@@ -2,6 +2,11 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { ProfileType } from '../types/ProfileType';
 
+/**
+ * The profile model.
+ * @param data The profile data.
+ * @returns The profile model.
+ */
 function ProfileModel(data: PartialDeep<ProfileType>) {
 	data = data || {};
 

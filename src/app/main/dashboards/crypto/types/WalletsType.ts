@@ -1,3 +1,6 @@
+/**
+ * WalletsType
+ */
 type WalletsType = {
 	btc: number;
 	eth: number;

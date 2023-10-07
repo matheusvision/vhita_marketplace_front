@@ -13,6 +13,10 @@ import { getMails, selectMails, selectSearchText } from '../store/mailsSlice';
 import MailListItem from './MailListItem';
 import { MailsType } from '../types/MailType';
 
+/**
+ * The mail list.
+ * @returns The jsx component.
+ */
 function MailList() {
 	const dispatch = useAppDispatch();
 	const mails = useAppSelector(selectMails);

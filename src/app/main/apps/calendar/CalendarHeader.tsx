@@ -17,6 +17,11 @@ type CalendarHeaderProps = {
 	onToggleLeftSidebar: () => void;
 };
 
+/**
+ * The calendar header.
+ * @param props - The component props.
+ * @returns The JSX element for the component.
+ */
 function CalendarHeader(props: CalendarHeaderProps) {
 	const { calendarRef, currentDate, onToggleLeftSidebar } = props;
 

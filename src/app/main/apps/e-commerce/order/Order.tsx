@@ -16,6 +16,11 @@ import InvoiceTab from './tabs/InvoiceTab';
 import OrderDetailsTab from './tabs/OrderDetailsTab';
 import ProductsTab from './tabs/ProductsTab';
 
+/**
+ * The order.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function Order() {
 	const dispatch = useAppDispatch();
 	const order = useAppSelector(selectOrder);

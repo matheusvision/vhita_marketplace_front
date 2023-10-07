@@ -100,6 +100,9 @@ const Root = styled('div')<{ opened: number }>(({ theme, opened }) => ({
 	}
 }));
 
+/**
+ * The chat panel component.
+ */
 function ChatPanel() {
 	const dispatch = useAppDispatch();
 	const selectedContactId = useAppSelector(selectSelectedContactId);

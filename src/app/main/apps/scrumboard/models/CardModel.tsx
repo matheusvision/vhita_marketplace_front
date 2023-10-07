@@ -2,6 +2,11 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { CardType } from '../types/CardType';
 
+/**
+ * The card model.
+ * @param data The card data.
+ * @returns The card model.
+ */
 function CardModel(data: PartialDeep<CardType>) {
 	data = data || {};
 

@@ -18,6 +18,11 @@ type TaskListItemProps = {
 	index: number;
 };
 
+/**
+ * The task list item.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function TaskListItem(props: TaskListItemProps) {
 	const { data, index } = props;
 

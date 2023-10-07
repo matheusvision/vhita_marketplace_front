@@ -6,6 +6,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The OverdueWidget widget.
+ *
+ * @returns {JSX.Element} The OverdueWidget widget.
+ */
 function OverdueWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { data, title } = widgets.overdue;

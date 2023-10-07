@@ -21,6 +21,10 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a title')
 });
 
+/**
+ * The board title component.
+ * @returns The jsx component.
+ */
 function BoardTitle() {
 	const dispatch = useAppDispatch();
 	const board = useAppSelector(selectBoard);

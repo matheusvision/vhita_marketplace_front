@@ -11,6 +11,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The OverviewPageLayoutsUI page.
+ */
 function OverviewPageLayoutsUI() {
 	return (
 		<Root

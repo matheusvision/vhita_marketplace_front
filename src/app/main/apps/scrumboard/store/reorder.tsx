@@ -13,6 +13,9 @@ const reorder = (list: string[], startIndex: number, endIndex: number) => {
 
 export default reorder;
 
+/**
+ * Reorder Quote Map
+ */
 export const reorderQuoteMap = (
 	lists: BoardListsType,
 	source: DropResult['source'],

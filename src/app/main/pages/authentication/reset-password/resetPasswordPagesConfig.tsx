@@ -10,6 +10,9 @@ const SplitScreenReversedResetPasswordPage = lazy(() => import('./SplitScreenRev
 const FullScreenResetPasswordPage = lazy(() => import('./FullScreenResetPasswordPage'));
 const FullScreenReversedResetPasswordPage = lazy(() => import('./FullScreenReversedResetPasswordPage'));
 
+/**
+ * The reset password pages config.
+ */
 const resetPasswordPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

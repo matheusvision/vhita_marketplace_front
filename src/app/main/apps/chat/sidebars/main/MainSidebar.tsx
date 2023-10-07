@@ -20,6 +20,11 @@ import { ChatAppContext } from '../../ChatApp';
 import { selectUser } from '../../store/userSlice';
 import ChatListItem from './ChatListItem';
 
+/**
+ * The main sidebar.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function MainSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
 

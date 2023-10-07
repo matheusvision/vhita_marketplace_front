@@ -11,6 +11,11 @@ import AccountBalanceWidget from './widgets/AccountBalanceWidget';
 import RecentTransactionsWidget from './widgets/RecentTransactionsWidget';
 import BudgetWidget from './widgets/BudgetWidget';
 
+/**
+ * The finance dashboard app.
+ *
+ * @returns {JSX.Element} The finance dashboard app.
+ */
 function FinanceDashboardApp() {
 	const dispatch = useAppDispatch();
 	const widgets = useAppSelector(selectWidgets);

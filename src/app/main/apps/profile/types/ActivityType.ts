@@ -1,5 +1,8 @@
 import { UserType } from './UserType';
 
+/**
+ * The Activity type definition.
+ */
 export type ActivityType = {
 	id: string;
 	user: UserType;
@@ -7,4 +10,7 @@ export type ActivityType = {
 	time: string;
 };
 
+/**
+ * The Activities type definition.
+ */
 export type ActivitiesType = ActivityType[];

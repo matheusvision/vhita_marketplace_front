@@ -8,6 +8,9 @@ import { ItemPathType } from '../types/ItemPathType';
 
 export type AppRootStateType = RootStateType<itemsSliceType>;
 
+/**
+ * Get items from server
+ */
 export const getItems = createAppAsyncThunk<ItemResponseType, string>(
 	'fileManagerApp/items/getItems',
 	async (folderId) => {
@@ -35,6 +38,9 @@ export const {
 	selectById
 } = itemsAdapter.getSelectors((state: AppRootStateType) => state.fileManagerApp.items);
 
+/**
+ * The File Manager items slice.
+ */
 const itemsSlice = createSlice({
 	name: 'fileManagerApp/items',
 	initialState,

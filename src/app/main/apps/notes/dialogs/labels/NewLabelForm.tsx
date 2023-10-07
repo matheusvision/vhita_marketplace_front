@@ -24,6 +24,10 @@ const schema = yup.object().shape({
 	title: yup.string().required('You must enter a label title')
 });
 
+/**
+ * The new label form.
+ * @returns The jsx component.
+ */
 function NewLabelForm() {
 	const dispatch = useAppDispatch();
 

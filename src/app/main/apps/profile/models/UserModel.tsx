@@ -3,6 +3,11 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { UserType } from '../types/UserType';
 
+/**
+ * The user model.
+ * @param data The user data.
+ * @returns The user model.
+ */
 function UserModel(data: PartialDeep<UserType>) {
 	data = data || {};
 

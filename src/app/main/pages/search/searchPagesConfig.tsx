@@ -5,6 +5,9 @@ import { FuseRouteConfigType } from '@fuse/utils/FuseUtils';
 const ClassicSearchPage = lazy(() => import('./ClassicSearchPage'));
 const ModernSearchPage = lazy(() => import('./ModernSearchPage'));
 
+/**
+ * The search pages config.
+ */
 const searchPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

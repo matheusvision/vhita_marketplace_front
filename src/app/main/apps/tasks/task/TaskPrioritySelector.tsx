@@ -9,6 +9,9 @@ import Button from '@mui/material/Button';
 import _ from '@lodash';
 import clsx from 'clsx';
 
+/**
+ * The priority list data.
+ */
 const priorityList = [
 	{
 		value: 0,
@@ -39,6 +42,11 @@ type TaskPrioritySelectorProps = {
 	className?: string;
 };
 
+/**
+ * The task priority selector.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 const TaskPrioritySelector = forwardRef<HTMLButtonElement, TaskPrioritySelectorProps>((props, ref) => {
 	const { value = 0, onChange, className } = props;
 

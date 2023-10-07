@@ -4,6 +4,9 @@ import contacts, { contactsSliceType } from './contactsSlice';
 import countries, { countriesSliceType } from './countriesSlice';
 import contact, { contactSliceType } from './contactSlice';
 
+/**
+ * The Contacts App slices.
+ */
 const slices = [tags, countries, contacts, contact];
 
 export default slices;

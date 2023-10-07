@@ -19,6 +19,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The classic coming soon page.
+ */
 function ClassicComingSoonPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

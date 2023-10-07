@@ -13,6 +13,11 @@ type EventLabelSelectProps = {
 	className?: string;
 };
 
+/**
+ * The event label select.
+ * @param props - The component props.
+ * @returns The JSX element for the component.
+ */
 const EventLabelSelect = forwardRef<HTMLElement, EventLabelSelectProps>((props, ref) => {
 	const { value, onChange, className } = props;
 

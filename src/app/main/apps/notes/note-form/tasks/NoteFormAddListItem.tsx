@@ -25,6 +25,11 @@ type NoteFormAddListItemProps = {
 	onListItemAdd: (noteListItem: NoteListItemType) => void;
 };
 
+/**
+ * The note form add list item.
+ * @param props The component props.
+ * @returns The JSX element.
+ */
 function NoteFormAddListItem(props: NoteFormAddListItemProps) {
 	const { onListItemAdd } = props;
 

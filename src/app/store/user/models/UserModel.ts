@@ -1,6 +1,9 @@
 import _ from '@lodash';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 
+/**
+ * The type definition for a user object.
+ */
 export type UserModelType = {
 	uuid?: string;
 	role?: string[] | string;
@@ -14,6 +17,11 @@ export type UserModelType = {
 	};
 };
 
+/**
+ * Creates a new user object with the specified data.
+ * @param data
+ * @returns
+ */
 function UserModel(data: UserModelType) {
 	data = data || {};
 

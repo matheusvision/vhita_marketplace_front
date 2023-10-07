@@ -1,5 +1,8 @@
 import { ReactNode } from 'react';
 
+/**
+ * The type of the SimplePricingItemType.
+ */
 type SimplePricingItemType = {
 	period?: 'month' | 'year';
 	title?: string;

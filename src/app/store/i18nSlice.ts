@@ -3,6 +3,11 @@ import i18n from 'src/i18n';
 import { AppThunkType, RootStateType } from 'app/store/types';
 import { setDefaultSettings } from './fuse/settingsSlice';
 
+/**
+ * Changes the language of the application and updates the settings if necessary.
+ * @param languageId - The id of the language to change to.
+ * @returns A Promise that resolves when the language has been changed.
+ */
 export const changeLanguage =
 	(languageId: string): AppThunkType =>
 	async (dispatch, getState) => {
@@ -25,17 +30,26 @@ export const changeLanguage =
 		});
 	};
 
+/**
+ * The type definition for a language object.
+ */
 export type LanguageType = {
 	id: string;
 	title: string;
 	flag: string;
 };
 
+/**
+ * The type definition for the i18n state.
+ */
 type I18nState = {
 	language: string;
 	languages: LanguageType[];
 };
 
+/**
+ * The i18n slice
+ */
 const i18nSlice = createSlice({
 	name: 'i18n',
 	initialState: {
@@ -47,6 +61,11 @@ const i18nSlice = createSlice({
 		]
 	} as I18nState,
 	reducers: {
+		/**
+		 * Updates the state with the new language.
+		 * @param state - The current state.
+		 * @param action - The Redux action containing the new language id.
+		 */
 		languageChanged: (state, action: PayloadAction<string>) => {
 			state.language = action.payload;
 		}

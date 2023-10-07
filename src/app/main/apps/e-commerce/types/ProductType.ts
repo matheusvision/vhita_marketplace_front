@@ -1,5 +1,8 @@
 import { ProductImageType } from './ProductImageType';
 
+/**
+ * Product Type
+ */
 export type ProductType = {
 	id: string;
 	name: string;

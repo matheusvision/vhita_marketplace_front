@@ -6,6 +6,10 @@ import { closeLabelsDialog, selectLabels, selectLabelsDialogOpen } from '../../s
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
 
+/**
+ * The labels dialog.
+ * @returns The jsx component.
+ */
 function LabelsDialog() {
 	const dispatch = useAppDispatch();
 	const labelsDialogOpen = useAppSelector(selectLabelsDialogOpen);

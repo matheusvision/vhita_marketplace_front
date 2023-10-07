@@ -2,8 +2,16 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { MailType } from '../types/MailType';
 
+/**
+ * The mails type.
+ */
 export type MailsType = MailType[];
 
+/**
+ * The mail model.
+ * @param data The initial data.
+ * @returns The mail model.
+ */
 const MailModel = (data: PartialDeep<MailType>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),

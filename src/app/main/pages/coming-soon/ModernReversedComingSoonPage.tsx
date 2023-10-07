@@ -22,6 +22,9 @@ const defaultValues = {
 	email: ''
 };
 
+/**
+ * The modern reversed coming soon page.
+ */
 function ModernReversedComingSoonPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

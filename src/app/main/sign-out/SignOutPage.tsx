@@ -3,6 +3,9 @@ import Paper from '@mui/material/Paper';
 import { useEffect } from 'react';
 import JwtService from '../../auth/services/jwtService';
 
+/**
+ * The sign out page.
+ */
 function SignOutPage() {
 	useEffect(() => {
 		setTimeout(() => {

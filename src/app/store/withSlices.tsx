@@ -2,18 +2,41 @@ import React from 'react';
 import { AnyAction, combineReducers, Reducer } from '@reduxjs/toolkit';
 import { injectReducers } from 'app/store';
 
+/**
+ * The reducer function for the slice.
+ */
 type Slice<State = unknown> = {
 	reducer: Reducer<State, AnyAction>;
+	/**
+	 * The name of the slice.
+	 */
 	name: string;
 };
 
 type KnownAction = {
+	/**
+	 * The type of the action.
+	 */
 	type: string;
+	/**
+	 * The payload of the action.
+	 */
 	payload: unknown;
 };
 
+/**
+ * Injects reducers grouped by common key.
+ * @param slices - The slices to group and inject.
+ * @returns A promise that resolves to true when the reducers have been injected.
+ */
 export const injectReducersGroupedByCommonKey = async (slices: Slice[]) => {
+	/**
+	 * An object that groups reducers by their common key.
+	 */
 	const groupedReducers: Record<string, Record<string, Reducer<unknown, KnownAction>>> = {};
+	/**
+	 * An object that contains all combined reducers.
+	 */
 	const allCombinedReducers: Record<string, Reducer> = {};
 
 	// Group slices by their common key and prepare for combineReducers
@@ -39,6 +62,11 @@ export const injectReducersGroupedByCommonKey = async (slices: Slice[]) => {
 	return true;
 };
 
+/**
+ * A Higher Order Component that injects reducers for the provided slices.
+ * @param slices - The slices to inject reducers for.
+ * @returns A new component with the injected reducers.
+ */
 const withSlices =
 	<P extends object>(slices: Slice[]) =>
 	(WrappedComponent: React.FC<P>) => {

@@ -1,5 +1,8 @@
 import { DeepPartial } from 'react-hook-form';
 
+/**
+ * The Layout3 Config object.
+ */
 const Layout3Config = {
 	title: 'Layout 3 - Horizontal',
 	defaults: {

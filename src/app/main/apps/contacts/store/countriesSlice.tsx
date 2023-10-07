@@ -4,6 +4,9 @@ import axios from 'axios';
 import { CountriesType, CountryType } from '../types/CountryType';
 import { AppRootStateType } from '.';
 
+/**
+ * Get countries from server
+ */
 export const getCountries = createAppAsyncThunk('contactsApp/countries/getCountries', async () => {
 	const response = await axios.get('/api/countries');
 
@@ -18,6 +21,9 @@ export const { selectAll: selectCountries, selectById: selectCountriesById } = c
 	(state: AppRootStateType) => state.contactsApp?.countries
 );
 
+/**
+ * The Contacts App countries slice.
+ */
 const countriesSlice = createSlice({
 	name: 'contactsApp/countries',
 	initialState: countriesAdapter.getInitialState([]),

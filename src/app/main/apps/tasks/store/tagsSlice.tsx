@@ -6,6 +6,9 @@ import { TagsType } from '../types/TagType';
 
 export type AppRootStateType = RootStateType<tagsSliceType>;
 
+/**
+ * Get tags from the server.
+ */
 export const getTags = createAppAsyncThunk('tasksApp/tags/getTags', async () => {
 	const response = await axios.get('/api/tasks/tags');
 
@@ -21,6 +24,9 @@ export const { selectAll: selectTags, selectById: selectTagsById } = tagsAdapter
 	(state: AppRootStateType) => state.tasksApp.tags
 );
 
+/**
+ * The Tasks app tags slice.
+ */
 const tagsSlice = createSlice({
 	name: 'tasksApp/tags',
 	initialState,

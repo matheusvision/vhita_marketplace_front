@@ -21,6 +21,11 @@ import { getCourse, selectCourse, updateCourse } from '../store/courseSlice';
 import CourseInfo from '../CourseInfo';
 import CourseProgress from '../CourseProgress';
 
+/**
+ * The Course page.
+ *
+ * @returns {JSX.Element} The Course page.
+ */
 function Course() {
 	const dispatch = useAppDispatch();
 	const course = useAppSelector(selectCourse);

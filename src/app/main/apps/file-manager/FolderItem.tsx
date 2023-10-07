@@ -12,6 +12,11 @@ type FolderItemProps = {
 	item: FileManagerItemType;
 };
 
+/**
+ * The folder item.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function FolderItem(props: FolderItemProps) {
 	const { item } = props;
 	const dispatch = useAppDispatch();

@@ -1,6 +1,9 @@
 import GuestRoleExample from './GuestRoleExample';
 import authRoles from '../../../auth/authRoles';
 
+/**
+ * GuestRoleExampleConfig
+ */
 const GuestRoleExampleConfig = {
 	settings: {
 		layout: {

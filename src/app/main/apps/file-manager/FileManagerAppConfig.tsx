@@ -6,6 +6,9 @@ const FileManagerApp = lazy(() => import('./FileManagerApp'));
 
 const FileManagerAppWithSlices = withSlices(slices)(FileManagerApp);
 
+/**
+ * The file manager app config.
+ */
 const FileManagerAppConfig = {
 	settings: {
 		layout: {

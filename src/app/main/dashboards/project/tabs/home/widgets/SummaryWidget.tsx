@@ -8,6 +8,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The SummaryWidget widget.
+ *
+ * @returns {JSX.Element} The SummaryWidget widget.
+ */
 function SummaryWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { data, ranges, currentRange: currentRangeDefault } = widgets.summary;

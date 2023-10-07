@@ -151,6 +151,9 @@ export const deleteBoard = createAppAsyncThunk<string, string>(
 
 const initialState: BoardType = null;
 
+/**
+ * The Scrumbboard board slice.
+ */
 const boardSlice = createSlice({
 	name: 'scrumboardApp/board',
 	initialState,

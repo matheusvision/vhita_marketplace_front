@@ -2,6 +2,11 @@ import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import { LabelType } from '../types/LabelType';
 
+/**
+ * The label model.
+ * @param data The label data.
+ * @returns The label model.
+ */
 function LabelModel(data: Partial<LabelType>) {
 	data = data || {};
 	return _.defaults(data, {

@@ -11,6 +11,9 @@ import { CardsType, CardType } from '../types/CardType';
 
 type AppRootStateType = RootStateType<[CardsSliceType, BoardSliceType]>;
 
+/**
+ * Get Cards
+ */
 export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/cards/getCards', async (boardId) => {
 	const response = await axios.get(`/api/scrumboard/boards/${boardId}/cards`);
 
@@ -19,6 +22,9 @@ export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/ca
 	return data;
 });
 
+/**
+ * Create New Card
+ */
 export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: CardType }>(
 	'scrumboardApp/cards/newCard',
 	async ({ listId, newData }, { getState }) => {
@@ -43,6 +49,9 @@ export const { selectAll: selectCards, selectById } = cardsAdapter.getSelectors(
 	(state: AppRootStateType) => state.scrumboardApp.cards
 );
 
+/**
+ * The Scrumboard Cards Slice.
+ */
 const cardsSlice = createSlice({
 	name: 'scrumboardApp/cards',
 	initialState: cardsAdapter.getInitialState({}),

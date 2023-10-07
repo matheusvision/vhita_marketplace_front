@@ -5,6 +5,9 @@ const Root = styled('div')({
 	padding: 24
 });
 
+/**
+ * The BlankSample page.
+ */
 function BlankSample() {
 	return (
 		<Root>

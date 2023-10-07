@@ -9,6 +9,9 @@ import { motion } from 'framer-motion';
 import TablePricingFeatureItem from './TablePricingFeatureItem';
 import TablePricingTable from './TablePricingTable';
 
+/**
+ * The table pricing page.
+ */
 function TablePricingPage() {
 	const [period, setPeriod] = useState<'month' | 'year'>('month');
 

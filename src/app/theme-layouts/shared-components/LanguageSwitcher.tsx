@@ -10,6 +10,11 @@ import { Link } from 'react-router-dom';
 import { changeLanguage, LanguageType, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
 import { useAppDispatch } from 'app/store';
 
+/**
+ * The language switcher.
+ *
+ * @returns {JSX.Element} The language switcher.
+ */
 function LanguageSwitcher() {
 	const currentLanguage = useSelector(selectCurrentLanguage);
 	const languages = useSelector(selectLanguages);

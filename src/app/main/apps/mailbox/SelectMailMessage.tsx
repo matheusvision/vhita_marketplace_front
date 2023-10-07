@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
+/**
+ * The select mail message.
+ * @returns The jsx component.
+ */
 function SelectMailMessage() {
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-24">

@@ -9,6 +9,10 @@ import Card from '@mui/material/Card';
 import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
 import { getGuide, selectGuide } from '../store/guideSlice';
 
+/**
+ * The help center guide.
+ * @returns The jsx component.
+ */
 function HelpCenterGuide() {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();

@@ -12,6 +12,9 @@ type AppRootStateType = RootStateType<eventsSliceType>;
 
 export const dateFormat = 'YYYY-MM-DDTHH:mm:ss.sssZ';
 
+/**
+ * Get events from server
+ */
 export const getEvents = createAppAsyncThunk('calendarApp/events/getEvents', async () => {
 	const response = await axios.get('/api/calendar/events');
 
@@ -20,6 +23,9 @@ export const getEvents = createAppAsyncThunk('calendarApp/events/getEvents', asy
 	return data;
 });
 
+/**
+ * Add new event
+ */
 export const addEvent = createAppAsyncThunk<EventType, EventType>('calendarApp/events/addEvent', async (newEvent) => {
 	const response = await axios.post('/api/calendar/events', newEvent);
 
@@ -28,6 +34,9 @@ export const addEvent = createAppAsyncThunk<EventType, EventType>('calendarApp/e
 	return data;
 });
 
+/**
+ * Update event
+ */
 export const updateEvent = createAppAsyncThunk<EventType, EventType>(
 	'calendarApp/events/updateEvent',
 	async (event) => {
@@ -39,6 +48,9 @@ export const updateEvent = createAppAsyncThunk<EventType, EventType>(
 	}
 );
 
+/**
+ * Remove event
+ */
 export const removeEvent = createAppAsyncThunk<string, string>('calendarApp/events/removeEvent', async (eventId) => {
 	const response = await axios.delete(`/api/calendar/events/${eventId}`);
 
@@ -75,6 +87,9 @@ export const {
 	selectById: selectEventById
 } = eventsAdapter.getSelectors((state: AppRootStateType) => state.calendarApp.events);
 
+/**
+ * The Calendar App events slice.
+ */
 const eventsSlice = createSlice({
 	name: 'calendarApp/events',
 	initialState,

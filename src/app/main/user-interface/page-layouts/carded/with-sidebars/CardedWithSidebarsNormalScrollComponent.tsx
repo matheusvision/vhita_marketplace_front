@@ -14,6 +14,9 @@ const Root = styled(FusePageCarded)(() => ({
 	'& .FusePageCarded-sidebarContent': {}
 }));
 
+/**
+ * The CardedWithSidebarsNormalScroll page.
+ */
 function CardedWithSidebarsNormalScrollComponent() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 

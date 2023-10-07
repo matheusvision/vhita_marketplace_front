@@ -1,3 +1,6 @@
+/**
+ * Order Payment Type
+ */
 export type OrderPaymentType = {
 	transactionId: string;
 	amount: string;

@@ -8,6 +8,9 @@ import { UserType } from '../types/UserType';
 
 type AppRootStateType = RootStateType<userSliceType>;
 
+/**
+ * Get the user data.
+ */
 export const getUserData = createAppAsyncThunk<UserType>('chatPanel/user/getUserData', async () => {
 	const response = await axios.get('/api/chat/user');
 
@@ -16,6 +19,9 @@ export const getUserData = createAppAsyncThunk<UserType>('chatPanel/user/getUser
 	return data;
 });
 
+/**
+ * Update the user data.
+ */
 export const updateUserData = createAppAsyncThunk<UserType, DeepPartial<UserType>>(
 	'chatPanel/user/updateUserData',
 	async (newData) => {
@@ -29,6 +35,9 @@ export const updateUserData = createAppAsyncThunk<UserType, DeepPartial<UserType
 
 const initialState: PartialDeep<UserType> = {};
 
+/**
+ * The slice for the chatpanel user.
+ */
 const userSlice = createSlice({
 	name: 'chatPanel/user',
 	initialState,

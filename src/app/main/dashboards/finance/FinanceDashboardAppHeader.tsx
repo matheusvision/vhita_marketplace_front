@@ -2,6 +2,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
+/**
+ * The FinanceDashboardAppHeader component.
+ *
+ * @returns {JSX.Element} The FinanceDashboardAppHeader component.
+ */
 function FinanceDashboardAppHeader() {
 	return (
 		<div className="flex w-full container">

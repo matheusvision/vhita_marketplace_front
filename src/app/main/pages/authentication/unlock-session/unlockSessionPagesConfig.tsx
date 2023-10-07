@@ -10,6 +10,9 @@ const SplitScreenReversedUnlockSessionPage = lazy(() => import('./SplitScreenRev
 const FullScreenUnlockSessionPage = lazy(() => import('./FullScreenUnlockSessionPage'));
 const FullScreenReversedUnlockSessionPage = lazy(() => import('./FullScreenReversedUnlockSessionPage'));
 
+/**
+ * The unlock session pages config.
+ */
 const unlockSessionPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

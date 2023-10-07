@@ -5,6 +5,9 @@ import { OrderShippingDetailType } from './OrderShippingDetailType';
 import { OrderCustomerType } from './OrderCustomerType';
 import { OrderPaymentType } from './OrderPaymentType';
 
+/**
+ * Order Type
+ */
 export type OrderType = {
 	id: string;
 	reference: string;

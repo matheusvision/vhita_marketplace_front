@@ -1,3 +1,6 @@
+/**
+ * Route params type
+ */
 type RouteParamsType = {
 	folderHandle?: string;
 	labelHandle?: string;

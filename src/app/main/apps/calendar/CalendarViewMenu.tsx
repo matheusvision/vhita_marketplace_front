@@ -28,6 +28,11 @@ type CalendarViewMenuProps = {
 	currentDate: DatesSetArg;
 };
 
+/**
+ * The calendar view menu.
+ * @param props - The component props.
+ * @returns The JSX element for the component.
+ */
 function CalendarViewMenu(props: CalendarViewMenuProps) {
 	const { className, calendarApi, currentDate } = props;
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

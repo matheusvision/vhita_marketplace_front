@@ -8,6 +8,11 @@ import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * Impressions widget.
+ *
+ * @returns {JSX.Element} The impressions widget.
+ */
 function Impressions() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);

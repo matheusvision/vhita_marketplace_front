@@ -1,5 +1,8 @@
 import { OrderAddressType } from './OrderAddressType';
 
+/**
+ * Order Customer Type
+ */
 export type OrderCustomerType = {
 	id: string;
 	firstName: string;

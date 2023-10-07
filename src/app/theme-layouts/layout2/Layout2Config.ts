@@ -1,5 +1,8 @@
 import { DeepPartial } from 'react-hook-form';
 
+/**
+ * The Layout2 Config object.
+ */
 const Layout2Config = {
 	title: 'Layout 2 - Horizontal',
 	defaults: {

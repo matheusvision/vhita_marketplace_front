@@ -11,6 +11,10 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The TailwindCssUI page.
+ *
+ */
 function TailwindCssUI() {
 	return (
 		<Root

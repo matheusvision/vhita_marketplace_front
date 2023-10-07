@@ -3,6 +3,9 @@ import slices from './store';
 
 const NotesApp = lazyWithSlices(() => import('./NotesApp'), slices);
 
+/**
+ * The notes app config.
+ */
 const NotesAppConfig = {
 	settings: {
 		layout: {

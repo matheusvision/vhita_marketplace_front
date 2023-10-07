@@ -12,6 +12,10 @@ import MailLabelsMenu from './MailLabelsMenu';
 import { selectMail } from '../store/mailSlice';
 import { setActionToMails } from '../store/mailsSlice';
 
+/**
+ * The mail toolbar.
+ * @returns The jsx component.
+ */
 function MailToolbar() {
 	const dispatch = useAppDispatch();
 	const mail = useAppSelector(selectMail);

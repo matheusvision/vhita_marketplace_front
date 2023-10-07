@@ -1,3 +1,6 @@
+/**
+ * Chat Message Type
+ */
 export type ChatMessageType = {
 	id: string;
 	chatId: string;
@@ -6,4 +9,7 @@ export type ChatMessageType = {
 	createdAt: string;
 };
 
+/**
+ * Chat Messages Type
+ */
 export type ChatMessagesType = ChatMessageType[];

@@ -16,6 +16,16 @@ const emptyInitialState = navigationAdapter.getInitialState();
 
 const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationConfig);
 
+/**
+ * Redux Thunk actions related to the navigation store state
+ */
+
+/**
+Appends a navigation item to the navigation store state.
+@param item The navigational item to be appended. 
+@param parentId The id of the parent item into which the item will be appended.
+@returns {AppThunkType} Returns async thunk which calls setNavigation to append item.
+ */
 export const appendNavigationItem =
 	(item: FuseNavItemType, parentId?: string): AppThunkType =>
 	async (dispatch, getState) => {
@@ -23,6 +33,12 @@ export const appendNavigationItem =
 		dispatch(setNavigation(FuseUtils.appendNavItem(navigation, FuseNavItemModel(item), parentId)));
 	};
 
+/**
+ * Prepends a navigation item to the navigation store state.
+ * @param item
+ * @param parentId
+ * @returns
+ */
 export const prependNavigationItem =
 	(item: FuseNavItemType, parentId?: string): AppThunkType =>
 	async (dispatch, getState) => {
@@ -33,6 +49,13 @@ export const prependNavigationItem =
 		return Promise.resolve();
 	};
 
+/**
+ * Adds a navigation item to the navigation store state at the specified index.
+ * @param item
+ * @param index
+ * @param parentId
+ * @returns
+ */
 export const updateNavigationItem =
 	(id: string, item: PartialDeep<FuseNavItemType>): AppThunkType =>
 	async (dispatch, getState) => {
@@ -43,6 +66,11 @@ export const updateNavigationItem =
 		return Promise.resolve();
 	};
 
+/**
+ * Removes a navigation item from the navigation store state.
+ * @param id
+ * @returns
+ */
 export const removeNavigationItem =
 	(id: string): AppThunkType =>
 	async (dispatch, getState) => {
@@ -59,6 +87,9 @@ export const {
 	selectById: selectNavigationItemById
 } = navigationAdapter.getSelectors((state: RootStateType) => state.fuse.navigation);
 
+/**
+ * The navigation slice
+ */
 const navigationSlice = createSlice({
 	name: 'navigation',
 	initialState,

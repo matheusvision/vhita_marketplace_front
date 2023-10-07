@@ -10,6 +10,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import exampleSearchResponse from './exampleSearchResponse';
 import SearchItemType from './SearchItemType';
 
+/**
+ * The modern search page.
+ */
 function ModernSearchPage() {
 	const [data, setData] = useState<SearchItemType[]>([]);
 

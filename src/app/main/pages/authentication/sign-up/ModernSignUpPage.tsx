@@ -37,6 +37,9 @@ const defaultValues = {
 	acceptTermsConditions: false
 };
 
+/**
+ * The modern sign up page.
+ */
 function ModernSignUpPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

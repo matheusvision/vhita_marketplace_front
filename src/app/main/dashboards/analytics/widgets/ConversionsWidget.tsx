@@ -9,6 +9,9 @@ import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 import ConversionsWidgetType from '../types/ConversionsWidgetType';
 
+/**
+ * The conversions widget.
+ */
 function ConversionsWidget() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);

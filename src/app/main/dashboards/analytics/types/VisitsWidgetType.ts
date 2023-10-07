@@ -5,6 +5,9 @@ interface SeriesItem {
 	data: number[];
 }
 
+/**
+ * Visits Widget Type
+ */
 interface VisitsWidgetType {
 	amount: number;
 	labels: Label[];

@@ -26,6 +26,11 @@ type CardCommentProps = {
 	onCommentAdd: (comment: CommentType) => void;
 };
 
+/**
+ * The card comment component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function CardComment(props: CardCommentProps) {
 	const { onCommentAdd } = props;
 

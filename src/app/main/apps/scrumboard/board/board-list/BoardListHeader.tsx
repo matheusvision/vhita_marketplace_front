@@ -35,6 +35,9 @@ type BoardListHeaderProps = {
 	className?: string;
 };
 
+/**
+ * The board list header component.
+ */
 function BoardListHeader(props: BoardListHeaderProps) {
 	const { list, cardIds, className, handleProps } = props;
 	const dispatch = useAppDispatch();

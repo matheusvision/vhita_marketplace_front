@@ -9,6 +9,11 @@ type SimplePricingCardProps = SimplePricingItemType & {
 	className?: string;
 };
 
+/**
+ * The simple pricing card component.
+ * @param {SimplePricingCardProps} props - The component props.
+ * @returns {JSX.Element} The simple pricing card component.
+ */
 function SimplePricingCard(props: SimplePricingCardProps) {
 	const {
 		period = '',

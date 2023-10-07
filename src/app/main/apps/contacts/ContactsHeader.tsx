@@ -9,6 +9,9 @@ import { useAppDispatch, useAppSelector } from 'app/store';
 import { ChangeEvent } from 'react';
 import { selectFilteredContacts, selectSearchText, setContactsSearchText } from './store/contactsSlice';
 
+/**
+ * The contacts header.
+ */
 function ContactsHeader() {
 	const dispatch = useAppDispatch();
 	const searchText = useAppSelector(selectSearchText);

@@ -11,6 +11,9 @@ enum TransactionStatusType {
 	PENDING = 'pending'
 }
 
+/**
+ * Recent Transactions Widget Type
+ */
 type RecentTransactionsWidgetType = {
 	columns: string[];
 	rows: TransactionType[];

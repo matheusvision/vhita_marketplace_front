@@ -13,6 +13,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
 
+/**
+ * The ScheduleWidget widget.
+ *
+ * @returns {JSX.Element} The ScheduleWidget widget.
+ */
 function ScheduleWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { series, ranges } = widgets.schedule;

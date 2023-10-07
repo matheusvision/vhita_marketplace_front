@@ -32,6 +32,11 @@ type BoardCardProps = {
 	index: number;
 };
 
+/**
+ * The board card component.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function BoardCard(props: BoardCardProps) {
 	const { cardId, index } = props;
 

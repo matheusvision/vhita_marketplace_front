@@ -18,4 +18,7 @@ src/@fake-db/db/*
 **/*.{js,jsx}
 
 .eslintrc.js
-tailwind.config.js
+tailwind.config.
+
+aliases.js
+config-overrides.js

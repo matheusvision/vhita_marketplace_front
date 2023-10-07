@@ -9,6 +9,11 @@ type FileItemProps = {
 	item: FileManagerItemType;
 };
 
+/**
+ * The file item.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function FileItem(props: FileItemProps) {
 	const { item } = props;
 

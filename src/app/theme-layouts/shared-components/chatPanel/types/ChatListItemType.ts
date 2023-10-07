@@ -1,5 +1,7 @@
 import { MessageType } from './MessageType';
-
+/**
+ * Chat list item type
+ */
 export type ChatListItemType = {
 	id: string;
 	contactId: string;

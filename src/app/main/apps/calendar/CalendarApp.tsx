@@ -104,6 +104,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The calendar app.
+ */
 function CalendarApp() {
 	const [currentDate, setCurrentDate] = useState<DatesSetArg>();
 	const dispatch = useAppDispatch();

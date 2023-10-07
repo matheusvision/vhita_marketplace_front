@@ -2,6 +2,11 @@ import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import { NoteType } from '../types/NoteType';
 
+/**
+ * The note model.
+ * @param data The note data.
+ * @returns The note model.
+ */
 function NoteModel(data: PartialDeep<NoteType>) {
 	data = data || {};
 

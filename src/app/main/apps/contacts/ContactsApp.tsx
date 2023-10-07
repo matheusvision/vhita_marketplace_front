@@ -18,6 +18,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
+/**
+ * The ContactsApp page.
+ */
 function ContactsApp() {
 	const dispatch = useAppDispatch();
 	const pageLayout = useRef(null);

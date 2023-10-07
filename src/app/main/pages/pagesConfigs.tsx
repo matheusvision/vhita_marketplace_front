@@ -8,6 +8,9 @@ import errorPagesConfig from './error/errorPagesConfig';
 import pricingPagesConfig from './pricing/pricingPagesConfig';
 import searchPagesConfig from './search/searchPagesConfig';
 
+/**
+ * The pages routes config.
+ */
 const pagesConfigs: FuseRouteConfigsType = [
 	...authenticationPagesConfig,
 	comingSoonPagesConfig,

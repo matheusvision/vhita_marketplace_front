@@ -10,6 +10,9 @@ const SplitScreenReversedForgotPasswordPage = lazy(() => import('./SplitScreenRe
 const FullScreenForgotPasswordPage = lazy(() => import('./FullScreenForgotPasswordPage'));
 const FullScreenReversedForgotPasswordPage = lazy(() => import('./FullScreenReversedForgotPasswordPage'));
 
+/**
+ * Route Configuration for Forgot Password Pages.
+ */
 const forgotPasswordPagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

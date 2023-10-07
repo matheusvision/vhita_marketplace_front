@@ -37,6 +37,12 @@ type NavbarMobileLayout2Props = {
 	className?: string;
 };
 
+/**
+ * The navbar mobile layout 2.
+ *
+ * @param {NavbarMobileLayout2Props} props - The props.
+ * @returns {JSX.Element} The navbar mobile layout 2.
+ */
 function NavbarMobileLayout2(props: NavbarMobileLayout2Props) {
 	const { className = '' } = props;
 

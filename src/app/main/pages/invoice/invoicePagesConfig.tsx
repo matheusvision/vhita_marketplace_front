@@ -3,6 +3,9 @@ import { FuseRouteConfigType } from '@fuse/utils/FuseUtils';
 import CompactInvoicePage from './printable/CompactInvoicePage';
 import ModernInvoicePage from './printable/ModernInvoicePage';
 
+/**
+ * The invoice pages config.
+ */
 const invoicePagesConfig: FuseRouteConfigType = {
 	settings: {
 		layout: {

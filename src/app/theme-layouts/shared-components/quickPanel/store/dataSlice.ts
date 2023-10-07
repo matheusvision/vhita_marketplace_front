@@ -3,6 +3,9 @@ import { RootStateType } from 'app/store/types';
 
 type AppRootStateType = RootStateType<dataSliceType>;
 
+/**
+ * Quick Panel data slice.
+ */
 const dataSlice = createSlice({
 	name: 'quickPanel/data',
 	initialState: {

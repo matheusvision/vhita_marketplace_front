@@ -17,6 +17,12 @@ type NoteLabelProps = {
 		deleteIcon?: string;
 	};
 };
+
+/**
+ * The note label.
+ * @param props The props.
+ * @returns The jsx component.
+ */
 function NoteLabel(props: NoteLabelProps) {
 	const { id, linkable, onDelete, className, classes } = props;
 

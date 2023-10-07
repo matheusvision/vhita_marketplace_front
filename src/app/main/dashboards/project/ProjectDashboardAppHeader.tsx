@@ -10,6 +10,9 @@ import { useAppDispatch, useAppSelector } from 'app/store';
 import { selectUser } from 'app/store/user/userSlice';
 import { getProjects, selectProjects } from './store/projectsSlice';
 
+/**
+ * The ProjectDashboardAppHeader page.
+ */
 function ProjectDashboardAppHeader() {
 	const dispatch = useAppDispatch();
 	const projects = useAppSelector(selectProjects);

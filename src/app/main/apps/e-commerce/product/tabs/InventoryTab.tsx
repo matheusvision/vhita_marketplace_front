@@ -1,6 +1,11 @@
 import TextField from '@mui/material/TextField';
 import { Controller, useFormContext } from 'react-hook-form';
 
+/**
+ * The inventory tab.
+ *
+ * @returns {JSX.Element} The component.
+ */
 function InventoryTab() {
 	const methods = useFormContext();
 	const { control } = methods;

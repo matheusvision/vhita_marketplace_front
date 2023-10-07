@@ -14,6 +14,11 @@ type MembersMenuProps = {
 	onToggleMember: (memberId: string) => void;
 };
 
+/**
+ * The members menu component.
+ * @param props The component props.
+ * @returns The jsx component.
+ */
 function MembersMenu(props: MembersMenuProps) {
 	const { memberIds, onToggleMember } = props;
 

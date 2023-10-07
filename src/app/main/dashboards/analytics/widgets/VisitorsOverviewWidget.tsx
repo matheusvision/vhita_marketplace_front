@@ -16,6 +16,11 @@ const Root = styled(Paper)(({ theme }) => ({
 	color: theme.palette.primary.contrastText
 }));
 
+/**
+ * The visitors overview widget.
+ *
+ * @returns {JSX.Element} The visitors overview widget.
+ */
 function VisitorsOverviewWidget() {
 	const theme = useTheme();
 	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.main));

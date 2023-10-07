@@ -5,6 +5,13 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 type DocumentationButtonProps = {
 	className?: string;
 };
+
+/**
+ * The documentation button.
+ *
+ * @param {DocumentationButtonProps} props - The component props.
+ * @returns {JSX.Element} The documentation button.
+ */
 function DocumentationButton(props: DocumentationButtonProps) {
 	const { className = '' } = props;
 

@@ -11,6 +11,10 @@ import ModernPricingCard from './ModernPricingCard';
 import ModernPricingFeatureItem from './ModernPricingFeatureItem';
 import ModernPricingItemType from './ModernPricingItemType';
 
+/**
+ * The modern pricing page.
+ * @returns {JSX.Element} The modern pricing page.
+ */
 function ModernPricingPage() {
 	const [period, setPeriod] = useState<ModernPricingItemType['period']>('month');
 

@@ -2,6 +2,9 @@ import _ from '@lodash';
 import clsx from 'clsx';
 import { OrderStatusType } from '../types/OrderStatusType';
 
+/**
+ * The order statuses.
+ */
 export const orderStatuses: OrderStatusType[] = [
 	{
 		id: '1',
@@ -75,10 +78,19 @@ export const orderStatuses: OrderStatusType[] = [
 	}
 ];
 
+/**
+ * The orders status properties.
+ */
 type OrdersStatusProps = {
 	name: string;
 };
 
+/**
+ * The orders status component.
+ *
+ * @param props The properties.
+ * @returns The JSX element.
+ */
 function OrdersStatus(props: OrdersStatusProps) {
 	const { name } = props;
 

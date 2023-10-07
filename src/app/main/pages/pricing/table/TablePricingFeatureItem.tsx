@@ -8,6 +8,11 @@ type TablePricingFeatureItemProps = {
 	icon?: string;
 };
 
+/**
+ * The table pricing feature item component.
+ * @param {TablePricingFeatureItemProps} props - The component props.
+ * @returns {JSX.Element} The table pricing feature item component.
+ */
 function TablePricingFeatureItem(props: TablePricingFeatureItemProps) {
 	const { title = '', subtitle = '', icon = '' } = props;
 

@@ -34,6 +34,9 @@ const defaultValues = {
 	acceptTermsConditions: false
 };
 
+/**
+ * The classic sign up page.
+ */
 function ClassicSignUpPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

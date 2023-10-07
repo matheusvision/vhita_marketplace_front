@@ -6,6 +6,9 @@ import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { openLabelsDialog, selectLabels, selectSelectedLabels, toggleSelectedLabels } from './store/labelsSlice';
 
+/**
+ * The calendar app sidebar.
+ */
 function CalendarAppSidebar() {
 	const labels = useAppSelector(selectLabels);
 	const selectedLabels = useAppSelector(selectSelectedLabels);

@@ -14,6 +14,10 @@ import MailToolbar from './MailToolbar';
 import MailAttachment from './MailAttachment';
 import MailInfo from './MailInfo';
 
+/**
+ * The mail details.
+ * @returns The jsx component.
+ */
 function MailDetails() {
 	const dispatch = useAppDispatch();
 	const mail = useAppSelector(selectMail);

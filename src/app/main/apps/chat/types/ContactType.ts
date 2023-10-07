@@ -2,6 +2,9 @@ import { ContactAttachmentsType } from './ContactAttachmentsType';
 import { ContactDetailsType } from './ContactDetailsType';
 import { ContactStatusType } from './ContactStatusType';
 
+/**
+ * Contact Type
+ */
 export type ContactType = {
 	id: string;
 	avatar: string;

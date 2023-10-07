@@ -14,6 +14,9 @@ i18next.addResourceBundle('en', 'mailboxApp', en);
 i18next.addResourceBundle('tr', 'mailboxApp', tr);
 i18next.addResourceBundle('ar', 'mailboxApp', ar);
 
+/**
+ * The mailbox app config.
+ */
 const MailboxAppConfig = {
 	settings: {
 		layout: {}

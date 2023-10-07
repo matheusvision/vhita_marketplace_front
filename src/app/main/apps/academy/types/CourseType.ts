@@ -1,3 +1,6 @@
+/**
+ * Step Type
+ */
 type StepType = {
 	id: string;
 	title: string;
@@ -6,6 +9,9 @@ type StepType = {
 	order: number;
 };
 
+/**
+ * Course Type
+ */
 type CourseType = {
 	id: string;
 	title: string;

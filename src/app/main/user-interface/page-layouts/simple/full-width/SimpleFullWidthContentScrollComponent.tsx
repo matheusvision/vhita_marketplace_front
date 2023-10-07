@@ -16,6 +16,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-sidebarContent': {}
 }));
 
+/**
+ * The SimpleFullWidthContentScroll page.
+ */
 function SimpleFullWidthContentScrollComponent() {
 	return (
 		<Root

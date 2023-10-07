@@ -1,3 +1,6 @@
+/**
+ * Guide Type
+ */
 export type GuideType = {
 	id: string;
 	categoryId: string;
@@ -7,4 +10,7 @@ export type GuideType = {
 	content: string;
 };
 
+/**
+ * Guides Type
+ */
 export type GuidesType = GuideType[];

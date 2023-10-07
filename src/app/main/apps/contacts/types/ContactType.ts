@@ -1,6 +1,9 @@
 import { ContactEmailsType } from './ContactEmailType';
 import { ContactPhoneNumbersType } from './ContactPhoneNumberType';
 
+/**
+ * Contact Type
+ */
 export type ContactType = {
 	id: string;
 	avatar: string;
@@ -16,4 +19,7 @@ export type ContactType = {
 	tags: string[];
 };
 
+/**
+ * Contacts Type
+ */
 export type ContactsType = ContactType[];

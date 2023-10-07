@@ -9,6 +9,11 @@ import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
 
+/**
+ * New vs. returning widget.
+ *
+ * @returns {JSX.Element} The new vs. returning widget.
+ */
 function NewVsReturningWidget() {
 	const widgets = useAppSelector(selectWidgets);
 	const { series, labels, uniqueVisitors } = widgets.newVsReturning;

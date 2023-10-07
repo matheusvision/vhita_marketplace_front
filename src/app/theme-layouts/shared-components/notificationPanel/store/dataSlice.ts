@@ -4,6 +4,9 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import { RootStateType } from 'app/store/types';
 
+/**
+ * Gets the notifications from the server.
+ */
 export const getNotifications = createAppAsyncThunk('notificationPanel/getData', async () => {
 	const response = await axios.get('/api/notifications');
 
@@ -12,6 +15,9 @@ export const getNotifications = createAppAsyncThunk('notificationPanel/getData',
 	return data;
 });
 
+/**
+ * Dismisses all notifications.
+ */
 export const dismissAll = createAppAsyncThunk('notificationPanel/dismissAll', async () => {
 	const response = await axios.delete('/api/notifications');
 	await response.data;
@@ -19,6 +25,9 @@ export const dismissAll = createAppAsyncThunk('notificationPanel/dismissAll', as
 	return true;
 });
 
+/**
+ * Dismisses a single notification.
+ */
 export const dismissItem = createAppAsyncThunk('notificationPanel/dismissItem', async (id: string) => {
 	const response = await axios.delete(`/api/notifications/${id}`);
 	await response.data;
@@ -26,6 +35,9 @@ export const dismissItem = createAppAsyncThunk('notificationPanel/dismissItem', 
 	return id;
 });
 
+/**
+ * Adds a notification.
+ */
 export const addNotification = createAppAsyncThunk(
 	'notificationPanel/addNotification',
 	async (item: NotificationModelProps) => {
@@ -52,6 +64,9 @@ type ExtendedRootState = RootStateType & {
 export const { selectAll: selectNotifications, selectById: selectNotificationsById } =
 	notificationsAdapter.getSelectors((state: ExtendedRootState) => state.notificationPanel.data);
 
+/**
+ * The notification panel slice.
+ */
 const dataSlice = createSlice({
 	name: 'notificationPanel/data',
 	initialState,

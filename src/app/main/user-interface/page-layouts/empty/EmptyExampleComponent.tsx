@@ -1,3 +1,6 @@
+/**
+ * Example of an empty page layout component.
+ */
 function EmptyExampleComponent() {
 	return (
 		<div className="flex flex-col flex-auto min-w-0">

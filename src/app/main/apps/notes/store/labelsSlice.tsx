@@ -7,6 +7,9 @@ import { LabelType, LabelsType } from '../types/LabelType';
 
 export type AppRootStateType = RootStateType<labelsSliceType>;
 
+/**
+ * Get labels from server
+ */
 export const getLabels = createAppAsyncThunk<LabelsType>('notesApp/labels/getLabels', async () => {
 	const response = await axios.get('/api/notes/labels');
 
@@ -15,6 +18,9 @@ export const getLabels = createAppAsyncThunk<LabelsType>('notesApp/labels/getLab
 	return data;
 });
 
+/**
+ * Create new label
+ */
 export const createLabel = createAppAsyncThunk<LabelType, LabelType>('notesApp/labels/createLabel', async (label) => {
 	const response = await axios.post(`/api/notes/labels`, label);
 
@@ -23,6 +29,9 @@ export const createLabel = createAppAsyncThunk<LabelType, LabelType>('notesApp/l
 	return data;
 });
 
+/**
+ * Update label
+ */
 export const updateLabel = createAppAsyncThunk<LabelType, PartialDeep<LabelType>>(
 	'notesApp/labels/updateLabel',
 	async (label) => {
@@ -33,6 +42,9 @@ export const updateLabel = createAppAsyncThunk<LabelType, PartialDeep<LabelType>
 	}
 );
 
+/**
+ * Remove label
+ */
 export const removeLabel = createAppAsyncThunk<string, string>('notesApp/labels/removeLabel', async (id) => {
 	const response = await axios.delete(`/api/notes/labels/${id}`);
 	const data = (await response.data) as string;
@@ -49,6 +61,9 @@ export const {
 	selectById: selectLabelById
 } = labelsAdapter.getSelectors((state: AppRootStateType) => state.notesApp?.labels);
 
+/**
+ * The Notes labels slice.
+ */
 const labelsSlice = createSlice({
 	name: 'notesApp/labels',
 	initialState,
