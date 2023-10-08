@@ -97,7 +97,7 @@ function MainSidebar() {
 				)}
 			</Box>
 
-			<FuseScrollbars className="overflow-y-auto flex-1">
+			<FuseScrollbars className="flex-1">
 				<List className="w-full">
 					{useMemo(() => {
 						function getFilteredArray<T>(arr: T[], _searchText: string): T[] {
