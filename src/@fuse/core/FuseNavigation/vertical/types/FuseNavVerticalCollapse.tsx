@@ -93,7 +93,9 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 				<ListItemButton
 					component={component}
 					className="fuse-list-item"
-					onClick={() => setOpen(!open)}
+					onClick={() => {
+						setOpen(!open);
+					}}
 					{...itemProps}
 				>
 					{item.icon && (
@@ -125,7 +127,11 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 					<IconButton
 						disableRipple
 						className="-mx-12 h-20 w-20 p-0 hover:bg-transparent focus:bg-transparent"
-						onClick={(ev) => ev.preventDefault()}
+						onClick={(ev) => {
+							ev.preventDefault();
+							ev.stopPropagation();
+							setOpen(!open);
+						}}
 						size="large"
 					>
 						<FuseSvgIcon
