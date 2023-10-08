@@ -54,7 +54,7 @@ function MultiLanguageDoc() {
 				className="mb-16"
 				component="p"
 			>
-				To use the translations, create a translation file called <code>i18n/en.tsx</code> within the folder of
+				To use the translations, create a translation file called <code>i18n/en.ts</code> within the folder of
 				the app you would like to use them with. For example, to use the translations in the Mail app, create
 				this file inside the <code>apps/mail</code> folder.
 			</Typography>
@@ -63,7 +63,7 @@ function MultiLanguageDoc() {
 				component="pre"
 				className="language-jsx mb-24"
 			>
-				{require('!raw-loader!src/app/main/apps/mailbox/i18n/en.tsx')}
+				{require('!raw-loader!src/app/main/apps/mailbox/i18n/en.ts')}
 			</FuseHighlight>
 
 			<Typography
@@ -122,7 +122,7 @@ function MultiLanguageDoc() {
 				component="p"
 			>
 				To change the default language of the Fuse React, you need to change <code>lng</code> setting in the
-				file <code>src/i18n.tsx</code>
+				file <code>src/i18n.ts</code>
 			</Typography>
 
 			<Typography
