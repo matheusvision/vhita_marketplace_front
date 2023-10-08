@@ -91,7 +91,7 @@ function IDEsDoc() {
 				To configure ESLint and Prettier in VSCode further, refer to the official documentation:
 			</Typography>
 
-			<ul>
+			<ul className="space-y-12">
 				<li>
 					<a
 						href="https://eslint.org/docs/user-guide/getting-started"

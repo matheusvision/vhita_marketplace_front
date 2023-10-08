@@ -1,5 +1,5 @@
 import { NavLink, NavLinkProps, useNavigate } from 'react-router-dom';
-import React, { CSSProperties, forwardRef, ReactNode } from 'react';
+import { CSSProperties, forwardRef, ReactNode } from 'react';
 
 export type NavLinkAdapterPropsType = NavLinkProps & {
 	activeClassName?: string;
