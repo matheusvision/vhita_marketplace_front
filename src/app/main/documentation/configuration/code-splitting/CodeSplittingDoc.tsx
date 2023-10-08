@@ -43,76 +43,65 @@ function CodeSplittingDoc() {
 				Check out the examples below to see dynamically or regular way of importing the components.
 			</Typography>
 
-			<div className="space-y-24">
-				<div>
-					<Typography
-						className="text-16 mt-16 mb-10 font-700"
-						variant="h6"
-					>
-						Lazy Loaded Component:
-					</Typography>
+			<>
+				<Typography
+					variant="h5"
+					className="text-20 mt-20 mb-10 font-700"
+				>
+					Using `lazyWithSlices` in configuration pages with route definitions
+				</Typography>
+				<Typography
+					component="p"
+					className="mb-16"
+				>
+					`lazyWithSlices` is commonly used in configuration pages with route definitions to improve the
+					performance of the application. By using `lazyWithSlices`, you can lazily load the configuration
+					page and inject reducers for the provided slices, which can reduce the amount of JavaScript that
+					needs to be downloaded and parsed by the browser, leading to faster load times and a better user
+					experience.
+				</Typography>
+				<Typography
+					component="p"
+					className="mb-16"
+				>
+					Here's an example of how you can use `lazyWithSlices` in a configuration page with route
+					definitions:
+				</Typography>
+				<FuseHighlight
+					component="pre"
+					className="language-typescript mb-32"
+				>
+					{`
+					import lazyWithSlices from 'app/store/lazyWithSlices';
+					import { RouteConfig } from 'react-router-config';
+					import { AcademyAppConfig } from 'app/main/apps/academy/AcademyAppConfig';
 
-					<FuseHighlight
-						component="pre"
-						className="language-jsx my-16"
-					>
-						{`
-						import { lazy } from 'react';
-
-						const AnalyticsDashboardApp = lazy(() => import('./AnalyticsDashboardApp'));
-						
-						const AnalyticsDashboardAppConfig = {
-							settings: {
-							layout: {
-								config: {}
-							}
-							},
-							routes: [
+					const routes: RouteConfig[] = [
+						{
+						path: '/apps/academy',
+						component: lazyWithSlices(() => import('./AcademyAppConfig'), [
 							{
-								path: 'apps/dashboards/analytics',
-								element: <AnalyticsDashboardApp />
-							}
-							],
-						};
-						
-						export default AnalyticsDashboardAppConfig;
-
-					`}
-					</FuseHighlight>
-				</div>
-
-				<div className="w-ful">
-					<Typography
-						className="text-16 mt-16 mb-10 font-700"
-						variant="h6"
-					>
-						Regular Loaded Component:
-					</Typography>
-
-					<FuseHighlight
-						component="pre"
-						className="language-jsx my-16"
-					>
-						{`
-						import AnalyticsDashboardApp from './AnalyticsDashboardApp';
-
-						export const AnalyticsDashboardAppConfig = {
-							settings: {
-								layout: {
-									config: {}
-								}
+							name: 'academy',
+							reducer: academyReducer,
 							},
-							routes  : [
-								{
-									path     : '/apps/dashboards/analytics',
-									element:AnalyticsDashboardApp
-								}
-							]
-						};
+						]),
+						},
+					];
 					`}
-					</FuseHighlight>
-				</div>
-			</div>
+				</FuseHighlight>
+				<Typography
+					component="p"
+					className="mb-16"
+				>
+					In this example, we import the `lazyWithSlices` function from the `app/store/lazyWithSlices` file,
+					and the `AcademyAppConfig` component from the `app/main/apps/academy/AcademyAppConfig` file. We then
+					define an array of routes that contains a route for the `AcademyAppConfig` component. We use the
+					`lazyWithSlices` function to lazily load the `AcademyAppConfig` component and inject a reducer for
+					the `academy` slice. By using `lazyWithSlices` in this way, we can improve the performance of the
+					application by reducing the amount of JavaScript that needs to be downloaded and parsed by the
+					browser.
+				</Typography>
+			</>
 
 			<Typography
 				className="text-20 mt-20 mb-10 font-700"
