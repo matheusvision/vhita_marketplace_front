@@ -95,6 +95,12 @@ const DocumentationNavigation: FuseNavItemType = {
 					url: '/documentation/development/updating-fuse-react'
 				},
 				{
+					id: 'ts-file-remaming-migration-doc',
+					title: 'Typescript migration: File renaming helpter',
+					type: 'item',
+					url: '/documentation/development/ts-file-rename-migration'
+				},
+				{
 					id: 'fuse-react-ides-vscode-webstorm-doc',
 					title: 'IDEs (Webstorm, VsCode)',
 					type: 'item',

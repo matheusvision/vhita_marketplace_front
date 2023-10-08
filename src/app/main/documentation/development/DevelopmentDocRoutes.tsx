@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import TsFileRenamingMigrationDoc from './ts-migration/TsFileRenamingMigrationDoc';
 
 const DevelopmentServerDoc = lazy(() => import('./development-server/DevelopmentServerDoc'));
 const ProductionDoc = lazy(() => import('./production/ProductionDoc'));
@@ -36,6 +37,10 @@ const DevelopmentDocRoutes = [
 	{
 		path: 'development/updating-fuse-react',
 		element: <UpdatingFuseReactDoc />
+	},
+	{
+		path: 'development/ts-file-rename-migration',
+		element: <TsFileRenamingMigrationDoc />
 	},
 	{
 		path: 'development/ides-vscode-webstorm',
