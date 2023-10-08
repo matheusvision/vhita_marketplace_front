@@ -21,23 +21,28 @@ function MailboxAppSidebarContent() {
 	const { t } = useTranslation('mailboxApp');
 
 	return (
-		<motion.div
-			initial={{ y: 20, opacity: 0 }}
-			animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
-			className="flex-auto border-l-1"
-		>
+		<div className="flex-auto border-l-1">
 			<div className="mb-24 mt-40 mx-24">
-				<motion.span
-					initial={{ x: -20 }}
-					animate={{ x: 0, transition: { delay: 0.2 } }}
+				<motion.div
+					initial={{ x: 20, opacity: 0 }}
+					animate={{ x: 0, opacity: 1, transition: { delay: 0.2 } }}
 				>
 					<Typography className="text-4xl font-extrabold tracking-tight leading-none">Mailbox</Typography>
-				</motion.span>
+				</motion.div>
 
-				<MailCompose className="mt-32" />
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1, transition: { delay: 0.1 } }}
+				>
+					<MailCompose className="mt-32" />
+				</motion.div>
 			</div>
 
-			<div className="mb-24">
+			<motion.div
+				className="mb-24"
+				initial={{ y: 20, opacity: 0 }}
+				animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
+			>
 				<Typography
 					className="px-28 py-10 uppercase text-12 font-600"
 					color="secondary.main"
@@ -52,9 +57,13 @@ function MailboxAppSidebarContent() {
 						url: `/apps/mailbox/${item.slug}`
 					}))}
 				/>
-			</div>
+			</motion.div>
 
-			<div className="mb-24">
+			<motion.div
+				className="mb-24"
+				initial={{ y: 20, opacity: 0 }}
+				animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
+			>
 				<Typography
 					className="px-28 py-10 uppercase text-12 font-600"
 					color="secondary.main"
@@ -69,9 +78,13 @@ function MailboxAppSidebarContent() {
 						url: `/apps/mailbox/filter/${item.slug}`
 					}))}
 				/>
-			</div>
+			</motion.div>
 
-			<div className="mb-24">
+			<motion.div
+				className="mb-24"
+				initial={{ y: 20, opacity: 0 }}
+				animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
+			>
 				<Typography
 					className="px-28 py-10 uppercase text-12 font-600"
 					color="secondary.main"
@@ -93,8 +106,8 @@ function MailboxAppSidebarContent() {
 						}
 					}))}
 				/>
-			</div>
-		</motion.div>
+			</motion.div>
+		</div>
 	);
 }
 
