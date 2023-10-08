@@ -17,6 +17,10 @@ const demos = [
 	}
 ];
 
+/**
+ * FusePageCarded Doc
+ * This document provides information on how to use the FusePageCarded.
+ */
 function FusePageCardedDoc() {
 	return (
 		<>

@@ -3,6 +3,10 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+/**
+ * FuseCountdown Doc
+ * This document provides information on how to use the FuseCountdown.
+ */
 function FuseCountdownDoc() {
 	return (
 		<>
@@ -32,7 +36,7 @@ function FuseCountdownDoc() {
 				className="language-jsx"
 			>
 				{`
-          <FuseCountdown endDate="2023-10-29" className="my-48"/>
+          <FuseCountdown endDate="2071-10-29" className="my-48"/>
         `}
 			</FuseHighlight>
 
@@ -44,7 +48,7 @@ function FuseCountdownDoc() {
 			</Typography>
 
 			<FuseCountdown
-				endDate="2023-10-29"
+				endDate="2071-10-29"
 				className="my-48"
 			/>
 

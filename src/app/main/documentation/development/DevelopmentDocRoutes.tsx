@@ -9,6 +9,9 @@ const UpdatingFuseReactDoc = lazy(() => import('./updating-fuse-react/UpdatingFu
 const IDEsDoc = lazy(() => import('./ides-vscode-webstorm/IDEsDoc'));
 const HerokuNotesDoc = lazy(() => import('./heroku-notes/HerokuNotesDoc'));
 
+/**
+ * Development Doc Routes
+ */
 const DevelopmentDocRoutes = [
 	{
 		path: 'development/development-server',

@@ -6,6 +6,7 @@ import changelogData from './ChangelogData';
 
 /**
  * The changelog doc page.
+ * Changelog records all notable changes made to Fuse React.
  */
 function ChangelogDoc() {
 	return (

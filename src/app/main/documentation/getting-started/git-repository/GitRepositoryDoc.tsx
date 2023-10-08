@@ -1,5 +1,9 @@
 import Typography from '@mui/material/Typography';
 
+/**
+ * Git Repository Doc
+ * This document provides information on how to get the Fuse React's Github repository.
+ */
 function GitRepositoryDoc() {
 	return (
 		<>

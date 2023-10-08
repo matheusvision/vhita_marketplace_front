@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+/**
+ * Theme Layouts Doc
+ * This document provides information on how to use the theme layouts.
+ */
 function ThemeLayoutsDoc() {
 	return (
 		<>

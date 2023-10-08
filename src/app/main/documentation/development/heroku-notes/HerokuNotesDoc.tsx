@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 
 /**
  * HeroKu Notes Doc
+ * This document provides information on how to deploy the application to heroku.
  */
 function HerokuNotesDoc() {
 	return (

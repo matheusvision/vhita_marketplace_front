@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
+/**
+ * Theme Layouts Doc
+ * This document provides information on how to use theme layouts.
+ */
 function FuseThemeDoc() {
 	return (
 		<>

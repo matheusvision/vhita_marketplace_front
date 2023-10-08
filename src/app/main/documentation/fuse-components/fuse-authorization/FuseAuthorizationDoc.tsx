@@ -10,6 +10,10 @@ import Typography from '@mui/material/Typography';
 /* eslint import/no-webpack-loader-syntax: off */
 /* eslint import/extensions: off */
 
+/**
+ * FuseAuthorization Doc
+ * This document provides information on how to use FuseAuthorization.
+ */
 function FuseAuthorizationDoc() {
 	return (
 		<>
@@ -24,31 +28,112 @@ function FuseAuthorizationDoc() {
 				className="mb-16"
 				component="p"
 			>
-				<code>FuseAuthorization</code> is the authorization component of the Fuse React. It restricts
-				unauthorized user access by looking at <b>route configs</b> and <b>user.role</b>.
+				FuseAuthorization is a higher-order component that handles the authorization logic of a React app. It
+				checks the provided auth property from FuseRouteItemType against the current logged-in user role.
 			</Typography>
 
 			<Typography
 				className="text-20 mt-20 mb-10 font-700"
 				variant="h5"
 			>
-				Setup
+				Usage
 			</Typography>
 
 			<Typography
-				className="inline-block mb-8 italic"
-				component="code"
+				className="mb-16"
+				component="p"
 			>
-				src/app/App.tsx
+				To use FuseAuthorization, you need to import it from @fuse/core/FuseAuthorization and wrap it around the
+				component that needs to be authorized. The FuseAuthorization component takes in the following props:
+			</Typography>
+
+			<Paper className="max-w-md my-16">
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell className="font-semibold text-14">Prop Name</TableCell>
+							<TableCell className="font-semibold text-14">Type</TableCell>
+							<TableCell className="font-semibold text-14">Description</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						<TableRow>
+							<TableCell>userRole</TableCell>
+							<TableCell>string or array of strings</TableCell>
+							<TableCell>Represents the roles that are authorized to access the component.</TableCell>
+						</TableRow>
+						<TableRow>
+							<TableCell>loginRedirectUrl</TableCell>
+							<TableCell>string</TableCell>
+							<TableCell>
+								Represents the URL to redirect to if the user is not authorized to access the component.
+							</TableCell>
+						</TableRow>
+						<TableRow>
+							<TableCell>children</TableCell>
+							<TableCell>ReactNode</TableCell>
+							<TableCell>The child component that needs to be authorized.</TableCell>
+						</TableRow>
+					</TableBody>
+				</Table>
+			</Paper>
+
+			<Typography
+				className="mt-32 mb-8"
+				variant="subtitle2"
+			>
+				Example Usage:
 			</Typography>
 
 			<FuseHighlight
 				component="pre"
-				className="language-jsx"
+				className="language-jsx mb-32"
 			>
-				{/* eslint-disable-next-line global-require */}
-				{require('!raw-loader!src/app/App.tsx')}
+				{`
+                import { FuseAuthorization } from '@fuse/core';
+
+                function MyComponent() {
+                    return (
+                        <div>
+                            <h1>My Component</h1>
+                        </div>
+                    );
+                }
+
+                function App() {
+                    return (
+                        <FuseAuthorization userRole={['admin', 'editor']} loginRedirectUrl="/login">
+                            <MyComponent />
+                        </FuseAuthorization>
+                    );
+                }
+                `}
 			</FuseHighlight>
+
+			<Typography
+				className="mb-16"
+				component="p"
+			>
+				In this example, MyComponent is wrapped in FuseAuthorization and can only be accessed by users with the
+				roles admin or editor. If the user is not authorized, they will be redirected to the login page
+				specified in loginRedirectUrl.
+			</Typography>
+
+			<Typography
+				className="mb-16"
+				component="p"
+			>
+				Note that FuseAuthorization uses the AppContext to get the list of routes in the app. Therefore, it
+				needs to be used within a component that is wrapped in AppContextProvider.
+			</Typography>
+
+			<Typography
+				className="mb-16"
+				component="p"
+			>
+				<code>FuseAuthorization</code> is the authorization component of the Fuse React. It restricts
+				unauthorized user access by looking at <b>route configs</b> and <b>user.role</b>.
+			</Typography>
 
 			<Typography
 				className="text-20 mt-20 mb-10 font-700"
@@ -164,7 +249,7 @@ function FuseAuthorizationDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js"
+				className="language-js mb-32"
 			>
 				{`  
                 const initialState = {
@@ -239,7 +324,7 @@ function FuseAuthorizationDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js"
+				className="language-js mb-32"
 			>
 				{`
 					 {
@@ -285,7 +370,7 @@ function FuseAuthorizationDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js"
+				className="language-js mb-32"
 			>
 				{`
 					defaultAuth:['admin','staff','user']
@@ -308,7 +393,7 @@ function FuseAuthorizationDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js"
+				className="language-js mb-32"
 			>
 				{`
 				defaultAuth: null
@@ -338,18 +423,18 @@ function FuseAuthorizationDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js"
+				className="language-js mb-32"
 			>
 				{`
 				export const setUser = createAsyncThunk('user/setUser', async (user, { dispatch, getState }) => {
-            /*
-              You can redirect the logged-in user to a specific route depending on his role
-              */
-            if (user.loginRedirectUrl) {
-              settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
-            }
-          
-            return user;
+				
+				/*
+				You can redirect the logged-in user to a specific route depending on his role
+				*/
+				if (user.loginRedirectUrl) {
+					settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+				}
+           		 return user;
           });
 				`}
 			</FuseHighlight>

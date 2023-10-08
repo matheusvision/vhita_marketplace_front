@@ -1,3 +1,6 @@
+/**
+ * This file is used to define navigation for FuseComponents
+ */
 const FuseComponentsNavigation = {
 	id: 'fuse-components',
 	title: 'Fuse Components',

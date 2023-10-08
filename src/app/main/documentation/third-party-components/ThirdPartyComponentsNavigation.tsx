@@ -1,3 +1,6 @@
+/**
+ * Third Party Components Navigation
+ */
 const ThirdPartyComponentsNavigation = {
 	id: '3rd-party-components',
 	title: '3rd Party Components',

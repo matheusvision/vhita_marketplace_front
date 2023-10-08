@@ -2,6 +2,10 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+/**
+ * Installation Doc
+ * This document provides information on how to install Fuse React.
+ */
 function InstallationDoc() {
 	return (
 		<>

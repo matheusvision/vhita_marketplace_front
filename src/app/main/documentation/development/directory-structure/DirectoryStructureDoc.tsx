@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import FuseHighlight from '@fuse/core/FuseHighlight';
 
+/**
+ * Directory Structure Doc
+ * This document explains the directory structure and naming conventions used in Fuse React.
+ */
 function DirectoryStructureDoc() {
 	return (
 		<>

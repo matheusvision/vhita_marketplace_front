@@ -1,5 +1,9 @@
 import Typography from '@mui/material/Typography';
 
+/**
+ * Introduction Doc
+ * This document provides information on how to use Fuse React.
+ */
 function IntroductionDoc() {
 	return (
 		<>

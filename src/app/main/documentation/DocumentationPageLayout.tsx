@@ -20,6 +20,9 @@ const Root = styled(FusePageCarded)(() => ({
 	}
 }));
 
+/**
+ * Documentation Page Layout
+ */
 function DocumentationPageLayout() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const location = useLocation();

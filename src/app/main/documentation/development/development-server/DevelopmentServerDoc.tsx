@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 
 /**
  * Development Server Doc
+ * This document provides information on how to run the development server.
  */
 function DevelopmentServerDoc() {
 	return (

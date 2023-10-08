@@ -2,7 +2,6 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { alpha, styled } from '@mui/material/styles';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useEffect, useMemo, useState } from 'react';
@@ -10,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import List, { ListProps } from '@mui/material/List';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import type { Location } from 'history';
+import { ListItemButton } from '@mui/material';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
@@ -90,7 +90,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 				itempadding={itempadding}
 				sx={item.sx}
 			>
-				<ListItem
+				<ListItemButton
 					component={component}
 					className="fuse-list-item"
 					onClick={() => setOpen(!open)}
@@ -136,7 +136,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 							{open ? 'heroicons-solid:chevron-down' : 'heroicons-solid:chevron-right'}
 						</FuseSvgIcon>
 					</IconButton>
-				</ListItem>
+				</ListItemButton>
 
 				{item.children && (
 					<Collapse

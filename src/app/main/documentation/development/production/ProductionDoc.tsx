@@ -1,6 +1,10 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 
+/**
+ * Production Doc
+ * This document provides information on how to build the application for production.
+ */
 function ProductionDoc() {
 	return (
 		<>

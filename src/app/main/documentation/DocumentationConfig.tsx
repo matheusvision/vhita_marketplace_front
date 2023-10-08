@@ -13,6 +13,9 @@ import MockApiDoc from './mock-api/MockApiDoc';
 const DocumentationPageLayout = lazy(() => import('./DocumentationPageLayout'));
 const ChangelogDoc = lazy(() => import('./changelog/ChangelogDoc'));
 
+/**
+ * Documentation Config
+ */
 const DocumentationConfig = {
 	routes: [
 		{

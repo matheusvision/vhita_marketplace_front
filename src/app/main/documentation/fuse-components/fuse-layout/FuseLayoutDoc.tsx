@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+/**
+ * FuseLayout Doc
+ * This document provides information on how to use the FuseLayout.
+ */
 function FuseLayoutDoc() {
 	return (
 		<>

@@ -2,6 +2,7 @@ import Typography from '@mui/material/Typography';
 
 /**
  * Deployment Doc
+ * This document provides information on how to deploy the application.
  */
 function DeploymentDoc() {
 	return (

@@ -16,6 +16,10 @@ const componentModule = require('./examples/simple.tsx') as ModuleWithDefault<El
 // eslint-disable-next-line global-require
 const rawModule = require('!raw-loader!./examples/simple.tsx') as ModuleWithDefault<string>;
 
+/**
+ * GoogleMapReact Doc
+ * This document provides information on how to use GoogleMapReact.
+ */
 function GoogleMapReactDoc() {
 	return (
 		<>

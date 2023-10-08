@@ -12,6 +12,10 @@ import {
 	updateNavigationItem
 } from 'app/store/fuse/navigationSlice';
 
+/**
+ * FuseNavigation Doc
+ * This document provides information on how to use the FuseNavigation.
+ */
 function FuseNavigationDoc() {
 	const dispatch = useAppDispatch();
 

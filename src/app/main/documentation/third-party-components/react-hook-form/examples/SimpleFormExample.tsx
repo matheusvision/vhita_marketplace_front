@@ -62,6 +62,9 @@ const schema = yup.object().shape({
 	DateTimePicker: yup.string().nullable().required('You must select a date')
 });
 
+/**
+ * Simple Form Example 
+ */
 function SimpleFormExample() {
 	const { handleSubmit, register, reset, control, watch, formState } = useForm({
 		defaultValues,

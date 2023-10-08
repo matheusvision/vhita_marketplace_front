@@ -14,6 +14,10 @@ const Root = styled('div')(() => ({
 	}
 }));
 
+/**
+ * Mock API Doc
+ * This document provides information on how to use the mock API.
+ */
 function MockApiDoc() {
 	return (
 		<Root className="w-full">

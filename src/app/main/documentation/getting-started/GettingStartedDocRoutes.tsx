@@ -4,6 +4,9 @@ const IntroductionDoc = lazy(() => import('./introduction/IntroductionDoc'));
 const InstallationDoc = lazy(() => import('./installation/InstallationDoc'));
 const GitRepositoryDoc = lazy(() => import('./git-repository/GitRepositoryDoc'));
 
+/**
+ * Getting Started Doc Routes
+ */
 const GettingStartedDocRoutes = [
 	{
 		path: 'getting-started/introduction',

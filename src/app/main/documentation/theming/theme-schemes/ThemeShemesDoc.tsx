@@ -3,6 +3,10 @@ import Typography from '@mui/material/Typography';
 
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
+/**
+ * Theme Layouts Doc
+ * This document provides information on how to use theme layouts.
+ */
 function ThemeShemesDoc() {
 	return (
 		<>

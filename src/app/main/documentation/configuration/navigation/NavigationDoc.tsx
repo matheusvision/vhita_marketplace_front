@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+/**
+ * Navigation Doc
+ * This document provides information on how to use the navigation.
+ */
 function NavigationDoc() {
 	return (
 		<>

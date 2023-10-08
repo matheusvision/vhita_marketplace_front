@@ -35,6 +35,9 @@ type DocumentationPageBreadcrumbProps = {
 	className?: string;
 };
 
+/**
+ * Documentation Page Breadcrumb
+ */
 function DocumentationPageBreadcrumb(props: DocumentationPageBreadcrumbProps) {
 	const { className } = props;
 

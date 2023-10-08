@@ -5,6 +5,10 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
+/**
+ * React Hook Form Doc
+ * This document provides information on how to use React Hook Form.
+ */
 function ReactHookFormDoc() {
 	return (
 		<>

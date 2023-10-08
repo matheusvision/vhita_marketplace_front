@@ -6,6 +6,10 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
+/**
+ * GoogleMapReact Doc
+ * This document provides information on how to use GoogleMapReact.
+ */
 function ReactApexchartsDoc() {
 	return (
 		<>

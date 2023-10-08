@@ -4,6 +4,10 @@ import Typography from '@mui/material/Typography';
 import { useAppDispatch } from 'app/store';
 import { showMessage } from 'app/store/fuse/messageSlice';
 
+/**
+ * FuseMessage Doc
+ * This document provides information on how to use the FuseMessage.
+ */
 function FuseMessageDoc() {
 	const dispatch = useAppDispatch();
 

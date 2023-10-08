@@ -17,6 +17,10 @@ const demos = [
 	}
 ];
 
+/**
+ * FusePageSimple Doc
+ * This document provides information on how to use the FusePageSimple.
+ */
 function FusePageSimpleDoc() {
 	return (
 		<>

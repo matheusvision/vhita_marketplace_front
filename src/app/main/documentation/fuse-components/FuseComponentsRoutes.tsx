@@ -12,6 +12,9 @@ const FuseNavigationDoc = lazy(() => import('./fuse-navigation/FuseNavigationDoc
 const FuseMessageDoc = lazy(() => import('./fuse-message/FuseMessageDoc'));
 const FuseDialogDoc = lazy(() => import('./fuse-dialog/FuseDialogDoc'));
 
+/**
+ * FuseComponentsRoutes
+ */
 const FuseComponentsRoutes = [
 	{
 		path: 'fuse-components/fuse-theme',

@@ -20,6 +20,7 @@ import FuseSvgIcon from '../../../FuseSvgIcon';
 const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	color: theme.palette.text.primary,
 	minHeight: 48,
+	cursor: 'pointer',
 	'&.active, &.active:hover, &.active:focus': {
 		backgroundColor: `${theme.palette.secondary.main}!important`,
 		color: `${theme.palette.secondary.contrastText}!important`,

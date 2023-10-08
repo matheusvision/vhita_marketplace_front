@@ -8,6 +8,10 @@ import Typography from '@mui/material/Typography';
 import { useAppDispatch } from 'app/store';
 import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
 
+/**
+ * FuseDialog Doc
+ * This document provides information on how to use the FuseDialog.
+ */
 function FuseDialogDoc() {
 	const dispatch = useAppDispatch();
 

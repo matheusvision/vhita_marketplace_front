@@ -1,5 +1,9 @@
 import Typography from '@mui/material/Typography';
 
+/**
+ * Updating Fuse React Doc
+ * This document provides information on how to update Fuse React.
+ */
 function UpdatingFuseReactDoc() {
 	return (
 		<>

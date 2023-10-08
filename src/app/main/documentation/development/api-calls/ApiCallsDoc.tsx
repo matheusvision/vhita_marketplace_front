@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 /**
  * Api Calls Doc
+ * This document provides information on how to use the api calls.
  */
 function ApiCallsDoc() {
 	return (

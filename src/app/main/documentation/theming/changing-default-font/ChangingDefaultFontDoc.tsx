@@ -1,6 +1,10 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 
+/**
+ * Changing Default Font Doc
+ * This document provides information on how to change default font.
+ */
 function ChangingDefaultFontDoc() {
 	return (
 		<>

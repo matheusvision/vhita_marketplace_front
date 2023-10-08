@@ -1,6 +1,10 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 
+/**
+ * FuseScrollbars Doc
+ * This document provides information on how to use the FuseScrollbars.
+ */
 function FuseScrollbarsDoc() {
 	return (
 		<>

@@ -1,6 +1,10 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 
+/**
+ * Code Splitting Doc
+ * This document provides information on how to use code splitting.
+ */
 function CodeSplittingDoc() {
 	return (
 		<>

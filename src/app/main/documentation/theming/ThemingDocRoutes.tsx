@@ -6,6 +6,9 @@ const PageLayoutsDoc = lazy(() => import('./page-layouts/PageLayoutsDoc'));
 const RTLSupportDoc = lazy(() => import('./rtl-support/RTLSupportDoc'));
 const ChangingDefaultFontDoc = lazy(() => import('./changing-default-font/ChangingDefaultFontDoc'));
 
+/**
+ * Theming Doc Routes
+ */
 const ThemingDocRoutes = [
 	{
 		path: 'theming/theme-schemes',
