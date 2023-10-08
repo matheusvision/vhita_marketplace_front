@@ -63,7 +63,7 @@ const schema = yup.object().shape({
 });
 
 /**
- * Simple Form Example 
+ * Simple Form Example
  */
 function SimpleFormExample() {
 	const { handleSubmit, register, reset, control, watch, formState } = useForm({

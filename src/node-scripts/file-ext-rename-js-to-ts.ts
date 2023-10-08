@@ -24,9 +24,11 @@ function checkAndRename(file: string, fromExt: string, toExt: string): void {
 		if ((fromExt === '.js' && !hasJSX) || (fromExt === '.jsx' && hasJSX)) {
 			const newPath = path.join(path.dirname(file), path.basename(file, fromExt) + toExt);
 			fs.renameSync(file, newPath);
+			/* eslint-disable-next-line no-console */
 			console.log(`Renamed ${file} to ${newPath}`);
 		}
 	} catch (error) {
+		/* eslint-disable-next-line no-console */
 		console.error(`Error processing file ${file}:`, error);
 	}
 }
