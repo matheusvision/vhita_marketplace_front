@@ -18,6 +18,54 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '9.0.0',
+		date: '2023-10-10',
+		newChanges: [
+			'Converted codebase from JavaScript to TypeScript',
+			'Updated all dependencies to latest stable versions',
+			'Improved app performance by optimizing code and reducing bundle size',
+			'Added new features and functionality'
+		],
+		breakingChanges: [
+			'All JavaScript code has been converted to TypeScript, which may require updates to existing code',
+			'Some APIs and interfaces have changed due to the conversion to TypeScript'
+		],
+		notes: (
+			<div className="text-14 p-24 border-2 rounded-16 w-full max-w-lg mt-40 mb-24">
+				<ul className="list-disc">
+					<Typography
+						component="li"
+						className="leading-loose mb-16"
+					>
+						Migrating to the new major version (v9.0.0) can be difficult because of the migration to
+						TypeScript.
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						Please follow the migration guide at{' '}
+						<a
+							href="https://mui.com/guides/migration-v4"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							https://mui.com/guides/migration-v4/
+						</a>
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						You may also want to consider starting with the latest skeleton version of Fuse React, which is
+						a clean slate, and then move your codebase to the new version. This can make the migration
+						process easier and more efficient.
+					</Typography>
+				</ul>
+			</div>
+		)
+	},
+	{
 		version: '8.3.8',
 		date: '2023-07-03',
 		newChanges: [
