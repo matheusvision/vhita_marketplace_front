@@ -12,6 +12,7 @@ import NewBoardItem from './NewBoardItem';
  */
 function Boards() {
 	const dispatch = useAppDispatch();
+
 	// const boards = [];
 	const boards = useAppSelector(selectBoards);
 

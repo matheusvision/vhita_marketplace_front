@@ -31,12 +31,16 @@ function useThemeMediaQuery(themeCallbackFunc: (theme: ThemeOptions) => string) 
 	useEffect(
 		() => {
 			const mediaQuery = window.matchMedia(query);
+
 			// Update the state with the current value
 			setMatches(getMatches(query));
+
 			// Create an event listener
 			const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+
 			// Attach the event listener to know when the matches value changes
 			mediaQuery.addEventListener('change', handler);
+
 			// Remove the event listener on cleanup
 			return () => mediaQuery.removeEventListener('change', handler);
 		},

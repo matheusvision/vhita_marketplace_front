@@ -94,6 +94,7 @@ const removeFile = async (filePath: string) => {
 	try {
 		await fsp.access(filePath); // checks if file exists
 		await fsp.unlink(filePath);
+
 		// console.log('Successfully deleted the file.');
 	} catch (error) {
 		if (error.code === 'ENOENT') {
@@ -482,6 +483,7 @@ function removeUnnecessaryFiles() {
 			list.forEach((file) => {
 				const extToRemove = [
 					'.preview',
+
 					// '.js',
 					// '.jsx',
 					'-de.md',
@@ -495,6 +497,7 @@ function removeUnnecessaryFiles() {
 				extToRemove.forEach((str) => {
 					if (file.endsWith(str)) {
 						removeFile(file);
+
 						// fs.unlink(file, () => {});
 					}
 				});

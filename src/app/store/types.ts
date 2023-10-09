@@ -32,6 +32,7 @@ export type AsyncReducersType = {
  * `(dispatch, getState, extraArgument) => {}`
  */
 export type AppThunkType<R = Promise<void>, E = unknown> = ThunkAction<R, RootStateType, E, Action<string>>;
+
 // export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 
 /**

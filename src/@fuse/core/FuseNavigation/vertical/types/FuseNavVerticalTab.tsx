@@ -43,6 +43,7 @@ const Root = styled(Box)(({ theme }) => ({
 			color: theme.palette.text.primary,
 			backgroundColor:
 				theme.palette.mode === 'light' ? 'rgba(0, 0, 0, .05)!important' : 'rgba(255, 255, 255, .1)!important',
+
 			// pointerEvents: 'none',
 			transition: 'border-radius .15s cubic-bezier(0.4,0.0,0.2,1)',
 			'& .fuse-list-item-text-primary': {

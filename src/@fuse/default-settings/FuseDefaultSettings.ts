@@ -129,6 +129,7 @@ export const defaultThemeOptions = {
 			styleOverrides: {
 				root: {
 					textTransform: 'none'
+
 					// lineHeight: 1,
 				},
 				sizeMedium: {

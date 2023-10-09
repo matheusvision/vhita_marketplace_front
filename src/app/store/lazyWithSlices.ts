@@ -7,6 +7,7 @@ type Slice<State = unknown> = {
 	 * The reducer function for the slice.
 	 */
 	reducer: Reducer<State, AnyAction>;
+
 	/**
 	 * The name of the slice.
 	 */

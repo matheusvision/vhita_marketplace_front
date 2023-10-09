@@ -35,6 +35,7 @@ const inputGlobalStyles = (
 				backgroundColor: theme.palette.background.default,
 				color: theme.palette.text.primary
 			},
+
 			/*  'code:not([class*="language-"])': {
         color: theme.palette.secondary.dark,
         backgroundColor:
@@ -126,6 +127,7 @@ function FuseLayout(props: FuseLayoutProps) {
 
 	const shouldAwaitRender = useCallback(() => {
 		let _newSettings: FuseSettingsConfigType;
+
 		/**
 		 * On Path changed
 		 */

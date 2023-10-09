@@ -60,11 +60,13 @@ const Root = styled('div')(({ theme }) => ({
 		'& code': {
 			fontSize: 'inherit',
 			lineHeight: 'inherit',
+
 			// Remove scroll on small screens.
 			wordBreak: 'break-word'
 		},
 		'& .anchor-link-style': {
 			opacity: 0,
+
 			// To prevent the link to get the focus.
 			display: 'none'
 		},

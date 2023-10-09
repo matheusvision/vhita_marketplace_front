@@ -8,6 +8,7 @@ import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ChecklistItemModel from '../../../../models/ChecklistItemModel';
 import { CheckListItemType } from '../../../../types/CheckListItemType';
+
 /**
  * Form Validation Schema
  */

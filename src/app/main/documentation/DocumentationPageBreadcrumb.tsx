@@ -11,6 +11,7 @@ const getPathTree = (departmentTree: FuseNavItemType, url: string) => {
 		if (node.url === _url) {
 			return [];
 		}
+
 		// If current node not search node match, examine children. For first
 		// child that returns an array (path), prepend current node to that
 		// path result

@@ -38,6 +38,7 @@ function DemoFrame(props: DemoFrameProps) {
 
 	React.useEffect(() => {
 		const document = frameRef.current.contentDocument;
+
 		// When we hydrate the iframe then the load event is already dispatched
 		// once the iframe markup is parsed (maybe later but the important part is
 		// that it happens before React can attach event listeners).

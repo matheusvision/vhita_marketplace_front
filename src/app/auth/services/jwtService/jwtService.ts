@@ -216,6 +216,7 @@ function isAuthTokenValid(access_token: string) {
 function getAccessToken() {
 	return window.localStorage.getItem('jwt_access_token');
 }
+
 /**
  * Sets the access token in the local storage.
  * @param access_token

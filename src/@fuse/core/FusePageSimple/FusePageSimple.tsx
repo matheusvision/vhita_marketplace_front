@@ -89,6 +89,7 @@ const Root = styled('div')<FusePageSimpleProps>(({ theme, ...props }) => ({
 		width: '100%',
 		flex: '1 1 auto',
 		overflow: 'hidden',
+
 		//    WebkitOverflowScrolling: 'touch',
 		zIndex: 9999
 	},
@@ -281,6 +282,7 @@ const FusePageSimple = forwardRef<
 						)}
 						<div
 							className="FusePageSimple-contentWrapper"
+
 							// enable={scroll === 'page'}
 						>
 							{header && <FusePageSimpleHeader header={header} />}

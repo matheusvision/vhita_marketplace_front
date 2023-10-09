@@ -85,6 +85,7 @@ function Product() {
 		if (!product) {
 			return;
 		}
+
 		/**
 		 * Reset the form on product state changes
 		 */

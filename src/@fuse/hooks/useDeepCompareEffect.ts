@@ -4,6 +4,7 @@ import deepEqual from 'lodash/isEqual';
 type UseEffectParamsType = Parameters<typeof React.useEffect>;
 type EffectCallbackType = UseEffectParamsType[0];
 type DependencyListType = UseEffectParamsType[1];
+
 // yes, I know it's void, but I like what this communicates about
 // the intent of these functions: It's just like useEffect
 type UseEffectReturn = ReturnType<typeof React.useEffect>;

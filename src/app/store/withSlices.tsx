@@ -7,6 +7,7 @@ import { injectReducers } from 'app/store';
  */
 type Slice<State = unknown> = {
 	reducer: Reducer<State, AnyAction>;
+
 	/**
 	 * The name of the slice.
 	 */
@@ -18,6 +19,7 @@ type KnownAction = {
 	 * The type of the action.
 	 */
 	type: string;
+
 	/**
 	 * The payload of the action.
 	 */
@@ -34,6 +36,7 @@ export const injectReducersGroupedByCommonKey = async (slices: Slice[]) => {
 	 * An object that groups reducers by their common key.
 	 */
 	const groupedReducers: Record<string, Record<string, Reducer<unknown, KnownAction>>> = {};
+
 	/**
 	 * An object that contains all combined reducers.
 	 */

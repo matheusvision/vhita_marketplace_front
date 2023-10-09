@@ -21,10 +21,12 @@ const settingsConfig: FuseSettingsConfigType = {
 		 */
 		config: {} // checkout default layout configs at app/theme-layouts for example  app/theme-layouts/layout1/Layout1Config.js
 	},
+
 	/**
 	 * The customScrollbars property defines whether or not to use custom scrollbars in the application.
 	 */
 	customScrollbars: false,
+
 	/**
 	 * The direction property defines the text direction for the application.
 	 */
@@ -38,6 +40,7 @@ const settingsConfig: FuseSettingsConfigType = {
 		toolbar: themesConfig.default,
 		footer: themesConfig.defaultDark
 	},
+
 	/**
 	 * The defaultAuth property defines the default authorization roles for the application.
 	 * To make the whole app auth protected by default set defaultAuth:['admin','staff','user']
@@ -45,6 +48,7 @@ const settingsConfig: FuseSettingsConfigType = {
 	 * The individual route configs which have auth option won't be overridden.
 	 */
 	defaultAuth: ['admin'],
+
 	/**
 	 * The loginRedirectUrl property defines the default redirect URL for the logged-in user.
 	 */

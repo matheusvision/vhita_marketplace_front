@@ -10,6 +10,7 @@ const StyledBadge = styled('div')<{ value: string }>(({ value }) => ({
 	fontSize: 14,
 	fontWeight: 700,
 	color: '#FFF',
+
 	// letterSpacing: '.015em',
 	lineHeight: 1,
 	padding: '4px 12px',

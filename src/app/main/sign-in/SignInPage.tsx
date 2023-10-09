@@ -60,6 +60,7 @@ function SignInPage() {
 			.then((user: UserType) => {
 				// eslint-disable-next-line no-console
 				console.info(user);
+
 				// No need to do anything, user data will be set at app/auth/AuthContext
 			})
 			.catch((_errors: { type: 'email' | 'password' | `root.${string}` | 'root'; message: string }[]) => {

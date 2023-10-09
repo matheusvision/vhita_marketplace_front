@@ -46,10 +46,12 @@ function App() {
 	 * The user object from the Redux store.
 	 */
 	const user = useSelector(selectUser);
+
 	/**
 	 * The language direction from the Redux store.
 	 */
 	const langDirection = useSelector(selectCurrentLanguageDirection);
+
 	/**
 	 * The main theme from the Redux store.
 	 */

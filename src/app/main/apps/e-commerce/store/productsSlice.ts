@@ -55,6 +55,7 @@ const productsSlice = createSlice({
 			.addCase(removeProducts.fulfilled, (state, action) => {
 				productsAdapter.removeMany(state, action.payload);
 			});
+
 		// You can add more cases here similar to the provided example, e.g. removeProducts
 	}
 });

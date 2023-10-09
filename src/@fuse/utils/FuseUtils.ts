@@ -478,6 +478,7 @@ class FuseUtils {
 			// console.info("auth is empty[]:", authArr);
 			return !userRole || userRole.length === 0;
 		}
+
 		/**
 		 * Check if user has grants
 		 */

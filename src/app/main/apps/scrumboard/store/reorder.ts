@@ -40,6 +40,7 @@ export const reorderQuoteMap = (
 
 	// remove from original
 	current.cards.splice(source.index, 1);
+
 	// insert into next
 	next.cards.splice(destination.index, 0, target);
 

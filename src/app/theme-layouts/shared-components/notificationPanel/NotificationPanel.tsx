@@ -68,6 +68,7 @@ function NotificationPanel() {
 
 		enqueueSnackbar(item.title, {
 			key: item.id,
+
 			// autoHideDuration: 3000,
 			content: (
 				<NotificationTemplate
