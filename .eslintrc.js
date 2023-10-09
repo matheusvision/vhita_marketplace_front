@@ -111,7 +111,7 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "off",
         "react/jsx-wrap-multilines": "off",
-//        "react/prop-types": "off",
+        "react/prop-types": "warn",
         "react/require-default-props": "off",
         "react/no-unescaped-entities": "off",
         "no-underscore-dangle": "off",
