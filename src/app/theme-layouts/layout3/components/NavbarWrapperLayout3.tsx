@@ -3,11 +3,13 @@ import { styled, ThemeProvider } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import clsx from 'clsx';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
 import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from 'app/store/fuse/settingsSlice';
 import { Layout3ConfigDefaultsType } from 'app/theme-layouts/layout3/Layout3Config';
+import { useLocation } from 'react-router';
+import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import NavbarLayout3 from './NavbarLayout3';
 import NavbarMobileLayout3 from './NavbarMobileLayout3';
 import NavbarToggleFab from '../../shared-components/NavbarToggleFab';
@@ -43,6 +45,15 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
 	const navbarTheme = useSelector(selectNavbarTheme);
 	const navbar = useSelector(selectFuseNavbar);
+	const location = useLocation();
+	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
+	const { pathname } = location;
+
+	useEffect(() => {
+		if (isMobile) {
+			dispatch(navbarCloseMobile());
+		}
+	}, [pathname, isMobile]);
 
 	return (
 		<>
