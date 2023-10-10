@@ -39,7 +39,6 @@ const emotionCacheOptions = {
 
 /**
  * The main App component.
- * @returns The App component.
  */
 function App() {
 	/**

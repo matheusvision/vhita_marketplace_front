@@ -14,8 +14,6 @@ type CardActivityProps = {
 
 /**
  * The card activity component.
- * @param props The props.
- * @returns The jsx component.
  */
 function CardActivity(props: CardActivityProps) {
 	const { item } = props;

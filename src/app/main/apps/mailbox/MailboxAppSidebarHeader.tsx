@@ -17,8 +17,6 @@ const accounts = {
 
 /**
  * The mailbox app sidebar header.
- *
- * @returns {JSX.Element}
  */
 function MailboxAppSidebarHeader() {
 	const [selectedAccount, setSelectedCount] = useState('creapond');

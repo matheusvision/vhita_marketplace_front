@@ -9,7 +9,6 @@ import { NoteType } from './types/NoteType';
 
 /**
  * The new note component.
- * @returns The jsx component.
  */
 function NewNote() {
 	const dispatch = useAppDispatch();

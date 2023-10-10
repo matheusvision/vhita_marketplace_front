@@ -10,8 +10,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The SummaryWidget widget.
- *
- * @returns {JSX.Element} The SummaryWidget widget.
  */
 function SummaryWidget() {
 	const widgets = useAppSelector(selectWidgets);

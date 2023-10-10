@@ -9,9 +9,6 @@ type ChatPanelToggleButtonProps = {
 
 /**
  * The chat panel toggle button.
- *
- * @param {ChatPanelToggleButtonProps} props - The props.
- * @returns {JSX.Element} The chat panel toggle button.
  */
 function ChatPanelToggleButton(props: ChatPanelToggleButtonProps) {
 	const { children } = props;

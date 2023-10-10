@@ -60,8 +60,6 @@ class JwtService extends FuseUtils.EventEmitter {
 
 	/**
 	 * Creates a new user account.
-	 * @param data
-	 * @returns
 	 */
 	createUser = (data: {
 		displayName: UserModelType['data']['displayName'];
@@ -93,9 +91,6 @@ class JwtService extends FuseUtils.EventEmitter {
 
 	/**
 	 * Signs in with the provided email and password.
-	 * @param email
-	 * @param password
-	 * @returns
 	 */
 	signInWithEmailAndPassword = (email: string, password: string) =>
 		new Promise((resolve, reject) => {
@@ -130,7 +125,6 @@ class JwtService extends FuseUtils.EventEmitter {
 
 	/**
 	 * Signs in with the provided provider.
-	 * @returns
 	 */
 	signInWithToken = () =>
 		new Promise((resolve, reject) => {
@@ -157,8 +151,6 @@ class JwtService extends FuseUtils.EventEmitter {
 
 	/**
 	 * Updates the user data.
-	 * @param user
-	 * @returns
 	 */
 	updateUserData = (user: UserModelType) =>
 		axios.post(jwtServiceConfig.updateUser, {
@@ -176,7 +168,6 @@ class JwtService extends FuseUtils.EventEmitter {
 
 /**
  * Sets the session by storing the access token in the local storage and setting the default authorization header.
- * @param access_token
  */
 function _setSession(access_token: string) {
 	if (access_token) {
@@ -190,8 +181,6 @@ function _setSession(access_token: string) {
 
 /**
  * Checks if the access token is valid.
- * @param access_token
- * @returns
  */
 function isAuthTokenValid(access_token: string) {
 	if (!access_token) {
@@ -211,7 +200,6 @@ function isAuthTokenValid(access_token: string) {
 
 /**
  * Gets the access token from the local storage.
- * @returns
  */
 function getAccessToken() {
 	return window.localStorage.getItem('jwt_access_token');
@@ -219,8 +207,6 @@ function getAccessToken() {
 
 /**
  * Sets the access token in the local storage.
- * @param access_token
- * @returns
  */
 function setAccessToken(access_token: string) {
 	return window.localStorage.setItem('jwt_access_token', access_token);
@@ -228,7 +214,6 @@ function setAccessToken(access_token: string) {
 
 /**
  * Removes the access token from the local storage.
- * @returns
  */
 function removeAccessToken() {
 	return window.localStorage.removeItem('jwt_access_token');

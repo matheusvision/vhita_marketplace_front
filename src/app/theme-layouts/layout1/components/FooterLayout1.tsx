@@ -11,9 +11,6 @@ type FooterLayout1Props = { className?: string };
 
 /**
  * The footer layout 1.
- *
- * @param {FooterLayout1Props} props - The props.
- * @returns {JSX.Element} The footer layout 1.
  */
 function FooterLayout1(props: FooterLayout1Props) {
 	const { className } = props;

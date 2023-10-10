@@ -18,8 +18,6 @@ type NoteListItemProps = {
 
 /**
  * The note list item.
- * @param props The props.
- * @returns The jsx component.
  */
 function NoteListItem(props: NoteListItemProps) {
 	const { note, className, variateDescSize } = props;

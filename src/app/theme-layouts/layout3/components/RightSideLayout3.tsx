@@ -5,8 +5,6 @@ import QuickPanel from '../../shared-components/quickPanel/QuickPanel';
 
 /**
  * The right side layout 3.
- *
- * @returns {JSX.Element} The right side layout 3.
  */
 function RightSideLayout3() {
 	return (

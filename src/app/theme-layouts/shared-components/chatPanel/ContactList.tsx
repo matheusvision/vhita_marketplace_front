@@ -21,9 +21,6 @@ type ContactListProps = {
 
 /**
  * The contact list.
- *
- * @param {ContactListProps} props - The props.
- * @returns {JSX.Element} The contact list.
  */
 function ContactList(props: ContactListProps) {
 	const { className } = props;

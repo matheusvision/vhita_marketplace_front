@@ -10,8 +10,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * Impressions widget.
- *
- * @returns {JSX.Element} The impressions widget.
  */
 function Impressions() {
 	const theme = useTheme();

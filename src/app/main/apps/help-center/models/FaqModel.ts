@@ -4,8 +4,6 @@ import { FaqType } from '../types/FaqType';
 
 /**
  * Creates a new faq object with the specified data.
- * @param data
- * @returns
  */
 const FaqModel = (data: PartialDeep<FaqType>) =>
 	_.defaults(data || {}, {

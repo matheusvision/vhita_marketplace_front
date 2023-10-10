@@ -10,9 +10,6 @@ type ValueSectionSmallProps = {
 
 /**
  * The value section small component.
- *
- * @param {ValueSectionSmallProps} props - The props.
- * @returns {JSX.Element} The value section small component.
  */
 function ValueSectionSmall(props: ValueSectionSmallProps) {
 	const { value = 0, title = '', unit = '', className = '' } = props;

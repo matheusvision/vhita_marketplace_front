@@ -37,14 +37,9 @@ const StyledList = styled(List)(({ theme }) => ({
 
 /**
  * FuseNavVerticalLayout1
- *
  * This component is used to render vertical navigations using
  * the Material-UI List component. It accepts the FuseNavigationProps props
  * and renders the FuseNavItem components accordingly
- *
- * @param {FuseNavigationProps} props this component's props
- *
- * @returns {JSX.Element} jsx element
  */
 function FuseNavVerticalLayout1(props: FuseNavigationProps) {
 	const { navigation, active, dense, className, onItemClick } = props;

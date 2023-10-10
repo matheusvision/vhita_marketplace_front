@@ -42,7 +42,6 @@ import { CommentsType } from '../../../types/CommentType';
 
 /**
  * The board card form component.
- * @returns The jsx component.
  */
 function BoardCardForm() {
 	const dispatch = useAppDispatch();

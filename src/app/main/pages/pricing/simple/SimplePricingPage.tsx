@@ -12,7 +12,6 @@ import SimplePricingItemType from './SimplePricingItemType';
 
 /**
  * The simple pricing page.
- * @returns {JSX.Element} The simple pricing page.
  */
 function SimplePricingPage() {
 	const [period, setPeriod] = useState<SimplePricingItemType['period']>('month');

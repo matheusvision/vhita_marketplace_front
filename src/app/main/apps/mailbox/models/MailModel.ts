@@ -9,8 +9,6 @@ export type MailsType = MailType[];
 
 /**
  * The mail model.
- * @param data The initial data.
- * @returns The mail model.
  */
 const MailModel = (data: PartialDeep<MailType>) =>
 	_.defaults(data || {}, {

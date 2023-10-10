@@ -3,8 +3,6 @@ import TeamMembersWidget from './widgets/TeamMembersWidget';
 
 /**
  * The TeamTab component.
- *
- * @returns {JSX.Element} The TeamTab component.
  */
 function TeamTab() {
 	const container = {

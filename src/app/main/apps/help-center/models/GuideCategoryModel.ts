@@ -4,8 +4,6 @@ import { GuideCategoryType } from '../types/GuideCategoryType';
 
 /**
  * Creates a new guide category object with the specified data.
- * @param data
- * @returns
  */
 const GuideCategoryModel = (data: PartialDeep<GuideCategoryType>) =>
 	_.defaults(data || {}, {

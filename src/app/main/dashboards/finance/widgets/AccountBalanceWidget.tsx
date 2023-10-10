@@ -9,8 +9,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * The AccountBalanceWidget widget.
- *
- * @returns {JSX.Element} The AccountBalanceWidget widget.
  */
 function AccountBalanceWidget() {
 	const theme = useTheme();

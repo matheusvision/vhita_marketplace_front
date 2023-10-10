@@ -9,7 +9,6 @@ import GuideListMenu from './GuideListMenu';
 
 /**
  * The guide categories.
- * @returns The jsx component.
  */
 function GuideCategories() {
 	const navigate = useNavigate();

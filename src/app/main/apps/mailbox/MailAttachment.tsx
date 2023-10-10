@@ -30,9 +30,6 @@ type MailAttachmentProps = {
 
 /**
  * The mail attachment.
- *
- * @param {React.PropsWithChildren<MailAttachmentProps>} props
- * @returns {JSX.Element}
  */
 function MailAttachment(props: MailAttachmentProps) {
 	const { className, fileName, size } = props;

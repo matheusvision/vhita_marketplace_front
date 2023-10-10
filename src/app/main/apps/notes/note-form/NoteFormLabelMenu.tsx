@@ -18,8 +18,6 @@ type NoteFormLabelMenuProps = {
 
 /**
  * The note form label menu.
- * @param props The component props.
- * @returns The JSX element.
  */
 function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
 	const { note, onChange } = props;

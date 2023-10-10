@@ -31,8 +31,6 @@ type BoardAddCardProps = {
 
 /**
  * The board add card component.
- * @param props The props.
- * @returns The jsx component.
  */
 function BoardAddCard(props: BoardAddCardProps) {
 	const { listId, onCardAdded } = props;

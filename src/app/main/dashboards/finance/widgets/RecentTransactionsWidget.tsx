@@ -14,8 +14,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * The RecentTransactionsWidget widget.
- *
- * @returns {JSX.Element} The RecentTransactionsWidget widget.
  */
 function RecentTransactionsWidget() {
 	const widgets = useAppSelector(selectWidgets);

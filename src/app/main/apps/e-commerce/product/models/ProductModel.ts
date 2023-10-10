@@ -4,9 +4,6 @@ import { ProductType } from '../../types/ProductType';
 
 /**
  * The product model.
- *
- * @param {PartialDeep<ProductType>} data - The data.
- * @returns {ProductType} The product.
  */
 const ProductModel = (data: PartialDeep<ProductType>) =>
 	_.defaults(data || {}, {

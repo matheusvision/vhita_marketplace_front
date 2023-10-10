@@ -60,7 +60,6 @@ export const defaultSettings = {
 /**
  * The getParsedQuerySettings function parses the query string to retrieve the default settings for the Fuse application.
  * It returns a FuseSettingsConfigType object that can be used to configure the application.
- * @returns A FuseSettingsConfigType object that can be used to configure the application.
  */
 export function getParsedQuerySettings(): FuseSettingsConfigType {
 	const parsedQueryString = qs.parse(window.location.search, { ignoreQueryPrefix: true });
@@ -318,8 +317,6 @@ export const defaultThemes = {
 
 /**
  * The extendThemeWithMixins function extends the theme with mixins.
- * @param obj
- * @returns
  */
 export function extendThemeWithMixins(obj: ThemeOptions) {
 	const theme = createTheme(obj);

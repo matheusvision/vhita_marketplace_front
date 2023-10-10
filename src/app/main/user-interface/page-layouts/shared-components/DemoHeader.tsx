@@ -11,7 +11,6 @@ type DemoHeaderProps = {
 
 /**
  * The DemoHeader component.
- * @param props
  */
 function DemoHeader(props: DemoHeaderProps) {
 	const { leftSidebarToggle, rightSidebarToggle } = props;

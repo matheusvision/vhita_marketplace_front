@@ -12,8 +12,6 @@ import { ProductType } from '../types/ProductType';
 
 /**
  * The product header.
- *
- * @returns {JSX.Element} The component.
  */
 function ProductHeader() {
 	const dispatch = useAppDispatch();

@@ -23,9 +23,6 @@ type ToolbarLayout2Props = {
 
 /**
  * The toolbar layout 2.
- *
- * @param {ToolbarLayout2Props} props - The props.
- * @returns {JSX.Element} The toolbar layout 2.
  */
 function ToolbarLayout2(props: ToolbarLayout2Props) {
 	const { className = '' } = props;

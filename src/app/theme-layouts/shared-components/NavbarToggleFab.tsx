@@ -60,11 +60,6 @@ type NavbarToggleFabProps = {
 
 /**
  * The NavbarToggleFab component.
- * @param {Object} props - The component props.
- * @param {string} props.className - The CSS class name to apply to the component.
- * @param {string} props.position - The position of the component.
- * @param {function} props.onClick - The function to call when the component is clicked.
- * @returns {JSX.Element} The NavbarToggleFab component.
  */
 function NavbarToggleFab(props: NavbarToggleFabProps) {
 	const { className = '', position = 'left', onClick } = props;

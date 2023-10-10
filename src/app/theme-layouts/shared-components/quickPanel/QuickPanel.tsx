@@ -28,8 +28,6 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(() => ({
 
 /**
  * The quick panel.
- *
- * @returns {JSX.Element} The quick panel.
  */
 function QuickPanel() {
 	const dispatch = useAppDispatch();

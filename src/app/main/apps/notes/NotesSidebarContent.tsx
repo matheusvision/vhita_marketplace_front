@@ -37,7 +37,6 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & Partia
 
 /**
  * The notes sidebar content.
- * @returns The jsx component.
  */
 function NotesSidebarContent() {
 	const dispatch = useAppDispatch();

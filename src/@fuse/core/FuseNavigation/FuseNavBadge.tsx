@@ -24,7 +24,6 @@ type FuseNavBadgeProps = {
 
 /**
  * FuseNavBadge component.
- *
  * This component will render a badge on a FuseNav element. It accepts a `FuseNavBadgeType` as a prop,
  * which is an object containing a title and background and foreground colour.
  */

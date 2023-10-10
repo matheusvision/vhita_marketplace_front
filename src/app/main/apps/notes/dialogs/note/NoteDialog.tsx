@@ -30,7 +30,6 @@ const Transition = forwardRef(function Transition(props: { children: ReactElemen
 
 /**
  * The note dialog.
- * @returns The jsx component.
  */
 function NoteDialog() {
 	const dispatch = useAppDispatch();

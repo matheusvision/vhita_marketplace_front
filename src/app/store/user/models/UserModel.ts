@@ -19,8 +19,6 @@ export type UserModelType = {
 
 /**
  * Creates a new user object with the specified data.
- * @param data
- * @returns
  */
 function UserModel(data: UserModelType) {
 	data = data || {};

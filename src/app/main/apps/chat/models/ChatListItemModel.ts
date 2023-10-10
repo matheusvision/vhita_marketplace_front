@@ -4,9 +4,6 @@ import { ChatListItemType } from '../types/ChatListItemType';
 
 /**
  * Chat list item model.
- *
- * @param {PartialDeep<ChatListItemType>} data - The data.
- * @returns {ChatListItemType} The chat list item model.
  */
 function ChatListItemModel(data?: PartialDeep<ChatListItemType>) {
 	data = data || {};

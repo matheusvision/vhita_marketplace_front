@@ -14,8 +14,6 @@ type FolderItemProps = {
 
 /**
  * The folder item.
- * @param props The props.
- * @returns The jsx component.
  */
 function FolderItem(props: FolderItemProps) {
 	const { item } = props;

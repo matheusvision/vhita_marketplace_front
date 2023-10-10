@@ -11,8 +11,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * Language widget.
- *
- * @returns {JSX.Element} The language widget.
  */
 function LanguageWidget() {
 	const widgets = useAppSelector(selectWidgets);

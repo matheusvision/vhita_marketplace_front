@@ -29,8 +29,6 @@ type CardChecklistNameProps = {
 
 /**
  * The card checklist name component.
- * @param props The component props.
- * @returns The jsx component.
  */
 const CardChecklistName = forwardRef<CardChecklistHandle, CardChecklistNameProps>((props, ref) => {
 	const { name, onNameChange } = props;

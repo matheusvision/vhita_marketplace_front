@@ -5,8 +5,6 @@ import { ProductType } from '../../types/ProductType';
 
 /**
  * The basic info tab.
- *
- * @returns {JSX.Element} The component.
  */
 function BasicInfoTab() {
 	const methods = useFormContext();

@@ -8,7 +8,6 @@ import LabelItemForm from './LabelItemForm';
 
 /**
  * The labels dialog.
- * @returns The jsx component.
  */
 function LabelsDialog() {
 	const dispatch = useAppDispatch();

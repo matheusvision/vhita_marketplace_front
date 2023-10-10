@@ -5,7 +5,6 @@ import BoardCardForm from './BoardCardForm';
 
 /**
  * The board card dialog component.
- * @returns The jsx component.
  */
 function BoardCardDialog() {
 	const dispatch = useAppDispatch();

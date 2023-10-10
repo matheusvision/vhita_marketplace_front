@@ -11,7 +11,6 @@ import { getGuide, selectGuide } from '../store/guideSlice';
 
 /**
  * The help center guide.
- * @returns The jsx component.
  */
 function HelpCenterGuide() {
 	const navigate = useNavigate();

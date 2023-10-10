@@ -16,9 +16,6 @@ import { AppDispatchType, AsyncReducersType, BaseRootStateType } from './types';
 
 /**
  * Configures the middleware which are used during the React application lifecycle.
- *
- * @param {object} config Configuration object
- * @param {object} config.env Environment configuration values
  */
 const middlewares: Middleware[] = [];
 
@@ -30,12 +27,6 @@ if (process.env.NODE_ENV === 'development') {
 
 /**
  * Configures the application's store by calling `configureStore` with an object of settings.
- *
- * @param {object} settings The settings for the store.
- * @param {function} settings.reducer The reducer function for the store.
- * @param {function} settings.middleware The middleware functions for the store.
- * @param {boolean} settings.devTools Flag for enabling the DevTools extension.
- * @returns {object} The store object.
  */
 const store = configureStore({
 	reducer: createReducer({}),
@@ -54,11 +45,6 @@ const asyncReducers: AsyncReducersType = {};
 
 /**
  * injects a single reducer to the store
- *
- * @param {String} key - unique identifier to register the reducer in asyncReducers
- * @param {Reducer} reducer - reducer function
- *
- * @returns {boolean} false if the reducer already exists or store object
  */
 export const injectReducer = (key: string, reducer: Reducer) => {
 	if (asyncReducers[key]) {
@@ -73,9 +59,6 @@ export const injectReducer = (key: string, reducer: Reducer) => {
 };
 
 /**
-injects reducers to the store in bulk
-@param {ReducersMapObject} reducers - object containing reducers to inject
-@returns {Store} the store object
  */
 export const injectReducers = (reducers: ReducersMapObject) => {
 	store.replaceReducer(createReducer(_.merge(asyncReducers, reducers)));
@@ -90,9 +73,7 @@ export const useAppDispatch: () => AppDispatchType = useDispatch;
 
 /**
  * Typed hook to get a slice of the Redux store state.
- * @template T - The type of the slice of state to retrieve.
- * @param selector - A function that takes the root state and returns the desired slice of state.
- * @returns The selected slice of state.
+ * T - The type of the slice of state to retrieve.
  */
 export const useAppSelector: TypedUseSelectorHook<BaseRootStateType> = useSelector;
 

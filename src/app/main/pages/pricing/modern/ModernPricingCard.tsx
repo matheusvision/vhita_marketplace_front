@@ -12,8 +12,6 @@ type ModernPricingCardProps = ModernPricingItemType & {
 
 /**
  * The modern pricing card component.
- * @param {ModernPricingCardProps} props - The component props.
- * @returns {JSX.Element} The modern pricing card component.
  */
 function ModernPricingCard(props: ModernPricingCardProps) {
 	const {

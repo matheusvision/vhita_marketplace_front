@@ -5,7 +5,6 @@ import { getGuideCategories } from '../store/guideCategoriesSlice';
 
 /**
  * The help center guides.
- * @returns The jsx component.
  */
 function HelpCenterGuides() {
 	const dispatch = useAppDispatch();

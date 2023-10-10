@@ -15,9 +15,6 @@ type CryptoDashboardAppHeaderProps = {
 
 /**
  * The crypto dashboard app header.
- *
- * @param {CryptoDashboardAppHeaderProps} props - The props.
- * @returns {JSX.Element} The crypto dashboard app header.
  */
 function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 	const { onToggleLeftSidebar } = props;

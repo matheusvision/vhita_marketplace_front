@@ -10,9 +10,6 @@ type NavbarToggleFabLayout2Props = {
 
 /**
  * The navbar toggle fab layout 2.
- *
- * @param {NavbarToggleFabLayout2Props} props - The props.
- * @returns {JSX.Element} The navbar toggle fab layout 2.
  */
 function NavbarToggleFabLayout2(props: NavbarToggleFabLayout2Props) {
 	const { className } = props;

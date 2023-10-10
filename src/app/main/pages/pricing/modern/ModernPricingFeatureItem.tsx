@@ -11,8 +11,6 @@ type ModernPricingFeatureItemProps = {
 
 /**
  * The modern pricing feature item component.
- * @param {ModernPricingFeatureItemProps} props - The component props.
- * @returns {JSX.Element} The modern pricing feature item component.
  */
 function ModernPricingFeatureItem(props: ModernPricingFeatureItemProps) {
 	const { title = '', subtitle = '', icon = '' } = props;

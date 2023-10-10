@@ -4,8 +4,6 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * The FinanceDashboardAppHeader component.
- *
- * @returns {JSX.Element} The FinanceDashboardAppHeader component.
  */
 function FinanceDashboardAppHeader() {
 	return (

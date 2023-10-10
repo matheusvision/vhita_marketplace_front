@@ -7,7 +7,6 @@ import { selectSearchText, setNotesSearchText } from './store/notesSlice';
 
 /**
  * The notes search.
- * @returns The jsx component.
  */
 function NotesSearch() {
 	const dispatch = useAppDispatch();

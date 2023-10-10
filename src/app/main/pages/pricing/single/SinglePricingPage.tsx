@@ -8,7 +8,6 @@ import SinglePricingCard from './SinglePricingCard';
 
 /**
  * The single pricing page.
- * @returns {JSX.Element} The single pricing page.
  */
 function SinglePricingPage() {
 	return (

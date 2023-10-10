@@ -8,8 +8,6 @@ import ContactListItem from './ContactListItem';
 
 /**
  * The contacts list.
- *
- * @returns {JSX.Element} The component.
  */
 function ContactsList() {
 	const filteredData = useAppSelector(selectFilteredContacts);

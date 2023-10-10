@@ -18,8 +18,6 @@ type MailActionsMenuProps = {
 
 /**
  * The mail actions menu.
- * @param props The props.
- * @returns The jsx component.
  */
 function MailActionsMenu(props: MailActionsMenuProps) {
 	const { className } = props;

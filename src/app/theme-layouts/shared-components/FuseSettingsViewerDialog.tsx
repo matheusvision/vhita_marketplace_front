@@ -18,9 +18,6 @@ type FuseSettingsViewerDialogProps = {
 
 /**
  * The settings viewer dialog.
- *
- * @param {FuseSettingsViewerDialogProps} props - The component props.
- * @returns {JSX.Element} The settings viewer dialog.
  */
 function FuseSettingsViewerDialog(props: FuseSettingsViewerDialogProps) {
 	const { className = '' } = props;

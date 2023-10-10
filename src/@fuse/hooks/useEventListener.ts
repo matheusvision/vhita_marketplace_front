@@ -4,10 +4,6 @@ import { useEffect, useRef } from 'react';
  * The useEventListener function is a custom hook that adds an event listener to an element.
  * It takes in an event name, a handler function, and an optional element as parameters.
  * It returns nothing.
- *
- * @param eventName - The name of the event to listen for.
- * @param handler - The function to call when the event is triggered.
- * @param element - The element to add the event listener to. Defaults to the window object.
  */
 function useEventListener<T extends Event>(
 	eventName: string,

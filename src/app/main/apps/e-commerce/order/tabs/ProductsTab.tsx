@@ -5,8 +5,6 @@ import { selectOrder } from '../../store/orderSlice';
 
 /**
  * The products tab.
- *
- * @returns {JSX.Element} The component.
  */
 function ProductsTab() {
 	const order = useAppSelector(selectOrder);

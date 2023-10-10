@@ -22,9 +22,6 @@ type AdjustFontSizeProps = {
 
 /**
  * The adjust font size.
- *
- * @param {AdjustFontSizeProps} props - The component props.
- * @returns {JSX.Element} The adjust font size.
  */
 function AdjustFontSize(props: AdjustFontSizeProps) {
 	const { className = '' } = props;

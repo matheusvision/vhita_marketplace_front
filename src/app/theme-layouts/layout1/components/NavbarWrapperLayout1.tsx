@@ -14,8 +14,6 @@ import NavbarStyle3 from './navbar/style-3/NavbarStyle3';
 
 /**
  * The navbar wrapper layout 1.
- *
- * @returns {JSX.Element} The navbar wrapper layout 1.
  */
 function NavbarWrapperLayout1() {
 	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;

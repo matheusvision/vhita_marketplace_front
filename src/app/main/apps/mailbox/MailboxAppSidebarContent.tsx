@@ -10,8 +10,6 @@ import { selectLabels } from './store/labelsSlice';
 
 /**
  * The mailbox app sidebar content.
- *
- * @returns {JSX.Element}
  */
 function MailboxAppSidebarContent() {
 	const folders = useAppSelector(selectFolders);

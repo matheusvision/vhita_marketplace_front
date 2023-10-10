@@ -139,7 +139,6 @@ function JwtAuthDoc() {
 
 					/**
 					 * Checks if the access token is expired.
-					 * @returns True if the access token is not expired, false otherwise.
 					 */
 					isAccessTokenValid() {
 						const accessToken = this.getAccessToken();
@@ -160,7 +159,6 @@ function JwtAuthDoc() {
 
 					/**
 					 * Gets the access token from the local storage.
-					 * @returns The access token.
 					 */
 					getAccessToken() {
 						return window.localStorage.getItem('jwt_access_token');
@@ -168,7 +166,6 @@ function JwtAuthDoc() {
 
 					/**
 					 * Sets the access token in the local storage.
-					 * @param access_token The access token to set.
 					 */
 					setAccessToken(access_token: string) {
 						window.localStorage.setItem('jwt_access_token', access_token);
@@ -365,8 +362,6 @@ function JwtAuthDoc() {
                 class FirebaseAuthService {
                     /**
                      * Verifies a Firebase ID token and returns the decoded user information.
-                     * @param idToken The Firebase ID token to verify.
-                     * @returns The decoded user information.
                      */
                     verifyIdToken = async (idToken: string) => {
                         try {

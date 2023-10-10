@@ -97,9 +97,6 @@ type OrdersTableHeadProps = {
 
 /**
  * The orders table head.
- *
- * @param {OrdersTableHeadProps} props - The props.
- * @returns {JSX.Element} The component.
  */
 function OrdersTableHead(props: OrdersTableHeadProps) {
 	const { selectedOrderIds, onRequestSort, onSelectAllClick, tableOrder, rowCount, onMenuItemClick } = props;

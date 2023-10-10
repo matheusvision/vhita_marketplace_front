@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 
 /**
  * The Error404Page component renders a custom 404 error page.
- * @returns A React JSX element that represents the 404 error page.
  */
 function Error404Page() {
 	return (

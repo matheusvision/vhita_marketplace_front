@@ -11,7 +11,6 @@ import { NotesType } from './types/NoteType';
 
 /**
  * The note list.
- * @returns The jsx component.
  */
 function NoteList() {
 	const notes = useAppSelector(selectNotes);

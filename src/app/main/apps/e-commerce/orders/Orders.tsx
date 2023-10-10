@@ -5,8 +5,6 @@ import OrdersTable from './OrdersTable';
 
 /**
  * The orders page.
- *
- * @returns {JSX.Element} The component.
  */
 function Orders() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));

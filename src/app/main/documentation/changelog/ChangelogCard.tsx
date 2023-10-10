@@ -36,8 +36,6 @@ type ChangelogCardProps = ChangelogItemType & {
 
 /**
  * The changelog card.
- * @param props The properties.
- * @returns The jsx component.
  */
 function ChangelogCard(props: ChangelogCardProps) {
 	const { className, version, date, newChanges, fixedChanges, breakingChanges, notes } = props;

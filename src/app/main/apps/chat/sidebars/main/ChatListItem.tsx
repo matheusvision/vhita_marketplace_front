@@ -27,9 +27,6 @@ type ChatListItemProps = {
 
 /**
  * The chat list item.
- *
- * @param {ChatListItemProps} props - The component props.
- * @returns {JSX.Element} The component.
  */
 function ChatListItem(props: ChatListItemProps) {
 	const { item } = props;

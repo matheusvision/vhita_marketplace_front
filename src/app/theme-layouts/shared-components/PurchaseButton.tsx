@@ -8,9 +8,6 @@ type PurchaseButtonProps = {
 
 /**
  * The purchase button.
- *
- * @param {PurchaseButtonProps} props - The component props.
- * @returns {JSX.Element} The purchase button.
  */
 function PurchaseButton(props: PurchaseButtonProps) {
 	const { className = '' } = props;

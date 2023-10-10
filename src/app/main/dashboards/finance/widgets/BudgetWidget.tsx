@@ -10,8 +10,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * The BudgetWidget widget.
- *
- * @returns {JSX.Element} The BudgetWidget widget.
  */
 function BudgetWidget() {
 	const widgets = useAppSelector(selectWidgets);

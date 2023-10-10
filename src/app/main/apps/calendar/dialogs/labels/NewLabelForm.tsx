@@ -28,8 +28,6 @@ const schema = yup.object().shape({
 
 /**
  * The new label form.
- *
- * @returns {JSX.Element} The component.
  */
 function NewLabelForm() {
 	const dispatch = useAppDispatch();

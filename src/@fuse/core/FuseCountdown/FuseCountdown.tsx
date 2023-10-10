@@ -12,15 +12,8 @@ type FuseCountdownProps = {
 
 /**
  * FuseCountdown
- *
  * A React component used to display the number of days, hours, minutes and seconds left until a specified end date.
  * It allows a callback function to be passed in to be executed when the end date is reached.
- *
- * @param  {Moment} endDate - The end date that a countdown is shown until
- * @param  {Function} onComplete - A callback function that is called when the end date is reached
- * @param  {string} className - The className to be applied to the root element
- *
- * @return {JSX.Element} A React component
  */
 function FuseCountdown(props: FuseCountdownProps) {
 	const { onComplete, endDate = moment().add(15, 'days'), className } = props;

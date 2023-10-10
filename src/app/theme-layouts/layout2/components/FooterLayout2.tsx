@@ -13,9 +13,6 @@ type FooterLayout2Props = {
 
 /**
  * The footer layout 2.
- *
- * @param {FooterLayout2Props} props - The props.
- * @returns {JSX.Element} The footer layout 2.
  */
 function FooterLayout2(props: FooterLayout2Props) {
 	const { className = '' } = props;

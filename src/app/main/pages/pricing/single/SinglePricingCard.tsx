@@ -7,7 +7,6 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * The single pricing card component.
- * @returns {JSX.Element} The single pricing card component.
  */
 function SinglePricingCard() {
 	return (

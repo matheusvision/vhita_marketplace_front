@@ -1,6 +1,5 @@
 /**
  * Configuration object containing the authentication service API endpoints
- * @type {Object.}
  */
 const jwtServiceConfig = {
 	signIn: 'api/auth/sign-in',

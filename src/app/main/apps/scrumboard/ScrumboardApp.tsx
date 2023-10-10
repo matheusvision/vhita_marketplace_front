@@ -5,7 +5,6 @@ import { getMembers } from './store/membersSlice';
 
 /**
  * The scrumboard app.
- * @returns The jsx component.
  */
 function ScrumboardApp() {
 	const dispatch = useAppDispatch();

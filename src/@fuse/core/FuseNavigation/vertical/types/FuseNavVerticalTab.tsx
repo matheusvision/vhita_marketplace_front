@@ -66,9 +66,6 @@ export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & 
  *  The `FuseNavVerticalTab` component renders vertical navigation item with an adaptable
  *  layout to be used within the `FuseNavigation`. It only supports the `type`s of 'item',
  *  'selection' and 'divider'
- *
- * @param {FuseNavVerticalTabProps} props - Props
- *
  * */
 function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 	const { item, onItemClick, firstLevel, dense, selectedId } = props;

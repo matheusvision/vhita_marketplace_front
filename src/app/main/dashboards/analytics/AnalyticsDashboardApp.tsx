@@ -18,8 +18,6 @@ import GenderWidget from './widgets/GenderWidget';
 
 /**
  * The analytics dashboard app.
- *
- * @returns {JSX.Element} The analytics dashboard app.
  */
 function AnalyticsDashboardApp() {
 	const dispatch = useAppDispatch();

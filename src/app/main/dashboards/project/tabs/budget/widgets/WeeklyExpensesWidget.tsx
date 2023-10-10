@@ -10,8 +10,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The MonthlyExpensesWidget widget.
- *
- * @returns {JSX.Element} The MonthlyExpensesWidget widget.
  */
 function WeeklyExpensesWidget() {
 	const widgets = useAppSelector(selectWidgets);

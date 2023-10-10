@@ -11,9 +11,6 @@ type MainSidebarMoreMenuProps = {
 
 /**
  * The main sidebar more menu.
- *
- * @param {MainSidebarMoreMenuProps} props The props.
- * @returns {JSX.Element} The component.
  */
 function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
 	const { className } = props;

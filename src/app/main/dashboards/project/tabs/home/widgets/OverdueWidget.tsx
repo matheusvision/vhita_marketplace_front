@@ -8,8 +8,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The OverdueWidget widget.
- *
- * @returns {JSX.Element} The OverdueWidget widget.
  */
 function OverdueWidget() {
 	const widgets = useAppSelector(selectWidgets);

@@ -18,9 +18,6 @@ type CountryCodeSelectorProps = {
 
 /**
  * The country code selector.
- *
- * @param {CountryCodeSelectorProps} props The props.
- * @returns {JSX.Element} The component.
  */
 const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className } = props;

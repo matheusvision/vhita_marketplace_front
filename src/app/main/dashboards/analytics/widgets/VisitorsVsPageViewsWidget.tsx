@@ -11,8 +11,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * Visitors vs. Page Views widget.
- *
- * @returns {JSX.Element} The visitors vs. page views widget.
  */
 function VisitorsVsPageViewsWidget() {
 	const theme = useTheme();

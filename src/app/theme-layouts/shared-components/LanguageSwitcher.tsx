@@ -12,8 +12,6 @@ import { useAppDispatch } from 'app/store';
 
 /**
  * The language switcher.
- *
- * @returns {JSX.Element} The language switcher.
  */
 function LanguageSwitcher() {
 	const currentLanguage = useSelector(selectCurrentLanguage);

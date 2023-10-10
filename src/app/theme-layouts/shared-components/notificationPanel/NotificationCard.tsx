@@ -17,9 +17,6 @@ type NotificationCardProps = {
 
 /**
  * The notification card.
- *
- * @param {NotificationCardProps} props - The component props.
- * @returns {JSX.Element} The notification card.
  */
 function NotificationCard(props: NotificationCardProps) {
 	const { item, className, onClose } = props;

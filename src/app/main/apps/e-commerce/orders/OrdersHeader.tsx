@@ -8,8 +8,6 @@ import { selectOrdersSearchText, setOrdersSearchText } from '../store/ordersSlic
 
 /**
  * The orders header.
- *
- * @returns {JSX.Element} The component.
  */
 function OrdersHeader() {
 	const dispatch = useAppDispatch();

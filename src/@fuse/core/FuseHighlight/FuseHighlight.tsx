@@ -13,15 +13,7 @@ type FuseHighlightProps = {
 
 /**
  * FuseHighlight
- *
  * Highlight language-specific syntax with Prism.js
- *
- * @param {Object} props - Properties of the component
- * @param {ElementType} [props.component='code'] - The HTML element type as a wrapper
- * @param {string|Object} props.children - The children prop can be either a string corresponding to the snippet of source code, or an object with a default key containing the source code as a string
- * @param {string} props.className - The className of the component
- * @param {boolean} [props.async=false] - Flag for async rendered source code
- * @param {React.RefObject} ref - Reference to the HTML DOM element
  */
 const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref) => {
 	const { async = false, children, className, component: Wrapper = 'code' } = props;

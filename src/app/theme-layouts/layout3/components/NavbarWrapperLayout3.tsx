@@ -34,9 +34,6 @@ type NavbarWrapperLayout3Props = {
 
 /**
  * The navbar wrapper layout 3.
- *
- * @param {NavbarWrapperLayout3Props} props - The props.
- * @returns {JSX.Element} The navbar wrapper layout 3.
  */
 function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	const { className = '' } = props;

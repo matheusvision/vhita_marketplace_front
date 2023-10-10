@@ -21,10 +21,6 @@ const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationC
  */
 
 /**
-Appends a navigation item to the navigation store state.
-@param item The navigational item to be appended. 
-@param parentId The id of the parent item into which the item will be appended.
-@returns {AppThunkType} Returns async thunk which calls setNavigation to append item.
  */
 export const appendNavigationItem =
 	(item: FuseNavItemType, parentId?: string): AppThunkType =>
@@ -35,9 +31,6 @@ export const appendNavigationItem =
 
 /**
  * Prepends a navigation item to the navigation store state.
- * @param item
- * @param parentId
- * @returns
  */
 export const prependNavigationItem =
 	(item: FuseNavItemType, parentId?: string): AppThunkType =>
@@ -51,10 +44,6 @@ export const prependNavigationItem =
 
 /**
  * Adds a navigation item to the navigation store state at the specified index.
- * @param item
- * @param index
- * @param parentId
- * @returns
  */
 export const updateNavigationItem =
 	(id: string, item: PartialDeep<FuseNavItemType>): AppThunkType =>
@@ -68,8 +57,6 @@ export const updateNavigationItem =
 
 /**
  * Removes a navigation item from the navigation store state.
- * @param id
- * @returns
  */
 export const removeNavigationItem =
 	(id: string): AppThunkType =>

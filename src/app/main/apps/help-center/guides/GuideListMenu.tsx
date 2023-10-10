@@ -15,8 +15,6 @@ type GuideListMenuProps = {
 
 /**
  * The guide list menu component.
- * @param props The props.
- * @returns The jsx component.
  */
 function GuideListMenu(props: GuideListMenuProps) {
 	const { list = [], className, categorySlug = '', maxItems = 999 } = props;

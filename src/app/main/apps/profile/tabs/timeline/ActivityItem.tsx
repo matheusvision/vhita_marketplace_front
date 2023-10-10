@@ -10,8 +10,6 @@ type ActivityItemProps = {
 
 /**
  * The activity item.
- * @param props The props.
- * @returns The jsx component.
  */
 function ActivityItem(props: ActivityItemProps) {
 	const { item } = props;

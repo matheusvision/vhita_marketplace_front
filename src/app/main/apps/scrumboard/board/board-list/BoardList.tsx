@@ -26,8 +26,6 @@ type BoardListProps = {
 
 /**
  * The board list component.
- * @param props The props.
- * @returns The jsx component.
  */
 function BoardList(props: BoardListProps) {
 	const { listId, cardIds, index } = props;

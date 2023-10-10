@@ -5,7 +5,6 @@ import { selectMailsTitle } from '../store/mailsSlice';
 
 /**
  * The mail list title.
- * @returns The jsx component.
  */
 function MailListTitle() {
 	const routeParams = useParams();

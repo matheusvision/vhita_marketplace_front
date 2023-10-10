@@ -28,11 +28,7 @@ const StyledList = styled(List)(({ theme }) => ({
 
 /**
  * FuseNavVerticalLayout2 component represents a vertical navigation layout with material UI elements.
- *
  * It displays the navigation object in the structured vertical menu and allows to handle onClick events for each navigation item.
- *
- * @param {FuseNavigationProps} props - Accepts the FuseNavigationProps.
- * @returns {JSX.Element}
  */
 function FuseNavVerticalLayout2(props: FuseNavigationProps) {
 	const { navigation, active, dense, className, onItemClick, firstLevel, selectedId } = props;

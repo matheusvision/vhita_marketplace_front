@@ -3,7 +3,6 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * The select mail message.
- * @returns The jsx component.
  */
 function SelectMailMessage() {
 	return (

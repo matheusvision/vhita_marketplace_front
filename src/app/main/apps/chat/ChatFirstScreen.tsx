@@ -6,8 +6,6 @@ import { ChatAppContext } from './ChatApp';
 
 /**
  * The chat first screen.
- *
- * @returns {JSX.Element} The chat first screen.
  */
 function ChatFirstScreen() {
 	const { setMainSidebarOpen } = useContext(ChatAppContext);

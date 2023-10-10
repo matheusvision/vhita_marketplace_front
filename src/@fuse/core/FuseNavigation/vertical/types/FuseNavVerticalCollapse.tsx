@@ -48,10 +48,6 @@ function needsToBeOpened(location: Location, item: FuseNavItemType) {
 
 /**
  * FuseNavVerticalCollapse component used for vertical navigation items with collapsible children.
- *
- * @param {FuseNavItemComponentProps} props - props to be used for this component.
- *
- * @returns {React.ReactElement} A React element.
  */
 function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 	const location = useLocation();

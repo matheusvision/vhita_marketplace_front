@@ -9,10 +9,7 @@ import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { FuseNavigationProps } from '@fuse/core/FuseNavigation/FuseNavigation';
 
 /**
- * The navigation.
- *
- * @param {FuseNavigationProps} props - The component props.
- * @returns {JSX.Element} The navigation.
+ * Navigation
  */
 function Navigation(props: Partial<FuseNavigationProps>) {
 	const { className = '', layout = 'vertical', dense, active } = props;
@@ -32,7 +29,7 @@ function Navigation(props: Partial<FuseNavigationProps>) {
 
 		return (
 			<FuseNavigation
-				className={clsx('navigation', className)}
+				className={clsx('navigation flex-1', className)}
 				navigation={navigation}
 				layout={layout}
 				dense={dense}

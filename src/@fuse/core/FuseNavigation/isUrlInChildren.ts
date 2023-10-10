@@ -3,10 +3,6 @@ import { FuseNavItemType } from './types/FuseNavItemType';
 
 /**
  * Determines whether a given URL is present in the parent's child list or not.
- *
- * @param parent {FuseNavItemType} The parent's navigation item.
- * @param url {Pathname} The URL to look for.
- * @return {boolean} True if the URL is present in the parent's child list, false otherwise.
  */
 const isUrlInChildren = (parent: FuseNavItemType, url: Pathname) => {
 	if (!parent.children) {

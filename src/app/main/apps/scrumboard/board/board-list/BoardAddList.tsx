@@ -30,7 +30,6 @@ const schema = yup.object().shape({
 
 /**
  * The board add list component.
- * @returns The jsx component.
  */
 function BoardAddList() {
 	const dispatch = useAppDispatch();

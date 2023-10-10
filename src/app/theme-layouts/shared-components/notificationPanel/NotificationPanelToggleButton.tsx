@@ -15,9 +15,6 @@ type NotificationPanelToggleButtonProps = {
 
 /**
  * The notification panel toggle button.
- *
- * @param {NotificationPanelToggleButtonProps} props - The component props.
- * @returns {JSX.Element} The notification panel toggle button.
  */
 function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps) {
 	const { children = <FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon> } = props;

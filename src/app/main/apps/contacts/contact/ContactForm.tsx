@@ -60,8 +60,6 @@ const schema = yup.object().shape({
 
 /**
  * The contact form.
- *
- * @returns {JSX.Element} The component.
  */
 function ContactForm() {
 	const contact = useAppSelector(selectContact);

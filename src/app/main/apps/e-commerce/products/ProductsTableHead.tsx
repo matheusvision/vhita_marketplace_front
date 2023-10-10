@@ -90,9 +90,6 @@ type ProductsTableHeadPropsType = {
 
 /**
  * The products table head component.
- *
- * @param {ProductsTableHeadPropsType} props The props.
- * @returns {JSX.Element} The component.
  */
 function ProductsTableHead(props: ProductsTableHeadPropsType) {
 	const { selectedProductIds, tableOrder, onSelectAllClick, onRequestSort, rowCount, onMenuItemClick } = props;

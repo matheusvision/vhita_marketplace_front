@@ -9,8 +9,6 @@ import ScheduleWidget from './widgets/ScheduleWidget';
 
 /**
  * The HomeTab component.
- *
- * @returns {JSX.Element} The HomeTab component.
  */
 function HomeTab() {
 	const container = {

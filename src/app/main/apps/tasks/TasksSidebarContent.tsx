@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 
 /**
  * The tasks sidebar content.
- * @returns The jsx component.
  */
 function TasksSidebarContent() {
 	return (

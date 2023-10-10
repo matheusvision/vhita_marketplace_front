@@ -12,7 +12,6 @@ import SearchItemType from './SearchItemType';
 
 /**
  * The classic search page.
- * @returns {JSX.Element} The classic search page.
  */
 function ClassicSearchPage() {
 	const [data, setData] = useState<SearchItemType[]>([]);

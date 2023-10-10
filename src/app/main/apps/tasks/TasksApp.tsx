@@ -19,7 +19,6 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 
 /**
  * The tasks app.
- * @returns The jsx component.
  */
 function TasksApp() {
 	const dispatch = useAppDispatch();

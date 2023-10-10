@@ -25,8 +25,6 @@ type BoardSettingsSidebarProps = {
 
 /**
  * The board settings sidebar component.
- * @param props The component props.
- * @returns The jsx component.
  */
 function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 	const { onSetSidebarOpen } = props;

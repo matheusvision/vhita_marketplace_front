@@ -8,8 +8,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * The CurrentStatementWidget widget.
- *
- * @returns {JSX.Element} The CurrentStatementWidget widget.
  */
 function CurrentStatementWidget() {
 	const widgets = useAppSelector(selectWidgets);

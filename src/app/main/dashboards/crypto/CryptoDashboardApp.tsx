@@ -25,8 +25,6 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 
 /**
  * The CryptoDashboardApp page.
- *
- * @returns {JSX.Element} The CryptoDashboardApp page.
  */
 function CryptoDashboardApp() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));

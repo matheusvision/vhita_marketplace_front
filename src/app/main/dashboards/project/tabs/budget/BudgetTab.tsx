@@ -7,8 +7,6 @@ import BudgetDetailsWidget from './widgets/BudgetDetailsWidget';
 
 /**
  * The BudgetTab component.
- *
- * @returns {JSX.Element} The BudgetTab component.
  */
 function BudgetTab() {
 	const container = {

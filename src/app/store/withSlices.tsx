@@ -28,8 +28,6 @@ type KnownAction = {
 
 /**
  * Injects reducers grouped by common key.
- * @param slices - The slices to group and inject.
- * @returns A promise that resolves to true when the reducers have been injected.
  */
 export const injectReducersGroupedByCommonKey = async (slices: Slice[]) => {
 	/**
@@ -67,8 +65,6 @@ export const injectReducersGroupedByCommonKey = async (slices: Slice[]) => {
 
 /**
  * A Higher Order Component that injects reducers for the provided slices.
- * @param slices - The slices to inject reducers for.
- * @returns A new component with the injected reducers.
  */
 const withSlices =
 	<P extends object>(slices: Slice[]) =>

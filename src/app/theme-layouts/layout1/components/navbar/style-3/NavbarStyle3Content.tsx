@@ -44,9 +44,6 @@ const StyledPanel = styled(FuseScrollbars)<StyledPanelProps>(({ theme, opened })
 
 /**
  * Check if the item needs to be opened.
- * @param location
- * @param item
- * @returns
  */
 function needsToBeOpened(location: Location, item: FuseNavItemType) {
 	return location && isUrlInChildren(item, location.pathname);
@@ -56,9 +53,6 @@ type NavbarStyle3ContentProps = { className?: string; dense?: number };
 
 /**
  * The navbar style 3 content.
- *
- * @param {NavbarStyle3ContentProps} props - The props.
- * @returns {JSX.Element} The navbar style 3 content.
  */
 function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 	const { className = '', dense = false } = props;

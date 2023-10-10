@@ -27,9 +27,6 @@ function checkDeps(deps: DependencyListType) {
 /**
  * The isPrimitive function checks if a value is a primitive type.
  * It returns true if the value is null, undefined, a string, a boolean, or a number.
- *
- * @param val - The value to check.
- * @returns True if the value is a primitive type, false otherwise.
  */
 function isPrimitive(val: unknown) {
 	return val == null || /^[sbn]/.test(typeof val);
@@ -38,9 +35,6 @@ function isPrimitive(val: unknown) {
 /**
  * The isPrimitive function checks if a value is a primitive type.
  * It returns true if the value is null, undefined, a string, a boolean, or a number.
- *
- * @param val - The value to check.
- * @returns True if the value is a primitive type, false otherwise.
  */
 export function useDeepCompareMemoize<T>(value: T) {
 	const ref = React.useRef<T>(value);
@@ -57,9 +51,6 @@ export function useDeepCompareMemoize<T>(value: T) {
 /**
  * The isPrimitive function checks if a value is a primitive type.
  * It returns true if the value is null, undefined, a string, a boolean, or a number.
- *
- * @param val - The value to check.
- * @returns True if the value is a primitive type, false otherwise.
  */
 function useDeepCompareEffect(callback: EffectCallbackType, dependencies: DependencyListType): UseEffectReturn {
 	if (process.env.NODE_ENV !== 'production') {

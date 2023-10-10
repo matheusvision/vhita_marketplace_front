@@ -11,8 +11,6 @@ import { selectWidgets } from '../store/widgetsSlice';
 
 /**
  * New vs. returning widget.
- *
- * @returns {JSX.Element} The new vs. returning widget.
  */
 function NewVsReturningWidget() {
 	const widgets = useAppSelector(selectWidgets);

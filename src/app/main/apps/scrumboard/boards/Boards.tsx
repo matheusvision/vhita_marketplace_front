@@ -8,7 +8,6 @@ import NewBoardItem from './NewBoardItem';
 
 /**
  * The scrumboard boards component.
- * @returns The jsx component.
  */
 function Boards() {
 	const dispatch = useAppDispatch();

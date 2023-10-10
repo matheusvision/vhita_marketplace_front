@@ -4,8 +4,6 @@ import { LabelType } from '../types/LabelType';
 
 /**
  * The label model.
- * @param data The label data.
- * @returns The label model.
  */
 function LabelModel(data: Partial<LabelType>) {
 	data = data || {};

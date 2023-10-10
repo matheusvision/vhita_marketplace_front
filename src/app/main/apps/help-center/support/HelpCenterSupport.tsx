@@ -22,7 +22,6 @@ const schema = yup.object().shape({
 
 /**
  * The help center support.
- * @returns The jsx component.
  */
 function HelpCenterSupport() {
 	const { control, handleSubmit, watch, formState } = useForm({

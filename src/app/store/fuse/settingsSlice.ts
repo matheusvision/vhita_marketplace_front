@@ -19,8 +19,6 @@ import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 
 /**
  * Changes all Fuse Themes.
- * @param {FuseThemeType} theme The theme to apply to Fuse
- * @returns {AppThunkType} dispatchFn
  */
 export const changeFuseTheme =
 	(theme: FuseThemeType): AppThunkType<void> =>
@@ -48,7 +46,6 @@ type layoutProps = {
 
 /**
  * Gets the initial settings for the application.
- * @returns The initial settings object.
  */
 function getInitialSettings(): FuseSettingsConfigType {
 	const defaultLayoutStyle =
@@ -64,9 +61,6 @@ function getInitialSettings(): FuseSettingsConfigType {
 
 /**
  * Generates the settings object by merging the default settings with the new settings.
- * @param _defaultSettings - The default settings object.
- * @param _newSettings - The new settings object.
- * @returns The merged settings object.
  */
 export function generateSettings(_defaultSettings: FuseSettingsConfigType, _newSettings: FuseSettingsConfigType) {
 	return _.merge(
@@ -99,9 +93,6 @@ const initialState: initialStateProps = {
 
 /**
  * Sets the default settings for the application.
- * @param dispatch - The Redux dispatch function.
- * @param theme - The theme object.
- * @returns The default settings object.
  */
 export const setDefaultSettings = createAppAsyncThunk(
 	'fuse/settings/setDefaultSettings',
@@ -168,9 +159,6 @@ const getFooterTheme = (state: RootStateType): Partial<Theme> => state.fuse.sett
 
 /**
  * Generates the MUI theme object.
- * @param theme
- * @param direction
- * @returns
  */
 function generateMuiTheme(theme: Partial<Theme>, direction: directionType) {
 	const data = _.merge({}, defaultThemeOptions, theme, mustHaveThemeOptions);
@@ -185,8 +173,6 @@ function generateMuiTheme(theme: Partial<Theme>, direction: directionType) {
 
 /**
  * Selects the contrast theme based on the background color.
- * @param bgColor
- * @returns
  */
 export const selectContrastMainTheme = (bgColor: string) => {
 	function isDark(color: string) {
@@ -197,9 +183,6 @@ export const selectContrastMainTheme = (bgColor: string) => {
 
 /**
  * Changes the theme mode.
- * @param theme
- * @param mode
- * @returns
  */
 function changeThemeMode(theme: Partial<Theme>, mode: 'dark' | 'light') {
 	const modes = {

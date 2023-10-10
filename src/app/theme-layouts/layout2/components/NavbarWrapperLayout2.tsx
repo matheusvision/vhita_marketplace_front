@@ -33,9 +33,6 @@ type NavbarWrapperLayout2Props = {
 
 /**
  * The navbar wrapper layout 2.
- *
- * @param {NavbarWrapperLayout2Props} props - The props.
- * @returns {JSX.Element} The navbar wrapper layout 2.
  */
 function NavbarWrapperLayout2(props: NavbarWrapperLayout2Props) {
 	const { className = '' } = props;

@@ -7,8 +7,6 @@ type MailsProps = {
 
 /**
  * The mails component.
- * @param {MailsProps} props - The component props.
- * @returns {JSX.Element} The mails component.
  */
 function Mails(props: MailsProps) {
 	const { onToggleLeftSidebar } = props;

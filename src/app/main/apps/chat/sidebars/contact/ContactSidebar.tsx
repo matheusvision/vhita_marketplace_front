@@ -14,8 +14,6 @@ import { ChatAppContext } from '../../ChatApp';
 
 /**
  * The contact sidebar.
- *
- * @returns {JSX.Element} The component.
  */
 function ContactSidebar() {
 	const { setContactSidebarOpen } = useContext(ChatAppContext);

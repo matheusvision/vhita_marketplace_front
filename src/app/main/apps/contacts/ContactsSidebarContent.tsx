@@ -5,8 +5,6 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * The contacts sidebar content.
- *
- * @returns {JSX.Element} The component.
  */
 function ContactsSidebarContent() {
 	return (

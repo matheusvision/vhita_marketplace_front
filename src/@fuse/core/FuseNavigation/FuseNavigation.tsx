@@ -69,13 +69,8 @@ export type FuseNavigationProps = {
 
 /**
  * FuseNavigation
- *
  * Component for displaying a navigation bar which contains FuseNavItem components
  * and acts as parent for providing props to its children components
- *
- * @param {FuseNavigationProps} props Props of the component
- *
- * @returns {React.ReactElement} Navigation bar
  */
 function FuseNavigation(props: FuseNavigationProps) {
 	const { navigation, layout = 'vertical' } = props;

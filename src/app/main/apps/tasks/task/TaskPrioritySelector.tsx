@@ -44,8 +44,6 @@ type TaskPrioritySelectorProps = {
 
 /**
  * The task priority selector.
- * @param props The props.
- * @returns The jsx component.
  */
 const TaskPrioritySelector = forwardRef<HTMLButtonElement, TaskPrioritySelectorProps>((props, ref) => {
 	const { value = 0, onChange, className } = props;

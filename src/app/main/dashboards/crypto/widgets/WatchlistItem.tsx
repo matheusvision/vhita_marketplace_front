@@ -12,9 +12,6 @@ type WatchlistItemProps = {
 
 /**
  * The watchlist item component.
- *
- * @param {WatchlistItemProps} props - The props.
- * @returns {JSX.Element} The watchlist item component.
  */
 function WatchlistItem(props: WatchlistItemProps) {
 	const { item } = props;

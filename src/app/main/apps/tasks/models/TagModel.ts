@@ -4,8 +4,6 @@ import { TagType } from '../types/TagType';
 
 /**
  * The tag model.
- * @param data The tag data.
- * @returns The tag model.
  */
 const TagModel = (data: PartialDeep<TagType>) =>
 	_.defaults(data || {}, {

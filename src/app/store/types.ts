@@ -13,8 +13,6 @@ export type BaseRootStateType = ReturnType<typeof store.getState>;
 
 /**
  * The extended type of the root state for this application (AppState).
- * @param T - The string key to extend the root state with.
- * @param State - The state to extend the root state with.
  */
 type ExtendedRootStateType<T extends string, State> = BaseRootStateType & { [K in T]: State };
 
@@ -44,8 +42,6 @@ export type AppThunkDispatchType<E = unknown> = ThunkDispatch<RootStateType, E, 
 
 /**
  * The type of a path to a specific type.
- * @param Str - The string path to the type.
- * @param T - The type at the end of the path.
  */
 type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Rest}`
 	? { [P in Start as P]: PathToType<Rest, T> }
@@ -53,8 +49,7 @@ type PathToType<Str extends string, T> = Str extends `${infer Start}/${infer Res
 
 /**
  * The type of multiple paths to specific types.
- * @param Slices - The array of slice names to get the types for.
- * @_T - The type to return.
+ * _T - The type to return.
  */
 type MultiplePathsToType<Slices extends unknown[], _T = unknown> = Slices extends [infer First, ...infer Rest]
 	? First extends { name: string; getInitialState: () => unknown }
@@ -64,7 +59,6 @@ type MultiplePathsToType<Slices extends unknown[], _T = unknown> = Slices extend
 
 /**
  * The type of the root state for this application (AppState) with a specific slice.
- * @param SliceType - The slice to add to the root state.
  */
 export type RootStateWithSliceType<SliceType extends { name: string; getInitialState: () => unknown }> =
 	BaseRootStateType & PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;

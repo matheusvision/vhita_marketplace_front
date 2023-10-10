@@ -39,9 +39,6 @@ type NavbarMobileLayout3Props = {
 
 /**
  * The navbar mobile layout 3.
- *
- * @param {NavbarMobileLayout3Props} props - The props.
- * @returns {JSX.Element} The navbar mobile layout 3.
  */
 function NavbarMobileLayout3(props: NavbarMobileLayout3Props) {
 	const { className = '' } = props;

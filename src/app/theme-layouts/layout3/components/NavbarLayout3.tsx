@@ -15,9 +15,6 @@ type NavbarLayout3Props = {
 
 /**
  * The navbar layout 3.
- *
- * @param {NavbarLayout3Props} props - The props.
- * @returns {JSX.Element} The navbar layout 3.
  */
 function NavbarLayout3(props: NavbarLayout3Props) {
 	const { className = '' } = props;

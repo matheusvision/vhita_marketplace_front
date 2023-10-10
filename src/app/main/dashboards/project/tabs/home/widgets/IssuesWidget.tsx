@@ -8,8 +8,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The IssuesWidget widget.
- *
- * @returns {JSX.Element} The IssuesWidget widget.
  */
 function IssuesWidget() {
 	const widgets = useAppSelector(selectWidgets);

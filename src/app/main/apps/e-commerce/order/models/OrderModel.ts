@@ -4,9 +4,6 @@ import { OrderType } from '../../types/OrderType';
 
 /**
  * The order model.
- *
- * @param {PartialDeep<OrderType>} data - The data.
- * @returns {OrderType} The order model.
  */
 const OrderModel = (data: PartialDeep<OrderType>) =>
 	_.defaults(data || {}, {

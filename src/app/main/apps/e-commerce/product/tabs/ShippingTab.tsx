@@ -4,8 +4,6 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 /**
  * The shipping tab.
- *
- * @returns {JSX.Element} The component.
  */
 function ShippingTab() {
 	const methods = useFormContext();

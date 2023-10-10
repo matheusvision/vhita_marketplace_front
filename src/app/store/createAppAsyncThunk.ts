@@ -13,7 +13,6 @@ type CreateAsyncThunkOptions = {
 
 /**
  * Creates an async thunk with the specified types.
- * @returns A function that can be used to create an async thunk.
  */
 const createAppAsyncThunk = createAsyncThunk.withTypes<CreateAsyncThunkOptions>();
 

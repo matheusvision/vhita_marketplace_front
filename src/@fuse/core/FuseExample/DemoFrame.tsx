@@ -20,11 +20,6 @@ type DemoFrameProps = {
 
 /**
  * DemoFrame component for creating styled iframe
- *
- * @component
- * @param {string} name - The name of the demo
- * @param {React.ReactElement} children - Content of the demo
- * @param {Object} [other] - Additional props for the iframe
  */
 function DemoFrame(props: DemoFrameProps) {
 	const { children, name, ...other } = props;

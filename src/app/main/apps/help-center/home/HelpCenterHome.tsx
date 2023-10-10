@@ -15,7 +15,6 @@ import FaqList from '../faqs/FaqList';
 
 /**
  * The help center home.
- * @returns The jsx component.
  */
 function HelpCenterHome() {
 	const mainThemeDark = useAppSelector(selectMainThemeDark);

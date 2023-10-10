@@ -10,10 +10,6 @@ import clsx from 'clsx';
 
 /**
  * The root component of the WYSIWYG editor.
- * @param {Object} props - The component props.
- * @param {string} props.className - The CSS class name to apply to the component.
- * @param {function} props.onChange - The function to call when the editor content changes.
- * @returns {JSX.Element} The WYSIWYGEditorComponent.
  */
 const Root = styled('div')({
 	'& .rdw-dropdown-selectedtext': {
@@ -30,9 +26,6 @@ const Root = styled('div')({
 });
 
 /* The props for the WYSIWYG editor component.
- * @typedef {Object} WYSIWYGEditorComponentProps
- * @property {string} className - The CSS class name to apply to the component.
- * @property {function} onChange - The function to call when the editor content changes.
  */
 type WYSIWYGEditorComponentProps = {
 	className?: string;
@@ -41,9 +34,6 @@ type WYSIWYGEditorComponentProps = {
 
 /**
  * The WYSIWYG editor component.
- * @param {WYSIWYGEditorComponentProps} props - The component props.
- * @param {React.ForwardedRef<HTMLDivElement>} ref - The component ref.
- * @returns {JSX.Element} The WYSIWYGEditorComponent.
  */
 function WYSIWYGEditorComponent(props: WYSIWYGEditorComponentProps, ref: React.ForwardedRef<HTMLDivElement>) {
 	const { onChange, className = '' } = props;
@@ -52,8 +42,6 @@ function WYSIWYGEditorComponent(props: WYSIWYGEditorComponentProps, ref: React.F
 
 	/**
 	 * The function to call when the editor state changes.
-	 * @param {EditorState} _editorState - The new editor state.
-	 * @returns {void}
 	 */
 	function onEditorStateChange(_editorState) {
 		setEditorState(_editorState);

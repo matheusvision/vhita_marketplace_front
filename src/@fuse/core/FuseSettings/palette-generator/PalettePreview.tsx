@@ -13,7 +13,6 @@ type PalettePreviewProps = {
 
 /**
  * PalettePreview component
- * @param props - Props for PalettePreview component
  */
 function PalettePreview(props: PalettePreviewProps) {
 	const { palette, className } = props;

@@ -17,8 +17,6 @@ type CardChecklistItemProps = {
 
 /**
  * The card checklist item component.
- * @param props The component props.
- * @returns The jsx component.
  */
 function CardChecklistItem(props: CardChecklistItemProps) {
 	const { item, onListItemChange, index, onListItemRemove } = props;

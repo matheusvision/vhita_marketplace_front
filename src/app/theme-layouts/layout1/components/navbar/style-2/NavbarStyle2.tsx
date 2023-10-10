@@ -128,8 +128,6 @@ const StyledNavbarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(({ theme }
 
 /**
  * The navbar style 2.
- *
- * @returns {JSX.Element} The navbar style 2.
  */
 function NavbarStyle2() {
 	const dispatch = useAppDispatch();

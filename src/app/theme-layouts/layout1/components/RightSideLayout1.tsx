@@ -5,8 +5,6 @@ import NotificationPanel from '../../shared-components/notificationPanel/Notific
 
 /**
  * The right side layout 1.
- *
- * @returns {JSX.Element} The right side layout 1.
  */
 function RightSideLayout1() {
 	return (

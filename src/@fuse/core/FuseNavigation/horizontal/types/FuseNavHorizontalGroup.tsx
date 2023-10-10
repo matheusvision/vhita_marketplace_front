@@ -46,12 +46,8 @@ type FuseNavHorizontalGroupProps = FuseNavItemComponentProps & WithRouterProps;
 
 /**
  * FuseNavHorizontalGroup.
- *
  * Represents a horizontal group component used in the Fuse navigation navigation list.
  * It shows the list item as well as its children with a flyout effect.
- *
- * @param {FuseNavHorizontalGroupProps} props - Props with extra attributes.
- * @returns {React.ReactElement}
  */
 function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 	const [opened, setOpened] = useState(false);

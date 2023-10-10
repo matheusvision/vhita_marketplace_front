@@ -11,8 +11,6 @@ import { selectProductsSearchText, setProductsSearchText } from '../store/produc
 
 /**
  * The products header.
- *
- * @returns {JSX.Element} The component.
  */
 function ProductsHeader() {
 	const dispatch = useAppDispatch();

@@ -23,7 +23,6 @@ const schema = yup.object().shape({
 
 /**
  * The board title component.
- * @returns The jsx component.
  */
 function BoardTitle() {
 	const dispatch = useAppDispatch();

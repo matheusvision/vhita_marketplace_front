@@ -12,8 +12,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The GithubIssuesWidget widget.
- *
- * @returns {JSX.Element} The GithubIssuesWidget widget.
  */
 function GithubIssuesWidget() {
 	const theme = useTheme();

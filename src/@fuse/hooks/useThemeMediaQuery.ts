@@ -6,9 +6,6 @@ import { ThemeOptions } from '@mui/material/styles/createTheme';
  * The useThemeMediaQuery function is a custom hook that returns a boolean indicating whether the current screen matches the specified media query.
  * It takes in a themeCallbackFunc as a parameter, which is a function that returns a string representing the media query to match.
  * It returns a boolean indicating whether the current screen matches the specified media query.
- *
- * @param themeCallbackFunc - A function that returns a string representing the media query to match.
- * @returns A boolean indicating whether the current screen matches the specified media query.
  */
 function useThemeMediaQuery(themeCallbackFunc: (theme: ThemeOptions) => string) {
 	const theme = useTheme();
@@ -19,8 +16,6 @@ function useThemeMediaQuery(themeCallbackFunc: (theme: ThemeOptions) => string) 
 	 * The getMatches function checks if the current screen matches the specified media query.
 	 * It takes in a media query string as a parameter and returns a boolean indicating whether the screen matches the query.
 	 *
-	 * @param q - The media query string to check.
-	 * @returns A boolean indicating whether the current screen matches the specified media query.
 	 */
 	function getMatches(q: string) {
 		return window.matchMedia(q).matches;

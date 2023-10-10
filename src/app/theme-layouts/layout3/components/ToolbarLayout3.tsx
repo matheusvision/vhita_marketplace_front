@@ -23,9 +23,6 @@ type ToolbarLayout3Props = {
 
 /**
  * The toolbar layout 3.
- *
- * @param {ToolbarLayout3Props} props - The props.
- * @returns {JSX.Element} The toolbar layout 3.
  */
 function ToolbarLayout3(props: ToolbarLayout3Props) {
 	const { className = '' } = props;

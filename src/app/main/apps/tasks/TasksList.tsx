@@ -8,7 +8,6 @@ import SectionListItem from './SectionListItem';
 
 /**
  * The tasks list.
- * @returns The jsx component.
  */
 function TasksList() {
 	const dispatch = useAppDispatch();

@@ -42,14 +42,7 @@ const Root = styled(ListItemButton)<ListItemButtonStyleProps>(({ theme, ...props
 
 /**
  * FuseNavVerticalLink
- *
  * Create a vertical Link to use inside the navigation component.
- *
- * @param props The props for the FuseNavVerticalLink
- * @reactProps {object} item - The navigation item
- * @reactProps {string} className - The className for the navigation link
- * @reactProps {number} nestedLevel - The nested level of the navigation panel
- * @reactProps {function} onItemClick - The function to call when a navigation item is clicked
  */
 function FuseNavVerticalLink(props: FuseNavItemComponentProps) {
 	const { item, nestedLevel, onItemClick } = props;

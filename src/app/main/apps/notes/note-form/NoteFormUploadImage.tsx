@@ -8,8 +8,6 @@ type NoteFormUploadImageProps = {
 
 /**
  * The note form upload image.
- * @param props The component props.
- * @returns The JSX element.
  */
 function NoteFormUploadImage(props: NoteFormUploadImageProps) {
 	const { onChange } = props;

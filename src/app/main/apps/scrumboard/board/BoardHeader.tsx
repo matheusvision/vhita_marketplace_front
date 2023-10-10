@@ -9,8 +9,6 @@ type BoardHeaderProps = {
 
 /**
  * The board header component.
- * @param props The component props.
- * @returns The jsx component.
  */
 function BoardHeader(props: BoardHeaderProps) {
 	const { onSetSidebarOpen } = props;

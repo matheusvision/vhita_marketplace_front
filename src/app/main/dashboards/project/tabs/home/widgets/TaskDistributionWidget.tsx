@@ -12,8 +12,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The TaskDistributionWidget widget.
- *
- * @returns {JSX.Element} The TaskDistributionWidget widget.
  */
 function TaskDistributionWidget() {
 	const widgets = useAppSelector(selectWidgets);

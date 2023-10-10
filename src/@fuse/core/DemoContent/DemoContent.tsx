@@ -4,7 +4,6 @@ import { memo } from 'react';
  * DemoContent is a React component used to render a demo content on the page.
  * It renders a image on the page followed by a heading, some text and a footer.
  * It also renders a quote and some content about a person being transformed into a vermin.
- * @returns {React.ReactNode} Returns a React element.
  */
 function DemoContent() {
 	return (

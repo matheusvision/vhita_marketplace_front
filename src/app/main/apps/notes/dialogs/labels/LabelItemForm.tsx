@@ -28,8 +28,6 @@ type LabelFormProps = {
 
 /**
  * The new label form.
- * @param props The props.
- * @returns The jsx component.
  */
 function NewLabelForm(props: LabelFormProps) {
 	const { label } = props;

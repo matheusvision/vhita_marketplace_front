@@ -87,9 +87,6 @@ type OrdersStatusProps = {
 
 /**
  * The orders status component.
- *
- * @param props The properties.
- * @returns The JSX element.
  */
 function OrdersStatus(props: OrdersStatusProps) {
 	const { name } = props;

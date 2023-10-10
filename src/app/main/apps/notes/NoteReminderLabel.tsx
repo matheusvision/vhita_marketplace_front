@@ -17,8 +17,6 @@ type NoteLabelProps = {
 
 /**
  * The note label.
- * @param props The props.
- * @returns The jsx component.
  */
 function NoteLabel(props: NoteLabelProps) {
 	const { date, onDelete, className, classes } = props;

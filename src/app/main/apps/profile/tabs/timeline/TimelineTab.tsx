@@ -23,7 +23,6 @@ export type TimelineResponseDataType = {
 
 /**
  * The timeline tab.
- * @returns The jsx component.
  */
 function TimelineTab() {
 	const [data, setData] = useState<TimelineResponseDataType>({ activities: [], posts: [] });

@@ -9,8 +9,6 @@ type BoardCardLabelProps = {
 
 /**
  * The board card label component.
- * @param props The props.
- * @returns The jsx component.
  */
 function BoardCardLabel(props: BoardCardLabelProps) {
 	const { id } = props;

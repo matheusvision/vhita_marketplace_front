@@ -22,7 +22,6 @@ const Root = styled(FusePageCarded)(() => ({
 
 /**
  * The notes app.
- * @returns The jsx component.
  */
 function NotesApp() {
 	const dispatch = useAppDispatch();

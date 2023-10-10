@@ -16,8 +16,6 @@ type LabelsMenuProps = {
 
 /**
  * The labels menu component.
- * @param props The component props.
- * @returns The jsx component.
  */
 function LabelsMenu(props: LabelsMenuProps) {
 	const { labels, onToggleLabel } = props;

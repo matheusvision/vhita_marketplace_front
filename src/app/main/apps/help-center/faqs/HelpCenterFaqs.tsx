@@ -10,7 +10,6 @@ import FaqList from './FaqList';
 
 /**
  * The help center faqs page.
- * @returns The jsx component.
  */
 function HelpCenterFaqs() {
 	const dispatch = useAppDispatch();

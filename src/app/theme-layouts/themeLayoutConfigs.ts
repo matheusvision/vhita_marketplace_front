@@ -12,10 +12,7 @@ export type themeLayoutDefaultsProps =
 	| Layout2ConfigDefaultsType;
 
 /**
- * @typedef {Object} ThemeLayoutProps
- * @property {string} title - The name of the current theme layout.
- * @property {themeLayoutDefaultsProps} defaults - Defaults options for the current theme layout.
- * @property {ThemeFormConfigTypes} form - The form configuration of the current theme layout.
+ * The type definition for the theme layout.
  */
 export type themeLayoutProps = {
 	title: string;
@@ -24,15 +21,14 @@ export type themeLayoutProps = {
 };
 
 /**
- * @typedef {Object} themeLayoutConfigsProps
- * @property {themeLayoutProps} [key: string] - A mapping of the theme layout names and properties.
+ * The type definition for the theme layout configs.
  */
 export type themeLayoutConfigsProps = {
 	[key: string]: themeLayoutProps;
 };
 
 /**
-@type {themeLayoutConfigsProps} themeLayoutConfigs - A mapping of the theme layout names and properties.
+ * The theme layout configs.
  */
 const themeLayoutConfigs: themeLayoutConfigsProps = {
 	layout1: layout1 as themeLayoutProps,

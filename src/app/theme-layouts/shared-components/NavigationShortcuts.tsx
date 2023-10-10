@@ -11,9 +11,6 @@ type NavigationShortcutsProps = {
 
 /**
  * The navigation shortcuts.
- *
- * @param {NavigationShortcutsProps} props - The component props.
- * @returns {JSX.Element} The navigation shortcuts.
  */
 function NavigationShortcuts(props: NavigationShortcutsProps) {
 	const { variant, className } = props;

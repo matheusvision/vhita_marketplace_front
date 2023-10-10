@@ -26,8 +26,6 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 
 /**
  * The mailbox app.
- *
- * @returns {JSX.Element}
  */
 function MailboxApp() {
 	const dispatch = useAppDispatch();

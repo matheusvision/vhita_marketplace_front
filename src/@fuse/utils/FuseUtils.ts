@@ -63,9 +63,6 @@ class FuseUtils {
 	 * The filterArrayByString function filters an array of objects by a search string.
 	 * It takes in an array of objects and a search string as parameters and returns a filtered array of objects.
 	 *
-	 * @param mainArr - The array of objects to filter.
-	 * @param searchText - The search string to filter by.
-	 * @returns A filtered array of objects.
 	 */
 	static filterArrayByString<T>(mainArr: T[], searchText: string): T[] {
 		if (searchText === '') {
@@ -81,9 +78,6 @@ class FuseUtils {
 	 * The searchInObj function searches an object for a given search string.
 	 * It takes in an object and a search string as parameters and returns a boolean indicating whether the search string was found in the object.
 	 *
-	 * @param item - The object to search.
-	 * @param searchText - The search string to search for.
-	 * @returns A boolean indicating whether the search string was found in the object.
 	 */
 	static searchInObj(itemObj: unknown, searchText: string) {
 		if (!itemObj) {
@@ -119,9 +113,6 @@ class FuseUtils {
 	 * The searchInArray function searches an array for a given search string.
 	 * It takes in an array and a search string as parameters and returns a boolean indicating whether the search string was found in the array.
 	 *
-	 * @param arr - The array to search.
-	 * @param searchText - The search string to search for.
-	 * @returns A boolean indicating whether the search string was found in the array.
 	 */
 	static searchInArray(arr: unknown[], searchText: string) {
 		arr.forEach((value) => {
@@ -145,9 +136,6 @@ class FuseUtils {
 	 * The searchInString function searches a string for a given search string.
 	 * It takes in a string and a search string as parameters and returns a boolean indicating whether the search string was found in the string.
 	 *
-	 * @param value - The string to search.
-	 * @param searchText - The search string to search for.
-	 * @returns A boolean indicating whether the search string was found in the string.
 	 */
 	static searchInString(value: string, searchText: string) {
 		return value.toLowerCase().includes(searchText);
@@ -157,7 +145,6 @@ class FuseUtils {
 	 * The generateGUID function generates a globally unique identifier.
 	 * It returns a string representing the GUID.
 	 *
-	 * @returns A string representing the GUID.
 	 */
 	static generateGUID() {
 		function S4() {
@@ -171,8 +158,6 @@ class FuseUtils {
 
 	/**
 	 * The toggleInArray function toggles an item in an array.
-	 * @param item
-	 * @param array
 	 */
 	static toggleInArray(item: unknown, array: unknown[]) {
 		if (array.indexOf(item) === -1) {
@@ -184,8 +169,6 @@ class FuseUtils {
 
 	/**
 	 * The handleize function converts a string to a handle.
-	 * @param text
-	 * @returns
 	 */
 	static handleize(text: string) {
 		return text
@@ -200,8 +183,6 @@ class FuseUtils {
 
 	/**
 	 * The setRoutes function sets the routes for the Fuse project.
-	 * @param routes - The routes to set.
-	 * @returns - The updated route configuration.
 	 */
 	static setRoutes(config?: FuseRouteConfigType, defaultAuth: FuseSettingsConfigType['defaultAuth'] = null) {
 		let routes = [...config.routes];
@@ -227,8 +208,6 @@ class FuseUtils {
 	 * The generateRoutesFromConfigs function generates routes from a set of route configurations.
 	 * It takes in an array of route configurations as a parameter and returns an array of routes.
 	 *
-	 * @param configs - The array of route configurations to generate routes from.
-	 * @returns An array of routes.
 	 */
 	static generateRoutesFromConfigs(
 		configs: FuseRouteConfigsType,
@@ -243,9 +222,6 @@ class FuseUtils {
 
 	/**
 	 * The findById function finds an object by its id.
-	 * @param obj
-	 * @param id
-	 * @returns
 	 */
 	static findById(obj: { id?: string }, id: string) {
 		let i: number;
@@ -271,9 +247,6 @@ class FuseUtils {
 
 	/**
 	 *  The updateNavItem function updates a navigation item.
-	 * @param navigationItems
-	 * @param flatNavigation
-	 * @returns
 	 */
 	static getFlatNavigation(navigationItems: FuseNavigationType = [], flatNavigation = []) {
 		for (let i = 0; i < navigationItems.length; i += 1) {
@@ -301,8 +274,6 @@ class FuseUtils {
 
 	/**
 	 * The randomMatColor function generates a random material color.
-	 * @param hue
-	 * @returns
 	 */
 	static randomMatColor(hue: hueTypes = '400') {
 		const mainColors = [
@@ -330,9 +301,6 @@ class FuseUtils {
 
 	/**
 	 * The findNavItemById function finds a navigation item by its id.
-	 * @param object
-	 * @param base
-	 * @returns
 	 */
 	static difference(object: unknown, base: unknown) {
 		function changes(_object: unknown, _base: unknown) {
@@ -372,9 +340,6 @@ class FuseUtils {
 
 	/**
 	 * The removeNavItem function removes a navigation item.
-	 * @param nav
-	 * @param id
-	 * @returns
 	 */
 	static removeNavItem(nav: FuseNavigationType, id: string): FuseNavigationType {
 		return nav
@@ -396,10 +361,6 @@ class FuseUtils {
 
 	/**
 	 * The prependNavItem function prepends a navigation item.
-	 * @param nav
-	 * @param item
-	 * @param parentId
-	 * @returns
 	 */
 	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
 		if (!parentId) {
@@ -426,10 +387,6 @@ class FuseUtils {
 
 	/**
 	 * The appendNavItem function appends a navigation item.
-	 * @param nav
-	 * @param item
-	 * @param parentId
-	 * @returns
 	 */
 	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
 		if (!parentId) {
@@ -456,9 +413,6 @@ class FuseUtils {
 
 	/**
 	 * The hasPermission function checks if a user has permission to access a resource.
-	 * @param authArr
-	 * @param userRole
-	 * @returns
 	 */
 	static hasPermission(authArr: string[] | string, userRole: string | string[]): boolean {
 		/**
@@ -498,9 +452,6 @@ class FuseUtils {
 
 	/**
 	 * The filterArrayByString function filters an array of objects by a search string.
-	 * @param data
-	 * @param predicate
-	 * @returns
 	 */
 	static filterRecursive(data: [] | null, predicate: (arg0: unknown) => boolean) {
 		// if no data is sent in, return null, otherwise transform the data

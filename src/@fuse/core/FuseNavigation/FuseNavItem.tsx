@@ -5,8 +5,6 @@ const components: { [key: string]: FC<FuseNavItemComponentProps> } = {};
 
 /**
  * Register a component to FuseNavItem.
- * @param {string} name Name of the component.
- * @param {React.FC} Component React Function component.
  */
 export function registerComponent(name: string, Component: React.FC) {
 	components[name] = Component;

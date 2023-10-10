@@ -20,8 +20,6 @@ type MailLabelsMenuProps = {
 
 /**
  * The mail labels menu.
- * @param props The props.
- * @returns The jsx component.
  */
 function MailLabelsMenu(props: MailLabelsMenuProps) {
 	const { className, onChange, labels } = props;

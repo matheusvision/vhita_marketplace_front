@@ -11,8 +11,6 @@ type SimplePricingCardProps = SimplePricingItemType & {
 
 /**
  * The simple pricing card component.
- * @param {SimplePricingCardProps} props - The component props.
- * @returns {JSX.Element} The simple pricing card component.
  */
 function SimplePricingCard(props: SimplePricingCardProps) {
 	const {

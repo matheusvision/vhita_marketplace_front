@@ -22,9 +22,6 @@ type ContactListItemProps = {
 
 /**
  * The contact list item.
- *
- * @param {ContactListItemProps} props - The component props.
- * @returns {JSX.Element} The component.
  */
 function ContactListItem(props: ContactListItemProps) {
 	const { item } = props;

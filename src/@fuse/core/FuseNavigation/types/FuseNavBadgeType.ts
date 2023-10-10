@@ -1,8 +1,5 @@
 /**
  * Represents a FuseNavBadge.
- *
- * @export
- * @interface FuseNavBadgeType
  */
 export type FuseNavBadgeType = {
 	bg?: string;

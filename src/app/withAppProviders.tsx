@@ -18,14 +18,10 @@ type ComponentProps = {
 
 /**
  * A Higher Order Component that provides the necessary context providers for the app.
- * @param Component - The component to wrap with the app providers.
- * @returns A new component with the necessary context providers.
  */
 function withAppProviders(Component: React.ComponentType<ComponentProps>) {
 	/**
 	 * The component that wraps the provided component with the necessary context providers.
-	 * @param props - The props to pass to the wrapped component.
-	 * @returns The wrapped component with the necessary context providers.
 	 */
 	function WithAppProviders(props: React.PropsWithChildren<ComponentProps>) {
 		/**

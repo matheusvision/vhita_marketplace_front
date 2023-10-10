@@ -6,8 +6,6 @@ import BuySellForm from './widgets/BuySellForm';
 
 /**
  * The crypto dashboard app sidebar.
- *
- * @returns {JSX.Element} The crypto dashboard app sidebar.
  */
 function CryptoDashboardAppSidebar() {
 	const widgets = useAppSelector(selectWidgets);

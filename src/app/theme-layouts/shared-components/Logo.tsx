@@ -17,7 +17,6 @@ const Root = styled('div')(({ theme }) => ({
 
 /**
  * The logo component.
- * @returns {JSX.Element} The logo component.
  */
 function Logo() {
 	return (

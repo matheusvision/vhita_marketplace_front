@@ -109,9 +109,6 @@ type NavbarStyle3Props = {
 
 /**
  * The navbar style 3.
- *
- * @param {NavbarStyle3Props} props - The props.
- * @returns {JSX.Element} The navbar style 3.
  */
 function NavbarStyle3(props: NavbarStyle3Props) {
 	const { className = '', dense = false } = props;

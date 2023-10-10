@@ -50,7 +50,6 @@ const schema = yup.object().shape({
 
 /**
  * The task form.
- * @returns The jsx component.
  */
 function TaskForm() {
 	const task = useAppSelector(selectTask);

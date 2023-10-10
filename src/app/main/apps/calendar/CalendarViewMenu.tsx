@@ -30,8 +30,6 @@ type CalendarViewMenuProps = {
 
 /**
  * The calendar view menu.
- * @param props - The component props.
- * @returns The JSX element for the component.
  */
 function CalendarViewMenu(props: CalendarViewMenuProps) {
 	const { className, calendarApi, currentDate } = props;

@@ -17,9 +17,6 @@ type PhoneNumberSelectorProps = {
 
 /**
  * The phone number selector.
- *
- * @param {PhoneNumberSelectorProps} props - The props.
- * @returns {JSX.Element} The component.
  */
 const PhoneNumberSelector = forwardRef((props: PhoneNumberSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className, error, helperText } = props;

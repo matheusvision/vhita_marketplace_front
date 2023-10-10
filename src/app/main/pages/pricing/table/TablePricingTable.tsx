@@ -97,9 +97,6 @@ type TablePricingTableProps = {
 
 /**
  * The pricing table.
- *
- * @param props The component props.
- * @returns The JSX element.
  */
 function TablePricingTable(props: TablePricingTableProps) {
 	const { period } = props;

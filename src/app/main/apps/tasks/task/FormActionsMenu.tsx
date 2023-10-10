@@ -15,8 +15,6 @@ type FormActionsMenuProps = {
 
 /**
  * The form actions menu.
- * @param props The props.
- * @returns The jsx component.
  */
 function FormActionsMenu(props: FormActionsMenuProps) {
 	const { taskId } = props;

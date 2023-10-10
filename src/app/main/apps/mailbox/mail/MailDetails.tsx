@@ -16,7 +16,6 @@ import MailInfo from './MailInfo';
 
 /**
  * The mail details.
- * @returns The jsx component.
  */
 function MailDetails() {
 	const dispatch = useAppDispatch();

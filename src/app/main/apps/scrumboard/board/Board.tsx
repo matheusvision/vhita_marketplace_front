@@ -18,7 +18,6 @@ import BoardHeader from './BoardHeader';
 
 /**
  * The board component.
- * @returns The jsx component.
  */
 function Board() {
 	const dispatch = useAppDispatch();

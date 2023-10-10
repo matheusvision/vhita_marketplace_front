@@ -4,8 +4,6 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 /**
  * The pricing tab.
- *
- * @returns {JSX.Element} The component.
  */
 function PricingTab() {
 	const methods = useFormContext();

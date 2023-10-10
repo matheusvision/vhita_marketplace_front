@@ -11,8 +11,6 @@ type BoardCardDueDateProps = {
 
 /**
  * The board card due date component.
- * @param props The props.
- * @returns The jsx component.
  */
 function BoardCardDueDate(props: BoardCardDueDateProps) {
 	const { dueDate } = props;

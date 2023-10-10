@@ -5,8 +5,6 @@ import { setDefaultSettings } from './fuse/settingsSlice';
 
 /**
  * Changes the language of the application and updates the settings if necessary.
- * @param languageId - The id of the language to change to.
- * @returns A Promise that resolves when the language has been changed.
  */
 export const changeLanguage =
 	(languageId: string): AppThunkType =>
@@ -63,8 +61,6 @@ const i18nSlice = createSlice({
 	reducers: {
 		/**
 		 * Updates the state with the new language.
-		 * @param state - The current state.
-		 * @param action - The Redux action containing the new language id.
 		 */
 		languageChanged: (state, action: PayloadAction<string>) => {
 			state.language = action.payload;

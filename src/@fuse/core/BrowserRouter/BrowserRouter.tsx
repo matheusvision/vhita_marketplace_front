@@ -5,12 +5,7 @@ import { BrowserRouterProps, Router } from 'react-router-dom';
 /**
  * The BrowserRouter component provides an interface for users to interact with the application's history.
  * It is responsible for managing the routing through the use of the `react-router-dom` library and the browser's `history` object.
- *
  * It also integrates with `useLayoutEffect` to listen for changes to the `location` state from the browser's `history` object.
- *
- * @param {BrowserRouterProps} props - Props for the router.
- * @param {string} props.basename - The base path to use for all routes.
- * @param {React.ReactNode} props.children - The content to be rendered.
  */
 function BrowserRouter(props: BrowserRouterProps) {
 	const { basename, children } = props;

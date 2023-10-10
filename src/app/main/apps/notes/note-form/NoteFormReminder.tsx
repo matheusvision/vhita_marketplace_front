@@ -10,8 +10,6 @@ type NoteFormReminderProps = {
 
 /**
  * The note form reminder.
- * @param props The component props.
- * @returns The JSX element.
  */
 function NoteFormReminder(props: NoteFormReminderProps) {
 	const { reminder, onChange } = props;

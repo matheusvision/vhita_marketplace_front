@@ -259,7 +259,6 @@ type FuseSearchProps = {
 
 /**
  * FuseSearch component
- * @param props - Props for FuseSearch component
  */
 function FuseSearch(props: FuseSearchProps) {
 	const {

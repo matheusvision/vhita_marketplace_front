@@ -35,8 +35,6 @@ const schema = yup.object().shape({
 
 /**
  * The product page.
- *
- * @returns {JSX.Element} The component.
  */
 function Product() {
 	const dispatch = useAppDispatch();

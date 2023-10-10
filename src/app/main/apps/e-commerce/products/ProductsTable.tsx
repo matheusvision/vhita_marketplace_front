@@ -26,9 +26,6 @@ type ProductsTableProps = WithRouterProps & {
 
 /**
  * The products table.
- *
- * @param {ProductsTableProps} props The props.
- * @returns {JSX.Element} The component.
  */
 function ProductsTable(props: ProductsTableProps) {
 	const { navigate } = props;

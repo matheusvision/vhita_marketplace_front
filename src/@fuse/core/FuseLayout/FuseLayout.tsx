@@ -101,11 +101,6 @@ type FuseLayoutProps = {
  * React frontend component in a React project that is used for layouting the user interface. The component
  * handles generating user interface settings related to current routes, merged with default settings, and uses
  * the new settings to generate layouts.
- *
- * @param {FuseLayoutProps} props - The props passed down from parent
- * @param {themeLayoutsType} props.layouts - List of themeLayoutsType used for different layout styles
- *
- * @returns {React.ReactNode} - Returns the new layout to display
  */
 function FuseLayout(props: FuseLayoutProps) {
 	const { layouts, ...restProps } = props;

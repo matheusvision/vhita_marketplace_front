@@ -18,8 +18,6 @@ const Root = styled(Paper)(({ theme }) => ({
 
 /**
  * The visitors overview widget.
- *
- * @returns {JSX.Element} The visitors overview widget.
  */
 function VisitorsOverviewWidget() {
 	const theme = useTheme();

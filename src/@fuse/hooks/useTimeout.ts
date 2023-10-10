@@ -4,9 +4,6 @@ import { useEffect, useRef } from 'react';
  * The useTimeout function is a custom hook that sets a timeout for a given callback function.
  * It takes in a callback function and a delay time in milliseconds as parameters.
  * It returns nothing.
- *
- * @param callback - The function to call when the timeout expires.
- * @param delay - The delay time in milliseconds.
  */
 function useTimeout(callback: () => void, delay: number) {
 	const callbackRef = useRef(callback);

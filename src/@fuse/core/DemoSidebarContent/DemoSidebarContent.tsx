@@ -6,7 +6,6 @@ import { cloneElement, memo } from 'react';
 
 /**
  * This component renders a demo sidebar content which contains List with ListItemButton and ListItemText for -30- times.
- * @returns {JSX.Element} Rendered DemoSidebarContent.
  */
 function DemoSidebarContent() {
 	function generate(element: JSX.Element) {

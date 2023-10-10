@@ -8,8 +8,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The TeamMembersWidget widget.
- *
- * @returns {JSX.Element} The TeamMembersWidget widget.
  */
 function TeamMembersWidget() {
 	const widgets = useAppSelector(selectWidgets);

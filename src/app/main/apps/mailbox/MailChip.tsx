@@ -25,8 +25,6 @@ type MailChipProps = {
 
 /**
  * The mail chip.
- * @param props The props.
- * @returns The jsx component.
  */
 function MailChip(props: MailChipProps) {
 	const { className, color, title } = props;

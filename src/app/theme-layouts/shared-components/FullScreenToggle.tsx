@@ -27,9 +27,6 @@ type HeaderFullScreenToggleProps = {
 
 /**
  * The header full screen toggle.
- *
- * @param {HeaderFullScreenToggleProps} props - The component props.
- * @returns {JSX.Element} The header full screen toggle.
  */
 function HeaderFullScreenToggle(props: HeaderFullScreenToggleProps) {
 	const { className = '' } = props;

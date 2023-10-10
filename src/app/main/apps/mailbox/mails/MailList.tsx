@@ -15,7 +15,6 @@ import { MailsType } from '../types/MailType';
 
 /**
  * The mail list.
- * @returns The jsx component.
  */
 function MailList() {
 	const dispatch = useAppDispatch();

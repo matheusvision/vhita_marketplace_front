@@ -13,9 +13,6 @@ type ContactListItemPropsType = {
 
 /**
  * The contact list item.
- *
- * @param {ContactListItemPropsType} props The props.
- * @returns {JSX.Element} The component.
  */
 function ContactListItem(props: ContactListItemPropsType) {
 	const { contact } = props;

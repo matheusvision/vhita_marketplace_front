@@ -15,15 +15,12 @@ export type WithRouterProps = {
 const withRouterAndRef =
 	/**
 	 * A higher-order function that takes a component and returns a new component with the withRouter props.
-	 * @param Component The component to wrap with withRouter props.
-	 * @returns A new component with the withRouter props.
 	 */
 
 
 		<Props extends WithRouterProps>(Component: ComponentType<Props>) =>
 		/**
 		 * A higher-order function that returns the wrapped component with the withRouter props.
-		 * @returns The wrapped component with the withRouter props.
 		 */
 		() => {
 			const location = useLocation();

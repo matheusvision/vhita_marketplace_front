@@ -13,7 +13,6 @@ type SectionPreviewProps = {
 
 /**
  * SectionPreview component
- * @param props - Props for SectionPreview component
  */
 function SectionPreview(props: SectionPreviewProps) {
 	const { section, className } = props;

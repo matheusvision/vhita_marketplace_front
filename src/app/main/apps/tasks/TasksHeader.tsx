@@ -8,7 +8,6 @@ import { selectRemainingTasks } from './store/tasksSlice';
 
 /**
  * The tasks header.
- * @returns The jsx component.
  */
 function TasksHeader() {
 	const remainingTasks = useAppSelector(selectRemainingTasks);

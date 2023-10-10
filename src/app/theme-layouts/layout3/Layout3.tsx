@@ -38,9 +38,6 @@ type Layout3Props = {
 
 /**
  * The layout 3.
- *
- * @param {Layout3Props} props - The props.
- * @returns {JSX.Element} The layout 3.
  */
 function Layout3(props: Layout3Props) {
 	const { children } = props;

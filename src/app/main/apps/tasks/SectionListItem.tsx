@@ -15,8 +15,6 @@ type SectionListItemProps = {
 
 /**
  * The section list item.
- * @param props The props.
- * @returns The jsx component.
  */
 function SectionListItem(props: SectionListItemProps) {
 	const { data, index } = props;

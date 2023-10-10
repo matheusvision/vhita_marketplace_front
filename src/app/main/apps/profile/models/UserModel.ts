@@ -5,8 +5,6 @@ import { UserType } from '../types/UserType';
 
 /**
  * The user model.
- * @param data The user data.
- * @returns The user model.
  */
 function UserModel(data: PartialDeep<UserType>) {
 	data = data || {};

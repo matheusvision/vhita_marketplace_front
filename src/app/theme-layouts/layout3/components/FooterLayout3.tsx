@@ -13,9 +13,6 @@ type FooterLayout3Props = {
 
 /**
  * The footer layout 3.
- *
- * @param {FooterLayout3Props} props - The props.
- * @returns {JSX.Element} The footer layout 3.
  */
 function FooterLayout3(props: FooterLayout3Props) {
 	const { className = '' } = props;

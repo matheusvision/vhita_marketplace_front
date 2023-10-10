@@ -49,10 +49,6 @@ type FuseScrollbarsProps = {
 /**
  * FuseScrollbars Component for app-level scrollbar
  * Unlike normal scrollbars, this component supports mobile device as well
- *
- * @component FuseScrollbars
- * @param {FuseScrollbarsProps} props
- * @returns {React.ReactElement}
  */
 const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, ref) => {
 	const {

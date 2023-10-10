@@ -21,8 +21,6 @@ type FuseExampleProps = {
 /**
  * FuseExample component gives a visual display as well as code for a component example.
  * It consists of two tabs, a visual tab and code tab.
- *
- * @param {FuseExampleProps} props Props for FuseExample component
  */
 function FuseExample(props: FuseExampleProps) {
 	const { component: Component, raw, iframe, className, name = '', currentTabIndex = 0 } = props;

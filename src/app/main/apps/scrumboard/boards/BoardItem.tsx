@@ -18,8 +18,6 @@ type BoardItemProps = {
 
 /**
  * The board item component.
- * @param props The component props.
- * @returns The jsx component.
  */
 function BoardItem(props: BoardItemProps) {
 	const { board } = props;

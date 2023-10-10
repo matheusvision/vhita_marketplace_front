@@ -23,8 +23,6 @@ import CourseProgress from '../CourseProgress';
 
 /**
  * The Course page.
- *
- * @returns {JSX.Element} The Course page.
  */
 function Course() {
 	const dispatch = useAppDispatch();

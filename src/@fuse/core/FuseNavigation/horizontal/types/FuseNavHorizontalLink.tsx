@@ -33,15 +33,9 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 type FuseNavHorizontalLinkProps = FuseNavItemComponentProps & WithRouterProps;
 
 /*
- * @typedoc
- *
  * FuseNavHorizontalLink
- *
  * This is a component to render horizontal navigation links in the Fuse navigations.
  * It receieves `FuseNavItemComponentProps` and `WithRouterProps` as props.
- *
- * @param {FuseNavItemComponentProps} props - Props that are passed to the component
- * @param {WithRouterProps} props - Props that are passed to the component
  */
 function FuseNavHorizontalLink(props: FuseNavHorizontalLinkProps) {
 	const { item } = props;

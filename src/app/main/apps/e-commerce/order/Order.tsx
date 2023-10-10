@@ -18,8 +18,6 @@ import ProductsTab from './tabs/ProductsTab';
 
 /**
  * The order.
- *
- * @returns {JSX.Element} The component.
  */
 function Order() {
 	const dispatch = useAppDispatch();

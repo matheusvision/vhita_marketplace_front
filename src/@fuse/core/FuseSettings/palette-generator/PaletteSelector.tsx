@@ -16,8 +16,6 @@ import { FuseThemeType } from '../FuseSettings';
 
 /**
  * Check if a color is dark
- * @param color - Color to check
- * @returns True if the color is dark, false otherwise
  */
 function isDark(color: string) {
 	return getContrastRatio(color, '#ffffff') >= 3;
@@ -34,7 +32,6 @@ type PaletteSelectorProps = {
 
 /**
  * PaletteSelector component
- * @param props - Props for PaletteSelector component
  */
 function PaletteSelector(props: PaletteSelectorProps) {
 	const {

@@ -4,11 +4,7 @@ import { FuseNavItemType } from '../types/FuseNavItemType';
 
 /**
  *  FuseNavItemModel
- *  @summary Constructs a navigation item based on FuseNavItemType
- *
- *  @param {PartialDeep} data Data to use to construct a navigation item
- *
- *  @returns {FuseNavItemType} Navigation item
+ *  Constructs a navigation item based on FuseNavItemType
  */
 function FuseNavItemModel(data?: PartialDeep<FuseNavItemType>) {
 	data = data || {};

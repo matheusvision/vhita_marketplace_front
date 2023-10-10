@@ -15,8 +15,6 @@ import { selectWidgets } from '../../../store/widgetsSlice';
 
 /**
  * The ScheduleWidget widget.
- *
- * @returns {JSX.Element} The ScheduleWidget widget.
  */
 function ScheduleWidget() {
 	const widgets = useAppSelector(selectWidgets);

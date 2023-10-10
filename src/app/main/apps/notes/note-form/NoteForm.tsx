@@ -66,8 +66,6 @@ type NoteFormProps = WithRouterProps & {
 
 /**
  * The note form.
- * @param props The component props.
- * @returns The JSX element.
  */
 function NoteForm(props: NoteFormProps) {
 	const { note = null, variant = 'edit', onChange: onFormChange, onCreate, onRemove, onClose } = props;

@@ -14,8 +14,6 @@ type MailInfoProps = {
 
 /**
  * The mail info.
- * @param props The props.
- * @returns The jsx component.
  */
 function MailInfo(props: MailInfoProps) {
 	const { className } = props;

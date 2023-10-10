@@ -38,9 +38,6 @@ type NavbarStyle1ContentProps = {
 
 /**
  * The navbar style 1 content.
- *
- * @param {NavbarStyle1ContentProps} props - The props.
- * @returns {JSX.Element} The navbar style 1 content.
  */
 function NavbarStyle1Content(props: NavbarStyle1ContentProps) {
 	const { className = '' } = props;

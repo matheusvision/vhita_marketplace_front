@@ -4,8 +4,6 @@ import { FilterType } from '../types/FilterType';
 
 /**
  * The filter model.
- * @param data The initial data.
- * @returns The filter model.
  */
 const FilterModel = (data: PartialDeep<FilterType>) =>
 	_.defaults(data || {}, {

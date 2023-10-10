@@ -37,8 +37,6 @@ type FaqListProps = {
 
 /**
  * The faq list component.
- * @param {FaqListProps} props - The component props.
- * @returns {JSX.Element} The faq list component.
  */
 function FaqList(props: FaqListProps) {
 	const { list, className } = props;

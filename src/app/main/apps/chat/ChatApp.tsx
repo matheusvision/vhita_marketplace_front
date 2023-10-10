@@ -48,8 +48,6 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 
 /**
  * The chat app.
- *
- * @returns {JSX.Element} The chat app.
  */
 function ChatApp() {
 	const dispatch = useAppDispatch();

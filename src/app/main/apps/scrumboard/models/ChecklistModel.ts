@@ -5,8 +5,6 @@ import { ChecklistType } from '../types/ChecklistType';
 
 /**
  * The checklist model.
- * @param data The checklist data.
- * @returns The checklist model.
  */
 function ChecklistModel(data: PartialDeep<ChecklistType>) {
 	data = data || {};

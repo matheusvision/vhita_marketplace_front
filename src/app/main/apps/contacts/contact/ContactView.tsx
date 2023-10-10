@@ -18,8 +18,6 @@ import { selectTags } from '../store/tagsSlice';
 
 /**
  * The contact view.
- *
- * @returns {JSX.Element} The component.
  */
 function ContactView() {
 	const contact = useAppSelector(selectContact);

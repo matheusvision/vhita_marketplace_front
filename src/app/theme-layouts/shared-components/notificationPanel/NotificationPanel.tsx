@@ -27,8 +27,6 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 
 /**
  * The notification panel.
- *
- * @returns {JSX.Element} The notification panel.
  */
 function NotificationPanel() {
 	const location = useLocation();

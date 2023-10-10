@@ -4,8 +4,6 @@ import NavigationShortcuts from '../../shared-components/NavigationShortcuts';
 
 /**
  * The left side layout 3.
- *
- * @returns {JSX.Element} The left side layout 3.
  */
 function LeftSideLayout3() {
 	return (

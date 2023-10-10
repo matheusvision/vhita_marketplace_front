@@ -11,9 +11,6 @@ type MainSidebarMoreMenuProps = {
 
 /**
  * The main sidebar more menu.
- *
- * @param {MainSidebarMoreMenuProps} props - The component props.
- * @returns {JSX.Element} The component.
  */
 function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
 	const { setContactSidebarOpen } = useContext(ChatAppContext);

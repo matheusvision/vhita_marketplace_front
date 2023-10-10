@@ -5,8 +5,6 @@ import ProductsTable from './ProductsTable';
 
 /**
  * The products page.
- *
- * @returns {JSX.Element} The component.
  */
 function Products() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));

@@ -11,9 +11,6 @@ type CourseCategoryProps = {
 
 /**
  * The CourseCategory component.
- *
- * @param {CourseCategoryProps} props - The props.
- * @returns {JSX.Element} The component.
  */
 function CourseCategory(props: CourseCategoryProps) {
 	const { slug } = props;

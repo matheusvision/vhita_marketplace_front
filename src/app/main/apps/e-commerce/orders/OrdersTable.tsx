@@ -26,9 +26,6 @@ type OrdersTableProps = WithRouterProps & {
 
 /**
  * The orders table.
- *
- * @param {OrdersTableProps} props - The props.
- * @returns {JSX.Element} The component.
  */
 function OrdersTable(props: OrdersTableProps) {
 	const { navigate } = props;

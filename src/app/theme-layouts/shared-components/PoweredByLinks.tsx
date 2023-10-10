@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 
 /**
  * The powered by links.
- *
- * @returns {JSX.Element} The powered by links.
  */
 function PoweredByLinks() {
 	const container = {

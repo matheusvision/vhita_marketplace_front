@@ -38,9 +38,6 @@ type Layout2Props = {
 
 /**
  * The layout 2.
- *
- * @param {Layout2Props} props - The props.
- * @returns {JSX.Element} The layout 2.
  */
 function Layout2(props: Layout2Props) {
 	const { children } = props;
