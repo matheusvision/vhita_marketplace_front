@@ -73,6 +73,12 @@ function ChatApp() {
 		}
 	}, [location, isMobile]);
 
+	useEffect(() => {
+		if (isMobile && userSidebarOpen) {
+			setMainSidebarOpen(false);
+		}
+	}, [isMobile, userSidebarOpen]);
+
 	const ChatAppContextData = useMemo(
 		() => ({
 			setMainSidebarOpen,

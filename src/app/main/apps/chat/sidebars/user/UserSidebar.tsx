@@ -30,7 +30,7 @@ function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
 	const dispatch = useAppDispatch();
 	const { data: user } = useAppSelector(selectUser);
-	const { control, handleSubmit, reset, formState } = useForm({});
+	const { control, handleSubmit, reset, formState, watch } = useForm({});
 	const { isValid, dirtyFields, errors } = formState;
 
 	useEffect(() => {
@@ -42,8 +42,9 @@ function UserSidebar() {
 	function onSubmit(data: PartialObjectDeep<UserType, object>) {
 		dispatch(updateUserData(data));
 	}
+	const formValues = watch();
 
-	if (!user) {
+	if (!user || _.isEmpty(formValues)) {
 		return null;
 	}
 
