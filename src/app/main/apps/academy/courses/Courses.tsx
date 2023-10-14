@@ -47,8 +47,7 @@ function Courses() {
 	const categories = useAppSelector(selectCategories);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	// const theme = useTheme();
-	const [filteredData, setFilteredData] = useState<CourseType[]>(null);
+	const [filteredData, setFilteredData] = useState<CourseType[]>([]);
 	const [searchText, setSearchText] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
 	const [hideCompleted, setHideCompleted] = useState(false);

@@ -30,7 +30,6 @@ function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
 	return (
 		<div className={className}>
 			<IconButton
-				aria-owns={moreMenuEl ? 'main-more-menu' : null}
 				aria-haspopup="true"
 				onClick={handleMoreMenuClick}
 				size="large"

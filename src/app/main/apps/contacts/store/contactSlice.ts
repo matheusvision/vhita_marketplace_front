@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { DeepPartial } from 'react-hook-form';
+import { AsyncStateType } from 'app/store/types';
 import { ContactType } from '../types/ContactType';
 import ContactModel from '../models/ContactModel';
 import { AppRootStateType } from '.';
@@ -10,31 +11,34 @@ import { AppRootStateType } from '.';
 /**
  * Get contacts from server
  */
-export const getContact = createAppAsyncThunk<ContactType, string>('contactsApp/task/getContact', async (id) => {
-	try {
-		const response = await axios.get(`/api/contacts/${id}`);
+export const getContact = createAppAsyncThunk<ContactType, string>(
+	'contactsApp/task/getContact',
+	async (id, { rejectWithValue }) => {
+		try {
+			const response = await axios.get(`/api/contacts/${id}`);
 
-		const data = (await response.data) as ContactType;
+			const data = (await response.data) as ContactType;
 
-		return data;
-	} catch (error) {
-		history.push({ pathname: `/apps/contacts` });
+			return data;
+		} catch (error) {
+			history.push({ pathname: `/apps/contacts` });
 
-		return null;
+			const axiosError = error as AxiosError;
+			return rejectWithValue(axiosError.message);
+		}
 	}
-});
+);
 
-/**
- * Add contact
- */
 export const addContact = createAppAsyncThunk<ContactType, ContactType>(
-	'contactsApp/contacts/addContact',
-	async (contact) => {
-		const response = await axios.post('/api/contacts', contact);
-
-		const data = (await response.data) as ContactType;
-
-		return data;
+	'contacts/add',
+	async (contact: ContactType, { rejectWithValue }) => {
+		try {
+			const response = await axios.post('/api/contacts', contact);
+			return response.data as ContactType;
+		} catch (error) {
+			const axiosError = error as AxiosError;
+			return rejectWithValue(axiosError.message);
+		}
 	}
 );
 
@@ -63,7 +67,10 @@ export const removeContact = createAppAsyncThunk<string, string>('contactsApp/co
 	return id;
 });
 
-const initialState: ContactType = null;
+const initialState: AsyncStateType<ContactType> = {
+	data: null,
+	status: 'idle'
+};
 
 /**
  * The Contacts App Contact slice.
@@ -72,15 +79,27 @@ const contactSlice = createSlice({
 	name: 'contactsApp/contact',
 	initialState,
 	reducers: {
-		newContact: () => ContactModel({}),
-		resetContact: () => null
+		newContact: (state) => {
+			state.data = ContactModel({});
+		},
+		resetContact: () => initialState
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(getContact.pending, () => null)
-			.addCase(getContact.fulfilled, (state, action) => action.payload)
-			.addCase(updateContact.fulfilled, (state, action) => action.payload)
-			.addCase(removeContact.fulfilled, () => null);
+			.addCase(getContact.pending, (state) => {
+				state.status = 'loading';
+			})
+			.addCase(getContact.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
+			.addCase(updateContact.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
+			.addCase(removeContact.fulfilled, (state) => {
+				state.data = null;
+			});
 	}
 });
 

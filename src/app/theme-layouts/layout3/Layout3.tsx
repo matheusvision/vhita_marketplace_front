@@ -42,10 +42,12 @@ type Layout3Props = {
 function Layout3(props: Layout3Props) {
 	const { children } = props;
 
-	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
 
 	const appContext = useContext(AppContext);
+
 	const { routes } = appContext;
+
 	return (
 		<Root
 			id="fuse-layout"
@@ -85,7 +87,7 @@ function Layout3(props: Layout3Props) {
 					</div>
 
 					{config.footer.display && (
-						<FooterLayout3 className={config.footer.style === 'fixed' && 'sticky bottom-0'} />
+						<FooterLayout3 className={config.footer.style === 'fixed' ? 'sticky bottom-0' : ''} />
 					)}
 				</main>
 			</div>

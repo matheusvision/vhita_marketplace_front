@@ -29,7 +29,7 @@ function MainSidebar() {
 	const dispatch = useAppDispatch();
 	const contacts = useAppSelector(selectContacts);
 	const chats = useAppSelector(selectChats);
-	const user = useAppSelector(selectUser);
+	const { data: user } = useAppSelector(selectUser);
 
 	const [searchText, setSearchText] = useState('');
 
@@ -61,7 +61,7 @@ function MainSidebar() {
 								className="relative"
 								user={user}
 							/>
-							<Typography className="mx-16 font-medium">{user.name}</Typography>
+							<Typography className="mx-16 font-medium">{user?.name}</Typography>
 						</div>
 					)}
 

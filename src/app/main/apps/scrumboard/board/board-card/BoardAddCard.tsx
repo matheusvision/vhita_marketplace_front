@@ -11,7 +11,10 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { newCard } from '../../store/cardsSlice';
-import { CardType } from '../../types/CardType';
+
+type FormType = {
+	title: string;
+};
 
 const defaultValues = {
 	title: ''
@@ -37,7 +40,7 @@ function BoardAddCard(props: BoardAddCardProps) {
 	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -60,7 +63,7 @@ function BoardAddCard(props: BoardAddCardProps) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(newData: CardType) {
+	function onSubmit(newData: FormType) {
 		dispatch(newCard({ listId, newData })).then(() => {
 			onCardAdded();
 		});

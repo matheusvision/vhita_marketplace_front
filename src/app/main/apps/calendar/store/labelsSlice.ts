@@ -45,6 +45,7 @@ export const updateLabel = createAppAsyncThunk<LabelType, LabelType>(
  */
 export const removeLabel = createAppAsyncThunk<string, string>('calendarApp/labels/removeLabel', async (labelId) => {
 	const response = await axios.delete(`/api/calendar/labels/${labelId}`);
+
 	const data = (await response.data) as string;
 
 	return data;

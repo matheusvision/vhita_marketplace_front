@@ -5,7 +5,7 @@ import { LabelType } from '../types/LabelType';
 /**
  * The label model.
  */
-function LabelModel(data: Partial<LabelType>) {
+function LabelModel(data: Partial<LabelType>): LabelType {
 	data = data || {};
 	return _.defaults(data, {
 		id: FuseUtils.generateGUID(),

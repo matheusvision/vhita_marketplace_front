@@ -39,7 +39,7 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	const { className = '' } = props;
 
 	const dispatch = useAppDispatch();
-	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
 	const navbarTheme = useSelector(selectNavbarTheme);
 	const navbar = useSelector(selectFuseNavbar);
 	const location = useLocation();

@@ -23,7 +23,9 @@ const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref
 	const [source, setSource] = useState(trimCode(children));
 
 	const highlight = useCallback(() => {
-		Prism.highlightElement(innerRef.current, async);
+		if (innerRef.current) {
+			Prism.highlightElement(innerRef.current, async);
+		}
 	}, [async]);
 
 	useEffect(() => {

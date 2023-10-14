@@ -20,8 +20,7 @@ import { AppDispatchType, AsyncReducersType, BaseRootStateType } from './types';
 const middlewares: Middleware[] = [];
 
 if (process.env.NODE_ENV === 'development') {
-	const logger = createLogger({ collapsed: (getState, action, logEntry) => !logEntry.error });
-
+	const logger = createLogger({ collapsed: (getState, action, logEntry) => (logEntry ? !logEntry.error : true) });
 	middlewares.push(logger);
 }
 
@@ -69,12 +68,13 @@ export const injectReducers = (reducers: ReducersMapObject) => {
 /**
  * Typed hook to get the dispatch function from the Redux store.
  */
+// export const useAppDispatch: () => AppDispatchType = useDispatch;
 export const useAppDispatch: () => AppDispatchType = useDispatch;
 
 /**
  * Typed hook to get a slice of the Redux store state.
  * T - The type of the slice of state to retrieve.
  */
-export const useAppSelector: TypedUseSelectorHook<BaseRootStateType> = useSelector;
+export const useAppSelector: TypedUseSelectorHook<ReturnType<BaseRootStateType>> = useSelector;
 
 export default store;

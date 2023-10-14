@@ -40,7 +40,7 @@ type Layout1Props = {
  */
 function Layout1(props: Layout1Props) {
 	const { children } = props;
-	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 
@@ -60,7 +60,7 @@ function Layout1(props: Layout1Props) {
 					className="relative z-10 flex min-h-full min-w-0 flex-auto flex-col"
 				>
 					{config.toolbar.display && (
-						<ToolbarLayout1 className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
+						<ToolbarLayout1 className={config.toolbar.style === 'fixed' ? 'sticky top-0' : ''} />
 					)}
 
 					<div className="sticky top-0 z-99">
@@ -74,7 +74,7 @@ function Layout1(props: Layout1Props) {
 					</div>
 
 					{config.footer.display && (
-						<FooterLayout1 className={config.footer.style === 'fixed' && 'sticky bottom-0'} />
+						<FooterLayout1 className={config.footer.style === 'fixed' ? 'sticky bottom-0' : ''} />
 					)}
 				</main>
 

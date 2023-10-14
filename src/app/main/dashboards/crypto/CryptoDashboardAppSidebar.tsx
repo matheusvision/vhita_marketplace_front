@@ -3,14 +3,14 @@ import { useAppSelector } from 'app/store';
 import WatchlistItem from './widgets/WatchlistItem';
 import { selectWidgets } from './store/widgetsSlice';
 import BuySellForm from './widgets/BuySellForm';
+import WatchlistType from './types/WatchlistType';
 
 /**
  * The crypto dashboard app sidebar.
  */
 function CryptoDashboardAppSidebar() {
 	const widgets = useAppSelector(selectWidgets);
-
-	const { watchlist } = widgets || {};
+	const watchlist = widgets?.watchlist as WatchlistType;
 
 	return (
 		<>

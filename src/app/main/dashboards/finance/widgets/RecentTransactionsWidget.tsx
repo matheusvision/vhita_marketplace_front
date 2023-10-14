@@ -11,13 +11,14 @@ import clsx from 'clsx';
 import Button from '@mui/material/Button';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import RecentTransactionsWidgetType from '../types/RecentTransactionsWidgetType';
 
 /**
  * The RecentTransactionsWidget widget.
  */
 function RecentTransactionsWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { columns, rows } = widgets.recentTransactions;
+	const { columns, rows } = widgets.recentTransactions as RecentTransactionsWidgetType;
 
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">

@@ -1,6 +1,9 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
+import { FaqCategoryType } from '../../app/main/apps/help-center/types/FaqCategoryType';
+import { GuideCategoryType } from '../../app/main/apps/help-center/types/GuideCategoryType';
+import { Params } from '../ExtendedMockAdapter';
 
 const faqsDB = mockApi.components.examples.help_center_faqs.value;
 const faqCategoriesDB = mockApi.components.examples.help_center_faq_categories.value;
@@ -12,9 +15,10 @@ const guideContent = mockApi.components.examples.help_center_guide_content.value
 mock.onGet('/api/help-center/faqs').reply(() => {
 	return [200, faqsDB];
 });
-mock.onGet(/\/api\/help-center\/faqs\/[^]+/).reply(({ url }) => {
-	const { categorySlug } = url.match(/\/api\/help-center\/faqs\/(?<categorySlug>[^/]+)/).groups;
-	const category = _.find(faqCategoriesDB, { slug: categorySlug });
+mock.onGet('/api/help-center/faqs/:categorySlug').reply((config) => {
+	const { categorySlug } = config.params as Params;
+
+	const category = _.find(faqCategoriesDB, { slug: categorySlug }) as FaqCategoryType;
 
 	return [200, _.filter(faqsDB, { categoryId: category.id })];
 });
@@ -27,15 +31,16 @@ mock.onGet('/api/help-center/guides').reply(() => {
 	return [200, guidesDB];
 });
 
-mock.onGet(/\/api\/help-center\/guides\/[^/]+(?!.)/).reply(({ url }) => {
-	const { categorySlug } = url.match(/\/api\/help-center\/guides\/(?<categorySlug>[^/]+)/).groups;
-	const category = _.find(guideCategoriesDB, { slug: categorySlug });
+mock.onGet('/api/help-center/guides/:categorySlug').reply((config) => {
+	const { categorySlug } = config.params as Params;
+
+	const category = _.find(guideCategoriesDB, { slug: categorySlug }) as GuideCategoryType;
 
 	return [200, _.filter(guidesDB, { categoryId: category.id })];
 });
 
-mock.onGet(/\/api\/help-center\/guides\/[^/]+\/[^/]+/).reply(({ url }) => {
-	const { guideSlug } = url.match(/\/api\/help-center\/guides\/(?<categorySlug>[^/]+)\/(?<guideSlug>[^/]+)/).groups;
+mock.onGet('/api/help-center/guides/:guideSlug').reply((config) => {
+	const { guideSlug } = config.params as Params;
 
 	return [200, { ..._.find(guidesDB, { slug: guideSlug }), content: guideContent }];
 });

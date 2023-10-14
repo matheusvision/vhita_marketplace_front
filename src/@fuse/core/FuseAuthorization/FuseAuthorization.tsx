@@ -7,7 +7,7 @@ import history from '@history';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 
-let loginRedirectUrl: string = null;
+let loginRedirectUrl: string = '/';
 
 type FuseAuthorizationProps = {
 	children: ReactNode;

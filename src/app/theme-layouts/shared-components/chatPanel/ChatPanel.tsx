@@ -109,7 +109,7 @@ function ChatPanel() {
 	const selectedContact = useAppSelector(selectContactById(selectedContactId));
 	const state = useAppSelector(selectChatPanelState);
 	const theme = useTheme();
-	const ref = useRef<HTMLDivElement>();
+	const ref = useRef<HTMLDivElement>(null);
 
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
@@ -181,7 +181,7 @@ function ChatPanel() {
 					className="shadow-md"
 				>
 					<Toolbar className="px-4">
-						{(!state || !selectedContactId) && (
+						{(!state || selectedContactId === '') && (
 							<div className="flex flex-1 items-center px-8 space-x-12">
 								<IconButton
 									className=""
@@ -191,7 +191,7 @@ function ChatPanel() {
 								>
 									<FuseSvgIcon size={24}>heroicons-outline:chat-alt-2</FuseSvgIcon>
 								</IconButton>
-								{!selectedContactId && (
+								{selectedContactId === '' && (
 									<Typography
 										className="text-16"
 										color="inherit"

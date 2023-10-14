@@ -70,9 +70,9 @@ export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & 
 function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 	const { item, onItemClick, firstLevel, dense, selectedId } = props;
 
-	const component = item.url ? NavLinkAdapter : '';
+	const component = item.url ? NavLinkAdapter : 'li';
 
-	let itemProps;
+	let itemProps = {};
 
 	if (typeof component !== 'string') {
 		itemProps = {

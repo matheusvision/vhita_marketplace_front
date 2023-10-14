@@ -8,6 +8,7 @@ import { removeCard, updateCard } from './cardSlice';
 import CardModel from '../models/CardModel';
 import { BoardSliceType } from './boardSlice';
 import { CardsType, CardType } from '../types/CardType';
+import { BoardType } from '../types/BoardType';
 
 type AppRootStateType = RootStateType<[CardsSliceType, BoardSliceType]>;
 
@@ -25,12 +26,11 @@ export const getCards = createAppAsyncThunk<CardsType, string>('scrumboardApp/ca
 /**
  * Create New Card
  */
-export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: CardType }>(
+export const newCard = createAppAsyncThunk<CardType, { listId: string; newData: Partial<CardType> }>(
 	'scrumboardApp/cards/newCard',
 	async ({ listId, newData }, { getState }) => {
 		const AppState = getState() as AppRootStateType;
-
-		const { board } = AppState.scrumboardApp;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const response = await axios.post(
 			`/api/scrumboard/boards/${board.id}/lists/${listId}/cards`,

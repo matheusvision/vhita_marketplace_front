@@ -1,9 +1,9 @@
 import _ from '@lodash';
-import { DropResult } from 'react-beautiful-dnd';
+import { DraggableLocation, DropResult } from 'react-beautiful-dnd';
 import { BoardListsType } from '../types/BoardListType';
 
 // a little function to help us with reordering the result
-const reorder = (list: string[], startIndex: number, endIndex: number) => {
+const reorder = (list: string[], startIndex: DraggableLocation['index'], endIndex: DraggableLocation['index']) => {
 	const result = Array.from(list);
 	const [removed] = result.splice(startIndex, 1);
 	result.splice(endIndex, 0, removed);
@@ -22,11 +22,11 @@ export const reorderQuoteMap = (
 	destination: DropResult['destination']
 ) => {
 	const current = _.find(lists, { id: source.droppableId });
-	const next = _.find(lists, { id: destination.droppableId });
+	const next = _.find(lists, { id: destination?.droppableId });
 	const target = current.cards[source.index];
 
 	// moving to same list
-	if (source.droppableId === destination.droppableId) {
+	if (source.droppableId === destination?.droppableId) {
 		const reordered = reorder(current.cards, source.index, destination.index);
 		return lists.map((list) => {
 			if (list.id === source.droppableId) {
@@ -42,13 +42,13 @@ export const reorderQuoteMap = (
 	current.cards.splice(source.index, 1);
 
 	// insert into next
-	next.cards.splice(destination.index, 0, target);
+	next.cards.splice(destination?.index, 0, target);
 
 	return lists.map((list) => {
 		if (list.id === source.droppableId) {
 			return current;
 		}
-		if (list.id === destination.droppableId) {
+		if (list.id === destination?.droppableId) {
 			return next;
 		}
 		return list;

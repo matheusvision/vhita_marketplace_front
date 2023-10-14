@@ -4,6 +4,7 @@ import ContactModel from 'src/app/main/apps/contacts/models/ContactModel';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 import { ContactType, ContactsType } from '../../app/main/apps/contacts/types/ContactType';
+import { Params } from '../ExtendedMockAdapter';
 
 const contactsDB = mockApi.components.examples.contacts.value as ContactsType;
 const tagsDB = mockApi.components.examples.contacts_tags.value;
@@ -12,16 +13,17 @@ mock.onGet('/api/contacts').reply(() => {
 	return [200, contactsDB];
 });
 
-mock.onPost('/api/contacts').reply(({ data }: { data: string }) => {
-	const newContact = ContactModel({ id: FuseUtils.generateGUID(), ...JSON.parse(data) } as ContactType);
+mock.onPost('/api/contacts').reply(({ data }) => {
+	const newContact = ContactModel({ id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as ContactType);
 
 	contactsDB.push(newContact);
 
 	return [200, newContact];
 });
 
-mock.onGet(/\/api\/contacts\/(?!tags)[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/contacts\/(?<id>[^/]+)/).groups;
+mock.onGet('/api/contacts/:id').reply((config) => {
+	const { id } = config.params as Params;
+
 	const contact = _.find(contactsDB, { id });
 
 	if (contact) {
@@ -31,16 +33,16 @@ mock.onGet(/\/api\/contacts\/(?!tags)[^/]+/).reply((config) => {
 	return [404, 'Requested task do not exist.'];
 });
 
-mock.onPut(/\/api\/contacts\/[^/]+/).reply(({ url, data }: { url: string; data: string }) => {
-	const { id } = url.match(/\/api\/contacts\/(?<id>[^/]+)/).groups;
+mock.onPut('/api/contacts/:id').reply((config) => {
+	const { id } = config.params as Params;
 
-	_.assign(_.find(contactsDB, { id }), JSON.parse(data));
+	_.assign(_.find(contactsDB, { id }), JSON.parse(config.data as string));
 
 	return [200, _.find(contactsDB, { id })];
 });
 
-mock.onDelete(/\/api\/contacts\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/contacts\/(?<id>[^/]+)/).groups;
+mock.onDelete('/api/contacts/:id').reply((config) => {
+	const { id } = config.params as Params;
 
 	_.remove(contactsDB, { id });
 

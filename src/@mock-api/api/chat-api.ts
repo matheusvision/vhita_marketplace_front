@@ -4,6 +4,9 @@ import { ChatListType } from 'src/app/main/apps/chat/types/ChatListType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 import { UserType } from '../../app/main/apps/chat/types/UserType';
+import { ChatListItemType } from '../../app/main/apps/chat/types/ChatListItemType';
+import { ContactType } from '../../app/main/apps/chat/types/ContactType';
+import { Params } from '../ExtendedMockAdapter';
 
 const contactsDB = mockApi.components.examples.chat_contacts.value;
 let userDB = mockApi.components.examples.chat_profile.value;
@@ -27,38 +30,40 @@ mock.onGet('/api/chat/chats').reply(() => {
 	return [200, userChatListDB];
 });
 
-mock.onGet(/\/api\/chat\/chats\/[^/]+/).reply((config) => {
-	const { contactId } = config.url.match(/\/api\/chat\/chats\/(?<contactId>[^/]+)/).groups;
-	const contact = _.find(contactsDB, { id: contactId });
+mock.onGet('/api/chat/chats/:contactId').reply((config) => {
+	const { contactId } = config.params as Params;
+
+	const contact = _.find(contactsDB, { id: contactId }) as ContactType;
 
 	if (!contact) {
 		return [404, 'Requested data do not exist.'];
 	}
 
-	const data = _.find(chatsDB, { contactId })?.messages;
+	const chat = (_.find(chatsDB, { contactId }) as ChatListItemType)?.messages;
 
-	if (data) {
-		return [200, data];
+	if (chat) {
+		return [200, chat];
 	}
 
 	return [200, []];
 });
 
-mock.onPost(/\/api\/chat\/chats\/[^/]+/).reply(({ url, data: value }) => {
-	const { contactId } = url.match(/\/api\/chat\/chats\/(?<contactId>[^/]+)/).groups;
+mock.onPost('/api/chat/chats/:contactId').reply((config) => {
+	const { contactId } = config.params as Params;
+
 	const contact = _.find(contactsDB, { id: contactId });
 
 	if (!contact) {
 		return [404, 'Requested data do not exist.'];
 	}
 
-	const contactChat = _.find(chatsDB, { contactId });
+	const contactChat = _.find(chatsDB, { contactId }) as ChatListItemType;
 
 	if (!contactChat) {
 		createNewChat(contactId);
 	}
 
-	const newMessage = createNewMessage(value as string, contactId);
+	const newMessage = createNewMessage(config.data as string, contactId);
 
 	return [200, newMessage];
 });
@@ -67,8 +72,8 @@ mock.onGet('/api/chat/user').reply(() => {
 	return [200, userDB as UserType];
 });
 
-mock.onPost('/api/chat/user').reply(({ data }: { data: string }) => {
-	const userData = JSON.parse(data) as UserType;
+mock.onPost('/api/chat/user').reply(({ data }) => {
+	const userData = JSON.parse(data as string) as UserType;
 
 	userDB = _.merge({}, userDB, userData);
 
@@ -84,7 +89,7 @@ function createNewMessage(value: string, contactId: string) {
 		chatId: ''
 	};
 
-	const selectedChat = _.find(chatsDB, { contactId });
+	const selectedChat = _.find(chatsDB, { contactId }) as ChatListItemType;
 	const userSelectedChat = _.find(userChatListDB, { contactId });
 
 	selectedChat.messages.push(message);
@@ -104,7 +109,7 @@ function createNewChat(contactId: string) {
 		muted: false,
 		lastMessage: '',
 		lastMessageAt: ''
-	};
+	} as ChatListItemType;
 
 	userChatListDB.push(newChat);
 

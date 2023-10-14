@@ -2,28 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootStateType } from 'app/store/types';
-import ConversionsWidgetType from '../types/ConversionsWidgetType';
-import GenderWidgetType from '../types/GenderWidgetType';
-import ImpressionsWidgetType from '../types/ImpressionsWidgetType';
-import LanguageWidgetType from '../types/LanguageWidgetType';
-import NewVsReturningWidgetType from '../types/NewVsReturningWidgetType';
-import VisitorsOverviewWidgetType from '../types/VisitorsOverviewWidgetType';
-import VisitorsVsPageViewsType from '../types/VisitorsVsPageViewsType';
-import VisitsWidgetType from '../types/VisitsWidgetType';
-import AgeWidgetType from '../types/AgeWidgetType';
 
 type AppRootStateType = RootStateType<widgetsSliceType>;
 
 export type WidgetsType = {
-	age?: AgeWidgetType;
-	conversions?: ConversionsWidgetType;
-	gender?: GenderWidgetType;
-	impressions?: ImpressionsWidgetType;
-	language?: LanguageWidgetType;
-	newVsReturning?: NewVsReturningWidgetType;
-	visitors?: VisitorsOverviewWidgetType;
-	visitorsVsPageViews?: VisitorsVsPageViewsType;
-	visits?: VisitsWidgetType;
+	[key: string]: unknown;
 };
 
 /**

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootStateType } from 'app/store/types';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import axios from 'axios';
 import { OrderType } from '../types/OrderType';
 
@@ -28,19 +28,32 @@ export const saveOrder = createAppAsyncThunk('eCommerceApp/order/saveOrder', asy
 	return data;
 });
 
+const initialState: AsyncStateType<OrderType> = {
+	data: null,
+	status: 'idle'
+};
+
 /**
  * The E-Commerce order slice.
  */
 const orderSlice = createSlice({
 	name: 'eCommerceApp/order',
-	initialState: null as OrderType | null,
+	initialState,
 	reducers: {
-		resetOrder: () => null
+		resetOrder: () => initialState
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(getOrder.fulfilled, (state, action) => action.payload)
-			.addCase(saveOrder.fulfilled, (state, action) => action.payload);
+			.addCase(getOrder.pending, (state) => {
+				state.status = 'loading';
+			})
+			.addCase(getOrder.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
+			.addCase(saveOrder.fulfilled, (state, action) => {
+				state.data = action.payload;
+			});
 	}
 });
 

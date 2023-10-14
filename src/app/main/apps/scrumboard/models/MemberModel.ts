@@ -6,7 +6,7 @@ import { MemberType } from '../types/MemberType';
 /**
  * The member model.
  */
-function MemberModel(data: PartialDeep<MemberType>) {
+function MemberModel(data: PartialDeep<MemberType>): MemberType {
 	data = data || {};
 
 	return _.defaults(data, {

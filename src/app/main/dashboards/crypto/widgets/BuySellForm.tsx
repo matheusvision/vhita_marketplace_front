@@ -13,6 +13,9 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import WalletsType from '../types/WalletsType';
+import PricesType from '../types/PricesType';
+import CoinTypes from '../types/CoinTypes';
 
 const actionValues = [
 	{ title: 'Buy', value: 'buy' },
@@ -33,14 +36,21 @@ const defaultValues = {
 	amountType: 'usd'
 };
 
+type FormType = {
+	action: string;
+	wallet: string;
+	amount: number;
+	amountType: string;
+};
+
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
 	action: yup.string().required('You must select a value'),
 	wallet: yup.string().required('You must select a value'),
-	amount: yup.number().typeError('You must specify a number value').moreThan(0).nullable(),
-	amountType: yup.string()
+	amount: yup.number().typeError('You must specify a number value').moreThan(0).required('You must specify a value'),
+	amountType: yup.string().required('You must select a value')
 });
 
 /**
@@ -48,9 +58,10 @@ const schema = yup.object().shape({
  */
 function BuySellForm() {
 	const widgets = useAppSelector(selectWidgets);
-	const { wallets, prices } = widgets || {};
+	const wallets = widgets?.wallets as WalletsType;
+	const prices = widgets?.prices as PricesType;
 
-	const { handleSubmit, reset, control, watch, formState, setValue } = useForm({
+	const { handleSubmit, reset, control, watch, formState, setValue } = useForm<FormType>({
 		defaultValues,
 		mode: 'all',
 		resolver: yupResolver(schema)
@@ -62,7 +73,7 @@ function BuySellForm() {
 	const walletValue = watch('wallet');
 	const amountTypeValue = watch('amountType');
 
-	function onSubmit(_data) {
+	function onSubmit(_data: FormType) {
 		// eslint-disable-next-line no-console
 		console.info(_data);
 		reset();
@@ -146,7 +157,9 @@ function BuySellForm() {
 										key={item.value}
 										value={item.value}
 									>
-										{`${item.title} - ${wallets[item.value]} ${item.value.toUpperCase()}`}
+										{`${item.title} - ${
+											wallets[item.value as keyof WalletsType]
+										} ${item.value.toUpperCase()}`}
 									</MenuItem>
 								))}
 							</Select>
@@ -161,7 +174,9 @@ function BuySellForm() {
 									component="span"
 									className="font-mono font-medium text-12"
 								>
-									{(wallets[field.value] * prices[field.value]).toLocaleString('en-US', {
+									{(
+										wallets[field.value as CoinTypes] * prices[field.value as CoinTypes]
+									).toLocaleString('en-US', {
 										style: 'currency',
 										currency: 'USD'
 									})}
@@ -197,11 +212,14 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value / prices[walletValue]).toLocaleString('en-US', {
-														style: 'currency',
-														currency: walletValue,
-														maximumFractionDigits: 8
-													})}
+													{(field.value / prices[walletValue as CoinTypes]).toLocaleString(
+														'en-US',
+														{
+															style: 'currency',
+															currency: walletValue,
+															maximumFractionDigits: 8
+														}
+													)}
 												</Typography>
 											</>
 										)}
@@ -218,10 +236,13 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value * prices[walletValue]).toLocaleString('en-US', {
-														style: 'currency',
-														currency: 'USD'
-													})}
+													{(field.value * prices[walletValue as CoinTypes]).toLocaleString(
+														'en-US',
+														{
+															style: 'currency',
+															currency: 'USD'
+														}
+													)}
 												</Typography>
 											</>
 										)}
@@ -238,11 +259,14 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value / prices[walletValue]).toLocaleString('en-US', {
-														style: 'currency',
-														currency: walletValue,
-														maximumFractionDigits: 8
-													})}
+													{(field.value / prices[walletValue as CoinTypes]).toLocaleString(
+														'en-US',
+														{
+															style: 'currency',
+															currency: walletValue,
+															maximumFractionDigits: 8
+														}
+													)}
 												</Typography>
 											</>
 										)}
@@ -259,10 +283,13 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value * prices[walletValue]).toLocaleString('en-US', {
-														style: 'currency',
-														currency: 'USD'
-													})}
+													{(field.value * prices[walletValue as CoinTypes]).toLocaleString(
+														'en-US',
+														{
+															style: 'currency',
+															currency: 'USD'
+														}
+													)}
 												</Typography>
 											</>
 										)}
@@ -324,7 +351,7 @@ function BuySellForm() {
 					disabled={_.isEmpty(dirtyFields) || !isValid}
 					fullWidth
 				>
-					{_.find(actionValues, { value: actionValue }).title}
+					{_.find(actionValues, { value: actionValue })?.title}
 				</Button>
 			</div>
 		</form>

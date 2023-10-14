@@ -5,7 +5,7 @@ import { TaskType } from '../types/TaskType';
 /**
  * The task model.
  */
-const TaskModel = (data: PartialDeep<TaskType>) =>
+const TaskModel = (data: PartialDeep<TaskType>): TaskType =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		type: 'task',

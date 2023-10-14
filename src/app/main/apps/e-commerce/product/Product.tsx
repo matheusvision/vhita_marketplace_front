@@ -38,7 +38,7 @@ const schema = yup.object().shape({
  */
 function Product() {
 	const dispatch = useAppDispatch();
-	const product = useAppSelector(selectProduct);
+	const { data: product, status } = useAppSelector(selectProduct);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();
@@ -107,6 +107,9 @@ function Product() {
 		setTabValue(value);
 	}
 
+	if (status === 'loading') {
+		return <FuseLoading />;
+	}
 	/**
 	 * Show Message if the requested products is not exists
 	 */

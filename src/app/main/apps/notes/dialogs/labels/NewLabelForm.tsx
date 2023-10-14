@@ -17,6 +17,7 @@ const defaultValues = {
 	title: ''
 };
 
+type FormType = { title: LabelType['title'] };
 /**
  * Form Validation Schema
  */
@@ -30,7 +31,7 @@ const schema = yup.object().shape({
 function NewLabelForm() {
 	const dispatch = useAppDispatch();
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -38,7 +39,7 @@ function NewLabelForm() {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data: LabelType) {
+	function onSubmit(data: FormType) {
 		const newLabel = LabelModel(data);
 		dispatch(createLabel(newLabel));
 		reset(defaultValues);

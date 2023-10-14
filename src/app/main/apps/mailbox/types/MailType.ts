@@ -7,7 +7,7 @@ export type MailType = {
 	id: string;
 	type: string;
 	from: {
-		name: string;
+		email: string;
 		avatar: string;
 		contact: string;
 	};
@@ -15,7 +15,7 @@ export type MailType = {
 	cc: string[];
 	bcc: string[];
 	date: string;
-	subject: string;
+	subject?: string;
 	content: string;
 	attachments: MailAttachmentType[];
 	starred: boolean;

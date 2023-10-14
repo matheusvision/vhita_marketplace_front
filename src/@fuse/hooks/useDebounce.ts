@@ -1,21 +1,22 @@
-import _ from '@lodash';
-import { DebounceSettings } from 'lodash';
-import { useRef } from 'react';
+import { useCallback } from 'react';
+import debounce from 'lodash/debounce';
 
 /**
- * The useDebounce hook returns a debounced version of the provided function.
- * It uses the Lodash debounce function to create the debounced function.
- * The debounced function is memoized using the useRef hook to prevent unnecessary re-renders.
- * The hook takes in the original function, the wait time, and the debounce options as parameters.
- * The hook returns the debounced function.
+ * useDebounce hook
+ *
+ * @param callback - Function to debounce.
+ * @param delay - The number of milliseconds to delay.
+ * @returns - A new debounced function.
  */
-function useDebounce<T extends (...args: unknown[]) => unknown>(
-	func: T,
-	wait: number | undefined,
-	options?: DebounceSettings
-): T {
-	const debouncedFunc = useRef(_.debounce(func, wait, options) as unknown as T);
-	return debouncedFunc.current;
+function useDebounce<T extends (...args: never[]) => void>(
+	callback: T,
+	delay: number
+): (...args: Parameters<T>) => void {
+	// Using useCallback to return a memorized version of the debounced function
+	return useCallback(
+		debounce((...args: Parameters<T>) => callback(...args), delay),
+		[delay, callback]
+	);
 }
 
 export default useDebounce;

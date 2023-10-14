@@ -80,6 +80,10 @@ const Transition = forwardRef((props: TransitionProps, ref) => {
 
 	const theme = useTheme();
 
+	if (!children) {
+		return null;
+	}
+
 	return (
 		<Slide
 			direction={theme.direction === 'ltr' ? 'left' : 'right'}

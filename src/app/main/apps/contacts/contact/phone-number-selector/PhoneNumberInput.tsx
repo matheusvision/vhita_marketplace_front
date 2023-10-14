@@ -10,9 +10,9 @@ import CountryCodeSelector from './CountryCodeSelector';
 import { ContactPhoneNumberType } from '../../types/ContactPhoneNumberType';
 
 const schema = yup.object().shape({
-	country: yup.string(),
-	phoneNumber: yup.string(),
-	label: yup.string()
+	country: yup.string().required('You must select a country'),
+	phoneNumber: yup.string().required('You must enter a phone number'),
+	label: yup.string().required('You must enter a label')
 });
 
 const defaultValues = {
@@ -35,7 +35,7 @@ type PhoneNumberInputProps = {
 function PhoneNumberInput(props: PhoneNumberInputProps) {
 	const { value, hideRemove, onChange, onRemove } = props;
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<ContactPhoneNumberType>({
 		mode: 'all',
 		defaultValues,
 		resolver: yupResolver(schema)

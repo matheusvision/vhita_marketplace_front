@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootStateType } from 'app/store/types';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import { ProductType } from '../types/ProductType';
 import ProductModel from '../product/models/ProductModel';
 
@@ -24,12 +24,12 @@ export const getProduct = createAppAsyncThunk<ProductType, string>(
 /**
  * Remove product
  */
-export const removeProduct = createAppAsyncThunk<string, null>(
+export const removeProduct = createAppAsyncThunk<string>(
 	'eCommerceApp/product/removeProduct',
 	async (_, { getState }) => {
 		const AppState = getState() as AppRootStateType;
 
-		const { id } = AppState.eCommerceApp.product;
+		const { id } = AppState.eCommerceApp.product.data as ProductType;
 
 		await axios.delete(`/api/ecommerce/products/${id}`);
 
@@ -45,7 +45,7 @@ export const saveProduct = createAppAsyncThunk<ProductType, ProductType>(
 	async (productData, { getState }) => {
 		const AppState = getState() as AppRootStateType;
 
-		const { id } = AppState.eCommerceApp.product;
+		const { id } = AppState.eCommerceApp.product.data as ProductType;
 
 		const response = await axios.put(`/api/ecommerce/products/${id}`, productData);
 
@@ -55,7 +55,10 @@ export const saveProduct = createAppAsyncThunk<ProductType, ProductType>(
 	}
 );
 
-const initialState: ProductType = null;
+const initialState: AsyncStateType<ProductType> = {
+	data: null,
+	status: 'idle'
+};
 
 /**
  * The E-Commerce product slice.
@@ -64,14 +67,21 @@ const productSlice = createSlice({
 	name: 'eCommerceApp/product',
 	initialState,
 	reducers: {
-		resetProduct: () => null,
-		newProduct: () => ProductModel({})
+		resetProduct: () => initialState,
+		newProduct: (state) => {
+			state.data = ProductModel({});
+		}
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(getProduct.fulfilled, (state, action) => action.payload)
-			.addCase(saveProduct.fulfilled, (state, action) => action.payload)
-			.addCase(removeProduct.fulfilled, () => null);
+			.addCase(getProduct.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
+			.addCase(saveProduct.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(removeProduct.fulfilled, () => initialState);
 	}
 });
 

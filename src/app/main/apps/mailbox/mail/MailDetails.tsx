@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import FuseLoading from '@fuse/core/FuseLoading';
 import { getMail, selectMail } from '../store/mailSlice';
 import MailLabel from './MailLabel';
 import MailToolbar from './MailToolbar';
@@ -19,12 +20,16 @@ import MailInfo from './MailInfo';
  */
 function MailDetails() {
 	const dispatch = useAppDispatch();
-	const mail = useAppSelector(selectMail);
+	const { data: mail, status } = useAppSelector(selectMail);
 	const routeParams = useParams();
 
 	useDeepCompareEffect(() => {
 		dispatch(getMail(routeParams));
 	}, [dispatch, routeParams]);
+
+	if (status === 'loading') {
+		return <FuseLoading />;
+	}
 
 	if (!mail) {
 		return null;

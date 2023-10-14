@@ -20,7 +20,7 @@ type AuthProviderProps = { children: ReactNode };
  */
 function AuthProvider(props: AuthProviderProps) {
 	const { children } = props;
-	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(undefined);
+	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 	const [waitAuthCheck, setWaitAuthCheck] = useState(true);
 	const dispatch = useAppDispatch();
 	const val = useMemo(() => ({ isAuthenticated }), [isAuthenticated]);

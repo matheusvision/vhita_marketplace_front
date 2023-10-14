@@ -21,17 +21,18 @@ import BoardHeader from './BoardHeader';
  */
 function Board() {
 	const dispatch = useAppDispatch();
-	const board = useAppSelector(selectBoard);
+	const { data: board } = useAppSelector(selectBoard);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();
 	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const { boardId } = routeParams;
 
 	useDeepCompareEffect(() => {
-		dispatch(getBoard(routeParams.boardId));
-		dispatch(getCards(routeParams.boardId));
-		dispatch(getLists(routeParams.boardId));
-		dispatch(getLabels(routeParams.boardId));
+		dispatch(getBoard(boardId));
+		dispatch(getCards(boardId));
+		dispatch(getLists(boardId));
+		dispatch(getLabels(boardId));
 
 		return () => {
 			dispatch(resetBoard());

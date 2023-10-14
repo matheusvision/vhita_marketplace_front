@@ -22,7 +22,7 @@ const StyledListItem = styled(ListItemButton)<ExtendedListItemProps>(({ theme })
 }));
 
 type ChatListItemProps = {
-	item: ContactType & ChatListItemType;
+	item: Partial<ContactType & ChatListItemType>;
 };
 
 /**

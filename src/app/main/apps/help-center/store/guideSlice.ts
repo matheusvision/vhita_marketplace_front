@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { GuideType } from '../types/GuideType';
+import GuideModel from '../models/GuideModel';
 
 export type AppRootStateType = RootStateType<guideSliceType>;
 
 /**
  * Get Guide from server
  */
-export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
+export const getGuide2 = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
 	'helpCenterApp/guide/get',
 	async ({ categorySlug, guideSlug }) => {
 		const response = await axios.get(`/api/help-center/guides/${categorySlug}/${guideSlug}`);
@@ -20,7 +21,21 @@ export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; g
 	}
 );
 
-const initialState: GuideType = null;
+export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
+	'helpCenterApp/guide/get',
+	async (arg, { rejectWithValue }) => {
+		try {
+			// Assuming you're using axios or similar for HTTP requests
+			const response = await axios.get(`/api/guide/${arg.categorySlug}/${arg.guideSlug}`);
+			return response.data as GuideType;
+		} catch (error) {
+			const axiosError = error as AxiosError;
+			return rejectWithValue(axiosError.message);
+		}
+	}
+);
+
+const initialState: GuideType = GuideModel({});
 
 /**
  * The Help Center App guide slice.

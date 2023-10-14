@@ -17,7 +17,7 @@ import { setActionToMails } from '../store/mailsSlice';
  */
 function MailToolbar() {
 	const dispatch = useAppDispatch();
-	const mail = useAppSelector(selectMail);
+	const { data: mail } = useAppSelector(selectMail);
 	const theme = useTheme();
 	const navigate = useNavigate();
 

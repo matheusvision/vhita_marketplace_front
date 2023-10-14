@@ -6,13 +6,14 @@ import ReactApexChart from 'react-apexcharts';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import BudgetDistributionDataType from '../../../types/BudgetDistributionDataType';
 
 /**
  * The BudgetDistributionWidget widget.
  */
 function BudgetDistributionWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { categories, series } = widgets.budgetDistribution;
+	const { categories, series } = widgets.budgetDistribution as BudgetDistributionDataType;
 
 	const theme = useTheme();
 
@@ -88,8 +89,8 @@ function BudgetDistributionWidget() {
 					className="flex-auto w-full h-320"
 					options={chartOptions}
 					series={series}
-					type={chartOptions.chart.type}
-					height={chartOptions.chart.height}
+					type={chartOptions?.chart?.type}
+					height={chartOptions?.chart?.height}
 				/>
 			</div>
 		</Paper>

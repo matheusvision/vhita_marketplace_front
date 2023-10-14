@@ -5,13 +5,14 @@ import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import PreviousStatementWidgetType from '../types/PreviousStatementWidgetType';
 
 /**
  * The PreviousStatementWidget widget.
  */
 function PreviousStatementWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { status, date, limit, spent, minimum } = widgets.previousStatement;
+	const { status, date, limit, spent, minimum } = widgets.previousStatement as PreviousStatementWidgetType;
 
 	return (
 		<Paper className="relative flex flex-col flex-auto p-24 pr-12 pb-12 rounded-2xl shadow overflow-hidden">

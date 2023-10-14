@@ -20,7 +20,7 @@ import { selectTags } from '../store/tagsSlice';
  * The contact view.
  */
 function ContactView() {
-	const contact = useAppSelector(selectContact);
+	const { data: contact, status } = useAppSelector(selectContact);
 	const countries = useAppSelector(selectCountries);
 	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
@@ -34,8 +34,12 @@ function ContactView() {
 		return countries.find((country) => country.iso === iso);
 	}
 
-	if (!contact) {
+	if (status === 'loading') {
 		return <FuseLoading />;
+	}
+
+	if (!contact) {
+		return null;
 	}
 
 	return (
@@ -69,7 +73,7 @@ function ContactView() {
 							src={contact.avatar}
 							alt={contact.name}
 						>
-							{contact.name.charAt(0)}
+							{contact?.name?.charAt(0)}
 						</Avatar>
 						<div className="flex items-center ml-auto mb-4">
 							<Button
@@ -87,10 +91,10 @@ function ContactView() {
 					<Typography className="mt-12 text-4xl font-bold truncate">{contact.name}</Typography>
 
 					<div className="flex flex-wrap items-center mt-8">
-						{contact.tags.map((id) => (
+						{contact?.tags?.map((id) => (
 							<Chip
 								key={id}
-								label={_.find(tags, { id }).title}
+								label={_.find(tags, { id })?.title}
 								className="mr-12 mb-12"
 								size="small"
 							/>
@@ -114,7 +118,7 @@ function ContactView() {
 							</div>
 						)}
 
-						{contact.emails.length && contact.emails.some((item) => item.email.length > 0) && (
+						{contact?.emails?.length && contact.emails.some((item) => item.email.length > 0) && (
 							<div className="flex">
 								<FuseSvgIcon>heroicons-outline:mail</FuseSvgIcon>
 								<div className="min-w-0 ml-24 space-y-4">
@@ -149,7 +153,8 @@ function ContactView() {
 							</div>
 						)}
 
-						{contact.phoneNumbers.length &&
+						{contact?.phoneNumbers &&
+							contact?.phoneNumbers?.length &&
 							contact.phoneNumbers.some((item) => item.phoneNumber.length > 0) && (
 								<div className="flex">
 									<FuseSvgIcon>heroicons-outline:phone</FuseSvgIcon>

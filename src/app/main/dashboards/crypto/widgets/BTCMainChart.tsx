@@ -6,6 +6,7 @@ import format from 'date-fns/format';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../store/widgetsSlice';
+import BTCWidgetType from '../types/BTCWidgetType';
 
 /**
  * The BTC main chart.
@@ -13,8 +14,7 @@ import { selectWidgets } from '../store/widgetsSlice';
 function BtcMainChart() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);
-
-	const { btc } = widgets || {};
+	const btc = widgets?.btc as BTCWidgetType;
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -141,9 +141,9 @@ function BtcMainChart() {
 		<div className="flex flex-col flex-auto h-full">
 			<ReactApexChart
 				options={chartOptions}
-				series={btc.price?.series || []}
-				type={chartOptions.chart.type}
-				height={chartOptions.chart.height}
+				series={btc?.price?.series || []}
+				type={chartOptions?.chart?.type}
+				height={chartOptions?.chart?.height}
 			/>
 		</div>
 	);

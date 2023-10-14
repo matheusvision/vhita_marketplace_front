@@ -79,7 +79,7 @@ function ProductImagesTab() {
 								onChange={async (e) => {
 									function readFileAsync() {
 										return new Promise((resolve, reject) => {
-											const file = e.target.files[0];
+											const file = e?.target?.files?.[0];
 											if (!file) {
 												return;
 											}

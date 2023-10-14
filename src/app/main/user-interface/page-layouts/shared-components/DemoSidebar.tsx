@@ -1,9 +1,10 @@
 import FuseNavigation from '@fuse/core/FuseNavigation';
+import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
 
 /**
  * Navigation data
  */
-const navigationData = [
+const navigationData: FuseNavigationType = [
 	{
 		id: '1',
 		title: 'Actions',

@@ -21,54 +21,60 @@ import { addContact, getContact, newContact, removeContact, selectContact, updat
 import { selectTags } from '../store/tagsSlice';
 import ContactEmailSelector from './email-selector/ContactEmailSelector';
 import PhoneNumberSelector from './phone-number-selector/PhoneNumberSelector';
-import { ContactEmailsType } from '../types/ContactEmailType';
-import { ContactPhoneNumbersType } from '../types/ContactPhoneNumberType';
 import { ContactType } from '../types/ContactType';
+import { TagsType } from '../types/TagType';
+import { ContactEmailType, ContactEmailsType } from '../types/ContactEmailType';
+import { ContactPhoneNumbersType, ContactPhoneNumberType } from '../types/ContactPhoneNumberType';
 
 function BirtdayIcon() {
 	return <FuseSvgIcon size={20}>heroicons-solid:cake</FuseSvgIcon>;
 }
 
+type FormType = Omit<ContactType, 'emails' | 'phoneNumbers'> & {
+	emails: Partial<ContactEmailType>[];
+	phoneNumbers: Partial<ContactPhoneNumberType>[];
+};
+
 /**
  * Form Validation Schema
  */
-const emailSchema = yup.object().shape({
-	email: yup.string().email('Invalid email format'),
+const contactEmailSchema = yup.object().shape({
+	email: yup.string(),
 	label: yup.string()
 });
 
-const phoneNumberSchema = yup.object().shape({
-	country: yup.string(),
-	phoneNumber: yup.string(),
-	label: yup.string()
+const contactPhoneNumberSchema = yup.object().shape({
+	country: yup.string().required('You must select a country'),
+	phoneNumber: yup.string().required('You must enter a phone number'),
+	label: yup.string().required('You must enter a label')
 });
 
 const schema = yup.object().shape({
-	id: yup.string(),
-	avatar: yup.string(),
-	background: yup.string(),
+	id: yup.string().required('ID is required'),
+	avatar: yup.string().required('Avatar is required'),
+	background: yup.string().required('Background is required'),
 	name: yup.string().required('Name is required'),
-	emails: yup.array().of(emailSchema),
-	phoneNumbers: yup.array().of(phoneNumberSchema),
-	title: yup.string(),
-	company: yup.string(),
-	birthday: yup.string(),
-	address: yup.string(),
-	notes: yup.string(),
-	tags: yup.array().of(yup.string())
+	emails: yup.array().of(contactEmailSchema),
+	phoneNumbers: yup.array().of(contactPhoneNumberSchema),
+	title: yup.string().required('Title is required'),
+	company: yup.string().required('Company is required'),
+	birthday: yup.string().required('Birthday is required'), // consider using date() if the format is ISO date string
+	address: yup.string().required('Address is required'),
+	notes: yup.string().required('Notes are required'),
+	tags: yup.array().of(yup.string()).required('Tags are required')
 });
 
 /**
  * The contact form.
  */
 function ContactForm() {
-	const contact = useAppSelector(selectContact);
+	const { data: contact } = useAppSelector(selectContact);
 	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const { control, watch, reset, handleSubmit, formState } = useForm({
+	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
 		mode: 'all',
 		resolver: yupResolver(schema)
 	});
@@ -104,6 +110,9 @@ function ContactForm() {
 	}
 
 	function handleRemoveContact() {
+		if (!contact) {
+			return;
+		}
 		dispatch(removeContact(contact.id)).then(() => {
 			navigate('/apps/contacts');
 		});
@@ -160,7 +169,7 @@ function ContactForm() {
 													onChange={async (e) => {
 														function readFileAsync() {
 															return new Promise((resolve, reject) => {
-																const file = e.target.files[0];
+																const file = e?.target?.files?.[0];
 																if (!file) {
 																	return;
 																}
@@ -217,7 +226,7 @@ function ContactForm() {
 										src={value}
 										alt={contact.name}
 									>
-										{contact.name.charAt(0)}
+										{contact?.name?.charAt(0)}
 									</Avatar>
 								</Box>
 							)}
@@ -249,7 +258,6 @@ function ContactForm() {
 						/>
 					)}
 				/>
-
 				<Controller
 					control={control}
 					name="tags"
@@ -270,9 +278,9 @@ function ContactForm() {
 									{option.title}
 								</li>
 							)}
-							value={value ? value.map((id) => _.find(tags, { id })) : []}
+							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : ([] as TagsType)}
 							onChange={(event, newValue) => {
-								onChange(newValue.map((item) => item.id));
+								onChange(newValue.map((item) => item?.id));
 							}}
 							fullWidth
 							renderInput={(params) => (

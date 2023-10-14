@@ -20,7 +20,7 @@ import { FuseNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 type FuseShortcutsProps = {
 	className?: string;
 	navigation: FuseNavigationType;
-	onChange: (T) => void;
+	onChange: (T: string[]) => void;
 	shortcuts?: string[];
 	variant?: 'horizontal' | 'vertical';
 };
@@ -34,9 +34,9 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	const { navigation = [], shortcuts = [], onChange, variant = 'horizontal', className = '' } = props;
 
 	const searchInputRef = useRef<HTMLInputElement>(null);
-	const [addMenu, setAddMenu] = useState<HTMLElement>(null);
+	const [addMenu, setAddMenu] = useState<HTMLElement | null>(null);
 	const [searchText, setSearchText] = useState('');
-	const [searchResults, setSearchResults] = useState<FuseNavigationType>(null);
+	const [searchResults, setSearchResults] = useState<FuseNavigationType>([]);
 	const shortcutItems = shortcuts ? shortcuts.map((id) => _.find(navigation, { id })) : [];
 
 	function addMenuClick(event: React.MouseEvent<HTMLElement>) {
@@ -58,7 +58,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 			);
 			return;
 		}
-		setSearchResults(null);
+		setSearchResults([]);
 	}
 
 	function toggleInShortcuts(id: string) {
@@ -130,7 +130,6 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 									component={motion.div}
 									variants={item}
 									className="h-40 w-40 p-0"
-									aria-owns={addMenu ? 'add-menu' : null}
 									aria-haspopup="true"
 									onClick={addMenuClick}
 									size="large"
@@ -153,7 +152,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 				}}
 				TransitionProps={{
 					onEntered: () => {
-						searchInputRef.current.focus();
+						searchInputRef?.current?.focus();
 					},
 					onExited: () => {
 						setSearchText('');
@@ -218,7 +217,7 @@ function ShortcutMenuItem(props: {
 	item: FuseNavItemType;
 	onToggle: (T: string) => void;
 }) {
-	const { item, onToggle, shortcuts } = props;
+	const { item, onToggle, shortcuts = [] } = props;
 
 	if (!item || !item.id) {
 		return null;

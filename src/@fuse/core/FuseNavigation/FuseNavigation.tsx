@@ -53,6 +53,7 @@ registerComponent('horizontal-group', FuseNavHorizontalGroup);
 registerComponent('horizontal-collapse', FuseNavHorizontalCollapse);
 registerComponent('horizontal-item', FuseNavHorizontalItem);
 registerComponent('horizontal-link', FuseNavHorizontalLink);
+registerComponent('divider', () => <Divider className="my-16" />);
 registerComponent('vertical-divider', () => <Divider className="my-16" />);
 registerComponent('horizontal-divider', () => <Divider className="my-16" />);
 

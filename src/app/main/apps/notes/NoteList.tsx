@@ -17,7 +17,7 @@ function NoteList() {
 	const variateDescSize = useAppSelector(selectVariateDescSize);
 	const searchText = useAppSelector(selectSearchText);
 	const params = useParams<{ id: string; labelId: string }>();
-	const [filteredData, setFilteredData] = useState<NotesType>(null);
+	const [filteredData, setFilteredData] = useState<NotesType>([]);
 
 	useEffect(() => {
 		function filterData() {

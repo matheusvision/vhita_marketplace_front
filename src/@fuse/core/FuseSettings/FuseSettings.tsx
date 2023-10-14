@@ -59,26 +59,26 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 export type FuseThemeType = {
-	palette?: PartialDeep<Palette>;
+	palette: PartialDeep<Palette>;
 };
 
 export type FuseThemesType = { [key: string]: FuseThemeType };
 
 export type FuseSettingsConfigType = {
-	layout?: {
+	layout: {
 		style?: string;
-		config?: themeLayoutDefaultsProps;
+		config?: PartialDeep<themeLayoutDefaultsProps>;
 	};
 	customScrollbars?: boolean;
-	direction?: 'rtl' | 'ltr';
-	theme?: {
-		main?: unknown;
-		navbar?: unknown;
-		toolbar?: unknown;
-		footer?: unknown;
+	direction: 'rtl' | 'ltr';
+	theme: {
+		main: FuseThemeType;
+		navbar: FuseThemeType;
+		toolbar: FuseThemeType;
+		footer: FuseThemeType;
 	};
 	defaultAuth?: string[];
-	loginRedirectUrl?: string;
+	loginRedirectUrl: string;
 };
 
 /**
@@ -323,7 +323,7 @@ function FuseSettings() {
 						control={control}
 						render={({ field: { value, onChange } }) => (
 							<PaletteSelector
-								value={value as FuseThemeType}
+								value={value}
 								onChange={onChange}
 								triggerElement={
 									<div className="group m-8 flex w-128 cursor-pointer flex-col items-center space-y-8">
@@ -345,7 +345,7 @@ function FuseSettings() {
 						control={control}
 						render={({ field: { value, onChange } }) => (
 							<PaletteSelector
-								value={value as FuseThemeType}
+								value={value}
 								onChange={onChange}
 								triggerElement={
 									<div className="group m-8 flex w-128 cursor-pointer flex-col items-center space-y-8">
@@ -367,7 +367,7 @@ function FuseSettings() {
 						control={control}
 						render={({ field: { value, onChange } }) => (
 							<PaletteSelector
-								value={value as FuseThemeType}
+								value={value}
 								onChange={onChange}
 								triggerElement={
 									<div className="group m-8 flex w-128 cursor-pointer flex-col items-center space-y-8">
@@ -389,7 +389,7 @@ function FuseSettings() {
 						control={control}
 						render={({ field: { value, onChange } }) => (
 							<PaletteSelector
-								value={value as FuseThemeType}
+								value={value}
 								onChange={onChange}
 								triggerElement={
 									<div className="group m-8 flex w-128 cursor-pointer flex-col items-center space-y-8">

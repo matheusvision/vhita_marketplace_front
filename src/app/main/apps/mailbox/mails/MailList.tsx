@@ -22,7 +22,7 @@ function MailList() {
 	const searchText = useAppSelector(selectSearchText);
 
 	const routeParams = useParams();
-	const [filteredData, setFilteredData] = useState<MailsType>(null);
+	const [filteredData, setFilteredData] = useState<MailsType>([]);
 	const { t } = useTranslation('mailboxApp');
 
 	useDeepCompareEffect(() => {

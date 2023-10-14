@@ -2,8 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { DeepPartial } from 'react-hook-form';
-import { RootStateType } from 'app/store/types';
-import { PartialDeep } from 'type-fest';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import { UserType } from '../types/UserType';
 
 type AppRootStateType = RootStateType<userSliceType>;
@@ -33,7 +32,10 @@ export const updateUserData = createAppAsyncThunk<UserType, DeepPartial<UserType
 	}
 );
 
-const initialState: PartialDeep<UserType> = {};
+const initialState: AsyncStateType<UserType> = {
+	data: null,
+	status: 'idle'
+};
 
 /**
  * Chat App User Slice
@@ -44,8 +46,16 @@ const userSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(getUserData.fulfilled, (state, action) => action.payload)
-			.addCase(updateUserData.fulfilled, (state, action) => action.payload);
+			.addCase(getUserData.pending, (state) => {
+				state.status = 'loading';
+			})
+			.addCase(getUserData.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
+			.addCase(updateUserData.fulfilled, (state, action) => {
+				state.data = action.payload;
+			});
 	}
 });
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import { BoardSliceType } from './boardSlice';
 import { CardType } from '../types/CardType';
+import { BoardType } from '../types/BoardType';
 
 type AppRootStateType = RootStateType<[CardSliceType, BoardSliceType]>;
 
@@ -15,9 +16,10 @@ export const updateCard = createAppAsyncThunk<CardType, CardType>(
 	'scrumboardApp/card/update',
 	async (newData, { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const { card, board } = AppState.scrumboardApp;
+		const board = AppState.scrumboardApp.board.data as BoardType;
+		const card = AppState.scrumboardApp.card.data as CardType;
 
-		const response = await axios.put(`/api/scrumboard/boards/${board.id}/cards/${card.data.id}`, newData);
+		const response = await axios.put(`/api/scrumboard/boards/${board.id}/cards/${card?.id}`, newData);
 
 		const data = (await response.data) as CardType;
 
@@ -43,9 +45,10 @@ export const removeCard = createAppAsyncThunk<string>(
 	'scrumboardApp/card/removeCard',
 	async (_params, { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const { card, board } = AppState.scrumboardApp;
+		const board = AppState.scrumboardApp.board.data as BoardType;
+		const card = AppState.scrumboardApp.card.data as CardType;
 
-		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/cards/${card.data.id}`);
+		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/cards/${card?.id}`);
 
 		const data = (await response.data) as string;
 
@@ -57,7 +60,7 @@ export const removeCard = createAppAsyncThunk<string>(
 
 const initialState: {
 	dialogOpen: boolean;
-	data: CardType;
+	data: CardType | null;
 } = {
 	dialogOpen: false,
 	data: null

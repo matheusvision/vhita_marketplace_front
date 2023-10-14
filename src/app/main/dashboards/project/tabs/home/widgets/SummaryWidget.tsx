@@ -7,18 +7,19 @@ import MenuItem from '@mui/material/MenuItem';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import WidgetDataType, { RangeType } from '../../../types/WidgetDataType';
 
 /**
  * The SummaryWidget widget.
  */
 function SummaryWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { data, ranges, currentRange: currentRangeDefault } = widgets.summary;
+	const { data, ranges, currentRange: currentRangeDefault } = widgets.summary as WidgetDataType;
 
-	const [currentRange, setCurrentRange] = useState(currentRangeDefault);
+	const [currentRange, setCurrentRange] = useState<RangeType>(currentRangeDefault as RangeType);
 
 	function handleChangeRange(event: SelectChangeEvent<string>) {
-		setCurrentRange(event.target.value);
+		setCurrentRange(event.target.value as RangeType);
 	}
 
 	return (

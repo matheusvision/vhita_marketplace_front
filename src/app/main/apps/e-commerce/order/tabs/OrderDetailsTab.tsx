@@ -43,8 +43,12 @@ function Marker(props: MarkerPropsType) {
  * The order details tab.
  */
 function OrderDetailsTab() {
-	const order = useAppSelector(selectOrder);
+	const { data: order } = useAppSelector(selectOrder);
 	const [map, setMap] = useState<string>('shipping');
+
+	if (!order) {
+		return null;
+	}
 
 	return (
 		<div>

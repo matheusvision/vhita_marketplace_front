@@ -46,9 +46,7 @@ const initialState: ChatMessagesType = [];
 const chatMessagesSlice = createSlice({
 	name: 'chatApp/chat',
 	initialState,
-	reducers: {
-		// removeChat: (state, action) => action.payload
-	},
+	reducers: {},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getChat.fulfilled, (state, action) => action.payload)

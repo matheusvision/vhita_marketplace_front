@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
 import { ContactType } from 'app/theme-layouts/shared-components/chatPanel/types/ContactType';
+import ContactStatus from 'app/theme-layouts/shared-components/chatPanel/ContactStatus';
+import { ChatListItemType } from 'app/theme-layouts/shared-components/chatPanel/types/ChatListItemType';
 
 const Root = styled(Tooltip)<{ active: number }>(({ theme, active }) => ({
 	width: 70,
@@ -43,35 +45,8 @@ const StyledUreadBadge = styled('div')(({ theme }) => ({
 	zIndex: 10
 }));
 
-const StyledStatus = styled('div')<{ value: string }>(({ theme, value }) => ({
-	position: 'absolute',
-	width: 12,
-	height: 12,
-	bottom: 4,
-	left: 44,
-	border: `2px solid ${theme.palette.background.default}`,
-	borderRadius: '50%',
-	zIndex: 10,
-
-	...(value === 'online' && {
-		backgroundColor: '#4CAF50'
-	}),
-
-	...(value === 'do-not-disturb' && {
-		backgroundColor: '#F44336'
-	}),
-
-	...(value === 'away' && {
-		backgroundColor: '#FFC107'
-	}),
-
-	...(value === 'offline' && {
-		backgroundColor: '#646464'
-	})
-}));
-
 type ContactButtonProps = {
-	contact: ContactType;
+	contact: Partial<ContactType & ChatListItemType>;
 	selectedContactId: string;
 	onClick: (id: string) => void;
 };
@@ -97,7 +72,7 @@ function ContactButton(props: ContactButtonProps) {
 			>
 				{contact.unread && <StyledUreadBadge>{contact.unread}</StyledUreadBadge>}
 
-				<StyledStatus value={contact.status} />
+				<ContactStatus value={contact.status} />
 
 				<Avatar
 					src={contact.avatar}

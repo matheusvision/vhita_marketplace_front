@@ -26,7 +26,7 @@ export const ContactEmailModel = (data: PartialDeep<ContactEmailType> | null): C
 /**
  * The contact model.
  */
-const ContactModel = (data: PartialDeep<ContactType>) =>
+const ContactModel = (data: PartialDeep<ContactType>): ContactType =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		avatar: '',

@@ -10,5 +10,5 @@ export type ChatListItemType = {
 	muted: boolean;
 	lastMessage?: string;
 	lastMessageAt?: string;
-	messages?: MessageType[];
+	messages: MessageType[];
 };

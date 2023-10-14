@@ -98,11 +98,7 @@ module.exports = {
         "@typescript-eslint/no-useless-constructor": "error",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-floating-promises": "off",
-        "@typescript-eslint/no-misused-promises": [2, {
-            "checksVoidReturn": {
-                "attributes": false
-            }
-        }],
+        "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/require-await": "off",
         "no-useless-constructor": "off",
         "no-tabs": "off",

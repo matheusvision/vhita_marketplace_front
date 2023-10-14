@@ -1,3 +1,4 @@
+import { FuseRouteConfigsType } from '@fuse/utils/FuseUtils';
 import AcademyAppConfig from './academy/AcademyAppConfig';
 import CalendarAppConfig from './calendar/CalendarAppConfig';
 import ChatAppConfig from './chat/ChatAppConfig';
@@ -14,7 +15,7 @@ import TasksAppConfig from './tasks/TasksAppConfig';
 /**
  * The list of application configurations.
  */
-const appsConfigs = [
+const appsConfigs: FuseRouteConfigsType = [
 	AcademyAppConfig,
 	CalendarAppConfig,
 	ChatAppConfig,

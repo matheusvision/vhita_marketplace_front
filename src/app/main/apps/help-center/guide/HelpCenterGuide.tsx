@@ -20,7 +20,8 @@ function HelpCenterGuide() {
 	const category = useAppSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
 
 	useEffect(() => {
-		const { categorySlug, guideSlug } = routeParams;
+		const { guideSlug } = routeParams;
+		const { categorySlug } = routeParams;
 		dispatch(getGuide({ categorySlug, guideSlug }));
 	}, [dispatch, routeParams]);
 

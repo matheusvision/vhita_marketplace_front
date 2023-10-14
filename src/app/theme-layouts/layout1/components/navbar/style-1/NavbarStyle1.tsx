@@ -54,7 +54,7 @@ const StyledNavBarMobile = styled(SwipeableDrawer)(() => ({
  */
 function NavbarStyle1() {
 	const dispatch = useAppDispatch();
-	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const navbar = useSelector(selectFuseNavbar);
 
 	return (

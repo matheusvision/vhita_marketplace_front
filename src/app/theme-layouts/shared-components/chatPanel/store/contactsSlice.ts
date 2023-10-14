@@ -21,7 +21,7 @@ export const getContacts = createAppAsyncThunk<ContactsType>('chatPanel/contacts
 const contactsAdapter = createEntityAdapter<ContactType>();
 
 const initialState = contactsAdapter.getInitialState({
-	selectedContactId: null
+	selectedContactId: ''
 });
 
 export const {
@@ -41,7 +41,7 @@ const contactsSlice = createSlice({
 			state.selectedContactId = action.payload as string;
 		},
 		removeSelectedContactId: (state) => {
-			state.selectedContactId = null;
+			state.selectedContactId = '';
 		}
 	},
 	extraReducers: (builder) => {
@@ -53,8 +53,7 @@ const contactsSlice = createSlice({
 	}
 });
 
-export const selectSelectedContactId = (state: AppRootStateType) =>
-	state.chatPanel.contacts.selectedContactId as string;
+export const selectSelectedContactId = (state: AppRootStateType) => state.chatPanel.contacts.selectedContactId;
 
 export const selectContactById = (id: ContactType['id']) => (state: AppRootStateType) => selectById(state, id);
 

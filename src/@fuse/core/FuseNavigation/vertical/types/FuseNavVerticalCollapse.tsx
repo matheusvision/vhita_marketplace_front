@@ -51,7 +51,7 @@ function needsToBeOpened(location: Location, item: FuseNavItemType) {
  */
 function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 	const location = useLocation();
-	const { item, nestedLevel, onItemClick } = props;
+	const { item, nestedLevel = 0, onItemClick } = props;
 
 	const [open, setOpen] = useState(() => needsToBeOpened(location, item));
 
@@ -68,7 +68,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 
 	const component = item.url ? NavLinkAdapter : 'li';
 
-	let itemProps;
+	let itemProps = {};
 
 	if (typeof component !== 'string') {
 		itemProps = {

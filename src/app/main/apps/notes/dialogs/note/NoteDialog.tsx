@@ -13,6 +13,7 @@ import {
 	updateNote
 } from '../../store/notesSlice';
 import NoteForm from '../../note-form/NoteForm';
+import { NoteType } from '../../types/NoteType';
 
 const Transition = forwardRef(function Transition(props: { children: ReactElement<ReactNode> }, ref) {
 	const { children, ...other } = props;
@@ -36,7 +37,7 @@ function NoteDialog() {
 	const routeParams = useParams();
 	const note = useAppSelector(selectDialogNote);
 
-	const handleOnChange = useDebounce((_note) => {
+	const handleOnChange = useDebounce((_note: NoteType) => {
 		dispatch(updateNote(_note)).then(() => {
 			dispatch(getNotes(routeParams as RouteParamsType));
 		});

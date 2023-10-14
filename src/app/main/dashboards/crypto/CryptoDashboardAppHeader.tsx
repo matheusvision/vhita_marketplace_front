@@ -8,6 +8,7 @@ import { useAppSelector } from 'app/store';
 import { MouseEvent } from 'react';
 import { selectWidgets } from './store/widgetsSlice';
 import ValueSectionSmall from './widgets/ValueSectionSmall';
+import BTCWidgetType from './types/BTCWidgetType';
 
 type CryptoDashboardAppHeaderProps = {
 	onToggleLeftSidebar: (ev: MouseEvent) => void;
@@ -19,7 +20,7 @@ type CryptoDashboardAppHeaderProps = {
 function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 	const { onToggleLeftSidebar } = props;
 	const widgets = useAppSelector(selectWidgets);
-	const { btc } = widgets || {};
+	const btc = widgets?.btc as BTCWidgetType;
 
 	if (!btc) {
 		return null;

@@ -12,13 +12,14 @@ import Tab from '@mui/material/Tab';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import ScheduleDataType from '../../../types/ScheduleDataType';
 
 /**
  * The ScheduleWidget widget.
  */
 function ScheduleWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { series, ranges } = widgets.schedule;
+	const { series, ranges } = widgets.schedule as ScheduleDataType;
 	const [tabValue, setTabValue] = useState(0);
 	const currentRange = Object.keys(ranges)[tabValue];
 

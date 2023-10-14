@@ -124,7 +124,6 @@ function MailToolbar(props: MailToolbarProps) {
 				<IconButton
 					size="small"
 					aria-label="More"
-					aria-owns={menu.select ? 'select-menu' : null}
 					aria-haspopup="true"
 					onClick={(ev) => handleMenuOpen(ev, 'select')}
 				>
@@ -211,7 +210,11 @@ function MailToolbar(props: MailToolbarProps) {
 							<IconButton
 								onClick={() => {
 									dispatch(
-										setActionToMails({ type: 'folder', value: trashFolderId, ids: selectedMailIds })
+										setActionToMails({
+											type: 'folder',
+											value: trashFolderId,
+											ids: selectedMailIds
+										})
 									);
 								}}
 								aria-label="Delete"
@@ -224,7 +227,6 @@ function MailToolbar(props: MailToolbarProps) {
 						<Tooltip title="Move to folder">
 							<IconButton
 								aria-label="More"
-								aria-owns={menu.folders ? 'folders-menu' : null}
 								aria-haspopup="true"
 								onClick={(ev) => handleMenuOpen(ev, 'folders')}
 								size="small"
@@ -262,7 +264,6 @@ function MailToolbar(props: MailToolbarProps) {
 						<Tooltip title="Add label">
 							<IconButton
 								aria-label="label"
-								aria-owns={menu.labels ? 'labels-menu' : null}
 								aria-haspopup="true"
 								onClick={(ev) => handleMenuOpen(ev, 'labels')}
 								size="small"

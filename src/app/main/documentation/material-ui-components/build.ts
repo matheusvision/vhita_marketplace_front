@@ -20,23 +20,26 @@ const componentRegexp = /^"component": "(.*)"/;
 const headerRegExp = /---[\r\n]([\s\S]*)[\r\n]---/;
 const emptyRegExp = /^\s*$/;
 
-/*
-eslint-disable @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,no-cond-assign,@typescript-eslint/no-unsafe-return
-*/
 marked.Lexer.prototype.lex = function lex(src) {
 	src = src
 		.replace(/\r\n|\r/g, '\n')
 		.replace(/\t/g, '    ')
 		.replace(/\u2424/g, '\n');
 
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 	this.blockTokens(src, this.tokens);
 
 	let next;
-	// eslint-disable-next-line no-cond-assign
-	while ((next = this.inlineQueue.shift())) {
+
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	// eslint-disable-next-line no-cond-assign,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+	while ((next = this.inlineQueue.shift() as { src: string; tokens: { type: 'space'; raw: string }[] })) {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 		this.inlineTokens(next.src, next.tokens);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return
 	return this.tokens;
 };
 
@@ -97,10 +100,8 @@ const removeFile = async (filePath: string) => {
 
 		// console.log('Successfully deleted the file.');
 	} catch (error) {
-		if (error.code === 'ENOENT') {
-			// console.log('File does not exist.');
-		} else {
-			// console.error('Error while deleting the file:', error);
+		if (error) {
+			throw error;
 		}
 	}
 };
@@ -132,9 +133,8 @@ const rmDir = async (dirPath: string) => {
 		// Remove the directory itself
 		await fsp.rmdir(dirPath);
 	} catch (error) {
-		if (error.code !== 'ENOENT') {
-			// Ignore errors for non-existent paths
-			throw error; // Rethrow other errors
+		if (error) {
+			throw error;
 		}
 	}
 };
@@ -170,8 +170,8 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		const match = content.match(demoRegexp);
 
 		if (match) {
-			const demoOptions = JSON.parse(`{${content}}`);
-			const name = demoOptions.demo as string; // example: SimpleZoom.js
+			const demoOptions = JSON.parse(`{${content}}`) as { demo: string; iframe?: boolean };
+			const name = demoOptions.demo; // example: SimpleZoom.js
 			const nameWithoutExt = path.basename(name, path.extname(name)); // example: SimpleZoom
 			let filePath = path.resolve(fileDir, name);
 
@@ -224,7 +224,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 	return response;
 }
 
-function eraseMdSection(content, folderName, requestedDir, title) {
+function eraseMdSection(content: string, folderName: string, requestedDir: string, title: string) {
 	if (folderName !== requestedDir) {
 		return content;
 	}
@@ -233,7 +233,7 @@ function eraseMdSection(content, folderName, requestedDir, title) {
 }
 
 function readDir(dir: string) {
-	return new Promise((resolve, reject) => {
+	return new Promise<{ dir: string; list: string[] }>((resolve, reject) => {
 		fs.readdir(dir, (err, list) => {
 			if (err) {
 				reject(err);
@@ -386,7 +386,7 @@ function writeNavigationFile(pages: string[]) {
 }
 
 function filewalker(dir: string) {
-	return new Promise((resolve, reject) => {
+	return new Promise<string[]>((resolve, reject) => {
 		let results: string[] = [];
 
 		fs.readdir(dir, (err, list) => {
@@ -414,7 +414,7 @@ function filewalker(dir: string) {
 					// If directory, make a recursive call
 					if (stat && stat.isDirectory()) {
 						filewalker(file)
-							.then((__res: string[]) => {
+							.then((__res) => {
 								results = results.concat(__res);
 								pending -= 1;
 								if (!pending) {
@@ -436,7 +436,7 @@ function filewalker(dir: string) {
 }
 
 async function replaceInExamples() {
-	const list = (await filewalker(demoDir)) as string[];
+	const list = await filewalker(demoDir);
 
 	list.forEach((file) => {
 		const fileSource = fsp.readFile(file, 'utf8');
@@ -479,11 +479,10 @@ function removeExcludedComponents() {
 
 function removeUnnecessaryFiles() {
 	filewalker(demoDir)
-		.then((list: string[]) => {
+		.then((list) => {
 			list.forEach((file) => {
 				const extToRemove = [
 					'.preview',
-
 					// '.js',
 					// '.jsx',
 					'-de.md',
@@ -524,7 +523,7 @@ async function build() {
 	fs.mkdirSync(pagesDirectory);
 
 	readDir(examplesDirectory).then(({ dir: _dir, list }) => {
-		writePages(_dir as string, list as string[]).then((pages) => {
+		writePages(_dir, list).then((pages) => {
 			writeRouteFile(pages);
 
 			writeNavigationFile(pages);

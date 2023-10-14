@@ -12,7 +12,7 @@ export type FuseLoadingProps = {
  * FuseLoading displays a loading state with an optional delay
  */
 function FuseLoading(props: FuseLoadingProps) {
-	const { delay } = props;
+	const { delay = 0 } = props;
 	const [showLoading, setShowLoading] = useState(!delay);
 
 	useTimeout(() => {

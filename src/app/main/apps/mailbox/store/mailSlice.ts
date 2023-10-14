@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import _ from '@lodash';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootStateType } from 'app/store/types';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import { getMails } from './mailsSlice';
 import { MailType } from '../types/MailType';
 import RouteParamsType from '../types/RouteParamsType';
@@ -15,7 +15,7 @@ export type AppRootStateType = RootStateType<mailSliceType>;
  */
 export const getMail = createAppAsyncThunk<MailType, RouteParamsType>(
 	'mailboxApp/mail/getMail',
-	async (routeParams) => {
+	async (routeParams, { rejectWithValue }) => {
 		let url = '/api/mailbox/mails/';
 		if (routeParams.folderHandle) {
 			url += `${routeParams.folderHandle}/${routeParams.mailId}`;
@@ -37,13 +37,17 @@ export const getMail = createAppAsyncThunk<MailType, RouteParamsType>(
 			return data;
 		} catch (error) {
 			history.push({ pathname: `/apps/mailbox` });
-
-			return null;
+			const axiosError = error as AxiosError;
+			return rejectWithValue(axiosError.message);
 		}
 	}
 );
 
-const initialState: MailType = null;
+const initialState: AsyncStateType<MailType> = {
+	data: null,
+	status: 'idle',
+	error: null
+};
 
 /**
  * The Mailbox App mail slice.
@@ -54,17 +58,28 @@ const mailSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(getMail.fulfilled, (state, action) => action.payload)
+			.addCase(getMail.pending, (state) => {
+				state.status = 'loading';
+			})
+			.addCase(getMail.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
 			.addCase(getMails.fulfilled, (state, action) => {
 				const mails = action.payload.data;
 
-				if (!state) {
-					return null;
+				if (state.data) {
+					const mail = _.find(mails, { id: state.data.id });
+
+					if (mail) {
+						state.data = mail;
+					} else {
+						state = initialState;
+					}
+					return;
 				}
 
-				const mail = _.find(mails, { id: state.id });
-
-				return mail || null;
+				state = initialState;
 			});
 	}
 });

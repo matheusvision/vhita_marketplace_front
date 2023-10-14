@@ -27,7 +27,7 @@ type ToolbarLayout2Props = {
 function ToolbarLayout2(props: ToolbarLayout2Props) {
 	const { className = '' } = props;
 
-	const config: Layout2ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout2ConfigDefaultsType;
 	const toolbarTheme = useSelector(selectToolbarTheme);
 
 	return (

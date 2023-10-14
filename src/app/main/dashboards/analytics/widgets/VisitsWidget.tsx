@@ -7,6 +7,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import VisitsWidgetType from '../types/VisitsWidgetType';
 
 /**
  * Impressions widget.
@@ -14,7 +15,7 @@ import { selectWidgets } from '../store/widgetsSlice';
 function Impressions() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);
-	const { series, amount, labels } = widgets.visits;
+	const { series, amount, labels } = widgets.visits as VisitsWidgetType;
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -83,8 +84,8 @@ function Impressions() {
 				<ReactApexChart
 					options={chartOptions}
 					series={series}
-					type={chartOptions.chart.type}
-					height={chartOptions.chart.height}
+					type={chartOptions?.chart?.type}
+					height={chartOptions?.chart?.height}
 				/>
 			</div>
 		</Paper>

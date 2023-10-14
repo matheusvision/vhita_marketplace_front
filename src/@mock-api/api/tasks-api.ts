@@ -4,6 +4,7 @@ import mockApi from '../mock-api.json';
 import mock from '../mock';
 import { TasksType, TaskType } from '../../app/main/apps/tasks/types/TaskType';
 import { TagsType } from '../../app/main/apps/tasks/types/TagType';
+import { Params } from '../ExtendedMockAdapter';
 
 let tasksDB = mockApi.components.examples.tasks.value as TasksType;
 const tagsDB = mockApi.components.examples.tasks_tags.value as TagsType;
@@ -33,8 +34,9 @@ mock.onPost('/api/tasks/reorder').reply(({ data }) => {
 	return [200, tasksDB];
 });
 
-mock.onGet(/\/api\/tasks\/(?!tags)[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
+mock.onGet('/api/tasks/:id').reply((config) => {
+	const { id } = config.params as Params;
+
 	const task = _.find(tasksDB, { id });
 
 	if (task) {
@@ -44,16 +46,16 @@ mock.onGet(/\/api\/tasks\/(?!tags)[^/]+/).reply((config) => {
 	return [404, 'Requested task do not exist.'];
 });
 
-mock.onPut(/\/api\/tasks\/[^/]+/).reply(({ url, data }) => {
-	const { id } = url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
+mock.onPut('/api/tasks/:id').reply((config) => {
+	const { id } = config.params as Params;
 
-	_.assign(_.find(tasksDB, { id }), JSON.parse(data as string));
+	_.assign(_.find(tasksDB, { id }), JSON.parse(config.data as string));
 
 	return [200, _.find(tasksDB, { id })];
 });
 
-mock.onDelete(/\/api\/tasks\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/tasks\/(?<id>[^/]+)/).groups;
+mock.onDelete('/api/tasks/:id').reply((config) => {
+	const { id } = config.params as Params;
 
 	_.remove(tasksDB, { id });
 

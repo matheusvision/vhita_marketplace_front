@@ -59,7 +59,7 @@ function BoardItem(props: BoardItemProps) {
 								<Avatar
 									key={index}
 									alt="member"
-									src={member.avatar}
+									src={member?.avatar}
 								/>
 							))}
 						</AvatarGroup>

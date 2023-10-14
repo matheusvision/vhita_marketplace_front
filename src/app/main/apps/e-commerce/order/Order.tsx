@@ -5,12 +5,14 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import * as React from 'react';
+import FuseLoading from '@fuse/core/FuseLoading';
 import { getOrder, resetOrder, selectOrder } from '../store/orderSlice';
 import InvoiceTab from './tabs/InvoiceTab';
 import OrderDetailsTab from './tabs/OrderDetailsTab';
@@ -21,7 +23,7 @@ import ProductsTab from './tabs/ProductsTab';
  */
 function Order() {
 	const dispatch = useAppDispatch();
-	const order = useAppSelector(selectOrder);
+	const { data: order, status } = useAppSelector(selectOrder);
 	const theme = useTheme();
 	const isMobile = useThemeMediaQuery((_theme) => _theme.breakpoints.down('lg'));
 
@@ -45,8 +47,12 @@ function Order() {
 		};
 	}, [dispatch]);
 
-	function handleTabChange(event: ChangeEvent, value: number) {
+	function handleTabChange(event: React.SyntheticEvent, value: number) {
 		setTabValue(value);
+	}
+
+	if (status === 'loading') {
+		return <FuseLoading />;
 	}
 
 	if (noOrder) {

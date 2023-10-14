@@ -21,17 +21,19 @@ import {
 	selectEventDialog,
 	updateEvent
 } from '../../store/eventsSlice';
-import EventLabelSelect from '../../EventLabelSelect';
+import EventLabelSelect, { EventLabelSelectProps } from '../../EventLabelSelect';
 import EventModel from '../../models/EventModel';
 import { selectFirstLabelId } from '../../store/labelsSlice';
+import { EventType } from '../../types/EventType';
 
 const defaultValues = EventModel();
 
 /**
  * Form Validation Schema
  */
+
 const schema = yup.object().shape({
-	id: yup.string(),
+	id: yup.string().required('You must enter an id'),
 	title: yup.string().required('You must enter a title'),
 	start: yup.string().required('Please enter start date'),
 	end: yup.string(),
@@ -50,7 +52,7 @@ function EventDialog() {
 	const eventDialog = useAppSelector(selectEventDialog);
 	const firstLabelId = useAppSelector(selectFirstLabelId);
 
-	const { reset, formState, watch, control, getValues } = useForm({
+	const { reset, formState, watch, control, getValues } = useForm<EventType>({
 		defaultValues,
 		mode: 'onChange',
 		resolver: yupResolver(schema)
@@ -130,8 +132,8 @@ function EventDialog() {
 
 	return (
 		<Popover
-			open={eventDialog.props.open}
 			{...eventDialog.props}
+			open={eventDialog.props.open}
 			anchorReference="anchorPosition"
 			anchorOrigin={{
 				vertical: 'center',
@@ -259,7 +261,7 @@ function EventDialog() {
 						render={({ field }) => (
 							<EventLabelSelect
 								className="mt-8 mb-16"
-								{...field}
+								{...(field as EventLabelSelectProps)}
 							/>
 						)}
 					/>

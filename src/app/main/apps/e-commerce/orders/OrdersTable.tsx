@@ -15,6 +15,7 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { Many } from 'lodash';
+import * as React from 'react';
 import OrdersStatus from '../order/OrdersStatus';
 import { getOrders, selectOrders, selectOrdersSearchText } from '../store/ordersSlice';
 import OrdersTableHead from './OrdersTableHead';
@@ -34,7 +35,7 @@ function OrdersTable(props: OrdersTableProps) {
 	const searchText = useAppSelector(selectOrdersSearchText);
 
 	const [loading, setLoading] = useState(true);
-	const [selected, setSelected] = useState([]);
+	const [selected, setSelected] = useState<string[]>([]);
 	const [data, setData] = useState<OrdersType>(orders);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -43,7 +44,7 @@ function OrdersTable(props: OrdersTableProps) {
 		id: string;
 	}>({
 		direction: 'asc',
-		id: null
+		id: ''
 	});
 
 	useEffect(() => {
@@ -91,7 +92,7 @@ function OrdersTable(props: OrdersTableProps) {
 
 	function handleCheck(event: ChangeEvent<HTMLInputElement>, id: string) {
 		const selectedIndex = selected.indexOf(id);
-		let newSelected = [];
+		let newSelected: string[] = [];
 
 		if (selectedIndex === -1) {
 			newSelected = newSelected.concat(selected, id);
@@ -106,8 +107,8 @@ function OrdersTable(props: OrdersTableProps) {
 		setSelected(newSelected);
 	}
 
-	function handleChangePage(event, value: number) {
-		setPage(+value);
+	function handleChangePage(event: React.MouseEvent<HTMLButtonElement> | null, page: number) {
+		setPage(+page);
 	}
 
 	function handleChangeRowsPerPage(event: React.ChangeEvent<HTMLInputElement>) {

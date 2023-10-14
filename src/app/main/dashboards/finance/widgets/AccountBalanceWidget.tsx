@@ -6,6 +6,7 @@ import ReactApexChart from 'react-apexcharts';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../store/widgetsSlice';
+import AccountBalanceWidgetType from '../types/AccountBalanceWidgetType';
 
 /**
  * The AccountBalanceWidget widget.
@@ -13,7 +14,7 @@ import { selectWidgets } from '../store/widgetsSlice';
 function AccountBalanceWidget() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);
-	const { series, growRate, ami } = widgets.accountBalance;
+	const { series, growRate, ami } = widgets.accountBalance as AccountBalanceWidgetType;
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -114,8 +115,8 @@ function AccountBalanceWidget() {
 					className="flex-auto w-full h-full"
 					options={chartOptions}
 					series={series}
-					type={chartOptions.chart.type}
-					height={chartOptions.chart.height}
+					type={chartOptions?.chart?.type}
+					height={chartOptions?.chart?.height}
 				/>
 			</div>
 		</Paper>

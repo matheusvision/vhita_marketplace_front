@@ -2,7 +2,7 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { TagsType } from '../types/TagType';
+import { TagType, TagsType } from '../types/TagType';
 
 export type AppRootStateType = RootStateType<tagsSliceType>;
 
@@ -17,7 +17,7 @@ export const getTags = createAppAsyncThunk('tasksApp/tags/getTags', async () => 
 	return data;
 });
 
-const tagsAdapter = createEntityAdapter({});
+const tagsAdapter = createEntityAdapter<TagType>({});
 const initialState = tagsAdapter.getInitialState([]);
 
 export const { selectAll: selectTags, selectById: selectTagsById } = tagsAdapter.getSelectors(

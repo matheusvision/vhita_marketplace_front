@@ -18,7 +18,7 @@ import { LabelType } from '../../types/LabelType';
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-	id: yup.string(),
+	id: yup.string().required(),
 	title: yup.string().required('You must enter a label title')
 });
 
@@ -33,20 +33,20 @@ function NewLabelForm(props: LabelFormProps) {
 	const { label } = props;
 	const dispatch = useAppDispatch();
 
-	const { control, formState, reset, watch } = useForm({
+	const { control, formState, reset, watch } = useForm<LabelType>({
 		mode: 'onChange',
 		defaultValues: label,
 		resolver: yupResolver(schema)
 	});
 
 	const { errors } = formState;
-	const form: LabelType = watch();
+	const form = watch();
 
 	useEffect(() => {
 		reset(label);
 	}, [label, reset]);
 
-	const handleOnChange = useDebounce((_label, _form) => {
+	const handleOnChange = useDebounce((_label: LabelType, _form: LabelType) => {
 		if (!_label) {
 			return;
 		}

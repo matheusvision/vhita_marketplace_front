@@ -5,13 +5,14 @@ import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import WidgetDataType from '../../../types/WidgetDataType';
 
 /**
  * The OverdueWidget widget.
  */
 function OverdueWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { data, title } = widgets.overdue;
+	const { data, title } = widgets.overdue as WidgetDataType;
 
 	return (
 		<Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden">
@@ -31,7 +32,7 @@ function OverdueWidget() {
 			</div>
 			<div className="text-center mt-8">
 				<Typography className="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-red-500">
-					{data.count}
+					{String(data.count)}
 				</Typography>
 				<Typography className="text-lg font-medium text-red-600">{data.name}</Typography>
 			</div>
@@ -39,7 +40,7 @@ function OverdueWidget() {
 				className="flex items-baseline justify-center w-full mt-20 mb-24"
 				color="text.secondary"
 			>
-				<span className="truncate">{data.extra.name}</span>:<b className="px-8">{data.extra.count}</b>
+				<span className="truncate">{data.extra.name}</span>:<b className="px-8">{String(data.extra.count)}</b>
 			</Typography>
 		</Paper>
 	);

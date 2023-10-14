@@ -23,9 +23,10 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 	const { className } = props;
 
 	const dispatch = useAppDispatch();
+	const { data: mail } = useAppSelector(selectMail);
+
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const mail = useAppSelector(selectMail);
 	const spamFolderId = useAppSelector(selectSpamFolderId);
 	const trashFolderId = useAppSelector(selectTrashFolderId);
 	const navigate = useNavigate();
@@ -37,6 +38,10 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	if (!mail) {
+		return null;
+	}
 
 	return (
 		<div className={className}>

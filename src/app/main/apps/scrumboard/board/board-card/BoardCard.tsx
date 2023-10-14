@@ -39,7 +39,7 @@ function BoardCard(props: BoardCardProps) {
 	const { cardId, index } = props;
 
 	const dispatch = useAppDispatch();
-	const board = useAppSelector(selectBoard);
+	const { data: board } = useAppSelector(selectBoard);
 	const card = useAppSelector(selectCardById(cardId));
 	const members = useAppSelector(selectMembers);
 	const commentsCount = getCommentsCount(card);
@@ -53,6 +53,10 @@ function BoardCard(props: BoardCardProps) {
 
 	function getCommentsCount(_card: CardType) {
 		return _.sum(_card.activities.map((x) => (x.type === 'comment' ? 1 : 0)));
+	}
+
+	if (!board) {
+		return null;
 	}
 
 	return (
@@ -160,13 +164,13 @@ function BoardCard(props: BoardCardProps) {
 												const member = _.find(members, { id });
 												return (
 													<Tooltip
-														title={member.name}
+														title={member?.name}
 														key={id}
 													>
 														<Avatar
 															key={index}
 															alt="member"
-															src={member.avatar}
+															src={member?.avatar}
 														/>
 													</Tooltip>
 												);

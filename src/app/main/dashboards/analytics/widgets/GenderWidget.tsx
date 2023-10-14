@@ -8,13 +8,14 @@ import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import GenderWidgetType from '../types/GenderWidgetType';
 
 /**
  * Gender widget.
  */
 function GenderWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { series, labels, uniqueVisitors } = widgets.gender;
+	const { series, labels, uniqueVisitors } = widgets.gender as GenderWidgetType;
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
 
@@ -105,8 +106,8 @@ function GenderWidget() {
 					className="flex flex-auto items-center justify-center w-full h-full"
 					options={chartOptions}
 					series={series}
-					type={chartOptions.chart.type}
-					height={chartOptions.chart.height}
+					type={chartOptions?.chart?.type}
+					height={chartOptions?.chart?.height}
 				/>
 			</div>
 			<div className="mt-32">
@@ -119,7 +120,7 @@ function GenderWidget() {
 							<div className="flex items-center">
 								<Box
 									className="flex-0 w-8 h-8 rounded-full"
-									sx={{ backgroundColor: chartOptions.colors[i] as string }}
+									sx={{ backgroundColor: chartOptions?.colors?.[i] as string }}
 								/>
 								<Typography className="ml-12 truncate">{labels[i]}</Typography>
 							</div>

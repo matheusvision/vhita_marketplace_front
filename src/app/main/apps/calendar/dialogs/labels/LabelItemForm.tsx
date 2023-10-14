@@ -69,7 +69,7 @@ function NewLabelForm(props: NewLabelFormProps) {
 	useEffect(() => {
 		handleOnChange({
 			label,
-			form
+			form: form as LabelType
 		});
 	}, [handleOnChange, label, form]);
 
@@ -95,8 +95,8 @@ function NewLabelForm(props: NewLabelFormProps) {
 								onClick={() => {
 									dispatch(removeLabel(label.id)).then(() => {
 										dispatch(getEvents());
+										dispatch(closeDialog());
 									});
-									dispatch(closeDialog());
 								}}
 								color="primary"
 								autoFocus

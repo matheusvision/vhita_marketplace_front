@@ -1,15 +1,19 @@
 import _ from '@lodash';
+import { LabelType } from 'src/app/main/apps/mailbox/types/LabelType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 import ItemType from '../../app/main/apps/mailbox/types/ItemType';
+import { FolderType } from '../../app/main/apps/mailbox/types/FolderType';
+import { Params } from '../ExtendedMockAdapter';
 
 const mailsDB = mockApi.components.examples.mailbox_mails.value;
 const labelsDB = mockApi.components.examples.mailbox_labels.value;
 const filtersDB = mockApi.components.examples.mailbox_filters.value;
 const foldersDB = mockApi.components.examples.mailbox_folders.value;
 
-mock.onGet(/\/api\/mailbox\/mails\/filters\/(?<filterSlug>[^/]*)\/(?<mailId>[^/]*)/).reply(({ url }) => {
-	const { mailId } = url.match(/\/api\/mailbox\/mails\/filters\/(?<filterSlug>[^/]*)\/(?<mailId>[^/]*)/).groups;
+mock.onGet('/api/mailbox/mails/filters/:filterSlug/:mailId').reply((config) => {
+	const { mailId } = config.params as Params;
+
 	const response = _.find(mailsDB, { id: mailId });
 	if (!response) {
 		return [404, 'Requested mail do not exist.'];
@@ -17,16 +21,17 @@ mock.onGet(/\/api\/mailbox\/mails\/filters\/(?<filterSlug>[^/]*)\/(?<mailId>[^/]
 	return [200, response];
 });
 
-mock.onGet(/\/api\/mailbox\/mails\/filters\/[^]+/).reply(({ url }) => {
-	const { filterSlug } = url.match(/\/api\/mailbox\/mails\/filters\/(?<filterSlug>[^/]+)/).groups;
+mock.onGet('/api/mailbox/mails/filters/:filterSlug').reply((config) => {
+	const { filterSlug } = config.params as Params;
 
 	const response = _.filter(mailsDB, { [filterSlug]: true });
 
 	return [200, response];
 });
 
-mock.onGet(/\/api\/mailbox\/mails\/labels\/(?<labelSlug>[^/]*)\/(?<mailId>[^/]*)/).reply(({ url }) => {
-	const { mailId } = url.match(/\/api\/mailbox\/mails\/labels\/(?<labelSlug>[^/]*)\/(?<mailId>[^/]*)/).groups;
+mock.onGet('/api/mailbox/mails/labels/:labelSlug/:mailId').reply((config) => {
+	const { mailId } = config.params as Params;
+
 	const response = _.find(mailsDB, { id: mailId });
 	if (!response) {
 		return [404, 'Requested mail do not exist.'];
@@ -34,29 +39,31 @@ mock.onGet(/\/api\/mailbox\/mails\/labels\/(?<labelSlug>[^/]*)\/(?<mailId>[^/]*)
 	return [200, response];
 });
 
-mock.onGet(/\/api\/mailbox\/mails\/labels\/[^]+/).reply(({ url }) => {
-	const { labelSlug } = url.match(/\/api\/mailbox\/mails\/labels\/(?<labelSlug>[^/]+)/).groups;
+mock.onGet('/api/mailbox/mails/labels/:labelSlug').reply((config) => {
+	const { labelSlug } = config.params as Params;
 
-	const labelId = _.find(labelsDB, { slug: labelSlug }).id;
+	const labelId = (_.find(labelsDB, { slug: labelSlug }) as LabelType).id;
 
 	const response = _.filter(mailsDB, (item) => item.labels.includes(labelId));
 
 	return [200, response];
 });
 
-mock.onGet(/\/api\/mailbox\/mails\/(?<folderSlug>[^/]*)\/(?<mailId>[^/]*)/).reply(({ url }) => {
-	const { mailId } = url.match(/\/api\/mailbox\/mails\/(?<folderSlug>[^/]+)\/(?<mailId>[^/]+)/).groups;
+mock.onGet('/api/mailbox/mails/:folderSlug/:mailId').reply((config) => {
+	const { mailId } = config.params as Params;
+
 	const response = _.find(mailsDB, { id: mailId });
+
 	if (!response) {
 		return [404, 'Requested mail do not exist.'];
 	}
 	return [200, response];
 });
 
-mock.onGet(/\/api\/mailbox\/mails\/[^]+/).reply(({ url }) => {
-	const { folderSlug } = url.match(/\/api\/mailbox\/mails\/(?<folderSlug>[^/]+)/).groups;
+mock.onGet('/api/mailbox/mails/:folderSlug').reply((config) => {
+	const { folderSlug } = config.params as Params;
 
-	const folderId = _.find(foldersDB, { slug: folderSlug }).id;
+	const folderId = (_.find(foldersDB, { slug: folderSlug }) as FolderType).id;
 
 	const response = _.filter(mailsDB, { folder: folderId });
 
@@ -75,8 +82,8 @@ mock.onGet('/api/mailbox/labels').reply(() => {
 	return [200, labelsDB];
 });
 
-mock.onPost('/api/mailbox/actions').reply(({ data }: { data: string }) => {
-	const { type, value, ids } = JSON.parse(data) as {
+mock.onPost('/api/mailbox/actions').reply((config) => {
+	const { type, value, ids } = JSON.parse(config.data as string) as {
 		type: ItemType;
 		value: boolean | string | string[];
 		ids: string[];

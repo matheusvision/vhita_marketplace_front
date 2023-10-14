@@ -1,5 +1,3 @@
-import { DeepPartial } from 'react-hook-form';
-
 /**
  * The Layout3 Config object.
  */
@@ -142,6 +140,6 @@ const Layout3Config = {
 	}
 };
 
-export type Layout3ConfigDefaultsType = DeepPartial<(typeof Layout3Config)['defaults']>;
+export type Layout3ConfigDefaultsType = (typeof Layout3Config)['defaults'];
 
 export default Layout3Config;

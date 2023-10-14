@@ -102,7 +102,7 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 	const { selectedOrderIds, onRequestSort, onSelectAllClick, tableOrder, rowCount, onMenuItemClick } = props;
 	const numSelected = selectedOrderIds.length;
 
-	const [selectedOrdersMenu, setSelectedOrdersMenu] = useState<HTMLButtonElement>(null);
+	const [selectedOrdersMenu, setSelectedOrdersMenu] = useState<HTMLButtonElement | null>(null);
 
 	const dispatch = useAppDispatch();
 
@@ -147,7 +147,6 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 							}}
 						>
 							<IconButton
-								aria-owns={selectedOrdersMenu ? 'selectedOrdersMenu' : null}
 								aria-haspopup="true"
 								onClick={openSelectedOrdersMenu}
 								size="large"
@@ -211,7 +210,7 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 							)}
 						</TableCell>
 					);
-				}, this)}
+				})}
 			</TableRow>
 		</TableHead>
 	);

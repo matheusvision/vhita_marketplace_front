@@ -32,7 +32,7 @@ function DemoFrame(props: DemoFrameProps) {
 	const [iframeLoaded, onLoad] = React.useReducer(() => true, false);
 
 	React.useEffect(() => {
-		const document = frameRef.current.contentDocument;
+		const document = frameRef.current?.contentDocument;
 
 		// When we hydrate the iframe then the load event is already dispatched
 		// once the iframe markup is parsed (maybe later but the important part is

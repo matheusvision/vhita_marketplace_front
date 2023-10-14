@@ -111,7 +111,7 @@ function CalendarApp() {
 	const [currentDate, setCurrentDate] = useState<DatesSetArg>();
 	const dispatch = useAppDispatch();
 	const events = useAppSelector(selectFilteredEvents);
-	const calendarRef = useRef<FullCalendar>();
+	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 
@@ -135,15 +135,15 @@ function CalendarApp() {
 		dispatch(openNewEventDialog(selectInfo));
 	};
 
-	const handleEventDrop = (eventDropInfo: EventDropArg & { event: EventType }) => {
+	const handleEventDrop = (eventDropInfo: EventDropArg): void => {
 		const { id, title, allDay, start, end, extendedProps } = eventDropInfo.event;
 		dispatch(
 			updateEvent({
 				id,
 				title,
 				allDay,
-				start,
-				end,
+				start: start?.toISOString() ?? '',
+				end: end?.toISOString() ?? '',
 				extendedProps
 			})
 		);

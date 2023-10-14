@@ -21,6 +21,9 @@ import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import { removeList, updateList } from '../../store/listsSlice';
 import { ListType } from '../../types/ListType';
 
+type FormType = {
+	title: ListType['title'];
+};
 /**
  * Form Validation Schema
  */
@@ -31,7 +34,7 @@ const schema = yup.object().shape({
 type BoardListHeaderProps = {
 	list: ListType;
 	cardIds: string[];
-	handleProps: DraggableProvidedDragHandleProps;
+	handleProps: DraggableProvidedDragHandleProps | null | undefined;
 	className?: string;
 };
 
@@ -45,7 +48,7 @@ function BoardListHeader(props: BoardListHeaderProps) {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 	const [formOpen, setFormOpen] = useState(false);
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues: {
 			title: list.title
@@ -86,7 +89,7 @@ function BoardListHeader(props: BoardListHeaderProps) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(newData: ListType) {
+	function onSubmit(newData: FormType) {
 		dispatch(updateList({ id: list.id, newData }));
 		handleCloseForm();
 	}
@@ -150,7 +153,6 @@ function BoardListHeader(props: BoardListHeaderProps) {
 						{cardIds.length}
 					</Box>
 					<IconButton
-						aria-owns={anchorEl ? 'actions-menu' : null}
 						aria-haspopup="true"
 						onClick={handleMenuClick}
 						size="small"

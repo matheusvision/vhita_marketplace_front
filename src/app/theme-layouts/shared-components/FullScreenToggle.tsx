@@ -7,12 +7,12 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 type FullScreenDocumentType = Document & {
-	mozFullScreenElement?: Element;
-	msFullscreenElement?: Element;
-	webkitFullscreenElement?: Element;
 	mozCancelFullScreen?: () => void;
 	msExitFullscreen?: () => void;
 	webkitExitFullscreen?: () => void;
+	mozFullScreenElement?: Element | null;
+	msFullscreenElement?: Element | null;
+	webkitFullscreenElement?: Element | null;
 };
 
 type FullScreenHTMLElementType = HTMLElement & {
@@ -34,15 +34,16 @@ function HeaderFullScreenToggle(props: HeaderFullScreenToggleProps) {
 	const [isFullScreen, setIsFullScreen] = useState(false);
 
 	useEnhancedEffect(() => {
-		document.onfullscreenchange = () => setIsFullScreen(document[getBrowserFullscreenElementProp()] != null);
+		document.onfullscreenchange = () =>
+			setIsFullScreen((document as FullScreenDocumentType)[getBrowserFullscreenElementProp()] != null);
 
 		return () => {
-			document.onfullscreenchange = undefined;
+			document.onfullscreenchange = null;
 		};
 	});
 
-	function getBrowserFullscreenElementProp() {
-		const doc: FullScreenDocumentType = document;
+	function getBrowserFullscreenElementProp(): keyof FullScreenDocumentType {
+		const doc: FullScreenDocumentType = document as FullScreenDocumentType;
 
 		if (typeof doc.fullscreenElement !== 'undefined') {
 			return 'fullscreenElement';

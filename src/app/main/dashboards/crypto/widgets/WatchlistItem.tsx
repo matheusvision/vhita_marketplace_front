@@ -96,8 +96,8 @@ function WatchlistItem(props: WatchlistItemProps) {
 				className="flex-auto w-full h-40"
 				options={chartOptions}
 				series={item.series}
-				type={chartOptions.chart.type}
-				height={chartOptions.chart.height}
+				type={chartOptions?.chart?.type}
+				height={chartOptions?.chart?.height}
 			/>
 		</div>
 	);

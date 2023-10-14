@@ -52,7 +52,7 @@ function NoteListItem(props: NoteListItemProps) {
 						<div
 							className={clsx('w-full break-words', variateDescSize ? 'font-500' : 'text-14')}
 							ref={(el) => {
-								setTimeout(() => setDescriptionStyle(note.content, el, variateDescSize));
+								setTimeout(() => setDescriptionStyle(note.content, el, Boolean(variateDescSize)));
 							}}
 						>
 							{note.content}

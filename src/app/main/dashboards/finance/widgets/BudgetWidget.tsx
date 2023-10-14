@@ -7,15 +7,16 @@ import LinearProgress from '@mui/material/LinearProgress';
 import IconButton from '@mui/material/IconButton';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import BudgetWidgetType from '../types/BudgetWidgetType';
 
 /**
  * The BudgetWidget widget.
  */
 function BudgetWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { expenses, expensesLimit, savings, savingsGoal, bills, billsLimit } = widgets.budget;
+	const { expenses, expensesLimit, savings, savingsGoal, bills, billsLimit } = widgets.budget as BudgetWidgetType;
 
-	function calcProgressVal(val, limit) {
+	function calcProgressVal(val: number, limit: number) {
 		const percentage = (val * 100) / limit;
 
 		return percentage > 100 ? 100 : percentage;

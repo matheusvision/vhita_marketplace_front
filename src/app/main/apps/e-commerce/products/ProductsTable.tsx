@@ -16,6 +16,7 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Many } from 'lodash';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
+import * as React from 'react';
 import { getProducts, selectProducts, selectProductsSearchText } from '../store/productsSlice';
 import ProductsTableHead from './ProductsTableHead';
 import { ProductType } from '../types/ProductType';
@@ -34,7 +35,7 @@ function ProductsTable(props: ProductsTableProps) {
 	const searchText = useAppSelector(selectProductsSearchText);
 
 	const [loading, setLoading] = useState(true);
-	const [selected, setSelected] = useState([]);
+	const [selected, setSelected] = useState<string[]>([]);
 	const [data, setData] = useState(products);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -43,7 +44,7 @@ function ProductsTable(props: ProductsTableProps) {
 		id: string;
 	}>({
 		direction: 'asc',
-		id: null
+		id: ''
 	});
 
 	useEffect(() => {
@@ -91,7 +92,7 @@ function ProductsTable(props: ProductsTableProps) {
 
 	function handleCheck(event: ChangeEvent<HTMLInputElement>, id: string) {
 		const selectedIndex = selected.indexOf(id);
-		let newSelected = [];
+		let newSelected: string[] = [];
 
 		if (selectedIndex === -1) {
 			newSelected = newSelected.concat(selected, id);
@@ -106,8 +107,8 @@ function ProductsTable(props: ProductsTableProps) {
 		setSelected(newSelected);
 	}
 
-	function handleChangePage(event, value: number) {
-		setPage(+value);
+	function handleChangePage(event: React.MouseEvent<HTMLButtonElement> | null, page: number) {
+		setPage(+page);
 	}
 
 	function handleChangeRowsPerPage(event: React.ChangeEvent<HTMLInputElement>) {
@@ -204,10 +205,10 @@ function ProductsTable(props: ProductsTableProps) {
 											scope="row"
 											padding="none"
 										>
-											{n.images.length > 0 && n.featuredImageId ? (
+											{n?.images?.length > 0 && n.featuredImageId ? (
 												<img
 													className="w-full block rounded"
-													src={_.find(n.images, { id: n.featuredImageId }).url}
+													src={_.find(n.images, { id: n.featuredImageId })?.url}
 													alt={n.name}
 												/>
 											) : (

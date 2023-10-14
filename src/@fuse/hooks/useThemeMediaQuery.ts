@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { ThemeOptions } from '@mui/material/styles/createTheme';
+import { Theme } from '@mui/system/createTheme/createTheme';
 
 /**
  * The useThemeMediaQuery function is a custom hook that returns a boolean indicating whether the current screen matches the specified media query.
  * It takes in a themeCallbackFunc as a parameter, which is a function that returns a string representing the media query to match.
  * It returns a boolean indicating whether the current screen matches the specified media query.
  */
-function useThemeMediaQuery(themeCallbackFunc: (theme: ThemeOptions) => string) {
+function useThemeMediaQuery(themeCallbackFunc: (theme: Theme) => string) {
 	const theme = useTheme();
 
 	const query = themeCallbackFunc(theme).replace('@media ', '');

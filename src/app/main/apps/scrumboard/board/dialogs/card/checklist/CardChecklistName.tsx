@@ -11,6 +11,10 @@ import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ChecklistType } from '../../../../types/ChecklistType';
 
+type FormType = {
+	name: ChecklistType['name'];
+};
+
 /**
  * Form Validation Schema
  */
@@ -34,7 +38,7 @@ const CardChecklistName = forwardRef<CardChecklistHandle, CardChecklistNameProps
 	const { name, onNameChange } = props;
 
 	const [formOpen, setFormOpen] = useState(false);
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues: {
 			name
@@ -67,7 +71,7 @@ const CardChecklistName = forwardRef<CardChecklistHandle, CardChecklistNameProps
 		setFormOpen(false);
 	}
 
-	function onSubmit(data: ChecklistType) {
+	function onSubmit(data: FormType) {
 		onNameChange(data.name);
 		handleCloseForm();
 	}

@@ -1,5 +1,4 @@
-import { useEffect, useMemo } from 'react';
-import _ from '@lodash';
+import { useEffect } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
@@ -15,6 +14,20 @@ import NewVsReturningWidget from './widgets/NewVsReturningWidget';
 import AgeWidget from './widgets/AgeWidget';
 import LanguageWidget from './widgets/LanguageWidget';
 import GenderWidget from './widgets/GenderWidget';
+import _ from '../../../../@lodash/@lodash';
+
+const container = {
+	show: {
+		transition: {
+			staggerChildren: 0.06
+		}
+	}
+};
+
+const item = {
+	hidden: { opacity: 0, y: 20 },
+	show: { opacity: 1, y: 0 }
+};
 
 /**
  * The analytics dashboard app.
@@ -22,22 +35,19 @@ import GenderWidget from './widgets/GenderWidget';
 function AnalyticsDashboardApp() {
 	const dispatch = useAppDispatch();
 	const widgets = useAppSelector(selectWidgets);
-	const content = useMemo(() => {
-		const container = {
-			show: {
-				transition: {
-					staggerChildren: 0.06
-				}
-			}
-		};
 
-		const item = {
-			hidden: { opacity: 0, y: 20 },
-			show: { opacity: 1, y: 0 }
-		};
+	useEffect(() => {
+		dispatch(getWidgets());
+	}, [dispatch]);
 
-		return (
-			!_.isEmpty(widgets) && (
+	if (_.isEmpty(widgets)) {
+		return null;
+	}
+
+	return (
+		<FusePageSimple
+			header={<AnalyticsDashboardAppHeader />}
+			content={
 				<motion.div
 					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 w-full p-24 md:p-32"
 					variants={container}
@@ -106,18 +116,7 @@ function AnalyticsDashboardApp() {
 						</motion.div>
 					</div>
 				</motion.div>
-			)
-		);
-	}, [widgets]);
-
-	useEffect(() => {
-		dispatch(getWidgets());
-	}, [dispatch]);
-
-	return (
-		<FusePageSimple
-			header={<AnalyticsDashboardAppHeader />}
-			content={content}
+			}
 		/>
 	);
 }

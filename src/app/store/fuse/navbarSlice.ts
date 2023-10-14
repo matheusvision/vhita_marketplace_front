@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
 
+type AppRootStateType = RootStateType<navbarSliceType>;
+
 /**
  * The type definition for the initial state of the navbar slice.
  */
@@ -23,7 +25,7 @@ const initialState: initialStateProps = {
  * The navbar slice.
  */
 const navbarSlice = createSlice({
-	name: 'navbar',
+	name: 'fuse/navbar',
 	initialState,
 	reducers: {
 		navbarToggleFolded: (state) => {
@@ -68,6 +70,8 @@ export const {
 	navbarToggleMobile
 } = navbarSlice.actions;
 
-export const selectFuseNavbar = ({ fuse }: RootStateType) => fuse.navbar;
+export const selectFuseNavbar = ({ fuse }: AppRootStateType) => fuse.navbar;
 
-export default navbarSlice.reducer;
+export type navbarSliceType = typeof navbarSlice;
+
+export default navbarSlice;

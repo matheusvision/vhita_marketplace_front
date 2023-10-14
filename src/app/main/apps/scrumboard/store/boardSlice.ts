@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import history from '@history';
 import _ from '@lodash';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootStateType } from 'app/store/types';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import { PartialDeep } from 'type-fest';
 import { DropResult } from 'react-beautiful-dnd';
 import reorder, { reorderQuoteMap } from './reorder';
@@ -21,7 +21,7 @@ type AppRootStateType = RootStateType<[BoardSliceType]>;
  */
 export const getBoard = createAppAsyncThunk<BoardType, string>(
 	'scrumboardApp/board/get',
-	async (boardId, { dispatch }) => {
+	async (boardId, { dispatch, rejectWithValue }) => {
 		try {
 			const response = await axios.get(`/api/scrumboard/boards/${boardId}`);
 
@@ -46,7 +46,8 @@ export const getBoard = createAppAsyncThunk<BoardType, string>(
 				pathname: '/apps/scrumboard/board'
 			});
 
-			return null;
+			const axiosError = error as AxiosError;
+			return rejectWithValue(axiosError.message);
 		}
 	}
 );
@@ -58,7 +59,7 @@ export const updateBoard = createAppAsyncThunk<BoardType, PartialDeep<BoardType>
 	'scrumboardApp/board/update',
 	async (newData, { getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const { board } = AppState.scrumboardApp;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}`, newData);
 
@@ -75,8 +76,9 @@ export const reorderList = createAppAsyncThunk<BoardType, DropResult>(
 	'scrumboardApp/board/reorderList',
 	async ({ source, destination }, { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const { board } = AppState.scrumboardApp;
-		const ordered = reorder(_.merge([], board.lists), source.index, destination.index);
+		const board = AppState.scrumboardApp.board.data as BoardType;
+
+		const ordered = reorder(_.merge([], board.lists), source.index, destination?.index);
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}`, { lists: ordered });
 
@@ -104,7 +106,7 @@ export const reorderCard = createAppAsyncThunk<BoardType, DropResult>(
 	'scrumboardApp/board/reorderCard',
 	async ({ source, destination }, { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const { board } = AppState.scrumboardApp;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const ordered = reorderQuoteMap(_.merge([], board.lists), source, destination);
 
@@ -122,7 +124,6 @@ export const reorderCard = createAppAsyncThunk<BoardType, DropResult>(
 				}
 			})
 		);
-
 		return data;
 	}
 );
@@ -135,7 +136,7 @@ export const deleteBoard = createAppAsyncThunk<string, string>(
 	async (params, { getState }) => {
 		const AppState = getState() as AppRootStateType;
 
-		const board = AppState.scrumboardApp.board as BoardType;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const response = await axios.delete(`/api/scrumboard/boards/${board.id}`);
 
@@ -149,7 +150,11 @@ export const deleteBoard = createAppAsyncThunk<string, string>(
 	}
 );
 
-const initialState: BoardType = null;
+const initialState: AsyncStateType<BoardType> = {
+	data: null,
+	status: 'idle',
+	error: null
+};
 
 /**
  * The Scrumbboard board slice.
@@ -158,42 +163,65 @@ const boardSlice = createSlice({
 	name: 'scrumboardApp/board',
 	initialState,
 	reducers: {
-		resetBoard: () => null,
+		resetBoard: () => {},
 		addLabel: (state, action) => {
-			state.labels = [...state.labels, action.payload as LabelType] as LabelsType;
+			if (state.data) {
+				state.data.labels = [...state.data.labels, action.payload as LabelType] as LabelsType;
+			}
 		}
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(getBoard.fulfilled, (state, action) => action.payload)
-			.addCase(updateBoard.fulfilled, (state, action) => action.payload)
-			.addCase(reorderList.fulfilled, (state, action) => action.payload)
-			.addCase(reorderCard.fulfilled, (state, action) => action.payload)
+			.addCase(getBoard.fulfilled, (state, action) => {
+				state.data = action.payload;
+				state.status = 'succeeded';
+			})
+			.addCase(updateBoard.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(reorderList.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(reorderCard.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
 			.addCase(deleteBoard.fulfilled, (state) => {
 				// eslint-disable-next-line unused-imports/no-unused-vars
 				state = initialState;
 			})
 			.addCase(removeCard.fulfilled, (state, action) => {
 				const cardId = action.payload;
-
-				state.lists = state.lists.map((list) => ({
-					...list,
-					cards: _.reject(list.cards, (id) => id === cardId)
-				}));
+				if (state.data) {
+					state.data.lists = state.data.lists.map((list) => ({
+						...list,
+						cards: _.reject(list.cards, (id) => id === cardId)
+					}));
+				}
 			})
 			.addCase(removeList.fulfilled, (state, action) => {
 				const listId = action.payload;
-
-				state.lists = _.reject(state.lists, { id: listId });
+				if (state.data) {
+					state.data.lists = _.reject(state.data.lists, { id: listId });
+				}
 			})
 			.addCase(newList.fulfilled, (state, action) => {
-				state.lists = [...state.lists, { id: action.payload.id, cards: [] }];
+				if (state.data) {
+					state.data.lists = [
+						...state.data.lists,
+						{
+							id: action.payload.id,
+							cards: []
+						}
+					];
+				}
 			})
 			.addCase(newCard.fulfilled, (state, action) => {
 				const cardData = action.payload;
-				state.lists = state.lists.map((list) =>
-					list.id === cardData.listId ? { ...list, cards: [...list.cards, cardData.id] } : list
-				);
+				if (state.data) {
+					state.data.lists = state.data.lists.map((list) =>
+						list.id === cardData.listId ? { ...list, cards: [...list.cards, cardData.id] } : list
+					);
+				}
 			});
 	}
 });

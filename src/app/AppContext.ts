@@ -10,12 +10,12 @@ export type AppContextType = {
 	/**
 	 * The routes to be used in the app.
 	 */
-	routes?: RouteObject[];
+	routes: RouteObject[];
 };
 
 /**
  * The AppContext object.
  */
-const AppContext = createContext<AppContextType>({});
+const AppContext = createContext<AppContextType>({ routes: [] });
 
 export default AppContext;

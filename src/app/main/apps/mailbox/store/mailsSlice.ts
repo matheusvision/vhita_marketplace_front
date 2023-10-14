@@ -102,9 +102,14 @@ const mailsSlice = createSlice({
 			state.selectedMailIds = [];
 		},
 		selectMailsByParameter: (state, action) => {
-			const [parameter, value] = action.payload as [string, string];
+			const [parameter, value] = action.payload as [keyof MailType, string];
 
-			state.selectedMailIds = state.ids.filter((id) => state.entities[id][parameter] === value) as string[];
+			state.selectedMailIds = state.ids.filter((id) => {
+				const entity = state.entities[id] as MailType;
+				const entityParameter = entity[parameter];
+
+				return entityParameter ? entityParameter === value : false;
+			}) as string[];
 		},
 		toggleInSelectedMails: (state, action) => {
 			const mailId = action.payload as string;

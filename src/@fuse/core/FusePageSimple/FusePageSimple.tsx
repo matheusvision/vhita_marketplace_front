@@ -229,10 +229,10 @@ const FusePageSimple = forwardRef<
 	useImperativeHandle(ref, () => ({
 		rootRef,
 		toggleLeftSidebar: (val: boolean) => {
-			leftSidebarRef.current.toggleSidebar(val);
+			leftSidebarRef?.current?.toggleSidebar(val);
 		},
 		toggleRightSidebar: (val: boolean) => {
-			rightSidebarRef.current.toggleSidebar(val);
+			rightSidebarRef?.current?.toggleSidebar(val);
 		}
 	}));
 

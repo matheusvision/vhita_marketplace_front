@@ -9,7 +9,7 @@ import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from 'a
 import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '../FuseSvgIcon';
 
-export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info' | undefined;
+export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info';
 
 type StyledSnackbarProps = {
 	variant?: FuseMessageVariantType;

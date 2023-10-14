@@ -8,7 +8,7 @@ export type CardIdsType = CardType['id'][];
 /**
  * The board model.
  */
-function BoardModel(data: PartialDeep<BoardType>) {
+function BoardModel(data: PartialDeep<BoardType>): BoardType {
 	data = data || {};
 
 	return _.defaults(data, {

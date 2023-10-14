@@ -3,9 +3,9 @@ import MobileDetect from 'mobile-detect';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import React, { forwardRef, useEffect, useRef, ReactNode, useCallback, useState } from 'react';
-import { connect } from 'react-redux';
-import { RootStateType } from 'app/store/types';
 import history from '@history';
+import { useAppSelector } from 'app/store';
+import { selectCustomScrollbarsEnabled } from 'app/store/fuse/settingsSlice';
 
 const Root = styled('div')(() => ({
 	overscrollBehavior: 'contain',
@@ -37,7 +37,6 @@ type FuseScrollbarsProps = {
 	className?: string;
 	children: ReactNode;
 	enable?: boolean;
-	customScrollbars?: boolean;
 	scrollToTopOnChildChange?: () => void;
 	scrollToTopOnRouteChange?: () => void;
 	option?: {
@@ -55,7 +54,6 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 		className = '',
 		children,
 		id = '',
-		customScrollbars,
 		scrollToTopOnChildChange = false,
 		scrollToTopOnRouteChange = false,
 		enable = true,
@@ -67,10 +65,11 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 	const psRef = useRef<PerfectScrollbar | null>(null);
 	const handlerByEvent = useRef<Map<string, EventListener>>(new Map());
 	const [style, setStyle] = useState({});
+	const customScrollbars = useAppSelector(selectCustomScrollbarsEnabled);
 
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {
-			const callback = props[handlerNameByEvent[key]] as (T: HTMLDivElement) => void;
+			const callback = props[handlerNameByEvent[key] as keyof FuseScrollbarsProps] as (T: HTMLDivElement) => void;
 
 			if (callback) {
 				const handler: EventListener = () => callback(containerRef.current);
@@ -146,6 +145,8 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 			className={className}
 			style={style}
 			ref={(el) => {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
 				containerRef.current = el;
 				if (typeof ref === 'function') {
 					ref(el);
@@ -159,10 +160,4 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 	);
 });
 
-function mapStateToProps({ fuse }: RootStateType) {
-	return {
-		customScrollbars: fuse.settings.current.customScrollbars
-	};
-}
-
-export default connect(mapStateToProps, null, null, { forwardRef: true })(FuseScrollbars);
+export default FuseScrollbars;

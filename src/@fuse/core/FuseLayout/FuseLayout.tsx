@@ -8,13 +8,13 @@ import {
 	setSettings
 } from 'app/store/fuse/settingsSlice';
 import { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { useAppDispatch } from 'app/store';
-import { useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha } from '@mui/material/styles';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
+import { PartialDeep } from 'type-fest';
 
 export type FuseRouteObjectType = RouteObject & {
 	settings?: FuseSettingsConfigType;
@@ -105,8 +105,8 @@ type FuseLayoutProps = {
 function FuseLayout(props: FuseLayoutProps) {
 	const { layouts, ...restProps } = props;
 	const dispatch = useAppDispatch();
-	const settings = useSelector(selectFuseCurrentSettings);
-	const defaultSettings = useSelector(selectFuseDefaultSettings);
+	const settings = useAppSelector(selectFuseCurrentSettings);
+	const defaultSettings = useAppSelector(selectFuseDefaultSettings);
 
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
@@ -118,7 +118,7 @@ function FuseLayout(props: FuseLayoutProps) {
 
 	const matched = matchedRoutes?.[0] || false;
 
-	const newSettings = useRef<FuseSettingsConfigType>(null);
+	const newSettings = useRef<PartialDeep<FuseSettingsConfigType>>({});
 
 	const shouldAwaitRender = useCallback(() => {
 		let _newSettings: FuseSettingsConfigType;
@@ -141,7 +141,7 @@ function FuseLayout(props: FuseLayoutProps) {
 			 */
 			_newSettings = _.merge({}, defaultSettings);
 		} else {
-			_newSettings = newSettings.current;
+			_newSettings = newSettings.current as FuseSettingsConfigType;
 		}
 
 		if (!_.isEqual(newSettings.current, _newSettings)) {
@@ -157,7 +157,7 @@ function FuseLayout(props: FuseLayoutProps) {
 
 	useDeepCompareEffect(() => {
 		if (!_.isEqual(newSettings.current, settings)) {
-			dispatch(setSettings(newSettings.current));
+			dispatch(setSettings(newSettings.current as FuseSettingsConfigType));
 		}
 	}, [dispatch, newSettings.current, settings]);
 

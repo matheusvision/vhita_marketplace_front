@@ -2,20 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import RecentTransactionsWidgetType from '../types/RecentTransactionsWidgetType';
-import CurrentStatementWidgetType from '../types/CurrentStatementWidgetType';
-import PreviousStatementWidgetType from '../types/PreviousStatementWidgetType';
-import BudgetWidgetType from '../types/BudgetWidgetType';
-import AccountBalanceWidgetType from '../types/AccountBalanceWidgetType';
 
 type AppRootStateType = RootStateType<widgetsSliceType>;
 
 type WidgetsType = {
-	recentTransactions?: RecentTransactionsWidgetType;
-	currentStatement?: CurrentStatementWidgetType;
-	previousStatement?: PreviousStatementWidgetType;
-	budget?: BudgetWidgetType;
-	accountBalance?: AccountBalanceWidgetType;
+	[key: string]: unknown;
 };
 
 export const getWidgets = createAppAsyncThunk('financeDashboardApp/widgets/getWidgets', async () => {

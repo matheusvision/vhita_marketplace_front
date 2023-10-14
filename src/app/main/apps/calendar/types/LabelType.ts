@@ -2,7 +2,7 @@
  * Label Type
  */
 export type LabelType = {
-	id?: string;
+	id: string;
 	title: string;
 	color: string;
 };

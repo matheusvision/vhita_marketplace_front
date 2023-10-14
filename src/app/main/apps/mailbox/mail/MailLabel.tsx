@@ -19,6 +19,7 @@ function MailLabel(props: MailLabelProps) {
 	if (!label) {
 		return null;
 	}
+
 	return (
 		<Chip
 			label={label.title}

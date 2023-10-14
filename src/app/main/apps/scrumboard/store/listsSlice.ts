@@ -3,9 +3,9 @@ import axios from 'axios';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import ListModel from '../models/ListModel';
-import { BoardType } from '../types/BoardType';
 import { ListsType, ListType } from '../types/ListType';
 import { BoardSliceType } from './boardSlice';
+import { BoardType } from '../types/BoardType';
 
 type AppRootStateType = RootStateType<[ListsSliceType, BoardSliceType]>;
 
@@ -23,11 +23,11 @@ export const getLists = createAppAsyncThunk<ListsType, string>('scrumboardApp/li
 /**
  * Create List
  */
-export const newList = createAppAsyncThunk<ListType, ListType>(
+export const newList = createAppAsyncThunk<ListType, Partial<ListType>>(
 	'scrumboardApp/lists/new',
 	async (list, { getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const board = AppState.scrumboardApp.board as BoardType;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const response = await axios.post(`/api/scrumboard/boards/${board.id}/lists`, ListModel(list));
 
@@ -40,11 +40,11 @@ export const newList = createAppAsyncThunk<ListType, ListType>(
 /**
  * Update list
  */
-export const updateList = createAppAsyncThunk<ListType, { id: string; newData: ListType }>(
+export const updateList = createAppAsyncThunk<ListType, { id: string; newData: Partial<ListType> }>(
 	'scrumboardApp/lists/update',
 	async ({ id, newData }, { getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const board = AppState.scrumboardApp.board as BoardType;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const response = await axios.put(`/api/scrumboard/boards/${board.id}/lists/${id}`, newData);
 
@@ -61,7 +61,7 @@ export const removeList = createAppAsyncThunk<string, string>(
 	'scrumboardApp/lists/remove',
 	async (id, { getState }) => {
 		const AppState = getState() as AppRootStateType;
-		const board = AppState.scrumboardApp.board as BoardType;
+		const board = AppState.scrumboardApp.board.data as BoardType;
 
 		const response = await axios.delete(`/api/scrumboard/boards/${board.id}/lists/${id}`);
 

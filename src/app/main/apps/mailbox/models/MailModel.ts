@@ -10,12 +10,12 @@ export type MailsType = MailType[];
 /**
  * The mail model.
  */
-const MailModel = (data: PartialDeep<MailType>) =>
+const MailModel = (data: PartialDeep<MailType>): MailType =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		type: '',
 		from: {
-			name: '',
+			email: '',
 			avatar: '',
 			contact: ''
 		},

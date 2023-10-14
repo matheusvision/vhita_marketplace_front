@@ -13,7 +13,7 @@ import { AlbumsType } from '../../types/AlbumType';
  * The photos videos tab.
  */
 function PhotosVideosTab() {
-	const [data, setData] = useState<AlbumsType>(null);
+	const [data, setData] = useState<AlbumsType>([]);
 
 	useEffect(() => {
 		axios.get('/api/profile/photos-videos').then((res) => {

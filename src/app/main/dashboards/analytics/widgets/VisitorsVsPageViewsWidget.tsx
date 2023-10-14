@@ -8,6 +8,7 @@ import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import VisitorsVsPageViewsType from '../types/VisitorsVsPageViewsType';
 
 /**
  * Visitors vs. Page Views widget.
@@ -15,7 +16,8 @@ import { selectWidgets } from '../store/widgetsSlice';
 function VisitorsVsPageViewsWidget() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);
-	const { series, averageRatio, predictedRatio, overallScore } = widgets.visitorsVsPageViews;
+	const { series, averageRatio, predictedRatio, overallScore } =
+		widgets.visitorsVsPageViews as VisitorsVsPageViewsType;
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -194,8 +196,8 @@ function VisitorsVsPageViewsWidget() {
 					className="flex-auto w-full h-full"
 					options={chartOptions}
 					series={series}
-					type={chartOptions.chart.type}
-					height={chartOptions.chart.height}
+					type={chartOptions?.chart?.type}
+					height={chartOptions?.chart?.height}
 				/>
 			</div>
 		</Paper>

@@ -15,7 +15,7 @@ import ConversionsWidgetType from '../types/ConversionsWidgetType';
 function ConversionsWidget() {
 	const theme = useTheme();
 	const widgets = useAppSelector(selectWidgets);
-	const { series, amount, labels }: ConversionsWidgetType = widgets.conversions;
+	const { series, amount, labels } = widgets.conversions as ConversionsWidgetType;
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -84,8 +84,8 @@ function ConversionsWidget() {
 				<ReactApexChart
 					options={chartOptions}
 					series={series}
-					type={chartOptions.chart.type}
-					height={chartOptions.chart.height}
+					type={chartOptions?.chart?.type}
+					height={chartOptions?.chart?.height}
 				/>
 			</div>
 		</Paper>

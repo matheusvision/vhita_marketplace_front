@@ -4,6 +4,7 @@ import mockApi from '../mock-api.json';
 import mock from '../mock';
 import { EventType } from '../../app/main/apps/calendar/types/EventType';
 import { LabelType } from '../../app/main/apps/calendar/types/LabelType';
+import { Params } from '../ExtendedMockAdapter';
 
 const eventsDB = mockApi.components.examples.calendar_events.value as EventType[];
 const labelsDB = mockApi.components.examples.calendar_labels.value as LabelType[];
@@ -14,21 +15,23 @@ mock.onGet('/api/calendar/labels').reply(() => {
 
 mock.onPost('/api/calendar/labels').reply(({ data }) => {
 	const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as LabelType;
+
 	labelsDB.push(newLabel);
 
 	return [200, newLabel];
 });
 
-mock.onPut(/\/api\/calendar\/labels\/[^/]+/).reply(({ url, data }) => {
-	const { id } = url.match(/\/api\/calendar\/labels\/(?<id>[^/]+)/).groups;
+mock.onPut('/api/calendar/labels/:id').reply((config) => {
+	const { id } = config.params as Params;
 
-	_.assign(_.find(labelsDB, { id }), JSON.parse(data as string));
+	_.assign(_.find(labelsDB, { id }), JSON.parse(config.data as string));
 
 	return [200, _.find(labelsDB, { id })];
 });
 
-mock.onGet(/\/api\/calendar\/labels\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/calendar\/labels\/(?<id>[^/]+)/).groups;
+mock.onGet('/api/calendar/labels/:id').reply((config) => {
+	const { id } = config.params as Params;
+
 	const response = _.find(labelsDB, { label: id });
 
 	if (response) {
@@ -38,8 +41,9 @@ mock.onGet(/\/api\/calendar\/labels\/[^/]+/).reply((config) => {
 	return [404, 'Requested label do not exist.'];
 });
 
-mock.onGet(/\/api\/calendar\/labels\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/calendar\/labels\/(?<id>[^/]+)/).groups;
+mock.onGet('/api/calendar/labels/:id').reply((config) => {
+	const { id } = config.params as Params;
+
 	const response = _.find(labelsDB, { label: id });
 
 	if (response) {
@@ -49,8 +53,8 @@ mock.onGet(/\/api\/calendar\/labels\/[^/]+/).reply((config) => {
 	return [404, 'Requested label do not exist.'];
 });
 
-mock.onDelete(/\/api\/calendar\/labels\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/calendar\/labels\/(?<id>[^/]+)/).groups;
+mock.onDelete('/api/calendar/labels/:id').reply((config) => {
+	const { id } = config.params as Params;
 
 	_.remove(labelsDB, { id });
 	_.remove(eventsDB, { extendedProps: { label: id } });
@@ -69,16 +73,17 @@ mock.onPost('/api/calendar/events').reply(({ data }) => {
 	return [200, newEvent];
 });
 
-mock.onPut(/\/api\/calendar\/events\/[^/]+/).reply(({ url, data }) => {
-	const { id } = url.match(/\/api\/calendar\/events\/(?<id>[^/]+)/).groups;
+mock.onPut('/api/calendar/events/:id').reply((config) => {
+	const { id } = config.params as Params;
 
-	_.assign(_.find(eventsDB, { id }), JSON.parse(data as string)) as EventType;
+	_.assign(_.find(eventsDB, { id }), JSON.parse(config.data as string)) as EventType;
 
 	return [200, _.find(eventsDB, { id })];
 });
 
-mock.onGet(/\/api\/calendar\/events\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/calendar\/events\/(?<id>[^/]+)/).groups;
+mock.onGet('/api/calendar/events/:id').reply((config) => {
+	const { id } = config.params as Params;
+
 	const response = _.find(eventsDB, { event: id });
 
 	if (response) {
@@ -88,19 +93,8 @@ mock.onGet(/\/api\/calendar\/events\/[^/]+/).reply((config) => {
 	return [404, 'Requested event do not exist.'];
 });
 
-mock.onGet(/\/api\/calendar\/events\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/calendar\/events\/(?<id>[^/]+)/).groups;
-	const response = _.find(eventsDB, { event: id });
-
-	if (response) {
-		return [200, response];
-	}
-
-	return [404, 'Requested event do not exist.'];
-});
-
-mock.onDelete(/\/api\/calendar\/events\/[^/]+/).reply((config) => {
-	const { id } = config.url.match(/\/api\/calendar\/events\/(?<id>[^/]+)/).groups;
+mock.onDelete('/api/calendar/events/:id').reply((config) => {
+	const { id } = config.params as Params;
 
 	_.remove(eventsDB, { id });
 

@@ -113,7 +113,7 @@ type NavbarStyle3Props = {
 function NavbarStyle3(props: NavbarStyle3Props) {
 	const { className = '', dense = false } = props;
 	const dispatch = useAppDispatch();
-	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const navbar = useSelector(selectFuseNavbar);
 	const { folded } = config.navbar;
 

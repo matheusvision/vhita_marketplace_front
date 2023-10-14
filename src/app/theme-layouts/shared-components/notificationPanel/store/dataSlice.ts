@@ -1,8 +1,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
+import { NotificationModelType } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import { RootStateType } from 'app/store/types';
+
+export type AppRootStateType = RootStateType<dataSliceType>;
 
 /**
  * Gets the notifications from the server.
@@ -10,7 +12,7 @@ import { RootStateType } from 'app/store/types';
 export const getNotifications = createAppAsyncThunk('notificationPanel/getData', async () => {
 	const response = await axios.get('/api/notifications');
 
-	const data = (await response.data) as NotificationModelProps[];
+	const data = (await response.data) as NotificationModelType[];
 
 	return data;
 });
@@ -40,29 +42,21 @@ export const dismissItem = createAppAsyncThunk('notificationPanel/dismissItem', 
  */
 export const addNotification = createAppAsyncThunk(
 	'notificationPanel/addNotification',
-	async (item: NotificationModelProps) => {
+	async (item: NotificationModelType) => {
 		const response = await axios.post(`/api/notifications`, { ...item });
 
-		const data = (await response.data) as NotificationModelProps;
+		const data = (await response.data) as NotificationModelType;
 
 		return data;
 	}
 );
 
-const notificationsAdapter = createEntityAdapter<NotificationModelProps>();
+const notificationsAdapter = createEntityAdapter<NotificationModelType>();
 
 const initialState = notificationsAdapter.getInitialState();
 
-type NotificationPanelState = {
-	data: ReturnType<typeof notificationsAdapter.getInitialState>;
-};
-
-type ExtendedRootState = RootStateType & {
-	notificationPanel: NotificationPanelState;
-};
-
 export const { selectAll: selectNotifications, selectById: selectNotificationsById } =
-	notificationsAdapter.getSelectors((state: ExtendedRootState) => state.notificationPanel.data);
+	notificationsAdapter.getSelectors((state: AppRootStateType) => state.notificationPanel.data);
 
 /**
  * The notification panel slice.
@@ -84,5 +78,7 @@ const dataSlice = createSlice({
 		);
 	}
 });
+
+export type dataSliceType = typeof dataSlice;
 
 export default dataSlice;

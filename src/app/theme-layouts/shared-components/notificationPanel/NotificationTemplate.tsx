@@ -1,10 +1,10 @@
 import { ForwardedRef, forwardRef } from 'react';
 import { SnackbarContent } from 'notistack';
-import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
+import { NotificationModelType } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import NotificationCard from './NotificationCard';
 
 type NotificationTemplateProps = {
-	item: NotificationModelProps;
+	item: NotificationModelType;
 	onClose: () => void;
 };
 

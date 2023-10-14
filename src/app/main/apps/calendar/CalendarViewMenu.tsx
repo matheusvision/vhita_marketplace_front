@@ -7,6 +7,8 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
 import { MouseEvent, useState } from 'react';
 
+type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay';
+
 const viewNamesObj = {
 	dayGridMonth: {
 		title: 'Month',
@@ -59,8 +61,8 @@ function CalendarViewMenu(props: CalendarViewMenuProps) {
 			>
 				{currentDate &&
 					currentDate.view &&
-					viewNamesObj[currentDate.view.type] &&
-					(viewNamesObj[currentDate.view.type] as { title: string }).title}
+					viewNamesObj[currentDate.view.type as ViewType] &&
+					(viewNamesObj[currentDate.view.type as ViewType] as { title: string }).title}
 			</Button>
 			<Menu
 				id="view-select-menu"

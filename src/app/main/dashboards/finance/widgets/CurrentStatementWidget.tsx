@@ -5,13 +5,14 @@ import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import CurrentStatementWidgetType from '../types/CurrentStatementWidgetType';
 
 /**
  * The CurrentStatementWidget widget.
  */
 function CurrentStatementWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { status, date, limit, spent, minimum } = widgets.currentStatement;
+	const { status, date, limit, spent, minimum } = widgets.currentStatement as CurrentStatementWidgetType;
 
 	return (
 		<Paper className="relative flex flex-col flex-auto p-24 pr-12 pb-12 rounded-2xl shadow overflow-hidden">

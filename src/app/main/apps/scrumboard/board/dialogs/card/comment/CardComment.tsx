@@ -10,6 +10,10 @@ import { selectMemberById } from '../../../../store/membersSlice';
 import CommentModel from '../../../../models/CommentModel';
 import { CommentType } from '../../../../types/CommentType';
 
+type FormType = {
+	message: CommentType['message'];
+};
+
 /**
  * Form Validation Schema
  */
@@ -34,7 +38,7 @@ function CardComment(props: CardCommentProps) {
 
 	const user = useAppSelector(selectMemberById(defaultValues.idMember));
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -42,7 +46,7 @@ function CardComment(props: CardCommentProps) {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data: CommentType) {
+	function onSubmit(data: FormType) {
 		onCommentAdd(CommentModel({ ...defaultValues, ...data }));
 		reset(defaultValues);
 	}

@@ -6,7 +6,7 @@ import { ChecklistType } from '../types/ChecklistType';
 /**
  * The checklist model.
  */
-function ChecklistModel(data: PartialDeep<ChecklistType>) {
+function ChecklistModel(data: PartialDeep<ChecklistType>): ChecklistType {
 	data = data || {};
 
 	return _.defaults(data, {

@@ -1,15 +1,31 @@
-import { Action, Reducer, ThunkAction, ThunkDispatch } from '@reduxjs/toolkit';
+import { Action, Reducer, ThunkAction, ThunkDispatch, Dispatch, AnyAction } from '@reduxjs/toolkit';
 import store from 'app/store';
 
 /**
  * The type of the dispatch function for this application (AppState).
  */
-export type AppDispatchType = typeof store.dispatch;
+// export type AppDispatchType = typeof store.dispatch;
+// export type AppDispatchType = ThunkDispatch<RootStateType, unknown, Action<string>> & Dispatch<Action<string>>;
+
+// export type AppDispatchType = ThunkDispatch<RootStateType, undefined, AnyAction>;
+
+// This represents any action that can be dispatched to the store, either regular actions or thunks.
+export type AppAction<R = Promise<void>> = Action<string> | ThunkAction<R, RootStateType, unknown, Action<string>>;
+
+// export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootStateType, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+	ReturnType,
+	RootStateType,
+	{ s: string; n: number },
+	Action<string>
+>;
+
+export type AppDispatchType = Dispatch<Action<string>> & ((thunk: AppThunk) => Promise<AnyAction>);
 
 /**
  * The base type of the root state for this application (AppState).
  */
-export type BaseRootStateType = ReturnType<typeof store.getState>;
+export type BaseRootStateType = typeof store.getState;
 
 /**
  * The extended type of the root state for this application (AppState).
@@ -29,7 +45,14 @@ export type AsyncReducersType = {
  * `E` describes the extra argument type given to the action thunk, e.g.
  * `(dispatch, getState, extraArgument) => {}`
  */
+
+// export type AppThunkAction<R, S, E, A> = (dispatch: AppThunkDispatchType<E>, getState: () => S, extraArgument: E) => R;
+
 export type AppThunkType<R = Promise<void>, E = unknown> = ThunkAction<R, RootStateType, E, Action<string>>;
+
+// export type AppThunkDispatchTyp3e<E = unknown> = (
+// 	thunkAction: AppThunkAction<Promise<void>, RootStateType, E, Action<string>>
+// ) => Promise<void>;
 
 // export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 
@@ -67,7 +90,7 @@ export type RootStateType<
 	T extends
 		| string
 		| { name: string; getInitialState: () => unknown }
-		| Array<{ name: string; getInitialState: () => unknown }> = null,
+		| Array<{ name: string; getInitialState: () => unknown }> = never,
 	State = never
 > = T extends string
 	? ExtendedRootStateType<T, State>
@@ -76,3 +99,9 @@ export type RootStateType<
 	: T extends Array<{ name: string; getInitialState: () => unknown }>
 	? BaseRootStateType & MultiplePathsToType<T>
 	: BaseRootStateType;
+
+export type AsyncStateType<T> = {
+	data: T | null;
+	status: 'idle' | 'loading' | 'succeeded' | 'failed';
+	error?: string | null;
+};

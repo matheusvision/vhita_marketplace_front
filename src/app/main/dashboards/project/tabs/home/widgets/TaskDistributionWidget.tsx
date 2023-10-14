@@ -9,13 +9,14 @@ import Tab from '@mui/material/Tab';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import TaskDistributionDataType from '../../../types/TaskDistributionDataType';
 
 /**
  * The TaskDistributionWidget widget.
  */
 function TaskDistributionWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { overview, series, labels, ranges } = widgets.taskDistribution;
+	const { overview, series, labels, ranges } = widgets.taskDistribution as TaskDistributionDataType;
 	const [tabValue, setTabValue] = useState(0);
 	const currentRange = Object.keys(ranges)[tabValue];
 	const [awaitRender, setAwaitRender] = useState(true);
@@ -129,7 +130,7 @@ function TaskDistributionWidget() {
 					className="flex-auto w-full"
 					options={chartOptions}
 					series={series[currentRange]}
-					type={chartOptions.chart.type}
+					type={chartOptions?.chart?.type}
 				/>
 			</div>
 			<Box

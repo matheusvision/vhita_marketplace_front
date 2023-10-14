@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { showMessage } from 'app/store/fuse/messageSlice';
-import { RootStateType } from 'app/store/types';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { PartialDeep } from 'type-fest';
 import CourseType from '../types/CourseType';
@@ -26,7 +26,8 @@ export const updateCourse = createAppAsyncThunk<CourseType, PartialDeep<CourseTy
 	'academyApp/course/updateCourse',
 	async (_data, { getState, dispatch }) => {
 		const AppState = getState() as AppRootStateType;
-		const { id } = AppState.academyApp.course;
+
+		const { id } = AppState.academyApp.course.data;
 
 		const response = await axios.put(`/api/academy/courses/${id}`, _data);
 
@@ -38,7 +39,10 @@ export const updateCourse = createAppAsyncThunk<CourseType, PartialDeep<CourseTy
 	}
 );
 
-const initialState: CourseType = null;
+const initialState: AsyncStateType<CourseType> = {
+	data: null,
+	status: 'idle'
+};
 
 /**
  * The Academy App course slice.
@@ -48,8 +52,16 @@ const courseSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(getCourse.fulfilled, (state, action) => action.payload);
-		builder.addCase(updateCourse.fulfilled, (state, action) => action.payload);
+		builder.addCase(getCourse.pending, (state) => {
+			state.status = 'loading';
+		});
+		builder.addCase(getCourse.fulfilled, (state, action) => {
+			state.data = action.payload;
+			state.status = 'succeeded';
+		});
+		builder.addCase(updateCourse.fulfilled, (state, action) => {
+			state.data = action.payload;
+		});
 	}
 });
 

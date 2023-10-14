@@ -16,7 +16,7 @@ import fromUnixTime from 'date-fns/fromUnixTime';
 import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
@@ -45,13 +45,13 @@ import { CommentsType } from '../../../types/CommentType';
  */
 function BoardCardForm() {
 	const dispatch = useAppDispatch();
-	const board = useAppSelector(selectBoard);
+	const { data: board } = useAppSelector(selectBoard);
 	const labels = useAppSelector(selectLabels);
 	const members = useAppSelector(selectMembers);
-	const card = useAppSelector(selectCardData);
+	const card = useAppSelector(selectCardData) as CardType;
 	const list = useAppSelector(selectListById(card?.listId));
 
-	const { register, watch, control, setValue } = useForm({ mode: 'onChange', defaultValues: card });
+	const { register, watch, control, setValue } = useForm<CardType>({ mode: 'onChange', defaultValues: card });
 
 	const cardForm = watch();
 
@@ -72,7 +72,7 @@ function BoardCardForm() {
 		register('attachmentCoverId');
 	}, [register]);
 
-	if (!card) {
+	if (!card && !board) {
 		return null;
 	}
 
@@ -168,21 +168,24 @@ function BoardCardForm() {
 							multiple
 							freeSolo
 							options={labels}
-							getOptionLabel={(label: LabelType) => {
-								return label.title;
+							getOptionLabel={(option: string | LabelType) => {
+								if (typeof option === 'string') {
+									return option;
+								}
+								return option?.title;
 							}}
-							value={cardForm.labels.map((id) => _.find(labels, { id }))}
-							onChange={(event, newValue: LabelsType) => {
-								setValue(
-									'labels',
-									newValue.map((item) => item.id)
-								);
+							value={cardForm.labels.map((id) => _.find(labels, { id })) as LabelsType}
+							onChange={(event: SyntheticEvent<Element, Event>, value: (string | LabelType)[]) => {
+								const ids = value
+									.filter((item): item is LabelType => typeof item !== 'string')
+									.map((item) => item.id);
+								setValue('labels', ids);
 							}}
 							renderTags={(value, getTagProps) =>
 								value.map((option, index) => {
 									return (
 										<Chip
-											label={option.title}
+											label={typeof option === 'string' ? option : option.title}
 											{...getTagProps({ index })}
 											className="m-3"
 										/>
@@ -215,23 +218,26 @@ function BoardCardForm() {
 							multiple
 							freeSolo
 							options={members}
-							getOptionLabel={(member: MemberType) => {
-								return member.name;
+							getOptionLabel={(member: string | MemberType) => {
+								return typeof member === 'string' ? member : member?.name;
 							}}
-							value={cardForm.memberIds.map((id) => _.find(members, { id }))}
-							onChange={(event, newValue: MembersType) => {
-								setValue(
-									'memberIds',
-									newValue.map((item) => item.id)
-								);
+							value={cardForm.memberIds.map((id) => _.find(members, { id })) as MembersType}
+							onChange={(event: SyntheticEvent<Element, Event>, value: (string | MemberType)[]) => {
+								const ids = value
+									.filter((item): item is MemberType => typeof item !== 'string')
+									.map((item) => item.id);
+								setValue('memberIds', ids);
 							}}
 							renderTags={(value, getTagProps) =>
 								value.map((option, index) => {
+									if (typeof option === 'string') {
+										return <span />;
+									}
 									return (
 										<Chip
 											label={option.name}
 											{...getTagProps({ index })}
-											className={clsx('m-3', option.class)}
+											className={clsx('m-3', option?.class)}
 											avatar={
 												<Tooltip title={option.name}>
 													<Avatar src={option.avatar} />
@@ -359,7 +365,6 @@ function BoardCardForm() {
 						<Controller
 							name="dueDate"
 							control={control}
-							defaultValue={null}
 							render={({ field: { onChange, value } }) => (
 								<DueMenu
 									onDueChange={onChange}

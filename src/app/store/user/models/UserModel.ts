@@ -1,5 +1,6 @@
 import _ from '@lodash';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
+import { PartialDeep } from 'type-fest';
 
 /**
  * The type definition for a user object.
@@ -8,8 +9,8 @@ export type UserModelType = {
 	uuid?: string;
 	role?: string[] | string;
 	from?: string;
-	data?: {
-		displayName?: string;
+	data: {
+		displayName: string;
 		photoURL?: string;
 		email?: string;
 		shortcuts?: string[];
@@ -20,7 +21,7 @@ export type UserModelType = {
 /**
  * Creates a new user object with the specified data.
  */
-function UserModel(data: UserModelType) {
+function UserModel(data: PartialDeep<UserModelType>): UserModelType {
 	data = data || {};
 
 	return _.defaults(data, {
@@ -32,7 +33,7 @@ function UserModel(data: UserModelType) {
 			shortcuts: ['apps.calendar', 'apps.mailbox', 'apps.contacts', 'apps.tasks'],
 			settings: {}
 		}
-	}) as UserModelType;
+	});
 }
 
 export default UserModel;

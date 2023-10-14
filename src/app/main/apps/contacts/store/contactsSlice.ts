@@ -55,7 +55,7 @@ export const selectGroupedFilteredContacts = createSelector([selectFilteredConta
 			if (!r[group]) r[group] = { group, children: [e] };
 			// if there is push current element to children array for that letter
 			else {
-				r[group].children.push(e);
+				r[group]?.children?.push(e);
 			}
 
 			// return accumulator

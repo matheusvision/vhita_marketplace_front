@@ -184,7 +184,9 @@ marked.Lexer.prototype.lex = function lex(src) {
 
 	let next;
 
-	while ((next = this.inlineQueue.shift())) {
+	// eslint-disable-next-line no-cond-assign,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	while ((next = this.inlineQueue.shift() as { src: string; tokens: { type: 'space'; raw: string }[] })) {
 		this.inlineTokens(next.src, next.tokens);
 	}
 

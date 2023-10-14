@@ -5,13 +5,14 @@ import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import TeamMemberType from '../../../types/TeamMemberType';
 
 /**
  * The TeamMembersWidget widget.
  */
 function TeamMembersWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const members = widgets.teamMembers;
+	const members = widgets.teamMembers as TeamMemberType[];
 	const container = {
 		show: {
 			transition: {

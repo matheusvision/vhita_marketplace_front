@@ -5,7 +5,7 @@ import FuseTheme from '@fuse/core/FuseTheme';
 import { SnackbarProvider } from 'notistack';
 import { useSelector } from 'react-redux';
 import rtlPlugin from 'stylis-plugin-rtl';
-import createCache from '@emotion/cache';
+import createCache, { Options } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
 import { selectUser } from 'app/store/user/userSlice';
@@ -13,6 +13,7 @@ import themeLayouts from 'app/theme-layouts/themeLayouts';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import settingsConfig from 'app/configs/settingsConfig';
+import { useAppSelector } from 'app/store';
 import withAppProviders from './withAppProviders';
 import { AuthProvider } from './auth/AuthContext';
 
@@ -44,7 +45,7 @@ function App() {
 	/**
 	 * The user object from the Redux store.
 	 */
-	const user = useSelector(selectUser);
+	const user = useAppSelector(selectUser);
 
 	/**
 	 * The language direction from the Redux store.
@@ -57,7 +58,7 @@ function App() {
 	const mainTheme = useSelector(selectMainTheme);
 
 	return (
-		<CacheProvider value={createCache(emotionCacheOptions[langDirection])}>
+		<CacheProvider value={createCache(emotionCacheOptions[langDirection] as Options)}>
 			<FuseTheme
 				theme={mainTheme}
 				direction={langDirection}

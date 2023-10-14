@@ -5,7 +5,7 @@ import { TagType } from '../types/TagType';
 /**
  * The tag model.
  */
-const TagModel = (data: PartialDeep<TagType>) =>
+const TagModel = (data: PartialDeep<TagType>): TagType =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		title: ''

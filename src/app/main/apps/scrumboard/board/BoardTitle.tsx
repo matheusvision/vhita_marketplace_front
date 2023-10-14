@@ -26,14 +26,14 @@ const schema = yup.object().shape({
  */
 function BoardTitle() {
 	const dispatch = useAppDispatch();
-	const board = useAppSelector(selectBoard);
+	const { data: board } = useAppSelector(selectBoard);
 
 	const [formOpen, setFormOpen] = useState(false);
 
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues: {
-			title: board.title
+			title: board?.title
 		},
 		resolver: yupResolver(schema)
 	});
@@ -43,10 +43,10 @@ function BoardTitle() {
 	useEffect(() => {
 		if (!formOpen) {
 			reset({
-				title: board.title
+				title: board?.title
 			});
 		}
-	}, [formOpen, reset, board.title]);
+	}, [formOpen, reset, board?.title]);
 
 	function handleOpenForm(ev: MouseEvent<HTMLDivElement>) {
 		ev.stopPropagation();
@@ -105,7 +105,7 @@ function BoardTitle() {
 						onClick={handleOpenForm}
 						color="inherit"
 					>
-						{board.title}
+						{board?.title}
 					</Typography>
 					{board?.settings.subscribed && <FuseSvgIcon>heroicons-outline:eye</FuseSvgIcon>}
 				</div>

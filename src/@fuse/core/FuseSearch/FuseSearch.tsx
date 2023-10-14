@@ -13,8 +13,8 @@ import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import clsx from 'clsx';
 import _ from '@lodash';
-import { memo, useEffect, useReducer, useRef, ReactNode, ChangeEvent } from 'react';
-import Autosuggest from 'react-autosuggest';
+import { memo, useEffect, useReducer, useRef, ReactNode } from 'react';
+import Autosuggest, { RenderInputComponentProps, RenderSuggestionParams, ChangeEvent } from 'react-autosuggest';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { PopperOwnProps } from '@mui/base/Popper';
@@ -62,7 +62,7 @@ type RenderInputComponentType = {
 	ref?: (node: HTMLInputElement) => void;
 };
 
-function renderInputComponent(props) {
+function renderInputComponent(props: RenderInputComponentProps) {
 	const { variant, ref, inputRef = () => {}, ...other } = props as RenderInputComponentType;
 	return (
 		<div className="relative w-full">
@@ -73,7 +73,7 @@ function renderInputComponent(props) {
 						fullWidth
 						InputProps={{
 							inputRef: (node: HTMLInputElement) => {
-								ref(node);
+								ref?.(node);
 								inputRef(node);
 							},
 							classes: {
@@ -98,7 +98,7 @@ function renderInputComponent(props) {
 					InputProps={{
 						disableUnderline: true,
 						inputRef: (node: HTMLInputElement) => {
-							ref(node);
+							ref?.(node);
 							inputRef(node);
 						},
 						classes: {
@@ -113,8 +113,8 @@ function renderInputComponent(props) {
 	);
 }
 
-function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted }) {
-	const matches = match(suggestion.title, query as string);
+function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted }: RenderSuggestionParams) {
+	const matches = match(suggestion.title, query);
 	const parts = parse(suggestion.title, matches);
 
 	return (
@@ -152,7 +152,7 @@ function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted })
 	);
 }
 
-function getSuggestions(value: string, data: FuseNavigationType) {
+function getSuggestions(value: string, data: FuseNavigationType): FuseNavigationType {
 	const inputValue = _.deburr(value.trim()).toLowerCase();
 	const inputLength = inputValue.length;
 	let count = 0;
@@ -176,16 +176,16 @@ function getSuggestionValue(suggestion: FuseNavItemType) {
 	return suggestion.title;
 }
 
-type initialStateTypes = {
+type StateType = {
 	searchText: string;
 	search: boolean;
-	navigation?: FuseNavigationType;
-	suggestions: [];
+	navigation: FuseNavigationType;
+	suggestions: FuseNavigationType;
 	noSuggestions: boolean;
 	opened: boolean;
 };
 
-const initialState: initialStateTypes = {
+const initialState: StateType = {
 	searchText: '',
 	search: false,
 	navigation: [],
@@ -194,7 +194,15 @@ const initialState: initialStateTypes = {
 	opened: false
 };
 
-function reducer(state: initialStateTypes, action: { type: string; value?: string; data?: FuseNavigationType }) {
+type ActionType =
+	| { type: 'setSearchText'; value: string }
+	| { type: 'setNavigation'; data: FuseNavigationType }
+	| { type: 'updateSuggestions'; value: string }
+	| { type: 'clearSuggestions' }
+	| { type: 'open' }
+	| { type: 'close' };
+
+function reducer(state: StateType, action: ActionType): StateType {
 	switch (action.type) {
 		case 'open': {
 			return {
@@ -334,10 +342,10 @@ function FuseSearch(props: FuseSearchProps) {
 		});
 	}
 
-	function handleChange(event: ChangeEvent<HTMLInputElement>) {
+	function handleChange(event: React.FormEvent<HTMLElement>, { newValue }: ChangeEvent) {
 		dispatch({
 			type: 'setSearchText',
-			value: event.target.value
+			value: newValue
 		});
 	}
 
@@ -393,11 +401,11 @@ function FuseSearch(props: FuseSearchProps) {
 							>
 								<div ref={suggestionsNode}>
 									<Paper
-										className="overflow-hidden rounded-8 shadow-lg"
 										{...options.containerProps}
 										style={{
 											width: popperNode.current ? popperNode.current.clientWidth : ''
 										}}
+										className="overflow-hidden rounded-8 shadow-lg"
 									>
 										{options.children}
 										{state.noSuggestions && (
@@ -472,13 +480,13 @@ function FuseSearch(props: FuseSearchProps) {
 											>
 												<div ref={suggestionsNode}>
 													<Paper
-														className="shadow-lg"
 														square
 														{...options.containerProps}
+														className="shadow-lg"
 														style={{
 															width: popperNode.current
 																? popperNode.current.clientWidth
-																: null
+																: 'auto'
 														}}
 													>
 														{options.children}

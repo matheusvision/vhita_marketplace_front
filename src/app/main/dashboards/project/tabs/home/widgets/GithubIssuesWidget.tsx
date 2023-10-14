@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import GithubIssuesDataType from '../../../types/GithubIssuesDataType';
 
 /**
  * The GithubIssuesWidget widget.
@@ -18,7 +19,7 @@ function GithubIssuesWidget() {
 	const [awaitRender, setAwaitRender] = useState(true);
 	const [tabValue, setTabValue] = useState(0);
 	const widgets = useAppSelector(selectWidgets);
-	const { overview, series, ranges, labels } = widgets.githubIssues;
+	const { overview, series, ranges, labels } = widgets.githubIssues as GithubIssuesDataType;
 	const currentRange = Object.keys(ranges)[tabValue];
 
 	const chartOptions: ApexOptions = {

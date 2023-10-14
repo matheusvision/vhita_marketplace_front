@@ -7,7 +7,7 @@ import { CommentType } from '../types/CommentType';
 /**
  * The comment model.
  */
-function CommentModel(data: PartialDeep<CommentType>) {
+function CommentModel(data: PartialDeep<CommentType>): CommentType {
 	data = data || {};
 
 	return _.defaults(data, {

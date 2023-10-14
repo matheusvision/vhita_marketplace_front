@@ -11,7 +11,7 @@ import { ContactEmailType } from '../../types/ContactEmailType';
 
 const schema = yup.object().shape({
 	email: yup.string().email('You must enter a valid email').required('You must enter a email'),
-	label: yup.string()
+	label: yup.string().required()
 });
 
 const defaultValues = {
@@ -32,7 +32,7 @@ type EmailInputProps = {
 function EmailInput(props: EmailInputProps) {
 	const { value, hideRemove, onChange, onRemove } = props;
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<ContactEmailType>({
 		mode: 'all',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -44,7 +44,7 @@ function EmailInput(props: EmailInputProps) {
 
 	const { errors } = formState;
 
-	function onSubmit(data: ContactEmailType) {
+	function onSubmit(data: ContactEmailType): void {
 		onChange(data);
 	}
 

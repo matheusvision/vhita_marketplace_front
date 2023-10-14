@@ -12,7 +12,7 @@ import { openNewEventDialog } from './store/eventsSlice';
 import CalendarViewMenu from './CalendarViewMenu';
 
 type CalendarHeaderProps = {
-	calendarRef: MutableRefObject<FullCalendar>;
+	calendarRef: MutableRefObject<FullCalendar | null>;
 	currentDate: DatesSetArg;
 	onToggleLeftSidebar: () => void;
 };
@@ -24,7 +24,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 	const { calendarRef, currentDate, onToggleLeftSidebar } = props;
 
 	const mainTheme = useAppSelector(selectMainTheme);
-	const calendarApi = () => calendarRef.current?.getApi();
+	const calendarApi = () => calendarRef.current.getApi();
 	const dispatch = useAppDispatch();
 
 	return (

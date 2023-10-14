@@ -96,7 +96,7 @@ function ProductsTableHead(props: ProductsTableHeadPropsType) {
 
 	const numSelected = selectedProductIds.length;
 
-	const [selectedProductsMenu, setSelectedProductsMenu] = useState<HTMLButtonElement>(null);
+	const [selectedProductsMenu, setSelectedProductsMenu] = useState<HTMLButtonElement | null>(null);
 
 	const dispatch = useAppDispatch();
 
@@ -138,7 +138,6 @@ function ProductsTableHead(props: ProductsTableHeadPropsType) {
 							}}
 						>
 							<IconButton
-								aria-owns={selectedProductsMenu ? 'selectedProductsMenu' : null}
 								aria-haspopup="true"
 								onClick={openSelectedProductsMenu}
 								size="large"
@@ -202,7 +201,7 @@ function ProductsTableHead(props: ProductsTableHeadPropsType) {
 							)}
 						</TableCell>
 					);
-				}, this)}
+				})}
 			</TableRow>
 		</TableHead>
 	);

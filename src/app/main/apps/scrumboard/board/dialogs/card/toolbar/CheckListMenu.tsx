@@ -11,6 +11,10 @@ import ToolbarMenu from './ToolbarMenu';
 import ChecklistModel from '../../../../models/ChecklistModel';
 import { ChecklistType } from '../../../../types/ChecklistType';
 
+type FormType = {
+	name: ChecklistType['name'];
+};
+
 /**
  * Form Validation Schema
  */
@@ -31,7 +35,7 @@ function CheckListMenu(props: CheckListMenuProps) {
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues: {
 			name
@@ -57,7 +61,7 @@ function CheckListMenu(props: CheckListMenuProps) {
 		setAnchorEl(null);
 	}
 
-	function onSubmit(data: ChecklistType) {
+	function onSubmit(data: FormType) {
 		onAddCheckList(ChecklistModel(data));
 		handleMenuClose();
 	}

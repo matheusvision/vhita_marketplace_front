@@ -2,31 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import WidgetDataType from '../types/WidgetDataType';
-import GithubIssuesDataType from '../types/GithubIssuesDataType';
-import TaskDistributionDataType from '../types/TaskDistributionDataType';
-import ScheduleDataType from '../types/ScheduleDataType';
-import BudgetDistributionDataType from '../types/BudgetDistributionDataType';
-import ExpensesDataType from '../types/ExpensesDataType';
-import BudgetDetailsDataType from '../types/BudgetDetailsDataType';
-import TeamMemberType from '../types/TeamMemberType';
 
 type AppRootStateType = RootStateType<widgetsSliceType>;
 
 type WidgetsType = {
-	summary: WidgetDataType;
-	overdue: WidgetDataType;
-	issues: WidgetDataType;
-	features: WidgetDataType;
-	githubIssues: GithubIssuesDataType;
-	taskDistribution: TaskDistributionDataType;
-	schedule: ScheduleDataType;
-	budgetDistribution: BudgetDistributionDataType;
-	weeklyExpenses: ExpensesDataType;
-	monthlyExpenses: ExpensesDataType;
-	yearlyExpenses: ExpensesDataType;
-	budgetDetails: BudgetDetailsDataType;
-	teamMembers: TeamMemberType[];
+	[key: string]: unknown;
 };
 
 export const getWidgets = createAppAsyncThunk('projectDashboardApp/widgets/getWidgets', async () => {
@@ -36,7 +16,7 @@ export const getWidgets = createAppAsyncThunk('projectDashboardApp/widgets/getWi
 	return data;
 });
 
-const initialState: WidgetsType = null;
+const initialState: WidgetsType = {};
 
 /**
  * The project dashboard widgets slice.

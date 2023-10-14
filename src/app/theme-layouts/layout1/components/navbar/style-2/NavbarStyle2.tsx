@@ -131,11 +131,11 @@ const StyledNavbarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(({ theme }
  */
 function NavbarStyle2() {
 	const dispatch = useAppDispatch();
-	const config: Layout1ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const navbar = useSelector(selectFuseNavbar);
 
 	// const folded = !navbar.open;
-	const { folded } = config.navbar;
+	const folded = config.navbar?.folded;
 	const foldedandclosed = folded && !navbar.foldedOpen;
 	const foldedandopened = folded && navbar.foldedOpen;
 
@@ -149,7 +149,7 @@ function NavbarStyle2() {
 			<Hidden lgDown>
 				<StyledNavbar
 					className="flex-auto flex-col"
-					position={config.navbar.position}
+					position={config?.navbar?.position}
 					folded={folded ? 1 : 0}
 					foldedandopened={foldedandopened ? 1 : 0}
 					foldedandclosed={foldedandclosed ? 1 : 0}
@@ -168,7 +168,7 @@ function NavbarStyle2() {
 					folded={folded ? 1 : 0}
 					foldedandopened={foldedandopened ? 1 : 0}
 					foldedandclosed={foldedandclosed ? 1 : 0}
-					anchor={config.navbar.position as 'left' | 'top' | 'right' | 'bottom'}
+					anchor={config?.navbar?.position as 'left' | 'top' | 'right' | 'bottom'}
 					variant="temporary"
 					open={navbar.mobileOpen}
 					onClose={() => dispatch(navbarCloseMobile())}

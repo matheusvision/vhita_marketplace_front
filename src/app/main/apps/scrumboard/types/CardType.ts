@@ -2,7 +2,7 @@ import { ChecklistType } from './ChecklistType';
 import { CommentsType } from './CommentType';
 import { AttachmentType } from './AttachmentType';
 
-type Label = string;
+export type LabelId = string;
 
 type MemberId = string;
 
@@ -15,7 +15,7 @@ export type CardType = {
 	listId: string;
 	title: string;
 	description: string;
-	labels: Label[];
+	labels: LabelId[];
 	dueDate: number;
 	attachmentCoverId: string;
 	memberIds: MemberId[];

@@ -50,7 +50,7 @@ function ContactsList() {
 						</Typography>
 						<Divider />
 						<List className="w-full m-0 p-0">
-							{group.children.map((item) => (
+							{group?.children?.map((item) => (
 								<ContactListItem
 									key={item.id}
 									contact={item}

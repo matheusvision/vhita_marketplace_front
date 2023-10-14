@@ -83,7 +83,7 @@ function ChatApp() {
 	);
 
 	return (
-		<ChatAppContext.Provider value={ChatAppContextData}>
+		<ChatAppContext.Provider value={ChatAppContextData as ChatAppContextType}>
 			<Root
 				content={<Outlet />}
 				leftSidebarContent={<MainSidebar />}

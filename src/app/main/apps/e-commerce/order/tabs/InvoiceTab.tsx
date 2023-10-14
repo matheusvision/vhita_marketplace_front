@@ -142,15 +142,19 @@ function InvoiceTab(props: InvoiceTabProps) {
 									</TableRow>
 								</TableHead>
 								<TableBody>
-									{order.products.map((product) => (
+									{order?.products?.map((product) => (
 										<TableRow key={product.id}>
 											<TableCell>
 												<Typography variant="subtitle1">{product.name}</Typography>
 											</TableCell>
-											<TableCell align="right">{formatter.format(+product.price)}</TableCell>
+											<TableCell align="right">
+												{product.price && formatter.format(+product.price)}
+											</TableCell>
 											<TableCell align="right">{product.quantity}</TableCell>
 											<TableCell align="right">
-												{formatter.format(+product.price * product.quantity)}
+												{product.price &&
+													product.quantity &&
+													formatter.format(+product.price * product.quantity)}
 											</TableCell>
 										</TableRow>
 									))}

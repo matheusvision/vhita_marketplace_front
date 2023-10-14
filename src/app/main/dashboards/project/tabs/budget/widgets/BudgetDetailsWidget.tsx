@@ -9,13 +9,14 @@ import { memo } from 'react';
 import Chip from '@mui/material/Chip';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import BudgetDetailsDataType from '../../../types/BudgetDetailsDataType';
 
 /**
  * The BudgetDetailsWidget widget.
  */
 function BudgetDetailsWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { columns, rows } = widgets.budgetDetails;
+	const { columns, rows } = widgets.budgetDetails as BudgetDetailsDataType;
 
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">

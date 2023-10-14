@@ -52,7 +52,8 @@ export const themesConfig: FuseThemesType = {
 			error: {
 				light: '#ffcdd2',
 				main: '#f44336',
-				dark: '#b71c1c'
+				dark: '#b71c1c',
+				contrastText: darkPaletteText.primary
 			}
 		}
 	},

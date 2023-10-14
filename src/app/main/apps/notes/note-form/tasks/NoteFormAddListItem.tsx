@@ -10,7 +10,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NoteListItemModel from '../../models/NoteListItemModel';
 import { NoteListItemType } from '../../types/NoteListItemType';
 
-const defaultValues = {
+type FormType = Pick<NoteListItemType, 'content'>;
+
+const defaultValues: FormType = {
 	content: ''
 };
 
@@ -31,7 +33,7 @@ type NoteFormAddListItemProps = {
 function NoteFormAddListItem(props: NoteFormAddListItemProps) {
 	const { onListItemAdd } = props;
 
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -39,7 +41,7 @@ function NoteFormAddListItem(props: NoteFormAddListItemProps) {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data: NoteListItemType) {
+	function onSubmit(data: FormType) {
 		onListItemAdd(NoteListItemModel(data));
 		reset(defaultValues);
 	}

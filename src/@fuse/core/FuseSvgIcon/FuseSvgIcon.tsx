@@ -23,9 +23,7 @@ const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit
 	minHeight: size,
 	fontSize: size,
 	lineHeight: size,
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	color: {
-		// Use fill instead of color for SVGs
 		primary: theme.palette.primary.main,
 		secondary: theme.palette.secondary.main,
 		info: theme.palette.info.main,
@@ -35,7 +33,7 @@ const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit
 		error: theme.palette.error.main,
 		disabled: theme.palette.action.disabled,
 		inherit: 'currentColor'
-	}[color]
+	}[color] as string
 }));
 
 /**
@@ -44,7 +42,7 @@ const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit
  * The component is memoized to prevent unnecessary re-renders.
  */
 const FuseSvgIcon = forwardRef<SVGSVGElement, FuseSvgIconProps>((props, ref) => {
-	const { children, className = '', color } = props;
+	const { children, className = '', color = 'inherit' } = props;
 
 	if (typeof children !== 'string') {
 		return null;
@@ -77,10 +75,5 @@ const FuseSvgIcon = forwardRef<SVGSVGElement, FuseSvgIconProps>((props, ref) => 
 		</Root>
 	);
 });
-
-FuseSvgIcon.defaultProps = {
-	size: 24,
-	color: 'inherit'
-};
 
 export default FuseSvgIcon;

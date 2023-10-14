@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import * as React from 'react';
 import ProjectDashboardAppHeader from './ProjectDashboardAppHeader';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import HomeTab from './tabs/home/HomeTab';
@@ -32,7 +33,7 @@ function ProjectDashboardApp() {
 		dispatch(getWidgets());
 	}, [dispatch]);
 
-	function handleChangeTab(ev, value: number) {
+	function handleChangeTab(event: React.SyntheticEvent, value: number) {
 		setTabValue(value);
 	}
 

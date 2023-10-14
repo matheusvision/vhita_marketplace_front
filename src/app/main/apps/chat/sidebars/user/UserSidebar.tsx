@@ -16,6 +16,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import InputAdornment from '@mui/material/InputAdornment';
 import { lighten } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import { PartialObjectDeep } from 'type-fest/source/partial-deep';
 import Statuses from '../../Statuses';
 import UserAvatar from '../../UserAvatar';
 import { selectUser, updateUserData } from '../../store/userSlice';
@@ -28,20 +29,21 @@ import { UserType } from '../../types/UserType';
 function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
-	const { control, handleSubmit, watch, reset, formState } = useForm({ defaultValues: user });
+	const { data: user } = useAppSelector(selectUser);
+	const { control, handleSubmit, reset, formState } = useForm({});
 	const { isValid, dirtyFields, errors } = formState;
 
-	const form = watch();
 	useEffect(() => {
-		reset(user);
+		if (user) {
+			reset(user);
+		}
 	}, [reset, user]);
 
-	function onSubmit(data: UserType) {
+	function onSubmit(data: PartialObjectDeep<UserType, object>) {
 		dispatch(updateUserData(data));
 	}
 
-	if (_.isEmpty(form)) {
+	if (!user) {
 		return null;
 	}
 
@@ -85,7 +87,7 @@ function UserSidebar() {
 							placeholder="Name"
 							id="name"
 							error={!!errors.name}
-							helperText={errors?.name?.message}
+							helperText={errors?.name?.message as string}
 							variant="outlined"
 							required
 							fullWidth
@@ -112,7 +114,7 @@ function UserSidebar() {
 							variant="outlined"
 							fullWidth
 							error={!!errors.email}
-							helperText={errors?.email?.message}
+							helperText={errors?.email?.message as string}
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position="start">

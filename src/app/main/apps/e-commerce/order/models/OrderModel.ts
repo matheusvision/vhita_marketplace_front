@@ -5,7 +5,7 @@ import { OrderType } from '../../types/OrderType';
 /**
  * The order model.
  */
-const OrderModel = (data: PartialDeep<OrderType>) =>
+const OrderModel = (data: PartialDeep<OrderType>): OrderType =>
 	_.defaults(data || {}, {
 		id: _.uniqueId('order-'),
 		reference: '',

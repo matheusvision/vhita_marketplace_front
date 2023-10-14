@@ -1,6 +1,6 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, Resolver, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
@@ -22,9 +22,7 @@ import NoteFormUploadImage from './NoteFormUploadImage';
 import NoteModel from '../models/NoteModel';
 import NoteReminderLabel from '../NoteReminderLabel';
 import NoteLabel from '../NoteLabel';
-import { NoteListItemsType } from '../types/NoteListItemType';
 import { NoteType } from '../types/NoteType';
-
 /**
  * Form Validation Schema
  */
@@ -40,8 +38,8 @@ const schema = yup.object().shape({
 	content: yup.string(),
 	tasks: yup.array().of(tasksSchema).default([]).notRequired(),
 	labels: yup.array().of(yup.string()).default([]).notRequired(),
-	image: yup.string(),
-	reminder: yup.string(),
+	image: yup.string().nullable(),
+	reminder: yup.string().nullable(),
 	archived: yup.boolean(),
 	createdAt: yup.string(),
 	updatedAt: yup.string(),
@@ -49,7 +47,8 @@ const schema = yup.object().shape({
 		.bool()
 		.default(undefined)
 		.when(['title', 'content', 'image', 'tasks'], {
-			is: (a, b, c, d) => (!a && !b && !c && !d) || (!!a && !!b && !!c && !!d),
+			is: (a: string | undefined, b: string | undefined, c: string | undefined, d: string | undefined) =>
+				(!a && !b && !c && !d) || (!!a && !!b && !!c && !!d),
 			then: (_schema) => _schema.required('At least one of the fields is required.'),
 			otherwise: (_schema) => _schema.nullable()
 		})
@@ -80,10 +79,10 @@ function NoteForm(props: NoteFormProps) {
 		routeParams.id === 'archive' ? { archived: true } : null
 	);
 
-	const { formState, handleSubmit, getValues, watch, setValue, control } = useForm({
+	const { formState, handleSubmit, getValues, watch, setValue, control } = useForm<NoteType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: yupResolver(schema) as unknown as Resolver<NoteType>
 	});
 
 	const { isValid, dirtyFields } = formState;
@@ -95,7 +94,7 @@ function NoteForm(props: NoteFormProps) {
 	 */
 	useEffect(() => {
 		if (note && variant !== 'new' && onFormChange && !_.isEqual(note, noteForm)) {
-			onFormChange(noteForm as NoteType);
+			onFormChange(noteForm);
 		}
 	}, [noteForm, note, variant, onFormChange, defaultValues]);
 
@@ -119,7 +118,7 @@ function NoteForm(props: NoteFormProps) {
 						defaultValue=""
 						render={({ field: { onChange, value } }) => {
 							if (!value || value === '') {
-								return null;
+								return <span />;
 							}
 							return (
 								<div className="relative">
@@ -183,12 +182,12 @@ function NoteForm(props: NoteFormProps) {
 						defaultValue={[]}
 						render={({ field: { onChange, value } }) => {
 							if ((value?.length === 0 && !showList) || (!value && !showList)) {
-								return null;
+								return <span />;
 							}
 							return (
 								<div className="px-16">
 									<NoteFormList
-										tasks={(value as NoteListItemsType) || []}
+										tasks={value || []}
 										onCheckListChange={(val) => onChange(val)}
 									/>
 								</div>
@@ -203,7 +202,7 @@ function NoteForm(props: NoteFormProps) {
 									className="mt-4 mx-4"
 									date={noteForm.reminder}
 									onDelete={() => {
-										setValue('reminder', null);
+										setValue('reminder', undefined);
 									}}
 								/>
 							)}
@@ -214,7 +213,7 @@ function NoteForm(props: NoteFormProps) {
 								defaultValue={[]}
 								render={({ field: { onChange, value } }) => {
 									if (!value) {
-										return null;
+										return <span />;
 									}
 									return (
 										<>
@@ -296,7 +295,7 @@ function NoteForm(props: NoteFormProps) {
 					>
 						<div>
 							<NoteFormLabelMenu
-								note={noteForm as NoteType}
+								note={noteForm}
 								onChange={(labels: string[]) => setValue('labels', labels)}
 							/>
 						</div>
@@ -319,7 +318,7 @@ function NoteForm(props: NoteFormProps) {
 											onChange(!value);
 
 											if (variant === 'new') {
-												setTimeout(() => onSubmitNewNote(getValues() as NoteType));
+												setTimeout(() => onSubmitNewNote(getValues()));
 											}
 										}}
 										size="large"

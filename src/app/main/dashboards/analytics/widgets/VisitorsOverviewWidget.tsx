@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
 import { selectWidgets } from '../store/widgetsSlice';
+import VisitorsOverviewWidgetType from '../types/VisitorsOverviewWidgetType';
 
 const Root = styled(Paper)(({ theme }) => ({
 	background: theme.palette.primary.main,
@@ -23,7 +24,7 @@ function VisitorsOverviewWidget() {
 	const theme = useTheme();
 	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.main));
 	const widgets = useAppSelector(selectWidgets);
-	const { series, ranges } = widgets.visitors;
+	const { series, ranges } = widgets.visitors as VisitorsOverviewWidgetType;
 	const [tabValue, setTabValue] = useState(0);
 	const currentRange = Object.keys(ranges)[tabValue];
 
@@ -173,8 +174,8 @@ function VisitorsOverviewWidget() {
 					<ReactApexChart
 						options={chartOptions}
 						series={series[currentRange]}
-						type={chartOptions.chart.type}
-						height={chartOptions.chart.height}
+						type={chartOptions?.chart?.type}
+						height={chartOptions?.chart?.height}
 					/>
 				</div>
 			</Root>

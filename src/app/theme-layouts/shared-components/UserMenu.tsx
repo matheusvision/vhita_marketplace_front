@@ -17,7 +17,7 @@ import { selectUser } from 'app/store/user/userSlice';
 function UserMenu() {
 	const user = useSelector(selectUser);
 
-	const [userMenu, setUserMenu] = useState<HTMLElement>(null);
+	const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
 
 	const userMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		setUserMenu(event.currentTarget);

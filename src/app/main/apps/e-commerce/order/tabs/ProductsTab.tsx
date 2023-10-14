@@ -7,7 +7,7 @@ import { selectOrder } from '../../store/orderSlice';
  * The products tab.
  */
 function ProductsTab() {
-	const order = useAppSelector(selectOrder);
+	const { data: order } = useAppSelector(selectOrder);
 
 	return (
 		<div className="table-responsive">
@@ -32,7 +32,7 @@ function ProductsTab() {
 					</tr>
 				</thead>
 				<tbody>
-					{order.products.map((product) => (
+					{order?.products?.map((product) => (
 						<tr key={product.id}>
 							<td className="w-64">{product.id}</td>
 							<td className="w-80">

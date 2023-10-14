@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import formatISO from 'date-fns/formatISO';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { DeepPartial } from 'react-hook-form';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
+import formatISO from 'date-fns/formatISO';
 import { selectSelectedLabels } from './labelsSlice';
 import { EventType } from '../types/EventType';
 
@@ -63,8 +63,8 @@ const eventsAdapter = createEntityAdapter<EventType>();
 
 export type EventDialogType = {
 	type: 'new' | 'edit';
-	props?: {
-		open?: boolean;
+	props: {
+		open: boolean;
 		anchorPosition?: { top: number; left: number };
 	};
 	data?: DeepPartial<EventType> | null;
@@ -104,8 +104,8 @@ const eventsSlice = createSlice({
 						anchorPosition: { top: jsEvent.pageY, left: jsEvent.pageX }
 					},
 					data: {
-						start: formatISO(new Date(start)),
-						end: formatISO(new Date(end))
+						start: formatISO(start),
+						end: formatISO(end)
 					}
 				};
 				return { payload, meta: undefined, error: null };
@@ -130,8 +130,8 @@ const eventsSlice = createSlice({
 						title,
 						allDay,
 						extendedProps,
-						start: formatISO(new Date(start)),
-						end: formatISO(new Date(end))
+						start: formatISO(start),
+						end: formatISO(end)
 					}
 				};
 				return { payload, meta: undefined, error: null };

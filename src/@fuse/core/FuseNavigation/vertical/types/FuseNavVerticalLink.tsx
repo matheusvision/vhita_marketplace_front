@@ -45,11 +45,11 @@ const Root = styled(ListItemButton)<ListItemButtonStyleProps>(({ theme, ...props
  * Create a vertical Link to use inside the navigation component.
  */
 function FuseNavVerticalLink(props: FuseNavItemComponentProps) {
-	const { item, nestedLevel, onItemClick } = props;
+	const { item, nestedLevel = 0, onItemClick } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
 
-	let itemProps;
+	let itemProps = {};
 
 	const component = item.url ? Link : 'li';
 

@@ -22,43 +22,43 @@ import FormActionsMenu from './FormActionsMenu';
 import { addTask, getTask, newTask, selectTask, updateTask } from '../store/taskSlice';
 import { selectTags } from '../store/tagsSlice';
 import { TaskType } from '../types/TaskType';
-import { TagType } from '../types/TagType';
+import { TagsType, TagType } from '../types/TagType';
 
 /**
  * Form Validation Schema
  */
 
 const subTaskSchema = yup.object().shape({
-	id: yup.string(),
-	title: yup.string(),
-	completed: yup.boolean()
+	id: yup.string().required(),
+	title: yup.string().required(),
+	completed: yup.boolean().required()
 });
 
 const schema = yup.object().shape({
-	id: yup.string(),
-	type: yup.string(),
+	id: yup.string().required(),
+	type: yup.string().required(),
 	title: yup.string().required('You must enter a name'),
-	notes: yup.string(),
-	completed: yup.boolean(),
-	dueDate: yup.string().nullable(),
-	priority: yup.number(),
-	tags: yup.array(yup.string()),
-	assignedTo: yup.string().nullable(),
-	subTasks: yup.array(subTaskSchema),
-	order: yup.number()
+	notes: yup.string().nullable().default(null),
+	completed: yup.boolean().required(),
+	dueDate: yup.string().nullable().default(null),
+	priority: yup.number().required(),
+	tags: yup.array(yup.string()).required(),
+	assignedTo: yup.string().nullable().default(null),
+	subTasks: yup.array(subTaskSchema).required(),
+	order: yup.number().required()
 });
 
 /**
  * The task form.
  */
 function TaskForm() {
-	const task = useAppSelector(selectTask);
+	const { data: task } = useAppSelector(selectTask);
 	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const { control, watch, reset, handleSubmit, formState } = useForm({
+	const { control, watch, reset, handleSubmit, formState } = useForm<TaskType>({
 		mode: 'onChange',
 		resolver: yupResolver(schema)
 	});
@@ -76,7 +76,7 @@ function TaskForm() {
 		}
 
 		if (!_.isEqual(task, form)) {
-			onSubmit(form as TaskType);
+			onSubmit(form);
 		}
 	}, [form, isValid]);
 
@@ -185,7 +185,7 @@ function TaskForm() {
 									{option.title}
 								</li>
 							)}
-							value={value ? value.map((id) => _.find(tags, { id })) : []}
+							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : []}
 							onChange={(event, newValue) => {
 								onChange(newValue.map((item: TagType) => item.id));
 							}}

@@ -1,11 +1,11 @@
 type ExtraData = {
 	name: string;
-	count: number;
+	count: Record<RangeType, number>;
 };
 
 type WidgetInnerData = {
 	name: string;
-	count: number;
+	count: Record<RangeType, number>;
 	extra: ExtraData;
 };
 
@@ -14,10 +14,12 @@ type WidgetInnerData = {
  */
 type WidgetDataType = {
 	title?: string;
-	ranges?: Record<string, string>;
+	ranges: Record<RangeType, string>;
 	currentRange?: string;
-	data?: WidgetInnerData;
+	data: WidgetInnerData;
 	detail?: string;
 };
+
+export type RangeType = 'DY' | 'DT' | 'DTM';
 
 export default WidgetDataType;

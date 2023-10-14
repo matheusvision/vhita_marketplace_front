@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
-import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NavbarToggleFab from 'app/theme-layouts/shared-components/NavbarToggleFab';
 
@@ -17,7 +16,7 @@ type NavbarToggleFabLayout1Props = {
 function NavbarToggleFabLayout1(props: NavbarToggleFabLayout1Props) {
 	const { className } = props;
 
-	const isMobile = useThemeMediaQuery((theme: ThemeOptions) => theme.breakpoints.down('lg'));
+	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 

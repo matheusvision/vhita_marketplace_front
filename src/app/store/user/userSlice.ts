@@ -11,10 +11,12 @@ import { UserType } from 'app/store/user';
 import jwtService from '../../auth/services/jwtService';
 import createAppAsyncThunk from '../createAppAsyncThunk';
 
+type AppRootStateType = RootStateType<userSliceType>;
+
 /**
  * Sets the user data in the Redux store and updates the login redirect URL if provided.
  */
-export const setUser = createAsyncThunk('user/setUser', (user?: UserType) => {
+export const setUser = createAsyncThunk('user/setUser', (user: UserType) => {
 	/*
     You can redirect the logged-in user to a specific route depending on his role
     */
@@ -32,7 +34,7 @@ export const updateUserSettings = createAppAsyncThunk(
 	'user/updateSettings',
 	async (settings: FuseSettingsConfigType, thunkApi) => {
 		const { dispatch, getState } = thunkApi;
-		const { user } = getState();
+		const { user } = getState() as AppRootStateType;
 
 		const newUser = _.merge({}, user, { data: { settings } }) as UserType;
 
@@ -49,14 +51,16 @@ export const updateUserShortcuts = createAppAsyncThunk(
 	'user/updateShortucts',
 	async (shortcuts: string[], thunkApi) => {
 		const { dispatch, getState } = thunkApi;
-		const { user } = getState();
+		const AppState = getState() as AppRootStateType;
+		const { user } = AppState;
+
 		const newUser = {
 			...user,
 			data: {
 				...user.data,
 				shortcuts
 			}
-		};
+		} as UserType;
 
 		await dispatch(updateUserData(newUser));
 
@@ -68,7 +72,8 @@ export const updateUserShortcuts = createAppAsyncThunk(
  * Logs the user out and resets the Redux store.
  */
 export const logoutUser = () => async (dispatch: AppDispatchType, getState: () => RootStateType) => {
-	const { user } = getState();
+	const AppState = getState() as AppRootStateType;
+	const { user } = AppState;
 
 	if (!user.role || user.role.length === 0) {
 		// is guest
@@ -135,8 +140,10 @@ const userSlice = createSlice({
 
 export const { userLoggedOut } = userSlice.actions;
 
-export const selectUser = (state: RootStateType) => state.user;
+export const selectUser = (state: AppRootStateType) => state.user;
 
-export const selectUserShortcuts = (state: RootStateType) => state.user.data.shortcuts;
+export const selectUserShortcuts = (state: AppRootStateType) => state.user.data.shortcuts;
 
-export default userSlice.reducer;
+export type userSliceType = typeof userSlice;
+
+export default userSlice;

@@ -9,10 +9,18 @@ import Button from '@mui/material/Button';
 import _ from '@lodash';
 import clsx from 'clsx';
 
+type priorityListType = {
+	value: number;
+	title: string;
+	icon: string;
+	textColor: string;
+	bgColor: string;
+};
+
 /**
  * The priority list data.
  */
-const priorityList = [
+const priorityList: priorityListType[] = [
 	{
 		value: 0,
 		title: 'Low',

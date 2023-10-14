@@ -69,7 +69,6 @@ function CardAttachment(props: CardAttachmentProps) {
 							{format(fromUnixTime(item.time), 'Pp')}
 						</Typography>
 						<Button
-							aria-owns={anchorEl ? 'actions-menu' : null}
 							aria-haspopup="true"
 							onClick={handleMenuOpen}
 							variant="outlined"
@@ -134,7 +133,6 @@ function CardAttachment(props: CardAttachmentProps) {
 							{item.time}
 						</Typography>
 						<Button
-							aria-owns={anchorEl ? 'actions-menu' : null}
 							aria-haspopup="true"
 							onClick={handleMenuOpen}
 							variant="outlined"

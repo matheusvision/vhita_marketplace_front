@@ -61,7 +61,7 @@ function ProjectDashboardAppHeader() {
 						alt="user photo"
 						src={user?.data?.photoURL}
 					>
-						{user?.data?.displayName[0]}
+						{user?.data?.displayName?.[0]}
 					</Avatar>
 					<div className="flex flex-col min-w-0 mx-16">
 						<Typography className="text-2xl md:text-5xl font-semibold tracking-tight leading-7 md:leading-snug truncate">
@@ -120,7 +120,7 @@ function ProjectDashboardAppHeader() {
 						</FuseSvgIcon>
 					}
 				>
-					{_.find(projects, ['id', selectedProject.id]).name}
+					{_.find(projects, ['id', selectedProject.id])?.name}
 				</Button>
 				<Menu
 					id="project-menu"

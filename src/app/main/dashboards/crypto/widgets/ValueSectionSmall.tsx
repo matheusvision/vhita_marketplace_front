@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 
 type ValueSectionSmallProps = {
-	unit?: 'B' | 'M' | '';
+	unit?: 'B' | 'M';
 	title: string;
 	value: number;
 	className?: string;
@@ -12,7 +12,7 @@ type ValueSectionSmallProps = {
  * The value section small component.
  */
 function ValueSectionSmall(props: ValueSectionSmallProps) {
-	const { value = 0, title = '', unit = '', className = '' } = props;
+	const { value = 0, title = '', unit = 'B', className = '' } = props;
 
 	const unitValues = {
 		B: 1000000000,

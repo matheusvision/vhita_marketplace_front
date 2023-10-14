@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import history from '@history';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import { RootStateType } from 'app/store/types';
+import { AsyncStateType, RootStateType } from 'app/store/types';
 import { PartialDeep } from 'type-fest';
 import SectionModel from '../models/SectionModel';
 import TaskModel from '../models/TaskModel';
@@ -13,19 +13,22 @@ export type AppRootStateType = RootStateType<taskSliceType>;
 /**
  * Get task from the server.
  */
-export const getTask = createAppAsyncThunk<TaskType, string>('tasksApp/task/getTask', async (id) => {
-	try {
-		const response = await axios.get(`/api/tasks/${id}`);
+export const getTask = createAppAsyncThunk<TaskType, string>(
+	'tasksApp/task/getTask',
+	async (id, { rejectWithValue }) => {
+		try {
+			const response = await axios.get(`/api/tasks/${id}`);
 
-		const data = (await response.data) as TaskType;
+			const data = (await response.data) as TaskType;
 
-		return data;
-	} catch (error) {
-		history.push({ pathname: `/apps/tasks` });
-
-		return null;
+			return data;
+		} catch (error) {
+			history.push({ pathname: `/apps/tasks` });
+			const axiosError = error as AxiosError;
+			return rejectWithValue(axiosError.message);
+		}
 	}
-});
+);
 
 /**
  * Add task to the server.
@@ -60,7 +63,10 @@ export const removeTask = createAppAsyncThunk<string, string>('tasksApp/tasks/re
 	return id;
 });
 
-const initialState: TaskType = null;
+const initialState: AsyncStateType<TaskType> = {
+	data: null,
+	status: 'idle'
+};
 
 /**
  * The Tasks app task slice.
@@ -73,23 +79,31 @@ const taskSlice = createSlice({
 			const type = action.payload as TaskType['type'];
 
 			if (type === 'section') {
-				return SectionModel({});
+				state.data = SectionModel({});
 			}
 			if (type === 'task') {
-				return TaskModel({});
+				state.data = TaskModel({});
 			}
-			return null;
+			return initialState;
 		},
-		resetTask: () => null
+		resetTask: () => initialState
 	},
 
 	extraReducers: (builder) => {
 		builder
-			.addCase(getTask.pending, () => null)
-			.addCase(getTask.fulfilled, (state, action) => action.payload)
-			.addCase(addTask.fulfilled, (state, action) => action.payload)
-			.addCase(updateTask.fulfilled, (state, action) => action.payload)
-			.addCase(removeTask.fulfilled, () => null);
+			.addCase(getTask.pending, (state) => {
+				state.status = 'loading';
+			})
+			.addCase(getTask.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(addTask.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(updateTask.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
+			.addCase(removeTask.fulfilled, () => initialState);
 	}
 });
 

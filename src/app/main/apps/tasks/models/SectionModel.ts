@@ -5,7 +5,7 @@ import { TaskType } from '../types/TaskType';
 /**
  * The section model.
  */
-const SectionModel = (data: PartialDeep<TaskType>) =>
+const SectionModel = (data: PartialDeep<TaskType>): TaskType =>
 	_.defaults(data || {}, {
 		type: 'section',
 		title: '',

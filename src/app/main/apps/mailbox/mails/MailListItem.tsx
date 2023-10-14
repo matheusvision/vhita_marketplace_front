@@ -74,9 +74,9 @@ function MailListItem(props: MailListItemProps) {
 				<div className="flex w-full space-x-6 items-center">
 					<Avatar
 						sx={{
-							backgroundColor: (theme) => theme.palette.primary[500] as string
+							backgroundColor: (_theme) => _theme.palette.primary.main
 						}}
-						alt={mail.from.name}
+						alt={mail.from.email}
 						src={mail.from?.avatar}
 					>
 						{mail.from.contact}

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { useAppSelector } from 'app/store';
 import { selectLabels } from './store/labelsSlice';
 
-type EventLabelSelectProps = {
+export type EventLabelSelectProps = {
 	value: string;
 	onChange: (value: string) => void;
 	className?: string;

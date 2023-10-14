@@ -4,7 +4,7 @@ import { ListType } from '../types/ListType';
 /**
  * The list model.
  */
-function ListModel(data: Partial<ListType>) {
+function ListModel(data: Partial<ListType>): ListType {
 	data = data || {};
 
 	return _.defaults(data, {

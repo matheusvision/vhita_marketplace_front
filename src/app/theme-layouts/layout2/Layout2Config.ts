@@ -1,5 +1,3 @@
-import { DeepPartial } from 'react-hook-form';
-
 /**
  * The Layout2 Config object.
  */
@@ -141,6 +139,6 @@ const Layout2Config = {
 	}
 };
 
-export type Layout2ConfigDefaultsType = DeepPartial<(typeof Layout2Config)['defaults']>;
+export type Layout2ConfigDefaultsType = (typeof Layout2Config)['defaults'];
 
 export default Layout2Config;

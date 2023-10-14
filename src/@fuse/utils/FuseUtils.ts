@@ -5,8 +5,13 @@ import { RouteObject } from 'react-router-dom';
 import { PartialDeep } from 'type-fest';
 import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
+import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import EventEmitter from './EventEmitter';
 
+type TreeNode = {
+	id: string;
+	children?: TreeNode[];
+};
 /**
  * The FuseRouteItemType type is a custom type that extends the RouteObject type from react-router-dom.
  * It adds an optional auth property and an optional settings property.
@@ -25,11 +30,11 @@ export type FuseRoutesType = FuseRouteItemType[];
  * The FuseRouteConfigType type is a custom type that defines the configuration for a set of routes.
  * It includes an optional routes property, an optional settings property, and an optional auth property.
  */
-export type FuseRouteConfigType = Partial<{
-	routes?: FuseRoutesType;
+export type FuseRouteConfigType = {
+	routes: FuseRoutesType;
 	settings?: unknown;
 	auth?: string[] | [];
-}>;
+};
 
 /**
  * The FuseRouteConfigsType type is a custom type that is an array of FuseRouteConfigType objects.
@@ -54,6 +59,24 @@ type hueTypes =
 	| 'A200'
 	| 'A400'
 	| 'A700';
+
+type Color = {
+	50?: string;
+	100?: string;
+	200?: string;
+	300?: string;
+	400?: string;
+	500?: string;
+	600?: string;
+	700?: string;
+	800?: string;
+	900?: string;
+	A100?: string;
+	A200?: string;
+	A400?: string;
+	A700?: string;
+	[key: string]: string | undefined;
+};
 
 /**
  * The FuseUtils class provides utility functions for the Fuse project.
@@ -80,15 +103,20 @@ class FuseUtils {
 	 *
 	 */
 	static searchInObj(itemObj: unknown, searchText: string) {
-		if (!itemObj) {
+		if (!isRecord(itemObj)) {
 			return false;
 		}
 
 		const propArray = Object.keys(itemObj);
 
+		function isRecord(value: unknown): value is Record<string, unknown> {
+			return Boolean(value && typeof value === 'object' && !Array.isArray(value) && typeof value !== 'function');
+		}
+
 		for (let i = 0; i < propArray.length; i += 1) {
 			const prop = propArray[i];
-			const value: unknown = itemObj[prop];
+
+			const value = itemObj[prop];
 
 			if (typeof value === 'string') {
 				if (this.searchInString(value, searchText)) {
@@ -122,7 +150,7 @@ class FuseUtils {
 				}
 			}
 
-			if (typeof value === 'object') {
+			if (value && typeof value === 'object') {
 				if (this.searchInObj(value, searchText)) {
 					return true;
 				}
@@ -146,7 +174,7 @@ class FuseUtils {
 	 * It returns a string representing the GUID.
 	 *
 	 */
-	static generateGUID() {
+	static generateGUID(): string {
 		function S4() {
 			return Math.floor((1 + Math.random()) * 0x10000)
 				.toString(16)
@@ -184,7 +212,10 @@ class FuseUtils {
 	/**
 	 * The setRoutes function sets the routes for the Fuse project.
 	 */
-	static setRoutes(config?: FuseRouteConfigType, defaultAuth: FuseSettingsConfigType['defaultAuth'] = null) {
+	static setRoutes(
+		config: FuseRouteConfigType,
+		defaultAuth: FuseSettingsConfigType['defaultAuth'] = undefined
+	): FuseRouteItemType[] {
 		let routes = [...config.routes];
 
 		routes = routes.map((route) => {
@@ -199,7 +230,7 @@ class FuseUtils {
 				settings,
 				auth
 			};
-		});
+		}) as FuseRouteItemType[];
 
 		return [...routes];
 	}
@@ -213,7 +244,7 @@ class FuseUtils {
 		configs: FuseRouteConfigsType,
 		defaultAuth: FuseSettingsConfigType['defaultAuth']
 	) {
-		let allRoutes: FuseRouteConfigsType = [];
+		let allRoutes: FuseRouteItemType[] = [];
 		configs.forEach((config: FuseRouteConfigType) => {
 			allRoutes = [...allRoutes, ...this.setRoutes(config, defaultAuth)];
 		});
@@ -223,26 +254,26 @@ class FuseUtils {
 	/**
 	 * The findById function finds an object by its id.
 	 */
-	static findById(obj: { id?: string }, id: string) {
-		let i: number;
-		let childObj: unknown;
-		let result: unknown;
+	static findById(tree: TreeNode[], idToFind: string): TreeNode | undefined {
+		// Try to find the node at the current level
+		const node = _.find(tree, { id: idToFind });
 
-		if (id === obj.id) {
-			return obj;
+		if (node) {
+			return node;
 		}
 
-		for (i = 0; i < Object.keys(obj).length; i += 1) {
-			childObj = obj[Object.keys(obj)[i]];
+		let foundNode: TreeNode | undefined;
 
-			if (typeof childObj === 'object') {
-				result = this.findById(childObj, id);
-				if (result) {
-					return result;
-				}
+		// If not found, search in the children using lodash's some for iteration
+		_.some(tree, (item) => {
+			if (item.children) {
+				foundNode = this.findById(item.children, idToFind);
+				return foundNode; // If foundNode is truthy, _.some will stop iterating
 			}
-		}
-		return false;
+			return false; // Continue iterating
+		});
+
+		return foundNode;
 	}
 
 	/**
@@ -253,14 +284,8 @@ class FuseUtils {
 			const navItem = navigationItems[i];
 
 			if (navItem.type === 'item') {
-				flatNavigation.push({
-					id: navItem.id,
-					title: navItem.title,
-					type: navItem.type,
-					icon: navItem.icon || false,
-					url: navItem.url,
-					auth: navItem.auth || null
-				});
+				const _navtItem = FuseNavItemModel(navItem);
+				flatNavigation.push(_navtItem);
 			}
 
 			if (navItem.type === 'collapse' || navItem.type === 'group') {
@@ -294,23 +319,29 @@ class FuseUtils {
 			'orange',
 			'deepOrange'
 		];
+
 		const randomColor = mainColors[Math.floor(Math.random() * mainColors.length)];
-		// eslint-disable-next-line
-		return colors[randomColor][hue];
+
+		return (colors as { [key: string]: Color })[randomColor][hue];
 	}
 
 	/**
 	 * The findNavItemById function finds a navigation item by its id.
 	 */
-	static difference(object: unknown, base: unknown) {
-		function changes(_object: unknown, _base: unknown) {
-			// eslint-disable-next-line
-			// @ts-ignore
-			return _.transform(_object, (result, value, key) => {
-				if (!_.isEqual(value, _base[key])) {
-					result[key] = _.isObject(value) && _.isObject(_base[key]) ? changes(value, _base[key]) : value;
-				}
-			});
+	static difference(object: Record<string, unknown>, base: Record<string, unknown>): Record<string, unknown> {
+		function changes(_object: Record<string, unknown>, _base: Record<string, unknown>): Record<string, unknown> {
+			return _.transform(
+				_object,
+				(result: Record<string, unknown>, value: unknown, key: string) => {
+					if (!_.isEqual(value, _base[key])) {
+						result[key] =
+							_.isObject(value) && _.isObject(_base[key])
+								? changes(value as Record<string, unknown>, _base[key] as Record<string, unknown>)
+								: value;
+					}
+				},
+				{}
+			);
 		}
 
 		return changes(object, base);
@@ -356,13 +387,13 @@ class FuseUtils {
 
 				return _.merge({}, _item);
 			})
-			.filter((s) => s);
+			.filter((s) => s) as FuseNavigationType;
 	}
 
 	/**
 	 * The prependNavItem function prepends a navigation item.
 	 */
-	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
+	static prependNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string | null): FuseNavigationType {
 		if (!parentId) {
 			return [item, ...nav];
 		}
@@ -388,7 +419,7 @@ class FuseUtils {
 	/**
 	 * The appendNavItem function appends a navigation item.
 	 */
-	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string): FuseNavigationType {
+	static appendNavItem(nav: FuseNavigationType, item: FuseNavItemType, parentId: string | null): FuseNavigationType {
 		if (!parentId) {
 			return [...nav, item];
 		}
@@ -414,7 +445,7 @@ class FuseUtils {
 	/**
 	 * The hasPermission function checks if a user has permission to access a resource.
 	 */
-	static hasPermission(authArr: string[] | string, userRole: string | string[]): boolean {
+	static hasPermission(authArr: string[] | string | undefined, userRole: string | string[] | undefined): boolean {
 		/**
 		 * If auth array is not defined
 		 * Pass and allow
@@ -466,7 +497,7 @@ class FuseUtils {
 					if (entry.children != null) {
 						// if the object has childrens, filter the list of children
 						const children = this.filterRecursive(entry.children, predicate);
-						if (children.length > 0) {
+						if (children && children?.length > 0) {
 							// if any of the children matches, clone the parent object, overwrite
 							// the children list with the filtered list
 							clone = { ...entry, children };

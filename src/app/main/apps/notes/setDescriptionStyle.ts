@@ -38,8 +38,8 @@ const setDescriptionStyle: setDescriptionStyleType = (sentence, refEl, enabled) 
 		return;
 	}
 
-	refEl.style.fontSize = null;
-	refEl.style.lineHeight = null;
+	refEl.style.fontSize = 'auto';
+	refEl.style.lineHeight = 'auto';
 	const refElWidth = refEl.clientWidth;
 
 	if (refElWidth === 0) {

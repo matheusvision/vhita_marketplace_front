@@ -16,6 +16,7 @@ import { useDebounce, useDeepCompareEffect } from '@fuse/hooks';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { PartialDeep } from 'type-fest';
+import ListItemButton from '@mui/material/ListItemButton';
 import { deleteBoard, selectBoard, updateBoard } from '../../../store/boardSlice';
 import { BoardType } from '../../../types/BoardType';
 
@@ -30,11 +31,11 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 	const { onSetSidebarOpen } = props;
 
 	const dispatch = useAppDispatch();
-	const board = useAppSelector(selectBoard);
+	const { data: board } = useAppSelector(selectBoard);
 
 	const { watch, control, reset } = useForm({
 		mode: 'onChange',
-		defaultValues: board.settings
+		defaultValues: board?.settings
 	});
 
 	const boardSettingsForm = watch();
@@ -135,15 +136,12 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 					</ListItemSecondaryAction>
 				</ListItem>
 
-				<ListItem
-					button
-					onClick={() => dispatch(deleteBoard(board.id))}
-				>
+				<ListItemButton onClick={() => dispatch(deleteBoard(board?.id))}>
 					<ListItemIcon className="min-w-40">
 						<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Delete Board" />
-				</ListItem>
+				</ListItemButton>
 			</List>
 		</div>
 	);

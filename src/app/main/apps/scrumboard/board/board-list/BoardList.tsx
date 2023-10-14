@@ -29,11 +29,13 @@ type BoardListProps = {
  */
 function BoardList(props: BoardListProps) {
 	const { listId, cardIds, index } = props;
-	const contentScrollEl = useRef<null | HTMLDivElement>(null);
+	const contentScrollEl = useRef<HTMLDivElement>(null);
 	const list = useAppSelector(selectListById(listId));
 
 	function handleCardAdded() {
-		contentScrollEl.current.scrollTop = contentScrollEl.current.scrollHeight;
+		if (contentScrollEl.current) {
+			contentScrollEl.current.scrollTop = contentScrollEl.current.scrollHeight;
+		}
 	}
 
 	if (!list) {

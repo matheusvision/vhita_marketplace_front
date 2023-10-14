@@ -17,7 +17,7 @@ type MailInfoProps = {
  */
 function MailInfo(props: MailInfoProps) {
 	const { className } = props;
-	const mail = useAppSelector(selectMail);
+	const { data: mail } = useAppSelector(selectMail);
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 
@@ -28,6 +28,10 @@ function MailInfo(props: MailInfoProps) {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	if (!mail) {
+		return null;
+	}
 
 	return (
 		<div className={className}>

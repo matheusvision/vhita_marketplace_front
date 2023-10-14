@@ -17,6 +17,10 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { newList } from '../../store/listsSlice';
 import { ListType } from '../../types/ListType';
 
+type FormType = {
+	title: ListType['title'];
+};
+
 const defaultValues = {
 	title: ''
 };
@@ -35,7 +39,7 @@ function BoardAddList() {
 	const dispatch = useAppDispatch();
 
 	const [formOpen, setFormOpen] = useState(false);
-	const { control, formState, handleSubmit, reset } = useForm({
+	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
 		resolver: yupResolver(schema)
@@ -58,7 +62,7 @@ function BoardAddList() {
 		setFormOpen(false);
 	}
 
-	function onSubmit(data: ListType) {
+	function onSubmit(data: FormType) {
 		dispatch(newList(data));
 		handleCloseForm();
 	}

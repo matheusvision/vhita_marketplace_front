@@ -2,9 +2,9 @@
  * Sub Task Type
  */
 type SubTask = {
-	id: string;
-	title: string;
-	completed: boolean;
+	id?: string;
+	title?: string;
+	completed?: boolean;
 };
 
 /**

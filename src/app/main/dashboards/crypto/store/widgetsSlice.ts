@@ -2,24 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootStateType } from 'app/store/types';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
-import BTCWidgetType from '../types/BTCWidgetType';
-import PricesType from '../types/PricesType';
-import WalletsType from '../types/WalletsType';
-import WatchlistType from '../types/WatchlistType';
 
 type AppRootStateType = RootStateType<widgetsSliceType>;
 
-type WidgetsType = {
-	btc?: BTCWidgetType;
-	prices?: PricesType;
-	wallets?: WalletsType;
-	watchlist?: WatchlistType;
+export type WidgetsType = {
+	[key: string]: unknown;
 };
 
 /**
  * Get the widgets data.
  */
-export const getWidgets = createAppAsyncThunk<WidgetsType>('cryptoDashboardApp/widgets/getWidgets', async () => {
+export const getWidgets = createAppAsyncThunk('cryptoDashboardApp/widgets/getWidgets', async () => {
 	const response = await axios.get('/api/dashboards/crypto/widgets');
 
 	const data = (await response.data) as WidgetsType;
@@ -27,7 +20,7 @@ export const getWidgets = createAppAsyncThunk<WidgetsType>('cryptoDashboardApp/w
 	return data;
 });
 
-const initialState: WidgetsType = null;
+const initialState: WidgetsType = {};
 
 /**
  * the crypto dashboard widgets slice.

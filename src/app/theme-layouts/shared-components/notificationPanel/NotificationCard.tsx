@@ -6,11 +6,11 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { NotificationModelProps } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
+import { NotificationModelType } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import { MouseEvent } from 'react';
 
 type NotificationCardProps = {
-	item: NotificationModelProps;
+	item: NotificationModelType;
 	className?: string;
 	onClose: (T: string) => void;
 };

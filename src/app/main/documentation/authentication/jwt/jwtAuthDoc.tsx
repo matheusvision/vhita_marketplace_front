@@ -116,7 +116,6 @@ function JwtAuthDoc() {
 							);
 						};
 
-
 						* Handles authentication by checking for a valid access token and emitting events based on the result.
 						*/
 						handleAuthentication = () => {

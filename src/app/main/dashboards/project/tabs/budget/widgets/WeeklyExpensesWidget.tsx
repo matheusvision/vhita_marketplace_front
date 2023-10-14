@@ -7,13 +7,14 @@ import Typography from '@mui/material/Typography';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
 import { selectWidgets } from '../../../store/widgetsSlice';
+import ExpensesDataType from '../../../types/ExpensesDataType';
 
 /**
  * The MonthlyExpensesWidget widget.
  */
 function WeeklyExpensesWidget() {
 	const widgets = useAppSelector(selectWidgets);
-	const { amount, series, labels } = widgets.weeklyExpenses;
+	const { amount, series, labels } = widgets.weeklyExpenses as ExpensesDataType;
 	const theme = useTheme();
 
 	const chartOptions: ApexOptions = {
@@ -82,8 +83,8 @@ function WeeklyExpensesWidget() {
 						className="flex-auto w-full h-64"
 						options={chartOptions}
 						series={series}
-						type={chartOptions.chart.type}
-						height={chartOptions.chart.height}
+						type={chartOptions?.chart?.type}
+						height={chartOptions?.chart?.height}
 					/>
 				</div>
 			</div>

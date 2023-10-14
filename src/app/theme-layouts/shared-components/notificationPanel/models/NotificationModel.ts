@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 /**
  * The type of the NotificationModel.
  */
-export type NotificationModelProps = {
+export type NotificationModelType = {
 	id?: string;
 	icon?: string;
 	title?: string;
@@ -23,7 +23,7 @@ export type NotificationModelProps = {
  * The NotificationModel class.
  * Implements NotificationModelProps interface.
  */
-function NotificationModel(data: NotificationModelProps) {
+function NotificationModel(data: NotificationModelType): NotificationModelType {
 	data = data || {};
 
 	return _.defaults(data, {
@@ -34,7 +34,7 @@ function NotificationModel(data: NotificationModelProps) {
 		time: new Date().toISOString(),
 		read: false,
 		variant: 'default'
-	}) as NotificationModelProps;
+	}) as NotificationModelType;
 }
 
 export default NotificationModel;

@@ -6,7 +6,7 @@ import { EventType } from '../types/EventType';
 /**
  * The event model.
  */
-const EventModel = (data?: DeepPartial<EventType>) =>
+const EventModel = (data?: DeepPartial<EventType>): EventType =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		title: '',

@@ -42,7 +42,7 @@ type Layout2Props = {
 function Layout2(props: Layout2Props) {
 	const { children } = props;
 
-	const config: Layout2ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout2ConfigDefaultsType;
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 
@@ -85,7 +85,7 @@ function Layout2(props: Layout2Props) {
 					</div>
 
 					{config.footer.display && (
-						<FooterLayout2 className={config.footer.style === 'fixed' && 'sticky bottom-0'} />
+						<FooterLayout2 className={config.footer.style === 'fixed' ? 'sticky bottom-0' : ''} />
 					)}
 				</main>
 			</div>

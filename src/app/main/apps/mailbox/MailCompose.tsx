@@ -17,15 +17,35 @@ import WYSIWYGEditor from 'app/shared-components/WYSIWYGEditor';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import MailAttachment from './MailAttachment';
+import { MailType } from './types/MailType';
 
+type FormType = {
+	from: { email?: MailType['from']['email'] };
+	to: MailType['to'];
+	cc: MailType['cc'];
+	bcc: MailType['bcc'];
+	subject: MailType['subject'];
+	message: string;
+};
+
+const defaultValues: FormType = {
+	from: { email: 'johndoe@creapond.com' },
+	to: '',
+	cc: [],
+	bcc: [],
+	subject: '',
+	message: ''
+};
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-	from: yup.string(),
-	to: yup.string().required('You must enter an e-mail').email('You must enter a valid e-mail.'),
-	cc: yup.string(),
-	bcc: yup.string(),
+	from: yup.object({
+		email: yup.string().email('You must enter a valid e-mail.').nullable()
+	}),
+	to: yup.string().email('You must enter a valid e-mail.').required(),
+	cc: yup.array(yup.string().email('Must be a valid email')),
+	bcc: yup.array(yup.string().email('Must be a valid email')),
 	subject: yup.string(),
 	message: yup.string()
 });
@@ -40,16 +60,9 @@ type MailComposeProps = {
 function MailCompose(props: MailComposeProps) {
 	const { className } = props;
 	const [openDialog, setOpenDialog] = useState(false);
-	const { handleSubmit, formState, control } = useForm({
+	const { handleSubmit, formState, control } = useForm<FormType>({
 		mode: 'onChange',
-		defaultValues: {
-			from: 'johndoe@creapond.com',
-			to: '',
-			cc: '',
-			bcc: '',
-			subject: '',
-			message: ''
-		},
+		defaultValues,
 		resolver: yupResolver(schema)
 	});
 
@@ -69,7 +82,7 @@ function MailCompose(props: MailComposeProps) {
 		setOpenDialog(false);
 	}
 
-	function onSubmit(data: FormDataEvent) {
+	function onSubmit(data: FormType) {
 		// eslint-disable-next-line no-console
 		console.info(data);
 		setOpenDialog(false);
@@ -115,7 +128,7 @@ function MailCompose(props: MailComposeProps) {
 				>
 					<DialogContent classes={{ root: 'p-16 pb-0 sm:p-32 sm:pb-0' }}>
 						<Controller
-							name="from"
+							name="from.email"
 							control={control}
 							render={({ field }) => (
 								<TextField

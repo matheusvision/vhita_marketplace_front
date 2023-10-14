@@ -18,6 +18,7 @@ import UserAvatar from '../UserAvatar';
 import ChatMoreMenu from './ChatMoreMenu';
 import { ChatAppContext } from '../ChatApp';
 import { ChatMessageType } from '../types/ChatMessageType';
+import Error404Page from '../../../404/Error404Page';
 
 const StyledMessageRow = styled('div')(({ theme }) => ({
 	'&.contact': {
@@ -102,11 +103,10 @@ type ChatPropsType = {
  */
 function Chat(props: ChatPropsType) {
 	const { className } = props;
-
 	const { setMainSidebarOpen, setContactSidebarOpen } = useContext(ChatAppContext);
 	const dispatch = useAppDispatch();
 	const chat = useAppSelector(selectChat);
-	const user = useAppSelector(selectUser);
+	const { data: user } = useAppSelector(selectUser);
 	const routeParams = useParams();
 	const contactId = routeParams.id;
 	const selectedContact = useAppSelector(selectContactById(contactId));
@@ -162,7 +162,7 @@ function Chat(props: ChatPropsType) {
 	}
 
 	if (!user || !chat || !selectedContact) {
-		return null;
+		return <Error404Page />;
 	}
 
 	return (

@@ -26,7 +26,7 @@ type ToolbarLayout3Props = {
  */
 function ToolbarLayout3(props: ToolbarLayout3Props) {
 	const { className = '' } = props;
-	const config: Layout3ConfigDefaultsType = useSelector(selectFuseCurrentLayoutConfig);
+	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
 	const toolbarTheme = useSelector(selectToolbarTheme);
 
 	return (

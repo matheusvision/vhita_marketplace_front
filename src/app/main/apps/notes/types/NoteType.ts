@@ -8,12 +8,12 @@ export type NoteType = {
 	title: string;
 	content: string;
 	tasks: NoteListItemsType;
-	image: string;
-	reminder: string;
+	image: string | null;
+	reminder: string | null;
 	labels: string[];
 	archived: boolean;
 	createdAt: string;
-	updatedAt: string;
+	updatedAt: string | null;
 };
 
 /**

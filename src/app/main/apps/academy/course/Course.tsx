@@ -17,16 +17,18 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import FuseLoading from '@fuse/core/FuseLoading';
 import { getCourse, selectCourse, updateCourse } from '../store/courseSlice';
 import CourseInfo from '../CourseInfo';
 import CourseProgress from '../CourseProgress';
+import Error404Page from '../../../404/Error404Page';
 
 /**
  * The Course page.
  */
 function Course() {
 	const dispatch = useAppDispatch();
-	const course = useAppSelector(selectCourse);
+	const { data: course, status } = useAppSelector(selectCourse);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const theme = useTheme();
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
@@ -46,7 +48,7 @@ function Course() {
 		 * If the course is opened for the first time
 		 * Change ActiveStep to 1
 		 */
-		if (course && course.progress.currentStep === 0) {
+		if (course && course?.progress?.currentStep === 0) {
 			dispatch(updateCourse({ progress: { currentStep: 1 } }));
 		}
 	}, [dispatch, course]);
@@ -55,14 +57,10 @@ function Course() {
 		setLeftSidebarOpen(!isMobile);
 	}, [isMobile]);
 
-	if (!course) {
-		return null;
-	}
-
-	const { currentStep } = course.progress;
+	const currentStep = course?.progress?.currentStep || 0;
 
 	function updateCurrentStep(index: number) {
-		if (index > course.totalSteps || index < 0) {
+		if (course && (index > course.totalSteps || index < 0)) {
 			return;
 		}
 		dispatch(updateCourse({ progress: { currentStep: index } }));
@@ -81,6 +79,14 @@ function Course() {
 	}
 
 	const activeStep = currentStep !== 0 ? currentStep : 1;
+
+	if (status === 'loading') {
+		return <FuseLoading />;
+	}
+
+	if (!course) {
+		return <Error404Page />;
+	}
 
 	return (
 		<FusePageSimple

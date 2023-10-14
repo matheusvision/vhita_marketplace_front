@@ -5,7 +5,7 @@ import { CardType } from '../types/CardType';
 /**
  * The card model.
  */
-function CardModel(data: PartialDeep<CardType>) {
+function CardModel(data: PartialDeep<CardType>): CardType {
 	data = data || {};
 
 	return _.defaults(data, {

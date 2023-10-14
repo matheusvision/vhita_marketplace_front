@@ -1,26 +1,24 @@
-import { combineReducers, ReducersMapObject } from '@reduxjs/toolkit';
-import fuse from './fuse';
-import i18n from './i18nSlice';
-import user from './user/userSlice';
+import { combineReducers, ReducersMapObject, Slice } from '@reduxjs/toolkit';
+import userSlice from './user/userSlice';
+import i18nSlice from './i18nSlice';
+import generateReducersFromSlices from './generateReducersFromSlices';
+import fuseSlices from './fuse';
 
 /**
  * Creates a reducer function that combines the provided reducers with the async reducers.
  */
 const createReducer = (asyncReducers: ReducersMapObject) =>
 	combineReducers({
-		fuse,
-		i18n,
-		user,
+		...generateReducersFromSlices([...fuseSlices, i18nSlice, userSlice] as Slice[]),
 		...asyncReducers
-	});
+	} as ReducersMapObject);
 
 /* Reset the redux store when user logged out */
-
 /**
-if (action.type === 'user/userLoggedOut') {
-	// state = undefined;
-}
-return combinedReducer(state, action);
+	if (action.type === 'user/userLoggedOut') {
+		// state = undefined;
+	}
+	return combinedReducer(state, action);
 */
 
 export default createReducer;
