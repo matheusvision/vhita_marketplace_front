@@ -256,7 +256,6 @@ export default ModernInvoicePage;
  <div className="page-break-after"></div>
  <div className="page-break-before"></div>
 
-
  Example:
  --------
 
