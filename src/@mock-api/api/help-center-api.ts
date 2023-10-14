@@ -39,9 +39,9 @@ mock.onGet('/api/help-center/guides/:categorySlug').reply((config) => {
 	return [200, _.filter(guidesDB, { categoryId: category.id })];
 });
 
-mock.onGet('/api/help-center/guides/:guideSlug').reply((config) => {
-	const { guideSlug } = config.params as Params;
-
+mock.onGet('/api/help-center/guides/:categorySlug/:guideSlug').reply((config) => {
+	const { categorySlug, guideSlug } = config.params as Params;
+	console.info(guideSlug);
 	return [200, { ..._.find(guidesDB, { slug: guideSlug }), content: guideContent }];
 });
 

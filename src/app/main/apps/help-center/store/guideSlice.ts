@@ -10,23 +10,11 @@ export type AppRootStateType = RootStateType<guideSliceType>;
 /**
  * Get Guide from server
  */
-export const getGuide2 = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
-	'helpCenterApp/guide/get',
-	async ({ categorySlug, guideSlug }) => {
-		const response = await axios.get(`/api/help-center/guides/${categorySlug}/${guideSlug}`);
-
-		const data = (await response.data) as GuideType;
-
-		return data;
-	}
-);
-
 export const getGuide = createAppAsyncThunk<GuideType, { categorySlug: string; guideSlug: string }>(
 	'helpCenterApp/guide/get',
 	async (arg, { rejectWithValue }) => {
 		try {
-			// Assuming you're using axios or similar for HTTP requests
-			const response = await axios.get(`/api/guide/${arg.categorySlug}/${arg.guideSlug}`);
+			const response = await axios.get(`/api/help-center/guides/${arg.categorySlug}/${arg.guideSlug}`);
 			return response.data as GuideType;
 		} catch (error) {
 			const axiosError = error as AxiosError;
