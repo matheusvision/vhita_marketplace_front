@@ -81,7 +81,7 @@ export const { selectAll: selectMails, selectById: selectMailById } = mailsAdapt
 /**
  * The Mailbox App mails slice.
  */
-const mailsSlice = createSlice({
+export const mailsSlice = createSlice({
 	name: 'mailboxApp/mails',
 	initialState,
 	reducers: {
@@ -156,4 +156,4 @@ export const selectSelectedMailIds = (state: AppRootStateType) => state.mailboxA
 
 export type mailsSliceType = typeof mailsSlice;
 
-export default mailsSlice;
+export default mailsSlice.reducer;

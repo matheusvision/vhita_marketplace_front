@@ -21,7 +21,7 @@ const initialState: WidgetsType = {};
 /**
  * The project dashboard widgets slice.
  */
-const widgetsSlice = createSlice({
+export const widgetsSlice = createSlice({
 	name: 'projectDashboardApp/widgets',
 	initialState,
 	reducers: {},
@@ -34,4 +34,4 @@ export const selectWidgets = (state: AppRootStateType) => state.projectDashboard
 
 export type widgetsSliceType = typeof widgetsSlice;
 
-export default widgetsSlice;
+export default widgetsSlice.reducer;

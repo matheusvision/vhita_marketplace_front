@@ -118,7 +118,7 @@ function ContactForm() {
 		});
 	}
 
-	if (_.isEmpty(form) || !contact) {
+	if (_.isEmpty(form) || !contact || tags.length === 0) {
 		return <FuseLoading />;
 	}
 

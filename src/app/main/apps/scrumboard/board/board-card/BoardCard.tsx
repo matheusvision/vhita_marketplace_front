@@ -110,7 +110,7 @@ function BoardCard(props: BoardCardProps) {
 
 						<div className="flex justify-between h-48 px-16">
 							<div className="flex items-center space-x-4">
-								{card.subscribed && (
+								{card?.subscribed && (
 									<FuseSvgIcon
 										size={16}
 										color="action"

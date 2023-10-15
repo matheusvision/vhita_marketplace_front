@@ -1,3 +1,4 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import filters from './filtersSlice';
 import folders from './foldersSlice';
 import labels from './labelsSlice';
@@ -5,8 +6,14 @@ import mail from './mailSlice';
 import mails from './mailsSlice';
 
 /**
- * The Mailbox App slices.
+ * The Mailbox App reducer.
  */
-const slices = [mails, mail, folders, labels, filters];
+const reducer = combineReducers({
+	mails,
+	mail,
+	folders,
+	labels,
+	filters
+});
 
-export default slices;
+export default reducer;

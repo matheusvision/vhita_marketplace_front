@@ -6,7 +6,7 @@ export type AppRootStateType = RootStateType<stateSlice>;
 /**
  * The chat panel state slice.
  */
-const stateSlice = createSlice({
+export const stateSlice = createSlice({
 	name: 'chatPanel/state',
 	initialState: false,
 	reducers: {
@@ -22,4 +22,4 @@ export const selectChatPanelState = (state: AppRootStateType) => state.chatPanel
 
 export type stateSlice = typeof stateSlice;
 
-export default stateSlice;
+export default stateSlice.reducer;

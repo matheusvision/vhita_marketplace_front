@@ -38,7 +38,7 @@ const initialState: PartialDeep<UserType> = {};
 /**
  * The slice for the chatpanel user.
  */
-const userSlice = createSlice({
+export const userSlice = createSlice({
 	name: 'chatPanel/user',
 	initialState,
 	reducers: {},
@@ -53,4 +53,4 @@ export const selectUser = (state: AppRootStateType) => state.chatPanel.user;
 
 export type userSliceType = typeof userSlice;
 
-export default userSlice;
+export default userSlice.reducer;

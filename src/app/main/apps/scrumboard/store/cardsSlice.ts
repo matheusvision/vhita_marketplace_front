@@ -52,7 +52,7 @@ export const { selectAll: selectCards, selectById } = cardsAdapter.getSelectors(
 /**
  * The Scrumboard Cards Slice.
  */
-const cardsSlice = createSlice({
+export const cardsSlice = createSlice({
 	name: 'scrumboardApp/cards',
 	initialState: cardsAdapter.getInitialState({}),
 	reducers: {
@@ -80,4 +80,4 @@ export const selectCardById = (id: CardType['id']) => (state: AppRootStateType) 
 
 export type CardsSliceType = typeof cardsSlice;
 
-export default cardsSlice;
+export default cardsSlice.reducer;

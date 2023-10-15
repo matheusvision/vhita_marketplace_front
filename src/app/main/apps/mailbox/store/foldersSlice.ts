@@ -29,7 +29,7 @@ const initialState = foldersAdapter.getInitialState();
 /**
  * The Mailbox App folders slice.
  */
-const foldersSlice = createSlice({
+export const foldersSlice = createSlice({
 	name: 'mailboxApp/folders',
 	initialState,
 	reducers: {},
@@ -48,4 +48,4 @@ export const selectTrashFolderId = createSelector([selectFolders], (folders) => 
 
 export type foldersSliceType = typeof foldersSlice;
 
-export default foldersSlice;
+export default foldersSlice.reducer;

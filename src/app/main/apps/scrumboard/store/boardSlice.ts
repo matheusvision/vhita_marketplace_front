@@ -159,7 +159,7 @@ const initialState: AsyncStateType<BoardType> = {
 /**
  * The Scrumbboard board slice.
  */
-const boardSlice = createSlice({
+export const boardSlice = createSlice({
 	name: 'scrumboardApp/board',
 	initialState,
 	reducers: {
@@ -232,4 +232,4 @@ export const selectBoard = (state: AppRootStateType) => state.scrumboardApp.boar
 
 export type BoardSliceType = typeof boardSlice;
 
-export default boardSlice;
+export default boardSlice.reducer;

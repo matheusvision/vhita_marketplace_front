@@ -1,8 +1,11 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import widgets from './widgetsSlice';
 
 /**
- * Crypto store slices.
+ * Crypto Dashboard reducer.
  */
-const slices = [widgets];
+const reducer = combineReducers({
+	widgets
+});
 
-export default slices;
+export default reducer;

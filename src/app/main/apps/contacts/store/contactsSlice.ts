@@ -72,7 +72,7 @@ const initialState = contactsAdapter.getInitialState({
 /**
  * The Contacts App Contacts slice.
  */
-const contactsSlice = createSlice({
+export const contactsSlice = createSlice({
 	name: 'contactsApp/contacts',
 	initialState,
 	reducers: {
@@ -103,4 +103,4 @@ export const { setContactsSearchText } = contactsSlice.actions;
 
 export type contactsSliceType = typeof contactsSlice;
 
-export default contactsSlice;
+export default contactsSlice.reducer;

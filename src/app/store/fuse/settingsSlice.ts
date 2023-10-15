@@ -119,7 +119,7 @@ export const setDefaultSettings = createAppAsyncThunk(
 /**
  * The settings slice.
  */
-const settingsSlice = createSlice({
+export const settingsSlice = createSlice({
 	name: 'fuse/settings',
 	initialState,
 	reducers: {
@@ -282,4 +282,4 @@ export const { resetSettings, setInitialSettings, setSettings } = settingsSlice.
 
 export type settingsSliceType = typeof settingsSlice;
 
-export default settingsSlice;
+export default settingsSlice.reducer;

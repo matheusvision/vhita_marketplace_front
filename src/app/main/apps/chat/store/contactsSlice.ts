@@ -30,7 +30,7 @@ export const {
 /**
  * Chat App Contacts Slice
  */
-const contactsSlice = createSlice({
+export const contactsSlice = createSlice({
 	name: 'chatApp/contacts',
 	initialState,
 	reducers: {},
@@ -43,4 +43,4 @@ export const selectContactById = (id: ContactType['id']) => (state: AppRootState
 
 export type contactsSliceType = typeof contactsSlice;
 
-export default contactsSlice;
+export default contactsSlice.reducer;

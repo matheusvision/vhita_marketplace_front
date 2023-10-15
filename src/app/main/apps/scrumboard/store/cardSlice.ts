@@ -69,7 +69,7 @@ const initialState: {
 /**
  * The Scrumboard Card Slice.
  */
-const cardSlice = createSlice({
+export const cardSlice = createSlice({
 	name: 'scrumboardApp/card',
 	initialState,
 	reducers: {
@@ -99,4 +99,4 @@ export const selectCardData = (state: AppRootStateType) => state.scrumboardApp.c
 
 export type CardSliceType = typeof cardSlice;
 
-export default cardSlice;
+export default cardSlice.reducer;

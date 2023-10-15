@@ -30,7 +30,7 @@ const initialState = faqsAdapter.getInitialState();
 /**
  * The Help Center App faqs slice.
  */
-const faqsSlice = createSlice({
+export const faqsSlice = createSlice({
 	name: 'helpCenterApp/faqs',
 	initialState,
 	reducers: {},
@@ -48,4 +48,4 @@ export const selectGroupedFaqs = createSelector([selectFaqs, selectFaqCategories
 
 export type faqsSliceType = typeof faqsSlice;
 
-export default faqsSlice;
+export default faqsSlice.reducer;

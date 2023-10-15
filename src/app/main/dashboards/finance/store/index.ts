@@ -1,8 +1,11 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import widgets from './widgetsSlice';
 
 /**
- * The Finance dashboard store slices.
+ * The Finance dashboard reducer.
  */
-const slices = [widgets];
+const reducer = combineReducers({
+	widgets
+});
 
-export default slices;
+export default reducer;

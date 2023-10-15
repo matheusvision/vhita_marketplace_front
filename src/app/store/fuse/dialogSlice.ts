@@ -15,7 +15,7 @@ const initialState: DialogProps = {
 /**
  * The Dialog slice
  */
-const dialogSlice = createSlice({
+export const dialogSlice = createSlice({
 	name: 'fuse/dialog',
 	initialState,
 	reducers: {
@@ -35,4 +35,4 @@ export const selectFuseDialogProps = (state: AppRootStateType) => state.fuse.dia
 
 export type dialogSliceType = typeof dialogSlice;
 
-export default dialogSlice;
+export default dialogSlice.reducer;

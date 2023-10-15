@@ -90,7 +90,7 @@ export const {
 /**
  * The Calendar App events slice.
  */
-const eventsSlice = createSlice({
+export const eventsSlice = createSlice({
 	name: 'calendarApp/events',
 	initialState,
 	reducers: {
@@ -181,4 +181,4 @@ export const selectEventDialog = (state: AppRootStateType) => state.calendarApp.
 
 export type eventsSliceType = typeof eventsSlice;
 
-export default eventsSlice;
+export default eventsSlice.reducer;

@@ -26,7 +26,7 @@ export const { selectAll: selectFaqsMost, selectById: selectFaqsMostById } = faq
 /**
  * The Help Center App faqsMost slice.
  */
-const faqsMostSlice = createSlice({
+export const faqsMostSlice = createSlice({
 	name: 'helpCenterApp/faqsMost',
 	initialState: faqsMostAdapter.getInitialState({}),
 	reducers: {},
@@ -37,4 +37,4 @@ const faqsMostSlice = createSlice({
 
 export type faqsMostSliceType = typeof faqsMostSlice;
 
-export default faqsMostSlice;
+export default faqsMostSlice.reducer;

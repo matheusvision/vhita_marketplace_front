@@ -59,7 +59,7 @@ export const selectRemainingTasks = createSelector([selectTasks], (tasks) => {
 /**
  * The Tasks app tasks slice.
  */
-const tasksSlice = createSlice({
+export const tasksSlice = createSlice({
 	name: 'tasksApp/tasks',
 	initialState,
 	reducers: {},
@@ -79,4 +79,4 @@ const tasksSlice = createSlice({
 
 export type tasksSliceType = typeof tasksSlice;
 
-export default tasksSlice;
+export default tasksSlice.reducer;

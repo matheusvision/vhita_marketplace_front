@@ -64,7 +64,7 @@ export const {
 /**
  * The Notes labels slice.
  */
-const labelsSlice = createSlice({
+export const labelsSlice = createSlice({
 	name: 'notesApp/labels',
 	initialState,
 	reducers: {
@@ -92,4 +92,4 @@ export const selectLabelsDialogOpen = (state: AppRootStateType) => state.notesAp
 
 export type labelsSliceType = typeof labelsSlice;
 
-export default labelsSlice;
+export default labelsSlice.reducer;

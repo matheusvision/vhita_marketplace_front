@@ -1,3 +1,4 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import faqs from './faqsSlice';
 import faqsMost from './faqsMostSlice';
 import guides from './guidesSlice';
@@ -6,8 +7,15 @@ import faqCategories from './faqCategoriesSlice';
 import guideCategories from './guideCategoriesSlice';
 
 /**
- * The Help Center App slices.
+ * The Help Center App reducer.
  */
-const slices = [guide, guides, guideCategories, faqs, faqCategories, faqsMost];
+const reducer = combineReducers({
+	guide,
+	guides,
+	guideCategories,
+	faqs,
+	faqCategories,
+	faqsMost
+});
 
-export default slices;
+export default reducer;

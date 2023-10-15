@@ -43,7 +43,7 @@ const initialState: ChatMessagesType = [];
 /**
  * Chat App Chat Messages Slice
  */
-const chatMessagesSlice = createSlice({
+export const chatMessagesSlice = createSlice({
 	name: 'chatApp/chat',
 	initialState,
 	reducers: {},
@@ -58,4 +58,4 @@ export const selectChat = (state: AppRootStateType) => state.chatApp.chat;
 
 export type chatMessagesSliceType = typeof chatMessagesSlice;
 
-export default chatMessagesSlice;
+export default chatMessagesSlice.reducer;

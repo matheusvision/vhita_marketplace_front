@@ -26,7 +26,7 @@ export const { selectAll: selectFilters, selectById: selectFilterById } = filter
 /**
  * The Mailbox App filters slice.
  */
-const filtersSlice = createSlice({
+export const filtersSlice = createSlice({
 	name: 'mailboxApp/filters',
 	initialState: filtersAdapter.getInitialState({}),
 	reducers: {},
@@ -37,4 +37,4 @@ const filtersSlice = createSlice({
 
 export type filtersSliceType = typeof filtersSlice;
 
-export default filtersSlice;
+export default filtersSlice.reducer;

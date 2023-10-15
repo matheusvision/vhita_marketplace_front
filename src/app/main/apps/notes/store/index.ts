@@ -1,9 +1,13 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import labels from './labelsSlice';
 import notes from './notesSlice';
 
 /**
- * The Notes store slices.
+ * The Notes store reducer.
  */
-const slices = [notes, labels];
+const reducer = combineReducers({
+	notes,
+	labels
+});
 
-export default slices;
+export default reducer;

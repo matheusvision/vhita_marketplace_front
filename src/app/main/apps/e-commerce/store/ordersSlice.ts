@@ -42,7 +42,7 @@ const initialState = ordersAdapter.getInitialState({
 /**
  * The E-Commerce orders slice.
  */
-const ordersSlice = createSlice({
+export const ordersSlice = createSlice({
 	name: 'eCommerceApp/orders',
 	initialState,
 	reducers: {
@@ -63,4 +63,4 @@ export const selectOrdersSearchText = (state: AppRootStateType) => state.eCommer
 
 export type ordersSliceType = typeof ordersSlice;
 
-export default ordersSlice;
+export default ordersSlice.reducer;

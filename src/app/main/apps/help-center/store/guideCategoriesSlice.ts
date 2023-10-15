@@ -30,7 +30,7 @@ const initialState = guideCategoriesAdapter.getInitialState();
 /**
  * The Help Center App guideCategories slice.
  */
-const guideCategoriesSlice = createSlice({
+export const guideCategoriesSlice = createSlice({
 	name: 'helpCenterApp/guideCategories',
 	initialState,
 	reducers: {},
@@ -48,4 +48,4 @@ export const selectGuideCategorieseBySlug = (slug: GuideCategoryType['slug']) =>
 
 export type guideCategoriesSliceType = typeof guideCategoriesSlice;
 
-export default guideCategoriesSlice;
+export default guideCategoriesSlice.reducer;

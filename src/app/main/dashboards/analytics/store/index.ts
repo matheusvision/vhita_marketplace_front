@@ -1,8 +1,11 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import widgets from './widgetsSlice';
 
 /**
- * the dashboard analytics store slices
+ * The Dashboard analytics store reducer
  */
-const slices = [widgets];
+const reducer = combineReducers({
+	widgets
+});
 
-export default slices;
+export default reducer;

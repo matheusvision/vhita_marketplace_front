@@ -25,7 +25,7 @@ const initialState: WidgetsType = {};
 /**
  * the crypto dashboard widgets slice.
  */
-const widgetsSlice = createSlice({
+export const widgetsSlice = createSlice({
 	name: 'cryptoDashboardApp/widgets',
 	initialState,
 	reducers: {},
@@ -38,4 +38,4 @@ export const selectWidgets = (state: AppRootStateType) => state.cryptoDashboardA
 
 export type widgetsSliceType = typeof widgetsSlice;
 
-export default widgetsSlice;
+export default widgetsSlice.reducer;

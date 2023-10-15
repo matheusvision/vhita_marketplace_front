@@ -28,7 +28,7 @@ const initialState: GuideType = GuideModel({});
 /**
  * The Help Center App guide slice.
  */
-const guideSlice = createSlice({
+export const guideSlice = createSlice({
 	name: 'helpCenterApp/guide',
 	initialState,
 	reducers: {},
@@ -41,4 +41,4 @@ export const selectGuide = (state: AppRootStateType) => state.helpCenterApp.guid
 
 export type guideSliceType = typeof guideSlice;
 
-export default guideSlice;
+export default guideSlice.reducer;

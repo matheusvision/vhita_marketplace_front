@@ -1,4 +1,4 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
+import lazyWithReducer from 'app/store/lazyWithReducer';
 import HelpCenterHome from './home/HelpCenterHome';
 import HelpCenterFaqs from './faqs/HelpCenterFaqs';
 import HelpCenterGuides from './guides/HelpCenterGuides';
@@ -6,9 +6,9 @@ import HelpCenterSupport from './support/HelpCenterSupport';
 import GuideCategory from './guides/GuideCategory';
 import GuideCategories from './guides/GuideCategories';
 import HelpCenterGuide from './guide/HelpCenterGuide';
-import slices from './store';
+import reducer from './store';
 
-const HelpCenterApp = lazyWithSlices(() => import('./HelpCenterApp'), slices);
+const HelpCenterApp = lazyWithReducer('helpCenterApp', () => import('./HelpCenterApp'), reducer);
 
 /**
  * The help center app config.

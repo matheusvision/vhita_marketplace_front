@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ReactNode } from 'react';
-import withSlices from 'app/store/withSlices';
+import withReducer from 'app/store/withReducer';
 import { selectNotifications } from './store/dataSlice';
 import { toggleNotificationPanel } from './store/stateSlice';
-import slices from './store';
+import reducer from './store';
 
 type NotificationPanelToggleButtonProps = {
 	children?: ReactNode;
@@ -40,4 +40,4 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 	);
 }
 
-export default withSlices(slices)(NotificationPanelToggleButton);
+export default withReducer('notificationPanel', reducer)(NotificationPanelToggleButton);

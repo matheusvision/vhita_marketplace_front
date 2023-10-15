@@ -1,7 +1,11 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const AnalyticsDashboardApp = lazyWithSlices(() => import('./AnalyticsDashboardApp'), slices);
+const AnalyticsDashboardApp = lazyWithReducer(
+	'analyticsDashboardApp',
+	() => import('./AnalyticsDashboardApp'),
+	reducer
+);
 
 /**
  * The analytics dashboard app config.

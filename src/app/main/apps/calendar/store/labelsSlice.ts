@@ -72,7 +72,7 @@ export const {
 /**
  * The CalendarApp labels slice.
  */
-const labelsSlice = createSlice({
+export const labelsSlice = createSlice({
 	name: 'calendarApp/labels',
 	initialState,
 	reducers: {
@@ -106,4 +106,4 @@ export const { toggleSelectedLabels, openLabelsDialog, closeLabelsDialog } = lab
 
 export type labelsSliceType = typeof labelsSlice;
 
-export default labelsSlice;
+export default labelsSlice.reducer;

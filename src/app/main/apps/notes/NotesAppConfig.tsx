@@ -1,7 +1,7 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const NotesApp = lazyWithSlices(() => import('./NotesApp'), slices);
+const NotesApp = lazyWithReducer('notesApp', () => import('./NotesApp'), reducer);
 
 /**
  * The notes app config.

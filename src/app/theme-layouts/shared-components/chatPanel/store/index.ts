@@ -1,3 +1,4 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import chatList from './chatListSlice';
 import chat from './chatMessagesSlice';
 import contacts from './contactsSlice';
@@ -5,8 +6,14 @@ import user from './userSlice';
 import state from './stateSlice';
 
 /**
- * Chat panel slices.
+ * Chat panel reducer.
  */
-const slices = [user, contacts, chatList, chat, state];
+const reducer = combineReducers({
+	user,
+	contacts,
+	chatList,
+	chat,
+	state
+});
 
-export default slices;
+export default reducer;

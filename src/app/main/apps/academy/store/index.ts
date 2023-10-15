@@ -1,11 +1,15 @@
-import { SlicesType } from 'app/store/lazyWithSlices';
+import { combineReducers } from '@reduxjs/toolkit';
 import course from './courseSlice';
 import courses from './coursesSlice';
 import categories from './categoriesSlice';
 
 /**
- * The Academy App slices.
+ * The Academy App reducer.
  */
-const slices = [categories, courses, course] as SlicesType;
+const reducer = combineReducers({
+	categories,
+	courses,
+	course
+});
 
-export default slices;
+export default reducer;

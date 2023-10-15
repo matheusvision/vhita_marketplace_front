@@ -9,15 +9,15 @@ import keycode from 'keycode';
 import { useCallback, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import withSlices from 'app/store/withSlices';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { getChatList } from 'app/theme-layouts/shared-components/chatPanel/store/chatListSlice';
+import withReducer from 'app/store/withReducer';
 import Chat from './Chat';
 import ContactList from './ContactList';
 import { getContacts, selectSelectedContactId, selectContactById } from './store/contactsSlice';
 import { closeChatPanel, openChatPanel, selectChatPanelState } from './store/stateSlice';
 import { getUserData } from './store/userSlice';
-import slices from './store';
+import reducer from './store';
 
 const Root = styled('div')<{ opened: number }>(({ theme, opened }) => ({
 	position: 'sticky',
@@ -250,4 +250,4 @@ function ChatPanel() {
 	);
 }
 
-export default withSlices(slices)(ChatPanel);
+export default withReducer('chatPanel', reducer)(ChatPanel);

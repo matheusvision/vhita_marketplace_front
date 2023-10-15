@@ -71,7 +71,7 @@ const initialState: AsyncStateType<TaskType> = {
 /**
  * The Tasks app task slice.
  */
-const taskSlice = createSlice({
+export const taskSlice = createSlice({
 	name: 'tasksApp/task',
 	initialState,
 	reducers: {
@@ -113,4 +113,4 @@ export const { resetTask, newTask } = taskSlice.actions;
 
 export type taskSliceType = typeof taskSlice;
 
-export default taskSlice;
+export default taskSlice.reducer;

@@ -1,7 +1,7 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const CalendarApp = lazyWithSlices(() => import('./CalendarApp'), slices);
+const CalendarApp = lazyWithReducer('calendarApp', () => import('./CalendarApp'), reducer);
 
 /**
  * The Calendar App Config.

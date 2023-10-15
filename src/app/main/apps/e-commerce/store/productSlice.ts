@@ -63,7 +63,7 @@ const initialState: AsyncStateType<ProductType> = {
 /**
  * The E-Commerce product slice.
  */
-const productSlice = createSlice({
+export const productSlice = createSlice({
 	name: 'eCommerceApp/product',
 	initialState,
 	reducers: {
@@ -91,4 +91,4 @@ export const { newProduct, resetProduct } = productSlice.actions;
 
 export type productSliceType = typeof productSlice;
 
-export default productSlice;
+export default productSlice.reducer;

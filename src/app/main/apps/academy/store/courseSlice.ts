@@ -47,7 +47,7 @@ const initialState: AsyncStateType<CourseType> = {
 /**
  * The Academy App course slice.
  */
-const courseSlice = createSlice({
+export const courseSlice = createSlice({
 	name: 'academyApp/course',
 	initialState,
 	reducers: {},
@@ -69,4 +69,4 @@ export const selectCourse = (state: AppRootStateType) => state.academyApp.course
 
 export type CourseSliceType = typeof courseSlice;
 
-export default courseSlice;
+export default courseSlice.reducer;

@@ -124,7 +124,7 @@ function BoardCardForm() {
 								InputProps={{
 									endAdornment: (
 										<InputAdornment position="end">
-											{card.subscribed && (
+											{card?.subscribed && (
 												<FuseSvgIcon
 													size={20}
 													color="action"

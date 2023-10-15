@@ -26,7 +26,7 @@ export const { selectAll: selectMembers, selectById } = membersAdapter.getSelect
 /**
  * The Scrumboard Members Slice.
  */
-const membersSlice = createSlice({
+export const membersSlice = createSlice({
 	name: 'scrumboardApp/members',
 	initialState: membersAdapter.getInitialState({}),
 	reducers: {
@@ -44,4 +44,4 @@ export const selectMemberById = (id: MemberType['id']) => (state: AppRootStateTy
 
 export type MembersSliceType = typeof membersSlice;
 
-export default membersSlice;
+export default membersSlice.reducer;

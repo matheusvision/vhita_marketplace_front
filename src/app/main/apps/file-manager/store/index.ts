@@ -1,8 +1,11 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import items from './itemsSlice';
 
 /**
- * The File Manager store slices.
+ * The File Manager store reducer.
  */
-const slices = [items];
+const reducer = combineReducers({
+	items
+});
 
-export default slices;
+export default reducer;

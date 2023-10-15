@@ -52,7 +52,7 @@ const initialState: AsyncStateType<MailType> = {
 /**
  * The Mailbox App mail slice.
  */
-const mailSlice = createSlice({
+export const mailSlice = createSlice({
 	name: 'mailboxApp/mail',
 	initialState,
 	reducers: {},
@@ -88,4 +88,4 @@ export const selectMail = (state: AppRootStateType) => state.mailboxApp.mail;
 
 export type mailSliceType = typeof mailSlice;
 
-export default mailSlice;
+export default mailSlice.reducer;

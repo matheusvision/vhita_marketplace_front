@@ -25,7 +25,7 @@ type CardAddChecklistItemProps = {
  * The card add checklist item component.
  */
 function CardAddChecklistItem(props: CardAddChecklistItemProps) {
-	const { name, onListItemAdd } = props;
+	const { name = '', onListItemAdd } = props;
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues: {
@@ -53,6 +53,7 @@ function CardAddChecklistItem(props: CardAddChecklistItemProps) {
 				<Controller
 					name="name"
 					control={control}
+					defaultValue=""
 					render={({ field }) => (
 						<TextField
 							{...field}

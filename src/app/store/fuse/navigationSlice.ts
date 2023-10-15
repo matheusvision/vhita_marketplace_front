@@ -86,7 +86,7 @@ export const {
 /**
  * The navigation slice
  */
-const navigationSlice = createSlice({
+export const navigationSlice = createSlice({
 	name: 'fuse/navigation',
 	initialState,
 	reducers: {
@@ -144,4 +144,4 @@ export const selectFlatNavigation = createSelector([selectNavigation], (navigati
 
 export type navigationSliceType = typeof navigationSlice;
 
-export default navigationSlice;
+export default navigationSlice.reducer;

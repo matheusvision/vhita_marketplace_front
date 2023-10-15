@@ -81,7 +81,7 @@ export const { selectAll: selectLists, selectById } = listsAdapter.getSelectors(
 /**
  * The Scrumboard Lists Slice.
  */
-const listsSlice = createSlice({
+export const listsSlice = createSlice({
 	name: 'scrumboardApp/lists',
 	initialState,
 	reducers: {
@@ -102,4 +102,4 @@ export const selectListById = (id: ListType['id']) => (state: AppRootStateType) 
 
 export type ListsSliceType = typeof listsSlice;
 
-export default listsSlice;
+export default listsSlice.reducer;

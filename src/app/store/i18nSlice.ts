@@ -51,7 +51,7 @@ type I18nState = {
 /**
  * The i18n slice
  */
-const i18nSlice = createSlice({
+export const i18nSlice = createSlice({
 	name: 'i18n',
 	initialState: {
 		language: i18n.options.lng,
@@ -83,4 +83,4 @@ export const selectCurrentLanguage = createSelector([selectCurrentLanguageId, se
 
 export type i18nSliceType = typeof i18nSlice;
 
-export default i18nSlice;
+export default i18nSlice.reducer;

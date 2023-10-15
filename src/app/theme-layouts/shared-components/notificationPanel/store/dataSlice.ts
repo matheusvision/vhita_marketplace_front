@@ -61,7 +61,7 @@ export const { selectAll: selectNotifications, selectById: selectNotificationsBy
 /**
  * The notification panel slice.
  */
-const dataSlice = createSlice({
+export const dataSlice = createSlice({
 	name: 'notificationPanel/data',
 	initialState,
 	reducers: {},
@@ -81,4 +81,4 @@ const dataSlice = createSlice({
 
 export type dataSliceType = typeof dataSlice;
 
-export default dataSlice;
+export default dataSlice.reducer;

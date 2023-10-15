@@ -30,7 +30,7 @@ export const {
 /**
  * The Mailbox App labels slice.
  */
-const labelsSlice = createSlice({
+export const labelsSlice = createSlice({
 	name: 'mailboxApp/labels',
 	initialState,
 	reducers: {},
@@ -43,4 +43,4 @@ export const selectLabelById = (id: string) => (state: AppRootStateType) => sele
 
 export type labelsSliceType = typeof labelsSlice;
 
-export default labelsSlice;
+export default labelsSlice.reducer;

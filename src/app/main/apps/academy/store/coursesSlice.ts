@@ -28,7 +28,7 @@ export const { selectAll: selectCourses, selectById: selectCourseById } = course
 /**
  * The Academy App courses slice.
  */
-const coursesSlice = createSlice({
+export const coursesSlice = createSlice({
 	name: 'academyApp/courses',
 	initialState,
 	reducers: {},
@@ -39,4 +39,4 @@ const coursesSlice = createSlice({
 
 export type CoursesSliceType = typeof coursesSlice;
 
-export default coursesSlice;
+export default coursesSlice.reducer;

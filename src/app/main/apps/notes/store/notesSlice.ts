@@ -112,7 +112,7 @@ const initialState = notesAdapter.getInitialState<{
 /**
  * The Notes App notes slice.
  */
-const notesSlice = createSlice({
+export const notesSlice = createSlice({
 	name: 'notesApp/notes',
 	initialState,
 	reducers: {
@@ -163,4 +163,4 @@ export const selectDialogNote = createSelector([selectDialogNoteId, selectNotesE
 
 export type notesSliceType = typeof notesSlice;
 
-export default notesSlice;
+export default notesSlice.reducer;

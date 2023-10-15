@@ -25,7 +25,7 @@ export const { selectAll: selectLabels, selectById } = labelsAdapter.getSelector
 /**
  * The Scrumboard Labels Slice.
  */
-const labelsSlice = createSlice({
+export const labelsSlice = createSlice({
 	name: 'scrumboardApp/labels',
 	initialState: labelsAdapter.getInitialState({}),
 	reducers: {
@@ -42,4 +42,4 @@ export const selectLabelById = (id: LabelType['id']) => (state: AppRootStateType
 
 export type LabelsSliceType = typeof labelsSlice;
 
-export default labelsSlice;
+export default labelsSlice.reducer;

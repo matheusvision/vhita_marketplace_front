@@ -49,7 +49,7 @@ export const {
 /**
  * The Scrumboard Boards Slice.
  */
-const boardsSlice = createSlice({
+export const boardsSlice = createSlice({
 	name: 'scrumboardApp/boards',
 	initialState,
 	reducers: {
@@ -64,4 +64,4 @@ export const { resetBoards } = boardsSlice.actions;
 
 export type BoardsSliceType = typeof boardsSlice;
 
-export default boardsSlice;
+export default boardsSlice.reducer;

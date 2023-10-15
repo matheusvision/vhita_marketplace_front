@@ -31,7 +31,7 @@ type CheckListMenuProps = {
  * The checklist menu component.
  */
 function CheckListMenu(props: CheckListMenuProps) {
-	const { onAddCheckList, name } = props;
+	const { onAddCheckList, name = '' } = props;
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 

@@ -28,7 +28,7 @@ const initialState = faqCategoriesAdapter.getInitialState();
 /**
  * The Help Center App faqCategories slice.
  */
-const faqCategoriesSlice = createSlice({
+export const faqCategoriesSlice = createSlice({
 	name: 'helpCenterApp/faqCategories',
 	initialState,
 	reducers: {},
@@ -41,4 +41,4 @@ const faqCategoriesSlice = createSlice({
 
 export type faqCategoriesSliceType = typeof faqCategoriesSlice;
 
-export default faqCategoriesSlice;
+export default faqCategoriesSlice.reducer;

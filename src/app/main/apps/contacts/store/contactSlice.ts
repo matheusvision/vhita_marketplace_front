@@ -75,7 +75,7 @@ const initialState: AsyncStateType<ContactType> = {
 /**
  * The Contacts App Contact slice.
  */
-const contactSlice = createSlice({
+export const contactSlice = createSlice({
 	name: 'contactsApp/contact',
 	initialState,
 	reducers: {
@@ -109,4 +109,4 @@ export const { resetContact, newContact } = contactSlice.actions;
 
 export type contactSliceType = typeof contactSlice;
 
-export default contactSlice;
+export default contactSlice.reducer;

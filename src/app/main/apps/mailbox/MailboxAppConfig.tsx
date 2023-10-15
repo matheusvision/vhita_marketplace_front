@@ -1,14 +1,14 @@
 import i18next from 'i18next';
 import { Navigate } from 'react-router-dom';
-import lazyWithSlices from 'app/store/lazyWithSlices';
+import lazyWithReducer from 'app/store/lazyWithReducer';
 import ar from './i18n/ar';
 import en from './i18n/en';
 import tr from './i18n/tr';
 import SelectMailMessage from './SelectMailMessage';
 import MailDetails from './mail/MailDetails';
-import slices from './store';
+import reducer from './store';
 
-const MailboxApp = lazyWithSlices(() => import('./MailboxApp'), slices);
+const MailboxApp = lazyWithReducer('mailboxApp', () => import('./MailboxApp'), reducer);
 
 i18next.addResourceBundle('en', 'mailboxApp', en);
 i18next.addResourceBundle('tr', 'mailboxApp', tr);

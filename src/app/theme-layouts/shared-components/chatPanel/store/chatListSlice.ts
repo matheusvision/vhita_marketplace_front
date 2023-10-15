@@ -29,7 +29,7 @@ export const { selectAll: selectChats, selectById: selectChatById } = chatsAdapt
 /**
  * The slice for the chat list.
  */
-const chatListSlice = createSlice({
+export const chatListSlice = createSlice({
 	name: 'chatPanel/chatList',
 	initialState,
 	reducers: {},
@@ -40,4 +40,4 @@ const chatListSlice = createSlice({
 
 export type chatListSliceType = typeof chatListSlice;
 
-export default chatListSlice;
+export default chatListSlice.reducer;

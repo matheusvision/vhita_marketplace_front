@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import lazyWithSlices from 'app/store/lazyWithSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const AcademyApp = lazyWithSlices(() => import('./AcademyApp'), slices);
+const AcademyApp = lazyWithReducer('academyApp', () => import('./AcademyApp'), reducer);
 const Course = lazy(() => import('./course/Course'));
 const Courses = lazy(() => import('./courses/Courses'));
 

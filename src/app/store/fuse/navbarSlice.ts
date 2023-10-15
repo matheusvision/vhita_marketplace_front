@@ -24,7 +24,7 @@ const initialState: initialStateProps = {
 /**
  * The navbar slice.
  */
-const navbarSlice = createSlice({
+export const navbarSlice = createSlice({
 	name: 'fuse/navbar',
 	initialState,
 	reducers: {
@@ -74,4 +74,4 @@ export const selectFuseNavbar = ({ fuse }: AppRootStateType) => fuse.navbar;
 
 export type navbarSliceType = typeof navbarSlice;
 
-export default navbarSlice;
+export default navbarSlice.reducer;

@@ -27,7 +27,7 @@ export const { selectAll: selectTags, selectById: selectTagsById } = tagsAdapter
 /**
  * The Tasks app tags slice.
  */
-const tagsSlice = createSlice({
+export const tagsSlice = createSlice({
 	name: 'tasksApp/tags',
 	initialState,
 	reducers: {},
@@ -40,4 +40,4 @@ const tagsSlice = createSlice({
 
 export type tagsSliceType = typeof tagsSlice;
 
-export default tagsSlice;
+export default tagsSlice.reducer;

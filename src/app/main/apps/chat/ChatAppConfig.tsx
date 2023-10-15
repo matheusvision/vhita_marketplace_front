@@ -1,9 +1,9 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
+import lazyWithReducer from 'app/store/lazyWithReducer';
 import Chat from './chat/Chat';
 import ChatFirstScreen from './ChatFirstScreen';
-import slices from './store';
+import reducer from './store';
 
-const ChatApp = lazyWithSlices(() => import('./ChatApp'), slices);
+const ChatApp = lazyWithReducer('chatApp', () => import('./ChatApp'), reducer);
 
 /**
  * The chat app config.

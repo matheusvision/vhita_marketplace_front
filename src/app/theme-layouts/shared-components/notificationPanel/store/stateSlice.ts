@@ -8,7 +8,7 @@ const initialState: initialStateType = false;
 /**
  * The notificationPanel state slice.
  */
-const stateSlice = createSlice({
+export const stateSlice = createSlice({
 	name: 'notificationPanel/state',
 	initialState,
 	reducers: {
@@ -24,4 +24,4 @@ type AppRootStateType = RootStateType<typeof stateSlice>;
 
 export const selectNotificationPanelState = (state: AppRootStateType) => state.notificationPanel.state;
 
-export default stateSlice;
+export default stateSlice.reducer;

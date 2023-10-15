@@ -1,18 +1,6 @@
 import React, { ComponentType, lazy } from 'react';
 import { Slice } from '@reduxjs/toolkit';
 import withSlices from './withSlices';
-//
-// type Slice<State = unknown> = {
-// 	/**
-// 	 * The reducer function for the slice.
-// 	 */
-// 	reducer: Reducer<State, AnyAction>;
-//
-// 	/**
-// 	 * The name of the slice.
-// 	 */
-// 	name: string;
-// };
 
 export type SlicesType = Slice[];
 

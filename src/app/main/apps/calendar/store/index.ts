@@ -1,9 +1,10 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import events from './eventsSlice';
 import labels from './labelsSlice';
 
 /**
- * The Calendar App slices.
+ * The Calendar App reducer.
  */
-const slices = [events, labels];
+const reducer = combineReducers({ events, labels });
 
-export default slices;
+export default reducer;

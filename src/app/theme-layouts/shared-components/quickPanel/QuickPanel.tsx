@@ -15,8 +15,8 @@ import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import withSlices from 'app/store/withSlices';
-import slices from './store';
+import withReducer from 'app/store/withReducer';
+import reducer from './store';
 import { selectQuickPanelData } from './store/dataSlice';
 import { selectQuickPanelState, toggleQuickPanel } from './store/stateSlice';
 
@@ -163,4 +163,4 @@ function QuickPanel() {
 	);
 }
 
-export default withSlices(slices)(memo(QuickPanel));
+export default withReducer('quickPanel', reducer)(memo(QuickPanel));

@@ -33,7 +33,7 @@ export const {
 /**
  * The slice for the contacts.
  */
-const contactsSlice = createSlice({
+export const contactsSlice = createSlice({
 	name: 'chatPanel/contacts',
 	initialState,
 	reducers: {
@@ -59,4 +59,4 @@ export const selectContactById = (id: ContactType['id']) => (state: AppRootState
 
 export type contactsSliceType = typeof contactsSlice;
 
-export default contactsSlice;
+export default contactsSlice.reducer;

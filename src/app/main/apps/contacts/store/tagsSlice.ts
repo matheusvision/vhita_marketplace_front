@@ -26,7 +26,7 @@ export const { selectAll: selectTags, selectById: selectTagsById } = tagsAdapter
 /**
  * The Contacts App tags slice.
  */
-const tagsSlice = createSlice({
+export const tagsSlice = createSlice({
 	name: 'contactsApp/tags',
 	initialState,
 	reducers: {},
@@ -37,4 +37,4 @@ const tagsSlice = createSlice({
 
 export type tagsSliceType = typeof tagsSlice;
 
-export default tagsSlice;
+export default tagsSlice.reducer;

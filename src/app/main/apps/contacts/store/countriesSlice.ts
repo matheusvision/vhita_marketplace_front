@@ -24,7 +24,7 @@ export const { selectAll: selectCountries, selectById: selectCountriesById } = c
 /**
  * The Contacts App countries slice.
  */
-const countriesSlice = createSlice({
+export const countriesSlice = createSlice({
 	name: 'contactsApp/countries',
 	initialState: countriesAdapter.getInitialState([]),
 	reducers: {},
@@ -36,4 +36,4 @@ const countriesSlice = createSlice({
 
 export type countriesSliceType = typeof countriesSlice;
 
-export default countriesSlice;
+export default countriesSlice.reducer;

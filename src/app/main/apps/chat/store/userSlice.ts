@@ -40,7 +40,7 @@ const initialState: AsyncStateType<UserType> = {
 /**
  * Chat App User Slice
  */
-const userSlice = createSlice({
+export const userSlice = createSlice({
 	name: 'chatApp/user',
 	initialState,
 	reducers: {},
@@ -63,4 +63,4 @@ export const selectUser = (state: AppRootStateType) => state.chatApp.user;
 
 export type userSliceType = typeof userSlice;
 
-export default userSlice;
+export default userSlice.reducer;

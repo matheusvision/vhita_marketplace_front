@@ -1,11 +1,17 @@
-import order from './orderSlice';
-import orders from './ordersSlice';
-import product from './productSlice';
+import { combineReducers } from '@reduxjs/toolkit';
 import products from './productsSlice';
+import product from './productSlice';
+import orders from './ordersSlice';
+import order from './orderSlice';
 
 /**
- * The E-Commerce store slices.
+ * The E-Commerce store reducer.
  */
-const slices = [products, product, orders, order];
+const reducer = combineReducers({
+	products,
+	product,
+	orders,
+	order
+});
 
-export default slices;
+export default reducer;

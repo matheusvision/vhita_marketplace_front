@@ -1,7 +1,7 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const FinanceDashboardApp = lazyWithSlices(() => import('./FinanceDashboardApp'), slices);
+const FinanceDashboardApp = lazyWithReducer('financeDashboardApp', () => import('./FinanceDashboardApp'), reducer);
 
 /**
  * The finance dashboard app config.

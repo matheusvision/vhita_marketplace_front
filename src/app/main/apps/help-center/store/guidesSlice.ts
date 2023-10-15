@@ -33,7 +33,7 @@ export const { selectAll: selectGuides, selectById: selectGuideById } = guidesAd
 /**
  * The Help Center App guides slice.
  */
-const guidesSlice = createSlice({
+export const guidesSlice = createSlice({
 	name: 'helpCenterApp/guides',
 	initialState: guidesAdapter.getInitialState({}),
 	reducers: {},
@@ -51,4 +51,4 @@ export const selectGroupedGuides = createSelector([selectGuides, selectGuideCate
 
 export type guidesSliceType = typeof guidesSlice;
 
-export default guidesSlice;
+export default guidesSlice.reducer;

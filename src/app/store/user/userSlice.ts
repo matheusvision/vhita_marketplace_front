@@ -124,7 +124,7 @@ const initialState: UserType = {
 /**
  * The User slice
  */
-const userSlice = createSlice({
+export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
@@ -146,4 +146,4 @@ export const selectUserShortcuts = (state: AppRootStateType) => state.user.data.
 
 export type userSliceType = typeof userSlice;
 
-export default userSlice;
+export default userSlice.reducer;

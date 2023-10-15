@@ -1,10 +1,15 @@
-import tags from './tagsSlice';
-import tasks from './tasksSlice';
+import { combineReducers } from '@reduxjs/toolkit';
 import task from './taskSlice';
+import tasks from './tasksSlice';
+import tags from './tagsSlice';
 
 /**
- * The Tasks Slices.
+ * The Tasks App reducer.
  */
-const slices = [tags, tasks, task];
+const reducer = combineReducers({
+	tags,
+	tasks,
+	task
+});
 
-export default slices;
+export default reducer;

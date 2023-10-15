@@ -1,9 +1,13 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import projects from './projectsSlice';
 import widgets from './widgetsSlice';
 
 /**
- * The Project store slices.
+ * The Project dashboard reducer.
  */
-const slices = [widgets, projects];
+const reducer = combineReducers({
+	widgets,
+	projects
+});
 
-export default slices;
+export default reducer;

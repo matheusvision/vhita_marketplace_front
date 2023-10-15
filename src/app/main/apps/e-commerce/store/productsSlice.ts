@@ -38,7 +38,7 @@ const initialState = productsAdapter.getInitialState({
 /**
  * The E-Commerce products slice.
  */
-const productsSlice = createSlice({
+export const productsSlice = createSlice({
 	name: 'eCommerceApp/products',
 	initialState,
 	reducers: {
@@ -66,4 +66,4 @@ export const selectProductsSearchText = (state: AppRootStateType) => state.eComm
 
 export type productsSliceType = typeof productsSlice;
 
-export default productsSlice;
+export default productsSlice.reducer;

@@ -22,7 +22,7 @@ const initialState: WidgetsType = {};
 /**
  * The finance dashboard widgets slice.
  */
-const widgetsSlice = createSlice({
+export const widgetsSlice = createSlice({
 	name: 'financeDashboardApp/widgets',
 	initialState,
 	reducers: {},
@@ -35,4 +35,4 @@ export const selectWidgets = (state: AppRootStateType) => state.financeDashboard
 
 export type widgetsSliceType = typeof widgetsSlice;
 
-export default widgetsSlice;
+export default widgetsSlice.reducer;

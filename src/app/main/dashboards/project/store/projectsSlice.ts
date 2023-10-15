@@ -31,7 +31,7 @@ export const {
 /**
  * The project dashboard projects slice.
  */
-const projectsSlice = createSlice({
+export const projectsSlice = createSlice({
 	name: 'projectDashboardApp/projects',
 	initialState,
 	reducers: {},
@@ -42,4 +42,4 @@ const projectsSlice = createSlice({
 
 export type projectsSliceType = typeof projectsSlice;
 
-export default projectsSlice;
+export default projectsSlice.reducer;

@@ -1,10 +1,7 @@
-import { lazy } from 'react';
-import withSlices from 'app/store/withSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const FileManagerApp = lazy(() => import('./FileManagerApp'));
-
-const FileManagerAppWithSlices = withSlices(slices)(FileManagerApp);
+const FileManagerAppWithReducers = lazyWithReducer('fileManagerApp', () => import('./FileManagerApp'), reducer);
 
 /**
  * The file manager app config.
@@ -18,7 +15,7 @@ const FileManagerAppConfig = {
 	routes: [
 		{
 			path: 'apps/file-manager',
-			element: <FileManagerAppWithSlices />,
+			element: <FileManagerAppWithReducers />,
 			children: [
 				{
 					path: ':folderId'

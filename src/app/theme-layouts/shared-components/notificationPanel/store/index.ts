@@ -1,9 +1,13 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import data from './dataSlice';
 import state from './stateSlice';
 
 /**
- * The notification panel slices.
+ * The Notification panel reducer.
  */
-const slices = [data, state];
+const reducer = combineReducers({
+	data,
+	state
+});
 
-export default slices;
+export default reducer;

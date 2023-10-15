@@ -1,9 +1,9 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
+import lazyWithReducer from 'app/store/lazyWithReducer';
 import ContactView from './contact/ContactView';
 import ContactForm from './contact/ContactForm';
-import slices from './store';
+import reducer from './store';
 
-const ContactsApp = lazyWithSlices(() => import('./ContactsApp'), slices);
+const ContactsApp = lazyWithReducer('contactsApp', () => import('./ContactsApp'), reducer);
 
 /**
  * The ContactsApp configuration.

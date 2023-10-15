@@ -36,7 +36,7 @@ const initialState: AsyncStateType<OrderType> = {
 /**
  * The E-Commerce order slice.
  */
-const orderSlice = createSlice({
+export const orderSlice = createSlice({
 	name: 'eCommerceApp/order',
 	initialState,
 	reducers: {
@@ -63,4 +63,4 @@ export const selectOrder = (state: AppRootStateType) => state.eCommerceApp.order
 
 export type orderSliceType = typeof orderSlice;
 
-export default orderSlice;
+export default orderSlice.reducer;

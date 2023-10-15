@@ -1,7 +1,7 @@
-import lazyWithSlices from 'app/store/lazyWithSlices';
-import slices from './store';
+import lazyWithReducer from 'app/store/lazyWithReducer';
+import reducer from './store';
 
-const CryptoDashboardApp = lazyWithSlices(() => import('./CryptoDashboardApp'), slices);
+const CryptoDashboardApp = lazyWithReducer('cryptoDashboardApp', () => import('./CryptoDashboardApp'), reducer);
 
 /**
  * The CryptoDashboardAppConfig.

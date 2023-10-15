@@ -6,7 +6,7 @@ type AppRootStateType = RootStateType<stateSliceType>;
 /**
  * State slice for the quick panel.
  */
-const stateSlice = createSlice({
+export const stateSlice = createSlice({
 	name: 'quickPanel/state',
 	initialState: false,
 	reducers: {
@@ -22,4 +22,4 @@ export const selectQuickPanelState = (state: AppRootStateType) => state.quickPan
 
 export type stateSliceType = typeof stateSlice;
 
-export default stateSlice;
+export default stateSlice.reducer;

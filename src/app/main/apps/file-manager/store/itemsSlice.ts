@@ -41,7 +41,7 @@ export const {
 /**
  * The File Manager items slice.
  */
-const itemsSlice = createSlice({
+export const itemsSlice = createSlice({
 	name: 'fileManagerApp/items',
 	initialState,
 	reducers: {
@@ -80,4 +80,4 @@ export const selectItemByIds = (id: FileManagerItemType['id']) => (state: AppRoo
 
 export type itemsSliceType = typeof itemsSlice;
 
-export default itemsSlice;
+export default itemsSlice.reducer;

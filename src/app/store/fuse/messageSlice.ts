@@ -34,7 +34,7 @@ const initialState: initialStateProps = {
 /**
  * The Message slice.
  */
-const messageSlice = createSlice({
+export const messageSlice = createSlice({
 	name: 'fuse/message',
 	initialState,
 	reducers: {
@@ -59,4 +59,4 @@ export const selectFuseMessageOptions = (state: AppRootStateType) => state.fuse.
 
 export type messageSliceType = typeof messageSlice;
 
-export default messageSlice;
+export default messageSlice.reducer;

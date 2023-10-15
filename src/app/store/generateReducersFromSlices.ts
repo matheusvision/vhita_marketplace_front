@@ -6,7 +6,7 @@ export const generateReducersFromSlices = <T = unknown>(slices: SlicesType): Red
 	const reducerGroups: DeepPartial<ReducersMapObject> = {};
 
 	// Group reducers based on common key derived from slice name.
-	slices.forEach((slice) => {
+	slices?.forEach((slice) => {
 		const [primary, secondary] = slice.name.split('/');
 		if (secondary) {
 			if (!reducerGroups[primary]) {
