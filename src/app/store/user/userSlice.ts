@@ -1,13 +1,14 @@
 /* eslint import/no-extraneous-dependencies: off */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import history from '@history';
-import _ from '@lodash';
 import { setInitialSettings } from 'app/store/fuse/settingsSlice';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import settingsConfig from 'app/configs/settingsConfig';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { AppDispatchType, RootStateType } from 'app/store/types';
 import { UserType } from 'app/store/user';
+import { PartialDeep } from 'type-fest';
+import { AxiosError } from 'axios/index';
 import jwtService from '../../auth/services/jwtService';
 import createAppAsyncThunk from '../createAppAsyncThunk';
 
@@ -32,15 +33,12 @@ export const setUser = createAsyncThunk('user/setUser', (user: UserType) => {
  */
 export const updateUserSettings = createAppAsyncThunk(
 	'user/updateSettings',
-	async (settings: FuseSettingsConfigType, thunkApi) => {
-		const { dispatch, getState } = thunkApi;
-		const { user } = getState() as AppRootStateType;
+	async (settings: FuseSettingsConfigType, { dispatch, getState }) => {
+		const AppState = getState() as AppRootStateType;
+		const { user } = AppState;
+		const userDataSettings = { data: { ...user.data, settings } } as UserType;
 
-		const newUser = _.merge({}, user, { data: { settings } }) as UserType;
-
-		await dispatch(updateUserData(newUser));
-
-		return Promise.resolve(newUser);
+		await dispatch(updateUserData(userDataSettings));
 	}
 );
 
@@ -49,22 +47,13 @@ export const updateUserSettings = createAppAsyncThunk(
  */
 export const updateUserShortcuts = createAppAsyncThunk(
 	'user/updateShortucts',
-	async (shortcuts: string[], thunkApi) => {
-		const { dispatch, getState } = thunkApi;
+	async (shortcuts: string[], { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;
 		const { user } = AppState;
 
-		const newUser = {
-			...user,
-			data: {
-				...user.data,
-				shortcuts
-			}
-		} as UserType;
+		const userDataShortcuts = { data: { ...user.data, shortcuts } } as PartialDeep<UserType>;
 
-		await dispatch(updateUserData(newUser));
-
-		return newUser;
+		await dispatch(updateUserData(userDataShortcuts));
 	}
 );
 
@@ -92,21 +81,31 @@ export const logoutUser = () => async (dispatch: AppDispatchType, getState: () =
 /**
  * Updates the user's data in the Redux store and returns the updated user object.
  */
-export const updateUserData = (user: UserType) => async (dispatch: AppDispatchType) => {
-	if (!user.role || user.role.length === 0) {
-		// is guest
-		return;
-	}
+export const updateUserData = createAppAsyncThunk<UserType, PartialDeep<UserType>>(
+	'user/update',
+	async (userRequestData, { dispatch, rejectWithValue, getState }) => {
+		const state = getState() as AppRootStateType;
+		const { role } = state.user;
 
-	await jwtService
-		.updateUserData(user)
-		.then(() => {
+		if (!role || role.length === 0) {
+			return undefined; // Early return if user is guest
+		}
+
+		try {
+			const response = await jwtService.updateUserData(userRequestData);
+
 			dispatch(showMessage({ message: 'User data saved with api' }));
-		})
-		.catch((error: Error) => {
-			dispatch(showMessage({ message: error.message }));
-		});
-};
+
+			return response.data as UserType;
+		} catch (error) {
+			const axiosError = error as AxiosError;
+
+			dispatch(showMessage({ message: axiosError.message }));
+
+			return rejectWithValue(axiosError.message);
+		}
+	}
+);
 
 /**
  * The initial state of the user slice.
@@ -133,8 +132,7 @@ export const userSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(setUser.fulfilled, (state, action) => action.payload)
-			.addCase(updateUserSettings.fulfilled, (state, action) => action.payload)
-			.addCase(updateUserShortcuts.fulfilled, (state, action) => action.payload);
+			.addCase(updateUserData.fulfilled, (state, action) => action.payload);
 	}
 });
 

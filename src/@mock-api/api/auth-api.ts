@@ -8,6 +8,7 @@ import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Utf8 from 'crypto-js/enc-utf8';
 import jwtDecode from 'jwt-decode';
 import UserModel, { UserModelType } from 'app/store/user/models/UserModel';
+import { PartialDeep } from 'type-fest';
 import mock from '../mock';
 import mockApi from '../mock-api.json';
 
@@ -127,17 +128,26 @@ mock.onPost('/api/auth/sign-up').reply((request) => {
 });
 
 mock.onPost('/api/auth/user/update').reply((config) => {
-	const data = JSON.parse(config.data as string) as { user: UserType };
+	const access_token = config?.headers?.Authorization as string;
+
+	const userData = jwtDecode(access_token);
+	const uuid = (userData as { [key: string]: string }).id;
+
+	const data = JSON.parse(config.data as string) as { user: PartialDeep<UserType> };
 	const { user } = data;
 
+	let updatedUser;
+
 	usersApi = usersApi.map((_user) => {
-		if (user.uuid === _user.uuid) {
-			return _.merge(_user, user);
+		if (uuid === _user.uuid) {
+			updatedUser = _.assign({}, _user, user);
 		}
 		return _user;
 	});
 
-	return [200, user];
+	delete (updatedUser as Partial<UserType>).password;
+
+	return [200, updatedUser];
 });
 
 /**

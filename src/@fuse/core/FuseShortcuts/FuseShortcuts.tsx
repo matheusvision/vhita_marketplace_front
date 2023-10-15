@@ -9,8 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import { memo, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import _ from '@lodash';
 import FuseSvgIcon from '../FuseSvgIcon';
@@ -37,7 +36,15 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	const [addMenu, setAddMenu] = useState<HTMLElement | null>(null);
 	const [searchText, setSearchText] = useState('');
 	const [searchResults, setSearchResults] = useState<FuseNavigationType>([]);
-	const shortcutItems = shortcuts ? shortcuts.map((id) => _.find(navigation, { id })) : [];
+	const [shortcutItems, setShortcutItems] = useState<FuseNavigationType>([]);
+
+	useEffect(() => {
+		const _shortcutItems = shortcuts
+			? shortcuts.map((id) => _.find(navigation, { id }))
+			: ([] as FuseNavigationType);
+
+		setShortcutItems(_shortcutItems);
+	}, [shortcuts]);
 
 	function addMenuClick(event: React.MouseEvent<HTMLElement>) {
 		setAddMenu(event.currentTarget);
@@ -64,7 +71,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	function toggleInShortcuts(id: string) {
 		let newShortcuts = [...shortcuts];
 
-		newShortcuts = _.xor(newShortcuts, id);
+		newShortcuts = _.xor(newShortcuts, [id]);
 
 		onChange(newShortcuts);
 	}
@@ -84,61 +91,50 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 					show: { opacity: 1, scale: 1 }
 				};
 				return (
-					<motion.div
-						variants={container}
-						initial="hidden"
-						animate="show"
-						className={clsx('flex flex-1', variant === 'vertical' && 'flex-col')}
-					>
-						<>
-							{shortcutItems.map(
-								(_item) =>
-									_item && (
-										<Link
-											to={_item.url}
-											key={_item.id}
-											role="button"
+					<div className={clsx('flex flex-1', variant === 'vertical' && 'flex-col')}>
+						{shortcutItems.map(
+							(_item) =>
+								_item && (
+									<Link
+										to={_item.url}
+										key={_item.id}
+										role="button"
+									>
+										<Tooltip
+											title={_item.title}
+											placement={variant === 'horizontal' ? 'bottom' : 'left'}
 										>
-											<Tooltip
-												title={_item.title}
-												placement={variant === 'horizontal' ? 'bottom' : 'left'}
+											<IconButton
+												className="h-40 w-40 p-0"
+												size="large"
 											>
-												<IconButton
-													className="h-40 w-40 p-0"
-													component={motion.div}
-													variants={item}
-													size="large"
-												>
-													{_item.icon ? (
-														<FuseSvgIcon>{_item.icon}</FuseSvgIcon>
-													) : (
-														<span className="text-20 font-semibold uppercase">
-															{_item.title[0]}
-														</span>
-													)}
-												</IconButton>
-											</Tooltip>
-										</Link>
-									)
-							)}
+												{_item.icon ? (
+													<FuseSvgIcon>{_item.icon}</FuseSvgIcon>
+												) : (
+													<span className="text-20 font-semibold uppercase">
+														{_item.title[0]}
+													</span>
+												)}
+											</IconButton>
+										</Tooltip>
+									</Link>
+								)
+						)}
 
-							<Tooltip
-								title="Click to add/remove shortcut"
-								placement={variant === 'horizontal' ? 'bottom' : 'left'}
+						<Tooltip
+							title="Click to add/remove shortcut"
+							placement={variant === 'horizontal' ? 'bottom' : 'left'}
+						>
+							<IconButton
+								className="h-40 w-40 p-0"
+								aria-haspopup="true"
+								onClick={addMenuClick}
+								size="large"
 							>
-								<IconButton
-									component={motion.div}
-									variants={item}
-									className="h-40 w-40 p-0"
-									aria-haspopup="true"
-									onClick={addMenuClick}
-									size="large"
-								>
-									<FuseSvgIcon sx={{ color: amber[600] }}>heroicons-solid:star</FuseSvgIcon>
-								</IconButton>
-							</Tooltip>
-						</>
-					</motion.div>
+								<FuseSvgIcon sx={{ color: amber[600] }}>heroicons-solid:star</FuseSvgIcon>
+							</IconButton>
+						</Tooltip>
+					</div>
 				);
 			}, [addMenu, variant, shortcutItems])}
 
@@ -175,16 +171,20 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 
 				<Divider />
 
-				{searchText.length !== 0 &&
-					searchResults &&
-					searchResults.map((_item) => (
+				{useMemo(() => {
+					if (searchText.length === 0 || !searchResults || searchResults.length === 0) {
+						return null;
+					}
+
+					return searchResults.map((_item) => (
 						<ShortcutMenuItem
 							shortcuts={shortcuts}
 							key={_item.id}
 							item={_item}
 							onToggle={() => toggleInShortcuts(_item.id)}
 						/>
-					))}
+					));
+				}, [searchResults, shortcuts, searchText])}
 
 				{searchText.length !== 0 && searchResults.length === 0 && (
 					<Typography
@@ -195,8 +195,12 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 					</Typography>
 				)}
 
-				{searchText.length === 0 &&
-					shortcutItems.map(
+				{useMemo(() => {
+					if (searchText.length !== 0) {
+						return null;
+					}
+
+					return shortcutItems.map(
 						(_item) =>
 							_item && (
 								<ShortcutMenuItem
@@ -206,7 +210,8 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 									onToggle={() => toggleInShortcuts(_item.id)}
 								/>
 							)
-					)}
+					);
+				}, [shortcutItems, shortcuts, searchText])}
 			</Menu>
 		</div>
 	);

@@ -3,6 +3,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { UserType } from 'app/store/user';
 import { UserModelType } from 'app/store/user/models/UserModel';
+import { PartialDeep } from 'type-fest';
 import jwtServiceConfig from './jwtServiceConfig';
 /* eslint-disable camelcase, class-methods-use-this */
 
@@ -152,7 +153,7 @@ class JwtService extends FuseUtils.EventEmitter {
 	/**
 	 * Updates the user data.
 	 */
-	updateUserData = (user: UserModelType) =>
+	updateUserData = (user: PartialDeep<UserType>) =>
 		axios.post(jwtServiceConfig.updateUser, {
 			user
 		});
