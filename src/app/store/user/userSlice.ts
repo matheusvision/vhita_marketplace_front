@@ -33,12 +33,31 @@ export const setUser = createAsyncThunk('user/setUser', (user: UserType) => {
  */
 export const updateUserSettings = createAppAsyncThunk(
 	'user/updateSettings',
-	async (settings: FuseSettingsConfigType, { dispatch, getState }) => {
+	async (settings: FuseSettingsConfigType, { dispatch, rejectWithValue, getState }) => {
 		const AppState = getState() as AppRootStateType;
 		const { user } = AppState;
-		const userDataSettings = { data: { ...user.data, settings } } as UserType;
 
-		await dispatch(updateUserData(userDataSettings));
+		const isUserGuest = selectIsUserGuest(AppState);
+
+		if (isUserGuest) {
+			return null;
+		}
+
+		const userRequestData = { data: { ...user.data, settings } } as UserType;
+
+		try {
+			const response = await jwtService.updateUserData(userRequestData);
+
+			dispatch(showMessage({ message: 'User settings saved with api' }));
+
+			return response.data as UserType;
+		} catch (error) {
+			const axiosError = error as AxiosError;
+
+			dispatch(showMessage({ message: axiosError.message }));
+
+			return rejectWithValue(axiosError.message);
+		}
 	}
 );
 
@@ -47,13 +66,31 @@ export const updateUserSettings = createAppAsyncThunk(
  */
 export const updateUserShortcuts = createAppAsyncThunk(
 	'user/updateShortucts',
-	async (shortcuts: string[], { dispatch, getState }) => {
+	async (shortcuts: string[], { dispatch, getState, rejectWithValue }) => {
 		const AppState = getState() as AppRootStateType;
 		const { user } = AppState;
 
-		const userDataShortcuts = { data: { ...user.data, shortcuts } } as PartialDeep<UserType>;
+		const isUserGuest = selectIsUserGuest(AppState);
 
-		await dispatch(updateUserData(userDataShortcuts));
+		if (isUserGuest) {
+			return null;
+		}
+
+		const userRequestData = { data: { ...user.data, shortcuts } } as PartialDeep<UserType>;
+
+		try {
+			const response = await jwtService.updateUserData(userRequestData);
+
+			dispatch(showMessage({ message: 'User shortcuts saved with api' }));
+
+			return response.data as UserType;
+		} catch (error) {
+			const axiosError = error as AxiosError;
+
+			dispatch(showMessage({ message: axiosError.message }));
+
+			return rejectWithValue(axiosError.message);
+		}
 	}
 );
 
@@ -62,10 +99,10 @@ export const updateUserShortcuts = createAppAsyncThunk(
  */
 export const logoutUser = () => async (dispatch: AppDispatchType, getState: () => RootStateType) => {
 	const AppState = getState() as AppRootStateType;
-	const { user } = AppState;
 
-	if (!user.role || user.role.length === 0) {
-		// is guest
+	const isUserGuest = selectIsUserGuest(AppState);
+
+	if (isUserGuest) {
 		return null;
 	}
 
@@ -84,11 +121,12 @@ export const logoutUser = () => async (dispatch: AppDispatchType, getState: () =
 export const updateUserData = createAppAsyncThunk<UserType, PartialDeep<UserType>>(
 	'user/update',
 	async (userRequestData, { dispatch, rejectWithValue, getState }) => {
-		const state = getState() as AppRootStateType;
-		const { role } = state.user;
+		const AppState = getState() as AppRootStateType;
 
-		if (!role || role.length === 0) {
-			return undefined; // Early return if user is guest
+		const isUserGuest = selectIsUserGuest(AppState);
+
+		if (isUserGuest) {
+			return null;
 		}
 
 		try {
@@ -132,13 +170,27 @@ export const userSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(setUser.fulfilled, (state, action) => action.payload)
-			.addCase(updateUserData.fulfilled, (state, action) => action.payload);
+			.addCase(updateUserData.fulfilled, (state, action) => action.payload)
+			.addCase(updateUserShortcuts.fulfilled, (state, action) => {
+				state.data.shortcuts = action.payload.data.shortcuts;
+			})
+			.addCase(updateUserSettings.fulfilled, (state, action) => {
+				state.data.settings = action.payload.data.settings;
+			});
 	}
 });
 
 export const { userLoggedOut } = userSlice.actions;
 
 export const selectUser = (state: AppRootStateType) => state.user;
+
+export const selectUserRole = (state: AppRootStateType) => state.user.role;
+
+export const selectIsUserGuest = (state: AppRootStateType) => {
+	const { role } = state.user;
+
+	return !role || role.length === 0;
+};
 
 export const selectUserShortcuts = (state: AppRootStateType) => state.user.data.shortcuts;
 

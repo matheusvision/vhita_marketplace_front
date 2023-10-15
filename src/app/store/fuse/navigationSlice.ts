@@ -9,7 +9,7 @@ import { PartialDeep } from 'type-fest';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
-import { userSliceType } from 'app/store/user/userSlice';
+import { selectUserRole, userSliceType } from 'app/store/user/userSlice';
 
 type AppRootStateType = RootStateType<[navigationSliceType, userSliceType]>;
 
@@ -98,10 +98,8 @@ export const navigationSlice = createSlice({
 
 export const { setNavigation, resetNavigation } = navigationSlice.actions;
 
-const getUserRole = (state: AppRootStateType) => state.user.role;
-
 export const selectNavigation = createSelector(
-	[selectNavigationAll, selectCurrentLanguageId, getUserRole],
+	[selectNavigationAll, selectCurrentLanguageId, selectUserRole],
 	(navigation, language, userRole) => {
 		function setTranslationValues(data: FuseNavigationType) {
 			// loop through every object in the array

@@ -8,7 +8,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import createCache, { Options } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
-import { selectUser } from 'app/store/user/userSlice';
+import { selectUserRole } from 'app/store/user/userSlice';
 import themeLayouts from 'app/theme-layouts/themeLayouts';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
@@ -45,7 +45,7 @@ function App() {
 	/**
 	 * The user object from the Redux store.
 	 */
-	const user = useAppSelector(selectUser);
+	const userRole = useAppSelector(selectUserRole);
 
 	/**
 	 * The language direction from the Redux store.
@@ -66,7 +66,7 @@ function App() {
 				<AuthProvider>
 					<BrowserRouter>
 						<FuseAuthorization
-							userRole={user.role}
+							userRole={userRole}
 							loginRedirectUrl={settingsConfig.loginRedirectUrl}
 						>
 							<SnackbarProvider
