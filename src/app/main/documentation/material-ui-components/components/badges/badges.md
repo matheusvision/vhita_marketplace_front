@@ -1,5 +1,5 @@
 ---
-product: material-ui
+productId: material-ui
 title: React Badge component
 components: Badge
 githubLabel: 'component: badge'
@@ -71,3 +71,4 @@ You can't rely on the content of the badge to be announced correctly.
 You should provide a full description, for instance, with `aria-label`:
 
 {{"demo": "AccessibleBadges.js"}}
+

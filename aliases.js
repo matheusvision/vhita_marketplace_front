@@ -1,3 +1,6 @@
+/**
+ * Create aliases for the paths
+ */
 const aliases = (prefix = `src`) => ({
   '@fuse': `${prefix}/@fuse`,
   '@history': `${prefix}/@history`,
