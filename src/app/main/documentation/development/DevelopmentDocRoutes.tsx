@@ -1,6 +1,10 @@
 import { lazy } from 'react';
 import TsFileRenamingMigrationDoc from './ts-migration/TsFileRenamingMigrationDoc';
+import CodeSplittingDoc from './code-splitting/CodeSplittingDoc';
+import MultiLanguageDoc from './multi-language/MultiLanguageDoc';
 
+const WithReducersCodeSplittingDoc = lazy(() => import('./code-splitting/with-reducers/WithReducersCodeSplittingDoc'));
+const WithSlicesCodeSplittingDoc = lazy(() => import('./code-splitting/with-slices/WithSlicesCodeSplittingDoc'));
 const DevelopmentServerDoc = lazy(() => import('./development-server/DevelopmentServerDoc'));
 const ProductionDoc = lazy(() => import('./production/ProductionDoc'));
 const DeploymentDoc = lazy(() => import('./deployment/DeploymentDoc'));
@@ -33,6 +37,22 @@ const DevelopmentDocRoutes = [
 	{
 		path: 'development/api-calls',
 		element: <ApiCallsDoc />
+	},
+	{
+		path: 'development/code-splitting',
+		element: <CodeSplittingDoc />
+	},
+	{
+		path: 'development/code-splitting/with-reducers',
+		element: <WithReducersCodeSplittingDoc />
+	},
+	{
+		path: 'development/code-splitting/with-slices',
+		element: <WithSlicesCodeSplittingDoc />
+	},
+	{
+		path: 'development/multi-language',
+		element: <MultiLanguageDoc />
 	},
 	{
 		path: 'development/updating-fuse-react',

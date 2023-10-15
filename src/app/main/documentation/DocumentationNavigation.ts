@@ -89,6 +89,32 @@ const DocumentationNavigation: FuseNavItemType = {
 					url: '/documentation/development/api-calls'
 				},
 				{
+					id: 'fuse-react-code-splitting-doc',
+					title: 'Code Splitting',
+					type: 'collapse',
+					url: '/documentation/development/code-splitting',
+					children: [
+						{
+							id: 'fuse-react-code-splitting-with-reducers-doc',
+							title: 'With Reducers (default)',
+							type: 'item',
+							url: '/documentation/development/code-splitting/with-reducers'
+						},
+						{
+							id: 'fuse-react-code-splitting-with-slices-doc',
+							title: 'With Slices',
+							type: 'item',
+							url: '/documentation/development/code-splitting/with-slices'
+						}
+					]
+				},
+				{
+					id: 'fuse-react-multi-language-doc',
+					title: 'Multi Language',
+					type: 'item',
+					url: '/documentation/development/multi-language'
+				},
+				{
 					id: 'updating-fuse-react-doc',
 					title: 'Updating Fuse React',
 					type: 'item',
@@ -182,18 +208,6 @@ const DocumentationNavigation: FuseNavItemType = {
 					title: 'Navigation',
 					type: 'item',
 					url: '/documentation/configuration/navigation'
-				},
-				{
-					id: 'fuse-react-code-splitting-doc',
-					title: 'Code Splitting',
-					type: 'item',
-					url: '/documentation/configuration/code-splitting'
-				},
-				{
-					id: 'fuse-react-multi-language-doc',
-					title: 'Multi Language',
-					type: 'item',
-					url: '/documentation/configuration/multi-language'
 				}
 			]
 		},
