@@ -62,30 +62,9 @@ export default function SpacingGrid() {
               </FormControl>
             </Grid>
           </Grid>
-        ))}
+        </Paper>
+        <HighlightedCode code={jsx} language="jsx" />
       </Grid>
-      <Paper sx={{ p: 2 }}>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">spacing</FormLabel>
-          <RadioGroup
-            name="spacing"
-            aria-label="spacing"
-            value={spacing.toString()}
-            onChange={handleChange}
-            row
-          >
-            {[0, 0.5, 1, 2, 3, 4, 8, 12].map((value) => (
-              <FormControlLabel
-                key={value}
-                value={value.toString()}
-                control={<Radio />}
-                label={value.toString()}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-      </Paper>
-      <HighlightedCode code={jsx} language="jsx" />
-    </Box>
+    </Grid>
   );
 }

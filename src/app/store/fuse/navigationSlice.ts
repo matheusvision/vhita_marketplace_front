@@ -4,12 +4,12 @@ import FuseUtils from '@fuse/utils';
 import i18next from 'i18next';
 import _ from '@lodash';
 import { AppThunkType, RootStateType } from 'app/store/types';
-import { selectCurrentLanguageId } from 'app/store/i18nSlice';
 import { PartialDeep } from 'type-fest';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
 import { selectUserRole, userSliceType } from 'app/store/user/userSlice';
+import { selectCurrentLanguageId } from '../i18nSlice';
 
 type AppRootStateType = RootStateType<[navigationSliceType, userSliceType]>;
 
@@ -30,9 +30,11 @@ export const appendNavigationItem =
 	(item: FuseNavItemType, parentId?: string | null): AppThunkType =>
 	async (dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
-		const { navigation } = AppState.fuse;
+		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseUtils.appendNavItem(navigation, FuseNavItemModel(item), parentId)));
+
+		return Promise.resolve();
 	};
 
 /**
@@ -42,7 +44,7 @@ export const prependNavigationItem =
 	(item: FuseNavItemType, parentId?: string | null): AppThunkType =>
 	async (dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
-		const { navigation } = AppState.fuse;
+		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseUtils.prependNavItem(navigation, FuseNavItemModel(item), parentId)));
 
@@ -56,7 +58,7 @@ export const updateNavigationItem =
 	(id: string, item: PartialDeep<FuseNavItemType>): AppThunkType =>
 	async (dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
-		const { navigation } = AppState.fuse;
+		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseUtils.updateNavItem(navigation, id, item)));
 
@@ -70,9 +72,9 @@ export const removeNavigationItem =
 	(id: string): AppThunkType =>
 	async (dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
-		const { navigation: _navigation } = AppState.fuse;
+		const navigation = selectNavigationAll(AppState);
 
-		dispatch(setNavigation(FuseUtils.removeNavItem(_navigation, id)));
+		dispatch(setNavigation(FuseUtils.removeNavItem(navigation, id)));
 
 		return Promise.resolve();
 	};

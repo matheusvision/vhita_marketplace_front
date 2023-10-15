@@ -6,8 +6,12 @@ import withRouter from '@fuse/core/withRouter';
 import history from '@history';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
-
-let loginRedirectUrl: string = '/';
+import {
+	getSessionRedirectUrl,
+	resetSessionRedirectUrl,
+	setSessionRedirectUrl
+} from '@fuse/core/FuseAuthorization/sessionRedirectUrl';
+import FuseLoading from '@fuse/core/FuseLoading';
 
 type FuseAuthorizationProps = {
 	children: ReactNode;
@@ -20,13 +24,15 @@ type State = AppContextType & {
 	accessGranted: boolean;
 };
 
+function isUserGuest(role: string[] | string) {
+	return !role || (Array.isArray(role) && role.length === 0);
+}
+
 /**
  * FuseAuthorization is a higher-order component that wraps its child component which handles the authorization logic of the app.
  * It checks the provided Auth property from FuseRouteItemType (auth property) against the current logged-in user role.
  */
 class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
-	defaultLoginRedirectUrl: string;
-
 	constructor(props: FuseAuthorizationProps, context: AppContextType) {
 		super(props);
 
@@ -36,8 +42,6 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 			accessGranted: true,
 			routes
 		};
-
-		this.defaultLoginRedirectUrl = props.loginRedirectUrl || '/';
 	}
 
 	componentDidMount() {
@@ -68,30 +72,53 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 		const matchedRoutes = matchRoutes(state.routes, pathname);
 		const matched = matchedRoutes ? matchedRoutes[0] : false;
 
+		const isGuest = isUserGuest(userRole);
+
 		if (!matched) {
 			return { accessGranted: true };
 		}
 
 		const { route }: { route: FuseRouteItemType } = matched;
 
+		const userHasPermission = FuseUtils.hasPermission(route.auth, userRole);
+
+		const ignoredPaths = ['/', '/callback', '/sign-in', '/sign-out', '/logout', '/404'];
+
+		if (matched && !userHasPermission && !ignoredPaths.includes(pathname)) {
+			setSessionRedirectUrl(pathname);
+		}
+
+		/**
+		 * If user is member but don't have permission to view the route
+		 * redirected to main route '/'
+		 */
+		if (!userHasPermission && !isGuest && !ignoredPaths.includes(pathname)) {
+			setSessionRedirectUrl('/');
+		}
+
 		return {
-			accessGranted: FuseUtils.hasPermission(route.auth, userRole)
+			accessGranted: matched ? userHasPermission : true
 		};
 	}
 
 	redirectRoute() {
-		const { location, userRole } = this.props;
-		const { pathname } = location;
-		const redirectUrl = loginRedirectUrl || this.defaultLoginRedirectUrl;
+		const { userRole, loginRedirectUrl } = this.props;
+		const redirectUrl = getSessionRedirectUrl() || loginRedirectUrl;
 
+		/*
+		User is guest
+		Redirect to Login Page
+		*/
 		if (!userRole || userRole.length === 0) {
-			// User is guest. Redirect to Login Page.
 			setTimeout(() => history.push('/sign-in'), 0);
-			loginRedirectUrl = pathname;
 		} else {
-			// User is member. Redirect to dashboard or loginRedirectUrl.
+			/*
+		  User is member
+		  User must be on unAuthorized page or just logged in
+		  Redirect to dashboard or loginRedirectUrl
+			*/
 			setTimeout(() => history.push(redirectUrl), 0);
-			loginRedirectUrl = this.defaultLoginRedirectUrl;
+			resetSessionRedirectUrl();
 		}
 	}
 
@@ -99,7 +126,7 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 		const { accessGranted } = this.state;
 		const { children } = this.props;
 
-		return accessGranted ? children : null;
+		return accessGranted ? children : <FuseLoading />;
 	}
 }
 

@@ -12,6 +12,7 @@ import DashboardsConfigs from '../main/dashboards/dashboardsConfigs';
 import AppsConfigs from '../main/apps/appsConfigs';
 import UserInterfaceConfigs from '../main/user-interface/UserInterfaceConfigs';
 import DocumentationConfig from '../main/documentation/DocumentationConfig';
+import authRoleExamplesConfigs from '../main/auth/authRoleExamplesConfigs';
 
 const routeConfigs: FuseRouteConfigsType = [
 	SignOutConfig,
@@ -21,7 +22,8 @@ const routeConfigs: FuseRouteConfigsType = [
 	...PagesConfigs,
 	...UserInterfaceConfigs,
 	...DashboardsConfigs,
-	...AppsConfigs
+	...AppsConfigs,
+	...authRoleExamplesConfigs
 ];
 
 /**

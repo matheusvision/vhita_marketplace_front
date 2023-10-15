@@ -20,18 +20,6 @@ export default function VirtualElementPopper() {
     }
   }, [anchorEl]);
 
-  const previousAnchorElPosition = React.useRef(undefined);
-
-  React.useEffect(() => {
-    if (anchorEl) {
-      if (typeof anchorEl === 'object') {
-        previousAnchorElPosition.current = anchorEl.getBoundingClientRect();
-      } else {
-        previousAnchorElPosition.current = anchorEl().getBoundingClientRect();
-      }
-    }
-  }, [anchorEl]);
-
   const handleClose = () => {
     setOpen(false);
   };
