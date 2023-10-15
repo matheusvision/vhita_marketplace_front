@@ -2,14 +2,14 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { alpha, styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import { ListItemButton, ListItemButtonProps, ListItemText } from '@mui/material';
+import { ListItem, ListItemButtonProps, ListItemText } from '@mui/material';
 import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 
 type ListItemButtonComponentProps = ListItemButtonProps & {
 	itempadding: number;
 };
 
-const Root = styled(ListItemButton)<ListItemButtonComponentProps>(({ theme, ...props }) => ({
+const Root = styled(ListItem)<ListItemButtonComponentProps>(({ theme, ...props }) => ({
 	minminHeight: 44,
 	width: '100%',
 	borderRadius: '6px',
@@ -50,7 +50,7 @@ function FuseNavVerticalGroup(props: FuseNavItemComponentProps) {
 				<Root
 					component={component}
 					itempadding={itempadding}
-					className={clsx('fuse-list-subheader flex items-center  py-10', !item.url && 'cursor-default')}
+					className={clsx('fuse-list-subheader flex items-center  py-10', !item.url ? 'cursor-default' : '')}
 					onClick={() => onItemClick && onItemClick(item)}
 					sx={item.sx}
 					{...itemProps}
