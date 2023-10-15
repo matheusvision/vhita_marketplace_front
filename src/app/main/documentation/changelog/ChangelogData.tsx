@@ -19,15 +19,15 @@ export type ChangelogItemType = {
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '9.0.0',
-		date: '2023-10-10',
+		date: '2023-10-15',
 		newChanges: [
-			'Converted codebase from JavaScript to TypeScript',
-			'Updated all dependencies to latest stable versions',
-			'Improved app performance by optimizing code and reducing bundle size',
-			'Added new features and functionality'
+			'Transitioned the codebase from JavaScript to TypeScript.',
+			'Upgraded all dependencies to their latest stable versions.',
+			'Enhanced application performance through code optimization and bundle size reduction.',
+			'Introduced new features and functionalities.'
 		],
 		breakingChanges: [
-			'All JavaScript code has been converted to TypeScript, which may require updates to existing code',
+			'The entire JavaScript codebase has been transitioned to TypeScript, necessitating potential updates to existing code.',
 			'Some APIs and interfaces have changed due to the conversion to TypeScript'
 		],
 		notes: (
@@ -37,20 +37,20 @@ const changelogData: ChangelogItemType[] = [
 						component="li"
 						className="leading-loose mb-16"
 					>
-						Migrating to the new major version (v9.0.0) can be difficult because of the migration to
+						Transitioning to the new major release (v9.0.0) may present challenges due to the shift to
 						TypeScript.
 					</Typography>
 					<Typography
 						component="li"
 						className="leading-loose"
 					>
-						Please follow the migration guide at{' '}
+						You may find this page helpful:{' '}
 						<a
-							href="https://mui.com/guides/migration-v4"
+							href="https://react-typescript-cheatsheet.netlify.app/docs/migration/"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							https://mui.com/guides/migration-v4/
+							Migrating (to TypeScript) Cheatsheet
 						</a>
 					</Typography>
 					<Typography
