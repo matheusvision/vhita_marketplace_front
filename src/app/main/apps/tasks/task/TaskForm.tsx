@@ -187,9 +187,6 @@ function TaskForm() {
 							)}
 							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : []}
 							onChange={(event, newValue) => {
-								console.info(newValue);
-								console.info(tags);
-								console.info(value);
 								onChange(newValue.map((item: TagType) => item.id));
 							}}
 							fullWidth

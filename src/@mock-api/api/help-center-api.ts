@@ -40,8 +40,8 @@ mock.onGet('/api/help-center/guides/:categorySlug').reply((config) => {
 });
 
 mock.onGet('/api/help-center/guides/:categorySlug/:guideSlug').reply((config) => {
+	// eslint-disable-next-line unused-imports/no-unused-vars
 	const { categorySlug, guideSlug } = config.params as Params;
-	console.info(guideSlug);
 	return [200, { ..._.find(guidesDB, { slug: guideSlug }), content: guideContent }];
 });
 

@@ -19,7 +19,7 @@ export type ChangelogItemType = {
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '9.0.0',
-		date: '2023-10-15',
+		date: '2023-10-16',
 		newChanges: [
 			'Transitioned the codebase from JavaScript to TypeScript.',
 			'Upgraded all dependencies to their latest stable versions.',

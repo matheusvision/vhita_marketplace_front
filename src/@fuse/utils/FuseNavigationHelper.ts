@@ -7,7 +7,8 @@ import { PartialDeep } from 'type-fest';
 
 class FuseNavigationHelper {
 	static selectById(nav: FuseNavigationType, id: string): FuseNavItemType | undefined {
-		for (const item of nav) {
+		for (let i = 0; i < nav.length; i += 1) {
+			const item = nav[i];
 			if (item.id === id) {
 				return item;
 			}
@@ -103,8 +104,6 @@ class FuseNavigationHelper {
 	 * The updateNavItem function updates a navigation item by its ID with new data.
 	 */
 	static updateNavItem(nav: FuseNavigationType, id: string, item: PartialDeep<FuseNavItemType>): FuseNavigationType {
-		console.info(id);
-		console.info(item);
 		return nav.map((node) => {
 			if (node.id === id) {
 				return _.merge({}, node, item); // merge original node data with updated item data

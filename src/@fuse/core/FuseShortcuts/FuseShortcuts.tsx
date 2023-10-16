@@ -79,17 +79,6 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	return (
 		<div className={clsx('flex flex-1', variant === 'vertical' && 'shrink grow-0 flex-col', className)}>
 			{useMemo(() => {
-				const container = {
-					show: {
-						transition: {
-							staggerChildren: 0.1
-						}
-					}
-				};
-				const item = {
-					hidden: { opacity: 0, scale: 0.6 },
-					show: { opacity: 1, scale: 1 }
-				};
 				return (
 					<div className={clsx('flex flex-1', variant === 'vertical' && 'flex-col')}>
 						{shortcutItems.map(
