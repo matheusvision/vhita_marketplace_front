@@ -114,8 +114,8 @@ class JwtService extends FuseUtils.EventEmitter {
 					) => {
 						if (response.data.user) {
 							_setSession(response.data.access_token);
-							resolve(response.data.user);
 							this.emit('onLogin', response.data.user);
+							resolve(response.data.user);
 						} else {
 							reject(response.data.error);
 						}

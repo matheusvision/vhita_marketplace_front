@@ -59,27 +59,27 @@ function AuthProvider(props: AuthProviderProps) {
 		});
 
 		jwtService.on('onNoAccessToken', () => {
-			pass("Couldn't retrieve access token");
+			pass();
 		});
 
 		jwtService.init();
 
 		function success(user: UserType, message: string) {
-			if (message) {
-				dispatch(showMessage({ message }));
-			}
-
 			Promise.all([
 				dispatch(setUser(user))
 
 				// You can receive data in here before app initialization
 			]).then(() => {
+				if (message) {
+					dispatch(showMessage({ message }));
+				}
+
 				setWaitAuthCheck(false);
 				setIsAuthenticated(true);
 			});
 		}
 
-		function pass(message: string) {
+		function pass(message?: string) {
 			if (message) {
 				dispatch(showMessage({ message }));
 			}
