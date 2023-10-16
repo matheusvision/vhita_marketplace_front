@@ -24,7 +24,6 @@
     ],
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "allowJs": true,
-    "maxNodeModuleJsDepth": 3,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
