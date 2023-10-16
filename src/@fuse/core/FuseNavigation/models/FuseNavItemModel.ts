@@ -13,7 +13,7 @@ function FuseNavItemModel(data?: PartialDeep<FuseNavItemType>) {
 		id: _.uniqueId(),
 		title: '',
 		translate: '',
-		auth: '',
+		auth: null,
 		subtitle: '',
 		icon: '',
 		iconClass: '',

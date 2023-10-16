@@ -24,4 +24,5 @@ export type FuseNavItemType = {
 	end?: boolean;
 	badge?: FuseNavBadgeType;
 	children?: FuseNavigationType;
+	hasPermission?: boolean;
 };

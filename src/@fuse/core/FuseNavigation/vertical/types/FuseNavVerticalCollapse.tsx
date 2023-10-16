@@ -51,7 +51,7 @@ function needsToBeOpened(location: Location, item: FuseNavItemType) {
  */
 function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 	const location = useLocation();
-	const { item, nestedLevel = 0, onItemClick } = props;
+	const { item, nestedLevel = 0, onItemClick, checkPermission } = props;
 
 	const [open, setOpen] = useState(() => needsToBeOpened(location, item));
 
@@ -77,6 +77,10 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 			end: item.end,
 			role: 'button'
 		};
+	}
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
 	}
 
 	return useMemo(
@@ -152,6 +156,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 								item={_item}
 								nestedLevel={nestedLevel + 1}
 								onItemClick={onItemClick}
+								checkPermission={checkPermission}
 							/>
 						))}
 					</Collapse>

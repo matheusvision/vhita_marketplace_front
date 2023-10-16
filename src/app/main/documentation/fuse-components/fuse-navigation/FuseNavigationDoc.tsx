@@ -96,6 +96,20 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
+				className="text-16 mt-16 mb-10 font-700"
+				variant="h6"
+			>
+				[checkPermission]
+			</Typography>
+
+			<Typography
+				className="mb-16"
+				component="p"
+			>
+				You can use <b>{`checkPermission={true}`}</b> to enable authorization for navigation.
+			</Typography>
+
+			<Typography
 				className="text-20 mt-20 mb-10 font-700"
 				variant="h5"
 			>
@@ -487,14 +501,16 @@ function FuseNavigationDoc() {
 					className="text-16 mb-24"
 					component="h2"
 				>
-					With the button below, 'dashboards' title changes, and a badge is added.
+					With clicking the button below, a badge will be added into the 'Project' dashboard navigation item.
 				</Typography>
 
 				<Button
 					onClick={() => {
 						dispatch(
-							updateNavigationItem('dashboards', {
-								title: 'All Dashboards'
+							updateNavigationItem('dashboards.project', {
+								badge: {
+									title: 'NEW'
+								}
 							})
 						);
 					}}
@@ -509,19 +525,22 @@ function FuseNavigationDoc() {
 					className="language-jsx mt-24"
 				>
 					{`
-          <Button
-            onClick={() => {
-              dispatch(
-                updateNavigationItem('dashboards', {
-                  title: 'All Dashboards',
-                })
-              );
-            }}
-            variant="contained"
-            color="secondary"
-          >
-            Update Navigation Item
-          </Button>
+					<Button
+						onClick={() => {
+							dispatch(
+								updateNavigationItem('dashboards.project', {
+									badge: {
+										title: 'NEW'
+									}
+								})
+							);
+						}}
+						variant="contained"
+						color="secondary"
+					>
+						Update Navigation Item
+					</Button>
+					
         `}
 				</FuseHighlight>
 			</div>

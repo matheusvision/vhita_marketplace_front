@@ -35,7 +35,7 @@ function ContactView() {
 	}
 
 	if (status === 'loading') {
-		return <FuseLoading />;
+		return <FuseLoading className="min-h-screen" />;
 	}
 
 	if (!contact) {

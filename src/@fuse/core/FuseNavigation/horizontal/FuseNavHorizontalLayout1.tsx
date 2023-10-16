@@ -35,7 +35,7 @@ const StyledList = styled(List)(({ theme }) => ({
  * rendering horizontal navigation menus, using the Material UI List component.
  */
 function FuseNavHorizontalLayout1(props: FuseNavigationProps) {
-	const { navigation, active, dense, className } = props;
+	const { navigation, active, dense, className, checkPermission } = props;
 
 	return (
 		<StyledList
@@ -53,6 +53,7 @@ function FuseNavHorizontalLayout1(props: FuseNavigationProps) {
 					item={_item}
 					nestedLevel={0}
 					dense={dense}
+					checkPermission={checkPermission}
 				/>
 			))}
 		</StyledList>

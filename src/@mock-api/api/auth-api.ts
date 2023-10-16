@@ -7,14 +7,15 @@ import Base64 from 'crypto-js/enc-base64';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Utf8 from 'crypto-js/enc-utf8';
 import jwtDecode from 'jwt-decode';
-import UserModel, { UserModelType } from 'app/store/user/models/UserModel';
 import { PartialDeep } from 'type-fest';
+import UserType from 'app/store/user/UserType';
+import UserModel from 'app/store/user/models/UserModel';
 import mock from '../mock';
 import mockApi from '../mock-api.json';
 
-type UserType = UserModelType & { password: string };
+type UserAuthType = UserType & { password: string };
 
-let usersApi = mockApi.components.examples.auth_users.value as UserType[];
+let usersApi = mockApi.components.examples.auth_users.value as UserAuthType[];
 
 mock.onGet('/api/auth/sign-in').reply((config) => {
 	const data = JSON.parse(config.data as string) as { email: string; password: string };
@@ -40,7 +41,7 @@ mock.onGet('/api/auth/sign-in').reply((config) => {
 	}
 
 	if (error.length === 0) {
-		delete (user as Partial<UserType>).password;
+		delete (user as Partial<UserAuthType>).password;
 
 		const access_token = generateJWTToken({ id: user.uuid });
 
@@ -65,7 +66,7 @@ mock.onGet('/api/auth/access-token').reply((config) => {
 
 		const user = _.cloneDeep(usersApi.find((_user) => _user.uuid === id));
 
-		delete (user as Partial<UserType>).password;
+		delete (user as Partial<UserAuthType>).password;
 
 		const updatedAccessToken = generateJWTToken({ id: user.uuid });
 
@@ -107,13 +108,13 @@ mock.onPost('/api/auth/sign-up').reply((request) => {
 				settings: {},
 				shortcuts: []
 			}
-		} as UserType) as UserType;
+		} as UserAuthType) as UserAuthType;
 
 		usersApi = [...usersApi, newUser];
 
 		const user = _.cloneDeep(newUser);
 
-		delete (user as Partial<UserType>).password;
+		delete (user as Partial<UserAuthType>).password;
 
 		const access_token = generateJWTToken({ id: user.uuid });
 
@@ -133,10 +134,10 @@ mock.onPost('/api/auth/user/update').reply((config) => {
 	const userData = jwtDecode(access_token);
 	const uuid = (userData as { [key: string]: string }).id;
 
-	const data = JSON.parse(config.data as string) as { user: PartialDeep<UserType> };
+	const data = JSON.parse(config.data as string) as { user: PartialDeep<UserAuthType> };
 	const { user } = data;
 
-	let updatedUser;
+	let updatedUser: UserType;
 
 	usersApi = usersApi.map((_user) => {
 		if (uuid === _user.uuid) {
@@ -145,7 +146,7 @@ mock.onPost('/api/auth/user/update').reply((config) => {
 		return _user;
 	});
 
-	delete (updatedUser as Partial<UserType>).password;
+	delete (updatedUser as Partial<UserAuthType>).password;
 
 	return [200, updatedUser];
 });

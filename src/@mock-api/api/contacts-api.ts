@@ -21,6 +21,10 @@ mock.onPost('/api/contacts').reply(({ data }) => {
 	return [200, newContact];
 });
 
+mock.onGet('/api/contacts/tags').reply(() => {
+	return [200, tagsDB];
+});
+
 mock.onGet('/api/contacts/:id').reply((config) => {
 	const { id } = config.params as Params;
 
@@ -47,8 +51,4 @@ mock.onDelete('/api/contacts/:id').reply((config) => {
 	_.remove(contactsDB, { id });
 
 	return [200, id];
-});
-
-mock.onGet('/api/contacts/tags').reply(() => {
-	return [200, tagsDB];
 });

@@ -42,7 +42,7 @@ const StyledList = styled(List)(({ theme }) => ({
  * and renders the FuseNavItem components accordingly
  */
 function FuseNavVerticalLayout1(props: FuseNavigationProps) {
-	const { navigation, active, dense, className, onItemClick } = props;
+	const { navigation, active, dense, className, onItemClick, checkPermission } = props;
 
 	function handleItemClick(item: FuseNavItemType) {
 		onItemClick?.(item);
@@ -64,6 +64,7 @@ function FuseNavVerticalLayout1(props: FuseNavigationProps) {
 					item={_item}
 					nestedLevel={0}
 					onItemClick={handleItemClick}
+					checkPermission={checkPermission}
 				/>
 			))}
 		</StyledList>

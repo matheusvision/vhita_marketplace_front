@@ -49,7 +49,7 @@ type FuseNavHorizontalCollapseProps = FuseNavItemComponentProps & {
  */
 function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 	const [opened, setOpened] = useState(false);
-	const { item, nestedLevel, dense, location } = props;
+	const { item, nestedLevel, dense, location, checkPermission } = props;
 	const theme = useTheme();
 
 	const handleToggle = useDebounce((open: boolean) => {
@@ -67,6 +67,10 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 			end: item.end,
 			role: 'button'
 		};
+	}
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
 	}
 
 	return useMemo(
@@ -183,7 +187,7 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 				</Manager>
 			</ul>
 		),
-		[dense, handleToggle, item, nestedLevel, opened, props.location.pathname, theme.direction]
+		[dense, handleToggle, item, nestedLevel, opened, location.pathname, theme.direction]
 	);
 }
 

@@ -35,7 +35,7 @@ function AuthProvider(props: AuthProviderProps) {
 			jwtService
 				.signInWithToken()
 				.then((user) => {
-					success(user, 'Signed in with JWT');
+					success(user as UserType, 'Signed in with JWT');
 				})
 				.catch((error: AxiosError) => {
 					pass(error.message);

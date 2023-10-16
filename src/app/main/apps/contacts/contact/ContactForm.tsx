@@ -118,8 +118,8 @@ function ContactForm() {
 		});
 	}
 
-	if (_.isEmpty(form) || !contact || tags.length === 0) {
-		return <FuseLoading />;
+	if (_.isEmpty(form) || !contact) {
+		return <FuseLoading className="min-h-screen" />;
 	}
 
 	return (
@@ -266,16 +266,16 @@ function ContactForm() {
 							multiple
 							id="tags"
 							className="mt-32"
-							options={tags}
+							options={tags || []}
 							disableCloseOnSelect
-							getOptionLabel={(option) => option.title}
+							getOptionLabel={(option) => option?.title}
 							renderOption={(_props, option, { selected }) => (
 								<li {..._props}>
 									<Checkbox
 										style={{ marginRight: 8 }}
 										checked={selected}
 									/>
-									{option.title}
+									{option?.title}
 								</li>
 							)}
 							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : ([] as TagsType)}

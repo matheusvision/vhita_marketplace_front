@@ -31,7 +31,7 @@ const StyledList = styled(List)(({ theme }) => ({
  * It displays the navigation object in the structured vertical menu and allows to handle onClick events for each navigation item.
  */
 function FuseNavVerticalLayout2(props: FuseNavigationProps) {
-	const { navigation, active, dense, className, onItemClick, firstLevel, selectedId } = props;
+	const { navigation, active, dense, className, onItemClick, firstLevel, selectedId, checkPermission } = props;
 
 	function handleItemClick(item: FuseNavItemType) {
 		onItemClick?.(item);
@@ -56,6 +56,7 @@ function FuseNavVerticalLayout2(props: FuseNavigationProps) {
 					firstLevel={firstLevel}
 					dense={dense}
 					selectedId={selectedId}
+					checkPermission={checkPermission}
 				/>
 			))}
 		</StyledList>

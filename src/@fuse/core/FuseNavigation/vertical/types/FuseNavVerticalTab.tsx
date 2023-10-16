@@ -68,7 +68,7 @@ export type FuseNavVerticalTabProps = Omit<FuseNavigationProps, 'navigation'> & 
  *  'selection' and 'divider'
  * */
 function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
-	const { item, onItemClick, firstLevel, dense, selectedId } = props;
+	const { item, onItemClick, firstLevel, dense, selectedId, checkPermission } = props;
 
 	const component = item.url ? NavLinkAdapter : 'li';
 
@@ -81,6 +81,10 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 			end: item.end,
 			role: 'button'
 		};
+	}
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
 	}
 
 	return useMemo(
@@ -165,6 +169,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 							onItemClick={onItemClick}
 							dense={dense}
 							selectedId={selectedId}
+							checkPermission={checkPermission}
 						/>
 					))}
 			</Root>

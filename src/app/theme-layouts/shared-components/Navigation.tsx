@@ -34,6 +34,7 @@ function Navigation(props: Partial<FuseNavigationProps>) {
 				dense={dense}
 				active={active}
 				onItemClick={handleItemClick}
+				checkPermission
 			/>
 		);
 	}, [dispatch, isMobile, navigation, active, className, dense, layout]);

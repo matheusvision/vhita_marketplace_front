@@ -66,6 +66,7 @@ export type FuseNavigationProps = {
 	layout?: 'horizontal' | 'vertical' | 'vertical-2';
 	firstLevel?: boolean;
 	selectedId?: string;
+	checkPermission?: boolean;
 };
 
 /**
@@ -83,9 +84,24 @@ function FuseNavigation(props: FuseNavigationProps) {
 	return (
 		<>
 			{inputGlobalStyles}
-			{layout === 'horizontal' && <FuseNavHorizontalLayout1 {...props} />}
-			{layout === 'vertical' && <FuseNavVerticalLayout1 {...props} />}
-			{layout === 'vertical-2' && <FuseNavVerticalLayout2 {...props} />}
+			{layout === 'horizontal' && (
+				<FuseNavHorizontalLayout1
+					checkPermission={false}
+					{...props}
+				/>
+			)}
+			{layout === 'vertical' && (
+				<FuseNavVerticalLayout1
+					checkPermission={false}
+					{...props}
+				/>
+			)}
+			{layout === 'vertical-2' && (
+				<FuseNavVerticalLayout2
+					checkPermission={false}
+					{...props}
+				/>
+			)}
 		</>
 	);
 }

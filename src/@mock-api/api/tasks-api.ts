@@ -34,6 +34,10 @@ mock.onPost('/api/tasks/reorder').reply(({ data }) => {
 	return [200, tasksDB];
 });
 
+mock.onGet('/api/tasks/tags').reply(() => {
+	return [200, tagsDB];
+});
+
 mock.onGet('/api/tasks/:id').reply((config) => {
 	const { id } = config.params as Params;
 
@@ -60,8 +64,4 @@ mock.onDelete('/api/tasks/:id').reply((config) => {
 	_.remove(tasksDB, { id });
 
 	return [200, id];
-});
-
-mock.onGet('/api/tasks/tags').reply(() => {
-	return [200, tagsDB];
 });

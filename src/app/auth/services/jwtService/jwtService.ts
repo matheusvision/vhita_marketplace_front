@@ -1,8 +1,7 @@
 import FuseUtils from '@fuse/utils/FuseUtils';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
-import { UserType } from 'app/store/user';
-import { UserModelType } from 'app/store/user/models/UserModel';
+import UserType from 'app/store/user/UserType';
 import { PartialDeep } from 'type-fest';
 import jwtServiceConfig from './jwtServiceConfig';
 /* eslint-disable camelcase, class-methods-use-this */
@@ -63,9 +62,9 @@ class JwtService extends FuseUtils.EventEmitter {
 	 * Creates a new user account.
 	 */
 	createUser = (data: {
-		displayName: UserModelType['data']['displayName'];
+		displayName: UserType['data']['displayName'];
 		password: string;
-		email: UserModelType['data']['email'];
+		email: UserType['data']['email'];
 	}) =>
 		new Promise((resolve, reject) => {
 			axios.post(jwtServiceConfig.signUp, data).then(
@@ -135,10 +134,10 @@ class JwtService extends FuseUtils.EventEmitter {
 						access_token: getAccessToken()
 					}
 				})
-				.then((response: AxiosResponse<{ user: UserModelType; access_token: string }>) => {
+				.then((response: AxiosResponse<{ user: UserType; access_token: string }>) => {
 					if (response.data.user) {
 						_setSession(response.data.access_token);
-						resolve(response.data.user as UserType);
+						resolve(response.data.user);
 					} else {
 						this.logout();
 						reject(new Error('Failed to login with token.'));

@@ -27,7 +27,7 @@ const Root = styled(ListItem)<ListItemButtonComponentProps>(({ theme, ...props }
  * FuseNavVerticalGroup is a component used to render a group of navigation items in a vertical layout.
  */
 function FuseNavVerticalGroup(props: FuseNavItemComponentProps) {
-	const { item, nestedLevel = 0, onItemClick } = props;
+	const { item, nestedLevel = 0, onItemClick, checkPermission } = props;
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
 
@@ -42,6 +42,10 @@ function FuseNavVerticalGroup(props: FuseNavItemComponentProps) {
 			end: item.end,
 			role: 'button'
 		};
+	}
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
 	}
 
 	return useMemo(
@@ -89,6 +93,7 @@ function FuseNavVerticalGroup(props: FuseNavItemComponentProps) {
 								item={_item}
 								nestedLevel={nestedLevel}
 								onItemClick={onItemClick}
+								checkPermission={checkPermission}
 							/>
 						))}
 					</>

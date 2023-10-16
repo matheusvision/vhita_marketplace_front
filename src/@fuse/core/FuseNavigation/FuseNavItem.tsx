@@ -15,6 +15,7 @@ export type FuseNavItemComponentProps = {
 	dense?: boolean;
 	nestedLevel?: number;
 	onItemClick?: (T: FuseNavItemType) => void;
+	checkPermission?: boolean;
 };
 
 /**
@@ -22,6 +23,8 @@ Component to render NavItem depending on its type.
 */
 export default function FuseNavItem(props: FuseNavItemComponentProps) {
 	const { type } = props;
+
 	const C = components[type];
+
 	return C ? <C {...(props as object)} /> : null;
 }

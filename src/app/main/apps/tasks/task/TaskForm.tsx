@@ -173,20 +173,23 @@ function TaskForm() {
 							multiple
 							id="tags"
 							className="mt-32"
-							options={tags}
+							options={tags || []}
 							disableCloseOnSelect
-							getOptionLabel={(option: TagType) => option.title}
+							getOptionLabel={(option: TagType) => option?.title}
 							renderOption={(_props, option: TagType, { selected }) => (
 								<li {..._props}>
 									<Checkbox
 										style={{ marginRight: 8 }}
 										checked={selected}
 									/>
-									{option.title}
+									{option?.title}
 								</li>
 							)}
 							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : []}
 							onChange={(event, newValue) => {
+								console.info(newValue);
+								console.info(tags);
+								console.info(value);
 								onChange(newValue.map((item: TagType) => item.id));
 							}}
 							fullWidth

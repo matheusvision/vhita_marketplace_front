@@ -38,7 +38,7 @@ type FuseNavHorizontalLinkProps = FuseNavItemComponentProps & WithRouterProps;
  * It receieves `FuseNavItemComponentProps` and `WithRouterProps` as props.
  */
 function FuseNavHorizontalLink(props: FuseNavHorizontalLinkProps) {
-	const { item } = props;
+	const { item, checkPermission } = props;
 
 	let itemProps;
 
@@ -51,6 +51,10 @@ function FuseNavHorizontalLink(props: FuseNavHorizontalLinkProps) {
 			role: 'button',
 			target: item.target ? item.target : '_blank'
 		};
+	}
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
 	}
 
 	return useMemo(

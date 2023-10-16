@@ -51,7 +51,7 @@ type FuseNavHorizontalGroupProps = FuseNavItemComponentProps & WithRouterProps;
  */
 function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 	const [opened, setOpened] = useState(false);
-	const { item, nestedLevel, dense, location } = props;
+	const { item, nestedLevel, dense, location, checkPermission } = props;
 	const theme = useTheme();
 
 	const handleToggle = useDebounce((open: boolean) => {
@@ -78,6 +78,10 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 				end: item.end,
 				role: 'button'
 			};
+		}
+
+		if (checkPermission && !item?.hasPermission) {
+			return null;
 		}
 
 		return (

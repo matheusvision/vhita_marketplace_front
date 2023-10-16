@@ -37,7 +37,7 @@ type FuseNavHorizontalItemProps = FuseNavItemComponentProps & WithRouterProps;
  * FuseNavHorizontalItem is a component responsible for rendering the navigation element in the horizontal menu in the Fuse theme.
  */
 function FuseNavHorizontalItem(props: FuseNavHorizontalItemProps) {
-	const { item } = props;
+	const { item, checkPermission } = props;
 
 	const component = item.url ? NavLinkAdapter : 'li';
 
@@ -50,6 +50,10 @@ function FuseNavHorizontalItem(props: FuseNavHorizontalItemProps) {
 			end: item.end,
 			role: 'button'
 		};
+	}
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
 	}
 
 	return useMemo(
