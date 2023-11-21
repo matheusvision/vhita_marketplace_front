@@ -17,7 +17,7 @@ type UserAuthType = UserType & { password: string };
 
 let usersApi = mockApi.components.examples.auth_users.value as UserAuthType[];
 
-mock.onGet('/api/auth/sign-in').reply((config) => {
+mock.onGet('/auth/sign-in').reply((config) => {
 	const data = JSON.parse(config.data as string) as { email: string; password: string };
 
 	const { email, password } = data;
@@ -56,7 +56,7 @@ mock.onGet('/api/auth/sign-in').reply((config) => {
 	return [200, { error }];
 });
 
-mock.onGet('/api/auth/access-token').reply((config) => {
+mock.onGet('/auth/access-token').reply((config) => {
 	const data = JSON.parse(config.data as string) as { access_token: string };
 
 	const { access_token } = data;
@@ -83,7 +83,7 @@ mock.onGet('/api/auth/access-token').reply((config) => {
 	return [401, { error }];
 });
 
-mock.onPost('/api/auth/sign-up').reply((request) => {
+mock.onPost('/auth/sign-up').reply((request) => {
 	const data = JSON.parse(request.data as string) as { displayName: string; password: string; email: string };
 	const { displayName, password, email } = data;
 	const isEmailExists = usersApi.find((_user) => _user.data.email === email);
@@ -128,7 +128,7 @@ mock.onPost('/api/auth/sign-up').reply((request) => {
 	return [200, { error }];
 });
 
-mock.onPost('/api/auth/user/update').reply((config) => {
+mock.onPost('/auth/user/update').reply((config) => {
 	const access_token = config?.headers?.Authorization as string;
 
 	const userData = jwtDecode(access_token);

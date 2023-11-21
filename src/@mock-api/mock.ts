@@ -4,6 +4,6 @@ import ExtendedMockAdapter from './ExtendedMockAdapter';
 /**
  * The mock adapter for Axios requests in the Fuse project.
  */
-const mock = new ExtendedMockAdapter(axios, { delayResponse: 0 });
+const mock = new ExtendedMockAdapter(axios, { delayResponse: 0 }, '/mock-api');
 
 export default mock;

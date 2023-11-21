@@ -5,6 +5,7 @@ import { createLogger } from 'redux-logger';
 import _ from '@lodash';
 import createReducer from './rootReducer';
 import { AppDispatchType, AsyncReducersType, BaseRootStateType } from './types';
+import apiService from './apiService';
 
 /* if (process.env.NODE_ENV === 'development' && module.hot) {
 	module.hot.accept('./rootReducer', () => {
@@ -17,7 +18,7 @@ import { AppDispatchType, AsyncReducersType, BaseRootStateType } from './types';
 /**
  * Configures the middleware which are used during the React application lifecycle.
  */
-const middlewares: Middleware[] = [];
+const middlewares: Middleware[] = [apiService.middleware];
 
 if (process.env.NODE_ENV === 'development') {
 	const logger = createLogger({ collapsed: (getState, action, logEntry) => (logEntry ? !logEntry.error : true) });

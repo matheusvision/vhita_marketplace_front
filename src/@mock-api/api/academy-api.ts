@@ -1,8 +1,8 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import CourseType from '../../app/main/apps/academy/types/CourseType';
 import { Params } from '../ExtendedMockAdapter';
+import { Course } from '../../app/main/apps/academy/AcademyApi';
 
 const demoCourseContent = mockApi.components.examples.academy_demo_course_content.value;
 const exampleCourseSteps = mockApi.components.examples.academy_demo_course_steps.value;
@@ -19,13 +19,12 @@ const coursesDB = courses.map((course) => ({
 	steps
 }));
 
-mock.onGet('/api/academy/courses').reply(() => {
+mock.onGet('/academy/courses').reply(() => {
 	return [200, coursesDB];
 });
 
-mock.onGet('/api/academy/courses/:courseId').reply((config) => {
+mock.onGet('/academy/courses/:courseId').reply((config) => {
 	const { courseId } = config.params as Params;
-
 	const course = _.find(coursesDB, { id: courseId });
 
 	if (!course) {
@@ -34,13 +33,12 @@ mock.onGet('/api/academy/courses/:courseId').reply((config) => {
 	return [200, course];
 });
 
-mock.onPut('/api/academy/courses/:courseId').reply((config) => {
+mock.onPut('/academy/courses/:courseId').reply((config) => {
 	const { courseId } = config.params as Params;
 
-	const course = _.find(coursesDB, { id: courseId }) as CourseType;
+	const course = _.find(coursesDB, { id: courseId }) as Course;
 
-	const newData = JSON.parse(config.data as string) as CourseType;
-
+	const newData = JSON.parse(config.data as string) as Course;
 	if (!course) {
 		return [404, 'Requested data do not exist.'];
 	}
@@ -54,6 +52,6 @@ mock.onPut('/api/academy/courses/:courseId').reply((config) => {
 	return [200, course];
 });
 
-mock.onGet('/api/academy/categories').reply(() => {
+mock.onGet('/academy/categories').reply(() => {
 	return [200, categoriesDB];
 });
