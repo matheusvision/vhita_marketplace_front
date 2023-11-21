@@ -6,7 +6,6 @@ import Paper from '@mui/material/Paper';
 import Stepper from '@mui/material/Stepper';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import SwipeableViews from 'react-swipeable-views';
 import { Step, StepContent, StepLabel } from '@mui/material';
 import Divider from '@mui/material/Divider';
@@ -16,32 +15,24 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { getCourse, selectCourse, updateCourse } from '../store/courseSlice';
 import CourseInfo from '../CourseInfo';
 import CourseProgress from '../CourseProgress';
 import Error404Page from '../../../404/Error404Page';
+import { useGetCourseQuery, useUpdateCourseMutation } from '../AcademyApi';
 
 /**
  * The Course page.
  */
 function Course() {
-	const dispatch = useAppDispatch();
-	const { data: course, status } = useAppSelector(selectCourse);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const theme = useTheme();
+	const pageLayout = useRef(null);
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 	const routeParams = useParams();
 	const { courseId } = routeParams;
-	const pageLayout = useRef(null);
-
-	useDeepCompareEffect(() => {
-		/**
-		 * Get the Course Data
-		 */
-		dispatch(getCourse(courseId));
-	}, [dispatch, routeParams]);
+	const { data: course, isLoading } = useGetCourseQuery({ courseId });
+	const [updateCourse] = useUpdateCourseMutation();
 
 	useEffect(() => {
 		/**
@@ -49,9 +40,9 @@ function Course() {
 		 * Change ActiveStep to 1
 		 */
 		if (course && course?.progress?.currentStep === 0) {
-			dispatch(updateCourse({ progress: { currentStep: 1 } }));
+			updateCourse({ courseId, data: { progress: { currentStep: 1 } } });
 		}
-	}, [dispatch, course]);
+	}, [course]);
 
 	useEffect(() => {
 		setLeftSidebarOpen(!isMobile);
@@ -63,7 +54,7 @@ function Course() {
 		if (course && (index > course.totalSteps || index < 0)) {
 			return;
 		}
-		dispatch(updateCourse({ progress: { currentStep: index } }));
+		updateCourse({ courseId, data: { progress: { currentStep: index } } });
 	}
 
 	function handleNext() {
@@ -80,7 +71,7 @@ function Course() {
 
 	const activeStep = currentStep !== 0 ? currentStep : 1;
 
-	if (status === 'loading') {
+	if (isLoading) {
 		return <FuseLoading />;
 	}
 

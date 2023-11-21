@@ -7,10 +7,10 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import CourseInfo from '../CourseInfo';
 import CourseProgress from '../CourseProgress';
-import CourseType from '../types/CourseType';
+import { Course } from '../AcademyApi';
 
 type CourseCardProps = {
-	course: CourseType;
+	course: Course;
 };
 
 /**

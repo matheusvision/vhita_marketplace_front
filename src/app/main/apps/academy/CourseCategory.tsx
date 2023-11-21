@@ -1,12 +1,10 @@
 import { darken, lighten } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
-import { useAppSelector } from 'app/store';
 import _ from '@lodash';
-import { selectCategories } from './store/categoriesSlice';
-import CourseType from './types/CourseType';
+import { Course, useGetCategoriesQuery } from './AcademyApi';
 
 type CourseCategoryProps = {
-	slug: CourseType['slug'];
+	slug: Course['slug'];
 };
 
 /**
@@ -15,9 +13,13 @@ type CourseCategoryProps = {
 function CourseCategory(props: CourseCategoryProps) {
 	const { slug } = props;
 
-	const categories = useAppSelector(selectCategories);
+	const { data: categories } = useGetCategoriesQuery();
 
 	const category = _.find(categories, { slug });
+
+	if (!category) {
+		return null;
+	}
 
 	return (
 		<Chip

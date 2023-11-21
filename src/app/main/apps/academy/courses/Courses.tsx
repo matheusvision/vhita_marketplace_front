@@ -12,12 +12,10 @@ import Switch from '@mui/material/Switch';
 import { FormControlLabel } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { Theme } from '@mui/material/styles';
-import { selectCategories } from '../store/categoriesSlice';
-import { getCourses, selectCourses } from '../store/coursesSlice';
+import { useLocation } from 'react-router-dom';
 import CourseCard from './CourseCard';
-import CourseType from '../types/CourseType';
+import { useLazyGetCoursesQuery, Course, useGetCategoriesQuery, useGetCoursesQuery } from '../AcademyApi';
 
 const container = {
 	show: {
@@ -42,23 +40,26 @@ const item = {
  * The Courses page.
  */
 function Courses() {
-	const dispatch = useAppDispatch();
-	const courses = useAppSelector(selectCourses);
-	const categories = useAppSelector(selectCategories);
+	const { data: courses } = useGetCoursesQuery();
+	const { data: categories } = useGetCategoriesQuery();
+	const [updateCourses] = useLazyGetCoursesQuery();
+	const location = useLocation();
+	const { pathname } = location;
+
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	const [filteredData, setFilteredData] = useState<CourseType[]>([]);
+	const [filteredData, setFilteredData] = useState<Course[]>([]);
 	const [searchText, setSearchText] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
 	const [hideCompleted, setHideCompleted] = useState(false);
 
 	useEffect(() => {
-		dispatch(getCourses());
-	}, [dispatch]);
+		updateCourses();
+	}, [pathname]);
 
 	useEffect(() => {
 		function getFilteredArray() {
-			if (searchText.length === 0 && selectedCategory === 'all' && !hideCompleted) {
+			if (courses && searchText.length === 0 && selectedCategory === 'all' && !hideCompleted) {
 				return courses;
 			}
 
@@ -87,6 +88,7 @@ function Courses() {
 	function handleSearchText(event: ChangeEvent<HTMLInputElement>) {
 		setSearchText(event.target.value);
 	}
+
 	return (
 		<FusePageSimple
 			header={
@@ -181,7 +183,7 @@ function Courses() {
 									<MenuItem value="all">
 										<em> All </em>
 									</MenuItem>
-									{categories.map((category) => (
+									{categories?.map((category) => (
 										<MenuItem
 											value={category.slug}
 											key={category.id}
