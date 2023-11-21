@@ -1,26 +1,21 @@
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { useEffect } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { getGuides, selectGuides } from '../store/guidesSlice';
-import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
+import { useAppSelector } from 'app/store';
 import GuideListMenu from './GuideListMenu';
+import { selectGuideCategoryBySlug, useGetGuidesByCategorySlugQuery } from '../HelpCenterApi';
 
 /**
  * The guide category.
  */
 function GuideCategory() {
 	const navigate = useNavigate();
-
-	const dispatch = useAppDispatch();
 	const routeParams = useParams();
-	const guides = useAppSelector(selectGuides);
-	const category = useAppSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
-
-	useEffect(() => {
-		dispatch(getGuides(routeParams.categorySlug));
-	}, [dispatch, routeParams.categorySlug]);
+	const { categorySlug } = routeParams;
+	const { data: guides } = useGetGuidesByCategorySlugQuery({
+		categorySlug
+	});
+	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
 
 	const handleGoBack = () => {
 		navigate(-1);

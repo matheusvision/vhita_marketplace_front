@@ -1,23 +1,18 @@
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { useEffect } from 'react';
+import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { getGuides, selectGroupedGuides } from '../store/guidesSlice';
 import GuideListMenu from './GuideListMenu';
+import { useGetGuidesQuery, selectGroupedGuides } from '../HelpCenterApi';
 
 /**
  * The guide categories.
  */
 function GuideCategories() {
 	const navigate = useNavigate();
-	const dispatch = useAppDispatch();
+	useGetGuidesQuery();
 	const groupedGuides = useAppSelector(selectGroupedGuides);
-
-	useEffect(() => {
-		dispatch(getGuides());
-	}, [dispatch]);
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -39,7 +34,7 @@ function GuideCategories() {
 					Guides & Resources
 				</div>
 				<div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row gap-y-48 sm:gap-x-16 mt-32 sm:mt-48">
-					{groupedGuides.map((category) => (
+					{groupedGuides?.map((category) => (
 						<div key={category.id}>
 							<Typography
 								component={Link}

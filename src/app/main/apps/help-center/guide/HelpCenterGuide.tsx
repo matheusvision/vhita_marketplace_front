@@ -1,29 +1,24 @@
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
-import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
-import { getGuide, selectGuide } from '../store/guideSlice';
+import { useAppSelector } from 'app/store';
+import { selectGuideCategoryBySlug, useGetGuideByCategoryGuideSlugQuery } from '../HelpCenterApi';
 
 /**
  * The help center guide.
  */
 function HelpCenterGuide() {
 	const navigate = useNavigate();
-	const dispatch = useAppDispatch();
-	const guide = useAppSelector(selectGuide);
 	const routeParams = useParams();
-	const category = useAppSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
-
-	useEffect(() => {
-		const { guideSlug } = routeParams;
-		const { categorySlug } = routeParams;
-		dispatch(getGuide({ categorySlug, guideSlug }));
-	}, [dispatch, routeParams]);
+	const { guideSlug, categorySlug } = routeParams;
+	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
+	const { data: guide } = useGetGuideByCategoryGuideSlugQuery({
+		categorySlug,
+		guideSlug
+	});
 
 	const handleGoBack = () => {
 		navigate(-1);

@@ -7,7 +7,7 @@ import { SyntheticEvent, useState } from 'react';
 import clsx from 'clsx';
 import { styled } from '@mui/material/styles';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { FaqsType } from '../types/FaqType';
+import { Faq } from '../HelpCenterApi';
 
 const container = {
 	show: {
@@ -31,7 +31,7 @@ const StyledAccordion = styled(Accordion)(() => ({
 }));
 
 type FaqListProps = {
-	list: FaqsType;
+	list: Faq[];
 	className?: string;
 };
 
@@ -48,7 +48,7 @@ function FaqList(props: FaqListProps) {
 	};
 
 	return (
-		list.length > 0 && (
+		list?.length > 0 && (
 			<motion.div
 				variants={container}
 				initial="hidden"

@@ -1,4 +1,4 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
+import { lazy } from 'react';
 import HelpCenterHome from './home/HelpCenterHome';
 import HelpCenterFaqs from './faqs/HelpCenterFaqs';
 import HelpCenterGuides from './guides/HelpCenterGuides';
@@ -6,9 +6,8 @@ import HelpCenterSupport from './support/HelpCenterSupport';
 import GuideCategory from './guides/GuideCategory';
 import GuideCategories from './guides/GuideCategories';
 import HelpCenterGuide from './guide/HelpCenterGuide';
-import reducer from './store';
 
-const HelpCenterApp = lazyWithReducer('helpCenterApp', () => import('./HelpCenterApp'), reducer);
+const HelpCenterApp = lazy(() => import('./HelpCenterApp'));
 
 /**
  * The help center app config.

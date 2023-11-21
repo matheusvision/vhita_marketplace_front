@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { FaqCategoryType } from '../types/FaqCategoryType';
+import { FaqCategory } from '../HelpCenterApi';
 
 /**
  * Creates a new faq category object with the specified data.
  */
-const FaqCategoryModel = (data: PartialDeep<FaqCategoryType>) =>
+const FaqCategoryModel = (data: PartialDeep<FaqCategory>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		slug: '',

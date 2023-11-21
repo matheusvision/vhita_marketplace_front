@@ -4,10 +4,10 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import { darken } from '@mui/material/styles';
-import { GuidesType } from '../types/GuideType';
+import { Guide } from '../HelpCenterApi';
 
 type GuideListMenuProps = {
-	list: GuidesType;
+	list: Guide[];
 	className?: string;
 	categorySlug?: string;
 	maxItems?: number;

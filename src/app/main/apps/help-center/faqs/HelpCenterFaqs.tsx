@@ -1,25 +1,19 @@
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { useEffect } from 'react';
+import { useAppSelector } from 'app/store';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { getFaqs, selectGroupedFaqs } from '../store/faqsSlice';
-import { getFaqCategories } from '../store/faqCategoriesSlice';
 import FaqList from './FaqList';
+import { useGetFaqCategoriesQuery, useGetFaqsQuery, selectGroupedFaqs } from '../HelpCenterApi';
 
 /**
  * The help center faqs page.
  */
 function HelpCenterFaqs() {
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	useGetFaqsQuery();
+	useGetFaqCategoriesQuery();
 	const groupedFaqs = useAppSelector(selectGroupedFaqs);
-
-	useEffect(() => {
-		dispatch(getFaqs());
-		dispatch(getFaqCategories());
-	}, [dispatch]);
 
 	const handleGoBack = () => {
 		navigate(-1);

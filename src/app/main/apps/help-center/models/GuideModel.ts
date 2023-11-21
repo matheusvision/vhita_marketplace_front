@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { GuideType } from '../types/GuideType';
+import { Guide } from '../HelpCenterApi';
 
 /**
  * Creates a new guide object with the specified data.
  */
-const GuideModel = (data: PartialDeep<GuideType>) =>
+const GuideModel = (data: PartialDeep<Guide>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		categoryId: '',
