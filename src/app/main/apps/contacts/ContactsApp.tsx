@@ -1,16 +1,12 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import { styled } from '@mui/material/styles';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch } from 'app/store';
-import ContactsSidebarContent from './ContactsSidebarContent';
 import ContactsHeader from './ContactsHeader';
 import ContactsList from './ContactsList';
-import { getTags } from './store/tagsSlice';
-import { getCountries } from './store/countriesSlice';
-import { getContacts } from './store/contactsSlice';
+import { useGetContactsQuery, useGetCountriesQuery, useGetTagsQuery } from './ContactsApi';
+import ContactsSidebarContent from './ContactsSidebarContent';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -22,17 +18,13 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
  * The ContactsApp page.
  */
 function ContactsApp() {
-	const dispatch = useAppDispatch();
 	const pageLayout = useRef(null);
 	const routeParams = useParams();
 	const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
-
-	useDeepCompareEffect(() => {
-		dispatch(getContacts());
-		dispatch(getCountries());
-		dispatch(getTags());
-	}, [dispatch]);
+	useGetContactsQuery();
+	useGetCountriesQuery();
+	useGetTagsQuery();
 
 	useEffect(() => {
 		setRightSidebarOpen(Boolean(routeParams.id));

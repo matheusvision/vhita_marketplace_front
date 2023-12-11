@@ -1,23 +1,21 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { ContactPhoneNumberType } from '../types/ContactPhoneNumberType';
-import { ContactEmailType } from '../types/ContactEmailType';
-import { ContactType } from '../types/ContactType';
+import { Contact, ContactEmail, ContactPhoneNumber } from '../ContactsApi';
 
 /**
  * The contact phone number model.
  */
-export const ContactPhoneModel = (data: PartialDeep<ContactPhoneNumberType> | null): ContactPhoneNumberType =>
+export const ContactPhoneModel = (data: PartialDeep<ContactPhoneNumber> | null): ContactPhoneNumber =>
 	_.defaults(data || {}, {
 		country: '',
 		phoneNumber: '',
-		label: 'string'
+		label: ''
 	});
 
 /**
  * The contact email model.
  */
-export const ContactEmailModel = (data: PartialDeep<ContactEmailType> | null): ContactEmailType =>
+export const ContactEmailModel = (data: Partial<ContactEmail> | null): ContactEmail =>
 	_.defaults(data || {}, {
 		email: '',
 		label: ''
@@ -26,14 +24,14 @@ export const ContactEmailModel = (data: PartialDeep<ContactEmailType> | null): C
 /**
  * The contact model.
  */
-const ContactModel = (data: PartialDeep<ContactType>): ContactType =>
+const ContactModel = (data: PartialDeep<Contact>): Contact =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		avatar: '',
 		background: '',
 		name: '',
-		emails: [ContactEmailModel({})],
-		phoneNumbers: [{ country: 'us', phoneNumber: '', label: '' }],
+		emails: [ContactEmailModel(null)],
+		phoneNumbers: [ContactPhoneModel(null)],
 		title: '',
 		company: '',
 		birthday: '',

@@ -1,4 +1,3 @@
-import { useAppSelector } from 'app/store';
 import _ from '@lodash';
 import * as React from 'react';
 import { ForwardedRef, forwardRef, MouseEvent, useState } from 'react';
@@ -8,7 +7,7 @@ import Box from '@mui/system/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import clsx from 'clsx';
-import { selectCountries } from '../../store/countriesSlice';
+import { useGetCountriesQuery } from '../../ContactsApi';
 
 type CountryCodeSelectorProps = {
 	value: string;
@@ -21,8 +20,7 @@ type CountryCodeSelectorProps = {
  */
 const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className } = props;
-
-	const countries = useAppSelector(selectCountries);
+	const { data: countries } = useGetCountriesQuery();
 	const country = _.find(countries, { iso: value });
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
@@ -68,10 +66,10 @@ const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: Fo
 				open={open}
 				onClose={handleClose}
 			>
-				{countries.map((item) => (
+				{countries?.map((item) => (
 					<MenuItem
 						onClick={() => {
-							onChange(item.iso);
+							onChange(item?.iso as string);
 							handleClose();
 						}}
 						disableRipple

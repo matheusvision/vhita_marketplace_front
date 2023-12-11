@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { CountryType } from '../types/CountryType';
+import { Country } from '../ContactsApi';
 
 /**
  * The country model.
  */
-const CountryModel = (data: PartialDeep<CountryType>) =>
+const CountryModel = (data: PartialDeep<Country>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		iso: '',

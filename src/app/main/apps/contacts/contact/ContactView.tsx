@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
@@ -11,30 +10,25 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/system/Box';
 import format from 'date-fns/format';
 import _ from '@lodash';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { getContact, selectContact } from '../store/contactSlice';
-import { selectCountries } from '../store/countriesSlice';
-import { selectTags } from '../store/tagsSlice';
+import { useGetContactQuery, useGetCountriesQuery, useGetTagsQuery } from '../ContactsApi';
 
 /**
  * The contact view.
  */
 function ContactView() {
-	const { data: contact, status } = useAppSelector(selectContact);
-	const countries = useAppSelector(selectCountries);
-	const tags = useAppSelector(selectTags);
+	const { data: countries } = useGetCountriesQuery();
+	const { data: tags } = useGetTagsQuery();
 	const routeParams = useParams();
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		dispatch(getContact(routeParams.id));
-	}, [dispatch, routeParams]);
+	const { id: contactId } = routeParams as { id: string };
+	const { data: contact, isLoading } = useGetContactQuery({
+		contactId
+	});
 
 	function getCountryByIso(iso: string) {
-		return countries.find((country) => country.iso === iso);
+		return countries?.find((country) => country.iso === iso);
 	}
 
-	if (status === 'loading') {
+	if (isLoading) {
 		return <FuseLoading className="min-h-screen" />;
 	}
 
@@ -118,7 +112,7 @@ function ContactView() {
 							</div>
 						)}
 
-						{contact?.emails?.length && contact.emails.some((item) => item.email.length > 0) && (
+						{contact?.emails?.length && contact.emails.some((item) => item.email?.length > 0) && (
 							<div className="flex">
 								<FuseSvgIcon>heroicons-outline:mail</FuseSvgIcon>
 								<div className="min-w-0 ml-24 space-y-4">
@@ -155,7 +149,7 @@ function ContactView() {
 
 						{contact?.phoneNumbers &&
 							contact?.phoneNumbers?.length &&
-							contact.phoneNumbers.some((item) => item.phoneNumber.length > 0) && (
+							contact.phoneNumbers.some((item) => item.phoneNumber?.length > 0) && (
 								<div className="flex">
 									<FuseSvgIcon>heroicons-outline:phone</FuseSvgIcon>
 									<div className="min-w-0 ml-24 space-y-4">

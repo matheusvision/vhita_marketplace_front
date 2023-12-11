@@ -2,17 +2,18 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
-import * as yup from 'yup';
 import IconButton from '@mui/material/IconButton';
 import { useEffect } from 'react';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import CountryCodeSelector from './CountryCodeSelector';
-import { ContactPhoneNumberType } from '../../types/ContactPhoneNumberType';
+import { ContactPhoneNumber } from '../../ContactsApi';
 
-const schema = yup.object().shape({
-	country: yup.string().required('You must select a country'),
-	phoneNumber: yup.string().required('You must enter a phone number'),
-	label: yup.string().required('You must enter a label')
+// Zod schema for ContactPhoneNumber
+const schema = z.object({
+	country: z.string().optional(),
+	phoneNumber: z.string().optional(),
+	label: z.string().optional()
 });
 
 const defaultValues = {
@@ -22,9 +23,9 @@ const defaultValues = {
 };
 
 type PhoneNumberInputProps = {
-	value: ContactPhoneNumberType;
-	onChange: (T: ContactPhoneNumberType) => void;
-	onRemove: (T: ContactPhoneNumberType) => void;
+	value: ContactPhoneNumber;
+	onChange: (T: ContactPhoneNumber) => void;
+	onRemove: (T: ContactPhoneNumber) => void;
 	hideRemove?: boolean;
 	error?: boolean;
 };
@@ -35,10 +36,10 @@ type PhoneNumberInputProps = {
 function PhoneNumberInput(props: PhoneNumberInputProps) {
 	const { value, hideRemove, onChange, onRemove } = props;
 
-	const { control, formState, handleSubmit, reset } = useForm<ContactPhoneNumberType>({
+	const { control, formState, handleSubmit, reset } = useForm<ContactPhoneNumber>({
 		mode: 'all',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { errors } = formState;
@@ -47,7 +48,7 @@ function PhoneNumberInput(props: PhoneNumberInputProps) {
 		reset(value);
 	}, [reset, value]);
 
-	function onSubmit(data: ContactPhoneNumberType) {
+	function onSubmit(data: ContactPhoneNumber) {
 		onChange(data);
 	}
 

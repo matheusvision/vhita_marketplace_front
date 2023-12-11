@@ -7,7 +7,8 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { ChangeEvent } from 'react';
-import { selectFilteredContacts, selectSearchText, setContactsSearchText } from './store/contactsSlice';
+import { selectSearchText, setSearchText } from './store/searchTextSlice';
+import { selectFilteredContacts } from './ContactsApi';
 
 /**
  * The contacts header.
@@ -37,7 +38,7 @@ function ContactsHeader() {
 						className="text-14 font-medium ml-2"
 						color="text.secondary"
 					>
-						{`${filteredData.length} contacts`}
+						{`${filteredData?.length} contacts`}
 					</Typography>
 				</motion.span>
 			</div>
@@ -64,7 +65,7 @@ function ContactsHeader() {
 						inputProps={{
 							'aria-label': 'Search'
 						}}
-						onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setContactsSearchText(ev))}
+						onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(ev))}
 					/>
 				</Box>
 				<Button

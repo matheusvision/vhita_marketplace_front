@@ -3,8 +3,8 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import { useAppSelector } from 'app/store';
-import { selectFilteredContacts, selectGroupedFilteredContacts } from './store/contactsSlice';
 import ContactListItem from './ContactListItem';
+import { selectGroupedFilteredContacts, selectFilteredContacts } from './ContactsApi';
 
 /**
  * The contacts list.

@@ -1,21 +1,16 @@
 import { RootStateType } from 'app/store/types';
 import { combineReducers } from '@reduxjs/toolkit';
-import tags, { tagsSliceType } from './tagsSlice';
-import contacts, { contactsSliceType } from './contactsSlice';
-import countries, { countriesSliceType } from './countriesSlice';
-import contact, { contactSliceType } from './contactSlice';
+import searchText, { searchTextSliceType } from './searchTextSlice';
+import { ContactsApiType } from '../ContactsApi';
 
 /**
  * The Contacts App slices.
  */
 
 const reducer = combineReducers({
-	tags,
-	countries,
-	contacts,
-	contact
+	searchText
 });
 
 export default reducer;
 
-export type AppRootStateType = RootStateType<[contactsSliceType, tagsSliceType, countriesSliceType, contactSliceType]>;
+export type AppRootStateType = RootStateType<[searchTextSliceType]> & ContactsApiType;

@@ -4477,7 +4477,7 @@
         "operationId": "contacts_getContact",
         "description": "Retrieve the information of the contact with the matching contact ID.",
         "tags": [
-          "contacts"
+          "contacts_contact"
         ]
       },
       "put": {
@@ -4724,7 +4724,7 @@
         "operationId": "contacts_getTag",
         "description": "Retrieve the information of the tag with the matching tag ID.",
         "tags": [
-          "contacts"
+          "contacts_tag"
         ]
       },
       "put": {
@@ -4812,7 +4812,7 @@
         "operationId": "contacts_getTags",
         "description": "Retrieve all of the tags.",
         "tags": [
-          "contacts"
+          "contacts_tags"
         ]
       },
       "parameters": [],
@@ -5568,42 +5568,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "hhngxzc8mp89r"
+              "id": "mg1zrlsn8bx2h"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "jbe9lc123dtkf"
+              "id": "yf1rc8kta6v6f"
             },
             "items": {
               "x-stoplight": {
-                "id": "qyt9xck8v8fz8"
+                "id": "6ltfo6vy6e2o2"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "li8k0cltgx6z8"
+                    "id": "skpenpktf5b6n"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "rfa04a2vq5wme"
+                    "id": "zb5wdfetedphc"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "5gqsxpnwlhb4i"
+                    "id": "okmppge1evobg"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "yr93zagbw63bs"
+                    "id": "rchhtz6m7goc0"
                   }
                 }
               }
@@ -6152,8 +6152,16 @@
         }
       },
       "help_center_guide": {
-        "description": "",
         "type": "object",
+        "x-examples": {
+          "example-1": {
+            "id": "a008ffa3-7b3f-43be-8a8f-dbf5272ed2dd",
+            "categoryId": "0ee72de7-49c0-4880-9e89-b72a4edd6a81",
+            "slug": "what-is-this-app",
+            "title": "What is this app?",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+          }
+        },
         "properties": {
           "id": {
             "type": "string",
@@ -6174,6 +6182,12 @@
           "subtitle": {
             "type": "string",
             "minLength": 1
+          },
+          "content": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ke2vgtkdalu53"
+            }
           }
         },
         "required": [
@@ -6182,16 +6196,7 @@
           "slug",
           "title",
           "subtitle"
-        ],
-        "x-examples": {
-          "example-1": {
-            "id": "a008ffa3-7b3f-43be-8a8f-dbf5272ed2dd",
-            "categoryId": "0ee72de7-49c0-4880-9e89-b72a4edd6a81",
-            "slug": "what-is-this-app",
-            "title": "What is this app?",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-          }
-        }
+        ]
       },
       "help_center_faq": {
         "description": "",

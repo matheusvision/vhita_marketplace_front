@@ -3,9 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from '@lodash';
-import * as yup from 'yup';
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import Box from '@mui/system/Box';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Avatar from '@mui/material/Avatar';
@@ -15,68 +13,77 @@ import IconButton from '@mui/material/IconButton';
 import Autocomplete from '@mui/material/Autocomplete/Autocomplete';
 import Checkbox from '@mui/material/Checkbox/Checkbox';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import history from '@history';
-import { addContact, getContact, newContact, removeContact, selectContact, updateContact } from '../store/contactSlice';
-import { selectTags } from '../store/tagsSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import ContactEmailSelector from './email-selector/ContactEmailSelector';
 import PhoneNumberSelector from './phone-number-selector/PhoneNumberSelector';
-import { ContactType } from '../types/ContactType';
-import { TagsType } from '../types/TagType';
-import { ContactEmailType, ContactEmailsType } from '../types/ContactEmailType';
-import { ContactPhoneNumbersType, ContactPhoneNumberType } from '../types/ContactPhoneNumberType';
+import {
+	useCreateContactMutation,
+	useDeleteContactMutation,
+	useGetContactQuery,
+	useGetTagsQuery,
+	useUpdateContactMutation,
+	Contact,
+	Tag
+} from '../ContactsApi';
+import ContactModel from '../models/ContactModel';
 
 function BirtdayIcon() {
 	return <FuseSvgIcon size={20}>heroicons-solid:cake</FuseSvgIcon>;
 }
 
-type FormType = Omit<ContactType, 'emails' | 'phoneNumbers'> & {
-	emails: Partial<ContactEmailType>[];
-	phoneNumbers: Partial<ContactPhoneNumberType>[];
-};
+type FormType = Contact;
 
 /**
  * Form Validation Schema
  */
-const contactEmailSchema = yup.object().shape({
-	email: yup.string(),
-	label: yup.string()
+
+// Zod schema for ContactEmail
+const ContactEmailSchema = z.object({
+	email: z.string().optional(),
+	type: z.string().optional()
 });
 
-const contactPhoneNumberSchema = yup.object().shape({
-	country: yup.string().required('You must select a country'),
-	phoneNumber: yup.string().required('You must enter a phone number'),
-	label: yup.string().required('You must enter a label')
+// Zod schema for ContactPhoneNumber
+const ContactPhoneNumberSchema = z.object({
+	number: z.string().optional(),
+	type: z.string().optional()
 });
 
-const schema = yup.object().shape({
-	id: yup.string().required('ID is required'),
-	avatar: yup.string().required('Avatar is required'),
-	background: yup.string().required('Background is required'),
-	name: yup.string().required('Name is required'),
-	emails: yup.array().of(contactEmailSchema),
-	phoneNumbers: yup.array().of(contactPhoneNumberSchema),
-	title: yup.string().required('Title is required'),
-	company: yup.string().required('Company is required'),
-	birthday: yup.string().required('Birthday is required'), // consider using date() if the format is ISO date string
-	address: yup.string().required('Address is required'),
-	notes: yup.string().required('Notes are required'),
-	tags: yup.array().of(yup.string()).required('Tags are required')
+const schema = z.object({
+	avatar: z.string().optional(),
+	background: z.string().optional(),
+	name: z.string().min(1, { message: 'Name is required' }),
+	emails: z.array(ContactEmailSchema).optional(),
+	phoneNumbers: z.array(ContactPhoneNumberSchema).optional(),
+	title: z.string().optional(),
+	company: z.string().optional(),
+	birthday: z.string().optional(),
+	address: z.string().optional(),
+	notes: z.string().optional(),
+	tags: z.array(z.string()).optional()
 });
 
 /**
  * The contact form.
  */
 function ContactForm() {
-	const { data: contact } = useAppSelector(selectContact);
-	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
-	const dispatch = useAppDispatch();
+	const { id: contactId } = routeParams as { id: string };
+	const { data: contact } = useGetContactQuery({
+		contactId
+	});
+
+	const [createContact] = useCreateContactMutation();
+	const [updateContact] = useUpdateContactMutation();
+	const [deleteContact] = useDeleteContactMutation();
+	const { data: tags } = useGetTagsQuery();
 	const navigate = useNavigate();
 
 	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
 		mode: 'all',
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
@@ -84,28 +91,25 @@ function ContactForm() {
 	const form = watch();
 
 	useEffect(() => {
-		if (routeParams.id === 'new') {
-			dispatch(newContact());
+		if (contactId === 'new') {
+			reset(ContactModel({}));
 		} else {
-			dispatch(getContact(routeParams.id));
+			reset({ ...contact });
 		}
-	}, [dispatch, routeParams]);
-
-	useEffect(() => {
-		reset({ ...contact });
-	}, [contact, reset]);
+	}, [contact, reset, routeParams]);
 
 	/**
 	 * Form Submit
 	 */
-	function onSubmit(data: ContactType) {
-		if (routeParams.id === 'new') {
-			dispatch(addContact(data)).then((action) => {
-				const payload = action.payload as ContactType;
-				navigate(`/apps/contacts/${payload.id}`);
-			});
+	function onSubmit(data: Contact) {
+		if (contactId === 'new') {
+			createContact({ contact: data })
+				.unwrap()
+				.then((action) => {
+					navigate(`/apps/contacts/${action.id}`);
+				});
 		} else {
-			dispatch(updateContact(data));
+			updateContact({ contactId, contact: data });
 		}
 	}
 
@@ -113,12 +117,15 @@ function ContactForm() {
 		if (!contact) {
 			return;
 		}
-		dispatch(removeContact(contact.id)).then(() => {
+		deleteContact({ contactId: contact.id }).then(() => {
 			navigate('/apps/contacts');
 		});
 	}
 
-	if (_.isEmpty(form) || !contact) {
+	const background = watch('background');
+	const name = watch('name');
+
+	if (_.isEmpty(form)) {
 		return <FuseLoading className="min-h-screen" />;
 	}
 
@@ -130,10 +137,10 @@ function ContactForm() {
 					backgroundColor: 'background.default'
 				}}
 			>
-				{contact.background && (
+				{background && (
 					<img
 						className="absolute inset-0 object-cover w-full h-full"
-						src={contact.background}
+						src={background}
 						alt="user background"
 					/>
 				)}
@@ -224,9 +231,9 @@ function ContactForm() {
 										}}
 										className="object-cover w-full h-full text-64 font-bold"
 										src={value}
-										alt={contact.name}
+										alt={name}
 									>
-										{contact?.name?.charAt(0)}
+										{name?.charAt(0)}
 									</Avatar>
 								</Box>
 							)}
@@ -268,7 +275,7 @@ function ContactForm() {
 							className="mt-32"
 							options={tags || []}
 							disableCloseOnSelect
-							getOptionLabel={(option) => option?.title}
+							getOptionLabel={(option) => option?.title as string}
 							renderOption={(_props, option, { selected }) => (
 								<li {..._props}>
 									<Checkbox
@@ -278,9 +285,9 @@ function ContactForm() {
 									{option?.title}
 								</li>
 							)}
-							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : ([] as TagsType)}
+							value={value ? value?.map((id) => _.find(tags, { id })) : ([] as Tag[])}
 							onChange={(event, newValue) => {
-								onChange(newValue.map((item) => item?.id));
+								onChange(newValue?.map((item) => item?.id));
 							}}
 							fullWidth
 							renderInput={(params) => (
@@ -350,7 +357,7 @@ function ContactForm() {
 						<ContactEmailSelector
 							className="mt-32"
 							{...field}
-							value={field.value as ContactEmailsType}
+							value={field?.value}
 							onChange={(val) => field.onChange(val)}
 						/>
 					)}
@@ -365,7 +372,7 @@ function ContactForm() {
 							{...field}
 							error={!!errors.phoneNumbers}
 							helperText={errors?.phoneNumbers?.message}
-							value={field.value as ContactPhoneNumbersType}
+							value={field.value}
 							onChange={(val) => field.onChange(val)}
 						/>
 					)}
@@ -400,8 +407,10 @@ function ContactForm() {
 					name="birthday"
 					render={({ field: { value, onChange } }) => (
 						<DateTimePicker
-							value={new Date(value)}
-							onChange={onChange}
+							value={new Date(value as string)}
+							onChange={(val) => {
+								onChange(val?.toString());
+							}}
 							className="mt-32 mb-16 w-full"
 							slotProps={{
 								textField: {
@@ -457,12 +466,11 @@ function ContactForm() {
 					)}
 				/>
 			</div>
-
 			<Box
 				className="flex items-center mt-40 py-14 pr-16 pl-4 sm:pr-48 sm:pl-36 border-t"
 				sx={{ backgroundColor: 'background.default' }}
 			>
-				{routeParams.id !== 'new' && (
+				{contactId !== 'new' && (
 					<Button
 						color="error"
 						onClick={handleRemoveContact}
