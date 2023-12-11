@@ -1,23 +1,28 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import * as yup from 'yup';
 import _ from '@lodash';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	password: yup
-		.string()
-		.required('Please enter your password.')
-		.min(8, 'Password is too short - should be 8 chars minimum.'),
-	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
-});
+const schema = z
+	.object({
+		password: z
+			.string()
+			.nonempty('Please enter your password.')
+			.min(8, 'Password is too short - should be 8 chars minimum.'),
+		passwordConfirm: z.string().nonempty('Password confirmation is required')
+	})
+	.refine((data) => data.password === data.passwordConfirm, {
+		message: 'Passwords must match',
+		path: ['passwordConfirm']
+	});
 
 const defaultValues = {
 	password: '',
@@ -31,7 +36,7 @@ function ClassicResetPasswordPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

@@ -1,21 +1,20 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import * as yup from 'yup';
 import _ from '@lodash';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import FuseCountdown from '@fuse/core/FuseCountdown';
-
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	email: yup.string().email('You must enter a valid email').required('You must enter a email')
+const schema = z.object({
+	email: z.string().email('You must enter a valid email').nonempty('You must enter an email')
 });
 
 const defaultValues = {
@@ -29,7 +28,7 @@ function SplitScreenReversedComingSoonPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
