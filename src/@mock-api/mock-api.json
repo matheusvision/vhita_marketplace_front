@@ -551,7 +551,7 @@
         "operationId": "calendar_getEvents",
         "description": "Retrieve Calendar events.",
         "tags": [
-          "calendar"
+          "calendar_events"
         ]
       },
       "parameters": [],
@@ -570,9 +570,6 @@
             }
           }
         },
-        "tags": [
-          "calendar"
-        ],
         "description": "Create event.",
         "requestBody": {
           "content": {
@@ -582,7 +579,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "calendar_event"
+        ]
       }
     },
     "/calendar/events/{eventSlug}": {
@@ -639,7 +639,7 @@
         },
         "description": "Update Calendar event.",
         "tags": [
-          "calendar"
+          "calendar_event"
         ]
       },
       "delete": {
@@ -652,7 +652,7 @@
         },
         "description": "Delete event.",
         "tags": [
-          "calendar"
+          "calendar_event"
         ]
       }
     },
@@ -682,7 +682,7 @@
         "operationId": "calendar_getLabels",
         "description": "Retrieve Calendar labels.",
         "tags": [
-          "calendar"
+          "calendar_labels"
         ]
       },
       "parameters": [],
@@ -710,9 +710,6 @@
             }
           }
         },
-        "tags": [
-          "calendar"
-        ],
         "description": "Create Calendar label.",
         "requestBody": {
           "content": {
@@ -722,7 +719,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "calendar_label"
+        ]
       }
     },
     "/calendar/labels/{labelSlug}": {
@@ -772,7 +772,7 @@
         },
         "description": "Update Calendar label.",
         "tags": [
-          "calendar"
+          "calendar_label"
         ]
       },
       "delete": {
@@ -785,7 +785,7 @@
         },
         "description": "Delete Calendar label.",
         "tags": [
-          "calendar"
+          "calendar_label"
         ]
       }
     },
@@ -5568,42 +5568,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "mg1zrlsn8bx2h"
+              "id": "tq55xmz4qivos"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "yf1rc8kta6v6f"
+              "id": "wructbnay8hjp"
             },
             "items": {
               "x-stoplight": {
-                "id": "6ltfo6vy6e2o2"
+                "id": "180v14oqmg4lg"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "skpenpktf5b6n"
+                    "id": "k3m0hnml3gv58"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "zb5wdfetedphc"
+                    "id": "mlfm1z2gg7gu6"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "okmppge1evobg"
+                    "id": "p6v20l4l9v0wh"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "rchhtz6m7goc0"
+                    "id": "4n028v82750mo"
                   }
                 }
               }
@@ -6186,7 +6186,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "ke2vgtkdalu53"
+              "id": "vdewc6jc18yqn"
             }
           }
         },

@@ -1,65 +1,14 @@
-import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
-import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { DeepPartial } from 'react-hook-form';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import formatISO from 'date-fns/formatISO';
 import { selectSelectedLabels } from './labelsSlice';
-import { EventType } from '../types/EventType';
+import { CalendarApiType, Event, selectEvents } from '../CalendarApi';
 
-type AppRootStateType = RootStateType<eventsSliceType>;
+type AppRootStateType = RootStateType<eventsSliceType> & CalendarApiType;
 
 export const dateFormat = 'YYYY-MM-DDTHH:mm:ss.sssZ';
-
-/**
- * Get events from server
- */
-export const getEvents = createAppAsyncThunk('calendarApp/events/getEvents', async () => {
-	const response = await axios.get('/api/calendar/events');
-
-	const data = (await response.data) as EventType[];
-
-	return data;
-});
-
-/**
- * Add new event
- */
-export const addEvent = createAppAsyncThunk<EventType, EventType>('calendarApp/events/addEvent', async (newEvent) => {
-	const response = await axios.post('/api/calendar/events', newEvent);
-
-	const data = (await response.data) as EventType;
-
-	return data;
-});
-
-/**
- * Update event
- */
-export const updateEvent = createAppAsyncThunk<EventType, EventType>(
-	'calendarApp/events/updateEvent',
-	async (event) => {
-		const response = await axios.put(`/api/calendar/events/${event.id}`, event);
-
-		const data = (await response.data) as EventType;
-
-		return data;
-	}
-);
-
-/**
- * Remove event
- */
-export const removeEvent = createAppAsyncThunk<string, string>('calendarApp/events/removeEvent', async (eventId) => {
-	const response = await axios.delete(`/api/calendar/events/${eventId}`);
-
-	const data = (await response.data) as string;
-
-	return data;
-});
-
-const eventsAdapter = createEntityAdapter<EventType>();
 
 export type EventDialogType = {
 	type: 'new' | 'edit';
@@ -67,10 +16,10 @@ export type EventDialogType = {
 		open: boolean;
 		anchorPosition?: { top: number; left: number };
 	};
-	data?: DeepPartial<EventType> | null;
+	data?: DeepPartial<Event> | null;
 };
 
-const initialState = eventsAdapter.getInitialState<{ eventDialog: EventDialogType }>({
+const initialState: { eventDialog: EventDialogType } = {
 	eventDialog: {
 		type: 'new',
 		props: {
@@ -79,13 +28,7 @@ const initialState = eventsAdapter.getInitialState<{ eventDialog: EventDialogTyp
 		},
 		data: null
 	}
-});
-
-export const {
-	selectAll: selectEvents,
-	selectIds: selectEventIds,
-	selectById: selectEventById
-} = eventsAdapter.getSelectors((state: AppRootStateType) => state.calendarApp.events);
+};
 
 /**
  * The Calendar App events slice.
@@ -160,13 +103,6 @@ export const eventsSlice = createSlice({
 				data: null
 			};
 		}
-	},
-	extraReducers: (builder) => {
-		builder
-			.addCase(getEvents.fulfilled, (state, action) => eventsAdapter.setAll(state, action.payload))
-			.addCase(addEvent.fulfilled, (state, action) => eventsAdapter.addOne(state, action.payload))
-			.addCase(updateEvent.fulfilled, (state, action) => eventsAdapter.upsertOne(state, action.payload))
-			.addCase(removeEvent.fulfilled, (state, action) => eventsAdapter.removeOne(state, action.payload));
 	}
 });
 
@@ -174,7 +110,7 @@ export const { openNewEventDialog, closeNewEventDialog, openEditEventDialog, clo
 	eventsSlice.actions;
 
 export const selectFilteredEvents = createSelector([selectSelectedLabels, selectEvents], (selectedLabels, events) => {
-	return events.filter((item) => selectedLabels.includes(item.extendedProps.label));
+	return events.filter((item) => selectedLabels.includes(item?.extendedProps?.label as string));
 });
 
 export const selectEventDialog = (state: AppRootStateType) => state.calendarApp.events.eventDialog;

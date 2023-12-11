@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import TextField from '@mui/material/TextField';
@@ -6,44 +5,43 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FormLabel from '@mui/material/FormLabel';
 import Input from '@mui/material/Input';
 import { PartialDeep } from 'type-fest';
-import { useAppDispatch } from 'app/store';
-import { addLabel } from '../../store/labelsSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import LabelModel from '../../models/LabelModel';
-import { LabelType } from '../../types/LabelType';
+import { Label, useCreateLabelMutation } from '../../CalendarApi';
 
 const defaultValues = LabelModel();
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a label title'),
-	color: yup.string()
+const schema = z.object({
+	title: z.string().nonempty('You must enter a label title'),
+	color: z.string().optional()
 });
 
 /**
  * The new label form.
  */
 function NewLabelForm() {
-	const dispatch = useAppDispatch();
+	const [createLabel] = useCreateLabelMutation();
 
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit(data: PartialDeep<LabelType>) {
+	function onSubmit(data: PartialDeep<Label>) {
 		const newLabel = LabelModel(data);
 
-		dispatch(addLabel(newLabel));
+		createLabel(newLabel);
 
 		reset(defaultValues);
 	}

@@ -4,15 +4,16 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { openLabelsDialog, selectLabels, selectSelectedLabels, toggleSelectedLabels } from './store/labelsSlice';
+import { openLabelsDialog, selectSelectedLabels, toggleSelectedLabels } from './store/labelsSlice';
+import { useGetLabelsQuery } from './CalendarApi';
 
 /**
  * The calendar app sidebar.
  */
 function CalendarAppSidebar() {
-	const labels = useAppSelector(selectLabels);
 	const selectedLabels = useAppSelector(selectSelectedLabels);
 	const dispatch = useAppDispatch();
+	const { data: labels } = useGetLabelsQuery();
 
 	return (
 		<div className="flex flex-col flex-auto min-h-full p-32">
@@ -45,7 +46,7 @@ function CalendarAppSidebar() {
 				</IconButton>
 			</div>
 
-			{labels.map((label) => (
+			{labels?.map((label) => (
 				<div
 					key={label.id}
 					className="group flex items-center mt-8 space-x-8 h-24 w-full"

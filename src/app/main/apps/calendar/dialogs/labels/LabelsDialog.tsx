@@ -2,9 +2,10 @@ import Dialog from '@mui/material/Dialog';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { closeLabelsDialog, selectLabels, selectLabelsDialogOpen } from '../../store/labelsSlice';
+import { closeLabelsDialog, selectLabelsDialogOpen } from '../../store/labelsSlice';
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
+import { useGetLabelsQuery } from '../../CalendarApi';
 
 /**
  * The labels dialog.
@@ -12,7 +13,7 @@ import LabelItemForm from './LabelItemForm';
 function LabelsDialog() {
 	const dispatch = useAppDispatch();
 	const labelsDialogOpen = useAppSelector(selectLabelsDialogOpen);
-	const labels = useAppSelector(selectLabels);
+	const { data: labels } = useGetLabelsQuery();
 
 	return (
 		<Dialog
@@ -27,7 +28,7 @@ function LabelsDialog() {
 			<List dense>
 				<NewLabelForm />
 
-				{labels.map((item) => (
+				{labels?.map((item) => (
 					<LabelItemForm
 						label={item}
 						key={item.id}

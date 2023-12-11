@@ -19,18 +19,11 @@ import {
 } from '@fullcalendar/core';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
-import {
-	getEvents,
-	openEditEventDialog,
-	openNewEventDialog,
-	selectFilteredEvents,
-	updateEvent
-} from './store/eventsSlice';
-import { getLabels } from './store/labelsSlice';
+import { openEditEventDialog, openNewEventDialog, selectFilteredEvents } from './store/eventsSlice';
 import LabelsDialog from './dialogs/labels/LabelsDialog';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
-import { EventType } from './types/EventType';
+import { Event, useGetEventsQuery, useUpdateEventMutation } from './CalendarApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -114,11 +107,8 @@ function CalendarApp() {
 	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-
-	useEffect(() => {
-		dispatch(getEvents());
-		dispatch(getLabels());
-	}, [dispatch]);
+	useGetEventsQuery();
+	const [updateEvent] = useUpdateEventMutation();
 
 	useEffect(() => {
 		setLeftSidebarOpen(!isMobile);
@@ -137,16 +127,14 @@ function CalendarApp() {
 
 	const handleEventDrop = (eventDropInfo: EventDropArg): void => {
 		const { id, title, allDay, start, end, extendedProps } = eventDropInfo.event;
-		dispatch(
-			updateEvent({
-				id,
-				title,
-				allDay,
-				start: start?.toISOString() ?? '',
-				end: end?.toISOString() ?? '',
-				extendedProps
-			})
-		);
+		updateEvent({
+			id,
+			title,
+			allDay,
+			start: start?.toISOString() ?? '',
+			end: end?.toISOString() ?? '',
+			extendedProps
+		});
 	};
 
 	const handleEventClick = (clickInfo: EventClickArg) => {
@@ -201,7 +189,7 @@ function CalendarApp() {
 						select={handleDateSelect}
 						events={events}
 						// eslint-disable-next-line react/no-unstable-nested-components
-						eventContent={(eventInfo: EventContentArg & { event: EventType }) => (
+						eventContent={(eventInfo: EventContentArg & { event: Event }) => (
 							<CalendarAppEventContent eventInfo={eventInfo} />
 						)}
 						eventClick={handleEventClick}
