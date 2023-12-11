@@ -53,7 +53,8 @@ const FusePageSimpleSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }
 							paper: clsx(
 								'FusePageSimple-sidebar',
 								variant,
-								position === 'left' ? 'FusePageSimple-leftSidebar' : 'FusePageSimple-rightSidebar'
+								position === 'left' ? 'FusePageSimple-leftSidebar' : 'FusePageSimple-rightSidebar',
+								'max-w-full'
 							)
 						}}
 						ModalProps={{
