@@ -1,4 +1,4 @@
-import { configureStore, Reducer, Middleware, ReducersMapObject } from '@reduxjs/toolkit';
+import { configureStore, Middleware, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { createLogger } from 'redux-logger';
