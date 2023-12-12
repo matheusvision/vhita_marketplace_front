@@ -53,7 +53,6 @@ mock.onGet('/calendar/labels/:id').reply((config) => {
 
 mock.onDelete('/calendar/labels/:id').reply((config) => {
 	const { id } = config.params as Params;
-	console.info(id);
 	_.remove(labelsDB, { id });
 	_.remove(eventsDB, { extendedProps: { label: id } });
 

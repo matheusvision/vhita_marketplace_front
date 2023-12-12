@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { ChatMessageType } from '../types/ChatMessageType';
+import { Message } from '../ChatApi';
 
 /**
  * Chat message model.
  */
-function ChatMessageModel(data?: PartialDeep<ChatMessageType>) {
+function ChatMessageModel(data?: PartialDeep<Message>) {
 	data = data || {};
 
 	return _.defaults(data, {

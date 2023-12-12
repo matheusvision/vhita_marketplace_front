@@ -15,21 +15,21 @@ import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import InputAdornment from '@mui/material/InputAdornment';
 import { lighten } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { PartialObjectDeep } from 'type-fest/source/partial-deep';
 import Statuses from '../../Statuses';
 import UserAvatar from '../../UserAvatar';
-import { selectUser, updateUserData } from '../../store/userSlice';
 import { ChatAppContext } from '../../ChatApp';
-import { UserType } from '../../types/UserType';
+import { Profile, useGetUserProfileQuery, useUpdateUserProfileMutation } from '../../ChatApi';
 
 /**
  * The user sidebar.
  */
 function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
-	const dispatch = useAppDispatch();
-	const { data: user } = useAppSelector(selectUser);
+
+	const { data: user } = useGetUserProfileQuery();
+	const [updateUserData] = useUpdateUserProfileMutation();
+
 	const { control, handleSubmit, reset, formState, watch } = useForm({});
 	const { isValid, dirtyFields, errors } = formState;
 
@@ -39,9 +39,10 @@ function UserSidebar() {
 		}
 	}, [reset, user]);
 
-	function onSubmit(data: PartialObjectDeep<UserType, object>) {
-		dispatch(updateUserData(data));
+	function onSubmit(data: PartialObjectDeep<Profile, object>) {
+		updateUserData(data);
 	}
+
 	const formValues = watch();
 
 	if (!user || _.isEmpty(formValues)) {

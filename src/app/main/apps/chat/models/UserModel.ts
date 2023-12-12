@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { UserType } from '../types/UserType';
+import { Profile } from '../ChatApi';
 
 /**
  * User model.
  */
-function UserModel(data?: PartialDeep<UserType>) {
+function UserModel(data?: PartialDeep<Profile>) {
 	data = data || {};
 
 	return _.defaults(data, {

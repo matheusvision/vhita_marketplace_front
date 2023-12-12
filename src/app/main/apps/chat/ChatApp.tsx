@@ -4,13 +4,9 @@ import { createContext, useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch } from 'app/store';
 import MainSidebar from './sidebars/main/MainSidebar';
 import ContactSidebar from './sidebars/contact/ContactSidebar';
-import { getUserData } from './store/userSlice';
-import { getContacts } from './store/contactsSlice';
 import UserSidebar from './sidebars/user/UserSidebar';
-import { getChatList } from './store/chatListSlice';
 
 const drawerWidth = 400;
 
@@ -50,18 +46,12 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
  * The chat app.
  */
 function ChatApp() {
-	const dispatch = useAppDispatch();
+	const location = useLocation();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
+
 	const [mainSidebarOpen, setMainSidebarOpen] = useState(!isMobile);
 	const [contactSidebarOpen, setContactSidebarOpen] = useState(false);
 	const [userSidebarOpen, setUserSidebarOpen] = useState(false);
-	const location = useLocation();
-
-	useEffect(() => {
-		dispatch(getUserData());
-		dispatch(getContacts());
-		dispatch(getChatList());
-	}, [dispatch]);
 
 	useEffect(() => {
 		setMainSidebarOpen(!isMobile);

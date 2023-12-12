@@ -8,8 +8,7 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import ListItemButton from '@mui/material/ListItemButton';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import UserAvatar from '../../UserAvatar';
-import { ContactType } from '../../types/ContactType';
-import { ChatListItemType } from '../../types/ChatListItemType';
+import { Chat, Contact } from '../../ChatApi';
 
 type ExtendedListItemProps = NavLinkAdapterPropsType & {
 	component: React.ElementType<NavLinkAdapterPropsType>;
@@ -22,7 +21,7 @@ const StyledListItem = styled(ListItemButton)<ExtendedListItemProps>(({ theme })
 }));
 
 type ChatListItemProps = {
-	item: Partial<ContactType & ChatListItemType>;
+	item: Partial<Contact & Chat>;
 };
 
 /**

@@ -10,26 +10,21 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { lighten } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import ContactListItem from './ContactListItem';
-import { selectContacts } from '../../store/contactsSlice';
-import { selectChats } from '../../store/chatListSlice';
 import UserAvatar from '../../UserAvatar';
 import MainSidebarMoreMenu from './MainSidebarMoreMenu';
 import { ChatAppContext } from '../../ChatApp';
-import { selectUser } from '../../store/userSlice';
 import ChatListItem from './ChatListItem';
+import { Chat, useGetChatsQuery, useGetContactsQuery, useGetUserProfileQuery } from '../../ChatApi';
 
 /**
  * The main sidebar.
  */
 function MainSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
-
-	const dispatch = useAppDispatch();
-	const contacts = useAppSelector(selectContacts);
-	const chats = useAppSelector(selectChats);
-	const { data: user } = useAppSelector(selectUser);
+	const { data: contacts } = useGetContactsQuery();
+	const { data: user } = useGetUserProfileQuery();
+	const { data: chats } = useGetChatsQuery();
 
 	const [searchText, setSearchText] = useState('');
 
@@ -98,6 +93,10 @@ function MainSidebar() {
 			<FuseScrollbars className="flex-1">
 				<List className="w-full">
 					{useMemo(() => {
+						if (!contacts || !chats) {
+							return null;
+						}
+
 						function getFilteredArray<T>(arr: T[], _searchText: string): T[] {
 							if (_searchText.length === 0) {
 								return arr;
@@ -106,7 +105,7 @@ function MainSidebar() {
 						}
 
 						const chatListContacts =
-							contacts.length > 0 && chats.length > 0
+							contacts?.length > 0 && chats?.length > 0
 								? chats.map((_chat) => ({
 										..._chat,
 										...contacts.find((_contact) => _contact.id === _chat.contactId)
@@ -115,7 +114,7 @@ function MainSidebar() {
 
 						const filteredContacts = getFilteredArray([...contacts], searchText);
 
-						const filteredChatList = getFilteredArray([...chatListContacts], searchText);
+						const filteredChatList = getFilteredArray([...chatListContacts], searchText) as Chat[];
 
 						const container = {
 							show: {
@@ -182,7 +181,7 @@ function MainSidebar() {
 								))}
 							</motion.div>
 						);
-					}, [contacts, chats, searchText, dispatch])}
+					}, [contacts, chats, searchText])}
 				</List>
 			</FuseScrollbars>
 		</div>

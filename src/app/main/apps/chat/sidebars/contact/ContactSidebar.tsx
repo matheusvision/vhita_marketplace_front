@@ -7,19 +7,20 @@ import { useContext } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { useAppSelector } from 'app/store';
-import { selectContactById } from '../../store/contactsSlice';
 import UserAvatar from '../../UserAvatar';
 import { ChatAppContext } from '../../ChatApp';
+import { useGetContactQuery } from '../../ChatApi';
 
 /**
  * The contact sidebar.
  */
 function ContactSidebar() {
 	const { setContactSidebarOpen } = useContext(ChatAppContext);
+
 	const routeParams = useParams();
 	const contactId = routeParams.id;
-	const contact = useAppSelector(selectContactById(contactId));
+
+	const { data: contact } = useGetContactQuery(contactId);
 
 	if (!contact) {
 		return null;

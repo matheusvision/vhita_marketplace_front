@@ -581,7 +581,8 @@
           }
         },
         "tags": [
-          "calendar_event"
+          "calendar_event",
+          "calendar_events"
         ]
       }
     },
@@ -639,7 +640,8 @@
         },
         "description": "Update Calendar event.",
         "tags": [
-          "calendar_event"
+          "calendar_event",
+          "calendar_events"
         ]
       },
       "delete": {
@@ -652,7 +654,8 @@
         },
         "description": "Delete event.",
         "tags": [
-          "calendar_event"
+          "calendar_event",
+          "calendar_events"
         ]
       }
     },
@@ -721,7 +724,8 @@
           }
         },
         "tags": [
-          "calendar_label"
+          "calendar_label",
+          "calendar_labels"
         ]
       }
     },
@@ -785,7 +789,8 @@
         },
         "description": "Delete Calendar label.",
         "tags": [
-          "calendar_label"
+          "calendar_label",
+          "calendar_labels"
         ]
       }
     },

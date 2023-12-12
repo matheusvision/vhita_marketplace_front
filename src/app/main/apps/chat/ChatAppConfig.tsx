@@ -1,9 +1,8 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
+import { lazy } from 'react';
 import Chat from './chat/Chat';
 import ChatFirstScreen from './ChatFirstScreen';
-import reducer from './store';
 
-const ChatApp = lazyWithReducer('chatApp', () => import('./ChatApp'), reducer);
+const ChatApp = lazy(() => import('./ChatApp'));
 
 /**
  * The chat app config.

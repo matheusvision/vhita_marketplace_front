@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { ContactType } from '../types/ContactType';
+import { Contact } from '../ChatApi';
 
 /**
  * Contact model.
  */
-function ContactModel(data?: PartialDeep<ContactType>) {
+function ContactModel(data?: PartialDeep<Contact>) {
 	data = data || {};
 
 	return _.defaults(data, {

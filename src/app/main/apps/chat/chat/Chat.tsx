@@ -10,15 +10,17 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Toolbar from '@mui/material/Toolbar';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { getChat, selectChat, sendMessage } from '../store/chatMessagesSlice';
-import { selectContactById } from '../store/contactsSlice';
-import { selectUser } from '../store/userSlice';
 import UserAvatar from '../UserAvatar';
 import ChatMoreMenu from './ChatMoreMenu';
 import { ChatAppContext } from '../ChatApp';
-import { ChatMessageType } from '../types/ChatMessageType';
 import Error404Page from '../../../404/Error404Page';
+import {
+	Message,
+	useGetChatQuery,
+	useGetContactQuery,
+	useGetUserProfileQuery,
+	useSendMessageMutation
+} from '../ChatApi';
 
 const StyledMessageRow = styled('div')(({ theme }) => ({
 	'&.contact': {
@@ -104,18 +106,16 @@ type ChatPropsType = {
 function Chat(props: ChatPropsType) {
 	const { className } = props;
 	const { setMainSidebarOpen, setContactSidebarOpen } = useContext(ChatAppContext);
-	const dispatch = useAppDispatch();
-	const chat = useAppSelector(selectChat);
-	const { data: user } = useAppSelector(selectUser);
+	const chatRef = useRef<HTMLDivElement>(null);
+	const [message, setMessage] = useState('');
+
 	const routeParams = useParams();
 	const contactId = routeParams.id;
-	const selectedContact = useAppSelector(selectContactById(contactId));
-	const chatRef = useRef<HTMLDivElement>(null);
-	const [messageText, setMessageText] = useState('');
 
-	useEffect(() => {
-		dispatch(getChat(contactId));
-	}, [contactId, dispatch]);
+	const { data: user } = useGetUserProfileQuery();
+	const { data: chat } = useGetChatQuery(contactId);
+	const { data: selectedContact } = useGetContactQuery(contactId);
+	const [sendMessage] = useSendMessageMutation();
 
 	useEffect(() => {
 		if (chat) {
@@ -133,32 +133,30 @@ function Chat(props: ChatPropsType) {
 		});
 	}
 
-	function isFirstMessageOfGroup(item: ChatMessageType, i: number) {
+	function isFirstMessageOfGroup(item: Message, i: number) {
 		return i === 0 || (chat[i - 1] && chat[i - 1].contactId !== item.contactId);
 	}
 
-	function isLastMessageOfGroup(item: ChatMessageType, i: number) {
+	function isLastMessageOfGroup(item: Message, i: number) {
 		return i === chat.length - 1 || (chat[i + 1] && chat[i + 1].contactId !== item.contactId);
 	}
 
 	function onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-		setMessageText(ev.target.value);
+		setMessage(ev.target.value);
 	}
 
 	function onMessageSubmit(ev: React.FormEvent<HTMLFormElement>) {
 		ev.preventDefault();
-		if (messageText === '') {
+		if (message === '') {
 			return;
 		}
 
-		dispatch(
-			sendMessage({
-				messageText,
-				contactId
-			})
-		).then(() => {
-			setMessageText('');
+		sendMessage({
+			message,
+			contactId
 		});
+
+		setMessage('');
 	}
 
 	if (!user || !chat || !selectedContact) {
@@ -290,7 +288,7 @@ function Chat(props: ChatPropsType) {
 									className="flex-1 flex grow shrink-0 h-44 mx-8 px-16 border-2 rounded-full"
 									placeholder="Type your message"
 									onChange={onInputChange}
-									value={messageText}
+									value={message}
 									sx={{ backgroundColor: 'background.paper' }}
 								/>
 								<IconButton
