@@ -13,7 +13,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { closeEditEventDialog, closeNewEventDialog, selectEventDialog } from '../../store/eventsSlice';
+import { closeEditEventDialog, closeNewEventDialog, selectEventDialog } from '../../store/eventDialogSlice';
 import EventLabelSelect, { EventLabelSelectProps } from '../../EventLabelSelect';
 import EventModel from '../../models/EventModel';
 import {

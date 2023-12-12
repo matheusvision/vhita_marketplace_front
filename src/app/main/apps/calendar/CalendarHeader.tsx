@@ -8,7 +8,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FullCalendar from '@fullcalendar/react';
 import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
 import { MutableRefObject } from 'react';
-import { openNewEventDialog } from './store/eventsSlice';
+import { openNewEventDialog } from './store/eventDialogSlice';
 import CalendarViewMenu from './CalendarViewMenu';
 
 type CalendarHeaderProps = {

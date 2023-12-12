@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import { Checkbox, IconButton } from '@mui/material';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { Checkbox } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { openLabelsDialog, selectSelectedLabels, toggleSelectedLabels } from './store/labelsSlice';
+import { selectSelectedLabels, toggleSelectedLabels } from './store/selectedLabelsSlice';
 import { useGetLabelsQuery } from './CalendarApi';
+import LabelsDialog from './dialogs/labels/LabelsDialog';
 
 /**
  * The calendar app sidebar.
@@ -33,17 +33,7 @@ function CalendarAppSidebar() {
 					LABELS
 				</Typography>
 
-				<IconButton
-					onClick={() => dispatch(openLabelsDialog())}
-					size="small"
-				>
-					<FuseSvgIcon
-						color="secondary"
-						size={20}
-					>
-						heroicons-solid:pencil-alt
-					</FuseSvgIcon>
-				</IconButton>
+				<LabelsDialog />
 			</div>
 
 			{labels?.map((label) => (

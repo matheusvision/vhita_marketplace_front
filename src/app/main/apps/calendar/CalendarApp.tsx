@@ -19,11 +19,10 @@ import {
 } from '@fullcalendar/core';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
-import { openEditEventDialog, openNewEventDialog, selectFilteredEvents } from './store/eventsSlice';
-import LabelsDialog from './dialogs/labels/LabelsDialog';
+import { openEditEventDialog, openNewEventDialog } from './store/eventDialogSlice';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
-import { Event, useGetEventsQuery, useUpdateEventMutation } from './CalendarApi';
+import { Event, selectFilteredEvents, useGetEventsQuery, useUpdateEventMutation } from './CalendarApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -208,7 +207,6 @@ function CalendarApp() {
 				scroll="content"
 			/>
 			<EventDialog />
-			<LabelsDialog />
 		</>
 	);
 }
