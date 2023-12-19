@@ -80,11 +80,12 @@ export const taskSlice = createSlice({
 
 			if (type === 'section') {
 				state.data = SectionModel({});
+				state.status = 'idle';
 			}
 			if (type === 'task') {
 				state.data = TaskModel({});
+				state.status = 'idle';
 			}
-			return initialState;
 		},
 		resetTask: () => initialState
 	},
