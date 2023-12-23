@@ -5,8 +5,8 @@ import { selectSearchText } from './store/searchTextSlice';
 import { AppRootStateType } from './store';
 
 export const addTagTypes = [
-	'contacts_contact',
-	'contacts_all',
+	'contacts_item',
+	'contacts_list',
 	'contacts_tag',
 	'contacts_tags',
 	'contacts_countries'
@@ -18,65 +18,65 @@ const ContactsApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getContact: build.query<GetContactApiResponse, GetContactApiArg>({
-				query: (queryArg) => ({ url: `/mock-api/contacts/${queryArg.contactId}` }),
-				providesTags: ['contacts_contact']
-			}),
-			updateContact: build.mutation<UpdateContactApiResponse, UpdateContactApiArg>({
-				query: (queryArg) => ({
-					url: `/mock-api/contacts/${queryArg.contactId}`,
-					method: 'PUT',
-					data: queryArg.contact
-				}),
-				invalidatesTags: ['contacts_contact', 'contacts_all']
-			}),
-			deleteContact: build.mutation<DeleteContactApiResponse, DeleteContactApiArg>({
-				query: (queryArg) => ({
-					url: `/mock-api/contacts/${queryArg.contactId}`,
-					method: 'DELETE'
-				}),
-				invalidatesTags: ['contacts_all']
-			}),
-			getContacts: build.query<GetApiResponse, GetApiArg>({
+			getContactList: build.query<GetContactListApiResponse, GetContactListApiArg>({
 				query: () => ({ url: `/mock-api/contacts` }),
-				providesTags: ['contacts_all']
+				providesTags: ['contacts_list']
 			}),
-			createContact: build.mutation<CreateContactApiResponse, CreateContactApiArg>({
+			createContactItem: build.mutation<CreateContactItemApiResponse, CreateContactItemApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/contacts`,
 					method: 'POST',
 					data: queryArg.contact
 				}),
-				invalidatesTags: ['contacts_all']
+				invalidatesTags: ['contacts_list']
 			}),
-			getTag: build.query<GetTagApiResponse, GetTagApiArg>({
-				query: (queryArg) => ({ url: `/mock-api/contacts/tags/${queryArg.tagId}` }),
+			getContactItem: build.query<GetContactItemApiResponse, GetContactItemApiArg>({
+				query: (contactId) => ({ url: `/mock-api/contacts/${contactId}` }),
+				providesTags: ['contacts_item']
+			}),
+			updateContactItem: build.mutation<UpdateContactItemApiResponse, UpdateContactItemApiArg>({
+				query: (contact) => ({
+					url: `/mock-api/contacts/${contact.id}`,
+					method: 'PUT',
+					data: contact
+				}),
+				invalidatesTags: ['contacts_item', 'contacts_list']
+			}),
+			deleteContactItem: build.mutation<DeleteContactItemApiResponse, DeleteContactItemApiArg>({
+				query: (contactId) => ({
+					url: `/mock-api/contacts/${contactId}`,
+					method: 'DELETE'
+				}),
+				invalidatesTags: ['contacts_list']
+			}),
+			getContactTag: build.query<GetContactTagApiResponse, GetContactTagApiArg>({
+				query: (tagId) => ({ url: `/mock-api/contacts/tags/${tagId}` }),
 				providesTags: ['contacts_tag']
 			}),
-			updateTag: build.mutation<UpdateTagApiResponse, UpdateTagApiArg>({
-				query: (queryArg) => ({
-					url: `/mock-api/contacts/tags/${queryArg.tagId}`,
+			updateContactTag: build.mutation<UpdateContactTagApiResponse, UpdateContactTagApiArg>({
+				query: (tag) => ({
+					url: `/mock-api/contacts/tags/${tag.id}`,
 					method: 'PUT',
-					body: queryArg.tag
+					body: tag
 				}),
 				invalidatesTags: ['contacts_tags']
 			}),
-			deleteTag: build.mutation<DeleteTagApiResponse, DeleteTagApiArg>({
-				query: (queryArg) => ({
-					url: `/mock-api/contacts/tags/${queryArg.tagId}`,
+			deleteContactTag: build.mutation<DeleteContactTagApiResponse, DeleteContactTagApiArg>({
+				query: (tagId) => ({
+					url: `/mock-api/contacts/tags/${tagId}`,
 					method: 'DELETE'
 				}),
 				invalidatesTags: ['contacts_tags']
 			}),
-			getTags: build.query<GetTagsApiResponse, GetTagsApiArg>({
+			getContactTagList: build.query<GetContactTagListApiResponse, GetContactTagListApiArg>({
 				query: () => ({ url: `/mock-api/contacts/tags` }),
 				providesTags: ['contacts_tags']
 			}),
-			getCountries: build.query<GetCountriesApiResponse, GetCountriesApiArg>({
+			getContactCountryList: build.query<GetContactCountryListApiResponse, GetContactCountryListApiArg>({
 				query: () => ({ url: `/mock-api/countries` }),
 				providesTags: ['contacts_countries']
 			}),
-			createTag: build.mutation<CreateTagApiResponse, CreateTagApiArg>({
+			createContactTag: build.mutation<CreateContactTagApiResponse, CreateContactTagApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/contacts/tags`,
 					method: 'POST',
@@ -88,52 +88,30 @@ const ContactsApi = api
 		overrideExisting: false
 	});
 export { ContactsApi as Api };
-export type GetContactApiResponse = /** status 200 User Found */ ContactRead;
-export type GetContactApiArg = {
-	/** contact id */
-	contactId: string;
-};
-export type UpdateContactApiResponse = /** status 200 Contact Updated */ ContactRead;
-export type UpdateContactApiArg = {
-	/** contact id */
-	contactId: string;
-	/** Update user properties. */
+export type GetContactItemApiResponse = /** status 200 User Found */ ContactRead;
+export type GetContactItemApiArg = string;
+export type UpdateContactItemApiResponse = /** status 200 Contact Updated */ ContactRead;
+export type UpdateContactItemApiArg = Contact;
+export type DeleteContactItemApiResponse = unknown;
+export type DeleteContactItemApiArg = string;
+export type GetContactListApiResponse = /** status 200 OK */ ContactRead[];
+export type GetContactListApiArg = void;
+export type CreateContactItemApiResponse = /** status 201 Created */ ContactRead;
+export type CreateContactItemApiArg = {
 	contact: Contact;
 };
-export type DeleteContactApiResponse = unknown;
-export type DeleteContactApiArg = {
-	/** contact id */
-	contactId: string;
-};
-export type GetApiResponse = /** status 200 OK */ ContactRead[];
-export type GetApiArg = void;
-export type CreateContactApiResponse = /** status 201 Created */ ContactRead;
-export type CreateContactApiArg = {
-	contact: Contact;
-};
-export type GetTagApiResponse = /** status 200 Tag Found */ Tag;
-export type GetTagApiArg = {
-	/** tag id */
-	tagId: string;
-};
-export type GetCountriesApiResponse = /** status 200 */ Country[];
-export type GetCountriesApiArg = void;
-export type UpdateTagApiResponse = /** status 200 */ Tag;
-export type UpdateTagApiArg = {
-	/** tag id */
-	tagId: string;
-	/** Update tag properties to update. */
-	tag: Tag;
-};
-export type DeleteTagApiResponse = unknown;
-export type DeleteTagApiArg = {
-	/** tag id */
-	tagId: string;
-};
-export type GetTagsApiResponse = /** status 200 OK */ Tag[];
-export type GetTagsApiArg = void;
-export type CreateTagApiResponse = /** status 200 OK */ Tag;
-export type CreateTagApiArg = {
+export type GetContactTagApiResponse = /** status 200 Tag Found */ Tag;
+export type GetContactTagApiArg = string;
+export type GetContactCountryListApiResponse = /** status 200 */ Country[];
+export type GetContactCountryListApiArg = void;
+export type UpdateContactTagApiResponse = /** status 200 */ Tag;
+export type UpdateContactTagApiArg = Tag;
+export type DeleteContactTagApiResponse = unknown;
+export type DeleteContactTagApiArg = string;
+export type GetContactTagListApiResponse = /** status 200 OK */ Tag[];
+export type GetContactTagListApiArg = void;
+export type CreateContactTagApiResponse = /** status 200 OK */ Tag;
+export type CreateContactTagApiArg = {
 	tag: Tag;
 };
 
@@ -201,17 +179,17 @@ export type AccumulatorType = {
 };
 
 export const {
-	useGetContactQuery,
-	useUpdateContactMutation,
-	useDeleteContactMutation,
-	useGetContactsQuery,
-	useCreateContactMutation,
-	useGetTagQuery,
-	useGetCountriesQuery,
-	useUpdateTagMutation,
-	useDeleteTagMutation,
-	useGetTagsQuery,
-	useCreateTagMutation
+	useGetContactItemQuery,
+	useUpdateContactItemMutation,
+	useDeleteContactItemMutation,
+	useGetContactListQuery,
+	useCreateContactItemMutation,
+	useGetContactTagQuery,
+	useGetContactCountryListQuery,
+	useUpdateContactTagMutation,
+	useDeleteContactTagMutation,
+	useGetContactTagListQuery,
+	useCreateContactTagMutation
 } = ContactsApi;
 
 export default ContactsApi;
@@ -220,23 +198,26 @@ export type ContactsApiType = {
 	[ContactsApi.reducerPath]: ReturnType<typeof ContactsApi.reducer>;
 };
 
-export const selectContacts = (state: AppRootStateType) =>
-	ContactsApi.endpoints.getContacts.select()(state)?.data ?? [];
+export const selectContactList = (state: AppRootStateType) =>
+	ContactsApi.endpoints.getContactList.select()(state)?.data ?? [];
 
 /**
  * Select filtered contacts
  */
-export const selectFilteredContacts = createSelector([selectContacts, selectSearchText], (contacts, searchText) => {
-	if (searchText.length === 0) {
-		return contacts;
+export const selectFilteredContactList = createSelector(
+	[selectContactList, selectSearchText],
+	(contacts, searchText) => {
+		if (searchText.length === 0) {
+			return contacts;
+		}
+		return FuseUtils.filterArrayByString<ContactRead>(contacts, searchText);
 	}
-	return FuseUtils.filterArrayByString<ContactRead>(contacts, searchText);
-});
+);
 
 /**
  * Select grouped contacts
  */
-export const selectGroupedFilteredContacts = createSelector([selectFilteredContacts], (contacts) => {
+export const selectGroupedFilteredContacts = createSelector([selectFilteredContactList], (contacts) => {
 	const sortedContacts = [...contacts]?.sort((a, b) => a?.name?.localeCompare(b.name, 'es', { sensitivity: 'base' }));
 
 	const groupedObject = sortedContacts?.reduce<AccumulatorType>((r, e) => {

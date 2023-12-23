@@ -19,7 +19,7 @@ import { PartialObjectDeep } from 'type-fest/source/partial-deep';
 import Statuses from '../../Statuses';
 import UserAvatar from '../../UserAvatar';
 import { ChatAppContext } from '../../ChatApp';
-import { Profile, useGetUserProfileQuery, useUpdateUserProfileMutation } from '../../ChatApi';
+import { Profile, useGetChatUserProfileQuery, useUpdateChatUserProfileMutation } from '../../ChatApi';
 
 /**
  * The user sidebar.
@@ -27,8 +27,8 @@ import { Profile, useGetUserProfileQuery, useUpdateUserProfileMutation } from '.
 function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
 
-	const { data: user } = useGetUserProfileQuery();
-	const [updateUserData] = useUpdateUserProfileMutation();
+	const { data: user } = useGetChatUserProfileQuery();
+	const [updateUserData] = useUpdateChatUserProfileMutation();
 
 	const { control, handleSubmit, reset, formState, watch } = useForm({});
 	const { isValid, dirtyFields, errors } = formState;

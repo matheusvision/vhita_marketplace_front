@@ -4,7 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { forwardRef } from 'react';
 import Box from '@mui/material/Box';
-import { useGetLabelsQuery } from './CalendarApi';
+import { useGetCalendarLabelListQuery } from './CalendarApi';
 
 export type EventLabelSelectProps = {
 	value: string;
@@ -17,7 +17,7 @@ export type EventLabelSelectProps = {
  */
 const EventLabelSelect = forwardRef<HTMLElement, EventLabelSelectProps>((props, ref) => {
 	const { value, onChange, className } = props;
-	const { data: labels } = useGetLabelsQuery();
+	const { data: labels } = useGetCalendarLabelListQuery();
 
 	const handleChange = (event: SelectChangeEvent) => {
 		onChange(event.target.value);

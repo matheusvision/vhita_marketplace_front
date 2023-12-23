@@ -6,14 +6,14 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useState } from 'react';
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
-import { useGetLabelsQuery } from '../../CalendarApi';
+import { useGetCalendarLabelListQuery } from '../../CalendarApi';
 
 /**
  * The labels dialog.
  */
 function LabelsDialog() {
 	const [openDialog, setOpenDialog] = useState(false);
-	const { data: labels } = useGetLabelsQuery();
+	const { data: labels } = useGetCalendarLabelListQuery();
 
 	function handleOpenDialog() {
 		setOpenDialog(true);

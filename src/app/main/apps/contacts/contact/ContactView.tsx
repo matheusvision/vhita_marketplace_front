@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
@@ -10,19 +10,21 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/system/Box';
 import format from 'date-fns/format';
 import _ from '@lodash';
-import { useGetContactQuery, useGetCountriesQuery, useGetTagsQuery } from '../ContactsApi';
+import { showMessage } from 'app/store/fuse/messageSlice';
+import { useDispatch } from 'react-redux';
+import { useGetContactItemQuery, useGetContactCountryListQuery, useGetContactTagListQuery } from '../ContactsApi';
 
 /**
  * The contact view.
  */
 function ContactView() {
-	const { data: countries } = useGetCountriesQuery();
-	const { data: tags } = useGetTagsQuery();
+	const { data: countries } = useGetContactCountryListQuery();
+	const { data: tags } = useGetContactTagListQuery();
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
-	const { data: contact, isLoading } = useGetContactQuery({
-		contactId
-	});
+	const { data: contact, isLoading, isError } = useGetContactItemQuery(contactId);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	function getCountryByIso(iso: string) {
 		return countries?.find((country) => country.iso === iso);
@@ -30,6 +32,15 @@ function ContactView() {
 
 	if (isLoading) {
 		return <FuseLoading className="min-h-screen" />;
+	}
+
+	if (isError) {
+		setTimeout(() => {
+			navigate('/apps/contacts');
+			dispatch(showMessage({ message: 'NOT FOUND' }));
+		}, 0);
+
+		return null;
 	}
 
 	if (!contact) {

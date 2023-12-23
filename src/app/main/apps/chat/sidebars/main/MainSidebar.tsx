@@ -15,16 +15,16 @@ import UserAvatar from '../../UserAvatar';
 import MainSidebarMoreMenu from './MainSidebarMoreMenu';
 import { ChatAppContext } from '../../ChatApp';
 import ChatListItem from './ChatListItem';
-import { Chat, useGetChatsQuery, useGetContactsQuery, useGetUserProfileQuery } from '../../ChatApi';
+import { Chat, useGetChatListQuery, useGetChatContactListQuery, useGetChatUserProfileQuery } from '../../ChatApi';
 
 /**
  * The main sidebar.
  */
 function MainSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
-	const { data: contacts } = useGetContactsQuery();
-	const { data: user } = useGetUserProfileQuery();
-	const { data: chats } = useGetChatsQuery();
+	const { data: contacts } = useGetChatContactListQuery();
+	const { data: user } = useGetChatUserProfileQuery();
+	const { data: chats } = useGetChatListQuery();
 
 	const [searchText, setSearchText] = useState('');
 

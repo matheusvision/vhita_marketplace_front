@@ -9,7 +9,7 @@ import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import UserAvatar from '../../UserAvatar';
 import { ChatAppContext } from '../../ChatApp';
-import { useGetContactQuery } from '../../ChatApi';
+import { useGetChatContactQuery } from '../../ChatApi';
 
 /**
  * The contact sidebar.
@@ -20,7 +20,7 @@ function ContactSidebar() {
 	const routeParams = useParams();
 	const contactId = routeParams.id;
 
-	const { data: contact } = useGetContactQuery(contactId);
+	const { data: contact } = useGetChatContactQuery(contactId);
 
 	if (!contact) {
 		return null;

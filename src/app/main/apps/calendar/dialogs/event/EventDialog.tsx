@@ -19,9 +19,9 @@ import EventModel from '../../models/EventModel';
 import {
 	Event,
 	selectFirstLabelId,
-	useCreateEventMutation,
-	useDeleteEventMutation,
-	useUpdateEventMutation
+	useCreateCalendarEventMutation,
+	useDeleteCalendarEventMutation,
+	useUpdateCalendarEventMutation
 } from '../../CalendarApi';
 
 const defaultValues = EventModel();
@@ -50,9 +50,9 @@ function EventDialog() {
 	const dispatch = useAppDispatch();
 	const eventDialog = useAppSelector(selectEventDialog);
 	const firstLabelId = useAppSelector(selectFirstLabelId);
-	const [createEvent] = useCreateEventMutation();
-	const [updateEvent] = useUpdateEventMutation();
-	const [deleteEvent] = useDeleteEventMutation();
+	const [createEvent] = useCreateCalendarEventMutation();
+	const [updateEvent] = useUpdateCalendarEventMutation();
+	const [deleteEvent] = useDeleteCalendarEventMutation();
 
 	const { reset, formState, watch, control, getValues } = useForm<Event>({
 		defaultValues,

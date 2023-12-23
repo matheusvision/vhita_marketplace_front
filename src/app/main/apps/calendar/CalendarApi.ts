@@ -11,11 +11,11 @@ const CalendarApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getEvents: build.query<GetEventsApiResponse, GetEventsApiArg>({
+			getCalendarEventList: build.query<GetCalendarEventListApiResponse, GetCalendarEventListApiArg>({
 				query: () => ({ url: `/mock-api/calendar/events` }),
 				providesTags: ['calendar_events']
 			}),
-			createEvent: build.mutation<CreateEventApiResponse, CreateEventApiArg>({
+			createCalendarEvent: build.mutation<CreateCalendarEventApiResponse, CreateCalendarEventApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/calendar/events`,
 					method: 'POST',
@@ -23,7 +23,7 @@ const CalendarApi = api
 				}),
 				invalidatesTags: ['calendar_event', 'calendar_events']
 			}),
-			updateEvent: build.mutation<UpdateEventApiResponse, UpdateEventApiArg>({
+			updateCalendarEvent: build.mutation<UpdateCalendarEventApiResponse, UpdateCalendarEventApiArg>({
 				query: (Event) => ({
 					url: `/mock-api/calendar/events/${Event.id}`,
 					method: 'PUT',
@@ -31,14 +31,14 @@ const CalendarApi = api
 				}),
 				invalidatesTags: ['calendar_event', 'calendar_events']
 			}),
-			deleteEvent: build.mutation<DeleteEventApiResponse, DeleteEventApiArg>({
+			deleteCalendarEvent: build.mutation<DeleteCalendarEventApiResponse, DeleteCalendarEventApiArg>({
 				query: (id) => ({
 					url: `/mock-api/calendar/events/${id}`,
 					method: 'DELETE'
 				}),
 				invalidatesTags: ['calendar_event', 'calendar_events']
 			}),
-			getLabels: build.query<GetLabelsApiResponse, GetLabelsApiArg>({
+			getCalendarLabelList: build.query<GetCalendarLabelListApiResponse, GetCalendarLabelListApiArg>({
 				query: () => ({ url: `/mock-api/calendar/labels` }),
 				providesTags: ['calendar_labels'],
 				async onQueryStarted(id, { dispatch, queryFulfilled }) {
@@ -50,7 +50,7 @@ const CalendarApi = api
 					}
 				}
 			}),
-			createLabel: build.mutation<CreateLabelApiResponse, CreateLabelApiArg>({
+			createCalendarLabel: build.mutation<CreateCalendarLabelApiResponse, CreateCalendarLabelApiArg>({
 				query: (Label) => {
 					return {
 						url: `/mock-api/calendar/labels`,
@@ -60,7 +60,7 @@ const CalendarApi = api
 				},
 				invalidatesTags: ['calendar_label', 'calendar_labels']
 			}),
-			updateLabel: build.mutation<UpdateLabelApiResponse, UpdateLabelApiArg>({
+			updateCalendarLabel: build.mutation<UpdateCalendarLabelApiResponse, UpdateCalendarLabelApiArg>({
 				query: (Label) => ({
 					url: `/mock-api/calendar/labels/${Label.id}`,
 					method: 'PUT',
@@ -68,7 +68,7 @@ const CalendarApi = api
 				}),
 				invalidatesTags: ['calendar_labels']
 			}),
-			deleteLabel: build.mutation<DeleteLabelApiResponse, DeleteLabelApiArg>({
+			deleteCalendarLabel: build.mutation<DeleteCalendarLabelApiResponse, DeleteCalendarLabelApiArg>({
 				query: (id) => ({
 					url: `/mock-api/calendar/labels/${id}`,
 					method: 'DELETE'
@@ -79,24 +79,24 @@ const CalendarApi = api
 		overrideExisting: false
 	});
 
-export type GetEventsApiResponse = /** status 200 OK */ Event[];
-export type GetEventsApiArg = void;
-export type CreateEventApiResponse = /** status 200 OK */ Event;
-export type CreateEventApiArg = {
+export type GetCalendarEventListApiResponse = /** status 200 OK */ Event[];
+export type GetCalendarEventListApiArg = void;
+export type CreateCalendarEventApiResponse = /** status 200 OK */ Event;
+export type CreateCalendarEventApiArg = {
 	Event: Event;
 };
-export type UpdateEventApiResponse = /** status 200 OK */ Event;
-export type UpdateEventApiArg = Event;
-export type DeleteEventApiResponse = unknown;
-export type DeleteEventApiArg = string;
-export type GetLabelsApiResponse = /** status 200 OK */ Label[];
-export type GetLabelsApiArg = void;
-export type CreateLabelApiResponse = /** status 200 OK */ Label;
-export type CreateLabelApiArg = Label;
-export type UpdateLabelApiResponse = /** status 200 OK */ Label;
-export type UpdateLabelApiArg = Label;
-export type DeleteLabelApiResponse = unknown;
-export type DeleteLabelApiArg = string;
+export type UpdateCalendarEventApiResponse = /** status 200 OK */ Event;
+export type UpdateCalendarEventApiArg = Event;
+export type DeleteCalendarEventApiResponse = unknown;
+export type DeleteCalendarEventApiArg = string;
+export type GetCalendarLabelListApiResponse = /** status 200 OK */ Label[];
+export type GetCalendarLabelListApiArg = void;
+export type CreateCalendarLabelApiResponse = /** status 200 OK */ Label;
+export type CreateCalendarLabelApiArg = Label;
+export type UpdateCalendarLabelApiResponse = /** status 200 OK */ Label;
+export type UpdateCalendarLabelApiArg = Label;
+export type DeleteCalendarLabelApiResponse = unknown;
+export type DeleteCalendarLabelApiArg = string;
 export type Event = {
 	id: string;
 	title: string;
@@ -111,14 +111,14 @@ export type Label = {
 	color: string;
 };
 export const {
-	useGetEventsQuery,
-	useCreateEventMutation,
-	useUpdateEventMutation,
-	useDeleteEventMutation,
-	useGetLabelsQuery,
-	useCreateLabelMutation,
-	useUpdateLabelMutation,
-	useDeleteLabelMutation
+	useGetCalendarEventListQuery,
+	useCreateCalendarEventMutation,
+	useUpdateCalendarEventMutation,
+	useDeleteCalendarEventMutation,
+	useGetCalendarLabelListQuery,
+	useCreateCalendarLabelMutation,
+	useUpdateCalendarLabelMutation,
+	useDeleteCalendarLabelMutation
 } = CalendarApi;
 
 export default CalendarApi;
@@ -127,8 +127,10 @@ export type CalendarApiType = {
 	[CalendarApi.reducerPath]: ReturnType<typeof CalendarApi.reducer>;
 };
 
-export const selectEvents = (state: CalendarApiType) => CalendarApi.endpoints.getEvents.select()(state)?.data ?? [];
-export const selectLabels = (state: CalendarApiType) => CalendarApi.endpoints.getLabels.select()(state)?.data ?? [];
+export const selectEvents = (state: CalendarApiType) =>
+	CalendarApi.endpoints.getCalendarEventList.select()(state)?.data ?? [];
+export const selectLabels = (state: CalendarApiType) =>
+	CalendarApi.endpoints.getCalendarLabelList.select()(state)?.data ?? [];
 
 export const selectFirstLabelId = createSelector([selectLabels], (labels) => labels[0]?.id ?? null);
 

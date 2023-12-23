@@ -24,7 +24,8 @@ const axiosBaseQuery =
 
 export const apiService = createApi({
 	baseQuery: axiosBaseQuery(),
-	endpoints: () => ({})
+	endpoints: () => ({}),
+	reducerPath: 'apiService'
 });
 
 export default apiService;

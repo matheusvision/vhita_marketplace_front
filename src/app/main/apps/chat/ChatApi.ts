@@ -1,7 +1,13 @@
 import { apiService as api } from 'app/store/apiService';
 import { PartialObjectDeep } from 'type-fest/source/partial-deep';
 
-export const addTagTypes = ['chat_contacts', 'chat_contact', 'chat_chats', 'chat_chat', 'chat_user_profile'] as const;
+export const addTagTypes = [
+	'chat_contact_list',
+	'chat_contact',
+	'chat_chats',
+	'chat_chat',
+	'chat_user_profile'
+] as const;
 
 const ChatApi = api
 	.enhanceEndpoints({
@@ -9,15 +15,15 @@ const ChatApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getContacts: build.query<GetContactsApiResponse, GetContactsApiArg>({
+			getChatContactList: build.query<GetChatContactListApiResponse, GetChatContactListApiArg>({
 				query: () => ({ url: `/mock-api/chat/contacts` }),
-				providesTags: ['chat_contacts']
+				providesTags: ['chat_contact_list']
 			}),
-			getContact: build.query<GetContactApiResponse, GetContactApiArg>({
+			getChatContact: build.query<GetChatContactApiResponse, GetChatContactApiArg>({
 				query: (queryArg) => ({ url: `/mock-api/chat/contacts/${queryArg}` }),
 				providesTags: ['chat_contact']
 			}),
-			updateContact: build.mutation<UpdateContactApiResponse, UpdateContactApiArg>({
+			updateChatContact: build.mutation<UpdateChatContactApiResponse, UpdateChatContactApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/chat/contacts/${queryArg.id}`,
 					method: 'PUT',
@@ -25,29 +31,29 @@ const ChatApi = api
 				}),
 				invalidatesTags: ['chat_contact']
 			}),
-			deleteContact: build.mutation<DeleteContactApiResponse, DeleteContactApiArg>({
+			deleteChatContact: build.mutation<DeleteChatContactApiResponse, DeleteChatContactApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/chat/contacts/${queryArg}`,
 					method: 'DELETE'
 				}),
 				invalidatesTags: ['chat_contact']
 			}),
-			getChats: build.query<GetsChatsApiResponse, GetsChatsApiArg>({
+			getChatList: build.query<GetChatListApiResponse, GetChatListApiArg>({
 				query: () => ({ url: `/mock-api/chat/chats` }),
 				providesTags: ['chat_chats']
 			}),
-			getChat: build.query<GetChatApiResponse, GetChatApiArg>({
+			getChatItem: build.query<GetChatItemApiResponse, GetChatItemApiArg>({
 				query: (queryArg) => ({ url: `/mock-api/chat/chats/${queryArg}` }),
 				providesTags: ['chat_chat']
 			}),
-			deleteChat: build.mutation<DeleteChatApiResponse, DeleteChatApiArg>({
+			deleteChatItem: build.mutation<DeleteChatItemApiResponse, DeleteChatItemApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/chat/chats/${queryArg}`,
 					method: 'DELETE'
 				}),
 				invalidatesTags: ['chat_chats']
 			}),
-			sendMessage: build.mutation<SendMessageApiResponse, SendMessageApiArg>({
+			sendChatMessage: build.mutation<SendChatMessageApiResponse, SendChatMessageApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/chat/chats/${queryArg.contactId}`,
 					method: 'POST',
@@ -55,11 +61,11 @@ const ChatApi = api
 				}),
 				invalidatesTags: ['chat_chat', 'chat_chats']
 			}),
-			getUserProfile: build.query<GetUserProfileApiResponse, GetUserProfileApiArg>({
+			getChatUserProfile: build.query<GetChatUserProfileApiResponse, GetChatUserProfileApiArg>({
 				query: () => ({ url: `/mock-api/chat/profile` }),
 				providesTags: ['chat_user_profile']
 			}),
-			updateUserProfile: build.mutation<UpdateUserProfileApiResponse, UpdateUserProfileApiArg>({
+			updateChatUserProfile: build.mutation<UpdateChatUserProfileApiResponse, UpdateChatUserProfileApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/chat/profile`,
 					method: 'PUT',
@@ -71,29 +77,29 @@ const ChatApi = api
 		overrideExisting: false
 	});
 export default ChatApi;
-export type GetContactsApiResponse = /** status 200 OK */ Contact[];
-export type GetContactsApiArg = void;
-export type GetContactApiResponse = /** status 200 OK */ Contact;
-export type GetContactApiArg = string;
-export type UpdateContactApiResponse = unknown;
-export type UpdateContactApiArg = Contact;
-export type DeleteContactApiResponse = unknown;
-export type DeleteContactApiArg = string;
-export type GetsChatsApiResponse = /** status 200 OK */ Chat[];
-export type GetsChatsApiArg = void;
-export type GetChatApiResponse = /** status 200 OK */ Message[];
-export type GetChatApiArg = string;
-export type DeleteChatApiResponse = unknown;
-export type DeleteChatApiArg = string;
-export type SendMessageApiArg = {
+export type GetChatContactListApiResponse = /** status 200 OK */ Contact[];
+export type GetChatContactListApiArg = void;
+export type GetChatContactApiResponse = /** status 200 OK */ Contact;
+export type GetChatContactApiArg = string;
+export type UpdateChatContactApiResponse = unknown;
+export type UpdateChatContactApiArg = Contact;
+export type DeleteChatContactApiResponse = unknown;
+export type DeleteChatContactApiArg = string;
+export type GetChatListApiResponse = /** status 200 OK */ Chat[];
+export type GetChatListApiArg = void;
+export type GetChatItemApiResponse = /** status 200 OK */ Message[];
+export type GetChatItemApiArg = string;
+export type DeleteChatItemApiResponse = unknown;
+export type DeleteChatItemApiArg = string;
+export type SendChatMessageApiArg = {
 	contactId: string;
 	message: string;
 };
-export type SendMessageApiResponse = Message[];
-export type GetUserProfileApiResponse = Profile;
-export type GetUserProfileApiArg = void;
-export type UpdateUserProfileApiResponse = Profile;
-export type UpdateUserProfileApiArg = PartialObjectDeep<Profile, object>;
+export type SendChatMessageApiResponse = Message[];
+export type GetChatUserProfileApiResponse = Profile;
+export type GetChatUserProfileApiArg = void;
+export type UpdateChatUserProfileApiResponse = Profile;
+export type UpdateChatUserProfileApiArg = PartialObjectDeep<Profile, object>;
 export type ContactStatusType = 'online' | 'do-not-disturb' | 'away' | 'offline';
 
 export type Contact = {
@@ -164,14 +170,14 @@ export type Profile = {
 };
 
 export const {
-	useGetContactsQuery,
-	useGetContactQuery,
-	useUpdateContactMutation,
-	useDeleteContactMutation,
-	useGetChatsQuery,
-	useGetChatQuery,
-	useDeleteChatMutation,
-	useGetUserProfileQuery,
-	useUpdateUserProfileMutation,
-	useSendMessageMutation
+	useGetChatContactListQuery,
+	useGetChatContactQuery,
+	useUpdateChatContactMutation,
+	useDeleteChatContactMutation,
+	useGetChatListQuery,
+	useGetChatItemQuery,
+	useDeleteChatItemMutation,
+	useGetChatUserProfileQuery,
+	useUpdateChatUserProfileMutation,
+	useSendChatMessageMutation
 } = ChatApi;

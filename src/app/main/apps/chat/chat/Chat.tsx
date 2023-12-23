@@ -16,10 +16,10 @@ import { ChatAppContext } from '../ChatApp';
 import Error404Page from '../../../404/Error404Page';
 import {
 	Message,
-	useGetChatQuery,
-	useGetContactQuery,
-	useGetUserProfileQuery,
-	useSendMessageMutation
+	useGetChatItemQuery,
+	useGetChatContactQuery,
+	useGetChatUserProfileQuery,
+	useSendChatMessageMutation
 } from '../ChatApi';
 
 const StyledMessageRow = styled('div')(({ theme }) => ({
@@ -112,10 +112,10 @@ function Chat(props: ChatPropsType) {
 	const routeParams = useParams();
 	const contactId = routeParams.id;
 
-	const { data: user } = useGetUserProfileQuery();
-	const { data: chat } = useGetChatQuery(contactId);
-	const { data: selectedContact } = useGetContactQuery(contactId);
-	const [sendMessage] = useSendMessageMutation();
+	const { data: user } = useGetChatUserProfileQuery();
+	const { data: chat } = useGetChatItemQuery(contactId);
+	const { data: selectedContact } = useGetChatContactQuery(contactId);
+	const [sendMessage] = useSendChatMessageMutation();
 
 	useEffect(() => {
 		if (chat) {

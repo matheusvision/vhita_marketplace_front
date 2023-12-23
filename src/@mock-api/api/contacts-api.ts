@@ -38,13 +38,15 @@ mock.onGet('/contacts/:id').reply((config) => {
 		return [200, contact];
 	}
 
-	return [404, 'Requested task do not exist.'];
+	return [404, 'Requested contact do not exist.'];
 });
 
 mock.onPut('/contacts/:id').reply((config) => {
 	const { id } = config.params as Params;
 
-	_.assign(_.find(contactsDB, { id }), JSON.parse(config.data as string));
+	const newData = JSON.parse(config.data as string) as Contact;
+
+	_.assign(_.find(contactsDB, { id }), newData);
 
 	return [200, _.find(contactsDB, { id })];
 });

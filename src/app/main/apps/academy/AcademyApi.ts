@@ -10,15 +10,15 @@ const AcademyApi = apiService
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getCourses: build.query<GetCoursesApiResponse, GetCoursesApiArg>({
+			getAcademyCourseList: build.query<GetAcademyCourseListApiResponse, GetAcademyCourseListApiArg>({
 				query: () => ({ url: `/mock-api/academy/courses` }),
 				providesTags: ['academy_courses']
 			}),
-			getCourse: build.query<GetCourseApiResponse, GetCourseApiArg>({
+			getAcademyCourse: build.query<GetAcademyCourseApiResponse, GetAcademyCourseApiArg>({
 				query: (queryArg) => ({ url: `/mock-api/academy/courses/${queryArg.courseId}` }),
 				providesTags: ['academy_course']
 			}),
-			updateCourse: build.mutation<UpdateCourseApiResponse, UpdateCourseApiArg>({
+			updateAcademyCourse: build.mutation<UpdateAcademyCourseApiResponse, UpdateAcademyCourseApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/academy/courses/${queryArg.courseId}`,
 					method: 'PUT',
@@ -32,15 +32,15 @@ const AcademyApi = apiService
 						dispatch(showMessage({ message: 'Error Saving the course!' }));
 					}
 				},
-				invalidatesTags: ['academy_course']
+				invalidatesTags: ['academy_courses', 'academy_course']
 			}),
-			deleteCourse: build.mutation<DeleteCourseApiResponse, DeleteCourseApiArg>({
+			deleteAcademyCourse: build.mutation<DeleteAcademyCourseApiResponse, DeleteAcademyCourseApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/academy/courses/${queryArg.courseId}`,
 					method: 'DELETE'
 				})
 			}),
-			getCategories: build.query<GetCategoriesApiResponse, GetCategoriesApiArg>({
+			getAcademyCategories: build.query<GetAcademyCategoriesApiResponse, GetAcademyCategoriesApiArg>({
 				query: () => ({ url: `/mock-api/academy/categories` }),
 				providesTags: ['academy_categories']
 			})
@@ -49,26 +49,26 @@ const AcademyApi = apiService
 	});
 
 export { AcademyApi as exampleApi };
-export type GetCoursesApiResponse = /** status 200 OK */ Course[];
-export type GetCoursesApiArg = void;
-export type GetCourseApiResponse = /** status 200 OK */ Course;
-export type GetCourseApiArg = {
+export type GetAcademyCourseListApiResponse = /** status 200 OK */ Course[];
+export type GetAcademyCourseListApiArg = void;
+export type GetAcademyCourseApiResponse = /** status 200 OK */ Course;
+export type GetAcademyCourseApiArg = {
 	courseId: string;
 };
 
-export type UpdateCourseApiResponse = unknown;
-export type UpdateCourseApiArg = {
+export type UpdateAcademyCourseApiResponse = unknown;
+export type UpdateAcademyCourseApiArg = {
 	courseId: string;
 	data: PartialDeep<Course>;
 };
 
-export type DeleteCourseApiResponse = unknown;
-export type DeleteCourseApiArg = {
+export type DeleteAcademyCourseApiResponse = unknown;
+export type DeleteAcademyCourseApiArg = {
 	courseId: string;
 };
 
-export type GetCategoriesApiResponse = /** status 200 OK */ Category[];
-export type GetCategoriesApiArg = void;
+export type GetAcademyCategoriesApiResponse = /** status 200 OK */ Category[];
+export type GetAcademyCategoriesApiArg = void;
 export type Course = {
 	id: string;
 	title: string;
@@ -100,10 +100,9 @@ export type Category = {
 };
 
 export const {
-	useGetCoursesQuery,
-	useGetCourseQuery,
-	useUpdateCourseMutation,
-	useDeleteCourseMutation,
-	useGetCategoriesQuery,
-	useLazyGetCoursesQuery
+	useGetAcademyCourseListQuery,
+	useGetAcademyCourseQuery,
+	useUpdateAcademyCourseMutation,
+	useDeleteAcademyCourseMutation,
+	useGetAcademyCategoriesQuery
 } = AcademyApi;

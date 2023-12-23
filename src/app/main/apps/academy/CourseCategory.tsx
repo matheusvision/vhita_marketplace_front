@@ -1,7 +1,7 @@
 import { darken, lighten } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import _ from '@lodash';
-import { Course, useGetCategoriesQuery } from './AcademyApi';
+import { Course, useGetAcademyCategoriesQuery } from './AcademyApi';
 
 type CourseCategoryProps = {
 	slug: Course['slug'];
@@ -13,7 +13,7 @@ type CourseCategoryProps = {
 function CourseCategory(props: CourseCategoryProps) {
 	const { slug } = props;
 
-	const { data: categories } = useGetCategoriesQuery();
+	const { data: categories } = useGetAcademyCategoriesQuery();
 
 	const category = _.find(categories, { slug });
 

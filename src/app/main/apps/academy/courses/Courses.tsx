@@ -13,9 +13,8 @@ import { FormControlLabel } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { Theme } from '@mui/material/styles';
-import { useLocation } from 'react-router-dom';
 import CourseCard from './CourseCard';
-import { useLazyGetCoursesQuery, Course, useGetCategoriesQuery, useGetCoursesQuery } from '../AcademyApi';
+import { Course, useGetAcademyCategoriesQuery, useGetAcademyCourseListQuery } from '../AcademyApi';
 
 const container = {
 	show: {
@@ -40,11 +39,8 @@ const item = {
  * The Courses page.
  */
 function Courses() {
-	const { data: courses } = useGetCoursesQuery();
-	const { data: categories } = useGetCategoriesQuery();
-	const [updateCourses] = useLazyGetCoursesQuery();
-	const location = useLocation();
-	const { pathname } = location;
+	const { data: courses } = useGetAcademyCourseListQuery();
+	const { data: categories } = useGetAcademyCategoriesQuery();
 
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
@@ -52,10 +48,6 @@ function Courses() {
 	const [searchText, setSearchText] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
 	const [hideCompleted, setHideCompleted] = useState(false);
-
-	useEffect(() => {
-		updateCourses();
-	}, [pathname]);
 
 	useEffect(() => {
 		function getFilteredArray() {

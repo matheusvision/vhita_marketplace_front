@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import ContactsHeader from './ContactsHeader';
 import ContactsList from './ContactsList';
-import { useGetContactsQuery, useGetCountriesQuery, useGetTagsQuery } from './ContactsApi';
+import { useGetContactListQuery, useGetContactCountryListQuery, useGetContactTagListQuery } from './ContactsApi';
 import ContactsSidebarContent from './ContactsSidebarContent';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
@@ -22,9 +22,9 @@ function ContactsApp() {
 	const routeParams = useParams();
 	const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
-	useGetContactsQuery();
-	useGetCountriesQuery();
-	useGetTagsQuery();
+	useGetContactListQuery();
+	useGetContactCountryListQuery();
+	useGetContactTagListQuery();
 
 	useEffect(() => {
 		setRightSidebarOpen(Boolean(routeParams.id));

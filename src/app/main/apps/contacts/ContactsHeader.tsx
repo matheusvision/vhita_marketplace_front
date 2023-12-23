@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { ChangeEvent } from 'react';
 import { selectSearchText, setSearchText } from './store/searchTextSlice';
-import { selectFilteredContacts } from './ContactsApi';
+import { selectFilteredContactList } from './ContactsApi';
 
 /**
  * The contacts header.
@@ -16,7 +16,7 @@ import { selectFilteredContacts } from './ContactsApi';
 function ContactsHeader() {
 	const dispatch = useAppDispatch();
 	const searchText = useAppSelector(selectSearchText);
-	const filteredData = useAppSelector(selectFilteredContacts);
+	const filteredData = useAppSelector(selectFilteredContactList);
 
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1">

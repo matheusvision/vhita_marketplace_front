@@ -7,7 +7,7 @@ import Box from '@mui/system/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import clsx from 'clsx';
-import { useGetCountriesQuery } from '../../ContactsApi';
+import { useGetContactCountryListQuery } from '../../ContactsApi';
 
 type CountryCodeSelectorProps = {
 	value: string;
@@ -20,7 +20,7 @@ type CountryCodeSelectorProps = {
  */
 const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className } = props;
-	const { data: countries } = useGetCountriesQuery();
+	const { data: countries } = useGetContactCountryListQuery();
 	const country = _.find(countries, { iso: value });
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);

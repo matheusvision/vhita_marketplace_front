@@ -19,7 +19,7 @@ import Button from '@mui/material/Button';
 import { useAppDispatch } from 'app/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Label, useDeleteLabelMutation, useUpdateLabelMutation } from '../../CalendarApi';
+import { Label, useDeleteCalendarLabelMutation, useUpdateCalendarLabelMutation } from '../../CalendarApi';
 
 /**
  * Form Validation Schema
@@ -40,8 +40,8 @@ type NewLabelFormProps = {
 function NewLabelForm(props: NewLabelFormProps) {
 	const { label, isLast } = props;
 	const dispatch = useAppDispatch();
-	const [deleteLabel] = useDeleteLabelMutation();
-	const [updateLabel] = useUpdateLabelMutation();
+	const [deleteLabel] = useDeleteCalendarLabelMutation();
+	const [updateLabel] = useUpdateCalendarLabelMutation();
 
 	const { control, formState, reset, watch } = useForm({
 		mode: 'onChange',

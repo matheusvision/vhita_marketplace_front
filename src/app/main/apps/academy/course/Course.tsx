@@ -19,7 +19,7 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import CourseInfo from '../CourseInfo';
 import CourseProgress from '../CourseProgress';
 import Error404Page from '../../../404/Error404Page';
-import { useGetCourseQuery, useUpdateCourseMutation } from '../AcademyApi';
+import { useGetAcademyCourseQuery, useUpdateAcademyCourseMutation } from '../AcademyApi';
 
 /**
  * The Course page.
@@ -31,8 +31,8 @@ function Course() {
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 	const routeParams = useParams();
 	const { courseId } = routeParams;
-	const { data: course, isLoading } = useGetCourseQuery({ courseId });
-	const [updateCourse] = useUpdateCourseMutation();
+	const { data: course, isLoading } = useGetAcademyCourseQuery({ courseId });
+	const [updateCourse] = useUpdateAcademyCourseMutation();
 
 	useEffect(() => {
 		/**

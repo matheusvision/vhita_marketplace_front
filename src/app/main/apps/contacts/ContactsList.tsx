@@ -4,13 +4,13 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import { useAppSelector } from 'app/store';
 import ContactListItem from './ContactListItem';
-import { selectGroupedFilteredContacts, selectFilteredContacts } from './ContactsApi';
+import { selectGroupedFilteredContacts, selectFilteredContactList } from './ContactsApi';
 
 /**
  * The contacts list.
  */
 function ContactsList() {
-	const filteredData = useAppSelector(selectFilteredContacts);
+	const filteredData = useAppSelector(selectFilteredContactList);
 	const groupedFilteredContacts = useAppSelector(selectGroupedFilteredContacts);
 
 	if (!filteredData) {

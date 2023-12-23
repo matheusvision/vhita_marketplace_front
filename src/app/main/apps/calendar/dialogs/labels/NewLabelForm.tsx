@@ -12,7 +12,7 @@ import { PartialDeep } from 'type-fest';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import LabelModel from '../../models/LabelModel';
-import { Label, useCreateLabelMutation } from '../../CalendarApi';
+import { Label, useCreateCalendarLabelMutation } from '../../CalendarApi';
 
 const defaultValues = LabelModel();
 
@@ -28,7 +28,7 @@ const schema = z.object({
  * The new label form.
  */
 function NewLabelForm() {
-	const [createLabel] = useCreateLabelMutation();
+	const [createLabel] = useCreateCalendarLabelMutation();
 
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',

@@ -16,14 +16,16 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import history from '@history';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { showMessage } from 'app/store/fuse/messageSlice';
+import { useDispatch } from 'react-redux';
 import ContactEmailSelector from './email-selector/ContactEmailSelector';
 import PhoneNumberSelector from './phone-number-selector/PhoneNumberSelector';
 import {
-	useCreateContactMutation,
-	useDeleteContactMutation,
-	useGetContactQuery,
-	useGetTagsQuery,
-	useUpdateContactMutation,
+	useCreateContactItemMutation,
+	useDeleteContactItemMutation,
+	useGetContactItemQuery,
+	useGetContactTagListQuery,
+	useUpdateContactItemMutation,
 	Contact,
 	Tag
 } from '../ContactsApi';
@@ -71,15 +73,14 @@ const schema = z.object({
 function ContactForm() {
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
-	const { data: contact } = useGetContactQuery({
-		contactId
-	});
+	const { data: contact, isError } = useGetContactItemQuery(contactId);
 
-	const [createContact] = useCreateContactMutation();
-	const [updateContact] = useUpdateContactMutation();
-	const [deleteContact] = useDeleteContactMutation();
-	const { data: tags } = useGetTagsQuery();
+	const [createContact] = useCreateContactItemMutation();
+	const [updateContact] = useUpdateContactItemMutation();
+	const [deleteContact] = useDeleteContactItemMutation();
+	const { data: tags } = useGetContactTagListQuery();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
 		mode: 'all',
@@ -109,7 +110,7 @@ function ContactForm() {
 					navigate(`/apps/contacts/${action.id}`);
 				});
 		} else {
-			updateContact({ contactId, contact: data });
+			updateContact({ id: contact.id, ...data });
 		}
 	}
 
@@ -117,13 +118,22 @@ function ContactForm() {
 		if (!contact) {
 			return;
 		}
-		deleteContact({ contactId: contact.id }).then(() => {
+		deleteContact(contact.id).then(() => {
 			navigate('/apps/contacts');
 		});
 	}
 
 	const background = watch('background');
 	const name = watch('name');
+
+	if (isError && contactId !== 'new') {
+		setTimeout(() => {
+			navigate('/apps/contacts');
+			dispatch(showMessage({ message: 'NOT FOUND' }));
+		}, 0);
+
+		return null;
+	}
 
 	if (_.isEmpty(form)) {
 		return <FuseLoading className="min-h-screen" />;
@@ -275,7 +285,7 @@ function ContactForm() {
 							className="mt-32"
 							options={tags || []}
 							disableCloseOnSelect
-							getOptionLabel={(option) => option?.title as string}
+							getOptionLabel={(option) => option?.title}
 							renderOption={(_props, option, { selected }) => (
 								<li {..._props}>
 									<Checkbox
@@ -407,7 +417,7 @@ function ContactForm() {
 					name="birthday"
 					render={({ field: { value, onChange } }) => (
 						<DateTimePicker
-							value={new Date(value as string)}
+							value={new Date(value)}
 							onChange={(val) => {
 								onChange(val?.toString());
 							}}
