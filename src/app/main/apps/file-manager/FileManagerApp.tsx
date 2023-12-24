@@ -1,30 +1,52 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppSelector } from 'app/store';
 import FusePageCarded from '@fuse/core/FusePageCarded';
-import { useParams } from 'react-router-dom';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import { useParams } from 'react-router-dom';
+import FuseLoading from '@fuse/core/FuseLoading';
+import * as React from 'react';
 import DetailSidebarContent from './DetailSidebarContent';
-import { getItems, selectSelectedItemId } from './store/itemsSlice';
 import FileManagerHeader from './FileManagerHeader';
 import FileManagerList from './FileManagerList';
+import { selectFiles, selectFolders, selectPath, useGetFileManagerFolderQuery } from './FileManagerApi';
+import { selectSelectedItemId } from './store/selectedItemIdSlice';
 
 /**
  * The file manager app.
  */
 function FileManagerApp() {
-	const dispatch = useAppDispatch();
-	const selectedItem = useAppSelector(selectSelectedItemId);
 	const routeParams = useParams();
+
+	const { folderId } = routeParams;
+
+	const selectedItem = useAppSelector(selectSelectedItemId);
+
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	useEffect(() => {
-		dispatch(getItems(routeParams.folderId));
-	}, [dispatch, routeParams.folderId]);
+	const { isLoading } = useGetFileManagerFolderQuery(folderId);
+
+	const folders = useAppSelector(selectFolders(folderId));
+	const files = useAppSelector(selectFiles(folderId));
+	const path = useAppSelector(selectPath(folderId));
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
 
 	return (
 		<FusePageCarded
-			header={<FileManagerHeader />}
-			content={<FileManagerList />}
+			header={
+				<FileManagerHeader
+					path={path}
+					folders={folders}
+					files={files}
+				/>
+			}
+			content={
+				<FileManagerList
+					folders={folders}
+					files={files}
+				/>
+			}
 			rightSidebarOpen={Boolean(selectedItem)}
 			rightSidebarContent={<DetailSidebarContent />}
 			rightSidebarWidth={400}

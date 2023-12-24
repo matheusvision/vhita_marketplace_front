@@ -6,16 +6,30 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { selectSelectedItem, setSelectedItem } from './store/itemsSlice';
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import ItemIcon from './ItemIcon';
+import { resetSelectedItemId } from './store/selectedItemIdSlice';
+import { selectSelectedItem } from './FileManagerApi';
 
 /**
  * The detail sidebar content.
  */
 function DetailSidebarContent() {
+	const location = useLocation();
+	const { pathname } = location;
+	const routeParams = useParams();
+	const { folderId } = routeParams;
+
 	const dispatch = useAppDispatch();
 
-	const item = useAppSelector(selectSelectedItem);
+	const item = useAppSelector(selectSelectedItem(folderId));
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetSelectedItemId());
+		};
+	}, [pathname]);
 
 	if (!item) {
 		return null;
@@ -30,7 +44,7 @@ function DetailSidebarContent() {
 			<div className="flex items-center justify-end w-full">
 				<IconButton
 					size="large"
-					onClick={() => dispatch(setSelectedItem(null))}
+					onClick={() => dispatch(resetSelectedItemId())}
 				>
 					<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
 				</IconButton>

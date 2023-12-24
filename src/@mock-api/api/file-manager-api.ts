@@ -1,12 +1,12 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { FileManagerItemType, FileManagerItemsType } from '../../app/main/apps/file-manager/types/FileManagerItemType';
 import { Params } from '../ExtendedMockAdapter';
+import { FileManagerItem } from '../../app/main/apps/file-manager/FileManagerApi';
 
-const itemsApi = mockApi.components.examples.file_manager_items.value as FileManagerItemsType;
+const itemsApi = mockApi.components.examples.file_manager_items.value as FileManagerItem[];
 
-mock.onGet('/api/file-manager/:folderId').reply((config) => {
+mock.onGet('/file-manager/:folderId').reply((config) => {
 	const { folderId: _folderId } = config.params as Params;
 
 	let items = _.cloneDeep(itemsApi);
@@ -18,11 +18,14 @@ mock.onGet('/api/file-manager/:folderId').reply((config) => {
 	const pathItems = _.cloneDeep(itemsApi);
 	const path = [];
 
-	let currentFolder: FileManagerItemType | null = null;
+	let currentFolder: FileManagerItem | null = null;
 
 	if (folderId) {
-		currentFolder = pathItems.find((item) => item.id === folderId);
-		path.push(currentFolder);
+		currentFolder = _.find(pathItems, { id: folderId });
+
+		if (currentFolder) {
+			path.push(currentFolder);
+		}
 	}
 
 	while (currentFolder?.folderId) {

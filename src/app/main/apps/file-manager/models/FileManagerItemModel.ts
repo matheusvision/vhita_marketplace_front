@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { FileManagerItemType } from '../types/FileManagerItemType';
+import { FileManagerItem } from '../FileManagerApi';
 
 /**
  * FileManager Item Model
  */
-const FileManagerItemModel = (data: PartialDeep<FileManagerItemType>) =>
+const FileManagerItemModel = (data: PartialDeep<FileManagerItem>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		folderId: '',
