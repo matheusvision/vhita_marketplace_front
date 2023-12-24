@@ -82,7 +82,7 @@ function Product() {
 	/**
 	 * Show Message if the requested products is not exists
 	 */
-	if (isError) {
+	if (isError && productId !== 'new') {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}
