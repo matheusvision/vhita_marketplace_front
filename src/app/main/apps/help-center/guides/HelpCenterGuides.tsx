@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import { useGetGuideCategoriesQuery } from '../HelpCenterApi';
+import { useGetHelpCenterGuideCategoriesQuery } from '../HelpCenterApi';
 
 /**
  * The help center guides.
  */
 function HelpCenterGuides() {
-	useGetGuideCategoriesQuery();
+	useGetHelpCenterGuideCategoriesQuery();
 
 	return <Outlet />;
 }

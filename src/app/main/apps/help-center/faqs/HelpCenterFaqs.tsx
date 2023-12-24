@@ -4,15 +4,15 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import FaqList from './FaqList';
-import { useGetFaqCategoriesQuery, useGetFaqsQuery, selectGroupedFaqs } from '../HelpCenterApi';
+import { useGetHelpCenterFaqCategoriesQuery, useGetHelpCenterFaqsQuery, selectGroupedFaqs } from '../HelpCenterApi';
 
 /**
  * The help center faqs page.
  */
 function HelpCenterFaqs() {
 	const navigate = useNavigate();
-	useGetFaqsQuery();
-	useGetFaqCategoriesQuery();
+	useGetHelpCenterFaqsQuery();
+	useGetHelpCenterFaqCategoriesQuery();
 	const groupedFaqs = useAppSelector(selectGroupedFaqs);
 
 	const handleGoBack = () => {

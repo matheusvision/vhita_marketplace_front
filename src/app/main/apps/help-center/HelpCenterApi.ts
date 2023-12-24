@@ -20,44 +20,56 @@ const HelpCenterApi = apiService
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getGuides: build.query<GetGuidesApiResponse, GetGuidesApiArg>({
+			getHelpCenterGuides: build.query<GetHelpCenterGuidesApiResponse, GetHelpCenterGuidesApiArg>({
 				query: () => ({ url: `/mock-api/help-center/guides` }),
 				providesTags: ['help_center_guides']
 			}),
-			getGuidesByCategorySlug: build.query<GetGuidesByCategorySlugApiResponse, GetGuidesByCategorySlugApiArg>({
+			getHelpCenterGuidesByCategorySlug: build.query<
+				GetHelpCenterGuidesByCategorySlugApiResponse,
+				GetHelpCenterGuidesByCategorySlugApiArg
+			>({
 				query: (queryArg) => ({
 					url: `/mock-api/help-center/guides/${queryArg.categorySlug}`
 				}),
 				providesTags: ['help_center_guides_by_category']
 			}),
-			getGuideByCategoryGuideSlug: build.query<
-				GetGuideByCategoryGuideSlugApiResponse,
-				GetGuideByCategoryGuideSlugApiArg
+			getHelpCenterGuideByCategoryGuideSlug: build.query<
+				GetHelpCenterGuideByCategoryGuideSlugApiResponse,
+				GetHelpCenterGuideByCategoryGuideSlugApiArg
 			>({
 				query: (queryArg) => ({
 					url: `/mock-api/help-center/guides/${queryArg.categorySlug}/${queryArg.guideSlug}`
 				}),
 				providesTags: ['help_center_guide']
 			}),
-			getGuideCategories: build.query<GetGuideCategoriesApiResponse, GetGuideCategoriesApiArg>({
+			getHelpCenterGuideCategories: build.query<
+				GetHelpCenterGuideCategoriesApiResponse,
+				GetHelpCenterGuideCategoriesApiArg
+			>({
 				query: () => ({ url: `/mock-api/help-center/guides/categories` }),
 				providesTags: ['help_center_guide_categories']
 			}),
-			getFaqs: build.query<GetFaqsApiResponse, GetFaqsApiArg>({
+			getHelpCenterFaqs: build.query<GetHelpCenterFaqsApiResponse, GetHelpCenterFaqsApiArg>({
 				query: () => ({ url: `/mock-api/help-center/faqs` }),
 				providesTags: ['help_center_faqs']
 			}),
-			getFaqsByCategorySlug: build.query<GetFaqsByCategorySlugApiResponse, GetFaqsByCategorySlugApiArg>({
+			getHelpCenterFaqsByCategorySlug: build.query<
+				GetHelpCenterFaqsByCategorySlugApiResponse,
+				GetHelpCenterFaqsByCategorySlugApiArg
+			>({
 				query: (queryArg) => ({
 					url: `/mock-api/help-center/faqs/${queryArg.categorySlug}`
 				}),
 				providesTags: ['help_center_faqs_by_category']
 			}),
-			getMostlyFaqs: build.query<GetMostlyFaqsApiResponse, GetMostlyFaqsApiArg>({
+			getHelpCenterMostlyFaqs: build.query<GetMostlyFaqsApiResponse, GetMostlyFaqsApiArg>({
 				query: () => ({ url: `/mock-api/help-center/faqs/most-asked` }),
 				providesTags: ['help_center_most_asked_faqs']
 			}),
-			getFaqCategories: build.query<GetFaqCategoriesApiResponse, GetFaqCategoriesApiArg>({
+			getHelpCenterFaqCategories: build.query<
+				GetHelpCenterFaqCategoriesApiResponse,
+				GetHelpCenterFaqCategoriesApiArg
+			>({
 				query: () => ({ url: `/mock-api/help-center/faqs/categories` }),
 				providesTags: ['help_center_faq_categories']
 			})
@@ -65,33 +77,42 @@ const HelpCenterApi = apiService
 		overrideExisting: false
 	});
 export { HelpCenterApi };
-export type GetGuidesApiResponse = /** status 200 OK */ Guide[];
-export type GetGuidesApiArg = void;
-export type GetGuidesByCategorySlugApiResponse = /** status 200 OK */ Guide[];
-export type GetGuidesByCategorySlugApiArg = {
+
+export type GetHelpCenterGuidesApiResponse = /** status 200 OK */ Guide[];
+export type GetHelpCenterGuidesApiArg = void;
+
+export type GetHelpCenterGuidesByCategorySlugApiResponse = /** status 200 OK */ Guide[];
+export type GetHelpCenterGuidesByCategorySlugApiArg = {
 	/** category slug */
 	categorySlug: string;
 };
-export type GetGuideByCategoryGuideSlugApiResponse = /** status 200 OK */ Guide;
-export type GetGuideByCategoryGuideSlugApiArg = {
+
+export type GetHelpCenterGuideByCategoryGuideSlugApiResponse = /** status 200 OK */ Guide;
+export type GetHelpCenterGuideByCategoryGuideSlugApiArg = {
 	/** category slug */
 	categorySlug: string;
 	/** guide slug */
 	guideSlug: string;
 };
-export type GetGuideCategoriesApiResponse = /** status 200 OK */ GuideCategory[];
-export type GetGuideCategoriesApiArg = void;
-export type GetFaqsApiResponse = /** status 200 OK */ Faq[];
-export type GetFaqsApiArg = void;
-export type GetFaqsByCategorySlugApiResponse = /** status 200 OK */ Faq[];
-export type GetFaqsByCategorySlugApiArg = {
+
+export type GetHelpCenterGuideCategoriesApiResponse = /** status 200 OK */ GuideCategory[];
+export type GetHelpCenterGuideCategoriesApiArg = void;
+
+export type GetHelpCenterFaqsApiResponse = /** status 200 OK */ Faq[];
+export type GetHelpCenterFaqsApiArg = void;
+
+export type GetHelpCenterFaqsByCategorySlugApiResponse = /** status 200 OK */ Faq[];
+export type GetHelpCenterFaqsByCategorySlugApiArg = {
 	/** category slug */
 	categorySlug: string;
 };
+
 export type GetMostlyFaqsApiResponse = /** status 200 OK */ Faq[];
 export type GetMostlyFaqsApiArg = void;
-export type GetFaqCategoriesApiResponse = /** status 200 OK */ FaqCategory[];
-export type GetFaqCategoriesApiArg = void;
+
+export type GetHelpCenterFaqCategoriesApiResponse = /** status 200 OK */ FaqCategory[];
+export type GetHelpCenterFaqCategoriesApiArg = void;
+
 export type Guide = {
 	id: string;
 	categoryId: string;
@@ -100,38 +121,42 @@ export type Guide = {
 	subtitle: string;
 	content: string;
 };
+
 export type GuideCategory = {
 	id: string;
 	slug: string;
 	title: string;
 };
+
 export type Faq = {
 	id: string;
 	categoryId: string;
 	question: string;
 	answer: string;
 };
+
 export type FaqCategory = {
 	id: string;
 	slug: string;
 	title: string;
 };
+
 export const {
-	useGetGuidesQuery,
-	useGetGuidesByCategorySlugQuery,
-	useGetGuideByCategoryGuideSlugQuery,
-	useGetGuideCategoriesQuery,
-	useGetFaqsQuery,
-	useGetFaqsByCategorySlugQuery,
-	useGetMostlyFaqsQuery,
-	useGetFaqCategoriesQuery
+	useGetHelpCenterGuidesQuery,
+	useGetHelpCenterGuidesByCategorySlugQuery,
+	useGetHelpCenterGuideByCategoryGuideSlugQuery,
+	useGetHelpCenterGuideCategoriesQuery,
+	useGetHelpCenterFaqsQuery,
+	useGetHelpCenterFaqsByCategorySlugQuery,
+	useGetHelpCenterMostlyFaqsQuery,
+	useGetHelpCenterFaqCategoriesQuery
 } = HelpCenterApi;
 
 export const selectGroupedFaqs = createSelector(
 	// Input selectors
 	[
-		(state: RootStateType) => HelpCenterApi.endpoints.getFaqs.select()(state)?.data || [],
-		(state: RootStateType) => HelpCenterApi.endpoints.getFaqCategories.select()(state)?.data || []
+		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterFaqs.select()(state)?.data || [],
+		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterFaqCategories.select()(state)?.data || []
 	],
 
 	// Transform function
@@ -145,8 +170,8 @@ export const selectGroupedFaqs = createSelector(
 
 export const selectGroupedGuides = createSelector(
 	[
-		(state: RootStateType) => HelpCenterApi.endpoints.getGuides.select()(state)?.data || [],
-		(state: RootStateType) => HelpCenterApi.endpoints.getGuideCategories.select()(state)?.data || []
+		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuides.select()(state)?.data || [],
+		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuideCategories.select()(state)?.data || []
 	],
 	(guides, categories) => {
 		return categories.map((category) => ({
@@ -158,7 +183,7 @@ export const selectGroupedGuides = createSelector(
 
 export const selectGuideCategoryBySlug = (slug: GuideCategory['slug']) =>
 	createSelector(
-		[(state: RootStateType) => HelpCenterApi.endpoints.getGuideCategories.select()(state)?.data || []],
+		[(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuideCategories.select()(state)?.data || []],
 		(categories) => {
 			return _.find(categories, { slug });
 		}

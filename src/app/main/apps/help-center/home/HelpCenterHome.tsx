@@ -10,14 +10,14 @@ import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FaqList from '../faqs/FaqList';
-import { useGetMostlyFaqsQuery } from '../HelpCenterApi';
+import { useGetHelpCenterMostlyFaqsQuery } from '../HelpCenterApi';
 
 /**
  * The help center home.
  */
 function HelpCenterHome() {
 	const mainThemeDark = useAppSelector(selectMainThemeDark);
-	const { data: faqsMost } = useGetMostlyFaqsQuery();
+	const { data: faqsMost } = useGetHelpCenterMostlyFaqsQuery();
 
 	return (
 		<div className="flex flex-col flex-auto min-w-0">

@@ -4,14 +4,14 @@ import Typography from '@mui/material/Typography';
 import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import GuideListMenu from './GuideListMenu';
-import { useGetGuidesQuery, selectGroupedGuides } from '../HelpCenterApi';
+import { useGetHelpCenterGuidesQuery, selectGroupedGuides } from '../HelpCenterApi';
 
 /**
  * The guide categories.
  */
 function GuideCategories() {
 	const navigate = useNavigate();
-	useGetGuidesQuery();
+	useGetHelpCenterGuidesQuery();
 	const groupedGuides = useAppSelector(selectGroupedGuides);
 
 	const handleGoBack = () => {
