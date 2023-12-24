@@ -3,18 +3,25 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useFormContext } from 'react-hook-form';
-import { useAppDispatch } from 'app/store';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { removeProduct, saveProduct } from '../store/productSlice';
-import { ProductType } from '../types/ProductType';
+import {
+	EcommerceProduct,
+	useDeleteECommerceProductMutation,
+	useUpdateECommerceProductMutation
+} from '../ECommerceApi';
 
 /**
  * The product header.
  */
 function ProductHeader() {
-	const dispatch = useAppDispatch();
+	const routeParams = useParams();
+	const { productId } = routeParams;
+
+	const [saveProduct] = useUpdateECommerceProductMutation();
+	const [removeProduct] = useDeleteECommerceProductMutation();
+
 	const methods = useFormContext();
 	const { formState, watch, getValues } = methods;
 	const { isValid, dirtyFields } = formState;
@@ -22,16 +29,15 @@ function ProductHeader() {
 	const theme = useTheme();
 	const navigate = useNavigate();
 
-	const { name, images, featuredImageId } = watch() as ProductType;
+	const { name, images, featuredImageId } = watch() as EcommerceProduct;
 
 	function handleSaveProduct() {
-		dispatch(saveProduct(getValues() as ProductType));
+		saveProduct(getValues() as EcommerceProduct);
 	}
 
 	function handleRemoveProduct() {
-		dispatch(removeProduct()).then(() => {
-			navigate('/apps/e-commerce/products');
-		});
+		removeProduct(productId);
+		navigate('/apps/e-commerce/products');
 	}
 
 	return (

@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { OrderType } from '../../types/OrderType';
+import { EcommerceOrder } from '../../ECommerceApi';
 
 /**
  * The order model.
  */
-const OrderModel = (data: PartialDeep<OrderType>): OrderType =>
+const OrderModel = (data: PartialDeep<EcommerceOrder>): EcommerceOrder =>
 	_.defaults(data || {}, {
 		id: _.uniqueId('order-'),
 		reference: '',

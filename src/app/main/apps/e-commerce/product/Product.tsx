@@ -1,13 +1,11 @@
 import FuseLoading from '@fuse/core/FuseLoading';
 import FusePageCarded from '@fuse/core/FusePageCarded';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import Button from '@mui/material/Button';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { SyntheticEvent, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { Link, useParams } from 'react-router-dom';
 import _ from '@lodash';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -15,13 +13,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import * as React from 'react';
-import { getProduct, newProduct, resetProduct, selectProduct } from '../store/productSlice';
 import ProductHeader from './ProductHeader';
 import BasicInfoTab from './tabs/BasicInfoTab';
 import InventoryTab from './tabs/InventoryTab';
 import PricingTab from './tabs/PricingTab';
 import ProductImagesTab from './tabs/ProductImagesTab';
 import ShippingTab from './tabs/ShippingTab';
+import { useGetECommerceProductQuery } from '../ECommerceApi';
+import ProductModel from './models/ProductModel';
 
 /**
  * Form Validation Schema
@@ -37,68 +36,37 @@ const schema = yup.object().shape({
  * The product page.
  */
 function Product() {
-	const dispatch = useAppDispatch();
-	const { data: product, status } = useAppSelector(selectProduct);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();
+
+	const { productId } = routeParams;
+
+	const { data: product, isLoading, isError } = useGetECommerceProductQuery(productId);
+
 	const [tabValue, setTabValue] = useState(0);
-	const [noProduct, setNoProduct] = useState(false);
+
 	const methods = useForm({
 		mode: 'onChange',
 		defaultValues: {},
 		resolver: yupResolver(schema)
 	});
+
 	const { reset, watch } = methods;
+
 	const form = watch();
 
-	useDeepCompareEffect(() => {
-		function updateProductState() {
-			const { productId } = routeParams;
-
-			if (productId === 'new') {
-				/**
-				 * Create New Product data
-				 */
-				dispatch(newProduct());
-			} else {
-				/**
-				 * Get Product data
-				 */
-				dispatch(getProduct(productId)).then((action) => {
-					/**
-					 * If the requested product is not exist show message
-					 */
-					if (!action.payload) {
-						setNoProduct(true);
-					}
-				});
-			}
+	useEffect(() => {
+		if (productId === 'new') {
+			reset(ProductModel({}));
 		}
-
-		updateProductState();
-	}, [dispatch, routeParams]);
+	}, [productId, reset]);
 
 	useEffect(() => {
-		if (!product) {
-			return;
+		if (product) {
+			reset({ ...product });
 		}
-
-		/**
-		 * Reset the form on product state changes
-		 */
-		reset(product);
 	}, [product, reset]);
-
-	useEffect(() => {
-		return () => {
-			/**
-			 * Reset Product on component unload
-			 */
-			dispatch(resetProduct());
-			setNoProduct(false);
-		};
-	}, [dispatch]);
 
 	/**
 	 * Tab Change
@@ -107,13 +75,14 @@ function Product() {
 		setTabValue(value);
 	}
 
-	if (status === 'loading') {
+	if (isLoading) {
 		return <FuseLoading />;
 	}
+
 	/**
 	 * Show Message if the requested products is not exists
 	 */
-	if (noProduct) {
+	if (isError) {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}

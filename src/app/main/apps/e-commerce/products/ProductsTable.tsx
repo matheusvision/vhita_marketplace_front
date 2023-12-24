@@ -9,17 +9,16 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { ChangeEvent, MouseEvent, useState } from 'react';
+import { useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Many } from 'lodash';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import * as React from 'react';
-import { getProducts, selectProducts, selectProductsSearchText } from '../store/productsSlice';
 import ProductsTableHead from './ProductsTableHead';
-import { ProductType } from '../types/ProductType';
+import { EcommerceProduct, selectFilteredProductList, useGetECommerceProductListQuery } from '../ECommerceApi';
 
 type ProductsTableProps = WithRouterProps & {
 	navigate: (path: string) => void;
@@ -30,13 +29,13 @@ type ProductsTableProps = WithRouterProps & {
  */
 function ProductsTable(props: ProductsTableProps) {
 	const { navigate } = props;
-	const dispatch = useAppDispatch();
-	const products = useAppSelector(selectProducts);
-	const searchText = useAppSelector(selectProductsSearchText);
 
-	const [loading, setLoading] = useState(true);
-	const [selected, setSelected] = useState<string[]>([]);
-	const [data, setData] = useState(products);
+	const { isLoading } = useGetECommerceProductListQuery();
+
+	const data = useAppSelector(selectFilteredProductList);
+
+	const [selected, setSelected] = useState<EcommerceProduct['id'][]>([]);
+
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [tableOrder, setTableOrder] = useState<{
@@ -46,19 +45,6 @@ function ProductsTable(props: ProductsTableProps) {
 		direction: 'asc',
 		id: ''
 	});
-
-	useEffect(() => {
-		dispatch(getProducts()).then(() => setLoading(false));
-	}, [dispatch]);
-
-	useEffect(() => {
-		if (searchText.length !== 0) {
-			setData(_.filter(products, (item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
-			setPage(0);
-		} else {
-			setData(products);
-		}
-	}, [products, searchText]);
 
 	function handleRequestSort(event: MouseEvent<HTMLSpanElement>, property: string) {
 		const newOrder: {
@@ -86,7 +72,7 @@ function ProductsTable(props: ProductsTableProps) {
 		setSelected([]);
 	}
 
-	function handleClick(item: ProductType) {
+	function handleClick(item: EcommerceProduct) {
 		navigate(`/apps/e-commerce/products/${item.id}/${item.handle}`);
 	}
 
@@ -115,7 +101,7 @@ function ProductsTable(props: ProductsTableProps) {
 		setRowsPerPage(+event.target.value);
 	}
 
-	if (loading) {
+	if (isLoading) {
 		return (
 			<div className="flex items-center justify-center h-full">
 				<FuseLoading />
@@ -123,7 +109,7 @@ function ProductsTable(props: ProductsTableProps) {
 		);
 	}
 
-	if (data.length === 0) {
+	if (data?.length === 0) {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}
@@ -161,7 +147,7 @@ function ProductsTable(props: ProductsTableProps) {
 						{_.orderBy(
 							data,
 							[
-								(o) => {
+								(o: EcommerceProduct) => {
 									switch (o.id) {
 										case 'categories': {
 											return o.categories[0];
@@ -175,7 +161,7 @@ function ProductsTable(props: ProductsTableProps) {
 							[tableOrder.direction] as Many<boolean | 'asc' | 'desc'>
 						)
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((n) => {
+							.map((n: EcommerceProduct) => {
 								const isSelected = selected.indexOf(n.id) !== -1;
 								return (
 									<TableRow

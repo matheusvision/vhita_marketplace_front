@@ -1,17 +1,16 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import products from './productsSlice';
-import product from './productSlice';
-import orders from './ordersSlice';
-import order from './orderSlice';
+import { RootStateType } from 'app/store/types';
+import searchText, { searchTextSliceType } from './searchTextSlice';
+import { ECommerceApiType } from '../ECommerceApi';
 
 /**
  * The E-Commerce store reducer.
  */
+
 const reducer = combineReducers({
-	products,
-	product,
-	orders,
-	order
+	searchText
 });
+
+export type AppRootStateType = RootStateType<[searchTextSliceType]> & ECommerceApiType;
 
 export default reducer;

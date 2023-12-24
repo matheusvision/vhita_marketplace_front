@@ -6,15 +6,21 @@ import { motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ChangeEvent } from 'react';
-import { selectProductsSearchText, setProductsSearchText } from '../store/productsSlice';
+import { ChangeEvent, useEffect } from 'react';
+import { resetSearchText, selectSearchText, setSearchText } from '../store/searchTextSlice';
 
 /**
  * The products header.
  */
 function ProductsHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectProductsSearchText);
+	const searchText = useAppSelector(selectSearchText);
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetSearchText());
+		};
+	}, []);
 
 	return (
 		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 flex-1 w-full items-center justify-between py-32 px-24 md:px-32">
@@ -42,9 +48,7 @@ function ProductsHeader() {
 						inputProps={{
 							'aria-label': 'Search'
 						}}
-						onChange={(ev: ChangeEvent<HTMLInputElement>) =>
-							dispatch(setProductsSearchText(ev.target.value))
-						}
+						onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(ev))}
 					/>
 				</Paper>
 				<motion.div

@@ -14,8 +14,7 @@ import Box from '@mui/material/Box';
 import TableHead from '@mui/material/TableHead';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
-import { useAppDispatch } from 'app/store';
-import { removeProducts } from '../store/productsSlice';
+import { useDeleteECommerceProductsMutation } from '../ECommerceApi';
 
 /**
  * The table head row type.
@@ -94,11 +93,11 @@ type ProductsTableHeadPropsType = {
 function ProductsTableHead(props: ProductsTableHeadPropsType) {
 	const { selectedProductIds, tableOrder, onSelectAllClick, onRequestSort, rowCount, onMenuItemClick } = props;
 
+	const [removeProducts] = useDeleteECommerceProductsMutation();
+
 	const numSelected = selectedProductIds.length;
 
 	const [selectedProductsMenu, setSelectedProductsMenu] = useState<HTMLButtonElement | null>(null);
-
-	const dispatch = useAppDispatch();
 
 	const createSortHandler = (event: MouseEvent<HTMLSpanElement>, property: string) => {
 		onRequestSort(event, property);
@@ -153,7 +152,7 @@ function ProductsTableHead(props: ProductsTableHeadPropsType) {
 								<MenuList>
 									<MenuItem
 										onClick={() => {
-											dispatch(removeProducts(selectedProductIds));
+											removeProducts(selectedProductIds);
 											onMenuItemClick();
 											closeSelectedProductsMenu();
 										}}

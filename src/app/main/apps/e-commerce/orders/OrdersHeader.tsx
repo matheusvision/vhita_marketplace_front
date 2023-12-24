@@ -4,14 +4,21 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { selectOrdersSearchText, setOrdersSearchText } from '../store/ordersSlice';
+import { useEffect } from 'react';
+import { resetSearchText, selectSearchText, setSearchText } from '../store/searchTextSlice';
 
 /**
  * The orders header.
  */
 function OrdersHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectOrdersSearchText);
+	const searchText = useAppSelector(selectSearchText);
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetSearchText());
+		};
+	}, []);
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 w-full space-y-8 sm:space-y-0 items-center justify-between py-32 px-24 md:px-32">
@@ -40,9 +47,7 @@ function OrdersHeader() {
 						inputProps={{
 							'aria-label': 'Search Orders'
 						}}
-						onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
-							dispatch(setOrdersSearchText(ev.target.value))
-						}
+						onChange={(ev: React.ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(ev))}
 					/>
 				</Paper>
 			</div>

@@ -8,9 +8,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GoogleMap from 'google-map-react';
 import { useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useParams } from 'react-router-dom';
 import OrdersStatus from '../OrdersStatus';
-import { selectOrder } from '../../store/orderSlice';
+import { useGetECommerceOrderQuery } from '../../ECommerceApi';
 
 type MarkerPropsType = {
 	text: string;
@@ -43,10 +43,15 @@ function Marker(props: MarkerPropsType) {
  * The order details tab.
  */
 function OrderDetailsTab() {
-	const { data: order } = useAppSelector(selectOrder);
+	const routeParams = useParams();
+
+	const { orderId } = routeParams;
+
+	const { data: order, isError } = useGetECommerceOrderQuery(orderId);
+
 	const [map, setMap] = useState<string>('shipping');
 
-	if (!order) {
+	if (!isError && !order) {
 		return null;
 	}
 

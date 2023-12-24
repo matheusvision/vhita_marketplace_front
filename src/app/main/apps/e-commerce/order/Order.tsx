@@ -5,57 +5,40 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import * as React from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { getOrder, resetOrder, selectOrder } from '../store/orderSlice';
 import InvoiceTab from './tabs/InvoiceTab';
 import OrderDetailsTab from './tabs/OrderDetailsTab';
 import ProductsTab from './tabs/ProductsTab';
+import { useGetECommerceOrderQuery } from '../ECommerceApi';
 
 /**
  * The order.
  */
 function Order() {
-	const dispatch = useAppDispatch();
-	const { data: order, status } = useAppSelector(selectOrder);
+	const routeParams = useParams();
+	const { orderId } = routeParams;
+
+	const { data: order, isLoading, isError } = useGetECommerceOrderQuery(orderId);
+
 	const theme = useTheme();
 	const isMobile = useThemeMediaQuery((_theme) => _theme.breakpoints.down('lg'));
 
-	const routeParams = useParams();
-	const { orderId } = routeParams;
 	const [tabValue, setTabValue] = useState(0);
-	const [noOrder, setNoOrder] = useState(false);
-
-	useDeepCompareEffect(() => {
-		dispatch(getOrder(orderId)).then((action) => {
-			if (!action.payload) {
-				setNoOrder(true);
-			}
-		});
-	}, [dispatch, routeParams]);
-
-	useEffect(() => {
-		return () => {
-			dispatch(resetOrder());
-			setNoOrder(false);
-		};
-	}, [dispatch]);
 
 	function handleTabChange(event: React.SyntheticEvent, value: number) {
 		setTabValue(value);
 	}
 
-	if (status === 'loading') {
+	if (isLoading) {
 		return <FuseLoading />;
 	}
 
-	if (noOrder) {
+	if (isError) {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}

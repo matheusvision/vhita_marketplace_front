@@ -1,5 +1,4 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import Checkbox from '@mui/material/Checkbox';
 import Table from '@mui/material/Table';
@@ -9,17 +8,16 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppSelector } from 'app/store';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { Many } from 'lodash';
 import * as React from 'react';
 import OrdersStatus from '../order/OrdersStatus';
-import { getOrders, selectOrders, selectOrdersSearchText } from '../store/ordersSlice';
 import OrdersTableHead from './OrdersTableHead';
-import { OrderType, OrdersType } from '../types/OrderType';
+import { EcommerceOrder, selectFilteredOrderList, useGetECommerceOrderListQuery } from '../ECommerceApi';
 
 type OrdersTableProps = WithRouterProps & {
 	navigate: (path: string) => void;
@@ -30,13 +28,13 @@ type OrdersTableProps = WithRouterProps & {
  */
 function OrdersTable(props: OrdersTableProps) {
 	const { navigate } = props;
-	const dispatch = useAppDispatch();
-	const orders = useAppSelector(selectOrders);
-	const searchText = useAppSelector(selectOrdersSearchText);
 
-	const [loading, setLoading] = useState(true);
+	const { isLoading } = useGetECommerceOrderListQuery();
+
+	const data = useAppSelector(selectFilteredOrderList);
+
 	const [selected, setSelected] = useState<string[]>([]);
-	const [data, setData] = useState<OrdersType>(orders);
+
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [tableOrder, setTableOrder] = useState<{
@@ -46,19 +44,6 @@ function OrdersTable(props: OrdersTableProps) {
 		direction: 'asc',
 		id: ''
 	});
-
-	useEffect(() => {
-		dispatch(getOrders()).then(() => setLoading(false));
-	}, [dispatch]);
-
-	useEffect(() => {
-		if (searchText.length !== 0) {
-			setData(FuseUtils.filterArrayByString(orders, searchText));
-			setPage(0);
-		} else {
-			setData(orders);
-		}
-	}, [orders, searchText]);
 
 	function handleRequestSort(event: MouseEvent<HTMLSpanElement>, property: string) {
 		const newOrder: {
@@ -86,7 +71,7 @@ function OrdersTable(props: OrdersTableProps) {
 		setSelected([]);
 	}
 
-	function handleClick(item: OrderType) {
+	function handleClick(item: EcommerceOrder) {
 		navigate(`/apps/e-commerce/orders/${item.id}`);
 	}
 
@@ -115,7 +100,7 @@ function OrdersTable(props: OrdersTableProps) {
 		setRowsPerPage(+event.target.value);
 	}
 
-	if (loading) {
+	if (isLoading) {
 		return (
 			<div className="flex items-center justify-center h-full">
 				<FuseLoading />
@@ -161,7 +146,7 @@ function OrdersTable(props: OrdersTableProps) {
 						{_.orderBy(
 							data,
 							[
-								(o: OrderType) => {
+								(o: EcommerceOrder) => {
 									switch (o.id) {
 										case 'id': {
 											return parseInt(o.id, 10);
