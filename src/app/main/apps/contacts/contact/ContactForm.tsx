@@ -71,6 +71,9 @@ const schema = z.object({
  * The contact form.
  */
 function ContactForm() {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
 	const { data: contact, isError } = useGetContactItemQuery(contactId);
@@ -78,9 +81,8 @@ function ContactForm() {
 	const [createContact] = useCreateContactItemMutation();
 	const [updateContact] = useUpdateContactItemMutation();
 	const [deleteContact] = useDeleteContactItemMutation();
+
 	const { data: tags } = useGetContactTagListQuery();
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
 		mode: 'all',
