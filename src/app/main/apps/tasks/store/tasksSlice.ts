@@ -4,7 +4,6 @@ import { showMessage } from 'app/store/fuse/messageSlice';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { RootStateType } from 'app/store/types';
 import { addTask, updateTask } from './taskSlice';
-import { removeLabel } from '../../notes/store/labelsSlice';
 import { TaskType, TasksType } from '../types/TaskType';
 
 export type AppRootStateType = RootStateType<tasksSliceType>;
@@ -72,8 +71,7 @@ export const tasksSlice = createSlice({
 				tasksAdapter.setAll(state, action.payload);
 			})
 			.addCase(updateTask.fulfilled, (state, action) => tasksAdapter.upsertOne(state, action.payload))
-			.addCase(addTask.fulfilled, (state, action) => tasksAdapter.addOne(state, action.payload))
-			.addCase(removeLabel.fulfilled, (state, action) => tasksAdapter.removeOne(state, action.payload));
+			.addCase(addTask.fulfilled, (state, action) => tasksAdapter.addOne(state, action.payload));
 	}
 });
 
