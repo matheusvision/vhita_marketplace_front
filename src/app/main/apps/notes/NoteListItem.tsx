@@ -2,25 +2,28 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NoteLabel from './NoteLabel';
 import NoteReminderLabel from './NoteReminderLabel';
 import setDescriptionStyle from './setDescriptionStyle';
-import { openNoteDialog } from './store/notesSlice';
-import { NoteType } from './types/NoteType';
+import { openNoteDialog } from './store/dialogsSlice';
+import { NotesNote } from './NotesApi';
+import { selectVariateDescSize } from './store/variateDescSlice';
 
 type NoteListItemProps = {
-	note: NoteType;
+	note: NotesNote;
 	className?: string;
-	variateDescSize?: boolean;
 };
 
 /**
  * The note list item.
  */
 function NoteListItem(props: NoteListItemProps) {
-	const { note, className, variateDescSize } = props;
+	const { note, className } = props;
+
+	const variateDescSize = useAppSelector(selectVariateDescSize);
+
 	const dispatch = useAppDispatch();
 
 	return (

@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'app/store';
+import { useState } from 'react';
 import { lighten, styled } from '@mui/material/styles';
-import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
@@ -11,8 +9,6 @@ import NewNote from './NewNote';
 import NoteList from './NoteList';
 import NotesHeader from './NotesHeader';
 import NotesSidebarContent from './NotesSidebarContent';
-import { getLabels } from './store/labelsSlice';
-import { getNotes, RouteParamsType } from './store/notesSlice';
 
 const Root = styled(FusePageCarded)(() => ({
 	'& .FusePageCarded-header': {},
@@ -24,15 +20,8 @@ const Root = styled(FusePageCarded)(() => ({
  * The notes app.
  */
 function NotesApp() {
-	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-	const routeParams = useParams<RouteParamsType>();
-
-	useEffect(() => {
-		dispatch(getNotes(routeParams as RouteParamsType));
-		dispatch(getLabels());
-	}, [dispatch, routeParams]);
 
 	return (
 		<Root

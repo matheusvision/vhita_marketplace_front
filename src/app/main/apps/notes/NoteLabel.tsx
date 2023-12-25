@@ -1,10 +1,10 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import { useAppSelector } from 'app/store';
 import { Link } from 'react-router-dom';
 import { darken } from '@mui/material/styles';
 import { MouseEvent } from 'react';
-import { selectLabelsEntities } from './store/labelsSlice';
+import _ from '@lodash';
+import { useGetNotesLabelListQuery } from './NotesApi';
 
 type NoteLabelProps = {
 	id: string;
@@ -23,14 +23,13 @@ type NoteLabelProps = {
  */
 function NoteLabel(props: NoteLabelProps) {
 	const { id, linkable, onDelete, className, classes } = props;
-
-	const labels = useAppSelector(selectLabelsEntities);
+	const { data: labels } = useGetNotesLabelListQuery();
 
 	if (!labels) {
 		return null;
 	}
 
-	const label = labels[id];
+	const label = _.find(labels, { id });
 
 	if (!label) {
 		return null;

@@ -1,27 +1,27 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Controller, useForm } from 'react-hook-form';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import NoteListItemModel from '../../models/NoteListItemModel';
-import { NoteListItemType } from '../../types/NoteListItemType';
+import { NoteListItemType } from '../../NotesApi';
+
+/**
+ * Form Validation Schema
+ */
+const schema = z.object({
+	content: z.string().nonempty('You must enter a content')
+});
 
 type FormType = Pick<NoteListItemType, 'content'>;
 
 const defaultValues: FormType = {
 	content: ''
 };
-
-/**
- * Form Validation Schema
- */
-const schema = yup.object().shape({
-	content: yup.string().required('You must enter a label title')
-});
 
 type NoteFormAddListItemProps = {
 	onListItemAdd: (noteListItem: NoteListItemType) => void;
@@ -36,7 +36,7 @@ function NoteFormAddListItem(props: NoteFormAddListItemProps) {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

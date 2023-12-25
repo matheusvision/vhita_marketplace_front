@@ -1,12 +1,12 @@
 import List from '@mui/material/List';
 import NoteFormAddListItem from './NoteFormAddListItem';
 import NoteFormListItem from './NoteFormListItem';
-import { NoteListItemType, NoteListItemsType } from '../../types/NoteListItemType';
+import { NoteListItemType } from '../../NotesApi';
 
 type NoteFormListProps = {
 	className?: string;
-	tasks: NoteListItemsType;
-	onCheckListChange: (tasks: NoteListItemsType) => void;
+	tasks: NoteListItemType[];
+	onCheckListChange: (tasks: NoteListItemType[]) => void;
 };
 
 /**
@@ -16,11 +16,11 @@ function NoteFormList(props: NoteFormListProps) {
 	const { tasks, onCheckListChange, className } = props;
 
 	function handleListItemChange(item: NoteListItemType) {
-		onCheckListChange(tasks.map((_item) => (_item.id === item.id ? item : _item)) as NoteListItemsType);
+		onCheckListChange(tasks.map((_item) => (_item.id === item.id ? item : _item)));
 	}
 
 	function handleListItemRemove(id: string) {
-		onCheckListChange(tasks.filter((_item) => _item.id !== id) as NoteListItemsType);
+		onCheckListChange(tasks.filter((_item) => _item.id !== id));
 	}
 
 	function handleListItemAdd(item: NoteListItemType) {

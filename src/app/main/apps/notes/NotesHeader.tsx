@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NotesSearch from './NotesSearch';
-import { selectVariateDescSize, toggleVariateDescSize } from './store/notesSlice';
+import { selectVariateDescSize, toggleVariateDescSize } from './store/variateDescSlice';
 
 type NotesHeaderProps = {
 	onSetSidebarOpen: (open: boolean) => void;

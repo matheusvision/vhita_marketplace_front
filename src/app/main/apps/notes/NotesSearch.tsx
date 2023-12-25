@@ -3,7 +3,7 @@ import { OutlinedInput } from '@mui/material';
 import { motion } from 'framer-motion';
 import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectSearchText, setNotesSearchText } from './store/notesSlice';
+import { setSearchText, selectSearchText } from './store/searchTextSlice';
 
 /**
  * The notes search.
@@ -30,7 +30,7 @@ function NotesSearch() {
 					'aria-label': 'Search'
 				}}
 				value={searchText}
-				onChange={(ev) => dispatch(setNotesSearchText(ev))}
+				onChange={(ev) => dispatch(setSearchText(ev))}
 			/>
 		</motion.div>
 	);

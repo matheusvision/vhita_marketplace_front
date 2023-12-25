@@ -2392,7 +2392,7 @@
         "operationId": "getNotesNoteList",
         "description": "Retrieve all notes except archived ones.",
         "tags": [
-          "notes"
+          "notes_list"
         ]
       },
       "parameters": [],
@@ -2434,7 +2434,8 @@
         },
         "description": "Create new note.",
         "tags": [
-          "notes"
+          "notes_list",
+          "notes_item"
         ]
       }
     },
@@ -2474,7 +2475,7 @@
         "operationId": "getNotesNote",
         "description": "Retrieve note by id.",
         "tags": [
-          "notes"
+          "notes_item"
         ]
       },
       "parameters": [
@@ -2529,7 +2530,7 @@
           "description": ""
         },
         "tags": [
-          "notes"
+          "notes_item"
         ]
       },
       "delete": {
@@ -2545,16 +2546,13 @@
         },
         "description": "Delete note.",
         "tags": [
-          "notes"
+          "notes_list"
         ]
       }
     },
     "/notes/labels": {
       "get": {
         "summary": "Get Label List",
-        "tags": [
-          "notes"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2576,14 +2574,14 @@
           }
         },
         "operationId": "getNotesLabelList",
-        "description": "Retrieve note labels."
+        "description": "Retrieve note labels.",
+        "tags": [
+          "notes_label_list"
+        ]
       },
       "parameters": [],
       "post": {
         "summary": "Create New Label",
-        "tags": [
-          "notes"
-        ],
         "operationId": "createNotesLabel",
         "responses": {
           "200": {
@@ -2608,15 +2606,16 @@
             }
           },
           "description": ""
-        }
+        },
+        "tags": [
+          "notes_label_item",
+          "notes_label_list"
+        ]
       }
     },
     "/notes/labels/{labelId}": {
       "get": {
         "summary": "Get Label",
-        "tags": [
-          "notes"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2638,7 +2637,10 @@
           }
         },
         "operationId": "getNotesLabel",
-        "description": "Retrieve note label by id."
+        "description": "Retrieve note label by id.",
+        "tags": [
+          "notes_label_item"
+        ]
       },
       "parameters": [
         {
@@ -2653,9 +2655,6 @@
       ],
       "put": {
         "summary": "Update Label",
-        "tags": [
-          "notes"
-        ],
         "operationId": "updateNotesLabel",
         "responses": {
           "200": {
@@ -2683,13 +2682,13 @@
             }
           },
           "description": ""
-        }
+        },
+        "tags": [
+          "notes_label_item"
+        ]
       },
       "delete": {
         "summary": "Delete Label",
-        "tags": [
-          "notes"
-        ],
         "operationId": "notes_deleteLabel",
         "responses": {
           "200": {
@@ -2699,15 +2698,15 @@
             "description": "Not Found"
           }
         },
-        "description": "Delete note label."
+        "description": "Delete note label.",
+        "tags": [
+          "notes_label_list"
+        ]
       }
     },
     "/notes/archive": {
       "get": {
         "summary": "Get Archived Note List",
-        "tags": [
-          "notes"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2729,16 +2728,16 @@
           }
         },
         "operationId": "getNotesArchivedNoteList",
-        "description": "Retrieve all archived note list."
+        "description": "Retrieve all archived note list.",
+        "tags": [
+          "notes_archived_note_list"
+        ]
       },
       "parameters": []
     },
     "/notes/reminder": {
       "get": {
         "summary": "Get Reminder Notes",
-        "tags": [
-          "notes"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2760,7 +2759,10 @@
           }
         },
         "operationId": "getNotesReminderNoteList",
-        "description": "Retrieve all notes with reminder."
+        "description": "Retrieve all notes with reminder.",
+        "tags": [
+          "notes_reminder_note_list"
+        ]
       },
       "parameters": []
     },
@@ -3372,7 +3374,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "sl2rstr322yh1"
+          "id": "z6rsuw5gdx2rc"
         }
       },
       "parameters": []
@@ -5581,42 +5583,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "4b0nfbcs339da"
+              "id": "z7bzomo0pnbjc"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "6q2hsp1oe687q"
+              "id": "nzvzlxv1jk12m"
             },
             "items": {
               "x-stoplight": {
-                "id": "yyifzddplwv04"
+                "id": "j9mtr0asgv37e"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "rwogerpr9ka96"
+                    "id": "3j3ipkmpux9ao"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "va0vue8j91oyz"
+                    "id": "wz7siyauwnsys"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "i0qtkjt9sj1od"
+                    "id": "jj8pflfly2r1a"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "w8hd0xbv79cpf"
+                    "id": "yve202s55wabk"
                   }
                 }
               }
@@ -6199,7 +6201,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "0iqgh93yy64wm"
+              "id": "dqejfsgc61ivy"
             }
           }
         },
