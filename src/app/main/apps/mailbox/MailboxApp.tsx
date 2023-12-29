@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'app/store';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import MailboxAppSidebarContent from './MailboxAppSidebarContent';
-import { getFilters } from './store/filtersSlice';
-import { getFolders } from './store/foldersSlice';
-import { getLabels } from './store/labelsSlice';
 import Mails from './mails/Mails';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
@@ -28,19 +24,12 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
  * The mailbox app.
  */
 function MailboxApp() {
-	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 	const [rightSidebarOpen, setRightSidebarOpen] = useState(!isMobile);
 	const routeParams = useParams();
 	const { mailId } = routeParams;
 	const location = useLocation();
-
-	useEffect(() => {
-		dispatch(getFilters());
-		dispatch(getFolders());
-		dispatch(getLabels());
-	}, [dispatch]);
 
 	useEffect(() => {
 		if (isMobile) {

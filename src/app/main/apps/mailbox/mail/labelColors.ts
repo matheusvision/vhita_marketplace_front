@@ -15,12 +15,14 @@ export type LabelColorsType =
  */
 export const labelColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
 
-type LabelColorDefsType = {
-	[key in LabelColorsType]: {
-		text: string;
-		bg: string;
-		combined: string;
-	};
+export type LabelColorDef = {
+	text: string;
+	bg: string;
+	combined: string;
+};
+
+export type LabelColorDefsType = {
+	[key in LabelColorsType]: LabelColorDef;
 };
 
 /**

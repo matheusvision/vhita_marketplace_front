@@ -1,27 +1,15 @@
 import _ from '@lodash';
-import { LabelType } from 'src/app/main/apps/mailbox/types/LabelType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import ItemType from '../../app/main/apps/mailbox/types/ItemType';
-import { FolderType } from '../../app/main/apps/mailbox/types/FolderType';
 import { Params } from '../ExtendedMockAdapter';
+import { MailboxAction, MailboxFolder, MailboxLabel } from '../../app/main/apps/mailbox/MailboxApi';
 
 const mailsDB = mockApi.components.examples.mailbox_mails.value;
 const labelsDB = mockApi.components.examples.mailbox_labels.value;
 const filtersDB = mockApi.components.examples.mailbox_filters.value;
 const foldersDB = mockApi.components.examples.mailbox_folders.value;
 
-mock.onGet('/api/mailbox/mails/filters/:filterSlug/:mailId').reply((config) => {
-	const { mailId } = config.params as Params;
-
-	const response = _.find(mailsDB, { id: mailId });
-	if (!response) {
-		return [404, 'Requested mail do not exist.'];
-	}
-	return [200, response];
-});
-
-mock.onGet('/api/mailbox/mails/filters/:filterSlug').reply((config) => {
+mock.onGet('/mailbox/mails/filters/:filterSlug').reply((config) => {
 	const { filterSlug } = config.params as Params;
 
 	const response = _.filter(mailsDB, { [filterSlug]: true });
@@ -29,30 +17,30 @@ mock.onGet('/api/mailbox/mails/filters/:filterSlug').reply((config) => {
 	return [200, response];
 });
 
-mock.onGet('/api/mailbox/mails/labels/:labelSlug/:mailId').reply((config) => {
-	const { mailId } = config.params as Params;
-
-	const response = _.find(mailsDB, { id: mailId });
-	if (!response) {
-		return [404, 'Requested mail do not exist.'];
-	}
-	return [200, response];
-});
-
-mock.onGet('/api/mailbox/mails/labels/:labelSlug').reply((config) => {
+mock.onGet('/mailbox/mails/labels/:labelSlug').reply((config) => {
 	const { labelSlug } = config.params as Params;
 
-	const labelId = (_.find(labelsDB, { slug: labelSlug }) as LabelType).id;
+	const labelId = (_.find(labelsDB, { slug: labelSlug }) as MailboxLabel).id;
 
 	const response = _.filter(mailsDB, (item) => item.labels.includes(labelId));
 
 	return [200, response];
 });
 
-mock.onGet('/api/mailbox/mails/:folderSlug/:mailId').reply((config) => {
-	const { mailId } = config.params as Params;
+mock.onGet('/mailbox/mails/:folderSlug').reply((config) => {
+	const { folderSlug } = config.params as Params;
 
-	const response = _.find(mailsDB, { id: mailId });
+	const folderId = (_.find(foldersDB, { slug: folderSlug }) as MailboxFolder).id;
+
+	const response = _.filter(mailsDB, { folder: folderId });
+
+	return [200, response];
+});
+
+mock.onGet('/mailbox/mails/mail/:id').reply((config) => {
+	const { id } = config.params as Params;
+
+	const response = _.find(mailsDB, { id });
 
 	if (!response) {
 		return [404, 'Requested mail do not exist.'];
@@ -60,31 +48,21 @@ mock.onGet('/api/mailbox/mails/:folderSlug/:mailId').reply((config) => {
 	return [200, response];
 });
 
-mock.onGet('/api/mailbox/mails/:folderSlug').reply((config) => {
-	const { folderSlug } = config.params as Params;
-
-	const folderId = (_.find(foldersDB, { slug: folderSlug }) as FolderType).id;
-
-	const response = _.filter(mailsDB, { folder: folderId });
-
-	return [200, response];
-});
-
-mock.onGet('/api/mailbox/folders').reply(() => {
+mock.onGet('/mailbox/folders').reply(() => {
 	return [200, foldersDB];
 });
 
-mock.onGet('/api/mailbox/filters').reply(() => {
+mock.onGet('/mailbox/filters').reply(() => {
 	return [200, filtersDB];
 });
 
-mock.onGet('/api/mailbox/labels').reply(() => {
+mock.onGet('/mailbox/labels').reply(() => {
 	return [200, labelsDB];
 });
 
-mock.onPost('/api/mailbox/actions').reply((config) => {
+mock.onPost('/mailbox/mails/actions').reply((config) => {
 	const { type, value, ids } = JSON.parse(config.data as string) as {
-		type: ItemType;
+		type: MailboxAction;
 		value: boolean | string | string[];
 		ids: string[];
 	};

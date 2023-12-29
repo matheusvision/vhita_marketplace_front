@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -11,20 +10,21 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Controller, useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import _ from '@lodash';
 import WYSIWYGEditor from 'app/shared-components/WYSIWYGEditor';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import MailAttachment from './MailAttachment';
-import { MailType } from './types/MailType';
+import { MailboxMail } from './MailboxApi';
 
 type FormType = {
-	from: { email?: MailType['from']['email'] };
-	to: MailType['to'];
-	cc: MailType['cc'];
-	bcc: MailType['bcc'];
-	subject: MailType['subject'];
+	from: { email?: MailboxMail['from']['email'] };
+	to: MailboxMail['to'];
+	cc: MailboxMail['cc'];
+	bcc: MailboxMail['bcc'];
+	subject: MailboxMail['subject'];
 	message: string;
 };
 
@@ -36,18 +36,19 @@ const defaultValues: FormType = {
 	subject: '',
 	message: ''
 };
+
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	from: yup.object({
-		email: yup.string().email('You must enter a valid e-mail.').nullable()
+const schema = z.object({
+	from: z.object({
+		email: z.union([z.string().email('You must enter a valid e-mail.'), z.null()])
 	}),
-	to: yup.string().email('You must enter a valid e-mail.').required(),
-	cc: yup.array(yup.string().email('Must be a valid email')),
-	bcc: yup.array(yup.string().email('Must be a valid email')),
-	subject: yup.string(),
-	message: yup.string()
+	to: z.string().email('You must enter a valid e-mail.'),
+	cc: z.array(z.string().email('Must be a valid email')),
+	bcc: z.array(z.string().email('Must be a valid email')),
+	subject: z.string(),
+	message: z.string()
 });
 
 type MailComposeProps = {
@@ -63,7 +64,7 @@ function MailCompose(props: MailComposeProps) {
 	const { handleSubmit, formState, control } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import { useAppSelector } from 'app/store';
-import { selectMailsTitle } from '../store/mailsSlice';
+import { selectMailsTitle } from '../MailboxApi';
 
 /**
  * The mail list title.

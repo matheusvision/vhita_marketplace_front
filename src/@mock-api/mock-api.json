@@ -821,7 +821,7 @@
           "description": ""
         },
         "tags": [
-          "mailbox"
+          "mailbox_list"
         ]
       }
     },
@@ -851,7 +851,7 @@
         "operationId": "getMilboxMailList",
         "description": "Retrieve mails by folder.",
         "tags": [
-          "mailbox"
+          "mailbox_list"
         ]
       },
       "parameters": [
@@ -922,7 +922,7 @@
           }
         },
         "tags": [
-          "mailbox"
+          "mailbox_list"
         ]
       }
     },
@@ -952,7 +952,7 @@
         "operationId": "getMailboxMailListByLabel",
         "description": "Retrieve mails by label.",
         "tags": [
-          "mailbox"
+          "mailbox_list"
         ]
       },
       "parameters": [
@@ -993,7 +993,7 @@
         "operationId": "getMailboxMailListByFilter",
         "description": "Retrieve mails by filter.",
         "tags": [
-          "mailbox"
+          "mailbox_list"
         ]
       },
       "parameters": [
@@ -1034,7 +1034,7 @@
         "operationId": "getMailboxFilterList",
         "description": "Retrieve mail filters.",
         "tags": [
-          "mailbox"
+          "mailbox_filters"
         ]
       },
       "parameters": []
@@ -1065,7 +1065,7 @@
         "operationId": "getMailboxLabelList",
         "description": "Retrieve mail labels.",
         "tags": [
-          "mailbox"
+          "mailbox_labels"
         ]
       },
       "parameters": [],
@@ -1094,9 +1094,6 @@
             }
           }
         },
-        "tags": [
-          "mailbox"
-        ],
         "description": "Create mail label.",
         "requestBody": {
           "content": {
@@ -1116,7 +1113,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "mailbox_labels"
+        ]
       }
     },
     "/mailbox/labels/{labelSlug}": {
@@ -1177,7 +1177,8 @@
         },
         "description": "Update mail label.",
         "tags": [
-          "mailbox"
+          "mailbox_label",
+          "mailbox_labels"
         ]
       },
       "delete": {
@@ -1190,7 +1191,7 @@
         },
         "description": "Delete mail label.",
         "tags": [
-          "mailbox"
+          "mailbox_labels"
         ]
       }
     },
@@ -1220,7 +1221,7 @@
         "operationId": "getMailboxFolderList",
         "description": "Retrieve mail folders.",
         "tags": [
-          "mailbox"
+          "mailbox_folders"
         ]
       },
       "parameters": []
@@ -3374,7 +3375,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "yexm9nvtfn2n3"
+          "id": "56yfi7i2kh9uh"
         }
       },
       "parameters": []
@@ -5583,42 +5584,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "s48ryj7ex428f"
+              "id": "t126g37m19ma4"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "t3n1isavj5nrr"
+              "id": "96d3bpwrgv7rk"
             },
             "items": {
               "x-stoplight": {
-                "id": "f6fmcdppdjxqg"
+                "id": "rx6wz2c5qzsci"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "jwnxb9zceuv8x"
+                    "id": "f3xi1ftkbdtcf"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "w6dt105ucjn4x"
+                    "id": "7vz56zdevukxj"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "5zssorwemw4j2"
+                    "id": "lkomldqxjq5oc"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "89fsr8z9njswh"
+                    "id": "jxxvey1psc8f7"
                   }
                 }
               }
@@ -6201,7 +6202,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "k0u5iw29btbri"
+              "id": "fd744vk6d12ve"
             }
           }
         },

@@ -1,33 +1,26 @@
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { getMail, selectMail } from '../store/mailSlice';
 import MailLabel from './MailLabel';
 import MailToolbar from './MailToolbar';
 import MailAttachment from './MailAttachment';
 import MailInfo from './MailInfo';
+import { useGetMailboxMailQuery } from '../MailboxApi';
 
 /**
  * The mail details.
  */
 function MailDetails() {
-	const dispatch = useAppDispatch();
-	const { data: mail, status } = useAppSelector(selectMail);
-	const routeParams = useParams();
+	const { mailId } = useParams() as { mailId: string };
+	const { data: mail, isLoading } = useGetMailboxMailQuery(mailId);
 
-	useDeepCompareEffect(() => {
-		dispatch(getMail(routeParams));
-	}, [dispatch, routeParams]);
-
-	if (status === 'loading') {
+	if (isLoading) {
 		return <FuseLoading />;
 	}
 

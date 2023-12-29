@@ -4,37 +4,32 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { getMails, selectMails, selectSearchText } from '../store/mailsSlice';
 import MailListItem from './MailListItem';
-import { MailsType } from '../types/MailType';
+import { selectSearchText } from '../store/searchTextSlice';
+import { MailboxMail, useGetMailboxListQuery } from '../MailboxApi';
 
 /**
  * The mail list.
  */
 function MailList() {
-	const dispatch = useAppDispatch();
-	const mails = useAppSelector(selectMails);
 	const searchText = useAppSelector(selectSearchText);
-
 	const routeParams = useParams();
-	const [filteredData, setFilteredData] = useState<MailsType>([]);
-	const { t } = useTranslation('mailboxApp');
+	const { data: mails } = useGetMailboxListQuery(routeParams);
 
-	useDeepCompareEffect(() => {
-		dispatch(getMails(routeParams));
-	}, [dispatch, routeParams]);
+	const [filteredData, setFilteredData] = useState<MailboxMail[]>([]);
+
+	const { t } = useTranslation('mailboxApp');
 
 	useEffect(() => {
 		function getFilteredArray() {
 			if (searchText.length === 0) {
 				return mails;
 			}
-			return FuseUtils.filterArrayByString(mails, searchText);
+			return FuseUtils.filterArrayByString<MailboxMail>(mails, searchText);
 		}
 
 		if (mails) {

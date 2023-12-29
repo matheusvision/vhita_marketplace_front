@@ -11,8 +11,8 @@ import format from 'date-fns/format';
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
-import { selectSelectedMailIds, toggleInSelectedMails } from '../store/mailsSlice';
-import { MailType } from '../types/MailType';
+import { selectSelectedMailIds, toggleInSelectedMails } from '../store/selectedMailIdsSlice';
+import { MailboxMail } from '../MailboxApi';
 
 const StyledListItem = styled(ListItemButton)<ListItemButtonProps & NavLinkAdapterPropsType & { unread: number }>(
 	({ theme, unread }) => ({
@@ -39,7 +39,7 @@ const StyledListItem = styled(ListItemButton)<ListItemButtonProps & NavLinkAdapt
 );
 
 type MailListItemProps = WithRouterProps & {
-	mail: MailType;
+	mail: MailboxMail;
 };
 
 /**
@@ -48,6 +48,7 @@ type MailListItemProps = WithRouterProps & {
 function MailListItem(props: MailListItemProps) {
 	const dispatch = useAppDispatch();
 	const selectedMailIds = useAppSelector(selectSelectedMailIds);
+
 	const { mail } = props;
 	const checked = selectedMailIds.length > 0 && selectedMailIds.find((id) => id === mail.id) !== undefined;
 
