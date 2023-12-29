@@ -1,8 +1,7 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
+import { lazy } from 'react';
 import TaskForm from './task/TaskForm';
-import reducer from './store';
 
-const TasksApp = lazyWithReducer('tasksApp', () => import('./TasksApp'), reducer);
+const TasksApp = lazy(() => import('./TasksApp'));
 
 /**
  * The tasks app config.

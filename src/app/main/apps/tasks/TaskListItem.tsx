@@ -7,14 +7,13 @@ import { IconButton } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import format from 'date-fns/format';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store';
 import { Draggable } from 'react-beautiful-dnd';
 import clsx from 'clsx';
-import { updateTask } from './store/taskSlice';
-import { TaskType } from './types/TaskType';
+
+import { Task, useUpdateTasksItemMutation } from './TasksApi';
 
 type TaskListItemProps = {
-	data: TaskType;
+	data: Task;
 	index: number;
 };
 
@@ -23,8 +22,7 @@ type TaskListItemProps = {
  */
 function TaskListItem(props: TaskListItemProps) {
 	const { data, index } = props;
-
-	const dispatch = useAppDispatch();
+	const [updateTask] = useUpdateTasksItemMutation();
 
 	return (
 		<Draggable
@@ -59,7 +57,7 @@ function TaskListItem(props: TaskListItemProps) {
 								onClick={(ev) => {
 									ev.preventDefault();
 									ev.stopPropagation();
-									dispatch(updateTask({ ...data, completed: !data.completed }));
+									updateTask({ ...data, completed: !data.completed });
 								}}
 							>
 								<FuseSvgIcon>heroicons-outline:check-circle</FuseSvgIcon>

@@ -1,20 +1,19 @@
-import { useAppDispatch, useAppSelector } from 'app/store';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react-beautiful-dnd';
-import { reorderList, selectTasks } from './store/tasksSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
 import TaskListItem from './TaskListItem';
 import SectionListItem from './SectionListItem';
+import { useGetTasksListQuery, useReorderTasksListMutation } from './TasksApi';
 
 /**
  * The tasks list.
  */
 function TasksList() {
-	const dispatch = useAppDispatch();
-	const tasks = useAppSelector(selectTasks);
-
-	if (!tasks) {
-		return null;
+	const { data: tasks, isLoading } = useGetTasksListQuery();
+	const [reorderList] = useReorderTasksListMutation();
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	if (tasks.length === 0) {
@@ -44,12 +43,10 @@ function TasksList() {
 			return;
 		}
 
-		dispatch(
-			reorderList({
-				startIndex: sourceIndex,
-				endIndex: destinationIndex
-			})
-		);
+		reorderList({
+			startIndex: sourceIndex,
+			endIndex: destinationIndex
+		});
 	}
 	return (
 		<List className="w-full m-0 p-0">

@@ -3374,7 +3374,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "z6rsuw5gdx2rc"
+          "id": "ua968et5mv1d1"
         }
       },
       "parameters": []
@@ -4089,9 +4089,6 @@
     "/tasks": {
       "get": {
         "summary": "Get Task List",
-        "tags": [
-          "tasks"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -4113,7 +4110,10 @@
           }
         },
         "operationId": "getTasksList",
-        "description": "Retrieve all of the tasks."
+        "description": "Retrieve all of the tasks.",
+        "tags": [
+          "tasks_list"
+        ]
       },
       "post": {
         "summary": "Create New Task",
@@ -4191,7 +4191,7 @@
         },
         "description": "Creates a new task.",
         "tags": [
-          "tasks"
+          "tasks_list"
         ]
       },
       "parameters": []
@@ -4253,7 +4253,7 @@
         "operationId": "getTasksItem",
         "description": "Retrieve the information of the task with the matching task ID.",
         "tags": [
-          "tasks"
+          "tasks_item"
         ]
       },
       "delete": {
@@ -4269,14 +4269,11 @@
         },
         "description": "Delete an existing task.",
         "tags": [
-          "tasks"
+          "tasks_list"
         ]
       },
       "put": {
         "summary": "Update Task Information",
-        "tags": [
-          "tasks"
-        ],
         "operationId": "updateTasksItem",
         "responses": {
           "200": {
@@ -4350,7 +4347,10 @@
             }
           },
           "description": "Update task properties."
-        }
+        },
+        "tags": [
+          "tasks_item"
+        ]
       }
     },
     "/tasks/tags": {
@@ -4379,7 +4379,7 @@
         "operationId": "getTasksTagList",
         "description": "Retrieve all of the tags.",
         "tags": [
-          "tasks"
+          "tags_tag_list"
         ]
       },
       "parameters": [],
@@ -4425,7 +4425,7 @@
         },
         "description": "Creates a new tag.",
         "tags": [
-          "tasks"
+          "tags_tag_list"
         ]
       }
     },
@@ -5583,42 +5583,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "z7bzomo0pnbjc"
+              "id": "nb2rpvdiiexfr"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "nzvzlxv1jk12m"
+              "id": "k8q3akhphnc0v"
             },
             "items": {
               "x-stoplight": {
-                "id": "j9mtr0asgv37e"
+                "id": "v3ta79jhxqk4t"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "3j3ipkmpux9ao"
+                    "id": "r6kk9fik8csec"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "wz7siyauwnsys"
+                    "id": "h0qf21bxnxi72"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "jj8pflfly2r1a"
+                    "id": "agqsw7rsplp33"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "yve202s55wabk"
+                    "id": "zib2oiq9szdmw"
                   }
                 }
               }
@@ -6201,7 +6201,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "dqejfsgc61ivy"
+              "id": "8iaq219xt8ala"
             }
           }
         },

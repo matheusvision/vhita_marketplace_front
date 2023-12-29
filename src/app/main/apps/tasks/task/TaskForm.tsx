@@ -1,13 +1,11 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from '@lodash';
-import * as yup from 'yup';
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import Box from '@mui/system/Box';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import TextField from '@mui/material/TextField';
@@ -17,97 +15,121 @@ import Checkbox from '@mui/material/Checkbox/Checkbox';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import IconButton from '@mui/material/IconButton';
 import { useDeepCompareEffect } from '@fuse/hooks';
+import { showMessage } from 'app/store/fuse/messageSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import TaskPrioritySelector from './TaskPrioritySelector';
 import FormActionsMenu from './FormActionsMenu';
-import { addTask, getTask, newTask, selectTask, updateTask } from '../store/taskSlice';
-import { selectTags } from '../store/tagsSlice';
-import { TaskType } from '../types/TaskType';
-import { TagsType, TagType } from '../types/TagType';
+import {
+	Tag,
+	Task,
+	useCreateTasksItemMutation,
+	useGetTasksItemQuery,
+	useGetTasksTagListQuery,
+	useUpdateTasksItemMutation
+} from '../TasksApi';
+import SectionModel from '../models/SectionModel';
+import TaskModel from '../models/TaskModel';
 
 /**
  * Form Validation Schema
  */
 
-const subTaskSchema = yup.object().shape({
-	id: yup.string().required(),
-	title: yup.string().required(),
-	completed: yup.boolean().required()
+const subTaskSchema = z.object({
+	id: z.string().nonempty(),
+	title: z.string().nonempty(),
+	completed: z.boolean()
 });
 
-const schema = yup.object().shape({
-	id: yup.string().required(),
-	type: yup.string().required(),
-	title: yup.string().required('You must enter a name'),
-	notes: yup.string().nullable().default(null),
-	completed: yup.boolean().required(),
-	dueDate: yup.string().nullable().default(null),
-	priority: yup.number().required(),
-	tags: yup.array(yup.string()).required(),
-	assignedTo: yup.string().nullable().default(null),
-	subTasks: yup.array(subTaskSchema).required(),
-	order: yup.number().required()
+const schema = z.object({
+	id: z.string().optional(),
+	type: z.string().nonempty(),
+	title: z.string().nonempty('You must enter a title'),
+	notes: z.string().nullable().optional(),
+	completed: z.boolean(),
+	dueDate: z.string().nullable().optional(),
+	priority: z.number(),
+	tags: z.array(z.string()),
+	assignedTo: z.string().nullable().optional(),
+	subTasks: z.array(subTaskSchema).optional(),
+	order: z.number()
 });
 
 /**
  * The task form.
  */
 function TaskForm() {
-	const { data: task } = useAppSelector(selectTask);
-	const tags = useAppSelector(selectTags);
 	const routeParams = useParams();
+	const taskId = routeParams?.id;
+	const taskType = routeParams?.type;
+
+	const { data: task, isError } = useGetTasksItemQuery(routeParams.id);
+	const { data: tags } = useGetTasksTagListQuery();
+
+	const [updateTask] = useUpdateTasksItemMutation();
+	const [createTask] = useCreateTasksItemMutation();
+
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const { control, watch, reset, handleSubmit, formState } = useForm<TaskType>({
+	const { control, watch, reset, handleSubmit, formState } = useForm<Task>({
 		mode: 'onChange',
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
 
 	const form = watch();
-
 	/**
 	 * Update Task
 	 */
 	useDeepCompareEffect(() => {
-		if (!isValid || _.isEmpty(form) || !task || routeParams.id === 'new') {
-			return;
-		}
-
-		if (!_.isEqual(task, form)) {
+		if (!(!isValid || _.isEmpty(form) || !task || routeParams.id === 'new') && !_.isEqual(task, form)) {
 			onSubmit(form);
 		}
 	}, [form, isValid]);
 
 	useEffect(() => {
-		if (routeParams.id === 'new') {
-			dispatch(newTask(routeParams.type));
+		if (taskId === 'new') {
+			if (taskType === 'section') {
+				reset(SectionModel({}));
+			}
+			if (taskType === 'task') {
+				reset(TaskModel({}));
+			}
 		} else {
-			dispatch(getTask(routeParams.id));
+			reset({ ...task });
 		}
-	}, [dispatch, routeParams]);
-
-	useEffect(() => {
-		reset({ ...task });
-	}, [task, reset]);
+	}, [task, reset, taskId, taskType]);
 
 	/**
 	 * Form Submit
 	 */
-	function onSubmit(data: TaskType) {
-		dispatch(updateTask(data));
+	function onSubmit(data: Task) {
+		updateTask(data);
 	}
 
-	function onSubmitNew(data: TaskType) {
-		dispatch(addTask(data)).then(({ payload }) => {
-			const { id } = payload as TaskType;
-
-			navigate(`/apps/tasks/${id}`);
-		});
+	function onSubmitNew(data: Task) {
+		createTask(data)
+			.unwrap()
+			.then((newTask) => {
+				navigate(`/apps/tasks/${newTask?.id}`);
+			})
+			.catch((rejected) => {
+				dispatch(showMessage({ message: `Error creating task item ${rejected}`, variant: 'error' }));
+			});
 	}
 
-	if (_.isEmpty(form) || !task) {
+	if (isError && taskId !== 'new') {
+		setTimeout(() => {
+			navigate('/apps/tasks');
+			dispatch(showMessage({ message: 'NOT FOUND' }));
+		}, 0);
+
+		return null;
+	}
+
+	if (_.isEmpty(form)) {
 		return <FuseLoading />;
 	}
 
@@ -127,13 +149,13 @@ function TaskForm() {
 									<FuseSvgIcon>heroicons-outline:check-circle</FuseSvgIcon>
 								</Box>
 								<span className="mx-8">
-									{task.completed ? 'MARK AS INCOMPLETE' : 'MARK AS COMPLETE'}
+									{task?.completed ? 'MARK AS INCOMPLETE' : 'MARK AS COMPLETE'}
 								</span>
 							</Button>
 						)}
 					/>
 					<div className="flex items-center">
-						{routeParams.id !== 'new' && <FormActionsMenu taskId={task.id} />}
+						{routeParams?.id !== 'new' && <FormActionsMenu taskId={task?.id} />}
 						<IconButton
 							component={NavLinkAdapter}
 							to="/apps/tasks"
@@ -175,8 +197,8 @@ function TaskForm() {
 							className="mt-32"
 							options={tags || []}
 							disableCloseOnSelect
-							getOptionLabel={(option: TagType) => option?.title}
-							renderOption={(_props, option: TagType, { selected }) => (
+							getOptionLabel={(option: Tag) => option?.title}
+							renderOption={(_props, option: Tag, { selected }) => (
 								<li {..._props}>
 									<Checkbox
 										style={{ marginRight: 8 }}
@@ -185,9 +207,9 @@ function TaskForm() {
 									{option?.title}
 								</li>
 							)}
-							value={value ? (value.map((id) => _.find(tags, { id })) as TagsType) : []}
+							value={value ? value.map((id) => _.find(tags, { id })) : []}
 							onChange={(event, newValue) => {
-								onChange(newValue.map((item: TagType) => item.id));
+								onChange(newValue.map((item: Tag) => item.id));
 							}}
 							fullWidth
 							renderInput={(params) => (

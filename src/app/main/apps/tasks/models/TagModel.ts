@@ -1,14 +1,14 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { TagType } from '../types/TagType';
+import { Tag } from '../TasksApi';
 
 /**
  * The tag model.
  */
-const TagModel = (data: PartialDeep<TagType>): TagType =>
+const TagModel = (data: PartialDeep<Tag>): Tag =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		title: ''
-	}) as TagType;
+	}) as Tag;
 
 export default TagModel;
