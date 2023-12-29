@@ -225,10 +225,10 @@
             }
           }
         },
-        "operationId": "profile_getPhotosVideos",
+        "operationId": "getProfilePhotosVideos",
         "description": "Retrieve photos and videos.",
         "tags": [
-          "profile"
+          "profile_photos_videos"
         ]
       },
       "parameters": []
@@ -253,10 +253,10 @@
             }
           }
         },
-        "operationId": "profile_getTimeline",
+        "operationId": "getProfileTimeline",
         "description": "Retrieve timeline.",
         "tags": [
-          "profile"
+          "profile_timeline"
         ]
       },
       "parameters": []
@@ -281,10 +281,10 @@
             }
           }
         },
-        "operationId": "profile_getAbout",
+        "operationId": "getProfileAbout",
         "description": "Retrieve about.",
         "tags": [
-          "profile"
+          "profile_about"
         ]
       },
       "parameters": []
@@ -3374,7 +3374,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "ua968et5mv1d1"
+          "id": "yexm9nvtfn2n3"
         }
       },
       "parameters": []
@@ -5583,42 +5583,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "nb2rpvdiiexfr"
+              "id": "s48ryj7ex428f"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "k8q3akhphnc0v"
+              "id": "t3n1isavj5nrr"
             },
             "items": {
               "x-stoplight": {
-                "id": "v3ta79jhxqk4t"
+                "id": "f6fmcdppdjxqg"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "r6kk9fik8csec"
+                    "id": "jwnxb9zceuv8x"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "h0qf21bxnxi72"
+                    "id": "w6dt105ucjn4x"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "agqsw7rsplp33"
+                    "id": "5zssorwemw4j2"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "zib2oiq9szdmw"
+                    "id": "89fsr8z9njswh"
                   }
                 }
               }
@@ -6201,7 +6201,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "8iaq219xt8ala"
+              "id": "k0u5iw29btbri"
             }
           }
         },

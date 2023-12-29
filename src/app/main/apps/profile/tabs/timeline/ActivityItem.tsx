@@ -2,10 +2,10 @@ import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
-import { ActivityType } from '../../types/ActivityType';
+import { Activity } from '../../ProfileApi';
 
 type ActivityItemProps = {
-	item: ActivityType;
+	item: Activity;
 };
 
 /**

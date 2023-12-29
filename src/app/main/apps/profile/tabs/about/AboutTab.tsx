@@ -8,26 +8,19 @@ import ListItem from '@mui/material/ListItem';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ProfileType } from '../../types/ProfileType';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProfileAboutQuery } from '../../ProfileApi';
 
 /**
  * The about tab.
  */
 function AboutTab() {
-	const [profile, setProfile] = useState<ProfileType>();
+	const { data: profile, isLoading } = useGetProfileAboutQuery();
 
-	useEffect(() => {
-		axios.get('/api/profile/about').then((res) => {
-			setProfile(res.data as ProfileType);
-		});
-	}, []);
-
-	if (!profile) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	const { general, work, contact, groups, friends } = profile;

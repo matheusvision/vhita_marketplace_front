@@ -5,36 +5,28 @@ import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import FuseLoading from '@fuse/core/FuseLoading';
 import ActivityItem from './ActivityItem';
-import { ActivitiesType } from '../../types/ActivityType';
-import { PostsType } from '../../types/PostType';
 import PostItem from './PostItem';
+import { Activity, Post, useGetProfileTimelineQuery } from '../../ProfileApi';
 
 export type TimelineResponseDataType = {
-	activities: ActivitiesType;
-	posts: PostsType;
+	activities: Activity[];
+	posts: Post[];
 };
 
 /**
  * The timeline tab.
  */
 function TimelineTab() {
-	const [data, setData] = useState<TimelineResponseDataType>({ activities: [], posts: [] });
+	const { data: timeline, isLoading } = useGetProfileTimelineQuery();
 
-	useEffect(() => {
-		axios.get('/api/profile/timeline').then((res) => {
-			setData(res.data as TimelineResponseDataType);
-		});
-	}, []);
-
-	if (!data) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	const container = {
@@ -77,7 +69,7 @@ function TimelineTab() {
 
 						<CardContent className="p-0">
 							<List className="p-0">
-								{data.activities.map((activity) => (
+								{timeline.activities.map((activity) => (
 									<ActivityItem
 										item={activity}
 										key={activity.id}
@@ -137,7 +129,7 @@ function TimelineTab() {
 						</Box>
 					</Card>
 
-					{data.posts.map((post) => (
+					{timeline.posts.map((post) => (
 						<motion.div
 							variants={item}
 							key={post.id}
