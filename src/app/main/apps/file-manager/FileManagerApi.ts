@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import _ from '@lodash';
 import { selectSelectedItemId } from './store/selectedItemIdSlice';
 
-export const addTagTypes = ['fileManager_folder'] as const;
+export const addTagTypes = ['file_manager_folder'] as const;
 
 const FileManagerApi = api
 	.enhanceEndpoints({
@@ -13,7 +13,7 @@ const FileManagerApi = api
 		endpoints: (build) => ({
 			getFileManagerFolder: build.query<GetFileManagerFolderApiResponse, GetFileManagerFolderApiArg>({
 				query: (folderId) => ({ url: `/mock-api/file-manager/${folderId}` }),
-				providesTags: ['fileManager_folder']
+				providesTags: ['file_manager_folder']
 			}),
 			updateFileManagerFolder: build.mutation<UpdateFileManagerFolderApiResponse, UpdateFileManagerFolderApiArg>({
 				query: (queryArg) => ({
@@ -21,14 +21,14 @@ const FileManagerApi = api
 					method: 'PUT',
 					body: queryArg.fileManagerItem
 				}),
-				invalidatesTags: ['fileManager_folder']
+				invalidatesTags: ['file_manager_folder']
 			}),
 			deleteFileManagerFolder: build.mutation<DeleteFileManagerFolderApiResponse, DeleteFileManagerFolderApiArg>({
 				query: (folderId) => ({
 					url: `/mock-api/file-manager/${folderId}`,
 					method: 'DELETE'
 				}),
-				invalidatesTags: ['fileManager_folder']
+				invalidatesTags: ['file_manager_folder']
 			})
 		}),
 		overrideExisting: false
