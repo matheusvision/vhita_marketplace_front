@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import { Controller, useForm } from 'react-hook-form';
@@ -13,6 +12,8 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FuseHighlight from '@fuse/core/FuseHighlight';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetIconsListQuery } from './IconsApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -38,7 +39,9 @@ type IconListPageProps = {
  */
 function IconListPage(props: IconListPageProps) {
 	const { pageTitle, referenceUrl, apiUrl, iconName } = props;
-	const [listData, setListData] = useState<string[]>([]);
+
+	const { data: listData, isLoading } = useGetIconsListQuery(apiUrl);
+
 	const [selectedIcon, setSelectedIcon] = useState('');
 	const [filteredData, setFilteredData] = useState<string[]>([]);
 
@@ -53,11 +56,8 @@ function IconListPage(props: IconListPageProps) {
 	const searchText = watch('searchText');
 
 	useEffect(() => {
-		axios.get(apiUrl).then((res: AxiosResponse<string[]>) => {
-			setListData(res.data);
-			setSelectedIcon(res.data[0]);
-		});
-	}, [apiUrl]);
+		setSelectedIcon(listData?.[0]);
+	}, [listData]);
 
 	useEffect(() => {
 		setFilteredData(
@@ -72,6 +72,14 @@ function IconListPage(props: IconListPageProps) {
 				: listData
 		);
 	}, [listData, searchText]);
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	if (!listData) {
+		return null;
+	}
 
 	return (
 		<Root

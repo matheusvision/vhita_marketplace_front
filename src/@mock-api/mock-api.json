@@ -312,10 +312,10 @@
             }
           }
         },
-        "operationId": "icons_getFeatherIcons",
+        "operationId": "getIconsFeatherIcons",
         "description": "Retrieve feather icons data.",
         "tags": [
-          "icons"
+          "icons_feather_icons_list"
         ]
       },
       "parameters": []
@@ -343,10 +343,10 @@
             }
           }
         },
-        "operationId": "icons_getHeroicons",
+        "operationId": "getIconsHeroicons",
         "description": "Retrieve heroicons data.",
         "tags": [
-          "icons"
+          "icons_heroicons_list"
         ]
       },
       "parameters": []
@@ -374,10 +374,10 @@
             }
           }
         },
-        "operationId": "icons_getMaterialIcons",
+        "operationId": "getIconsMaterialIcons",
         "description": "Retrieve material icons data.",
         "tags": [
-          "icons"
+          "icons_material_icons_list"
         ]
       },
       "parameters": []
@@ -3376,7 +3376,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "3m35jkk77rtis"
+          "id": "x0rugf5e1zbd3"
         }
       },
       "parameters": []
@@ -5585,42 +5585,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "3o8f32ne91zy7"
+              "id": "dikh7lddznhla"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "d9pj0ggsunhj6"
+              "id": "23x8rf2ljmlwx"
             },
             "items": {
               "x-stoplight": {
-                "id": "5kjwfo47yoow3"
+                "id": "3e8b4zwabjnp7"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "ux4xzzr9juelw"
+                    "id": "eum3m2cwsqkmv"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "rpb3w1d0nszxi"
+                    "id": "0s6cnqxovavss"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "p1tscut1hdgr8"
+                    "id": "mr0x1au5adhm2"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "kfi9c57bs3nyq"
+                    "id": "0r7jbtrs487xv"
                   }
                 }
               }
@@ -6203,7 +6203,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "1x6397zv7rc8u"
+              "id": "82ln3754iwyts"
             }
           }
         },

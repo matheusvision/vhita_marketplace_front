@@ -34,7 +34,7 @@ const iconsUIConfig = {
 									pageTitle="Heroicons Outline"
 									referenceUrl="https://heroicons.com/"
 									iconName="heroicons-outline"
-									apiUrl="/api/ui/icons/heroicons"
+									apiUrl="/mock-api/ui/icons/heroicons"
 								/>
 							)
 						},
@@ -45,7 +45,7 @@ const iconsUIConfig = {
 									pageTitle="Heroicons Solid"
 									referenceUrl="https://heroicons.com/"
 									iconName="heroicons-solid"
-									apiUrl="/api/ui/icons/heroicons"
+									apiUrl="/mock-api/ui/icons/heroicons"
 								/>
 							)
 						}
@@ -64,7 +64,7 @@ const iconsUIConfig = {
 								<IconListPage
 									pageTitle="Material Outline"
 									iconName="material-outline"
-									apiUrl="/api/ui/icons/material"
+									apiUrl="/mock-api/ui/icons/material"
 								/>
 							)
 						},
@@ -74,7 +74,7 @@ const iconsUIConfig = {
 								<IconListPage
 									pageTitle="Material Solid"
 									iconName="material-solid"
-									apiUrl="/api/ui/icons/material"
+									apiUrl="/mock-api/ui/icons/material"
 								/>
 							)
 						},
@@ -84,7 +84,7 @@ const iconsUIConfig = {
 								<IconListPage
 									pageTitle="Material Twotone"
 									iconName="material-twotone"
-									apiUrl="/api/ui/icons/material"
+									apiUrl="/mock-api/ui/icons/material"
 								/>
 							)
 						}
@@ -96,7 +96,7 @@ const iconsUIConfig = {
 						<IconListPage
 							pageTitle="Feather"
 							iconName="feather"
-							apiUrl="/api/ui/icons/feather"
+							apiUrl="/mock-api/ui/icons/feather"
 						/>
 					)
 				}
