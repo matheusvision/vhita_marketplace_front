@@ -9,8 +9,8 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
 import VisitorsOverviewWidgetType from '../types/VisitorsOverviewWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 const Root = styled(Paper)(({ theme }) => ({
 	background: theme.palette.primary.main,
@@ -23,8 +23,14 @@ const Root = styled(Paper)(({ theme }) => ({
 function VisitorsOverviewWidget() {
 	const theme = useTheme();
 	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.main));
-	const widgets = useAppSelector(selectWidgets);
-	const { series, ranges } = widgets.visitors as VisitorsOverviewWidgetType;
+	const widget = useAppSelector<VisitorsOverviewWidgetType>(selectWidget('visitors'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, ranges } = widget;
+
 	const [tabValue, setTabValue] = useState(0);
 	const currentRange = Object.keys(ranges)[tabValue];
 

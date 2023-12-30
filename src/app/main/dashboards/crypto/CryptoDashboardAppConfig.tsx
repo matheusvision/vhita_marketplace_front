@@ -1,7 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const CryptoDashboardApp = lazyWithReducer('cryptoDashboardApp', () => import('./CryptoDashboardApp'), reducer);
+const CryptoDashboardApp = lazy(() => import('./CryptoDashboardApp'));
 
 /**
  * The CryptoDashboardAppConfig.

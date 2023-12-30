@@ -6,15 +6,20 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import LinearProgress from '@mui/material/LinearProgress';
 import IconButton from '@mui/material/IconButton';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import BudgetWidgetType from '../types/BudgetWidgetType';
+import BudgetWidgetType from './types/BudgetWidgetType';
+import { selectWidget } from '../FinanceDashboardApi';
 
 /**
  * The BudgetWidget widget.
  */
 function BudgetWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { expenses, expensesLimit, savings, savingsGoal, bills, billsLimit } = widgets.budget as BudgetWidgetType;
+	const widget = useAppSelector(selectWidget<BudgetWidgetType>('budget'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { expenses, expensesLimit, savings, savingsGoal, bills, billsLimit } = widget;
 
 	function calcProgressVal(val: number, limit: number) {
 		const percentage = (val * 100) / limit;

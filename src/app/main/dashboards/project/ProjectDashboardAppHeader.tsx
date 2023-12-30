@@ -2,30 +2,27 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppSelector } from 'app/store';
 import { selectUser } from 'app/store/user/userSlice';
-import { getProjects, selectProjects } from './store/projectsSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 
 /**
  * The ProjectDashboardAppHeader page.
  */
 function ProjectDashboardAppHeader() {
-	const dispatch = useAppDispatch();
-	const projects = useAppSelector(selectProjects);
+	const { data: projects, isLoading } = useGetProjectDashboardProjectsQuery();
+
 	const user = useAppSelector(selectUser);
 
 	const [selectedProject, setSelectedProject] = useState<{ id: number; menuEl: HTMLElement | null }>({
 		id: 1,
 		menuEl: null
 	});
-
-	useEffect(() => {
-		dispatch(getProjects());
-	}, [dispatch]);
 
 	function handleChangeProject(id: number) {
 		setSelectedProject({
@@ -48,8 +45,8 @@ function ProjectDashboardAppHeader() {
 		});
 	}
 
-	if (_.isEmpty(projects)) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (

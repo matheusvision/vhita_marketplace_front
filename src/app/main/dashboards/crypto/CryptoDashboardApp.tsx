@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { styled } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import _ from '@lodash';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { getWidgets, selectWidgets } from './store/widgetsSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
 import CryptoDashboardAppHeader from './CryptoDashboardAppHeader';
 import CryptoDashboardAppSidebar from './CryptoDashboardAppSidebar';
 import CryptoDashboardAppContent from './CryptoDashboardAppContent';
+import { useGetCryptoDashboardWidgetsQuery } from './CryptoDashboardApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -30,19 +29,19 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function CryptoDashboardApp() {
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-	const dispatch = useAppDispatch();
-	const widgets = useAppSelector(selectWidgets);
 
-	useEffect(() => {
-		dispatch(getWidgets());
-	}, [dispatch]);
+	const { data: widgets, isLoading } = useGetCryptoDashboardWidgetsQuery();
 
 	useEffect(() => {
 		setLeftSidebarOpen(!isMobile);
 	}, [isMobile]);
 
-	if (_.isEmpty(widgets)) {
+	if (!widgets) {
 		return null;
+	}
+
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (

@@ -1,7 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const ProjectDashboardApp = lazyWithReducer('projectDashboardApp', () => import('./ProjectDashboardApp'), reducer);
+const ProjectDashboardApp = lazy(() => import('./ProjectDashboardApp'));
 
 /**
  * The ProjectDashboardApp configuration.

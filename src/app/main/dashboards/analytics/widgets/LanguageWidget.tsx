@@ -7,15 +7,20 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
 import LanguageWidgetType from '../types/LanguageWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**
  * Language widget.
  */
 function LanguageWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { series, labels, uniqueVisitors } = widgets.language as LanguageWidgetType;
+	const widget = useAppSelector<LanguageWidgetType>(selectWidget('language'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, labels, uniqueVisitors } = widget;
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
 

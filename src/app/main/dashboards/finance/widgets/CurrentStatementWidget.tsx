@@ -4,15 +4,20 @@ import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import CurrentStatementWidgetType from '../types/CurrentStatementWidgetType';
+import CurrentStatementWidgetType from './types/CurrentStatementWidgetType';
+import { selectWidget } from '../FinanceDashboardApi';
 
 /**
  * The CurrentStatementWidget widget.
  */
 function CurrentStatementWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { status, date, limit, spent, minimum } = widgets.currentStatement as CurrentStatementWidgetType;
+	const widget = useAppSelector(selectWidget<CurrentStatementWidgetType>('currentStatement'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { status, date, limit, spent, minimum } = widget;
 
 	return (
 		<Paper className="relative flex flex-col flex-auto p-24 pr-12 pb-12 rounded-2xl shadow overflow-hidden">

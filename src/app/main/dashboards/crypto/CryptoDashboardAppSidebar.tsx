@@ -1,16 +1,19 @@
 import Paper from '@mui/material/Paper';
 import { useAppSelector } from 'app/store';
 import WatchlistItem from './widgets/WatchlistItem';
-import { selectWidgets } from './store/widgetsSlice';
 import BuySellForm from './widgets/BuySellForm';
 import WatchlistType from './types/WatchlistType';
+import { selectWidget } from './CryptoDashboardApi';
 
 /**
  * The crypto dashboard app sidebar.
  */
 function CryptoDashboardAppSidebar() {
-	const widgets = useAppSelector(selectWidgets);
-	const watchlist = widgets?.watchlist as WatchlistType;
+	const watchlist = useAppSelector(selectWidget<WatchlistType>('watchlist'));
+
+	if (!watchlist) {
+		return null;
+	}
 
 	return (
 		<>

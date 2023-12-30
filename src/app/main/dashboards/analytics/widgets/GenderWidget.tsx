@@ -7,15 +7,20 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
 import GenderWidgetType from '../types/GenderWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**
  * Gender widget.
  */
 function GenderWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { series, labels, uniqueVisitors } = widgets.gender as GenderWidgetType;
+	const widget = useAppSelector<GenderWidgetType>(selectWidget('gender'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, labels, uniqueVisitors } = widget;
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
 

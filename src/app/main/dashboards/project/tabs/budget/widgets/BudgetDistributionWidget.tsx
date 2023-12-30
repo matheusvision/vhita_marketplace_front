@@ -5,15 +5,20 @@ import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import BudgetDistributionDataType from '../../../types/BudgetDistributionDataType';
+import BudgetDistributionDataType from './types/BudgetDistributionDataType';
+import { selectWidget } from '../../../ProjectDashboardApi';
 
 /**
  * The BudgetDistributionWidget widget.
  */
 function BudgetDistributionWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { categories, series } = widgets.budgetDistribution as BudgetDistributionDataType;
+	const widget = useAppSelector(selectWidget<BudgetDistributionDataType>('budgetDistribution'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { categories, series } = widget;
 
 	const theme = useTheme();
 

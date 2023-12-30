@@ -8,8 +8,8 @@ import ReactApexChart from 'react-apexcharts';
 import Box from '@mui/material/Box';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import GithubIssuesDataType from '../../../types/GithubIssuesDataType';
+import GithubIssuesDataType from './types/GithubIssuesDataType';
+import { selectWidget } from '../../../ProjectDashboardApi';
 
 /**
  * The GithubIssuesWidget widget.
@@ -18,8 +18,14 @@ function GithubIssuesWidget() {
 	const theme = useTheme();
 	const [awaitRender, setAwaitRender] = useState(true);
 	const [tabValue, setTabValue] = useState(0);
-	const widgets = useAppSelector(selectWidgets);
-	const { overview, series, ranges, labels } = widgets.githubIssues as GithubIssuesDataType;
+
+	const widget = useAppSelector(selectWidget<GithubIssuesDataType>('githubIssues'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { overview, series, ranges, labels } = widget;
 	const currentRange = Object.keys(ranges)[tabValue];
 
 	const chartOptions: ApexOptions = {

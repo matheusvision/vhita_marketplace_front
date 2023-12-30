@@ -6,15 +6,20 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import ExpensesDataType from '../../../types/ExpensesDataType';
+import ExpensesDataType from './types/ExpensesDataType';
+import { selectWidget } from '../../../ProjectDashboardApi';
 
 /**
  * The MonthlyExpensesWidget widget.
  */
 function MonthlyExpensesWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { amount, series, labels } = widgets.monthlyExpenses as ExpensesDataType;
+	const widget = useAppSelector(selectWidget<ExpensesDataType>('monthlyExpenses'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { amount, series, labels } = widget;
 	const theme = useTheme();
 
 	const chartOptions: ApexOptions = {

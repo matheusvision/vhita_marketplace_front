@@ -3,6 +3,6 @@ import mock from '../../mock';
 
 const widgets = mockApi.components.examples.crypto_dashboard_widgets.value;
 
-mock.onGet('/api/dashboards/crypto/widgets').reply(() => {
+mock.onGet('/dashboards/crypto/widgets').reply(() => {
 	return [200, widgets];
 });

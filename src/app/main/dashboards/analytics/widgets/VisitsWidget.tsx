@@ -6,16 +6,21 @@ import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
 import VisitsWidgetType from '../types/VisitsWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**
  * Impressions widget.
  */
 function Impressions() {
 	const theme = useTheme();
-	const widgets = useAppSelector(selectWidgets);
-	const { series, amount, labels } = widgets.visits as VisitsWidgetType;
+	const widget = useAppSelector<VisitsWidgetType>(selectWidget('visits'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, amount, labels } = widget;
 
 	const chartOptions: ApexOptions = {
 		chart: {

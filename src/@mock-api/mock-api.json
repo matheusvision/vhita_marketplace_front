@@ -405,7 +405,7 @@
         "operationId": "getProjectDashboardWidgets",
         "description": "Retrieve Project dashboard widgets.",
         "tags": [
-          "project-dashboard"
+          "project_dashboard_widgets"
         ]
       },
       "parameters": []
@@ -436,7 +436,7 @@
         "operationId": "getProjectDashboardProjects",
         "description": "Retrieve Project dashboard projects.",
         "tags": [
-          "project-dashboard"
+          "project_dashboard_projects"
         ]
       },
       "parameters": []
@@ -464,7 +464,7 @@
         "operationId": "getCryptoDashboardWidgets",
         "description": "Retrieve Crypto dashboard widgets.",
         "tags": [
-          "crypto-dashboard"
+          "crypto_dashboard_widgets"
         ]
       },
       "parameters": []
@@ -492,7 +492,7 @@
         "operationId": "getFinanceDashboardWidgets",
         "description": "Retrieve Finance dashboard widgets.",
         "tags": [
-          "finance-dashboard"
+          "finance_dashboard_widgets"
         ]
       },
       "parameters": []
@@ -520,7 +520,7 @@
         "operationId": "getAnalyticsDashboardWidgets",
         "description": "Retrieve Analytics dashboard widgets.",
         "tags": [
-          "analytics-dashboard"
+          "analytics_dashboard_widgets"
         ]
       },
       "parameters": []
@@ -3092,7 +3092,7 @@
         "operationId": "getFileManagerFolder",
         "description": "Retrieve File Manager folder by id.",
         "tags": [
-          "fileManager_folder"
+          "file_manager_folder"
         ]
       },
       "parameters": [
@@ -3129,7 +3129,7 @@
           "description": ""
         },
         "tags": [
-          "fileManager_folder"
+          "file_manager_folder"
         ]
       },
       "delete": {
@@ -3145,7 +3145,7 @@
         },
         "description": "Delete folder.",
         "tags": [
-          "fileManager_folder"
+          "file_manager_folder"
         ]
       }
     },
@@ -3376,7 +3376,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "t4bkzff5mwue1"
+          "id": "3m35jkk77rtis"
         }
       },
       "parameters": []
@@ -5585,42 +5585,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "9bj9cv6u5urbh"
+              "id": "3o8f32ne91zy7"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "q4g4stjv844np"
+              "id": "d9pj0ggsunhj6"
             },
             "items": {
               "x-stoplight": {
-                "id": "rk2tsxov42i68"
+                "id": "5kjwfo47yoow3"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "klwz7dfhwqcxl"
+                    "id": "ux4xzzr9juelw"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "g119bo1mjkarw"
+                    "id": "rpb3w1d0nszxi"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "tqp0x8wvnf7mz"
+                    "id": "p1tscut1hdgr8"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "rfysuc7mag98w"
+                    "id": "kfi9c57bs3nyq"
                   }
                 }
               }
@@ -6203,7 +6203,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "qfmy7dbk37087"
+              "id": "1x6397zv7rc8u"
             }
           }
         },

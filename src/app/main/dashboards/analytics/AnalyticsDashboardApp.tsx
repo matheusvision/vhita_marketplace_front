@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { getWidgets, selectWidgets } from './store/widgetsSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
 import AnalyticsDashboardAppHeader from './AnalyticsDashboardAppHeader';
 import VisitorsOverviewWidget from './widgets/VisitorsOverviewWidget';
 import ConversionsWidget from './widgets/ConversionsWidget';
@@ -14,7 +12,7 @@ import NewVsReturningWidget from './widgets/NewVsReturningWidget';
 import AgeWidget from './widgets/AgeWidget';
 import LanguageWidget from './widgets/LanguageWidget';
 import GenderWidget from './widgets/GenderWidget';
-import _ from '../../../../@lodash/@lodash';
+import { useGetAnalyticsDashboardWidgetsQuery } from './AnalyticsDashboardApi';
 
 const container = {
 	show: {
@@ -33,16 +31,20 @@ const item = {
  * The analytics dashboard app.
  */
 function AnalyticsDashboardApp() {
-	const dispatch = useAppDispatch();
-	const widgets = useAppSelector(selectWidgets);
+	const { isLoading } = useGetAnalyticsDashboardWidgetsQuery();
 
-	useEffect(() => {
-		dispatch(getWidgets());
-	}, [dispatch]);
-
-	if (_.isEmpty(widgets)) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
+
+	/*
+	return (
+		<div>
+			<VisitorsOverviewWidget />;
+			<ConversionsWidget />
+		</div>
+	);
+*/
 
 	return (
 		<FusePageSimple

@@ -7,17 +7,22 @@ import { Tooltip } from '@mui/material';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
 import VisitorsVsPageViewsType from '../types/VisitorsVsPageViewsType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**
  * Visitors vs. Page Views widget.
  */
 function VisitorsVsPageViewsWidget() {
 	const theme = useTheme();
-	const widgets = useAppSelector(selectWidgets);
-	const { series, averageRatio, predictedRatio, overallScore } =
-		widgets.visitorsVsPageViews as VisitorsVsPageViewsType;
+
+	const widget = useAppSelector<VisitorsVsPageViewsType>(selectWidget('visitorsVsPageViews'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, averageRatio, predictedRatio, overallScore } = widget;
 
 	const chartOptions: ApexOptions = {
 		chart: {

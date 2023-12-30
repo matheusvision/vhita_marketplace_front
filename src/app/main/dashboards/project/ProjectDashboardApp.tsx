@@ -1,17 +1,16 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import _ from '@lodash';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import * as React from 'react';
+import FuseLoading from '@fuse/core/FuseLoading';
 import ProjectDashboardAppHeader from './ProjectDashboardAppHeader';
-import { getWidgets, selectWidgets } from './store/widgetsSlice';
 import HomeTab from './tabs/home/HomeTab';
 import TeamTab from './tabs/team/TeamTab';
 import BudgetTab from './tabs/budget/BudgetTab';
+import { useGetProjectDashboardWidgetsQuery } from './ProjectDashboardApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -24,21 +23,16 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
  * The ProjectDashboardApp page.
  */
 function ProjectDashboardApp() {
-	const dispatch = useAppDispatch();
-	const widgets = useAppSelector(selectWidgets);
+	const { isLoading } = useGetProjectDashboardWidgetsQuery();
 
 	const [tabValue, setTabValue] = useState(0);
-
-	useEffect(() => {
-		dispatch(getWidgets());
-	}, [dispatch]);
 
 	function handleChangeTab(event: React.SyntheticEvent, value: number) {
 		setTabValue(value);
 	}
 
-	if (_.isEmpty(widgets)) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (

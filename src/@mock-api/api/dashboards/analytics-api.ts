@@ -3,6 +3,6 @@ import mock from '../../mock';
 
 const widgets = mockApi.components.examples.analytics_dashboard_widgets.value;
 
-mock.onGet('/api/dashboards/analytics/widgets').reply(() => {
+mock.onGet('/dashboards/analytics/widgets').reply(() => {
 	return [200, widgets];
 });

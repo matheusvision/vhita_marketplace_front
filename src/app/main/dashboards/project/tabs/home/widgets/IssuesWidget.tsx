@@ -4,15 +4,19 @@ import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import WidgetDataType from '../../../types/WidgetDataType';
+import { selectWidget } from '../../../ProjectDashboardApi';
+import WidgetDataType from './types/WidgetDataType';
 
 /**
  * The IssuesWidget widget.
  */
 function IssuesWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { data, title } = widgets.issues as WidgetDataType;
+	const widget = useAppSelector(selectWidget<WidgetDataType>('issues'));
+
+	if (!widget) {
+		return null;
+	}
+	const { data, title } = widget;
 
 	return (
 		<Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden">

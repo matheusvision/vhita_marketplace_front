@@ -1,20 +1,23 @@
 import { useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
-import CircularProgress from '@mui/material/CircularProgress';
 import sub from 'date-fns/sub';
 import format from 'date-fns/format';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import { selectWidgets } from '../store/widgetsSlice';
 import BTCWidgetType from '../types/BTCWidgetType';
+import { selectWidget } from '../CryptoDashboardApi';
 
 /**
  * The BTC main chart.
  */
 function BtcMainChart() {
 	const theme = useTheme();
-	const widgets = useAppSelector(selectWidgets);
-	const btc = widgets?.btc as BTCWidgetType;
+
+	const btc = useAppSelector(selectWidget<BTCWidgetType>('btc'));
+
+	if (!btc) {
+		return null;
+	}
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -128,14 +131,6 @@ function BtcMainChart() {
 			}
 		}
 	};
-
-	if (!widgets) {
-		return (
-			<div className="flex flex-1 items-center justify-center">
-				<CircularProgress color="secondary" />
-			</div>
-		);
-	}
 
 	return (
 		<div className="flex flex-col flex-auto h-full">

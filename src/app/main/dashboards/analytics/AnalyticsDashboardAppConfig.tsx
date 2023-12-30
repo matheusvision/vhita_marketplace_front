@@ -1,12 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const AnalyticsDashboardApp = lazyWithReducer(
-	'analyticsDashboardApp',
-	() => import('./AnalyticsDashboardApp'),
-	reducer
-);
-
+const AnalyticsDashboardApp = lazy(() => import('./AnalyticsDashboardApp'));
 /**
  * The analytics dashboard app config.
  */
