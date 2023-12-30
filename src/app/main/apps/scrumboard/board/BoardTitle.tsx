@@ -1,18 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
-
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState, MouseEvent } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectBoard, updateBoard } from '../store/boardSlice';
-import { BoardType } from '../types/BoardType';
+import { useParams } from 'react-router-dom';
+import { ScrumboardBoard, useGetScrumboardBoardQuery, useUpdateScrumboardBoardMutation } from '../ScrumboardApi';
 
 /**
  * Form Validation Schema
@@ -25,8 +23,12 @@ const schema = yup.object().shape({
  * The board title component.
  */
 function BoardTitle() {
-	const dispatch = useAppDispatch();
-	const { data: board } = useAppSelector(selectBoard);
+	const routeParams = useParams();
+	const { boardId } = routeParams;
+
+	const { data: board } = useGetScrumboardBoardQuery(boardId);
+
+	const [updateBoard] = useUpdateScrumboardBoardMutation();
 
 	const [formOpen, setFormOpen] = useState(false);
 
@@ -57,8 +59,8 @@ function BoardTitle() {
 		setFormOpen(false);
 	}
 
-	function onSubmit(data: BoardType) {
-		dispatch(updateBoard(data));
+	function onSubmit(data: ScrumboardBoard) {
+		updateBoard({ id: board.id, ...data });
 		handleCloseForm();
 	}
 

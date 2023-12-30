@@ -4,11 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { useAppSelector } from 'app/store';
+import _ from '@lodash';
 import BoardAddCard from '../board-card/BoardAddCard';
 import BoardCard from '../board-card/BoardCard';
 import BoardListHeader from './BoardListHeader';
-import { selectListById } from '../../store/listsSlice';
+import { useGetScrumboardBoardListItemsQuery } from '../../ScrumboardApi';
 
 const StyledCard = styled(Card)(({ theme }) => ({
 	'&': {
@@ -19,6 +19,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 type BoardListProps = {
+	boardId: string;
 	listId: string;
 	cardIds: string[];
 	index: number;
@@ -28,9 +29,13 @@ type BoardListProps = {
  * The board list component.
  */
 function BoardList(props: BoardListProps) {
-	const { listId, cardIds, index } = props;
+	const { boardId, listId, cardIds, index } = props;
+
 	const contentScrollEl = useRef<HTMLDivElement>(null);
-	const list = useAppSelector(selectListById(listId));
+
+	const { data: listItems } = useGetScrumboardBoardListItemsQuery(boardId);
+
+	const list = _.find(listItems, { id: listId });
 
 	function handleCardAdded() {
 		if (contentScrollEl.current) {
@@ -69,12 +74,13 @@ function BoardList(props: BoardListProps) {
 						<BoardListHeader
 							list={list}
 							cardIds={cardIds}
+							boardId={boardId}
 							className="border-b-1"
 							handleProps={provided.dragHandleProps}
 						/>
 
 						<CardContent
-							className="flex flex-col flex-1 flex-auto h-full min-h-0 w-full p-0 overflow-auto"
+							className="flex flex-col flex-auto h-full min-h-0 w-full p-0 overflow-auto"
 							ref={contentScrollEl}
 						>
 							<Droppable
@@ -102,6 +108,7 @@ function BoardList(props: BoardListProps) {
 
 						<div className="p-12">
 							<BoardAddCard
+								boardId={boardId}
 								listId={listId}
 								onCardAdded={handleCardAdded}
 							/>

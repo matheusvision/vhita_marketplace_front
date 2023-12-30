@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
@@ -6,15 +5,14 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { MouseEvent, useEffect, useState } from 'react';
-import { useAppDispatch } from 'app/store';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { newCard } from '../../store/cardsSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { PartialDeep } from 'type-fest';
+import { ScrumboardCard, useCreateScrumboardBoardCardMutation } from '../../ScrumboardApi';
 
-type FormType = {
-	title: string;
-};
+type FormType = PartialDeep<ScrumboardCard>;
 
 const defaultValues = {
 	title: ''
@@ -23,11 +21,12 @@ const defaultValues = {
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a title')
+const schema = z.object({
+	title: z.string().nonempty('You must enter a title')
 });
 
 type BoardAddCardProps = {
+	boardId: string;
 	listId: string;
 	onCardAdded: () => void;
 };
@@ -36,14 +35,16 @@ type BoardAddCardProps = {
  * The board add card component.
  */
 function BoardAddCard(props: BoardAddCardProps) {
-	const { listId, onCardAdded } = props;
-	const dispatch = useAppDispatch();
+	const { boardId, listId, onCardAdded } = props;
 
 	const [formOpen, setFormOpen] = useState(false);
+
+	const [createCard] = useCreateScrumboardBoardCardMutation();
+
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;
@@ -63,10 +64,12 @@ function BoardAddCard(props: BoardAddCardProps) {
 		setFormOpen(false);
 	}
 
-	function onSubmit(newData: FormType) {
-		dispatch(newCard({ listId, newData })).then(() => {
-			onCardAdded();
-		});
+	function onSubmit(card: FormType) {
+		createCard({ boardId, listId, card })
+			.unwrap()
+			.then(() => {
+				onCardAdded();
+			});
 
 		handleCloseForm();
 	}

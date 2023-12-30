@@ -45,7 +45,7 @@ function DueMenu(props: DueMenuProps) {
 				onClose={handleMenuClose}
 			>
 				<div className="p-16 max-w-192">
-					{formatteddueDate ? (
+					{dueDate ? (
 						<MenuItem
 							onClick={() => {
 								onRemoveDue();

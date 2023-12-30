@@ -2,12 +2,12 @@ import FuseUtils from '@fuse/utils';
 import getUnixTime from 'date-fns/getUnixTime';
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { CommentType } from '../types/CommentType';
+import { ScrumboardComment } from '../ScrumboardApi';
 
 /**
  * The comment model.
  */
-function CommentModel(data: PartialDeep<CommentType>): CommentType {
+function CommentModel(data: PartialDeep<ScrumboardComment>): ScrumboardComment {
 	data = data || {};
 
 	return _.defaults(data, {

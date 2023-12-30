@@ -1,27 +1,29 @@
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import CardModel from 'src/app/main/apps/scrumboard/models/CardModel';
-import { MembersType } from '../../app/main/apps/scrumboard/types/MemberType';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
-import { BoardType, BoardsType } from '../../app/main/apps/scrumboard/types/BoardType';
-import { LabelsType } from '../../app/main/apps/scrumboard/types/LabelType';
-import { CardsType, CardType } from '../../app/main/apps/scrumboard/types/CardType';
-import { ListType, ListsType } from '../../app/main/apps/scrumboard/types/ListType';
 import ListModel from '../../app/main/apps/scrumboard/models/ListModel';
 import { Params } from '../ExtendedMockAdapter';
+import {
+	ScrumboardBoard,
+	ScrumboardCard,
+	ScrumboardLabel,
+	ScrumboardList,
+	ScrumboardMember
+} from '../../app/main/apps/scrumboard/ScrumboardApi';
 
-const boardsDB = mockApi.components.examples.scrumboard_boards.value as BoardsType;
-const labelsDB = mockApi.components.examples.scrumboard_labels.value as LabelsType;
-const cardsDB = mockApi.components.examples.scrumboard_cards.value as CardsType;
-const membersDB = mockApi.components.examples.scrumboard_members.value as MembersType;
-const listsDB = mockApi.components.examples.scrumboard_lists.value as ListsType;
+const boardsDB = mockApi.components.examples.scrumboard_boards.value as ScrumboardBoard[];
+const labelsDB = mockApi.components.examples.scrumboard_labels.value as ScrumboardLabel[];
+const cardsDB = mockApi.components.examples.scrumboard_cards.value as ScrumboardCard[];
+const membersDB = mockApi.components.examples.scrumboard_members.value as ScrumboardMember[];
+const listsDB = mockApi.components.examples.scrumboard_lists.value as ScrumboardList[];
 
 /**
  * GET BOARDS
  * GET api/scrumboard/boards
  */
-mock.onGet('/api/scrumboard/boards').reply(() => {
+mock.onGet('/scrumboard/boards').reply(() => {
 	return [200, boardsDB];
 });
 
@@ -29,8 +31,8 @@ mock.onGet('/api/scrumboard/boards').reply(() => {
  * CREATE NEW BOARD
  * POST api/scrumboard/boards
  */
-mock.onPost('/api/scrumboard/boards').reply(({ data }) => {
-	const newBoard = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as BoardType;
+mock.onPost('/scrumboard/boards').reply(({ data }) => {
+	const newBoard = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as ScrumboardBoard;
 
 	boardsDB.push(newBoard);
 
@@ -41,7 +43,7 @@ mock.onPost('/api/scrumboard/boards').reply(({ data }) => {
  * GET BOARD LABELS
  * GET api/scrumboard/boards/:boardId/labels
  */
-mock.onGet('/api/scrumboard/boards/:boardId/labels').reply((config) => {
+mock.onGet('/scrumboard/boards/:boardId/labels').reply((config) => {
 	const { boardId } = config.params as Params;
 
 	const labels = labelsDB.filter((item) => item.boardId === boardId);
@@ -53,11 +55,11 @@ mock.onGet('/api/scrumboard/boards/:boardId/labels').reply((config) => {
  * CREATE CARD
  * PUT api/scrumboard/boards/:boardId/lists/:listId/cards
  */
-mock.onPost('/api/scrumboard/boards/:boardId/lists/:listId/cards').reply((config) => {
+mock.onPost('/scrumboard/boards/:boardId/lists/:listId/cards').reply((config) => {
 	const { boardId, listId } = config.params as Params;
 
 	const newCard = CardModel({
-		...(JSON.parse(config.data as string) as CardType),
+		...(JSON.parse(config.data as string) as ScrumboardCard),
 		id: FuseUtils.generateGUID(),
 		boardId,
 		listId
@@ -80,7 +82,7 @@ mock.onPost('/api/scrumboard/boards/:boardId/lists/:listId/cards').reply((config
  * UPDATE CARD
  * PUT api/scrumboard/boards/:boardId/cards/:cardId
  */
-mock.onPut('/api/scrumboard/boards/:boardId/cards/:cardId').reply((config) => {
+mock.onPut('/scrumboard/boards/:boardId/cards/:cardId').reply((config) => {
 	const { cardId } = config.params as Params;
 
 	const card = _.find(cardsDB, { id: cardId });
@@ -93,7 +95,7 @@ mock.onPut('/api/scrumboard/boards/:boardId/cards/:cardId').reply((config) => {
  * DELETE CARD
  * api/scrumboard/boards/:boardId/cards/:cardId
  */
-mock.onDelete('/api/scrumboard/boards/:boardId/cards/:cardId').reply((config) => {
+mock.onDelete('/scrumboard/boards/:boardId/cards/:cardId').reply((config) => {
 	const { boardId, cardId } = config.params as Params;
 
 	const board = _.find(boardsDB, { id: boardId });
@@ -114,9 +116,9 @@ mock.onDelete('/api/scrumboard/boards/:boardId/cards/:cardId').reply((config) =>
 });
 
 /** GET LISTS BY BOARD ID
- * GET /api/scrumboard/boards/:boardId/lists
+ * GET /scrumboard/boards/:boardId/lists
  */
-mock.onGet('/api/scrumboard/boards/:boardId/lists').reply((config) => {
+mock.onGet('/scrumboard/boards/:boardId/lists').reply((config) => {
 	const { boardId } = config.params as Params;
 
 	const lists = listsDB.filter((item) => item.boardId === boardId);
@@ -128,7 +130,7 @@ mock.onGet('/api/scrumboard/boards/:boardId/lists').reply((config) => {
  * UPDATE LIST
  * PUT api/scrumboard/boards/:boardId/lists/:listId
  */
-mock.onPut('/api/scrumboard/boards/:boardId/lists/:listId').reply((config) => {
+mock.onPut('/scrumboard/boards/:boardId/lists/:listId').reply((config) => {
 	const { listId } = config.params as Params;
 
 	const list = _.find(listsDB, { id: listId });
@@ -142,11 +144,11 @@ mock.onPut('/api/scrumboard/boards/:boardId/lists/:listId').reply((config) => {
  * CREATE LIST
  * POST api/scrumboard/boards/:boardId/lists
  */
-mock.onPost('/api/scrumboard/boards/:boardId/lists').reply((config) => {
+mock.onPost('/scrumboard/boards/:boardId/lists').reply((config) => {
 	const { boardId } = config.params as Params;
 
-	const newList: ListType = ListModel({
-		...(JSON.parse(config.data as string) as ListType),
+	const newList: ScrumboardList = ListModel({
+		...(JSON.parse(config.data as string) as ScrumboardList),
 		id: FuseUtils.generateGUID(),
 		boardId
 	});
@@ -165,7 +167,7 @@ mock.onPost('/api/scrumboard/boards/:boardId/lists').reply((config) => {
  * DELETE LIST
  * DELETE api/scrumboard/boards/:boardId/lists/:listId
  */
-mock.onDelete('/api/scrumboard/boards/:boardId/lists/:listId').reply((config) => {
+mock.onDelete('/scrumboard/boards/:boardId/lists/:listId').reply((config) => {
 	const { boardId, listId } = config.params as Params;
 
 	const board = _.find(boardsDB, { id: boardId });
@@ -186,7 +188,7 @@ mock.onDelete('/api/scrumboard/boards/:boardId/lists/:listId').reply((config) =>
  * GET BOARD CARDS
  * GET api/scrumboard/boards/:boardId/cards
  */
-mock.onGet('/api/scrumboard/boards/:boardId/cards').reply((config) => {
+mock.onGet('/scrumboard/boards/:boardId/cards').reply((config) => {
 	const { boardId } = config.params as Params;
 
 	const cards = cardsDB.filter((item) => item.boardId === boardId);
@@ -198,7 +200,7 @@ mock.onGet('/api/scrumboard/boards/:boardId/cards').reply((config) => {
  * GET BOARD
  * GET api/scrumboard/boards/:boardId
  */
-mock.onGet('/api/scrumboard/boards/:boardId').reply((config) => {
+mock.onGet('/scrumboard/boards/:boardId').reply((config) => {
 	const { boardId } = config.params as Params;
 
 	const board = _.find(boardsDB, { id: boardId });
@@ -214,7 +216,7 @@ mock.onGet('/api/scrumboard/boards/:boardId').reply((config) => {
  * UPDATE BOARD
  * PUT api/scrumboard/boards/:boardId
  */
-mock.onPut('/api/scrumboard/boards/:boardId').reply((config) => {
+mock.onPut('/scrumboard/boards/:boardId').reply((config) => {
 	const { boardId } = config.params as Params;
 
 	const board = _.find(boardsDB, { id: boardId });
@@ -228,7 +230,7 @@ mock.onPut('/api/scrumboard/boards/:boardId').reply((config) => {
  * DELETE BOARD
  * DELETE api/scrumboard/boards/:boardId
  */
-mock.onDelete('/api/scrumboard/boards/:boardId').reply((config) => {
+mock.onDelete('/scrumboard/boards/:boardId').reply((config) => {
 	const { boardId } = config.params as Params;
 
 	_.remove(boardsDB, { id: boardId });
@@ -242,6 +244,6 @@ mock.onDelete('/api/scrumboard/boards/:boardId').reply((config) => {
  * GET ALL MEMBERS
  * GET api/scrumboard/members
  */
-mock.onGet('/api/scrumboard/members').reply(() => {
+mock.onGet('/scrumboard/members').reply(() => {
 	return [200, membersDB];
 });

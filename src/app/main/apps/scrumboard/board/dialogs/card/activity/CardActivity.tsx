@@ -5,11 +5,10 @@ import fromUnixTime from 'date-fns/fromUnixTime';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Box from '@mui/material/Box';
 import { useAppSelector } from 'app/store';
-import { selectMemberById } from '../../../../store/membersSlice';
-import { CommentType } from '../../../../types/CommentType';
+import { ScrumboardComment, selectMemberById } from '../../../../ScrumboardApi';
 
 type CardActivityProps = {
-	item: CommentType;
+	item: ScrumboardComment;
 };
 
 /**

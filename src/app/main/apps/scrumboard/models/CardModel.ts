@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { CardType } from '../types/CardType';
+import { ScrumboardCard } from '../ScrumboardApi';
 
 /**
  * The card model.
  */
-function CardModel(data: PartialDeep<CardType>): CardType {
+function CardModel(data: PartialDeep<ScrumboardCard>): ScrumboardCard {
 	data = data || {};
 
 	return _.defaults(data, {

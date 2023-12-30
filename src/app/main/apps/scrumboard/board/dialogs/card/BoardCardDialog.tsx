@@ -1,6 +1,6 @@
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { closeCardDialog, selectCardDialogOpen } from '../../../store/cardSlice';
+import { closeCardDialog, selectCardDialogOpen } from '../../../store/cardDialogSlice';
 import BoardCardForm from './BoardCardForm';
 
 /**

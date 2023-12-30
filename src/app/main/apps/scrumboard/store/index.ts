@@ -1,23 +1,15 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import board from './boardSlice';
-import boards from './boardsSlice';
-import card from './cardSlice';
-import cards from './cardsSlice';
-import lists from './listsSlice';
-import labels from './labelsSlice';
-import members from './membersSlice';
+import { RootStateType } from 'app/store/types';
+import cardDialog, { CardSliceType } from './cardDialogSlice';
+import { ScrumboardApiType } from '../ScrumboardApi';
 
 /**
  * The Scrumboard Reducer.
  */
 const reducer = combineReducers({
-	board,
-	boards,
-	card,
-	cards,
-	lists,
-	labels,
-	members
+	cardDialog
 });
 
 export default reducer;
+
+export type AppRootStateType = RootStateType<[CardSliceType]> & ScrumboardApiType;

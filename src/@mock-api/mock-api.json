@@ -1395,7 +1395,7 @@
         "operationId": "getScrumboardMemberList",
         "description": "Retrieve scrumboard members.",
         "tags": [
-          "scrumboard"
+          "scrumboard_member_list"
         ]
       },
       "parameters": [],
@@ -1408,9 +1408,6 @@
           }
         },
         "description": "Create Scrumboard member.",
-        "tags": [
-          "scrumboard"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1428,7 +1425,82 @@
               }
             }
           }
+        },
+        "tags": [
+          "scrumboard_member_list"
+        ]
+      }
+    },
+    "/scrumboard/boards/{boardId}/lists": {
+      "get": {
+        "summary": "Get Board List Items",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/scrumboard_list"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "$ref": "#/components/examples/scrumboard_lists"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getScrumboardBoardListItems",
+        "description": "Retrieve Scrumboard board lists.",
+        "tags": [
+          "scrumboard_board_list_items"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "boardId",
+          "in": "path",
+          "required": true,
+          "description": "boar id"
         }
+      ],
+      "post": {
+        "summary": "Create Board List",
+        "operationId": "createScrumboardBoardList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Create Scrumboard board list.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/scrumboard_list"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": "string",
+                    "boardId": "string",
+                    "title": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "scrumboard_board_list_items"
+        ]
       }
     },
     "/scrumboard/members/{memberId}": {
@@ -1458,7 +1530,7 @@
         "operationId": "getScrumboardMember",
         "description": "Retrieve Scrumboard member by id.",
         "tags": [
-          "scrumboard"
+          "scrumboard_member"
         ]
       },
       "parameters": [
@@ -1504,7 +1576,7 @@
           "description": ""
         },
         "tags": [
-          "scrumboard"
+          "scrumboard_member"
         ]
       },
       "delete": {
@@ -1520,83 +1592,11 @@
         },
         "description": "Delete Scrumboard member.",
         "tags": [
-          "scrumboard"
+          "scrumboard_member_list"
         ]
       }
     },
-    "/scrumboard/boards/{boardId}/lists": {
-      "get": {
-        "summary": "Get Board List Items",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/scrumboard_list"
-                  }
-                },
-                "examples": {
-                  "example-1": {
-                    "$ref": "#/components/examples/scrumboard_lists"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "getScrumboardBoardListItems",
-        "description": "Retrieve Scrumboard board lists.",
-        "tags": [
-          "scrumboard"
-        ]
-      },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "boardId",
-          "in": "path",
-          "required": true,
-          "description": "boar id"
-        }
-      ],
-      "post": {
-        "summary": "Create Board List",
-        "operationId": "createScrumboardBoardList",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Create Scrumboard board list.",
-        "tags": [
-          "scrumboard"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/scrumboard_list"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "id": "string",
-                    "boardId": "string",
-                    "title": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/scrumboard/boards/{bordId}/lists/{listId}": {
+    "/scrumboard/boards/{boardId}/lists/{listId}": {
       "get": {
         "summary": "Get Board List",
         "responses": {
@@ -1623,7 +1623,7 @@
         "operationId": "getScrumboardBoardListItem",
         "description": "Retrieve Scrumboard board list by id.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_list_items"
         ]
       },
       "parameters": [
@@ -1640,7 +1640,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "bordId",
+          "name": "boardId",
           "in": "path",
           "required": true,
           "description": "board id"
@@ -1669,7 +1669,7 @@
           "description": ""
         },
         "tags": [
-          "scrumboard"
+          "scrumboard_board_list_item"
         ]
       },
       "delete": {
@@ -1685,7 +1685,7 @@
         },
         "description": "Delete Scrumboard board list.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_list_items"
         ]
       }
     },
@@ -1715,7 +1715,7 @@
         "operationId": "getScrumboardBoardLabelList",
         "description": "Retrieve Scrumboard board label list.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_label_items"
         ]
       },
       "parameters": [
@@ -1738,9 +1738,6 @@
           }
         },
         "description": "Create Scrumboard board label.",
-        "tags": [
-          "scrumboard"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1758,7 +1755,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "scrumboard_board_label_items"
+        ]
       }
     },
     "/scrumboard/boards/{boardId}/labels/{labelId}": {
@@ -1788,7 +1788,7 @@
         "operationId": "getScrumboardBoardLabel",
         "description": "Retrieve Scrumboard board label by id.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_label_item"
         ]
       },
       "parameters": [
@@ -1843,7 +1843,7 @@
           "description": ""
         },
         "tags": [
-          "scrumboard"
+          "scrumboard_board_label_item"
         ]
       },
       "delete": {
@@ -1859,7 +1859,7 @@
         },
         "description": "Delete Scrumboard board label.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_label_items"
         ]
       }
     },
@@ -1889,7 +1889,7 @@
         "operationId": "getScrumboardBoardCardList",
         "description": "Retrieve Scrumboard board cards.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_card_items"
         ]
       },
       "parameters": [
@@ -1912,9 +1912,6 @@
           }
         },
         "description": "Create Scrumboard board card.",
-        "tags": [
-          "scrumboard"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1974,7 +1971,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "scrumboard_board_card_item"
+        ]
       }
     },
     "/scrumboard/boards/{boardId}/cards/{cardId}": {
@@ -2046,7 +2046,7 @@
         "operationId": "scrumboard_getCard",
         "description": "Retrieve Scrumboard board card by id.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_card_item"
         ]
       },
       "parameters": [
@@ -2143,7 +2143,7 @@
           "description": ""
         },
         "tags": [
-          "scrumboard"
+          "scrumboard_board_card_item"
         ]
       },
       "delete": {
@@ -2159,7 +2159,7 @@
         },
         "description": "Delete Scrumboard board card.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_card_items"
         ]
       }
     },
@@ -2189,7 +2189,7 @@
         "operationId": "getScrumboardBoardList",
         "description": "Retrieve Scrumboard board list.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_list"
         ]
       },
       "parameters": [],
@@ -2202,9 +2202,6 @@
           }
         },
         "description": "Create Scrumboard board.",
-        "tags": [
-          "scrumboard"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2237,7 +2234,11 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "scrumboard_board_list",
+          "scrumboard_board"
+        ]
       }
     },
     "/scrumboard/boards/{boardId}": {
@@ -2284,7 +2285,7 @@
         "operationId": "getScrumboardBoard",
         "description": "Retrieve Scrumboard board by id.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board"
         ]
       },
       "parameters": [
@@ -2347,7 +2348,7 @@
           "description": ""
         },
         "tags": [
-          "scrumboard"
+          "scrumboard_board"
         ]
       },
       "delete": {
@@ -2363,7 +2364,7 @@
         },
         "description": "Delete Scrumboard board.",
         "tags": [
-          "scrumboard"
+          "scrumboard_board_list"
         ]
       }
     },
@@ -3375,7 +3376,7 @@
           "eCommerce_orders"
         ],
         "x-stoplight": {
-          "id": "56yfi7i2kh9uh"
+          "id": "t4bkzff5mwue1"
         }
       },
       "parameters": []
@@ -5584,42 +5585,42 @@
           "activeStep": {
             "type": "number",
             "x-stoplight": {
-              "id": "t126g37m19ma4"
+              "id": "9bj9cv6u5urbh"
             }
           },
           "steps": {
             "type": "array",
             "x-stoplight": {
-              "id": "96d3bpwrgv7rk"
+              "id": "q4g4stjv844np"
             },
             "items": {
               "x-stoplight": {
-                "id": "rx6wz2c5qzsci"
+                "id": "rk2tsxov42i68"
               },
               "type": "object",
               "properties": {
                 "content": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "f3xi1ftkbdtcf"
+                    "id": "klwz7dfhwqcxl"
                   }
                 },
                 "title": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "7vz56zdevukxj"
+                    "id": "g119bo1mjkarw"
                   }
                 },
                 "subtitle": {
                   "type": "string",
                   "x-stoplight": {
-                    "id": "lkomldqxjq5oc"
+                    "id": "tqp0x8wvnf7mz"
                   }
                 },
                 "order": {
                   "type": "number",
                   "x-stoplight": {
-                    "id": "jxxvey1psc8f7"
+                    "id": "rfysuc7mag98w"
                   }
                 }
               }
@@ -6202,7 +6203,7 @@
           "content": {
             "type": "string",
             "x-stoplight": {
-              "id": "fd744vk6d12ve"
+              "id": "qfmy7dbk37087"
             }
           }
         },

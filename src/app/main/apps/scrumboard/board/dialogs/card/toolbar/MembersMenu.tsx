@@ -4,10 +4,9 @@ import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, MouseEvent } from 'react';
-import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
-import { selectMembers } from '../../../../store/membersSlice';
+import { useGetScrumboardMemberListQuery } from '../../../../ScrumboardApi';
 
 type MembersMenuProps = {
 	memberIds: string[];
@@ -21,7 +20,8 @@ function MembersMenu(props: MembersMenuProps) {
 	const { memberIds, onToggleMember } = props;
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
-	const members = useAppSelector(selectMembers);
+
+	const { data: members } = useGetScrumboardMemberListQuery();
 
 	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);

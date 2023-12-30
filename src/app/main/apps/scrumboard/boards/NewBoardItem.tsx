@@ -1,13 +1,16 @@
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store';
-import { newBoard } from '../store/boardsSlice';
+import { useCreateScrumboardBoardMutation } from '../ScrumboardApi';
 
 /**
  * The new board item component.
  */
 function NewBoardItem() {
-	const dispatch = useAppDispatch();
+	const [createNewBoard] = useCreateScrumboardBoardMutation();
+
+	function handleNewBoard() {
+		createNewBoard({});
+	}
 
 	return (
 		<Box
@@ -15,8 +18,8 @@ function NewBoardItem() {
 				borderColor: 'divider'
 			}}
 			className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer border-2 border-gray-300 border-dashed hover:bg-hover transition-colors duration-150 ease-in-out"
-			onClick={() => dispatch(newBoard({}))}
-			onKeyDown={() => dispatch(newBoard({}))}
+			onClick={handleNewBoard}
+			onKeyDown={handleNewBoard}
 			role="button"
 			tabIndex={0}
 		>

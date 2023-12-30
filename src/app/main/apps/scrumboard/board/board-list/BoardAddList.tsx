@@ -1,8 +1,5 @@
 import { Controller, useForm } from 'react-hook-form';
-
 import { darken } from '@mui/material/styles';
-
-import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
@@ -10,15 +7,15 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState, MouseEvent } from 'react';
-import { useAppDispatch } from 'app/store';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { newList } from '../../store/listsSlice';
-import { ListType } from '../../types/ListType';
+import { useParams } from 'react-router';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { ScrumboardList, useCreateScrumboardBoardListMutation } from '../../ScrumboardApi';
 
 type FormType = {
-	title: ListType['title'];
+	title: ScrumboardList['title'];
 };
 
 const defaultValues = {
@@ -28,21 +25,25 @@ const defaultValues = {
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a title')
+const schema = z.object({
+	title: z.string().nonempty('You must enter a title')
 });
 
 /**
  * The board add list component.
  */
 function BoardAddList() {
-	const dispatch = useAppDispatch();
+	const routeParams = useParams();
+	const { boardId } = routeParams;
+
+	const [createList] = useCreateScrumboardBoardListMutation();
 
 	const [formOpen, setFormOpen] = useState(false);
+
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;
@@ -63,7 +64,7 @@ function BoardAddList() {
 	}
 
 	function onSubmit(data: FormType) {
-		dispatch(newList(data));
+		createList({ boardId, list: data });
 		handleCloseForm();
 	}
 

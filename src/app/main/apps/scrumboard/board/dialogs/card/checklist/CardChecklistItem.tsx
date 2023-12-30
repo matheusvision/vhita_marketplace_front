@@ -6,11 +6,11 @@ import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { CheckListItemType } from '../../../../types/CheckListItemType';
+import { ScrumboardCheckListItem } from '../../../../ScrumboardApi';
 
 type CardChecklistItemProps = {
-	item: CheckListItemType;
-	onListItemChange: (item: CheckListItemType, index: number) => void;
+	item: ScrumboardCheckListItem;
+	onListItemChange: (item: ScrumboardCheckListItem, index: number) => void;
 	index: number;
 	onListItemRemove: () => void;
 };

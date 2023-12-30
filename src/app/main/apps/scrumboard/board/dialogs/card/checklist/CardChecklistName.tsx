@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { forwardRef, useEffect, useImperativeHandle, useState, MouseEvent } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
@@ -6,20 +5,21 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ChecklistType } from '../../../../types/ChecklistType';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { ScrumboardChecklist } from '../../../../ScrumboardApi';
 
 type FormType = {
-	name: ChecklistType['name'];
+	name: ScrumboardChecklist['name'];
 };
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	name: yup.string().required('You must enter a title')
+const schema = z.object({
+	name: z.string().nonempty('You must enter a title')
 });
 
 export type CardChecklistHandle = {
@@ -43,7 +43,7 @@ const CardChecklistName = forwardRef<CardChecklistHandle, CardChecklistNameProps
 		defaultValues: {
 			name
 		},
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;

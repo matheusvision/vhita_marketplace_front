@@ -1,26 +1,15 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { getBoards, resetBoards, selectBoards } from '../store/boardsSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
 import BoardItem from './BoardItem';
 import NewBoardItem from './NewBoardItem';
+import { useGetScrumboardBoardListQuery } from '../ScrumboardApi';
 
 /**
- * The scrumboard boards component.
+ * The Scrumboard boards component.
  */
 function Boards() {
-	const dispatch = useAppDispatch();
-
-	// const boards = [];
-	const boards = useAppSelector(selectBoards);
-
-	useEffect(() => {
-		dispatch(getBoards());
-		return () => {
-			dispatch(resetBoards());
-		};
-	}, [dispatch]);
+	const { data: boards, isLoading } = useGetScrumboardBoardListQuery();
 
 	const container = {
 		show: {
@@ -35,9 +24,8 @@ function Boards() {
 		show: { opacity: 1, y: 0 }
 	};
 
-	if (!boards) {
-		// handle the "loading" state or return null
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (
