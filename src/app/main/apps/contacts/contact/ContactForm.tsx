@@ -21,11 +21,11 @@ import { useDispatch } from 'react-redux';
 import ContactEmailSelector from './email-selector/ContactEmailSelector';
 import PhoneNumberSelector from './phone-number-selector/PhoneNumberSelector';
 import {
-	useCreateContactItemMutation,
-	useDeleteContactItemMutation,
-	useGetContactItemQuery,
-	useGetContactTagListQuery,
-	useUpdateContactItemMutation,
+	useCreateContactsItemMutation,
+	useDeleteContactsItemMutation,
+	useGetContactsItemQuery,
+	useGetContactsTagsQuery,
+	useUpdateContactsItemMutation,
 	Contact,
 	Tag
 } from '../ContactsApi';
@@ -76,13 +76,13 @@ function ContactForm() {
 
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
-	const { data: contact, isError } = useGetContactItemQuery(contactId);
+	const { data: contact, isError } = useGetContactsItemQuery(contactId);
 
-	const [createContact] = useCreateContactItemMutation();
-	const [updateContact] = useUpdateContactItemMutation();
-	const [deleteContact] = useDeleteContactItemMutation();
+	const [createContact] = useCreateContactsItemMutation();
+	const [updateContact] = useUpdateContactsItemMutation();
+	const [deleteContact] = useDeleteContactsItemMutation();
 
-	const { data: tags } = useGetContactTagListQuery();
+	const { data: tags } = useGetContactsTagsQuery();
 
 	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
 		mode: 'all',

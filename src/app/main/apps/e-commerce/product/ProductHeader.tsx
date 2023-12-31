@@ -8,6 +8,7 @@ import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import {
 	EcommerceProduct,
+	useCreateECommerceProductMutation,
 	useDeleteECommerceProductMutation,
 	useUpdateECommerceProductMutation
 } from '../ECommerceApi';
@@ -19,6 +20,7 @@ function ProductHeader() {
 	const routeParams = useParams();
 	const { productId } = routeParams;
 
+	const [createProduct] = useCreateECommerceProductMutation();
 	const [saveProduct] = useUpdateECommerceProductMutation();
 	const [removeProduct] = useDeleteECommerceProductMutation();
 
@@ -33,6 +35,14 @@ function ProductHeader() {
 
 	function handleSaveProduct() {
 		saveProduct(getValues() as EcommerceProduct);
+	}
+
+	function handleCreateProduct() {
+		createProduct(getValues() as EcommerceProduct)
+			.unwrap()
+			.then((data) => {
+				navigate(`/apps/e-commerce/products/${data.id}`);
+			});
 	}
 
 	function handleRemoveProduct() {
@@ -105,24 +115,38 @@ function ProductHeader() {
 				initial={{ opacity: 0, x: 20 }}
 				animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}
 			>
-				<Button
-					className="whitespace-nowrap mx-4"
-					variant="contained"
-					color="secondary"
-					onClick={handleRemoveProduct}
-					startIcon={<FuseSvgIcon className="hidden sm:flex">heroicons-outline:trash</FuseSvgIcon>}
-				>
-					Remove
-				</Button>
-				<Button
-					className="whitespace-nowrap mx-4"
-					variant="contained"
-					color="secondary"
-					disabled={_.isEmpty(dirtyFields) || !isValid}
-					onClick={handleSaveProduct}
-				>
-					Save
-				</Button>
+				{productId !== 'new' ? (
+					<>
+						<Button
+							className="whitespace-nowrap mx-4"
+							variant="contained"
+							color="secondary"
+							onClick={handleRemoveProduct}
+							startIcon={<FuseSvgIcon className="hidden sm:flex">heroicons-outline:trash</FuseSvgIcon>}
+						>
+							Remove
+						</Button>
+						<Button
+							className="whitespace-nowrap mx-4"
+							variant="contained"
+							color="secondary"
+							disabled={_.isEmpty(dirtyFields) || !isValid}
+							onClick={handleSaveProduct}
+						>
+							Save
+						</Button>
+					</>
+				) : (
+					<Button
+						className="whitespace-nowrap mx-4"
+						variant="contained"
+						color="secondary"
+						disabled={_.isEmpty(dirtyFields) || !isValid}
+						onClick={handleCreateProduct}
+					>
+						Add
+					</Button>
+				)}
 			</motion.div>
 		</div>
 	);

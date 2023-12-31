@@ -13,7 +13,7 @@ import { z } from 'zod';
 import {
 	NotesLabel,
 	useDeleteNotesLabelMutation,
-	useGetNotesLabelListQuery,
+	useGetNotesLabelsQuery,
 	useUpdateNotesLabelMutation
 } from '../../NotesApi';
 
@@ -26,7 +26,7 @@ type LabelFormProps = {
  */
 function NewLabelForm(props: LabelFormProps) {
 	const { label } = props;
-	const { data: labels } = useGetNotesLabelListQuery();
+	const { data: labels } = useGetNotesLabelsQuery();
 
 	const [updateLabel] = useUpdateNotesLabelMutation();
 	const [removeLabel] = useDeleteNotesLabelMutation();

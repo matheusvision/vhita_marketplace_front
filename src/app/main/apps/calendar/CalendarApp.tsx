@@ -22,7 +22,7 @@ import EventDialog from './dialogs/event/EventDialog';
 import { openEditEventDialog, openNewEventDialog } from './store/eventDialogSlice';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
-import { Event, selectFilteredEvents, useGetCalendarEventListQuery, useUpdateCalendarEventMutation } from './CalendarApi';
+import { Event, selectFilteredEvents, useGetCalendarEventsQuery, useUpdateCalendarEventMutation } from './CalendarApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -106,7 +106,7 @@ function CalendarApp() {
 	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-	useGetCalendarEventListQuery();
+	useGetCalendarEventsQuery();
 	const [updateEvent] = useUpdateCalendarEventMutation();
 
 	useEffect(() => {

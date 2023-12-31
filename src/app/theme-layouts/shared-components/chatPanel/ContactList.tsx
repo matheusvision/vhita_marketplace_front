@@ -62,7 +62,7 @@ function ContactList(props: ContactListProps) {
 				const container = {
 					show: {
 						transition: {
-							staggerChildren: 0.05
+							staggerChildren: 0.04
 						}
 					}
 				};

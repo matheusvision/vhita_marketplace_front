@@ -4,14 +4,14 @@ import { DragDropContext, Droppable, DroppableProvided, DropResult } from 'react
 import FuseLoading from '@fuse/core/FuseLoading';
 import TaskListItem from './TaskListItem';
 import SectionListItem from './SectionListItem';
-import { useGetTasksListQuery, useReorderTasksListMutation } from './TasksApi';
+import { useGetTasksQuery, useReorderTasksMutation } from './TasksApi';
 
 /**
  * The tasks list.
  */
 function TasksList() {
-	const { data: tasks, isLoading } = useGetTasksListQuery();
-	const [reorderList] = useReorderTasksListMutation();
+	const { data: tasks, isLoading } = useGetTasksQuery();
+	const [reorderList] = useReorderTasksMutation();
 	if (isLoading) {
 		return <FuseLoading />;
 	}

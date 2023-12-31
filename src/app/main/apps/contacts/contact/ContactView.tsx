@@ -12,17 +12,17 @@ import format from 'date-fns/format';
 import _ from '@lodash';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import { useDispatch } from 'react-redux';
-import { useGetContactItemQuery, useGetContactCountryListQuery, useGetContactTagListQuery } from '../ContactsApi';
+import { useGetContactsItemQuery, useGetContactsCountriesQuery, useGetContactsTagsQuery } from '../ContactsApi';
 
 /**
  * The contact view.
  */
 function ContactView() {
-	const { data: countries } = useGetContactCountryListQuery();
-	const { data: tags } = useGetContactTagListQuery();
+	const { data: countries } = useGetContactsCountriesQuery();
+	const { data: tags } = useGetContactsTagsQuery();
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
-	const { data: contact, isLoading, isError } = useGetContactItemQuery(contactId);
+	const { data: contact, isLoading, isError } = useGetContactsItemQuery(contactId);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

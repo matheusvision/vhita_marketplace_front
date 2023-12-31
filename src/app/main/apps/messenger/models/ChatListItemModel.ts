@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { Chat } from '../ChatApi';
+import { Chat } from '../MessengerApi';
 
 /**
  * Chat list item model.

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { darken } from '@mui/material/styles';
 import { MouseEvent } from 'react';
 import _ from '@lodash';
-import { useGetNotesLabelListQuery } from './NotesApi';
+import { useGetNotesLabelsQuery } from './NotesApi';
 
 type NoteLabelProps = {
 	id: string;
@@ -23,7 +23,7 @@ type NoteLabelProps = {
  */
 function NoteLabel(props: NoteLabelProps) {
 	const { id, linkable, onDelete, className, classes } = props;
-	const { data: labels } = useGetNotesLabelListQuery();
+	const { data: labels } = useGetNotesLabelsQuery();
 
 	if (!labels) {
 		return null;

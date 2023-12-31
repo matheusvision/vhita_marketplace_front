@@ -17,7 +17,7 @@ import { Many } from 'lodash';
 import * as React from 'react';
 import OrdersStatus from '../order/OrdersStatus';
 import OrdersTableHead from './OrdersTableHead';
-import { EcommerceOrder, selectFilteredOrderList, useGetECommerceOrderListQuery } from '../ECommerceApi';
+import { EcommerceOrder, selectFilteredOrders, useGetECommerceOrdersQuery } from '../ECommerceApi';
 
 type OrdersTableProps = WithRouterProps & {
 	navigate: (path: string) => void;
@@ -29,9 +29,9 @@ type OrdersTableProps = WithRouterProps & {
 function OrdersTable(props: OrdersTableProps) {
 	const { navigate } = props;
 
-	const { isLoading } = useGetECommerceOrderListQuery();
+	const { isLoading } = useGetECommerceOrdersQuery();
 
-	const data = useAppSelector(selectFilteredOrderList);
+	const data = useAppSelector(selectFilteredOrders);
 
 	const [selected, setSelected] = useState<string[]>([]);
 

@@ -40,10 +40,10 @@ import {
 	ScrumboardLabel,
 	ScrumboardMember,
 	useDeleteScrumboardBoardCardMutation,
-	useGetScrumboardBoardLabelListQuery,
-	useGetScrumboardBoardListItemsQuery,
+	useGetScrumboardBoardLabelsQuery,
+	useGetScrumboardBoardListsQuery,
 	useGetScrumboardBoardQuery,
-	useGetScrumboardMemberListQuery,
+	useGetScrumboardMembersQuery,
 	useUpdateScrumboardBoardCardMutation
 } from '../../../ScrumboardApi';
 
@@ -56,9 +56,9 @@ function BoardCardForm() {
 	const { boardId } = routeParams;
 
 	const { data: board, isLoading: isBoardLoading } = useGetScrumboardBoardQuery(boardId);
-	const { data: members, isLoading: isMembersLoading } = useGetScrumboardMemberListQuery();
-	const { data: labels, isLoading: isLabelsLoading } = useGetScrumboardBoardLabelListQuery(boardId);
-	const { data: listItems, isLoading: isListItemsLoading } = useGetScrumboardBoardListItemsQuery(boardId);
+	const { data: members, isLoading: isMembersLoading } = useGetScrumboardMembersQuery();
+	const { data: labels, isLoading: isLabelsLoading } = useGetScrumboardBoardLabelsQuery(boardId);
+	const { data: listItems, isLoading: isListItemsLoading } = useGetScrumboardBoardListsQuery(boardId);
 	const loading = isBoardLoading || isMembersLoading || isLabelsLoading || isListItemsLoading;
 
 	const card = useAppSelector(selectCardData);

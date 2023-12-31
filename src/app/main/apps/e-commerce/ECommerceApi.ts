@@ -1,17 +1,20 @@
 import { apiService as api } from 'app/store/apiService';
 import { createSelector } from '@reduxjs/toolkit';
 import FuseUtils from '@fuse/utils';
+import { PartialDeep } from 'type-fest';
 import { AppRootStateType } from './store';
 import { selectSearchText } from './store/searchTextSlice';
+import ProductModel from './product/models/ProductModel';
 
 export const addTagTypes = ['eCommerce_products', 'eCommerce_product', 'eCommerce_orders', 'eCommerce_order'] as const;
+
 const ECommerceApi = api
 	.enhanceEndpoints({
 		addTagTypes
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getECommerceProductList: build.query<GetECommerceProductListApiResponse, GetECommerceProductListApiArg>({
+			getECommerceProducts: build.query<GetECommerceProductsApiResponse, GetECommerceProductsApiArg>({
 				query: () => ({ url: `/mock-api/ecommerce/products` }),
 				providesTags: ['eCommerce_products']
 			}),
@@ -29,6 +32,14 @@ const ECommerceApi = api
 				}),
 				providesTags: ['eCommerce_product', 'eCommerce_products']
 			}),
+			createECommerceProduct: build.mutation<CreateECommerceProductApiResponse, CreateECommerceProductApiArg>({
+				query: (newProduct) => ({
+					url: `/mock-api/ecommerce/products`,
+					method: 'POST',
+					data: ProductModel(newProduct)
+				}),
+				invalidatesTags: ['eCommerce_products', 'eCommerce_product']
+			}),
 			updateECommerceProduct: build.mutation<UpdateECommerceProductApiResponse, UpdateECommerceProductApiArg>({
 				query: (product) => ({
 					url: `/mock-api/ecommerce/products/${product.id}`,
@@ -44,7 +55,7 @@ const ECommerceApi = api
 				}),
 				invalidatesTags: ['eCommerce_product', 'eCommerce_products']
 			}),
-			getECommerceOrderList: build.query<GetECommerceOrderListApiResponse, GetECommerceOrderListApiArg>({
+			getECommerceOrders: build.query<GetECommerceOrdersApiResponse, GetECommerceOrdersApiArg>({
 				query: () => ({ url: `/mock-api/ecommerce/orders` }),
 				providesTags: ['eCommerce_orders']
 			}),
@@ -78,10 +89,11 @@ const ECommerceApi = api
 		}),
 		overrideExisting: false
 	});
-export { ECommerceApi };
 
-export type GetECommerceProductListApiResponse = /** status 200 OK */ EcommerceProduct[];
-export type GetECommerceProductListApiArg = void;
+export default ECommerceApi;
+
+export type GetECommerceProductsApiResponse = /** status 200 OK */ EcommerceProduct[];
+export type GetECommerceProductsApiArg = void;
 
 export type DeleteECommerceProductsApiResponse = unknown;
 export type DeleteECommerceProductsApiArg = string[]; /** Product ids */
@@ -89,14 +101,17 @@ export type DeleteECommerceProductsApiArg = string[]; /** Product ids */
 export type GetECommerceProductApiResponse = /** status 200 OK */ EcommerceProduct;
 export type GetECommerceProductApiArg = string;
 
+export type CreateECommerceProductApiResponse = /** status 200 OK */ EcommerceProduct;
+export type CreateECommerceProductApiArg = PartialDeep<EcommerceProduct>;
+
 export type UpdateECommerceProductApiResponse = unknown;
 export type UpdateECommerceProductApiArg = EcommerceProduct; // Product
 
 export type DeleteECommerceProductApiResponse = unknown;
 export type DeleteECommerceProductApiArg = string; // Product id
 
-export type GetECommerceOrderListApiResponse = /** status 200 OK */ EcommerceOrder[];
-export type GetECommerceOrderListApiArg = void;
+export type GetECommerceOrdersApiResponse = /** status 200 OK */ EcommerceOrder[];
+export type GetECommerceOrdersApiArg = void;
 
 export type GetECommerceOrderApiResponse = /** status 200 OK */ EcommerceOrder;
 export type GetECommerceOrderApiArg = string; // Order id
@@ -188,48 +203,52 @@ export type EcommerceOrder = {
 		date: string;
 	}[];
 };
+
 export const {
-	useGetECommerceProductListQuery,
+	useGetECommerceProductsQuery,
 	useDeleteECommerceProductsMutation,
 	useGetECommerceProductQuery,
 	useUpdateECommerceProductMutation,
 	useDeleteECommerceProductMutation,
-	useGetECommerceOrderListQuery,
+	useGetECommerceOrdersQuery,
 	useGetECommerceOrderQuery,
 	useUpdateECommerceOrderMutation,
 	useDeleteECommerceOrderMutation,
-	useDeleteECommerceOrdersMutation
+	useDeleteECommerceOrdersMutation,
+	useCreateECommerceProductMutation
 } = ECommerceApi;
-
-export default ECommerceApi;
 
 export type ECommerceApiType = {
 	[ECommerceApi.reducerPath]: ReturnType<typeof ECommerceApi.reducer>;
 };
 
-export const selectProductList = (state: AppRootStateType) =>
-	ECommerceApi.endpoints.getECommerceProductList.select()(state)?.data ?? [];
+/**
+ * Select products
+ */
+export const selectProducts = (state: AppRootStateType) =>
+	ECommerceApi.endpoints.getECommerceProducts.select()(state)?.data ?? [];
 
 /**
- * Select filtered orders
+ * Select filtered products
  */
-export const selectFilteredProductList = createSelector(
-	[selectProductList, selectSearchText],
-	(products, searchText) => {
-		if (searchText.length === 0) {
-			return products;
-		}
-		return FuseUtils.filterArrayByString<EcommerceProduct>(products, searchText);
+export const selectFilteredProducts = createSelector([selectProducts, selectSearchText], (products, searchText) => {
+	if (searchText.length === 0) {
+		return products;
 	}
-);
+	return FuseUtils.filterArrayByString<EcommerceProduct>(products, searchText);
+});
 
-export const selectOrderList = (state: AppRootStateType) =>
-	ECommerceApi.endpoints.getECommerceOrderList.select()(state)?.data ?? [];
+/**
+ * Select orders
+ */
+
+export const selectOrders = (state: AppRootStateType) =>
+	ECommerceApi.endpoints.getECommerceOrders.select()(state)?.data ?? [];
 
 /**
  * Select filtered orders
  */
-export const selectFilteredOrderList = createSelector([selectOrderList, selectSearchText], (orders, searchText) => {
+export const selectFilteredOrders = createSelector([selectOrders, selectSearchText], (orders, searchText) => {
 	if (searchText.length === 0) {
 		return orders;
 	}

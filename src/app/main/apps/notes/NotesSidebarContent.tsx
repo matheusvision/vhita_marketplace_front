@@ -9,7 +9,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import { PartialDeep } from 'type-fest';
 import { openLabelsDialog } from './store/dialogsSlice';
-import { useGetNotesLabelListQuery } from './NotesApi';
+import { useGetNotesLabelsQuery } from './NotesApi';
 
 const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & PartialDeep<NavLinkAdapterPropsType>>(
 	({ theme }) => ({
@@ -41,7 +41,7 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & Partia
  */
 function NotesSidebarContent() {
 	const dispatch = useAppDispatch();
-	const { data: labels, isLoading } = useGetNotesLabelListQuery();
+	const { data: labels, isLoading } = useGetNotesLabelsQuery();
 
 	if (isLoading) {
 		return null;

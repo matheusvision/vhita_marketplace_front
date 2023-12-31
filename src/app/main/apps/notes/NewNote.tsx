@@ -3,14 +3,11 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import NoteForm from './note-form/NoteForm';
-import { useCreateNotesNoteMutation } from './NotesApi';
 
 /**
  * The new note component.
  */
 function NewNote() {
-	const [createNote] = useCreateNotesNoteMutation();
-
 	const [formOpen, setFormOpen] = useState(false);
 
 	function handleFormOpen(ev: React.MouseEvent<HTMLDivElement>) {

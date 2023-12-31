@@ -10,7 +10,7 @@ import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import MailListItem from './MailListItem';
 import { selectSearchText } from '../store/searchTextSlice';
-import { MailboxMail, useGetMailboxListQuery } from '../MailboxApi';
+import { MailboxMail, useGetMailboxMailsQuery } from '../MailboxApi';
 
 /**
  * The mail list.
@@ -18,7 +18,7 @@ import { MailboxMail, useGetMailboxListQuery } from '../MailboxApi';
 function MailList() {
 	const searchText = useAppSelector(selectSearchText);
 	const routeParams = useParams();
-	const { data: mails } = useGetMailboxListQuery(routeParams);
+	const { data: mails } = useGetMailboxMailsQuery(routeParams);
 
 	const [filteredData, setFilteredData] = useState<MailboxMail[]>([]);
 

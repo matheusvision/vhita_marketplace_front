@@ -33,13 +33,12 @@ const FileManagerApi = api
 		}),
 		overrideExisting: false
 	});
-export { FileManagerApi };
+export default FileManagerApi;
 
 export type GetFileManagerFolderApiResponse = {
 	items: FileManagerItem[];
 	path: FileManagerPath[];
 };
-
 export type GetFileManagerFolderApiArg = string; // folderId
 
 export type UpdateFileManagerFolderApiResponse = unknown;

@@ -2,7 +2,7 @@ import { apiService as api } from 'app/store/apiService';
 import { createSelector } from '@reduxjs/toolkit';
 import { showMessage } from 'app/store/fuse/messageSlice';
 
-export const addTagTypes = ['tasks_list', 'tasks_item', 'tags_tag_list'] as const;
+export const addTagTypes = ['tasks_list', 'tasks_item', 'tasks_tags'] as const;
 
 const TasksApi = api
 	.enhanceEndpoints({
@@ -10,11 +10,11 @@ const TasksApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getTasksList: build.query<GetTasksListApiResponse, GetTasksListApiArg>({
+			getTasks: build.query<GetTasksApiResponse, GetTasksApiArg>({
 				query: () => ({ url: `/mock-api/tasks` }),
 				providesTags: ['tasks_list']
 			}),
-			reorderTasksList: build.mutation<ReorderTasksListApiResponse, ReorderTasksListApiArg>({
+			reorderTasks: build.mutation<ReorderTasksApiResponse, ReorderTasksApiArg>({
 				query: ({ startIndex, endIndex }) => ({
 					url: `/mock-api/tasks/reorder`,
 					method: 'POST',
@@ -66,9 +66,9 @@ const TasksApi = api
 				}),
 				invalidatesTags: ['tasks_item', 'tasks_list']
 			}),
-			getTasksTagList: build.query<GetTasksTagListApiResponse, GetTasksTagListApiArg>({
+			getTasksTags: build.query<GetTasksTagsApiResponse, GetTasksTagsApiArg>({
 				query: () => ({ url: `/mock-api/tasks/tags` }),
-				providesTags: ['tags_tag_list']
+				providesTags: ['tasks_tags']
 			}),
 			createTasksTag: build.mutation<CreateTasksTagApiResponse, CreateTasksTagApiArg>({
 				query: (tag) => ({
@@ -76,18 +76,18 @@ const TasksApi = api
 					method: 'POST',
 					data: tag
 				}),
-				invalidatesTags: ['tags_tag_list']
+				invalidatesTags: ['tasks_tags']
 			})
 		}),
 		overrideExisting: false
 	});
 export { TasksApi };
 
-export type GetTasksListApiResponse = /** status 200 OK */ Task[];
-export type GetTasksListApiArg = void;
+export type GetTasksApiResponse = /** status 200 OK */ Task[];
+export type GetTasksApiArg = void;
 
-export type ReorderTasksListApiResponse = /** status 200 OK */ Task[];
-export type ReorderTasksListApiArg = { startIndex: number; endIndex: number };
+export type ReorderTasksApiResponse = /** status 200 OK */ Task[];
+export type ReorderTasksApiArg = { startIndex: number; endIndex: number };
 
 export type CreateTasksItemApiResponse = /** status 201 Created */ Task;
 export type CreateTasksItemApiArg = Task;
@@ -101,8 +101,8 @@ export type DeleteTasksItemApiArg = string;
 export type UpdateTasksItemApiResponse = /** status 200 OK */ Task;
 export type UpdateTasksItemApiArg = Task;
 
-export type GetTasksTagListApiResponse = /** status 200 OK */ Tag[];
-export type GetTasksTagListApiArg = void;
+export type GetTasksTagsApiResponse = /** status 200 OK */ Tag[];
+export type GetTasksTagsApiArg = void;
 
 export type CreateTasksTagApiResponse = /** status 200 OK */ Tag;
 export type CreateTasksTagApiArg = Tag;
@@ -131,21 +131,21 @@ export type Tag = {
 };
 
 export const {
-	useGetTasksListQuery,
+	useGetTasksQuery,
 	useCreateTasksItemMutation,
 	useGetTasksItemQuery,
 	useDeleteTasksItemMutation,
 	useUpdateTasksItemMutation,
-	useGetTasksTagListQuery,
+	useGetTasksTagsQuery,
 	useCreateTasksTagMutation,
-	useReorderTasksListMutation
+	useReorderTasksMutation
 } = TasksApi;
 
 export type TasksApiType = {
 	[TasksApi.reducerPath]: ReturnType<typeof TasksApi.reducer>;
 };
 
-export const selectTasksList = (state: TasksApiType) => TasksApi.endpoints.getTasksList.select()(state)?.data ?? [];
+export const selectTasksList = (state: TasksApiType) => TasksApi.endpoints.getTasks.select()(state)?.data ?? [];
 
 export const selectRemainingTasks = createSelector([selectTasksList], (tasks) => {
 	return tasks.filter((item) => item.type === 'task' && !item.completed).length;

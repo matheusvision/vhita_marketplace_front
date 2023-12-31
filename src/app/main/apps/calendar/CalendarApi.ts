@@ -5,13 +5,14 @@ import { Dictionary } from '@fullcalendar/core/internal';
 import { selectSelectedLabels, setSelectedLabels } from './store/selectedLabelsSlice';
 
 export const addTagTypes = ['calendar_events', 'calendar_event', 'calendar_labels', 'calendar_label'] as const;
+
 const CalendarApi = api
 	.enhanceEndpoints({
 		addTagTypes
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getCalendarEventList: build.query<GetCalendarEventListApiResponse, GetCalendarEventListApiArg>({
+			getCalendarEvents: build.query<GetCalendarEventsApiResponse, GetCalendarEventsApiArg>({
 				query: () => ({ url: `/mock-api/calendar/events` }),
 				providesTags: ['calendar_events']
 			}),
@@ -21,7 +22,7 @@ const CalendarApi = api
 					method: 'POST',
 					data: queryArg.Event
 				}),
-				invalidatesTags: ['calendar_event', 'calendar_events']
+				invalidatesTags: ['calendar_events']
 			}),
 			updateCalendarEvent: build.mutation<UpdateCalendarEventApiResponse, UpdateCalendarEventApiArg>({
 				query: (Event) => ({
@@ -38,7 +39,7 @@ const CalendarApi = api
 				}),
 				invalidatesTags: ['calendar_event', 'calendar_events']
 			}),
-			getCalendarLabelList: build.query<GetCalendarLabelListApiResponse, GetCalendarLabelListApiArg>({
+			getCalendarLabels: build.query<GetCalendarLabelsApiResponse, GetCalendarLabelsApiArg>({
 				query: () => ({ url: `/mock-api/calendar/labels` }),
 				providesTags: ['calendar_labels'],
 				async onQueryStarted(id, { dispatch, queryFulfilled }) {
@@ -79,24 +80,32 @@ const CalendarApi = api
 		overrideExisting: false
 	});
 
-export type GetCalendarEventListApiResponse = /** status 200 OK */ Event[];
-export type GetCalendarEventListApiArg = void;
+export type GetCalendarEventsApiResponse = /** status 200 OK */ Event[];
+export type GetCalendarEventsApiArg = void;
+
 export type CreateCalendarEventApiResponse = /** status 200 OK */ Event;
 export type CreateCalendarEventApiArg = {
 	Event: Event;
 };
+
 export type UpdateCalendarEventApiResponse = /** status 200 OK */ Event;
 export type UpdateCalendarEventApiArg = Event;
+
 export type DeleteCalendarEventApiResponse = unknown;
 export type DeleteCalendarEventApiArg = string;
-export type GetCalendarLabelListApiResponse = /** status 200 OK */ Label[];
-export type GetCalendarLabelListApiArg = void;
+
+export type GetCalendarLabelsApiResponse = /** status 200 OK */ Label[];
+export type GetCalendarLabelsApiArg = void;
+
 export type CreateCalendarLabelApiResponse = /** status 200 OK */ Label;
 export type CreateCalendarLabelApiArg = Label;
+
 export type UpdateCalendarLabelApiResponse = /** status 200 OK */ Label;
 export type UpdateCalendarLabelApiArg = Label;
+
 export type DeleteCalendarLabelApiResponse = unknown;
 export type DeleteCalendarLabelApiArg = string;
+
 export type Event = {
 	id: string;
 	title: string;
@@ -111,11 +120,11 @@ export type Label = {
 	color: string;
 };
 export const {
-	useGetCalendarEventListQuery,
+	useGetCalendarEventsQuery,
 	useCreateCalendarEventMutation,
 	useUpdateCalendarEventMutation,
 	useDeleteCalendarEventMutation,
-	useGetCalendarLabelListQuery,
+	useGetCalendarLabelsQuery,
 	useCreateCalendarLabelMutation,
 	useUpdateCalendarLabelMutation,
 	useDeleteCalendarLabelMutation
@@ -128,9 +137,9 @@ export type CalendarApiType = {
 };
 
 export const selectEvents = (state: CalendarApiType) =>
-	CalendarApi.endpoints.getCalendarEventList.select()(state)?.data ?? [];
+	CalendarApi.endpoints.getCalendarEvents.select()(state)?.data ?? [];
 export const selectLabels = (state: CalendarApiType) =>
-	CalendarApi.endpoints.getCalendarLabelList.select()(state)?.data ?? [];
+	CalendarApi.endpoints.getCalendarLabels.select()(state)?.data ?? [];
 
 export const selectFirstLabelId = createSelector([selectLabels], (labels) => labels[0]?.id ?? null);
 

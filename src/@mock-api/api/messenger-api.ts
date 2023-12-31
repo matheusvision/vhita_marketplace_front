@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
-import { Chat, Contact, Message, Profile } from 'src/app/main/apps/chat/ChatApi';
+import { Chat, Contact, Message, Profile } from '../../app/main/apps/messenger/MessengerApi';
 import mockApi from '../mock-api.json';
 import mock from '../mock';
 import { Params } from '../ExtendedMockAdapter';
@@ -17,11 +17,11 @@ const chatsDB = userChatListDB.map((chat) => ({
 	}))
 }));
 
-mock.onGet('/chat/contacts').reply(() => {
+mock.onGet('/messenger/contacts').reply(() => {
 	return [200, contactsDB];
 });
 
-mock.onGet('/chat/contacts/:contactId').reply((config) => {
+mock.onGet('/messenger/contacts/:contactId').reply((config) => {
 	const { contactId } = config.params as Params;
 
 	const contact = _.find(contactsDB, { id: contactId }) as Contact;
@@ -33,13 +33,13 @@ mock.onGet('/chat/contacts/:contactId').reply((config) => {
 	return [200, contact];
 });
 
-mock.onGet('/chat/chats').reply(() => {
+mock.onGet('/messenger/chats').reply(() => {
 	userChatListDB.sort((d1, d2) => new Date(d2.lastMessageAt).getTime() - new Date(d1.lastMessageAt).getTime());
 
 	return [200, userChatListDB];
 });
 
-mock.onGet('/chat/chats/:contactId').reply((config) => {
+mock.onGet('/messenger/chats/:contactId').reply((config) => {
 	const { contactId } = config.params as Params;
 
 	const contact = _.find(contactsDB, { id: contactId }) as Contact;
@@ -57,7 +57,7 @@ mock.onGet('/chat/chats/:contactId').reply((config) => {
 	return [200, []];
 });
 
-mock.onPost('/chat/chats/:contactId').reply((config) => {
+mock.onPost('/messenger/chats/:contactId').reply((config) => {
 	const { contactId } = config.params as Params;
 
 	const contact = _.find(contactsDB, { id: contactId });
@@ -77,11 +77,11 @@ mock.onPost('/chat/chats/:contactId').reply((config) => {
 	return [200, newMessage];
 });
 
-mock.onGet('/chat/profile').reply(() => {
+mock.onGet('/messenger/profile').reply(() => {
 	return [200, userDB as Profile];
 });
 
-mock.onPut('/chat/profile').reply(({ data }) => {
+mock.onPut('/messenger/profile').reply(({ data }) => {
 	const userData = JSON.parse(data as string) as Profile;
 
 	userDB = _.merge({}, userDB, userData);

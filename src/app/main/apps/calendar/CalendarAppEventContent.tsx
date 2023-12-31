@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import { EventContentArg } from '@fullcalendar/core';
-import { Event, useGetCalendarLabelListQuery } from './CalendarApi';
+import { Event, useGetCalendarLabelsQuery } from './CalendarApi';
 
 type CalendarAppEventContentProps = {
 	eventInfo: EventContentArg & { event: Event };
@@ -16,7 +16,7 @@ type CalendarAppEventContentProps = {
 function CalendarAppEventContent(props: CalendarAppEventContentProps) {
 	const { eventInfo } = props;
 	const theme = useTheme();
-	const { data: labels } = useGetCalendarLabelListQuery();
+	const { data: labels } = useGetCalendarLabelsQuery();
 
 	const labelId = eventInfo.event.extendedProps.label as string;
 	const label = _.find(labels, { id: labelId });

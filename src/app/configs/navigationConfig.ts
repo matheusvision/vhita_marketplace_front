@@ -78,12 +78,12 @@ const navigationConfig: FuseNavigationType = [
 				translate: 'CALENDAR'
 			},
 			{
-				id: 'apps.chat',
-				title: 'Chat',
+				id: 'apps.messenger',
+				title: 'Messenger',
 				type: 'item',
 				icon: 'heroicons-outline:chat-alt',
-				url: '/apps/chat',
-				translate: 'CHAT'
+				url: '/apps/messenger',
+				translate: 'MESSENGER'
 			},
 			{
 				id: 'apps.contacts',

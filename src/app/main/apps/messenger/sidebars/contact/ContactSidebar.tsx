@@ -8,8 +8,8 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import UserAvatar from '../../UserAvatar';
-import { ChatAppContext } from '../../ChatApp';
-import { useGetChatContactQuery } from '../../ChatApi';
+import { ChatAppContext } from '../../MessengerApp';
+import { useGetMessengerContactQuery } from '../../MessengerApi';
 
 /**
  * The contact sidebar.
@@ -20,7 +20,7 @@ function ContactSidebar() {
 	const routeParams = useParams();
 	const contactId = routeParams.id;
 
-	const { data: contact } = useGetChatContactQuery(contactId);
+	const { data: contact } = useGetMessengerContactQuery(contactId);
 
 	if (!contact) {
 		return null;

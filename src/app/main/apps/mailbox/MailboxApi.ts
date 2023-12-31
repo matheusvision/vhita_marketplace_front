@@ -5,12 +5,12 @@ import { AppRootStateType } from './store';
 import { LabelColorsType } from './mail/labelColors';
 
 export const addTagTypes = [
-	'mailbox_list',
+	'mailbox_mail',
+	'mailbox_mails',
 	'mailbox_filters',
 	'mailbox_labels',
 	'mailbox_label',
-	'mailbox_folders',
-	'mailbox_mail'
+	'mailbox_folders'
 ] as const;
 
 const MailboxApi = api
@@ -19,7 +19,7 @@ const MailboxApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getMailboxList: build.query<GetMailboxListApiResponse, GetMailboxListApiArg>({
+			getMailboxMails: build.query<GetMailboxMailsApiResponse, GetMailboxMailsApiArg>({
 				query: (routeParams) => {
 					let url = '/mock-api/mailbox/mails/';
 
@@ -41,11 +41,11 @@ const MailboxApi = api
 						url
 					};
 				},
-				providesTags: ['mailbox_list']
+				providesTags: ['mailbox_mails']
 			}),
 			getMailboxMail: build.query<GetMailboxMailApiResponse, GetMailboxMailApiArg>({
 				query: (mailId) => ({
-					url: `/mock-api/mailbox/mails/mail/${mailId}`
+					url: `/mock-api/mailbox/mail/${mailId}`
 				}),
 				providesTags: ['mailbox_mail']
 			}),
@@ -55,7 +55,7 @@ const MailboxApi = api
 					method: 'POST',
 					data: queryArg
 				}),
-				invalidatesTags: ['mailbox_list', 'mailbox_mail']
+				invalidatesTags: ['mailbox_mails', 'mailbox_mail']
 			}),
 			createMailboxMail: build.mutation<CreateMailboxMailApiResponse, CreateMailboxMailApiArg>({
 				query: (queryArg) => ({
@@ -63,31 +63,25 @@ const MailboxApi = api
 					method: 'POST',
 					data: queryArg.mail
 				}),
-				invalidatesTags: ['mailbox_list']
+				invalidatesTags: ['mailbox_mails']
 			}),
-			getMailboxMailListByLabel: build.query<
-				GetMailboxMailListByLabelApiResponse,
-				GetMailboxMailListByLabelApiArg
-			>({
+			getMailboxMailsByLabel: build.query<GetMailboxMailsByLabelApiResponse, GetMailboxMailsByLabelApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/mailbox/mails/labels/${queryArg.labelSlug}`
 				}),
-				providesTags: ['mailbox_list']
+				providesTags: ['mailbox_mails']
 			}),
-			getMailboxMailListByFilter: build.query<
-				GetMailboxMailListByFilterApiResponse,
-				GetMailboxMailListByFilterApiArg
-			>({
+			getMailboxMailsByFilter: build.query<GetMailboxMailsByFilterApiResponse, GetMailboxMailsByFilterApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/mailbox/mails/filters/${queryArg.filterSlug}`
 				}),
-				providesTags: ['mailbox_list']
+				providesTags: ['mailbox_mails']
 			}),
-			getMailboxFilterList: build.query<GetMailboxFilterListApiResponse, GetMailboxFilterListApiArg>({
+			getMailboxFilters: build.query<GetMailboxFiltersApiResponse, GetMailboxFiltersApiArg>({
 				query: () => ({ url: `/mock-api/mailbox/filters` }),
 				providesTags: ['mailbox_filters']
 			}),
-			getMailboxLabelList: build.query<GetMailboxLabelListApiResponse, GetMailboxLabelListApiArg>({
+			getMailboxLabels: build.query<GetMailboxLabelsApiResponse, GetMailboxLabelsApiArg>({
 				query: () => ({ url: `/mock-api/mailbox/labels` }),
 				providesTags: ['mailbox_labels']
 			}),
@@ -99,7 +93,7 @@ const MailboxApi = api
 				}),
 				invalidatesTags: ['mailbox_label', 'mailbox_labels']
 			}),
-			getMailboxFolderList: build.query<GetMailboxFolderListApiResponse, GetMailboxFolderListApiArg>({
+			getMailboxFolders: build.query<GetMailboxFoldersApiResponse, GetMailboxFoldersApiArg>({
 				query: () => ({ url: `/mock-api/mailbox/folders` }),
 				providesTags: ['mailbox_folders']
 			})
@@ -116,8 +110,8 @@ type RouteParams = {
 	mailId?: string;
 };
 
-export type GetMailboxListApiResponse = /** status 200 OK */ MailboxMail[];
-export type GetMailboxListApiArg = RouteParams;
+export type GetMailboxMailsApiResponse = /** status 200 OK */ MailboxMail[];
+export type GetMailboxMailsApiArg = RouteParams;
 
 export type ApplyMailboxMailActionApiResponse = unknown;
 export type ApplyMailboxMailActionApiArg = {
@@ -132,8 +126,8 @@ export type CreateMailboxMailApiArg = {
 	folderSlug: string;
 	mail: MailboxMail;
 };
-export type GetMailboxMailListByLabelApiResponse = /** status 200 OK */ MailboxMail[];
-export type GetMailboxMailListByLabelApiArg = {
+export type GetMailboxMailsByLabelApiResponse = /** status 200 OK */ MailboxMail[];
+export type GetMailboxMailsByLabelApiArg = {
 	/** label slug */
 	labelSlug: string;
 };
@@ -141,17 +135,17 @@ export type GetMailboxMailListByLabelApiArg = {
 export type GetMailboxMailApiResponse = MailboxMail;
 export type GetMailboxMailApiArg = string;
 
-export type GetMailboxMailListByFilterApiResponse = /** status 200 OK */ MailboxMail[];
-export type GetMailboxMailListByFilterApiArg = {
+export type GetMailboxMailsByFilterApiResponse = /** status 200 OK */ MailboxMail[];
+export type GetMailboxMailsByFilterApiArg = {
 	/** filter slug */
 	filterSlug: string;
 };
 
-export type GetMailboxFilterListApiResponse = /** status 200 OK */ MailboxFilter[];
-export type GetMailboxFilterListApiArg = void;
+export type GetMailboxFiltersApiResponse = /** status 200 OK */ MailboxFilter[];
+export type GetMailboxFiltersApiArg = void;
 
-export type GetMailboxLabelListApiResponse = /** status 200 OK */ MailboxLabel[];
-export type GetMailboxLabelListApiArg = void;
+export type GetMailboxLabelsApiResponse = /** status 200 OK */ MailboxLabel[];
+export type GetMailboxLabelsApiArg = void;
 
 export type UpdateMailboxLabelApiResponse = /** status 200 OK */ MailboxLabel;
 export type UpdateMailboxLabelApiArg = {
@@ -160,8 +154,8 @@ export type UpdateMailboxLabelApiArg = {
 	label: MailboxLabel;
 };
 
-export type GetMailboxFolderListApiResponse = /** status 200 OK */ MailboxFolder[];
-export type GetMailboxFolderListApiArg = void;
+export type GetMailboxFoldersApiResponse = /** status 200 OK */ MailboxFolder[];
+export type GetMailboxFoldersApiArg = void;
 
 export type MailboxMailAttachment = {
 	type: string;
@@ -192,18 +186,21 @@ export type MailboxMail = {
 	folder: string;
 	labels: string[];
 };
+
 export type MailboxFilter = {
 	id: string;
 	title: string;
 	slug: string;
 	icon: string;
 };
+
 export type MailboxLabel = {
 	id?: string;
 	title?: string;
 	slug?: string;
 	color?: LabelColorsType;
 };
+
 export type MailboxFolder = {
 	id: string;
 	title: string;
@@ -225,15 +222,15 @@ export type MailboxAction =
 	| 'all';
 
 export const {
-	useGetMailboxListQuery,
+	useGetMailboxMailsQuery,
 	useApplyMailboxMailActionMutation,
 	useCreateMailboxMailMutation,
-	useGetMailboxMailListByLabelQuery,
-	useGetMailboxMailListByFilterQuery,
-	useGetMailboxFilterListQuery,
-	useGetMailboxLabelListQuery,
+	useGetMailboxMailsByLabelQuery,
+	useGetMailboxMailsByFilterQuery,
+	useGetMailboxFiltersQuery,
+	useGetMailboxLabelsQuery,
 	useUpdateMailboxLabelMutation,
-	useGetMailboxFolderListQuery,
+	useGetMailboxFoldersQuery,
 	useGetMailboxMailQuery
 } = MailboxApi;
 
@@ -241,33 +238,33 @@ export type MailboxApiType = {
 	[MailboxApi.reducerPath]: ReturnType<typeof MailboxApi.reducer>;
 };
 
-export const selectMailList = (routeParams: RouteParams) => (state: AppRootStateType) =>
-	MailboxApi.endpoints.getMailboxList.select(routeParams)(state)?.data ?? [];
+export const selectMails = (routeParams: RouteParams) => (state: AppRootStateType) =>
+	MailboxApi.endpoints.getMailboxMails.select(routeParams)(state)?.data ?? [];
 
-export const selectFolderList = (state: AppRootStateType) =>
-	MailboxApi.endpoints.getMailboxFolderList.select()(state)?.data ?? [];
+export const selectFolders = (state: AppRootStateType) =>
+	MailboxApi.endpoints.getMailboxFolders.select()(state)?.data ?? [];
 
-export const selectLabelList = (state: AppRootStateType) =>
-	MailboxApi.endpoints.getMailboxLabelList.select()(state)?.data ?? [];
+export const selectLabels = (state: AppRootStateType) =>
+	MailboxApi.endpoints.getMailboxLabels.select()(state)?.data ?? [];
 
 export const selectLabelById = (id: string) =>
-	createSelector([selectLabelList], (labels) => {
+	createSelector([selectLabels], (labels) => {
 		return _.find(labels, { id });
 	});
 
-export const selectFilterList = (state: AppRootStateType) =>
-	MailboxApi.endpoints.getMailboxLabelList.select()(state)?.data ?? [];
+export const selectFilters = (state: AppRootStateType) =>
+	MailboxApi.endpoints.getMailboxLabels.select()(state)?.data ?? [];
 
-export const selectSpamFolderId = createSelector([selectFolderList], (folders) => {
+export const selectSpamFolderId = createSelector([selectFolders], (folders) => {
 	return _.find(folders, { slug: 'spam' })?.id;
 });
 
-export const selectTrashFolderId = createSelector([selectFolderList], (folders) => {
+export const selectTrashFolderId = createSelector([selectFolders], (folders) => {
 	return _.find(folders, { slug: 'trash' })?.id;
 });
 
 export const selectMailsTitle = (routeParams: RouteParams) =>
-	createSelector([selectFolderList, selectLabelList, selectFilterList], (folders, labels, filters) => {
+	createSelector([selectFolders, selectLabels, selectFilters], (folders, labels, filters) => {
 		let title = '';
 
 		if (routeParams.folderHandle) {
@@ -283,5 +280,3 @@ export const selectMailsTitle = (routeParams: RouteParams) =>
 		}
 		return title;
 	});
-
-// export const selectSelectedMailIds = (state: AppRootStateType) => state.mailboxApp?.mails.selectedMailIds;

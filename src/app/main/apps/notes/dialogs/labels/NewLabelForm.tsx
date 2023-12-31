@@ -9,7 +9,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import LabelModel from '../../models/LabelModel';
-import { NotesLabel, useCreateNotesLabelMutation, useGetNotesLabelListQuery } from '../../NotesApi';
+import { NotesLabel, useCreateNotesLabelMutation, useGetNotesLabelsQuery } from '../../NotesApi';
 
 const defaultValues = {
 	title: ''
@@ -22,7 +22,7 @@ type FormType = { title: NotesLabel['title'] };
  */
 function NewLabelForm() {
 	const [createLabel] = useCreateNotesLabelMutation();
-	const { data: labels } = useGetNotesLabelListQuery();
+	const { data: labels } = useGetNotesLabelsQuery();
 
 	/**
 	 * Form Validation Schema

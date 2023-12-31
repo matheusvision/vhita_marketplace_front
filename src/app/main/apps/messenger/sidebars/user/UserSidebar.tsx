@@ -18,8 +18,8 @@ import { lighten } from '@mui/material/styles';
 import { PartialObjectDeep } from 'type-fest/source/partial-deep';
 import Statuses from '../../Statuses';
 import UserAvatar from '../../UserAvatar';
-import { ChatAppContext } from '../../ChatApp';
-import { Profile, useGetChatUserProfileQuery, useUpdateChatUserProfileMutation } from '../../ChatApi';
+import { ChatAppContext } from '../../MessengerApp';
+import { Profile, useGetMessengerUserProfileQuery, useUpdateMessengerUserProfileMutation } from '../../MessengerApi';
 
 /**
  * The user sidebar.
@@ -27,8 +27,8 @@ import { Profile, useGetChatUserProfileQuery, useUpdateChatUserProfileMutation }
 function UserSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
 
-	const { data: user } = useGetChatUserProfileQuery();
-	const [updateUserData] = useUpdateChatUserProfileMutation();
+	const { data: user } = useGetMessengerUserProfileQuery();
+	const [updateUserData] = useUpdateMessengerUserProfileMutation();
 
 	const { control, handleSubmit, reset, formState, watch } = useForm({});
 	const { isValid, dirtyFields, errors } = formState;

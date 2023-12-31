@@ -1,7 +1,7 @@
 import { FuseRouteConfigsType } from '@fuse/utils/FuseUtils';
 import AcademyAppConfig from './academy/AcademyAppConfig';
 import CalendarAppConfig from './calendar/CalendarAppConfig';
-import ChatAppConfig from './chat/ChatAppConfig';
+import MessengerAppConfig from './messenger/MessengerAppConfig';
 import ContactsAppConfig from './contacts/ContactsAppConfig';
 import ECommerceAppConfig from './e-commerce/ECommerceAppConfig';
 import FileManagerAppConfig from './file-manager/FileManagerAppConfig';
@@ -18,7 +18,7 @@ import TasksAppConfig from './tasks/TasksAppConfig';
 const appsConfigs: FuseRouteConfigsType = [
 	AcademyAppConfig,
 	CalendarAppConfig,
-	ChatAppConfig,
+	MessengerAppConfig,
 	ContactsAppConfig,
 	ECommerceAppConfig,
 	FileManagerAppConfig,

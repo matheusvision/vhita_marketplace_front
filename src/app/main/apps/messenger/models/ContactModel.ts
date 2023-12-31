@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { Contact } from '../ChatApi';
+import { Contact } from '../MessengerApi';
 
 /**
  * Contact model.

@@ -45,7 +45,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 /**
  * The chat app.
  */
-function ChatApp() {
+function MessengerApp() {
 	const location = useLocation();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
@@ -123,4 +123,4 @@ function ChatApp() {
 	);
 }
 
-export default ChatApp;
+export default MessengerApp;

@@ -18,9 +18,9 @@ import BoardCardDueDate from './BoardCardDueDate';
 import BoardCardCheckItems from './BoardCardCheckItems';
 import {
 	ScrumboardCard,
-	useGetScrumboardBoardCardListQuery,
+	useGetScrumboardBoardCardsQuery,
 	useGetScrumboardBoardQuery,
-	useGetScrumboardMemberListQuery
+	useGetScrumboardMembersQuery
 } from '../../ScrumboardApi';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -47,8 +47,8 @@ function BoardCard(props: BoardCardProps) {
 	const { boardId } = routeParams;
 
 	const { data: board, isLoading: isBoardLoading } = useGetScrumboardBoardQuery(boardId);
-	const { data: cards, isLoading: isCardsLoading } = useGetScrumboardBoardCardListQuery(boardId);
-	const { data: members, isLoading: isMembersLoading } = useGetScrumboardMemberListQuery();
+	const { data: cards, isLoading: isCardsLoading } = useGetScrumboardBoardCardsQuery(boardId);
+	const { data: members, isLoading: isMembersLoading } = useGetScrumboardMembersQuery();
 
 	const card = _.find(cards, { id: cardId });
 

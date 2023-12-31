@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 import FuseLoading from '@fuse/core/FuseLoading';
 import BoardItem from './BoardItem';
 import NewBoardItem from './NewBoardItem';
-import { useGetScrumboardBoardListQuery } from '../ScrumboardApi';
+import { useGetScrumboardBoardsQuery } from '../ScrumboardApi';
 
 /**
  * The Scrumboard boards component.
  */
 function Boards() {
-	const { data: boards, isLoading } = useGetScrumboardBoardListQuery();
+	const { data: boards, isLoading } = useGetScrumboardBoardsQuery();
 
 	const container = {
 		show: {
 			transition: {
-				staggerChildren: 0.1
+				staggerChildren: 0.04
 			}
 		}
 	};

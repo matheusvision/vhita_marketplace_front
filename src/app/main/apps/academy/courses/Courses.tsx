@@ -13,13 +13,14 @@ import { FormControlLabel } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { Theme } from '@mui/material/styles';
+import FuseLoading from '@fuse/core/FuseLoading';
 import CourseCard from './CourseCard';
-import { Course, useGetAcademyCategoriesQuery, useGetAcademyCourseListQuery } from '../AcademyApi';
+import { Course, useGetAcademyCategoriesQuery, useGetAcademyCoursesQuery } from '../AcademyApi';
 
 const container = {
 	show: {
 		transition: {
-			staggerChildren: 0.1
+			staggerChildren: 0.04
 		}
 	}
 };
@@ -27,7 +28,7 @@ const container = {
 const item = {
 	hidden: {
 		opacity: 0,
-		y: 20
+		y: 10
 	},
 	show: {
 		opacity: 1,
@@ -39,12 +40,12 @@ const item = {
  * The Courses page.
  */
 function Courses() {
-	const { data: courses } = useGetAcademyCourseListQuery();
+	const { data: courses, isLoading } = useGetAcademyCoursesQuery();
 	const { data: categories } = useGetAcademyCategoriesQuery();
 
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	const [filteredData, setFilteredData] = useState<Course[]>([]);
+	const [filteredData, setFilteredData] = useState<Course[]>(courses);
 	const [searchText, setSearchText] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
 	const [hideCompleted, setHideCompleted] = useState(false);
@@ -79,6 +80,10 @@ function Courses() {
 
 	function handleSearchText(event: ChangeEvent<HTMLInputElement>) {
 		setSearchText(event.target.value);
+	}
+
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (
@@ -217,7 +222,7 @@ function Courses() {
 					{filteredData &&
 						(filteredData.length > 0 ? (
 							<motion.div
-								className="flex grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 mt-32 sm:mt-40"
+								className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 mt-32 sm:mt-40"
 								variants={container}
 								initial="hidden"
 								animate="show"

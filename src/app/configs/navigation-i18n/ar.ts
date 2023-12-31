@@ -8,7 +8,7 @@ const locale = {
 	TASKS: 'لكى يفعل',
 	FILE_MANAGER: 'مدير الملفات',
 	CONTACTS: 'جهات الاتصال',
-	CHAT: 'دردشة',
+	MESSENGER: 'ماسنجر',
 	SCRUMBOARD: 'مجلس',
 	NOTES: 'ملاحظات'
 };

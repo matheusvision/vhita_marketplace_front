@@ -4,7 +4,7 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import ListItemButton from '@mui/material/ListItemButton';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import UserAvatar from '../../UserAvatar';
-import { Contact } from '../../ChatApi';
+import { Contact } from '../../MessengerApi';
 
 type ExtendedListItemProps = NavLinkAdapterPropsType & {
 	component: React.ElementType<NavLinkAdapterPropsType>;
@@ -30,7 +30,7 @@ function ContactListItem(props: ContactListItemProps) {
 		<StyledListItem
 			component={NavLinkAdapter}
 			className="px-32 py-12 min-h-80"
-			to={`/apps/chat/${item.id}`}
+			to={`/apps/messenger/${item.id}`}
 			end
 			activeClassName="active"
 		>

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import GuideListMenu from './GuideListMenu';
-import { selectGuideCategoryBySlug, useGetHelpCenterGuidesByCategorySlugQuery } from '../HelpCenterApi';
+import { selectGuideCategoryBySlug, useGetHelpCenterGuidesByCategoryQuery } from '../HelpCenterApi';
 
 /**
  * The guide category.
@@ -12,7 +12,7 @@ function GuideCategory() {
 	const navigate = useNavigate();
 	const routeParams = useParams();
 	const { categorySlug } = routeParams;
-	const { data: guides } = useGetHelpCenterGuidesByCategorySlugQuery({
+	const { data: guides } = useGetHelpCenterGuidesByCategoryQuery({
 		categorySlug
 	});
 	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));

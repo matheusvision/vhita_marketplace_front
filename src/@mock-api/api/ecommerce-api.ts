@@ -15,7 +15,7 @@ mock.onGet('/ecommerce/products').reply(() => {
 mock.onPost('/ecommerce/products').reply(({ data }) => {
 	const newProduct = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as EcommerceProduct;
 
-	productsDB.push(newProduct);
+	productsDB.unshift(newProduct);
 
 	return [200, newProduct];
 });

@@ -37,7 +37,7 @@ mock.onGet('/mailbox/mails/:folderSlug').reply((config) => {
 	return [200, response];
 });
 
-mock.onGet('/mailbox/mails/mail/:id').reply((config) => {
+mock.onGet('/mailbox/mail/:id').reply((config) => {
 	const { id } = config.params as Params;
 
 	const response = _.find(mailsDB, { id });

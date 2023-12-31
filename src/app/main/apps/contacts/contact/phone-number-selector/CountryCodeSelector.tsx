@@ -7,7 +7,7 @@ import Box from '@mui/system/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import clsx from 'clsx';
-import { useGetContactCountryListQuery } from '../../ContactsApi';
+import { useGetContactsCountriesQuery } from '../../ContactsApi';
 
 type CountryCodeSelectorProps = {
 	value: string;
@@ -20,7 +20,7 @@ type CountryCodeSelectorProps = {
  */
 const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange, className } = props;
-	const { data: countries } = useGetContactCountryListQuery();
+	const { data: countries } = useGetContactsCountriesQuery();
 	const country = _.find(countries, { iso: value });
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
@@ -69,7 +69,7 @@ const CountryCodeSelector = forwardRef((props: CountryCodeSelectorProps, ref: Fo
 				{countries?.map((item) => (
 					<MenuItem
 						onClick={() => {
-							onChange(item?.iso as string);
+							onChange(item?.iso);
 							handleClose();
 						}}
 						disableRipple

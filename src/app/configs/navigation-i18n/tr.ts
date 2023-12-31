@@ -8,7 +8,7 @@ const locale = {
 	TASKS: 'Yapılacaklar',
 	FILE_MANAGER: 'Dosya Yöneticisi',
 	CONTACTS: 'Kişiler',
-	CHAT: 'Sohbet',
+	MESSENGER: 'Sohbet',
 	SCRUMBOARD: 'Proje',
 	NOTES: 'Notlar'
 };

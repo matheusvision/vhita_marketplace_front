@@ -799,7 +799,8 @@
         },
         "description": "Delete Calendar label.",
         "tags": [
-          "calendar_labels"
+          "calendar_labels",
+          "calendar_events"
         ]
       }
     },
@@ -830,7 +831,7 @@
           "description": ""
         },
         "tags": [
-          "mailbox_list"
+          "mailbox_mails"
         ]
       }
     },
@@ -934,6 +935,35 @@
           "mailbox_mails"
         ]
       }
+    },
+    "/mailbox/mail/{mailId}": {
+      "get": {
+        "summary": "Get mail",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          }
+        },
+        "operationId": "getMailboxMail",
+        "description": "Retrieve mail.",
+        "x-stoplight": {
+          "id": "uh9lhs0ze7ow8"
+        },
+        "tags": [
+          "mailbox_mail"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "mailId",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/mailbox/mails/labels/{labelSlug}": {
       "get": {
@@ -2453,7 +2483,8 @@
         },
         "description": "Create new note.",
         "tags": [
-          "notes_list"
+          "notes_list",
+          "notes_item"
         ]
       }
     },
@@ -2548,7 +2579,8 @@
           "description": ""
         },
         "tags": [
-          "notes_item"
+          "notes_item",
+          "notes_list"
         ]
       },
       "delete": {
@@ -2599,14 +2631,14 @@
       },
       "parameters": [],
       "post": {
-        "summary": "Create new label",
+        "summary": "Create label",
         "operationId": "createNotesLabel",
         "responses": {
           "200": {
             "description": "OK"
           }
         },
-        "description": "Create a new note Label.",
+        "description": "Create a note Label.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2626,7 +2658,8 @@
           "description": ""
         },
         "tags": [
-          "notes_labels"
+          "notes_labels",
+          "notes_label"
         ]
       }
     },
@@ -2656,7 +2689,7 @@
         "operationId": "getNotesLabel",
         "description": "Retrieve note label by id.",
         "tags": [
-          "notes_label"
+          "note_labels"
         ]
       },
       "parameters": [
@@ -2701,7 +2734,7 @@
           "description": ""
         },
         "tags": [
-          "notes_label"
+          "notes_labels"
         ]
       },
       "delete": {
@@ -3160,7 +3193,7 @@
         },
         "description": "Delete folder.",
         "tags": [
-          "file_manager_folders"
+          "file_manager_folder"
         ]
       }
     },
@@ -3357,7 +3390,8 @@
         },
         "description": "Delete E-commerce product.",
         "tags": [
-          "eCommerce_products"
+          "eCommerce_products",
+          "eCommerce_product"
         ]
       }
     },
@@ -3393,7 +3427,40 @@
           "id": "x71nx4hzq184b"
         }
       },
-      "parameters": []
+      "parameters": [],
+      "delete": {
+        "summary": "Delete Orders",
+        "operationId": "deleteEcommerceOrders",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-stoplight": {
+          "id": "92bu4y5riik1p"
+        },
+        "requestBody": {
+          "description": "Order ids",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "x-stoplight": {
+                    "id": "xs3u6yv88qfix"
+                  },
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "eCommerce_order",
+          "eCommerce_orders"
+        ],
+        "description": "Delete E-commerce orders."
+      }
     },
     "/ecommerce/orders/{orderId}": {
       "get": {
@@ -3584,7 +3651,8 @@
         },
         "description": "Delete E-commerce order.",
         "tags": [
-          "eCommerce_orders"
+          "eCommerce_orders",
+          "eCommerce_order"
         ]
       }
     },
@@ -3711,7 +3779,8 @@
           }
         },
         "tags": [
-          "academy_course"
+          "academy_course",
+          "academy_courses"
         ]
       },
       "delete": {
@@ -4056,8 +4125,8 @@
         ]
       },
       "put": {
-        "summary": "Update chat",
-        "operationId": "updateMessengerChat",
+        "summary": "Send message",
+        "operationId": "sendMessengerMessage",
         "responses": {
           "200": {
             "description": "OK",
@@ -4070,7 +4139,7 @@
             }
           }
         },
-        "description": "Update the messages of an existing chat.",
+        "description": "Send chat message.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4093,7 +4162,8 @@
           "id": "satehp9hs0v2m"
         },
         "tags": [
-          "messenger_chat"
+          "messenger_chat",
+          "messenger_chats"
         ]
       }
     },
@@ -4391,7 +4461,8 @@
           "description": "Update task properties."
         },
         "tags": [
-          "tasks_item"
+          "tasks_item",
+          "tasks_list"
         ]
       }
     },

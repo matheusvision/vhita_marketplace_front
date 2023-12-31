@@ -4,15 +4,15 @@ import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import MailCompose from './MailCompose';
-import { useGetMailboxFilterListQuery, useGetMailboxFolderListQuery, useGetMailboxLabelListQuery } from './MailboxApi';
+import { useGetMailboxFiltersQuery, useGetMailboxFoldersQuery, useGetMailboxLabelsQuery } from './MailboxApi';
 
 /**
  * The mailbox app sidebar content.
  */
 function MailboxAppSidebarContent() {
-	const { data: folders } = useGetMailboxFolderListQuery();
-	const { data: labels } = useGetMailboxLabelListQuery();
-	const { data: filters } = useGetMailboxFilterListQuery();
+	const { data: folders } = useGetMailboxFoldersQuery();
+	const { data: labels } = useGetMailboxLabelsQuery();
+	const { data: filters } = useGetMailboxFiltersQuery();
 
 	const { t } = useTranslation('mailboxApp');
 

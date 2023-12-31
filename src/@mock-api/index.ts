@@ -10,7 +10,7 @@ import './api/dashboards/finance-api';
 import './api/ui/icons-api';
 import './api/countries-api';
 import './api/contacts-api';
-import './api/chat-api';
+import './api/messenger-api';
 import './api/tasks-api';
 import './api/academy-api';
 import './api/ecommerce-api';

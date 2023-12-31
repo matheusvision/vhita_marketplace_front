@@ -8,7 +8,7 @@ import _ from '@lodash';
 import BoardAddCard from '../board-card/BoardAddCard';
 import BoardCard from '../board-card/BoardCard';
 import BoardListHeader from './BoardListHeader';
-import { useGetScrumboardBoardListItemsQuery } from '../../ScrumboardApi';
+import { useGetScrumboardBoardListsQuery } from '../../ScrumboardApi';
 
 const StyledCard = styled(Card)(({ theme }) => ({
 	'&': {
@@ -33,7 +33,7 @@ function BoardList(props: BoardListProps) {
 
 	const contentScrollEl = useRef<HTMLDivElement>(null);
 
-	const { data: listItems } = useGetScrumboardBoardListItemsQuery(boardId);
+	const { data: listItems } = useGetScrumboardBoardListsQuery(boardId);
 
 	const list = _.find(listItems, { id: listId });
 

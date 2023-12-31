@@ -9,7 +9,7 @@ import { Menu } from '@mui/material';
 import _ from '@lodash';
 import Tooltip from '@mui/material/Tooltip';
 import { labelColorDefs } from './labelColors';
-import { useGetMailboxLabelListQuery } from '../MailboxApi';
+import { useGetMailboxLabelsQuery } from '../MailboxApi';
 
 type MailLabelsMenuProps = {
 	className?: string;
@@ -23,7 +23,7 @@ type MailLabelsMenuProps = {
 function MailLabelsMenu(props: MailLabelsMenuProps) {
 	const { className, onChange, labels } = props;
 	const [selectedLabels, setSelectedLabels] = useState(labels);
-	const { data: labelsAll } = useGetMailboxLabelListQuery();
+	const { data: labelsAll } = useGetMailboxLabelsQuery();
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);

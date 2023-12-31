@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { formatDistance } from 'date-fns';
 import _ from '@lodash';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { ScrumboardBoard, useGetScrumboardMemberListQuery } from '../ScrumboardApi';
+import { ScrumboardBoard, useGetScrumboardMembersQuery } from '../ScrumboardApi';
 
 type BoardItemProps = {
 	board: ScrumboardBoard;
@@ -20,7 +20,7 @@ type BoardItemProps = {
 function BoardItem(props: BoardItemProps) {
 	const { board } = props;
 
-	const { data: members } = useGetScrumboardMemberListQuery();
+	const { data: members } = useGetScrumboardMembersQuery();
 
 	const boardMembers = board.members.map((id) => _.find(members, { id }));
 

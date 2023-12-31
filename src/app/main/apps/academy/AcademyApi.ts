@@ -10,7 +10,7 @@ const AcademyApi = apiService
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getAcademyCourseList: build.query<GetAcademyCourseListApiResponse, GetAcademyCourseListApiArg>({
+			getAcademyCourses: build.query<GetAcademyCoursesApiResponse, GetAcademyCoursesApiArg>({
 				query: () => ({ url: `/mock-api/academy/courses` }),
 				providesTags: ['academy_courses']
 			}),
@@ -38,7 +38,8 @@ const AcademyApi = apiService
 				query: (queryArg) => ({
 					url: `/mock-api/academy/courses/${queryArg.courseId}`,
 					method: 'DELETE'
-				})
+				}),
+				invalidatesTags: ['academy_courses']
 			}),
 			getAcademyCategories: build.query<GetAcademyCategoriesApiResponse, GetAcademyCategoriesApiArg>({
 				query: () => ({ url: `/mock-api/academy/categories` }),
@@ -48,9 +49,9 @@ const AcademyApi = apiService
 		overrideExisting: false
 	});
 
-export { AcademyApi as exampleApi };
-export type GetAcademyCourseListApiResponse = /** status 200 OK */ Course[];
-export type GetAcademyCourseListApiArg = void;
+export default AcademyApi;
+export type GetAcademyCoursesApiResponse = /** status 200 OK */ Course[];
+export type GetAcademyCoursesApiArg = void;
 export type GetAcademyCourseApiResponse = /** status 200 OK */ Course;
 export type GetAcademyCourseApiArg = {
 	courseId: string;
@@ -100,7 +101,7 @@ export type Category = {
 };
 
 export const {
-	useGetAcademyCourseListQuery,
+	useGetAcademyCoursesQuery,
 	useGetAcademyCourseQuery,
 	useUpdateAcademyCourseMutation,
 	useDeleteAcademyCourseMutation,

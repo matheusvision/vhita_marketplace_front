@@ -6,7 +6,7 @@ import { useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
 import NoteListItem from './NoteListItem';
-import { NotesNote, RouteParams, useGetNotesNoteListQuery } from './NotesApi';
+import { NotesNote, RouteParams, useGetNotesListQuery } from './NotesApi';
 import { selectSearchText } from './store/searchTextSlice';
 
 /**
@@ -14,7 +14,7 @@ import { selectSearchText } from './store/searchTextSlice';
  */
 function NoteList() {
 	const routeParams = useParams<RouteParams>();
-	const { data: notes } = useGetNotesNoteListQuery(routeParams);
+	const { data: notes } = useGetNotesListQuery(routeParams);
 
 	const searchText = useAppSelector(selectSearchText);
 

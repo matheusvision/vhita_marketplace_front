@@ -27,9 +27,9 @@ import NoteReminderLabel from '../NoteReminderLabel';
 import NoteLabel from '../NoteLabel';
 import {
 	NotesNote,
-	useCreateNotesNoteMutation,
-	useDeleteNotesNoteMutation,
-	useUpdateNotesNoteMutation
+	useCreateNotesItemMutation,
+	useDeleteNotesItemMutation,
+	useUpdateNotesItemMutation
 } from '../NotesApi';
 import { selectDialogNote } from '../store/dialogsSlice';
 
@@ -57,6 +57,7 @@ const schema = z.object({
 		.boolean()
 		.optional()
 		.refine(
+			// eslint-disable-next-line func-names
 			function (
 				this: {
 					parent: NotesNote;
@@ -90,9 +91,9 @@ function NoteForm(props: NoteFormProps) {
 	const [showList, setShowList] = useState(false);
 	const routeParams = useParams();
 
-	const [updateNote] = useUpdateNotesNoteMutation();
-	const [removeNote] = useDeleteNotesNoteMutation();
-	const [createNote] = useCreateNotesNoteMutation();
+	const [updateNote] = useUpdateNotesItemMutation();
+	const [removeNote] = useDeleteNotesItemMutation();
+	const [createNote] = useCreateNotesItemMutation();
 
 	const note = useAppSelector(selectDialogNote(routeParams));
 

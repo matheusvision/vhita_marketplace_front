@@ -12,7 +12,7 @@ import { useGetFinanceDashboardWidgetsQuery } from './FinanceDashboardApi';
 const container = {
 	show: {
 		transition: {
-			staggerChildren: 0.06
+			staggerChildren: 0.04
 		}
 	}
 };

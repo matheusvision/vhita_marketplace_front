@@ -4,10 +4,10 @@ import { AppRootStateType } from './store';
 export const addTagTypes = [
 	'notes_list',
 	'notes_item',
-	'notes_label_list',
-	'notes_label_item',
-	'notes_archived_note_list',
-	'notes_reminder_note_list'
+	'notes_labels',
+	'notes_label',
+	'notes_archived_items',
+	'notes_reminder_items'
 ] as const;
 
 const NotesApi = api
@@ -16,7 +16,7 @@ const NotesApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getNotesNoteList: build.query<GetNotesNoteListApiResponse, GetNotesNoteListApiArg>({
+			getNotesList: build.query<GetNotesListApiResponse, GetNotesListApiArg>({
 				query: (routeParams) => {
 					const { filter, id } = routeParams;
 					let url = '';
@@ -43,7 +43,7 @@ const NotesApi = api
 				},
 				providesTags: ['notes_list']
 			}),
-			createNotesNote: build.mutation<CreateNotesNoteApiResponse, CreateNotesNoteApiArg>({
+			createNotesItem: build.mutation<CreateNotesItemApiResponse, CreateNotesItemApiArg>({
 				query: (note) => ({
 					url: `/mock-api/notes`,
 					method: 'POST',
@@ -51,11 +51,11 @@ const NotesApi = api
 				}),
 				invalidatesTags: ['notes_list', 'notes_item']
 			}),
-			getNotesNote: build.query<GetNotesNoteApiResponse, GetNotesNoteApiArg>({
+			getNotesItem: build.query<GetNotesItemApiResponse, GetNotesItemApiArg>({
 				query: (queryArg) => ({ url: `/mock-api/notes/${queryArg.noteId}` }),
 				providesTags: ['notes_item']
 			}),
-			updateNotesNote: build.mutation<UpdateNotesNoteApiResponse, UpdateNotesNoteApiArg>({
+			updateNotesItem: build.mutation<UpdateNotesItemApiResponse, UpdateNotesItemApiArg>({
 				query: (note) => ({
 					url: `/mock-api/notes/${note.id}`,
 					method: 'PUT',
@@ -63,16 +63,16 @@ const NotesApi = api
 				}),
 				invalidatesTags: ['notes_item', 'notes_list']
 			}),
-			deleteNotesNote: build.mutation<DeleteNotesNoteApiResponse, DeleteNotesNoteApiArg>({
+			deleteNotesItem: build.mutation<DeleteNotesItemApiResponse, DeleteNotesItemApiArg>({
 				query: (noteId) => ({
 					url: `/mock-api/notes/${noteId}`,
 					method: 'DELETE'
 				}),
 				invalidatesTags: ['notes_list']
 			}),
-			getNotesLabelList: build.query<GetNotesLabelListApiResponse, GetNotesLabelListApiArg>({
+			getNotesLabels: build.query<GetNotesLabelsApiResponse, GetNotesLabelsApiArg>({
 				query: () => ({ url: `/mock-api/notes/labels` }),
-				providesTags: ['notes_label_list']
+				providesTags: ['notes_labels']
 			}),
 			createNotesLabel: build.mutation<CreateNotesLabelApiResponse, CreateNotesLabelApiArg>({
 				query: (noteLabel) => ({
@@ -80,11 +80,11 @@ const NotesApi = api
 					method: 'POST',
 					data: noteLabel
 				}),
-				invalidatesTags: ['notes_label_item', 'notes_label_list']
+				invalidatesTags: ['notes_label', 'notes_labels']
 			}),
 			getNotesLabel: build.query<GetNotesLabelApiResponse, GetNotesLabelApiArg>({
 				query: (queryArg) => ({ url: `/mock-api/notes/labels/${queryArg.labelId}` }),
-				providesTags: ['notes_label_item']
+				providesTags: ['notes_label']
 			}),
 			updateNotesLabel: build.mutation<UpdateNotesLabelApiResponse, UpdateNotesLabelApiArg>({
 				query: (notesLabel) => ({
@@ -92,22 +92,22 @@ const NotesApi = api
 					method: 'PUT',
 					data: notesLabel
 				}),
-				invalidatesTags: ['notes_label_list']
+				invalidatesTags: ['notes_labels']
 			}),
 			deleteNotesLabel: build.mutation<DeleteNotesLabelApiResponse, DeleteNotesLabelApiArg>({
 				query: (labelId) => ({
 					url: `/mock-api/notes/labels/${labelId}`,
 					method: 'DELETE'
 				}),
-				invalidatesTags: ['notes_label_list']
+				invalidatesTags: ['notes_labels']
 			}),
-			getNotesArchivedNoteList: build.query<GetNotesArchivedNoteListApiResponse, GetNotesArchivedNoteListApiArg>({
+			getNotesArchivedItems: build.query<GetNotesArchivedItemsApiResponse, GetNotesArchivedItemsApiArg>({
 				query: () => ({ url: `/mock-api/notes/archive` }),
-				providesTags: ['notes_archived_note_list']
+				providesTags: ['notes_archived_items']
 			}),
-			getNotesReminderNoteList: build.query<GetNotesReminderNoteListApiResponse, GetNotesReminderNoteListApiArg>({
+			getNotesReminderItems: build.query<GetNotesReminderItemsApiResponse, GetNotesReminderItemsApiArg>({
 				query: () => ({ url: `/mock-api/notes/reminder` }),
-				providesTags: ['notes_reminder_note_list']
+				providesTags: ['notes_reminder_items']
 			})
 		}),
 		overrideExisting: false
@@ -119,26 +119,26 @@ export type RouteParams = Partial<{
 	id: string;
 }>;
 
-export type GetNotesNoteListApiResponse = /** status 200 OK */ NotesNote[];
-export type GetNotesNoteListApiArg = RouteParams;
+export type GetNotesListApiResponse = /** status 200 OK */ NotesNote[];
+export type GetNotesListApiArg = RouteParams;
 
-export type CreateNotesNoteApiResponse = unknown;
-export type CreateNotesNoteApiArg = NotesNote;
+export type CreateNotesItemApiResponse = unknown;
+export type CreateNotesItemApiArg = NotesNote;
 
-export type GetNotesNoteApiResponse = /** status 200 OK */ NotesNote;
-export type GetNotesNoteApiArg = {
+export type GetNotesItemApiResponse = /** status 200 OK */ NotesNote;
+export type GetNotesItemApiArg = {
 	/** note id */
 	noteId: string;
 };
 
-export type UpdateNotesNoteApiResponse = unknown;
-export type UpdateNotesNoteApiArg = NotesNote;
+export type UpdateNotesItemApiResponse = unknown;
+export type UpdateNotesItemApiArg = NotesNote;
 
-export type DeleteNotesNoteApiResponse = unknown;
-export type DeleteNotesNoteApiArg = string;
+export type DeleteNotesItemApiResponse = unknown;
+export type DeleteNotesItemApiArg = string;
 
-export type GetNotesLabelListApiResponse = /** status 200 OK */ NotesLabel[];
-export type GetNotesLabelListApiArg = void;
+export type GetNotesLabelsApiResponse = /** status 200 OK */ NotesLabel[];
+export type GetNotesLabelsApiArg = void;
 
 export type CreateNotesLabelApiResponse = unknown;
 export type CreateNotesLabelApiArg = NotesLabel;
@@ -155,11 +155,11 @@ export type UpdateNotesLabelApiArg = NotesLabel;
 export type DeleteNotesLabelApiResponse = unknown;
 export type DeleteNotesLabelApiArg = string;
 
-export type GetNotesArchivedNoteListApiResponse = /** status 200 OK */ NotesNote[];
-export type GetNotesArchivedNoteListApiArg = void;
+export type GetNotesArchivedItemsApiResponse = /** status 200 OK */ NotesNote[];
+export type GetNotesArchivedItemsApiArg = void;
 
-export type GetNotesReminderNoteListApiResponse = /** status 200 OK */ NotesNote[];
-export type GetNotesReminderNoteListApiArg = void;
+export type GetNotesReminderItemsApiResponse = /** status 200 OK */ NotesNote[];
+export type GetNotesReminderItemsApiArg = void;
 
 export type NoteListItemType = {
 	id: string;
@@ -186,18 +186,18 @@ export type NotesLabel = {
 };
 
 export const {
-	useGetNotesNoteListQuery,
-	useCreateNotesNoteMutation,
-	useGetNotesNoteQuery,
-	useUpdateNotesNoteMutation,
-	useDeleteNotesNoteMutation,
-	useGetNotesLabelListQuery,
+	useGetNotesListQuery,
+	useCreateNotesItemMutation,
+	useGetNotesItemQuery,
+	useUpdateNotesItemMutation,
+	useDeleteNotesItemMutation,
+	useGetNotesLabelsQuery,
 	useCreateNotesLabelMutation,
 	useGetNotesLabelQuery,
 	useUpdateNotesLabelMutation,
 	useDeleteNotesLabelMutation,
-	useGetNotesArchivedNoteListQuery,
-	useGetNotesReminderNoteListQuery
+	useGetNotesArchivedItemsQuery,
+	useGetNotesReminderItemsQuery
 } = NotesApi;
 
 export type NotesApiType = {
@@ -205,4 +205,4 @@ export type NotesApiType = {
 };
 
 export const selectNoteList = (routeParams: RouteParams) => (state: AppRootStateType) =>
-	NotesApi.endpoints.getNotesNoteList.select(routeParams)(state)?.data ?? [];
+	NotesApi.endpoints.getNotesList.select(routeParams)(state)?.data ?? [];

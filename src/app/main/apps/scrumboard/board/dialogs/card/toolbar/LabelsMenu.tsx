@@ -7,7 +7,7 @@ import { useState, MouseEvent } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useParams } from 'react-router-dom';
 import ToolbarMenu from './ToolbarMenu';
-import { useGetScrumboardBoardLabelListQuery } from '../../../../ScrumboardApi';
+import { useGetScrumboardBoardLabelsQuery } from '../../../../ScrumboardApi';
 
 type LabelsMenuProps = {
 	labels: string[];
@@ -23,7 +23,7 @@ function LabelsMenu(props: LabelsMenuProps) {
 	const routeParams = useParams();
 	const { boardId } = routeParams;
 
-	const { data: labelsArr } = useGetScrumboardBoardLabelListQuery(boardId);
+	const { data: labelsArr } = useGetScrumboardBoardLabelsQuery(boardId);
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 

@@ -25,7 +25,7 @@ import {
 	Task,
 	useCreateTasksItemMutation,
 	useGetTasksItemQuery,
-	useGetTasksTagListQuery,
+	useGetTasksTagsQuery,
 	useUpdateTasksItemMutation
 } from '../TasksApi';
 import SectionModel from '../models/SectionModel';
@@ -64,7 +64,7 @@ function TaskForm() {
 	const taskType = routeParams?.type;
 
 	const { data: task, isError } = useGetTasksItemQuery(routeParams.id);
-	const { data: tags } = useGetTasksTagListQuery();
+	const { data: tags } = useGetTasksTagsQuery();
 
 	const [updateTask] = useUpdateTasksItemMutation();
 	const [createTask] = useCreateTasksItemMutation();

@@ -5,7 +5,7 @@ import List from '@mui/material/List';
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
 import { closeLabelsDialog, selectLabelsDialogOpen } from '../../store/dialogsSlice';
-import { useGetNotesLabelListQuery } from '../../NotesApi';
+import { useGetNotesLabelsQuery } from '../../NotesApi';
 
 /**
  * The labels dialog.
@@ -13,7 +13,7 @@ import { useGetNotesLabelListQuery } from '../../NotesApi';
 function LabelsDialog() {
 	const dispatch = useAppDispatch();
 	const labelsDialogOpen = useAppSelector(selectLabelsDialogOpen);
-	const { data: labels } = useGetNotesLabelListQuery();
+	const { data: labels } = useGetNotesLabelsQuery();
 
 	return (
 		<Dialog

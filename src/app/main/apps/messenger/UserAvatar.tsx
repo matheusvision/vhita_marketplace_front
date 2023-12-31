@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
 import Statuses from './Statuses';
-import { Contact } from './ChatApi';
+import { Contact } from './MessengerApi';
 
 const StyledBadge = styled(Badge)<{ statuscolor: string }>(({ theme, ...props }) => ({
 	width: 40,

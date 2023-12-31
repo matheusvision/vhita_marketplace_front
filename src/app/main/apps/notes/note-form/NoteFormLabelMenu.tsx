@@ -7,7 +7,7 @@ import Popover from '@mui/material/Popover';
 import { useState, MouseEvent } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ListItemButton from '@mui/material/ListItemButton';
-import { NotesNote, useGetNotesLabelListQuery } from '../NotesApi';
+import { NotesNote, useGetNotesLabelsQuery } from '../NotesApi';
 
 type NoteFormLabelMenuProps = {
 	note: NotesNote;
@@ -19,7 +19,7 @@ type NoteFormLabelMenuProps = {
  */
 function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
 	const { note, onChange } = props;
-	const { data: labels } = useGetNotesLabelListQuery();
+	const { data: labels } = useGetNotesLabelsQuery();
 
 	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
 

@@ -18,7 +18,7 @@ import { Many } from 'lodash';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import * as React from 'react';
 import ProductsTableHead from './ProductsTableHead';
-import { EcommerceProduct, selectFilteredProductList, useGetECommerceProductListQuery } from '../ECommerceApi';
+import { EcommerceProduct, selectFilteredProducts, useGetECommerceProductsQuery } from '../ECommerceApi';
 
 type ProductsTableProps = WithRouterProps & {
 	navigate: (path: string) => void;
@@ -30,9 +30,9 @@ type ProductsTableProps = WithRouterProps & {
 function ProductsTable(props: ProductsTableProps) {
 	const { navigate } = props;
 
-	const { isLoading } = useGetECommerceProductListQuery();
+	const { isLoading } = useGetECommerceProductsQuery();
 
-	const data = useAppSelector(selectFilteredProductList);
+	const data = useAppSelector(selectFilteredProducts);
 
 	const [selected, setSelected] = useState<EcommerceProduct['id'][]>([]);
 

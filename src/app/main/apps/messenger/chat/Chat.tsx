@@ -12,15 +12,15 @@ import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import UserAvatar from '../UserAvatar';
 import ChatMoreMenu from './ChatMoreMenu';
-import { ChatAppContext } from '../ChatApp';
+import { ChatAppContext } from '../MessengerApp';
 import Error404Page from '../../../404/Error404Page';
 import {
 	Message,
-	useGetChatItemQuery,
-	useGetChatContactQuery,
-	useGetChatUserProfileQuery,
-	useSendChatMessageMutation
-} from '../ChatApi';
+	useGetMessengerChatQuery,
+	useGetMessengerContactQuery,
+	useGetMessengerUserProfileQuery,
+	useSendMessengerMessageMutation
+} from '../MessengerApi';
 
 const StyledMessageRow = styled('div')(({ theme }) => ({
 	'&.contact': {
@@ -112,10 +112,10 @@ function Chat(props: ChatPropsType) {
 	const routeParams = useParams();
 	const contactId = routeParams.id;
 
-	const { data: user } = useGetChatUserProfileQuery();
-	const { data: chat } = useGetChatItemQuery(contactId);
-	const { data: selectedContact } = useGetChatContactQuery(contactId);
-	const [sendMessage] = useSendChatMessageMutation();
+	const { data: user } = useGetMessengerUserProfileQuery();
+	const { data: chat } = useGetMessengerChatQuery(contactId);
+	const { data: selectedContact } = useGetMessengerContactQuery(contactId);
+	const [sendMessage] = useSendMessengerMessageMutation();
 
 	useEffect(() => {
 		if (chat) {

@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { Profile } from '../ChatApi';
+import { Profile } from '../MessengerApi';
 
 /**
  * User model.

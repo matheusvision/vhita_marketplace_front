@@ -13,18 +13,23 @@ import { lighten } from '@mui/material/styles';
 import ContactListItem from './ContactListItem';
 import UserAvatar from '../../UserAvatar';
 import MainSidebarMoreMenu from './MainSidebarMoreMenu';
-import { ChatAppContext } from '../../ChatApp';
+import { ChatAppContext } from '../../MessengerApp';
 import ChatListItem from './ChatListItem';
-import { Chat, useGetChatListQuery, useGetChatContactListQuery, useGetChatUserProfileQuery } from '../../ChatApi';
+import {
+	Chat,
+	useGetMessengerChatsQuery,
+	useGetMessengerContactsQuery,
+	useGetMessengerUserProfileQuery
+} from '../../MessengerApi';
 
 /**
  * The main sidebar.
  */
 function MainSidebar() {
 	const { setUserSidebarOpen } = useContext(ChatAppContext);
-	const { data: contacts } = useGetChatContactListQuery();
-	const { data: user } = useGetChatUserProfileQuery();
-	const { data: chats } = useGetChatListQuery();
+	const { data: contacts } = useGetMessengerContactsQuery();
+	const { data: user } = useGetMessengerUserProfileQuery();
+	const { data: chats } = useGetMessengerChatsQuery();
 
 	const [searchText, setSearchText] = useState('');
 
@@ -119,13 +124,13 @@ function MainSidebar() {
 						const container = {
 							show: {
 								transition: {
-									staggerChildren: 0.1
+									staggerChildren: 0.02
 								}
 							}
 						};
 
 						const item = {
-							hidden: { opacity: 0, y: 20 },
+							hidden: { opacity: 0, y: 10 },
 							show: { opacity: 1, y: 0 }
 						};
 

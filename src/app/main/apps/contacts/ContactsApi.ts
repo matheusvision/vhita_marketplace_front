@@ -4,13 +4,7 @@ import FuseUtils from '@fuse/utils';
 import { selectSearchText } from './store/searchTextSlice';
 import { AppRootStateType } from './store';
 
-export const addTagTypes = [
-	'contacts_item',
-	'contacts_list',
-	'contacts_tag',
-	'contacts_tags',
-	'contacts_countries'
-] as const;
+export const addTagTypes = ['contacts_item', 'contacts', 'contacts_tag', 'contacts_tags', 'countries'] as const;
 
 const ContactsApi = api
 	.enhanceEndpoints({
@@ -18,42 +12,42 @@ const ContactsApi = api
 	})
 	.injectEndpoints({
 		endpoints: (build) => ({
-			getContactList: build.query<GetContactListApiResponse, GetContactListApiArg>({
+			getContactsList: build.query<GetContactsListApiResponse, GetContactsListApiArg>({
 				query: () => ({ url: `/mock-api/contacts` }),
-				providesTags: ['contacts_list']
+				providesTags: ['contacts']
 			}),
-			createContactItem: build.mutation<CreateContactItemApiResponse, CreateContactItemApiArg>({
+			createContactsItem: build.mutation<CreateContactsItemApiResponse, CreateContactsItemApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/contacts`,
 					method: 'POST',
 					data: queryArg.contact
 				}),
-				invalidatesTags: ['contacts_list']
+				invalidatesTags: ['contacts']
 			}),
-			getContactItem: build.query<GetContactItemApiResponse, GetContactItemApiArg>({
+			getContactsItem: build.query<GetContactsItemApiResponse, GetContactsItemApiArg>({
 				query: (contactId) => ({ url: `/mock-api/contacts/${contactId}` }),
 				providesTags: ['contacts_item']
 			}),
-			updateContactItem: build.mutation<UpdateContactItemApiResponse, UpdateContactItemApiArg>({
+			updateContactsItem: build.mutation<UpdateContactsItemApiResponse, UpdateContactsItemApiArg>({
 				query: (contact) => ({
 					url: `/mock-api/contacts/${contact.id}`,
 					method: 'PUT',
 					data: contact
 				}),
-				invalidatesTags: ['contacts_item', 'contacts_list']
+				invalidatesTags: ['contacts_item', 'contacts']
 			}),
-			deleteContactItem: build.mutation<DeleteContactItemApiResponse, DeleteContactItemApiArg>({
+			deleteContactsItem: build.mutation<DeleteContactsItemApiResponse, DeleteContactsItemApiArg>({
 				query: (contactId) => ({
 					url: `/mock-api/contacts/${contactId}`,
 					method: 'DELETE'
 				}),
-				invalidatesTags: ['contacts_list']
+				invalidatesTags: ['contacts']
 			}),
-			getContactTag: build.query<GetContactTagApiResponse, GetContactTagApiArg>({
+			getContactsTag: build.query<GetContactsTagApiResponse, GetContactsTagApiArg>({
 				query: (tagId) => ({ url: `/mock-api/contacts/tags/${tagId}` }),
 				providesTags: ['contacts_tag']
 			}),
-			updateContactTag: build.mutation<UpdateContactTagApiResponse, UpdateContactTagApiArg>({
+			updateContactsTag: build.mutation<UpdateContactsTagApiResponse, UpdateContactsTagApiArg>({
 				query: (tag) => ({
 					url: `/mock-api/contacts/tags/${tag.id}`,
 					method: 'PUT',
@@ -61,22 +55,22 @@ const ContactsApi = api
 				}),
 				invalidatesTags: ['contacts_tags']
 			}),
-			deleteContactTag: build.mutation<DeleteContactTagApiResponse, DeleteContactTagApiArg>({
+			deleteContactsTag: build.mutation<DeleteContactsTagApiResponse, DeleteContactsTagApiArg>({
 				query: (tagId) => ({
 					url: `/mock-api/contacts/tags/${tagId}`,
 					method: 'DELETE'
 				}),
 				invalidatesTags: ['contacts_tags']
 			}),
-			getContactTagList: build.query<GetContactTagListApiResponse, GetContactTagListApiArg>({
+			getContactsTags: build.query<GetContactTagsApiResponse, GetContactTagsApiArg>({
 				query: () => ({ url: `/mock-api/contacts/tags` }),
 				providesTags: ['contacts_tags']
 			}),
-			getContactCountryList: build.query<GetContactCountryListApiResponse, GetContactCountryListApiArg>({
+			getContactsCountries: build.query<GetContactsCountriesApiResponse, GetContactsCountriesApiArg>({
 				query: () => ({ url: `/mock-api/countries` }),
-				providesTags: ['contacts_countries']
+				providesTags: ['countries']
 			}),
-			createContactTag: build.mutation<CreateContactTagApiResponse, CreateContactTagApiArg>({
+			createContactsTag: build.mutation<CreateContactsTagApiResponse, CreateContactsTagApiArg>({
 				query: (queryArg) => ({
 					url: `/mock-api/contacts/tags`,
 					method: 'POST',
@@ -87,31 +81,43 @@ const ContactsApi = api
 		}),
 		overrideExisting: false
 	});
-export { ContactsApi as Api };
-export type GetContactItemApiResponse = /** status 200 User Found */ ContactRead;
-export type GetContactItemApiArg = string;
-export type UpdateContactItemApiResponse = /** status 200 Contact Updated */ ContactRead;
-export type UpdateContactItemApiArg = Contact;
-export type DeleteContactItemApiResponse = unknown;
-export type DeleteContactItemApiArg = string;
-export type GetContactListApiResponse = /** status 200 OK */ ContactRead[];
-export type GetContactListApiArg = void;
-export type CreateContactItemApiResponse = /** status 201 Created */ ContactRead;
-export type CreateContactItemApiArg = {
+
+export default ContactsApi;
+
+export type GetContactsItemApiResponse = /** status 200 User Found */ ContactRead;
+export type GetContactsItemApiArg = string;
+
+export type UpdateContactsItemApiResponse = /** status 200 Contact Updated */ ContactRead;
+export type UpdateContactsItemApiArg = Contact;
+
+export type DeleteContactsItemApiResponse = unknown;
+export type DeleteContactsItemApiArg = string;
+
+export type GetContactsListApiResponse = /** status 200 OK */ ContactRead[];
+export type GetContactsListApiArg = void;
+
+export type CreateContactsItemApiResponse = /** status 201 Created */ ContactRead;
+export type CreateContactsItemApiArg = {
 	contact: Contact;
 };
-export type GetContactTagApiResponse = /** status 200 Tag Found */ Tag;
-export type GetContactTagApiArg = string;
-export type GetContactCountryListApiResponse = /** status 200 */ Country[];
-export type GetContactCountryListApiArg = void;
-export type UpdateContactTagApiResponse = /** status 200 */ Tag;
-export type UpdateContactTagApiArg = Tag;
-export type DeleteContactTagApiResponse = unknown;
-export type DeleteContactTagApiArg = string;
-export type GetContactTagListApiResponse = /** status 200 OK */ Tag[];
-export type GetContactTagListApiArg = void;
-export type CreateContactTagApiResponse = /** status 200 OK */ Tag;
-export type CreateContactTagApiArg = {
+
+export type GetContactsTagApiResponse = /** status 200 Tag Found */ Tag;
+export type GetContactsTagApiArg = string;
+
+export type GetContactsCountriesApiResponse = /** status 200 */ Country[];
+export type GetContactsCountriesApiArg = void;
+
+export type UpdateContactsTagApiResponse = /** status 200 */ Tag;
+export type UpdateContactsTagApiArg = Tag;
+
+export type DeleteContactsTagApiResponse = unknown;
+export type DeleteContactsTagApiArg = string;
+
+export type GetContactTagsApiResponse = /** status 200 OK */ Tag[];
+export type GetContactTagsApiArg = void;
+
+export type CreateContactsTagApiResponse = /** status 200 OK */ Tag;
+export type CreateContactsTagApiArg = {
 	tag: Tag;
 };
 
@@ -179,27 +185,25 @@ export type AccumulatorType = {
 };
 
 export const {
-	useGetContactItemQuery,
-	useUpdateContactItemMutation,
-	useDeleteContactItemMutation,
-	useGetContactListQuery,
-	useCreateContactItemMutation,
-	useGetContactTagQuery,
-	useGetContactCountryListQuery,
-	useUpdateContactTagMutation,
-	useDeleteContactTagMutation,
-	useGetContactTagListQuery,
-	useCreateContactTagMutation
+	useGetContactsItemQuery,
+	useUpdateContactsItemMutation,
+	useDeleteContactsItemMutation,
+	useGetContactsListQuery,
+	useCreateContactsItemMutation,
+	useGetContactsTagQuery,
+	useGetContactsCountriesQuery,
+	useUpdateContactsTagMutation,
+	useDeleteContactsTagMutation,
+	useGetContactsTagsQuery,
+	useCreateContactsTagMutation
 } = ContactsApi;
-
-export default ContactsApi;
 
 export type ContactsApiType = {
 	[ContactsApi.reducerPath]: ReturnType<typeof ContactsApi.reducer>;
 };
 
 export const selectContactList = (state: AppRootStateType) =>
-	ContactsApi.endpoints.getContactList.select()(state)?.data ?? [];
+	ContactsApi.endpoints.getContactsList.select()(state)?.data ?? [];
 
 /**
  * Select filtered contacts

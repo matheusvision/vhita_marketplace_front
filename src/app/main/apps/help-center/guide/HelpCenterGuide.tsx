@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
 import { useAppSelector } from 'app/store';
-import { selectGuideCategoryBySlug, useGetHelpCenterGuideByCategoryGuideSlugQuery } from '../HelpCenterApi';
+import { selectGuideCategoryBySlug, useGetHelpCenterGuideByCategoryQuery } from '../HelpCenterApi';
 
 /**
  * The help center guide.
@@ -15,7 +15,7 @@ function HelpCenterGuide() {
 	const routeParams = useParams();
 	const { guideSlug, categorySlug } = routeParams;
 	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
-	const { data: guide } = useGetHelpCenterGuideByCategoryGuideSlugQuery({
+	const { data: guide } = useGetHelpCenterGuideByCategoryQuery({
 		categorySlug,
 		guideSlug
 	});

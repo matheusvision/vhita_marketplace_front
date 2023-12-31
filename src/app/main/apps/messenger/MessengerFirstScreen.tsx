@@ -2,12 +2,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useContext } from 'react';
-import { ChatAppContext } from './ChatApp';
+import { ChatAppContext } from './MessengerApp';
 
 /**
  * The chat first screen.
  */
-function ChatFirstScreen() {
+function MessengerFirstScreen() {
 	const { setMainSidebarOpen } = useContext(ChatAppContext);
 
 	return (
@@ -36,4 +36,4 @@ function ChatFirstScreen() {
 	);
 }
 
-export default ChatFirstScreen;
+export default MessengerFirstScreen;

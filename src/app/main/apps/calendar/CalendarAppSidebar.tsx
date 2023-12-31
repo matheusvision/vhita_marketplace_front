@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { selectSelectedLabels, toggleSelectedLabels } from './store/selectedLabelsSlice';
-import { useGetCalendarLabelListQuery } from './CalendarApi';
+import { useGetCalendarLabelsQuery } from './CalendarApi';
 import LabelsDialog from './dialogs/labels/LabelsDialog';
 
 /**
@@ -13,7 +13,7 @@ import LabelsDialog from './dialogs/labels/LabelsDialog';
 function CalendarAppSidebar() {
 	const selectedLabels = useAppSelector(selectSelectedLabels);
 	const dispatch = useAppDispatch();
-	const { data: labels } = useGetCalendarLabelListQuery();
+	const { data: labels } = useGetCalendarLabelsQuery();
 
 	return (
 		<div className="flex flex-col flex-auto min-h-full p-32">

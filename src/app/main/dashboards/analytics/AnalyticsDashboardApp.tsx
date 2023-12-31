@@ -17,7 +17,7 @@ import { useGetAnalyticsDashboardWidgetsQuery } from './AnalyticsDashboardApi';
 const container = {
 	show: {
 		transition: {
-			staggerChildren: 0.06
+			staggerChildren: 0.04
 		}
 	}
 };

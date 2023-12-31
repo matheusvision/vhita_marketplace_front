@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ChatAppContext } from '../ChatApp';
+import { ChatAppContext } from '../../MessengerApp';
 
 type MainSidebarMoreMenuProps = {
 	className?: string;
@@ -13,13 +13,13 @@ type MainSidebarMoreMenuProps = {
  * The main sidebar more menu.
  */
 function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
-	const { setContactSidebarOpen } = useContext(ChatAppContext);
-
 	const { className } = props;
+
+	const { setUserSidebarOpen } = useContext(ChatAppContext);
 
 	const [moreMenuEl, setMoreMenuEl] = useState<HTMLElement | null>(null);
 
-	function handleMoreMenuClick(event: React.MouseEvent<HTMLElement>) {
+	function handleMoreMenuClick(event: React.MouseEvent<HTMLButtonElement>) {
 		setMoreMenuEl(event.currentTarget);
 	}
 
@@ -44,12 +44,13 @@ function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
 			>
 				<MenuItem
 					onClick={() => {
-						setContactSidebarOpen(true);
+						setUserSidebarOpen(true);
 						handleMoreMenuClose();
 					}}
 				>
-					Contact info
+					Profile
 				</MenuItem>
+				<MenuItem onClick={handleMoreMenuClose}>Logout</MenuItem>
 			</Menu>
 		</div>
 	);

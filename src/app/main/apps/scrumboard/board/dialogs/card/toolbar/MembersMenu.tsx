@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState, MouseEvent } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ToolbarMenu from './ToolbarMenu';
-import { useGetScrumboardMemberListQuery } from '../../../../ScrumboardApi';
+import { useGetScrumboardMembersQuery } from '../../../../ScrumboardApi';
 
 type MembersMenuProps = {
 	memberIds: string[];
@@ -21,7 +21,7 @@ function MembersMenu(props: MembersMenuProps) {
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 
-	const { data: members } = useGetScrumboardMemberListQuery();
+	const { data: members } = useGetScrumboardMembersQuery();
 
 	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>) {
 		setAnchorEl(event.currentTarget);

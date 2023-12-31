@@ -17,9 +17,9 @@ import MailListTitle from './MailListTitle';
 import {
 	selectTrashFolderId,
 	useApplyMailboxMailActionMutation,
-	useGetMailboxFolderListQuery,
-	useGetMailboxLabelListQuery,
-	useGetMailboxListQuery
+	useGetMailboxFoldersQuery,
+	useGetMailboxLabelsQuery,
+	useGetMailboxMailsQuery
 } from '../MailboxApi';
 import { selectSearchText, setSearchText } from '../store/searchTextSlice';
 import { deselectAllMails, selectSelectedMailIds, setSelectedMailIds } from '../store/selectedMailIdsSlice';
@@ -43,10 +43,10 @@ function MailToolbar(props: MailToolbarProps) {
 
 	const routeParams = useParams();
 
-	const { data: mails, isLoading: isMailsLoading } = useGetMailboxListQuery(routeParams);
+	const { data: mails, isLoading: isMailsLoading } = useGetMailboxMailsQuery(routeParams);
 	const mailIds = mails?.map((mail) => mail.id);
-	const { data: folders, isLoading: isFoldersLoading } = useGetMailboxFolderListQuery();
-	const { data: labels, isLoading: isLabelsLoading } = useGetMailboxLabelListQuery();
+	const { data: folders, isLoading: isFoldersLoading } = useGetMailboxFoldersQuery();
+	const { data: labels, isLoading: isLabelsLoading } = useGetMailboxLabelsQuery();
 
 	const [setActionToMails] = useApplyMailboxMailActionMutation();
 

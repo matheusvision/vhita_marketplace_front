@@ -111,77 +111,75 @@ function OrderDetailsTab() {
 						</table>
 					</div>
 
-					<Accordion
-						className="border-0 shadow-0 overflow-hidden"
-						expanded={map === 'shipping'}
-						onChange={() => setMap(map !== 'shipping' ? 'shipping' : '')}
-					>
-						<AccordionSummary
-							expandIcon={<ExpandMoreIcon />}
-							classes={{ root: 'border border-solid rounded-16 mb-16' }}
+					<div className="space-y-12">
+						<Accordion
+							className="border-0 shadow-0 overflow-hidden"
+							expanded={map === 'shipping'}
+							onChange={() => setMap(map !== 'shipping' ? 'shipping' : '')}
+							sx={{ backgroundColor: 'background.default', borderRadius: '12px!important' }}
 						>
-							<Typography className="font-semibold">Shipping Address</Typography>
-						</AccordionSummary>
-						<AccordionDetails className="flex flex-col md:flex-row -mx-8">
-							<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-16">
-								{order.customer.shippingAddress.address}
-							</Typography>
-							<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
-								<GoogleMap
-									bootstrapURLKeys={{
-										key: process.env.REACT_APP_MAP_KEY
-									}}
-									defaultZoom={15}
-									defaultCenter={{
-										lng: order.customer.shippingAddress.lng,
-										lat: order.customer.shippingAddress.lat
-									}}
-								>
-									<Marker
-										text={order.customer.shippingAddress.address}
-										lat={order.customer.shippingAddress.lat}
-										lng={order.customer.shippingAddress.lng}
-									/>
-								</GoogleMap>
-							</div>
-						</AccordionDetails>
-					</Accordion>
+							<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+								<Typography className="font-semibold">Shipping Address</Typography>
+							</AccordionSummary>
+							<AccordionDetails className="flex flex-col md:flex-row">
+								<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-16">
+									{order.customer.shippingAddress.address}
+								</Typography>
+								<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
+									<GoogleMap
+										bootstrapURLKeys={{
+											key: process.env.REACT_APP_MAP_KEY
+										}}
+										defaultZoom={15}
+										defaultCenter={{
+											lng: order.customer.shippingAddress.lng,
+											lat: order.customer.shippingAddress.lat
+										}}
+									>
+										<Marker
+											text={order.customer.shippingAddress.address}
+											lat={order.customer.shippingAddress.lat}
+											lng={order.customer.shippingAddress.lng}
+										/>
+									</GoogleMap>
+								</div>
+							</AccordionDetails>
+						</Accordion>
 
-					<Accordion
-						className="shadow-0 border-0 overflow-hidden"
-						expanded={map === 'invoice'}
-						onChange={() => setMap(map !== 'invoice' ? 'invoice' : '')}
-					>
-						<AccordionSummary
-							expandIcon={<ExpandMoreIcon />}
-							classes={{ root: 'border border-solid rounded-16 mb-16' }}
+						<Accordion
+							className="border-0 shadow-0 overflow-hidden"
+							expanded={map === 'invoice'}
+							onChange={() => setMap(map !== 'invoice' ? 'invoice' : '')}
+							sx={{ backgroundColor: 'background.default', borderRadius: '12px!important' }}
 						>
-							<Typography className="font-semibold">Invoice Address</Typography>
-						</AccordionSummary>
-						<AccordionDetails className="flex flex-col md:flex-row -mx-8">
-							<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-16">
-								{order.customer.invoiceAddress.address}
-							</Typography>
-							<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
-								<GoogleMap
-									bootstrapURLKeys={{
-										key: process.env.REACT_APP_MAP_KEY
-									}}
-									defaultZoom={15}
-									defaultCenter={{
-										lng: order.customer.invoiceAddress.lng,
-										lat: order.customer.invoiceAddress.lat
-									}}
-								>
-									<Marker
-										text={order.customer.invoiceAddress.address}
-										lat={order.customer.invoiceAddress.lat}
-										lng={order.customer.invoiceAddress.lng}
-									/>
-								</GoogleMap>
-							</div>
-						</AccordionDetails>
-					</Accordion>
+							<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+								<Typography className="font-semibold">Invoice Address</Typography>
+							</AccordionSummary>
+							<AccordionDetails className="flex flex-col md:flex-row -mx-8">
+								<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-16">
+									{order.customer.invoiceAddress.address}
+								</Typography>
+								<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
+									<GoogleMap
+										bootstrapURLKeys={{
+											key: process.env.REACT_APP_MAP_KEY
+										}}
+										defaultZoom={15}
+										defaultCenter={{
+											lng: order.customer.invoiceAddress.lng,
+											lat: order.customer.invoiceAddress.lat
+										}}
+									>
+										<Marker
+											text={order.customer.invoiceAddress.address}
+											lat={order.customer.invoiceAddress.lat}
+											lng={order.customer.invoiceAddress.lng}
+										/>
+									</GoogleMap>
+								</div>
+							</AccordionDetails>
+						</Accordion>
+					</div>
 				</div>
 			</div>
 
