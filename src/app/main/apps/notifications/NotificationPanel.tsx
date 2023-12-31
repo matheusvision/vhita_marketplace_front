@@ -10,13 +10,19 @@ import { useAppDispatch } from 'app/store';
 import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
-import NotificationTemplate from 'app/theme-layouts/shared-components/notificationPanel/NotificationTemplate';
-import NotificationModel from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import withReducer from 'app/store/withReducer';
+import FuseLoading from '@fuse/core/FuseLoading';
 import NotificationCard from './NotificationCard';
-import { addNotification, dismissAll, dismissItem, getNotifications, selectNotifications } from './store/dataSlice';
 import { closeNotificationPanel, selectNotificationPanelState, toggleNotificationPanel } from './store/stateSlice';
 import reducer from './store';
+import {
+	useCreateNotificationMutation,
+	useDeleteAllNotificationsMutation,
+	useDeleteNotificationMutation,
+	useGetAllNotificationsQuery
+} from './NotificationApi';
+import NotificationModel from './models/NotificationModel';
+import NotificationTemplate from './NotificationTemplate';
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 	'& .MuiDrawer-paper': {
@@ -32,16 +38,14 @@ function NotificationPanel() {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
 	const state = useSelector(selectNotificationPanelState);
-	const notifications = useSelector(selectNotifications);
+
+	const [deleteNotification] = useDeleteNotificationMutation();
+	const [deleteAllNotifications] = useDeleteAllNotificationsMutation();
+	const [addNotification] = useCreateNotificationMutation();
+
+	const { data: notifications, isLoading } = useGetAllNotificationsQuery();
 
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
-	useEffect(() => {
-		/*
-		Get Notifications from db
-		 */
-		dispatch(getNotifications());
-	}, [dispatch]);
 
 	useEffect(() => {
 		if (state) {
@@ -55,14 +59,16 @@ function NotificationPanel() {
 	}
 
 	function handleDismiss(id: string) {
-		dispatch(dismissItem(id));
+		deleteNotification(id);
 	}
 	function handleDismissAll() {
-		dispatch(dismissAll());
+		deleteAllNotifications();
 	}
 
 	function demoNotification() {
 		const item = NotificationModel({ title: 'Great Job! this is awesome.' });
+
+		addNotification(item);
 
 		enqueueSnackbar(item.title, {
 			key: item.id,
@@ -77,8 +83,10 @@ function NotificationPanel() {
 				/>
 			)
 		});
+	}
 
-		dispatch(addNotification(item));
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (
@@ -96,9 +104,10 @@ function NotificationPanel() {
 			>
 				<FuseSvgIcon color="action">heroicons-outline:x</FuseSvgIcon>
 			</IconButton>
-			{notifications.length > 0 ? (
-				<FuseScrollbars className="p-16">
-					<div className="flex flex-col">
+
+			<FuseScrollbars className="flex flex-col p-16 h-full">
+				{notifications.length > 0 ? (
+					<div className="flex flex-auto flex-col">
 						<div className="mb-36 flex items-end justify-between pt-136">
 							<Typography className="text-28 font-semibold leading-none">Notifications</Typography>
 							<Typography
@@ -118,26 +127,26 @@ function NotificationPanel() {
 							/>
 						))}
 					</div>
-				</FuseScrollbars>
-			) : (
-				<div className="flex flex-1 items-center justify-center p-16">
-					<Typography
-						className="text-center text-24"
-						color="text.secondary"
+				) : (
+					<div className="flex flex-1 items-center justify-center p-16">
+						<Typography
+							className="text-center text-24"
+							color="text.secondary"
+						>
+							There are no notifications for now.
+						</Typography>
+					</div>
+				)}
+				<div className="flex items-center justify-center py-16">
+					<Button
+						size="small"
+						variant="outlined"
+						onClick={demoNotification}
 					>
-						There are no notifications for now.
-					</Typography>
+						Create a notification example
+					</Button>
 				</div>
-			)}
-			<div className="flex items-center justify-center py-16">
-				<Button
-					size="small"
-					variant="outlined"
-					onClick={demoNotification}
-				>
-					Create a notification example
-				</Button>
-			</div>
+			</FuseScrollbars>
 		</StyledSwipeableDrawer>
 	);
 }

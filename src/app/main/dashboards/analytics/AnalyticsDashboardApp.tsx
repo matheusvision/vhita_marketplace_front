@@ -37,15 +37,6 @@ function AnalyticsDashboardApp() {
 		return <FuseLoading />;
 	}
 
-	/*
-	return (
-		<div>
-			<VisitorsOverviewWidget />;
-			<ConversionsWidget />
-		</div>
-	);
-*/
-
 	return (
 		<FusePageSimple
 			header={<AnalyticsDashboardAppHeader />}

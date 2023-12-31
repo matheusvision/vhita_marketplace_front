@@ -6,8 +6,8 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { NotificationModelType } from 'app/theme-layouts/shared-components/notificationPanel/models/NotificationModel';
 import { MouseEvent } from 'react';
+import { NotificationModelType } from './models/NotificationModel';
 
 type NotificationCardProps = {
 	item: NotificationModelType;

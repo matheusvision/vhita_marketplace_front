@@ -220,6 +220,13 @@ const navigationConfig: FuseNavigationType = [
 				type: 'item',
 				icon: 'heroicons-outline:user-circle',
 				url: '/apps/profile'
+			},
+			{
+				id: 'apps.notifications',
+				title: 'Notifications',
+				type: 'item',
+				icon: 'heroicons-outline:bell',
+				url: '/apps/notifications'
 			}
 		]
 	},

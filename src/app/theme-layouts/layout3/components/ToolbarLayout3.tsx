@@ -9,7 +9,7 @@ import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from 'app/store/fus
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
-import NotificationPanelToggleButton from '../../shared-components/notificationPanel/NotificationPanelToggleButton';
+import NotificationPanelToggleButton from 'src/app/main/apps/notifications/NotificationPanelToggleButton';
 import NavigationSearch from '../../shared-components/NavigationSearch';
 import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
