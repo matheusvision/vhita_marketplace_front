@@ -69,7 +69,7 @@ function ContactButton(props: ContactButtonProps) {
 					selectedContactId === contact.id && 'active'
 				)}
 			>
-				{contact.unreadCount && <StyledUreadBadge>{contact.unreadCount}</StyledUreadBadge>}
+				{Boolean(contact.unreadCount) && <StyledUreadBadge>{contact.unreadCount}</StyledUreadBadge>}
 
 				<ContactStatus value={contact.status} />
 
