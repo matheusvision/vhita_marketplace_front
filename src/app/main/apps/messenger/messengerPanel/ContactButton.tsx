@@ -3,9 +3,8 @@ import Button from '@mui/material/Button';
 import clsx from 'clsx';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
-import { ContactType } from 'app/theme-layouts/shared-components/chatPanel/types/ContactType';
-import ContactStatus from 'app/theme-layouts/shared-components/chatPanel/ContactStatus';
-import { ChatListItemType } from 'app/theme-layouts/shared-components/chatPanel/types/ChatListItemType';
+import ContactStatus from './ContactStatus';
+import { Chat, Contact } from '../MessengerApi';
 
 const Root = styled(Tooltip)<{ active: number }>(({ theme, active }) => ({
 	width: 70,
@@ -46,7 +45,7 @@ const StyledUreadBadge = styled('div')(({ theme }) => ({
 }));
 
 type ContactButtonProps = {
-	contact: Partial<ContactType & ChatListItemType>;
+	contact: Partial<Contact & Chat>;
 	selectedContactId: string;
 	onClick: (id: string) => void;
 };
@@ -70,7 +69,7 @@ function ContactButton(props: ContactButtonProps) {
 					selectedContactId === contact.id && 'active'
 				)}
 			>
-				{contact.unread && <StyledUreadBadge>{contact.unread}</StyledUreadBadge>}
+				{contact.unreadCount && <StyledUreadBadge>{contact.unreadCount}</StyledUreadBadge>}
 
 				<ContactStatus value={contact.status} />
 

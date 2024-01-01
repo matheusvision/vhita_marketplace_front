@@ -143,6 +143,7 @@ export type Contact = {
 	};
 	status: ContactStatusType;
 };
+
 export type Chat = {
 	id: string;
 	contactId: string;
@@ -151,6 +152,7 @@ export type Chat = {
 	lastMessage: string;
 	lastMessageAt: string;
 };
+
 export type Message = {
 	id: string;
 	chatId: string;
@@ -158,6 +160,7 @@ export type Message = {
 	value: string;
 	createdAt: string;
 };
+
 export type Task = {
 	id: string;
 	type: string;
@@ -175,6 +178,7 @@ export type Task = {
 	}[];
 	order: number;
 };
+
 export type Profile = {
 	id: string;
 	name: string;

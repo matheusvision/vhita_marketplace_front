@@ -10,14 +10,14 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { getChatList } from 'app/theme-layouts/shared-components/chatPanel/store/chatListSlice';
 import withReducer from 'app/store/withReducer';
+import _ from '@lodash';
 import Chat from './Chat';
 import ContactList from './ContactList';
-import { getContacts, selectSelectedContactId, selectContactById } from './store/contactsSlice';
+import { selectSelectedContactId } from './store/selectedContactIdSlice';
 import { closeChatPanel, openChatPanel, selectChatPanelState } from './store/stateSlice';
-import { getUserData } from './store/userSlice';
 import reducer from './store';
+import { useGetMessengerContactsQuery } from '../MessengerApi';
 
 const Root = styled('div')<{ opened: number }>(({ theme, opened }) => ({
 	position: 'sticky',
@@ -103,13 +103,15 @@ const Root = styled('div')<{ opened: number }>(({ theme, opened }) => ({
 /**
  * The chat panel component.
  */
-function ChatPanel() {
+function MessengerPanel() {
 	const dispatch = useAppDispatch();
-	const selectedContactId = useAppSelector(selectSelectedContactId);
-	const selectedContact = useAppSelector(selectContactById(selectedContactId));
-	const state = useAppSelector(selectChatPanelState);
 	const theme = useTheme();
 	const ref = useRef<HTMLDivElement>(null);
+
+	const selectedContactId = useAppSelector(selectSelectedContactId);
+	const { data: contacts } = useGetMessengerContactsQuery();
+	const selectedContact = _.find(contacts, { id: selectedContactId });
+	const state = useAppSelector(selectChatPanelState);
 
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
@@ -130,9 +132,6 @@ function ChatPanel() {
 	);
 
 	useEffect(() => {
-		dispatch(getUserData());
-		dispatch(getContacts());
-		dispatch(getChatList());
 		return () => {
 			document.removeEventListener('keydown', handleDocumentKeyDown);
 		};
@@ -250,4 +249,4 @@ function ChatPanel() {
 	);
 }
 
-export default withReducer('chatPanel', reducer)(ChatPanel);
+export default withReducer('chatPanel', reducer)(MessengerPanel);

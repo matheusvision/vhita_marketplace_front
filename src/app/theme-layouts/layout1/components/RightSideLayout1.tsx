@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import MessengerPanel from 'src/app/main/apps/messenger/messengerPanel/MessengerPanel';
 import NotificationPanel from 'src/app/main/apps/notifications/NotificationPanel';
 
 /**
@@ -7,11 +8,12 @@ import NotificationPanel from 'src/app/main/apps/notifications/NotificationPanel
 function RightSideLayout1() {
 	return (
 		<>
-			{/* <ChatPanel />
-
+			{/*
 			<QuickPanel />
 
 			<NotificationPanel /> */}
+			<MessengerPanel />
+
 			<NotificationPanel />
 		</>
 	);

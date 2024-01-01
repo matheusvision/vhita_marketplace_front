@@ -7,11 +7,14 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { ChatMessageType } from 'app/theme-layouts/shared-components/chatPanel/types/ChatMessageType';
-import { selectSelectedContactId } from './store/contactsSlice';
-import { selectChat, sendMessage } from './store/chatMessagesSlice';
-import { selectUser } from './store/userSlice';
+import { useAppSelector } from 'app/store';
+import { selectSelectedContactId } from './store/selectedContactIdSlice';
+import {
+	Message,
+	useGetMessengerChatQuery,
+	useGetMessengerUserProfileQuery,
+	useSendMessengerMessageMutation
+} from '../MessengerApi';
 
 const StyledMessageRow = styled('div')(({ theme }) => ({
 	'&.contact': {
@@ -96,13 +99,15 @@ type ChatProps = {
  */
 function Chat(props: ChatProps) {
 	const { className } = props;
-	const dispatch = useAppDispatch();
 	const selectedContactId = useAppSelector(selectSelectedContactId);
-	const chat = useAppSelector(selectChat);
-	const user = useAppSelector(selectUser);
+
+	const { data: chat } = useGetMessengerChatQuery(selectedContactId);
+	const { data: user } = useGetMessengerUserProfileQuery();
+	const [sendMessage] = useSendMessengerMessageMutation();
+
+	const [messageText, setMessageText] = useState('');
 
 	const chatScroll = useRef<HTMLDivElement>(null);
-	const [messageText, setMessageText] = useState('');
 
 	useEffect(() => {
 		scrollToBottom();
@@ -133,11 +138,11 @@ function Chat(props: ChatProps) {
 			>
 				<div className="flex flex-col pt-16">
 					{useMemo(() => {
-						function isFirstMessageOfGroup(item: ChatMessageType, i: number) {
+						function isFirstMessageOfGroup(item: Message, i: number) {
 							return i === 0 || (chat[i - 1] && chat[i - 1].contactId !== item.contactId);
 						}
 
-						function isLastMessageOfGroup(item: ChatMessageType, i: number) {
+						function isLastMessageOfGroup(item: Message, i: number) {
 							return i === chat.length - 1 || (chat[i + 1] && chat[i + 1].contactId !== item.contactId);
 						}
 
@@ -196,46 +201,47 @@ function Chat(props: ChatProps) {
 					if (messageText === '') {
 						return;
 					}
-					dispatch(
-						sendMessage({
-							messageText,
-							contactId: selectedContactId
-						})
-					).then(() => {
-						setMessageText('');
+
+					sendMessage({
+						message: messageText,
+						contactId: selectedContactId
 					});
+
+					setMessageText('');
 				};
 
-				return chat ? (
-					<form
-						onSubmit={onMessageSubmit}
-						className="pb-16 px-8 absolute bottom-0 left-0 right-0"
-					>
-						<Paper className="rounded-24 flex items-center relative shadow">
-							<InputBase
-								autoFocus={false}
-								id="message-input"
-								className="flex flex-1 grow shrink-0 mx-16 ltr:mr-48 rtl:ml-48 my-8"
-								placeholder="Type your message"
-								onChange={onInputChange}
-								value={messageText}
-							/>
-							<IconButton
-								className="absolute ltr:right-0 rtl:left-0 top-0"
-								type="submit"
-								size="large"
-							>
-								<FuseSvgIcon
-									className="rotate-90"
-									color="action"
+				return (
+					chat && (
+						<form
+							onSubmit={onMessageSubmit}
+							className="pb-16 px-8 absolute bottom-0 left-0 right-0"
+						>
+							<Paper className="rounded-24 flex items-center relative shadow">
+								<InputBase
+									autoFocus={false}
+									id="message-input"
+									className="flex flex-1 grow shrink-0 mx-16 ltr:mr-48 rtl:ml-48 my-8"
+									placeholder="Type your message"
+									onChange={onInputChange}
+									value={messageText}
+								/>
+								<IconButton
+									className="absolute ltr:right-0 rtl:left-0 top-0"
+									type="submit"
+									size="large"
 								>
-									heroicons-outline:paper-airplane
-								</FuseSvgIcon>
-							</IconButton>
-						</Paper>
-					</form>
-				) : null;
-			}, [chat, dispatch, messageText, selectedContactId])}
+									<FuseSvgIcon
+										className="rotate-90"
+										color="action"
+									>
+										heroicons-outline:paper-airplane
+									</FuseSvgIcon>
+								</IconButton>
+							</Paper>
+						</form>
+					)
+				);
+			}, [chat, messageText, selectedContactId])}
 		</Paper>
 	);
 }
