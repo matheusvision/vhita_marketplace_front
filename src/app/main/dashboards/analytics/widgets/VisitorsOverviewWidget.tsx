@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import VisitorsOverviewWidgetType from '../types/VisitorsOverviewWidgetType';
+import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
 const Root = styled(Paper)(({ theme }) => ({

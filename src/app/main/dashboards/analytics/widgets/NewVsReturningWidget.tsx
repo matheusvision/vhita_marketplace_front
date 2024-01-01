@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import NewVsReturningWidgetType from '../types/NewVsReturningWidgetType';
+import NewVsReturningWidgetType from './types/NewVsReturningWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**

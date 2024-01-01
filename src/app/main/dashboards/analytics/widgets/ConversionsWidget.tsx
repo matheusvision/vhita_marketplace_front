@@ -6,7 +6,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import ConversionsWidgetType from '../types/ConversionsWidgetType';
+import ConversionsWidgetType from './types/ConversionsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**

@@ -9,7 +9,7 @@ import MessengerPanel from '../../../main/apps/messenger/messengerPanel/Messenge
 function RightSideLayout2() {
 	return (
 		<>
-			<MessengerPanel/>
+			<MessengerPanel />
 
 			<QuickPanel />
 

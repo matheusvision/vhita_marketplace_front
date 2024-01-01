@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import ImressionsWidgetType from '../types/ImpressionsWidgetType';
+import ImressionsWidgetType from './types/ImpressionsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 /**
  * Impressions widget.

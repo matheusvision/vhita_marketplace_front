@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store';
-import LanguageWidgetType from '../types/LanguageWidgetType';
+import LanguageWidgetType from './types/LanguageWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**

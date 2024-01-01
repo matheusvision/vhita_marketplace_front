@@ -1,3 +1,4 @@
+import QuickPanel from 'app/theme-layouts/shared-components/quickPanel/QuickPanel';
 import { memo } from 'react';
 import MessengerPanel from 'src/app/main/apps/messenger/messengerPanel/MessengerPanel';
 import NotificationPanel from 'src/app/main/apps/notifications/NotificationPanel';
@@ -8,10 +9,8 @@ import NotificationPanel from 'src/app/main/apps/notifications/NotificationPanel
 function RightSideLayout1() {
 	return (
 		<>
-			{/*
 			<QuickPanel />
 
-			<NotificationPanel /> */}
 			<MessengerPanel />
 
 			<NotificationPanel />

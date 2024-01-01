@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import ExpensesDataType from '../../../types/ExpensesDataType';
+import ExpensesDataType from './types/ExpensesDataType';
 import { selectWidget } from '../../../ProjectDashboardApi';
 
 /**

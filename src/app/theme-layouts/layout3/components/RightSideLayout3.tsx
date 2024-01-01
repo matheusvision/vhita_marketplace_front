@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import NotificationPanel from 'src/app/main/apps/notifications/NotificationPanel';
-import QuickPanel from '../../shared-components/quickPanel/QuickPanel';
 import MessengerPanel from 'src/app/main/apps/messenger/messengerPanel/MessengerPanel';
+import QuickPanel from '../../shared-components/quickPanel/QuickPanel';
 
 /**
  * The right side layout 3.
@@ -9,7 +9,7 @@ import MessengerPanel from 'src/app/main/apps/messenger/messengerPanel/Messenger
 function RightSideLayout3() {
 	return (
 		<>
-			<MessengerPanel/>
+			<MessengerPanel />
 
 			<QuickPanel />
 
