@@ -283,7 +283,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 	 */
 	const updateUser = useCallback(async (userData: PartialDeep<User>) => {
 		try {
-			const response: AxiosResponse<User, PartialDeep<User>> = await axios.post(
+			const response: AxiosResponse<User, PartialDeep<User>> = await axios.put(
 				authConfig.updateUserUrl,
 				userData
 			);

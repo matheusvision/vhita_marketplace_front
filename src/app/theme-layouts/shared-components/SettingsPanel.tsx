@@ -7,14 +7,18 @@ import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
 import Slide from '@mui/material/Slide';
 import Typography from '@mui/material/Typography';
-import { forwardRef, memo, useState } from 'react';
+import { forwardRef, memo, useEffect, useState } from 'react';
 import FuseThemeSchemes from '@fuse/core/FuseThemeSchemes';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import themesConfig from 'app/configs/themesConfig';
 import { changeFuseTheme } from 'app/store/fuse/settingsSlice';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch, useAppSelector } from 'app/store';
+import { usePrevious } from '@fuse/hooks';
+import _ from '@lodash';
 import FuseSettingsViewerDialog from './FuseSettingsViewerDialog';
+import { selectIsUserGuest, selectUserSettings } from '../../auth/user/userSlice';
+import { useAuth } from '../../auth/AuthRouteProvider';
 
 const Root = styled('div')(({ theme }) => ({
 	position: 'absolute',
@@ -102,6 +106,17 @@ function SettingsPanel() {
 	const theme = useTheme();
 	const [open, setOpen] = useState('');
 	const dispatch = useAppDispatch();
+	const isUserGuest = useAppSelector(selectIsUserGuest);
+	const userSettings = useAppSelector(selectUserSettings);
+	const prevUserSettings = usePrevious(userSettings);
+
+	const { updateUser } = useAuth();
+
+	useEffect(() => {
+		if (!isUserGuest && prevUserSettings && !_.isEqual(userSettings, prevUserSettings)) {
+			updateUser({ data: { settings: userSettings } });
+		}
+	}, [isUserGuest, userSettings]);
 
 	const handlerOptions = {
 		onSwipedLeft: () => Boolean(open) && theme.direction === 'rtl' && handleClose(),

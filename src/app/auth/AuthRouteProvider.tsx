@@ -2,11 +2,12 @@ import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import { useAppSelector, useAppDispatch } from 'app/store';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen/FuseSplashScreen';
-import { resetUser, selectUserRole, setUser, updateUser } from 'src/app/auth/user/userSlice';
+import { resetUser, selectUser, selectUserRole, setUser, updateUser } from 'src/app/auth/user/userSlice';
 import BrowserRouter from '@fuse/core/BrowserRouter';
 import withSlices from 'app/store/withSlices';
 import { PartialDeep } from 'type-fest';
 import firebase from 'firebase/compat/app';
+import _ from '@lodash';
 import useJwtAuth, { JwtAuth } from './services/jwt/useJwtAuth';
 import userSlice from './user/userSlice';
 import { User } from './user';
@@ -45,7 +46,7 @@ type AuthProviderProps = { children: React.ReactNode };
 function AuthRouteProvider(props: AuthProviderProps) {
 	const { children } = props;
 	const dispatch = useAppDispatch();
-
+	const user = useAppSelector(selectUser);
 	/**
 	 * Get user role from store
 	 */
@@ -171,14 +172,14 @@ function AuthRouteProvider(props: AuthProviderProps) {
 				}
 
 				if (authService === 'firebase') {
-					return firebaseService?.updateUser(userData);
+					return firebaseService?.updateUser(_.merge({}, user, userData));
 				}
 
 				return null;
 			},
 			isAuthenticated
 		}),
-		[isAuthenticated]
+		[isAuthenticated, user]
 	);
 
 	/**

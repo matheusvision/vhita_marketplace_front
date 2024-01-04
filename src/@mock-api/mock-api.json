@@ -43,8 +43,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "uuid": "string",
-                    "from": "string",
+                    "uid": "string",
                     "password": "string",
                     "role": "string",
                     "data": {
@@ -87,8 +86,7 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "uuid": "string",
-                      "from": "string",
+                      "uid": "string",
                       "password": "string",
                       "role": "string",
                       "data": {
@@ -135,8 +133,7 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "uuid": "string",
-                      "from": "string",
+                      "uid": "string",
                       "password": "string",
                       "role": "string",
                       "data": {
@@ -180,8 +177,7 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "uuid": "string",
-                      "from": "string",
+                      "uid": "string",
                       "password": "string",
                       "role": "string",
                       "data": {
@@ -7443,7 +7439,7 @@
       "auth_user": {
         "type": "object",
         "properties": {
-          "uuid": {
+          "uid": {
             "type": "string"
           },
           "from": {
@@ -7491,8 +7487,7 @@
         },
         "x-examples": {
           "example-1": {
-            "uuid": "XgbuVEXBU5gtSKdbQRP1Zbbby1i1",
-            "from": "custom-db",
+            "uid": "XgbuVEXBU5gtSKdbQRP1Zbbby1i1",
             "password": "admin",
             "role": "admin",
             "data": {
@@ -32752,8 +32747,7 @@
       "auth_users": {
         "value": [
           {
-            "uuid": "XgbuVEXBU5gtSKdbQRP1Zbbby1i1",
-            "from": "custom-db",
+            "uid": "XgbuVEXBU5gtSKdbQRP1Zbbby1i1",
             "password": "admin",
             "role": "admin",
             "data": {
@@ -32772,8 +32766,7 @@
             }
           },
           {
-            "uuid": "XgbuVEXBU6gtSKdbTYR1Zbbby1i3",
-            "from": "custom-db",
+            "uid": "XgbuVEXBU6gtSKdbTYR1Zbbby1i3",
             "password": "staff",
             "role": "staff",
             "data": {

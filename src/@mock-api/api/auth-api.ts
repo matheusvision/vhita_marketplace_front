@@ -14,7 +14,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import mock from '../mock';
 import mockApi from '../mock-api.json';
 
-type UserAuthType = User & { uuid: string; password: string };
+type UserAuthType = User & { uid: string; password: string };
 
 let usersApi = mockApi.components.examples.auth_users.value as unknown as UserAuthType[];
 
@@ -44,7 +44,7 @@ mock.onPost('/auth/sign-in').reply((config) => {
 	if (error.length === 0) {
 		delete (user as Partial<UserAuthType>).password;
 
-		const access_token = generateJWTToken({ id: user.uuid });
+		const access_token = generateJWTToken({ id: user.uid });
 
 		const response = {
 			user,
@@ -101,11 +101,11 @@ function generateAccessToken(config: AxiosRequestConfig): { access_token: string
 	if (verifyJWTToken(access_token)) {
 		const { id }: { id: string } = jwtDecode(access_token);
 
-		const user = _.cloneDeep(usersApi.find((_user) => _user.uuid === id));
+		const user = _.cloneDeep(usersApi.find((_user) => _user.uid === id));
 
 		if (user) {
 			delete (user as Partial<UserAuthType>).password;
-			const access_token = generateJWTToken({ id: user.uuid });
+			const access_token = generateJWTToken({ id: user.uid });
 			return { access_token, user };
 		}
 	}
@@ -138,7 +138,7 @@ mock.onPost('/auth/sign-up').reply((request) => {
 			}
 		}) as UserAuthType;
 
-		newUser.uuid = FuseUtils.generateGUID();
+		newUser.uid = FuseUtils.generateGUID();
 		newUser.password = password;
 
 		usersApi = [...usersApi, newUser];
@@ -147,7 +147,7 @@ mock.onPost('/auth/sign-up').reply((request) => {
 
 		delete (user as Partial<UserAuthType>).password;
 
-		const access_token = generateJWTToken({ id: user.uuid });
+		const access_token = generateJWTToken({ id: user.uid });
 
 		const response = {
 			user,
@@ -159,19 +159,18 @@ mock.onPost('/auth/sign-up').reply((request) => {
 	return [200, { error }];
 });
 
-mock.onPost('/auth/user/update').reply((config) => {
+mock.onPut('/auth/user').reply((config) => {
 	const access_token = config?.headers?.Authorization as string;
 
 	const userData = jwtDecode(access_token);
-	const uuid = (userData as { [key: string]: string }).id;
+	const uid = (userData as { [key: string]: string }).id;
 
-	const data = JSON.parse(config.data as string) as { user: PartialDeep<UserAuthType> };
-	const { user } = data;
+	const user = JSON.parse(config.data as string) as { user: PartialDeep<UserAuthType> };
 
 	let updatedUser: User;
 
 	usersApi = usersApi.map((_user) => {
-		if (uuid === _user.uuid) {
+		if (uid === _user.uid) {
 			updatedUser = _.assign({}, _user, user);
 		}
 		return _user;

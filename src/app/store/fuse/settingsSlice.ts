@@ -159,8 +159,8 @@ export const settingsSlice = createSlice({
 			.addCase(resetUser.fulfilled, (state) => {
 				return {
 					...state,
-					defaults: _.merge({}, state.defaults),
-					current: _.merge({}, state.defaults)
+					defaults: _.merge({}, initialSettings),
+					current: _.merge({}, initialSettings)
 				};
 			});
 	}

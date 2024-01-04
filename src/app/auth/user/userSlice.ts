@@ -86,14 +86,27 @@ export const userSlice = createSlice({
 		 * Updates the user object in the Redux store.
 		 */
 		updateUser: (state, action) => {
+			const oldState = _.cloneDeep(state);
 			const user = action.payload as PartialDeep<User>;
+			const newUser = _.merge({}, oldState, user);
 
-			return _.defaults(user, state) as User;
+			if (_.isEqual(oldState, newUser)) {
+				return undefined;
+			}
+			return newUser as User;
 		},
 		userSignOut: () => initialState
 	},
 	extraReducers: (builder) => {
-		builder.addCase(setUser.fulfilled, (state, action) => action.payload);
+		builder.addCase(setUser.fulfilled, (state, action) => {
+			const user = action.payload as PartialDeep<User>;
+			const newUser = _.defaults(user, state);
+
+			if (_.isEqual(state, newUser)) {
+				return undefined;
+			}
+			return action.payload;
+		});
 		builder.addCase(resetUser.fulfilled, (state) => {
 			if (!_.isEqual(state, initialState)) {
 				return initialState;
@@ -115,7 +128,9 @@ export const selectIsUserGuest = (state: AppRootStateType) => {
 	return !role || role.length === 0;
 };
 
-export const selectUserShortcuts = (state: AppRootStateType) => state.user.data.shortcuts;
+export const selectUserShortcuts = (state: AppRootStateType) => state.user?.data?.shortcuts;
+
+export const selectUserSettings = (state: AppRootStateType) => state.user?.data?.settings;
 
 export type userSliceType = typeof userSlice;
 
