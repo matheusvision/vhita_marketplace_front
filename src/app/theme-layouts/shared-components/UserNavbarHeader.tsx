@@ -13,7 +13,7 @@ const Root = styled('div')(({ theme }) => ({
 	},
 
 	'& .avatar': {
-		background: theme.palette.background.default,
+		background: theme.palette.background.paper,
 		transition: theme.transitions.create('all', {
 			duration: theme.transitions.duration.shortest,
 			easing: theme.transitions.easing.easeInOut
@@ -39,7 +39,7 @@ function UserNavbarHeader() {
 						backgroundColor: 'background.paper',
 						color: 'text.secondary'
 					}}
-					className="avatar h-96 w-96 text-32 font-bold"
+					className="avatar uppercase h-96 w-96 text-32 font-bold"
 					src={user.data.photoURL}
 					alt={user.data.displayName}
 				>
