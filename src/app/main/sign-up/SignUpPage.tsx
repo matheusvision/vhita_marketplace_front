@@ -14,7 +14,7 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import FormHelperText from '@mui/material/FormHelperText';
-import jwtService from '../../auth/services/jwtService';
+import { SignUpPayload, useAuth } from '../../auth/AuthRouteProvider';
 
 /**
  * Form Validation Schema
@@ -42,6 +42,8 @@ const defaultValues = {
  * The sign up page.
  */
 function SignUpPage() {
+	const { jwtService } = useAuth();
+
 	const { control, formState, handleSubmit, setError } = useForm({
 		mode: 'onChange',
 		defaultValues,
@@ -50,15 +52,16 @@ function SignUpPage() {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	function onSubmit({ displayName, password, email }: typeof defaultValues) {
+	function onSubmit(formData: SignUpPayload) {
+		const { displayName, email, password } = formData;
 		jwtService
-			.createUser({
+			.signUp({
 				displayName,
 				password,
 				email
 			})
 			.then(() => {
-				// No need to do anything, registered user data will be set at app/auth/AuthContext
+				// No need to do anything, registered user data will be set at app/auth/AuthRouteProvider
 			})
 			.catch((_errors: { type: 'email' | 'password' | `root.${string}` | 'root'; message: string }[]) => {
 				_errors.forEach(({ message, type }) => {

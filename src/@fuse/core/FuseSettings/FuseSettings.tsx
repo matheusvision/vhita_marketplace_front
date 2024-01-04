@@ -14,11 +14,12 @@ import Typography from '@mui/material/Typography';
 import { memo, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
-import { selectUser } from 'app/store/user/userSlice';
+import { selectUser } from 'src/app/auth/user/userSlice';
 import { useAppDispatch } from 'app/store';
 import { Palette } from '@mui/material/styles/createPalette';
 import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
 import { PartialDeep } from 'type-fest';
+import { showMessage } from 'app/store/fuse/messageSlice';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
 
@@ -103,7 +104,9 @@ function FuseSettings() {
 	const settingsChanged = !_.isEqual(settings, prevSettings);
 
 	const handleUpdate = useDebounce((newSettings: FuseSettingsConfigType) => {
-		dispatch(setDefaultSettings(newSettings));
+		dispatch(setDefaultSettings(newSettings)).then(() => {
+			dispatch(showMessage({ message: 'User settings saved with the api' }));
+		});
 	}, 300);
 
 	useEffect(() => {

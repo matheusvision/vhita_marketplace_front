@@ -1,7 +1,7 @@
 // npx @rtk-query/codegen-openapi openapi-config.ts
 import type { ConfigFile } from '@rtk-query/codegen-openapi';
 
-const appName = 'Tasks';
+const appName = 'Auth';
 
 const config: ConfigFile = {
 	schemaFile: './mock-api.json',

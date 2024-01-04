@@ -3,7 +3,7 @@ import { AppThunkType, RootStateType } from 'app/store/types';
 import { PartialDeep } from 'type-fest';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
-import { selectUserRole, userSliceType } from 'app/store/user/userSlice';
+import { selectUserRole, userSliceType } from 'src/app/auth/user/userSlice';
 import FuseNavigationHelper from '@fuse/utils/FuseNavigationHelper';
 import i18next from 'i18next';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';

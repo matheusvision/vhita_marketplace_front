@@ -1,15 +1,16 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import UserType from 'app/store/user/UserType';
+import { User } from 'src/app/auth/user';
 
 /**
  * Creates a new user object with the specified data.
  */
-function UserModel(data: PartialDeep<UserType>): UserType {
+function UserModel(data: PartialDeep<User>): User {
 	data = data || {};
 
 	return _.defaults(data, {
-		role: [],
+		uid: '',
+		role: ['admin'],
 		data: {
 			displayName: 'John Doe',
 			photoURL: 'assets/images/avatars/brian-hughes.jpg',

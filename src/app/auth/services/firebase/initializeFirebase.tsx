@@ -1,0 +1,22 @@
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import firebaseConfig from './firebaseConfig';
+
+/**
+ * Initialize Firebase
+ */
+export const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+/**
+ * Firebase App initialization check
+ */
+let initialized = false;
+
+try {
+	firebase?.auth();
+	initialized = true;
+} catch (e) {
+	console.error(e);
+}
+
+export const firebaseInitialized = initialized;

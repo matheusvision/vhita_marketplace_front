@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
 import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
-import { selectUserShortcuts, updateUserShortcuts } from 'app/store/user/userSlice';
+import { selectUserShortcuts, updateUser } from 'src/app/auth/user/userSlice';
 
 type NavigationShortcutsProps = {
 	className?: string;
@@ -19,7 +19,7 @@ function NavigationShortcuts(props: NavigationShortcutsProps) {
 	const navigation = useSelector(selectFlatNavigation);
 
 	function handleShortcutsChange(newShortcuts: string[]) {
-		dispatch(updateUserShortcuts(newShortcuts));
+		dispatch(updateUser({ data: { shortcuts: newShortcuts } }));
 	}
 
 	return (

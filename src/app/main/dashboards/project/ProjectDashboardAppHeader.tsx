@@ -7,7 +7,7 @@ import _ from '@lodash';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
-import { selectUser } from 'app/store/user/userSlice';
+import { selectUser } from 'src/app/auth/user/userSlice';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 

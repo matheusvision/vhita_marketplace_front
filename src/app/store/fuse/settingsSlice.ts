@@ -10,13 +10,14 @@ import {
 } from '@fuse/default-settings';
 import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
-import { setUser, updateUserSettings } from 'app/store/user/userSlice';
+import { resetUser, setUser, updateUser } from 'src/app/auth/user/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
 import { RootStateType, AppThunkType } from 'app/store/types';
 import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { PartialDeep } from 'type-fest';
+import { showMessage } from './messageSlice';
 
 type AppRootStateType = RootStateType<settingsSliceType>;
 
@@ -36,7 +37,9 @@ export const changeFuseTheme =
 			}
 		};
 
-		return dispatch(setDefaultSettings(newSettings));
+		dispatch(setDefaultSettings(newSettings)).then(() => {
+			dispatch(showMessage({ message: 'User theme selection saved with the api' }));
+		});
 	};
 
 type layoutProps = {
@@ -106,7 +109,7 @@ export const setDefaultSettings = createAppAsyncThunk(
 
 		const defaults = generateSettings(settings.defaults, val as FuseSettingsConfigType);
 
-		await dispatch(updateUserSettings(defaults));
+		dispatch(updateUser({ data: { settings: defaults } }));
 
 		return {
 			...settings,
@@ -151,6 +154,13 @@ export const settingsSlice = createSlice({
 					...state,
 					defaults: _.merge({}, defaults),
 					current: _.merge({}, defaults)
+				};
+			})
+			.addCase(resetUser.fulfilled, (state) => {
+				return {
+					...state,
+					defaults: _.merge({}, state.defaults),
+					current: _.merge({}, state.defaults)
 				};
 			});
 	}

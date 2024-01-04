@@ -6,7 +6,7 @@ import { PartialDeep } from 'type-fest';
 import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
-import UserType from 'app/store/user/UserType';
+import { User } from 'src/app/auth/user';
 import EventEmitter from './EventEmitter';
 
 type TreeNode = {
@@ -446,7 +446,7 @@ class FuseUtils {
 	/**
 	 * The hasPermission function checks if a user has permission to access a resource.
 	 */
-	static hasPermission(authArr: string[] | string | undefined, userRole: UserType['role']): boolean {
+	static hasPermission(authArr: string[] | string | undefined, userRole: User['role']): boolean {
 		/**
 		 * If auth array is not defined
 		 * Pass and allow

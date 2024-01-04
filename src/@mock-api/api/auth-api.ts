@@ -8,16 +8,17 @@ import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Utf8 from 'crypto-js/enc-utf8';
 import jwtDecode from 'jwt-decode';
 import { PartialDeep } from 'type-fest';
-import UserType from 'app/store/user/UserType';
-import UserModel from 'app/store/user/models/UserModel';
+import UserModel from 'src/app/auth/user/models/UserModel';
+import { User } from 'src/app/auth/user';
+import axios, { AxiosRequestConfig } from 'axios';
 import mock from '../mock';
 import mockApi from '../mock-api.json';
 
-type UserAuthType = UserType & { password: string };
+type UserAuthType = User & { uuid: string; password: string };
 
-let usersApi = mockApi.components.examples.auth_users.value as UserAuthType[];
+let usersApi = mockApi.components.examples.auth_users.value as unknown as UserAuthType[];
 
-mock.onGet('/auth/sign-in').reply((config) => {
+mock.onPost('/auth/sign-in').reply((config) => {
 	const data = JSON.parse(config.data as string) as { email: string; password: string };
 
 	const { email, password } = data;
@@ -53,35 +54,64 @@ mock.onGet('/auth/sign-in').reply((config) => {
 		return [200, response];
 	}
 
-	return [200, { error }];
+	return [400, error];
 });
 
-mock.onGet('/auth/access-token').reply((config) => {
-	const data = JSON.parse(config.data as string) as { access_token: string };
+mock.onPost('/auth/refresh').reply((config) => {
+	const newTokenResponse = generateAccessToken(config);
 
-	const { access_token } = data;
+	if (newTokenResponse) {
+		const { access_token } = newTokenResponse;
+
+		return [200, null, { 'New-Access-Token': access_token }];
+	}
+
+	const error = 'Invalid access token detected or user not found';
+
+	return [401, { data: error }];
+});
+
+mock.onGet('/auth/user').reply((config) => {
+	const newTokenResponse = generateAccessToken(config);
+
+	if (newTokenResponse) {
+		const { access_token, user } = newTokenResponse;
+
+		return [200, user, { 'New-Access-Token': access_token }];
+	}
+
+	const error = 'Invalid access token detected or user not found';
+
+	return [401, { error }];
+});
+
+function generateAccessToken(config: AxiosRequestConfig): { access_token: string; user: User } | null {
+	const authHeader = config.headers.Authorization as string;
+
+	if (!authHeader) {
+		return null;
+	}
+
+	const [scheme, access_token] = authHeader.split(' ');
+
+	if (scheme !== 'Bearer' || !access_token) {
+		return null;
+	}
 
 	if (verifyJWTToken(access_token)) {
 		const { id }: { id: string } = jwtDecode(access_token);
 
 		const user = _.cloneDeep(usersApi.find((_user) => _user.uuid === id));
 
-		delete (user as Partial<UserAuthType>).password;
-
-		const updatedAccessToken = generateJWTToken({ id: user.uuid });
-
-		const response = {
-			user,
-			access_token: updatedAccessToken
-		};
-
-		return [200, response];
+		if (user) {
+			delete (user as Partial<UserAuthType>).password;
+			const access_token = generateJWTToken({ id: user.uuid });
+			return { access_token, user };
+		}
 	}
 
-	const error = 'Invalid access token detected';
-
-	return [401, { error }];
-});
+	return null;
+}
 
 mock.onPost('/auth/sign-up').reply((request) => {
 	const data = JSON.parse(request.data as string) as { displayName: string; password: string; email: string };
@@ -98,17 +128,18 @@ mock.onPost('/auth/sign-up').reply((request) => {
 
 	if (error.length === 0) {
 		const newUser = UserModel({
-			uuid: FuseUtils.generateGUID(),
-			role: 'admin',
-			password,
+			role: ['admin'],
 			data: {
 				displayName,
 				photoURL: 'assets/images/avatars/Abbott.jpg',
 				email,
-				settings: {},
-				shortcuts: []
+				shortcuts: [],
+				settings: {}
 			}
-		} as UserAuthType) as UserAuthType;
+		}) as UserAuthType;
+
+		newUser.uuid = FuseUtils.generateGUID();
+		newUser.password = password;
 
 		usersApi = [...usersApi, newUser];
 
@@ -137,7 +168,7 @@ mock.onPost('/auth/user/update').reply((config) => {
 	const data = JSON.parse(config.data as string) as { user: PartialDeep<UserAuthType> };
 	const { user } = data;
 
-	let updatedUser: UserType;
+	let updatedUser: User;
 
 	usersApi = usersApi.map((_user) => {
 		if (uuid === _user.uuid) {
@@ -227,3 +258,31 @@ function verifyJWTToken(token: string) {
 	// Verify that the resulting signature is valid
 	return signature === signatureCheck;
 }
+
+// Generate Authorization header on each successfull response
+axios.interceptors.response.use(
+	(response) =>{
+		// get access token from response headers
+		const requestHeaders = response.config.headers;
+		const authorization = requestHeaders.Authorization as string;
+		const accessToken = authorization?.split(' ')[1];
+		const responseUrl = response.config.url;
+
+		if(responseUrl.startsWith('/mock-api') && authorization){
+
+			if(!accessToken || !verifyJWTToken(accessToken)){
+				const error = new Error("Invalid access token detected.");
+				// @ts-ignore
+				error.status = 401;
+				return Promise.reject(error);
+			}
+
+			const newAccessToken = generateAccessToken(response.config);
+
+			if(newAccessToken){
+				response.headers['New-Access-Token'] = newAccessToken.access_token as string;
+			}
+			return response;
+		}
+		return response;
+	});

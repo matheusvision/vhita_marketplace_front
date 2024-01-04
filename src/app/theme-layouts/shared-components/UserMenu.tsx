@@ -7,16 +7,17 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectUser } from 'app/store/user/userSlice';
+import { selectUser } from 'src/app/auth/user/userSlice';
+import { useAuth } from 'src/app/auth/AuthRouteProvider';
 
 /**
  * The user menu.
  */
 function UserMenu() {
 	const user = useSelector(selectUser);
-
+	const { signOut } = useAuth();
 	const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
 
 	const userMenuClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -125,10 +126,8 @@ function UserMenu() {
 							<ListItemText primary="Inbox" />
 						</MenuItem>
 						<MenuItem
-							component={NavLink}
-							to="/sign-out"
 							onClick={() => {
-								userMenuClose();
+								signOut();
 							}}
 						>
 							<ListItemIcon className="min-w-40">

@@ -244,7 +244,7 @@ function FuseAuthorizationDoc() {
 				className="inline-block mb-8 italic"
 				component="code"
 			>
-				app/store/userSlice.tsx (initial user state)
+				app/auth/user/userSlice.tsx (initial user state)
 			</Typography>
 
 			<FuseHighlight
@@ -418,7 +418,7 @@ function FuseAuthorizationDoc() {
 				className="inline-block mb-8 italic"
 				component="code"
 			>
-				app/store/userSlice.tsx
+				app/auth/user/userSlice.tsx
 			</Typography>
 
 			<FuseHighlight
@@ -431,8 +431,8 @@ function FuseAuthorizationDoc() {
 				/*
 				You can redirect the logged-in user to a specific route depending on his role
 				*/
-				if (user.loginRedirectUrl) {
-					settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+				if (user.data.loginRedirectUrl) {
+					settingsConfig.loginRedirectUrl = user.data.loginRedirectUrl; // for example 'apps/academy'
 				}
            		 return user;
           });

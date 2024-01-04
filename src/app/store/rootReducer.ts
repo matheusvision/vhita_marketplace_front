@@ -1,6 +1,6 @@
 import { combineReducers, ReducersMapObject } from '@reduxjs/toolkit';
 import apiService from './apiService';
-import user from './user/userSlice';
+// import user from './user/userSlice';
 import i18n from './i18nSlice';
 import fuse from './fuse';
 
@@ -10,7 +10,7 @@ import fuse from './fuse';
 const createReducer = (asyncReducers: ReducersMapObject) =>
 	combineReducers({
 		fuse,
-		user,
+		// user,
 		i18n,
 		[apiService.reducerPath]: apiService.reducer,
 		...asyncReducers
