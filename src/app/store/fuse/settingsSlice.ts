@@ -10,7 +10,7 @@ import {
 } from '@fuse/default-settings';
 import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
-import { resetUser, setUser, updateUser } from 'src/app/auth/user/userSlice';
+import { resetUser, setUser, setUserSettings } from 'src/app/auth/user/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
 import { RootStateType, AppThunkType } from 'app/store/types';
 import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
@@ -109,7 +109,7 @@ export const setDefaultSettings = createAppAsyncThunk(
 
 		const defaults = generateSettings(settings.defaults, val as FuseSettingsConfigType);
 
-		dispatch(updateUser({ data: { settings: defaults } }));
+		dispatch(setUserSettings(defaults));
 
 		return {
 			...settings,

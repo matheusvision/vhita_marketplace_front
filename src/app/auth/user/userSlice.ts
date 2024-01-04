@@ -83,6 +83,30 @@ export const userSlice = createSlice({
 	initialState,
 	reducers: {
 		/**
+		 * Updates the user's settings
+		 */
+		setUserShortcuts: (state, action) => {
+			const oldState = _.cloneDeep(state);
+			const newUser = _.setIn(oldState, 'data.shortcuts', action.payload) as User;
+
+			if (_.isEqual(oldState, newUser)) {
+				return undefined;
+			}
+			return newUser;
+		},
+		/**
+		 * Updates the user's settings
+		 */
+		setUserSettings: (state, action) => {
+			const oldState = _.cloneDeep(state);
+			const newUser = _.setIn(oldState, 'data.settings', action.payload) as User;
+
+			if (_.isEqual(oldState, newUser)) {
+				return undefined;
+			}
+			return newUser;
+		},
+		/**
 		 * Updates the user object in the Redux store.
 		 */
 		updateUser: (state, action) => {
@@ -116,7 +140,7 @@ export const userSlice = createSlice({
 	}
 });
 
-export const { userSignOut, updateUser } = userSlice.actions;
+export const { userSignOut, updateUser, setUserShortcuts, setUserSettings } = userSlice.actions;
 
 export const selectUser = (state: AppRootStateType) => state.user;
 

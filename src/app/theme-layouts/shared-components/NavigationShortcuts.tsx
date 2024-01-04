@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
-import { selectIsUserGuest, selectUserShortcuts, updateUser } from 'src/app/auth/user/userSlice';
+import { selectIsUserGuest, selectUserShortcuts, setUserShortcuts } from 'src/app/auth/user/userSlice';
 import { usePrevious } from '@fuse/hooks';
 import { useEffect } from 'react';
 import { useAuth } from '../../auth/AuthRouteProvider';
@@ -34,7 +34,7 @@ function NavigationShortcuts(props: NavigationShortcutsProps) {
 	}, [isUserGuest, userShortcuts]);
 
 	function handleShortcutsChange(newShortcuts: string[]) {
-		dispatch(updateUser({ data: { shortcuts: newShortcuts } }));
+		dispatch(setUserShortcuts(newShortcuts));
 	}
 
 	return (
