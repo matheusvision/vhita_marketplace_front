@@ -15,7 +15,6 @@ import useFirebaseAuth from './services/firebase/useFirebaseAuth';
 /**
  * Initialize Firebase
  */
-import './services/firebase/initializeFirebase';
 
 export type SignInPayload = {
 	email: string;
@@ -83,20 +82,21 @@ function AuthRouteProvider(props: AuthProviderProps) {
 	});
 
 	const userRole = useAppSelector(selectUserRole);
+
 	const isLoading = useMemo(
-		() => jwtService.isLoading || firebaseService.isLoading,
-		[jwtService.isLoading, firebaseService.isLoading]
+		() => jwtService?.isLoading || firebaseService?.isLoading,
+		[jwtService?.isLoading, firebaseService?.isLoading]
 	);
+
 	const isAuthenticated = useMemo(
-		() => jwtService.isAuthenticated || firebaseService.isAuthenticated,
-		[jwtService.isAuthenticated, firebaseService.isAuthenticated]
+		() => jwtService?.isAuthenticated || firebaseService?.isAuthenticated,
+		[jwtService?.isAuthenticated, firebaseService?.isAuthenticated]
 	);
 
 	/**
 	 * On User Sign In Event
 	 */
 	function onSignedIn(_user: User, _authService: string) {
-		console.info('onSignedIn+++', _user, _authService);
 		dispatch(setUser(_user));
 		setAuthService(_authService);
 	}
@@ -105,7 +105,6 @@ function AuthRouteProvider(props: AuthProviderProps) {
 	 * On User Sign Out Event
 	 */
 	function onSignedOut() {
-		console.info('onSignedOut++');
 		dispatch(resetUser());
 		resetAuthService();
 	}
@@ -132,7 +131,7 @@ function AuthRouteProvider(props: AuthProviderProps) {
 				const authService = getAuthService();
 
 				if (authService === 'jwt') {
-					return jwtService.signOut();
+					return jwtService?.signOut();
 				}
 
 				if (authService === 'firebase') {
@@ -147,11 +146,11 @@ function AuthRouteProvider(props: AuthProviderProps) {
 				const authService = getAuthService();
 
 				if (authService === 'jwt') {
-					return jwtService.updateUser(userData);
+					return jwtService?.updateUser(userData);
 				}
 
 				if (authService === 'firebase') {
-					return firebaseService.updateUser(userData);
+					return firebaseService?.updateUser(userData);
 				}
 				return null;
 			},

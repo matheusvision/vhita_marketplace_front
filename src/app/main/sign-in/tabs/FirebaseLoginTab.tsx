@@ -57,7 +57,7 @@ function FirebaseLoginTab() {
 	function onSubmit(formData: FormType) {
 		const { email, password } = formData;
 
-		firebaseService.signIn(email, password).catch((_error) => {
+		firebaseService?.signIn(email, password).catch((_error) => {
 			const error = _error as firebase.auth.Error;
 
 			const errors: {

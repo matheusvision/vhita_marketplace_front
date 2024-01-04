@@ -1,14 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { firebaseInitialized } from './initializeFirebase';
 
 export type FirebaseAuthProps = {
+	enabled?: boolean;
 	onSignedIn?: (user: firebase.User) => void;
 	onSignedOut?: () => void;
 	onError?: (error: firebase.auth.Error) => void;
 };
 
 export type FirebaseAuth = {
+	enabled: boolean;
 	user: firebase.User | null;
 	isAuthenticated: boolean;
 	isLoading: boolean;
@@ -18,12 +21,16 @@ export type FirebaseAuth = {
 	updateUser: (userUpdate: Partial<firebase.User>) => Promise<void>;
 };
 
-const useFirebaseAuth = (props: FirebaseAuthProps): FirebaseAuth => {
-	const { onSignedIn, onSignedOut, onError } = props;
+const useFirebaseAuth = (props: FirebaseAuthProps): FirebaseAuth | null => {
+	const { onSignedIn, onSignedOut, onError, enabled = true } = props;
 
 	const [user, setUser] = useState<firebase.User | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+	if (!firebaseInitialized || !enabled) {
+		return null;
+	}
 
 	// Effect to handle the initial authentication state
 	useEffect(() => {
@@ -76,7 +83,7 @@ const useFirebaseAuth = (props: FirebaseAuthProps): FirebaseAuth => {
 		[user]
 	);
 
-	return { user, isAuthenticated, isLoading, signIn, signUp, signOut, updateUser };
+	return { user, isAuthenticated, isLoading, signIn, signUp, signOut, updateUser, enabled };
 };
 
 export default useFirebaseAuth;
