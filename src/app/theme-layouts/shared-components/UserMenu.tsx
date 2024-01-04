@@ -58,7 +58,7 @@ function UserMenu() {
 						src={user.data.photoURL}
 					/>
 				) : (
-					<Avatar className="md:mx-4">{user.data.displayName[0]}</Avatar>
+					<Avatar className="md:mx-4">{user?.data?.displayName?.[0]}</Avatar>
 				)}
 			</Button>
 

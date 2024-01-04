@@ -12,8 +12,8 @@ import _ from '@lodash';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import JwtLoginTab from './tabs/JwtLoginTab';
-import FirebaseLoginTab from './tabs/FirebaseLoginTab';
+import JwtLoginTab from './tabs/JwtSignInTab';
+import FirebaseSignInTab from './tabs/FirebaseSignInTab';
 
 const tabs = [
 	{
@@ -96,7 +96,7 @@ function SignInPage() {
 					</Tabs>
 
 					{selectedTabId === 'jwt' && <JwtLoginTab />}
-					{selectedTabId === 'firebase' && <FirebaseLoginTab />}
+					{selectedTabId === 'firebase' && <FirebaseSignInTab />}
 
 					<div className="mt-32 flex items-center">
 						<div className="mt-px flex-auto border-t" />

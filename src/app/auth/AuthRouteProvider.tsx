@@ -5,12 +5,13 @@ import FuseSplashScreen from '@fuse/core/FuseSplashScreen/FuseSplashScreen';
 import { resetUser, selectUserRole, setUser, updateUser } from 'src/app/auth/user/userSlice';
 import BrowserRouter from '@fuse/core/BrowserRouter';
 import withSlices from 'app/store/withSlices';
-import { AxiosError } from 'axios';
 import { PartialDeep } from 'type-fest';
+import firebase from 'firebase/compat/app';
 import useJwtAuth, { JwtAuth } from './services/jwt/useJwtAuth';
 import userSlice from './user/userSlice';
 import { User } from './user';
 import useFirebaseAuth from './services/firebase/useFirebaseAuth';
+import UserModel from './user/models/UserModel';
 
 /**
  * Initialize Firebase
@@ -31,6 +32,7 @@ type AuthContext = {
 	jwtService?: JwtAuth<User, SignInPayload, SignUpPayload>;
 	firebaseService?: ReturnType<typeof useFirebaseAuth>;
 	signOut?: () => void;
+	updateUser?: (U: PartialDeep<User>) => void;
 	isAuthenticated: boolean;
 };
 
@@ -45,6 +47,11 @@ function AuthRouteProvider(props: AuthProviderProps) {
 	const dispatch = useAppDispatch();
 
 	/**
+	 * Get user role from store
+	 */
+	const userRole = useAppSelector(selectUserRole);
+
+	/**
 	 * Jwt auth service
 	 */
 	const jwtService = useJwtAuth({
@@ -57,72 +64,88 @@ function AuthRouteProvider(props: AuthProviderProps) {
 			updateUserUrl: 'mock-api/auth/user',
 			updateTokenFromHeader: true
 		},
-		onSignedIn: (userData: User) => {
-			onSignedIn(userData, 'jwt');
+		onSignedIn: (user: User) => {
+			dispatch(setUser(user));
+			setAuthService('jwt');
 		},
-		onSignedOut,
-		onUserUpdated,
-		onError
+		onSignedUp: (user: User) => {
+			dispatch(setUser(user));
+			setAuthService('jwt');
+		},
+		onSignedOut: () => {
+			dispatch(resetUser());
+			resetAuthService();
+		},
+		onUpdateUser: (user) => {
+			dispatch(updateUser(user));
+		},
+		onError: (error) => {
+			console.warn(error);
+		}
 	});
 
-	const firebaseService: AuthContext['firebaseService'] = useFirebaseAuth({
-		onSignedIn: (user) => {
-			onSignedIn(
-				{
-					uid: user.uid,
-					role: ['admin'],
-					data: {
-						displayName: user.displayName
-					}
-				},
-				'firebase'
-			);
+	/**
+	 * Firebase auth service
+	 */
+	const firebaseService: AuthContext['firebaseService'] = useFirebaseAuth<User>({
+		onSignedIn: (_user) => {
+			firebase
+				.database()
+				.ref(`users/${_user.uid}`)
+				.once('value')
+				.then((snapshot) => {
+					const user = snapshot.val() as User;
+					dispatch(setUser(user));
+					setAuthService('firebase');
+				});
 		},
-		onSignedOut
+		onSignedUp: (userCredential, displayName) => {
+			const _user = userCredential.user;
+
+			const user = UserModel({
+				uid: _user.uid,
+				role: ['admin'],
+				data: {
+					displayName,
+					email: _user.email
+				}
+			});
+
+			firebaseService.updateUser(user);
+
+			setAuthService('firebase');
+		},
+		onSignedOut: () => {
+			dispatch(resetUser());
+			resetAuthService();
+		},
+		onUpdateUser: (user) => {
+			dispatch(updateUser(user));
+		},
+		onError: (error) => {
+			console.warn(error);
+		}
 	});
 
-	const userRole = useAppSelector(selectUserRole);
-
+	/**
+	 * Check if services is in loading state
+	 */
 	const isLoading = useMemo(
 		() => jwtService?.isLoading || firebaseService?.isLoading,
 		[jwtService?.isLoading, firebaseService?.isLoading]
 	);
 
+	/**
+	 * Check if user is authenticated
+	 */
 	const isAuthenticated = useMemo(
 		() => jwtService?.isAuthenticated || firebaseService?.isAuthenticated,
 		[jwtService?.isAuthenticated, firebaseService?.isAuthenticated]
 	);
 
 	/**
-	 * On User Sign In Event
+	 * Combine auth services
 	 */
-	function onSignedIn(_user: User, _authService: string) {
-		dispatch(setUser(_user));
-		setAuthService(_authService);
-	}
-
-	/**
-	 * On User Sign Out Event
-	 */
-	function onSignedOut() {
-		dispatch(resetUser());
-		resetAuthService();
-	}
-
-	/**
-	 * On User Updated Event
-	 */
-	function onUserUpdated(_userData: User) {
-		dispatch(updateUser(_userData));
-	}
-
-	/**
-	 * On Error Event
-	 */
-	function onError(error: AxiosError) {
-		console.warn(error);
-	}
-
 	const combinedAuth = useMemo<AuthContext>(
 		() => ({
 			jwtService,
@@ -138,11 +161,9 @@ function AuthRouteProvider(props: AuthProviderProps) {
 					return firebaseService?.signOut();
 				}
 
-				onSignedOut();
-
 				return null;
 			},
-			updateUser: (userData: PartialDeep<User>) => {
+			updateUser: (userData) => {
 				const authService = getAuthService();
 
 				if (authService === 'jwt') {
@@ -152,6 +173,7 @@ function AuthRouteProvider(props: AuthProviderProps) {
 				if (authService === 'firebase') {
 					return firebaseService?.updateUser(userData);
 				}
+
 				return null;
 			},
 			isAuthenticated
@@ -159,20 +181,32 @@ function AuthRouteProvider(props: AuthProviderProps) {
 		[isAuthenticated]
 	);
 
+	/**
+	 * Get auth service
+	 */
 	const getAuthService = useCallback(() => {
 		return localStorage.getItem('authService');
 	}, []);
 
+	/**
+	 * Set auth service
+	 */
 	const setAuthService = useCallback((authService: string) => {
 		if (authService) {
 			localStorage.setItem('authService', authService);
 		}
 	}, []);
 
+	/**
+	 * Reset auth service
+	 */
 	const resetAuthService = useCallback(() => {
 		localStorage.removeItem('authService');
 	}, []);
 
+	/**
+	 * Render loading screen while loading user data
+	 */
 	if (isLoading) {
 		return <FuseSplashScreen />;
 	}

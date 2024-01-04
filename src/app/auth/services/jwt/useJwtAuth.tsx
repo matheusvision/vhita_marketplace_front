@@ -28,10 +28,11 @@ export type JwtAuthProps<T> = {
 		 */
 		updateTokenFromHeader: boolean;
 	};
-	onSignedIn: (U: T) => void;
-	onSignedOut: () => void;
-	onUserUpdated: (U: T) => void;
-	onError: (error: AxiosError) => void;
+	onSignedIn?: (U: T) => void;
+	onSignedUp?: (U: T) => void;
+	onSignedOut?: () => void;
+	onUpdateUser?: (U: T) => void;
+	onError?: (error: AxiosError) => void;
 };
 
 export type JwtAuth<User, SignInPayload, SignUpPayload> = {
@@ -43,6 +44,7 @@ export type JwtAuth<User, SignInPayload, SignUpPayload> = {
 	signUp: (U: SignUpPayload) => Promise<AxiosResponse<User, AxiosError>>;
 	updateUser: (U: PartialDeep<User>) => void;
 	refreshToken: () => void;
+	setIsLoading: (isLoading: boolean) => void;
 };
 
 /**
@@ -58,7 +60,7 @@ export type JwtAuth<User, SignInPayload, SignUpPayload> = {
 const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 	props: JwtAuthProps<User>
 ): JwtAuth<User, SignInPayload, SignUpPayload> => {
-	const { config, onSignedIn, onSignedOut, onError, onUserUpdated } = props;
+	const { config, onSignedIn, onSignedOut, onSignedUp, onError, onUpdateUser } = props;
 
 	// Merge default config with the one from the props
 	const authConfig = _.defaults(config, defaultAuthConfig);
@@ -96,9 +98,23 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 		setSession(accessToken);
 
 		setIsAuthenticated(true);
+
 		setUser(userData);
 
 		onSignedIn(userData);
+	}, []);
+	/**
+	 * Handle sign-up success
+	 */
+
+	const handleSignUpSuccess = useCallback((userData: User, accessToken: string) => {
+		setSession(accessToken);
+
+		setIsAuthenticated(true);
+
+		setUser(userData);
+
+		onSignedUp(userData);
 	}, []);
 
 	/**
@@ -167,6 +183,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 					const userData = response?.data;
 
 					handleSignInSuccess(userData, accessToken);
+
 					return true;
 				} catch (error) {
 					const axiosError = error as AxiosError;
@@ -233,7 +250,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 				const userData = res?.data?.user;
 				const accessToken = res?.data?.access_token;
 
-				handleSignInSuccess(userData, accessToken);
+				handleSignUpSuccess(userData, accessToken);
 
 				return userData;
 			},
@@ -273,7 +290,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 
 			const updatedUserData = response?.data;
 
-			onUserUpdated(updatedUserData);
+			onUpdateUser(updatedUserData);
 
 			return null;
 		} catch (error) {
@@ -336,7 +353,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 		}
 	}, [isAuthenticated]);
 
-	return { user, isAuthenticated, isLoading, signIn, signUp, signOut, updateUser, refreshToken };
+	return { user, isAuthenticated, isLoading, signIn, signUp, signOut, updateUser, refreshToken, setIsLoading };
 };
 
 export default useJwtAuth;

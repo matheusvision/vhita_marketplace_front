@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
+import { AxiosError } from 'axios/index';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -10,9 +11,6 @@ import { Link } from 'react-router-dom';
 import { useAuth } from 'src/app/auth/AuthRouteProvider';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppDispatch } from 'app/store';
-import { showMessage } from 'app/store/fuse/messageSlice';
-import firebase from 'firebase/compat/app';
 
 /**
  * Form Validation Schema
@@ -37,9 +35,8 @@ const defaultValues = {
 	remember: true
 };
 
-function FirebaseLoginTab() {
-	const { firebaseService } = useAuth();
-	const dispatch = useAppDispatch();
+function jwtSignInTab() {
+	const { jwtService } = useAuth();
 
 	const { control, formState, handleSubmit, setValue, setError } = useForm<FormType>({
 		mode: 'onChange',
@@ -57,48 +54,30 @@ function FirebaseLoginTab() {
 	function onSubmit(formData: FormType) {
 		const { email, password } = formData;
 
-		firebaseService?.signIn(email, password).catch((_error) => {
-			const error = _error as firebase.auth.Error;
+		jwtService
+			.signIn({
+				email,
+				password
+			})
+			.catch(
+				(
+					error: AxiosError<
+						{
+							type: 'email' | 'password' | 'remember' | `root.${string}` | 'root';
+							message: string;
+						}[]
+					>
+				) => {
+					const errorData = error.response.data;
 
-			const errors: {
-				type: 'email' | 'password';
-				message: string;
-			}[] = [];
-
-			const emailErrorCodes = [
-				'auth/email-already-in-use',
-				'auth/invalid-email',
-				'auth/operation-not-allowed',
-				'auth/user-not-found',
-				'auth/user-disabled'
-			];
-			const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
-
-			if (emailErrorCodes.includes(error.code)) {
-				errors.push({
-					type: 'email',
-					message: error.message
-				});
-			}
-
-			if (passwordErrorCodes.includes(error.code)) {
-				errors.push({
-					type: 'password',
-					message: error.message
-				});
-			}
-
-			if (!emailErrorCodes.includes(error.code)) {
-				dispatch(showMessage({ message: error.message }));
-			}
-
-			errors.forEach((err) => {
-				setError(err.type, {
-					type: 'manual',
-					message: err.message
-				});
-			});
-		});
+					errorData.forEach((err) => {
+						setError(err.type, {
+							type: 'manual',
+							message: err.message
+						});
+					});
+				}
+			);
 	}
 
 	return (
@@ -189,4 +168,4 @@ function FirebaseLoginTab() {
 	);
 }
 
-export default FirebaseLoginTab;
+export default jwtSignInTab;

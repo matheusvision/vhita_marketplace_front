@@ -7,6 +7,7 @@ import { User } from 'src/app/auth/user';
 import { PartialDeep } from 'type-fest';
 import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import _ from '@lodash';
+import userModel from './models/UserModel';
 
 type AppRootStateType = RootStateType<userSliceType>;
 
@@ -72,16 +73,7 @@ export const resetUser = createAppAsyncThunk('user/resetUser', async () => {
 /**
  * The initial state of the user slice.
  */
-const initialState: User = {
-	uid: '',
-	role: null, // guest
-	data: {
-		displayName: 'Guest User',
-		photoURL: '',
-		email: '',
-		shortcuts: []
-	}
-};
+const initialState: User = userModel({});
 
 /**
  * The User slice
@@ -96,7 +88,7 @@ export const userSlice = createSlice({
 		updateUser: (state, action) => {
 			const user = action.payload as PartialDeep<User>;
 
-			return _.defaultsDeep(state, user) as User;
+			return _.defaults(user, state) as User;
 		},
 		userSignOut: () => initialState
 	},

@@ -10,12 +10,12 @@ function UserModel(data: PartialDeep<User>): User {
 
 	return _.defaults(data, {
 		uid: '',
-		role: ['admin'],
+		role: null, // guest
 		data: {
-			displayName: 'John Doe',
-			photoURL: 'assets/images/avatars/brian-hughes.jpg',
-			email: 'johndoe@withinpixels.com',
-			shortcuts: ['apps.calendar', 'apps.mailbox', 'apps.contacts', 'apps.tasks'],
+			displayName: 'Guest User',
+			photoURL: '',
+			email: '',
+			shortcuts: [],
 			settings: {}
 		}
 	});
