@@ -25,7 +25,7 @@ import {
 const StyledMessageRow = styled('div')(({ theme }) => ({
 	'&.contact': {
 		'& .bubble': {
-			backgroundColor: theme.palette.secondary.light,
+			backgroundColor: lighten(theme.palette.secondary.main, 0.1),
 			color: theme.palette.secondary.contrastText,
 			borderTopLeftRadius: 5,
 			borderBottomLeftRadius: 5,
@@ -51,7 +51,7 @@ const StyledMessageRow = styled('div')(({ theme }) => ({
 
 		'& .bubble': {
 			marginLeft: 'auto',
-			backgroundColor: theme.palette.primary.light,
+			backgroundColor: lighten(theme.palette.primary.main, 0.1),
 			color: theme.palette.primary.contrastText,
 			borderTopLeftRadius: 20,
 			borderBottomLeftRadius: 20,
