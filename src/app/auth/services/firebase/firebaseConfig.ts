@@ -1,4 +1,11 @@
 const prodConfig = {
+	apiKey: 'AIzaSyC3dTEzlmsam_nCeQ3hkiPPRzwoAbo7JR8',
+	authDomain: 'fuse-react.firebaseapp.com',
+	databaseURL: 'https://fuse-react.firebaseio.com',
+	projectId: 'fuse-react',
+	storageBucket: 'fuse-react.appspot.com',
+	messagingSenderId: '864155729955',
+	appId: '1:864155729955:web:c5e88e2570821ff4943196'
 	// apiKey           : "YOUR_API_KEY",
 	// authDomain       : "your-app.firebaseapp.com",
 	// databaseURL      : "https://your-app.firebaseio.com",
