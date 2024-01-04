@@ -20,7 +20,7 @@ function ContactsHeader() {
 
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1">
-			<div className="flex flex-col items-center sm:items-start">
+			<div className="flex flex-col">
 				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
@@ -42,7 +42,7 @@ function ContactsHeader() {
 					</Typography>
 				</motion.span>
 			</div>
-			<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 flex-1 items-center mt-16 -mx-8">
+			<div className="flex flex-1 items-center mt-16 -mx-8">
 				<Box
 					component={motion.div}
 					initial={{ y: -20, opacity: 0 }}
@@ -76,7 +76,7 @@ function ContactsHeader() {
 					to="new/edit"
 				>
 					<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>
-					<span className="mx-8">Add</span>
+					<span className="hidden sm:flex mx-8">Add</span>
 				</Button>
 			</div>
 		</div>

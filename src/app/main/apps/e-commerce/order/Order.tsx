@@ -68,7 +68,7 @@ function Order() {
 		<FusePageCarded
 			header={
 				order && (
-					<div className="flex flex-1 flex-col items-center sm:items-start py-32 px-24 md:px-32">
+					<div className="flex flex-1 flex-col py-32 px-24 md:px-32">
 						<motion.div
 							initial={{ x: 20, opacity: 0 }}
 							animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
@@ -92,7 +92,7 @@ function Order() {
 						<motion.div
 							initial={{ x: -20, opacity: 0 }}
 							animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
-							className="flex flex-col items-center sm:items-start min-w-0 items-center sm:items-start"
+							className="flex flex-col min-w-0"
 						>
 							<Typography className="text-20 truncate font-semibold">
 								{`Order ${order.reference}`}

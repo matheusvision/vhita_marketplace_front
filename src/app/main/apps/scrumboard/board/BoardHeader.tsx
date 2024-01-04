@@ -14,19 +14,19 @@ function BoardHeader(props: BoardHeaderProps) {
 	const { onSetSidebarOpen } = props;
 
 	return (
-		<div className="p-24 sm:p-32 w-full border-b-1 flex flex-col sm:flex-row items-center justify-between container">
-			<div className="flex items-center mb-12 sm:mb-0">
+		<div className="p-24 sm:p-32 w-full border-b-1 flex items-center sm:justify-between container">
+			<div className="flex items-center">
 				<BoardTitle />
 			</div>
 
-			<div className="flex items-center justify-end space-x-12">
+			<div className="flex flex-1 items-center justify-end space-x-0 sm:space-x-12">
 				<Button
 					className="whitespace-nowrap"
 					component={NavLinkAdapter}
 					to="/apps/scrumboard/boards/"
-					startIcon={<FuseSvgIcon size={20}>heroicons-outline:view-boards</FuseSvgIcon>}
 				>
-					Boards
+					<FuseSvgIcon size={20}>heroicons-outline:view-boards</FuseSvgIcon>
+					<span className="hidden sm:flex mx-8">Boards</span>
 				</Button>
 
 				<Button
@@ -34,9 +34,9 @@ function BoardHeader(props: BoardHeaderProps) {
 					variant="contained"
 					color="secondary"
 					onClick={() => onSetSidebarOpen(true)}
-					startIcon={<FuseSvgIcon size={20}>heroicons-outline:cog</FuseSvgIcon>}
 				>
-					Settings
+					<FuseSvgIcon size={20}>heroicons-outline:cog</FuseSvgIcon>
+					<span className="hidden sm:flex mx-8">Settings</span>
 				</Button>
 			</div>
 		</div>

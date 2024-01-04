@@ -23,7 +23,7 @@ function NotesHeader(props: NotesHeaderProps) {
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between p-8 sm:p-24 sm:px-32 relative">
-			<div className="flex shrink items-center sm:w-224">
+			<div className="flex shrink items-center sm:w-224 w-full">
 				<Hidden lgUp>
 					<IconButton
 						onClick={() => onSetSidebarOpen(true)}

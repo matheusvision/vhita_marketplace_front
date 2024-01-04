@@ -29,7 +29,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 
 	return (
 		<div className="flex flex-col md:flex-row w-full p-12 justify-between z-10 container">
-			<div className="flex flex-col sm:flex-row items-center">
+			<div className="flex items-center justify-between">
 				<div className="flex items-center">
 					<IconButton
 						onClick={() => onToggleLeftSidebar()}
@@ -39,7 +39,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 						<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
 					</IconButton>
 
-					<Typography className="text-2xl font-semibold tracking-tight whitespace-nowrap mx-16">
+					<Typography className="hidden sm:flex text-2xl font-semibold tracking-tight whitespace-nowrap mx-16">
 						{currentDate?.view.title}
 					</Typography>
 				</div>
@@ -90,7 +90,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 			</div>
 
 			<motion.div
-				className="flex items-center justify-center"
+				className="flex items-center justify-end md:justify-center"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1, transition: { delay: 0.3 } }}
 			>

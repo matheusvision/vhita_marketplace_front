@@ -112,7 +112,7 @@ function MailToolbar(props: MailToolbarProps) {
 		<div className="sticky top-0 z-10">
 			<Box
 				sx={{ backgroundColor: 'background.default' }}
-				className="flex flex-col sm:flex-row items-center w-full min-h-64 py-12 sm:py-0 space-x-8 px-8 border-b "
+				className="flex items-center w-full min-h-64 py-12 sm:py-0 space-x-8 px-8 border-b "
 			>
 				<div className="flex items-center">
 					<Hidden lgUp>

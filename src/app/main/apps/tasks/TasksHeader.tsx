@@ -13,8 +13,8 @@ function TasksHeader() {
 	const remainingTasks = useAppSelector(selectRemainingTasks);
 
 	return (
-		<div className="flex flex-col sm:flex-row item-center sm:items-start space-y-16 sm:space-y-0 p-24 sm:p-32 w-full border-b-1 items-center justify-between">
-			<div className="flex flex-col sm:flex-row items-center sm:space-x-12">
+		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 p-24 sm:p-32 w-full border-b-1 justify-between">
+			<div className="flex flex-col sm:flex-row sm:items-center sm:space-x-12">
 				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}

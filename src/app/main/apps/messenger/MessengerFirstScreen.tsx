@@ -19,7 +19,7 @@ function MessengerFirstScreen() {
 				heroicons-outline:chat
 			</FuseSvgIcon>
 			<Typography
-				className="hidden md:flex text-20 font-semibold tracking-tight text-secondary"
+				className="hidden lg:flex text-20 font-semibold tracking-tight text-secondary"
 				color="text.secondary"
 			>
 				Select a conversation or start a new chat
@@ -27,7 +27,7 @@ function MessengerFirstScreen() {
 			<Button
 				variant="contained"
 				color="secondary"
-				className="flex md:hidden"
+				className="flex lg:hidden"
 				onClick={() => setMainSidebarOpen(true)}
 			>
 				Select a conversation or start a new chat

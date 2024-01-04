@@ -10,7 +10,7 @@ function MailListTitle() {
 	const routeParams = useParams();
 	const title = useAppSelector(selectMailsTitle(routeParams));
 
-	return <Typography className="font-semibold uppercase mx-8">{title}</Typography>;
+	return <Typography className="hidden sm:flex font-semibold uppercase mx-8">{title}</Typography>;
 }
 
 export default MailListTitle;

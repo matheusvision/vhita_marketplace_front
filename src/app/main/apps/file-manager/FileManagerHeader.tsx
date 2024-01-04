@@ -20,8 +20,8 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 	const { path, folders, files } = props;
 
 	return (
-		<div className="p-24 sm:p-32 w-full flex flex-col sm:flex-row space-y-8 sm:space-y-0 items-center justify-between">
-			<div className="flex flex-col items-center sm:items-start space-y-8 sm:space-y-0">
+		<div className="p-24 sm:p-32 w-full flex  space-y-8 sm:space-y-0 items-center justify-between">
+			<div className="flex flex-col space-y-8 sm:space-y-0">
 				<motion.span
 					className="flex items-end"
 					initial={{ x: -20 }}
@@ -76,9 +76,9 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 					className="mx-8 whitespace-nowrap"
 					variant="contained"
 					color="secondary"
-					startIcon={<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>}
 				>
-					Upload file
+					<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>
+					<span className="hidden sm:flex mx-8">Upload file</span>
 				</Button>
 			</div>
 		</div>
