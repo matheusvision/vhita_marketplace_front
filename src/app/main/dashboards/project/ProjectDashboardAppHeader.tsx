@@ -9,6 +9,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store';
 import { selectUser } from 'src/app/auth/user/userSlice';
 import FuseLoading from '@fuse/core/FuseLoading';
+import { darken } from '@mui/material/styles';
 import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 
 /**
@@ -54,6 +55,10 @@ function ProjectDashboardAppHeader() {
 			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-32 sm:my-48">
 				<div className="flex flex-auto items-center min-w-0">
 					<Avatar
+						sx={{
+							background: (theme) => darken(theme.palette.background.default, 0.05),
+							color: (theme) => theme.palette.text.secondary
+						}}
 						className="flex-0 w-64 h-64"
 						alt="user photo"
 						src={user?.data?.photoURL}

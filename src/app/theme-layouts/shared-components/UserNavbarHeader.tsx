@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { darken, styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const Root = styled('div')(({ theme }) => ({
 	},
 
 	'& .avatar': {
-		background: theme.palette.background.paper,
+		background: darken(theme.palette.background.default, 0.05),
 		transition: theme.transitions.create('all', {
 			duration: theme.transitions.duration.shortest,
 			easing: theme.transitions.easing.easeInOut

@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectUser } from 'src/app/auth/user/userSlice';
 import { useAuth } from 'src/app/auth/AuthRouteProvider';
+import { darken } from '@mui/material/styles';
 
 /**
  * The user menu.
@@ -53,12 +54,24 @@ function UserMenu() {
 
 				{user.data.photoURL ? (
 					<Avatar
+						sx={{
+							background: (theme) => theme.palette.background.default,
+							color: (theme) => theme.palette.text.secondary
+						}}
 						className="md:mx-4"
 						alt="user photo"
 						src={user.data.photoURL}
 					/>
 				) : (
-					<Avatar className="md:mx-4">{user?.data?.displayName?.[0]}</Avatar>
+					<Avatar
+						sx={{
+							background: (theme) => darken(theme.palette.background.default, 0.05),
+							color: (theme) => theme.palette.text.secondary
+						}}
+						className="md:mx-4"
+					>
+						{user?.data?.displayName?.[0]}
+					</Avatar>
 				)}
 			</Button>
 
