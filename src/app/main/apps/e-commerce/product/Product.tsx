@@ -9,10 +9,10 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import _ from '@lodash';
 import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import * as React from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import ProductHeader from './ProductHeader';
 import BasicInfoTab from './tabs/BasicInfoTab';
 import InventoryTab from './tabs/InventoryTab';
@@ -25,11 +25,8 @@ import ProductModel from './models/ProductModel';
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	name: yup
-		.string()
-		.required('You must enter a product name')
-		.min(5, 'The product name must be at least 5 characters')
+const schema = z.object({
+	name: z.string().nonempty('You must enter a product name').min(5, 'The product name must be at least 5 characters')
 });
 
 /**
@@ -49,7 +46,7 @@ function Product() {
 	const methods = useForm({
 		mode: 'onChange',
 		defaultValues: {},
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { reset, watch } = methods;

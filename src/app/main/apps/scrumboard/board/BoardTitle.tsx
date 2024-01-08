@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
@@ -6,17 +5,18 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState, MouseEvent } from 'react';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useParams } from 'react-router-dom';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ScrumboardBoard, useGetScrumboardBoardQuery, useUpdateScrumboardBoardMutation } from '../ScrumboardApi';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a title')
+const schema = z.object({
+	title: z.string().nonempty('You must enter a title')
 });
 
 /**
@@ -37,7 +37,7 @@ function BoardTitle() {
 		defaultValues: {
 			title: board?.title
 		},
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;

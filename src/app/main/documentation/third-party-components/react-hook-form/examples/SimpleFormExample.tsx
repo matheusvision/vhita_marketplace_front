@@ -10,8 +10,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import Typography from '@mui/material/Typography';
 import Autocomplete from '@mui/material/Autocomplete';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import _ from '@lodash';
 import clsx from 'clsx';
 import FormControl from '@mui/material/FormControl';
@@ -19,6 +17,8 @@ import FormLabel from '@mui/material/FormLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 let renderCount = 0;
 
@@ -51,15 +51,18 @@ const defaultValues = {
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	TextField: yup.string().required('You must enter a value'),
-	Native: yup.string().required('You must enter a value'),
-	Select: yup.string().required('You must select a value').oneOf(['20', '30'], 'Select 20 or 30.'),
-	Checkbox: yup.boolean().oneOf([true], 'You must check.'),
-	Switch: yup.boolean().oneOf([true], 'You must turn it on.'),
-	RadioGroup: yup.string().oneOf(['female'], 'You must select female.'),
-	Autocomplete: yup.array().min(2, 'Select at least two.'),
-	DateTimePicker: yup.string().nullable().required('You must select a date')
+const schema = z.object({
+	TextField: z.string().nonempty('You must enter a value'),
+	Native: z.string().nonempty('You must enter a value'),
+	Select: z
+		.string()
+		.nonempty('You must select a value')
+		.refine((val) => ['20', '30'].includes(val), 'Select 20 or 30.'),
+	Checkbox: z.boolean().refine((val) => val === true, 'You must check.'),
+	Switch: z.boolean().refine((val) => val === true, 'You must turn it on.'),
+	RadioGroup: z.string().refine((val) => val === 'female', 'You must select female.'),
+	Autocomplete: z.array(z.string()).min(2, 'Select at least two.'),
+	DateTimePicker: z.string().refine((val) => val === null || val.trim().length > 0, 'You must select a date')
 });
 
 /**
@@ -69,7 +72,7 @@ function SimpleFormExample() {
 	const { handleSubmit, register, reset, control, watch, formState } = useForm({
 		defaultValues,
 		mode: 'all',
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors, touchedFields } = formState;

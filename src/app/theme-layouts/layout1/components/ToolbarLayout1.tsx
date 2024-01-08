@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from 'app/store/fuse/settingsSlice';
 import { selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
+import NotificationPanelToggleButton from 'src/app/main/apps/notifications/NotificationPanelToggleButton';
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
@@ -16,7 +17,6 @@ import NavigationSearch from '../../shared-components/NavigationSearch';
 import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
 import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
-import NotificationPanelToggleButton from 'src/app/main/apps/notifications/NotificationPanelToggleButton';
 
 type ToolbarLayout1Props = {
 	className?: string;

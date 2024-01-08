@@ -6,18 +6,18 @@ import Typography from '@mui/material/Typography';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import TextField from '@mui/material/TextField';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 type formValuesType = { name: string; email: string; subject: string; message: string };
 
 const defaultValues = { name: '', email: '', subject: '', message: '' };
 
-const schema = yup.object().shape({
-	name: yup.string().required('You must enter a name'),
-	subject: yup.string().required('You must enter a subject'),
-	message: yup.string().required('You must enter a message'),
-	email: yup.string().email('You must enter a valid email').required('You must enter a email')
+const schema = z.object({
+	name: z.string().nonempty('You must enter a name'),
+	subject: z.string().nonempty('You must enter a subject'),
+	message: z.string().nonempty('You must enter a message'),
+	email: z.string().email('You must enter a valid email').nonempty('You must enter an email')
 });
 
 /**
@@ -27,7 +27,7 @@ function HelpCenterSupport() {
 	const { control, handleSubmit, watch, formState } = useForm({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 	const { isValid, dirtyFields, errors } = formState;
 
