@@ -345,6 +345,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 
 					if (axiosError?.response?.status === 401) {
 						signOut();
+						// eslint-disable-next-line no-console
 						console.warn('Unauthorized request. User was signed out.');
 					}
 					return Promise.reject(axiosError);

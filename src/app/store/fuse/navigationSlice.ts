@@ -17,7 +17,7 @@ const navigationAdapter = createEntityAdapter<FuseNavItemType>();
 
 const emptyInitialState = navigationAdapter.getInitialState([]);
 
-const initialState = navigationAdapter.upsertMany(emptyInitialState, navigationConfig);
+const initialState: FuseNavItemType[] = navigationAdapter.upsertMany(emptyInitialState, navigationConfig);
 
 /**
  * Redux Thunk actions related to the navigation store state
@@ -118,7 +118,7 @@ export const selectNavigation = createSelector(
 	}
 );
 
-export const selectFlatNavigation = createSelector([selectNavigation], (navigation) =>
+export const selectFlatNavigation = createSelector([selectNavigation], (navigation: FuseNavigationType) =>
 	FuseNavigationHelper.getFlatNavigation(navigation)
 );
 

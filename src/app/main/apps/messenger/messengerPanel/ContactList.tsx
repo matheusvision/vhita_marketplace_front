@@ -41,7 +41,7 @@ function ContactList(props: ContactListProps) {
 	const contactListScroll = useRef<HTMLDivElement>(null);
 
 	const { data: chats, isLoading: isChatsLoading } = useGetMessengerChatsQuery();
-	const { data: contacts, isLoading: isContactsLoading, isLoading } = useGetMessengerContactsQuery();
+	const { data: contacts, isLoading: isContactsLoading } = useGetMessengerContactsQuery();
 
 	const chatListContacts = useMemo(() => {
 		return contacts?.length > 0 && chats?.length > 0

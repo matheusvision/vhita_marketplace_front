@@ -21,7 +21,7 @@ mock.onGet('/help-center/faqs/categories').reply(() => {
 
 mock.onGet('/help-center/faqs/:categorySlug').reply((config) => {
 	const { categorySlug } = config.params as Params;
-	console.info(categorySlug);
+
 	const category = _.find(faqCategoriesDB, { slug: categorySlug }) as FaqCategory;
 
 	return [200, _.filter(faqsDB, { categoryId: category.id })];

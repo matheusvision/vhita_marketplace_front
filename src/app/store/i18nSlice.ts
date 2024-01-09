@@ -3,8 +3,6 @@ import i18n from 'src/i18n';
 import { AppThunkType, RootStateType } from 'app/store/types';
 import { setDefaultSettings, settingsSliceType } from './fuse/settingsSlice';
 
-type AppRootStateType = RootStateType<[i18nSliceType, settingsSliceType]>;
-
 /**
  * Changes the language of the application and updates the settings if necessary.
  */
@@ -75,12 +73,16 @@ export const selectCurrentLanguageId = (state: AppRootStateType) => state.i18n.l
 
 export const selectLanguages = (state: AppRootStateType) => state.i18n.languages;
 
-export const selectCurrentLanguageDirection = createSelector([selectCurrentLanguageId], (id: string) => i18n.dir(id));
+export const selectCurrentLanguageDirection = createSelector([selectCurrentLanguageId], (id: string): string =>
+	i18n.dir(id)
+);
 
 export const selectCurrentLanguage = createSelector([selectCurrentLanguageId, selectLanguages], (id, languages) =>
 	languages.find((lng) => lng.id === id)
 );
 
 export type i18nSliceType = typeof i18nSlice;
+
+type AppRootStateType = RootStateType<[i18nSliceType, settingsSliceType]>;
 
 export default i18nSlice.reducer;

@@ -5,10 +5,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import ListItemButton from '@mui/material/ListItemButton';
-import { ContactRead } from './ContactsApi';
+import { Contact } from './ContactsApi';
 
 type ContactListItemPropsType = {
-	contact: ContactRead;
+	contact: Contact;
 };
 
 /**

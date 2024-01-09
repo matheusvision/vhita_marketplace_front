@@ -39,7 +39,7 @@ mock.onPut('/academy/courses/:courseId').reply((config) => {
 	const course = _.find(coursesDB, { id: courseId }) as Course;
 
 	const newData = JSON.parse(config.data as string) as Course;
-	console.info(newData);
+
 	if (!course) {
 		return [404, 'Requested data do not exist.'];
 	}

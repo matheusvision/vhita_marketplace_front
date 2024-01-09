@@ -1,7 +1,6 @@
 /* eslint import/no-extraneous-dependencies: off */
 import { createSlice } from '@reduxjs/toolkit';
 import settingsConfig from 'app/configs/settingsConfig';
-import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { RootStateType } from 'app/store/types';
 import { User } from 'src/app/auth/user';
 import { PartialDeep } from 'type-fest';
@@ -10,40 +9,6 @@ import _ from '@lodash';
 import userModel from './models/UserModel';
 
 type AppRootStateType = RootStateType<userSliceType>;
-
-/**
- * Updates the user's settings in the Redux store and returns the updated user object.
- */
-export const updateUserSettings = createAppAsyncThunk(
-	'user/updateSettings',
-	async (settings: FuseSettingsConfigType, { getState }) => {
-		const AppState = getState() as AppRootStateType;
-		const { user } = AppState;
-
-		const isUserGuest = selectIsUserGuest(AppState);
-
-		if (isUserGuest) {
-			return null;
-		}
-
-		const userRequestData = { data: { ...user.data, settings } } as User;
-
-		return null;
-		/* try {
-			const response = await jwtService.updateUserData(userRequestData);
-
-			dispatch(showMessage({ message: 'User settings saved with api' }));
-
-			return response.data as User;
-		} catch (error) {
-			const axiosError = error as AxiosError;
-
-			dispatch(showMessage({ message: axiosError.message }));
-
-			return rejectWithValue(axiosError.message);
-		} */
-	}
-);
 
 function updateRedirectUrl(user: PartialDeep<User>) {
 	/*

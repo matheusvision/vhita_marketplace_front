@@ -84,19 +84,19 @@ const ContactsApi = api
 
 export default ContactsApi;
 
-export type GetContactsItemApiResponse = /** status 200 User Found */ ContactRead;
+export type GetContactsItemApiResponse = /** status 200 User Found */ Contact;
 export type GetContactsItemApiArg = string;
 
-export type UpdateContactsItemApiResponse = /** status 200 Contact Updated */ ContactRead;
+export type UpdateContactsItemApiResponse = /** status 200 Contact Updated */ Contact;
 export type UpdateContactsItemApiArg = Contact;
 
 export type DeleteContactsItemApiResponse = unknown;
 export type DeleteContactsItemApiArg = string;
 
-export type GetContactsListApiResponse = /** status 200 OK */ ContactRead[];
+export type GetContactsListApiResponse = /** status 200 OK */ Contact[];
 export type GetContactsListApiArg = void;
 
-export type CreateContactsItemApiResponse = /** status 201 Created */ ContactRead;
+export type CreateContactsItemApiResponse = /** status 201 Created */ Contact;
 export type CreateContactsItemApiArg = {
 	contact: Contact;
 };
@@ -147,21 +147,6 @@ export type Contact = {
 	tags?: string[];
 };
 
-export type ContactRead = {
-	id: string;
-	avatar?: string;
-	background?: string;
-	name: string;
-	emails?: ContactEmail[];
-	phoneNumbers?: ContactPhoneNumber[];
-	title?: string;
-	company?: string;
-	birthday?: string;
-	address?: string;
-	notes?: string;
-	tags?: string[];
-};
-
 export type Tag = {
 	id: string;
 	title: string;
@@ -177,7 +162,7 @@ export type Country = {
 
 export type GroupedContacts = {
 	group: string;
-	children?: ContactRead[];
+	children?: Contact[];
 };
 
 export type AccumulatorType = {
@@ -214,14 +199,14 @@ export const selectFilteredContactList = createSelector(
 		if (searchText.length === 0) {
 			return contacts;
 		}
-		return FuseUtils.filterArrayByString<ContactRead>(contacts, searchText);
+		return FuseUtils.filterArrayByString<Contact>(contacts, searchText);
 	}
 );
 
 /**
  * Select grouped contacts
  */
-export const selectGroupedFilteredContacts = createSelector([selectFilteredContactList], (contacts) => {
+export const selectGroupedFilteredContacts = createSelector([selectFilteredContactList], (contacts: Contact[]) => {
 	const sortedContacts = [...contacts]?.sort((a, b) => a?.name?.localeCompare(b.name, 'es', { sensitivity: 'base' }));
 
 	const groupedObject = sortedContacts?.reduce<AccumulatorType>((r, e) => {

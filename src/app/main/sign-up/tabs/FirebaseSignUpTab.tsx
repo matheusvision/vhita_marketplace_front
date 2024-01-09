@@ -39,7 +39,7 @@ const defaultValues = {
 };
 
 function FirebaseSignUpTab() {
-	const { firebaseService, updateUser } = useAuth();
+	const { firebaseService } = useAuth();
 
 	const { control, formState, handleSubmit, setError } = useForm({
 		mode: 'onChange',
