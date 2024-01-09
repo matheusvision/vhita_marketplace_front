@@ -29,7 +29,8 @@ module.exports = {
     },
     "ignorePatterns": [
         "src/app/main/documentation/material-ui-components/components/**",
-        "src/app/main/documentation/material-ui-components/pages/**"
+        "src/app/main/documentation/material-ui-components/pages/**",
+        "tailwind.config.js"
     ],
     "rules": {
         "prettier/prettier": [
