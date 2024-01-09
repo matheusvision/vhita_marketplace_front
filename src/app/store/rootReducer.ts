@@ -16,12 +16,4 @@ const createReducer = (asyncReducers: ReducersMapObject) =>
 		...asyncReducers
 	} as ReducersMapObject);
 
-/* Reset the redux store when user logged out */
-/**
-	if (action.type === 'user/userLoggedOut') {
-		// state = undefined;
-	}
-	return combinedReducer(state, action);
-*/
-
 export default createReducer;

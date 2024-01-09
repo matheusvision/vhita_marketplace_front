@@ -1,8 +1,10 @@
 import mockApi from '../../mock-api.json';
-import mock from '../../mock';
+import ExtendedMockAdapter from '../../ExtendedMockAdapter';
 
 const widgets = mockApi.components.examples.analytics_dashboard_widgets.value;
 
-mock.onGet('/dashboards/analytics/widgets').reply(() => {
-	return [200, widgets];
-});
+export const analyticsDashboardApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/dashboards/analytics/widgets').reply(() => {
+		return [200, widgets];
+	});
+};

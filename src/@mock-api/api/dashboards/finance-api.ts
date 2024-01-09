@@ -1,8 +1,10 @@
 import mockApi from '../../mock-api.json';
-import mock from '../../mock';
+import ExtendedMockAdapter from '../../ExtendedMockAdapter';
 
 const widgets = mockApi.components.examples.finance_dashboard_widgets.value;
 
-mock.onGet('/dashboards/finance/widgets').reply(() => {
-	return [200, widgets];
-});
+export const financeDashboardApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/dashboards/finance/widgets').reply(() => {
+		return [200, widgets];
+	});
+};

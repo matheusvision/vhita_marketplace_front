@@ -47,10 +47,6 @@ const asyncReducers: AsyncReducersType = {};
  * injects a single reducer to the store
  */
 export const injectReducer = (key: string, reducer: Reducer) => {
-	if (asyncReducers[key]) {
-		return false;
-	}
-
 	asyncReducers[key] = reducer;
 
 	store.replaceReducer(createReducer(asyncReducers));

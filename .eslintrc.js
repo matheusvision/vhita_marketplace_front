@@ -3,7 +3,8 @@ module.exports = {
     "parser": '@typescript-eslint/parser',
     "parserOptions": {
         "tsconfigRootDir": __dirname,
-        "project": ['./tsconfig.json']
+        "project": ['./tsconfig.json'],
+        "sourceType": "module",
     },
     "plugins": [
         "@typescript-eslint",
@@ -116,5 +117,6 @@ module.exports = {
         "react/jsx-props-no-spreading": "off",
         "react/no-array-index-key": "off",
         "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }],
+        "import/no-import-module-exports": "off"
     },
 }

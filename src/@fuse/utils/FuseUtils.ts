@@ -89,11 +89,11 @@ class FuseUtils {
 	 *
 	 */
 	static filterArrayByString<T>(mainArr: T[], searchText: string): T[] {
-		if (searchText === '') {
+		if (typeof searchText !== 'string' || searchText === '') {
 			return mainArr;
 		}
 
-		searchText = searchText.toLowerCase();
+		searchText = searchText?.toLowerCase();
 
 		return mainArr.filter((itemObj: unknown) => this.searchInObj(itemObj, searchText));
 	}

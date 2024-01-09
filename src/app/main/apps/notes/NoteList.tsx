@@ -24,7 +24,7 @@ function NoteList() {
 		function filterData() {
 			let data = notes;
 
-			if (searchText.length === 0) {
+			if (searchText?.length === 0) {
 				return data;
 			}
 

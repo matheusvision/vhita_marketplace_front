@@ -15,15 +15,16 @@ export const searchTextSlice = createSlice({
 		setSearchText: {
 			reducer: (state, action) => action.payload as string,
 			prepare: (event: React.ChangeEvent<HTMLInputElement>) => ({
-				payload: event.target.value || '',
+				payload: `${event?.target?.value}` || initialState,
 				meta: undefined,
 				error: null
 			})
-		}
+		},
+		resetSearchText: () => initialState
 	}
 });
 
-export const { setSearchText } = searchTextSlice.actions;
+export const { setSearchText, resetSearchText } = searchTextSlice.actions;
 
 export type searchTextSliceType = typeof searchTextSlice;
 

@@ -6,8 +6,8 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { ChangeEvent } from 'react';
-import { selectSearchText, setSearchText } from './store/searchTextSlice';
+import { ChangeEvent, useEffect } from 'react';
+import { selectSearchText, setSearchText, resetSearchText } from './store/searchTextSlice';
 import { selectFilteredContactList } from './ContactsApi';
 
 /**
@@ -17,6 +17,12 @@ function ContactsHeader() {
 	const dispatch = useAppDispatch();
 	const searchText = useAppSelector(selectSearchText);
 	const filteredData = useAppSelector(selectFilteredContactList);
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetSearchText());
+		};
+	}, []);
 
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1">
