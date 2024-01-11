@@ -86,13 +86,6 @@ export const createAppSlice = buildCreateSlice({
 });
 
 /**
- * The type definition for the options object passed to `createAsyncThunk.withTypes`.
- */
-type CreateAsyncThunkOptions = {
-	dispatch: AppDispatchType;
-};
-
-/**
  * The type definition for the config object passed to `withAppMiddleware`.
  */
 type Config = {
@@ -101,10 +94,3 @@ type Config = {
 };
 
 export const withAppMiddleware = dynamicInstance.withMiddleware.withTypes<Config>();
-
-/**
- * Creates an async thunk with types.
- */
-// eslint-disable-next-line
-// @ts-ignore
-export const createAppAsyncThunk = createAsyncThunk.withTypes<CreateAsyncThunkOptions>();

@@ -4,8 +4,8 @@ import settingsConfig from 'app/configs/settingsConfig';
 import { RootStateType } from 'app/store/types';
 import { User } from 'src/app/auth/user';
 import { PartialDeep } from 'type-fest';
+import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import _ from '@lodash';
-import { appSelector, createAppAsyncThunk } from 'app/store/store';
 import userModel from './models/UserModel';
 
 type AppRootStateType = RootStateType<userSliceType>;
@@ -107,20 +107,28 @@ export const userSlice = createSlice({
 
 export const { userSignOut, updateUser, setUserShortcuts, setUserSettings } = userSlice.actions;
 
-export const selectUser = appSelector((state: AppRootStateType) => state.user);
+export const selectUser = (state: AppRootStateType) => state.user;
 
-export const selectUserRole = appSelector((state: AppRootStateType) => state.user.role);
+export const selectUserRole = (state: AppRootStateType) => state.user.role;
 
-export const selectIsUserGuest = appSelector((state: AppRootStateType) => {
+export const selectIsUserGuest = (state: AppRootStateType) => {
 	const { role } = state.user;
 
 	return !role || role.length === 0;
-});
+};
 
-export const selectUserShortcuts = appSelector((state: AppRootStateType) => state.user?.data?.shortcuts);
+export const selectUserShortcuts = (state: AppRootStateType) => state.user?.data?.shortcuts;
 
-export const selectUserSettings = appSelector((state: AppRootStateType) => state.user?.data?.settings);
+export const selectUserSettings = (state: AppRootStateType) => state.user?.data?.settings;
 
 export type userSliceType = typeof userSlice;
 
 export default userSlice.reducer;
+// const injectedUserSlice = userSlice.injectInto(rootReducer, {
+// 	reducerPath: 'user'
+// });
+// export const selectUser = injectedUserSlice.selector((state: AppRootStateType) => state.user);
+
+// export const selectUserRole = injectedUserSlice.selector((state: AppRootStateType) => state.user.role);
+
+// export const selectUserRole = injectedUserSlice.selectors.selectValue({ role: null });
