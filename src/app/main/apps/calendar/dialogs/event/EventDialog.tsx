@@ -10,7 +10,7 @@ import { MouseEvent, useCallback, useEffect } from 'react';
 import _ from '@lodash';
 import { Popover } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useSelector } from 'react-redux';

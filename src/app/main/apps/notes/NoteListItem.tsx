@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useSelector } from 'react-redux';
 import NoteLabel from './NoteLabel';

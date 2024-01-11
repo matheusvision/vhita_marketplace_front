@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import apiService from 'app/store/apiService';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
 import ExtendedMockAdapter from './ExtendedMockAdapter';

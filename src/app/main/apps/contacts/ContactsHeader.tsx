@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { ChangeEvent, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectSearchText, setSearchText, resetSearchText } from './store/searchTextSlice';

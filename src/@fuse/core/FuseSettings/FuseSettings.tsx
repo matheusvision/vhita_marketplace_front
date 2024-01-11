@@ -15,7 +15,7 @@ import { memo, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
 import { selectUser } from 'src/app/auth/user/userSlice';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { Palette } from '@mui/material/styles/createPalette';
 import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
 import { PartialDeep } from 'type-fest';

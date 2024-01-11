@@ -9,8 +9,8 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import routes from 'app/configs/routesConfig';
 import { useMemo } from 'react';
 import { Provider } from 'react-redux';
-import store from './store';
 import AppContext from './AppContext';
+import store from './store/store';
 
 type ComponentProps = {
 	name?: string;

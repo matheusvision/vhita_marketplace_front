@@ -7,13 +7,12 @@ import {
 	Store,
 	combineSlices,
 	buildCreateSlice,
-	asyncThunkCreator,
-	createAsyncThunk
+	asyncThunkCreator
 } from '@reduxjs/toolkit';
 import { createDynamicMiddleware } from '@reduxjs/toolkit/react';
 import { AppDispatchType } from 'app/store/types';
+import { useDispatch } from 'react-redux';
 import user from '../auth/user/userSlice';
-import store from '.';
 
 /**
  * The dynamic middleware instance.
@@ -74,6 +73,11 @@ export type AppStore = typeof store;
 export type AppDispatch = AppStore['dispatch'];
 
 /**
+ * Typed hook to get the dispatch function from the Redux store.
+ */
+export const useAppDispatch: () => AppDispatchType = useDispatch;
+
+/**
  * Shortage for the root state selector.
  */
 export const appSelector = rootReducer.selector;
@@ -94,3 +98,7 @@ type Config = {
 };
 
 export const withAppMiddleware = dynamicInstance.withMiddleware.withTypes<Config>();
+
+const store = configureAppStore();
+
+export default store;

@@ -7,7 +7,7 @@ import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Conf
 import NavbarToggleFabLayout1 from 'app/theme-layouts/layout1/components/NavbarToggleFabLayout1';
 import { useLocation } from 'react-router';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import NavbarStyle1 from './navbar/style-1/NavbarStyle1';
 import NavbarStyle2 from './navbar/style-2/NavbarStyle2';
 import NavbarStyle3 from './navbar/style-3/NavbarStyle3';

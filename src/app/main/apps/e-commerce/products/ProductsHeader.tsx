@@ -3,7 +3,7 @@ import Input from '@mui/material/Input';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ChangeEvent, useEffect } from 'react';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';

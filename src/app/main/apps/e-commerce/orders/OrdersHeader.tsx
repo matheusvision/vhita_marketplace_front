@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { resetSearchText, selectSearchText, setSearchText } from '../store/searchTextSlice';

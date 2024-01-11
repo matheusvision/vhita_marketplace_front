@@ -1,10 +1,9 @@
 /* eslint import/no-extraneous-dependencies: off */
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import settingsConfig from 'app/configs/settingsConfig';
 import { RootStateType } from 'app/store/types';
 import { User } from 'src/app/auth/user';
 import { PartialDeep } from 'type-fest';
-import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
 import _ from '@lodash';
 import userModel from './models/UserModel';
 
@@ -22,7 +21,7 @@ function updateRedirectUrl(user: PartialDeep<User>) {
 /**
  * Sets the user object in the Redux store.
  */
-export const setUser = createAppAsyncThunk<User, User>('user/setUser', async (user) => {
+export const setUser = createAsyncThunk<User, User>('user/setUser', async (user) => {
 	updateRedirectUrl(user);
 
 	return user;
@@ -31,7 +30,7 @@ export const setUser = createAppAsyncThunk<User, User>('user/setUser', async (us
 /**
  * Reset the user state.
  */
-export const resetUser = createAppAsyncThunk('user/resetUser', async () => {
+export const resetUser = createAsyncThunk('user/resetUser', async () => {
 	return true;
 });
 

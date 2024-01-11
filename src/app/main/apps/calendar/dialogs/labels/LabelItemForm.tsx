@@ -16,7 +16,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Label, useDeleteCalendarLabelMutation, useUpdateCalendarLabelMutation } from '../../CalendarApi';

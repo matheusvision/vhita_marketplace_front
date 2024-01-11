@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen/FuseSplashScreen';
 import { resetUser, selectUser, selectUserRole, setUser, updateUser } from 'src/app/auth/user/userSlice';
 import BrowserRouter from '@fuse/core/BrowserRouter';

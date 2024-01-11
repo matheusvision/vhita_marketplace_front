@@ -9,7 +9,7 @@ import keycode from 'keycode';
 import { useCallback, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
 import { useSelector } from 'react-redux';

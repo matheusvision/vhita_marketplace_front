@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { Draggable } from 'react-beautiful-dnd';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { AvatarGroup } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { MouseEvent } from 'react';

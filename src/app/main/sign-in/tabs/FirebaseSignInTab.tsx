@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from 'src/app/auth/AuthRouteProvider';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import firebase from 'firebase/compat/app';
 

@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import ItemIcon from './ItemIcon';
 import { FileManagerItem } from './FileManagerApi';
 import { setSelectedItemId } from './store/selectedItemIdSlice';

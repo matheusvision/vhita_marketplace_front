@@ -1,4 +1,4 @@
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { OutlinedInput } from '@mui/material';
 import { motion } from 'framer-motion';
 import InputAdornment from '@mui/material/InputAdornment';

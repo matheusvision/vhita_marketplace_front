@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 import { selectIsUserGuest, selectUserShortcuts, setUserShortcuts } from 'src/app/auth/user/userSlice';

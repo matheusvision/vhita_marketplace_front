@@ -1,5 +1,5 @@
 import { createTheme, getContrastRatio } from '@mui/material/styles';
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import _ from '@lodash';
 import {
 	defaultSettings,
@@ -17,7 +17,6 @@ import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/F
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { PartialDeep } from 'type-fest';
 import { showMessage } from './messageSlice';
-import createAppAsyncThunk from '../createAppAsyncThunk';
 
 type AppRootStateType = RootStateType<settingsSliceType>;
 
@@ -100,7 +99,7 @@ const initialState: initialStateProps = {
 /**
  * Sets the default settings for the application.
  */
-export const setDefaultSettings = createAppAsyncThunk(
+export const setDefaultSettings = createAsyncThunk(
 	'fuse/settings/setDefaultSettings',
 	async (val: PartialDeep<FuseSettingsConfigType>, { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;

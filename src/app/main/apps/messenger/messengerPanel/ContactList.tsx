@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import { motion } from 'framer-motion';
 import { memo, useMemo, useRef } from 'react';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import clsx from 'clsx';
 import { Box, CircularProgress } from '@mui/material';
 import { useSelector } from 'react-redux';

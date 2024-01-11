@@ -13,7 +13,7 @@ import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import themesConfig from 'app/configs/themesConfig';
 import { changeFuseTheme } from 'app/store/fuse/settingsSlice';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { usePrevious } from '@fuse/hooks';
 import _ from '@lodash';
 import { useSelector } from 'react-redux';

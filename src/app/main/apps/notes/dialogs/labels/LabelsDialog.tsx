@@ -1,5 +1,5 @@
 import Dialog from '@mui/material/Dialog';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import { useSelector } from 'react-redux';

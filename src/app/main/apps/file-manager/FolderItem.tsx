@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import ItemIcon from './ItemIcon';
 import { FileManagerItem } from './FileManagerApi';
 import { setSelectedItemId } from './store/selectedItemIdSlice';

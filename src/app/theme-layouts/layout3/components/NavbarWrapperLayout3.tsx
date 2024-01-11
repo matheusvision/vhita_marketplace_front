@@ -5,7 +5,7 @@ import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice'
 import clsx from 'clsx';
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from 'app/store/fuse/settingsSlice';
 import { Layout3ConfigDefaultsType } from 'app/theme-layouts/layout3/Layout3Config';
 import { useLocation } from 'react-router';

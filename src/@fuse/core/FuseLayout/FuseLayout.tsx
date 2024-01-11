@@ -8,7 +8,7 @@ import {
 	setSettings
 } from 'app/store/fuse/settingsSlice';
 import { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';

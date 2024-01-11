@@ -1,7 +1,7 @@
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { forwardRef, ReactElement, ReactNode } from 'react';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { useSelector } from 'react-redux';
 import { closeNoteDialog, selectNoteDialogId } from '../../store/dialogsSlice';
 

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
