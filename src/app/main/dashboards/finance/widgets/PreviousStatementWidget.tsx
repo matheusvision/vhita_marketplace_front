@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import PreviousStatementWidgetType from './types/PreviousStatementWidgetType';
 import { selectWidget } from '../FinanceDashboardApi';
 
@@ -11,7 +11,7 @@ import { selectWidget } from '../FinanceDashboardApi';
  * The PreviousStatementWidget widget.
  */
 function PreviousStatementWidget() {
-	const widget = useAppSelector(selectWidget<PreviousStatementWidgetType>('previousStatement'));
+	const widget = useSelector(selectWidget<PreviousStatementWidgetType>('previousStatement'));
 
 	if (!widget) {
 		return null;

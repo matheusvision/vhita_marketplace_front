@@ -9,9 +9,10 @@ import keycode from 'keycode';
 import { useCallback, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
+import { useSelector } from 'react-redux';
 import Chat from './Chat';
 import ContactList from './ContactList';
 import { selectSelectedContactId } from './store/selectedContactIdSlice';
@@ -108,10 +109,10 @@ function MessengerPanel() {
 	const theme = useTheme();
 	const ref = useRef<HTMLDivElement>(null);
 
-	const selectedContactId = useAppSelector(selectSelectedContactId);
+	const selectedContactId = useSelector(selectSelectedContactId);
 	const { data: contacts } = useGetMessengerContactsQuery();
 	const selectedContact = _.find(contacts, { id: selectedContactId });
-	const state = useAppSelector(selectChatPanelState);
+	const state = useSelector(selectChatPanelState);
 
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {

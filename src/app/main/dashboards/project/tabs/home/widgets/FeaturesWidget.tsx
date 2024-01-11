@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import WidgetDataType from './types/WidgetDataType';
 import { selectWidget } from '../../../ProjectDashboardApi';
 
@@ -11,7 +11,7 @@ import { selectWidget } from '../../../ProjectDashboardApi';
  * The FeaturesWidget widget.
  */
 function FeaturesWidget() {
-	const widget = useAppSelector(selectWidget<WidgetDataType>('features'));
+	const widget = useSelector(selectWidget<WidgetDataType>('features'));
 
 	if (!widget) {
 		return null;

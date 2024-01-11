@@ -8,11 +8,12 @@ import {
 	setSettings
 } from 'app/store/fuse/settingsSlice';
 import { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 import { PartialDeep } from 'type-fest';
+import { useSelector } from 'react-redux';
 
 export type FuseRouteObjectType = RouteObject & {
 	settings?: FuseSettingsConfigType;
@@ -35,8 +36,8 @@ type FuseLayoutProps = {
 function FuseLayout(props: FuseLayoutProps) {
 	const { layouts, ...restProps } = props;
 	const dispatch = useAppDispatch();
-	const settings = useAppSelector(selectFuseCurrentSettings);
-	const defaultSettings = useAppSelector(selectFuseDefaultSettings);
+	const settings = useSelector(selectFuseCurrentSettings);
+	const defaultSettings = useSelector(selectFuseDefaultSettings);
 
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;

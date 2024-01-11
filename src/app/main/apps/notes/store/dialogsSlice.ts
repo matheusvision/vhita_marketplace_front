@@ -1,5 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 import _ from '@lodash';
+import { appSelector } from 'app/store/store';
 import { AppRootStateType } from './index';
 import { NotesNote, RouteParams, selectNoteList } from '../NotesApi';
 
@@ -35,7 +36,7 @@ export const dialogsSlice = createSlice({
 
 export const { openNoteDialog, closeNoteDialog, closeLabelsDialog, openLabelsDialog } = dialogsSlice.actions;
 
-export const selectNoteDialogId = (state: AppRootStateType) => state.notesApp?.dialogs?.noteDialogId;
+export const selectNoteDialogId = appSelector((state: AppRootStateType) => state.notesApp?.dialogs?.noteDialogId);
 
 export const selectDialogNote = (routeParams: RouteParams) =>
 	createSelector([selectNoteDialogId, selectNoteList(routeParams)], (noteId: string, notes: NotesNote[]) => {

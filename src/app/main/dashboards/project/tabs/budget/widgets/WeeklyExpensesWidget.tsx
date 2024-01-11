@@ -4,8 +4,8 @@ import IconButton from '@mui/material/IconButton';
 import ReactApexChart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
+import { useSelector } from 'react-redux';
 import ExpensesDataType from './types/ExpensesDataType';
 import { selectWidget } from '../../../ProjectDashboardApi';
 
@@ -13,7 +13,7 @@ import { selectWidget } from '../../../ProjectDashboardApi';
  * The MonthlyExpensesWidget widget.
  */
 function WeeklyExpensesWidget() {
-	const widget = useAppSelector(selectWidget<ExpensesDataType>('weeklyExpenses'));
+	const widget = useSelector(selectWidget<ExpensesDataType>('weeklyExpenses'));
 
 	if (!widget) {
 		return null;

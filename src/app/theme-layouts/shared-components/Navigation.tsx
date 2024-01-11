@@ -1,11 +1,12 @@
 import FuseNavigation from '@fuse/core/FuseNavigation';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { selectNavigation } from 'app/store/fuse/navigationSlice';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
 import { FuseNavigationProps } from '@fuse/core/FuseNavigation/FuseNavigation';
+import { useSelector } from 'react-redux';
 
 /**
  * Navigation
@@ -13,7 +14,7 @@ import { FuseNavigationProps } from '@fuse/core/FuseNavigation/FuseNavigation';
 function Navigation(props: Partial<FuseNavigationProps>) {
 	const { className = '', layout = 'vertical', dense, active } = props;
 
-	const navigation = useAppSelector(selectNavigation);
+	const navigation = useSelector(selectNavigation);
 
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 

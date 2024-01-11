@@ -13,9 +13,10 @@ import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import themesConfig from 'app/configs/themesConfig';
 import { changeFuseTheme } from 'app/store/fuse/settingsSlice';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { usePrevious } from '@fuse/hooks';
 import _ from '@lodash';
+import { useSelector } from 'react-redux';
 import FuseSettingsViewerDialog from './FuseSettingsViewerDialog';
 import { selectIsUserGuest, selectUserSettings } from '../../auth/user/userSlice';
 import { useAuth } from '../../auth/AuthRouteProvider';
@@ -106,8 +107,8 @@ function SettingsPanel() {
 	const theme = useTheme();
 	const [open, setOpen] = useState('');
 	const dispatch = useAppDispatch();
-	const isUserGuest = useAppSelector(selectIsUserGuest);
-	const userSettings = useAppSelector(selectUserSettings);
+	const isUserGuest = useSelector(selectIsUserGuest);
+	const userSettings = useSelector(selectUserSettings);
 	const prevUserSettings = usePrevious(userSettings);
 
 	const { updateUser } = useAuth();

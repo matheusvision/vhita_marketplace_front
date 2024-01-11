@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import ContactListItem from './ContactListItem';
 import { selectGroupedFilteredContacts, selectFilteredContactList } from './ContactsApi';
 
@@ -10,8 +10,8 @@ import { selectGroupedFilteredContacts, selectFilteredContactList } from './Cont
  * The contacts list.
  */
 function ContactsList() {
-	const filteredData = useAppSelector(selectFilteredContactList);
-	const groupedFilteredContacts = useAppSelector(selectGroupedFilteredContacts);
+	const filteredData = useSelector(selectFilteredContactList);
+	const groupedFilteredContacts = useSelector(selectGroupedFilteredContacts);
 
 	if (!filteredData) {
 		return null;

@@ -3,8 +3,8 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
+import { useSelector } from 'react-redux';
 import BudgetDistributionDataType from './types/BudgetDistributionDataType';
 import { selectWidget } from '../../../ProjectDashboardApi';
 
@@ -12,7 +12,7 @@ import { selectWidget } from '../../../ProjectDashboardApi';
  * The BudgetDistributionWidget widget.
  */
 function BudgetDistributionWidget() {
-	const widget = useAppSelector(selectWidget<BudgetDistributionDataType>('budgetDistribution'));
+	const widget = useSelector(selectWidget<BudgetDistributionDataType>('budgetDistribution'));
 
 	if (!widget) {
 		return null;

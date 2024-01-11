@@ -2,9 +2,9 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import NoteListItem from './NoteListItem';
 import { NotesNote, RouteParams, useGetNotesListQuery } from './NotesApi';
 import { selectSearchText } from './store/searchTextSlice';
@@ -16,7 +16,7 @@ function NoteList() {
 	const routeParams = useParams<RouteParams>();
 	const { data: notes } = useGetNotesListQuery(routeParams);
 
-	const searchText = useAppSelector(selectSearchText);
+	const searchText = useSelector(selectSearchText);
 
 	const [filteredData, setFilteredData] = useState<NotesNote[]>([]);
 

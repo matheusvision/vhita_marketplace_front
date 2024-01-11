@@ -6,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import {
 	DateSelectArg,
 	DatesSetArg,
@@ -17,6 +17,7 @@ import {
 	EventDropArg,
 	EventRemoveArg
 } from '@fullcalendar/core';
+import { useSelector } from 'react-redux';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
 import { openEditEventDialog, openNewEventDialog } from './store/eventDialogSlice';
@@ -102,7 +103,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function CalendarApp() {
 	const [currentDate, setCurrentDate] = useState<DatesSetArg>();
 	const dispatch = useAppDispatch();
-	const events = useAppSelector(selectFilteredEvents);
+	const events = useSelector(selectFilteredEvents);
 	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);

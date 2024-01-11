@@ -1,7 +1,8 @@
-import QuickPanel from 'app/theme-layouts/shared-components/quickPanel/QuickPanel';
-import { memo } from 'react';
-import MessengerPanel from 'src/app/main/apps/messenger/messengerPanel/MessengerPanel';
-import NotificationPanel from 'src/app/main/apps/notifications/NotificationPanel';
+import { memo, lazy } from 'react';
+
+const QuickPanel = lazy(() => import('app/theme-layouts/shared-components/quickPanel/QuickPanel'));
+const MessengerPanel = lazy(() => import('src/app/main/apps/messenger/messengerPanel/MessengerPanel'));
+const NotificationPanel = lazy(() => import('src/app/main/apps/notifications/NotificationPanel'));
 
 /**
  * The right side layout 1.

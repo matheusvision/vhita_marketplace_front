@@ -3,8 +3,9 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { resetSearchText, selectSearchText, setSearchText } from '../store/searchTextSlice';
 
 /**
@@ -12,7 +13,7 @@ import { resetSearchText, selectSearchText, setSearchText } from '../store/searc
  */
 function OrdersHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectSearchText);
+	const searchText = useSelector(selectSearchText);
 
 	useEffect(() => {
 		return () => {

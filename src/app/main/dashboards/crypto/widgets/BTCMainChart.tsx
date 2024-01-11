@@ -2,8 +2,8 @@ import { useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
 import sub from 'date-fns/sub';
 import format from 'date-fns/format';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
+import { useSelector } from 'react-redux';
 import BTCWidgetType from '../types/BTCWidgetType';
 import { selectWidget } from '../CryptoDashboardApi';
 
@@ -13,7 +13,7 @@ import { selectWidget } from '../CryptoDashboardApi';
 function BtcMainChart() {
 	const theme = useTheme();
 
-	const btc = useAppSelector(selectWidget<BTCWidgetType>('btc'));
+	const btc = useSelector(selectWidget<BTCWidgetType>('btc'));
 
 	if (!btc) {
 		return null;

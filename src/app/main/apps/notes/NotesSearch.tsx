@@ -1,8 +1,9 @@
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { OutlinedInput } from '@mui/material';
 import { motion } from 'framer-motion';
 import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useSelector } from 'react-redux';
 import { setSearchText, selectSearchText } from './store/searchTextSlice';
 
 /**
@@ -10,7 +11,7 @@ import { setSearchText, selectSearchText } from './store/searchTextSlice';
  */
 function NotesSearch() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectSearchText);
+	const searchText = useSelector(selectSearchText);
 
 	return (
 		<motion.div

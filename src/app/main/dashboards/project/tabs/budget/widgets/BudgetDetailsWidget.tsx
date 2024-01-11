@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import Chip from '@mui/material/Chip';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import BudgetDetailsDataType from './types/BudgetDetailsDataType';
 import { selectWidget } from '../../../ProjectDashboardApi';
 
@@ -15,7 +15,7 @@ import { selectWidget } from '../../../ProjectDashboardApi';
  * The BudgetDetailsWidget widget.
  */
 function BudgetDetailsWidget() {
-	const widget = useAppSelector(selectWidget<BudgetDetailsDataType>('budgetDetails'));
+	const widget = useSelector(selectWidget<BudgetDetailsDataType>('budgetDetails'));
 
 	if (!widget) {
 		return null;

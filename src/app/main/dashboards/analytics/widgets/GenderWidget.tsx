@@ -6,7 +6,7 @@ import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import GenderWidgetType from './types/GenderWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * Gender widget.
  */
 function GenderWidget() {
-	const widget = useAppSelector<GenderWidgetType>(selectWidget('gender'));
+	const widget = useSelector<GenderWidgetType>(selectWidget('gender'));
 
 	if (!widget) {
 		return null;

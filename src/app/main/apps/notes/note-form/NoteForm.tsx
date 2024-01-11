@@ -13,11 +13,11 @@ import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import format from 'date-fns/format';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
-import { useAppSelector } from 'app/store';
 import { useDebounce } from '@fuse/hooks';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useSelector } from 'react-redux';
 import NoteFormList from './tasks/NoteFormList';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormReminder from './NoteFormReminder';
@@ -95,7 +95,7 @@ function NoteForm(props: NoteFormProps) {
 	const [removeNote] = useDeleteNotesItemMutation();
 	const [createNote] = useCreateNotesItemMutation();
 
-	const note = useAppSelector(selectDialogNote(routeParams));
+	const note = useSelector(selectDialogNote(routeParams));
 
 	const { formState, handleSubmit, getValues, watch, reset, setValue, control } = useForm<NotesNote>({
 		mode: 'onChange',

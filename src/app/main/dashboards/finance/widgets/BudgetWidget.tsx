@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import LinearProgress from '@mui/material/LinearProgress';
 import IconButton from '@mui/material/IconButton';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import BudgetWidgetType from './types/BudgetWidgetType';
 import { selectWidget } from '../FinanceDashboardApi';
 
@@ -13,7 +13,7 @@ import { selectWidget } from '../FinanceDashboardApi';
  * The BudgetWidget widget.
  */
 function BudgetWidget() {
-	const widget = useAppSelector(selectWidget<BudgetWidgetType>('budget'));
+	const widget = useSelector(selectWidget<BudgetWidgetType>('budget'));
 
 	if (!widget) {
 		return null;

@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { appSelector } from 'app/store/store';
 import { AppRootStateType } from '.';
-
-export const selectSearchText = (state: AppRootStateType) => state.mailboxApp?.searchText;
 
 const initialState = '';
 
@@ -24,6 +23,8 @@ export const searchTextSlice = createSlice({
 });
 
 export const { setSearchText } = searchTextSlice.actions;
+
+export const selectSearchText = appSelector((state: AppRootStateType) => state.mailboxApp?.searchText);
 
 export type searchTextSliceType = typeof searchTextSlice;
 

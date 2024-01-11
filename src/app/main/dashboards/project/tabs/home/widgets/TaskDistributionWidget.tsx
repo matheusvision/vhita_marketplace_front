@@ -6,8 +6,8 @@ import ReactApexChart from 'react-apexcharts';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
+import { useSelector } from 'react-redux';
 import { selectWidget } from '../../../ProjectDashboardApi';
 import TaskDistributionDataType from './types/TaskDistributionDataType';
 
@@ -15,7 +15,7 @@ import TaskDistributionDataType from './types/TaskDistributionDataType';
  * The TaskDistributionWidget widget.
  */
 function TaskDistributionWidget() {
-	const widget = useAppSelector(selectWidget<TaskDistributionDataType>('taskDistribution'));
+	const widget = useSelector(selectWidget<TaskDistributionDataType>('taskDistribution'));
 
 	if (!widget) {
 		return null;

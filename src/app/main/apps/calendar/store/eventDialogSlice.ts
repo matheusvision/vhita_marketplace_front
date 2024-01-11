@@ -3,6 +3,7 @@ import { RootStateType } from 'app/store/types';
 import { DeepPartial } from 'react-hook-form';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import formatISO from 'date-fns/formatISO';
+import { appSelector } from 'app/store/store';
 import { CalendarApiType, Event } from '../CalendarApi';
 
 type AppRootStateType = RootStateType<eventDialogSliceType> & CalendarApiType;
@@ -87,7 +88,7 @@ export const eventDialogSlice = createSlice({
 export const { openNewEventDialog, closeNewEventDialog, openEditEventDialog, closeEditEventDialog } =
 	eventDialogSlice.actions;
 
-export const selectEventDialog = (state: AppRootStateType) => state.calendarApp.eventDialog;
+export const selectEventDialog = appSelector((state: AppRootStateType) => state.calendarApp.eventDialog);
 
 export type eventDialogSliceType = typeof eventDialogSlice;
 

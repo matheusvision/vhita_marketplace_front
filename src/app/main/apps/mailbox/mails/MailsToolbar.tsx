@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ChangeEvent, MouseEvent, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -13,6 +13,7 @@ import { OutlinedInput } from '@mui/material';
 import Hidden from '@mui/material/Hidden';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
+import { useSelector } from 'react-redux';
 import MailListTitle from './MailListTitle';
 import {
 	selectTrashFolderId,
@@ -50,13 +51,13 @@ function MailToolbar(props: MailToolbarProps) {
 
 	const [setActionToMails] = useApplyMailboxMailActionMutation();
 
-	const searchText = useAppSelector(selectSearchText);
+	const searchText = useSelector(selectSearchText);
 
 	const { t } = useTranslation('mailboxApp');
 
-	const selectedMailIds = useAppSelector(selectSelectedMailIds);
+	const selectedMailIds = useSelector(selectSelectedMailIds);
 
-	const trashFolderId = useAppSelector(selectTrashFolderId);
+	const trashFolderId = useSelector(selectTrashFolderId);
 
 	const defaultMenuState = {
 		select: null,

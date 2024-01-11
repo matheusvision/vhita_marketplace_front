@@ -8,7 +8,7 @@ import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -22,8 +22,8 @@ const Root = styled(Paper)(({ theme }) => ({
  */
 function VisitorsOverviewWidget() {
 	const theme = useTheme();
-	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.main));
-	const widget = useAppSelector<VisitorsOverviewWidgetType>(selectWidget('visitors'));
+	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.main));
+	const widget = useSelector<VisitorsOverviewWidgetType>(selectWidget('visitors'));
 
 	if (!widget) {
 		return null;

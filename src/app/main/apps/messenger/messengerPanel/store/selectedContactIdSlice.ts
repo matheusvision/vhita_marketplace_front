@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
+import { appSelector } from 'app/store/store';
 
 export type AppRootStateType = RootStateType<contactsSliceType>;
 
@@ -19,7 +20,7 @@ export const selectedContactIdSlice = createSlice({
 
 export const { setSelectedContactId } = selectedContactIdSlice.actions;
 
-export const selectSelectedContactId = (state: AppRootStateType) => state.chatPanel.selectedContactId;
+export const selectSelectedContactId = appSelector((state: AppRootStateType) => state.chatPanel.selectedContactId);
 
 export type contactsSliceType = typeof selectedContactIdSlice;
 

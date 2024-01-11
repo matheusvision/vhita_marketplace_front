@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import WatchlistItem from './widgets/WatchlistItem';
 import BuySellForm from './widgets/BuySellForm';
 import WatchlistType from './types/WatchlistType';
@@ -9,7 +9,7 @@ import { selectWidget } from './CryptoDashboardApi';
  * The crypto dashboard app sidebar.
  */
 function CryptoDashboardAppSidebar() {
-	const watchlist = useAppSelector(selectWidget<WatchlistType>('watchlist'));
+	const watchlist = useSelector(selectWidget<WatchlistType>('watchlist'));
 
 	if (!watchlist) {
 		return null;

@@ -1,16 +1,16 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppSelector } from 'app/store';
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useSelector } from 'react-redux';
 import { selectRemainingTasks } from './TasksApi';
 
 /**
  * The tasks header.
  */
 function TasksHeader() {
-	const remainingTasks = useAppSelector(selectRemainingTasks);
+	const remainingTasks = useSelector(selectRemainingTasks);
 
 	return (
 		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 p-24 sm:p-32 w-full border-b-1 justify-between">

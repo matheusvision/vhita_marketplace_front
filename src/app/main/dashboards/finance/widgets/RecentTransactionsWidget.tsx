@@ -9,7 +9,7 @@ import { memo } from 'react';
 import format from 'date-fns/format';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import RecentTransactionsWidgetType from './types/RecentTransactionsWidgetType';
 import { selectWidget } from '../FinanceDashboardApi';
 
@@ -17,7 +17,7 @@ import { selectWidget } from '../FinanceDashboardApi';
  * The RecentTransactionsWidget widget.
  */
 function RecentTransactionsWidget() {
-	const widget = useAppSelector(selectWidget<RecentTransactionsWidgetType>('recentTransactions'));
+	const widget = useSelector(selectWidget<RecentTransactionsWidgetType>('recentTransactions'));
 
 	if (!widget) {
 		return null;

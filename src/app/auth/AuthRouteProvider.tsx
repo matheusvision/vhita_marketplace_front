@@ -1,15 +1,14 @@
 import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
-import { useAppSelector, useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen/FuseSplashScreen';
 import { resetUser, selectUser, selectUserRole, setUser, updateUser } from 'src/app/auth/user/userSlice';
 import BrowserRouter from '@fuse/core/BrowserRouter';
-import withSlices from 'app/store/withSlices';
 import { PartialDeep } from 'type-fest';
 import firebase from 'firebase/compat/app';
 import _ from '@lodash';
+import { useSelector } from 'react-redux';
 import useJwtAuth, { JwtAuth } from './services/jwt/useJwtAuth';
-import userSlice from './user/userSlice';
 import { User } from './user';
 import useFirebaseAuth from './services/firebase/useFirebaseAuth';
 import UserModel from './user/models/UserModel';
@@ -46,11 +45,11 @@ type AuthProviderProps = { children: React.ReactNode };
 function AuthRouteProvider(props: AuthProviderProps) {
 	const { children } = props;
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
+	const user = useSelector(selectUser);
 	/**
 	 * Get user role from store
 	 */
-	const userRole = useAppSelector(selectUserRole);
+	const userRole = useSelector(selectUserRole);
 
 	/**
 	 * Jwt auth service
@@ -231,6 +230,4 @@ function useAuth(): AuthContext {
 	return context;
 }
 
-const AuthRouteProviderWithReducer = withSlices([userSlice])(AuthRouteProvider);
-
-export { useAuth, AuthRouteProviderWithReducer as AuthRouteProvider };
+export { useAuth, AuthRouteProvider };

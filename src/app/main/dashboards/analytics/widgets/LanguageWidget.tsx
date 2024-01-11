@@ -6,7 +6,7 @@ import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import LanguageWidgetType from './types/LanguageWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * Language widget.
  */
 function LanguageWidget() {
-	const widget = useAppSelector<LanguageWidgetType>(selectWidget('language'));
+	const widget = useSelector<LanguageWidgetType>(selectWidget('language'));
 
 	if (!widget) {
 		return null;

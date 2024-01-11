@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import ItemIcon from './ItemIcon';
 import { resetSelectedItemId } from './store/selectedItemIdSlice';
 import { selectSelectedItem } from './FileManagerApi';
@@ -23,7 +24,7 @@ function DetailSidebarContent() {
 
 	const dispatch = useAppDispatch();
 
-	const item = useAppSelector(selectSelectedItem(folderId));
+	const item = useSelector(selectSelectedItem(folderId));
 
 	useEffect(() => {
 		return () => {

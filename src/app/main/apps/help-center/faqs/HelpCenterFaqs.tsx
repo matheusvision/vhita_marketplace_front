@@ -1,8 +1,8 @@
-import { useAppSelector } from 'app/store';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import FaqList from './FaqList';
 import { useGetHelpCenterFaqCategoriesQuery, useGetHelpCenterFaqsQuery, selectGroupedFaqs } from '../HelpCenterApi';
 
@@ -13,7 +13,7 @@ function HelpCenterFaqs() {
 	const navigate = useNavigate();
 	useGetHelpCenterFaqsQuery();
 	useGetHelpCenterFaqCategoriesQuery();
-	const groupedFaqs = useAppSelector(selectGroupedFaqs);
+	const groupedFaqs = useSelector(selectGroupedFaqs);
 
 	const handleGoBack = () => {
 		navigate(-1);

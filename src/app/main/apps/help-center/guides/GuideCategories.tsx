@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useSelector } from 'react-redux';
 import GuideListMenu from './GuideListMenu';
 import { useGetHelpCenterGuidesQuery, selectGroupedGuides } from '../HelpCenterApi';
 
@@ -12,7 +12,7 @@ import { useGetHelpCenterGuidesQuery, selectGroupedGuides } from '../HelpCenterA
 function GuideCategories() {
 	const navigate = useNavigate();
 	useGetHelpCenterGuidesQuery();
-	const groupedGuides = useAppSelector(selectGroupedGuides);
+	const groupedGuides = useSelector(selectGroupedGuides);
 
 	const handleGoBack = () => {
 		navigate(-1);

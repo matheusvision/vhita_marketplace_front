@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { appSelector } from 'app/store/store';
 import { AppRootStateType } from '.';
 
 const initialState = false;
@@ -18,6 +19,6 @@ export const { toggleVariateDescSize } = variateDescSlice.actions;
 
 export type variateDescSliceType = typeof variateDescSlice;
 
-export const selectVariateDescSize = (state: AppRootStateType) => state.notesApp?.variateDesc;
+export const selectVariateDescSize = appSelector((state: AppRootStateType) => state.notesApp?.variateDesc);
 
 export default variateDescSlice.reducer;

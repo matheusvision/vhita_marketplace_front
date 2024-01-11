@@ -6,7 +6,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Tooltip } from '@mui/material';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import VisitorsVsPageViewsType from './types/VisitorsVsPageViewsType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -16,7 +16,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
 function VisitorsVsPageViewsWidget() {
 	const theme = useTheme();
 
-	const widget = useAppSelector<VisitorsVsPageViewsType>(selectWidget('visitorsVsPageViews'));
+	const widget = useSelector<VisitorsVsPageViewsType>(selectWidget('visitorsVsPageViews'));
 
 	if (!widget) {
 		return null;

@@ -5,8 +5,9 @@ import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import { ChangeEvent, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { selectSearchText, setSearchText, resetSearchText } from './store/searchTextSlice';
 import { selectFilteredContactList } from './ContactsApi';
 
@@ -15,8 +16,8 @@ import { selectFilteredContactList } from './ContactsApi';
  */
 function ContactsHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectSearchText);
-	const filteredData = useAppSelector(selectFilteredContactList);
+	const searchText = useSelector(selectSearchText);
+	const filteredData = useSelector(selectFilteredContactList);
 
 	useEffect(() => {
 		return () => {

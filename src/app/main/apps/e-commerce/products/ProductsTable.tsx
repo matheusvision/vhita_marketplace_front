@@ -10,13 +10,13 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { ChangeEvent, MouseEvent, useState } from 'react';
-import { useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Many } from 'lodash';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import ProductsTableHead from './ProductsTableHead';
 import { EcommerceProduct, selectFilteredProducts, useGetECommerceProductsQuery } from '../ECommerceApi';
 
@@ -32,7 +32,7 @@ function ProductsTable(props: ProductsTableProps) {
 
 	const { isLoading } = useGetECommerceProductsQuery();
 
-	const data = useAppSelector(selectFilteredProducts);
+	const data = useSelector(selectFilteredProducts);
 
 	const [selected, setSelected] = useState<EcommerceProduct['id'][]>([]);
 

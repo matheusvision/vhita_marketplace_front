@@ -3,8 +3,8 @@ import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import ReactApexChart from 'react-apexcharts';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
+import { useSelector } from 'react-redux';
 import AccountBalanceWidgetType from './types/AccountBalanceWidgetType';
 import { selectWidget } from '../FinanceDashboardApi';
 
@@ -14,7 +14,7 @@ import { selectWidget } from '../FinanceDashboardApi';
 function AccountBalanceWidget() {
 	const theme = useTheme();
 
-	const widget = useAppSelector(selectWidget<AccountBalanceWidgetType>('accountBalance'));
+	const widget = useSelector(selectWidget<AccountBalanceWidgetType>('accountBalance'));
 
 	if (!widget) {
 		return null;

@@ -29,7 +29,7 @@ const initialState: FuseNavItemType[] = navigationAdapter.upsertMany(emptyInitia
 export const appendNavigationItem =
 	(item: FuseNavItemType, parentId?: string | null): AppThunkType =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseNavigationHelper.appendNavItem(navigation, FuseNavItemModel(item), parentId)));
@@ -43,7 +43,7 @@ export const appendNavigationItem =
 export const prependNavigationItem =
 	(item: FuseNavItemType, parentId?: string | null): AppThunkType =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseNavigationHelper.prependNavItem(navigation, FuseNavItemModel(item), parentId)));
@@ -57,7 +57,7 @@ export const prependNavigationItem =
 export const updateNavigationItem =
 	(id: string, item: PartialDeep<FuseNavItemType>): AppThunkType =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseNavigationHelper.updateNavItem(navigation, id, item)));
@@ -71,7 +71,7 @@ export const updateNavigationItem =
 export const removeNavigationItem =
 	(id: string): AppThunkType =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = selectNavigationAll(AppState);
 
 		dispatch(setNavigation(FuseNavigationHelper.removeNavItem(navigation, id)));

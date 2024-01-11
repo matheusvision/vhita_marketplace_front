@@ -4,7 +4,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import { selectGuideCategoryBySlug, useGetHelpCenterGuideByCategoryQuery } from '../HelpCenterApi';
 
 /**
@@ -14,7 +14,7 @@ function HelpCenterGuide() {
 	const navigate = useNavigate();
 	const routeParams = useParams();
 	const { guideSlug, categorySlug } = routeParams;
-	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
+	const category = useSelector(selectGuideCategoryBySlug(categorySlug));
 	const { data: guide } = useGetHelpCenterGuideByCategoryQuery({
 		categorySlug,
 		guideSlug

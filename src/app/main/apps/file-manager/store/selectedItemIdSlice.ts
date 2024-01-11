@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { appSelector } from 'app/store/store';
 import { AppRootStateType } from './index';
 
 const initialState: string | null = null;
@@ -15,9 +16,9 @@ export const selectedItemIdSlice = createSlice({
 	}
 });
 
-export const selectSelectedItemId = (state: AppRootStateType) => state?.fileManagerApp.selectedItemId;
-
 export const { setSelectedItemId, resetSelectedItemId } = selectedItemIdSlice.actions;
+
+export const selectSelectedItemId = appSelector((state: AppRootStateType) => state?.fileManagerApp.selectedItemId);
 
 export type selectedItemIdSliceType = typeof selectedItemIdSlice;
 

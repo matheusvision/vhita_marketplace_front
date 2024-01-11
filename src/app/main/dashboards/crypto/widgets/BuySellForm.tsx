@@ -8,9 +8,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import _ from '@lodash';
 import Typography from '@mui/material/Typography';
-import { useAppSelector } from 'app/store';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useSelector } from 'react-redux';
 import WalletsType from '../types/WalletsType';
 import PricesType from '../types/PricesType';
 import CoinTypes from '../types/CoinTypes';
@@ -61,8 +61,8 @@ const schema = z.object({
  * The buy sell form.
  */
 function BuySellForm() {
-	const wallets = useAppSelector(selectWidget<WalletsType>('wallets'));
-	const prices = useAppSelector(selectWidget<PricesType>('prices'));
+	const wallets = useSelector(selectWidget<WalletsType>('wallets'));
+	const prices = useSelector(selectWidget<PricesType>('prices'));
 
 	if (!wallets || !prices) {
 		return null;

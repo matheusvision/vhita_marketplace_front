@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import { memo, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import Box from '@mui/material/Box';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
+import { useSelector } from 'react-redux';
 import GithubIssuesDataType from './types/GithubIssuesDataType';
 import { selectWidget } from '../../../ProjectDashboardApi';
 
@@ -19,7 +19,7 @@ function GithubIssuesWidget() {
 	const [awaitRender, setAwaitRender] = useState(true);
 	const [tabValue, setTabValue] = useState(0);
 
-	const widget = useAppSelector(selectWidget<GithubIssuesDataType>('githubIssues'));
+	const widget = useSelector(selectWidget<GithubIssuesDataType>('githubIssues'));
 
 	if (!widget) {
 		return null;

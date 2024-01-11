@@ -27,9 +27,9 @@ export const selectedMailIdsSlice = createSlice({
 
 export const { setSelectedMailIds, toggleInSelectedMails, deselectAllMails } = selectedMailIdsSlice.actions;
 
-export type selectedMailIdsSliceType = typeof selectedMailIdsSlice;
-
 const selectedMailIdsReducer = selectedMailIdsSlice.reducer;
+
+export type selectedMailIdsSliceType = typeof selectedMailIdsSlice;
 
 export default selectedMailIdsReducer;
 

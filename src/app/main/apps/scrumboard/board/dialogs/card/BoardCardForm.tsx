@@ -17,12 +17,13 @@ import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { SyntheticEvent, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { showMessage } from 'app/store/fuse/messageSlice';
+import { useSelector } from 'react-redux';
 import { closeCardDialog, selectCardData } from '../../../store/cardDialogSlice';
 import CardActivity from './activity/CardActivity';
 import CardAttachment from './attachment/CardAttachment';
@@ -61,7 +62,7 @@ function BoardCardForm() {
 	const { data: listItems, isLoading: isListItemsLoading } = useGetScrumboardBoardListsQuery(boardId);
 	const loading = isBoardLoading || isMembersLoading || isLabelsLoading || isListItemsLoading;
 
-	const card = useAppSelector(selectCardData);
+	const card = useSelector(selectCardData);
 
 	const [updateCard] = useUpdateScrumboardBoardCardMutation();
 	const [removeCard] = useDeleteScrumboardBoardCardMutation();

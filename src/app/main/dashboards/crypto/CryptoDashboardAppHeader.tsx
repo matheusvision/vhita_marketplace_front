@@ -4,8 +4,8 @@ import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import clsx from 'clsx';
 import Divider from '@mui/material/Divider';
-import { useAppSelector } from 'app/store';
 import { MouseEvent } from 'react';
+import { useSelector } from 'react-redux';
 import ValueSectionSmall from './widgets/ValueSectionSmall';
 import BTCWidgetType from './types/BTCWidgetType';
 import { selectWidget } from './CryptoDashboardApi';
@@ -19,7 +19,7 @@ type CryptoDashboardAppHeaderProps = {
  */
 function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 	const { onToggleLeftSidebar } = props;
-	const btc = useAppSelector(selectWidget<BTCWidgetType>('btc'));
+	const btc = useSelector(selectWidget<BTCWidgetType>('btc'));
 
 	if (!btc) {
 		return null;

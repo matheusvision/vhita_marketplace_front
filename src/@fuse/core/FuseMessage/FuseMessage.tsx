@@ -6,7 +6,8 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from 'app/store/fuse/messageSlice';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
+import { useSelector } from 'react-redux';
 import FuseSvgIcon from '../FuseSvgIcon';
 
 export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info';
@@ -52,8 +53,8 @@ const variantIcon = {
  */
 function FuseMessage() {
 	const dispatch = useAppDispatch();
-	const state = useAppSelector(selectFuseMessageState);
-	const options = useAppSelector(selectFuseMessageOptions);
+	const state = useSelector(selectFuseMessageState);
+	const options = useSelector(selectFuseMessageOptions);
 
 	return (
 		<StyledSnackbar

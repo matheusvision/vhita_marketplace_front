@@ -117,6 +117,7 @@ module.exports = {
         "react/jsx-props-no-spreading": "off",
         "react/no-array-index-key": "off",
         "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }],
-        "import/no-import-module-exports": "off"
+        "import/no-import-module-exports": "off",
+        "import/no-extraneous-dependencies": "off"
     },
 }

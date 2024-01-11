@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useSelector } from 'react-redux';
 import MailListItem from './MailListItem';
 import { selectSearchText } from '../store/searchTextSlice';
 import { MailboxMail, useGetMailboxMailsQuery } from '../MailboxApi';
@@ -16,7 +16,7 @@ import { MailboxMail, useGetMailboxMailsQuery } from '../MailboxApi';
  * The mail list.
  */
 function MailList() {
-	const searchText = useAppSelector(selectSearchText);
+	const searchText = useSelector(selectSearchText);
 	const routeParams = useParams();
 	const { data: mails } = useGetMailboxMailsQuery(routeParams);
 

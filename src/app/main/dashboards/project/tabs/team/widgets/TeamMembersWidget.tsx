@@ -3,7 +3,7 @@ import { memo } from 'react';
 import Paper from '@mui/material/Paper';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import { selectWidget } from '../../../ProjectDashboardApi';
 import TeamMemberType from './types/TeamMemberType';
 
@@ -11,7 +11,7 @@ import TeamMemberType from './types/TeamMemberType';
  * The TeamMembersWidget widget.
  */
 function TeamMembersWidget() {
-	const members = useAppSelector(selectWidget<TeamMemberType[]>('teamMembers'));
+	const members = useSelector(selectWidget<TeamMemberType[]>('teamMembers'));
 
 	if (!members) {
 		return null;

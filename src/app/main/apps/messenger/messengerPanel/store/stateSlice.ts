@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
+import { appSelector } from 'app/store/store';
 
 export type AppRootStateType = RootStateType<stateSlice>;
 
@@ -18,7 +19,7 @@ export const stateSlice = createSlice({
 
 export const { toggleChatPanel, openChatPanel, closeChatPanel } = stateSlice.actions;
 
-export const selectChatPanelState = (state: AppRootStateType) => state.chatPanel.state;
+export const selectChatPanelState = appSelector((state: AppRootStateType) => state.chatPanel.state);
 
 export type stateSlice = typeof stateSlice;
 

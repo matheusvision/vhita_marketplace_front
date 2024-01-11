@@ -10,7 +10,7 @@ import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import { selectWidget } from '../../../ProjectDashboardApi';
 import ScheduleDataType from './types/ScheduleDataType';
 
@@ -18,7 +18,7 @@ import ScheduleDataType from './types/ScheduleDataType';
  * The ScheduleWidget widget.
  */
 function ScheduleWidget() {
-	const widget = useAppSelector(selectWidget<ScheduleDataType>('schedule'));
+	const widget = useSelector(selectWidget<ScheduleDataType>('schedule'));
 
 	if (!widget) {
 		return null;

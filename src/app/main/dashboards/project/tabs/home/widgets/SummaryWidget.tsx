@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { memo, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import { selectWidget } from '../../../ProjectDashboardApi';
 import WidgetDataType, { RangeType } from './types/WidgetDataType';
 
@@ -13,7 +13,7 @@ import WidgetDataType, { RangeType } from './types/WidgetDataType';
  * The SummaryWidget widget.
  */
 function SummaryWidget() {
-	const widget = useAppSelector(selectWidget<WidgetDataType>('summary'));
+	const widget = useSelector(selectWidget<WidgetDataType>('summary'));
 
 	if (!widget) {
 		return null;

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { appSelector } from 'app/store/store';
 import { AppRootStateType } from '.';
 import { ScrumboardCard } from '../ScrumboardApi';
 
@@ -32,9 +33,9 @@ export const data = (state: AppRootStateType) => state.scrumboardApp.cardDialog.
 
 export const { openCardDialog, closeCardDialog } = cardDialogSlice.actions;
 
-export const selectCardDialogOpen = (state: AppRootStateType) => state.scrumboardApp.cardDialog.dialogOpen;
+export const selectCardDialogOpen = appSelector((state: AppRootStateType) => state.scrumboardApp.cardDialog.dialogOpen);
 
-export const selectCardData = (state: AppRootStateType) => state.scrumboardApp.cardDialog.data;
+export const selectCardData = appSelector((state: AppRootStateType) => state.scrumboardApp.cardDialog.data);
 
 export type CardSliceType = typeof cardDialogSlice;
 

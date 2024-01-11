@@ -3,11 +3,12 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FullCalendar from '@fullcalendar/react';
 import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
 import { MutableRefObject } from 'react';
+import { useSelector } from 'react-redux';
 import { openNewEventDialog } from './store/eventDialogSlice';
 import CalendarViewMenu from './CalendarViewMenu';
 
@@ -23,7 +24,7 @@ type CalendarHeaderProps = {
 function CalendarHeader(props: CalendarHeaderProps) {
 	const { calendarRef, currentDate, onToggleLeftSidebar } = props;
 
-	const mainTheme = useAppSelector(selectMainTheme);
+	const mainTheme = useSelector(selectMainTheme);
 	const calendarApi = () => calendarRef.current.getApi();
 	const dispatch = useAppDispatch();
 

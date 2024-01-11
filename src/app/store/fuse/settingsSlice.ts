@@ -14,7 +14,7 @@ import { resetUser, setUser, setUserSettings } from 'src/app/auth/user/userSlice
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
 import { RootStateType, AppThunkType } from 'app/store/types';
 import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
-import createAppAsyncThunk from 'app/store/createAppAsyncThunk';
+import { createAppAsyncThunk } from 'app/store/store';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { PartialDeep } from 'type-fest';
 import { showMessage } from './messageSlice';

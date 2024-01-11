@@ -1,5 +1,6 @@
 import { RootStateType } from 'app/store/types';
 import { createSlice } from '@reduxjs/toolkit';
+import { appSelector } from 'app/store/store';
 
 type initialStateType = boolean;
 
@@ -22,6 +23,6 @@ export const { toggleNotificationPanel, openNotificationPanel, closeNotification
 
 type AppRootStateType = RootStateType<typeof stateSlice>;
 
-export const selectNotificationPanelState = (state: AppRootStateType) => state.notificationPanel.state;
+export const selectNotificationPanelState = appSelector((state: AppRootStateType) => state.notificationPanel.state);
 
 export default stateSlice.reducer;

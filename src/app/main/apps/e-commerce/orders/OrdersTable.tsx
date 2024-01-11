@@ -11,10 +11,10 @@ import { motion } from 'framer-motion';
 import { ChangeEvent, MouseEvent, useState } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { useAppSelector } from 'app/store';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { Many } from 'lodash';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import OrdersStatus from '../order/OrdersStatus';
 import OrdersTableHead from './OrdersTableHead';
 import { EcommerceOrder, selectFilteredOrders, useGetECommerceOrdersQuery } from '../ECommerceApi';
@@ -31,7 +31,7 @@ function OrdersTable(props: OrdersTableProps) {
 
 	const { isLoading } = useGetECommerceOrdersQuery();
 
-	const data = useAppSelector(selectFilteredOrders);
+	const data = useSelector(selectFilteredOrders);
 
 	const [selected, setSelected] = useState<string[]>([]);
 

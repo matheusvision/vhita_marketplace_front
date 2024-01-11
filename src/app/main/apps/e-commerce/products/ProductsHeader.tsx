@@ -3,10 +3,11 @@ import Input from '@mui/material/Input';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ChangeEvent, useEffect } from 'react';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
+import { useSelector } from 'react-redux';
 import { resetSearchText, selectSearchText, setSearchText } from '../store/searchTextSlice';
 
 /**
@@ -14,7 +15,7 @@ import { resetSearchText, selectSearchText, setSearchText } from '../store/searc
  */
 function ProductsHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectSearchText);
+	const searchText = useSelector(selectSearchText);
 
 	useEffect(() => {
 		return () => {

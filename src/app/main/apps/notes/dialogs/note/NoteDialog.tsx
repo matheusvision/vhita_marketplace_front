@@ -1,7 +1,8 @@
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { forwardRef, ReactElement, ReactNode } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
+import { useSelector } from 'react-redux';
 import { closeNoteDialog, selectNoteDialogId } from '../../store/dialogsSlice';
 
 import NoteForm from '../../note-form/NoteForm';
@@ -25,7 +26,7 @@ const Transition = forwardRef(function Transition(props: { children: ReactElemen
  */
 function NoteDialog() {
 	const dispatch = useAppDispatch();
-	const noteDialogId = useAppSelector(selectNoteDialogId);
+	const noteDialogId = useSelector(selectNoteDialogId);
 
 	return (
 		<Dialog

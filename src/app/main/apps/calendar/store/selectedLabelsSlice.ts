@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import _ from '@lodash';
 import { RootStateType } from 'app/store/types';
+import { appSelector } from 'app/store/store';
 
 type AppRootStateType = RootStateType<labelsSliceType>;
 
@@ -18,7 +19,7 @@ export const selectedLabelsSlice = createSlice({
 	}
 });
 
-export const selectSelectedLabels = (state: AppRootStateType) => state.calendarApp?.selectedLabels;
+export const selectSelectedLabels = appSelector((state: AppRootStateType) => state.calendarApp?.selectedLabels);
 
 export const { toggleSelectedLabels, setSelectedLabels } = selectedLabelsSlice.actions;
 

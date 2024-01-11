@@ -3,9 +3,10 @@ import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import { motion } from 'framer-motion';
 import { memo, useMemo, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import clsx from 'clsx';
 import { Box, CircularProgress } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { selectSelectedContactId, setSelectedContactId } from './store/selectedContactIdSlice';
 import { openChatPanel } from './store/stateSlice';
 import ContactButton from './ContactButton';
@@ -37,7 +38,7 @@ type ContactListProps = {
 function ContactList(props: ContactListProps) {
 	const { className } = props;
 	const dispatch = useAppDispatch();
-	const selectedContactId = useAppSelector(selectSelectedContactId);
+	const selectedContactId = useSelector(selectSelectedContactId);
 	const contactListScroll = useRef<HTMLDivElement>(null);
 
 	const { data: chats, isLoading: isChatsLoading } = useGetMessengerChatsQuery();

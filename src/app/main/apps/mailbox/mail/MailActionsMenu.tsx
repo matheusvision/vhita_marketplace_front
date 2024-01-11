@@ -4,10 +4,10 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MouseEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
 	useGetMailboxMailQuery,
 	selectSpamFolderId,
@@ -34,8 +34,8 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 	const { mailId } = useParams() as { mailId: string };
 	const { data: mail } = useGetMailboxMailQuery(mailId);
 
-	const spamFolderId = useAppSelector(selectSpamFolderId);
-	const trashFolderId = useAppSelector(selectTrashFolderId);
+	const spamFolderId = useSelector(selectSpamFolderId);
+	const trashFolderId = useSelector(selectTrashFolderId);
 
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);

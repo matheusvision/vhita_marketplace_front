@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
+import { useSelector } from 'react-redux';
 import { selectWidget } from '../../../ProjectDashboardApi';
 import WidgetDataType from './types/WidgetDataType';
 
@@ -11,7 +11,7 @@ import WidgetDataType from './types/WidgetDataType';
  * The OverdueWidget widget.
  */
 function OverdueWidget() {
-	const widget = useAppSelector(selectWidget<WidgetDataType>('overdue'));
+	const widget = useSelector(selectWidget<WidgetDataType>('overdue'));
 
 	if (!widget) {
 		return null;

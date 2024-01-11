@@ -2,8 +2,9 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useSelector } from 'react-redux';
 import NoteLabel from './NoteLabel';
 import NoteReminderLabel from './NoteReminderLabel';
 import setDescriptionStyle from './setDescriptionStyle';
@@ -22,7 +23,7 @@ type NoteListItemProps = {
 function NoteListItem(props: NoteListItemProps) {
 	const { note, className } = props;
 
-	const variateDescSize = useAppSelector(selectVariateDescSize);
+	const variateDescSize = useSelector(selectVariateDescSize);
 
 	const dispatch = useAppDispatch();
 

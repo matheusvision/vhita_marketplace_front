@@ -1,9 +1,9 @@
-import { useAppSelector } from 'app/store';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import DetailSidebarContent from './DetailSidebarContent';
 import FileManagerHeader from './FileManagerHeader';
 import FileManagerList from './FileManagerList';
@@ -18,15 +18,15 @@ function FileManagerApp() {
 
 	const { folderId } = routeParams;
 
-	const selectedItem = useAppSelector(selectSelectedItemId);
+	const selectedItem = useSelector(selectSelectedItemId);
 
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const { isLoading } = useGetFileManagerFolderQuery(folderId);
 
-	const folders = useAppSelector(selectFolders(folderId));
-	const files = useAppSelector(selectFiles(folderId));
-	const path = useAppSelector(selectPath(folderId));
+	const folders = useSelector(selectFolders(folderId));
+	const files = useSelector(selectFiles(folderId));
+	const path = useSelector(selectPath(folderId));
 
 	if (isLoading) {
 		return <FuseLoading />;
