@@ -25,7 +25,7 @@ const initialState: initialStateProps = {
  * The navbar slice.
  */
 export const navbarSlice = createSlice({
-	name: 'fuse/navbar',
+	name: 'navbar',
 	initialState,
 	reducers: {
 		navbarToggleFolded: (state) => {
@@ -70,7 +70,7 @@ export const {
 	navbarToggleMobile
 } = navbarSlice.actions;
 
-export const selectFuseNavbar = ({ fuse }: AppRootStateType) => fuse.navbar;
+export const selectFuseNavbar = ({ navbar }: AppRootStateType) => navbar;
 
 export type navbarSliceType = typeof navbarSlice;
 

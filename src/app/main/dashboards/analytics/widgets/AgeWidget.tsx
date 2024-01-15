@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * The age widget.
  */
 function AgeWidget() {
-	const widget = useSelector<AgeWidgetModelType>(selectWidget('age'));
+	const widget = useSelector(selectWidget<AgeWidgetModelType>('age'));
 
 	if (!widget) {
 		return null;

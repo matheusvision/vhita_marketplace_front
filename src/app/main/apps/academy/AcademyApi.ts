@@ -1,5 +1,5 @@
 import apiService from 'app/store/apiService';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import { PartialDeep } from 'type-fest';
 
 export const addTagTypes = ['academy_courses', 'academy_course', 'academy_categories'] as const;

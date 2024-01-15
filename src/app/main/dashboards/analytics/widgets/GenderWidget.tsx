@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * Gender widget.
  */
 function GenderWidget() {
-	const widget = useSelector<GenderWidgetType>(selectWidget('gender'));
+	const widget = useSelector(selectWidget<GenderWidgetType>('gender'));
 
 	if (!widget) {
 		return null;

@@ -244,7 +244,7 @@ function FuseAuthorizationDoc() {
 				className="inline-block mb-8 italic"
 				component="code"
 			>
-				app/auth/user/userSlice.tsx (initial user state)
+				app/auth/user/store/userSlice.tsx (initial user state)
 			</Typography>
 
 			<FuseHighlight
@@ -418,7 +418,7 @@ function FuseAuthorizationDoc() {
 				className="inline-block mb-8 italic"
 				component="code"
 			>
-				app/auth/user/userSlice.tsx
+				app/auth/user/store/userSlice.tsx
 			</Typography>
 
 			<FuseHighlight

@@ -13,13 +13,13 @@ import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFuseCurrentSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
-import { selectUser } from 'src/app/auth/user/userSlice';
+import { selectFuseCurrentSettings, setDefaultSettings } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectUser } from 'src/app/auth/user/store/userSlice';
 import { useAppDispatch } from 'app/store/store';
 import { Palette } from '@mui/material/styles/createPalette';
 import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
 import { PartialDeep } from 'type-fest';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
 

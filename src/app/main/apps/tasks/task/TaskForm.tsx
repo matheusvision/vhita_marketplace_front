@@ -15,7 +15,7 @@ import Checkbox from '@mui/material/Checkbox/Checkbox';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import IconButton from '@mui/material/IconButton';
 import { useDeepCompareEffect } from '@fuse/hooks';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import TaskPrioritySelector from './TaskPrioritySelector';

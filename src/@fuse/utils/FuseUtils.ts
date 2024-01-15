@@ -510,7 +510,7 @@ class FuseUtils {
 						list.push(clone);
 					}
 					return list;
-			  }, []);
+				}, []);
 	}
 }
 

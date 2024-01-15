@@ -12,13 +12,14 @@ import FuseThemeSchemes from '@fuse/core/FuseThemeSchemes';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import themesConfig from 'app/configs/themesConfig';
-import { changeFuseTheme } from 'app/store/fuse/settingsSlice';
+import { changeFuseTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { useAppDispatch } from 'app/store/store';
 import { usePrevious } from '@fuse/hooks';
 import _ from '@lodash';
 import { useSelector } from 'react-redux';
+import { FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import FuseSettingsViewerDialog from './FuseSettingsViewerDialog';
-import { selectIsUserGuest, selectUserSettings } from '../../auth/user/userSlice';
+import { selectIsUserGuest, selectUserSettings } from '../../auth/user/store/userSlice';
 import { useAuth } from '../../auth/AuthRouteProvider';
 
 const Root = styled('div')(({ theme }) => ({
@@ -236,7 +237,7 @@ function SettingsPanel() {
 
 					<FuseThemeSchemes
 						themes={themesConfig}
-						onSelect={(_theme) => {
+						onSelect={(_theme: FuseThemeType) => {
 							dispatch(changeFuseTheme(_theme));
 						}}
 					/>

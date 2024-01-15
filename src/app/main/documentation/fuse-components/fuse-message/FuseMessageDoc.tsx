@@ -2,7 +2,7 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useAppDispatch } from 'app/store/store';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 
 /**
  * FuseMessage Doc

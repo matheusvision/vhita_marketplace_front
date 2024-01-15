@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
+import { selectFooterTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import clsx from 'clsx';
 import DemoLayoutFooterContent from 'app/theme-layouts/shared-components/DemoLayoutFooterContent';
 

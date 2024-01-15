@@ -10,7 +10,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/system/Box';
 import format from 'date-fns/format';
 import _ from '@lodash';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import { useDispatch } from 'react-redux';
 import { useGetContactsItemQuery, useGetContactsCountriesQuery, useGetContactsTagsQuery } from '../ContactsApi';
 

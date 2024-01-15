@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function Impressions() {
 	const theme = useTheme();
-	const widget = useSelector<VisitsWidgetType>(selectWidget('visits'));
+	const widget = useSelector(selectWidget<VisitsWidgetType>('visits'));
 
 	if (!widget) {
 		return null;

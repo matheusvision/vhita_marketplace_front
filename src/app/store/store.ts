@@ -1,4 +1,3 @@
-import fuse from 'app/store/fuse';
 import i18n from 'app/store/i18nSlice';
 import apiService from 'app/store/apiService';
 import {
@@ -12,7 +11,6 @@ import {
 import { createDynamicMiddleware } from '@reduxjs/toolkit/react';
 import { AppDispatchType } from 'app/store/types';
 import { useDispatch } from 'react-redux';
-import user from '../auth/user/userSlice';
 
 /**
  * The dynamic middleware instance.
@@ -32,9 +30,8 @@ export interface LazyLoadedSlices {}
  * The static reducers.
  */
 const staticReducers: ReducersMapObject = {
-	fuse,
+	// fuse,
 	i18n,
-	user,
 	[apiService.reducerPath]: apiService.reducer
 };
 

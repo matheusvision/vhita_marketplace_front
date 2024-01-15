@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * Language widget.
  */
 function LanguageWidget() {
-	const widget = useSelector<LanguageWidgetType>(selectWidget('language'));
+	const widget = useSelector(selectWidget<LanguageWidgetType>('language'));
 
 	if (!widget) {
 		return null;

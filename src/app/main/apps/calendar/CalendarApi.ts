@@ -1,5 +1,5 @@
 import { apiService as api } from 'app/store/apiService';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import { createSelector } from '@reduxjs/toolkit';
 import { Dictionary } from '@fullcalendar/core/internal';
 import { selectSelectedLabels, setSelectedLabels } from './store/selectedLabelsSlice';

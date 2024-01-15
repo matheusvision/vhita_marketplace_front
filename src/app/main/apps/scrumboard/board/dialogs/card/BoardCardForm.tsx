@@ -22,7 +22,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import { useSelector } from 'react-redux';
 import { closeCardDialog, selectCardData } from '../../../store/cardDialogSlice';
 import CardActivity from './activity/CardActivity';

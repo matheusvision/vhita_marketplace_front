@@ -75,7 +75,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 						? {
 								..._mail,
 								labels: value
-						  }
+							}
 						: _mail
 				)
 			);
@@ -89,7 +89,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 						? {
 								..._mail,
 								labels: _mail.labels.includes(value as string) ? _mail.labels : [..._mail.labels, value]
-						  }
+							}
 						: _mail
 				)
 			);
@@ -103,7 +103,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 						? {
 								..._mail,
 								folder: value
-						  }
+							}
 						: _mail
 				)
 			);
@@ -118,7 +118,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 						? {
 								..._mail,
 								starred: value
-						  }
+							}
 						: _mail
 				)
 			);
@@ -133,7 +133,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 						? {
 								..._mail,
 								important: value
-						  }
+							}
 						: _mail
 				)
 			);
@@ -147,7 +147,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 						? {
 								..._mail,
 								unread: value
-						  }
+							}
 						: _mail
 				)
 			);

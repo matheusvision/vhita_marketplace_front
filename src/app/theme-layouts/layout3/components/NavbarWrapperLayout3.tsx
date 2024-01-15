@@ -1,18 +1,23 @@
 import Hidden from '@mui/material/Hidden';
 import { styled, ThemeProvider } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import clsx from 'clsx';
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store/store';
-import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from 'app/store/fuse/settingsSlice';
+import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { Layout3ConfigDefaultsType } from 'app/theme-layouts/layout3/Layout3Config';
 import { useLocation } from 'react-router';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import {
+	navbarCloseMobile,
+	navbarSlice,
+	selectFuseNavbar
+} from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
+import NavbarToggleFab from 'app/theme-layouts/shared-components/navbar/NavbarToggleFab';
+import withSlices from 'app/store/withSlices';
 import NavbarLayout3 from './NavbarLayout3';
 import NavbarMobileLayout3 from './NavbarMobileLayout3';
-import NavbarToggleFab from '../../shared-components/NavbarToggleFab';
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 	'& > .MuiDrawer-paper': {
@@ -84,4 +89,4 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	);
 }
 
-export default memo(NavbarWrapperLayout3);
+export default withSlices([navbarSlice])(memo(NavbarWrapperLayout3));

@@ -6,10 +6,10 @@ import { useState } from 'react';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectUser } from 'src/app/auth/user/userSlice';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { darken } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
+import { selectUser } from 'src/app/auth/user/store/userSlice';
 import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 
 /**

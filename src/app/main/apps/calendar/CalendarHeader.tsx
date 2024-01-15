@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { selectMainTheme } from 'app/store/fuse/settingsSlice';
+import { selectMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { motion } from 'framer-motion';
 import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';

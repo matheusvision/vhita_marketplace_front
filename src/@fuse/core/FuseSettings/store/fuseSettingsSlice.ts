@@ -10,21 +10,22 @@ import {
 } from '@fuse/default-settings';
 import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
-import { resetUser, setUser, setUserSettings } from 'src/app/auth/user/userSlice';
+import { resetUser, setUser, setUserSettings } from 'src/app/auth/user/store/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
-import { RootStateType, AppThunkType } from 'app/store/types';
+import { AppThunk, RootStateType } from 'app/store/types';
 import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { PartialDeep } from 'type-fest';
-import { showMessage } from './messageSlice';
+import { appSelector } from 'app/store/store';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 
 type AppRootStateType = RootStateType<settingsSliceType>;
 
 export const changeFuseTheme =
-	(theme: FuseThemeType): AppThunkType<void> =>
+	(theme: FuseThemeType): AppThunk<void> =>
 	(dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
-		const { settings } = AppState.fuse;
+		const settings = AppState.fuseSettings;
 
 		const newSettings: FuseSettingsConfigType = {
 			...settings.current,
@@ -100,11 +101,11 @@ const initialState: initialStateProps = {
  * Sets the default settings for the application.
  */
 export const setDefaultSettings = createAsyncThunk(
-	'fuse/settings/setDefaultSettings',
+	'fuseSettings/setDefaultSettings',
 	async (val: PartialDeep<FuseSettingsConfigType>, { dispatch, getState }) => {
 		const AppState = getState() as AppRootStateType;
 
-		const { settings } = AppState.fuse;
+		const settings = AppState.fuseSettings;
 
 		const defaults = generateSettings(settings.defaults, val as FuseSettingsConfigType);
 
@@ -121,8 +122,8 @@ export const setDefaultSettings = createAsyncThunk(
 /**
  * The settings slice.
  */
-export const settingsSlice = createSlice({
-	name: 'fuse/settings',
+export const fuseSettingsSlice = createSlice({
+	name: 'fuseSettings',
 	initialState,
 	reducers: {
 		setSettings: (state, action: PayloadAction<FuseSettingsConfigType>) => {
@@ -167,11 +168,11 @@ export const settingsSlice = createSlice({
 
 type directionType = 'ltr' | 'rtl';
 
-const getDirection = (state: AppRootStateType) => state.fuse.settings.current.direction;
-const getMainTheme = (state: AppRootStateType) => state.fuse.settings.current.theme.main;
-const getNavbarTheme = (state: AppRootStateType) => state.fuse.settings.current.theme.navbar;
-const getToolbarTheme = (state: AppRootStateType) => state.fuse.settings.current.theme.toolbar;
-const getFooterTheme = (state: AppRootStateType) => state.fuse.settings.current.theme.footer;
+const getDirection = appSelector((state: AppRootStateType) => state.fuseSettings.current.direction);
+const getMainTheme = appSelector((state: AppRootStateType) => state.fuseSettings.current.theme.main);
+const getNavbarTheme = appSelector((state: AppRootStateType) => state.fuseSettings.current.theme.navbar);
+const getToolbarTheme = appSelector((state: AppRootStateType) => state.fuseSettings.current.theme.toolbar);
+const getFooterTheme = appSelector((state: AppRootStateType) => state.fuseSettings.current.theme.footer);
 
 /**
  * Generates the MUI theme object.
@@ -277,18 +278,22 @@ export const selectFooterThemeLight = createSelector([getFooterTheme, getDirecti
 	generateMuiTheme(changeThemeMode(theme, 'light'), direction)
 );
 
-export const selectFuseCurrentSettings = (state: AppRootStateType) => state.fuse.settings.current;
+export const selectFuseCurrentSettings = appSelector((state: AppRootStateType) => state.fuseSettings.current);
 
-export const selectFuseCurrentLayoutConfig = (state: AppRootStateType) => state.fuse.settings.current.layout.config;
+export const selectFuseCurrentLayoutConfig = appSelector(
+	(state: AppRootStateType) => state.fuseSettings.current.layout.config
+);
 
-export const selectFuseDefaultSettings = (state: AppRootStateType) => state.fuse.settings.defaults;
+export const selectFuseDefaultSettings = appSelector((state: AppRootStateType) => state.fuseSettings.defaults);
 
-export const selectCustomScrollbarsEnabled = (state: AppRootStateType) => state.fuse.settings.current.customScrollbars;
+export const selectCustomScrollbarsEnabled = appSelector(
+	(state: AppRootStateType) => state.fuseSettings.current.customScrollbars
+);
 
-// export const selectFuseThemesSettings = (state: RootState) => state.fuse.settings.themes;
+// export const selectFuseThemesSettings = (state: RootState) => state.fuseSettings.themes;
 
-export const { resetSettings, setInitialSettings, setSettings } = settingsSlice.actions;
+export const { resetSettings, setInitialSettings, setSettings } = fuseSettingsSlice.actions;
 
-export type settingsSliceType = typeof settingsSlice;
+export type settingsSliceType = typeof fuseSettingsSlice;
 
-export default settingsSlice.reducer;
+export default fuseSettingsSlice.reducer;

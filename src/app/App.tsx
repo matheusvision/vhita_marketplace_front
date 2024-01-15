@@ -7,7 +7,7 @@ import createCache, { Options } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
 import themeLayouts from 'app/theme-layouts/themeLayouts';
-import { selectMainTheme } from 'app/store/fuse/settingsSlice';
+import { selectMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import MockAdapterProvider from 'src/@mock-api/MockAdapterProvider';
 import withAppProviders from './withAppProviders';
 import { AuthRouteProvider } from './auth/AuthRouteProvider';

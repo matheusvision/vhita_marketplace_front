@@ -170,7 +170,7 @@ function Chat(props: ChatProps) {
 											</div>
 										</StyledMessageRow>
 									);
-							  })
+								})
 							: null;
 					}, [chat, user?.id])}
 				</div>

@@ -1,4 +1,5 @@
 import { apiService as api } from 'app/store/apiService';
+import { appSelector } from 'app/store/store';
 
 export const addTagTypes = ['analytics_dashboard_widgets'] as const;
 
@@ -29,9 +30,8 @@ export type AnalyticsDashboardApiType = {
 	[AnalyticsDashboardApi.reducerPath]: ReturnType<typeof AnalyticsDashboardApi.reducer>;
 };
 
-export const selectWidget =
-	<T>(id: string) =>
-	(state: AnalyticsDashboardApiType) => {
+export const selectWidget = <T>(id: string) =>
+	appSelector((state: AnalyticsDashboardApiType) => {
 		const widgets = AnalyticsDashboardApi.endpoints.getAnalyticsDashboardWidgets.select()(state)?.data;
 		return widgets?.[id] as T;
-	};
+	});

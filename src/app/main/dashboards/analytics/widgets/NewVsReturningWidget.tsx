@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * New vs. returning widget.
  */
 function NewVsReturningWidget() {
-	const widget = useSelector<NewVsReturningWidgetType>(selectWidget('newVsReturning'));
+	const widget = useSelector(selectWidget<NewVsReturningWidgetType>('newVsReturning'));
 
 	if (!widget) {
 		return null;

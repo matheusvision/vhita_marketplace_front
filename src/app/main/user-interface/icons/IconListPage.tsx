@@ -68,7 +68,7 @@ function IconListPage(props: IconListPageProps) {
 						}
 
 						return false;
-				  })
+					})
 				: listData
 		);
 	}, [listData, searchText]);

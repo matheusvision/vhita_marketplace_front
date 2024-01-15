@@ -4,7 +4,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import React, { forwardRef, useEffect, useRef, ReactNode, useCallback, useState } from 'react';
 import history from '@history';
-import { selectCustomScrollbarsEnabled } from 'app/store/fuse/settingsSlice';
+import { selectCustomScrollbarsEnabled } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { useSelector } from 'react-redux';
 
 const Root = styled('div')(() => ({

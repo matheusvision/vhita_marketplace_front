@@ -5,7 +5,7 @@ import { RootStateType } from 'app/store/types';
 import { User } from 'src/app/auth/user';
 import { PartialDeep } from 'type-fest';
 import _ from '@lodash';
-import userModel from './models/UserModel';
+import userModel from '../models/UserModel';
 
 type AppRootStateType = RootStateType<userSliceType>;
 
@@ -123,11 +123,3 @@ export const selectUserSettings = (state: AppRootStateType) => state.user?.data?
 export type userSliceType = typeof userSlice;
 
 export default userSlice.reducer;
-// const injectedUserSlice = userSlice.injectInto(rootReducer, {
-// 	reducerPath: 'user'
-// });
-// export const selectUser = injectedUserSlice.selector((state: AppRootStateType) => state.user);
-
-// export const selectUserRole = injectedUserSlice.selector((state: AppRootStateType) => state.user.role);
-
-// export const selectUserRole = injectedUserSlice.selectors.selectValue({ role: null });

@@ -114,7 +114,7 @@ function MainSidebar() {
 								? chats.map((_chat) => ({
 										..._chat,
 										...contacts.find((_contact) => _contact.id === _chat.contactId)
-								  }))
+									}))
 								: [];
 
 						const filteredContacts = getFilteredArray([...contacts], searchText);

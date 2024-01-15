@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 import { useDispatch } from 'react-redux';
 import BoardAddList from './board-list/BoardAddList';
 import BoardList from './board-list/BoardList';

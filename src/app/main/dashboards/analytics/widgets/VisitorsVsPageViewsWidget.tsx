@@ -16,7 +16,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
 function VisitorsVsPageViewsWidget() {
 	const theme = useTheme();
 
-	const widget = useSelector<VisitorsVsPageViewsType>(selectWidget('visitorsVsPageViews'));
+	const widget = useSelector(selectWidget<VisitorsVsPageViewsType>('visitorsVsPageViews'));
 
 	if (!widget) {
 		return null;

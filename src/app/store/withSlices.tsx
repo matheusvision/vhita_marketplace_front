@@ -9,16 +9,18 @@ import { rootReducer } from './store';
  */
 export const injectReducersGroupedByCommonKey = async (slices: SlicesType) => {
 	const reducers = generateReducersFromSlices(slices);
-
 	if (reducers) {
 		Object.keys(reducers).forEach((key) => {
-			if (!key || reducers[key]) {
+			const reducer = reducers[key] as Reducer;
+
+			if (!key || !reducer) {
 				return;
 			}
+
 			rootReducer.inject(
 				{
 					reducerPath: key,
-					reducer: reducers[key] as Reducer
+					reducer
 				},
 				{
 					overrideExisting: true

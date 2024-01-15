@@ -1,10 +1,15 @@
 import Hidden from '@mui/material/Hidden';
 import { styled } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { navbarCloseFolded, navbarCloseMobile, navbarOpenFolded, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
+import {
+	navbarCloseFolded,
+	navbarCloseMobile,
+	navbarOpenFolded,
+	selectFuseNavbar
+} from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
 import { useAppDispatch } from 'app/store/store';
 import { useSelector } from 'react-redux';
-import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
+import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { Theme } from '@mui/system/createTheme';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NavbarStyle2Content from './NavbarStyle2Content';

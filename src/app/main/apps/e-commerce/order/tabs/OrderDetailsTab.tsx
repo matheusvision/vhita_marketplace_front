@@ -9,8 +9,13 @@ import GoogleMap from 'google-map-react';
 import { useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useParams } from 'react-router-dom';
-import OrdersStatus from '../OrdersStatus';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
 import { useGetECommerceOrderQuery } from '../../ECommerceApi';
+import OrdersStatus from '../OrdersStatus';
 
 type MarkerPropsType = {
 	text: string;
@@ -195,28 +200,28 @@ function OrderDetailsTab() {
 				</div>
 
 				<div className="table-responsive">
-					<table className="simple">
-						<thead>
-							<tr>
-								<th>
+					<Table className="simple">
+						<TableHead>
+							<TableRow>
+								<TableCell>
 									<Typography className="font-semibold">Status</Typography>
-								</th>
-								<th>
+								</TableCell>
+								<TableCell>
 									<Typography className="font-semibold">Updated On</Typography>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
+								</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
 							{order.status.map((status) => (
-								<tr key={status.id}>
-									<td>
+								<TableRow key={status.id}>
+									<TableCell>
 										<OrdersStatus name={status.name} />
-									</td>
-									<td>{status.date}</td>
-								</tr>
+									</TableCell>
+									<TableCell>{status.date}</TableCell>
+								</TableRow>
 							))}
-						</tbody>
-					</table>
+						</TableBody>
+					</Table>
 				</div>
 			</div>
 

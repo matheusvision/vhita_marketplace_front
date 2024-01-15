@@ -49,7 +49,7 @@ function ContactList(props: ContactListProps) {
 			? chats.map((_chat) => ({
 					..._chat,
 					...contacts.find((_contact) => _contact.id === _chat.contactId)
-			  }))
+				}))
 			: [];
 	}, [contacts, chats]);
 

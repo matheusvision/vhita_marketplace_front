@@ -2,12 +2,20 @@ import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import { useAppDispatch } from 'app/store/store';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen/FuseSplashScreen';
-import { resetUser, selectUser, selectUserRole, setUser, updateUser } from 'src/app/auth/user/userSlice';
+import {
+	resetUser,
+	selectUser,
+	selectUserRole,
+	setUser,
+	updateUser,
+	userSlice
+} from 'src/app/auth/user/store/userSlice';
 import BrowserRouter from '@fuse/core/BrowserRouter';
 import { PartialDeep } from 'type-fest';
 import firebase from 'firebase/compat/app';
 import _ from '@lodash';
 import { useSelector } from 'react-redux';
+import withReducer from 'app/store/withReducer';
 import useJwtAuth, { JwtAuth } from './services/jwt/useJwtAuth';
 import { User } from './user';
 import useFirebaseAuth from './services/firebase/useFirebaseAuth';
@@ -42,7 +50,7 @@ const AuthContext = createContext<AuthContext>({
 
 type AuthProviderProps = { children: React.ReactNode };
 
-function AuthRouteProvider(props: AuthProviderProps) {
+function AuthRoute(props: AuthProviderProps) {
 	const { children } = props;
 	const dispatch = useAppDispatch();
 	const user = useSelector(selectUser);
@@ -229,5 +237,7 @@ function useAuth(): AuthContext {
 	}
 	return context;
 }
+// const AuthRouteProvider = withSlices([userSlice])(AuthRoute);
+const AuthRouteProvider = withReducer('user', userSlice.reducer)(AuthRoute);
 
 export { useAuth, AuthRouteProvider };

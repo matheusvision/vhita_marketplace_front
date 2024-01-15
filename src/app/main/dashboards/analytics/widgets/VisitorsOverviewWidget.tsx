@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
-import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
+import { selectContrastMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
@@ -23,7 +23,7 @@ const Root = styled(Paper)(({ theme }) => ({
 function VisitorsOverviewWidget() {
 	const theme = useTheme();
 	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.main));
-	const widget = useSelector<VisitorsOverviewWidgetType>(selectWidget('visitors'));
+	const widget = useSelector(selectWidget<VisitorsOverviewWidgetType>('visitors'));
 
 	if (!widget) {
 		return null;

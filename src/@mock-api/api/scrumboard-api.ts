@@ -77,7 +77,7 @@ export const scrumboardApiMocks = (mock: ExtendedMockAdapter) => {
 					? {
 							...list,
 							cards: [...list.cards, newCard.id]
-					  }
+						}
 					: list
 			)
 		});

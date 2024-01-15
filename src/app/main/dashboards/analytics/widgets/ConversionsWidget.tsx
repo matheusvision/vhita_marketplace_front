@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function ConversionsWidget() {
 	const theme = useTheme();
-	const widget = useSelector<ConversionsWidgetType>(selectWidget('conversions'));
+	const widget = useSelector(selectWidget<ConversionsWidgetType>('conversions'));
 
 	if (!widget) {
 		return null;

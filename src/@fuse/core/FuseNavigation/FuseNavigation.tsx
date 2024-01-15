@@ -62,7 +62,7 @@ export type FuseNavigationProps = {
 	dense?: boolean;
 	active?: boolean;
 	onItemClick?: (T: FuseNavItemType) => void;
-	navigation: FuseNavigationType;
+	navigation?: FuseNavigationType;
 	layout?: 'horizontal' | 'vertical' | 'vertical-2';
 	firstLevel?: boolean;
 	selectedId?: string;

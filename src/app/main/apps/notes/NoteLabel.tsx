@@ -42,7 +42,7 @@ function NoteLabel(props: NoteLabelProps) {
 					ev.stopPropagation();
 				},
 				to: `/apps/notes/labels/${label.id}`
-		  }
+			}
 		: {};
 
 	return (

@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store/store';
 import FuseShortcuts from '@fuse/core/FuseShortcuts';
-import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
-import { selectIsUserGuest, selectUserShortcuts, setUserShortcuts } from 'src/app/auth/user/userSlice';
+import { selectIsUserGuest, selectUserShortcuts, setUserShortcuts } from 'src/app/auth/user/store/userSlice';
 import { usePrevious } from '@fuse/hooks';
 import { useEffect } from 'react';
-import { useAuth } from '../../auth/AuthRouteProvider';
-import _ from '../../../@lodash/@lodash';
+import _ from '@lodash';
+import { useAuth } from 'src/app/auth/AuthRouteProvider';
+import { selectFlatNavigation } from './store/navigationSlice';
 
 type NavigationShortcutsProps = {
 	className?: string;

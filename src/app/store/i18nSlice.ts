@@ -1,7 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import i18n from 'src/i18n';
 import { AppThunkType, RootStateType } from 'app/store/types';
-import { setDefaultSettings, settingsSliceType } from './fuse/settingsSlice';
+import { setDefaultSettings, settingsSliceType } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 
 /**
  * Changes the language of the application and updates the settings if necessary.
@@ -10,7 +10,7 @@ export const changeLanguage =
 	(languageId: string): AppThunkType =>
 	async (dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
-		const { direction } = AppState.fuse.settings.defaults;
+		const { direction } = AppState.fuseSettings.defaults;
 
 		const newLangDirection = i18n.dir(languageId);
 

@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectUser } from 'src/app/auth/user/userSlice';
+import { selectUser } from 'src/app/auth/user/store/userSlice';
 import { useAuth } from 'src/app/auth/AuthRouteProvider';
 import { darken } from '@mui/material/styles';
 
