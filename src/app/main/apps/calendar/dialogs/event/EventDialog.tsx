@@ -19,9 +19,9 @@ import EventLabelSelect, { EventLabelSelectProps } from '../../EventLabelSelect'
 import EventModel from '../../models/EventModel';
 import {
 	Event,
-	selectFirstLabelId,
 	useCreateCalendarEventMutation,
 	useDeleteCalendarEventMutation,
+	useGetCalendarLabelsQuery,
 	useUpdateCalendarEventMutation
 } from '../../CalendarApi';
 
@@ -50,7 +50,8 @@ const schema = z.object({
 function EventDialog() {
 	const dispatch = useAppDispatch();
 	const eventDialog = useSelector(selectEventDialog);
-	const firstLabelId = useSelector(selectFirstLabelId);
+	const { data: labels } = useGetCalendarLabelsQuery();
+	const firstLabelId = labels ? labels[0]?.id : null;
 	const [createEvent] = useCreateCalendarEventMutation();
 	const [updateEvent] = useUpdateCalendarEventMutation();
 	const [deleteEvent] = useDeleteCalendarEventMutation();

@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { useAppDispatch } from 'app/store/store';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
-import withSlices from 'app/store/withSlices';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
 import NavbarStyle1Content from './NavbarStyle1Content';
 
@@ -92,4 +91,4 @@ function NavbarStyle1() {
 	);
 }
 
-export default withSlices([])(NavbarStyle1);
+export default NavbarStyle1;

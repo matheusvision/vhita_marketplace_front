@@ -1,7 +1,6 @@
 import Hidden from '@mui/material/Hidden';
 import { styled, ThemeProvider } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import clsx from 'clsx';
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store/store';
@@ -61,7 +60,7 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 		<>
 			<ThemeProvider theme={navbarTheme}>
 				<Hidden lgDown>
-					<NavbarLayout3 className={clsx(className)} />
+					<NavbarLayout3 className={className} />
 				</Hidden>
 
 				<Hidden lgUp>
@@ -89,4 +88,4 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	);
 }
 
-export default withSlices([navbarSlice])(memo(NavbarWrapperLayout3));
+export default withSlices<NavbarWrapperLayout3Props>([navbarSlice])(memo(NavbarWrapperLayout3));

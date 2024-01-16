@@ -4,29 +4,33 @@ import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+import _ from '@lodash';
+import withReducer from 'app/store/withReducer';
 import DetailSidebarContent from './DetailSidebarContent';
 import FileManagerHeader from './FileManagerHeader';
 import FileManagerList from './FileManagerList';
-import { selectFiles, selectFolders, selectPath, useGetFileManagerFolderQuery } from './FileManagerApi';
+import { useGetFileManagerFolderQuery } from './FileManagerApi';
 import { selectSelectedItemId } from './store/selectedItemIdSlice';
+import reducer from './store';
 
 /**
  * The file manager app.
  */
 function FileManagerApp() {
-	const routeParams = useParams();
-
-	const { folderId } = routeParams;
-
-	const selectedItem = useSelector(selectSelectedItemId);
-
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	const { isLoading } = useGetFileManagerFolderQuery(folderId);
+	const routeParams = useParams();
+	const { folderId } = routeParams;
 
-	const folders = useSelector(selectFolders(folderId));
-	const files = useSelector(selectFiles(folderId));
-	const path = useSelector(selectPath(folderId));
+	const { data, isLoading } = useGetFileManagerFolderQuery(folderId);
+
+	const selectedItemId = useSelector(selectSelectedItemId);
+	const selectedItem = _.find(data?.items, { id: selectedItemId });
+
+	const folders = _.filter(data?.items, { type: 'folder' });
+	const files = _.reject(data?.items, { type: 'folder' });
+
+	const path = data?.path;
 
 	if (isLoading) {
 		return <FuseLoading />;
@@ -48,11 +52,15 @@ function FileManagerApp() {
 				/>
 			}
 			rightSidebarOpen={Boolean(selectedItem)}
-			rightSidebarContent={<DetailSidebarContent />}
+			rightSidebarContent={
+				<div className="w-full">
+					<DetailSidebarContent items={data?.items} />
+				</div>
+			}
 			rightSidebarWidth={400}
 			scroll={isMobile ? 'normal' : 'content'}
 		/>
 	);
 }
 
-export default FileManagerApp;
+export default withReducer('fileManagerApp', reducer)(FileManagerApp);

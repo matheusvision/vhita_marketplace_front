@@ -193,36 +193,47 @@ export const selectContactList = (state: AppRootStateType) =>
 /**
  * Select filtered contacts
  */
-export const selectFilteredContactList = createSelector(
-	[selectContactList, selectSearchText],
-	(contacts, searchText) => {
+export const selectFilteredContactList = (contacts: Contact[]) =>
+	createSelector([selectSearchText], (searchText) => {
+		if (!contacts) {
+			return [];
+		}
+
 		if (searchText.length === 0) {
 			return contacts;
 		}
 		return FuseUtils.filterArrayByString<Contact>(contacts, searchText);
-	}
-);
+	});
 
 /**
  * Select grouped contacts
  */
-export const selectGroupedFilteredContacts = createSelector([selectFilteredContactList], (contacts: Contact[]) => {
-	const sortedContacts = [...contacts]?.sort((a, b) => a?.name?.localeCompare(b.name, 'es', { sensitivity: 'base' }));
-
-	const groupedObject = sortedContacts?.reduce<AccumulatorType>((r, e) => {
-		// get first letter of name of current element
-		const group = e.name[0];
-
-		// if there is no property in accumulator with this letter create it
-		if (!r[group]) r[group] = { group, children: [e] };
-		// if there is push current element to children array for that letter
-		else {
-			r[group]?.children?.push(e);
+export const selectGroupedFilteredContacts = (contacts: Contact[]) =>
+	createSelector([selectFilteredContactList(contacts)], (contacts) => {
+		if (!contacts) {
+			return [];
 		}
 
-		// return accumulator
-		return r;
-	}, {});
+		const sortedContacts = [...contacts]?.sort((a, b) =>
+			a?.name?.localeCompare(b.name, 'es', { sensitivity: 'base' })
+		);
 
-	return groupedObject;
-});
+		const groupedObject: {
+			[key: string]: GroupedContacts;
+		} = sortedContacts?.reduce<AccumulatorType>((r, e) => {
+			// get first letter of name of current element
+			const group = e.name[0];
+
+			// if there is no property in accumulator with this letter create it
+			if (!r[group]) r[group] = { group, children: [e] };
+			// if there is push current element to children array for that letter
+			else {
+				r[group]?.children?.push(e);
+			}
+
+			// return accumulator
+			return r;
+		}, {});
+
+		return groupedObject;
+	});

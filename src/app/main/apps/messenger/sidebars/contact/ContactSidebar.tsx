@@ -20,7 +20,9 @@ function ContactSidebar() {
 	const routeParams = useParams();
 	const contactId = routeParams.id;
 
-	const { data: contact } = useGetMessengerContactQuery(contactId);
+	const { data: contact } = useGetMessengerContactQuery(contactId, {
+		skip: !contactId
+	});
 
 	if (!contact) {
 		return null;

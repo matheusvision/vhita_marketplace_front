@@ -63,7 +63,7 @@ function Layout3(props: Layout3Props) {
 				>
 					{config.navbar.display && (
 						<NavbarWrapperLayout3
-							className={clsx(config.navbar.style === 'fixed' && 'sticky top-0 z-50')}
+							className={clsx(config?.navbar?.style === 'fixed' ? 'sticky top-0 z-50' : '')}
 						/>
 					)}
 

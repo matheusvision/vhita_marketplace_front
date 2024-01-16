@@ -29,9 +29,9 @@ type OrdersTableProps = WithRouterProps & {
 function OrdersTable(props: OrdersTableProps) {
 	const { navigate } = props;
 
-	const { isLoading } = useGetECommerceOrdersQuery();
+	const { data, isLoading } = useGetECommerceOrdersQuery();
 
-	const data = useSelector(selectFilteredOrders);
+	const orders = useSelector(selectFilteredOrders(data));
 
 	const [selected, setSelected] = useState<string[]>([]);
 
@@ -60,7 +60,7 @@ function OrdersTable(props: OrdersTableProps) {
 
 	function handleSelectAllClick(event: ChangeEvent<HTMLInputElement>) {
 		if (event.target.checked) {
-			setSelected(data.map((n) => n.id));
+			setSelected(orders.map((n) => n.id));
 			return;
 		}
 
@@ -101,14 +101,10 @@ function OrdersTable(props: OrdersTableProps) {
 	}
 
 	if (isLoading) {
-		return (
-			<div className="flex items-center justify-center h-full">
-				<FuseLoading />
-			</div>
-		);
+		return <FuseLoading />;
 	}
 
-	if (data.length === 0) {
+	if (orders.length === 0) {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}
@@ -138,13 +134,13 @@ function OrdersTable(props: OrdersTableProps) {
 						tableOrder={tableOrder}
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
-						rowCount={data.length}
+						rowCount={orders.length}
 						onMenuItemClick={handleDeselect}
 					/>
 
 					<TableBody>
 						{_.orderBy(
-							data,
+							orders,
 							[
 								(o: EcommerceOrder) => {
 									switch (o.id) {
@@ -260,7 +256,7 @@ function OrdersTable(props: OrdersTableProps) {
 			<TablePagination
 				className="shrink-0 border-t-1"
 				component="div"
-				count={data.length}
+				count={orders.length}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				backIconButtonProps={{

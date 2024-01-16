@@ -88,7 +88,21 @@ class FuseUtils {
 	 * It takes in an array of objects and a search string as parameters and returns a filtered array of objects.
 	 *
 	 */
+
 	static filterArrayByString<T>(mainArr: T[], searchText: string): T[] {
+		if (searchText?.length === 0 || !searchText) {
+			return mainArr; // Return the original array
+		}
+
+		searchText = searchText.toLowerCase();
+		const filtered = mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
+		if (filtered.length === mainArr.length) {
+			return mainArr; // If the filtered array is identical, return the original
+		}
+		return filtered;
+	}
+
+	static filterArrayByString2<T>(mainArr: T[], searchText: string): T[] {
 		if (typeof searchText !== 'string' || searchText === '') {
 			return mainArr;
 		}

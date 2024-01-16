@@ -255,14 +255,6 @@ export const selectLabelById = (id: string) =>
 export const selectFilters = (state: AppRootStateType) =>
 	MailboxApi.endpoints.getMailboxLabels.select()(state)?.data ?? [];
 
-export const selectSpamFolderId = createSelector([selectFolders], (folders) => {
-	return _.find(folders, { slug: 'spam' })?.id;
-});
-
-export const selectTrashFolderId = createSelector([selectFolders], (folders) => {
-	return _.find(folders, { slug: 'trash' })?.id;
-});
-
 export const selectMailsTitle = (routeParams: RouteParams) =>
 	createSelector([selectFolders, selectLabels, selectFilters], (folders, labels, filters) => {
 		let title = '';

@@ -23,7 +23,13 @@ function Order() {
 	const routeParams = useParams();
 	const { orderId } = routeParams;
 
-	const { data: order, isLoading, isError } = useGetECommerceOrderQuery(orderId);
+	const {
+		data: order,
+		isLoading,
+		isError
+	} = useGetECommerceOrderQuery(orderId, {
+		skip: !orderId
+	});
 
 	const theme = useTheme();
 	const isMobile = useThemeMediaQuery((_theme) => _theme.breakpoints.down('lg'));

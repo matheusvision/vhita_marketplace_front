@@ -29,6 +29,10 @@ function UserMenu() {
 		setUserMenu(null);
 	};
 
+	if (!user) {
+		return null;
+	}
+
 	return (
 		<>
 			<Button
@@ -47,7 +51,7 @@ function UserMenu() {
 						className="text-11 font-medium capitalize"
 						color="text.secondary"
 					>
-						{user.role.toString()}
+						{user.role?.toString()}
 						{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
 					</Typography>
 				</div>

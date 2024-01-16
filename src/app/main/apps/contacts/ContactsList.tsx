@@ -3,18 +3,26 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import ContactListItem from './ContactListItem';
-import { selectGroupedFilteredContacts, selectFilteredContactList } from './ContactsApi';
+import {
+	Contact,
+	GroupedContacts,
+	selectFilteredContactList,
+	selectGroupedFilteredContacts,
+	useGetContactsListQuery
+} from './ContactsApi';
 
 /**
  * The contacts list.
  */
 function ContactsList() {
-	const filteredData = useSelector(selectFilteredContactList);
-	const groupedFilteredContacts = useSelector(selectGroupedFilteredContacts);
+	const { data, isLoading } = useGetContactsListQuery();
+	const filteredData = useSelector(selectFilteredContactList(data));
+	const groupedFilteredContacts = useSelector(selectGroupedFilteredContacts(filteredData));
 
-	if (!filteredData) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	if (filteredData.length === 0) {
@@ -36,7 +44,7 @@ function ContactsList() {
 			animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 			className="flex flex-col flex-auto w-full max-h-full"
 		>
-			{Object.entries(groupedFilteredContacts).map(([key, group]) => {
+			{Object.entries(groupedFilteredContacts).map(([key, group]: [string, GroupedContacts]) => {
 				return (
 					<div
 						key={key}
@@ -50,7 +58,7 @@ function ContactsList() {
 						</Typography>
 						<Divider />
 						<List className="w-full m-0 p-0">
-							{group?.children?.map((item) => (
+							{group?.children?.map((item: Contact) => (
 								<ContactListItem
 									key={item.id}
 									contact={item}

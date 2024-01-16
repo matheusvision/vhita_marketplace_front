@@ -1,14 +1,16 @@
 import React from 'react';
-import { SlicesType } from 'app/store/lazyWithSlices';
-import { Reducer } from '@reduxjs/toolkit';
+import { Reducer, Slice } from '@reduxjs/toolkit';
 import generateReducersFromSlices from './generateReducersFromSlices';
 import { rootReducer } from './store';
+
+export type SlicesType = Slice[];
 
 /**
  * Injects reducers grouped by common key.
  */
 export const injectReducersGroupedByCommonKey = async (slices: SlicesType) => {
 	const reducers = generateReducersFromSlices(slices);
+
 	if (reducers) {
 		Object.keys(reducers).forEach((key) => {
 			const reducer = reducers[key] as Reducer;

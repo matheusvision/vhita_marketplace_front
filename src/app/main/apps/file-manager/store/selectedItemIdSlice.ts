@@ -18,7 +18,7 @@ export const selectedItemIdSlice = createSlice({
 
 export const { setSelectedItemId, resetSelectedItemId } = selectedItemIdSlice.actions;
 
-export const selectSelectedItemId = appSelector((state: AppRootStateType) => state?.fileManagerApp.selectedItemId);
+export const selectSelectedItemId = appSelector((state: AppRootStateType) => state?.fileManagerApp?.selectedItemId);
 
 export type selectedItemIdSliceType = typeof selectedItemIdSlice;
 

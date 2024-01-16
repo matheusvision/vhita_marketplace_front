@@ -22,7 +22,13 @@ function ContactView() {
 	const { data: tags } = useGetContactsTagsQuery();
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
-	const { data: contact, isLoading, isError } = useGetContactsItemQuery(contactId);
+	const {
+		data: contact,
+		isLoading,
+		isError
+	} = useGetContactsItemQuery(contactId, {
+		skip: !contactId
+	});
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

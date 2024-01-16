@@ -12,6 +12,7 @@ function GuideCategory() {
 	const navigate = useNavigate();
 	const routeParams = useParams();
 	const { categorySlug } = routeParams;
+
 	const { data: guides } = useGetHelpCenterGuidesByCategoryQuery({
 		categorySlug
 	});

@@ -3,12 +3,14 @@ import { lighten, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import withReducer from 'app/store/withReducer';
 import LabelsDialog from './dialogs/labels/LabelsDialog';
 import NoteDialog from './dialogs/note/NoteDialog';
 import NewNote from './NewNote';
 import NoteList from './NoteList';
 import NotesHeader from './NotesHeader';
 import NotesSidebarContent from './NotesSidebarContent';
+import reducer from './store';
 
 const Root = styled(FusePageCarded)(() => ({
 	'& .FusePageCarded-header': {},
@@ -54,4 +56,4 @@ function NotesApp() {
 	);
 }
 
-export default NotesApp;
+export default withReducer('notesApp', reducer)(NotesApp);

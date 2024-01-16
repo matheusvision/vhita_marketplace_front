@@ -39,7 +39,13 @@ function Product() {
 
 	const { productId } = routeParams;
 
-	const { data: product, isLoading, isError } = useGetECommerceProductQuery(productId);
+	const {
+		data: product,
+		isLoading,
+		isError
+	} = useGetECommerceProductQuery(productId, {
+		skip: !productId || productId === 'new'
+	});
 
 	const [tabValue, setTabValue] = useState(0);
 

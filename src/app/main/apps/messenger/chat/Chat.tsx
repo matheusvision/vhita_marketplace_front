@@ -113,8 +113,12 @@ function Chat(props: ChatPropsType) {
 	const contactId = routeParams.id;
 
 	const { data: user } = useGetMessengerUserProfileQuery();
-	const { data: chat } = useGetMessengerChatQuery(contactId);
-	const { data: selectedContact } = useGetMessengerContactQuery(contactId);
+	const { data: chat } = useGetMessengerChatQuery(contactId, {
+		skip: !contactId
+	});
+	const { data: selectedContact } = useGetMessengerContactQuery(contactId, {
+		skip: !contactId
+	});
 	const [sendMessage] = useSendMessengerMessageMutation();
 
 	useEffect(() => {

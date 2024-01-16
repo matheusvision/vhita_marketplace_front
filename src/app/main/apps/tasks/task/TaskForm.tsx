@@ -63,7 +63,9 @@ function TaskForm() {
 	const taskId = routeParams?.id;
 	const taskType = routeParams?.type;
 
-	const { data: task, isError } = useGetTasksItemQuery(routeParams.id);
+	const { data: task, isError } = useGetTasksItemQuery(routeParams.id, {
+		skip: !taskId || taskId === 'new'
+	});
 	const { data: tags } = useGetTasksTagsQuery();
 
 	const [updateTask] = useUpdateTasksItemMutation();

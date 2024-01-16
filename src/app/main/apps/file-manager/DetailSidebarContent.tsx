@@ -6,30 +6,32 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import _ from '@lodash';
 import ItemIcon from './ItemIcon';
-import { resetSelectedItemId } from './store/selectedItemIdSlice';
-import { selectSelectedItem } from './FileManagerApi';
+import { resetSelectedItemId, selectSelectedItemId } from './store/selectedItemIdSlice';
+import { FileManagerItem } from './FileManagerApi';
 
+type DetailSidebarContentProps = {
+	items: FileManagerItem[];
+};
 /**
  * The detail sidebar content.
  */
-function DetailSidebarContent() {
+function DetailSidebarContent(props: DetailSidebarContentProps) {
+	const { items } = props;
+
 	const location = useLocation();
 	const { pathname } = location;
-	const routeParams = useParams();
-	const { folderId } = routeParams;
 
 	const dispatch = useAppDispatch();
-
-	const item = useSelector(selectSelectedItem(folderId));
+	const selectedItemId = useSelector(selectSelectedItemId);
+	const item = _.find(items, { id: selectedItemId });
 
 	useEffect(() => {
-		return () => {
-			dispatch(resetSelectedItemId());
-		};
+		dispatch(resetSelectedItemId());
 	}, [pathname]);
 
 	if (!item) {

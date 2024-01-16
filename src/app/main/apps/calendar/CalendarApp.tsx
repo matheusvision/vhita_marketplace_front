@@ -17,13 +17,15 @@ import {
 	EventDropArg,
 	EventRemoveArg
 } from '@fullcalendar/core';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
+import withReducer from 'app/store/withReducer';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
 import { openEditEventDialog, openNewEventDialog } from './store/eventDialogSlice';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
-import { Event, selectFilteredEvents, useGetCalendarEventsQuery, useUpdateCalendarEventMutation } from './CalendarApi';
+import { Event, useGetCalendarEventsQuery, useUpdateCalendarEventMutation } from './CalendarApi';
+import reducer from './store';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -103,11 +105,10 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function CalendarApp() {
 	const [currentDate, setCurrentDate] = useState<DatesSetArg>();
 	const dispatch = useAppDispatch();
-	const events = useSelector(selectFilteredEvents);
+	const { data: events, isLoading } = useGetCalendarEventsQuery();
 	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-	useGetCalendarEventsQuery();
 	const [updateEvent] = useUpdateCalendarEventMutation();
 
 	useEffect(() => {
@@ -165,6 +166,10 @@ function CalendarApp() {
 		setLeftSidebarOpen(!leftSidebarOpen);
 	}
 
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
 	return (
 		<>
 			<Root
@@ -212,4 +217,4 @@ function CalendarApp() {
 	);
 }
 
-export default CalendarApp;
+export default withReducer('calendarApp', reducer)(CalendarApp);

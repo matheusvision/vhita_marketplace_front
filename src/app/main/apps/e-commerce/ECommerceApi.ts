@@ -2,7 +2,6 @@ import { apiService as api } from 'app/store/apiService';
 import { createSelector } from '@reduxjs/toolkit';
 import FuseUtils from '@fuse/utils';
 import { PartialDeep } from 'type-fest';
-import { AppRootStateType } from './store';
 import { selectSearchText } from './store/searchTextSlice';
 import ProductModel from './product/models/ProductModel';
 
@@ -225,32 +224,24 @@ export type ECommerceApiType = {
 /**
  * Select products
  */
-export const selectProducts = (state: AppRootStateType) =>
-	ECommerceApi.endpoints.getECommerceProducts.select()(state)?.data ?? [];
-
 /**
  * Select filtered products
  */
-export const selectFilteredProducts = createSelector([selectProducts, selectSearchText], (products, searchText) => {
-	if (searchText.length === 0) {
-		return products;
-	}
-	return FuseUtils.filterArrayByString<EcommerceProduct>(products, searchText);
-});
-
-/**
- * Select orders
- */
-
-export const selectOrders = (state: AppRootStateType) =>
-	ECommerceApi.endpoints.getECommerceOrders.select()(state)?.data ?? [];
+export const selectFilteredProducts = (products: EcommerceProduct[]) =>
+	createSelector([selectSearchText], (searchText) => {
+		if (searchText.length === 0) {
+			return products;
+		}
+		return FuseUtils.filterArrayByString<EcommerceProduct>(products, searchText);
+	});
 
 /**
  * Select filtered orders
  */
-export const selectFilteredOrders = createSelector([selectOrders, selectSearchText], (orders, searchText) => {
-	if (searchText.length === 0) {
-		return orders;
-	}
-	return FuseUtils.filterArrayByString<EcommerceOrder>(orders, searchText);
-});
+export const selectFilteredOrders = (orders: EcommerceOrder[]) =>
+	createSelector([selectSearchText], (searchText) => {
+		if (searchText.length === 0) {
+			return orders;
+		}
+		return FuseUtils.filterArrayByString<EcommerceOrder>(orders, searchText);
+	});

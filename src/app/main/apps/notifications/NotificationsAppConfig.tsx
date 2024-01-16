@@ -1,7 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const NotificationsApp = lazyWithReducer('notesApp', () => import('./NotificationsApp'), reducer);
+const NotificationsApp = lazy(() => import('./NotificationsApp'));
 
 /**
  * The Notifications app config.

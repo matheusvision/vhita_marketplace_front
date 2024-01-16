@@ -1,7 +1,4 @@
 import { apiService as api } from 'app/store/apiService';
-import { createSelector } from '@reduxjs/toolkit';
-import _ from '@lodash';
-import { selectSelectedItemId } from './store/selectedItemIdSlice';
 
 export const addTagTypes = ['file_manager_folder'] as const;
 
@@ -75,24 +72,3 @@ export const { useGetFileManagerFolderQuery, useUpdateFileManagerFolderMutation,
 export type FileManagerApiType = {
 	[FileManagerApi.reducerPath]: ReturnType<typeof FileManagerApi.reducer>;
 };
-
-export const selectPath = (folderId: string) => (state: FileManagerApiType) =>
-	FileManagerApi.endpoints.getFileManagerFolder.select(folderId)(state)?.data?.path || ([] as FileManagerPath[]);
-
-export const selectFolderItems = (folderId: string) => (state: FileManagerApiType) =>
-	FileManagerApi.endpoints.getFileManagerFolder.select(folderId)(state)?.data?.items || ([] as FileManagerItem[]);
-
-export const selectFolders = (folderId: string) =>
-	createSelector([selectFolderItems(folderId)], (items) => {
-		return _.filter(items, { type: 'folder' });
-	});
-
-export const selectFiles = (folderId: string) =>
-	createSelector([selectFolderItems(folderId)], (items) => {
-		return _.reject(items, { type: 'folder' });
-	});
-
-export const selectSelectedItem = (folderId: string) =>
-	createSelector([selectFolderItems(folderId), selectSelectedItemId], (items, selectedItemId) => {
-		return _.find(items, { id: selectedItemId });
-	});

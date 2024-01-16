@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useMemo, useState } from 'react';
 import { useAppDispatch } from 'app/store/store';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,6 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import { useSelector } from 'react-redux';
 import MailListTitle from './MailListTitle';
 import {
-	selectTrashFolderId,
 	useApplyMailboxMailActionMutation,
 	useGetMailboxFoldersQuery,
 	useGetMailboxLabelsQuery,
@@ -24,6 +23,7 @@ import {
 } from '../MailboxApi';
 import { selectSearchText, setSearchText } from '../store/searchTextSlice';
 import { deselectAllMails, selectSelectedMailIds, setSelectedMailIds } from '../store/selectedMailIdsSlice';
+import _ from '../../../../../@lodash/@lodash';
 
 type MailToolbarProps = {
 	onToggleLeftSidebar: () => void;
@@ -57,7 +57,7 @@ function MailToolbar(props: MailToolbarProps) {
 
 	const selectedMailIds = useSelector(selectSelectedMailIds);
 
-	const trashFolderId = useSelector(selectTrashFolderId);
+	const trashFolderId = useMemo(() => _.find(folders, { slug: 'trash' })?.id, [folders]);
 
 	const defaultMenuState = {
 		select: null,

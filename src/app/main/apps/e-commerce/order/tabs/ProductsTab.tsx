@@ -10,7 +10,9 @@ function ProductsTab() {
 
 	const { orderId } = routeParams;
 
-	const { data: order } = useGetECommerceOrderQuery(orderId);
+	const { data: order } = useGetECommerceOrderQuery(orderId, {
+		skip: !orderId
+	});
 
 	return (
 		<div className="table-responsive">

@@ -237,7 +237,6 @@ function useAuth(): AuthContext {
 	}
 	return context;
 }
-// const AuthRouteProvider = withSlices([userSlice])(AuthRoute);
-const AuthRouteProvider = withReducer('user', userSlice.reducer)(AuthRoute);
+const AuthRouteProvider = withReducer<AuthProviderProps>('user', userSlice.reducer)(AuthRoute);
 
 export { useAuth, AuthRouteProvider };

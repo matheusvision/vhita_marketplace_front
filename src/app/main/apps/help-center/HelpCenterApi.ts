@@ -152,22 +152,6 @@ export const {
 	useGetHelpCenterFaqCategoriesQuery
 } = HelpCenterApi;
 
-export const selectGroupedFaqs = createSelector(
-	// Input selectors
-	[
-		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterFaqs.select()(state)?.data || [],
-		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterFaqCategories.select()(state)?.data || []
-	],
-
-	// Transform function
-	(faqs, categories) => {
-		return categories.map((category) => ({
-			...category,
-			faqs: faqs.filter((faq) => faq.categoryId === category.id)
-		}));
-	}
-);
-
 export const selectGroupedGuides = createSelector(
 	[
 		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuides.select()(state)?.data || [],

@@ -2,18 +2,24 @@ import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 import FaqList from './FaqList';
-import { useGetHelpCenterFaqCategoriesQuery, useGetHelpCenterFaqsQuery, selectGroupedFaqs } from '../HelpCenterApi';
+import { useGetHelpCenterFaqCategoriesQuery, useGetHelpCenterFaqsQuery } from '../HelpCenterApi';
 
 /**
  * The help center faqs page.
  */
 function HelpCenterFaqs() {
 	const navigate = useNavigate();
-	useGetHelpCenterFaqsQuery();
-	useGetHelpCenterFaqCategoriesQuery();
-	const groupedFaqs = useSelector(selectGroupedFaqs);
+
+	const { data: faqs } = useGetHelpCenterFaqsQuery();
+	const { data: categories } = useGetHelpCenterFaqCategoriesQuery();
+	const groupedFaqs = useMemo(() => {
+		return categories?.map((category) => ({
+			...category,
+			faqs: faqs?.filter((faq) => faq.categoryId === category.id)
+		}));
+	}, [faqs, categories]);
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -35,7 +41,7 @@ function HelpCenterFaqs() {
 					Frequently Asked Questions
 				</div>
 
-				{groupedFaqs.map((category) => (
+				{groupedFaqs?.map((category) => (
 					<div key={category.id}>
 						<Typography className="mt-48 sm:mt-64 text-3xl font-bold leading-tight tracking-tight">
 							{category.title}

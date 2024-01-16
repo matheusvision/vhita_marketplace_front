@@ -1,6 +1,6 @@
 import { combineReducers, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { DeepPartial } from 'react-hook-form';
-import { SlicesType } from 'app/store/lazyWithSlices';
+import { SlicesType } from 'app/store/withSlices';
 
 export const generateReducersFromSlices = <T = unknown>(slices: SlicesType): ReducersMapObject<T> => {
 	const reducerGroups: DeepPartial<ReducersMapObject> = {};

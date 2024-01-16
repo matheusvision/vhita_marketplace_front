@@ -30,9 +30,8 @@ type ProductsTableProps = WithRouterProps & {
 function ProductsTable(props: ProductsTableProps) {
 	const { navigate } = props;
 
-	const { isLoading } = useGetECommerceProductsQuery();
-
-	const data = useSelector(selectFilteredProducts);
+	const { data, isLoading } = useGetECommerceProductsQuery();
+	const products = useSelector(selectFilteredProducts(data));
 
 	const [selected, setSelected] = useState<EcommerceProduct['id'][]>([]);
 
@@ -61,7 +60,7 @@ function ProductsTable(props: ProductsTableProps) {
 
 	function handleSelectAllClick(event: ChangeEvent<HTMLInputElement>) {
 		if (event.target.checked) {
-			setSelected(data.map((n) => n.id));
+			setSelected(products.map((n) => n.id));
 			return;
 		}
 
@@ -109,7 +108,7 @@ function ProductsTable(props: ProductsTableProps) {
 		);
 	}
 
-	if (data?.length === 0) {
+	if (products?.length === 0) {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}
@@ -139,13 +138,13 @@ function ProductsTable(props: ProductsTableProps) {
 						tableOrder={tableOrder}
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
-						rowCount={data.length}
+						rowCount={products.length}
 						onMenuItemClick={handleDeselect}
 					/>
 
 					<TableBody>
 						{_.orderBy(
-							data,
+							products,
 							[
 								(o: EcommerceProduct) => {
 									switch (o.id) {
@@ -281,7 +280,7 @@ function ProductsTable(props: ProductsTableProps) {
 			<TablePagination
 				className="shrink-0 border-t-1"
 				component="div"
-				count={data.length}
+				count={products.length}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				backIconButtonProps={{

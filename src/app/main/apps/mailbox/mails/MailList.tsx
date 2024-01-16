@@ -16,8 +16,9 @@ import { MailboxMail, useGetMailboxMailsQuery } from '../MailboxApi';
  * The mail list.
  */
 function MailList() {
-	const searchText = useSelector(selectSearchText);
 	const routeParams = useParams();
+
+	const searchText = useSelector(selectSearchText);
 	const { data: mails } = useGetMailboxMailsQuery(routeParams);
 
 	const [filteredData, setFilteredData] = useState<MailboxMail[]>([]);

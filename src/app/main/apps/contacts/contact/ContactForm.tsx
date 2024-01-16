@@ -76,7 +76,9 @@ function ContactForm() {
 
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };
-	const { data: contact, isError } = useGetContactsItemQuery(contactId);
+	const { data: contact, isError } = useGetContactsItemQuery(contactId, {
+		skip: !contactId
+	});
 
 	const [createContact] = useCreateContactsItemMutation();
 	const [updateContact] = useUpdateContactsItemMutation();

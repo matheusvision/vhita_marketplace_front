@@ -88,4 +88,4 @@ function NavbarWrapperLayout2(props: NavbarWrapperLayout2Props) {
 	);
 }
 
-export default withSlices([navbarSlice])(memo(NavbarWrapperLayout2));
+export default withSlices<NavbarWrapperLayout2Props>([navbarSlice])(memo(NavbarWrapperLayout2));

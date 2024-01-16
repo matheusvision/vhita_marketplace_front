@@ -52,7 +52,9 @@ function OrderDetailsTab() {
 
 	const { orderId } = routeParams;
 
-	const { data: order, isError } = useGetECommerceOrderQuery(orderId);
+	const { data: order, isError } = useGetECommerceOrderQuery(orderId, {
+		skip: !orderId
+	});
 
 	const [map, setMap] = useState<string>('shipping');
 

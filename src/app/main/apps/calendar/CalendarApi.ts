@@ -136,14 +136,7 @@ export type CalendarApiType = {
 	[CalendarApi.reducerPath]: ReturnType<typeof CalendarApi.reducer>;
 };
 
-export const selectEvents = (state: CalendarApiType): Event[] =>
-	CalendarApi.endpoints.getCalendarEvents.select()(state)?.data ?? [];
-
-export const selectLabels = (state: CalendarApiType): Label[] =>
-	CalendarApi.endpoints.getCalendarLabels.select()(state)?.data ?? [];
-
-export const selectFirstLabelId = createSelector([selectLabels], (labels): string | null => labels[0]?.id ?? null);
-
-export const selectFilteredEvents = createSelector([selectSelectedLabels, selectEvents], (selectedLabels, events) => {
-	return events.filter((item) => selectedLabels.includes(item?.extendedProps?.label as string));
-});
+export const selectFilteredEvents = (events: Event[]) =>
+	createSelector([selectSelectedLabels], (selectedLabels) => {
+		return events.filter((item) => selectedLabels.includes(item?.extendedProps?.label as string));
+	});

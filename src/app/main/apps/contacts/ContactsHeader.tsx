@@ -8,8 +8,8 @@ import Box from '@mui/material/Box';
 import { useAppDispatch } from 'app/store/store';
 import { ChangeEvent, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectSearchText, setSearchText, resetSearchText } from './store/searchTextSlice';
-import { selectFilteredContactList } from './ContactsApi';
+import { setSearchText, resetSearchText, selectSearchText } from './store/searchTextSlice';
+import { selectFilteredContactList, useGetContactsListQuery } from './ContactsApi';
 
 /**
  * The contacts header.
@@ -17,7 +17,9 @@ import { selectFilteredContactList } from './ContactsApi';
 function ContactsHeader() {
 	const dispatch = useAppDispatch();
 	const searchText = useSelector(selectSearchText);
-	const filteredData = useSelector(selectFilteredContactList);
+	const { data, isLoading } = useGetContactsListQuery();
+
+	const filteredData = useSelector(selectFilteredContactList(data));
 
 	useEffect(() => {
 		return () => {
@@ -25,6 +27,9 @@ function ContactsHeader() {
 		};
 	}, []);
 
+	if (isLoading) {
+		return null;
+	}
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1">
 			<div className="flex flex-col">

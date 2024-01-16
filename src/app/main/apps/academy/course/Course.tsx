@@ -31,7 +31,12 @@ function Course() {
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
 	const routeParams = useParams();
 	const { courseId } = routeParams;
-	const { data: course, isLoading } = useGetAcademyCourseQuery({ courseId });
+	const { data: course, isLoading } = useGetAcademyCourseQuery(
+		{ courseId },
+		{
+			skip: !courseId
+		}
+	);
 	const [updateCourse] = useUpdateAcademyCourseMutation();
 
 	useEffect(() => {
