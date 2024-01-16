@@ -106,14 +106,14 @@ export const userSlice = createSlice({
 
 export const { userSignOut, updateUser, setUserShortcuts, setUserSettings } = userSlice.actions;
 
-export const selectUser = (state: AppRootStateType) => state.user;
+export const selectUser = (state: AppRootStateType) => state?.user;
 
-export const selectUserRole = (state: AppRootStateType) => state.user.role;
+export const selectUserRole = (state: AppRootStateType) => state?.user?.role;
 
 export const selectIsUserGuest = (state: AppRootStateType) => {
-	const { role } = state.user;
+	const userRole = state?.user?.role;
 
-	return !role || role.length === 0;
+	return !userRole || userRole?.length === 0;
 };
 
 export const selectUserShortcuts = (state: AppRootStateType) => state.user?.data?.shortcuts;
