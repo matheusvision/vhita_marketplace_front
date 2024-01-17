@@ -16,6 +16,7 @@ import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 import { PartialDeep } from 'type-fest';
 import { useSelector } from 'react-redux';
 import withSlices from 'app/store/withSlices';
+import FuseSuspense from '../FuseSuspense';
 
 export type FuseRouteObjectType = RouteObject & {
 	settings?: FuseSettingsConfigType;
@@ -105,7 +106,11 @@ function FuseLayout(props: FuseLayoutProps) {
 	);
 
 	return useMemo(() => {
-		return <Layout>{children}</Layout>;
+		return (
+			<FuseSuspense>
+				<Layout>{children}</Layout>
+			</FuseSuspense>
+		);
 	}, [Layout, children]);
 }
 
