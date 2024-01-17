@@ -8,7 +8,7 @@ import {
 	setSettings,
 	fuseSettingsSlice
 } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
-import { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { useAppDispatch } from 'app/store/store';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
@@ -16,7 +16,6 @@ import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 import { PartialDeep } from 'type-fest';
 import { useSelector } from 'react-redux';
 import withSlices from 'app/store/withSlices';
-import FuseSuspense from '../FuseSuspense';
 
 export type FuseRouteObjectType = RouteObject & {
 	settings?: FuseSettingsConfigType;
@@ -106,12 +105,8 @@ function FuseLayout(props: FuseLayoutProps) {
 	);
 
 	return useMemo(() => {
-		return (
-			<FuseSuspense>
-				<Layout>{children}</Layout>
-			</FuseSuspense>
-		);
+		return <Layout>{children}</Layout>;
 	}, [Layout, children]);
 }
 
-export default withSlices<FuseLayoutProps>([fuseSettingsSlice])(memo(FuseLayout));
+export default withSlices<FuseLayoutProps>([fuseSettingsSlice])(FuseLayout);
