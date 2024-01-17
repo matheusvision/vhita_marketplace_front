@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
+import { appSelector } from 'app/store/store';
 
 type AppRootStateType = RootStateType<navbarSliceType>;
 
@@ -70,7 +71,7 @@ export const {
 	navbarToggleMobile
 } = navbarSlice.actions;
 
-export const selectFuseNavbar = ({ navbar }: AppRootStateType) => navbar;
+export const selectFuseNavbar = appSelector(({ navbar }: AppRootStateType) => navbar);
 
 export type navbarSliceType = typeof navbarSlice;
 

@@ -6,7 +6,8 @@ import { usePrevious } from '@fuse/hooks';
 import { useEffect } from 'react';
 import _ from '@lodash';
 import { useAuth } from 'src/app/auth/AuthRouteProvider';
-import { selectFlatNavigation } from './store/navigationSlice';
+import withSlices from 'app/store/withSlices';
+import { navigationSlice, selectFlatNavigation } from './store/navigationSlice';
 
 type NavigationShortcutsProps = {
 	className?: string;
@@ -48,4 +49,4 @@ function NavigationShortcuts(props: NavigationShortcutsProps) {
 	);
 }
 
-export default NavigationShortcuts;
+export default withSlices<NavigationShortcutsProps>([navigationSlice])(NavigationShortcuts);

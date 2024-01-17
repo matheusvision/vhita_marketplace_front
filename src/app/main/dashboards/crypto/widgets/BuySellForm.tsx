@@ -82,7 +82,6 @@ function BuySellForm() {
 
 	function onSubmit(_data: FormType) {
 		// eslint-disable-next-line no-console
-		console.info(_data);
 		reset();
 	}
 

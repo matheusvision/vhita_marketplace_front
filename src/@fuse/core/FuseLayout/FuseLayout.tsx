@@ -106,12 +106,16 @@ function FuseLayout(props: FuseLayoutProps) {
 	);
 
 	return useMemo(() => {
+		if (!_.isEqual(currentSettings, settings)) {
+			return null;
+		}
+
 		return (
 			<FuseSuspense>
 				<Layout>{children}</Layout>
 			</FuseSuspense>
 		);
-	}, [Layout, children]);
+	}, [Layout, children, currentSettings, settings]);
 }
 
 export default withSlices<FuseLayoutProps>([fuseSettingsSlice])(FuseLayout);

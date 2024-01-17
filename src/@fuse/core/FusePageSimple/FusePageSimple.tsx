@@ -221,7 +221,6 @@ const FusePageSimple = forwardRef<
 		leftSidebarOnClose
 	} = props;
 
-	// console.info("render::FusePageSimple");
 	const leftSidebarRef = useRef<{ toggleSidebar: (T: boolean) => void }>(null);
 	const rightSidebarRef = useRef<{ toggleSidebar: (T: boolean) => void }>(null);
 	const rootRef = useRef(null);

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import FuseSearch from '@fuse/core/FuseSearch';
-import { selectFlatNavigation } from './store/navigationSlice';
+import withSlices from 'app/store/withSlices';
+import { navigationSlice, selectFlatNavigation } from './store/navigationSlice';
 
 type NavigationSearchProps = {
 	className?: string;
@@ -24,4 +25,4 @@ function NavigationSearch(props: NavigationSearchProps) {
 	);
 }
 
-export default NavigationSearch;
+export default withSlices<NavigationSearchProps>([navigationSlice])(NavigationSearch);
