@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
 import { useAppDispatch } from 'app/store/store';
 import apiService from 'app/store/apiService';
-import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
 import ExtendedMockAdapter from './ExtendedMockAdapter';
 import { authApiMocks } from './api/auth-api';
 import { notificationsApiMocks } from './api/notifications-api';
@@ -89,7 +89,7 @@ function MockAdapterProvider(props: MockAdapterProviderProps) {
 	}, [enabled]);
 
 	useEffect(() => {
-		if (module?.hot) {
+		if (import.meta.hot) {
 			dispatch(apiService.util.resetApiState());
 		}
 	}, [dispatch]);

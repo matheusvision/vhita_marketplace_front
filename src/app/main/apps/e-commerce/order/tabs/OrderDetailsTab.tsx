@@ -17,6 +17,8 @@ import TableHead from '@mui/material/TableHead';
 import { useGetECommerceOrderQuery } from '../../ECommerceApi';
 import OrdersStatus from '../OrdersStatus';
 
+const mapKey = import.meta.env.VITE_MAP_KEY;
+
 type MarkerPropsType = {
 	text: string;
 	lat: number;
@@ -135,7 +137,7 @@ function OrderDetailsTab() {
 								<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
 									<GoogleMap
 										bootstrapURLKeys={{
-											key: process.env.REACT_APP_MAP_KEY
+											key: mapKey
 										}}
 										defaultZoom={15}
 										defaultCenter={{
@@ -169,7 +171,7 @@ function OrderDetailsTab() {
 								<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
 									<GoogleMap
 										bootstrapURLKeys={{
-											key: process.env.REACT_APP_MAP_KEY
+											key: mapKey
 										}}
 										defaultZoom={15}
 										defaultCenter={{

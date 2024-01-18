@@ -5,19 +5,19 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+
                    function PopperDoc(props) {
                      return (
-                       
+
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button 
+					  <Button
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a" 
-							href="https://mui.com/components/popper" 
+							component="a"
+							href="https://mui.com/components/popper"
 							target="_blank"
 							role="button"
 							size="small"
@@ -47,7 +47,7 @@ If you need this behavior, you can use <a href="/material-ui/react-click-away-li
                     name="SimplePopper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/SimplePopper.tsx').default} 
+                    component={require('../components/popper/SimplePopper.tsx').default}
                     raw={require('!raw-loader!../components/popper/SimplePopper.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
@@ -64,7 +64,7 @@ These two callbacks allow the popper to unmount the child content when closed an
                     name="TransitionsPopper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/TransitionsPopper.tsx').default} 
+                    component={require('../components/popper/TransitionsPopper.tsx').default}
                     raw={require('!raw-loader!../components/popper/TransitionsPopper.tsx')}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Alternatively, you can use <a href="https://github.com/pmndrs/react-spring">react-spring</a>.</Typography>
@@ -72,7 +72,7 @@ These two callbacks allow the popper to unmount the child content when closed an
                     name="SpringPopper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/SpringPopper.tsx').default} 
+                    component={require('../components/popper/SpringPopper.tsx').default}
                     raw={require('!raw-loader!../components/popper/SpringPopper.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Positioned popper</Typography>
@@ -80,7 +80,7 @@ These two callbacks allow the popper to unmount the child content when closed an
                     name="PositionedPopper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/PositionedPopper.tsx').default} 
+                    component={require('../components/popper/PositionedPopper.tsx').default}
                     raw={require('!raw-loader!../components/popper/PositionedPopper.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Scroll playground</Typography>
@@ -88,7 +88,7 @@ These two callbacks allow the popper to unmount the child content when closed an
                     name="ScrollPlayground.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/ScrollPlayground.js').default} 
+                    component={require('../components/popper/ScrollPlayground.js').default}
                     raw={require('!raw-loader!../components/popper/ScrollPlayground.js')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Virtual element</Typography>
@@ -99,27 +99,26 @@ You need to create an object shaped like the <a href="https://popper.js.org/docs
                     name="VirtualElementPopper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/VirtualElementPopper.tsx').default} 
+                    component={require('../components/popper/VirtualElementPopper.tsx').default}
                     raw={require('!raw-loader!../components/popper/VirtualElementPopper.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complementary projects</Typography>
 <Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">material-ui-popup-state</Typography>
-<Typography className="text-14 mb-32" component="div"> src="https://img.shields.io/github/stars/jcoreio/material-ui-popup-state?style=social&label=Star" alt="stars/>
- src="https://img.shields.io/npm/dm/material-ui-popup-state.svg" alt="npm downloads/></Typography>
+<Typography className="text-14 mb-32" component="div"><img  src="https://img.shields.io/github/stars/jcoreio/material-ui-popup-state?style=social&label=Star" alt="stars"/>
+<img  src="https://img.shields.io/npm/dm/material-ui-popup-state.svg" alt="npm downloads"/></Typography>
 <Typography className="text-14 mb-32" component="div">The package <a href="https://github.com/jcoreio/material-ui-popup-state"><code>{`material-ui-popup-state`}</code></a> that takes care of popper state for you in most cases.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PopperPopupState.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/popper/PopperPopupState.tsx').default} 
+                    component={require('../components/popper/PopperPopupState.tsx').default}
                     raw={require('!raw-loader!../components/popper/PopperPopupState.tsx')}
                     /></Typography>
 
                 </>
-    
+
                      );
                    }
-                   
+
                    export default PopperDoc;
-                   

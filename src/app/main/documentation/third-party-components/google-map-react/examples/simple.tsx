@@ -34,7 +34,7 @@ function SimpleExample() {
 			<div className="w-full h-512">
 				<GoogleMap
 					bootstrapURLKeys={{
-						key: process.env.REACT_APP_MAP_KEY
+						key: import.meta.env.VITE_MAP_KEY
 					}}
 					defaultZoom={12}
 					defaultCenter={{

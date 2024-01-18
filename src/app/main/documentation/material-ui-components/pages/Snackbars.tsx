@@ -5,19 +5,19 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+
                    function SnackbarsDoc(props) {
                      return (
-                       
+
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button 
+					  <Button
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a" 
-							href="https://mui.com/components/snackbars" 
+							component="a"
+							href="https://mui.com/components/snackbars"
 							target="_blank"
 							role="button"
 							size="small"
@@ -39,7 +39,7 @@ They may contain a text action, but no icons. You can use them to display notifi
                     name="SimpleSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/SimpleSnackbar.tsx').default} 
+                    component={require('../components/snackbars/SimpleSnackbar.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/SimpleSnackbar.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
@@ -49,7 +49,7 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedSnackbars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/CustomizedSnackbars.tsx').default} 
+                    component={require('../components/snackbars/CustomizedSnackbars.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/CustomizedSnackbars.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Positioned snackbars</Typography>
@@ -59,7 +59,7 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="PositionedSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/PositionedSnackbar.tsx').default} 
+                    component={require('../components/snackbars/PositionedSnackbar.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/PositionedSnackbar.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Message Length</Typography>
@@ -68,7 +68,7 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="LongTextSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/LongTextSnackbar.tsx').default} 
+                    component={require('../components/snackbars/LongTextSnackbar.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/LongTextSnackbar.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
@@ -78,7 +78,7 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="ConsecutiveSnackbars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/ConsecutiveSnackbars.tsx').default} 
+                    component={require('../components/snackbars/ConsecutiveSnackbars.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/ConsecutiveSnackbars.tsx')}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Snackbars and floating action buttons (FABs)</Typography>
@@ -87,7 +87,7 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="FabIntegrationSnackbar.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/snackbars/FabIntegrationSnackbar.tsx').default} 
+                    component={require('../components/snackbars/FabIntegrationSnackbar.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/FabIntegrationSnackbar.tsx')}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Change transition</Typography>
@@ -96,7 +96,7 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="TransitionsSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/TransitionsSnackbar.tsx').default} 
+                    component={require('../components/snackbars/TransitionsSnackbar.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/TransitionsSnackbar.tsx')}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Control Slide direction</Typography>
@@ -121,14 +121,14 @@ export default function MyComponent() {
                     name="DirectionSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/DirectionSnackbar.tsx').default} 
+                    component={require('../components/snackbars/DirectionSnackbar.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/DirectionSnackbar.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complementary projects</Typography>
 <Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">notistack</Typography>
-<Typography className="text-14 mb-32" component="div"> src="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Star" alt="stars/>
- src="https://img.shields.io/npm/dm/notistack.svg" alt="npm downloads/></Typography>
+<Typography className="text-14 mb-32" component="div"><img src="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Star" alt="stars"/>
+<img src="https://img.shields.io/npm/dm/notistack.svg" alt="npm downloads"/></Typography>
 <Typography className="text-14 mb-32" component="div">This example demonstrates how to use <a href="https://github.com/iamhosseindhv/notistack">notistack</a>.
 notistack has an <strong>imperative API</strong> that makes it easy to display snackbars, without having to handle their open/close state.
 It also enables you to <strong>stack</strong> them on top of one another (although this is discouraged by the Material Design guidelines).</Typography>
@@ -136,7 +136,7 @@ It also enables you to <strong>stack</strong> them on top of one another (althou
                     name="IntegrationNotistack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/IntegrationNotistack.tsx').default} 
+                    component={require('../components/snackbars/IntegrationNotistack.tsx').default}
                     raw={require('!raw-loader!../components/snackbars/IntegrationNotistack.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
@@ -169,9 +169,8 @@ export default function MyComponent() {
 </FuseHighlight>
 
                 </>
-    
+
                      );
                    }
-                   
+
                    export default SnackbarsDoc;
-                   

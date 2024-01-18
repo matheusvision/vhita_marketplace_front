@@ -5,19 +5,19 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+
                    function DialogsDoc(props) {
                      return (
-                       
+
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button 
+					  <Button
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a" 
-							href="https://mui.com/components/dialogs" 
+							component="a"
+							href="https://mui.com/components/dialogs"
 							target="_blank"
 							role="button"
 							size="small"
@@ -43,7 +43,7 @@ For example, they can display avatars, icons, clarifying subtext, or orthogonal 
                     name="SimpleDialogDemo.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/SimpleDialogDemo.tsx').default} 
+                    component={require('../components/dialogs/SimpleDialogDemo.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/SimpleDialogDemo.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Alerts</Typography>
@@ -65,7 +65,7 @@ Users should be able to understand the choices based on the title and button tex
                     name="AlertDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/AlertDialog.tsx').default} 
+                    component={require('../components/dialogs/AlertDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/AlertDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
@@ -74,7 +74,7 @@ Users should be able to understand the choices based on the title and button tex
                     name="AlertDialogSlide.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/AlertDialogSlide.tsx').default} 
+                    component={require('../components/dialogs/AlertDialogSlide.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/AlertDialogSlide.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Form dialogs</Typography>
@@ -84,7 +84,7 @@ For example, if your site prompts for potential subscribers to fill in their ema
                     name="FormDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/FormDialog.tsx').default} 
+                    component={require('../components/dialogs/FormDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/FormDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
@@ -95,7 +95,7 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedDialogs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/CustomizedDialogs.tsx').default} 
+                    component={require('../components/dialogs/CustomizedDialogs.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/CustomizedDialogs.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Full-screen dialogs</Typography>
@@ -103,7 +103,7 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="FullScreenDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/FullScreenDialog.tsx').default} 
+                    component={require('../components/dialogs/FullScreenDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/FullScreenDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Optional sizes</Typography>
@@ -113,7 +113,7 @@ When the <code>{`fullWidth`}</code> prop is true, the dialog will adapt based on
                     name="MaxWidthDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/MaxWidthDialog.tsx').default} 
+                    component={require('../components/dialogs/MaxWidthDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/MaxWidthDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Responsive full-screen</Typography>
@@ -135,7 +135,7 @@ function MyComponent() {
                     name="ResponsiveDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/ResponsiveDialog.tsx').default} 
+                    component={require('../components/dialogs/ResponsiveDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/ResponsiveDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Confirmation dialogs</Typography>
@@ -146,7 +146,7 @@ For example, users can listen to multiple ringtones but only make a final select
                     name="ConfirmationDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/ConfirmationDialog.tsx').default} 
+                    component={require('../components/dialogs/ConfirmationDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/ConfirmationDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Draggable dialog</Typography>
@@ -157,7 +157,7 @@ This will make the entire dialog draggable.</Typography>
                     name="DraggableDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/DraggableDialog.tsx').default} 
+                    component={require('../components/dialogs/DraggableDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/DraggableDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Scrolling long content</Typography>
@@ -171,7 +171,7 @@ This will make the entire dialog draggable.</Typography>
                     name="ScrollDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/ScrollDialog.tsx').default} 
+                    component={require('../components/dialogs/ScrollDialog.tsx').default}
                     raw={require('!raw-loader!../components/dialogs/ScrollDialog.tsx')}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Performance</Typography>
@@ -181,16 +181,15 @@ This will make the entire dialog draggable.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complementary projects</Typography>
 <Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">material-ui-confirm</Typography>
-<Typography className="text-14 mb-32" component="div"> src="https://img.shields.io/github/stars/jonatanklosko/material-ui-confirm?style=social&label=Star" alt="stars/>
- src="https://img.shields.io/npm/dm/material-ui-confirm.svg" alt="npm downloads/></Typography>
+<Typography className="text-14 mb-32" component="div"><img src="https://img.shields.io/github/stars/jonatanklosko/material-ui-confirm?style=social&label=Star" alt="stars"/>
+ <img src="https://img.shields.io/npm/dm/material-ui-confirm.svg" alt="npm downloads"/></Typography>
 <Typography className="text-14 mb-32" component="div">The package <a href="https://github.com/jonatanklosko/material-ui-confirm/"><code>{`material-ui-confirm`}</code></a> provides dialogs for confirming user actions without writing boilerplate code.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">Follow the <a href="/material-ui/react-modal/#accessibility">Modal accessibility section</a>.</Typography>
 
                 </>
-    
+
                      );
                    }
-                   
+
                    export default DialogsDoc;
-                   
