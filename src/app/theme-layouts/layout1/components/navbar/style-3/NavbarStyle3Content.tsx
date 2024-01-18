@@ -137,7 +137,7 @@ function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 					<StyledPanel
 						id="fuse-navbar-panel"
 						opened={panelOpen}
-						className={clsx('overflow-y-auto overflow-x-hidden shadow-5')}
+						className={clsx('overflow-y-auto overflow-x-hidden shadow')}
 						option={{ suppressScrollX: true, wheelPropagation: false }}
 					>
 						<FuseNavigation

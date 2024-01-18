@@ -8,12 +8,12 @@ import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import AppContext from 'app/AppContext';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import Configurator from 'app/theme-layouts/shared-components/configurator/Configurator';
 import FooterLayout3 from './components/FooterLayout3';
 import LeftSideLayout3 from './components/LeftSideLayout3';
 import NavbarWrapperLayout3 from './components/NavbarWrapperLayout3';
 import RightSideLayout3 from './components/RightSideLayout3';
 import ToolbarLayout3 from './components/ToolbarLayout3';
-import SettingsPanel from '../shared-components/SettingsPanel';
 import { Layout3ConfigDefaultsType } from './Layout3Config';
 
 const Root = styled('div')<{ config: Layout3ConfigDefaultsType }>(({ config }) => ({
@@ -77,7 +77,7 @@ function Layout3(props: Layout3Props) {
 					)}
 
 					<div className="sticky top-0 z-99">
-						<SettingsPanel />
+						<Configurator />
 					</div>
 
 					<div className="relative z-10 flex min-h-0 flex-auto flex-col">

@@ -13,7 +13,7 @@ import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
 import { resetUser, setUser, setUserSettings } from 'src/app/auth/user/store/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
 import { AppThunk, RootStateType } from 'app/store/types';
-import { FuseSettingsConfigType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigType, FuseThemesType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { PartialDeep } from 'type-fest';
 import { appSelector } from 'app/store/store';
@@ -22,18 +22,20 @@ import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
 type AppRootStateType = RootStateType<settingsSliceType>;
 
 export const changeFuseTheme =
-	(theme: FuseThemeType): AppThunk<void> =>
+	(theme: FuseThemesType): AppThunk<void> =>
 	(dispatch, getState) => {
 		const AppState = getState() as AppRootStateType;
 		const settings = AppState.fuseSettings;
 
+		const { navbar, footer, toolbar, main } = theme;
+
 		const newSettings: FuseSettingsConfigType = {
 			...settings.current,
 			theme: {
-				main: theme,
-				navbar: theme,
-				toolbar: theme,
-				footer: theme
+				main,
+				navbar,
+				toolbar,
+				footer
 			}
 		};
 

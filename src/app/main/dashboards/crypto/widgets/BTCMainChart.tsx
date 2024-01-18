@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material/styles';
+import { darken, useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
 import sub from 'date-fns/sub';
 import format from 'date-fns/format';
@@ -41,7 +41,7 @@ function BtcMainChart() {
 			enabled: false
 		},
 		grid: {
-			borderColor: theme.palette.divider,
+			borderColor: darken(theme.palette.divider, 0.1),
 			position: 'back',
 			show: true,
 			strokeDashArray: 6,
@@ -63,7 +63,6 @@ function BtcMainChart() {
 			width: 2,
 			curve: 'straight'
 		},
-
 		tooltip: {
 			followCursor: true,
 			theme: 'dark',
@@ -83,10 +82,11 @@ function BtcMainChart() {
 					type: 'color',
 					color: theme.palette.divider
 				},
-				width: 3,
+				width: 1,
 				stroke: {
+					color: theme.palette.secondary.main,
 					dashArray: 0,
-					width: 0
+					width: 2
 				},
 				opacity: 0.9
 			},

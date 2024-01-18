@@ -1,28 +1,24 @@
-import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
+import { alpha, ThemeProvider, useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
 import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { selectContrastMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import { useSelector } from 'react-redux';
+// eslint-disable-next-line camelcase
+import { private_safeDarken } from '@mui/system/colorManipulator';
 import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
-
-const Root = styled(Paper)(({ theme }) => ({
-	background: theme.palette.primary.main,
-	color: theme.palette.primary.contrastText
-}));
 
 /**
  * The visitors overview widget.
  */
 function VisitorsOverviewWidget() {
 	const theme = useTheme();
-	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.main));
+	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.dark));
 	const widget = useSelector(selectWidget<VisitorsOverviewWidgetType>('visitors'));
 
 	if (!widget) {
@@ -63,7 +59,7 @@ function VisitorsOverviewWidget() {
 		},
 		grid: {
 			show: true,
-			borderColor: contrastTheme.palette.divider,
+			borderColor: alpha(contrastTheme.palette.primary.contrastText, 0.1),
 			padding: {
 				top: 10,
 				bottom: -40,
@@ -99,7 +95,7 @@ function VisitorsOverviewWidget() {
 			},
 			crosshairs: {
 				stroke: {
-					color: contrastTheme.palette.divider,
+					color: contrastTheme.palette.secondary.main,
 					dashArray: 0,
 					width: 2
 				}
@@ -107,7 +103,7 @@ function VisitorsOverviewWidget() {
 			labels: {
 				offsetY: -20,
 				style: {
-					colors: contrastTheme.palette.text.secondary
+					colors: contrastTheme.palette.primary.contrastText
 				}
 			},
 			tickAmount: 20,
@@ -132,15 +128,28 @@ function VisitorsOverviewWidget() {
 
 	return (
 		<ThemeProvider theme={contrastTheme}>
-			<Root className="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto shadow rounded-2xl overflow-hidden">
+			<Box
+				className="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto shadow rounded-2xl overflow-hidden"
+				sx={{
+					background: private_safeDarken(contrastTheme.palette.primary.main, 0.1),
+					color: contrastTheme.palette.primary.contrastText
+				}}
+			>
 				<div className="flex items-center justify-between mt-40 ml-40 mr-24 sm:mr-40">
 					<div className="flex flex-col">
-						<Typography className="mr-16 text-2xl md:text-3xl font-semibold tracking-tight leading-7">
+						<Typography
+							sx={{
+								color: contrastTheme.palette.primary.contrastText
+							}}
+							className="mr-16 text-2xl md:text-3xl font-semibold tracking-tight leading-7"
+						>
 							Visitors Overview
 						</Typography>
 						<Typography
 							className="font-medium"
-							color="text.secondary"
+							sx={{
+								color: alpha(contrastTheme.palette.primary.contrastText, 0.7)
+							}}
 						>
 							Number of unique visitors
 						</Typography>
@@ -158,8 +167,8 @@ function VisitorsOverviewWidget() {
 							TabIndicatorProps={{
 								children: (
 									<Box
-										sx={{ bgcolor: 'text.disabled' }}
-										className="w-full h-full rounded-full opacity-20"
+										sx={{ backgroundColor: contrastTheme.palette.primary.contrastText }}
+										className="w-full h-full rounded-full opacity-10"
 									/>
 								)
 							}}
@@ -168,6 +177,9 @@ function VisitorsOverviewWidget() {
 								<Tab
 									className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12"
 									disableRipple
+									sx={{
+										color: contrastTheme.palette.primary.contrastText
+									}}
 									key={key}
 									label={label}
 								/>
@@ -184,7 +196,7 @@ function VisitorsOverviewWidget() {
 						height={chartOptions?.chart?.height}
 					/>
 				</div>
-			</Root>
+			</Box>
 		</ThemeProvider>
 	);
 }
