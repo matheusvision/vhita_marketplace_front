@@ -6,12 +6,14 @@ import {
 	Store,
 	combineSlices,
 	buildCreateSlice,
-	asyncThunkCreator
+	asyncThunkCreator,
+	Middleware
 } from '@reduxjs/toolkit';
 import { createDynamicMiddleware } from '@reduxjs/toolkit/react';
 import { AppDispatchType } from 'app/store/types';
 import { useDispatch } from 'react-redux';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { createLogger } from 'redux-logger';
 
 /**
  * The dynamic middleware instance.
@@ -21,6 +23,13 @@ const dynamicInstance = createDynamicMiddleware();
 export const { middleware: dynamicMiddleware } = dynamicInstance;
 
 export const addAppMiddleware = dynamicInstance.addMiddleware.withTypes<Config>();
+
+const middlewares: Middleware[] = [apiService.middleware, dynamicMiddleware];
+
+if (process.env.NODE_ENV === 'development') {
+	const logger = createLogger({ collapsed: (getState, action, logEntry) => (logEntry ? !logEntry.error : true) });
+	middlewares.push(logger);
+}
 
 /**
  * The type definition for the lazy loaded slices.
@@ -52,8 +61,7 @@ export function configureAppStore(initialState?: RootState) {
 	const store = configureStore({
 		reducer: rootReducer,
 		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) =>
-			getDefaultMiddleware().concat(apiService.middleware).concat(dynamicMiddleware)
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares)
 	}) as Store<RootState>;
 
 	setupListeners(store.dispatch);
