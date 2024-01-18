@@ -11,6 +11,7 @@ import {
 import { createDynamicMiddleware } from '@reduxjs/toolkit/react';
 import { AppDispatchType } from 'app/store/types';
 import { useDispatch } from 'react-redux';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 /**
  * The dynamic middleware instance.
@@ -55,6 +56,8 @@ export function configureAppStore(initialState?: RootState) {
 		middleware: (getDefaultMiddleware) =>
 			getDefaultMiddleware().concat(apiService.middleware).concat(dynamicMiddleware)
 	}) as Store<RootState>;
+
+	setupListeners(store.dispatch);
 
 	return store;
 }

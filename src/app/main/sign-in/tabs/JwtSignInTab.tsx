@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
-import { AxiosError } from 'axios/index';
+import { AxiosError } from 'axios';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';

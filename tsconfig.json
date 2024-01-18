@@ -49,4 +49,5 @@
     "vite.config.mts",
     "vite-env.d.ts"
   ],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

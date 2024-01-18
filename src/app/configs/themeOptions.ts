@@ -110,24 +110,6 @@ const themeOptions = [
 		}
 	},
 	{
-		id: 'Charcoal Teal',
-		section: {
-			main: themesConfig.charcoalTeal,
-			navbar: themesConfig.charcoalTealDark,
-			toolbar: themesConfig.charcoalTeal,
-			footer: themesConfig.charcoalTealDark
-		}
-	},
-	{
-		id: 'Charcoal Teal Dark',
-		section: {
-			main: themesConfig.charcoalTealDark,
-			navbar: themesConfig.charcoalTealDark,
-			toolbar: themesConfig.charcoalTealDark,
-			footer: themesConfig.charcoalTealDark
-		}
-	},
-	{
 		id: 'Sky Blue Orange',
 		section: {
 			main: themesConfig.skyBlueOrange,

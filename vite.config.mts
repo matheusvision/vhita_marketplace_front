@@ -1,5 +1,4 @@
-import { defineConfig, Plugin } from 'vite';
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgrPlugin from 'vite-plugin-svgr';
 import checker from 'vite-plugin-checker';
@@ -9,7 +8,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
 	plugins: [
 		react({
-			jsxImportSource: '@emotion/react'
+			jsxImportSource: '@emotion/react',
 		}),
 		checker({
 			overlay: { initialIsOpen: false },
@@ -22,6 +21,18 @@ export default defineConfig({
 			parseNative: false,
 		}),
 		svgrPlugin(),
+		{
+			name: 'custom-hmr-control',
+			handleHotUpdate({ file, server }) {
+				if (file.includes('src/app/configs/')) {
+					server.ws.send({
+						type: 'full-reload',
+					});
+					return [];
+				}
+				return;
+			},
+		},
 	],
 	build: {
 		outDir: 'build',

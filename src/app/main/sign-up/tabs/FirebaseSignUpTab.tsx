@@ -6,9 +6,9 @@ import Checkbox from '@mui/material/Checkbox';
 import FormHelperText from '@mui/material/FormHelperText';
 import Button from '@mui/material/Button';
 import _ from '@lodash';
-import firebase from 'firebase/compat';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import firebase from 'firebase/compat/app';
 import { SignUpPayload, useAuth } from '../../../auth/AuthRouteProvider';
 
 /**
