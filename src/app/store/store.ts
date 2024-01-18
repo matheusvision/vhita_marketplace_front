@@ -31,7 +31,6 @@ export interface LazyLoadedSlices {}
  * The static reducers.
  */
 const staticReducers: ReducersMapObject = {
-	// fuse,
 	i18n,
 	[apiService.reducerPath]: apiService.reducer
 };

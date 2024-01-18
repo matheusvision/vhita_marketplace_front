@@ -5,7 +5,33 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import ButtonAppBarComponent from '../components/app-bar/ButtonAppBar';
+import ButtonAppBarRaw from '../components/app-bar/ButtonAppBar.tsx?raw';
+import MenuAppBarComponent from '../components/app-bar/MenuAppBar';
+import MenuAppBarRaw from '../components/app-bar/MenuAppBar.tsx?raw';
+import ResponsiveAppBarComponent from '../components/app-bar/ResponsiveAppBar';
+import ResponsiveAppBarRaw from '../components/app-bar/ResponsiveAppBar.tsx?raw';
+import SearchAppBarComponent from '../components/app-bar/SearchAppBar';
+import SearchAppBarRaw from '../components/app-bar/SearchAppBar.tsx?raw';
+import DrawerAppBarComponent from '../components/app-bar/DrawerAppBar';
+import DrawerAppBarRaw from '../components/app-bar/DrawerAppBar.tsx?raw';
+import PrimarySearchAppBarComponent from '../components/app-bar/PrimarySearchAppBar';
+import PrimarySearchAppBarRaw from '../components/app-bar/PrimarySearchAppBar.tsx?raw';
+import DenseAppBarComponent from '../components/app-bar/DenseAppBar';
+import DenseAppBarRaw from '../components/app-bar/DenseAppBar.tsx?raw';
+import ProminentAppBarComponent from '../components/app-bar/ProminentAppBar';
+import ProminentAppBarRaw from '../components/app-bar/ProminentAppBar.tsx?raw';
+import BottomAppBarComponent from '../components/app-bar/BottomAppBar';
+import BottomAppBarRaw from '../components/app-bar/BottomAppBar.tsx?raw';
+import HideAppBarComponent from '../components/app-bar/HideAppBar';
+import HideAppBarRaw from '../components/app-bar/HideAppBar.tsx?raw';
+import ElevateAppBarComponent from '../components/app-bar/ElevateAppBar';
+import ElevateAppBarRaw from '../components/app-bar/ElevateAppBar.tsx?raw';
+import BackToTopComponent from '../components/app-bar/BackToTop';
+import BackToTopRaw from '../components/app-bar/BackToTop.tsx?raw';
+import EnableColorOnDarkAppBarComponent from '../components/app-bar/EnableColorOnDarkAppBar';
+import EnableColorOnDarkAppBarRaw from '../components/app-bar/EnableColorOnDarkAppBar.tsx?raw';
+                   
                    function AppBarDoc(props) {
                      return (
                        
@@ -36,24 +62,24 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ButtonAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/ButtonAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/ButtonAppBar.tsx')}
+                    component={ButtonAppBarComponent} 
+                    raw={ButtonAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">App bar with menu</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MenuAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/MenuAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/MenuAppBar.tsx')}
+                    component={MenuAppBarComponent} 
+                    raw={MenuAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">App bar with responsive menu</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ResponsiveAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/ResponsiveAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/ResponsiveAppBar.tsx')}
+                    component={ResponsiveAppBarComponent} 
+                    raw={ResponsiveAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">App bar with search field</Typography>
 <Typography className="text-14 mb-32" component="div">A side searchbar.</Typography>
@@ -61,16 +87,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="SearchAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/SearchAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/SearchAppBar.tsx')}
+                    component={SearchAppBarComponent} 
+                    raw={SearchAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Responsive App bar with Drawer</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DrawerAppBar.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/app-bar/DrawerAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/DrawerAppBar.tsx')}
+                    component={DrawerAppBarComponent} 
+                    raw={DrawerAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">App bar with a primary search field</Typography>
 <Typography className="text-14 mb-32" component="div">A primary searchbar.</Typography>
@@ -78,16 +104,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="PrimarySearchAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/PrimarySearchAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/PrimarySearchAppBar.tsx')}
+                    component={PrimarySearchAppBarComponent} 
+                    raw={PrimarySearchAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Dense (desktop only)</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DenseAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/DenseAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/DenseAppBar.tsx')}
+                    component={DenseAppBarComponent} 
+                    raw={DenseAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Prominent</Typography>
 <Typography className="text-14 mb-32" component="div">A prominent app bar.</Typography>
@@ -95,16 +121,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ProminentAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/ProminentAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/ProminentAppBar.tsx')}
+                    component={ProminentAppBarComponent} 
+                    raw={ProminentAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Bottom App bar</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BottomAppBar.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/app-bar/BottomAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/BottomAppBar.tsx')}
+                    component={BottomAppBarComponent} 
+                    raw={BottomAppBarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Fixed placement</Typography>
 <Typography className="text-14 mb-32" component="div">When you render the app bar position fixed, the dimension of the element doesn&#39;t impact the rest of the page. This can cause some part of your content to be invisible, behind the app bar. Here are 3 possible solutions:</Typography>
@@ -155,8 +181,8 @@ function App() {
                     name="HideAppBar.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/app-bar/HideAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/HideAppBar.tsx')}
+                    component={HideAppBarComponent} 
+                    raw={HideAppBarRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Elevate App bar</Typography>
 <Typography className="text-14 mb-32" component="div">The app bar elevates on scroll to communicate that the user is not at the top of the page.</Typography>
@@ -164,8 +190,8 @@ function App() {
                     name="ElevateAppBar.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/app-bar/ElevateAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/ElevateAppBar.tsx')}
+                    component={ElevateAppBarComponent} 
+                    raw={ElevateAppBarRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Back to top</Typography>
 <Typography className="text-14 mb-32" component="div">A floating action button appears on scroll to make it easy to get back to the top of the page.</Typography>
@@ -173,8 +199,8 @@ function App() {
                     name="BackToTop.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/app-bar/BackToTop.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/BackToTop.tsx')}
+                    component={BackToTopComponent} 
+                    raw={BackToTopRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3"><code>{`useScrollTrigger([options]) => trigger`}</code></Typography>
 <Typography className="text-14 mt-12 mb-10" component="h4">Arguments</Typography>
@@ -212,8 +238,8 @@ You can override this behavior by setting the <code>{`enableColorOnDark`}</code>
                     name="EnableColorOnDarkAppBar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/app-bar/EnableColorOnDarkAppBar.tsx').default} 
-                    raw={require('!raw-loader!../components/app-bar/EnableColorOnDarkAppBar.tsx')}
+                    component={EnableColorOnDarkAppBarComponent} 
+                    raw={EnableColorOnDarkAppBarRaw}
                     /></Typography>
 
                 </>

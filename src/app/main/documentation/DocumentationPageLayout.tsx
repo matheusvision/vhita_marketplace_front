@@ -5,13 +5,17 @@ import FuseNavigation from '@fuse/core/FuseNavigation';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import FusePageCarded from '@fuse/core/FusePageCarded';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import FusePageSimple from '@fuse/core/FusePageSimple';
+import Typography from '@mui/material/Typography';
 import DocumentationNavigation from './DocumentationNavigation';
 
-const Root = styled(FusePageCarded)(() => ({
+const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageCarded-header': {},
+	'& .FusePageCarded-content': {
+		backgroundColor: theme.palette.background.default
+	},
 	'& .FusePageCarded-wrapper': {},
 	'& .FusePageCarded-leftSidebar': {},
 	'& .description': {
@@ -41,7 +45,7 @@ function DocumentationPageLayout() {
 	return (
 		<Root
 			header={
-				<div className="flex items-center justify-center py-12 px-4 md:px-12 h-full w-full">
+				<div className="flex items-center justify-center py-12 px-4 md:px-12 max-w-3xl h-full w-full">
 					<IconButton
 						onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
 						aria-label="toggle left sidebar"
@@ -50,15 +54,15 @@ function DocumentationPageLayout() {
 						<FuseSvgIcon>heroicons-outline:view-list</FuseSvgIcon>
 					</IconButton>
 					<div className="flex flex-1 items-center sm:justify-center px-8 lg:px-12">
-						<Link
-							color="inherit"
+						<Typography
+							component={Link}
+							color="textPrimary"
 							to="/documentation"
 							className="text-14 md:text-18 font-medium flex items-center"
 							role="button"
 						>
-							<FuseSvgIcon className="mr-8">heroicons-outline:book-open</FuseSvgIcon>{' '}
 							<span>Fuse React - Documentation</span>
-						</Link>
+						</Typography>
 					</div>
 				</div>
 			}

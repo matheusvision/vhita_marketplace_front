@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgrPlugin from 'vite-plugin-svgr';
-import checker from 'vite-plugin-checker';
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
@@ -9,13 +8,6 @@ export default defineConfig({
 	plugins: [
 		react({
 			jsxImportSource: '@emotion/react',
-		}),
-		checker({
-			overlay: { initialIsOpen: false },
-			typescript: true,
-			eslint: {
-				lintCommand: 'eslint "./src/**/*.{ts,tsx,js,jsx}"',
-			},
 		}),
 		tsconfigPaths({
 			parseNative: false,

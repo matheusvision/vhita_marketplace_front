@@ -5,7 +5,25 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import FileSystemNavigatorComponent from '../components/tree-view/FileSystemNavigator';
+import FileSystemNavigatorRaw from '../components/tree-view/FileSystemNavigator.tsx?raw';
+import MultiSelectTreeViewComponent from '../components/tree-view/MultiSelectTreeView';
+import MultiSelectTreeViewRaw from '../components/tree-view/MultiSelectTreeView.tsx?raw';
+import ControlledTreeViewComponent from '../components/tree-view/ControlledTreeView';
+import ControlledTreeViewRaw from '../components/tree-view/ControlledTreeView.tsx?raw';
+import RichObjectTreeViewComponent from '../components/tree-view/RichObjectTreeView';
+import RichObjectTreeViewRaw from '../components/tree-view/RichObjectTreeView.tsx?raw';
+import IconExpansionTreeViewComponent from '../components/tree-view/IconExpansionTreeView';
+import IconExpansionTreeViewRaw from '../components/tree-view/IconExpansionTreeView.tsx?raw';
+import BarTreeViewComponent from '../components/tree-view/BarTreeView';
+import BarTreeViewRaw from '../components/tree-view/BarTreeView.tsx?raw';
+import CustomizedTreeViewComponent from '../components/tree-view/CustomizedTreeView';
+import CustomizedTreeViewRaw from '../components/tree-view/CustomizedTreeView.tsx?raw';
+import GmailTreeViewComponent from '../components/tree-view/GmailTreeView';
+import GmailTreeViewRaw from '../components/tree-view/GmailTreeView.tsx?raw';
+import DisabledTreeItemsComponent from '../components/tree-view/DisabledTreeItems';
+import DisabledTreeItemsRaw from '../components/tree-view/DisabledTreeItems.tsx?raw';
+                   
                    function TreeViewDoc(props) {
                      return (
                        
@@ -35,8 +53,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="FileSystemNavigator.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/FileSystemNavigator.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/FileSystemNavigator.tsx')}
+                    component={FileSystemNavigatorComponent} 
+                    raw={FileSystemNavigatorRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Multi-selection</Typography>
 <Typography className="text-14 mb-32" component="div">Tree views also support multi-selection.</Typography>
@@ -44,8 +62,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="MultiSelectTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/MultiSelectTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/MultiSelectTreeView.tsx')}
+                    component={MultiSelectTreeViewComponent} 
+                    raw={MultiSelectTreeViewRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled tree view</Typography>
 <Typography className="text-14 mb-32" component="div">The tree view also offers a controlled API.</Typography>
@@ -64,8 +82,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ControlledTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/ControlledTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/ControlledTreeView.tsx')}
+                    component={ControlledTreeViewComponent} 
+                    raw={ControlledTreeViewRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Rich object</Typography>
 <Typography className="text-14 mb-32" component="div">While the <code>{`TreeView`}</code>/<code>{`TreeItem`}</code> component API maximizes flexibility, an extra step is needed to handle a rich object.</Typography>
@@ -90,8 +108,8 @@ const data = {
                     name="RichObjectTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/RichObjectTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/RichObjectTreeView.tsx')}
+                    component={RichObjectTreeViewComponent} 
+                    raw={RichObjectTreeViewRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">ContentComponent prop</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`ContentComponent`}</code> prop and the <code>{`useTreeItem`}</code> hook to further customize the behavior of the TreeItem.</Typography>
@@ -100,16 +118,16 @@ const data = {
                     name="IconExpansionTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/IconExpansionTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/IconExpansionTreeView.tsx')}
+                    component={IconExpansionTreeViewComponent} 
+                    raw={IconExpansionTreeViewRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Or increasing the width of the state indicator:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BarTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/BarTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/BarTreeView.tsx')}
+                    component={BarTreeViewComponent} 
+                    raw={BarTreeViewRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom icons, border and animation</Typography>
@@ -117,24 +135,24 @@ const data = {
                     name="CustomizedTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/CustomizedTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/CustomizedTreeView.tsx')}
+                    component={CustomizedTreeViewComponent} 
+                    raw={CustomizedTreeViewRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Gmail clone</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="GmailTreeView.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/GmailTreeView.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/GmailTreeView.tsx')}
+                    component={GmailTreeViewComponent} 
+                    raw={GmailTreeViewRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Disabled tree items</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DisabledTreeItems.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tree-view/DisabledTreeItems.tsx').default} 
-                    raw={require('!raw-loader!../components/tree-view/DisabledTreeItems.tsx')}
+                    component={DisabledTreeItemsComponent} 
+                    raw={DisabledTreeItemsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The behavior of disabled tree items depends on the <code>{`disabledItemsFocusable`}</code> prop.</Typography>
 <Typography className="text-14 mb-32" component="div">If it is false:</Typography>

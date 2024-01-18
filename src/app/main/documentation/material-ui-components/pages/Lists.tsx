@@ -5,7 +5,35 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicListComponent from '../components/lists/BasicList';
+import BasicListRaw from '../components/lists/BasicList.tsx?raw';
+import NestedListComponent from '../components/lists/NestedList';
+import NestedListRaw from '../components/lists/NestedList.tsx?raw';
+import FolderListComponent from '../components/lists/FolderList';
+import FolderListRaw from '../components/lists/FolderList.tsx?raw';
+import InteractiveListComponent from '../components/lists/InteractiveList';
+import InteractiveListRaw from '../components/lists/InteractiveList.tsx?raw';
+import SelectedListItemComponent from '../components/lists/SelectedListItem';
+import SelectedListItemRaw from '../components/lists/SelectedListItem.tsx?raw';
+import AlignItemsListComponent from '../components/lists/AlignItemsList';
+import AlignItemsListRaw from '../components/lists/AlignItemsList.tsx?raw';
+import CheckboxListComponent from '../components/lists/CheckboxList';
+import CheckboxListRaw from '../components/lists/CheckboxList.tsx?raw';
+import CheckboxListSecondaryComponent from '../components/lists/CheckboxListSecondary';
+import CheckboxListSecondaryRaw from '../components/lists/CheckboxListSecondary.tsx?raw';
+import SwitchListSecondaryComponent from '../components/lists/SwitchListSecondary';
+import SwitchListSecondaryRaw from '../components/lists/SwitchListSecondary.tsx?raw';
+import PinnedSubheaderListComponent from '../components/lists/PinnedSubheaderList';
+import PinnedSubheaderListRaw from '../components/lists/PinnedSubheaderList.tsx?raw';
+import InsetListComponent from '../components/lists/InsetList';
+import InsetListRaw from '../components/lists/InsetList.tsx?raw';
+import GutterlessListComponent from '../components/lists/GutterlessList';
+import GutterlessListRaw from '../components/lists/GutterlessList.tsx?raw';
+import VirtualizedListComponent from '../components/lists/VirtualizedList';
+import VirtualizedListRaw from '../components/lists/VirtualizedList.tsx?raw';
+import CustomizedListComponent from '../components/lists/CustomizedList';
+import CustomizedListRaw from '../components/lists/CustomizedList.tsx?raw';
+                   
                    function ListsDoc(props) {
                      return (
                        
@@ -35,8 +63,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/BasicList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/BasicList.tsx')}
+                    component={BasicListComponent} 
+                    raw={BasicListRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The last item of the previous demo shows how you can render a link:</Typography>
 
@@ -53,16 +81,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="NestedList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/NestedList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/NestedList.tsx')}
+                    component={NestedListComponent} 
+                    raw={NestedListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Folder List</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="FolderList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/FolderList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/FolderList.tsx')}
+                    component={FolderListComponent} 
+                    raw={FolderListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Interactive</Typography>
 <Typography className="text-14 mb-32" component="div">Below is an interactive demo that lets you explore the visual results of the different settings:</Typography>
@@ -70,16 +98,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="InteractiveList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/InteractiveList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/InteractiveList.tsx')}
+                    component={InteractiveListComponent} 
+                    raw={InteractiveListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Selected ListItem</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SelectedListItem.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/SelectedListItem.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/SelectedListItem.tsx')}
+                    component={SelectedListItemComponent} 
+                    raw={SelectedListItemRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Align list items</Typography>
 <Typography className="text-14 mb-32" component="div">When displaying three lines or more, the avatar is not aligned at the top.
@@ -88,8 +116,8 @@ You should set the <code>{`alignItems="flex-start"`}</code> prop to align the av
                     name="AlignItemsList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/AlignItemsList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/AlignItemsList.tsx')}
+                    component={AlignItemsListComponent} 
+                    raw={AlignItemsListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">List Controls</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Checkbox</Typography>
@@ -99,16 +127,16 @@ You should set the <code>{`alignItems="flex-start"`}</code> prop to align the av
                     name="CheckboxList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/CheckboxList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/CheckboxList.tsx')}
+                    component={CheckboxListComponent} 
+                    raw={CheckboxListRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The checkbox is the secondary action for the list item and a separate target.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CheckboxListSecondary.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/CheckboxListSecondary.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/CheckboxListSecondary.tsx')}
+                    component={CheckboxListSecondaryComponent} 
+                    raw={CheckboxListSecondaryRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Switch</Typography>
 <Typography className="text-14 mb-32" component="div">The switch is the secondary action and a separate target.</Typography>
@@ -116,8 +144,8 @@ You should set the <code>{`alignItems="flex-start"`}</code> prop to align the av
                     name="SwitchListSecondary.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/SwitchListSecondary.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/SwitchListSecondary.tsx')}
+                    component={SwitchListSecondaryComponent} 
+                    raw={SwitchListSecondaryRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sticky subheader</Typography>
 <Typography className="text-14 mb-32" component="div">Upon scrolling, subheaders remain pinned to the top of the screen until pushed off screen by the next subheader.
@@ -127,8 +155,8 @@ This feature relies on CSS sticky positioning.
                     name="PinnedSubheaderList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/PinnedSubheaderList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/PinnedSubheaderList.tsx')}
+                    component={PinnedSubheaderListComponent} 
+                    raw={PinnedSubheaderListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Inset List Item</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`inset`}</code> prop enables a list item that does not have a leading icon or avatar to align correctly with items that do.</Typography>
@@ -136,8 +164,8 @@ This feature relies on CSS sticky positioning.
                     name="InsetList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/InsetList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/InsetList.tsx')}
+                    component={InsetListComponent} 
+                    raw={InsetListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Gutterless list</Typography>
 <Typography className="text-14 mb-32" component="div">When rendering a list within a component that defines its own gutters, <code>{`ListItem`}</code> gutters can be disabled with <code>{`disableGutters`}</code>.</Typography>
@@ -145,8 +173,8 @@ This feature relies on CSS sticky positioning.
                     name="GutterlessList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/GutterlessList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/GutterlessList.tsx')}
+                    component={GutterlessListComponent} 
+                    raw={GutterlessListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Virtualized List</Typography>
 <Typography className="text-14 mb-32" component="div">In the following example, we demonstrate how to use <a href="https://github.com/bvaughn/react-window">react-window</a> with the <code>{`List`}</code> component.
@@ -156,8 +184,8 @@ Virtualization helps with performance issues.</Typography>
                     name="VirtualizedList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/VirtualizedList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/VirtualizedList.tsx')}
+                    component={VirtualizedListComponent} 
+                    raw={VirtualizedListRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The use of <a href="https://github.com/bvaughn/react-window">react-window</a> when possible is encouraged.
 If this library doesn&#39;t cover your use case, you should consider using alternatives like <a href="https://github.com/petyosi/react-virtuoso">react-virtuoso</a>.</Typography>
@@ -169,8 +197,8 @@ You can learn more about this in the
                     name="CustomizedList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/lists/CustomizedList.tsx').default} 
-                    raw={require('!raw-loader!../components/lists/CustomizedList.tsx')}
+                    component={CustomizedListComponent} 
+                    raw={CustomizedListRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/list-item/">MUI Treasury&#39;s customization examples</a>.</Typography>
 

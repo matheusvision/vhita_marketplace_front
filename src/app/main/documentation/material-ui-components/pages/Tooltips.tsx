@@ -5,7 +5,35 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicTooltipComponent from '../components/tooltips/BasicTooltip';
+import BasicTooltipRaw from '../components/tooltips/BasicTooltip.tsx?raw';
+import PositionedTooltipsComponent from '../components/tooltips/PositionedTooltips';
+import PositionedTooltipsRaw from '../components/tooltips/PositionedTooltips.tsx?raw';
+import CustomizedTooltipsComponent from '../components/tooltips/CustomizedTooltips';
+import CustomizedTooltipsRaw from '../components/tooltips/CustomizedTooltips.tsx?raw';
+import ArrowTooltipsComponent from '../components/tooltips/ArrowTooltips';
+import ArrowTooltipsRaw from '../components/tooltips/ArrowTooltips.tsx?raw';
+import TriggersTooltipsComponent from '../components/tooltips/TriggersTooltips';
+import TriggersTooltipsRaw from '../components/tooltips/TriggersTooltips.tsx?raw';
+import ControlledTooltipsComponent from '../components/tooltips/ControlledTooltips';
+import ControlledTooltipsRaw from '../components/tooltips/ControlledTooltips.tsx?raw';
+import VariableWidthComponent from '../components/tooltips/VariableWidth';
+import VariableWidthRaw from '../components/tooltips/VariableWidth.tsx?raw';
+import NonInteractiveTooltipsComponent from '../components/tooltips/NonInteractiveTooltips';
+import NonInteractiveTooltipsRaw from '../components/tooltips/NonInteractiveTooltips.tsx?raw';
+import DisabledTooltipsComponent from '../components/tooltips/DisabledTooltips';
+import DisabledTooltipsRaw from '../components/tooltips/DisabledTooltips.tsx?raw';
+import TransitionsTooltipsComponent from '../components/tooltips/TransitionsTooltips';
+import TransitionsTooltipsRaw from '../components/tooltips/TransitionsTooltips.tsx?raw';
+import FollowCursorTooltipsComponent from '../components/tooltips/FollowCursorTooltips';
+import FollowCursorTooltipsRaw from '../components/tooltips/FollowCursorTooltips.tsx?raw';
+import AnchorElTooltipsComponent from '../components/tooltips/AnchorElTooltips';
+import AnchorElTooltipsRaw from '../components/tooltips/AnchorElTooltips.tsx?raw';
+import DelayTooltipsComponent from '../components/tooltips/DelayTooltips';
+import DelayTooltipsRaw from '../components/tooltips/DelayTooltips.tsx?raw';
+import AccessibilityTooltipsComponent from '../components/tooltips/AccessibilityTooltips';
+import AccessibilityTooltipsRaw from '../components/tooltips/AccessibilityTooltips.tsx?raw';
+                   
                    function TooltipsDoc(props) {
                      return (
                        
@@ -35,8 +63,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicTooltip.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/BasicTooltip.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/BasicTooltip.tsx')}
+                    component={BasicTooltipComponent} 
+                    raw={BasicTooltipRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Positioned tooltips</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`Tooltip`}</code> has 12 <strong>placement</strong> choices.
@@ -45,8 +73,8 @@ They don&#39;t have directional arrows; instead, they rely on motion emanating f
                     name="PositionedTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/PositionedTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/PositionedTooltips.tsx')}
+                    component={PositionedTooltipsComponent} 
+                    raw={PositionedTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -55,8 +83,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/CustomizedTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/CustomizedTooltips.tsx')}
+                    component={CustomizedTooltipsComponent} 
+                    raw={CustomizedTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Arrow tooltips</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`arrow`}</code> prop to give your tooltip an arrow indicating which element it refers to.</Typography>
@@ -64,8 +92,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="ArrowTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/ArrowTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/ArrowTooltips.tsx')}
+                    component={ArrowTooltipsComponent} 
+                    raw={ArrowTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom child element</Typography>
 <Typography className="text-14 mb-32" component="div">The tooltip needs to apply DOM event listeners to its child element.
@@ -125,8 +153,8 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
                     name="TriggersTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/TriggersTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/TriggersTooltips.tsx')}
+                    component={TriggersTooltipsComponent} 
+                    raw={TriggersTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled tooltips</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`open`}</code>, <code>{`onOpen`}</code> and <code>{`onClose`}</code> props to control the behavior of the tooltip.</Typography>
@@ -134,8 +162,8 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
                     name="ControlledTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/ControlledTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/ControlledTooltips.tsx')}
+                    component={ControlledTooltipsComponent} 
+                    raw={ControlledTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Variable width</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`Tooltip`}</code> wraps long text by default to make it readable.</Typography>
@@ -143,8 +171,8 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
                     name="VariableWidth.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/VariableWidth.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/VariableWidth.tsx')}
+                    component={VariableWidthComponent} 
+                    raw={VariableWidthRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Interactive</Typography>
 <Typography className="text-14 mb-32" component="div">Tooltips are interactive by default (to pass <a href="https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus">WCAG 2.1 success criterion 1.4.13</a>).
@@ -154,8 +182,8 @@ You can disable this behavior (thus failing the success criterion which is requi
                     name="NonInteractiveTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/NonInteractiveTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/NonInteractiveTooltips.tsx')}
+                    component={NonInteractiveTooltipsComponent} 
+                    raw={NonInteractiveTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Disabled elements</Typography>
 <Typography className="text-14 mb-32" component="div">By default disabled elements like <code>{`<button>`}</code> do not trigger user interactions so a <code>{`Tooltip`}</code> will not activate on normal events like hover. To accommodate disabled elements, add a simple wrapper element, such as a <code>{`span`}</code>.</Typography>
@@ -166,8 +194,8 @@ In order to work with Safari, you need at least one display block or flex item b
                     name="DisabledTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/DisabledTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/DisabledTooltips.tsx')}
+                    component={DisabledTooltipsComponent} 
+                    raw={DisabledTooltipsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 If you&#39;re not wrapping a Material UI component that inherits from <code>{`ButtonBase`}</code>, for instance, a native <code>{`<button>`}</code> element, you should also add the CSS property <em>pointer-events: none;</em> to your element when disabled:
@@ -190,8 +218,8 @@ If you&#39;re not wrapping a Material UI component that inherits from <code>{`Bu
                     name="TransitionsTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/TransitionsTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/TransitionsTooltips.tsx')}
+                    component={TransitionsTooltipsComponent} 
+                    raw={TransitionsTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Follow cursor</Typography>
 <Typography className="text-14 mb-32" component="div">You can enable the tooltip to follow the cursor by setting <code>{`followCursor={true}`}</code>.</Typography>
@@ -199,8 +227,8 @@ If you&#39;re not wrapping a Material UI component that inherits from <code>{`Bu
                     name="FollowCursorTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/FollowCursorTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/FollowCursorTooltips.tsx')}
+                    component={FollowCursorTooltipsComponent} 
+                    raw={FollowCursorTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Virtual element</Typography>
 <Typography className="text-14 mb-32" component="div">In the event you need to implement a custom placement, you can use the <code>{`anchorEl`}</code> prop:
@@ -210,8 +238,8 @@ You need to create an object shaped like the <a href="https://popper.js.org/docs
                     name="AnchorElTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/AnchorElTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/AnchorElTooltips.tsx')}
+                    component={AnchorElTooltipsComponent} 
+                    raw={AnchorElTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Showing and hiding</Typography>
 <Typography className="text-14 mb-32" component="div">The tooltip is normally shown immediately when the user&#39;s mouse hovers over the element, and hides immediately when the user&#39;s mouse leaves. A delay in showing or hiding the tooltip can be added through the <code>{`enterDelay`}</code> and <code>{`leaveDelay`}</code> props, as shown in the Controlled Tooltips demo above.</Typography>
@@ -220,8 +248,8 @@ You need to create an object shaped like the <a href="https://popper.js.org/docs
                     name="DelayTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/DelayTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/DelayTooltips.tsx')}
+                    component={DelayTooltipsComponent} 
+                    raw={DelayTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(WAI-ARIA: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/">https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/</a>)</Typography>
@@ -241,8 +269,8 @@ Note that you shouldn&#39;t use <code>{`describeChild`}</code> if the tooltip pr
                     name="AccessibilityTooltips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tooltips/AccessibilityTooltips.tsx').default} 
-                    raw={require('!raw-loader!../components/tooltips/AccessibilityTooltips.tsx')}
+                    component={AccessibilityTooltipsComponent} 
+                    raw={AccessibilityTooltipsRaw}
                     /></Typography>
 
                 </>

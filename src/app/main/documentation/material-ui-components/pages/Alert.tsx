@@ -5,7 +5,23 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicAlertsComponent from '../components/alert/BasicAlerts';
+import BasicAlertsRaw from '../components/alert/BasicAlerts.tsx?raw';
+import DescriptionAlertsComponent from '../components/alert/DescriptionAlerts';
+import DescriptionAlertsRaw from '../components/alert/DescriptionAlerts.tsx?raw';
+import ActionAlertsComponent from '../components/alert/ActionAlerts';
+import ActionAlertsRaw from '../components/alert/ActionAlerts.tsx?raw';
+import TransitionAlertsComponent from '../components/alert/TransitionAlerts';
+import TransitionAlertsRaw from '../components/alert/TransitionAlerts.tsx?raw';
+import IconAlertsComponent from '../components/alert/IconAlerts';
+import IconAlertsRaw from '../components/alert/IconAlerts.tsx?raw';
+import OutlinedAlertsComponent from '../components/alert/OutlinedAlerts';
+import OutlinedAlertsRaw from '../components/alert/OutlinedAlerts.tsx?raw';
+import FilledAlertsComponent from '../components/alert/FilledAlerts';
+import FilledAlertsRaw from '../components/alert/FilledAlerts.tsx?raw';
+import ColorAlertsComponent from '../components/alert/ColorAlerts';
+import ColorAlertsRaw from '../components/alert/ColorAlerts.tsx?raw';
+                   
                    function AlertDoc(props) {
                      return (
                        
@@ -42,8 +58,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/BasicAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/BasicAlerts.tsx')}
+                    component={BasicAlertsComponent} 
+                    raw={BasicAlertsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Description</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`AlertTitle`}</code> component to display a formatted title above the content.</Typography>
@@ -51,8 +67,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="DescriptionAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/DescriptionAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/DescriptionAlerts.tsx')}
+                    component={DescriptionAlertsComponent} 
+                    raw={DescriptionAlertsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Actions</Typography>
 <Typography className="text-14 mb-32" component="div">An alert can have an action, such as a close or undo button.
@@ -62,8 +78,8 @@ It is rendered after the message, at the end of the alert.</Typography>
                     name="ActionAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/ActionAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/ActionAlerts.tsx')}
+                    component={ActionAlertsComponent} 
+                    raw={ActionAlertsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Transition</Typography>
 <Typography className="text-14 mb-32" component="div">You can use a <a href="/material-ui/transitions/">transition component</a> such as <code>{`Collapse`}</code> to transition the appearance of the alert.</Typography>
@@ -71,8 +87,8 @@ It is rendered after the message, at the end of the alert.</Typography>
                     name="TransitionAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/TransitionAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/TransitionAlerts.tsx')}
+                    component={TransitionAlertsComponent} 
+                    raw={TransitionAlertsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Icons</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`icon`}</code> prop allows you to add an icon to the beginning of the alert component.
@@ -83,8 +99,8 @@ This will override the default icon for the specified severity.</Typography>
                     name="IconAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/IconAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/IconAlerts.tsx')}
+                    component={IconAlertsComponent} 
+                    raw={IconAlertsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Variants</Typography>
 <Typography className="text-14 mb-32" component="div">Two additional variants are available – outlined, and filled:</Typography>
@@ -93,8 +109,8 @@ This will override the default icon for the specified severity.</Typography>
                     name="OutlinedAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/OutlinedAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/OutlinedAlerts.tsx')}
+                    component={OutlinedAlertsComponent} 
+                    raw={OutlinedAlertsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">When using an outlined alert with the <a href="/material-ui/react-snackbar/#customization"><code>{`Snackbar`}</code> component</a>, background content will be visible and bleed through the alert by default.
 You can prevent this by adding <code>{`bgcolor: 'background.paper'`}</code> to the<a href="/material-ui/customization/how-to-customize/#the-sx-prop"><code>{`sx`}</code> prop</a> on the <code>{`Alert`}</code> component.</Typography>
@@ -103,8 +119,8 @@ You can prevent this by adding <code>{`bgcolor: 'background.paper'`}</code> to t
                     name="FilledAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/FilledAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/FilledAlerts.tsx')}
+                    component={FilledAlertsComponent} 
+                    raw={FilledAlertsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Toast</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the Snackbar to <a href="/material-ui/react-snackbar/#customization">display a toast</a> with the Alert.</Typography>
@@ -114,8 +130,8 @@ You can prevent this by adding <code>{`bgcolor: 'background.paper'`}</code> to t
                     name="ColorAlerts.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/alert/ColorAlerts.tsx').default} 
-                    raw={require('!raw-loader!../components/alert/ColorAlerts.tsx')}
+                    component={ColorAlertsComponent} 
+                    raw={ColorAlertsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(WAI-ARIA: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">https://www.w3.org/WAI/ARIA/apg/patterns/alert/</a>)</Typography>

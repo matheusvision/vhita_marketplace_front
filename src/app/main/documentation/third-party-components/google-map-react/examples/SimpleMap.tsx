@@ -27,7 +27,7 @@ function Marker(props: MarkerProps) {
 	);
 }
 
-function SimpleExample() {
+function SimpleMapExample() {
 	return (
 		<div className="w-full">
 			<Typography className="h2 mb-16">Simple Map Example</Typography>
@@ -53,4 +53,4 @@ function SimpleExample() {
 	);
 }
 
-export default SimpleExample;
+export default SimpleMapExample;

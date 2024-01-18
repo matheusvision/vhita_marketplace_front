@@ -5,7 +5,37 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicGridComponent from '../components/grid2/BasicGrid';
+import BasicGridRaw from '../components/grid2/BasicGrid.tsx?raw';
+import FullWidthGridComponent from '../components/grid2/FullWidthGrid';
+import FullWidthGridRaw from '../components/grid2/FullWidthGrid.tsx?raw';
+import SpacingGridComponent from '../components/grid2/SpacingGrid';
+import SpacingGridRaw from '../components/grid2/SpacingGrid.tsx?raw';
+import RowAndColumnSpacingComponent from '../components/grid2/RowAndColumnSpacing';
+import RowAndColumnSpacingRaw from '../components/grid2/RowAndColumnSpacing.tsx?raw';
+import ResponsiveGridComponent from '../components/grid2/ResponsiveGrid';
+import ResponsiveGridRaw from '../components/grid2/ResponsiveGrid.tsx?raw';
+import AutoGridComponent from '../components/grid2/AutoGrid';
+import AutoGridRaw from '../components/grid2/AutoGrid.tsx?raw';
+import VariableWidthGridComponent from '../components/grid2/VariableWidthGrid';
+import VariableWidthGridRaw from '../components/grid2/VariableWidthGrid.tsx?raw';
+import NestedGridComponent from '../components/grid2/NestedGrid';
+import NestedGridRaw from '../components/grid2/NestedGrid.tsx?raw';
+import NestedGridColumnsComponent from '../components/grid2/NestedGridColumns';
+import NestedGridColumnsRaw from '../components/grid2/NestedGridColumns.tsx?raw';
+import ColumnsGridComponent from '../components/grid2/ColumnsGrid';
+import ColumnsGridRaw from '../components/grid2/ColumnsGrid.tsx?raw';
+import OffsetGridComponent from '../components/grid2/OffsetGrid';
+import OffsetGridRaw from '../components/grid2/OffsetGrid.tsx?raw';
+import OverflowGridComponent from '../components/grid2/OverflowGrid';
+import OverflowGridRaw from '../components/grid2/OverflowGrid.tsx?raw';
+import CenteredElementGridComponent from '../components/grid2/CenteredElementGrid';
+import CenteredElementGridRaw from '../components/grid2/CenteredElementGrid.tsx?raw';
+import FullBorderedGridComponent from '../components/grid2/FullBorderedGrid';
+import FullBorderedGridRaw from '../components/grid2/FullBorderedGrid.tsx?raw';
+import HalfBorderedGridComponent from '../components/grid2/HalfBorderedGrid';
+import HalfBorderedGridRaw from '../components/grid2/HalfBorderedGrid.tsx?raw';
+                   
                    function Grid2Doc(props) {
                      return (
                        
@@ -84,8 +114,8 @@ For example, a component with <code>{`xs={12}`}</code> occupies the whole viewpo
                     name="BasicGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/BasicGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/BasicGrid.tsx')}
+                    component={BasicGridComponent} 
+                    raw={BasicGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Multiple breakpoints</Typography>
 <Typography className="text-14 mb-32" component="div">Components may have multiple widths defined, causing the layout to change at the defined breakpoint. Width values given to larger breakpoints override those given to smaller breakpoints.</Typography>
@@ -95,8 +125,8 @@ When the viewport grows beyond this size, the component occupies half of the tot
                     name="FullWidthGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/FullWidthGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/FullWidthGrid.tsx')}
+                    component={FullWidthGridComponent} 
+                    raw={FullWidthGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Spacing</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`spacing`}</code> prop to control the space between children.
@@ -107,8 +137,8 @@ The prop is converted into a CSS property using the <a href="/material-ui/custom
                     name="SpacingGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/SpacingGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/SpacingGrid.tsx')}
+                    component={SpacingGridComponent} 
+                    raw={SpacingGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Row and column spacing</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`rowSpacing`}</code> and <code>{`columnSpacing`}</code> props let you specify row and column gaps independently of one another.
@@ -117,8 +147,8 @@ They behave similarly to the <code>{`row-gap`}</code> and <code>{`column-gap`}</
                     name="RowAndColumnSpacing.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/RowAndColumnSpacing.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/RowAndColumnSpacing.tsx')}
+                    component={RowAndColumnSpacingComponent} 
+                    raw={RowAndColumnSpacingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Responsive values</Typography>
 <Typography className="text-14 mb-32" component="div">You can set prop values to change when a given breakpoint is active.
@@ -127,8 +157,8 @@ For instance, we can implement Material Design&#39;s <a href="https://m2.materia
                     name="ResponsiveGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/ResponsiveGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/ResponsiveGrid.tsx')}
+                    component={ResponsiveGridComponent} 
+                    raw={ResponsiveGridRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Responsive values are supported by:</Typography>
 <ul className="space-y-16">
@@ -146,8 +176,8 @@ When you set the width of one item, the others will automatically resize to matc
                     name="AutoGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/AutoGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/AutoGrid.tsx')}
+                    component={AutoGridComponent} 
+                    raw={AutoGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Variable width content</Typography>
 <Typography className="text-14 mb-32" component="div">When a breakpoint&#39;s value is given as <code>{`"auto"`}</code> instead of <code>{`true`}</code> or a number, then a column&#39;s size will automatically adjust to match the width of its content.
@@ -156,8 +186,8 @@ The demo below shows how this works:</Typography>
                     name="VariableWidthGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/VariableWidthGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/VariableWidthGrid.tsx')}
+                    component={VariableWidthGridComponent} 
+                    raw={VariableWidthGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Nested grid</Typography>
 <Typography className="text-14 mb-32" component="div">The grid container that renders as a <strong>direct child</strong> inside another grid container is a nested grid that inherits its <a href="#columns"><code>{`columns`}</code></a> and <a href="#spacing"><code>{`spacing`}</code></a> from the top level.
@@ -180,8 +210,8 @@ It will also inherit the props of the top-level grid if it receives those props.
                     name="NestedGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/NestedGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/NestedGrid.tsx')}
+                    component={NestedGridComponent} 
+                    raw={NestedGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Inheriting columns</Typography>
 <Typography className="text-14 mb-32" component="div">A nested grid container will inherits the columns from its parent unless the <code>{`columns`}</code> prop is specified to the instance.</Typography>
@@ -189,8 +219,8 @@ It will also inherit the props of the top-level grid if it receives those props.
                     name="NestedGridColumns.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/NestedGridColumns.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/NestedGridColumns.tsx')}
+                    component={NestedGridColumnsComponent} 
+                    raw={NestedGridColumnsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Columns</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`columns`}</code> prop to change the default number of columns (12) in the grid, as shown below:</Typography>
@@ -198,8 +228,8 @@ It will also inherit the props of the top-level grid if it receives those props.
                     name="ColumnsGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/ColumnsGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/ColumnsGrid.tsx')}
+                    component={ColumnsGridComponent} 
+                    raw={ColumnsGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Offset</Typography>
 <Typography className="text-14 mb-32" component="div">Offset props (such as <code>{`smOffset`}</code>, <code>{`mdOffset`}</code>) push an item to the right side of the grid.
@@ -213,8 +243,8 @@ These props accept:</Typography>
                     name="OffsetGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/OffsetGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/OffsetGrid.tsx')}
+                    component={OffsetGridComponent} 
+                    raw={OffsetGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom breakpoints</Typography>
 <Typography className="text-14 mb-32" component="div">If you specify custom breakpoints in the theme, you can use those names as grid item props in responsive values:</Typography>
@@ -293,8 +323,8 @@ This removes the negative margins from the bottom and right sides of the grid to
                     name="OverflowGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/OverflowGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/OverflowGrid.tsx')}
+                    component={OverflowGridComponent} 
+                    raw={OverflowGridRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 You should avoid adding borders and backgrounds to the grid when <code>{`disableEqualOverflow`}</code> is <code>{`true`}</code> because the negative margin (applied only at the top and left sides) causes the grid to be visually misaligned.
@@ -307,8 +337,8 @@ Then use <code>{`justifyContent`}</code> and/or <code>{`alignItems`}</code> to a
                     name="CenteredElementGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/CenteredElementGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/CenteredElementGrid.tsx')}
+                    component={CenteredElementGridComponent} 
+                    raw={CenteredElementGridRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 Using the <code>{`container`}</code> prop does not work in this situation because the grid container is designed exclusively to wrap grid items.
@@ -319,16 +349,16 @@ It cannot wrap other elements.
                     name="FullBorderedGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/FullBorderedGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/FullBorderedGrid.tsx')}
+                    component={FullBorderedGridComponent} 
+                    raw={FullBorderedGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Half border</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="HalfBorderedGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid2/HalfBorderedGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid2/HalfBorderedGrid.tsx')}
+                    component={HalfBorderedGridComponent} 
+                    raw={HalfBorderedGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Column direction and reversing</Typography>

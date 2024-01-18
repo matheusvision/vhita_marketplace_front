@@ -5,7 +5,33 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicChipsComponent from '../components/chips/BasicChips';
+import BasicChipsRaw from '../components/chips/BasicChips.tsx?raw';
+import ClickableChipsComponent from '../components/chips/ClickableChips';
+import ClickableChipsRaw from '../components/chips/ClickableChips.tsx?raw';
+import DeletableChipsComponent from '../components/chips/DeletableChips';
+import DeletableChipsRaw from '../components/chips/DeletableChips.tsx?raw';
+import ClickableAndDeletableChipsComponent from '../components/chips/ClickableAndDeletableChips';
+import ClickableAndDeletableChipsRaw from '../components/chips/ClickableAndDeletableChips.tsx?raw';
+import ClickableLinkChipsComponent from '../components/chips/ClickableLinkChips';
+import ClickableLinkChipsRaw from '../components/chips/ClickableLinkChips.tsx?raw';
+import CustomDeleteIconChipsComponent from '../components/chips/CustomDeleteIconChips';
+import CustomDeleteIconChipsRaw from '../components/chips/CustomDeleteIconChips.tsx?raw';
+import AvatarChipsComponent from '../components/chips/AvatarChips';
+import AvatarChipsRaw from '../components/chips/AvatarChips.tsx?raw';
+import IconChipsComponent from '../components/chips/IconChips';
+import IconChipsRaw from '../components/chips/IconChips.tsx?raw';
+import ColorChipsComponent from '../components/chips/ColorChips';
+import ColorChipsRaw from '../components/chips/ColorChips.tsx?raw';
+import SizesChipsComponent from '../components/chips/SizesChips';
+import SizesChipsRaw from '../components/chips/SizesChips.tsx?raw';
+import MultilineChipsComponent from '../components/chips/MultilineChips';
+import MultilineChipsRaw from '../components/chips/MultilineChips.tsx?raw';
+import ChipsArrayComponent from '../components/chips/ChipsArray';
+import ChipsArrayRaw from '../components/chips/ChipsArray.tsx?raw';
+import ChipsPlaygroundComponent from '../components/chips/ChipsPlayground';
+import ChipsPlaygroundRaw from '../components/chips/ChipsPlayground.jsx?raw';
+                   
                    function ChipsDoc(props) {
                      return (
                        
@@ -39,8 +65,8 @@ not shown in context.</Typography>
                     name="BasicChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/BasicChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/BasicChips.tsx')}
+                    component={BasicChipsComponent} 
+                    raw={BasicChipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Chip actions</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the following actions.</Typography>
@@ -53,40 +79,40 @@ not shown in context.</Typography>
                     name="ClickableChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/ClickableChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/ClickableChips.tsx')}
+                    component={ClickableChipsComponent} 
+                    raw={ClickableChipsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Deletable</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DeletableChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/DeletableChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/DeletableChips.tsx')}
+                    component={DeletableChipsComponent} 
+                    raw={DeletableChipsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Clickable and deletable</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ClickableAndDeletableChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/ClickableAndDeletableChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/ClickableAndDeletableChips.tsx')}
+                    component={ClickableAndDeletableChipsComponent} 
+                    raw={ClickableAndDeletableChipsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Clickable link</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ClickableLinkChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/ClickableLinkChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/ClickableLinkChips.tsx')}
+                    component={ClickableLinkChipsComponent} 
+                    raw={ClickableLinkChipsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom delete icon</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CustomDeleteIconChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/CustomDeleteIconChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/CustomDeleteIconChips.tsx')}
+                    component={CustomDeleteIconChipsComponent} 
+                    raw={CustomDeleteIconChipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Chip adornments</Typography>
 <Typography className="text-14 mb-32" component="div">You can add ornaments to the beginning of the component.</Typography>
@@ -96,16 +122,16 @@ not shown in context.</Typography>
                     name="AvatarChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/AvatarChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/AvatarChips.tsx')}
+                    component={AvatarChipsComponent} 
+                    raw={AvatarChipsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Icon chip</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="IconChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/IconChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/IconChips.tsx')}
+                    component={IconChipsComponent} 
+                    raw={IconChipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color chip</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`color`}</code> prop to define a color from theme palette.</Typography>
@@ -113,8 +139,8 @@ not shown in context.</Typography>
                     name="ColorChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/ColorChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/ColorChips.tsx')}
+                    component={ColorChipsComponent} 
+                    raw={ColorChipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes chip</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`size`}</code> prop to define a small Chip.</Typography>
@@ -122,8 +148,8 @@ not shown in context.</Typography>
                     name="SizesChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/SizesChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/SizesChips.tsx')}
+                    component={SizesChipsComponent} 
+                    raw={SizesChipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Multiline chip</Typography>
 <Typography className="text-14 mb-32" component="div">By default, Chips displays labels only in a single line.
@@ -132,8 +158,8 @@ To have them support multiline content, use the <code>{`sx`}</code> prop to add 
                     name="MultilineChips.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/MultilineChips.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/MultilineChips.tsx')}
+                    component={MultilineChipsComponent} 
+                    raw={MultilineChipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Chip array</Typography>
 <Typography className="text-14 mb-32" component="div">An example of rendering multiple chips from an array of values.
@@ -144,16 +170,16 @@ gain depth while clicked or touched.</Typography>
                     name="ChipsArray.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/ChipsArray.tsx').default} 
-                    raw={require('!raw-loader!../components/chips/ChipsArray.tsx')}
+                    component={ChipsArrayComponent} 
+                    raw={ChipsArrayRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Chip playground</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="ChipsPlayground.js"
+                    name="ChipsPlayground.jsx"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/chips/ChipsPlayground.js').default} 
-                    raw={require('!raw-loader!../components/chips/ChipsPlayground.js')}
+                    component={ChipsPlaygroundComponent} 
+                    raw={ChipsPlaygroundRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">If the Chip is deletable or clickable then it is a button in tab order. When the Chip is focused (e.g. when tabbing) releasing (<code>{`keyup`}</code> event) <code>{`Backspace`}</code> or <code>{`Delete`}</code> will call the <code>{`onDelete`}</code> handler while releasing <code>{`Escape`}</code> will blur the Chip.</Typography>

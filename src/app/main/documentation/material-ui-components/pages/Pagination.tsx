@@ -5,7 +5,27 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicPaginationComponent from '../components/pagination/BasicPagination';
+import BasicPaginationRaw from '../components/pagination/BasicPagination.tsx?raw';
+import PaginationOutlinedComponent from '../components/pagination/PaginationOutlined';
+import PaginationOutlinedRaw from '../components/pagination/PaginationOutlined.tsx?raw';
+import PaginationRoundedComponent from '../components/pagination/PaginationRounded';
+import PaginationRoundedRaw from '../components/pagination/PaginationRounded.tsx?raw';
+import PaginationSizeComponent from '../components/pagination/PaginationSize';
+import PaginationSizeRaw from '../components/pagination/PaginationSize.tsx?raw';
+import PaginationButtonsComponent from '../components/pagination/PaginationButtons';
+import PaginationButtonsRaw from '../components/pagination/PaginationButtons.tsx?raw';
+import CustomIconsComponent from '../components/pagination/CustomIcons';
+import CustomIconsRaw from '../components/pagination/CustomIcons.tsx?raw';
+import PaginationRangesComponent from '../components/pagination/PaginationRanges';
+import PaginationRangesRaw from '../components/pagination/PaginationRanges.tsx?raw';
+import PaginationControlledComponent from '../components/pagination/PaginationControlled';
+import PaginationControlledRaw from '../components/pagination/PaginationControlled.tsx?raw';
+import UsePaginationComponent from '../components/pagination/UsePagination';
+import UsePaginationRaw from '../components/pagination/UsePagination.tsx?raw';
+import TablePaginationDemoComponent from '../components/pagination/TablePaginationDemo';
+import TablePaginationDemoRaw from '../components/pagination/TablePaginationDemo.tsx?raw';
+                   
                    function PaginationDoc(props) {
                      return (
                        
@@ -36,32 +56,32 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicPagination.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/BasicPagination.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/BasicPagination.tsx')}
+                    component={BasicPaginationComponent} 
+                    raw={BasicPaginationRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Outlined pagination</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PaginationOutlined.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/PaginationOutlined.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/PaginationOutlined.tsx')}
+                    component={PaginationOutlinedComponent} 
+                    raw={PaginationOutlinedRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Rounded pagination</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PaginationRounded.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/PaginationRounded.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/PaginationRounded.tsx')}
+                    component={PaginationRoundedComponent} 
+                    raw={PaginationRoundedRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Pagination size</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PaginationSize.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/PaginationSize.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/PaginationSize.tsx')}
+                    component={PaginationSizeComponent} 
+                    raw={PaginationSizeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Buttons</Typography>
 <Typography className="text-14 mb-32" component="div">You can optionally enable first-page and last-page buttons, or disable the previous-page and next-page buttons.</Typography>
@@ -69,8 +89,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="PaginationButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/PaginationButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/PaginationButtons.tsx')}
+                    component={PaginationButtonsComponent} 
+                    raw={PaginationButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom icons</Typography>
 <Typography className="text-14 mb-32" component="div">It&#39;s possible to customize the control icons.</Typography>
@@ -78,8 +98,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="CustomIcons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/CustomIcons.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/CustomIcons.tsx')}
+                    component={CustomIconsComponent} 
+                    raw={CustomIconsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Pagination ranges</Typography>
 <Typography className="text-14 mb-32" component="div">You can specify how many digits to display either side of current page with the <code>{`siblingCount`}</code> prop, and adjacent to the start and end page number with the <code>{`boundaryCount`}</code> prop.</Typography>
@@ -87,16 +107,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="PaginationRanges.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/PaginationRanges.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/PaginationRanges.tsx')}
+                    component={PaginationRangesComponent} 
+                    raw={PaginationRangesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled pagination</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PaginationControlled.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/PaginationControlled.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/PaginationControlled.tsx')}
+                    component={PaginationControlledComponent} 
+                    raw={PaginationControlledRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2"><code>{`usePagination`}</code></Typography>
 <Typography className="text-14 mb-32" component="div">For advanced customization use cases, a headless <code>{`usePagination()`}</code> hook is exposed.
@@ -113,8 +133,8 @@ import usePagination from '@mui/material/usePagination';
                     name="UsePagination.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/UsePagination.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/UsePagination.tsx')}
+                    component={UsePaginationComponent} 
+                    raw={UsePaginationRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Table pagination</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`Pagination`}</code> component was designed to paginate a list of arbitrary items when infinite loading isn&#39;t used.
@@ -124,8 +144,8 @@ It&#39;s preferred in contexts where SEO is important, for instance, a blog.</Ty
                     name="TablePaginationDemo.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/pagination/TablePaginationDemo.tsx').default} 
-                    raw={require('!raw-loader!../components/pagination/TablePaginationDemo.tsx')}
+                    component={TablePaginationDemoComponent} 
+                    raw={TablePaginationDemoRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 Note that the <code>{`Pagination`}</code> page prop starts at 1 to match the requirement of including the value in the URL, while the <code>{`TablePagination`}</code> page prop starts at 0 to match the requirement of zero-based JavaScript arrays that comes with rendering a lot of tabular data.

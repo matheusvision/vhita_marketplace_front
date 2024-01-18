@@ -5,7 +5,11 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import TypesComponent from '../components/typography/Types';
+import TypesRaw from '../components/typography/Types.tsx?raw';
+import TypographyThemeComponent from '../components/typography/TypographyTheme';
+import TypographyThemeRaw from '../components/typography/TypographyTheme.tsx?raw';
+                   
                    function TypographyDoc(props) {
                      return (
                        
@@ -72,8 +76,8 @@ Material UI default typography configuration only relies on 300, 400, 500, and 7
                     name="Types.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/typography/Types.tsx').default} 
-                    raw={require('!raw-loader!../components/typography/Types.tsx')}
+                    component={TypesComponent} 
+                    raw={TypesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Theme</Typography>
 <Typography className="text-14 mb-32" component="div">In some situations you might not be able to use the <code>{`Typography`}</code> component.
@@ -82,8 +86,8 @@ Hopefully, you might be able to take advantage of the <a href="/material-ui/cust
                     name="TypographyTheme.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/typography/TypographyTheme.tsx').default} 
-                    raw={require('!raw-loader!../components/typography/TypographyTheme.tsx')}
+                    component={TypographyThemeComponent} 
+                    raw={TypographyThemeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Changing the semantic element</Typography>
 <Typography className="text-14 mb-32" component="div">The Typography component uses the <code>{`variantMapping`}</code> prop to associate a UI variant with a semantic element.

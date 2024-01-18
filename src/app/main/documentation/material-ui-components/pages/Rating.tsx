@@ -5,7 +5,21 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicRatingComponent from '../components/rating/BasicRating';
+import BasicRatingRaw from '../components/rating/BasicRating.tsx?raw';
+import HalfRatingComponent from '../components/rating/HalfRating';
+import HalfRatingRaw from '../components/rating/HalfRating.tsx?raw';
+import HoverRatingComponent from '../components/rating/HoverRating';
+import HoverRatingRaw from '../components/rating/HoverRating.tsx?raw';
+import RatingSizeComponent from '../components/rating/RatingSize';
+import RatingSizeRaw from '../components/rating/RatingSize.tsx?raw';
+import CustomizedRatingComponent from '../components/rating/CustomizedRating';
+import CustomizedRatingRaw from '../components/rating/CustomizedRating.tsx?raw';
+import RadioGroupRatingComponent from '../components/rating/RadioGroupRating';
+import RadioGroupRatingRaw from '../components/rating/RadioGroupRating.tsx?raw';
+import TextRatingComponent from '../components/rating/TextRating';
+import TextRatingRaw from '../components/rating/TextRating.tsx?raw';
+                   
                    function RatingDoc(props) {
                      return (
                        
@@ -36,8 +50,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicRating.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/BasicRating.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/BasicRating.tsx')}
+                    component={BasicRatingComponent} 
+                    raw={BasicRatingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Rating precision</Typography>
 <Typography className="text-14 mb-32" component="div">The rating can display any float number with the <code>{`value`}</code> prop.
@@ -46,8 +60,8 @@ Use the <code>{`precision`}</code> prop to define the minimum increment value ch
                     name="HalfRating.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/HalfRating.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/HalfRating.tsx')}
+                    component={HalfRatingComponent} 
+                    raw={HalfRatingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Hover feedback</Typography>
 <Typography className="text-14 mb-32" component="div">You can display a label on hover to help the user pick the correct rating value.
@@ -56,8 +70,8 @@ The demo uses the <code>{`onChangeActive`}</code> prop.</Typography>
                     name="HoverRating.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/HoverRating.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/HoverRating.tsx')}
+                    component={HoverRatingComponent} 
+                    raw={HoverRatingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes</Typography>
 <Typography className="text-14 mb-32" component="div">For larger or smaller ratings use the <code>{`size`}</code> prop.</Typography>
@@ -65,8 +79,8 @@ The demo uses the <code>{`onChangeActive`}</code> prop.</Typography>
                     name="RatingSize.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/RatingSize.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/RatingSize.tsx')}
+                    component={RatingSizeComponent} 
+                    raw={RatingSizeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -75,8 +89,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedRating.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/CustomizedRating.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/CustomizedRating.tsx')}
+                    component={CustomizedRatingComponent} 
+                    raw={CustomizedRatingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Radio group</Typography>
 <Typography className="text-14 mb-32" component="div">The rating is implemented with a radio group, set <code>{`highlightSelectedOnly`}</code> to restore the natural behavior.</Typography>
@@ -84,8 +98,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="RadioGroupRating.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/RadioGroupRating.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/RadioGroupRating.tsx')}
+                    component={RadioGroupRatingComponent} 
+                    raw={RadioGroupRatingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(<a href="https://www.w3.org/WAI/tutorials/forms/custom-controls/#a-star-rating">WAI tutorial</a>)</Typography>
@@ -102,8 +116,8 @@ By default, the rating component uses both a difference of color and shape (fill
                     name="TextRating.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/rating/TextRating.tsx').default} 
-                    raw={require('!raw-loader!../components/rating/TextRating.tsx')}
+                    component={TextRatingComponent} 
+                    raw={TextRatingRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">ARIA</Typography>
 <Typography className="text-14 mb-32" component="div">The read only rating has a role of &quot;img&quot;, and an aria-label that describes the displayed rating.</Typography>

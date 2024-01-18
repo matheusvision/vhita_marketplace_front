@@ -95,7 +95,7 @@ gain depth while clicked or touched.
 
 ## Chip playground
 
-{{"demo": "ChipsPlayground.js", "hideToolbar": true}}
+{{"demo": "ChipsPlayground.jsx", "hideToolbar": true}}
 
 ## Accessibility
 

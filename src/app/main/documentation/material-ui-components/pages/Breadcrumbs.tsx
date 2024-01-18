@@ -5,7 +5,19 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicBreadcrumbsComponent from '../components/breadcrumbs/BasicBreadcrumbs';
+import BasicBreadcrumbsRaw from '../components/breadcrumbs/BasicBreadcrumbs.tsx?raw';
+import ActiveLastBreadcrumbComponent from '../components/breadcrumbs/ActiveLastBreadcrumb';
+import ActiveLastBreadcrumbRaw from '../components/breadcrumbs/ActiveLastBreadcrumb.tsx?raw';
+import CustomSeparatorComponent from '../components/breadcrumbs/CustomSeparator';
+import CustomSeparatorRaw from '../components/breadcrumbs/CustomSeparator.tsx?raw';
+import IconBreadcrumbsComponent from '../components/breadcrumbs/IconBreadcrumbs';
+import IconBreadcrumbsRaw from '../components/breadcrumbs/IconBreadcrumbs.tsx?raw';
+import CollapsedBreadcrumbsComponent from '../components/breadcrumbs/CollapsedBreadcrumbs';
+import CollapsedBreadcrumbsRaw from '../components/breadcrumbs/CollapsedBreadcrumbs.tsx?raw';
+import CustomizedBreadcrumbsComponent from '../components/breadcrumbs/CustomizedBreadcrumbs';
+import CustomizedBreadcrumbsRaw from '../components/breadcrumbs/CustomizedBreadcrumbs.tsx?raw';
+                   
                    function BreadcrumbsDoc(props) {
                      return (
                        
@@ -36,8 +48,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicBreadcrumbs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/breadcrumbs/BasicBreadcrumbs.tsx').default} 
-                    raw={require('!raw-loader!../components/breadcrumbs/BasicBreadcrumbs.tsx')}
+                    component={BasicBreadcrumbsComponent} 
+                    raw={BasicBreadcrumbsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Active last breadcrumb</Typography>
 <Typography className="text-14 mb-32" component="div">Keep the last breadcrumb interactive.</Typography>
@@ -45,8 +57,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ActiveLastBreadcrumb.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/breadcrumbs/ActiveLastBreadcrumb.tsx').default} 
-                    raw={require('!raw-loader!../components/breadcrumbs/ActiveLastBreadcrumb.tsx')}
+                    component={ActiveLastBreadcrumbComponent} 
+                    raw={ActiveLastBreadcrumbRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom separator</Typography>
 <Typography className="text-14 mb-32" component="div">In the following examples, we are using two string separators and an SVG icon.</Typography>
@@ -54,24 +66,24 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="CustomSeparator.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/breadcrumbs/CustomSeparator.tsx').default} 
-                    raw={require('!raw-loader!../components/breadcrumbs/CustomSeparator.tsx')}
+                    component={CustomSeparatorComponent} 
+                    raw={CustomSeparatorRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Breadcrumbs with icons</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="IconBreadcrumbs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/breadcrumbs/IconBreadcrumbs.tsx').default} 
-                    raw={require('!raw-loader!../components/breadcrumbs/IconBreadcrumbs.tsx')}
+                    component={IconBreadcrumbsComponent} 
+                    raw={IconBreadcrumbsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Collapsed breadcrumbs</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CollapsedBreadcrumbs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/breadcrumbs/CollapsedBreadcrumbs.tsx').default} 
-                    raw={require('!raw-loader!../components/breadcrumbs/CollapsedBreadcrumbs.tsx')}
+                    component={CollapsedBreadcrumbsComponent} 
+                    raw={CollapsedBreadcrumbsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -80,8 +92,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedBreadcrumbs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/breadcrumbs/CustomizedBreadcrumbs.tsx').default} 
-                    raw={require('!raw-loader!../components/breadcrumbs/CustomizedBreadcrumbs.tsx')}
+                    component={CustomizedBreadcrumbsComponent} 
+                    raw={CustomizedBreadcrumbsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(WAI-ARIA: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/">https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/</a>)</Typography>

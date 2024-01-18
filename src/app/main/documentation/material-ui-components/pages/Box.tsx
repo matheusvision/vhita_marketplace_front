@@ -5,7 +5,11 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BoxSxComponent from '../components/box/BoxSx';
+import BoxSxRaw from '../components/box/BoxSx.tsx?raw';
+import BoxComponentComponent from '../components/box/BoxComponent';
+import BoxComponentRaw from '../components/box/BoxComponent.tsx?raw';
+                   
                    function BoxDoc(props) {
                      return (
                        
@@ -39,8 +43,8 @@ In addition, the <code>{`sx`}</code> prop allows you to specify any other CSS ru
                     name="BoxSx.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/box/BoxSx.tsx').default} 
-                    raw={require('!raw-loader!../components/box/BoxSx.tsx')}
+                    component={BoxSxComponent} 
+                    raw={BoxSxRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Overriding Material UI components</Typography>
 <Typography className="text-14 mb-32" component="div">The Box component wraps your component.
@@ -50,8 +54,8 @@ Let&#39;s say you want to use a <code>{`<span>`}</code> instead:</Typography>
                     name="BoxComponent.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/box/BoxComponent.tsx').default} 
-                    raw={require('!raw-loader!../components/box/BoxComponent.tsx')}
+                    component={BoxComponentComponent} 
+                    raw={BoxComponentRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">This works great when the changes can be isolated to a new DOM element.
 For instance, you can change the margin this way.</Typography>

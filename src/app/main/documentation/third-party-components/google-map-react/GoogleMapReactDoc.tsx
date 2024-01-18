@@ -3,18 +3,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { ElementType } from 'react';
-
-/* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
-
-type ModuleWithDefault<T = unknown> = {
-	default: T;
-};
-
-// eslint-disable-next-line global-require
-const componentModule = require('./examples/simple.tsx') as ModuleWithDefault<ElementType>;
-// eslint-disable-next-line global-require
-const rawModule = require('!raw-loader!./examples/simple.tsx') as ModuleWithDefault<string>;
+import SimpleMapComponent from './examples/SimpleMap';
+import SimpleMapRaw from './examples/SimpleMap.tsx?raw';
 
 /**
  * GoogleMapReact Doc
@@ -54,8 +44,8 @@ function GoogleMapReactDoc() {
 			</Typography>
 			<FuseExample
 				className="mb-64"
-				component={componentModule.default}
-				raw={rawModule}
+				component={SimpleMapComponent}
+				raw={SimpleMapRaw}
 			/>
 
 			<Typography

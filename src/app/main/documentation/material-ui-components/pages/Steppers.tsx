@@ -5,7 +5,27 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import HorizontalLinearStepperComponent from '../components/steppers/HorizontalLinearStepper';
+import HorizontalLinearStepperRaw from '../components/steppers/HorizontalLinearStepper.tsx?raw';
+import HorizontalNonLinearStepperComponent from '../components/steppers/HorizontalNonLinearStepper';
+import HorizontalNonLinearStepperRaw from '../components/steppers/HorizontalNonLinearStepper.tsx?raw';
+import HorizontalLinearAlternativeLabelStepperComponent from '../components/steppers/HorizontalLinearAlternativeLabelStepper';
+import HorizontalLinearAlternativeLabelStepperRaw from '../components/steppers/HorizontalLinearAlternativeLabelStepper.tsx?raw';
+import HorizontalStepperWithErrorComponent from '../components/steppers/HorizontalStepperWithError';
+import HorizontalStepperWithErrorRaw from '../components/steppers/HorizontalStepperWithError.tsx?raw';
+import CustomizedSteppersComponent from '../components/steppers/CustomizedSteppers';
+import CustomizedSteppersRaw from '../components/steppers/CustomizedSteppers.tsx?raw';
+import VerticalLinearStepperComponent from '../components/steppers/VerticalLinearStepper';
+import VerticalLinearStepperRaw from '../components/steppers/VerticalLinearStepper.tsx?raw';
+import TextMobileStepperComponent from '../components/steppers/TextMobileStepper';
+import TextMobileStepperRaw from '../components/steppers/TextMobileStepper.tsx?raw';
+import SwipeableTextMobileStepperComponent from '../components/steppers/SwipeableTextMobileStepper';
+import SwipeableTextMobileStepperRaw from '../components/steppers/SwipeableTextMobileStepper.tsx?raw';
+import DotsMobileStepperComponent from '../components/steppers/DotsMobileStepper';
+import DotsMobileStepperRaw from '../components/steppers/DotsMobileStepper.tsx?raw';
+import ProgressMobileStepperComponent from '../components/steppers/ProgressMobileStepper';
+import ProgressMobileStepperRaw from '../components/steppers/ProgressMobileStepper.tsx?raw';
+                   
                    function SteppersDoc(props) {
                      return (
                        
@@ -51,8 +71,8 @@ Steppers may display a transient feedback message after a step is saved.</Typogr
                     name="HorizontalLinearStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/HorizontalLinearStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/HorizontalLinearStepper.tsx')}
+                    component={HorizontalLinearStepperComponent} 
+                    raw={HorizontalLinearStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Non-linear</Typography>
 <Typography className="text-14 mb-32" component="div">Non-linear steppers allow the user to enter a multi-step flow at any point.</Typography>
@@ -64,8 +84,8 @@ determine when all steps are completed (or even if they need to be completed).</
                     name="HorizontalNonLinearStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/HorizontalNonLinearStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/HorizontalNonLinearStepper.tsx')}
+                    component={HorizontalNonLinearStepperComponent} 
+                    raw={HorizontalNonLinearStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Alternative label</Typography>
 <Typography className="text-14 mb-32" component="div">Labels can be placed below the step icon by setting the <code>{`alternativeLabel`}</code> prop on the <code>{`Stepper`}</code> component.</Typography>
@@ -73,16 +93,16 @@ determine when all steps are completed (or even if they need to be completed).</
                     name="HorizontalLinearAlternativeLabelStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/HorizontalLinearAlternativeLabelStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/HorizontalLinearAlternativeLabelStepper.tsx')}
+                    component={HorizontalLinearAlternativeLabelStepperComponent} 
+                    raw={HorizontalLinearAlternativeLabelStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Error step</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="HorizontalStepperWithError.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/HorizontalStepperWithError.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/HorizontalStepperWithError.tsx')}
+                    component={HorizontalStepperWithErrorComponent} 
+                    raw={HorizontalStepperWithErrorRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Customized horizontal stepper</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -91,8 +111,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedSteppers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/CustomizedSteppers.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/CustomizedSteppers.tsx')}
+                    component={CustomizedSteppersComponent} 
+                    raw={CustomizedSteppersRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Vertical stepper</Typography>
 <Typography className="text-14 mb-32" component="div">Vertical steppers are designed for narrow screen sizes. They are ideal for mobile. All the features of the horizontal stepper can be implemented.</Typography>
@@ -100,8 +120,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="VerticalLinearStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/VerticalLinearStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/VerticalLinearStepper.tsx')}
+                    component={VerticalLinearStepperComponent} 
+                    raw={VerticalLinearStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Performance</Typography>
 <Typography className="text-14 mb-32" component="div">The content of a step is unmounted when closed.
@@ -121,8 +141,8 @@ If you need to make the content available to search engines or render expensive 
                     name="TextMobileStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/TextMobileStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/TextMobileStepper.tsx')}
+                    component={TextMobileStepperComponent} 
+                    raw={TextMobileStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Text with carousel effect</Typography>
 <Typography className="text-14 mb-32" component="div">This demo uses
@@ -131,8 +151,8 @@ If you need to make the content available to search engines or render expensive 
                     name="SwipeableTextMobileStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/SwipeableTextMobileStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/SwipeableTextMobileStepper.tsx')}
+                    component={SwipeableTextMobileStepperComponent} 
+                    raw={SwipeableTextMobileStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Dots</Typography>
 <Typography className="text-14 mb-32" component="div">Use dots when the number of steps is small.</Typography>
@@ -140,8 +160,8 @@ If you need to make the content available to search engines or render expensive 
                     name="DotsMobileStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/DotsMobileStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/DotsMobileStepper.tsx')}
+                    component={DotsMobileStepperComponent} 
+                    raw={DotsMobileStepperRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Progress</Typography>
 <Typography className="text-14 mb-32" component="div">Use a progress bar when there are many steps, or if there are steps that need to be inserted during the process (based on responses to earlier steps).</Typography>
@@ -149,8 +169,8 @@ If you need to make the content available to search engines or render expensive 
                     name="ProgressMobileStepper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/steppers/ProgressMobileStepper.tsx').default} 
-                    raw={require('!raw-loader!../components/steppers/ProgressMobileStepper.tsx')}
+                    component={ProgressMobileStepperComponent} 
+                    raw={ProgressMobileStepperRaw}
                     /></Typography>
 
                 </>

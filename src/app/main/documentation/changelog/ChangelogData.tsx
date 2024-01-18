@@ -18,6 +18,63 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '10.0.0',
+		date: '2024-01-19',
+		newChanges: [
+			'RTK Query added for data fetching.',
+			'ViteJS generator added for faster development. Changed from Create React App.',
+			'New Authentication provider created.',
+			'Firebase authentication service example added.',
+			'Jwt authentication updated.',
+			'Notifications App created.',
+			'New theme selector added into the theme panel.',
+			'New color schemes added.',
+			'Performance improvements.',
+			'mock-api data updated.'
+		],
+		breakingChanges: [
+			'Create React App changed with ViteJs.',
+			'All api endpoints moved from ..Slice.ts files into ..Api.ts files.',
+			'...Api.ts files created for rtk query api endpoints.',
+			'All types moved into the ...Api.ts files.',
+			'fuse, auth, navigation, settings slices lazy loaded from its own components with HOC'
+		],
+		notes: (
+			<div className="text-14 p-24 border-2 rounded-16 w-full max-w-lg mt-40 mb-24">
+				<ul className="list-disc">
+					<Typography
+						component="li"
+						className="leading-loose mb-16"
+					>
+						Transitioning to the new major release (v10.0.0) may present challenges, because of the RTK
+						Query integration.
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						You may find this page helpful:{' '}
+						<a
+							href="https://redux-toolkit.js.org/rtk-query/usage/migrating-to-rtk-query"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Migrating to RTK Query
+						</a>
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						Starting with the latest skeleton version of Fuse React offers a pristine base, facilitating a
+						smoother transition of your codebase to the new version. This approach streamlines the process,
+						making it more straightforward and efficient.
+					</Typography>
+				</ul>
+			</div>
+		)
+	},
+	{
 		version: '9.0.0',
 		date: '2023-10-16',
 		newChanges: [

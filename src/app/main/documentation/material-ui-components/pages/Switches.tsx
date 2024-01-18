@@ -5,7 +5,23 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicSwitchesComponent from '../components/switches/BasicSwitches';
+import BasicSwitchesRaw from '../components/switches/BasicSwitches.tsx?raw';
+import SwitchLabelsComponent from '../components/switches/SwitchLabels';
+import SwitchLabelsRaw from '../components/switches/SwitchLabels.tsx?raw';
+import SwitchesSizeComponent from '../components/switches/SwitchesSize';
+import SwitchesSizeRaw from '../components/switches/SwitchesSize.tsx?raw';
+import ColorSwitchesComponent from '../components/switches/ColorSwitches';
+import ColorSwitchesRaw from '../components/switches/ColorSwitches.tsx?raw';
+import ControlledSwitchesComponent from '../components/switches/ControlledSwitches';
+import ControlledSwitchesRaw from '../components/switches/ControlledSwitches.tsx?raw';
+import SwitchesGroupComponent from '../components/switches/SwitchesGroup';
+import SwitchesGroupRaw from '../components/switches/SwitchesGroup.tsx?raw';
+import CustomizedSwitchesComponent from '../components/switches/CustomizedSwitches';
+import CustomizedSwitchesRaw from '../components/switches/CustomizedSwitches.tsx?raw';
+import FormControlLabelPositionComponent from '../components/switches/FormControlLabelPosition';
+import FormControlLabelPositionRaw from '../components/switches/FormControlLabelPosition.tsx?raw';
+                   
                    function SwitchesDoc(props) {
                      return (
                        
@@ -37,8 +53,8 @@ should be made clear from the corresponding inline label.</Typography>
                     name="BasicSwitches.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/BasicSwitches.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/BasicSwitches.tsx')}
+                    component={BasicSwitchesComponent} 
+                    raw={BasicSwitchesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Label</Typography>
 <Typography className="text-14 mb-32" component="div">You can provide a label to the <code>{`Switch`}</code> thanks to the <code>{`FormControlLabel`}</code> component.</Typography>
@@ -46,8 +62,8 @@ should be made clear from the corresponding inline label.</Typography>
                     name="SwitchLabels.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/SwitchLabels.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/SwitchLabels.tsx')}
+                    component={SwitchLabelsComponent} 
+                    raw={SwitchLabelsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Size</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`size`}</code> prop to change the size of the switch.</Typography>
@@ -55,16 +71,16 @@ should be made clear from the corresponding inline label.</Typography>
                     name="SwitchesSize.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/SwitchesSize.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/SwitchesSize.tsx')}
+                    component={SwitchesSizeComponent} 
+                    raw={SwitchesSizeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ColorSwitches.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/ColorSwitches.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/ColorSwitches.tsx')}
+                    component={ColorSwitchesComponent} 
+                    raw={ColorSwitchesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled</Typography>
 <Typography className="text-14 mb-32" component="div">You can control the switch with the <code>{`checked`}</code> and <code>{`onChange`}</code> props:</Typography>
@@ -72,8 +88,8 @@ should be made clear from the corresponding inline label.</Typography>
                     name="ControlledSwitches.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/ControlledSwitches.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/ControlledSwitches.tsx')}
+                    component={ControlledSwitchesComponent} 
+                    raw={ControlledSwitchesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Switches with FormGroup</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`FormGroup`}</code> is a helpful wrapper used to group selection controls components that provides an easier API.
@@ -82,8 +98,8 @@ However, you are encouraged to use <a href="/material-ui/react-checkbox/">Checkb
                     name="SwitchesGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/SwitchesGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/SwitchesGroup.tsx')}
+                    component={SwitchesGroupComponent} 
+                    raw={SwitchesGroupRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -92,8 +108,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedSwitches.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/CustomizedSwitches.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/CustomizedSwitches.tsx')}
+                    component={CustomizedSwitchesComponent} 
+                    raw={CustomizedSwitchesRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/switch/">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Label placement</Typography>
@@ -102,8 +118,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="FormControlLabelPosition.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/switches/FormControlLabelPosition.tsx').default} 
-                    raw={require('!raw-loader!../components/switches/FormControlLabelPosition.tsx')}
+                    component={FormControlLabelPositionComponent} 
+                    raw={FormControlLabelPositionRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">When to use</Typography>
 <ul className="space-y-16">

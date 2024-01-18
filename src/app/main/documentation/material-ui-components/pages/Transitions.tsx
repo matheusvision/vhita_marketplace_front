@@ -5,7 +5,21 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import SimpleCollapseComponent from '../components/transitions/SimpleCollapse';
+import SimpleCollapseRaw from '../components/transitions/SimpleCollapse.tsx?raw';
+import SimpleFadeComponent from '../components/transitions/SimpleFade';
+import SimpleFadeRaw from '../components/transitions/SimpleFade.tsx?raw';
+import SimpleGrowComponent from '../components/transitions/SimpleGrow';
+import SimpleGrowRaw from '../components/transitions/SimpleGrow.tsx?raw';
+import SimpleSlideComponent from '../components/transitions/SimpleSlide';
+import SimpleSlideRaw from '../components/transitions/SimpleSlide.tsx?raw';
+import SlideFromContainerComponent from '../components/transitions/SlideFromContainer';
+import SlideFromContainerRaw from '../components/transitions/SlideFromContainer.tsx?raw';
+import SimpleZoomComponent from '../components/transitions/SimpleZoom';
+import SimpleZoomRaw from '../components/transitions/SimpleZoom.tsx?raw';
+import TransitionGroupExampleComponent from '../components/transitions/TransitionGroupExample';
+import TransitionGroupExampleRaw from '../components/transitions/TransitionGroupExample.tsx?raw';
+                   
                    function TransitionsDoc(props) {
                      return (
                        
@@ -38,8 +52,8 @@ The <code>{`collapsedSize`}</code> prop can be used to set the minimum width/hei
                     name="SimpleCollapse.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/SimpleCollapse.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/SimpleCollapse.tsx')}
+                    component={SimpleCollapseComponent} 
+                    raw={SimpleCollapseRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Fade</Typography>
 <Typography className="text-14 mb-32" component="div">Fade in from transparent to opaque.</Typography>
@@ -47,8 +61,8 @@ The <code>{`collapsedSize`}</code> prop can be used to set the minimum width/hei
                     name="SimpleFade.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/SimpleFade.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/SimpleFade.tsx')}
+                    component={SimpleFadeComponent} 
+                    raw={SimpleFadeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Grow</Typography>
 <Typography className="text-14 mb-32" component="div">Expands outwards from the center of the child element, while also fading in from transparent to opaque.</Typography>
@@ -58,8 +72,8 @@ the <code>{`timeout`}</code> prop to change the entry speed.</Typography>
                     name="SimpleGrow.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/SimpleGrow.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/SimpleGrow.tsx')}
+                    component={SimpleGrowComponent} 
+                    raw={SimpleGrowRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Slide</Typography>
 <Typography className="text-14 mb-32" component="div">Slide in from the edge of the screen.
@@ -73,8 +87,8 @@ Similarly, the <code>{`unmountOnExit`}</code> prop removes the component from th
                     name="SimpleSlide.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/SimpleSlide.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/SimpleSlide.tsx')}
+                    component={SimpleSlideComponent} 
+                    raw={SimpleSlideRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Slide relative to a container</Typography>
 <Typography className="text-14 mb-32" component="div">The Slide component also accepts <code>{`container`}</code> prop, which is a reference to a DOM node.
@@ -83,8 +97,8 @@ If this prop is set, the Slide component will slide from the edge of that DOM no
                     name="SlideFromContainer.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/SlideFromContainer.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/SlideFromContainer.tsx')}
+                    component={SlideFromContainerComponent} 
+                    raw={SlideFromContainerRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Zoom</Typography>
 <Typography className="text-14 mb-32" component="div">Expand outwards from the center of the child element.</Typography>
@@ -93,8 +107,8 @@ If this prop is set, the Slide component will slide from the edge of that DOM no
                     name="SimpleZoom.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/SimpleZoom.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/SimpleZoom.tsx')}
+                    component={SimpleZoomComponent} 
+                    raw={SimpleZoomRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Child requirement</Typography>
 <ul className="space-y-16">
@@ -133,8 +147,8 @@ As components are added or removed, the <code>{`in`}</code> prop is toggled auto
                     name="TransitionGroupExample.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transitions/TransitionGroupExample.tsx').default} 
-                    raw={require('!raw-loader!../components/transitions/TransitionGroupExample.tsx')}
+                    component={TransitionGroupExampleComponent} 
+                    raw={TransitionGroupExampleRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">TransitionComponent prop</Typography>
 <Typography className="text-14 mb-32" component="div">Some Material UI components use these transitions internally. These accept a <code>{`TransitionComponent`}</code> prop to customize the default transition.

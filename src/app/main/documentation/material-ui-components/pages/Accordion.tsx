@@ -5,7 +5,13 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicAccordionComponent from '../components/accordion/BasicAccordion';
+import BasicAccordionRaw from '../components/accordion/BasicAccordion.tsx?raw';
+import ControlledAccordionsComponent from '../components/accordion/ControlledAccordions';
+import ControlledAccordionsRaw from '../components/accordion/ControlledAccordions.tsx?raw';
+import CustomizedAccordionsComponent from '../components/accordion/CustomizedAccordions';
+import CustomizedAccordionsRaw from '../components/accordion/CustomizedAccordions.tsx?raw';
+                   
                    function AccordionDoc(props) {
                      return (
                        
@@ -40,8 +46,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicAccordion.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/accordion/BasicAccordion.tsx').default} 
-                    raw={require('!raw-loader!../components/accordion/BasicAccordion.tsx')}
+                    component={BasicAccordionComponent} 
+                    raw={BasicAccordionRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled accordion</Typography>
 <Typography className="text-14 mb-32" component="div">The Accordion component can be controlled or uncontrolled.</Typography>
@@ -60,8 +66,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ControlledAccordions.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/accordion/ControlledAccordions.tsx').default} 
-                    raw={require('!raw-loader!../components/accordion/ControlledAccordions.tsx')}
+                    component={ControlledAccordionsComponent} 
+                    raw={ControlledAccordionsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -70,8 +76,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedAccordions.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/accordion/CustomizedAccordions.tsx').default} 
-                    raw={require('!raw-loader!../components/accordion/CustomizedAccordions.tsx')}
+                    component={CustomizedAccordionsComponent} 
+                    raw={CustomizedAccordionsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Performance</Typography>
 <Typography className="text-14 mb-32" component="div">The content of Accordions is mounted by default even if the accordion is not expanded.

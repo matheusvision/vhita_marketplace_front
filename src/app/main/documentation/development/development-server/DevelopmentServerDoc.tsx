@@ -33,7 +33,7 @@ function DevelopmentServerDoc() {
 				className="mb-16"
 				component="p"
 			>
-				And that's it. create-react-app will take care of everything and will initiate the Fuse React server.
+				And that's it. ViteJS will take care of everything and will initiate the Fuse React server.
 			</Typography>
 
 			<Typography

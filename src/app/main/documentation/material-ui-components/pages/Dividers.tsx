@@ -5,7 +5,23 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import ListDividersComponent from '../components/dividers/ListDividers';
+import ListDividersRaw from '../components/dividers/ListDividers.tsx?raw';
+import InsetDividersComponent from '../components/dividers/InsetDividers';
+import InsetDividersRaw from '../components/dividers/InsetDividers.tsx?raw';
+import SubheaderDividersComponent from '../components/dividers/SubheaderDividers';
+import SubheaderDividersRaw from '../components/dividers/SubheaderDividers.tsx?raw';
+import MiddleDividersComponent from '../components/dividers/MiddleDividers';
+import MiddleDividersRaw from '../components/dividers/MiddleDividers.tsx?raw';
+import DividerTextComponent from '../components/dividers/DividerText';
+import DividerTextRaw from '../components/dividers/DividerText.tsx?raw';
+import VerticalDividersComponent from '../components/dividers/VerticalDividers';
+import VerticalDividersRaw from '../components/dividers/VerticalDividers.tsx?raw';
+import VerticalDividerMiddleComponent from '../components/dividers/VerticalDividerMiddle';
+import VerticalDividerMiddleRaw from '../components/dividers/VerticalDividerMiddle.tsx?raw';
+import VerticalDividerTextComponent from '../components/dividers/VerticalDividerText';
+import VerticalDividerTextRaw from '../components/dividers/VerticalDividerText.tsx?raw';
+                   
                    function DividersDoc(props) {
                      return (
                        
@@ -37,8 +53,8 @@ You can save rendering this DOM element by using the <code>{`divider`}</code> pr
                     name="ListDividers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/ListDividers.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/ListDividers.tsx')}
+                    component={ListDividersComponent} 
+                    raw={ListDividersRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">HTML5 specification</Typography>
 <Typography className="text-14 mb-32" component="div">In a list, you should ensure the <code>{`Divider`}</code> is rendered as an <code>{`<li>`}</code> to match the HTML5 specification.
@@ -48,24 +64,24 @@ The examples below show two ways of achieving this.</Typography>
                     name="InsetDividers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/InsetDividers.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/InsetDividers.tsx')}
+                    component={InsetDividersComponent} 
+                    raw={InsetDividersRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Subheader dividers</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SubheaderDividers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/SubheaderDividers.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/SubheaderDividers.tsx')}
+                    component={SubheaderDividersComponent} 
+                    raw={SubheaderDividersRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Middle divider</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MiddleDividers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/MiddleDividers.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/MiddleDividers.tsx')}
+                    component={MiddleDividersComponent} 
+                    raw={MiddleDividersRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Dividers with text</Typography>
 <Typography className="text-14 mb-32" component="div">You can also render a divider with content.</Typography>
@@ -73,8 +89,8 @@ The examples below show two ways of achieving this.</Typography>
                     name="DividerText.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/DividerText.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/DividerText.tsx')}
+                    component={DividerTextComponent} 
+                    raw={DividerTextRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 When using the <code>{`Divider`}</code> component for visual decoration, such as in a heading, explicitly specify <code>{`role="presentation"`}</code> to the divider to make sure screen readers can announce its content:</Typography>
@@ -94,8 +110,8 @@ When using the <code>{`Divider`}</code> component for visual decoration, such as
                     name="VerticalDividers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/VerticalDividers.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/VerticalDividers.tsx')}
+                    component={VerticalDividersComponent} 
+                    raw={VerticalDividersRaw}
                     /></Typography>
 <div className="border border-1 p-16 rounded-16 my-12">
 
@@ -108,8 +124,8 @@ When using the <code>{`Divider`}</code> component for visual decoration, such as
                     name="VerticalDividerMiddle.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/VerticalDividerMiddle.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/VerticalDividerMiddle.tsx')}
+                    component={VerticalDividerMiddleComponent} 
+                    raw={VerticalDividerMiddleRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Vertical with text</Typography>
 <Typography className="text-14 mb-32" component="div">You can also render a vertical divider with content.</Typography>
@@ -117,8 +133,8 @@ When using the <code>{`Divider`}</code> component for visual decoration, such as
                     name="VerticalDividerText.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dividers/VerticalDividerText.tsx').default} 
-                    raw={require('!raw-loader!../components/dividers/VerticalDividerText.tsx')}
+                    component={VerticalDividerTextComponent} 
+                    raw={VerticalDividerTextRaw}
                     /></Typography>
 
                 </>

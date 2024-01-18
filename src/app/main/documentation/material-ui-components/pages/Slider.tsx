@@ -5,7 +5,43 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import ContinuousSliderComponent from '../components/slider/ContinuousSlider';
+import ContinuousSliderRaw from '../components/slider/ContinuousSlider.tsx?raw';
+import SliderSizesComponent from '../components/slider/SliderSizes';
+import SliderSizesRaw from '../components/slider/SliderSizes.tsx?raw';
+import DiscreteSliderComponent from '../components/slider/DiscreteSlider';
+import DiscreteSliderRaw from '../components/slider/DiscreteSlider.tsx?raw';
+import DiscreteSliderStepsComponent from '../components/slider/DiscreteSliderSteps';
+import DiscreteSliderStepsRaw from '../components/slider/DiscreteSliderSteps.tsx?raw';
+import DiscreteSliderMarksComponent from '../components/slider/DiscreteSliderMarks';
+import DiscreteSliderMarksRaw from '../components/slider/DiscreteSliderMarks.tsx?raw';
+import DiscreteSliderValuesComponent from '../components/slider/DiscreteSliderValues';
+import DiscreteSliderValuesRaw from '../components/slider/DiscreteSliderValues.tsx?raw';
+import DiscreteSliderLabelComponent from '../components/slider/DiscreteSliderLabel';
+import DiscreteSliderLabelRaw from '../components/slider/DiscreteSliderLabel.tsx?raw';
+import RangeSliderComponent from '../components/slider/RangeSlider';
+import RangeSliderRaw from '../components/slider/RangeSlider.tsx?raw';
+import MinimumDistanceSliderComponent from '../components/slider/MinimumDistanceSlider';
+import MinimumDistanceSliderRaw from '../components/slider/MinimumDistanceSlider.tsx?raw';
+import InputSliderComponent from '../components/slider/InputSlider';
+import InputSliderRaw from '../components/slider/InputSlider.tsx?raw';
+import ColorSliderComponent from '../components/slider/ColorSlider';
+import ColorSliderRaw from '../components/slider/ColorSlider.tsx?raw';
+import CustomizedSliderComponent from '../components/slider/CustomizedSlider';
+import CustomizedSliderRaw from '../components/slider/CustomizedSlider.tsx?raw';
+import MusicPlayerSliderComponent from '../components/slider/MusicPlayerSlider';
+import MusicPlayerSliderRaw from '../components/slider/MusicPlayerSlider.tsx?raw';
+import VerticalSliderComponent from '../components/slider/VerticalSlider';
+import VerticalSliderRaw from '../components/slider/VerticalSlider.tsx?raw';
+import VerticalAccessibleSliderComponent from '../components/slider/VerticalAccessibleSlider';
+import VerticalAccessibleSliderRaw from '../components/slider/VerticalAccessibleSlider.tsx?raw';
+import TrackFalseSliderComponent from '../components/slider/TrackFalseSlider';
+import TrackFalseSliderRaw from '../components/slider/TrackFalseSlider.tsx?raw';
+import TrackInvertedSliderComponent from '../components/slider/TrackInvertedSlider';
+import TrackInvertedSliderRaw from '../components/slider/TrackInvertedSlider.tsx?raw';
+import NonLinearSliderComponent from '../components/slider/NonLinearSlider';
+import NonLinearSliderRaw from '../components/slider/NonLinearSlider.tsx?raw';
+                   
                    function SliderDoc(props) {
                      return (
                        
@@ -36,8 +72,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ContinuousSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/ContinuousSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/ContinuousSlider.tsx')}
+                    component={ContinuousSliderComponent} 
+                    raw={ContinuousSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes</Typography>
 <Typography className="text-14 mb-32" component="div">For smaller slider, use the prop <code>{`size="small"`}</code>.</Typography>
@@ -45,8 +81,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="SliderSizes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/SliderSizes.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/SliderSizes.tsx')}
+                    component={SliderSizesComponent} 
+                    raw={SliderSizesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Discrete sliders</Typography>
 <Typography className="text-14 mb-32" component="div">Discrete sliders can be adjusted to a specific value by referencing its value indicator.
@@ -55,8 +91,8 @@ You can generate a mark for each step with <code>{`marks={true}`}</code>.</Typog
                     name="DiscreteSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/DiscreteSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/DiscreteSlider.tsx')}
+                    component={DiscreteSliderComponent} 
+                    raw={DiscreteSliderRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Small steps</Typography>
 <Typography className="text-14 mb-32" component="div">You can change the default step increment.</Typography>
@@ -64,8 +100,8 @@ You can generate a mark for each step with <code>{`marks={true}`}</code>.</Typog
                     name="DiscreteSliderSteps.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/DiscreteSliderSteps.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/DiscreteSliderSteps.tsx')}
+                    component={DiscreteSliderStepsComponent} 
+                    raw={DiscreteSliderStepsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom marks</Typography>
 <Typography className="text-14 mb-32" component="div">You can have custom marks by providing a rich array to the <code>{`marks`}</code> prop.</Typography>
@@ -73,8 +109,8 @@ You can generate a mark for each step with <code>{`marks={true}`}</code>.</Typog
                     name="DiscreteSliderMarks.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/DiscreteSliderMarks.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/DiscreteSliderMarks.tsx')}
+                    component={DiscreteSliderMarksComponent} 
+                    raw={DiscreteSliderMarksRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Restricted values</Typography>
 <Typography className="text-14 mb-32" component="div">You can restrict the selectable values to those provided with the <code>{`marks`}</code> prop with <code>{`step={null}`}</code>.</Typography>
@@ -82,8 +118,8 @@ You can generate a mark for each step with <code>{`marks={true}`}</code>.</Typog
                     name="DiscreteSliderValues.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/DiscreteSliderValues.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/DiscreteSliderValues.tsx')}
+                    component={DiscreteSliderValuesComponent} 
+                    raw={DiscreteSliderValuesRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Label always visible</Typography>
 <Typography className="text-14 mb-32" component="div">You can force the thumb label to be always visible with <code>{`valueLabelDisplay="on"`}</code>.</Typography>
@@ -91,8 +127,8 @@ You can generate a mark for each step with <code>{`marks={true}`}</code>.</Typog
                     name="DiscreteSliderLabel.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/DiscreteSliderLabel.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/DiscreteSliderLabel.tsx')}
+                    component={DiscreteSliderLabelComponent} 
+                    raw={DiscreteSliderLabelRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Range slider</Typography>
 <Typography className="text-14 mb-32" component="div">The slider can be used to set the start and end of a range by supplying an array of values to the <code>{`value`}</code> prop.</Typography>
@@ -100,8 +136,8 @@ You can generate a mark for each step with <code>{`marks={true}`}</code>.</Typog
                     name="RangeSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/RangeSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/RangeSlider.tsx')}
+                    component={RangeSliderComponent} 
+                    raw={RangeSliderRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Minimum distance</Typography>
 <Typography className="text-14 mb-32" component="div">You can enforce a minimum distance between values in the <code>{`onChange`}</code> event handler.
@@ -111,8 +147,8 @@ If you want the range to shift when reaching minimum distance, you can utilize t
                     name="MinimumDistanceSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/MinimumDistanceSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/MinimumDistanceSlider.tsx')}
+                    component={MinimumDistanceSliderComponent} 
+                    raw={MinimumDistanceSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Slider with input field</Typography>
 <Typography className="text-14 mb-32" component="div">In this example, an input allows a discrete value to be set.</Typography>
@@ -120,16 +156,16 @@ If you want the range to shift when reaching minimum distance, you can utilize t
                     name="InputSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/InputSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/InputSlider.tsx')}
+                    component={InputSliderComponent} 
+                    raw={InputSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ColorSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/ColorSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/ColorSlider.tsx')}
+                    component={ColorSliderComponent} 
+                    raw={ColorSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -138,24 +174,24 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/CustomizedSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/CustomizedSlider.tsx')}
+                    component={CustomizedSliderComponent} 
+                    raw={CustomizedSliderRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Music player</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MusicPlayerSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/MusicPlayerSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/MusicPlayerSlider.tsx')}
+                    component={MusicPlayerSliderComponent} 
+                    raw={MusicPlayerSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Vertical sliders</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="VerticalSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/VerticalSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/VerticalSlider.tsx')}
+                    component={VerticalSliderComponent} 
+                    raw={VerticalSliderRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div"><strong>WARNING</strong>: Chrome, Safari and newer Edge versions i.e. any browser based on WebKit exposes <code>{`<Slider orientation="vertical" />`}</code> as horizontal (<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1158217">chromium issue #1158217</a>).
 By applying <code>{`-webkit-appearance: slider-vertical;`}</code> the slider is exposed as vertical.</Typography>
@@ -167,8 +203,8 @@ This might be less confusing to users compared to a change in direction.</Typogr
                     name="VerticalAccessibleSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/VerticalAccessibleSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/VerticalAccessibleSlider.tsx')}
+                    component={VerticalAccessibleSliderComponent} 
+                    raw={VerticalAccessibleSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Track</Typography>
 <Typography className="text-14 mb-32" component="div">The track shows the range available for user selection.</Typography>
@@ -178,8 +214,8 @@ This might be less confusing to users compared to a change in direction.</Typogr
                     name="TrackFalseSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/TrackFalseSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/TrackFalseSlider.tsx')}
+                    component={TrackFalseSliderComponent} 
+                    raw={TrackFalseSliderRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Inverted track</Typography>
 <Typography className="text-14 mb-32" component="div">The track can be inverted with <code>{`track="inverted"`}</code>.</Typography>
@@ -187,8 +223,8 @@ This might be less confusing to users compared to a change in direction.</Typogr
                     name="TrackInvertedSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/TrackInvertedSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/TrackInvertedSlider.tsx')}
+                    component={TrackInvertedSliderComponent} 
+                    raw={TrackInvertedSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Non-linear scale</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`scale`}</code> prop to represent the <code>{`value`}</code> on a different scale.</Typography>
@@ -198,8 +234,8 @@ Increasing <em>x</em> by one increases the represented value by factor <em>2</em
                     name="NonLinearSlider.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/slider/NonLinearSlider.tsx').default} 
-                    raw={require('!raw-loader!../components/slider/NonLinearSlider.tsx')}
+                    component={NonLinearSliderComponent} 
+                    raw={NonLinearSliderRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(WAI-ARIA: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/">https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/</a>)</Typography>

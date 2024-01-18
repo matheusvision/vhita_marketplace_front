@@ -5,7 +5,11 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import SimpleContainerComponent from '../components/container/SimpleContainer';
+import SimpleContainerRaw from '../components/container/SimpleContainer.tsx?raw';
+import FixedContainerComponent from '../components/container/FixedContainer';
+import FixedContainerRaw from '../components/container/FixedContainer.tsx?raw';
+                   
                    function ContainerDoc(props) {
                      return (
                        
@@ -36,8 +40,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="SimpleContainer.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/container/SimpleContainer.tsx').default} 
-                    raw={require('!raw-loader!../components/container/SimpleContainer.tsx')}
+                    component={SimpleContainerComponent} 
+                    raw={SimpleContainerRaw}
                     /></Typography>
 
 <FuseHighlight component="pre" className="language-jsx">
@@ -52,8 +56,8 @@ The max-width matches the min-width of the current breakpoint.</Typography>
                     name="FixedContainer.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/container/FixedContainer.tsx').default} 
-                    raw={require('!raw-loader!../components/container/FixedContainer.tsx')}
+                    component={FixedContainerComponent} 
+                    raw={FixedContainerRaw}
                     /></Typography>
 
 <FuseHighlight component="pre" className="language-jsx">

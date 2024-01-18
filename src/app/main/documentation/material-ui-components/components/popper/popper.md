@@ -53,7 +53,7 @@ Alternatively, you can use [react-spring](https://github.com/pmndrs/react-spring
 
 ## Scroll playground
 
-{{"demo": "ScrollPlayground.js", "hideToolbar": true, "bg": true}}
+{{"demo": "ScrollPlayground.jsx", "hideToolbar": true, "bg": true}}
 
 ## Virtual element
 

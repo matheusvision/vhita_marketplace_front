@@ -5,7 +5,31 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicTableComponent from '../components/table/BasicTable';
+import BasicTableRaw from '../components/table/BasicTable.tsx?raw';
+import DataTableComponent from '../components/table/DataTable';
+import DataTableRaw from '../components/table/DataTable.tsx?raw';
+import DenseTableComponent from '../components/table/DenseTable';
+import DenseTableRaw from '../components/table/DenseTable.tsx?raw';
+import EnhancedTableComponent from '../components/table/EnhancedTable';
+import EnhancedTableRaw from '../components/table/EnhancedTable.tsx?raw';
+import CustomizedTablesComponent from '../components/table/CustomizedTables';
+import CustomizedTablesRaw from '../components/table/CustomizedTables.tsx?raw';
+import CustomPaginationActionsTableComponent from '../components/table/CustomPaginationActionsTable';
+import CustomPaginationActionsTableRaw from '../components/table/CustomPaginationActionsTable.tsx?raw';
+import StickyHeadTableComponent from '../components/table/StickyHeadTable';
+import StickyHeadTableRaw from '../components/table/StickyHeadTable.tsx?raw';
+import ColumnGroupingTableComponent from '../components/table/ColumnGroupingTable';
+import ColumnGroupingTableRaw from '../components/table/ColumnGroupingTable.tsx?raw';
+import CollapsibleTableComponent from '../components/table/CollapsibleTable';
+import CollapsibleTableRaw from '../components/table/CollapsibleTable.tsx?raw';
+import SpanningTableComponent from '../components/table/SpanningTable';
+import SpanningTableRaw from '../components/table/SpanningTable.tsx?raw';
+import ReactVirtualizedTableComponent from '../components/table/ReactVirtualizedTable';
+import ReactVirtualizedTableRaw from '../components/table/ReactVirtualizedTable.tsx?raw';
+import AccessibleTableComponent from '../components/table/AccessibleTable';
+import AccessibleTableRaw from '../components/table/AccessibleTable.tsx?raw';
+                   
                    function TableDoc(props) {
                      return (
                        
@@ -41,8 +65,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/BasicTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/BasicTable.tsx')}
+                    component={BasicTableComponent} 
+                    raw={BasicTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Data table</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`Table`}</code> component has a close mapping to the native <code>{`<table>`}</code> elements.
@@ -53,8 +77,8 @@ While it comes with a more rigid structure, in exchange, you gain more powerful 
                     name="DataTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/DataTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/DataTable.tsx')}
+                    component={DataTableComponent} 
+                    raw={DataTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Dense table</Typography>
 <Typography className="text-14 mb-32" component="div">A simple example of a dense table with no frills.</Typography>
@@ -62,8 +86,8 @@ While it comes with a more rigid structure, in exchange, you gain more powerful 
                     name="DenseTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/DenseTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/DenseTable.tsx')}
+                    component={DenseTableComponent} 
+                    raw={DenseTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sorting &amp; selecting</Typography>
 <Typography className="text-14 mb-32" component="div">This example demonstrates the use of <code>{`Checkbox`}</code> and clickable rows for selection, with a custom <code>{`Toolbar`}</code>. It uses the <code>{`TableSortLabel`}</code> component to help style column headings.</Typography>
@@ -72,8 +96,8 @@ While it comes with a more rigid structure, in exchange, you gain more powerful 
                     name="EnhancedTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/EnhancedTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/EnhancedTable.tsx')}
+                    component={EnhancedTableComponent} 
+                    raw={EnhancedTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -82,8 +106,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedTables.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/CustomizedTables.tsx').default} 
-                    raw={require('!raw-loader!../components/table/CustomizedTables.tsx')}
+                    component={CustomizedTablesComponent} 
+                    raw={CustomizedTablesRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom pagination options</Typography>
 <Typography className="text-14 mb-32" component="div">It&#39;s possible to customize the options shown in the &quot;Rows per page&quot; select using the <code>{`rowsPerPageOptions`}</code> prop.
@@ -112,8 +136,8 @@ You should either provide an array of:</Typography>
                     name="CustomPaginationActionsTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/CustomPaginationActionsTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/CustomPaginationActionsTable.tsx')}
+                    component={CustomPaginationActionsTableComponent} 
+                    raw={CustomPaginationActionsTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sticky header</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of a table with scrollable rows and fixed column headers.
@@ -123,8 +147,8 @@ It leverages the <code>{`stickyHeader`}</code> prop.
                     name="StickyHeadTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/StickyHeadTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/StickyHeadTable.tsx')}
+                    component={StickyHeadTableComponent} 
+                    raw={StickyHeadTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Column grouping</Typography>
 <Typography className="text-14 mb-32" component="div">You can group column headers by rendering multiple table rows inside a table head:</Typography>
@@ -141,8 +165,8 @@ It leverages the <code>{`stickyHeader`}</code> prop.
                     name="ColumnGroupingTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/ColumnGroupingTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/ColumnGroupingTable.tsx')}
+                    component={ColumnGroupingTableComponent} 
+                    raw={ColumnGroupingTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Collapsible table</Typography>
 <Typography className="text-14 mb-32" component="div">An example of a table with expandable rows, revealing more information.
@@ -151,8 +175,8 @@ It utilizes the <a href="/material-ui/api/collapse/"><code>{`Collapse`}</code></
                     name="CollapsibleTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/CollapsibleTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/CollapsibleTable.tsx')}
+                    component={CollapsibleTableComponent} 
+                    raw={CollapsibleTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Spanning table</Typography>
 <Typography className="text-14 mb-32" component="div">A simple example with spanning rows &amp; columns.</Typography>
@@ -160,8 +184,8 @@ It utilizes the <a href="/material-ui/api/collapse/"><code>{`Collapse`}</code></
                     name="SpanningTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/SpanningTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/SpanningTable.tsx')}
+                    component={SpanningTableComponent} 
+                    raw={SpanningTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Virtualized table</Typography>
 <Typography className="text-14 mb-32" component="div">In the following example, we demonstrate how to use <a href="https://github.com/petyosi/react-virtuoso">react-virtuoso</a> with the <code>{`Table`}</code> component.
@@ -171,8 +195,8 @@ Virtualization helps with performance issues.</Typography>
                     name="ReactVirtualizedTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/ReactVirtualizedTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/ReactVirtualizedTable.tsx')}
+                    component={ReactVirtualizedTableComponent} 
+                    raw={ReactVirtualizedTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(WAI tutorial: <a href="https://www.w3.org/WAI/tutorials/tables/">https://www.w3.org/WAI/tutorials/tables/</a>)</Typography>
@@ -182,8 +206,8 @@ Virtualization helps with performance issues.</Typography>
                     name="AccessibleTable.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/table/AccessibleTable.tsx').default} 
-                    raw={require('!raw-loader!../components/table/AccessibleTable.tsx')}
+                    component={AccessibleTableComponent} 
+                    raw={AccessibleTableRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Unstyled</Typography>
 <Typography className="text-14 mb-32" component="div">If you would like to use an unstyled Table, you can use the primitive HTML elements and enhance the table with the TablePaginationUnstyled component.

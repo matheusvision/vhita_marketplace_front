@@ -5,19 +5,41 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-
+                   import SimpleDialogDemoComponent from '../components/dialogs/SimpleDialogDemo';
+import SimpleDialogDemoRaw from '../components/dialogs/SimpleDialogDemo.tsx?raw';
+import AlertDialogComponent from '../components/dialogs/AlertDialog';
+import AlertDialogRaw from '../components/dialogs/AlertDialog.tsx?raw';
+import AlertDialogSlideComponent from '../components/dialogs/AlertDialogSlide';
+import AlertDialogSlideRaw from '../components/dialogs/AlertDialogSlide.tsx?raw';
+import FormDialogComponent from '../components/dialogs/FormDialog';
+import FormDialogRaw from '../components/dialogs/FormDialog.tsx?raw';
+import CustomizedDialogsComponent from '../components/dialogs/CustomizedDialogs';
+import CustomizedDialogsRaw from '../components/dialogs/CustomizedDialogs.tsx?raw';
+import FullScreenDialogComponent from '../components/dialogs/FullScreenDialog';
+import FullScreenDialogRaw from '../components/dialogs/FullScreenDialog.tsx?raw';
+import MaxWidthDialogComponent from '../components/dialogs/MaxWidthDialog';
+import MaxWidthDialogRaw from '../components/dialogs/MaxWidthDialog.tsx?raw';
+import ResponsiveDialogComponent from '../components/dialogs/ResponsiveDialog';
+import ResponsiveDialogRaw from '../components/dialogs/ResponsiveDialog.tsx?raw';
+import ConfirmationDialogComponent from '../components/dialogs/ConfirmationDialog';
+import ConfirmationDialogRaw from '../components/dialogs/ConfirmationDialog.tsx?raw';
+import DraggableDialogComponent from '../components/dialogs/DraggableDialog';
+import DraggableDialogRaw from '../components/dialogs/DraggableDialog.tsx?raw';
+import ScrollDialogComponent from '../components/dialogs/ScrollDialog';
+import ScrollDialogRaw from '../components/dialogs/ScrollDialog.tsx?raw';
+                   
                    function DialogsDoc(props) {
                      return (
-
+                       
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button
+					  <Button 
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a"
-							href="https://mui.com/components/dialogs"
+							component="a" 
+							href="https://mui.com/components/dialogs" 
 							target="_blank"
 							role="button"
 							size="small"
@@ -43,8 +65,8 @@ For example, they can display avatars, icons, clarifying subtext, or orthogonal 
                     name="SimpleDialogDemo.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/SimpleDialogDemo.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/SimpleDialogDemo.tsx')}
+                    component={SimpleDialogDemoComponent} 
+                    raw={SimpleDialogDemoRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Alerts</Typography>
 <Typography className="text-14 mb-32" component="div">Alerts are urgent interruptions, requiring acknowledgement, that inform the user about a situation.</Typography>
@@ -65,8 +87,8 @@ Users should be able to understand the choices based on the title and button tex
                     name="AlertDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/AlertDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/AlertDialog.tsx')}
+                    component={AlertDialogComponent} 
+                    raw={AlertDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
 <Typography className="text-14 mb-32" component="div">You can also swap out the transition, the next example uses <code>{`Slide`}</code>.</Typography>
@@ -74,8 +96,8 @@ Users should be able to understand the choices based on the title and button tex
                     name="AlertDialogSlide.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/AlertDialogSlide.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/AlertDialogSlide.tsx')}
+                    component={AlertDialogSlideComponent} 
+                    raw={AlertDialogSlideRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Form dialogs</Typography>
 <Typography className="text-14 mb-32" component="div">Form dialogs allow users to fill out form fields within a dialog.
@@ -84,8 +106,8 @@ For example, if your site prompts for potential subscribers to fill in their ema
                     name="FormDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/FormDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/FormDialog.tsx')}
+                    component={FormDialogComponent} 
+                    raw={FormDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -95,16 +117,16 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedDialogs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/CustomizedDialogs.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/CustomizedDialogs.tsx')}
+                    component={CustomizedDialogsComponent} 
+                    raw={CustomizedDialogsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Full-screen dialogs</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="FullScreenDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/FullScreenDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/FullScreenDialog.tsx')}
+                    component={FullScreenDialogComponent} 
+                    raw={FullScreenDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Optional sizes</Typography>
 <Typography className="text-14 mb-32" component="div">You can set a dialog maximum width by using the <code>{`maxWidth`}</code> enumerable in combination with the <code>{`fullWidth`}</code> boolean.
@@ -113,8 +135,8 @@ When the <code>{`fullWidth`}</code> prop is true, the dialog will adapt based on
                     name="MaxWidthDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/MaxWidthDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/MaxWidthDialog.tsx')}
+                    component={MaxWidthDialogComponent} 
+                    raw={MaxWidthDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Responsive full-screen</Typography>
 <Typography className="text-14 mb-32" component="div">You may make a dialog responsively full screen using <a href="/material-ui/react-use-media-query/"><code>{`useMediaQuery`}</code></a>.</Typography>
@@ -135,8 +157,8 @@ function MyComponent() {
                     name="ResponsiveDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/ResponsiveDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/ResponsiveDialog.tsx')}
+                    component={ResponsiveDialogComponent} 
+                    raw={ResponsiveDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Confirmation dialogs</Typography>
 <Typography className="text-14 mb-32" component="div">Confirmation dialogs require users to explicitly confirm their choice before an option is committed.
@@ -146,8 +168,8 @@ For example, users can listen to multiple ringtones but only make a final select
                     name="ConfirmationDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/ConfirmationDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/ConfirmationDialog.tsx')}
+                    component={ConfirmationDialogComponent} 
+                    raw={ConfirmationDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Draggable dialog</Typography>
 <Typography className="text-14 mb-32" component="div">You can create a draggable dialog by using <a href="https://github.com/react-grid-layout/react-draggable">react-draggable</a>.
@@ -157,8 +179,8 @@ This will make the entire dialog draggable.</Typography>
                     name="DraggableDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/DraggableDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/DraggableDialog.tsx')}
+                    component={DraggableDialogComponent} 
+                    raw={DraggableDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Scrolling long content</Typography>
 <Typography className="text-14 mb-32" component="div">When dialogs become too long for the user&#39;s viewport or device, they scroll.</Typography>
@@ -171,8 +193,8 @@ This will make the entire dialog draggable.</Typography>
                     name="ScrollDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/dialogs/ScrollDialog.tsx').default}
-                    raw={require('!raw-loader!../components/dialogs/ScrollDialog.tsx')}
+                    component={ScrollDialogComponent} 
+                    raw={ScrollDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Performance</Typography>
 <Typography className="text-14 mb-32" component="div">Follow the <a href="/material-ui/react-modal/#performance">Modal performance section</a>.</Typography>
@@ -182,14 +204,15 @@ This will make the entire dialog draggable.</Typography>
 <Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">material-ui-confirm</Typography>
 <Typography className="text-14 mb-32" component="div"><img src="https://img.shields.io/github/stars/jonatanklosko/material-ui-confirm?style=social&label=Star" alt="stars"/>
- <img src="https://img.shields.io/npm/dm/material-ui-confirm.svg" alt="npm downloads"/></Typography>
+<img src="https://img.shields.io/npm/dm/material-ui-confirm.svg" alt="npm downloads"/></Typography>
 <Typography className="text-14 mb-32" component="div">The package <a href="https://github.com/jonatanklosko/material-ui-confirm/"><code>{`material-ui-confirm`}</code></a> provides dialogs for confirming user actions without writing boilerplate code.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">Follow the <a href="/material-ui/react-modal/#accessibility">Modal accessibility section</a>.</Typography>
 
                 </>
-
+    
                      );
                    }
-
+                   
                    export default DialogsDoc;
+                   

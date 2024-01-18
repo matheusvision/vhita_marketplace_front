@@ -18,24 +18,16 @@ function DeploymentDoc() {
 				className="mb-16"
 				component="p"
 			>
-				You may encounter difficulties refreshing the application URL. If so, you will need to configure server
-				settings.
-			</Typography>
-
-			<Typography
-				className="mb-16"
-				component="p"
-			>
-				For assistance, please refer to the deployment settings provided by Facebook's create-react-app
-				documentation:
+				For assistance, please refer to the
 				<a
-					href="https://facebook.github.io/create-react-app/docs/deployment"
+					href="https://vitejs.dev/guide/static-deploy"
 					target="_blank"
 					rel="noreferrer noopener"
 					className="ml-4"
 				>
-					Deployment
-				</a>
+					deployment documentation
+				</a>{' '}
+				provided by ViteJS:
 			</Typography>
 		</>
 	);

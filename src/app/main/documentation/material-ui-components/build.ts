@@ -4,8 +4,12 @@ import fsp from 'fs/promises';
 import { spawn } from 'child_process';
 import _ from 'lodash';
 import { marked } from 'marked';
-import path from 'path';
 import Promise from 'promise';
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const demoDir = 'src/app/main/documentation/material-ui-components/components';
 const rootDirectory = path.resolve(__dirname);
@@ -101,7 +105,7 @@ const removeFile = async (filePath: string) => {
 		// console.log('Successfully deleted the file.');
 	} catch (error) {
 		if (error) {
-			throw error;
+			console.log('File does not exist.',filePath)
 		}
 	}
 };
@@ -134,7 +138,7 @@ const rmDir = async (dirPath: string) => {
 		await fsp.rmdir(dirPath);
 	} catch (error) {
 		if (error) {
-			throw error;
+			console.log(error);
 		}
 	}
 };
@@ -166,6 +170,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 	);
 
 	let contentsArr = getContents(markdownSource);
+	let importPathList = [];
 	contentsArr = contentsArr.map((content) => {
 		const match = content.match(demoRegexp);
 
@@ -188,14 +193,23 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 			const selectedFileName = path.basename(filePath);
 			const importPath = `../components/${folderName}/${selectedFileName}`;
+			const componentPath = `../components/${folderName}/${nameWithoutExt}`;
 
 			const iframe = !!demoOptions.iframe;
+
+
+			const componentNameVar = `${nameWithoutExt}Component`;
+			const componentRawVar = `${nameWithoutExt}Raw`;
+
+			importPathList.push(`import ${componentNameVar} from '${componentPath}';`);
+			importPathList.push(`import ${componentRawVar} from '${importPath}?raw';`);
+
 			return `\n<FuseExample
                     name="${name}"
                     className="my-16"
                     iframe={${iframe}}
-                    component="{require('${importPath}').default}" 
-                    raw="{require('!raw-loader!${importPath}')}"
+                    component={${componentNameVar}} 
+                    raw={${componentRawVar}}
                     />`;
 		}
 
@@ -208,12 +222,13 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		return content;
 	});
 
-	const response = marked(contentsArr.join(''))
+	const htmlCode = marked(contentsArr.join(''))
 		.replace(/"{/g, '{')
 		.replace(/}"/g, '}')
 		.replace(/(<\s*\/?\s*)p(\s*([^>]*)?\s*>)/g, '$1Typography$2')
 		.replace(/class=/g, 'className=')
-		.replace(/<img([^>]+)(\s*[^/])>/gm, '$1/>')
+		// .replace(/<img([^>]+)(\s*[^/])>/gm, '$1/>')
+		.replace(/<img([^>]+)>/gi, '<img$1/>')
 		.replace(/<br>/g, '<br/>')
 		.replace(/\/static\//g, '/material-ui-static/')
 		.replace(/<!-- #default-branch-switch -->/g, '')
@@ -221,7 +236,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		.replace(/<ul start="(\d+)">/g, '<ul className="space-y-16" start={$1}>')
 		.replace(/<ol start="(\d+)">/g, '<ol start={$1}>');
 
-	return response;
+	return { htmlCode, importPaths: importPathList.join('\n') };
 }
 
 function eraseMdSection(content: string, folderName: string, requestedDir: string, title: string) {
@@ -275,7 +290,7 @@ function writePage(fileDir: string) {
 	const mdFileName = `${path.basename(fileDir)}.md`;
 	const markdownSource = fs.readFileSync(`${fileDir}/${mdFileName}`, 'utf8');
 	const fileName = _.upperFirst(_.camelCase(path.basename(fileDir)));
-	const htmlCode = getHtmlCode(markdownSource, fileDir);
+	const { htmlCode, importPaths } = getHtmlCode(markdownSource, fileDir);
 
 	const contentJSX = `
                 <>
@@ -308,7 +323,8 @@ function writePage(fileDir: string) {
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   ${importPaths}
+                   
                    function ${fileName}Doc(props) {
                      return (
                        ${contentJSX}

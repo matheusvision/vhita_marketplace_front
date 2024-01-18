@@ -5,19 +5,37 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-
+                   import SimpleSnackbarComponent from '../components/snackbars/SimpleSnackbar';
+import SimpleSnackbarRaw from '../components/snackbars/SimpleSnackbar.tsx?raw';
+import CustomizedSnackbarsComponent from '../components/snackbars/CustomizedSnackbars';
+import CustomizedSnackbarsRaw from '../components/snackbars/CustomizedSnackbars.tsx?raw';
+import PositionedSnackbarComponent from '../components/snackbars/PositionedSnackbar';
+import PositionedSnackbarRaw from '../components/snackbars/PositionedSnackbar.tsx?raw';
+import LongTextSnackbarComponent from '../components/snackbars/LongTextSnackbar';
+import LongTextSnackbarRaw from '../components/snackbars/LongTextSnackbar.tsx?raw';
+import ConsecutiveSnackbarsComponent from '../components/snackbars/ConsecutiveSnackbars';
+import ConsecutiveSnackbarsRaw from '../components/snackbars/ConsecutiveSnackbars.tsx?raw';
+import FabIntegrationSnackbarComponent from '../components/snackbars/FabIntegrationSnackbar';
+import FabIntegrationSnackbarRaw from '../components/snackbars/FabIntegrationSnackbar.tsx?raw';
+import TransitionsSnackbarComponent from '../components/snackbars/TransitionsSnackbar';
+import TransitionsSnackbarRaw from '../components/snackbars/TransitionsSnackbar.tsx?raw';
+import DirectionSnackbarComponent from '../components/snackbars/DirectionSnackbar';
+import DirectionSnackbarRaw from '../components/snackbars/DirectionSnackbar.tsx?raw';
+import IntegrationNotistackComponent from '../components/snackbars/IntegrationNotistack';
+import IntegrationNotistackRaw from '../components/snackbars/IntegrationNotistack.tsx?raw';
+                   
                    function SnackbarsDoc(props) {
                      return (
-
+                       
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button
+					  <Button 
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a"
-							href="https://mui.com/components/snackbars"
+							component="a" 
+							href="https://mui.com/components/snackbars" 
 							target="_blank"
 							role="button"
 							size="small"
@@ -39,8 +57,8 @@ They may contain a text action, but no icons. You can use them to display notifi
                     name="SimpleSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/SimpleSnackbar.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/SimpleSnackbar.tsx')}
+                    component={SimpleSnackbarComponent} 
+                    raw={SimpleSnackbarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -49,8 +67,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedSnackbars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/CustomizedSnackbars.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/CustomizedSnackbars.tsx')}
+                    component={CustomizedSnackbarsComponent} 
+                    raw={CustomizedSnackbarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Positioned snackbars</Typography>
 <Typography className="text-14 mb-32" component="div">In wide layouts, snackbars can be left-aligned or center-aligned if they are consistently placed on the same spot at the bottom of the screen, however there may be circumstances where the placement of the snackbar needs to be more flexible.
@@ -59,8 +77,8 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="PositionedSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/PositionedSnackbar.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/PositionedSnackbar.tsx')}
+                    component={PositionedSnackbarComponent} 
+                    raw={PositionedSnackbarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Message Length</Typography>
 <Typography className="text-14 mb-32" component="div">Some snackbars with varying message length.</Typography>
@@ -68,8 +86,8 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="LongTextSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/LongTextSnackbar.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/LongTextSnackbar.tsx')}
+                    component={LongTextSnackbarComponent} 
+                    raw={LongTextSnackbarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Consecutive Snackbars</Typography>
@@ -78,8 +96,8 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="ConsecutiveSnackbars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/ConsecutiveSnackbars.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/ConsecutiveSnackbars.tsx')}
+                    component={ConsecutiveSnackbarsComponent} 
+                    raw={ConsecutiveSnackbarsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Snackbars and floating action buttons (FABs)</Typography>
 <Typography className="text-14 mb-32" component="div">Snackbars should appear above FABs (on mobile).</Typography>
@@ -87,8 +105,8 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="FabIntegrationSnackbar.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/snackbars/FabIntegrationSnackbar.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/FabIntegrationSnackbar.tsx')}
+                    component={FabIntegrationSnackbarComponent} 
+                    raw={FabIntegrationSnackbarRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Change transition</Typography>
 <Typography className="text-14 mb-32" component="div"><a href="/material-ui/transitions/#grow">Grow</a> is the default transition but you can use a different one.</Typography>
@@ -96,8 +114,8 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     name="TransitionsSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/TransitionsSnackbar.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/TransitionsSnackbar.tsx')}
+                    component={TransitionsSnackbarComponent} 
+                    raw={TransitionsSnackbarRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Control Slide direction</Typography>
 <Typography className="text-14 mb-32" component="div">You can change the direction of the <a href="/material-ui/transitions/#slide">Slide</a> transition.</Typography>
@@ -121,8 +139,8 @@ export default function MyComponent() {
                     name="DirectionSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/DirectionSnackbar.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/DirectionSnackbar.tsx')}
+                    component={DirectionSnackbarComponent} 
+                    raw={DirectionSnackbarRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complementary projects</Typography>
 <Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
@@ -136,8 +154,8 @@ It also enables you to <strong>stack</strong> them on top of one another (althou
                     name="IntegrationNotistack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/snackbars/IntegrationNotistack.tsx').default}
-                    raw={require('!raw-loader!../components/snackbars/IntegrationNotistack.tsx')}
+                    component={IntegrationNotistackComponent} 
+                    raw={IntegrationNotistackRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">(WAI-ARIA: <a href="https://www.w3.org/TR/wai-aria-1.1/#alert">https://www.w3.org/TR/wai-aria-1.1/#alert</a>)</Typography>
@@ -169,8 +187,9 @@ export default function MyComponent() {
 </FuseHighlight>
 
                 </>
-
+    
                      );
                    }
-
+                   
                    export default SnackbarsDoc;
+                   

@@ -1,6 +1,5 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 /**
  * Installation Doc
@@ -197,19 +196,6 @@ function InstallationDoc() {
 				This command will take some time and install all the required libraries into the node_modules directory
 				in order for you to start developing.
 			</Typography>
-
-			<Box
-				className="mb-24 px-24 py-16 border-1 rounded-16"
-				sx={{ borderColor: 'secondary.main' }}
-			>
-				<Typography component="div">
-					After the installation completes, you may see warnings about deprecated packages and security risks.
-					You can safely ignore those messages as Fuse (and other React apps) use Node.js for only development
-					environment. <br /> <br /> Unless you explicitly add a package to your dependencies list in
-					package.json file, they won't be included into the final application therefore they are not going
-					cause any security risks.
-				</Typography>
-			</Box>
 		</>
 	);
 }

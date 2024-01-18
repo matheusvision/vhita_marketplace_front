@@ -5,7 +5,9 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicTabsComponent from '../components/tabs/BasicTabs';
+import BasicTabsRaw from '../components/tabs/BasicTabs.tsx?raw';
+                   
                    function TabsDoc(props) {
                      return (
                        
@@ -36,8 +38,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicTabs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/tabs/BasicTabs.tsx').default} 
-                    raw={require('!raw-loader!../components/tabs/BasicTabs.tsx')}
+                    component={BasicTabsComponent} 
+                    raw={BasicTabsRaw}
                     /></Typography>
 
                 </>

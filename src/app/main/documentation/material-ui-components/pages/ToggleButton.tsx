@@ -5,7 +5,23 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import ToggleButtonsComponent from '../components/toggle-button/ToggleButtons';
+import ToggleButtonsRaw from '../components/toggle-button/ToggleButtons.tsx?raw';
+import ToggleButtonsMultipleComponent from '../components/toggle-button/ToggleButtonsMultiple';
+import ToggleButtonsMultipleRaw from '../components/toggle-button/ToggleButtonsMultiple.tsx?raw';
+import ToggleButtonSizesComponent from '../components/toggle-button/ToggleButtonSizes';
+import ToggleButtonSizesRaw from '../components/toggle-button/ToggleButtonSizes.tsx?raw';
+import ColorToggleButtonComponent from '../components/toggle-button/ColorToggleButton';
+import ColorToggleButtonRaw from '../components/toggle-button/ColorToggleButton.tsx?raw';
+import VerticalToggleButtonsComponent from '../components/toggle-button/VerticalToggleButtons';
+import VerticalToggleButtonsRaw from '../components/toggle-button/VerticalToggleButtons.tsx?raw';
+import ToggleButtonNotEmptyComponent from '../components/toggle-button/ToggleButtonNotEmpty';
+import ToggleButtonNotEmptyRaw from '../components/toggle-button/ToggleButtonNotEmpty.tsx?raw';
+import StandaloneToggleButtonComponent from '../components/toggle-button/StandaloneToggleButton';
+import StandaloneToggleButtonRaw from '../components/toggle-button/StandaloneToggleButton.tsx?raw';
+import CustomizedDividersComponent from '../components/toggle-button/CustomizedDividers';
+import CustomizedDividersRaw from '../components/toggle-button/CustomizedDividers.tsx?raw';
+                   
                    function ToggleButtonDoc(props) {
                      return (
                        
@@ -40,8 +56,8 @@ The <code>{`ToggleButtonGroup`}</code> controls the selected state of its child 
                     name="ToggleButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/ToggleButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/ToggleButtons.tsx')}
+                    component={ToggleButtonsComponent} 
+                    raw={ToggleButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Multiple selection</Typography>
 <Typography className="text-14 mb-32" component="div">Multiple selection allows for logically-grouped options, like bold, italic, and underline, to have multiple options selected.</Typography>
@@ -49,8 +65,8 @@ The <code>{`ToggleButtonGroup`}</code> controls the selected state of its child 
                     name="ToggleButtonsMultiple.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/ToggleButtonsMultiple.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/ToggleButtonsMultiple.tsx')}
+                    component={ToggleButtonsMultipleComponent} 
+                    raw={ToggleButtonsMultipleRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Size</Typography>
 <Typography className="text-14 mb-32" component="div">For larger or smaller buttons, use the <code>{`size`}</code> prop.</Typography>
@@ -58,16 +74,16 @@ The <code>{`ToggleButtonGroup`}</code> controls the selected state of its child 
                     name="ToggleButtonSizes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/ToggleButtonSizes.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/ToggleButtonSizes.tsx')}
+                    component={ToggleButtonSizesComponent} 
+                    raw={ToggleButtonSizesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ColorToggleButton.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/ColorToggleButton.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/ColorToggleButton.tsx')}
+                    component={ColorToggleButtonComponent} 
+                    raw={ColorToggleButtonRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Vertical buttons</Typography>
 <Typography className="text-14 mb-32" component="div">The buttons can be stacked vertically with the <code>{`orientation`}</code> prop set to &quot;vertical&quot;.</Typography>
@@ -75,8 +91,8 @@ The <code>{`ToggleButtonGroup`}</code> controls the selected state of its child 
                     name="VerticalToggleButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/VerticalToggleButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/VerticalToggleButtons.tsx')}
+                    component={VerticalToggleButtonsComponent} 
+                    raw={VerticalToggleButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Enforce value set</Typography>
 <Typography className="text-14 mb-32" component="div">If you want to enforce that at least one button must be active, you can adapt your handleChange function.</Typography>
@@ -100,16 +116,16 @@ const handleDevices = (event, newDevices) => {
                     name="ToggleButtonNotEmpty.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/ToggleButtonNotEmpty.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/ToggleButtonNotEmpty.tsx')}
+                    component={ToggleButtonNotEmptyComponent} 
+                    raw={ToggleButtonNotEmptyRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Standalone toggle button</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="StandaloneToggleButton.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/StandaloneToggleButton.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/StandaloneToggleButton.tsx')}
+                    component={StandaloneToggleButtonComponent} 
+                    raw={StandaloneToggleButtonRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -118,8 +134,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedDividers.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/toggle-button/CustomizedDividers.tsx').default} 
-                    raw={require('!raw-loader!../components/toggle-button/CustomizedDividers.tsx')}
+                    component={CustomizedDividersComponent} 
+                    raw={CustomizedDividersRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">ARIA</Typography>

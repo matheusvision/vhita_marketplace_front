@@ -5,19 +5,45 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-
+                   import BasicMenuComponent from '../components/menus/BasicMenu';
+import BasicMenuRaw from '../components/menus/BasicMenu.tsx?raw';
+import IconMenuComponent from '../components/menus/IconMenu';
+import IconMenuRaw from '../components/menus/IconMenu.tsx?raw';
+import DenseMenuComponent from '../components/menus/DenseMenu';
+import DenseMenuRaw from '../components/menus/DenseMenu.tsx?raw';
+import SimpleListMenuComponent from '../components/menus/SimpleListMenu';
+import SimpleListMenuRaw from '../components/menus/SimpleListMenu.tsx?raw';
+import PositionedMenuComponent from '../components/menus/PositionedMenu';
+import PositionedMenuRaw from '../components/menus/PositionedMenu.tsx?raw';
+import MenuListCompositionComponent from '../components/menus/MenuListComposition';
+import MenuListCompositionRaw from '../components/menus/MenuListComposition.tsx?raw';
+import AccountMenuComponent from '../components/menus/AccountMenu';
+import AccountMenuRaw from '../components/menus/AccountMenu.tsx?raw';
+import CustomizedMenusComponent from '../components/menus/CustomizedMenus';
+import CustomizedMenusRaw from '../components/menus/CustomizedMenus.tsx?raw';
+import LongMenuComponent from '../components/menus/LongMenu';
+import LongMenuRaw from '../components/menus/LongMenu.tsx?raw';
+import TypographyMenuComponent from '../components/menus/TypographyMenu';
+import TypographyMenuRaw from '../components/menus/TypographyMenu.tsx?raw';
+import FadeMenuComponent from '../components/menus/FadeMenu';
+import FadeMenuRaw from '../components/menus/FadeMenu.tsx?raw';
+import ContextMenuComponent from '../components/menus/ContextMenu';
+import ContextMenuRaw from '../components/menus/ContextMenu.tsx?raw';
+import MenuPopupStateComponent from '../components/menus/MenuPopupState';
+import MenuPopupStateRaw from '../components/menus/MenuPopupState.tsx?raw';
+                   
                    function MenusDoc(props) {
                      return (
-
+                       
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button
+					  <Button 
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a"
-							href="https://mui.com/components/menus"
+							component="a" 
+							href="https://mui.com/components/menus" 
 							target="_blank"
 							role="button"
 							size="small"
@@ -38,8 +64,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/BasicMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/BasicMenu.tsx')}
+                    component={BasicMenuComponent} 
+                    raw={BasicMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Icon menu</Typography>
 <Typography className="text-14 mb-32" component="div">In desktop viewport, padding is increased to give more space to the menu.</Typography>
@@ -47,8 +73,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="IconMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/IconMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/IconMenu.tsx')}
+                    component={IconMenuComponent} 
+                    raw={IconMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Dense menu</Typography>
 <Typography className="text-14 mb-32" component="div">For the menu that has long list and long text, you can use the <code>{`dense`}</code> prop to reduce the padding and text size.</Typography>
@@ -56,8 +82,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="DenseMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/DenseMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/DenseMenu.tsx')}
+                    component={DenseMenuComponent} 
+                    raw={DenseMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Selected menu</Typography>
 <Typography className="text-14 mb-32" component="div">If used for item selection, when opened, simple menus places the initial focus on the selected menu item.
@@ -67,8 +93,8 @@ To use a selected menu item without impacting the initial focus, set the <code>{
                     name="SimpleListMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/SimpleListMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/SimpleListMenu.tsx')}
+                    component={SimpleListMenuComponent} 
+                    raw={SimpleListMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Positioned menu</Typography>
 <Typography className="text-14 mb-32" component="div">Because the <code>{`Menu`}</code> component uses the <code>{`Popover`}</code> component to position itself, you can use the same <a href="/material-ui/react-popover/#anchor-playground">positioning props</a> to position it.
@@ -77,8 +103,8 @@ For instance, you can display the menu on top of the anchor:</Typography>
                     name="PositionedMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/PositionedMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/PositionedMenu.tsx')}
+                    component={PositionedMenuComponent} 
+                    raw={PositionedMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">MenuList composition</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`Menu`}</code> component uses the <code>{`Popover`}</code> component internally.
@@ -89,8 +115,8 @@ For answering those needs, we expose a <code>{`MenuList`}</code> component that 
                     name="MenuListComposition.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/MenuListComposition.tsx').default}
-                    raw={require('!raw-loader!../components/menus/MenuListComposition.tsx')}
+                    component={MenuListCompositionComponent} 
+                    raw={MenuListCompositionRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Account menu</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`Menu`}</code> content can be mixed with other components like <code>{`Avatar`}</code>.</Typography>
@@ -98,8 +124,8 @@ For answering those needs, we expose a <code>{`MenuList`}</code> component that 
                     name="AccountMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/AccountMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/AccountMenu.tsx')}
+                    component={AccountMenuComponent} 
+                    raw={AccountMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -108,8 +134,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedMenus.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/CustomizedMenus.tsx').default}
-                    raw={require('!raw-loader!../components/menus/CustomizedMenus.tsx')}
+                    component={CustomizedMenusComponent} 
+                    raw={CustomizedMenusRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`MenuItem`}</code> is a wrapper around <code>{`ListItem`}</code> with some additional styles.
 You can use the same list composition features with the <code>{`MenuItem`}</code> component:</Typography>
@@ -120,8 +146,8 @@ You can use the same list composition features with the <code>{`MenuItem`}</code
                     name="LongMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/LongMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/LongMenu.tsx')}
+                    component={LongMenuComponent} 
+                    raw={LongMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-14 mb-32" component="div">There is <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=327437">a flexbox bug</a> that prevents <code>{`text-overflow: ellipsis`}</code> from working in a flexbox layout.
@@ -130,8 +156,8 @@ You can use the <code>{`Typography`}</code> component with <code>{`noWrap`}</cod
                     name="TypographyMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/TypographyMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/TypographyMenu.tsx')}
+                    component={TypographyMenuComponent} 
+                    raw={TypographyMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Change transition</Typography>
 <Typography className="text-14 mb-32" component="div">Use a different transition.</Typography>
@@ -139,8 +165,8 @@ You can use the <code>{`Typography`}</code> component with <code>{`noWrap`}</cod
                     name="FadeMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/FadeMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/FadeMenu.tsx')}
+                    component={FadeMenuComponent} 
+                    raw={FadeMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Context menu</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of a context menu. (Right click to open.)</Typography>
@@ -148,26 +174,27 @@ You can use the <code>{`Typography`}</code> component with <code>{`noWrap`}</cod
                     name="ContextMenu.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/ContextMenu.tsx').default}
-                    raw={require('!raw-loader!../components/menus/ContextMenu.tsx')}
+                    component={ContextMenuComponent} 
+                    raw={ContextMenuRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complementary projects</Typography>
 <Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">material-ui-popup-state</Typography>
 <Typography className="text-14 mb-32" component="div"><img src="https://img.shields.io/github/stars/jcoreio/material-ui-popup-state?style=social&label=Star" alt="stars"/>
- <img src="https://img.shields.io/npm/dm/material-ui-popup-state.svg" alt="npm downloads"/></Typography>
+<img src="https://img.shields.io/npm/dm/material-ui-popup-state.svg" alt="npm downloads"/></Typography>
 <Typography className="text-14 mb-32" component="div">The package <a href="https://github.com/jcoreio/material-ui-popup-state"><code>{`material-ui-popup-state`}</code></a> that takes care of menu state for you in most cases.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MenuPopupState.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/menus/MenuPopupState.tsx').default}
-                    raw={require('!raw-loader!../components/menus/MenuPopupState.tsx')}
+                    component={MenuPopupStateComponent} 
+                    raw={MenuPopupStateRaw}
                     /></Typography>
 
                 </>
-
+    
                      );
                    }
-
+                   
                    export default MenusDoc;
+                   

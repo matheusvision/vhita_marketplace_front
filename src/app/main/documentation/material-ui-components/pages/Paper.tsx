@@ -5,7 +5,13 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import SimplePaperComponent from '../components/paper/SimplePaper';
+import SimplePaperRaw from '../components/paper/SimplePaper.tsx?raw';
+import VariantsComponent from '../components/paper/Variants';
+import VariantsRaw from '../components/paper/Variants.tsx?raw';
+import ElevationComponent from '../components/paper/Elevation';
+import ElevationRaw from '../components/paper/Elevation.tsx?raw';
+                   
                    function PaperDoc(props) {
                      return (
                        
@@ -35,8 +41,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="SimplePaper.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/paper/SimplePaper.tsx').default} 
-                    raw={require('!raw-loader!../components/paper/SimplePaper.tsx')}
+                    component={SimplePaperComponent} 
+                    raw={SimplePaperRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Variants</Typography>
 <Typography className="text-14 mb-32" component="div">If you need an outlined surface, use the <code>{`variant`}</code> prop.</Typography>
@@ -44,8 +50,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="Variants.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/paper/Variants.tsx').default} 
-                    raw={require('!raw-loader!../components/paper/Variants.tsx')}
+                    component={VariantsComponent} 
+                    raw={VariantsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Elevation</Typography>
 <Typography className="text-14 mb-32" component="div">The elevation can be used to establish a hierarchy between other content. In practical terms, the elevation controls the size of the shadow applied to the surface. In dark mode, raising the elevation also makes the surface lighter.</Typography>
@@ -53,8 +59,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="Elevation.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/paper/Elevation.tsx').default} 
-                    raw={require('!raw-loader!../components/paper/Elevation.tsx')}
+                    component={ElevationComponent} 
+                    raw={ElevationRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The change of shade in dark mode is done by applying a semi-transparent gradient to the <code>{`background-image`}</code> property.
 This can lead to confusion when overriding the styles of <code>{`Paper`}</code>, as setting just the <code>{`background-color`}</code> property will not affect the elevation-related shading.

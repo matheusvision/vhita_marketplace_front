@@ -39,8 +39,8 @@
     "jsx": "react-jsx"
   },
   "exclude": [
-    "src/app/main/documentation/material-ui-components/components",
-    "src/app/main/documentation/material-ui-components/pages",
+    "src/app/main/documentation/material-ui-components/components/**/*",
+    "src/app/main/documentation/material-ui-components/pages/**/*",
     "node_modules"
   ],
   "include": [
@@ -49,5 +49,4 @@
     "vite.config.mts",
     "vite-env.d.ts"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
 }

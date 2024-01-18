@@ -5,7 +5,17 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicSpeedDialComponent from '../components/speed-dial/BasicSpeedDial';
+import BasicSpeedDialRaw from '../components/speed-dial/BasicSpeedDial.tsx?raw';
+import PlaygroundSpeedDialComponent from '../components/speed-dial/PlaygroundSpeedDial';
+import PlaygroundSpeedDialRaw from '../components/speed-dial/PlaygroundSpeedDial.tsx?raw';
+import ControlledOpenSpeedDialComponent from '../components/speed-dial/ControlledOpenSpeedDial';
+import ControlledOpenSpeedDialRaw from '../components/speed-dial/ControlledOpenSpeedDial.tsx?raw';
+import OpenIconSpeedDialComponent from '../components/speed-dial/OpenIconSpeedDial';
+import OpenIconSpeedDialRaw from '../components/speed-dial/OpenIconSpeedDial.tsx?raw';
+import SpeedDialTooltipOpenComponent from '../components/speed-dial/SpeedDialTooltipOpen';
+import SpeedDialTooltipOpenRaw from '../components/speed-dial/SpeedDialTooltipOpen.tsx?raw';
+                   
                    function SpeedDialDoc(props) {
                      return (
                        
@@ -36,16 +46,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicSpeedDial.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/speed-dial/BasicSpeedDial.tsx').default} 
-                    raw={require('!raw-loader!../components/speed-dial/BasicSpeedDial.tsx')}
+                    component={BasicSpeedDialComponent} 
+                    raw={BasicSpeedDialRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Playground</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PlaygroundSpeedDial.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/speed-dial/PlaygroundSpeedDial.tsx').default} 
-                    raw={require('!raw-loader!../components/speed-dial/PlaygroundSpeedDial.tsx')}
+                    component={PlaygroundSpeedDialComponent} 
+                    raw={PlaygroundSpeedDialRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled speed dial</Typography>
 <Typography className="text-14 mb-32" component="div">The open state of the component can be controlled with the <code>{`open`}</code>/<code>{`onOpen`}</code>/<code>{`onClose`}</code> props.</Typography>
@@ -53,8 +63,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ControlledOpenSpeedDial.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/speed-dial/ControlledOpenSpeedDial.tsx').default} 
-                    raw={require('!raw-loader!../components/speed-dial/ControlledOpenSpeedDial.tsx')}
+                    component={ControlledOpenSpeedDialComponent} 
+                    raw={ControlledOpenSpeedDialRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom close icon</Typography>
 <Typography className="text-14 mb-32" component="div">You can provide an alternate icon for the closed and open states using the <code>{`icon`}</code> and <code>{`openIcon`}</code> props
@@ -63,8 +73,8 @@ of the <code>{`SpeedDialIcon`}</code> component.</Typography>
                     name="OpenIconSpeedDial.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/speed-dial/OpenIconSpeedDial.tsx').default} 
-                    raw={require('!raw-loader!../components/speed-dial/OpenIconSpeedDial.tsx')}
+                    component={OpenIconSpeedDialComponent} 
+                    raw={OpenIconSpeedDialRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Persistent action tooltips</Typography>
 <Typography className="text-14 mb-32" component="div">The SpeedDialActions tooltips can be displayed persistently so that users don&#39;t have to long-press to see the tooltip on touch devices.</Typography>
@@ -73,8 +83,8 @@ of the <code>{`SpeedDialIcon`}</code> component.</Typography>
                     name="SpeedDialTooltipOpen.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/speed-dial/SpeedDialTooltipOpen.tsx').default} 
-                    raw={require('!raw-loader!../components/speed-dial/SpeedDialTooltipOpen.tsx')}
+                    component={SpeedDialTooltipOpenComponent} 
+                    raw={SpeedDialTooltipOpenRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">ARIA</Typography>

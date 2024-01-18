@@ -39,7 +39,7 @@ function ApiCallsDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-16 leading-loose"
 				component="p"
 			>
 				You can configure global Axios defaults, such as the base URL for the API connection. Check out
@@ -72,11 +72,11 @@ function ApiCallsDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-16 leading-loose"
 				component="p"
 			>
 				In order to demonstrate HTTP requests, all of the example backend data is located at src/@mock-api,
-				using
+				using{' '}
 				<a
 					href="https://github.com/ctimmerm/axios-mock-adapter"
 					target="_blank"
@@ -90,7 +90,7 @@ function ApiCallsDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-16 leading-loose"
 				component="p"
 			>
 				We have created open api definitions and followed this definitions while generating @mock-api. You can
@@ -104,26 +104,19 @@ function ApiCallsDoc() {
 			</Typography>
 
 			<Typography
+				className="mb-16 leading-loose"
+				component="p"
+			>
+				We are using our custom extended axios mock adapter provider. You can checkout at
+				<code>/src/@mock-api/MockAdapterProvider.tsx</code>.
+			</Typography>
+
+			<Typography
 				className="mb-16"
 				component="p"
 			>
-				You can adjust <code>delayResponse</code> value to test slow networks in the file:{' '}
-				<code>src/@mock-api/mock.tsx</code>.
+				You can adjust <code>delayResponse</code> value from the provider.
 			</Typography>
-
-			<FuseHighlight
-				component="pre"
-				className="language-js"
-			>
-				{`
-					const MockAdapter = require('axios-mock-adapter');
-					const axios = require('axios');
-					
-					const mock = new MockAdapter(axios, { delayResponse: 500 });
-					
-					export default mock;
-				`}
-			</FuseHighlight>
 		</>
 	);
 }

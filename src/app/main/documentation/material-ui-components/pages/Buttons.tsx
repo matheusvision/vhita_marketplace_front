@@ -5,7 +5,33 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicButtonsComponent from '../components/buttons/BasicButtons';
+import BasicButtonsRaw from '../components/buttons/BasicButtons.tsx?raw';
+import TextButtonsComponent from '../components/buttons/TextButtons';
+import TextButtonsRaw from '../components/buttons/TextButtons.tsx?raw';
+import ContainedButtonsComponent from '../components/buttons/ContainedButtons';
+import ContainedButtonsRaw from '../components/buttons/ContainedButtons.tsx?raw';
+import DisableElevationComponent from '../components/buttons/DisableElevation';
+import DisableElevationRaw from '../components/buttons/DisableElevation.tsx?raw';
+import OutlinedButtonsComponent from '../components/buttons/OutlinedButtons';
+import OutlinedButtonsRaw from '../components/buttons/OutlinedButtons.tsx?raw';
+import ColorButtonsComponent from '../components/buttons/ColorButtons';
+import ColorButtonsRaw from '../components/buttons/ColorButtons.tsx?raw';
+import ButtonSizesComponent from '../components/buttons/ButtonSizes';
+import ButtonSizesRaw from '../components/buttons/ButtonSizes.tsx?raw';
+import IconLabelButtonsComponent from '../components/buttons/IconLabelButtons';
+import IconLabelButtonsRaw from '../components/buttons/IconLabelButtons.tsx?raw';
+import IconButtonsComponent from '../components/buttons/IconButtons';
+import IconButtonsRaw from '../components/buttons/IconButtons.tsx?raw';
+import IconButtonSizesComponent from '../components/buttons/IconButtonSizes';
+import IconButtonSizesRaw from '../components/buttons/IconButtonSizes.tsx?raw';
+import IconButtonColorsComponent from '../components/buttons/IconButtonColors';
+import IconButtonColorsRaw from '../components/buttons/IconButtonColors.tsx?raw';
+import CustomizedButtonsComponent from '../components/buttons/CustomizedButtons';
+import CustomizedButtonsRaw from '../components/buttons/CustomizedButtons.tsx?raw';
+import ButtonBaseDemoComponent from '../components/buttons/ButtonBaseDemo';
+import ButtonBaseDemoRaw from '../components/buttons/ButtonBaseDemo.tsx?raw';
+                   
                    function ButtonsDoc(props) {
                      return (
                        
@@ -42,8 +68,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/BasicButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/BasicButtons.tsx')}
+                    component={BasicButtonsComponent} 
+                    raw={BasicButtonsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Text button</Typography>
 <Typography className="text-14 mb-32" component="div"><a href="https://m2.material.io/components/buttons#text-button">Text buttons</a>
@@ -53,8 +79,8 @@ In cards, text buttons help maintain an emphasis on card content.</Typography>
                     name="TextButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/TextButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/TextButtons.tsx')}
+                    component={TextButtonsComponent} 
+                    raw={TextButtonsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Contained button</Typography>
 <Typography className="text-14 mb-32" component="div"><a href="https://m2.material.io/components/buttons#contained-button">Contained buttons</a>
@@ -64,16 +90,16 @@ They contain actions that are primary to your app.</Typography>
                     name="ContainedButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/ContainedButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/ContainedButtons.tsx')}
+                    component={ContainedButtonsComponent} 
+                    raw={ContainedButtonsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">You can remove the elevation with the <code>{`disableElevation`}</code> prop.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DisableElevation.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/DisableElevation.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/DisableElevation.tsx')}
+                    component={DisableElevationComponent} 
+                    raw={DisableElevationRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Outlined button</Typography>
 <Typography className="text-14 mb-32" component="div"><a href="https://m2.material.io/components/buttons#outlined-button">Outlined buttons</a> are medium-emphasis buttons.
@@ -84,8 +110,8 @@ or a higher emphasis alternative to text buttons.</Typography>
                     name="OutlinedButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/OutlinedButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/OutlinedButtons.tsx')}
+                    component={OutlinedButtonsComponent} 
+                    raw={OutlinedButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Handling clicks</Typography>
 <Typography className="text-14 mb-32" component="div">All components accept an <code>{`onClick`}</code> handler that is applied to the root DOM element.</Typography>
@@ -107,8 +133,8 @@ or a higher emphasis alternative to text buttons.</Typography>
                     name="ColorButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/ColorButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/ColorButtons.tsx')}
+                    component={ColorButtonsComponent} 
+                    raw={ColorButtonsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">In addition to using the default button colors, you can add custom ones, or disable any you don&#39;t need. See the <a href="/material-ui/customization/palette/#custom-colors">Adding new colors</a> examples for more info.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes</Typography>
@@ -117,8 +143,8 @@ or a higher emphasis alternative to text buttons.</Typography>
                     name="ButtonSizes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/ButtonSizes.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/ButtonSizes.tsx')}
+                    component={ButtonSizesComponent} 
+                    raw={ButtonSizesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Buttons with icons and label</Typography>
 <Typography className="text-14 mb-32" component="div">Sometimes you might want to have icons for certain buttons to enhance the UX of the application as we recognize logos more easily than plain text. For example, if you have a delete button you can label it with a dustbin icon.</Typography>
@@ -126,8 +152,8 @@ or a higher emphasis alternative to text buttons.</Typography>
                     name="IconLabelButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/IconLabelButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/IconLabelButtons.tsx')}
+                    component={IconLabelButtonsComponent} 
+                    raw={IconLabelButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Icon button</Typography>
 <Typography className="text-14 mb-32" component="div">Icon buttons are commonly found in app bars and toolbars.</Typography>
@@ -137,8 +163,8 @@ deselected, such as adding or removing a star to an item.</Typography>
                     name="IconButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/IconButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/IconButtons.tsx')}
+                    component={IconButtonsComponent} 
+                    raw={IconButtonsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Sizes</Typography>
 <Typography className="text-14 mb-32" component="div">For larger or smaller icon buttons, use the <code>{`size`}</code> prop.</Typography>
@@ -146,8 +172,8 @@ deselected, such as adding or removing a star to an item.</Typography>
                     name="IconButtonSizes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/IconButtonSizes.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/IconButtonSizes.tsx')}
+                    component={IconButtonSizesComponent} 
+                    raw={IconButtonSizesRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Colors</Typography>
 <Typography className="text-14 mb-32" component="div">Use <code>{`color`}</code> prop to apply theme color palette to component.</Typography>
@@ -155,8 +181,8 @@ deselected, such as adding or removing a star to an item.</Typography>
                     name="IconButtonColors.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/IconButtonColors.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/IconButtonColors.tsx')}
+                    component={IconButtonColorsComponent} 
+                    raw={IconButtonColorsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -165,8 +191,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/CustomizedButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/CustomizedButtons.tsx')}
+                    component={CustomizedButtonsComponent} 
+                    raw={CustomizedButtonsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/button/">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complex button</Typography>
@@ -176,8 +202,8 @@ You can take advantage of this lower-level component to build custom interaction
                     name="ButtonBaseDemo.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/buttons/ButtonBaseDemo.tsx').default} 
-                    raw={require('!raw-loader!../components/buttons/ButtonBaseDemo.tsx')}
+                    component={ButtonBaseDemoComponent} 
+                    raw={ButtonBaseDemoRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Third-party routing library</Typography>
 <Typography className="text-14 mb-32" component="div">One frequent use case is to perform navigation on the client only, without an HTTP round-trip to the server.

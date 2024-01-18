@@ -5,7 +5,13 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import LinksComponent from '../components/links/Links';
+import LinksRaw from '../components/links/Links.tsx?raw';
+import UnderlineLinkComponent from '../components/links/UnderlineLink';
+import UnderlineLinkRaw from '../components/links/UnderlineLink.tsx?raw';
+import ButtonLinkComponent from '../components/links/ButtonLink';
+import ButtonLinkRaw from '../components/links/ButtonLink.tsx?raw';
+                   
                    function LinksDoc(props) {
                      return (
                        
@@ -37,8 +43,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="Links.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/links/Links.tsx').default} 
-                    raw={require('!raw-loader!../components/links/Links.tsx')}
+                    component={LinksComponent} 
+                    raw={LinksRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">However, the Link component has some different default props than the Typography component:</Typography>
 <ul className="space-y-16">
@@ -51,8 +57,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="UnderlineLink.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/links/UnderlineLink.tsx').default} 
-                    raw={require('!raw-loader!../components/links/UnderlineLink.tsx')}
+                    component={UnderlineLinkComponent} 
+                    raw={UnderlineLinkRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Security</Typography>
 <Typography className="text-14 mb-32" component="div">When you use <code>{`target="_blank"`}</code> with Links, it is <a href="https://developers.google.com/web/tools/lighthouse/audits/noopener">recommended</a> to always set <code>{`rel="noopener"`}</code> or <code>{`rel="noreferrer"`}</code> when linking to third party content.</Typography>
@@ -79,8 +85,8 @@ The demo below illustrates how to properly link with a <code>{`<button>`}</code>
                     name="ButtonLink.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/links/ButtonLink.tsx').default} 
-                    raw={require('!raw-loader!../components/links/ButtonLink.tsx')}
+                    component={ButtonLinkComponent} 
+                    raw={ButtonLinkRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Keyboard accessibility</Typography>
 <ul className="space-y-16">

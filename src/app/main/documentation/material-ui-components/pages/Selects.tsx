@@ -5,7 +5,39 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicSelectComponent from '../components/selects/BasicSelect';
+import BasicSelectRaw from '../components/selects/BasicSelect.tsx?raw';
+import SelectVariantsComponent from '../components/selects/SelectVariants';
+import SelectVariantsRaw from '../components/selects/SelectVariants.tsx?raw';
+import SelectLabelsComponent from '../components/selects/SelectLabels';
+import SelectLabelsRaw from '../components/selects/SelectLabels.tsx?raw';
+import SelectAutoWidthComponent from '../components/selects/SelectAutoWidth';
+import SelectAutoWidthRaw from '../components/selects/SelectAutoWidth.tsx?raw';
+import SelectSmallComponent from '../components/selects/SelectSmall';
+import SelectSmallRaw from '../components/selects/SelectSmall.tsx?raw';
+import SelectOtherPropsComponent from '../components/selects/SelectOtherProps';
+import SelectOtherPropsRaw from '../components/selects/SelectOtherProps.tsx?raw';
+import NativeSelectDemoComponent from '../components/selects/NativeSelectDemo';
+import NativeSelectDemoRaw from '../components/selects/NativeSelectDemo.tsx?raw';
+import CustomizedSelectsComponent from '../components/selects/CustomizedSelects';
+import CustomizedSelectsRaw from '../components/selects/CustomizedSelects.tsx?raw';
+import MultipleSelectComponent from '../components/selects/MultipleSelect';
+import MultipleSelectRaw from '../components/selects/MultipleSelect.tsx?raw';
+import MultipleSelectCheckmarksComponent from '../components/selects/MultipleSelectCheckmarks';
+import MultipleSelectCheckmarksRaw from '../components/selects/MultipleSelectCheckmarks.tsx?raw';
+import MultipleSelectChipComponent from '../components/selects/MultipleSelectChip';
+import MultipleSelectChipRaw from '../components/selects/MultipleSelectChip.tsx?raw';
+import MultipleSelectPlaceholderComponent from '../components/selects/MultipleSelectPlaceholder';
+import MultipleSelectPlaceholderRaw from '../components/selects/MultipleSelectPlaceholder.tsx?raw';
+import MultipleSelectNativeComponent from '../components/selects/MultipleSelectNative';
+import MultipleSelectNativeRaw from '../components/selects/MultipleSelectNative.tsx?raw';
+import ControlledOpenSelectComponent from '../components/selects/ControlledOpenSelect';
+import ControlledOpenSelectRaw from '../components/selects/ControlledOpenSelect.tsx?raw';
+import DialogSelectComponent from '../components/selects/DialogSelect';
+import DialogSelectRaw from '../components/selects/DialogSelect.tsx?raw';
+import GroupedSelectComponent from '../components/selects/GroupedSelect';
+import GroupedSelectRaw from '../components/selects/GroupedSelect.tsx?raw';
+                   
                    function SelectsDoc(props) {
                      return (
                        
@@ -37,8 +69,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="BasicSelect.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/BasicSelect.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/BasicSelect.tsx')}
+                    component={BasicSelectComponent} 
+                    raw={BasicSelectRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Advanced features</Typography>
 <Typography className="text-14 mb-32" component="div">The Select component is meant to be interchangeable with a native <code>{`<select>`}</code> element.</Typography>
@@ -53,16 +85,16 @@ It shares the same styles and many of the same props. Refer to the respective co
                     name="SelectVariants.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/SelectVariants.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/SelectVariants.tsx')}
+                    component={SelectVariantsComponent} 
+                    raw={SelectVariantsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Labels and helper text</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SelectLabels.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/SelectLabels.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/SelectLabels.tsx')}
+                    component={SelectLabelsComponent} 
+                    raw={SelectLabelsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 Note that when using FormControl with the outlined variant of the Select, you need to provide a label in two places: in the InputLabel component and in the <code>{`label`}</code> prop of the Select component (see the above demo).
@@ -72,24 +104,24 @@ Note that when using FormControl with the outlined variant of the Select, you ne
                     name="SelectAutoWidth.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/SelectAutoWidth.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/SelectAutoWidth.tsx')}
+                    component={SelectAutoWidthComponent} 
+                    raw={SelectAutoWidthRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Small Size</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SelectSmall.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/SelectSmall.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/SelectSmall.tsx')}
+                    component={SelectSmallComponent} 
+                    raw={SelectSmallRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Other props</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SelectOtherProps.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/SelectOtherProps.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/SelectOtherProps.tsx')}
+                    component={SelectOtherPropsComponent} 
+                    raw={SelectOtherPropsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Native select</Typography>
 <Typography className="text-14 mb-32" component="div">As the user experience can be improved on mobile using the native select of the platform,
@@ -98,8 +130,8 @@ we allow such pattern.</Typography>
                     name="NativeSelectDemo.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/NativeSelectDemo.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/NativeSelectDemo.tsx')}
+                    component={NativeSelectDemoComponent} 
+                    raw={NativeSelectDemoRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">TextField</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`TextField`}</code> wrapper component is a complete form control including a label, input and help text.
@@ -114,8 +146,8 @@ Notice that the <code>{`"standard"`}</code> variant is easier to customize, sinc
                     name="CustomizedSelects.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/CustomizedSelects.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/CustomizedSelects.tsx')}
+                    component={CustomizedSelectsComponent} 
+                    raw={CustomizedSelectsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/select/">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Multiple select</Typography>
@@ -127,40 +159,40 @@ It&#39;s enabled with the <code>{`multiple`}</code> prop.</Typography>
                     name="MultipleSelect.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/MultipleSelect.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/MultipleSelect.tsx')}
+                    component={MultipleSelectComponent} 
+                    raw={MultipleSelectRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Checkmarks</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MultipleSelectCheckmarks.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/MultipleSelectCheckmarks.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/MultipleSelectCheckmarks.tsx')}
+                    component={MultipleSelectCheckmarksComponent} 
+                    raw={MultipleSelectCheckmarksRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Chip</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MultipleSelectChip.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/MultipleSelectChip.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/MultipleSelectChip.tsx')}
+                    component={MultipleSelectChipComponent} 
+                    raw={MultipleSelectChipRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Placeholder</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MultipleSelectPlaceholder.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/MultipleSelectPlaceholder.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/MultipleSelectPlaceholder.tsx')}
+                    component={MultipleSelectPlaceholderComponent} 
+                    raw={MultipleSelectPlaceholderRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Native</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MultipleSelectNative.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/MultipleSelectNative.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/MultipleSelectNative.tsx')}
+                    component={MultipleSelectNativeComponent} 
+                    raw={MultipleSelectNativeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlling the open state</Typography>
 <Typography className="text-14 mb-32" component="div">You can control the open state of the select with the <code>{`open`}</code> prop. Alternatively, it is also possible to set the initial (uncontrolled) open state of the component with the <code>{`defaultOpen`}</code> prop.</Typography>
@@ -179,8 +211,8 @@ It&#39;s enabled with the <code>{`multiple`}</code> prop.</Typography>
                     name="ControlledOpenSelect.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/ControlledOpenSelect.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/ControlledOpenSelect.tsx')}
+                    component={ControlledOpenSelectComponent} 
+                    raw={ControlledOpenSelectRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">With a dialog</Typography>
 <Typography className="text-14 mb-32" component="div">While it&#39;s discouraged by the Material Design guidelines, you can use a select inside a dialog.</Typography>
@@ -188,8 +220,8 @@ It&#39;s enabled with the <code>{`multiple`}</code> prop.</Typography>
                     name="DialogSelect.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/DialogSelect.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/DialogSelect.tsx')}
+                    component={DialogSelectComponent} 
+                    raw={DialogSelectRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Grouping</Typography>
 <Typography className="text-14 mb-32" component="div">Display categories with the <code>{`ListSubheader`}</code> component or the native <code>{`<optgroup>`}</code> element.</Typography>
@@ -197,8 +229,8 @@ It&#39;s enabled with the <code>{`multiple`}</code> prop.</Typography>
                     name="GroupedSelect.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/selects/GroupedSelect.tsx').default} 
-                    raw={require('!raw-loader!../components/selects/GroupedSelect.tsx')}
+                    component={GroupedSelectComponent} 
+                    raw={GroupedSelectRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 If you wish to wrap the ListSubheader in a custom component, you&#39;ll have to annotate it so Material UI can handle it properly when determining focusable elements.</Typography>
