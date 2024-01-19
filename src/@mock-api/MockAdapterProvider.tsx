@@ -91,7 +91,6 @@ function MockAdapterProvider(props: MockAdapterProviderProps) {
 	useEffect(() => {
 		if (import.meta.hot) {
 			if (!isInitialMount.current) {
-				console.info('+++RELOADING MOCKS');
 				dispatch(apiService.util.resetApiState());
 			}
 			isInitialMount.current = false;
