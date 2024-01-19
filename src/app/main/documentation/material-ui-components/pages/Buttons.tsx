@@ -27,6 +27,8 @@ import IconButtonSizesComponent from '../components/buttons/IconButtonSizes';
 import IconButtonSizesRaw from '../components/buttons/IconButtonSizes.tsx?raw';
 import IconButtonColorsComponent from '../components/buttons/IconButtonColors';
 import IconButtonColorsRaw from '../components/buttons/IconButtonColors.tsx?raw';
+import InputFileUploadComponent from '../components/buttons/InputFileUpload';
+import InputFileUploadRaw from '../components/buttons/InputFileUpload.tsx?raw';
 import CustomizedButtonsComponent from '../components/buttons/CustomizedButtons';
 import CustomizedButtonsRaw from '../components/buttons/CustomizedButtons.tsx?raw';
 import ButtonBaseDemoComponent from '../components/buttons/ButtonBaseDemo';
@@ -184,6 +186,15 @@ deselected, such as adding or removing a star to an item.</Typography>
                     component={IconButtonColorsComponent} 
                     raw={IconButtonColorsRaw}
                     /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">File upload</Typography>
+<Typography className="text-14 mb-32" component="div">To create a file upload button, turn the button into a label using <code>{`component="label"`}</code> and then create a visually-hidden input with type <code>{`file`}</code>.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="InputFileUpload.js"
+                    className="my-16"
+                    iframe={false}
+                    component={InputFileUploadComponent} 
+                    raw={InputFileUploadRaw}
+                    /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
 You can learn more about this in the <a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.</Typography>
@@ -194,7 +205,7 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     component={CustomizedButtonsComponent} 
                     raw={CustomizedButtonsRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/button/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/button-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complex button</Typography>
 <Typography className="text-14 mb-32" component="div">The Text Buttons, Contained Buttons, Floating Action Buttons and Icon Buttons are built on top of the same component: the <code>{`ButtonBase`}</code>.
 You can take advantage of this lower-level component to build custom interactions.</Typography>

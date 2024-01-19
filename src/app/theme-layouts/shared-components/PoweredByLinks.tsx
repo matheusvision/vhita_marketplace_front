@@ -138,7 +138,7 @@ function PoweredByLinks() {
 					size="large"
 				>
 					<img
-						src="/public/assets/images/logo/vite.svg"
+						src="/assets/images/logo/vite.svg"
 						alt="vite"
 						width="32"
 					/>

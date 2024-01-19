@@ -1,7 +1,7 @@
 ---
 productId: material-ui
 title: React Button Group component
-components: Button, ButtonGroup
+components: Button, ButtonGroup, LoadingButton
 githubLabel: 'component: ButtonGroup'
 ---
 
@@ -47,3 +47,4 @@ The button group can be displayed vertically using the `orientation` prop.
 You can remove the elevation with the `disableElevation` prop.
 
 {{"demo": "DisableElevation.js"}}
+

@@ -29,8 +29,6 @@ import MultilineChipsComponent from '../components/chips/MultilineChips';
 import MultilineChipsRaw from '../components/chips/MultilineChips.tsx?raw';
 import ChipsArrayComponent from '../components/chips/ChipsArray';
 import ChipsArrayRaw from '../components/chips/ChipsArray.tsx?raw';
-import ChipsPlaygroundComponent from '../components/chips/ChipsPlayground';
-import ChipsPlaygroundRaw from '../components/chips/ChipsPlayground.jsx?raw';
                    
                    function ChipsDoc(props) {
                      return (
@@ -174,15 +172,6 @@ gain depth while clicked or touched.</Typography>
                     raw={ChipsArrayRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Chip playground</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="ChipsPlayground.jsx"
-                    className="my-16"
-                    iframe={false}
-                    component={ChipsPlaygroundComponent} 
-                    raw={ChipsPlaygroundRaw}
-                    /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
-<Typography className="text-14 mb-32" component="div">If the Chip is deletable or clickable then it is a button in tab order. When the Chip is focused (e.g. when tabbing) releasing (<code>{`keyup`}</code> event) <code>{`Backspace`}</code> or <code>{`Delete`}</code> will call the <code>{`onDelete`}</code> handler while releasing <code>{`Escape`}</code> will blur the Chip.</Typography>
 
                 </>
     

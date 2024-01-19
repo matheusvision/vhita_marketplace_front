@@ -274,7 +274,7 @@ Below is an example using the <a href="/material-ui/api/input-base/"><code>{`Inp
                     component={CustomizedInputBaseComponent} 
                     raw={CustomizedInputBaseRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/text-field/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/textField-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2"><code>{`useFormControl`}</code></Typography>
 <Typography className="text-14 mb-32" component="div">For advanced customization use cases, a <code>{`useFormControl()`}</code> hook is exposed.
 This hook returns the context value of the parent <code>{`FormControl`}</code> component.</Typography>
@@ -313,6 +313,40 @@ import { useFormControl } from '@mui/material/FormControl';
                     component={UseFormControlComponent} 
                     raw={UseFormControlRaw}
                     /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Performance</Typography>
+<Typography className="text-14 mb-32" component="div">Global styles for the auto-fill keyframes are injected and removed on each mount and unmount, respectively.
+If you are loading a large number of Text Field components at once, it might be a good idea to change this default behavior by enabling <a href="/material-ui/api/input-base/#InputBase-prop-disableInjectingGlobalStyles"><code>{`disableInjectingGlobalStyles`}</code></a> in <code>{`MuiInputBase`}</code>.
+Make sure to inject <code>{`GlobalStyles`}</code> for the auto-fill keyframes at the top of your application.</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
+{` 
+import { GlobalStyles, createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  components: {
+    MuiInputBase: {
+      defaultProps: {
+        disableInjectingGlobalStyles: true,
+      },
+    },
+  },
+});
+
+export default function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles
+        styles={{
+          '@keyframes mui-auto-fill': { from: { display: 'block' } },
+          '@keyframes mui-auto-fill-cancel': { from: { display: 'block' } },
+        
+      />
+      ...
+    </ThemeProvider>
+  );
+}
+`}
+</FuseHighlight>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Shrink</Typography>
 <Typography className="text-14 mb-32" component="div">The input label &quot;shrink&quot; state isn&#39;t always correct.
@@ -338,20 +372,16 @@ In some circumstances, we can&#39;t determine the &quot;shrink&quot; state (numb
 It won&#39;t impact the layout of the page.
 Make sure that the input is larger than the label to display correctly.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">type=&quot;number&quot;</Typography>
-<Typography className="text-14 mb-32" component="div">Inputs of type=&quot;number&quot; have potential usability issues:</Typography>
+<Typography className="text-14 mb-32" component="div">:::warning
+We do not recommend using <code>{`type="number"`}</code> with a Text Field due to potential usability issues:</Typography>
 <ul className="space-y-16">
-<li>Allowing certain non-numeric characters (&#39;e&#39;, &#39;+&#39;, &#39;-&#39;, &#39;.&#39;) and silently discarding others</li>
-<li>The functionality of scrolling to increment/decrement the number can cause accidental and hard-to-notice changes</li>
+<li>it allows certain non-numeric characters (&#39;e&#39;, &#39;+&#39;, &#39;-&#39;, &#39;.&#39;) and silently discards others</li>
+<li>the functionality of scrolling to increment/decrement the number can cause accidental and hard-to-notice changes</li>
+<li>and more—see <a href="https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/">Why the GOV.UK Design System team changed the input type for numbers</a> for a more detailed explanation of the limitations of <code>{`<input type="number">`}</code>
+:::</li>
 </ul>
-<Typography className="text-14 mb-32" component="div">and more - see <a href="https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/">this article</a> by the GOV.UK Design System team for a more detailed explanation.</Typography>
-<Typography className="text-14 mb-32" component="div">For number validation, one viable alternative is to use the default input type=&quot;text&quot; with the <em>pattern</em> attribute, for example:</Typography>
-
-<FuseHighlight component="pre" className="language-jsx">
-{` 
-<TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-`}
-</FuseHighlight>
-<Typography className="text-14 mb-32" component="div">In the future, we might provide a <a href="https://github.com/mui/material-ui/issues/19154">number input component</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">If you need a text field with number validation, you can use Base UI&#39;s <a href="/base-ui/react-number-input/">Number Input</a> instead.</Typography>
+<Typography className="text-14 mb-32" component="div">You can follow <a href="https://github.com/mui/material-ui/issues/19154">this GitHub issue</a> to track the progress of introducing the Number Input component to Material UI.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Helper text</Typography>
 <Typography className="text-14 mb-32" component="div">The helper text prop affects the height of the text field. If two text fields are placed side by side, one with a helper text and one without, they will have different heights. For example:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample

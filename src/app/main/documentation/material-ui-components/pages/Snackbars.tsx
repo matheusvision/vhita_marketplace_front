@@ -7,20 +7,20 @@ import FuseExample from '@fuse/core/FuseExample';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
                    import SimpleSnackbarComponent from '../components/snackbars/SimpleSnackbar';
 import SimpleSnackbarRaw from '../components/snackbars/SimpleSnackbar.tsx?raw';
-import CustomizedSnackbarsComponent from '../components/snackbars/CustomizedSnackbars';
-import CustomizedSnackbarsRaw from '../components/snackbars/CustomizedSnackbars.tsx?raw';
 import PositionedSnackbarComponent from '../components/snackbars/PositionedSnackbar';
 import PositionedSnackbarRaw from '../components/snackbars/PositionedSnackbar.tsx?raw';
 import LongTextSnackbarComponent from '../components/snackbars/LongTextSnackbar';
 import LongTextSnackbarRaw from '../components/snackbars/LongTextSnackbar.tsx?raw';
-import ConsecutiveSnackbarsComponent from '../components/snackbars/ConsecutiveSnackbars';
-import ConsecutiveSnackbarsRaw from '../components/snackbars/ConsecutiveSnackbars.tsx?raw';
-import FabIntegrationSnackbarComponent from '../components/snackbars/FabIntegrationSnackbar';
-import FabIntegrationSnackbarRaw from '../components/snackbars/FabIntegrationSnackbar.tsx?raw';
+import AutohideSnackbarComponent from '../components/snackbars/AutohideSnackbar';
+import AutohideSnackbarRaw from '../components/snackbars/AutohideSnackbar.tsx?raw';
 import TransitionsSnackbarComponent from '../components/snackbars/TransitionsSnackbar';
 import TransitionsSnackbarRaw from '../components/snackbars/TransitionsSnackbar.tsx?raw';
-import DirectionSnackbarComponent from '../components/snackbars/DirectionSnackbar';
-import DirectionSnackbarRaw from '../components/snackbars/DirectionSnackbar.tsx?raw';
+import CustomizedSnackbarsComponent from '../components/snackbars/CustomizedSnackbars';
+import CustomizedSnackbarsRaw from '../components/snackbars/CustomizedSnackbars.tsx?raw';
+import FabIntegrationSnackbarComponent from '../components/snackbars/FabIntegrationSnackbar';
+import FabIntegrationSnackbarRaw from '../components/snackbars/FabIntegrationSnackbar.tsx?raw';
+import ConsecutiveSnackbarsComponent from '../components/snackbars/ConsecutiveSnackbars';
+import ConsecutiveSnackbarsRaw from '../components/snackbars/ConsecutiveSnackbars.tsx?raw';
 import IntegrationNotistackComponent from '../components/snackbars/IntegrationNotistack';
 import IntegrationNotistackRaw from '../components/snackbars/IntegrationNotistack.tsx?raw';
                    
@@ -45,14 +45,13 @@ import IntegrationNotistackRaw from '../components/snackbars/IntegrationNotistac
 						</Button>
 					</div>
                      <Typography className="text-32 my-16 font-700" component="h1">Snackbar</Typography>
-<Typography className="description">Snackbars provide brief notifications. The component is also known as a toast.</Typography>
+<Typography className="description">Snackbars (also known as toasts) are used for brief notifications of processes that have been or will be performed.</Typography>
 
-<Typography className="text-14 mb-32" component="div">Snackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the bottom of the screen. They shouldn&#39;t interrupt the user experience, and they don&#39;t require user input to disappear.</Typography>
-<Typography className="text-14 mb-32" component="div">Snackbars contain a single line of text directly related to the operation performed.
-They may contain a text action, but no icons. You can use them to display notifications.</Typography>
-<Typography className="text-14 mb-32" component="div"><strong>Frequency</strong>: Only one snackbar may be displayed at a time.</Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Simple snackbars</Typography>
-<Typography className="text-14 mb-32" component="div">A basic snackbar that aims to reproduce Google Keep&#39;s snackbar behavior.</Typography>
+
+
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Introduction</Typography>
+<Typography className="text-14 mb-32" component="div">The Snackbar component appears temporarily and floats above the UI to provide users with (non-critical) updates on an app&#39;s processes.
+The demo below, inspired by Google Keep, shows a basic Snackbar with a text element and two actions:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SimpleSnackbar.js"
                     className="my-16"
@@ -60,19 +59,19 @@ They may contain a text action, but no icons. You can use them to display notifi
                     component={SimpleSnackbarComponent} 
                     raw={SimpleSnackbarRaw}
                     /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
-<Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
-You can learn more about this in the <a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="CustomizedSnackbars.js"
-                    className="my-16"
-                    iframe={false}
-                    component={CustomizedSnackbarsComponent} 
-                    raw={CustomizedSnackbarsRaw}
-                    /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Positioned snackbars</Typography>
-<Typography className="text-14 mb-32" component="div">In wide layouts, snackbars can be left-aligned or center-aligned if they are consistently placed on the same spot at the bottom of the screen, however there may be circumstances where the placement of the snackbar needs to be more flexible.
-You can control the position of the snackbar by specifying the <code>{`anchorOrigin`}</code> prop.</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Usage</Typography>
+<Typography className="text-14 mb-32" component="div">Snackbars differ from <a href="/material-ui/react-alert/">Alerts</a> in that Snackbars have a fixed position and a high z-index, so they&#39;re intended to break out of the document flow; Alerts, on the other hand, are usually part of the flow—except when they&#39;re <a href="#use-with-alerts">used as children of a Snackbar</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">Snackbars also from differ from <a href="/material-ui/react-dialog/">Dialogs</a> in that Snackbars are not intended to convey <em>critical</em> information or block the user from interacting with the rest of the app; Dialogs, by contrast, require input from the user in order to be dismissed.</Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Basics</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Import</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
+{` 
+import Snackbar from '@mui/material/Snackbar';
+`}
+</FuseHighlight>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Position</Typography>
+<Typography className="text-14 mb-32" component="div">Use the <code>{`anchorOrigin`}</code> prop to control the Snackbar&#39;s position on the screen.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="PositionedSnackbar.js"
                     className="my-16"
@@ -80,8 +79,14 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     component={PositionedSnackbarComponent} 
                     raw={PositionedSnackbarRaw}
                     /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Message Length</Typography>
-<Typography className="text-14 mb-32" component="div">Some snackbars with varying message length.</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Content</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
+{` 
+import SnackbarContent from '@mui/material/SnackbarContent';
+`}
+</FuseHighlight>
+<Typography className="text-14 mb-32" component="div">Use the Snackbar Content component to add text and actions to the Snackbar.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="LongTextSnackbar.js"
                     className="my-16"
@@ -89,27 +94,18 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     component={LongTextSnackbarComponent} 
                     raw={LongTextSnackbarRaw}
                     /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
-<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Consecutive Snackbars</Typography>
-<Typography className="text-14 mb-32" component="div">When multiple snackbar updates are necessary, they should appear one at a time.</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Automatic dismiss</Typography>
+<Typography className="text-14 mb-32" component="div">Use the <code>{`autoHideDuration`}</code> prop to automatically trigger the Snackbar&#39;s <code>{`onClose`}</code> function after a set period of time (in milliseconds).</Typography>
+<Typography className="text-14 mb-32" component="div">Make sure to <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits.html">provide sufficient time</a> for the user to process the information displayed on it.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="ConsecutiveSnackbars.js"
+                    name="AutohideSnackbar.js"
                     className="my-16"
                     iframe={false}
-                    component={ConsecutiveSnackbarsComponent} 
-                    raw={ConsecutiveSnackbarsRaw}
+                    component={AutohideSnackbarComponent} 
+                    raw={AutohideSnackbarRaw}
                     /></Typography>
-<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Snackbars and floating action buttons (FABs)</Typography>
-<Typography className="text-14 mb-32" component="div">Snackbars should appear above FABs (on mobile).</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="FabIntegrationSnackbar.js"
-                    className="my-16"
-                    iframe={true}
-                    component={FabIntegrationSnackbarComponent} 
-                    raw={FabIntegrationSnackbarRaw}
-                    /></Typography>
-<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Change transition</Typography>
-<Typography className="text-14 mb-32" component="div"><a href="/material-ui/transitions/#grow">Grow</a> is the default transition but you can use a different one.</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Transitions</Typography>
+<Typography className="text-14 mb-32" component="div">You can use the <code>{`TransitionComponent`}</code> prop to change the transition of the Snackbar from <a href="/material-ui/transitions/#grow">Grow</a> (the default) to others such as <a href="/material-ui/transitions/#slide">Slide</a>.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="TransitionsSnackbar.js"
                     className="my-16"
@@ -117,39 +113,41 @@ You can control the position of the snackbar by specifying the <code>{`anchorOri
                     component={TransitionsSnackbarComponent} 
                     raw={TransitionsSnackbarRaw}
                     /></Typography>
-<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Control Slide direction</Typography>
-<Typography className="text-14 mb-32" component="div">You can change the direction of the <a href="/material-ui/transitions/#slide">Slide</a> transition.</Typography>
-<Typography className="text-14 mb-32" component="div">Example of making the slide transition to the left:</Typography>
-
-<FuseHighlight component="pre" className="language-jsx">
-{` 
-import Slide from '@mui/material/Slide';
-
-function TransitionLeft(props) {
-  return <Slide {...props} direction="left" />;
-}
-
-export default function MyComponent() {
-  return <Snackbar TransitionComponent={TransitionLeft} />;
-}
-`}
-</FuseHighlight>
-<Typography className="text-14 mb-32" component="div">Other examples:</Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Use with Alerts</Typography>
+<Typography className="text-14 mb-32" component="div">Use an Alert inside a Snackbar for messages that communicate a certain severity.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="DirectionSnackbar.js"
+                    name="CustomizedSnackbars.js"
                     className="my-16"
                     iframe={false}
-                    component={DirectionSnackbarComponent} 
-                    raw={DirectionSnackbarRaw}
+                    component={CustomizedSnackbarsComponent} 
+                    raw={CustomizedSnackbarsRaw}
                     /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complementary projects</Typography>
-<Typography className="text-14 mb-32" component="div">For more advanced use cases you might be able to take advantage of:</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Use with Floating Action Buttons</Typography>
+<Typography className="text-14 mb-32" component="div">If you&#39;re using a <a href="/material-ui/react-floating-action-button/">Floating Action Button</a> on mobile, Material Design recommends positioning snackbars directly above it, as shown in the demo below:</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="FabIntegrationSnackbar.js"
+                    className="my-16"
+                    iframe={true}
+                    component={FabIntegrationSnackbarComponent} 
+                    raw={FabIntegrationSnackbarRaw}
+                    /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Common examples</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Consecutive Snackbars</Typography>
+<Typography className="text-14 mb-32" component="div">This demo shows how to display multiple Snackbars without stacking them by using a consecutive animation.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="ConsecutiveSnackbars.js"
+                    className="my-16"
+                    iframe={false}
+                    component={ConsecutiveSnackbarsComponent} 
+                    raw={ConsecutiveSnackbarsRaw}
+                    /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Third-party integrations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">notistack</Typography>
 <Typography className="text-14 mb-32" component="div"><img src="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Star" alt="stars"/>
 <img src="https://img.shields.io/npm/dm/notistack.svg" alt="npm downloads"/></Typography>
-<Typography className="text-14 mb-32" component="div">This example demonstrates how to use <a href="https://github.com/iamhosseindhv/notistack">notistack</a>.
-notistack has an <strong>imperative API</strong> that makes it easy to display snackbars, without having to handle their open/close state.
-It also enables you to <strong>stack</strong> them on top of one another (although this is discouraged by the Material Design guidelines).</Typography>
+<Typography className="text-14 mb-32" component="div">With an imperative API, <a href="https://github.com/iamhosseindhv/notistack">notistack</a> lets you vertically stack multiple Snackbars without having to handle their open and close states.
+Even though this is discouraged in the Material Design guidelines, it is still a common pattern.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="IntegrationNotistack.js"
                     className="my-16"
@@ -157,12 +155,11 @@ It also enables you to <strong>stack</strong> them on top of one another (althou
                     component={IntegrationNotistackComponent} 
                     raw={IntegrationNotistackRaw}
                     /></Typography>
+<Typography className="text-14 mb-32" component="div">:::warning
+Note that notistack prevents Snackbars from being <a href="#accessibility">closed by pressing <kbd className="key">Escape</kbd></a>.
+:::</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
-<Typography className="text-14 mb-32" component="div">(WAI-ARIA: <a href="https://www.w3.org/TR/wai-aria-1.1/#alert">https://www.w3.org/TR/wai-aria-1.1/#alert</a>)</Typography>
-<Typography className="text-14 mb-32" component="div">By default, the snackbar won&#39;t auto-hide. However, if you decide to use the <code>{`autoHideDuration`}</code> prop, it&#39;s recommended to give the user <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits.html">sufficient time</a> to respond.</Typography>
-<Typography className="text-14 mb-32" component="div">When open, <strong>every</strong> <code>{`Snackbar`}</code> will be dismissed if <kbd className="key">Escape</kbd> is pressed.
-Unless you don&#39;t handle <code>{`onClose`}</code> with the <code>{`"escapeKeyDown"`}</code> reason.
-If you want to limit this behavior to only dismiss the oldest currently open Snackbar call <code>{`event.preventDefault`}</code> in <code>{`onClose`}</code>.</Typography>
+<Typography className="text-14 mb-32" component="div">The user should be able to dismiss Snackbars by pressing <kbd className="key">Escape</kbd>. If there are multiple instances appearing at the same time and you want <kbd className="key">Escape</kbd> to dismiss only the oldest one that&#39;s currently open, call <code>{`event.preventDefault`}</code> in the <code>{`onClose`}</code> prop.</Typography>
 
 <FuseHighlight component="pre" className="language-jsx">
 {` 
@@ -183,6 +180,20 @@ export default function MyComponent() {
     </React.Fragment>
   );
 }
+`}
+</FuseHighlight>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Anatomy</Typography>
+<Typography className="text-14 mb-32" component="div">The Snackbar component is composed of a root <code>{`<div>`}</code> that houses interior elements like the Snackbar Content and other optional components (such as buttons or decorators).</Typography>
+
+<FuseHighlight component="pre" className="language-html">
+{` 
+<div role="presentation" className="MuiSnackbar-root">
+  <div className="MuiPaper-root MuiSnackbarContent-root" role="alert">
+    <div className="MuiSnackbarContent-message">
+      <!-- Snackbar content goes here -->
+    </div>
+  </div>
+</div>
 `}
 </FuseHighlight>
 

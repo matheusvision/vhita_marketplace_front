@@ -139,7 +139,7 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`MenuItem`}</code> is a wrapper around <code>{`ListItem`}</code> with some additional styles.
 You can use the same list composition features with the <code>{`MenuItem`}</code> component:</Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/menu/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/menu-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Max height menu</Typography>
 <Typography className="text-14 mb-32" component="div">If the height of a menu prevents all menu items from being displayed, the menu can scroll internally.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample

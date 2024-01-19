@@ -21,8 +21,6 @@ import DotBadgeComponent from '../components/badges/DotBadge';
 import DotBadgeRaw from '../components/badges/DotBadge.tsx?raw';
 import BadgeOverlapComponent from '../components/badges/BadgeOverlap';
 import BadgeOverlapRaw from '../components/badges/BadgeOverlap.tsx?raw';
-import BadgeAlignmentComponent from '../components/badges/BadgeAlignment';
-import BadgeAlignmentRaw from '../components/badges/BadgeAlignment.jsx?raw';
 import AccessibleBadgesComponent from '../components/badges/AccessibleBadges';
 import AccessibleBadgesRaw from '../components/badges/AccessibleBadges.tsx?raw';
                    
@@ -125,13 +123,6 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Badge alignment</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`anchorOrigin`}</code> prop to move the badge to any corner of the wrapped element.</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="BadgeAlignment.jsx"
-                    className="my-16"
-                    iframe={false}
-                    component={BadgeAlignmentComponent} 
-                    raw={BadgeAlignmentRaw}
-                    /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">You can&#39;t rely on the content of the badge to be announced correctly.
 You should provide a full description, for instance, with <code>{`aria-label`}</code>:</Typography>

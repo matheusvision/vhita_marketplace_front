@@ -13,8 +13,6 @@ import SpringPopperComponent from '../components/popper/SpringPopper';
 import SpringPopperRaw from '../components/popper/SpringPopper.tsx?raw';
 import PositionedPopperComponent from '../components/popper/PositionedPopper';
 import PositionedPopperRaw from '../components/popper/PositionedPopper.tsx?raw';
-import ScrollPlaygroundComponent from '../components/popper/ScrollPlayground';
-import ScrollPlaygroundRaw from '../components/popper/ScrollPlayground.jsx?raw';
 import VirtualElementPopperComponent from '../components/popper/VirtualElementPopper';
 import VirtualElementPopperRaw from '../components/popper/VirtualElementPopper.tsx?raw';
 import PopperPopupStateComponent from '../components/popper/PopperPopupState';
@@ -47,7 +45,6 @@ import PopperPopupStateRaw from '../components/popper/PopperPopupState.tsx?raw';
 <ul className="space-y-16">
 <li>🕷 Popper relies on the 3rd party library (<a href="https://popper.js.org/">Popper.js</a>) for perfect positioning.</li>
 <li>💄 It&#39;s an alternative API to react-popper. It aims for simplicity.</li>
-<li>📦 <a href="/size-snapshot/">24.9 kB gzipped</a>.</li>
 <li>The children is <a href="/material-ui/react-portal/"><code>{`Portal`}</code></a> to the body of the document to avoid rendering problems.
 You can disable this behavior with <code>{`disablePortal`}</code>.</li>
 <li>The scroll isn&#39;t blocked like with the <a href="/material-ui/react-popover/"><code>{`Popover`}</code></a> component.
@@ -98,13 +95,6 @@ These two callbacks allow the popper to unmount the child content when closed an
                     raw={PositionedPopperRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Scroll playground</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="ScrollPlayground.jsx"
-                    className="my-16"
-                    iframe={false}
-                    component={ScrollPlaygroundComponent} 
-                    raw={ScrollPlaygroundRaw}
-                    /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Virtual element</Typography>
 <Typography className="text-14 mb-32" component="div">The value of the <code>{`anchorEl`}</code> prop can be a reference to a fake DOM element.
 You need to create an object shaped like the <a href="https://popper.js.org/docs/v2/virtual-elements/"><code>{`VirtualElement`}</code></a>.</Typography>

@@ -23,6 +23,8 @@ import ResponsiveDialogComponent from '../components/dialogs/ResponsiveDialog';
 import ResponsiveDialogRaw from '../components/dialogs/ResponsiveDialog.tsx?raw';
 import ConfirmationDialogComponent from '../components/dialogs/ConfirmationDialog';
 import ConfirmationDialogRaw from '../components/dialogs/ConfirmationDialog.tsx?raw';
+import CookiesBannerComponent from '../components/dialogs/CookiesBanner';
+import CookiesBannerRaw from '../components/dialogs/CookiesBanner.tsx?raw';
 import DraggableDialogComponent from '../components/dialogs/DraggableDialog';
 import DraggableDialogRaw from '../components/dialogs/DraggableDialog.tsx?raw';
 import ScrollDialogComponent from '../components/dialogs/ScrollDialog';
@@ -170,6 +172,17 @@ For example, users can listen to multiple ringtones but only make a final select
                     iframe={false}
                     component={ConfirmationDialogComponent} 
                     raw={ConfirmationDialogRaw}
+                    /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Non-modal dialog</Typography>
+<Typography className="text-14 mb-32" component="div">Dialogs can also be non-modal, meaning they don&#39;t interrupt user interaction behind it.
+Visit <a href="https://www.nngroup.com/articles/modal-nonmodal-dialog/">the Nielsen Norman Group article</a> for more in-depth guidance about modal vs. non-modal dialog usage.</Typography>
+<Typography className="text-14 mb-32" component="div">The demo below shows a persistent cookie banner, a common non-modal dialog use case.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="CookiesBanner.js"
+                    className="my-16"
+                    iframe={true}
+                    component={CookiesBannerComponent} 
+                    raw={CookiesBannerRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Draggable dialog</Typography>
 <Typography className="text-14 mb-32" component="div">You can create a draggable dialog by using <a href="https://github.com/react-grid-layout/react-draggable">react-draggable</a>.

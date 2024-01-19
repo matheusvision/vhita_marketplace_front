@@ -27,6 +27,7 @@ const changelogData: ChangelogItemType[] = [
 			'Firebase authentication service example added.',
 			'Jwt authentication updated.',
 			'Notifications App created.',
+			'Material UI updated to v5.15.5',
 			'New theme selector added into the theme panel.',
 			'New color schemes added.',
 			'Performance improvements.',

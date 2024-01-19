@@ -75,7 +75,8 @@ The <code>{`Grid`}</code> component shouldn&#39;t be confused with a data grid; 
 <Typography className="text-14 mb-32" component="div">Fluid grids use columns that scale and resize content. A fluid grid&#39;s layout can use breakpoints to determine if the layout needs to change dramatically.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Basic grid</Typography>
 <Typography className="text-14 mb-32" component="div">Column widths are integer values between 1 and 12; they apply at any breakpoint and indicate how many columns are occupied by the component.</Typography>
-<Typography className="text-14 mb-32" component="div">A value given to a breakpoint applies to all the other breakpoints wider than it (unless overridden, as you can read later in this page). For example, <code>{`xs={12}`}</code> sizes a component to occupy the whole viewport width regardless of its size.</Typography>
+<Typography className="text-14 mb-32" component="div">A value passed to any given breakpoint also applies to all wider breakpoints (if they have no values explicitly defined).
+For example, <code>{`xs={12}`}</code> sizes a component to occupy the full width of its parent container, regardless of the viewport size.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BasicGrid.js"
                     className="my-16"

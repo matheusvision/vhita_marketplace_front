@@ -200,7 +200,6 @@ You can learn more about this in the
                     component={CustomizedListComponent} 
                     raw={CustomizedListRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/list-item/">MUI Treasury&#39;s customization examples</a>.</Typography>
 
                 </>
     

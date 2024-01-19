@@ -78,7 +78,7 @@ import GroupedSelectRaw from '../components/selects/GroupedSelect.tsx?raw';
 It&#39;s meant to be an improved version of the &quot;react-select&quot; and &quot;downshift&quot; packages.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Props</Typography>
 <Typography className="text-14 mb-32" component="div">The Select component is implemented as a custom <code>{`<input>`}</code> element of the <a href="/material-ui/api/input-base/">InputBase</a>.
-It extends the <a href="/material-ui/react-text-field/">text field components</a> sub-components, either the <a href="/material-ui/api/outlined-input/">OutlinedInput</a>, <a href="/material-ui/api/input/">Input</a>, or <a href="/material-ui/api/filled-input/">FilledInput</a>, depending on the variant selected.
+It extends the <a href="/material-ui/react-text-field/">text field components</a> subcomponents, either the <a href="/material-ui/api/outlined-input/">OutlinedInput</a>, <a href="/material-ui/api/input/">Input</a>, or <a href="/material-ui/api/filled-input/">FilledInput</a>, depending on the variant selected.
 It shares the same styles and many of the same props. Refer to the respective component&#39;s API page for details.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Filled and standard variants</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
@@ -149,7 +149,7 @@ Notice that the <code>{`"standard"`}</code> variant is easier to customize, sinc
                     component={CustomizedSelectsComponent} 
                     raw={CustomizedSelectsRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/select/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/select-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Multiple select</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`Select`}</code> component can handle multiple selections.
 It&#39;s enabled with the <code>{`multiple`}</code> prop.</Typography>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import FuseSplashScreen from '@fuse/core/FuseSplashScreen';
 import { useAppDispatch } from 'app/store/store';
@@ -42,7 +42,7 @@ function MockAdapterProvider(props: MockAdapterProviderProps) {
 	const { enabled = true, children } = props;
 	const [loading, setLoading] = useState(true);
 	const dispatch = useAppDispatch();
-
+	const isInitialMount = useRef(true);
 	useEffect(() => {
 		const setupAllMocks = () => {
 			[
@@ -90,7 +90,11 @@ function MockAdapterProvider(props: MockAdapterProviderProps) {
 
 	useEffect(() => {
 		if (import.meta.hot) {
-			dispatch(apiService.util.resetApiState());
+			if (!isInitialMount.current) {
+				console.info('+++RELOADING MOCKS');
+				dispatch(apiService.util.resetApiState());
+			}
+			isInitialMount.current = false;
 		}
 	}, [dispatch]);
 

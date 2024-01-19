@@ -45,10 +45,19 @@ import MediaControlCardRaw from '../components/cards/MediaControlCard.tsx?raw';
                      <Typography className="text-32 my-16 font-700" component="h1">Card</Typography>
 <Typography className="description">Cards contain content and actions about a single subject.</Typography>
 
-<Typography className="text-14 mb-32" component="div">Cards are surfaces that display content and actions on a single topic.</Typography>
-<Typography className="text-14 mb-32" component="div">They should be easy to scan for relevant and actionable information. Elements, like text and images, should be placed on them in a way that clearly indicates hierarchy.</Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Basic card</Typography>
-<Typography className="text-14 mb-32" component="div">Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are entry points to more complex and detailed information.</Typography>
+
+
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Introduction</Typography>
+<Typography className="text-14 mb-32" component="div">Cards are surfaces that display content and actions on a single topic.
+The Material UI Card component includes several complementary utility components to handle various use cases:</Typography>
+<ul className="space-y-16">
+<li>Card: a surface-level container for grouping related components.</li>
+<li>Card Content: the wrapper for the Card content.</li>
+<li>Card Header: an optional wrapper for the Card header.</li>
+<li>Card Media: an optional container for displaying background images and gradient layers behind the Card Content.</li>
+<li>Card Actions: an optional wrapper that groups a set of buttons.</li>
+<li>Card Action Area: an optional wrapper that allows users to interact with the specified area of the Card.</li>
+</ul>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BasicCard.js"
                     className="my-16"
@@ -56,6 +65,17 @@ import MediaControlCardRaw from '../components/cards/MediaControlCard.tsx?raw';
                     component={BasicCardComponent} 
                     raw={BasicCardRaw}
                     /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Basics</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
+{` 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+`}
+</FuseHighlight>
+<Typography className="text-14 mb-32" component="div">:::success
+Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are meant to be entry points to more complex and detailed information.
+:::</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Outlined Card</Typography>
 <Typography className="text-14 mb-32" component="div">Set <code>{`variant="outlined"`}</code> to render an outlined card.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
@@ -121,7 +141,7 @@ When <code>{`component="img"`}</code>, CardMedia relies on <code>{`object-fit`}<
                     component={MediaControlCardComponent} 
                     raw={MediaControlCardRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/components/card/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/card-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 
                 </>
     

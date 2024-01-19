@@ -111,7 +111,7 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     component={CustomizedSwitchesComponent} 
                     raw={CustomizedSwitchesRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/switch/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/switch-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Label placement</Typography>
 <Typography className="text-14 mb-32" component="div">You can change the placement of the label:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample

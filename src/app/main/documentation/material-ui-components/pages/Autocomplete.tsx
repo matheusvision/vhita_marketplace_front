@@ -164,6 +164,26 @@ const options = ['The Godfather', 'Pulp Fiction'];
                     component={ControllableStatesComponent} 
                     raw={ControllableStatesRaw}
                     /></Typography>
+<Typography className="text-14 mb-32" component="div">:::warning</Typography>
+<Typography className="text-14 mb-32" component="div">If you control the <code>{`value`}</code>, make sure it&#39;s referentially stable between renders.
+In other words, the reference to the value shouldn&#39;t change if the value itself doesn&#39;t change.</Typography>
+
+<FuseHighlight component="pre" className="language-tsx">
+{` 
+// ⚠️ BAD
+return <Autocomplete multiple value={allValues.filter((v) => v.selected)} />;
+
+// 👍 GOOD
+const selectedValues = React.useMemo(
+  () => allValues.filter((v) => v.selected),
+  [allValues],
+);
+return <Autocomplete multiple value={selectedValues} />;
+`}
+</FuseHighlight>
+<Typography className="text-14 mb-32" component="div">In the first example, <code>{`allValues.filter`}</code> is called and returns <strong>a new array</strong> every render.
+The fix includes memoizing the value, so it changes only when needed.
+:::</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Free solo</Typography>
 <Typography className="text-14 mb-32" component="div">Set <code>{`freeSolo`}</code> to true so the textbox can contain any arbitrary value.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Search input</Typography>
@@ -243,7 +263,7 @@ The Autocomplete component is built on this hook.</Typography>
 
 <FuseHighlight component="pre" className="language-tsx">
 {` 
-import useAutocomplete from '@mui/base/useAutocomplete';
+import { useAutocomplete } from '@mui/base/useAutocomplete';
 `}
 </FuseHighlight>
 <Typography className="text-14 mb-32" component="div">The <code>{`useAutocomplete`}</code> hook is also reexported from @mui/material for convenience and backward compatibility.</Typography>
@@ -253,9 +273,6 @@ import useAutocomplete from '@mui/base/useAutocomplete';
 import useAutocomplete from '@mui/material/useAutocomplete';
 `}
 </FuseHighlight>
-<ul className="space-y-16">
-<li>📦 <a href="/size-snapshot/">4.5 kB gzipped</a>.</li>
-</ul>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="UseAutocomplete.js"
                     className="my-16"
@@ -360,6 +377,9 @@ Before you can start using the Google Maps JavaScript API and Places API, you ne
 <Typography className="text-14 mb-32" component="div">The <code>{`renderInput`}</code> prop allows you to customize the rendered input.
 The first argument of this render prop contains props that you need to forward.
 Pay specific attention to the <code>{`ref`}</code> and <code>{`inputProps`}</code> keys.</Typography>
+<Typography className="text-14 mb-32" component="div">:::warning
+If you&#39;re using a custom input component inside the Autocomplete, make sure that you forward the ref to the underlying DOM element.
+:::</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CustomInputAutocomplete.js"
                     className="my-16"

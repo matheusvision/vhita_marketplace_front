@@ -23,6 +23,8 @@ import GroupAvatarsComponent from '../components/avatars/GroupAvatars';
 import GroupAvatarsRaw from '../components/avatars/GroupAvatars.tsx?raw';
 import TotalAvatarsComponent from '../components/avatars/TotalAvatars';
 import TotalAvatarsRaw from '../components/avatars/TotalAvatars.tsx?raw';
+import CustomSurplusAvatarsComponent from '../components/avatars/CustomSurplusAvatars';
+import CustomSurplusAvatarsRaw from '../components/avatars/CustomSurplusAvatars.tsx?raw';
 import BadgeAvatarsComponent from '../components/avatars/BadgeAvatars';
 import BadgeAvatarsRaw from '../components/avatars/BadgeAvatars.tsx?raw';
                    
@@ -136,6 +138,16 @@ The following demo generates the color based on the name of the person.</Typogra
                     iframe={false}
                     component={TotalAvatarsComponent} 
                     raw={TotalAvatarsRaw}
+                    /></Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom surplus</Typography>
+<Typography className="text-14 mb-32" component="div">Set the <code>{`renderSurplus`}</code> prop as a callback to customize the surplus avatar. The callback will receive the surplus number as an argument based on the children and the <code>{`max`}</code> prop, and should return a <code>{`React.ReactNode`}</code>.</Typography>
+<Typography className="text-14 mb-32" component="div">The <code>{`renderSurplus`}</code> prop is useful when you need to render the surplus based on the data sent from the server.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="CustomSurplusAvatars.js"
+                    className="my-16"
+                    iframe={false}
+                    component={CustomSurplusAvatarsComponent} 
+                    raw={CustomSurplusAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">With badge</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample

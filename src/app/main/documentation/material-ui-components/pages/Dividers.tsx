@@ -5,22 +5,20 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                   import ListDividersComponent from '../components/dividers/ListDividers';
-import ListDividersRaw from '../components/dividers/ListDividers.tsx?raw';
-import InsetDividersComponent from '../components/dividers/InsetDividers';
-import InsetDividersRaw from '../components/dividers/InsetDividers.tsx?raw';
-import SubheaderDividersComponent from '../components/dividers/SubheaderDividers';
-import SubheaderDividersRaw from '../components/dividers/SubheaderDividers.tsx?raw';
-import MiddleDividersComponent from '../components/dividers/MiddleDividers';
-import MiddleDividersRaw from '../components/dividers/MiddleDividers.tsx?raw';
-import DividerTextComponent from '../components/dividers/DividerText';
-import DividerTextRaw from '../components/dividers/DividerText.tsx?raw';
+                   import IntroDividerComponent from '../components/dividers/IntroDivider';
+import IntroDividerRaw from '../components/dividers/IntroDivider.tsx?raw';
+import DividerVariantsComponent from '../components/dividers/DividerVariants';
+import DividerVariantsRaw from '../components/dividers/DividerVariants.tsx?raw';
 import VerticalDividersComponent from '../components/dividers/VerticalDividers';
 import VerticalDividersRaw from '../components/dividers/VerticalDividers.tsx?raw';
+import FlexDividerComponent from '../components/dividers/FlexDivider';
+import FlexDividerRaw from '../components/dividers/FlexDivider.tsx?raw';
+import DividerTextComponent from '../components/dividers/DividerText';
+import DividerTextRaw from '../components/dividers/DividerText.tsx?raw';
+import ListDividersComponent from '../components/dividers/ListDividers';
+import ListDividersRaw from '../components/dividers/ListDividers.tsx?raw';
 import VerticalDividerMiddleComponent from '../components/dividers/VerticalDividerMiddle';
 import VerticalDividerMiddleRaw from '../components/dividers/VerticalDividerMiddle.tsx?raw';
-import VerticalDividerTextComponent from '../components/dividers/VerticalDividerText';
-import VerticalDividerTextRaw from '../components/dividers/VerticalDividerText.tsx?raw';
                    
                    function DividersDoc(props) {
                      return (
@@ -43,69 +41,40 @@ import VerticalDividerTextRaw from '../components/dividers/VerticalDividerText.t
 						</Button>
 					</div>
                      <Typography className="text-32 my-16 font-700" component="h1">Divider</Typography>
-<Typography className="description">A divider is a thin line that groups content in lists and layouts.</Typography>
+<Typography className="description">The Divider component provides a thin, unobtrusive line for grouping elements to reinforce visual hierarchy.</Typography>
 
-<Typography className="text-14 mb-32" component="div">Dividers separate content into clear groups.</Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">List dividers</Typography>
-<Typography className="text-14 mb-32" component="div">The divider renders as an <code>{`<hr>`}</code> by default.
-You can save rendering this DOM element by using the <code>{`divider`}</code> prop on the <code>{`ListItem`}</code> component.</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="ListDividers.js"
-                    className="my-16"
-                    iframe={false}
-                    component={ListDividersComponent} 
-                    raw={ListDividersRaw}
-                    /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">HTML5 specification</Typography>
-<Typography className="text-14 mb-32" component="div">In a list, you should ensure the <code>{`Divider`}</code> is rendered as an <code>{`<li>`}</code> to match the HTML5 specification.
-The examples below show two ways of achieving this.</Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Inset dividers</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="InsetDividers.js"
-                    className="my-16"
-                    iframe={false}
-                    component={InsetDividersComponent} 
-                    raw={InsetDividersRaw}
-                    /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Subheader dividers</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="SubheaderDividers.js"
-                    className="my-16"
-                    iframe={false}
-                    component={SubheaderDividersComponent} 
-                    raw={SubheaderDividersRaw}
-                    /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Middle divider</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="MiddleDividers.js"
-                    className="my-16"
-                    iframe={false}
-                    component={MiddleDividersComponent} 
-                    raw={MiddleDividersRaw}
-                    /></Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Dividers with text</Typography>
-<Typography className="text-14 mb-32" component="div">You can also render a divider with content.</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="DividerText.js"
-                    className="my-16"
-                    iframe={false}
-                    component={DividerTextComponent} 
-                    raw={DividerTextRaw}
-                    /></Typography>
-<Typography className="text-14 mb-32" component="div">:::warning
-When using the <code>{`Divider`}</code> component for visual decoration, such as in a heading, explicitly specify <code>{`role="presentation"`}</code> to the divider to make sure screen readers can announce its content:</Typography>
 
-<FuseHighlight component="pre" className="language-js">
+
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Introduction</Typography>
+<Typography className="text-14 mb-32" component="div">The Material UI Divider component renders as a dark gray <code>{`<hr>`}</code> by default, and features several useful props for quick style adjustments.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="IntroDivider.js"
+                    className="my-16"
+                    iframe={false}
+                    component={IntroDividerComponent} 
+                    raw={IntroDividerRaw}
+                    /></Typography>
+<Typography className="text-14 mb-32" component="div">:::success
+Use the handy <code>{`light`}</code> prop to make the Divider slightly lighter.
+:::</Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Basics</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
 {` 
-<Divider component="div" role="presentation">
-  {/* any elements nested inside the role="presentation" preserve their semantics. */}
-  <Typography variant="h2">My Heading</Typography>
-</Divider>
+import Divider from '@mui/material/Divider';
 `}
 </FuseHighlight>
-<Typography className="text-14 mb-32" component="div">:::</Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Vertical divider</Typography>
-<Typography className="text-14 mb-32" component="div">You can also render a divider vertically using the <code>{`orientation`}</code> prop.</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Variants</Typography>
+<Typography className="text-14 mb-32" component="div">The Divider component supports three variants: <code>{`fullWidth`}</code> (default), <code>{`inset`}</code>, and <code>{`middle`}</code>.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="DividerVariants.js"
+                    className="my-16"
+                    iframe={false}
+                    component={DividerVariantsComponent} 
+                    raw={DividerVariantsRaw}
+                    /></Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Orientation</Typography>
+<Typography className="text-14 mb-32" component="div">Use the <code>{`orientation`}</code> prop to change the Divider from horizontal to vertical.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="VerticalDividers.js"
                     className="my-16"
@@ -113,13 +82,36 @@ When using the <code>{`Divider`}</code> component for visual decoration, such as
                     component={VerticalDividersComponent} 
                     raw={VerticalDividersRaw}
                     /></Typography>
-<div className="border border-1 p-16 rounded-16 my-12">
-
-<Typography className="text-14 mb-32" component="div">Note the use of the <code>{`flexItem`}</code> prop to accommodate for the flex container.</Typography>
-</div>
-
-<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Vertical with variant middle</Typography>
-<Typography className="text-14 mb-32" component="div">You can also render a vertical divider with <code>{`variant="middle"`}</code>.</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Flex item</Typography>
+<Typography className="text-14 mb-32" component="div">Use the <code>{`flexItem`}</code> prop to display the Divider when it&#39;s being used in a flex container.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="FlexDivider.js"
+                    className="my-16"
+                    iframe={false}
+                    component={FlexDividerComponent} 
+                    raw={FlexDividerRaw}
+                    /></Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">With children</Typography>
+<Typography className="text-14 mb-32" component="div">Use the <code>{`textAlign`}</code> prop to align elements that are wrapped by the Divider.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="DividerText.js"
+                    className="my-16"
+                    iframe={false}
+                    component={DividerTextComponent} 
+                    raw={DividerTextRaw}
+                    /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Use with a List</Typography>
+<Typography className="text-14 mb-32" component="div">When using the Divider to separate items in a List, use the <code>{`component`}</code> prop to render it as an <code>{`<li>`}</code>—otherwise it won&#39;t be a valid HTML element.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="ListDividers.js"
+                    className="my-16"
+                    iframe={false}
+                    component={ListDividersComponent} 
+                    raw={ListDividersRaw}
+                    /></Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Icon grouping</Typography>
+<Typography className="text-14 mb-32" component="div">The demo below shows how to combine the props <code>{`variant="middle"`}</code> and <code>{`orientation="vertical"`}</code>.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="VerticalDividerMiddle.js"
                     className="my-16"
@@ -127,15 +119,35 @@ When using the <code>{`Divider`}</code> component for visual decoration, such as
                     component={VerticalDividerMiddleComponent} 
                     raw={VerticalDividerMiddleRaw}
                     /></Typography>
-<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Vertical with text</Typography>
-<Typography className="text-14 mb-32" component="div">You can also render a vertical divider with content.</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="VerticalDividerText.js"
-                    className="my-16"
-                    iframe={false}
-                    component={VerticalDividerTextComponent} 
-                    raw={VerticalDividerTextRaw}
-                    /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
+<Typography className="text-14 mb-32" component="div">Due to its implicit role of <code>{`separator`}</code>, the Divider, which is a <code>{`<hr>`}</code> element, will be announced by screen readers as a &quot;Horziontal Splitter&quot; (or vertical, if you&#39;re using the <code>{`orientation`}</code> prop).</Typography>
+<Typography className="text-14 mb-32" component="div">If you&#39;re using it as a purely stylistic element, we recommend setting <code>{`aria-hidden="true"`}</code> which will make screen readers bypass it.</Typography>
+
+<FuseHighlight component="pre" className="language-js">
+{` 
+<Divider aria-hidden="true" />
+`}
+</FuseHighlight>
+<Typography className="text-14 mb-32" component="div">If you&#39;re using the Divider to wrap other elements, such as text or chips, we recommend changing its rendered element to a plain <code>{`<div>`}</code> using the <code>{`component`}</code> prop, and setting <code>{`role="presentation"`}</code>.
+This ensures that it&#39;s not announced by screen readers while still preserving the semantics of the elements inside it.</Typography>
+
+<FuseHighlight component="pre" className="language-js">
+{` 
+<Divider component="div" role="presentation">
+  <Typograph>Text element</Typography>
+</Divider>
+`}
+</FuseHighlight>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Anatomy</Typography>
+<Typography className="text-14 mb-32" component="div">The Divider component is composed of a root <code>{`<hr>`}</code>.</Typography>
+
+<FuseHighlight component="pre" className="language-html">
+{` 
+<hr className="MuiDivider-root">
+  <!-- Divider children goes here -->
+</hr>
+`}
+</FuseHighlight>
 
                 </>
     

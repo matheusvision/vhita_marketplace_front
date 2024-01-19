@@ -45,7 +45,7 @@ import SelectAllTransferListRaw from '../components/transfer-list/SelectAllTrans
                     raw={TransferListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Enhanced transfer list</Typography>
-<Typography className="text-14 mb-32" component="div">This example exchanges the &quot;move all&quot; buttons for a &quot;select all / select none&quot; checkbox, and adds a counter.</Typography>
+<Typography className="text-14 mb-32" component="div">This example exchanges the &quot;move all&quot; buttons for a &quot;select all / select none&quot; checkbox and adds a counter.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SelectAllTransferList.js"
                     className="my-16"

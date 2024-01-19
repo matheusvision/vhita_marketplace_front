@@ -95,8 +95,5 @@ gain depth while clicked or touched.
 
 ## Chip playground
 
-{{"demo": "ChipsPlayground.jsx", "hideToolbar": true}}
+{{"demo": "ChipsPlayground.js", "hideToolbar": true}}
 
-## Accessibility
-
-If the Chip is deletable or clickable then it is a button in tab order. When the Chip is focused (e.g. when tabbing) releasing (`keyup` event) `Backspace` or `Delete` will call the `onDelete` handler while releasing `Escape` will blur the Chip.

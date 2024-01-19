@@ -13,6 +13,10 @@ import CustomizedTooltipsComponent from '../components/tooltips/CustomizedToolti
 import CustomizedTooltipsRaw from '../components/tooltips/CustomizedTooltips.tsx?raw';
 import ArrowTooltipsComponent from '../components/tooltips/ArrowTooltips';
 import ArrowTooltipsRaw from '../components/tooltips/ArrowTooltips.tsx?raw';
+import TooltipOffsetComponent from '../components/tooltips/TooltipOffset';
+import TooltipOffsetRaw from '../components/tooltips/TooltipOffset.tsx?raw';
+import TooltipMarginComponent from '../components/tooltips/TooltipMargin';
+import TooltipMarginRaw from '../components/tooltips/TooltipMargin.tsx?raw';
 import TriggersTooltipsComponent from '../components/tooltips/TriggersTooltips';
 import TriggersTooltipsRaw from '../components/tooltips/TriggersTooltips.tsx?raw';
 import ControlledTooltipsComponent from '../components/tooltips/ControlledTooltips';
@@ -94,6 +98,23 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     iframe={false}
                     component={ArrowTooltipsComponent} 
                     raw={ArrowTooltipsRaw}
+                    /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Distance from anchor</Typography>
+<Typography className="text-14 mb-32" component="div">To adjust the distance between the tooltip and its anchor, you can use the <code>{`slotProps`}</code> prop to modify the <a href="https://popper.js.org/docs/v2/modifiers/offset/">offset</a> of the popper.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="TooltipOffset.js"
+                    className="my-16"
+                    iframe={false}
+                    component={TooltipOffsetComponent} 
+                    raw={TooltipOffsetRaw}
+                    /></Typography>
+<Typography className="text-14 mb-32" component="div">Alternatively, you can use the <code>{`slotProps`}</code> prop to customize the margin of the popper.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="TooltipMargin.js"
+                    className="my-16"
+                    iframe={false}
+                    component={TooltipMarginComponent} 
+                    raw={TooltipMarginRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom child element</Typography>
 <Typography className="text-14 mb-32" component="div">The tooltip needs to apply DOM event listeners to its child element.
@@ -242,7 +263,7 @@ You need to create an object shaped like the <a href="https://popper.js.org/docs
                     raw={AnchorElTooltipsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Showing and hiding</Typography>
-<Typography className="text-14 mb-32" component="div">The tooltip is normally shown immediately when the user&#39;s mouse hovers over the element, and hides immediately when the user&#39;s mouse leaves. A delay in showing or hiding the tooltip can be added through the <code>{`enterDelay`}</code> and <code>{`leaveDelay`}</code> props, as shown in the Controlled Tooltips demo above.</Typography>
+<Typography className="text-14 mb-32" component="div">The tooltip is normally shown immediately when the user&#39;s mouse hovers over the element, and hides immediately when the user&#39;s mouse leaves. A delay in showing or hiding the tooltip can be added through the <code>{`enterDelay`}</code> and <code>{`leaveDelay`}</code> props.</Typography>
 <Typography className="text-14 mb-32" component="div">On mobile, the tooltip is displayed when the user longpresses the element and hides after a delay of 1500ms. You can disable this feature with the <code>{`disableTouchListener`}</code> prop.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DelayTooltips.js"

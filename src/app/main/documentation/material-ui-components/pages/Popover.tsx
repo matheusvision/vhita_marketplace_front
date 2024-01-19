@@ -7,8 +7,6 @@ import FuseExample from '@fuse/core/FuseExample';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
                    import BasicPopoverComponent from '../components/popover/BasicPopover';
 import BasicPopoverRaw from '../components/popover/BasicPopover.tsx?raw';
-import AnchorPlaygroundComponent from '../components/popover/AnchorPlayground';
-import AnchorPlaygroundRaw from '../components/popover/AnchorPlayground.jsx?raw';
 import MouseOverPopoverComponent from '../components/popover/MouseOverPopover';
 import MouseOverPopoverRaw from '../components/popover/MouseOverPopover.tsx?raw';
 import VirtualElementPopoverComponent from '../components/popover/VirtualElementPopover';
@@ -58,13 +56,6 @@ You can also set the <code>{`anchorReference`}</code> to <code>{`anchorPosition`
 When it is <code>{`anchorPosition`}</code>, the component will, instead of <code>{`anchorEl`}</code>,
 refer to the <code>{`anchorPosition`}</code> prop which you can adjust to set
 the position of the popover.</Typography>
-<Typography className="text-14 mb-32" component="div"><FuseExample
-                    name="AnchorPlayground.jsx"
-                    className="my-16"
-                    iframe={false}
-                    component={AnchorPlaygroundComponent} 
-                    raw={AnchorPlaygroundRaw}
-                    /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Mouse over interaction</Typography>
 <Typography className="text-14 mb-32" component="div">This demo demonstrates how to use the <code>{`Popover`}</code> component and the mouseover event to achieve popover behavior.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
@@ -124,3 +115,4 @@ This is different from virtual elements used for the <a href="/material-ui/react
                    }
                    
                    export default PopoverDoc;
+                   

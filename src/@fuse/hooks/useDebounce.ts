@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import debounce from 'lodash/debounce';
+import _ from '@lodash';
 
 /**
  * Debounce hook.
@@ -16,7 +16,7 @@ function useDebounce<T extends (...args: never[]) => void>(callback: T, delay: n
 	}, [callback]);
 
 	const debouncedFn = useCallback(
-		debounce((...args: never[]) => {
+		_.debounce((...args: never[]) => {
 			callbackRef.current(...args);
 		}, delay),
 		[delay]
