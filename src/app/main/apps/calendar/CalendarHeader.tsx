@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FullCalendar from '@fullcalendar/react';
-import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
+import { DatesSetArg } from '@fullcalendar/core';
 import { MutableRefObject } from 'react';
 import { useSelector } from 'react-redux';
 import { openNewEventDialog } from './store/eventDialogSlice';
@@ -27,6 +27,10 @@ function CalendarHeader(props: CalendarHeaderProps) {
 	const mainTheme = useSelector(selectMainTheme);
 	const calendarApi = () => calendarRef.current.getApi();
 	const dispatch = useAppDispatch();
+
+	function handleViewChange(viewType: string) {
+		calendarApi().changeView(viewType);
+	}
 
 	return (
 		<div className="flex flex-col md:flex-row w-full p-12 justify-between z-10 container">
@@ -113,7 +117,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 
 				<CalendarViewMenu
 					currentDate={currentDate}
-					calendarApi={calendarApi as unknown as CalendarApi}
+					onChange={handleViewChange}
 				/>
 			</motion.div>
 		</div>

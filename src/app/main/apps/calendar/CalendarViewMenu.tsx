@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
+import { DatesSetArg } from '@fullcalendar/core';
 import { MouseEvent, useState } from 'react';
 
 type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay';
@@ -26,7 +26,7 @@ const viewNamesObj = {
 
 type CalendarViewMenuProps = {
 	className?: string;
-	calendarApi: CalendarApi;
+	onChange: (view: string) => void;
 	currentDate: DatesSetArg;
 };
 
@@ -34,7 +34,7 @@ type CalendarViewMenuProps = {
  * The calendar view menu.
  */
 function CalendarViewMenu(props: CalendarViewMenuProps) {
-	const { className, calendarApi, currentDate } = props;
+	const { className, currentDate, onChange } = props;
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 
@@ -77,7 +77,7 @@ function CalendarViewMenu(props: CalendarViewMenuProps) {
 					<MenuItem
 						key={name}
 						onClick={() => {
-							calendarApi.changeView(name);
+							onChange(name);
 							handleClose();
 						}}
 					>
