@@ -5,7 +5,27 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import TemporaryDrawerComponent from '../components/drawers/TemporaryDrawer';
+import TemporaryDrawerRaw from '../components/drawers/TemporaryDrawer.tsx?raw';
+import SwipeableTemporaryDrawerComponent from '../components/drawers/SwipeableTemporaryDrawer';
+import SwipeableTemporaryDrawerRaw from '../components/drawers/SwipeableTemporaryDrawer.tsx?raw';
+import SwipeableEdgeDrawerComponent from '../components/drawers/SwipeableEdgeDrawer';
+import SwipeableEdgeDrawerRaw from '../components/drawers/SwipeableEdgeDrawer.tsx?raw';
+import ResponsiveDrawerComponent from '../components/drawers/ResponsiveDrawer';
+import ResponsiveDrawerRaw from '../components/drawers/ResponsiveDrawer.tsx?raw';
+import PersistentDrawerLeftComponent from '../components/drawers/PersistentDrawerLeft';
+import PersistentDrawerLeftRaw from '../components/drawers/PersistentDrawerLeft.tsx?raw';
+import PersistentDrawerRightComponent from '../components/drawers/PersistentDrawerRight';
+import PersistentDrawerRightRaw from '../components/drawers/PersistentDrawerRight.tsx?raw';
+import MiniDrawerComponent from '../components/drawers/MiniDrawer';
+import MiniDrawerRaw from '../components/drawers/MiniDrawer.tsx?raw';
+import PermanentDrawerLeftComponent from '../components/drawers/PermanentDrawerLeft';
+import PermanentDrawerLeftRaw from '../components/drawers/PermanentDrawerLeft.tsx?raw';
+import PermanentDrawerRightComponent from '../components/drawers/PermanentDrawerRight';
+import PermanentDrawerRightRaw from '../components/drawers/PermanentDrawerRight.tsx?raw';
+import ClippedDrawerComponent from '../components/drawers/ClippedDrawer';
+import ClippedDrawerRaw from '../components/drawers/ClippedDrawer.tsx?raw';
+                   
                    function DrawersDoc(props) {
                      return (
                        
@@ -39,8 +59,8 @@ It closes when an item is selected, handled by controlling the <code>{`open`}</c
                     name="TemporaryDrawer.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/drawers/TemporaryDrawer.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/TemporaryDrawer.tsx')}
+                    component={TemporaryDrawerComponent} 
+                    raw={TemporaryDrawerRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Swipeable</Typography>
 <Typography className="text-14 mb-32" component="div">You can make the drawer swipeable with the <code>{`SwipeableDrawer`}</code> component.</Typography>
@@ -51,8 +71,8 @@ You can use the <code>{`disableBackdropTransition`}</code> prop to help.</Typogr
                     name="SwipeableTemporaryDrawer.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/drawers/SwipeableTemporaryDrawer.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/SwipeableTemporaryDrawer.tsx')}
+                    component={SwipeableTemporaryDrawerComponent} 
+                    raw={SwipeableTemporaryDrawerRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The following properties are used in this documentation website for optimal usability of the component:</Typography>
 <ul className="space-y-16">
@@ -79,8 +99,8 @@ If you are on mobile, you can open the demo in CodeSandbox (&quot;edit&quot; ico
                     name="SwipeableEdgeDrawer.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/SwipeableEdgeDrawer.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/SwipeableEdgeDrawer.tsx')}
+                    component={SwipeableEdgeDrawerComponent} 
+                    raw={SwipeableEdgeDrawerRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Keep mounted</Typography>
 <Typography className="text-14 mb-32" component="div">The Modal used internally by the Swipeable Drawer has the <code>{`keepMounted`}</code> prop set by default.
@@ -103,8 +123,8 @@ This means that the contents of the drawer are always present in the DOM.</Typog
                     name="ResponsiveDrawer.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/ResponsiveDrawer.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/ResponsiveDrawer.tsx')}
+                    component={ResponsiveDrawerComponent} 
+                    raw={ResponsiveDrawerRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Persistent drawer</Typography>
 <Typography className="text-14 mb-32" component="div">Persistent navigation drawers can toggle open or closed.
@@ -118,15 +138,15 @@ They are not recommended for apps with multiple levels of hierarchy that require
                     name="PersistentDrawerLeft.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/PersistentDrawerLeft.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/PersistentDrawerLeft.tsx')}
+                    component={PersistentDrawerLeftComponent} 
+                    raw={PersistentDrawerLeftRaw}
                     />
 <FuseExample
                     name="PersistentDrawerRight.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/PersistentDrawerRight.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/PersistentDrawerRight.tsx')}
+                    component={PersistentDrawerRightComponent} 
+                    raw={PersistentDrawerRightRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Mini variant drawer</Typography>
 <Typography className="text-14 mb-32" component="div">In this variation, the persistent navigation drawer changes its width.
@@ -137,8 +157,8 @@ When expanded, it appears as the standard persistent navigation drawer.</Typogra
                     name="MiniDrawer.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/MiniDrawer.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/MiniDrawer.tsx')}
+                    component={MiniDrawerComponent} 
+                    raw={MiniDrawerRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Permanent drawer</Typography>
 <Typography className="text-14 mb-32" component="div">Permanent navigation drawers are always visible and pinned to the left edge, at the same elevation as the content or background. They cannot be closed.</Typography>
@@ -149,15 +169,15 @@ When expanded, it appears as the standard persistent navigation drawer.</Typogra
                     name="PermanentDrawerLeft.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/PermanentDrawerLeft.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/PermanentDrawerLeft.tsx')}
+                    component={PermanentDrawerLeftComponent} 
+                    raw={PermanentDrawerLeftRaw}
                     />
 <FuseExample
                     name="PermanentDrawerRight.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/PermanentDrawerRight.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/PermanentDrawerRight.tsx')}
+                    component={PermanentDrawerRightComponent} 
+                    raw={PermanentDrawerRightRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Clipped under the app bar</Typography>
 <Typography className="text-14 mb-32" component="div">Apps focused on productivity that require balance across the screen.</Typography>
@@ -165,8 +185,8 @@ When expanded, it appears as the standard persistent navigation drawer.</Typogra
                     name="ClippedDrawer.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/drawers/ClippedDrawer.tsx').default} 
-                    raw={require('!raw-loader!../components/drawers/ClippedDrawer.tsx')}
+                    component={ClippedDrawerComponent} 
+                    raw={ClippedDrawerRaw}
                     /></Typography>
 
                 </>

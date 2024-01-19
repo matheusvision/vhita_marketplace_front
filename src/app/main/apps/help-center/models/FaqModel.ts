@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { FaqType } from '../types/FaqType';
+import { Faq } from '../HelpCenterApi';
 
 /**
  * Creates a new faq object with the specified data.
  */
-const FaqModel = (data: PartialDeep<FaqType>) =>
+const FaqModel = (data: PartialDeep<Faq>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId(),
 		categoryId: '',

@@ -6,16 +6,22 @@ import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import NewVsReturningWidgetType from '../types/NewVsReturningWidgetType';
+import { useSelector } from 'react-redux';
+import NewVsReturningWidgetType from './types/NewVsReturningWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**
  * New vs. returning widget.
  */
 function NewVsReturningWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { series, labels, uniqueVisitors } = widgets.newVsReturning as NewVsReturningWidgetType;
+	const widget = useSelector(selectWidget<NewVsReturningWidgetType>('newVsReturning'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, labels, uniqueVisitors } = widget;
+
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
 

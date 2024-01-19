@@ -13,11 +13,11 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import CardAddChecklistItem from './CardAddChecklistItem';
 import CardChecklistItem from './CardChecklistItem';
 import CardChecklistName, { CardChecklistHandle } from './CardChecklistName';
-import { ChecklistType } from '../../../../types/ChecklistType';
+import { ScrumboardChecklist } from '../../../../ScrumboardApi';
 
 type CardChecklistProps = {
-	onCheckListChange: (checklist: ChecklistType, index: number) => void;
-	checklist: ChecklistType;
+	onCheckListChange: (checklist: ScrumboardChecklist, index: number) => void;
+	checklist: ScrumboardChecklist;
 	index: number;
 	onRemoveCheckList: () => void;
 };

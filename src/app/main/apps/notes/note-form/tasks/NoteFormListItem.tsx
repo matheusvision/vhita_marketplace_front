@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ChangeEvent } from 'react';
-import { NoteListItemType } from '../../types/NoteListItemType';
+import { NoteListItemType } from '../../NotesApi';
 
 type NoteFormListItemProps = {
 	onListItemRemove: (id: string) => void;
@@ -51,7 +51,7 @@ function NoteFormListItem(props: NoteFormListItemProps) {
 			/>
 			<Input
 				className={clsx('flex flex-1 mx-8', item.completed && 'line-through opacity-50')}
-				name="text"
+				name="content"
 				value={item.content}
 				onChange={handleChange}
 				disableUnderline

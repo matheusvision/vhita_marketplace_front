@@ -1,8 +1,7 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
-import mock from '../mock';
-import CourseType from '../../app/main/apps/academy/types/CourseType';
-import { Params } from '../ExtendedMockAdapter';
+import ExtendedMockAdapter, { Params } from '../ExtendedMockAdapter';
+import { Course } from '../../app/main/apps/academy/AcademyApi';
 
 const demoCourseContent = mockApi.components.examples.academy_demo_course_content.value;
 const exampleCourseSteps = mockApi.components.examples.academy_demo_course_steps.value;
@@ -19,41 +18,42 @@ const coursesDB = courses.map((course) => ({
 	steps
 }));
 
-mock.onGet('/api/academy/courses').reply(() => {
-	return [200, coursesDB];
-});
+export const academyApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/academy/courses').reply(() => {
+		return [200, coursesDB];
+	});
 
-mock.onGet('/api/academy/courses/:courseId').reply((config) => {
-	const { courseId } = config.params as Params;
+	mock.onGet('/academy/courses/:courseId').reply((config) => {
+		const { courseId } = config.params as Params;
+		const course = _.find(coursesDB, { id: courseId });
 
-	const course = _.find(coursesDB, { id: courseId });
+		if (!course) {
+			return [404, 'Requested data do not exist.'];
+		}
+		return [200, course];
+	});
 
-	if (!course) {
-		return [404, 'Requested data do not exist.'];
-	}
-	return [200, course];
-});
+	mock.onPut('/academy/courses/:courseId').reply((config) => {
+		const { courseId } = config.params as Params;
 
-mock.onPut('/api/academy/courses/:courseId').reply((config) => {
-	const { courseId } = config.params as Params;
+		const course = _.find(coursesDB, { id: courseId }) as Course;
 
-	const course = _.find(coursesDB, { id: courseId }) as CourseType;
+		const newData = JSON.parse(config.data as string) as Course;
 
-	const newData = JSON.parse(config.data as string) as CourseType;
+		if (!course) {
+			return [404, 'Requested data do not exist.'];
+		}
 
-	if (!course) {
-		return [404, 'Requested data do not exist.'];
-	}
+		_.assign(course, _.merge({}, course, newData));
 
-	_.assign(course, _.merge({}, course, newData));
+		if (newData?.progress?.currentStep === course?.totalSteps) {
+			_.assign(course, _.merge({}, course, { progress: { completed: course.progress.completed + 1 } }));
+		}
 
-	if (newData?.progress?.currentStep === course?.totalSteps) {
-		_.assign(course, _.merge({}, course, { progress: { completed: course.progress.completed + 1 } }));
-	}
+		return [200, course];
+	});
 
-	return [200, course];
-});
-
-mock.onGet('/api/academy/categories').reply(() => {
-	return [200, categoriesDB];
-});
+	mock.onGet('/academy/categories').reply(() => {
+		return [200, categoriesDB];
+	});
+};

@@ -9,16 +9,21 @@ import { memo } from 'react';
 import format from 'date-fns/format';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import RecentTransactionsWidgetType from '../types/RecentTransactionsWidgetType';
+import { useSelector } from 'react-redux';
+import RecentTransactionsWidgetType from './types/RecentTransactionsWidgetType';
+import { selectWidget } from '../FinanceDashboardApi';
 
 /**
  * The RecentTransactionsWidget widget.
  */
 function RecentTransactionsWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { columns, rows } = widgets.recentTransactions as RecentTransactionsWidgetType;
+	const widget = useSelector(selectWidget<RecentTransactionsWidgetType>('recentTransactions'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { columns, rows } = widget;
 
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">

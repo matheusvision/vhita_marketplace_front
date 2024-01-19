@@ -2,28 +2,29 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import NoteListItem from './NoteListItem';
-import { selectNotes, selectSearchText, selectVariateDescSize } from './store/notesSlice';
-import { NotesType } from './types/NoteType';
+import { NotesNote, RouteParams, useGetNotesListQuery } from './NotesApi';
+import { selectSearchText } from './store/searchTextSlice';
 
 /**
  * The note list.
  */
 function NoteList() {
-	const notes = useAppSelector(selectNotes);
-	const variateDescSize = useAppSelector(selectVariateDescSize);
-	const searchText = useAppSelector(selectSearchText);
-	const params = useParams<{ id: string; labelId: string }>();
-	const [filteredData, setFilteredData] = useState<NotesType>([]);
+	const routeParams = useParams<RouteParams>();
+	const { data: notes } = useGetNotesListQuery(routeParams);
+
+	const searchText = useSelector(selectSearchText);
+
+	const [filteredData, setFilteredData] = useState<NotesNote[]>([]);
 
 	useEffect(() => {
 		function filterData() {
 			let data = notes;
 
-			if (searchText.length === 0) {
+			if (searchText?.length === 0) {
 				return data;
 			}
 
@@ -32,21 +33,25 @@ function NoteList() {
 			return data;
 		}
 
-		if (notes.length > 0) {
+		if (notes?.length > 0) {
 			setFilteredData(filterData());
 		}
-	}, [notes, searchText, params]);
+	}, [notes, searchText, routeParams]);
 
-	return !filteredData || filteredData.length === 0 ? (
-		<div className="flex items-center justify-center h-full">
-			<Typography
-				color="text.secondary"
-				variant="h5"
-			>
-				There are no notes!
-			</Typography>
-		</div>
-	) : (
+	if (!filteredData || filteredData.length === 0) {
+		return (
+			<div className="flex items-center justify-center h-full">
+				<Typography
+					color="text.secondary"
+					variant="h5"
+				>
+					There are no notes!
+				</Typography>
+			</div>
+		);
+	}
+
+	return (
 		<div className="flex flex-wrap w-full">
 			<Masonry
 				breakpointCols={{
@@ -67,7 +72,6 @@ function NoteList() {
 						key={note.id}
 						note={note}
 						className="w-full rounded-20 shadow mb-16"
-						variateDescSize={variateDescSize}
 					/>
 				))}
 			</Masonry>

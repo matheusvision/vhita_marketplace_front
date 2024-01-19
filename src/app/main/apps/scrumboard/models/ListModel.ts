@@ -1,10 +1,10 @@
 import _ from '@lodash';
-import { ListType } from '../types/ListType';
+import { ScrumboardList } from '../ScrumboardApi';
 
 /**
  * The list model.
  */
-function ListModel(data: Partial<ListType>): ListType {
+function ListModel(data: Partial<ScrumboardList>): ScrumboardList {
 	data = data || {};
 
 	return _.defaults(data, {

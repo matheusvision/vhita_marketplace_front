@@ -3,10 +3,10 @@ import Divider from '@mui/material/Divider';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import clsx from 'clsx';
 import CourseCategory from './CourseCategory';
-import CourseType from './types/CourseType';
+import { Course } from './AcademyApi';
 
 type CourseInfoProps = {
-	course: CourseType;
+	course: Course;
 	className?: string;
 };
 

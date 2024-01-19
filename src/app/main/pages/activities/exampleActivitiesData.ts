@@ -74,7 +74,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 		description: '<strong>Tina Harris</strong> started a chat with you',
 		date: sub(new Date(), { days: 1 }),
 		linkedContent: 'Go to Chat (Tina Harris)',
-		link: '/apps/chat/5636c0ba-fa47-42ca-9160-27340583041e',
+		link: '/apps/messenger/5636c0ba-fa47-42ca-9160-27340583041e',
 		useRouter: true
 	},
 	{

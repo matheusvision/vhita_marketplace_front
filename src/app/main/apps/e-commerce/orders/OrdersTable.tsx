@@ -1,5 +1,4 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import Checkbox from '@mui/material/Checkbox';
 import Table from '@mui/material/Table';
@@ -9,17 +8,16 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import withRouter from '@fuse/core/withRouter';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { Many } from 'lodash';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import OrdersStatus from '../order/OrdersStatus';
-import { getOrders, selectOrders, selectOrdersSearchText } from '../store/ordersSlice';
 import OrdersTableHead from './OrdersTableHead';
-import { OrderType, OrdersType } from '../types/OrderType';
+import { EcommerceOrder, selectFilteredOrders, useGetECommerceOrdersQuery } from '../ECommerceApi';
 
 type OrdersTableProps = WithRouterProps & {
 	navigate: (path: string) => void;
@@ -30,13 +28,13 @@ type OrdersTableProps = WithRouterProps & {
  */
 function OrdersTable(props: OrdersTableProps) {
 	const { navigate } = props;
-	const dispatch = useAppDispatch();
-	const orders = useAppSelector(selectOrders);
-	const searchText = useAppSelector(selectOrdersSearchText);
 
-	const [loading, setLoading] = useState(true);
+	const { data, isLoading } = useGetECommerceOrdersQuery();
+
+	const orders = useSelector(selectFilteredOrders(data));
+
 	const [selected, setSelected] = useState<string[]>([]);
-	const [data, setData] = useState<OrdersType>(orders);
+
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [tableOrder, setTableOrder] = useState<{
@@ -46,19 +44,6 @@ function OrdersTable(props: OrdersTableProps) {
 		direction: 'asc',
 		id: ''
 	});
-
-	useEffect(() => {
-		dispatch(getOrders()).then(() => setLoading(false));
-	}, [dispatch]);
-
-	useEffect(() => {
-		if (searchText.length !== 0) {
-			setData(FuseUtils.filterArrayByString(orders, searchText));
-			setPage(0);
-		} else {
-			setData(orders);
-		}
-	}, [orders, searchText]);
 
 	function handleRequestSort(event: MouseEvent<HTMLSpanElement>, property: string) {
 		const newOrder: {
@@ -75,7 +60,7 @@ function OrdersTable(props: OrdersTableProps) {
 
 	function handleSelectAllClick(event: ChangeEvent<HTMLInputElement>) {
 		if (event.target.checked) {
-			setSelected(data.map((n) => n.id));
+			setSelected(orders.map((n) => n.id));
 			return;
 		}
 
@@ -86,7 +71,7 @@ function OrdersTable(props: OrdersTableProps) {
 		setSelected([]);
 	}
 
-	function handleClick(item: OrderType) {
+	function handleClick(item: EcommerceOrder) {
 		navigate(`/apps/e-commerce/orders/${item.id}`);
 	}
 
@@ -115,15 +100,11 @@ function OrdersTable(props: OrdersTableProps) {
 		setRowsPerPage(+event.target.value);
 	}
 
-	if (loading) {
-		return (
-			<div className="flex items-center justify-center h-full">
-				<FuseLoading />
-			</div>
-		);
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
-	if (data.length === 0) {
+	if (orders.length === 0) {
 		return (
 			<motion.div
 				initial={{ opacity: 0 }}
@@ -153,15 +134,15 @@ function OrdersTable(props: OrdersTableProps) {
 						tableOrder={tableOrder}
 						onSelectAllClick={handleSelectAllClick}
 						onRequestSort={handleRequestSort}
-						rowCount={data.length}
+						rowCount={orders.length}
 						onMenuItemClick={handleDeselect}
 					/>
 
 					<TableBody>
 						{_.orderBy(
-							data,
+							orders,
 							[
-								(o: OrderType) => {
+								(o: EcommerceOrder) => {
 									switch (o.id) {
 										case 'id': {
 											return parseInt(o.id, 10);
@@ -275,7 +256,7 @@ function OrdersTable(props: OrdersTableProps) {
 			<TablePagination
 				className="shrink-0 border-t-1"
 				component="div"
-				count={data.length}
+				count={orders.length}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				backIconButtonProps={{

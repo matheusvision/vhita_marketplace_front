@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import clsx from 'clsx';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
+import { selectFooterTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import DemoLayoutFooterContent from 'app/theme-layouts/shared-components/DemoLayoutFooterContent';
 
 type FooterLayout2Props = {

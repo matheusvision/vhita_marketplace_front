@@ -27,49 +27,31 @@ function DirectoryStructureDoc() {
 				className="language-jsx my-24"
 			>
 				{`
-				├── chat
-				│   ├── ChatApp.tsx
-				│   ├── ChatAppConfig.tsx
-				│   ├── ChatFirstScreen.tsx
-				│   ├── Statuses.tsx
-				│   ├── UserAvatar.tsx
-				│   ├── chat
-				│   │   ├── Chat.tsx
-				│   │   └── ChatMoreMenu.tsx
+				├── contacts
+				│   ├── ContactListItem.tsx
+				│   ├── ContactsApi.ts
+				│   ├── ContactsApp.tsx
+				│   ├── ContactsAppConfig.tsx
+				│   ├── ContactsHeader.tsx
+				│   ├── ContactsList.tsx
+				│   ├── ContactsSidebarContent.tsx
+				│   ├── contact
+				│   │   ├── ContactForm.tsx
+				│   │   ├── ContactView.tsx
+				│   │   ├── email-selector
+				│   │   │   ├── ContactEmailSelector.tsx
+				│   │   │   └── EmailInput.tsx
+				│   │   └── phone-number-selector
+				│   │       ├── CountryCodeSelector.tsx
+				│   │       ├── PhoneNumberInput.tsx
+				│   │       └── PhoneNumberSelector.tsx
 				│   ├── models
-				│   │   ├── ChatListItemModel.tsx
-				│   │   ├── ChatMessageModel.tsx
-				│   │   ├── ContactModel.tsx
-				│   │   └── UserModel.tsx
-				│   ├── sidebars
-				│   │   ├── contact
-				│   │   │   └── ContactSidebar.tsx
-				│   │   ├── main
-				│   │   │   ├── ChatListItem.tsx
-				│   │   │   ├── ContactListItem.tsx
-				│   │   │   ├── MainSidebar.tsx
-				│   │   │   └── MainSidebarMoreMenu.tsx
-				│   │   └── user
-				│   │       └── UserSidebar.tsx
-				│   ├── store
-				│   │   ├── chatListSlice.tsx
-				│   │   ├── chatMessagesSlice.tsx
-				│   │   ├── contactsSlice.tsx
-				│   │   ├── index.tsx
-				│   │   └── userSlice.tsx
-				│   └── types
-				│       ├── ChatListItemType.ts
-				│       ├── ChatListType.ts
-				│       ├── ChatMessageType.ts
-				│       ├── ContactAttachmentsType.ts
-				│       ├── ContactDetailsType.ts
-				│       ├── ContactEmailType.ts
-				│       ├── ContactPhoneNumberType.ts
-				│       ├── ContactStatusType.ts
-				│       ├── ContactType.ts
-				│       ├── MessageType.ts
-				│       └── UserType.ts
-				└── contacts`}
+				│   │   ├── ContactModel.ts
+				│   │   ├── CountryModel.ts
+				│   │   └── TagModel.ts
+				│   └── store
+				│       ├── index.ts
+				│       └── searchTextSlice.ts`}
 			</FuseHighlight>
 			<Typography
 				className="mb-16"
@@ -77,7 +59,7 @@ function DirectoryStructureDoc() {
 			>
 				The directory structure of Fuse React is organized by feature, with each feature having its own
 				directory. Within each feature directory, there are subdirectories for components, models, sidebars,
-				store, and types.
+				store.
 			</Typography>
 			<Typography
 				className="mb-16"
@@ -91,21 +73,21 @@ function DirectoryStructureDoc() {
 				component="p"
 			>
 				<strong>Files:</strong> named in PascalCase and use the name of the component, type, or model they
-				represent. Example: `ChatApp.tsx`, `ChatListItemType.ts`.
+				represent. Example: ` ContactApp.tsx`.
 			</Typography>
 			<Typography
 				className="mb-16"
 				component="p"
 			>
 				<strong>Components:</strong> named in PascalCase and use the name of the component they represent.
-				Example: `ChatApp.tsx`, `Chat.tsx`.
+				Example: ` ContactApp.tsx`, ` ContactForm.tsx`.
 			</Typography>
 			<Typography
 				className="mb-16"
 				component="p"
 			>
 				<strong>Models:</strong> named in PascalCase and use the name of the model they represent. Example:
-				`ChatListItemModel.tsx`, `UserModel.tsx`.
+				`ContactModel.tsx`.
 			</Typography>
 			<Typography
 				className="mb-16"
@@ -122,21 +104,21 @@ function DirectoryStructureDoc() {
 				component="p"
 			>
 				<strong>Store files:</strong> named in camelCase and use the name of the slice they represent. Example:
-				`chatListSlice.tsx`, `userSlice.tsx`.
+				`contactListSlice.tsx`, `userSlice.tsx`.
 			</Typography>
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				<strong>Types:</strong> named in PascalCase and use the name of the type they represent. Example:
-				`ChatListItemType.ts`, `UserType.ts`.
+				<strong>Api files:</strong> have api endpoints and named in PascalCase. RTK Query is used for API calls.
+				Example: `ContaactsApi.ts`
 			</Typography>
 			<Typography
 				className="mb-16"
 				component="p"
 			>
 				<strong>Config files:</strong> named in PascalCase and use the name of the feature they represent,
-				followed by `Config`. Example: `ChatAppConfig.tsx`.
+				followed by `Config`. Example: ` ContactAppConfig.tsx`.
 			</Typography>
 			<Typography
 				className="mb-16"

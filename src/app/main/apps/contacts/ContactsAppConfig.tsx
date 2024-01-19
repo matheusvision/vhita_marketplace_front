@@ -1,9 +1,8 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
+import { lazy } from 'react';
 import ContactView from './contact/ContactView';
 import ContactForm from './contact/ContactForm';
-import reducer from './store';
 
-const ContactsApp = lazyWithReducer('contactsApp', () => import('./ContactsApp'), reducer);
+const ContactsApp = lazy(() => import('./ContactsApp'));
 
 /**
  * The ContactsApp configuration.

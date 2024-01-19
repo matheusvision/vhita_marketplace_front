@@ -2,23 +2,26 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { selectFiles, selectFolders, selectPath } from './store/itemsSlice';
+import { FileManagerItem, FileManagerPath } from './FileManagerApi';
+
+type FileManagerHeaderProps = {
+	path: FileManagerPath[];
+	folders: FileManagerItem[];
+	files: FileManagerItem[];
+};
 
 /**
  * The file manager header.
  */
-function FileManagerHeader() {
-	const folders = useAppSelector(selectFolders);
-	const files = useAppSelector(selectFiles);
-	const path = useAppSelector(selectPath);
+function FileManagerHeader(props: FileManagerHeaderProps) {
+	const { path, folders, files } = props;
 
 	return (
-		<div className="p-24 sm:p-32 w-full flex flex-col sm:flex-row space-y-8 sm:space-y-0 items-center justify-between">
-			<div className="flex flex-col items-center sm:items-start space-y-8 sm:space-y-0">
+		<div className="p-24 sm:p-32 w-full flex  space-y-8 sm:space-y-0 items-center justify-between">
+			<div className="flex flex-col space-y-8 sm:space-y-0">
 				<motion.span
 					className="flex items-end"
 					initial={{ x: -20 }}
@@ -32,7 +35,7 @@ function FileManagerHeader() {
 					>
 						File Manager
 					</Typography>
-					{path.length > 0 && (
+					{path && path?.length > 0 && (
 						<Breadcrumbs
 							aria-label="breadcrumb"
 							className="mx-12"
@@ -73,9 +76,9 @@ function FileManagerHeader() {
 					className="mx-8 whitespace-nowrap"
 					variant="contained"
 					color="secondary"
-					startIcon={<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>}
 				>
-					Upload file
+					<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>
+					<span className="hidden sm:flex mx-8">Upload file</span>
 				</Button>
 			</div>
 		</div>

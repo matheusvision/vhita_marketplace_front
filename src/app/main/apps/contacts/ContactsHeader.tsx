@@ -5,21 +5,34 @@ import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { ChangeEvent } from 'react';
-import { selectFilteredContacts, selectSearchText, setContactsSearchText } from './store/contactsSlice';
+import { useAppDispatch } from 'app/store/store';
+import { ChangeEvent, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { setSearchText, resetSearchText, selectSearchText } from './store/searchTextSlice';
+import { selectFilteredContactList, useGetContactsListQuery } from './ContactsApi';
 
 /**
  * The contacts header.
  */
 function ContactsHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useAppSelector(selectSearchText);
-	const filteredData = useAppSelector(selectFilteredContacts);
+	const searchText = useSelector(selectSearchText);
+	const { data, isLoading } = useGetContactsListQuery();
 
+	const filteredData = useSelector(selectFilteredContactList(data));
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetSearchText());
+		};
+	}, []);
+
+	if (isLoading) {
+		return null;
+	}
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1">
-			<div className="flex flex-col items-center sm:items-start">
+			<div className="flex flex-col">
 				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
@@ -37,11 +50,11 @@ function ContactsHeader() {
 						className="text-14 font-medium ml-2"
 						color="text.secondary"
 					>
-						{`${filteredData.length} contacts`}
+						{`${filteredData?.length} contacts`}
 					</Typography>
 				</motion.span>
 			</div>
-			<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 flex-1 items-center mt-16 -mx-8">
+			<div className="flex flex-1 items-center mt-16 -mx-8">
 				<Box
 					component={motion.div}
 					initial={{ y: -20, opacity: 0 }}
@@ -64,7 +77,7 @@ function ContactsHeader() {
 						inputProps={{
 							'aria-label': 'Search'
 						}}
-						onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setContactsSearchText(ev))}
+						onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(ev))}
 					/>
 				</Box>
 				<Button
@@ -75,7 +88,7 @@ function ContactsHeader() {
 					to="new/edit"
 				>
 					<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>
-					<span className="mx-8">Add</span>
+					<span className="hidden sm:flex mx-8">Add</span>
 				</Button>
 			</div>
 		</div>

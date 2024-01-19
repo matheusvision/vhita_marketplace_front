@@ -5,7 +5,23 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import StandardImageListComponent from '../components/image-list/StandardImageList';
+import StandardImageListRaw from '../components/image-list/StandardImageList.tsx?raw';
+import QuiltedImageListComponent from '../components/image-list/QuiltedImageList';
+import QuiltedImageListRaw from '../components/image-list/QuiltedImageList.tsx?raw';
+import WovenImageListComponent from '../components/image-list/WovenImageList';
+import WovenImageListRaw from '../components/image-list/WovenImageList.tsx?raw';
+import MasonryImageListComponent from '../components/image-list/MasonryImageList';
+import MasonryImageListRaw from '../components/image-list/MasonryImageList.tsx?raw';
+import TitlebarImageListComponent from '../components/image-list/TitlebarImageList';
+import TitlebarImageListRaw from '../components/image-list/TitlebarImageList.tsx?raw';
+import TitlebarBelowImageListComponent from '../components/image-list/TitlebarBelowImageList';
+import TitlebarBelowImageListRaw from '../components/image-list/TitlebarBelowImageList.tsx?raw';
+import TitlebarBelowMasonryImageListComponent from '../components/image-list/TitlebarBelowMasonryImageList';
+import TitlebarBelowMasonryImageListRaw from '../components/image-list/TitlebarBelowMasonryImageList.tsx?raw';
+import CustomImageListComponent from '../components/image-list/CustomImageList';
+import CustomImageListRaw from '../components/image-list/CustomImageList.tsx?raw';
+                   
                    function ImageListDoc(props) {
                      return (
                        
@@ -36,8 +52,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="StandardImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/StandardImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/StandardImageList.tsx')}
+                    component={StandardImageListComponent} 
+                    raw={StandardImageListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Quilted image list</Typography>
 <Typography className="text-14 mb-32" component="div">Quilted image lists emphasize certain items over others in a collection. They create hierarchy using varied container sizes and ratios.</Typography>
@@ -45,8 +61,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="QuiltedImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/QuiltedImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/QuiltedImageList.tsx')}
+                    component={QuiltedImageListComponent} 
+                    raw={QuiltedImageListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Woven image list</Typography>
 <Typography className="text-14 mb-32" component="div">Woven image lists use alternating container ratios to create a rhythmic layout. A woven image list is best for browsing peer content.</Typography>
@@ -54,8 +70,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="WovenImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/WovenImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/WovenImageList.tsx')}
+                    component={WovenImageListComponent} 
+                    raw={WovenImageListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Masonry image list</Typography>
 <Typography className="text-14 mb-32" component="div">Masonry image lists use dynamically sized container heights that reflect the aspect ratio of each image. This image list is best used for browsing uncropped peer content.</Typography>
@@ -63,8 +79,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="MasonryImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/MasonryImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/MasonryImageList.tsx')}
+                    component={MasonryImageListComponent} 
+                    raw={MasonryImageListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Image list with title bars</Typography>
 <Typography className="text-14 mb-32" component="div">This example demonstrates the use of the <code>{`ImageListItemBar`}</code> to add an overlay to each item.
@@ -73,8 +89,8 @@ The overlay can accommodate a <code>{`title`}</code>, <code>{`subtitle`}</code> 
                     name="TitlebarImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/TitlebarImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/TitlebarImageList.tsx')}
+                    component={TitlebarImageListComponent} 
+                    raw={TitlebarImageListRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Title bar below image (standard)</Typography>
 <Typography className="text-14 mb-32" component="div">The title bar can be placed below the image.</Typography>
@@ -82,16 +98,16 @@ The overlay can accommodate a <code>{`title`}</code>, <code>{`subtitle`}</code> 
                     name="TitlebarBelowImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/TitlebarBelowImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/TitlebarBelowImageList.tsx')}
+                    component={TitlebarBelowImageListComponent} 
+                    raw={TitlebarBelowImageListRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Title bar below image (masonry)</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="TitlebarBelowMasonryImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/TitlebarBelowMasonryImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/TitlebarBelowMasonryImageList.tsx')}
+                    component={TitlebarBelowMasonryImageListComponent} 
+                    raw={TitlebarBelowMasonryImageListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom image list</Typography>
 <Typography className="text-14 mb-32" component="div">In this example the items have a customized titlebar, positioned at the top and with a custom gradient <code>{`titleBackground`}</code>.
@@ -100,8 +116,8 @@ The secondary action <code>{`IconButton`}</code> is positioned on the left. The 
                     name="CustomImageList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/image-list/CustomImageList.tsx').default} 
-                    raw={require('!raw-loader!../components/image-list/CustomImageList.tsx')}
+                    component={CustomImageListComponent} 
+                    raw={CustomImageListRaw}
                     /></Typography>
 
                 </>

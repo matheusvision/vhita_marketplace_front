@@ -5,7 +5,21 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import VariantsComponent from '../components/skeleton/Variants';
+import VariantsRaw from '../components/skeleton/Variants.tsx?raw';
+import AnimationsComponent from '../components/skeleton/Animations';
+import AnimationsRaw from '../components/skeleton/Animations.tsx?raw';
+import YouTubeComponent from '../components/skeleton/YouTube';
+import YouTubeRaw from '../components/skeleton/YouTube.tsx?raw';
+import FacebookComponent from '../components/skeleton/Facebook';
+import FacebookRaw from '../components/skeleton/Facebook.tsx?raw';
+import SkeletonTypographyComponent from '../components/skeleton/SkeletonTypography';
+import SkeletonTypographyRaw from '../components/skeleton/SkeletonTypography.tsx?raw';
+import SkeletonChildrenComponent from '../components/skeleton/SkeletonChildren';
+import SkeletonChildrenRaw from '../components/skeleton/SkeletonChildren.tsx?raw';
+import SkeletonColorComponent from '../components/skeleton/SkeletonColor';
+import SkeletonColorRaw from '../components/skeleton/SkeletonColor.tsx?raw';
+                   
                    function SkeletonDoc(props) {
                      return (
                        
@@ -45,7 +59,7 @@ For instance:</Typography>
       
       alt={item.title}
       src={item.src}
-    />
+    //>
   ) : (
     <Skeleton variant="rectangular" width={210} height={118} />
   );
@@ -62,8 +76,8 @@ For instance:</Typography>
                     name="Variants.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/Variants.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/Variants.tsx')}
+                    component={VariantsComponent} 
+                    raw={VariantsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Animations</Typography>
 <Typography className="text-14 mb-32" component="div">By default, the skeleton pulsates, but you can change the animation to a wave or disable it entirely.</Typography>
@@ -71,24 +85,24 @@ For instance:</Typography>
                     name="Animations.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/Animations.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/Animations.tsx')}
+                    component={AnimationsComponent} 
+                    raw={AnimationsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Pulsate example</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="YouTube.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/YouTube.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/YouTube.tsx')}
+                    component={YouTubeComponent} 
+                    raw={YouTubeRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Wave example</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="Facebook.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/Facebook.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/Facebook.tsx')}
+                    component={FacebookComponent} 
+                    raw={FacebookRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Inferring dimensions</Typography>
 <Typography className="text-14 mb-32" component="div">In addition to accepting <code>{`width`}</code> and <code>{`height`}</code> props, the component can also infer the dimensions.</Typography>
@@ -103,8 +117,8 @@ For instance:</Typography>
                     name="SkeletonTypography.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/SkeletonTypography.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/SkeletonTypography.tsx')}
+                    component={SkeletonTypographyComponent} 
+                    raw={SkeletonTypographyRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">But when it comes to other components, you may not want to repeat the width and
 height. In these instances, you can pass <code>{`children`}</code> and it will
@@ -125,8 +139,8 @@ loading ? (
                     name="SkeletonChildren.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/SkeletonChildren.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/SkeletonChildren.tsx')}
+                    component={SkeletonChildrenComponent} 
+                    raw={SkeletonChildrenRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div">The color of the component can be customized by changing its <code>{`background-color`}</code> CSS property.
@@ -135,8 +149,8 @@ This is especially useful when on a black background (as the skeleton will other
                     name="SkeletonColor.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/skeleton/SkeletonColor.tsx').default} 
-                    raw={require('!raw-loader!../components/skeleton/SkeletonColor.tsx')}
+                    component={SkeletonColorComponent} 
+                    raw={SkeletonColorRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Accessibility</Typography>
 <Typography className="text-14 mb-32" component="div">Skeleton screens provide an alternative to the traditional spinner method.

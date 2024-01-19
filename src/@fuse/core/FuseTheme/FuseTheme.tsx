@@ -11,7 +11,7 @@ const useEnhancedEffect = typeof window === 'undefined' ? useEffect : useLayoutE
 
 type FuseThemeProps = {
 	children: ReactNode;
-	direction: 'rtl' | 'ltr';
+	direction: string;
 	theme: Theme;
 };
 

@@ -1,23 +1,24 @@
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import withRouter from '@fuse/core/withRouter';
 import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import MailActionsMenu from './MailActionsMenu';
 import MailLabelsMenu from './MailLabelsMenu';
-import { selectMail } from '../store/mailSlice';
-import { setActionToMails } from '../store/mailsSlice';
+import { useApplyMailboxMailActionMutation, useGetMailboxMailQuery } from '../MailboxApi';
 
 /**
  * The mail toolbar.
  */
 function MailToolbar() {
-	const dispatch = useAppDispatch();
-	const { data: mail } = useAppSelector(selectMail);
+	const { mailId } = useParams() as { mailId: string };
+	const { data: mail } = useGetMailboxMailQuery(mailId);
+
+	const [setActionToMails] = useApplyMailboxMailActionMutation();
+
 	const theme = useTheme();
 	const navigate = useNavigate();
 
@@ -49,7 +50,7 @@ function MailToolbar() {
 				<MailLabelsMenu
 					labels={mail.labels}
 					onChange={(value) => {
-						dispatch(setActionToMails({ type: 'labels', value, ids: [mail.id] }));
+						setActionToMails({ type: 'labels', value, ids: [mail.id] });
 					}}
 					className="mx-4"
 				/>
@@ -57,9 +58,7 @@ function MailToolbar() {
 				<Tooltip title="Set important">
 					<IconButton
 						className="mx-4"
-						onClick={() =>
-							dispatch(setActionToMails({ type: 'important', value: !mail.important, ids: [mail.id] }))
-						}
+						onClick={() => setActionToMails({ type: 'important', value: !mail.important, ids: [mail.id] })}
 					>
 						<FuseSvgIcon className={clsx(mail.important && 'text-red-600 dark:text-red-500')}>
 							heroicons-outline:exclamation-circle
@@ -70,9 +69,7 @@ function MailToolbar() {
 				<Tooltip title="Set starred">
 					<IconButton
 						className="mx-4"
-						onClick={() =>
-							dispatch(setActionToMails({ type: 'starred', value: !mail.starred, ids: [mail.id] }))
-						}
+						onClick={() => setActionToMails({ type: 'starred', value: !mail.starred, ids: [mail.id] })}
 					>
 						<FuseSvgIcon className={clsx(mail.starred && 'text-orange-500 dark:text-red-400')}>
 							heroicons-outline:star

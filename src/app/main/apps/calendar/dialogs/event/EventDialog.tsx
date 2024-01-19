@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import FuseUtils from '@fuse/utils/FuseUtils';
 import Button from '@mui/material/Button';
@@ -8,40 +7,41 @@ import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { MouseEvent, useCallback, useEffect } from 'react';
-import * as yup from 'yup';
 import _ from '@lodash';
 import { Popover } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import {
-	addEvent,
-	closeEditEventDialog,
-	closeNewEventDialog,
-	removeEvent,
-	selectEventDialog,
-	updateEvent
-} from '../../store/eventsSlice';
+import { useAppDispatch } from 'app/store/store';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { useSelector } from 'react-redux';
+import { closeEditEventDialog, closeNewEventDialog, selectEventDialog } from '../../store/eventDialogSlice';
 import EventLabelSelect, { EventLabelSelectProps } from '../../EventLabelSelect';
 import EventModel from '../../models/EventModel';
-import { selectFirstLabelId } from '../../store/labelsSlice';
-import { EventType } from '../../types/EventType';
+import {
+	Event,
+	useCreateCalendarEventMutation,
+	useDeleteCalendarEventMutation,
+	useGetCalendarLabelsQuery,
+	useUpdateCalendarEventMutation
+} from '../../CalendarApi';
 
 const defaultValues = EventModel();
 
 /**
  * Form Validation Schema
  */
-
-const schema = yup.object().shape({
-	id: yup.string().required('You must enter an id'),
-	title: yup.string().required('You must enter a title'),
-	start: yup.string().required('Please enter start date'),
-	end: yup.string(),
-	allDay: yup.bool(),
-	extendedProps: yup.object().shape({
-		desc: yup.string(),
-		label: yup.string()
-	})
+const schema = z.object({
+	id: z.string().nonempty('You must enter an id'),
+	title: z.string().nonempty('You must enter a title'),
+	start: z.string().nonempty('Please enter start date'),
+	end: z.string().optional(),
+	allDay: z.boolean().optional(),
+	extendedProps: z
+		.object({
+			desc: z.string().optional(),
+			label: z.string().optional()
+		})
+		.optional()
 });
 
 /**
@@ -49,13 +49,17 @@ const schema = yup.object().shape({
  */
 function EventDialog() {
 	const dispatch = useAppDispatch();
-	const eventDialog = useAppSelector(selectEventDialog);
-	const firstLabelId = useAppSelector(selectFirstLabelId);
+	const eventDialog = useSelector(selectEventDialog);
+	const { data: labels } = useGetCalendarLabelsQuery();
+	const firstLabelId = labels ? labels[0]?.id : null;
+	const [createEvent] = useCreateCalendarEventMutation();
+	const [updateEvent] = useUpdateCalendarEventMutation();
+	const [deleteEvent] = useDeleteCalendarEventMutation();
 
-	const { reset, formState, watch, control, getValues } = useForm<EventType>({
+	const { reset, formState, watch, control, getValues } = useForm<Event>({
 		defaultValues,
 		mode: 'onChange',
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
@@ -115,9 +119,9 @@ function EventDialog() {
 		const data = getValues();
 
 		if (eventDialog.type === 'new') {
-			dispatch(addEvent(data));
+			createEvent({ Event: data });
 		} else {
-			dispatch(updateEvent({ ...eventDialog.data, ...data }));
+			updateEvent({ ...eventDialog.data, ...data });
 		}
 		closeComposeDialog();
 	}
@@ -126,7 +130,7 @@ function EventDialog() {
 	 * Remove Event
 	 */
 	function handleRemove() {
-		dispatch(removeEvent(id));
+		deleteEvent(id);
 		closeComposeDialog();
 	}
 

@@ -8,155 +8,186 @@ import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Utf8 from 'crypto-js/enc-utf8';
 import jwtDecode from 'jwt-decode';
 import { PartialDeep } from 'type-fest';
-import UserType from 'app/store/user/UserType';
-import UserModel from 'app/store/user/models/UserModel';
-import mock from '../mock';
+import UserModel from 'src/app/auth/user/models/UserModel';
+import { User } from 'src/app/auth/user';
+import axios, { AxiosRequestConfig } from 'axios';
 import mockApi from '../mock-api.json';
+import ExtendedMockAdapter from '../ExtendedMockAdapter';
 
-type UserAuthType = UserType & { password: string };
+type UserAuthType = User & { uid: string; password: string };
 
-let usersApi = mockApi.components.examples.auth_users.value as UserAuthType[];
+let usersApi = mockApi.components.examples.auth_users.value as unknown as UserAuthType[];
 
-mock.onGet('/api/auth/sign-in').reply((config) => {
-	const data = JSON.parse(config.data as string) as { email: string; password: string };
+export const authApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onPost('/auth/sign-in').reply((config) => {
+		const data = JSON.parse(config.data as string) as { email: string; password: string };
 
-	const { email, password } = data;
+		const { email, password } = data;
 
-	const user = _.cloneDeep(usersApi.find((_user) => _user.data.email === email));
+		const user = _.cloneDeep(usersApi.find((_user) => _user.data.email === email));
 
-	const error = [];
+		const error = [];
 
-	if (!user) {
-		error.push({
-			type: 'email',
-			message: 'Check your email address'
-		});
-	}
-
-	if (user && user.password !== password) {
-		error.push({
-			type: 'password',
-			message: 'Check your password'
-		});
-	}
-
-	if (error.length === 0) {
-		delete (user as Partial<UserAuthType>).password;
-
-		const access_token = generateJWTToken({ id: user.uuid });
-
-		const response = {
-			user,
-			access_token
-		};
-
-		return [200, response];
-	}
-
-	return [200, { error }];
-});
-
-mock.onGet('/api/auth/access-token').reply((config) => {
-	const data = JSON.parse(config.data as string) as { access_token: string };
-
-	const { access_token } = data;
-
-	if (verifyJWTToken(access_token)) {
-		const { id }: { id: string } = jwtDecode(access_token);
-
-		const user = _.cloneDeep(usersApi.find((_user) => _user.uuid === id));
-
-		delete (user as Partial<UserAuthType>).password;
-
-		const updatedAccessToken = generateJWTToken({ id: user.uuid });
-
-		const response = {
-			user,
-			access_token: updatedAccessToken
-		};
-
-		return [200, response];
-	}
-
-	const error = 'Invalid access token detected';
-
-	return [401, { error }];
-});
-
-mock.onPost('/api/auth/sign-up').reply((request) => {
-	const data = JSON.parse(request.data as string) as { displayName: string; password: string; email: string };
-	const { displayName, password, email } = data;
-	const isEmailExists = usersApi.find((_user) => _user.data.email === email);
-	const error = [];
-
-	if (isEmailExists) {
-		error.push({
-			type: 'email',
-			message: 'The email address is already in use'
-		});
-	}
-
-	if (error.length === 0) {
-		const newUser = UserModel({
-			uuid: FuseUtils.generateGUID(),
-			role: 'admin',
-			password,
-			data: {
-				displayName,
-				photoURL: 'assets/images/avatars/Abbott.jpg',
-				email,
-				settings: {},
-				shortcuts: []
-			}
-		} as UserAuthType) as UserAuthType;
-
-		usersApi = [...usersApi, newUser];
-
-		const user = _.cloneDeep(newUser);
-
-		delete (user as Partial<UserAuthType>).password;
-
-		const access_token = generateJWTToken({ id: user.uuid });
-
-		const response = {
-			user,
-			access_token
-		};
-
-		return [200, response];
-	}
-	return [200, { error }];
-});
-
-mock.onPost('/api/auth/user/update').reply((config) => {
-	const access_token = config?.headers?.Authorization as string;
-
-	const userData = jwtDecode(access_token);
-	const uuid = (userData as { [key: string]: string }).id;
-
-	const data = JSON.parse(config.data as string) as { user: PartialDeep<UserAuthType> };
-	const { user } = data;
-
-	let updatedUser: UserType;
-
-	usersApi = usersApi.map((_user) => {
-		if (uuid === _user.uuid) {
-			updatedUser = _.assign({}, _user, user);
+		if (!user) {
+			error.push({
+				type: 'email',
+				message: 'Check your email address'
+			});
 		}
-		return _user;
+
+		if (user && user.password !== password) {
+			error.push({
+				type: 'password',
+				message: 'Check your password'
+			});
+		}
+
+		if (error.length === 0) {
+			delete (user as Partial<UserAuthType>).password;
+
+			const access_token = generateJWTToken({ id: user.uid });
+
+			const response = {
+				user,
+				access_token
+			};
+
+			return [200, response];
+		}
+
+		return [400, error];
 	});
 
-	delete (updatedUser as Partial<UserAuthType>).password;
+	mock.onPost('/auth/refresh').reply((config) => {
+		const newTokenResponse = generateAccessToken(config);
 
-	return [200, updatedUser];
-});
+		if (newTokenResponse) {
+			const { access_token } = newTokenResponse;
 
-/**
- * JWT Token Generator/Verifier Helpers
- * !! Created for Demonstration Purposes, cannot be used for PRODUCTION
- */
+			return [200, null, { 'New-Access-Token': access_token }];
+		}
 
-const jwtSecret = 'some-secret-code-goes-here';
+		const error = 'Invalid access token detected or user not found';
+
+		return [401, { data: error }];
+	});
+
+	mock.onGet('/auth/user').reply((config) => {
+		const newTokenResponse = generateAccessToken(config);
+
+		if (newTokenResponse) {
+			const { access_token, user } = newTokenResponse;
+
+			return [200, user, { 'New-Access-Token': access_token }];
+		}
+
+		const error = 'Invalid access token detected or user not found';
+
+		return [401, { error }];
+	});
+
+	function generateAccessToken(config: AxiosRequestConfig): { access_token: string; user: User } | null {
+		const authHeader = config.headers.Authorization as string;
+
+		if (!authHeader) {
+			return null;
+		}
+
+		const [scheme, access_token] = authHeader.split(' ');
+
+		if (scheme !== 'Bearer' || !access_token) {
+			return null;
+		}
+
+		if (verifyJWTToken(access_token)) {
+			const { id }: { id: string } = jwtDecode(access_token);
+
+			const user = _.cloneDeep(usersApi.find((_user) => _user.uid === id));
+
+			if (user) {
+				delete (user as Partial<UserAuthType>).password;
+				const access_token = generateJWTToken({ id: user.uid });
+				return { access_token, user };
+			}
+		}
+
+		return null;
+	}
+
+	mock.onPost('/auth/sign-up').reply((request) => {
+		const data = JSON.parse(request.data as string) as { displayName: string; password: string; email: string };
+		const { displayName, password, email } = data;
+		const isEmailExists = usersApi.find((_user) => _user.data.email === email);
+		const error = [];
+
+		if (isEmailExists) {
+			error.push({
+				type: 'email',
+				message: 'The email address is already in use'
+			});
+		}
+
+		if (error.length === 0) {
+			const newUser = UserModel({
+				role: ['admin'],
+				data: {
+					displayName,
+					photoURL: 'assets/images/avatars/Abbott.jpg',
+					email,
+					shortcuts: [],
+					settings: {}
+				}
+			}) as UserAuthType;
+
+			newUser.uid = FuseUtils.generateGUID();
+			newUser.password = password;
+
+			usersApi = [...usersApi, newUser];
+
+			const user = _.cloneDeep(newUser);
+
+			delete (user as Partial<UserAuthType>).password;
+
+			const access_token = generateJWTToken({ id: user.uid });
+
+			const response = {
+				user,
+				access_token
+			};
+
+			return [200, response];
+		}
+		return [200, { error }];
+	});
+
+	mock.onPut('/auth/user').reply((config) => {
+		const access_token = config?.headers?.Authorization as string;
+
+		const userData = jwtDecode(access_token);
+		const uid = (userData as { [key: string]: string }).id;
+
+		const user = JSON.parse(config.data as string) as { user: PartialDeep<UserAuthType> };
+
+		let updatedUser: User;
+
+		usersApi = usersApi.map((_user) => {
+			if (uid === _user.uid) {
+				updatedUser = _.assign({}, _user, user);
+			}
+			return _user;
+		});
+
+		delete (updatedUser as Partial<UserAuthType>).password;
+
+		return [200, updatedUser];
+	});
+
+	/**
+	 * JWT Token Generator/Verifier Helpers
+	 * !! Created for Demonstration Purposes, cannot be used for PRODUCTION
+	 */
+
+	const jwtSecret = 'some-secret-code-goes-here';
 
 /* eslint-disable */
 
@@ -227,3 +258,32 @@ function verifyJWTToken(token: string) {
 	// Verify that the resulting signature is valid
 	return signature === signatureCheck;
 }
+
+// Generate Authorization header on each successfull response
+axios.interceptors.response.use(
+	(response) =>{
+		// get access token from response headers
+		const requestHeaders = response.config.headers;
+		const authorization = requestHeaders.Authorization as string;
+		const accessToken = authorization?.split(' ')[1];
+		const responseUrl = response.config.url;
+
+		if(responseUrl.startsWith('/mock-api') && authorization){
+
+			if(!accessToken || !verifyJWTToken(accessToken)){
+				const error = new Error("Invalid access token detected.");
+				// @ts-ignore
+				error.status = 401;
+				return Promise.reject(error);
+			}
+
+			const newAccessToken = generateAccessToken(response.config);
+
+			if(newAccessToken){
+				response.headers['New-Access-Token'] = newAccessToken.access_token as string;
+			}
+			return response;
+		}
+		return response;
+	});
+};

@@ -6,18 +6,22 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { Draggable } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import { AvatarGroup } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { MouseEvent } from 'react';
-import { openCardDialog } from '../../store/cardSlice';
-import { selectCardById } from '../../store/cardsSlice';
+import { useParams } from 'react-router-dom';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { openCardDialog } from '../../store/cardDialogSlice';
 import BoardCardLabel from './BoardCardLabel';
-import { selectMembers } from '../../store/membersSlice';
 import BoardCardDueDate from './BoardCardDueDate';
 import BoardCardCheckItems from './BoardCardCheckItems';
-import { selectBoard } from '../../store/boardSlice';
-import { CardType } from '../../types/CardType';
+import {
+	ScrumboardCard,
+	useGetScrumboardBoardCardsQuery,
+	useGetScrumboardBoardQuery,
+	useGetScrumboardMembersQuery
+} from '../../ScrumboardApi';
 
 const StyledCard = styled(Card)(({ theme }) => ({
 	'& ': {
@@ -37,27 +41,38 @@ type BoardCardProps = {
  */
 function BoardCard(props: BoardCardProps) {
 	const { cardId, index } = props;
-
 	const dispatch = useAppDispatch();
-	const { data: board } = useAppSelector(selectBoard);
-	const card = useAppSelector(selectCardById(cardId));
-	const members = useAppSelector(selectMembers);
-	const commentsCount = getCommentsCount(card);
-	const cardCoverImage = _.find(card.attachments, { id: card.attachmentCoverId });
 
-	function handleCardClick(ev: MouseEvent<HTMLDivElement>, _card: CardType) {
+	const routeParams = useParams();
+	const { boardId } = routeParams;
+
+	const { data: board, isLoading: isBoardLoading } = useGetScrumboardBoardQuery(boardId);
+	const { data: cards, isLoading: isCardsLoading } = useGetScrumboardBoardCardsQuery(boardId);
+	const { data: members, isLoading: isMembersLoading } = useGetScrumboardMembersQuery();
+
+	const card = _.find(cards, { id: cardId });
+
+	function handleCardClick(ev: MouseEvent<HTMLDivElement>, _card: ScrumboardCard) {
 		ev.preventDefault();
 
 		dispatch(openCardDialog(_card));
 	}
 
-	function getCommentsCount(_card: CardType) {
-		return _.sum(_card.activities.map((x) => (x.type === 'comment' ? 1 : 0)));
+	if (isBoardLoading || isCardsLoading || isMembersLoading) {
+		return <FuseLoading />;
 	}
 
-	if (!board) {
+	if (!card) {
 		return null;
 	}
+
+	function getCommentsCount(_card: ScrumboardCard) {
+		return _.sum(_card?.activities.map((x) => (x.type === 'comment' ? 1 : 0)));
+	}
+
+	const commentsCount = getCommentsCount(card);
+
+	const cardCoverImage = _.find(card?.attachments, { id: card?.attachmentCoverId });
 
 	return (
 		<Draggable
@@ -90,6 +105,7 @@ function BoardCard(props: BoardCardProps) {
 								<div className="flex flex-wrap mb-8 -mx-4">
 									{card.labels.map((id) => (
 										<BoardCardLabel
+											boardId={boardId}
 											id={id}
 											key={id}
 										/>

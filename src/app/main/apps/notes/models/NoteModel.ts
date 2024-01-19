@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { NoteType } from '../types/NoteType';
+import { NotesNote } from '../NotesApi';
 
 /**
  * The note model.
  */
-function NoteModel(data: PartialDeep<NoteType>) {
+function NoteModel(data: PartialDeep<NotesNote>) {
 	data = data || {};
 
 	return _.defaults(data, {

@@ -12,7 +12,6 @@ const DirectoryStructureDoc = lazy(() => import('./directory-structure/Directory
 const ApiCallsDoc = lazy(() => import('./api-calls/ApiCallsDoc'));
 const UpdatingFuseReactDoc = lazy(() => import('./updating-fuse-react/UpdatingFuseReactDoc'));
 const IDEsDoc = lazy(() => import('./ides-vscode-webstorm/IDEsDoc'));
-const HerokuNotesDoc = lazy(() => import('./heroku-notes/HerokuNotesDoc'));
 
 /**
  * Development Doc Routes
@@ -65,10 +64,6 @@ const DevelopmentDocRoutes = [
 	{
 		path: 'development/ides-vscode-webstorm',
 		element: <IDEsDoc />
-	},
-	{
-		path: 'development/heroku-notes',
-		element: <HerokuNotesDoc />
 	}
 ];
 

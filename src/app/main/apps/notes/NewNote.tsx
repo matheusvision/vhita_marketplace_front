@@ -2,17 +2,12 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useAppDispatch } from 'app/store';
 import NoteForm from './note-form/NoteForm';
-import { createNote } from './store/notesSlice';
-import { NoteType } from './types/NoteType';
 
 /**
  * The new note component.
  */
 function NewNote() {
-	const dispatch = useAppDispatch();
-
 	const [formOpen, setFormOpen] = useState(false);
 
 	function handleFormOpen(ev: React.MouseEvent<HTMLDivElement>) {
@@ -27,11 +22,6 @@ function NewNote() {
 		}
 		setFormOpen(false);
 		document.removeEventListener('keydown', escFunction, false);
-	}
-
-	function handleCreate(note: NoteType) {
-		dispatch(createNote(note));
-		handleFormClose();
 	}
 
 	function escFunction(event: KeyboardEvent) {
@@ -55,7 +45,7 @@ function NewNote() {
 				<ClickAwayListener onClickAway={handleClickAway}>
 					<div className="w-full">
 						<NoteForm
-							onCreate={handleCreate}
+							onClose={handleFormClose}
 							variant="new"
 						/>
 					</div>

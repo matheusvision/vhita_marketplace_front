@@ -5,7 +5,59 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import ComboBoxComponent from '../components/autocomplete/ComboBox';
+import ComboBoxRaw from '../components/autocomplete/ComboBox.tsx?raw';
+import PlaygroundComponent from '../components/autocomplete/Playground';
+import PlaygroundRaw from '../components/autocomplete/Playground.tsx?raw';
+import CountrySelectComponent from '../components/autocomplete/CountrySelect';
+import CountrySelectRaw from '../components/autocomplete/CountrySelect.tsx?raw';
+import ControllableStatesComponent from '../components/autocomplete/ControllableStates';
+import ControllableStatesRaw from '../components/autocomplete/ControllableStates.tsx?raw';
+import FreeSoloComponent from '../components/autocomplete/FreeSolo';
+import FreeSoloRaw from '../components/autocomplete/FreeSolo.tsx?raw';
+import FreeSoloCreateOptionComponent from '../components/autocomplete/FreeSoloCreateOption';
+import FreeSoloCreateOptionRaw from '../components/autocomplete/FreeSoloCreateOption.tsx?raw';
+import FreeSoloCreateOptionDialogComponent from '../components/autocomplete/FreeSoloCreateOptionDialog';
+import FreeSoloCreateOptionDialogRaw from '../components/autocomplete/FreeSoloCreateOptionDialog.tsx?raw';
+import GroupedComponent from '../components/autocomplete/Grouped';
+import GroupedRaw from '../components/autocomplete/Grouped.tsx?raw';
+import RenderGroupComponent from '../components/autocomplete/RenderGroup';
+import RenderGroupRaw from '../components/autocomplete/RenderGroup.tsx?raw';
+import DisabledOptionsComponent from '../components/autocomplete/DisabledOptions';
+import DisabledOptionsRaw from '../components/autocomplete/DisabledOptions.tsx?raw';
+import UseAutocompleteComponent from '../components/autocomplete/UseAutocomplete';
+import UseAutocompleteRaw from '../components/autocomplete/UseAutocomplete.tsx?raw';
+import CustomizedHookComponent from '../components/autocomplete/CustomizedHook';
+import CustomizedHookRaw from '../components/autocomplete/CustomizedHook.tsx?raw';
+import AsynchronousComponent from '../components/autocomplete/Asynchronous';
+import AsynchronousRaw from '../components/autocomplete/Asynchronous.tsx?raw';
+import GoogleMapsComponent from '../components/autocomplete/GoogleMaps';
+import GoogleMapsRaw from '../components/autocomplete/GoogleMaps.tsx?raw';
+import TagsComponent from '../components/autocomplete/Tags';
+import TagsRaw from '../components/autocomplete/Tags.tsx?raw';
+import FixedTagsComponent from '../components/autocomplete/FixedTags';
+import FixedTagsRaw from '../components/autocomplete/FixedTags.tsx?raw';
+import CheckboxesTagsComponent from '../components/autocomplete/CheckboxesTags';
+import CheckboxesTagsRaw from '../components/autocomplete/CheckboxesTags.tsx?raw';
+import LimitTagsComponent from '../components/autocomplete/LimitTags';
+import LimitTagsRaw from '../components/autocomplete/LimitTags.tsx?raw';
+import SizesComponent from '../components/autocomplete/Sizes';
+import SizesRaw from '../components/autocomplete/Sizes.tsx?raw';
+import CustomInputAutocompleteComponent from '../components/autocomplete/CustomInputAutocomplete';
+import CustomInputAutocompleteRaw from '../components/autocomplete/CustomInputAutocomplete.tsx?raw';
+import GloballyCustomizedOptionsComponent from '../components/autocomplete/GloballyCustomizedOptions';
+import GloballyCustomizedOptionsRaw from '../components/autocomplete/GloballyCustomizedOptions.tsx?raw';
+import GitHubLabelComponent from '../components/autocomplete/GitHubLabel';
+import GitHubLabelRaw from '../components/autocomplete/GitHubLabel.tsx?raw';
+import AutocompleteHintComponent from '../components/autocomplete/AutocompleteHint';
+import AutocompleteHintRaw from '../components/autocomplete/AutocompleteHint.tsx?raw';
+import HighlightsComponent from '../components/autocomplete/Highlights';
+import HighlightsRaw from '../components/autocomplete/Highlights.tsx?raw';
+import FilterComponent from '../components/autocomplete/Filter';
+import FilterRaw from '../components/autocomplete/Filter.tsx?raw';
+import VirtualizeComponent from '../components/autocomplete/Virtualize';
+import VirtualizeRaw from '../components/autocomplete/Virtualize.tsx?raw';
+                   
                    function AutocompleteDoc(props) {
                      return (
                        
@@ -41,8 +93,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ComboBox.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/ComboBox.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/ComboBox.tsx')}
+                    component={ComboBoxComponent} 
+                    raw={ComboBoxRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Options structure</Typography>
 <Typography className="text-14 mb-32" component="div">By default, the component accepts the following options structures:</Typography>
@@ -75,8 +127,8 @@ const options = ['The Godfather', 'Pulp Fiction'];
                     name="Playground.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Playground.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Playground.tsx')}
+                    component={PlaygroundComponent} 
+                    raw={PlaygroundRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Country select</Typography>
 <Typography className="text-14 mb-32" component="div">Choose one of the 248 countries.</Typography>
@@ -84,8 +136,8 @@ const options = ['The Godfather', 'Pulp Fiction'];
                     name="CountrySelect.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/CountrySelect.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/CountrySelect.tsx')}
+                    component={CountrySelectComponent} 
+                    raw={CountrySelectRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Controlled states</Typography>
 <Typography className="text-14 mb-32" component="div">The component has two states that can be controlled:</Typography>
@@ -109,9 +161,29 @@ const options = ['The Godfather', 'Pulp Fiction'];
                     name="ControllableStates.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/ControllableStates.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/ControllableStates.tsx')}
+                    component={ControllableStatesComponent} 
+                    raw={ControllableStatesRaw}
                     /></Typography>
+<Typography className="text-14 mb-32" component="div">:::warning</Typography>
+<Typography className="text-14 mb-32" component="div">If you control the <code>{`value`}</code>, make sure it&#39;s referentially stable between renders.
+In other words, the reference to the value shouldn&#39;t change if the value itself doesn&#39;t change.</Typography>
+
+<FuseHighlight component="pre" className="language-tsx">
+{` 
+// ⚠️ BAD
+return <Autocomplete multiple value={allValues.filter((v) => v.selected)} />;
+
+// 👍 GOOD
+const selectedValues = React.useMemo(
+  () => allValues.filter((v) => v.selected),
+  [allValues],
+);
+return <Autocomplete multiple value={selectedValues} />;
+`}
+</FuseHighlight>
+<Typography className="text-14 mb-32" component="div">In the first example, <code>{`allValues.filter`}</code> is called and returns <strong>a new array</strong> every render.
+The fix includes memoizing the value, so it changes only when needed.
+:::</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Free solo</Typography>
 <Typography className="text-14 mb-32" component="div">Set <code>{`freeSolo`}</code> to true so the textbox can contain any arbitrary value.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Search input</Typography>
@@ -120,8 +192,8 @@ const options = ['The Godfather', 'Pulp Fiction'];
                     name="FreeSolo.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/FreeSolo.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/FreeSolo.tsx')}
+                    component={FreeSoloComponent} 
+                    raw={FreeSoloRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 Be careful when using the free solo mode with non-string options, as it may cause type mismatch.</Typography>
@@ -139,16 +211,16 @@ Be careful when using the free solo mode with non-string options, as it may caus
                     name="FreeSoloCreateOption.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/FreeSoloCreateOption.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/FreeSoloCreateOption.tsx')}
+                    component={FreeSoloCreateOptionComponent} 
+                    raw={FreeSoloCreateOptionRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">You could also display a dialog when the user wants to add a new value.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="FreeSoloCreateOptionDialog.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/FreeSoloCreateOptionDialog.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/FreeSoloCreateOptionDialog.tsx')}
+                    component={FreeSoloCreateOptionDialogComponent} 
+                    raw={FreeSoloCreateOptionDialogRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Grouped</Typography>
 <Typography className="text-14 mb-32" component="div">You can group the options with the <code>{`groupBy`}</code> prop.
@@ -158,8 +230,8 @@ otherwise, you will notice duplicate headers.</Typography>
                     name="Grouped.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Grouped.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Grouped.tsx')}
+                    component={GroupedComponent} 
+                    raw={GroupedRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">To control how the groups are rendered, provide a custom <code>{`renderGroup`}</code> prop.
 This is a function that accepts an object with two fields:</Typography>
@@ -172,16 +244,16 @@ This is a function that accepts an object with two fields:</Typography>
                     name="RenderGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/RenderGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/RenderGroup.tsx')}
+                    component={RenderGroupComponent} 
+                    raw={RenderGroupRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Disabled options</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="DisabledOptions.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/DisabledOptions.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/DisabledOptions.tsx')}
+                    component={DisabledOptionsComponent} 
+                    raw={DisabledOptionsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2"><code>{`useAutocomplete`}</code></Typography>
 <Typography className="text-14 mb-32" component="div">For advanced customization use cases, a headless <code>{`useAutocomplete()`}</code> hook is exposed.
@@ -191,7 +263,7 @@ The Autocomplete component is built on this hook.</Typography>
 
 <FuseHighlight component="pre" className="language-tsx">
 {` 
-import useAutocomplete from '@mui/base/useAutocomplete';
+import { useAutocomplete } from '@mui/base/useAutocomplete';
 `}
 </FuseHighlight>
 <Typography className="text-14 mb-32" component="div">The <code>{`useAutocomplete`}</code> hook is also reexported from @mui/material for convenience and backward compatibility.</Typography>
@@ -201,23 +273,20 @@ import useAutocomplete from '@mui/base/useAutocomplete';
 import useAutocomplete from '@mui/material/useAutocomplete';
 `}
 </FuseHighlight>
-<ul className="space-y-16">
-<li>📦 <a href="/size-snapshot/">4.5 kB gzipped</a>.</li>
-</ul>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="UseAutocomplete.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/UseAutocomplete.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/UseAutocomplete.tsx')}
+                    component={UseAutocompleteComponent} 
+                    raw={UseAutocompleteRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Customized hook</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CustomizedHook.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/CustomizedHook.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/CustomizedHook.tsx')}
+                    component={CustomizedHookComponent} 
+                    raw={CustomizedHookRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Head to the <a href="#customization">customization</a> section for an example with the <code>{`Autocomplete`}</code> component instead of the hook.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Asynchronous requests</Typography>
@@ -232,8 +301,8 @@ import useAutocomplete from '@mui/material/useAutocomplete';
                     name="Asynchronous.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Asynchronous.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Asynchronous.tsx')}
+                    component={AsynchronousComponent} 
+                    raw={AsynchronousRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Search as you type</Typography>
 <Typography className="text-14 mb-32" component="div">If your logic is fetching new options on each keystroke and using the current value of the textbox
@@ -253,8 +322,8 @@ For this demo, we need to load the <a href="https://developers.google.com/maps/d
                     name="GoogleMaps.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/GoogleMaps.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/GoogleMaps.tsx')}
+                    component={GoogleMapsComponent} 
+                    raw={GoogleMapsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::error
 Before you can start using the Google Maps JavaScript API and Places API, you need to get your own <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">API key</a>.
@@ -265,8 +334,8 @@ Before you can start using the Google Maps JavaScript API and Places API, you ne
                     name="Tags.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Tags.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Tags.tsx')}
+                    component={TagsComponent} 
+                    raw={TagsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Fixed options</Typography>
 <Typography className="text-14 mb-32" component="div">In the event that you need to lock certain tags so that they can&#39;t be removed, you can set the chips disabled.</Typography>
@@ -274,16 +343,16 @@ Before you can start using the Google Maps JavaScript API and Places API, you ne
                     name="FixedTags.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/FixedTags.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/FixedTags.tsx')}
+                    component={FixedTagsComponent} 
+                    raw={FixedTagsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Checkboxes</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CheckboxesTags.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/CheckboxesTags.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/CheckboxesTags.tsx')}
+                    component={CheckboxesTagsComponent} 
+                    raw={CheckboxesTagsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Limit tags</Typography>
 <Typography className="text-14 mb-32" component="div">You can use the <code>{`limitTags`}</code> prop to limit the number of displayed options when not focused.</Typography>
@@ -291,8 +360,8 @@ Before you can start using the Google Maps JavaScript API and Places API, you ne
                     name="LimitTags.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/LimitTags.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/LimitTags.tsx')}
+                    component={LimitTagsComponent} 
+                    raw={LimitTagsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes</Typography>
 <Typography className="text-14 mb-32" component="div">Fancy smaller inputs? Use the <code>{`size`}</code> prop.</Typography>
@@ -300,20 +369,23 @@ Before you can start using the Google Maps JavaScript API and Places API, you ne
                     name="Sizes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Sizes.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Sizes.tsx')}
+                    component={SizesComponent} 
+                    raw={SizesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom input</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`renderInput`}</code> prop allows you to customize the rendered input.
 The first argument of this render prop contains props that you need to forward.
 Pay specific attention to the <code>{`ref`}</code> and <code>{`inputProps`}</code> keys.</Typography>
+<Typography className="text-14 mb-32" component="div">:::warning
+If you&#39;re using a custom input component inside the Autocomplete, make sure that you forward the ref to the underlying DOM element.
+:::</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CustomInputAutocomplete.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/CustomInputAutocomplete.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/CustomInputAutocomplete.tsx')}
+                    component={CustomInputAutocompleteComponent} 
+                    raw={CustomInputAutocompleteRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Globally Customized Options</Typography>
 <Typography className="text-14 mb-32" component="div">To globally customize the Autocomplete options for all components in your app,
@@ -325,8 +397,8 @@ This approach enables different options for each Autocomplete component while ke
                     name="GloballyCustomizedOptions.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/GloballyCustomizedOptions.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/GloballyCustomizedOptions.tsx')}
+                    component={GloballyCustomizedOptionsComponent} 
+                    raw={GloballyCustomizedOptionsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">GitHub&#39;s picker</Typography>
 <Typography className="text-14 mb-32" component="div">This demo reproduces GitHub&#39;s label picker:</Typography>
@@ -334,8 +406,8 @@ This approach enables different options for each Autocomplete component while ke
                     name="GitHubLabel.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/GitHubLabel.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/GitHubLabel.tsx')}
+                    component={GitHubLabelComponent} 
+                    raw={GitHubLabelRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Head to the <a href="#customized-hook">Customized hook</a> section for a customization example with the <code>{`useAutocomplete`}</code> hook instead of the component.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Hint</Typography>
@@ -344,8 +416,8 @@ This approach enables different options for each Autocomplete component while ke
                     name="AutocompleteHint.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/AutocompleteHint.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/AutocompleteHint.tsx')}
+                    component={AutocompleteHintComponent} 
+                    raw={AutocompleteHintRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Highlights</Typography>
 <Typography className="text-14 mb-32" component="div">The following demo relies on <a href="https://github.com/moroshko/autosuggest-highlight">autosuggest-highlight</a>, a small (1 kB) utility for highlighting text in autosuggest and autocomplete components.</Typography>
@@ -353,8 +425,8 @@ This approach enables different options for each Autocomplete component while ke
                     name="Highlights.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Highlights.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Highlights.tsx')}
+                    component={HighlightsComponent} 
+                    raw={HighlightsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Custom filter</Typography>
 <Typography className="text-14 mb-32" component="div">The component exposes a factory to create a filter method that can be provided to the <code>{`filterOptions`}</code> prop.
@@ -396,8 +468,8 @@ const filterOptions = createFilterOptions({
                     name="Filter.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Filter.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Filter.tsx')}
+                    component={FilterComponent} 
+                    raw={FilterRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Advanced</Typography>
 <Typography className="text-14 mb-32" component="div">For richer filtering mechanisms, like fuzzy matching, it&#39;s recommended to look at <a href="https://github.com/kentcdodds/match-sorter">match-sorter</a>. For instance:</Typography>
@@ -417,8 +489,8 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
                     name="Virtualize.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/autocomplete/Virtualize.tsx').default} 
-                    raw={require('!raw-loader!../components/autocomplete/Virtualize.tsx')}
+                    component={VirtualizeComponent} 
+                    raw={VirtualizeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Events</Typography>
 <Typography className="text-14 mb-32" component="div">If you would like to prevent the default key handler behavior, you can set the event&#39;s <code>{`defaultMuiPrevented`}</code> property to <code>{`true`}</code>:</Typography>

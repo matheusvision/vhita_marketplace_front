@@ -3,20 +3,24 @@ import { memo } from 'react';
 import Paper from '@mui/material/Paper';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import TeamMemberType from '../../../types/TeamMemberType';
+import { useSelector } from 'react-redux';
+import { selectWidget } from '../../../ProjectDashboardApi';
+import TeamMemberType from './types/TeamMemberType';
 
 /**
  * The TeamMembersWidget widget.
  */
 function TeamMembersWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const members = widgets.teamMembers as TeamMemberType[];
+	const members = useSelector(selectWidget<TeamMemberType[]>('teamMembers'));
+
+	if (!members) {
+		return null;
+	}
+
 	const container = {
 		show: {
 			transition: {
-				staggerChildren: 0.05
+				staggerChildren: 0.04
 			}
 		}
 	};

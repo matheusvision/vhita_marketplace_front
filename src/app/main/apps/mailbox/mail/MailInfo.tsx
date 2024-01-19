@@ -4,9 +4,9 @@ import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import format from 'date-fns/format';
-import { useAppSelector } from 'app/store';
 import { MouseEvent } from 'react';
-import { selectMail } from '../store/mailSlice';
+import { useParams } from 'react-router-dom';
+import { useGetMailboxMailQuery } from '../MailboxApi';
 
 type MailInfoProps = {
 	className?: string;
@@ -17,7 +17,10 @@ type MailInfoProps = {
  */
 function MailInfo(props: MailInfoProps) {
 	const { className } = props;
-	const { data: mail } = useAppSelector(selectMail);
+
+	const { mailId } = useParams() as { mailId: string };
+	const { data: mail } = useGetMailboxMailQuery(mailId);
+
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 

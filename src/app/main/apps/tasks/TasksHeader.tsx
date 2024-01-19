@@ -1,20 +1,22 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppSelector } from 'app/store';
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectRemainingTasks } from './store/tasksSlice';
+import _ from '@lodash';
+import { useGetTasksQuery } from './TasksApi';
 
 /**
  * The tasks header.
  */
 function TasksHeader() {
-	const remainingTasks = useAppSelector(selectRemainingTasks);
+	const { data: tasks } = useGetTasksQuery();
+
+	const remainingTasks = _.filter(tasks, (item) => item.type === 'task' && !item.completed).length;
 
 	return (
-		<div className="flex flex-col sm:flex-row item-center sm:items-start space-y-16 sm:space-y-0 p-24 sm:p-32 w-full border-b-1 flex items-center justify-between">
-			<div className="flex flex-col sm:flex-row items-center sm:space-x-12">
+		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 p-24 sm:p-32 w-full border-b-1 justify-between">
+			<div className="flex flex-col sm:flex-row sm:items-center sm:space-x-12">
 				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}

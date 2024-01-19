@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import TextField from '@mui/material/TextField';
@@ -6,42 +5,54 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import { useAppDispatch } from 'app/store';
-import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { createLabel } from '../../store/labelsSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import LabelModel from '../../models/LabelModel';
-import { LabelType } from '../../types/LabelType';
+import { NotesLabel, useCreateNotesLabelMutation, useGetNotesLabelsQuery } from '../../NotesApi';
 
 const defaultValues = {
 	title: ''
 };
 
-type FormType = { title: LabelType['title'] };
-/**
- * Form Validation Schema
- */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a label title')
-});
+type FormType = { title: NotesLabel['title'] };
 
 /**
  * The new label form.
  */
 function NewLabelForm() {
-	const dispatch = useAppDispatch();
+	const [createLabel] = useCreateNotesLabelMutation();
+	const { data: labels } = useGetNotesLabelsQuery();
+
+	/**
+	 * Form Validation Schema
+	 */
+	const schema = z.object({
+		title: z
+			.string()
+			.nonempty('You must enter a label title')
+			.refine(
+				(title) => {
+					// Check if title exists in labelListArray
+					return !labels.some((label) => label.title === title);
+				},
+				{
+					message: 'This label title already exists'
+				}
+			)
+	});
 
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
 
 	function onSubmit(data: FormType) {
 		const newLabel = LabelModel(data);
-		dispatch(createLabel(newLabel));
+		createLabel(newLabel);
 		reset(defaultValues);
 	}
 

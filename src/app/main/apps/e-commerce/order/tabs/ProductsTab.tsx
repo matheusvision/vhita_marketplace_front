@@ -1,13 +1,18 @@
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from 'app/store';
-import { selectOrder } from '../../store/orderSlice';
+import { Link, useParams } from 'react-router-dom';
+import { useGetECommerceOrderQuery } from '../../ECommerceApi';
 
 /**
  * The products tab.
  */
 function ProductsTab() {
-	const { data: order } = useAppSelector(selectOrder);
+	const routeParams = useParams();
+
+	const { orderId } = routeParams;
+
+	const { data: order } = useGetECommerceOrderQuery(orderId, {
+		skip: !orderId
+	});
 
 	return (
 		<div className="table-responsive">

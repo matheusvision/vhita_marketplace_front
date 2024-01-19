@@ -7,12 +7,11 @@ import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import { MouseEvent, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { AttachmentType } from '../../../../types/AttachmentType';
-import { CardType } from '../../../../types/CardType';
+import { ScrumboardAttachment, ScrumboardCard } from '../../../../ScrumboardApi';
 
 type CardAttachmentProps = {
-	item: AttachmentType;
-	card: CardType;
+	item: ScrumboardAttachment;
+	card: ScrumboardCard;
 	makeCover: (id: string) => void;
 	removeCover: () => void;
 	removeAttachment: (id: string) => void;

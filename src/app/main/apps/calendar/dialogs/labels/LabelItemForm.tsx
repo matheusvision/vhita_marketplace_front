@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
@@ -6,33 +5,32 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
 import { useDebounce } from '@fuse/hooks';
 import _ from '@lodash';
 import FormLabel from '@mui/material/FormLabel';
-import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
+import { closeDialog, openDialog } from '@fuse/core/FuseDialog/store/fuseDialogSlice';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import { useAppDispatch } from 'app/store';
-import { removeLabel, updateLabel } from '../../store/labelsSlice';
-import { getEvents } from '../../store/eventsSlice';
-import { LabelType } from '../../types/LabelType';
+import { useAppDispatch } from 'app/store/store';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Label, useDeleteCalendarLabelMutation, useUpdateCalendarLabelMutation } from '../../CalendarApi';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a label title'),
-	color: yup.string()
+const schema = z.object({
+	title: z.string().nonempty('You must enter a label title'),
+	color: z.string().optional()
 });
 
 type NewLabelFormProps = {
-	label: LabelType;
+	label: Label;
 	isLast: boolean;
 };
 
@@ -42,11 +40,13 @@ type NewLabelFormProps = {
 function NewLabelForm(props: NewLabelFormProps) {
 	const { label, isLast } = props;
 	const dispatch = useAppDispatch();
+	const [deleteLabel] = useDeleteCalendarLabelMutation();
+	const [updateLabel] = useUpdateCalendarLabelMutation();
 
 	const { control, formState, reset, watch } = useForm({
 		mode: 'onChange',
 		defaultValues: label,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { errors } = formState;
@@ -56,22 +56,15 @@ function NewLabelForm(props: NewLabelFormProps) {
 		reset(label);
 	}, [label, reset]);
 
-	const handleOnChange = useDebounce(({ label, form }: { label: LabelType; form: LabelType }) => {
-		if (!label) {
-			return;
-		}
-
-		if (form && !_.isEqual(form, label)) {
-			dispatch(updateLabel(form));
+	const debouncedUpdateLabel = useDebounce((_form: Label) => {
+		if (!_.isEqual(_form, label)) {
+			updateLabel(_form);
 		}
 	}, 300);
 
 	useEffect(() => {
-		handleOnChange({
-			label,
-			form: form as LabelType
-		});
-	}, [handleOnChange, label, form]);
+		debouncedUpdateLabel(form);
+	}, [debouncedUpdateLabel, form]);
 
 	function handleOnRemove() {
 		dispatch(
@@ -92,11 +85,10 @@ function NewLabelForm(props: NewLabelFormProps) {
 								Disagree
 							</Button>
 							<Button
-								onClick={() => {
-									dispatch(removeLabel(label.id)).then(() => {
-										dispatch(getEvents());
-										dispatch(closeDialog());
-									});
+								onClick={async () => {
+									await deleteLabel(label.id);
+
+									dispatch(closeDialog());
 								}}
 								color="primary"
 								autoFocus

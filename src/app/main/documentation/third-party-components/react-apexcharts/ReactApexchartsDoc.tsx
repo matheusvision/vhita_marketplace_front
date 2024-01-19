@@ -4,7 +4,23 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
-/* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
+import AreaComponent from './examples/Area';
+import AreaRaw from './examples/Area.tsx?raw';
+
+import BarComponent from './examples/Bar';
+import BarRaw from './examples/Bar.tsx?raw';
+
+import ColumnComponent from './examples/Column';
+import ColumnRaw from './examples/Column.tsx?raw';
+
+import DonutComponent from './examples/Donut';
+import DonutRaw from './examples/Donut.tsx?raw';
+
+import LineComponent from './examples/Line';
+import LineRaw from './examples/Line.tsx?raw';
+
+import RadialBarComponent from './examples/RadialBar';
+import RadialBarRaw from './examples/RadialBar.tsx?raw';
 
 /**
  * GoogleMapReact Doc
@@ -46,38 +62,38 @@ function ReactApexchartsDoc() {
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/Area.tsx').default}
-				raw={require('!raw-loader!./examples/Area.tsx')}
+				component={AreaComponent}
+				raw={AreaRaw}
 			/>
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/Bar.tsx').default}
-				raw={require('!raw-loader!./examples/Bar.tsx')}
+				component={BarComponent}
+				raw={BarRaw}
 			/>
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/Column.tsx').default}
-				raw={require('!raw-loader!./examples/Column.tsx')}
+				component={ColumnComponent}
+				raw={ColumnRaw}
 			/>
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/Donut.tsx').default}
-				raw={require('!raw-loader!./examples/Donut.tsx')}
+				component={DonutComponent}
+				raw={DonutRaw}
 			/>
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/Line.tsx').default}
-				raw={require('!raw-loader!./examples/Line.tsx')}
+				component={LineComponent}
+				raw={LineRaw}
 			/>
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/RadialBar.tsx').default}
-				raw={require('!raw-loader!./examples/RadialBar.tsx')}
+				component={RadialBarComponent}
+				raw={RadialBarRaw}
 			/>
 
 			<Typography

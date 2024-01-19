@@ -9,7 +9,7 @@ function PoweredByLinks() {
 	const container = {
 		show: {
 			transition: {
-				staggerChildren: 0.1
+				staggerChildren: 0.04
 			}
 		}
 	};
@@ -48,14 +48,14 @@ function PoweredByLinks() {
 				</IconButton>
 			</Tooltip>
 			<Tooltip
-				title="React Redux"
+				title="Redux Toolkit"
 				placement="top"
 			>
 				<IconButton
 					className="h-48 w-48 px-4"
 					component={motion.a}
 					variants={item}
-					href="https://github.com/reactjs/react-redux"
+					href="https://redux-toolkit.js.org/"
 					target="_blank"
 					rel="noreferrer noopener"
 					role="button"
@@ -119,6 +119,28 @@ function PoweredByLinks() {
                                     <svg class="w-48 h-48 block" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 11.1C15.3 3.9 19.8.3 27 .3c10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 27.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" transform="translate(5 16)" fill="url(#logoGradient)" fill-rule="evenodd"></path></svg>
                                     `
 						}}
+					/>
+				</IconButton>
+			</Tooltip>
+
+			<Tooltip
+				title="ViteJs"
+				placement="top"
+			>
+				<IconButton
+					className="h-48 w-48 px-4"
+					component={motion.a}
+					variants={item}
+					href="https://vitejs.dev/"
+					target="_blank"
+					rel="noreferrer noopener"
+					role="button"
+					size="large"
+				>
+					<img
+						src="/assets/images/logo/vite.svg"
+						alt="vite"
+						width="32"
 					/>
 				</IconButton>
 			</Tooltip>

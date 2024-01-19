@@ -1,18 +1,18 @@
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
-import { PartialDeep } from 'type-fest';
-import { MemberType } from '../types/MemberType';
+import { ScrumboardMember } from '../ScrumboardApi';
 
 /**
- * The member model.
+ * The Member model.
  */
-function MemberModel(data: PartialDeep<MemberType>): MemberType {
+function MemberModel(data: Partial<ScrumboardMember>): ScrumboardMember {
 	data = data || {};
 
 	return _.defaults(data, {
 		id: FuseUtils.generateGUID(),
 		name: '',
-		avatar: ''
+		avatar: '',
+		class: ''
 	});
 }
 

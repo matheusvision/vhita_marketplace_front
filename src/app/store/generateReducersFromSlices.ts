@@ -1,6 +1,6 @@
 import { combineReducers, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { DeepPartial } from 'react-hook-form';
-import { SlicesType } from 'app/store/lazyWithSlices';
+import { SlicesType } from 'app/store/withSlices';
 
 export const generateReducersFromSlices = <T = unknown>(slices: SlicesType): ReducersMapObject<T> => {
 	const reducerGroups: DeepPartial<ReducersMapObject> = {};
@@ -12,13 +12,13 @@ export const generateReducersFromSlices = <T = unknown>(slices: SlicesType): Red
 			if (!reducerGroups[primary]) {
 				reducerGroups[primary] = {};
 			}
-			(reducerGroups[primary] as ReducersMapObject)[secondary] = slice.reducer;
+			(reducerGroups[primary] as ReducersMapObject<T>)[secondary] = slice.reducer;
 		} else {
 			reducerGroups[primary] = slice.reducer;
 		}
 	});
 
-	const combinedReducers: ReducersMapObject = {};
+	const combinedReducers = {};
 
 	// Combine the grouped reducers.
 	Object.entries(reducerGroups).forEach(([key, reducerGroup]) => {
@@ -29,6 +29,6 @@ export const generateReducersFromSlices = <T = unknown>(slices: SlicesType): Red
 		}
 	});
 
-	return combinedReducers;
+	return combinedReducers as ReducersMapObject<T>;
 };
 export default generateReducersFromSlices;

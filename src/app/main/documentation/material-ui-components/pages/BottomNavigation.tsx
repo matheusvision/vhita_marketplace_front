@@ -5,7 +5,13 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import SimpleBottomNavigationComponent from '../components/bottom-navigation/SimpleBottomNavigation';
+import SimpleBottomNavigationRaw from '../components/bottom-navigation/SimpleBottomNavigation.tsx?raw';
+import LabelBottomNavigationComponent from '../components/bottom-navigation/LabelBottomNavigation';
+import LabelBottomNavigationRaw from '../components/bottom-navigation/LabelBottomNavigation.tsx?raw';
+import FixedBottomNavigationComponent from '../components/bottom-navigation/FixedBottomNavigation';
+import FixedBottomNavigationRaw from '../components/bottom-navigation/FixedBottomNavigation.tsx?raw';
+                   
                    function BottomNavigationDoc(props) {
                      return (
                        
@@ -36,8 +42,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="SimpleBottomNavigation.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/bottom-navigation/SimpleBottomNavigation.tsx').default} 
-                    raw={require('!raw-loader!../components/bottom-navigation/SimpleBottomNavigation.tsx')}
+                    component={SimpleBottomNavigationComponent} 
+                    raw={SimpleBottomNavigationRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Bottom navigation with no label</Typography>
 <Typography className="text-14 mb-32" component="div">If there are <strong>four</strong> or <strong>five</strong> actions, display inactive views as icons only.</Typography>
@@ -45,8 +51,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="LabelBottomNavigation.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/bottom-navigation/LabelBottomNavigation.tsx').default} 
-                    raw={require('!raw-loader!../components/bottom-navigation/LabelBottomNavigation.tsx')}
+                    component={LabelBottomNavigationComponent} 
+                    raw={LabelBottomNavigationRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Fixed positioning</Typography>
 <Typography className="text-14 mb-32" component="div">This demo keeps bottom navigation fixed to the bottom, no matter the amount of content on-screen.</Typography>
@@ -54,8 +60,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="FixedBottomNavigation.js"
                     className="my-16"
                     iframe={true}
-                    component={require('../components/bottom-navigation/FixedBottomNavigation.tsx').default} 
-                    raw={require('!raw-loader!../components/bottom-navigation/FixedBottomNavigation.tsx')}
+                    component={FixedBottomNavigationComponent} 
+                    raw={FixedBottomNavigationRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Third-party routing library</Typography>
 <Typography className="text-14 mb-32" component="div">One frequent use case is to perform navigation on the client only, without an HTTP round-trip to the server.

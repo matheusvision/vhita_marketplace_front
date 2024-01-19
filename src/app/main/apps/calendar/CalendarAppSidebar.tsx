@@ -1,18 +1,20 @@
 import { motion } from 'framer-motion';
-import { Checkbox, IconButton } from '@mui/material';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { Checkbox } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { openLabelsDialog, selectLabels, selectSelectedLabels, toggleSelectedLabels } from './store/labelsSlice';
+import { useAppDispatch } from 'app/store/store';
+import { useSelector } from 'react-redux';
+import { selectSelectedLabels, toggleSelectedLabels } from './store/selectedLabelsSlice';
+import { useGetCalendarLabelsQuery } from './CalendarApi';
+import LabelsDialog from './dialogs/labels/LabelsDialog';
 
 /**
  * The calendar app sidebar.
  */
 function CalendarAppSidebar() {
-	const labels = useAppSelector(selectLabels);
-	const selectedLabels = useAppSelector(selectSelectedLabels);
+	const selectedLabels = useSelector(selectSelectedLabels);
 	const dispatch = useAppDispatch();
+	const { data: labels } = useGetCalendarLabelsQuery();
 
 	return (
 		<div className="flex flex-col flex-auto min-h-full p-32">
@@ -32,20 +34,10 @@ function CalendarAppSidebar() {
 					LABELS
 				</Typography>
 
-				<IconButton
-					onClick={() => dispatch(openLabelsDialog())}
-					size="small"
-				>
-					<FuseSvgIcon
-						color="secondary"
-						size={20}
-					>
-						heroicons-solid:pencil-alt
-					</FuseSvgIcon>
-				</IconButton>
+				<LabelsDialog />
 			</div>
 
-			{labels.map((label) => (
+			{labels?.map((label) => (
 				<div
 					key={label.id}
 					className="group flex items-center mt-8 space-x-8 h-24 w-full"

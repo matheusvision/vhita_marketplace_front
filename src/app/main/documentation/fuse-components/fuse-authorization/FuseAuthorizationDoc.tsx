@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-
+import AdminRoleExampleConfigRaw from 'src/app/main/auth/admin-role-example/AdminRoleExampleConfig.tsx?raw';
 /* eslint import/no-webpack-loader-syntax: off */
 /* eslint import/extensions: off */
 
@@ -176,7 +176,7 @@ function FuseAuthorizationDoc() {
 				className="language-jsx"
 			>
 				{/* eslint-disable-next-line global-require */}
-				{require('!raw-loader!src/app/main/auth/admin-role-example/AdminRoleExampleConfig.tsx')}
+				{AdminRoleExampleConfigRaw}
 			</FuseHighlight>
 
 			<Typography
@@ -244,7 +244,7 @@ function FuseAuthorizationDoc() {
 				className="inline-block mb-8 italic"
 				component="code"
 			>
-				app/store/userSlice.tsx (initial user state)
+				app/auth/user/store/userSlice.tsx (initial user state)
 			</Typography>
 
 			<FuseHighlight
@@ -418,7 +418,7 @@ function FuseAuthorizationDoc() {
 				className="inline-block mb-8 italic"
 				component="code"
 			>
-				app/store/userSlice.tsx
+				app/auth/user/store/userSlice.tsx
 			</Typography>
 
 			<FuseHighlight
@@ -431,8 +431,8 @@ function FuseAuthorizationDoc() {
 				/*
 				You can redirect the logged-in user to a specific route depending on his role
 				*/
-				if (user.loginRedirectUrl) {
-					settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+				if (user.data.loginRedirectUrl) {
+					settingsConfig.loginRedirectUrl = user.data.loginRedirectUrl; // for example 'apps/academy'
 				}
            		 return user;
           });

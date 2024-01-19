@@ -5,7 +5,27 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import CheckboxesComponent from '../components/checkboxes/Checkboxes';
+import CheckboxesRaw from '../components/checkboxes/Checkboxes.tsx?raw';
+import CheckboxLabelsComponent from '../components/checkboxes/CheckboxLabels';
+import CheckboxLabelsRaw from '../components/checkboxes/CheckboxLabels.tsx?raw';
+import SizeCheckboxesComponent from '../components/checkboxes/SizeCheckboxes';
+import SizeCheckboxesRaw from '../components/checkboxes/SizeCheckboxes.tsx?raw';
+import ColorCheckboxesComponent from '../components/checkboxes/ColorCheckboxes';
+import ColorCheckboxesRaw from '../components/checkboxes/ColorCheckboxes.tsx?raw';
+import IconCheckboxesComponent from '../components/checkboxes/IconCheckboxes';
+import IconCheckboxesRaw from '../components/checkboxes/IconCheckboxes.tsx?raw';
+import ControlledCheckboxComponent from '../components/checkboxes/ControlledCheckbox';
+import ControlledCheckboxRaw from '../components/checkboxes/ControlledCheckbox.tsx?raw';
+import IndeterminateCheckboxComponent from '../components/checkboxes/IndeterminateCheckbox';
+import IndeterminateCheckboxRaw from '../components/checkboxes/IndeterminateCheckbox.tsx?raw';
+import CheckboxesGroupComponent from '../components/checkboxes/CheckboxesGroup';
+import CheckboxesGroupRaw from '../components/checkboxes/CheckboxesGroup.tsx?raw';
+import FormControlLabelPositionComponent from '../components/checkboxes/FormControlLabelPosition';
+import FormControlLabelPositionRaw from '../components/checkboxes/FormControlLabelPosition.tsx?raw';
+import CustomizedCheckboxComponent from '../components/checkboxes/CustomizedCheckbox';
+import CustomizedCheckboxRaw from '../components/checkboxes/CustomizedCheckbox.tsx?raw';
+                   
                    function CheckboxesDoc(props) {
                      return (
                        
@@ -38,8 +58,8 @@ If you have a single option, avoid using a checkbox and use an on/off switch ins
                     name="Checkboxes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/Checkboxes.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/Checkboxes.tsx')}
+                    component={CheckboxesComponent} 
+                    raw={CheckboxesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Label</Typography>
 <Typography className="text-14 mb-32" component="div">You can provide a label to the <code>{`Checkbox`}</code> thanks to the <code>{`FormControlLabel`}</code> component.</Typography>
@@ -47,8 +67,8 @@ If you have a single option, avoid using a checkbox and use an on/off switch ins
                     name="CheckboxLabels.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/CheckboxLabels.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/CheckboxLabels.tsx')}
+                    component={CheckboxLabelsComponent} 
+                    raw={CheckboxLabelsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Size</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`size`}</code> prop or customize the font size of the svg icons to change the size of the checkboxes.</Typography>
@@ -56,24 +76,24 @@ If you have a single option, avoid using a checkbox and use an on/off switch ins
                     name="SizeCheckboxes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/SizeCheckboxes.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/SizeCheckboxes.tsx')}
+                    component={SizeCheckboxesComponent} 
+                    raw={SizeCheckboxesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ColorCheckboxes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/ColorCheckboxes.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/ColorCheckboxes.tsx')}
+                    component={ColorCheckboxesComponent} 
+                    raw={ColorCheckboxesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Icon</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="IconCheckboxes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/IconCheckboxes.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/IconCheckboxes.tsx')}
+                    component={IconCheckboxesComponent} 
+                    raw={IconCheckboxesRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Controlled</Typography>
 <Typography className="text-14 mb-32" component="div">You can control the checkbox with the <code>{`checked`}</code> and <code>{`onChange`}</code> props:</Typography>
@@ -81,8 +101,8 @@ If you have a single option, avoid using a checkbox and use an on/off switch ins
                     name="ControlledCheckbox.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/ControlledCheckbox.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/ControlledCheckbox.tsx')}
+                    component={ControlledCheckboxComponent} 
+                    raw={ControlledCheckboxRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Indeterminate</Typography>
 <Typography className="text-14 mb-32" component="div">A checkbox input can only have two states in a form: checked or unchecked.
@@ -92,8 +112,8 @@ Visually, there are <strong>three</strong> states a checkbox can be in: checked,
                     name="IndeterminateCheckbox.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/IndeterminateCheckbox.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/IndeterminateCheckbox.tsx')}
+                    component={IndeterminateCheckboxComponent} 
+                    raw={IndeterminateCheckboxRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 When indeterminate is set, the value of the <code>{`checked`}</code> prop only impacts the form submitted values.
@@ -105,8 +125,8 @@ It has no accessibility or UX implications.
                     name="CheckboxesGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/CheckboxesGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/CheckboxesGroup.tsx')}
+                    component={CheckboxesGroupComponent} 
+                    raw={CheckboxesGroupRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Label placement</Typography>
 <Typography className="text-14 mb-32" component="div">You can change the placement of the label:</Typography>
@@ -114,8 +134,8 @@ It has no accessibility or UX implications.
                     name="FormControlLabelPosition.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/FormControlLabelPosition.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/FormControlLabelPosition.tsx')}
+                    component={FormControlLabelPositionComponent} 
+                    raw={FormControlLabelPositionRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -124,10 +144,10 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedCheckbox.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/checkboxes/CustomizedCheckbox.tsx').default} 
-                    raw={require('!raw-loader!../components/checkboxes/CustomizedCheckbox.tsx')}
+                    component={CustomizedCheckboxComponent} 
+                    raw={CustomizedCheckboxRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/checkbox/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/checkbox-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">When to use</Typography>
 <ul className="space-y-16">
 <li><a href="https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/">Checkboxes vs. Radio Buttons</a></li>

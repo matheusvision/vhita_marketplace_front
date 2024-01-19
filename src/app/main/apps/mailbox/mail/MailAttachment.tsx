@@ -1,9 +1,9 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import MailAttachmentType from '../types/MailAttachmentType';
+import { MailboxMailAttachment } from '../MailboxApi';
 
 type MailAttachmentProps = {
-	attachment: MailAttachmentType;
+	attachment: MailboxMailAttachment;
 };
 
 /**

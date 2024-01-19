@@ -14,10 +14,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import Input from '@mui/material/Input';
 import Card from '@mui/material/Card';
-import { PostType } from '../../types/PostType';
+import { Post } from '../../ProfileApi';
 
 type PostProps = {
-	item: PostType;
+	item: Post;
 };
 
 /**

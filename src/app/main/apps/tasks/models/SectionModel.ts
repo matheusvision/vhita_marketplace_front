@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { TaskType } from '../types/TaskType';
+import { Task } from '../TasksApi';
 
 /**
  * The section model.
  */
-const SectionModel = (data: PartialDeep<TaskType>): TaskType =>
+const SectionModel = (data: PartialDeep<Task>): Task =>
 	_.defaults(data || {}, {
 		type: 'section',
 		title: '',
@@ -17,6 +17,6 @@ const SectionModel = (data: PartialDeep<TaskType>): TaskType =>
 		assignedTo: null,
 		subTasks: [],
 		order: 1
-	}) as TaskType;
+	}) as Task;
 
 export default SectionModel;

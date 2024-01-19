@@ -1,6 +1,5 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
-
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
 /**
@@ -56,7 +55,44 @@ function ThemeShemesDoc() {
 				component="pre"
 				className="language-jsx"
 			>
-				{require('!raw-loader!app/configs/themesConfig.ts')}
+				{`
+				/**
+				* The themesConfig object is a configuration object for the color themes of the Fuse application.
+				*/
+				export const themesConfig: FuseThemesType = {
+					default: {
+							palette: {
+							mode: 'light',
+							divider: '#e2e8f0',
+							text: lightPaletteText,
+							common: {
+							black: 'rgb(17, 24, 39)',
+							white: 'rgb(255, 255, 255)'
+						},
+							primary: {
+							light: '#64748b',
+							main: '#1e293b',
+							dark: '#0f172a',
+							contrastText: darkPaletteText.primary
+						},
+							secondary: {
+							light: '#818cf8',
+							main: '#4f46e5',
+							dark: '#3730a3',
+							contrastText: darkPaletteText.primary
+						},
+							background: {
+							paper: '#FFFFFF',
+							default: '#f1f5f9'
+						},
+							error: {
+							light: '#ffcdd2',
+							main: '#f44336',
+							dark: '#b71c1c',
+							contrastText: darkPaletteText.primary
+						}
+					}
+				}`}
 			</FuseHighlight>
 		</>
 	);

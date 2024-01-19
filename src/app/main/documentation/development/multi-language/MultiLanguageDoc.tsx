@@ -1,5 +1,8 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
+import enLangRaw from 'src/app/main/apps/mailbox/i18n/en.ts?raw';
+import appConfigRaw from 'src/app/main/apps/mailbox/MailboxAppConfig.tsx?raw';
+import i18Raw from 'src/i18n.ts?raw';
 
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
@@ -63,7 +66,7 @@ function MultiLanguageDoc() {
 				component="pre"
 				className="language-jsx mb-24"
 			>
-				{require('!raw-loader!src/app/main/apps/mailbox/i18n/en.ts')}
+				{enLangRaw}
 			</FuseHighlight>
 
 			<Typography
@@ -78,7 +81,7 @@ function MultiLanguageDoc() {
 				component="pre"
 				className="language-jsx mb-24"
 			>
-				{require('!raw-loader!src/app/main/apps/mailbox/MailboxAppConfig.tsx')}
+				{appConfigRaw}
 			</FuseHighlight>
 
 			<Typography
@@ -136,7 +139,7 @@ function MultiLanguageDoc() {
 				component="pre"
 				className="language-jsx mb-24"
 			>
-				{require('!raw-loader!src/i18n.ts')}
+				{i18Raw}
 			</FuseHighlight>
 
 			<Typography

@@ -5,16 +5,21 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import ImressionsWidgetType from '../types/ImpressionsWidgetType';
+import { useSelector } from 'react-redux';
+import ImressionsWidgetType from './types/ImpressionsWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 /**
  * Impressions widget.
  */
 function Impressions() {
 	const theme = useTheme();
-	const widgets = useAppSelector(selectWidgets);
-	const { series, amount, labels } = widgets.impressions as ImressionsWidgetType;
+	const widget = useSelector(selectWidget<ImressionsWidgetType>('impressions'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, amount, labels } = widget;
 
 	const chartOptions: ApexOptions = {
 		chart: {

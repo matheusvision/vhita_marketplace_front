@@ -7,16 +7,18 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { selectUser } from 'app/store/user/userSlice';
+import { selectUser } from 'src/app/auth/user/store/userSlice';
+import { useAuth } from 'src/app/auth/AuthRouteProvider';
+import { darken } from '@mui/material/styles';
 
 /**
  * The user menu.
  */
 function UserMenu() {
 	const user = useSelector(selectUser);
-
+	const { signOut } = useAuth();
 	const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
 
 	const userMenuClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -26,6 +28,10 @@ function UserMenu() {
 	const userMenuClose = () => {
 		setUserMenu(null);
 	};
+
+	if (!user) {
+		return null;
+	}
 
 	return (
 		<>
@@ -45,19 +51,31 @@ function UserMenu() {
 						className="text-11 font-medium capitalize"
 						color="text.secondary"
 					>
-						{user.role.toString()}
+						{user.role?.toString()}
 						{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
 					</Typography>
 				</div>
 
 				{user.data.photoURL ? (
 					<Avatar
+						sx={{
+							background: (theme) => theme.palette.background.default,
+							color: (theme) => theme.palette.text.secondary
+						}}
 						className="md:mx-4"
 						alt="user photo"
 						src={user.data.photoURL}
 					/>
 				) : (
-					<Avatar className="md:mx-4">{user.data.displayName[0]}</Avatar>
+					<Avatar
+						sx={{
+							background: (theme) => darken(theme.palette.background.default, 0.05),
+							color: (theme) => theme.palette.text.secondary
+						}}
+						className="md:mx-4"
+					>
+						{user?.data?.displayName?.[0]}
+					</Avatar>
 				)}
 			</Button>
 
@@ -125,10 +143,8 @@ function UserMenu() {
 							<ListItemText primary="Inbox" />
 						</MenuItem>
 						<MenuItem
-							component={NavLink}
-							to="/sign-out"
 							onClick={() => {
-								userMenuClose();
+								signOut();
 							}}
 						>
 							<ListItemIcon className="min-w-40">

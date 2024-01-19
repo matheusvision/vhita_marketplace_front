@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import events from './eventsSlice';
-import labels from './labelsSlice';
+import eventDialog from './eventDialogSlice';
+import selectedLabels from './selectedLabelsSlice';
 
 /**
  * The Calendar App reducer.
  */
-const reducer = combineReducers({ events, labels });
+const reducer = combineReducers({ eventDialog, selectedLabels });
 
 export default reducer;

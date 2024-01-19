@@ -1,24 +1,24 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import Fab from '@mui/material/Fab';
 import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
 import { Controller, useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import ChecklistItemModel from '../../../../models/ChecklistItemModel';
-import { CheckListItemType } from '../../../../types/CheckListItemType';
+import { ScrumboardCheckListItem } from '../../../../ScrumboardApi';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	name: yup.string().required('You must enter a title')
+const schema = z.object({
+	name: z.string().nonempty('You must enter a title')
 });
 
 type CardAddChecklistItemProps = {
 	name?: string;
-	onListItemAdd: (item: CheckListItemType) => void;
+	onListItemAdd: (item: ScrumboardCheckListItem) => void;
 };
 
 /**
@@ -31,12 +31,12 @@ function CardAddChecklistItem(props: CardAddChecklistItemProps) {
 		defaultValues: {
 			name
 		},
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;
 
-	function onSubmit(data: CheckListItemType) {
+	function onSubmit(data: ScrumboardCheckListItem) {
 		onListItemAdd(ChecklistItemModel(data));
 		reset({
 			name

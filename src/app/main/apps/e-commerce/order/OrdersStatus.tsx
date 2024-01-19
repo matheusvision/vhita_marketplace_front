@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import clsx from 'clsx';
-import { OrderStatusType } from '../types/OrderStatusType';
+import { EcommerceOrder } from '../ECommerceApi';
 
 /**
  * The order statuses.
  */
-export const orderStatuses: OrderStatusType[] = [
+export const orderStatuses: EcommerceOrder['status'] = [
 	{
 		id: '1',
 		name: 'Awaiting check payment',
@@ -95,7 +95,7 @@ function OrdersStatus(props: OrdersStatusProps) {
 		<div
 			className={clsx(
 				'inline text-12 font-semibold py-4 px-12 rounded-full truncate',
-				_.find(orderStatuses, { name }).color
+				_.find(orderStatuses, { name })?.color
 			)}
 		>
 			{name}

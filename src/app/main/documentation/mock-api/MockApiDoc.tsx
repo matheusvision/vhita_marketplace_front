@@ -1,11 +1,11 @@
 import Typography from '@mui/material/Typography';
-import mockApiJson from '@mock-api/mock-api.json';
 import { RedocStandalone } from 'redoc';
 import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { RedocRawOptions } from 'redoc/typings/services/RedocNormalizedOptions';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import mockApiJson from 'src/@mock-api/mock-api.json';
 
 const Root = styled('div')(() => ({
 	'& .menu-content': {

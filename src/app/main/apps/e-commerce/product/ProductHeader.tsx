@@ -3,18 +3,27 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useFormContext } from 'react-hook-form';
-import { useAppDispatch } from 'app/store';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { removeProduct, saveProduct } from '../store/productSlice';
-import { ProductType } from '../types/ProductType';
+import {
+	EcommerceProduct,
+	useCreateECommerceProductMutation,
+	useDeleteECommerceProductMutation,
+	useUpdateECommerceProductMutation
+} from '../ECommerceApi';
 
 /**
  * The product header.
  */
 function ProductHeader() {
-	const dispatch = useAppDispatch();
+	const routeParams = useParams();
+	const { productId } = routeParams;
+
+	const [createProduct] = useCreateECommerceProductMutation();
+	const [saveProduct] = useUpdateECommerceProductMutation();
+	const [removeProduct] = useDeleteECommerceProductMutation();
+
 	const methods = useFormContext();
 	const { formState, watch, getValues } = methods;
 	const { isValid, dirtyFields } = formState;
@@ -22,21 +31,28 @@ function ProductHeader() {
 	const theme = useTheme();
 	const navigate = useNavigate();
 
-	const { name, images, featuredImageId } = watch() as ProductType;
+	const { name, images, featuredImageId } = watch() as EcommerceProduct;
 
 	function handleSaveProduct() {
-		dispatch(saveProduct(getValues() as ProductType));
+		saveProduct(getValues() as EcommerceProduct);
+	}
+
+	function handleCreateProduct() {
+		createProduct(getValues() as EcommerceProduct)
+			.unwrap()
+			.then((data) => {
+				navigate(`/apps/e-commerce/products/${data.id}`);
+			});
 	}
 
 	function handleRemoveProduct() {
-		dispatch(removeProduct()).then(() => {
-			navigate('/apps/e-commerce/products');
-		});
+		removeProduct(productId);
+		navigate('/apps/e-commerce/products');
 	}
 
 	return (
-		<div className="flex flex-col sm:flex-row flex-1 w-full items-center justify-between space-y-8 sm:space-y-0 py-32 px-24 md:px-32">
-			<div className="flex flex-col items-center sm:items-start space-y-8 sm:space-y-0 w-full sm:max-w-full min-w-0">
+		<div className="flex flex-col sm:flex-row flex-1 w-full items-center justify-between space-y-8 sm:space-y-0 py-24 sm:py-32 px-24 md:px-32">
+			<div className="flex flex-col items-start space-y-8 sm:space-y-0 w-full sm:max-w-full min-w-0">
 				<motion.div
 					initial={{ x: 20, opacity: 0 }}
 					animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
@@ -78,7 +94,7 @@ function ProductHeader() {
 						)}
 					</motion.div>
 					<motion.div
-						className="flex flex-col items-center sm:items-start min-w-0 mx-8 sm:mx-16"
+						className="flex flex-col min-w-0 mx-8 sm:mx-16"
 						initial={{ x: -20 }}
 						animate={{ x: 0, transition: { delay: 0.3 } }}
 					>
@@ -95,28 +111,42 @@ function ProductHeader() {
 				</div>
 			</div>
 			<motion.div
-				className="flex"
+				className="flex flex-1 w-full"
 				initial={{ opacity: 0, x: 20 }}
 				animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}
 			>
-				<Button
-					className="whitespace-nowrap mx-4"
-					variant="contained"
-					color="secondary"
-					onClick={handleRemoveProduct}
-					startIcon={<FuseSvgIcon className="hidden sm:flex">heroicons-outline:trash</FuseSvgIcon>}
-				>
-					Remove
-				</Button>
-				<Button
-					className="whitespace-nowrap mx-4"
-					variant="contained"
-					color="secondary"
-					disabled={_.isEmpty(dirtyFields) || !isValid}
-					onClick={handleSaveProduct}
-				>
-					Save
-				</Button>
+				{productId !== 'new' ? (
+					<>
+						<Button
+							className="whitespace-nowrap mx-4"
+							variant="contained"
+							color="secondary"
+							onClick={handleRemoveProduct}
+							startIcon={<FuseSvgIcon className="hidden sm:flex">heroicons-outline:trash</FuseSvgIcon>}
+						>
+							Remove
+						</Button>
+						<Button
+							className="whitespace-nowrap mx-4"
+							variant="contained"
+							color="secondary"
+							disabled={_.isEmpty(dirtyFields) || !isValid}
+							onClick={handleSaveProduct}
+						>
+							Save
+						</Button>
+					</>
+				) : (
+					<Button
+						className="whitespace-nowrap mx-4"
+						variant="contained"
+						color="secondary"
+						disabled={_.isEmpty(dirtyFields) || !isValid}
+						onClick={handleCreateProduct}
+					>
+						Add
+					</Button>
+				)}
 			</motion.div>
 		</div>
 	);

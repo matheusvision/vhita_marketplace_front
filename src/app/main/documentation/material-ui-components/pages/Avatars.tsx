@@ -5,7 +5,29 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import ImageAvatarsComponent from '../components/avatars/ImageAvatars';
+import ImageAvatarsRaw from '../components/avatars/ImageAvatars.tsx?raw';
+import LetterAvatarsComponent from '../components/avatars/LetterAvatars';
+import LetterAvatarsRaw from '../components/avatars/LetterAvatars.tsx?raw';
+import BackgroundLetterAvatarsComponent from '../components/avatars/BackgroundLetterAvatars';
+import BackgroundLetterAvatarsRaw from '../components/avatars/BackgroundLetterAvatars.tsx?raw';
+import SizeAvatarsComponent from '../components/avatars/SizeAvatars';
+import SizeAvatarsRaw from '../components/avatars/SizeAvatars.tsx?raw';
+import IconAvatarsComponent from '../components/avatars/IconAvatars';
+import IconAvatarsRaw from '../components/avatars/IconAvatars.tsx?raw';
+import VariantAvatarsComponent from '../components/avatars/VariantAvatars';
+import VariantAvatarsRaw from '../components/avatars/VariantAvatars.tsx?raw';
+import FallbackAvatarsComponent from '../components/avatars/FallbackAvatars';
+import FallbackAvatarsRaw from '../components/avatars/FallbackAvatars.tsx?raw';
+import GroupAvatarsComponent from '../components/avatars/GroupAvatars';
+import GroupAvatarsRaw from '../components/avatars/GroupAvatars.tsx?raw';
+import TotalAvatarsComponent from '../components/avatars/TotalAvatars';
+import TotalAvatarsRaw from '../components/avatars/TotalAvatars.tsx?raw';
+import CustomSurplusAvatarsComponent from '../components/avatars/CustomSurplusAvatars';
+import CustomSurplusAvatarsRaw from '../components/avatars/CustomSurplusAvatars.tsx?raw';
+import BadgeAvatarsComponent from '../components/avatars/BadgeAvatars';
+import BadgeAvatarsRaw from '../components/avatars/BadgeAvatars.tsx?raw';
+                   
                    function AvatarsDoc(props) {
                      return (
                        
@@ -37,8 +59,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="ImageAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/ImageAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/ImageAvatars.tsx')}
+                    component={ImageAvatarsComponent} 
+                    raw={ImageAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Letter avatars</Typography>
 <Typography className="text-14 mb-32" component="div">Avatars containing simple characters can be created by passing a string as <code>{`children`}</code>.</Typography>
@@ -46,8 +68,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="LetterAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/LetterAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/LetterAvatars.tsx')}
+                    component={LetterAvatarsComponent} 
+                    raw={LetterAvatarsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">You can use different background colors for the avatar.
 The following demo generates the color based on the name of the person.</Typography>
@@ -55,8 +77,8 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="BackgroundLetterAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/BackgroundLetterAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/BackgroundLetterAvatars.tsx')}
+                    component={BackgroundLetterAvatarsComponent} 
+                    raw={BackgroundLetterAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes</Typography>
 <Typography className="text-14 mb-32" component="div">You can change the size of the avatar with the <code>{`height`}</code> and <code>{`width`}</code> CSS properties.</Typography>
@@ -64,8 +86,8 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="SizeAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/SizeAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/SizeAvatars.tsx')}
+                    component={SizeAvatarsComponent} 
+                    raw={SizeAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Icon avatars</Typography>
 <Typography className="text-14 mb-32" component="div">Icon avatars are created by passing an icon as <code>{`children`}</code>.</Typography>
@@ -73,8 +95,8 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="IconAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/IconAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/IconAvatars.tsx')}
+                    component={IconAvatarsComponent} 
+                    raw={IconAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Variants</Typography>
 <Typography className="text-14 mb-32" component="div">If you need square or rounded avatars, use the <code>{`variant`}</code> prop.</Typography>
@@ -82,8 +104,8 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="VariantAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/VariantAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/VariantAvatars.tsx')}
+                    component={VariantAvatarsComponent} 
+                    raw={VariantAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Fallbacks</Typography>
 <Typography className="text-14 mb-32" component="div">If there is an error loading the avatar image, the component falls back to an alternative in the following order:</Typography>
@@ -96,8 +118,8 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="FallbackAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/FallbackAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/FallbackAvatars.tsx')}
+                    component={FallbackAvatarsComponent} 
+                    raw={FallbackAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Grouped</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`AvatarGroup`}</code> renders its children as a stack. Use the <code>{`max`}</code> prop to limit the number of avatars.</Typography>
@@ -105,8 +127,8 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="GroupAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/GroupAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/GroupAvatars.tsx')}
+                    component={GroupAvatarsComponent} 
+                    raw={GroupAvatarsRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Total avatars</Typography>
 <Typography className="text-14 mb-32" component="div">If you need to control the total number of avatars not shown, you can use the <code>{`total`}</code> prop.</Typography>
@@ -114,16 +136,26 @@ The following demo generates the color based on the name of the person.</Typogra
                     name="TotalAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/TotalAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/TotalAvatars.tsx')}
+                    component={TotalAvatarsComponent} 
+                    raw={TotalAvatarsRaw}
+                    /></Typography>
+<Typography className="text-16 mt-20 mb-10 font-700" component="h3">Custom surplus</Typography>
+<Typography className="text-14 mb-32" component="div">Set the <code>{`renderSurplus`}</code> prop as a callback to customize the surplus avatar. The callback will receive the surplus number as an argument based on the children and the <code>{`max`}</code> prop, and should return a <code>{`React.ReactNode`}</code>.</Typography>
+<Typography className="text-14 mb-32" component="div">The <code>{`renderSurplus`}</code> prop is useful when you need to render the surplus based on the data sent from the server.</Typography>
+<Typography className="text-14 mb-32" component="div"><FuseExample
+                    name="CustomSurplusAvatars.js"
+                    className="my-16"
+                    iframe={false}
+                    component={CustomSurplusAvatarsComponent} 
+                    raw={CustomSurplusAvatarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">With badge</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BadgeAvatars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/avatars/BadgeAvatars.tsx').default} 
-                    raw={require('!raw-loader!../components/avatars/BadgeAvatars.tsx')}
+                    component={BadgeAvatarsComponent} 
+                    raw={BadgeAvatarsRaw}
                     /></Typography>
 
                 </>

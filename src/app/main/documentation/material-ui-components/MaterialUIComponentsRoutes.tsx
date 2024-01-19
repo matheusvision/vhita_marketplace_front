@@ -52,7 +52,6 @@ const ToggleButton = lazy(() => import('./pages/ToggleButton'));
 const Tooltips = lazy(() => import('./pages/Tooltips'));
 const TransferList = lazy(() => import('./pages/TransferList'));
 const Transitions = lazy(() => import('./pages/Transitions'));
-const TreeView = lazy(() => import('./pages/TreeView'));
 const Typography = lazy(() => import('./pages/Typography'));
 
 const MaterialUIComponentsRoutes = [
@@ -108,7 +107,6 @@ const MaterialUIComponentsRoutes = [
 	{ path: 'material-ui-components/tooltips', element: <Tooltips /> },
 	{ path: 'material-ui-components/transfer-list', element: <TransferList /> },
 	{ path: 'material-ui-components/transitions', element: <Transitions /> },
-	{ path: 'material-ui-components/tree-view', element: <TreeView /> },
 	{ path: 'material-ui-components/typography', element: <Typography /> }
 ];
 

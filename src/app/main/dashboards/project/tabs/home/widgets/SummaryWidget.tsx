@@ -5,16 +5,21 @@ import Typography from '@mui/material/Typography';
 import { memo, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import WidgetDataType, { RangeType } from '../../../types/WidgetDataType';
+import { useSelector } from 'react-redux';
+import { selectWidget } from '../../../ProjectDashboardApi';
+import WidgetDataType, { RangeType } from './types/WidgetDataType';
 
 /**
  * The SummaryWidget widget.
  */
 function SummaryWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { data, ranges, currentRange: currentRangeDefault } = widgets.summary as WidgetDataType;
+	const widget = useSelector(selectWidget<WidgetDataType>('summary'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { data, ranges, currentRange: currentRangeDefault } = widget;
 
 	const [currentRange, setCurrentRange] = useState<RangeType>(currentRangeDefault as RangeType);
 

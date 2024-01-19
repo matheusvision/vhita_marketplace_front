@@ -7,16 +7,21 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import Chip from '@mui/material/Chip';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import BudgetDetailsDataType from '../../../types/BudgetDetailsDataType';
+import { useSelector } from 'react-redux';
+import BudgetDetailsDataType from './types/BudgetDetailsDataType';
+import { selectWidget } from '../../../ProjectDashboardApi';
 
 /**
  * The BudgetDetailsWidget widget.
  */
 function BudgetDetailsWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { columns, rows } = widgets.budgetDetails as BudgetDetailsDataType;
+	const widget = useSelector(selectWidget<BudgetDetailsDataType>('budgetDetails'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { columns, rows } = widget;
 
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">

@@ -121,7 +121,6 @@ const MaterialUIComponentsNavigation = {
 			type: 'item',
 			url: '/documentation/material-ui-components/transitions'
 		},
-		{ id: 'treeView', title: 'Tree View', type: 'item', url: '/documentation/material-ui-components/tree-view' },
 		{ id: 'typography', title: 'Typography', type: 'item', url: '/documentation/material-ui-components/typography' }
 	]
 };

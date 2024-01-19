@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Controller, useFormContext } from 'react-hook-form';
-import { ProductType } from '../../types/ProductType';
+import { EcommerceProduct } from '../../ECommerceApi';
 
 /**
  * The basic info tab.
@@ -60,7 +60,7 @@ function BasicInfoTab() {
 						multiple
 						freeSolo
 						options={[]}
-						value={value as ProductType['categories']}
+						value={value as EcommerceProduct['categories']}
 						onChange={(event, newValue) => {
 							onChange(newValue);
 						}}
@@ -89,7 +89,7 @@ function BasicInfoTab() {
 						multiple
 						freeSolo
 						options={[]}
-						value={value as ProductType['tags']}
+						value={value as EcommerceProduct['tags']}
 						onChange={(event, newValue) => {
 							onChange(newValue);
 						}}

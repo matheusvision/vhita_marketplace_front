@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import { FuseNavigationType } from '@fuse/core/FuseNavigation/types/FuseNavigationType';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import ar from './navigation-i18n/ar';
 import en from './navigation-i18n/en';
 import tr from './navigation-i18n/tr';
@@ -13,7 +13,7 @@ i18next.addResourceBundle('ar', 'navigation', ar);
 /**
  * The navigationConfig object is an array of navigation items for the Fuse application.
  */
-const navigationConfig: FuseNavigationType = [
+const navigationConfig: FuseNavItemType[] = [
 	{
 		id: 'dashboards',
 		title: 'Dashboards',
@@ -78,12 +78,12 @@ const navigationConfig: FuseNavigationType = [
 				translate: 'CALENDAR'
 			},
 			{
-				id: 'apps.chat',
-				title: 'Chat',
+				id: 'apps.messenger',
+				title: 'Messenger',
 				type: 'item',
 				icon: 'heroicons-outline:chat-alt',
-				url: '/apps/chat',
-				translate: 'CHAT'
+				url: '/apps/messenger',
+				translate: 'MESSENGER'
 			},
 			{
 				id: 'apps.contacts',
@@ -220,6 +220,13 @@ const navigationConfig: FuseNavigationType = [
 				type: 'item',
 				icon: 'heroicons-outline:user-circle',
 				url: '/apps/profile'
+			},
+			{
+				id: 'apps.notifications',
+				title: 'Notifications',
+				type: 'item',
+				icon: 'heroicons-outline:bell',
+				url: '/apps/notifications'
 			}
 		]
 	},

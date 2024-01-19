@@ -7,13 +7,11 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { formatDistance } from 'date-fns';
 import _ from '@lodash';
-import { useAppSelector } from 'app/store';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { selectMembers } from '../store/membersSlice';
-import { BoardType } from '../types/BoardType';
+import { ScrumboardBoard, useGetScrumboardMembersQuery } from '../ScrumboardApi';
 
 type BoardItemProps = {
-	board: BoardType;
+	board: ScrumboardBoard;
 };
 
 /**
@@ -22,7 +20,7 @@ type BoardItemProps = {
 function BoardItem(props: BoardItemProps) {
 	const { board } = props;
 
-	const members = useAppSelector(selectMembers);
+	const { data: members } = useGetScrumboardMembersQuery();
 
 	const boardMembers = board.members.map((id) => _.find(members, { id }));
 
@@ -31,7 +29,7 @@ function BoardItem(props: BoardItemProps) {
 			component={NavLinkAdapter}
 			to={board.id}
 			role="button"
-			className="flex flex-col items-start w-full h-full p-24 rounded-lg shadow rounded-lg hover:shadow-xl transition-shadow duration-150 ease-in-out"
+			className="flex flex-col items-start w-full h-full p-24 shadow rounded-lg hover:shadow-xl transition-shadow duration-150 ease-in-out"
 		>
 			<div className="flex flex-col flex-auto justify-start items-start w-full">
 				<Box

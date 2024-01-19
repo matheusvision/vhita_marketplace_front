@@ -19,8 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { PopperOwnProps } from '@mui/base/Popper';
 import FuseSvgIcon from '../FuseSvgIcon';
-import { FuseNavItemType } from '../FuseNavigation/types/FuseNavItemType';
-import { FuseNavigationType } from '../FuseNavigation/types/FuseNavigationType';
+import { FuseFlatNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 
 const Root = styled('div')(({ theme }) => ({
 	'& .FuseSearch-container': {
@@ -113,7 +112,7 @@ function renderInputComponent(props: RenderInputComponentProps) {
 	);
 }
 
-function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted }: RenderSuggestionParams) {
+function renderSuggestion(suggestion: FuseFlatNavItemType, { query, isHighlighted }: RenderSuggestionParams) {
 	const matches = match(suggestion.title, query);
 	const parts = parse(suggestion.title, matches);
 
@@ -152,7 +151,7 @@ function renderSuggestion(suggestion: FuseNavItemType, { query, isHighlighted }:
 	);
 }
 
-function getSuggestions(value: string, data: FuseNavigationType): FuseNavigationType {
+function getSuggestions(value: string, data: FuseFlatNavItemType[]): FuseFlatNavItemType[] {
 	const inputValue = _.deburr(value.trim()).toLowerCase();
 	const inputLength = inputValue.length;
 	let count = 0;
@@ -162,7 +161,7 @@ function getSuggestions(value: string, data: FuseNavigationType): FuseNavigation
 	}
 
 	return data.filter((suggestion) => {
-		const keep = count < 10 && match(suggestion.title, inputValue).length > 0;
+		const keep = count < 10 && suggestion?.title && match(suggestion?.title, inputValue)?.length > 0;
 
 		if (keep) {
 			count += 1;
@@ -172,15 +171,15 @@ function getSuggestions(value: string, data: FuseNavigationType): FuseNavigation
 	});
 }
 
-function getSuggestionValue(suggestion: FuseNavItemType) {
+function getSuggestionValue(suggestion: FuseFlatNavItemType) {
 	return suggestion.title;
 }
 
 type StateType = {
 	searchText: string;
 	search: boolean;
-	navigation: FuseNavigationType;
-	suggestions: FuseNavigationType;
+	navigation: FuseFlatNavItemType[];
+	suggestions: FuseFlatNavItemType[];
 	noSuggestions: boolean;
 	opened: boolean;
 };
@@ -196,7 +195,7 @@ const initialState: StateType = {
 
 type ActionType =
 	| { type: 'setSearchText'; value: string }
-	| { type: 'setNavigation'; data: FuseNavigationType }
+	| { type: 'setNavigation'; data: FuseFlatNavItemType[] }
 	| { type: 'updateSuggestions'; value: string }
 	| { type: 'clearSuggestions' }
 	| { type: 'open' }
@@ -258,7 +257,7 @@ function reducer(state: StateType, action: ActionType): StateType {
  */
 type FuseSearchProps = {
 	className?: string;
-	navigation: FuseNavigationType;
+	navigation: FuseFlatNavItemType[];
 	variant?: 'basic' | 'full';
 	trigger?: ReactNode;
 	placeholder?: string;
@@ -325,7 +324,7 @@ function FuseSearch(props: FuseSearchProps) {
 
 	function handleSuggestionSelected(
 		event: React.FormEvent<unknown>,
-		{ suggestion }: { suggestion: FuseNavItemType }
+		{ suggestion }: { suggestion: FuseFlatNavItemType }
 	) {
 		event.preventDefault();
 		event.stopPropagation();

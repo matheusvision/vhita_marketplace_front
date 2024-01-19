@@ -6,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import {
 	DateSelectArg,
 	DatesSetArg,
@@ -17,20 +17,15 @@ import {
 	EventDropArg,
 	EventRemoveArg
 } from '@fullcalendar/core';
+import FuseLoading from '@fuse/core/FuseLoading';
+import withReducer from 'app/store/withReducer';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
-import {
-	getEvents,
-	openEditEventDialog,
-	openNewEventDialog,
-	selectFilteredEvents,
-	updateEvent
-} from './store/eventsSlice';
-import { getLabels } from './store/labelsSlice';
-import LabelsDialog from './dialogs/labels/LabelsDialog';
+import { openEditEventDialog, openNewEventDialog } from './store/eventDialogSlice';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
-import { EventType } from './types/EventType';
+import { Event, useGetCalendarEventsQuery, useUpdateCalendarEventMutation } from './CalendarApi';
+import reducer from './store';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -110,15 +105,11 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function CalendarApp() {
 	const [currentDate, setCurrentDate] = useState<DatesSetArg>();
 	const dispatch = useAppDispatch();
-	const events = useAppSelector(selectFilteredEvents);
+	const { data: events, isLoading } = useGetCalendarEventsQuery();
 	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
-
-	useEffect(() => {
-		dispatch(getEvents());
-		dispatch(getLabels());
-	}, [dispatch]);
+	const [updateEvent] = useUpdateCalendarEventMutation();
 
 	useEffect(() => {
 		setLeftSidebarOpen(!isMobile);
@@ -137,16 +128,14 @@ function CalendarApp() {
 
 	const handleEventDrop = (eventDropInfo: EventDropArg): void => {
 		const { id, title, allDay, start, end, extendedProps } = eventDropInfo.event;
-		dispatch(
-			updateEvent({
-				id,
-				title,
-				allDay,
-				start: start?.toISOString() ?? '',
-				end: end?.toISOString() ?? '',
-				extendedProps
-			})
-		);
+		updateEvent({
+			id,
+			title,
+			allDay,
+			start: start?.toISOString() ?? '',
+			end: end?.toISOString() ?? '',
+			extendedProps
+		});
 	};
 
 	const handleEventClick = (clickInfo: EventClickArg) => {
@@ -177,6 +166,10 @@ function CalendarApp() {
 		setLeftSidebarOpen(!leftSidebarOpen);
 	}
 
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
 	return (
 		<>
 			<Root
@@ -201,7 +194,7 @@ function CalendarApp() {
 						select={handleDateSelect}
 						events={events}
 						// eslint-disable-next-line react/no-unstable-nested-components
-						eventContent={(eventInfo: EventContentArg & { event: EventType }) => (
+						eventContent={(eventInfo: EventContentArg & { event: Event }) => (
 							<CalendarAppEventContent eventInfo={eventInfo} />
 						)}
 						eventClick={handleEventClick}
@@ -220,9 +213,8 @@ function CalendarApp() {
 				scroll="content"
 			/>
 			<EventDialog />
-			<LabelsDialog />
 		</>
 	);
 }
 
-export default CalendarApp;
+export default withReducer('calendarApp', reducer)(CalendarApp);

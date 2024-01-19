@@ -3,18 +3,24 @@ import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import ReactApexChart from 'react-apexcharts';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import { selectWidgets } from '../store/widgetsSlice';
-import AccountBalanceWidgetType from '../types/AccountBalanceWidgetType';
+import { useSelector } from 'react-redux';
+import AccountBalanceWidgetType from './types/AccountBalanceWidgetType';
+import { selectWidget } from '../FinanceDashboardApi';
 
 /**
  * The AccountBalanceWidget widget.
  */
 function AccountBalanceWidget() {
 	const theme = useTheme();
-	const widgets = useAppSelector(selectWidgets);
-	const { series, growRate, ami } = widgets.accountBalance as AccountBalanceWidgetType;
+
+	const widget = useSelector(selectWidget<AccountBalanceWidgetType>('accountBalance'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, growRate, ami } = widget;
 
 	const chartOptions: ApexOptions = {
 		chart: {

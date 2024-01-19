@@ -4,11 +4,12 @@ import { styled } from '@mui/material/styles';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import { PartialDeep } from 'type-fest';
-import { openLabelsDialog, selectLabels } from './store/labelsSlice';
+import { openLabelsDialog } from './store/dialogsSlice';
+import { useGetNotesLabelsQuery } from './NotesApi';
 
 const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & PartialDeep<NavLinkAdapterPropsType>>(
 	({ theme }) => ({
@@ -40,7 +41,11 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & Partia
  */
 function NotesSidebarContent() {
 	const dispatch = useAppDispatch();
-	const labels = useAppSelector(selectLabels);
+	const { data: labels, isLoading } = useGetNotesLabelsQuery();
+
+	if (isLoading) {
+		return null;
+	}
 
 	return (
 		<div className="px-16 py-24">

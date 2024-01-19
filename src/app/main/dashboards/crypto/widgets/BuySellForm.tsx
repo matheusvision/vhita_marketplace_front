@@ -1,6 +1,4 @@
-import * as yup from 'yup';
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -10,12 +8,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import _ from '@lodash';
 import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useSelector } from 'react-redux';
 import WalletsType from '../types/WalletsType';
 import PricesType from '../types/PricesType';
 import CoinTypes from '../types/CoinTypes';
+import { selectWidget } from '../CryptoDashboardApi';
 
 const actionValues = [
 	{ title: 'Buy', value: 'buy' },
@@ -46,25 +45,33 @@ type FormType = {
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	action: yup.string().required('You must select a value'),
-	wallet: yup.string().required('You must select a value'),
-	amount: yup.number().typeError('You must specify a number value').moreThan(0).required('You must specify a value'),
-	amountType: yup.string().required('You must select a value')
+
+const schema = z.object({
+	action: z.string().min(1, 'You must select a value'),
+	wallet: z.string().min(1, 'You must select a value'),
+	amount: z
+		.number()
+		.nonnegative('You must specify a number value')
+		.positive('You must specify a number value greater than 0')
+		.or(z.number().min(0, 'Amount must be greater than or equal to 0')), // allows zero
+	amountType: z.string().min(1, 'You must select a value')
 });
 
 /**
  * The buy sell form.
  */
 function BuySellForm() {
-	const widgets = useAppSelector(selectWidgets);
-	const wallets = widgets?.wallets as WalletsType;
-	const prices = widgets?.prices as PricesType;
+	const wallets = useSelector(selectWidget<WalletsType>('wallets'));
+	const prices = useSelector(selectWidget<PricesType>('prices'));
+
+	if (!wallets || !prices) {
+		return null;
+	}
 
 	const { handleSubmit, reset, control, watch, formState, setValue } = useForm<FormType>({
 		defaultValues,
 		mode: 'all',
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;
@@ -75,16 +82,7 @@ function BuySellForm() {
 
 	function onSubmit(_data: FormType) {
 		// eslint-disable-next-line no-console
-		console.info(_data);
 		reset();
-	}
-
-	if (!widgets) {
-		return (
-			<div className="flex flex-1 items-center justify-center">
-				<CircularProgress color="secondary" />
-			</div>
-		);
 	}
 
 	return (
@@ -191,9 +189,14 @@ function BuySellForm() {
 				<Controller
 					name="amount"
 					control={control}
-					render={({ field }) => (
+					render={({ field: { onChange, value, ...fieldProps } }) => (
 						<TextField
-							{...field}
+							{...fieldProps}
+							value={value || ''}
+							onChange={(e) => {
+								const number = parseFloat(e.target.value);
+								onChange(Number.isNaN(number) ? '' : number);
+							}}
 							label="Amount"
 							variant="outlined"
 							error={!!errors.amount}
@@ -212,7 +215,7 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value / prices[walletValue as CoinTypes]).toLocaleString(
+													{(value / prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
 														{
 															style: 'currency',
@@ -236,7 +239,7 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value * prices[walletValue as CoinTypes]).toLocaleString(
+													{(value * prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
 														{
 															style: 'currency',
@@ -259,7 +262,7 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value / prices[walletValue as CoinTypes]).toLocaleString(
+													{(value / prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
 														{
 															style: 'currency',
@@ -283,7 +286,7 @@ function BuySellForm() {
 													component="span"
 													className="font-mono font-medium text-12 mx-4"
 												>
-													{(field.value * prices[walletValue as CoinTypes]).toLocaleString(
+													{(value * prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
 														{
 															style: 'currency',

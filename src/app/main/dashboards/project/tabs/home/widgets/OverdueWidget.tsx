@@ -3,16 +3,21 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import WidgetDataType from '../../../types/WidgetDataType';
+import { useSelector } from 'react-redux';
+import { selectWidget } from '../../../ProjectDashboardApi';
+import WidgetDataType from './types/WidgetDataType';
 
 /**
  * The OverdueWidget widget.
  */
 function OverdueWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { data, title } = widgets.overdue as WidgetDataType;
+	const widget = useSelector(selectWidget<WidgetDataType>('overdue'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { data, title } = widget;
 
 	return (
 		<Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden">

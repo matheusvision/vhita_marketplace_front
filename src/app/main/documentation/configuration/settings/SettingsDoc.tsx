@@ -1,6 +1,6 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
-
+import settingsConfigRaw from 'app/configs/settingsConfig.ts?raw';
 /* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
 /**
@@ -29,7 +29,7 @@ function SettingsDoc() {
 				component="pre"
 				className="language-jsx"
 			>
-				{require('!raw-loader!app/configs/settingsConfig.ts')}
+				{settingsConfigRaw}
 			</FuseHighlight>
 		</>
 	);

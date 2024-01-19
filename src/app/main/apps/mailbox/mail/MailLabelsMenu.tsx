@@ -4,13 +4,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { MouseEvent, useEffect, useState } from 'react';
-import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Menu } from '@mui/material';
 import _ from '@lodash';
 import Tooltip from '@mui/material/Tooltip';
-import { selectLabels } from '../store/labelsSlice';
 import { labelColorDefs } from './labelColors';
+import { useGetMailboxLabelsQuery } from '../MailboxApi';
 
 type MailLabelsMenuProps = {
 	className?: string;
@@ -24,7 +23,7 @@ type MailLabelsMenuProps = {
 function MailLabelsMenu(props: MailLabelsMenuProps) {
 	const { className, onChange, labels } = props;
 	const [selectedLabels, setSelectedLabels] = useState(labels);
-	const labelsAll = useAppSelector(selectLabels);
+	const { data: labelsAll } = useGetMailboxLabelsQuery();
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);

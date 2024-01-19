@@ -1,7 +1,7 @@
 import { FuseRouteConfigsType } from '@fuse/utils/FuseUtils';
 import AcademyAppConfig from './academy/AcademyAppConfig';
 import CalendarAppConfig from './calendar/CalendarAppConfig';
-import ChatAppConfig from './chat/ChatAppConfig';
+import MessengerAppConfig from './messenger/MessengerAppConfig';
 import ContactsAppConfig from './contacts/ContactsAppConfig';
 import ECommerceAppConfig from './e-commerce/ECommerceAppConfig';
 import FileManagerAppConfig from './file-manager/FileManagerAppConfig';
@@ -11,6 +11,7 @@ import NotesAppConfig from './notes/NotesAppConfig';
 import ProfileAppConfig from './profile/profileAppConfig';
 import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 import TasksAppConfig from './tasks/TasksAppConfig';
+import NotificationsAppConfig from './notifications/NotificationsAppConfig';
 
 /**
  * The list of application configurations.
@@ -18,7 +19,7 @@ import TasksAppConfig from './tasks/TasksAppConfig';
 const appsConfigs: FuseRouteConfigsType = [
 	AcademyAppConfig,
 	CalendarAppConfig,
-	ChatAppConfig,
+	MessengerAppConfig,
 	ContactsAppConfig,
 	ECommerceAppConfig,
 	FileManagerAppConfig,
@@ -27,7 +28,8 @@ const appsConfigs: FuseRouteConfigsType = [
 	NotesAppConfig,
 	ProfileAppConfig,
 	ScrumboardAppConfig,
-	TasksAppConfig
+	TasksAppConfig,
+	NotificationsAppConfig
 ];
 
 export default appsConfigs;

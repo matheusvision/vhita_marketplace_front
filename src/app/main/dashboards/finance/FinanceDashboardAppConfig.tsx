@@ -1,7 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const FinanceDashboardApp = lazyWithReducer('financeDashboardApp', () => import('./FinanceDashboardApp'), reducer);
+const FinanceDashboardApp = lazy(() => import('./FinanceDashboardApp'));
 
 /**
  * The finance dashboard app config.

@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { DraggableLocation, DropResult } from 'react-beautiful-dnd';
-import { BoardListsType } from '../types/BoardListType';
+import { ScrumboardBoardList } from '../ScrumboardApi';
 
 // a little function to help us with reordering the result
 const reorder = (list: string[], startIndex: DraggableLocation['index'], endIndex: DraggableLocation['index']) => {
@@ -17,7 +17,7 @@ export default reorder;
  * Reorder Quote Map
  */
 export const reorderQuoteMap = (
-	lists: BoardListsType,
+	lists: ScrumboardBoardList[],
 	source: DropResult['source'],
 	destination: DropResult['destination']
 ) => {

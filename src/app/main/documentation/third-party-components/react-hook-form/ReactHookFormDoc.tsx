@@ -2,8 +2,8 @@ import FuseExample from '@fuse/core/FuseExample';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-
-/* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
+import SimpleFormExampleRaw from './examples/SimpleFormExample.tsx?raw';
+import SimpleFormExample from './examples/SimpleFormExample';
 
 /**
  * React Hook Form Doc
@@ -37,7 +37,7 @@ function ReactHookFormDoc() {
 			<hr />
 
 			<Typography
-				className="text-24 mt-32 mb-16"
+				className="text-16 mt-32 mb-16"
 				component="h4"
 			>
 				Example usage with Material-UI elements and form validation
@@ -45,8 +45,8 @@ function ReactHookFormDoc() {
 
 			<FuseExample
 				className="mb-64"
-				component={require('./examples/SimpleFormExample.tsx').default}
-				raw={require('!raw-loader!./examples/SimpleFormExample.tsx')}
+				component={SimpleFormExample}
+				raw={SimpleFormExampleRaw}
 			/>
 
 			<Typography

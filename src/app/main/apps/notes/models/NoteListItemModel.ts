@@ -1,7 +1,7 @@
 import FuseUtils from '@fuse/utils';
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { NoteListItemType } from '../types/NoteListItemType';
+import { NoteListItemType } from '../NotesApi';
 
 /**
  * The note list item model.

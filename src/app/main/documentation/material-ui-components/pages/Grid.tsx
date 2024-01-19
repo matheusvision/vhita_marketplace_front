@@ -5,7 +5,33 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicGridComponent from '../components/grid/BasicGrid';
+import BasicGridRaw from '../components/grid/BasicGrid.tsx?raw';
+import FullWidthGridComponent from '../components/grid/FullWidthGrid';
+import FullWidthGridRaw from '../components/grid/FullWidthGrid.tsx?raw';
+import SpacingGridComponent from '../components/grid/SpacingGrid';
+import SpacingGridRaw from '../components/grid/SpacingGrid.tsx?raw';
+import RowAndColumnSpacingComponent from '../components/grid/RowAndColumnSpacing';
+import RowAndColumnSpacingRaw from '../components/grid/RowAndColumnSpacing.tsx?raw';
+import ResponsiveGridComponent from '../components/grid/ResponsiveGrid';
+import ResponsiveGridRaw from '../components/grid/ResponsiveGrid.tsx?raw';
+import InteractiveGridComponent from '../components/grid/InteractiveGrid';
+import InteractiveGridRaw from '../components/grid/InteractiveGrid.tsx?raw';
+import AutoGridComponent from '../components/grid/AutoGrid';
+import AutoGridRaw from '../components/grid/AutoGrid.tsx?raw';
+import VariableWidthGridComponent from '../components/grid/VariableWidthGrid';
+import VariableWidthGridRaw from '../components/grid/VariableWidthGrid.tsx?raw';
+import ComplexGridComponent from '../components/grid/ComplexGrid';
+import ComplexGridRaw from '../components/grid/ComplexGrid.tsx?raw';
+import NestedGridComponent from '../components/grid/NestedGrid';
+import NestedGridRaw from '../components/grid/NestedGrid.tsx?raw';
+import ColumnsGridComponent from '../components/grid/ColumnsGrid';
+import ColumnsGridRaw from '../components/grid/ColumnsGrid.tsx?raw';
+import AutoGridNoWrapComponent from '../components/grid/AutoGridNoWrap';
+import AutoGridNoWrapRaw from '../components/grid/AutoGridNoWrap.tsx?raw';
+import CSSGridComponent from '../components/grid/CSSGrid';
+import CSSGridRaw from '../components/grid/CSSGrid.tsx?raw';
+                   
                    function GridDoc(props) {
                      return (
                        
@@ -49,13 +75,14 @@ The <code>{`Grid`}</code> component shouldn&#39;t be confused with a data grid; 
 <Typography className="text-14 mb-32" component="div">Fluid grids use columns that scale and resize content. A fluid grid&#39;s layout can use breakpoints to determine if the layout needs to change dramatically.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Basic grid</Typography>
 <Typography className="text-14 mb-32" component="div">Column widths are integer values between 1 and 12; they apply at any breakpoint and indicate how many columns are occupied by the component.</Typography>
-<Typography className="text-14 mb-32" component="div">A value given to a breakpoint applies to all the other breakpoints wider than it (unless overridden, as you can read later in this page). For example, <code>{`xs={12}`}</code> sizes a component to occupy the whole viewport width regardless of its size.</Typography>
+<Typography className="text-14 mb-32" component="div">A value passed to any given breakpoint also applies to all wider breakpoints (if they have no values explicitly defined).
+For example, <code>{`xs={12}`}</code> sizes a component to occupy the full width of its parent container, regardless of the viewport size.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BasicGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/BasicGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/BasicGrid.tsx')}
+                    component={BasicGridComponent} 
+                    raw={BasicGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Grid with multiple breakpoints</Typography>
 <Typography className="text-14 mb-32" component="div">Components may have multiple widths defined, causing the layout to change at the defined breakpoint. Width values given to larger breakpoints override those given to smaller breakpoints.</Typography>
@@ -64,8 +91,8 @@ The <code>{`Grid`}</code> component shouldn&#39;t be confused with a data grid; 
                     name="FullWidthGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/FullWidthGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/FullWidthGrid.tsx')}
+                    component={FullWidthGridComponent} 
+                    raw={FullWidthGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Spacing</Typography>
 <Typography className="text-14 mb-32" component="div">To control space between children, use the <code>{`spacing`}</code> prop.
@@ -75,8 +102,8 @@ The prop is converted into a CSS property using the <a href="/material-ui/custom
                     name="SpacingGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/SpacingGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/SpacingGrid.tsx')}
+                    component={SpacingGridComponent} 
+                    raw={SpacingGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Row &amp; column spacing</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`rowSpacing`}</code> and <code>{`columnSpacing`}</code> props allow for specifying the row and column gaps independently.
@@ -85,8 +112,8 @@ It&#39;s similar to the <code>{`row-gap`}</code> and <code>{`column-gap`}</code>
                     name="RowAndColumnSpacing.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/RowAndColumnSpacing.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/RowAndColumnSpacing.tsx')}
+                    component={RowAndColumnSpacingComponent} 
+                    raw={RowAndColumnSpacingRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Responsive values</Typography>
 <Typography className="text-14 mb-32" component="div">You can switch the props&#39; value based on the active breakpoint.
@@ -95,8 +122,8 @@ For instance, we can implement the <a href="https://m2.material.io/design/layout
                     name="ResponsiveGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/ResponsiveGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/ResponsiveGrid.tsx')}
+                    component={ResponsiveGridComponent} 
+                    raw={ResponsiveGridRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Responsive values is supported by:</Typography>
 <ul className="space-y-16">
@@ -125,8 +152,8 @@ For instance, this is not working. The grid item misses the value for <code>{`md
                     name="InteractiveGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/InteractiveGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/InteractiveGrid.tsx')}
+                    component={InteractiveGridComponent} 
+                    raw={InteractiveGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Auto-layout</Typography>
 <Typography className="text-14 mb-32" component="div">The Auto-layout makes the <em>items</em> equitably share the available space.
@@ -135,8 +162,8 @@ That also means you can set the width of one <em>item</em> and the others will a
                     name="AutoGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/AutoGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/AutoGrid.tsx')}
+                    component={AutoGridComponent} 
+                    raw={AutoGridRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Variable width content</Typography>
 <Typography className="text-14 mb-32" component="div">Set one of the size breakpoint props to <code>{`"auto"`}</code> instead of <code>{`true`}</code> / a <code>{`number`}</code> to size
@@ -145,8 +172,8 @@ a column based on the natural width of its content.</Typography>
                     name="VariableWidthGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/VariableWidthGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/VariableWidthGrid.tsx')}
+                    component={VariableWidthGridComponent} 
+                    raw={VariableWidthGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complex Grid</Typography>
 <Typography className="text-14 mb-32" component="div">The following demo doesn&#39;t follow the Material Design guidelines, but illustrates how the grid can be used to build complex layouts.</Typography>
@@ -154,8 +181,8 @@ a column based on the natural width of its content.</Typography>
                     name="ComplexGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/ComplexGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/ComplexGrid.tsx')}
+                    component={ComplexGridComponent} 
+                    raw={ComplexGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Nested Grid</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`container`}</code> and <code>{`item`}</code> props are two independent booleans; they can be combined to allow a Grid component to be both a flex container and child.</Typography>
@@ -169,8 +196,8 @@ a column based on the natural width of its content.</Typography>
                     name="NestedGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/NestedGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/NestedGrid.tsx')}
+                    component={NestedGridComponent} 
+                    raw={NestedGridRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">⚠️ Defining an explicit width to a Grid element that is flex container, flex item, and has spacing at the same time leads to unexpected behavior, avoid doing it:</Typography>
 
@@ -186,8 +213,8 @@ a column based on the natural width of its content.</Typography>
                     name="ColumnsGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/ColumnsGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/ColumnsGrid.tsx')}
+                    component={ColumnsGridComponent} 
+                    raw={ColumnsGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Negative margin</Typography>
@@ -216,8 +243,8 @@ In practice, you can set the <code>{`zeroMinWidth`}</code> prop:</Typography>
                     name="AutoGridNoWrap.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/AutoGridNoWrap.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/AutoGridNoWrap.tsx')}
+                    component={AutoGridNoWrapComponent} 
+                    raw={AutoGridNoWrapRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">direction: column | column-reverse</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`xs`}</code>, <code>{`sm`}</code>, <code>{`md`}</code>, <code>{`lg`}</code>, and <code>{`xl`}</code> props are <strong>not supported</strong> within <code>{`direction="column"`}</code> and <code>{`direction="column-reverse"`}</code> containers.</Typography>
@@ -230,8 +257,8 @@ But as seen below, you can easily use <a href="/system/grid/">the system</a> and
                     name="CSSGrid.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/grid/CSSGrid.tsx').default} 
-                    raw={require('!raw-loader!../components/grid/CSSGrid.tsx')}
+                    component={CSSGridComponent} 
+                    raw={CSSGridRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">System props</Typography>
 <Typography className="text-14 mb-32" component="div">As a CSS utility component, the <code>{`Grid`}</code> supports all <a href="/system/properties/"><code>{`system`}</code></a> properties. You can use them as props directly on the component.

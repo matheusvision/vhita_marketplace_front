@@ -3,32 +3,25 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import ListSubheader from '@mui/material/ListSubheader';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { AlbumsType } from '../../types/AlbumType';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProfilePhotosVideosQuery } from '../../ProfileApi';
 
 /**
  * The photos videos tab.
  */
 function PhotosVideosTab() {
-	const [data, setData] = useState<AlbumsType>([]);
+	const { data: photosVideos, isLoading } = useGetProfilePhotosVideosQuery();
 
-	useEffect(() => {
-		axios.get('/api/profile/photos-videos').then((res) => {
-			setData(res.data as AlbumsType);
-		});
-	}, []);
-
-	if (!data) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	const container = {
 		show: {
 			transition: {
-				staggerChildren: 0.05
+				staggerChildren: 0.04
 			}
 		}
 	};
@@ -47,7 +40,7 @@ function PhotosVideosTab() {
 		>
 			<div className="md:flex">
 				<div className="flex flex-col flex-1 md:ltr:pr-32 md:rtl:pl-32">
-					{data.map((period) => (
+					{photosVideos.map((period) => (
 						<div
 							key={period.id}
 							className="mb-48"

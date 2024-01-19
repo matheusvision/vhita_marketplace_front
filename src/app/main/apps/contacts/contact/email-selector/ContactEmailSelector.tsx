@@ -3,12 +3,12 @@ import Button from '@mui/material/Button';
 import { ForwardedRef, forwardRef } from 'react';
 import clsx from 'clsx';
 import EmailInput from './EmailInput';
-import { ContactEmailsType, ContactEmailType } from '../../types/ContactEmailType';
 import { ContactEmailModel } from '../../models/ContactModel';
+import { ContactEmail } from '../../ContactsApi';
 
 type ContactEmailSelectorProps = {
-	value: ContactEmailsType;
-	onChange: (T: ContactEmailsType) => void;
+	value: ContactEmail[] | undefined;
+	onChange: (T: ContactEmail[]) => void;
 	className?: string;
 };
 
@@ -23,11 +23,11 @@ const ContactEmailSelector = forwardRef((props: ContactEmailSelectorProps, ref: 
 			className={clsx('w-full', className)}
 			ref={ref}
 		>
-			{value.map((item, index) => (
+			{value?.map((item, index) => (
 				<EmailInput
 					value={item}
 					key={index}
-					onChange={(val: ContactEmailType) => {
+					onChange={(val: ContactEmail) => {
 						onChange(value.map((_item, _index) => (index === _index ? val : _item)));
 					}}
 					onRemove={() => {
@@ -38,7 +38,7 @@ const ContactEmailSelector = forwardRef((props: ContactEmailSelectorProps, ref: 
 			))}
 			<Button
 				className="group inline-flex items-center mt-2 -ml-4 py-2 px-4 rounded cursor-pointer"
-				onClick={() => onChange([...value, ContactEmailModel({})])}
+				onClick={() => value && onChange([...value, ContactEmailModel({})])}
 			>
 				<FuseSvgIcon size={20}>heroicons-solid:plus-circle</FuseSvgIcon>
 

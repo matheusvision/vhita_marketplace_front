@@ -2,7 +2,7 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseUtils from '@fuse/utils';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import {
 	appendNavigationItem,
 	prependNavigationItem,
@@ -10,8 +10,7 @@ import {
 	resetNavigation,
 	setNavigation,
 	updateNavigationItem
-} from 'app/store/fuse/navigationSlice';
-
+} from 'app/theme-layouts/shared-components/navigation/store/navigationSlice';
 /**
  * FuseNavigation Doc
  * This document provides information on how to use the FuseNavigation.

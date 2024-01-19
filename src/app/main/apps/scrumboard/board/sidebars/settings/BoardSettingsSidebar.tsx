@@ -4,7 +4,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -17,8 +16,13 @@ import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { PartialDeep } from 'type-fest';
 import ListItemButton from '@mui/material/ListItemButton';
-import { deleteBoard, selectBoard, updateBoard } from '../../../store/boardSlice';
-import { BoardType } from '../../../types/BoardType';
+import { useNavigate, useParams } from 'react-router-dom';
+import {
+	ScrumboardBoard,
+	useDeleteScrumboardBoardMutation,
+	useGetScrumboardBoardQuery,
+	useUpdateScrumboardBoardMutation
+} from '../../../ScrumboardApi';
 
 type BoardSettingsSidebarProps = {
 	onSetSidebarOpen: (open: boolean) => void;
@@ -29,9 +33,15 @@ type BoardSettingsSidebarProps = {
  */
 function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 	const { onSetSidebarOpen } = props;
+	const navigate = useNavigate();
 
-	const dispatch = useAppDispatch();
-	const { data: board } = useAppSelector(selectBoard);
+	const routeParams = useParams();
+	const { boardId } = routeParams;
+
+	const { data: board } = useGetScrumboardBoardQuery(boardId);
+
+	const [updateBoard] = useUpdateScrumboardBoardMutation();
+	const [deleteBoard] = useDeleteScrumboardBoardMutation();
 
 	const { watch, control, reset } = useForm({
 		mode: 'onChange',
@@ -40,8 +50,8 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 
 	const boardSettingsForm = watch();
 
-	const updateBoardData = useDebounce((data: PartialDeep<BoardType>) => {
-		dispatch(updateBoard(data));
+	const updateBoardData = useDebounce((data: PartialDeep<ScrumboardBoard>) => {
+		updateBoard({ id: boardId, ...data });
 	}, 600);
 
 	useDeepCompareEffect(() => {
@@ -136,7 +146,15 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 					</ListItemSecondaryAction>
 				</ListItem>
 
-				<ListItemButton onClick={() => dispatch(deleteBoard(board?.id))}>
+				<ListItemButton
+					onClick={() => {
+						deleteBoard(boardId)
+							.unwrap()
+							.then(() => {
+								navigate(`/apps/scrumboard/boards`);
+							});
+					}}
+				>
 					<ListItemIcon className="min-w-40">
 						<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 					</ListItemIcon>

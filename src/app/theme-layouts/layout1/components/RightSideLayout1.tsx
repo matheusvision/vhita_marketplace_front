@@ -1,7 +1,8 @@
-import { memo } from 'react';
-import ChatPanel from 'app/theme-layouts/shared-components/chatPanel/ChatPanel';
-import QuickPanel from '../../shared-components/quickPanel/QuickPanel';
-import NotificationPanel from '../../shared-components/notificationPanel/NotificationPanel';
+import { memo, lazy } from 'react';
+
+const QuickPanel = lazy(() => import('app/theme-layouts/shared-components/quickPanel/QuickPanel'));
+const MessengerPanel = lazy(() => import('src/app/main/apps/messenger/messengerPanel/MessengerPanel'));
+const NotificationPanel = lazy(() => import('src/app/main/apps/notifications/NotificationPanel'));
 
 /**
  * The right side layout 1.
@@ -9,9 +10,9 @@ import NotificationPanel from '../../shared-components/notificationPanel/Notific
 function RightSideLayout1() {
 	return (
 		<>
-			<ChatPanel />
-
 			<QuickPanel />
+
+			<MessengerPanel />
 
 			<NotificationPanel />
 		</>

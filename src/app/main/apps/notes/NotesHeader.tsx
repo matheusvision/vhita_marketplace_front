@@ -3,10 +3,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useSelector } from 'react-redux';
 import NotesSearch from './NotesSearch';
-import { selectVariateDescSize, toggleVariateDescSize } from './store/notesSlice';
+import { selectVariateDescSize, toggleVariateDescSize } from './store/variateDescSlice';
 
 type NotesHeaderProps = {
 	onSetSidebarOpen: (open: boolean) => void;
@@ -19,11 +20,11 @@ function NotesHeader(props: NotesHeaderProps) {
 	const { onSetSidebarOpen } = props;
 
 	const dispatch = useAppDispatch();
-	const variateDescSize = useAppSelector(selectVariateDescSize);
+	const variateDescSize = useSelector(selectVariateDescSize);
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between p-8 sm:p-24 sm:px-32 relative">
-			<div className="flex shrink items-center sm:w-224">
+			<div className="flex shrink items-center sm:w-224 w-full">
 				<Hidden lgUp>
 					<IconButton
 						onClick={() => onSetSidebarOpen(true)}

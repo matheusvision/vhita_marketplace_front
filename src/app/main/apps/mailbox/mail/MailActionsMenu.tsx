@@ -4,13 +4,11 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useNavigate } from 'react-router-dom';
-import { MouseEvent, useState } from 'react';
-import { selectMail } from '../store/mailSlice';
-import { selectSpamFolderId, selectTrashFolderId } from '../store/foldersSlice';
-import { setActionToMails } from '../store/mailsSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import { MouseEvent, useMemo, useState } from 'react';
+import _ from '@lodash';
+import { useGetMailboxMailQuery, useApplyMailboxMailActionMutation, useGetMailboxFoldersQuery } from '../MailboxApi';
 
 type MailActionsMenuProps = {
 	className?: string;
@@ -21,15 +19,19 @@ type MailActionsMenuProps = {
  */
 function MailActionsMenu(props: MailActionsMenuProps) {
 	const { className } = props;
-
-	const dispatch = useAppDispatch();
-	const { data: mail } = useAppSelector(selectMail);
+	const navigate = useNavigate();
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const spamFolderId = useAppSelector(selectSpamFolderId);
-	const trashFolderId = useAppSelector(selectTrashFolderId);
-	const navigate = useNavigate();
+
+	const [setActionToMails] = useApplyMailboxMailActionMutation();
+
+	const { mailId } = useParams() as { mailId: string };
+	const { data: mail } = useGetMailboxMailQuery(mailId);
+
+	const { data: folders } = useGetMailboxFoldersQuery();
+	const spamFolderId = useMemo(() => _.find(folders, { slug: 'spam' })?.id, [folders]);
+	const trashFolderId = useMemo(() => _.find(folders, { slug: 'trash' })?.id, [folders]);
 
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
@@ -65,7 +67,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 			>
 				<MenuItem
 					onClick={() => {
-						dispatch(setActionToMails({ type: 'unread', value: true, ids: [mail.id] }));
+						setActionToMails({ type: 'unread', value: true, ids: [mail.id] });
 						handleClose();
 					}}
 				>
@@ -77,7 +79,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 
 				<MenuItem
 					onClick={() => {
-						dispatch(setActionToMails({ type: 'folder', value: spamFolderId, ids: [mail.id] }));
+						setActionToMails({ type: 'folder', value: spamFolderId, ids: [mail.id] });
 						handleClose();
 					}}
 				>
@@ -89,11 +91,8 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 
 				<MenuItem
 					onClick={() => {
-						dispatch(
-							setActionToMails({ type: 'folder', value: Boolean(trashFolderId), ids: [mail.id] })
-						).then(() => {
-							navigate(-1);
-						});
+						setActionToMails({ type: 'folder', value: Boolean(trashFolderId), ids: [mail.id] });
+						navigate(-1);
 						handleClose();
 					}}
 				>

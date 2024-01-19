@@ -1,25 +1,25 @@
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { getFaqs, selectGroupedFaqs } from '../store/faqsSlice';
-import { getFaqCategories } from '../store/faqCategoriesSlice';
+import { useMemo } from 'react';
 import FaqList from './FaqList';
+import { useGetHelpCenterFaqCategoriesQuery, useGetHelpCenterFaqsQuery } from '../HelpCenterApi';
 
 /**
  * The help center faqs page.
  */
 function HelpCenterFaqs() {
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const groupedFaqs = useAppSelector(selectGroupedFaqs);
 
-	useEffect(() => {
-		dispatch(getFaqs());
-		dispatch(getFaqCategories());
-	}, [dispatch]);
+	const { data: faqs } = useGetHelpCenterFaqsQuery();
+	const { data: categories } = useGetHelpCenterFaqCategoriesQuery();
+	const groupedFaqs = useMemo(() => {
+		return categories?.map((category) => ({
+			...category,
+			faqs: faqs?.filter((faq) => faq.categoryId === category.id)
+		}));
+	}, [faqs, categories]);
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -41,7 +41,7 @@ function HelpCenterFaqs() {
 					Frequently Asked Questions
 				</div>
 
-				{groupedFaqs.map((category) => (
+				{groupedFaqs?.map((category) => (
 					<div key={category.id}>
 						<Typography className="mt-48 sm:mt-64 text-3xl font-bold leading-tight tracking-tight">
 							{category.title}

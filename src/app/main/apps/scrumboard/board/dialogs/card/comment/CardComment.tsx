@@ -1,24 +1,23 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import * as yup from 'yup';
-import { useAppSelector } from 'app/store';
-import { selectMemberById } from '../../../../store/membersSlice';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useSelector } from 'react-redux';
 import CommentModel from '../../../../models/CommentModel';
-import { CommentType } from '../../../../types/CommentType';
+import { ScrumboardComment, selectMemberById } from '../../../../ScrumboardApi';
 
 type FormType = {
-	message: CommentType['message'];
+	message: ScrumboardComment['message'];
 };
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	message: yup.string().required('You must enter a comment')
+const schema = z.object({
+	message: z.string().nonempty('You must enter a comment')
 });
 
 const defaultValues = {
@@ -27,7 +26,7 @@ const defaultValues = {
 };
 
 type CardCommentProps = {
-	onCommentAdd: (comment: CommentType) => void;
+	onCommentAdd: (comment: ScrumboardComment) => void;
 };
 
 /**
@@ -36,12 +35,12 @@ type CardCommentProps = {
 function CardComment(props: CardCommentProps) {
 	const { onCommentAdd } = props;
 
-	const user = useAppSelector(selectMemberById(defaultValues.idMember));
+	const user = useSelector(selectMemberById(defaultValues.idMember));
 
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

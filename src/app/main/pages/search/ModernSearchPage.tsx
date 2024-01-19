@@ -25,7 +25,7 @@ function ModernSearchPage() {
 	const container = {
 		show: {
 			transition: {
-				staggerChildren: 0.05
+				staggerChildren: 0.04
 			}
 		}
 	};

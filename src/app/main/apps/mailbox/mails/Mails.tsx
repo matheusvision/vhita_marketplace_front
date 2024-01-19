@@ -12,7 +12,7 @@ function Mails(props: MailsProps) {
 	const { onToggleLeftSidebar } = props;
 
 	return (
-		<div className="flex flex-col w-full">
+		<div className="flex flex-col w-full min-h-full">
 			<MailsToolbar onToggleLeftSidebar={onToggleLeftSidebar} />
 			<MailList />
 		</div>

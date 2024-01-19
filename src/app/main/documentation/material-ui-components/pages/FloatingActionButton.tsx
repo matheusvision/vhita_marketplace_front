@@ -5,7 +5,15 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import FloatingActionButtonsComponent from '../components/floating-action-button/FloatingActionButtons';
+import FloatingActionButtonsRaw from '../components/floating-action-button/FloatingActionButtons.tsx?raw';
+import FloatingActionButtonSizeComponent from '../components/floating-action-button/FloatingActionButtonSize';
+import FloatingActionButtonSizeRaw from '../components/floating-action-button/FloatingActionButtonSize.tsx?raw';
+import FloatingActionButtonExtendedSizeComponent from '../components/floating-action-button/FloatingActionButtonExtendedSize';
+import FloatingActionButtonExtendedSizeRaw from '../components/floating-action-button/FloatingActionButtonExtendedSize.tsx?raw';
+import FloatingActionButtonZoomComponent from '../components/floating-action-button/FloatingActionButtonZoom';
+import FloatingActionButtonZoomRaw from '../components/floating-action-button/FloatingActionButtonZoom.tsx?raw';
+                   
                    function FloatingActionButtonDoc(props) {
                      return (
                        
@@ -38,8 +46,8 @@ Only one component is recommended per screen to represent the most common action
                     name="FloatingActionButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/floating-action-button/FloatingActionButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/floating-action-button/FloatingActionButtons.tsx')}
+                    component={FloatingActionButtonsComponent} 
+                    raw={FloatingActionButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Size</Typography>
 <Typography className="text-14 mb-32" component="div">By default, the size is <code>{`large`}</code>. Use the <code>{`size`}</code> prop for smaller floating action buttons.</Typography>
@@ -47,15 +55,15 @@ Only one component is recommended per screen to represent the most common action
                     name="FloatingActionButtonSize.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/floating-action-button/FloatingActionButtonSize.tsx').default} 
-                    raw={require('!raw-loader!../components/floating-action-button/FloatingActionButtonSize.tsx')}
+                    component={FloatingActionButtonSizeComponent} 
+                    raw={FloatingActionButtonSizeRaw}
                     />
 <FuseExample
                     name="FloatingActionButtonExtendedSize.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/floating-action-button/FloatingActionButtonExtendedSize.tsx').default} 
-                    raw={require('!raw-loader!../components/floating-action-button/FloatingActionButtonExtendedSize.tsx')}
+                    component={FloatingActionButtonExtendedSizeComponent} 
+                    raw={FloatingActionButtonExtendedSizeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Animation</Typography>
 <Typography className="text-14 mb-32" component="div">The floating action button animates onto the screen as an expanding piece of material, by default.</Typography>
@@ -68,8 +76,8 @@ animation to finish before the new one enters.</Typography>
                     name="FloatingActionButtonZoom.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/floating-action-button/FloatingActionButtonZoom.tsx').default} 
-                    raw={require('!raw-loader!../components/floating-action-button/FloatingActionButtonZoom.tsx')}
+                    component={FloatingActionButtonZoomComponent} 
+                    raw={FloatingActionButtonZoomRaw}
                     /></Typography>
 
                 </>

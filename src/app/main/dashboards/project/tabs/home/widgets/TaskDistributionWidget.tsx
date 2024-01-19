@@ -6,17 +6,22 @@ import ReactApexChart from 'react-apexcharts';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import TaskDistributionDataType from '../../../types/TaskDistributionDataType';
+import { useSelector } from 'react-redux';
+import { selectWidget } from '../../../ProjectDashboardApi';
+import TaskDistributionDataType from './types/TaskDistributionDataType';
 
 /**
  * The TaskDistributionWidget widget.
  */
 function TaskDistributionWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { overview, series, labels, ranges } = widgets.taskDistribution as TaskDistributionDataType;
+	const widget = useSelector(selectWidget<TaskDistributionDataType>('taskDistribution'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { overview, series, labels, ranges } = widget;
 	const [tabValue, setTabValue] = useState(0);
 	const currentRange = Object.keys(ranges)[tabValue];
 	const [awaitRender, setAwaitRender] = useState(true);

@@ -3,13 +3,13 @@ import Typography from '@mui/material/Typography';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store';
-import { setSelectedItem } from './store/itemsSlice';
+import { useAppDispatch } from 'app/store/store';
 import ItemIcon from './ItemIcon';
-import { FileManagerItemType } from './types/FileManagerItemType';
+import { FileManagerItem } from './FileManagerApi';
+import { setSelectedItemId } from './store/selectedItemIdSlice';
 
 type FolderItemProps = {
-	item: FileManagerItemType;
+	item: FileManagerItem;
 };
 
 /**
@@ -30,7 +30,7 @@ function FolderItem(props: FolderItemProps) {
 		>
 			<IconButton
 				className="absolute z-20 top-0 right-0 m-6 w-32 h-32 min-h-32"
-				onClick={() => dispatch(setSelectedItem(item.id))}
+				onClick={() => dispatch(setSelectedItemId(item.id))}
 			>
 				<FuseSvgIcon size={20}>heroicons-solid:information-circle</FuseSvgIcon>
 			</IconButton>

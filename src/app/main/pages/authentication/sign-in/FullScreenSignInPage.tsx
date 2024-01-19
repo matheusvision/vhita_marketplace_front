@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -7,23 +6,24 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	email: yup.string().email('You must enter a valid email').required('You must enter a email'),
-	password: yup
+const schema = z.object({
+	email: z.string().email('You must enter a valid email').nonempty('You must enter an email'),
+	password: z
 		.string()
-		.required('Please enter your password.')
 		.min(8, 'Password is too short - must be at least 8 chars.')
+		.nonempty('Please enter your password.')
 });
 
 type FormType = {
@@ -45,7 +45,7 @@ function FullScreenSignInPage() {
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

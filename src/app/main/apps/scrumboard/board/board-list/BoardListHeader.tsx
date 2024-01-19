@@ -1,5 +1,4 @@
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -10,29 +9,33 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState, MouseEvent } from 'react';
-import { useAppDispatch } from 'app/store';
-import * as yup from 'yup';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
 import { darken } from '@mui/material/styles';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import clsx from 'clsx';
 import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
-import { removeList, updateList } from '../../store/listsSlice';
-import { ListType } from '../../types/ListType';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+	ScrumboardList,
+	useDeleteScrumboardBoardListMutation,
+	useUpdateScrumboardBoardListMutation
+} from '../../ScrumboardApi';
 
 type FormType = {
-	title: ListType['title'];
+	title: ScrumboardList['title'];
 };
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	title: yup.string().required('You must enter a title')
+const schema = z.object({
+	title: z.string().nonempty('You must enter a title')
 });
 
 type BoardListHeaderProps = {
-	list: ListType;
+	list: ScrumboardList;
+	boardId: string;
 	cardIds: string[];
 	handleProps: DraggableProvidedDragHandleProps | null | undefined;
 	className?: string;
@@ -42,18 +45,20 @@ type BoardListHeaderProps = {
  * The board list header component.
  */
 function BoardListHeader(props: BoardListHeaderProps) {
-	const { list, cardIds, className, handleProps } = props;
-	const dispatch = useAppDispatch();
+	const { boardId, list, cardIds, className, handleProps } = props;
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 	const [formOpen, setFormOpen] = useState(false);
+
+	const [removeList] = useDeleteScrumboardBoardListMutation();
+	const [updateList] = useUpdateScrumboardBoardListMutation();
 
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',
 		defaultValues: {
 			title: list.title
 		},
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;
@@ -90,7 +95,7 @@ function BoardListHeader(props: BoardListHeaderProps) {
 	}
 
 	function onSubmit(newData: FormType) {
-		dispatch(updateList({ id: list.id, newData }));
+		updateList({ boardId, list: { id: list.id, ...newData } });
 		handleCloseForm();
 	}
 
@@ -167,7 +172,10 @@ function BoardListHeader(props: BoardListHeaderProps) {
 					>
 						<MenuItem
 							onClick={() => {
-								dispatch(removeList(list.id));
+								removeList({
+									boardId,
+									listId: list.id
+								});
 							}}
 						>
 							<ListItemIcon className="min-w-40">

@@ -5,8 +5,15 @@ import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
-import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from 'app/store/fuse/messageSlice';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import {
+	hideMessage,
+	fuseMessageSlice,
+	selectFuseMessageOptions,
+	selectFuseMessageState
+} from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { useAppDispatch } from 'app/store/store';
+import { useSelector } from 'react-redux';
+import withSlices from 'app/store/withSlices';
 import FuseSvgIcon from '../FuseSvgIcon';
 
 export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info';
@@ -52,8 +59,8 @@ const variantIcon = {
  */
 function FuseMessage() {
 	const dispatch = useAppDispatch();
-	const state = useAppSelector(selectFuseMessageState);
-	const options = useAppSelector(selectFuseMessageOptions);
+	const state = useSelector(selectFuseMessageState);
+	const options = useSelector(selectFuseMessageOptions);
 
 	return (
 		<StyledSnackbar
@@ -87,4 +94,4 @@ function FuseMessage() {
 	);
 }
 
-export default memo(FuseMessage);
+export default withSlices([fuseMessageSlice])(memo(FuseMessage));

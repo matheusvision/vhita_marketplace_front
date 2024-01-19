@@ -5,7 +5,27 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import RadioButtonsGroupComponent from '../components/radio-buttons/RadioButtonsGroup';
+import RadioButtonsGroupRaw from '../components/radio-buttons/RadioButtonsGroup.tsx?raw';
+import RowRadioButtonsGroupComponent from '../components/radio-buttons/RowRadioButtonsGroup';
+import RowRadioButtonsGroupRaw from '../components/radio-buttons/RowRadioButtonsGroup.tsx?raw';
+import ControlledRadioButtonsGroupComponent from '../components/radio-buttons/ControlledRadioButtonsGroup';
+import ControlledRadioButtonsGroupRaw from '../components/radio-buttons/ControlledRadioButtonsGroup.tsx?raw';
+import RadioButtonsComponent from '../components/radio-buttons/RadioButtons';
+import RadioButtonsRaw from '../components/radio-buttons/RadioButtons.tsx?raw';
+import SizeRadioButtonsComponent from '../components/radio-buttons/SizeRadioButtons';
+import SizeRadioButtonsRaw from '../components/radio-buttons/SizeRadioButtons.tsx?raw';
+import ColorRadioButtonsComponent from '../components/radio-buttons/ColorRadioButtons';
+import ColorRadioButtonsRaw from '../components/radio-buttons/ColorRadioButtons.tsx?raw';
+import FormControlLabelPlacementComponent from '../components/radio-buttons/FormControlLabelPlacement';
+import FormControlLabelPlacementRaw from '../components/radio-buttons/FormControlLabelPlacement.tsx?raw';
+import ErrorRadiosComponent from '../components/radio-buttons/ErrorRadios';
+import ErrorRadiosRaw from '../components/radio-buttons/ErrorRadios.tsx?raw';
+import CustomizedRadiosComponent from '../components/radio-buttons/CustomizedRadios';
+import CustomizedRadiosRaw from '../components/radio-buttons/CustomizedRadios.tsx?raw';
+import UseRadioGroupComponent from '../components/radio-buttons/UseRadioGroup';
+import UseRadioGroupRaw from '../components/radio-buttons/UseRadioGroup.tsx?raw';
+                   
                    function RadioButtonsDoc(props) {
                      return (
                        
@@ -38,8 +58,8 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="RadioButtonsGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/RadioButtonsGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/RadioButtonsGroup.tsx')}
+                    component={RadioButtonsGroupComponent} 
+                    raw={RadioButtonsGroupRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Direction</Typography>
 <Typography className="text-14 mb-32" component="div">To lay out the buttons horizontally, set the <code>{`row`}</code> prop:</Typography>
@@ -47,8 +67,8 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="RowRadioButtonsGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/RowRadioButtonsGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/RowRadioButtonsGroup.tsx')}
+                    component={RowRadioButtonsGroupComponent} 
+                    raw={RowRadioButtonsGroupRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Controlled</Typography>
 <Typography className="text-14 mb-32" component="div">You can control the radio with the <code>{`value`}</code> and <code>{`onChange`}</code> props:</Typography>
@@ -56,8 +76,8 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="ControlledRadioButtonsGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/ControlledRadioButtonsGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/ControlledRadioButtonsGroup.tsx')}
+                    component={ControlledRadioButtonsGroupComponent} 
+                    raw={ControlledRadioButtonsGroupRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Standalone radio buttons</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`Radio`}</code> can also be used standalone, without the RadioGroup wrapper.</Typography>
@@ -65,8 +85,8 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="RadioButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/RadioButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/RadioButtons.tsx')}
+                    component={RadioButtonsComponent} 
+                    raw={RadioButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Size</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`size`}</code> prop or customize the font size of the svg icons to change the size of the radios.</Typography>
@@ -74,16 +94,16 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="SizeRadioButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/SizeRadioButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/SizeRadioButtons.tsx')}
+                    component={SizeRadioButtonsComponent} 
+                    raw={SizeRadioButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ColorRadioButtons.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/ColorRadioButtons.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/ColorRadioButtons.tsx')}
+                    component={ColorRadioButtonsComponent} 
+                    raw={ColorRadioButtonsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Label placement</Typography>
 <Typography className="text-14 mb-32" component="div">You can change the placement of the label with the <code>{`FormControlLabel`}</code> component&#39;s <code>{`labelPlacement`}</code> prop:</Typography>
@@ -91,8 +111,8 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="FormControlLabelPlacement.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/FormControlLabelPlacement.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/FormControlLabelPlacement.tsx')}
+                    component={FormControlLabelPlacementComponent} 
+                    raw={FormControlLabelPlacementRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Show error</Typography>
 <Typography className="text-14 mb-32" component="div">In general, radio buttons should have a value selected by default. If this is not the case, you can display an error if no value is selected when the form is submitted:</Typography>
@@ -100,8 +120,8 @@ If available options can be collapsed, consider using a <a href="/material-ui/re
                     name="ErrorRadios.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/ErrorRadios.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/ErrorRadios.tsx')}
+                    component={ErrorRadiosComponent} 
+                    raw={ErrorRadiosRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here is an example of customizing the component.
@@ -110,8 +130,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedRadios.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/CustomizedRadios.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/CustomizedRadios.tsx')}
+                    component={CustomizedRadiosComponent} 
+                    raw={CustomizedRadiosRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2"><code>{`useRadioGroup`}</code></Typography>
 <Typography className="text-14 mb-32" component="div">For advanced customization use cases, a <code>{`useRadioGroup()`}</code> hook is exposed.
@@ -136,8 +156,8 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
                     name="UseRadioGroup.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/radio-buttons/UseRadioGroup.tsx').default} 
-                    raw={require('!raw-loader!../components/radio-buttons/UseRadioGroup.tsx')}
+                    component={UseRadioGroupComponent} 
+                    raw={UseRadioGroupRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">When to use</Typography>
 <ul className="space-y-16">

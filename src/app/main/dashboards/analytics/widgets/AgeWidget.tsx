@@ -6,16 +6,21 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import ReactApexChart from 'react-apexcharts';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import AgeWidgetModelType from '../types/AgeWidgetType';
+import { useSelector } from 'react-redux';
+import AgeWidgetModelType from './types/AgeWidgetType';
+import { selectWidget } from '../AnalyticsDashboardApi';
 
 /**
  * The age widget.
  */
 function AgeWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { series, labels, uniqueVisitors } = widgets.age as AgeWidgetModelType;
+	const widget = useSelector(selectWidget<AgeWidgetModelType>('age'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, labels, uniqueVisitors } = widget;
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
 

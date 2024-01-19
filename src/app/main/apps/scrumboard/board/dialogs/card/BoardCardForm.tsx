@@ -1,4 +1,4 @@
-import { useDebounce } from '@fuse/hooks';
+import { useDebounce, useDeepCompareEffect } from '@fuse/hooks';
 import _ from '@lodash';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import clsx from 'clsx';
@@ -17,63 +17,97 @@ import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { SyntheticEvent, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { closeCardDialog, removeCard, selectCardData, updateCard } from '../../../store/cardSlice';
+import { useParams } from 'react-router-dom';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { useSelector } from 'react-redux';
+import { closeCardDialog, selectCardData } from '../../../store/cardDialogSlice';
 import CardActivity from './activity/CardActivity';
 import CardAttachment from './attachment/CardAttachment';
 import CardChecklist from './checklist/CardChecklist';
 import CardComment from './comment/CardComment';
-import { selectListById } from '../../../store/listsSlice';
-import { selectLabels } from '../../../store/labelsSlice';
-import { selectBoard } from '../../../store/boardSlice';
-import { selectMembers } from '../../../store/membersSlice';
 import DueMenu from './toolbar/DueMenu';
 import LabelsMenu from './toolbar/LabelsMenu';
 import MembersMenu from './toolbar/MembersMenu';
 import CheckListMenu from './toolbar/CheckListMenu';
 import OptionsMenu from './toolbar/OptionsMenu';
-import { CardType } from '../../../types/CardType';
-import { LabelType, LabelsType } from '../../../types/LabelType';
-import { MemberType, MembersType } from '../../../types/MemberType';
-import { ChecklistsType } from '../../../types/ChecklistType';
-import { CommentsType } from '../../../types/CommentType';
+import {
+	ScrumboardCard,
+	ScrumboardChecklist,
+	ScrumboardComment,
+	ScrumboardLabel,
+	ScrumboardMember,
+	useDeleteScrumboardBoardCardMutation,
+	useGetScrumboardBoardLabelsQuery,
+	useGetScrumboardBoardListsQuery,
+	useGetScrumboardBoardQuery,
+	useGetScrumboardMembersQuery,
+	useUpdateScrumboardBoardCardMutation
+} from '../../../ScrumboardApi';
 
 /**
  * The board card form component.
  */
 function BoardCardForm() {
 	const dispatch = useAppDispatch();
-	const { data: board } = useAppSelector(selectBoard);
-	const labels = useAppSelector(selectLabels);
-	const members = useAppSelector(selectMembers);
-	const card = useAppSelector(selectCardData) as CardType;
-	const list = useAppSelector(selectListById(card?.listId));
+	const routeParams = useParams();
+	const { boardId } = routeParams;
 
-	const { register, watch, control, setValue } = useForm<CardType>({ mode: 'onChange', defaultValues: card });
+	const { data: board, isLoading: isBoardLoading } = useGetScrumboardBoardQuery(boardId);
+	const { data: members, isLoading: isMembersLoading } = useGetScrumboardMembersQuery();
+	const { data: labels, isLoading: isLabelsLoading } = useGetScrumboardBoardLabelsQuery(boardId);
+	const { data: listItems, isLoading: isListItemsLoading } = useGetScrumboardBoardListsQuery(boardId);
+	const loading = isBoardLoading || isMembersLoading || isLabelsLoading || isListItemsLoading;
 
+	const card = useSelector(selectCardData);
+
+	const [updateCard] = useUpdateScrumboardBoardCardMutation();
+	const [removeCard] = useDeleteScrumboardBoardCardMutation();
+
+	const list = _.find(listItems, { id: card?.listId });
+
+	const { register, watch, control, setValue, formState } = useForm<ScrumboardCard>({
+		mode: 'onChange',
+		defaultValues: card
+	});
+	const { isValid } = formState;
 	const cardForm = watch();
 
-	const updateCardData = useDebounce((newCard: CardType) => {
-		dispatch(updateCard(newCard));
+	const updateCardData = useDebounce((newCard: ScrumboardCard) => {
+		updateCard({ boardId, card: { id: card.id, ...newCard } })
+			.unwrap()
+			.then(() => {
+				dispatch(
+					showMessage({
+						message: 'Card Saved',
+						autoHideDuration: 2000,
+						anchorOrigin: {
+							vertical: 'top',
+							horizontal: 'right'
+						}
+					})
+				);
+			});
 	}, 600);
 
-	useEffect(() => {
-		if (!card) {
-			return;
-		}
-		if (!_.isEqual(card, cardForm)) {
+	/**
+	 * Update Card
+	 */
+	useDeepCompareEffect(() => {
+		if (!(!isValid || _.isEmpty(cardForm) || !card) && !_.isEqual(card, cardForm)) {
 			updateCardData(cardForm);
 		}
-	}, [card, cardForm, updateCardData]);
+	}, [cardForm, isValid]);
 
 	useEffect(() => {
 		register('attachmentCoverId');
 	}, [register]);
 
-	if (!card && !board) {
-		return null;
+	if (loading) {
+		return <FuseLoading />;
 	}
 
 	return (
@@ -168,16 +202,16 @@ function BoardCardForm() {
 							multiple
 							freeSolo
 							options={labels}
-							getOptionLabel={(option: string | LabelType) => {
+							getOptionLabel={(option: string | ScrumboardLabel) => {
 								if (typeof option === 'string') {
 									return option;
 								}
 								return option?.title;
 							}}
-							value={cardForm.labels.map((id) => _.find(labels, { id })) as LabelsType}
-							onChange={(event: SyntheticEvent<Element, Event>, value: (string | LabelType)[]) => {
+							value={cardForm.labels.map((id) => _.find(labels, { id }))}
+							onChange={(event: SyntheticEvent<Element, Event>, value: (string | ScrumboardLabel)[]) => {
 								const ids = value
-									.filter((item): item is LabelType => typeof item !== 'string')
+									.filter((item): item is ScrumboardLabel => typeof item !== 'string')
 									.map((item) => item.id);
 								setValue('labels', ids);
 							}}
@@ -185,7 +219,7 @@ function BoardCardForm() {
 								value.map((option, index) => {
 									return (
 										<Chip
-											label={typeof option === 'string' ? option : option.title}
+											label={typeof option === 'string' ? option : option?.title}
 											{...getTagProps({ index })}
 											className="m-3"
 										/>
@@ -218,13 +252,13 @@ function BoardCardForm() {
 							multiple
 							freeSolo
 							options={members}
-							getOptionLabel={(member: string | MemberType) => {
+							getOptionLabel={(member: string | ScrumboardMember) => {
 								return typeof member === 'string' ? member : member?.name;
 							}}
-							value={cardForm.memberIds.map((id) => _.find(members, { id })) as MembersType}
-							onChange={(event: SyntheticEvent<Element, Event>, value: (string | MemberType)[]) => {
+							value={cardForm.memberIds.map((id) => _.find(members, { id }))}
+							onChange={(event: SyntheticEvent<Element, Event>, value: (string | ScrumboardMember)[]) => {
 								const ids = value
-									.filter((item): item is MemberType => typeof item !== 'string')
+									.filter((item): item is ScrumboardMember => typeof item !== 'string')
 									.map((item) => item.id);
 								setValue('memberIds', ids);
 							}}
@@ -298,7 +332,7 @@ function BoardCardForm() {
 							onCheckListChange={(item, itemIndex) => {
 								setValue(
 									'checklists',
-									_.setIn(cardForm.checklists, `[${itemIndex}]`, item) as ChecklistsType
+									_.setIn(cardForm.checklists, `[${itemIndex}]`, item) as ScrumboardChecklist[]
 								);
 							}}
 							onRemoveCheckList={() => {
@@ -315,7 +349,7 @@ function BoardCardForm() {
 					<div>
 						<CardComment
 							onCommentAdd={(comment) =>
-								setValue('activities', [comment, ...cardForm.activities] as CommentsType)
+								setValue('activities', [comment, ...cardForm.activities] as ScrumboardComment[])
 							}
 						/>
 					</div>
@@ -420,7 +454,25 @@ function BoardCardForm() {
 							)}
 						/>
 
-						<OptionsMenu onRemoveCard={() => dispatch(removeCard())} />
+						<OptionsMenu
+							onRemoveCard={() => {
+								removeCard({ boardId, cardId: card.id })
+									.unwrap()
+									.then(() => {
+										dispatch(closeCardDialog());
+										dispatch(
+											showMessage({
+												message: 'Card Removed',
+												autoHideDuration: 2000,
+												anchorOrigin: {
+													vertical: 'top',
+													horizontal: 'right'
+												}
+											})
+										);
+									});
+							}}
+						/>
 					</div>
 				</Box>
 			</div>

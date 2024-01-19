@@ -2,30 +2,28 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch, useAppSelector } from 'app/store';
-import { selectUser } from 'app/store/user/userSlice';
-import { getProjects, selectProjects } from './store/projectsSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { darken } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'src/app/auth/user/store/userSlice';
+import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 
 /**
  * The ProjectDashboardAppHeader page.
  */
 function ProjectDashboardAppHeader() {
-	const dispatch = useAppDispatch();
-	const projects = useAppSelector(selectProjects);
-	const user = useAppSelector(selectUser);
+	const { data: projects, isLoading } = useGetProjectDashboardProjectsQuery();
+
+	const user = useSelector(selectUser);
 
 	const [selectedProject, setSelectedProject] = useState<{ id: number; menuEl: HTMLElement | null }>({
 		id: 1,
 		menuEl: null
 	});
-
-	useEffect(() => {
-		dispatch(getProjects());
-	}, [dispatch]);
 
 	function handleChangeProject(id: number) {
 		setSelectedProject({
@@ -48,8 +46,8 @@ function ProjectDashboardAppHeader() {
 		});
 	}
 
-	if (_.isEmpty(projects)) {
-		return null;
+	if (isLoading) {
+		return <FuseLoading />;
 	}
 
 	return (
@@ -57,6 +55,10 @@ function ProjectDashboardAppHeader() {
 			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-32 sm:my-48">
 				<div className="flex flex-auto items-center min-w-0">
 					<Avatar
+						sx={{
+							background: (theme) => darken(theme.palette.background.default, 0.05),
+							color: (theme) => theme.palette.text.secondary
+						}}
 						className="flex-0 w-64 h-64"
 						alt="user photo"
 						src={user?.data?.photoURL}

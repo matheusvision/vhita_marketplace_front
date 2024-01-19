@@ -8,7 +8,7 @@ function TeamTab() {
 	const container = {
 		show: {
 			transition: {
-				staggerChildren: 0.1
+				staggerChildren: 0.04
 			}
 		}
 	};

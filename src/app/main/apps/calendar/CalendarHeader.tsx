@@ -1,14 +1,15 @@
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { selectMainTheme } from 'app/store/fuse/settingsSlice';
+import { selectMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FullCalendar from '@fullcalendar/react';
 import { CalendarApi, DatesSetArg } from '@fullcalendar/core';
 import { MutableRefObject } from 'react';
-import { openNewEventDialog } from './store/eventsSlice';
+import { useSelector } from 'react-redux';
+import { openNewEventDialog } from './store/eventDialogSlice';
 import CalendarViewMenu from './CalendarViewMenu';
 
 type CalendarHeaderProps = {
@@ -23,13 +24,13 @@ type CalendarHeaderProps = {
 function CalendarHeader(props: CalendarHeaderProps) {
 	const { calendarRef, currentDate, onToggleLeftSidebar } = props;
 
-	const mainTheme = useAppSelector(selectMainTheme);
+	const mainTheme = useSelector(selectMainTheme);
 	const calendarApi = () => calendarRef.current.getApi();
 	const dispatch = useAppDispatch();
 
 	return (
 		<div className="flex flex-col md:flex-row w-full p-12 justify-between z-10 container">
-			<div className="flex flex-col sm:flex-row items-center">
+			<div className="flex items-center justify-between">
 				<div className="flex items-center">
 					<IconButton
 						onClick={() => onToggleLeftSidebar()}
@@ -39,7 +40,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 						<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
 					</IconButton>
 
-					<Typography className="text-2xl font-semibold tracking-tight whitespace-nowrap mx-16">
+					<Typography className="hidden sm:flex text-2xl font-semibold tracking-tight whitespace-nowrap mx-16">
 						{currentDate?.view.title}
 					</Typography>
 				</div>
@@ -90,7 +91,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 			</div>
 
 			<motion.div
-				className="flex items-center justify-center"
+				className="flex items-center justify-end md:justify-center"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1, transition: { delay: 0.3 } }}
 			>

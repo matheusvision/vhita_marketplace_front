@@ -10,16 +10,21 @@ import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../../../store/widgetsSlice';
-import ScheduleDataType from '../../../types/ScheduleDataType';
+import { useSelector } from 'react-redux';
+import { selectWidget } from '../../../ProjectDashboardApi';
+import ScheduleDataType from './types/ScheduleDataType';
 
 /**
  * The ScheduleWidget widget.
  */
 function ScheduleWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { series, ranges } = widgets.schedule as ScheduleDataType;
+	const widget = useSelector(selectWidget<ScheduleDataType>('schedule'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { series, ranges } = widget;
 	const [tabValue, setTabValue] = useState(0);
 	const currentRange = Object.keys(ranges)[tabValue];
 

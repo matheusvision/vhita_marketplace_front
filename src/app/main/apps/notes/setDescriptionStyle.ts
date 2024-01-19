@@ -38,15 +38,17 @@ const setDescriptionStyle: setDescriptionStyleType = (sentence, refEl, enabled) 
 		return;
 	}
 
+	if (!enabled) {
+		refEl.style.fontSize = null;
+		refEl.style.lineHeight = null;
+		return;
+	}
+
 	refEl.style.fontSize = 'auto';
 	refEl.style.lineHeight = 'auto';
 	const refElWidth = refEl.clientWidth;
 
 	if (refElWidth === 0) {
-		return;
-	}
-
-	if (!enabled) {
 		return;
 	}
 

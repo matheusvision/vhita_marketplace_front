@@ -3,16 +3,21 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store';
-import { selectWidgets } from '../store/widgetsSlice';
-import PreviousStatementWidgetType from '../types/PreviousStatementWidgetType';
+import { useSelector } from 'react-redux';
+import PreviousStatementWidgetType from './types/PreviousStatementWidgetType';
+import { selectWidget } from '../FinanceDashboardApi';
 
 /**
  * The PreviousStatementWidget widget.
  */
 function PreviousStatementWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { status, date, limit, spent, minimum } = widgets.previousStatement as PreviousStatementWidgetType;
+	const widget = useSelector(selectWidget<PreviousStatementWidgetType>('previousStatement'));
+
+	if (!widget) {
+		return null;
+	}
+
+	const { status, date, limit, spent, minimum } = widget;
 
 	return (
 		<Paper className="relative flex flex-col flex-auto p-24 pr-12 pb-12 rounded-2xl shadow overflow-hidden">

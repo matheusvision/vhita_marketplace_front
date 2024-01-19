@@ -1,20 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'app/store';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';
+import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import MailCompose from './MailCompose';
-import { selectFilters } from './store/filtersSlice';
-import { selectFolders } from './store/foldersSlice';
-import { selectLabels } from './store/labelsSlice';
+import { useGetMailboxFiltersQuery, useGetMailboxFoldersQuery, useGetMailboxLabelsQuery } from './MailboxApi';
 
 /**
  * The mailbox app sidebar content.
  */
 function MailboxAppSidebarContent() {
-	const folders = useAppSelector(selectFolders);
-	const labels = useAppSelector(selectLabels);
-	const filters = useAppSelector(selectFilters);
+	const { data: folders } = useGetMailboxFoldersQuery();
+	const { data: labels } = useGetMailboxLabelsQuery();
+	const { data: filters } = useGetMailboxFiltersQuery();
 
 	const { t } = useTranslation('mailboxApp');
 
@@ -49,7 +47,7 @@ function MailboxAppSidebarContent() {
 				</Typography>
 
 				<FuseNavigation
-					navigation={folders.map((item) => ({
+					navigation={folders?.map((item) => ({
 						...item,
 						type: 'item',
 						url: `/apps/mailbox/${item.slug}`
@@ -70,7 +68,7 @@ function MailboxAppSidebarContent() {
 				</Typography>
 
 				<FuseNavigation
-					navigation={filters.map((item) => ({
+					navigation={filters?.map((item) => ({
 						...item,
 						type: 'item',
 						url: `/apps/mailbox/filter/${item.slug}`
@@ -91,18 +89,20 @@ function MailboxAppSidebarContent() {
 				</Typography>
 
 				<FuseNavigation
-					navigation={labels.map((item) => ({
-						...item,
-						type: 'item',
-						url: `/apps/mailbox/label/${item.slug}`,
-						icon: 'heroicons-outline:tag',
-						sx: {
-							'& > .fuse-list-item-icon': {
-								color: `${item.color}!important`,
-								opacity: 0.6
+					navigation={labels?.map((item) =>
+						FuseNavItemModel({
+							...item,
+							type: 'item',
+							url: `/apps/mailbox/label/${item.slug}`,
+							icon: 'heroicons-outline:tag',
+							sx: {
+								'& > .fuse-list-item-icon': {
+									color: `${item.color}!important`,
+									opacity: 0.6
+								}
 							}
-						}
-					}))}
+						})
+					)}
 				/>
 			</motion.div>
 		</div>

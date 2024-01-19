@@ -1,180 +1,159 @@
 import _ from '@lodash';
-import { LabelType } from 'src/app/main/apps/mailbox/types/LabelType';
 import mockApi from '../mock-api.json';
-import mock from '../mock';
-import ItemType from '../../app/main/apps/mailbox/types/ItemType';
-import { FolderType } from '../../app/main/apps/mailbox/types/FolderType';
-import { Params } from '../ExtendedMockAdapter';
+import ExtendedMockAdapter, { Params } from '../ExtendedMockAdapter';
+import { MailboxAction, MailboxFolder, MailboxLabel } from '../../app/main/apps/mailbox/MailboxApi';
 
 const mailsDB = mockApi.components.examples.mailbox_mails.value;
 const labelsDB = mockApi.components.examples.mailbox_labels.value;
 const filtersDB = mockApi.components.examples.mailbox_filters.value;
 const foldersDB = mockApi.components.examples.mailbox_folders.value;
 
-mock.onGet('/api/mailbox/mails/filters/:filterSlug/:mailId').reply((config) => {
-	const { mailId } = config.params as Params;
+export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/mailbox/mails/filters/:filterSlug').reply((config) => {
+		const { filterSlug } = config.params as Params;
 
-	const response = _.find(mailsDB, { id: mailId });
-	if (!response) {
-		return [404, 'Requested mail do not exist.'];
-	}
-	return [200, response];
-});
+		const response = _.filter(mailsDB, { [filterSlug]: true });
 
-mock.onGet('/api/mailbox/mails/filters/:filterSlug').reply((config) => {
-	const { filterSlug } = config.params as Params;
+		return [200, response];
+	});
 
-	const response = _.filter(mailsDB, { [filterSlug]: true });
+	mock.onGet('/mailbox/mails/labels/:labelSlug').reply((config) => {
+		const { labelSlug } = config.params as Params;
 
-	return [200, response];
-});
+		const labelId = (_.find(labelsDB, { slug: labelSlug }) as MailboxLabel).id;
 
-mock.onGet('/api/mailbox/mails/labels/:labelSlug/:mailId').reply((config) => {
-	const { mailId } = config.params as Params;
+		const response = _.filter(mailsDB, (item) => item.labels.includes(labelId));
 
-	const response = _.find(mailsDB, { id: mailId });
-	if (!response) {
-		return [404, 'Requested mail do not exist.'];
-	}
-	return [200, response];
-});
+		return [200, response];
+	});
 
-mock.onGet('/api/mailbox/mails/labels/:labelSlug').reply((config) => {
-	const { labelSlug } = config.params as Params;
+	mock.onGet('/mailbox/mails/:folderSlug').reply((config) => {
+		const { folderSlug } = config.params as Params;
 
-	const labelId = (_.find(labelsDB, { slug: labelSlug }) as LabelType).id;
+		const folderId = (_.find(foldersDB, { slug: folderSlug }) as MailboxFolder).id;
 
-	const response = _.filter(mailsDB, (item) => item.labels.includes(labelId));
+		const response = _.filter(mailsDB, { folder: folderId });
 
-	return [200, response];
-});
+		return [200, response];
+	});
 
-mock.onGet('/api/mailbox/mails/:folderSlug/:mailId').reply((config) => {
-	const { mailId } = config.params as Params;
+	mock.onGet('/mailbox/mail/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	const response = _.find(mailsDB, { id: mailId });
+		const response = _.find(mailsDB, { id });
 
-	if (!response) {
-		return [404, 'Requested mail do not exist.'];
-	}
-	return [200, response];
-});
+		if (!response) {
+			return [404, 'Requested mail do not exist.'];
+		}
+		return [200, response];
+	});
 
-mock.onGet('/api/mailbox/mails/:folderSlug').reply((config) => {
-	const { folderSlug } = config.params as Params;
+	mock.onGet('/mailbox/folders').reply(() => {
+		return [200, foldersDB];
+	});
 
-	const folderId = (_.find(foldersDB, { slug: folderSlug }) as FolderType).id;
+	mock.onGet('/mailbox/filters').reply(() => {
+		return [200, filtersDB];
+	});
 
-	const response = _.filter(mailsDB, { folder: folderId });
+	mock.onGet('/mailbox/labels').reply(() => {
+		return [200, labelsDB];
+	});
 
-	return [200, response];
-});
+	mock.onPost('/mailbox/mails/actions').reply((config) => {
+		const { type, value, ids } = JSON.parse(config.data as string) as {
+			type: MailboxAction;
+			value: boolean | string | string[];
+			ids: string[];
+		};
 
-mock.onGet('/api/mailbox/folders').reply(() => {
-	return [200, foldersDB];
-});
+		if (type === 'labels') {
+			_.assign(
+				mailsDB,
+				mailsDB.map((_mail) =>
+					ids.includes(_mail.id)
+						? {
+								..._mail,
+								labels: value
+							}
+						: _mail
+				)
+			);
+			return [200, true];
+		}
+		if (type === 'label') {
+			_.assign(
+				mailsDB,
+				mailsDB.map((_mail) =>
+					ids.includes(_mail.id)
+						? {
+								..._mail,
+								labels: _mail.labels.includes(value as string) ? _mail.labels : [..._mail.labels, value]
+							}
+						: _mail
+				)
+			);
+			return [200, true];
+		}
+		if (type === 'folder') {
+			_.assign(
+				mailsDB,
+				mailsDB.map((_mail) =>
+					ids.includes(_mail.id)
+						? {
+								..._mail,
+								folder: value
+							}
+						: _mail
+				)
+			);
+			return [200, true];
+		}
 
-mock.onGet('/api/mailbox/filters').reply(() => {
-	return [200, filtersDB];
-});
+		if (type === 'starred') {
+			_.assign(
+				mailsDB,
+				mailsDB.map((_mail) =>
+					ids.includes(_mail.id)
+						? {
+								..._mail,
+								starred: value
+							}
+						: _mail
+				)
+			);
+			return [200, true];
+		}
 
-mock.onGet('/api/mailbox/labels').reply(() => {
-	return [200, labelsDB];
-});
+		if (type === 'important') {
+			_.assign(
+				mailsDB,
+				mailsDB.map((_mail) =>
+					ids.includes(_mail.id)
+						? {
+								..._mail,
+								important: value
+							}
+						: _mail
+				)
+			);
+			return [200, true];
+		}
+		if (type === 'unread') {
+			_.assign(
+				mailsDB,
+				mailsDB.map((_mail) =>
+					ids.includes(_mail.id)
+						? {
+								..._mail,
+								unread: value
+							}
+						: _mail
+				)
+			);
+			return [200, true];
+		}
 
-mock.onPost('/api/mailbox/actions').reply((config) => {
-	const { type, value, ids } = JSON.parse(config.data as string) as {
-		type: ItemType;
-		value: boolean | string | string[];
-		ids: string[];
-	};
-
-	if (type === 'labels') {
-		_.assign(
-			mailsDB,
-			mailsDB.map((_mail) =>
-				ids.includes(_mail.id)
-					? {
-							..._mail,
-							labels: value
-					  }
-					: _mail
-			)
-		);
-		return [200, true];
-	}
-	if (type === 'label') {
-		_.assign(
-			mailsDB,
-			mailsDB.map((_mail) =>
-				ids.includes(_mail.id)
-					? {
-							..._mail,
-							labels: _mail.labels.includes(value as string) ? _mail.labels : [..._mail.labels, value]
-					  }
-					: _mail
-			)
-		);
-		return [200, true];
-	}
-	if (type === 'folder') {
-		_.assign(
-			mailsDB,
-			mailsDB.map((_mail) =>
-				ids.includes(_mail.id)
-					? {
-							..._mail,
-							folder: value
-					  }
-					: _mail
-			)
-		);
-		return [200, true];
-	}
-
-	if (type === 'starred') {
-		_.assign(
-			mailsDB,
-			mailsDB.map((_mail) =>
-				ids.includes(_mail.id)
-					? {
-							..._mail,
-							starred: value
-					  }
-					: _mail
-			)
-		);
-		return [200, true];
-	}
-
-	if (type === 'important') {
-		_.assign(
-			mailsDB,
-			mailsDB.map((_mail) =>
-				ids.includes(_mail.id)
-					? {
-							..._mail,
-							important: value
-					  }
-					: _mail
-			)
-		);
-		return [200, true];
-	}
-	if (type === 'unread') {
-		_.assign(
-			mailsDB,
-			mailsDB.map((_mail) =>
-				ids.includes(_mail.id)
-					? {
-							..._mail,
-							unread: value
-					  }
-					: _mail
-			)
-		);
-		return [200, true];
-	}
-
-	return [404, false];
-});
+		return [404, false];
+	});
+};

@@ -3,27 +3,27 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ChangeEvent, MouseEvent, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { ChangeEvent, MouseEvent, useMemo, useState } from 'react';
+import { useAppDispatch } from 'app/store/store';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { OutlinedInput } from '@mui/material';
 import Hidden from '@mui/material/Hidden';
-import {
-	deselectAllMails,
-	selectAllMails,
-	selectMails,
-	selectMailsByParameter,
-	selectSearchText,
-	selectSelectedMailIds,
-	setActionToMails,
-	setMailsSearchText
-} from '../store/mailsSlice';
-import { selectLabels } from '../store/labelsSlice';
-import { selectFolders, selectTrashFolderId } from '../store/foldersSlice';
+import { useParams } from 'react-router-dom';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useSelector } from 'react-redux';
 import MailListTitle from './MailListTitle';
+import {
+	useApplyMailboxMailActionMutation,
+	useGetMailboxFoldersQuery,
+	useGetMailboxLabelsQuery,
+	useGetMailboxMailsQuery
+} from '../MailboxApi';
+import { selectSearchText, setSearchText } from '../store/searchTextSlice';
+import { deselectAllMails, selectSelectedMailIds, setSelectedMailIds } from '../store/selectedMailIdsSlice';
+import _ from '../../../../../@lodash/@lodash';
 
 type MailToolbarProps = {
 	onToggleLeftSidebar: () => void;
@@ -41,18 +41,30 @@ type MenuType = {
 function MailToolbar(props: MailToolbarProps) {
 	const { onToggleLeftSidebar } = props;
 	const dispatch = useAppDispatch();
-	const mails = useAppSelector(selectMails);
-	const labels = useAppSelector(selectLabels);
-	const folders = useAppSelector(selectFolders);
-	const searchText = useAppSelector(selectSearchText);
+
+	const routeParams = useParams();
+
+	const { data: mails, isLoading: isMailsLoading } = useGetMailboxMailsQuery(routeParams);
+	const mailIds = mails?.map((mail) => mail.id);
+	const { data: folders, isLoading: isFoldersLoading } = useGetMailboxFoldersQuery();
+	const { data: labels, isLoading: isLabelsLoading } = useGetMailboxLabelsQuery();
+
+	const [setActionToMails] = useApplyMailboxMailActionMutation();
+
+	const searchText = useSelector(selectSearchText);
+
 	const { t } = useTranslation('mailboxApp');
-	const selectedMailIds = useAppSelector(selectSelectedMailIds);
-	const trashFolderId = useAppSelector(selectTrashFolderId);
-	const [menu, setMenu] = useState<MenuType>({
+
+	const selectedMailIds = useSelector(selectSelectedMailIds);
+
+	const trashFolderId = useMemo(() => _.find(folders, { slug: 'trash' })?.id, [folders]);
+
+	const defaultMenuState = {
 		select: null,
 		folders: null,
 		labels: null
-	});
+	};
+	const [menu, setMenu] = useState<MenuType>(defaultMenuState);
 
 	function handleMenuOpen(event: MouseEvent<HTMLButtonElement>, _menu: string) {
 		setMenu({
@@ -61,22 +73,47 @@ function MailToolbar(props: MailToolbarProps) {
 		});
 	}
 
-	function handleMenuClose(_event: MouseEvent<HTMLButtonElement | HTMLLIElement>, _menu: string) {
-		setMenu({
-			...menu,
-			[_menu]: null
-		});
+	function handleMenuClose() {
+		setMenu(defaultMenuState);
 	}
 
 	function handleCheckChange(event: ChangeEvent<HTMLInputElement>) {
-		return event.target.checked ? dispatch(selectAllMails()) : dispatch(deselectAllMails());
+		return event.target.checked ? handleSelectAll() : handleDeselectAll();
+	}
+
+	function handleSelectAll() {
+		dispatch(setSelectedMailIds(mailIds));
+		handleMenuClose();
+	}
+
+	function handleDeselectAll() {
+		dispatch(deselectAllMails());
+		handleMenuClose();
+	}
+
+	function handleSelectByParameter(parameter: string, value: boolean) {
+		const selectedMails = mails.filter((mail) => {
+			const entityParameter = mail[parameter] as boolean;
+
+			return entityParameter ? entityParameter === value : false;
+		});
+
+		const newMailIds = selectedMails.map((mail) => mail.id);
+
+		dispatch(setSelectedMailIds(newMailIds));
+
+		handleMenuClose();
+	}
+
+	if (isMailsLoading || isFoldersLoading || isLabelsLoading) {
+		return <FuseLoading />;
 	}
 
 	return (
 		<div className="sticky top-0 z-10">
 			<Box
 				sx={{ backgroundColor: 'background.default' }}
-				className="flex flex-col sm:flex-row items-center w-full min-h-64 py-12 sm:py-0 space-x-8 px-8 border-b "
+				className="flex items-center w-full min-h-64 py-12 sm:py-0 space-x-8 px-8 border-b "
 			>
 				<div className="flex items-center">
 					<Hidden lgUp>
@@ -97,7 +134,7 @@ function MailToolbar(props: MailToolbarProps) {
 					fullWidth
 					placeholder={t('SEARCH_PLACEHOLDER')}
 					value={searchText}
-					onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setMailsSearchText(ev))}
+					onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(ev))}
 					startAdornment={
 						<InputAdornment position="start">
 							<FuseSvgIcon color="disabled">heroicons-solid:search</FuseSvgIcon>
@@ -116,8 +153,8 @@ function MailToolbar(props: MailToolbarProps) {
 			>
 				<Checkbox
 					onChange={handleCheckChange}
-					checked={selectedMailIds.length === Object.keys(mails).length && selectedMailIds.length > 0}
-					indeterminate={selectedMailIds.length !== Object.keys(mails).length && selectedMailIds.length > 0}
+					checked={selectedMailIds?.length === mails?.length && selectedMailIds?.length > 0}
+					indeterminate={selectedMailIds?.length !== mails?.length && selectedMailIds?.length > 0}
 					size="small"
 				/>
 
@@ -134,68 +171,48 @@ function MailToolbar(props: MailToolbarProps) {
 					id="select-menu"
 					anchorEl={menu.select}
 					open={Boolean(menu.select)}
-					onClose={(ev: MouseEvent<HTMLButtonElement>) => handleMenuClose(ev, 'select')}
+					onClose={handleMenuClose}
 				>
+					<MenuItem onClick={handleSelectAll}>All</MenuItem>
+					<MenuItem onClick={handleDeselectAll}>None</MenuItem>
 					<MenuItem
-						onClick={(ev) => {
-							dispatch(selectAllMails());
-							handleMenuClose(ev, 'select');
-						}}
-					>
-						All
-					</MenuItem>
-					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(deselectAllMails());
-							handleMenuClose(ev, 'select');
-						}}
-					>
-						None
-					</MenuItem>
-					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(selectMailsByParameter(['unread', false]));
-							handleMenuClose(ev, 'select');
+						onClick={() => {
+							handleSelectByParameter('unread', false);
 						}}
 					>
 						Read
 					</MenuItem>
 					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(selectMailsByParameter(['unread', true]));
-							handleMenuClose(ev, 'select');
+						onClick={() => {
+							handleSelectByParameter('unread', true);
 						}}
 					>
 						Unread
 					</MenuItem>
 					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(selectMailsByParameter(['starred', true]));
-							handleMenuClose(ev, 'select');
+						onClick={() => {
+							handleSelectByParameter('starred', true);
 						}}
 					>
 						Starred
 					</MenuItem>
 					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(selectMailsByParameter(['starred', false]));
-							handleMenuClose(ev, 'select');
+						onClick={() => {
+							handleSelectByParameter('starred', false);
 						}}
 					>
 						Unstarred
 					</MenuItem>
 					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(selectMailsByParameter(['important', true]));
-							handleMenuClose(ev, 'select');
+						onClick={() => {
+							handleSelectByParameter('important', true);
 						}}
 					>
 						Important
 					</MenuItem>
 					<MenuItem
-						onClick={(ev: MouseEvent<HTMLLIElement>) => {
-							dispatch(selectMailsByParameter(['important', false]));
-							handleMenuClose(ev, 'select');
+						onClick={() => {
+							handleSelectByParameter('important', false);
 						}}
 					>
 						Unimportant
@@ -209,13 +226,11 @@ function MailToolbar(props: MailToolbarProps) {
 						<Tooltip title="Delete">
 							<IconButton
 								onClick={() => {
-									dispatch(
-										setActionToMails({
-											type: 'folder',
-											value: trashFolderId,
-											ids: selectedMailIds
-										})
-									);
+									setActionToMails({
+										type: 'folder',
+										value: trashFolderId,
+										ids: selectedMailIds
+									});
 								}}
 								aria-label="Delete"
 								size="small"
@@ -239,20 +254,18 @@ function MailToolbar(props: MailToolbarProps) {
 							id="folders-menu"
 							anchorEl={menu.folders}
 							open={Boolean(menu.folders)}
-							onClose={(ev: MouseEvent<HTMLLIElement>) => handleMenuClose(ev, 'folders')}
+							onClose={handleMenuClose}
 						>
 							{folders.length > 0 &&
 								folders.map((folder) => (
 									<MenuItem
-										onClick={(ev) => {
-											dispatch(
-												setActionToMails({
-													type: 'folder',
-													value: folder.id,
-													ids: selectedMailIds
-												})
-											);
-											handleMenuClose(ev, 'folders');
+										onClick={() => {
+											setActionToMails({
+												type: 'folder',
+												value: folder.id,
+												ids: selectedMailIds
+											});
+											handleMenuClose();
 										}}
 										key={folder.id}
 									>
@@ -276,21 +289,19 @@ function MailToolbar(props: MailToolbarProps) {
 							id="labels-menu"
 							anchorEl={menu.labels}
 							open={Boolean(menu.labels)}
-							onClose={(ev: MouseEvent<HTMLLIElement>) => handleMenuClose(ev, 'labels')}
+							onClose={() => handleMenuClose()}
 						>
 							{labels.length > 0 &&
 								labels.map((label) => (
 									<MenuItem
-										onClick={(ev) => {
-											dispatch(
-												setActionToMails({
-													type: 'label',
-													value: label.id,
-													ids: selectedMailIds
-												})
-											);
+										onClick={() => {
+											setActionToMails({
+												type: 'label',
+												value: label.id,
+												ids: selectedMailIds
+											});
 
-											handleMenuClose(ev, 'labels');
+											handleMenuClose();
 										}}
 										key={label.id}
 									>
@@ -302,7 +313,7 @@ function MailToolbar(props: MailToolbarProps) {
 						<Tooltip title="Mark as unread">
 							<IconButton
 								onClick={() => {
-									dispatch(setActionToMails({ type: 'unread', value: true, ids: selectedMailIds }));
+									setActionToMails({ type: 'unread', value: true, ids: selectedMailIds });
 								}}
 								aria-label="Mark as unread"
 								size="small"
@@ -314,9 +325,7 @@ function MailToolbar(props: MailToolbarProps) {
 						<Tooltip title="Set important">
 							<IconButton
 								onClick={() => {
-									dispatch(
-										setActionToMails({ type: 'important', value: true, ids: selectedMailIds })
-									);
+									setActionToMails({ type: 'important', value: true, ids: selectedMailIds });
 								}}
 								aria-label="important"
 								size="small"
@@ -330,7 +339,7 @@ function MailToolbar(props: MailToolbarProps) {
 						<Tooltip title="Set starred">
 							<IconButton
 								onClick={() => {
-									dispatch(setActionToMails({ type: 'starred', value: true, ids: selectedMailIds }));
+									setActionToMails({ type: 'starred', value: true, ids: selectedMailIds });
 								}}
 								aria-label="important"
 								size="small"

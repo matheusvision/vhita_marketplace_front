@@ -1,9 +1,7 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
 
-const ScrumboardApp = lazyWithReducer('scrumboardApp', () => import('./ScrumboardApp'), reducer);
+const ScrumboardApp = lazy(() => import('./ScrumboardApp'));
 const Board = lazy(() => import('./board/Board'));
 const Boards = lazy(() => import('./boards/Boards'));
 

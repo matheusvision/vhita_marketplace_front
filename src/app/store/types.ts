@@ -1,5 +1,5 @@
 import { Action, Reducer, ThunkAction, ThunkDispatch, Dispatch, AnyAction } from '@reduxjs/toolkit';
-import store from 'app/store';
+import { RootState } from './store';
 
 /**
  * The type of the dispatch function for this application (AppState).
@@ -13,24 +13,14 @@ import store from 'app/store';
 export type AppAction<R = Promise<void>> = Action<string> | ThunkAction<R, RootStateType, unknown, Action<string>>;
 
 // export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootStateType, unknown, Action<string>>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-	ReturnType,
-	RootStateType,
-	{ s: string; n: number },
-	Action<string>
->;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, { s: string; n: number }, Action<string>>;
 
 export type AppDispatchType = Dispatch<Action<string>> & ((thunk: AppThunk) => Promise<AnyAction>);
 
 /**
- * The base type of the root state for this application (AppState).
- */
-export type BaseRootStateType = typeof store.getState;
-
-/**
  * The extended type of the root state for this application (AppState).
  */
-type ExtendedRootStateType<T extends string, State> = BaseRootStateType & { [K in T]: State };
+type ExtendedRootStateType<T extends string, State> = RootState & { [K in T]: State };
 
 /**
  * The type of the async reducers for this application (AppState).
@@ -83,8 +73,8 @@ type MultiplePathsToType<Slices extends unknown[], _T = unknown> = Slices extend
 /**
  * The type of the root state for this application (AppState) with a specific slice.
  */
-export type RootStateWithSliceType<SliceType extends { name: string; getInitialState: () => unknown }> =
-	BaseRootStateType & PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;
+export type RootStateWithSliceType<SliceType extends { name: string; getInitialState: () => unknown }> = RootState &
+	PathToType<SliceType['name'], ReturnType<SliceType['getInitialState']>>;
 
 export type RootStateType<
 	T extends
@@ -95,10 +85,10 @@ export type RootStateType<
 > = T extends string
 	? ExtendedRootStateType<T, State>
 	: T extends { name: string; getInitialState: () => unknown }
-	? RootStateWithSliceType<T>
-	: T extends Array<{ name: string; getInitialState: () => unknown }>
-	? BaseRootStateType & MultiplePathsToType<T>
-	: BaseRootStateType;
+		? RootStateWithSliceType<T>
+		: T extends Array<{ name: string; getInitialState: () => unknown }>
+			? RootState & MultiplePathsToType<T>
+			: RootState;
 
 export type AsyncStateType<T> = {
 	data: T | null;

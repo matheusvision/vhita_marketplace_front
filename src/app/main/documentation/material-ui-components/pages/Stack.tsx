@@ -5,7 +5,21 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicStackComponent from '../components/stack/BasicStack';
+import BasicStackRaw from '../components/stack/BasicStack.tsx?raw';
+import DirectionStackComponent from '../components/stack/DirectionStack';
+import DirectionStackRaw from '../components/stack/DirectionStack.tsx?raw';
+import DividerStackComponent from '../components/stack/DividerStack';
+import DividerStackRaw from '../components/stack/DividerStack.tsx?raw';
+import ResponsiveStackComponent from '../components/stack/ResponsiveStack';
+import ResponsiveStackRaw from '../components/stack/ResponsiveStack.tsx?raw';
+import FlexboxGapStackComponent from '../components/stack/FlexboxGapStack';
+import FlexboxGapStackRaw from '../components/stack/FlexboxGapStack.tsx?raw';
+import InteractiveStackComponent from '../components/stack/InteractiveStack';
+import InteractiveStackRaw from '../components/stack/InteractiveStack.tsx?raw';
+import ZeroWidthStackComponent from '../components/stack/ZeroWidthStack';
+import ZeroWidthStackRaw from '../components/stack/ZeroWidthStack.tsx?raw';
+                   
                    function StackDoc(props) {
                      return (
                        
@@ -53,8 +67,8 @@ The spacing value can be any number, including decimals, or a string.
                     name="BasicStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/BasicStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/BasicStack.tsx')}
+                    component={BasicStackComponent} 
+                    raw={BasicStackRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Stack vs. Grid</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`Stack`}</code> is concerned with one-dimensional layouts, while <a href="/material-ui/react-grid/">Grid</a> handles two-dimensional layouts. The default direction is <code>{`column`}</code> which stacks children vertically.</Typography>
@@ -65,8 +79,8 @@ Use the <code>{`direction`}</code> prop to position items horizontally in a row:
                     name="DirectionStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/DirectionStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/DirectionStack.tsx')}
+                    component={DirectionStackComponent} 
+                    raw={DirectionStackRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Dividers</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`divider`}</code> prop to insert an element between each child.
@@ -75,8 +89,8 @@ This works particularly well with the <a href="/material-ui/react-divider/">Divi
                     name="DividerStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/DividerStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/DividerStack.tsx')}
+                    component={DividerStackComponent} 
+                    raw={DividerStackRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Responsive values</Typography>
 <Typography className="text-14 mb-32" component="div">You can switch the <code>{`direction`}</code> or <code>{`spacing`}</code> values based on the active breakpoint.</Typography>
@@ -84,8 +98,8 @@ This works particularly well with the <a href="/material-ui/react-divider/">Divi
                     name="ResponsiveStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/ResponsiveStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/ResponsiveStack.tsx')}
+                    component={ResponsiveStackComponent} 
+                    raw={ResponsiveStackRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Flexbox gap</Typography>
 <Typography className="text-14 mb-32" component="div">To use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">flexbox <code>{`gap`}</code></a> for the spacing implementation, set the <code>{`useFlexGap`}</code> prop to true.</Typography>
@@ -95,8 +109,8 @@ This works particularly well with the <a href="/material-ui/react-divider/">Divi
                     name="FlexboxGapStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/FlexboxGapStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/FlexboxGapStack.tsx')}
+                    component={FlexboxGapStackComponent} 
+                    raw={FlexboxGapStackRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">To set the prop to all stack instances, create a theme with default props:</Typography>
 
@@ -130,8 +144,8 @@ function App() {
                     name="InteractiveStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/InteractiveStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/InteractiveStack.tsx')}
+                    component={InteractiveStackComponent} 
+                    raw={InteractiveStackRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">System props</Typography>
 <Typography className="text-14 mb-32" component="div">As a CSS utility component, the <code>{`Stack`}</code> supports all <a href="/system/properties/"><code>{`system`}</code></a> properties. You can use them as props directly on the component.
@@ -181,8 +195,8 @@ You can reproduce the issue with:</Typography>
                     name="ZeroWidthStack.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/stack/ZeroWidthStack.tsx').default} 
-                    raw={require('!raw-loader!../components/stack/ZeroWidthStack.tsx')}
+                    component={ZeroWidthStackComponent} 
+                    raw={ZeroWidthStackRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Anatomy</Typography>
 <Typography className="text-14 mb-32" component="div">The Stack component is composed of a single root <code>{`<div>`}</code> element:</Typography>

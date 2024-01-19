@@ -1,7 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const CalendarApp = lazyWithReducer('calendarApp', () => import('./CalendarApp'), reducer);
+const CalendarApp = lazy(() => import('./CalendarApp'));
 
 /**
  * The Calendar App Config.

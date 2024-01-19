@@ -5,7 +5,19 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicModalComponent from '../components/modal/BasicModal';
+import BasicModalRaw from '../components/modal/BasicModal.tsx?raw';
+import NestedModalComponent from '../components/modal/NestedModal';
+import NestedModalRaw from '../components/modal/NestedModal.tsx?raw';
+import TransitionsModalComponent from '../components/modal/TransitionsModal';
+import TransitionsModalRaw from '../components/modal/TransitionsModal.tsx?raw';
+import SpringModalComponent from '../components/modal/SpringModal';
+import SpringModalRaw from '../components/modal/SpringModal.tsx?raw';
+import KeepMountedModalComponent from '../components/modal/KeepMountedModal';
+import KeepMountedModalRaw from '../components/modal/KeepMountedModal.tsx?raw';
+import ServerModalComponent from '../components/modal/ServerModal';
+import ServerModalRaw from '../components/modal/ServerModal.tsx?raw';
+                   
                    function ModalDoc(props) {
                      return (
                        
@@ -59,8 +71,8 @@ Modal is a lower-level construct that is leveraged by the following components:<
                     name="BasicModal.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/modal/BasicModal.tsx').default} 
-                    raw={require('!raw-loader!../components/modal/BasicModal.tsx')}
+                    component={BasicModalComponent} 
+                    raw={BasicModalRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Notice that you can disable the outline (often blue or gold) with the <code>{`outline: 0`}</code> CSS property.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Nested modal</Typography>
@@ -69,8 +81,8 @@ Modal is a lower-level construct that is leveraged by the following components:<
                     name="NestedModal.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/modal/NestedModal.tsx').default} 
-                    raw={require('!raw-loader!../components/modal/NestedModal.tsx')}
+                    component={NestedModalComponent} 
+                    raw={NestedModalRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Transitions</Typography>
 <Typography className="text-14 mb-32" component="div">The open/close state of the modal can be animated with a transition component.
@@ -87,16 +99,16 @@ These two callbacks allow the modal to unmount the child content when closed and
                     name="TransitionsModal.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/modal/TransitionsModal.tsx').default} 
-                    raw={require('!raw-loader!../components/modal/TransitionsModal.tsx')}
+                    component={TransitionsModalComponent} 
+                    raw={TransitionsModalRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Alternatively, you can use <a href="https://github.com/pmndrs/react-spring">react-spring</a>.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SpringModal.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/modal/SpringModal.tsx').default} 
-                    raw={require('!raw-loader!../components/modal/SpringModal.tsx')}
+                    component={SpringModalComponent} 
+                    raw={SpringModalRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Performance</Typography>
 <Typography className="text-14 mb-32" component="div">The content of modal is unmounted when closed.
@@ -112,8 +124,8 @@ it might be a good idea to change this default behavior by enabling the <code>{`
                     name="KeepMountedModal.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/modal/KeepMountedModal.tsx').default} 
-                    raw={require('!raw-loader!../components/modal/KeepMountedModal.tsx')}
+                    component={KeepMountedModalComponent} 
+                    raw={KeepMountedModalRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">As with any performance optimization, this is not a silver bullet.
 Be sure to identify bottlenecks first, and then try out these optimization strategies.</Typography>
@@ -124,8 +136,8 @@ In order to display the modal, you need to disable the portal feature with the <
                     name="ServerModal.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/modal/ServerModal.tsx').default} 
-                    raw={require('!raw-loader!../components/modal/ServerModal.tsx')}
+                    component={ServerModalComponent} 
+                    raw={ServerModalRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Focus trap</Typography>

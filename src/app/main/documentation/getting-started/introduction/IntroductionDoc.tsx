@@ -116,21 +116,22 @@ function IntroductionDoc() {
 				className="text-20 mt-20 mb-10 font-700"
 				variant="h5"
 			>
-				Create React App (CLI)
+				ViteJS (CLI)
 			</Typography>
 			<Typography
 				className="mb-16"
 				component="p"
 			>
 				<a
-					href="https://github.com/facebook/create-react-app"
+					href="https://vitejs.dev/"
 					target="_blank"
 					rel="noreferrer noopener"
 				>
-					Create React App
+					ViteJS
 				</a>{' '}
-				is a tool built by developers at Facebook to help you build React applications. It saves you from
-				time-consuming setup and configuration.
+				is a modern frontend build tool created to streamline the development of web applications. It enhances
+				the development experience by offering fast server start and hot module replacement, eliminating the
+				need for complex setup and configuration tasks.
 			</Typography>
 		</>
 	);

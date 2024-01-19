@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import ItemIcon from './ItemIcon';
-import { setSelectedItem } from './store/itemsSlice';
-import { FileManagerItemType } from './types/FileManagerItemType';
+import { FileManagerItem } from './FileManagerApi';
+import { setSelectedItemId } from './store/selectedItemIdSlice';
 
 type FileItemProps = {
-	item: FileManagerItemType;
+	item: FileManagerItem;
 };
 
 /**
@@ -25,7 +25,7 @@ function FileItem(props: FileItemProps) {
 		<Box
 			sx={{ backgroundColor: 'background.paper' }}
 			className="flex flex-col relative w-full sm:w-160 h-160 m-8 p-16 shadow rounded-16 cursor-pointer"
-			onClick={() => dispatch(setSelectedItem(item.id))}
+			onClick={() => dispatch(setSelectedItemId(item.id))}
 		>
 			<div className="flex flex-auto w-full items-center justify-center">
 				<ItemIcon type={item.type} />

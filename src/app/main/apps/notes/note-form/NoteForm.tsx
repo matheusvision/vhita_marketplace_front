@@ -1,6 +1,5 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Controller, Resolver, useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
@@ -8,13 +7,17 @@ import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import * as yup from 'yup';
 import format from 'date-fns/format';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
+import { useDebounce } from '@fuse/hooks';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useSelector } from 'react-redux';
 import NoteFormList from './tasks/NoteFormList';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormReminder from './NoteFormReminder';
@@ -22,44 +25,61 @@ import NoteFormUploadImage from './NoteFormUploadImage';
 import NoteModel from '../models/NoteModel';
 import NoteReminderLabel from '../NoteReminderLabel';
 import NoteLabel from '../NoteLabel';
-import { NoteType } from '../types/NoteType';
+import {
+	NotesNote,
+	useCreateNotesItemMutation,
+	useDeleteNotesItemMutation,
+	useUpdateNotesItemMutation
+} from '../NotesApi';
+import { selectDialogNote } from '../store/dialogsSlice';
+
 /**
  * Form Validation Schema
  */
-const tasksSchema = yup.object().shape({
-	id: yup.string().required('ID is required'),
-	content: yup.string().required('Content is required'),
-	completed: yup.boolean().required('Completed status is required')
+const tasksSchema = z.object({
+	id: z.string().nonempty('ID is required'),
+	content: z.string().nonempty('Content is required'),
+	completed: z.boolean()
 });
 
-const schema = yup.object().shape({
-	id: yup.string(),
-	title: yup.string(),
-	content: yup.string(),
-	tasks: yup.array().of(tasksSchema).default([]).notRequired(),
-	labels: yup.array().of(yup.string()).default([]).notRequired(),
-	image: yup.string().nullable(),
-	reminder: yup.string().nullable(),
-	archived: yup.boolean(),
-	createdAt: yup.string(),
-	updatedAt: yup.string(),
-	oneOfThemRequired: yup
-		.bool()
-		.default(undefined)
-		.when(['title', 'content', 'image', 'tasks'], {
-			is: (a: string | undefined, b: string | undefined, c: string | undefined, d: string | undefined) =>
-				(!a && !b && !c && !d) || (!!a && !!b && !!c && !!d),
-			then: (_schema) => _schema.required('At least one of the fields is required.'),
-			otherwise: (_schema) => _schema.nullable()
-		})
+const schema = z.object({
+	id: z.string().optional(),
+	title: z.string().optional(),
+	content: z.string().optional(),
+	tasks: z.array(tasksSchema).default([]).optional(),
+	labels: z.array(z.string()).default([]).optional(),
+	image: z.string().nullable().optional(),
+	reminder: z.string().nullable().optional(),
+	archived: z.boolean().optional(),
+	createdAt: z.string().optional(),
+	updatedAt: z.string().optional(),
+	oneOfThemRequired: z
+		.boolean()
+		.optional()
+		.refine(
+			// eslint-disable-next-line func-names
+			function (
+				this: {
+					parent: NotesNote;
+				},
+				value
+			) {
+				if (value === true) {
+					// Now `this` is explicitly typed with `RefineContext`
+					const { title, content, image, tasks } = this.parent;
+					return title || content || image || (tasks && tasks.length > 0);
+				}
+				return true;
+			},
+			{
+				message: 'At least one of the fields is required.'
+			}
+		)
 });
 
 type NoteFormProps = WithRouterProps & {
 	variant?: 'new' | 'edit';
-	note?: NoteType;
-	onChange?: (note: NoteType) => void;
-	onCreate?: (note: NoteType) => void;
-	onRemove?: () => void;
+	note?: NotesNote;
 	onClose?: () => void;
 };
 
@@ -67,45 +87,82 @@ type NoteFormProps = WithRouterProps & {
  * The note form.
  */
 function NoteForm(props: NoteFormProps) {
-	const { note = null, variant = 'edit', onChange: onFormChange, onCreate, onRemove, onClose } = props;
+	const { variant = 'edit', onClose } = props;
 	const [showList, setShowList] = useState(false);
 	const routeParams = useParams();
 
-	const defaultValues = _.merge(
-		{ oneOfThemRequired: true },
-		NoteModel({}),
-		note,
-		routeParams.labelId ? { labels: [routeParams.labelId] } : null,
-		routeParams.id === 'archive' ? { archived: true } : null
-	);
+	const [updateNote] = useUpdateNotesItemMutation();
+	const [removeNote] = useDeleteNotesItemMutation();
+	const [createNote] = useCreateNotesItemMutation();
 
-	const { formState, handleSubmit, getValues, watch, setValue, control } = useForm<NoteType>({
+	const note = useSelector(selectDialogNote(routeParams));
+
+	const { formState, handleSubmit, getValues, watch, reset, setValue, control } = useForm<NotesNote>({
 		mode: 'onChange',
-		defaultValues,
-		resolver: yupResolver(schema) as unknown as Resolver<NoteType>
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields } = formState;
 
-	const noteForm = watch();
+	const watchedNoteForm = watch();
+
+	const resetForm = useCallback(() => {
+		if (variant === 'edit' && note) {
+			reset(note);
+		}
+
+		if (variant === 'new' && _.isEmpty(watchedNoteForm)) {
+			reset(
+				NoteModel(
+					_.merge(
+						routeParams.labelId ? { labels: [routeParams.labelId] } : null,
+						routeParams.id === 'archive' ? { archived: true } : null
+					)
+				)
+			);
+		}
+	}, [variant, routeParams, note]);
+
+	useEffect(() => {
+		resetForm();
+	}, [resetForm]);
+
+	/**
+	 * Create New Note
+	 */
+	function handleNewNote(data: NotesNote) {
+		createNote(data);
+		resetForm();
+	}
+
+	/**
+	 * On Change Handler
+	 */
+	const handleOnChange = useDebounce((_note: NotesNote) => {
+		updateNote(_note);
+	}, 600);
 
 	/**
 	 * Update Note
 	 */
 	useEffect(() => {
-		if (note && variant !== 'new' && onFormChange && !_.isEqual(note, noteForm)) {
-			onFormChange(noteForm);
+		if (variant === 'edit' && !_.isEmpty(dirtyFields)) {
+			if (!_.isEqual(note, watchedNoteForm)) {
+				handleOnChange(watchedNoteForm);
+			}
 		}
-	}, [noteForm, note, variant, onFormChange, defaultValues]);
+	}, [watchedNoteForm, note, variant, handleOnChange, dirtyFields]);
 
 	/**
-	 * Create New Note
+	 * Delete  Note
 	 */
-	function onSubmitNewNote(data: NoteType) {
-		if (!onCreate) {
-			return;
-		}
-		onCreate(data);
+	function handleOnRemove() {
+		removeNote(note?.id);
+		onClose?.();
+	}
+
+	if (_.isEmpty(watchedNoteForm)) {
+		return <FuseLoading />;
 	}
 
 	return (
@@ -195,12 +252,12 @@ function NoteForm(props: NoteFormProps) {
 						}}
 					/>
 
-					{(noteForm.labels || noteForm.reminder || noteForm.createdAt) && (
+					{(watchedNoteForm.labels || watchedNoteForm.reminder || watchedNoteForm.createdAt) && (
 						<div className="flex flex-wrap w-full px-20 my-16 -mx-4">
-							{noteForm.reminder && (
+							{watchedNoteForm.reminder && (
 								<NoteReminderLabel
 									className="mt-4 mx-4"
-									date={noteForm.reminder}
+									date={watchedNoteForm.reminder}
 									onDelete={() => {
 										setValue('reminder', undefined);
 									}}
@@ -230,12 +287,12 @@ function NoteForm(props: NoteFormProps) {
 								}}
 							/>
 
-							{noteForm.createdAt && (
+							{watchedNoteForm.createdAt && (
 								<Typography
 									color="text.secondary"
 									className="text-12 mt-8 mx-4"
 								>
-									Edited: {format(new Date(noteForm.createdAt), 'MMM dd yy, h:mm')}
+									Edited: {format(new Date(watchedNoteForm.createdAt), 'MMM dd yy, h:mm')}
 								</Typography>
 							)}
 						</div>
@@ -295,7 +352,7 @@ function NoteForm(props: NoteFormProps) {
 					>
 						<div>
 							<NoteFormLabelMenu
-								note={noteForm}
+								note={watchedNoteForm}
 								onChange={(labels: string[]) => setValue('labels', labels)}
 							/>
 						</div>
@@ -318,7 +375,7 @@ function NoteForm(props: NoteFormProps) {
 											onChange(!value);
 
 											if (variant === 'new') {
-												setTimeout(() => onSubmitNewNote(getValues()));
+												setTimeout(() => handleNewNote(getValues()));
 											}
 										}}
 										size="large"
@@ -341,7 +398,7 @@ function NoteForm(props: NoteFormProps) {
 							variant="contained"
 							color="secondary"
 							size="small"
-							onClick={handleSubmit(onSubmitNewNote)}
+							onClick={handleSubmit(handleNewNote)}
 							disabled={_.isEmpty(dirtyFields) || !isValid}
 						>
 							Create
@@ -354,7 +411,7 @@ function NoteForm(props: NoteFormProps) {
 							>
 								<IconButton
 									className="w-32 h-32 mx-4 p-0"
-									onClick={onRemove}
+									onClick={handleOnRemove}
 									size="large"
 								>
 									<FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>

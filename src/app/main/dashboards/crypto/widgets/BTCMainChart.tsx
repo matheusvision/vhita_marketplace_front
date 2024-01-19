@@ -1,20 +1,23 @@
-import { useTheme } from '@mui/material/styles';
+import { darken, useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
-import CircularProgress from '@mui/material/CircularProgress';
 import sub from 'date-fns/sub';
 import format from 'date-fns/format';
-import { useAppSelector } from 'app/store';
 import { ApexOptions } from 'apexcharts';
-import { selectWidgets } from '../store/widgetsSlice';
+import { useSelector } from 'react-redux';
 import BTCWidgetType from '../types/BTCWidgetType';
+import { selectWidget } from '../CryptoDashboardApi';
 
 /**
  * The BTC main chart.
  */
 function BtcMainChart() {
 	const theme = useTheme();
-	const widgets = useAppSelector(selectWidgets);
-	const btc = widgets?.btc as BTCWidgetType;
+
+	const btc = useSelector(selectWidget<BTCWidgetType>('btc'));
+
+	if (!btc) {
+		return null;
+	}
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -38,7 +41,7 @@ function BtcMainChart() {
 			enabled: false
 		},
 		grid: {
-			borderColor: theme.palette.divider,
+			borderColor: darken(theme.palette.divider, 0.1),
 			position: 'back',
 			show: true,
 			strokeDashArray: 6,
@@ -60,7 +63,6 @@ function BtcMainChart() {
 			width: 2,
 			curve: 'straight'
 		},
-
 		tooltip: {
 			followCursor: true,
 			theme: 'dark',
@@ -80,10 +82,11 @@ function BtcMainChart() {
 					type: 'color',
 					color: theme.palette.divider
 				},
-				width: 3,
+				width: 1,
 				stroke: {
+					color: theme.palette.secondary.main,
 					dashArray: 0,
-					width: 0
+					width: 2
 				},
 				opacity: 0.9
 			},
@@ -128,14 +131,6 @@ function BtcMainChart() {
 			}
 		}
 	};
-
-	if (!widgets) {
-		return (
-			<div className="flex flex-1 items-center justify-center">
-				<CircularProgress color="secondary" />
-			</div>
-		);
-	}
 
 	return (
 		<div className="flex flex-col flex-auto h-full">

@@ -1,11 +1,11 @@
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
-import { ProductType } from '../../types/ProductType';
+import { EcommerceProduct } from '../../ECommerceApi';
 
 /**
  * The product model.
  */
-const ProductModel = (data: PartialDeep<ProductType>) =>
+const ProductModel = (data: PartialDeep<EcommerceProduct>) =>
 	_.defaults(data || {}, {
 		id: _.uniqueId('product-'),
 		name: '',

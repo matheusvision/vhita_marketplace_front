@@ -5,7 +5,51 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicTextFieldsComponent from '../components/text-fields/BasicTextFields';
+import BasicTextFieldsRaw from '../components/text-fields/BasicTextFields.tsx?raw';
+import FormPropsTextFieldsComponent from '../components/text-fields/FormPropsTextFields';
+import FormPropsTextFieldsRaw from '../components/text-fields/FormPropsTextFields.tsx?raw';
+import ValidationTextFieldsComponent from '../components/text-fields/ValidationTextFields';
+import ValidationTextFieldsRaw from '../components/text-fields/ValidationTextFields.tsx?raw';
+import MultilineTextFieldsComponent from '../components/text-fields/MultilineTextFields';
+import MultilineTextFieldsRaw from '../components/text-fields/MultilineTextFields.tsx?raw';
+import SelectTextFieldsComponent from '../components/text-fields/SelectTextFields';
+import SelectTextFieldsRaw from '../components/text-fields/SelectTextFields.tsx?raw';
+import InputWithIconComponent from '../components/text-fields/InputWithIcon';
+import InputWithIconRaw from '../components/text-fields/InputWithIcon.tsx?raw';
+import InputAdornmentsComponent from '../components/text-fields/InputAdornments';
+import InputAdornmentsRaw from '../components/text-fields/InputAdornments.tsx?raw';
+import TextFieldSizesComponent from '../components/text-fields/TextFieldSizes';
+import TextFieldSizesRaw from '../components/text-fields/TextFieldSizes.tsx?raw';
+import TextFieldHiddenLabelComponent from '../components/text-fields/TextFieldHiddenLabel';
+import TextFieldHiddenLabelRaw from '../components/text-fields/TextFieldHiddenLabel.tsx?raw';
+import LayoutTextFieldsComponent from '../components/text-fields/LayoutTextFields';
+import LayoutTextFieldsRaw from '../components/text-fields/LayoutTextFields.tsx?raw';
+import FullWidthTextFieldComponent from '../components/text-fields/FullWidthTextField';
+import FullWidthTextFieldRaw from '../components/text-fields/FullWidthTextField.tsx?raw';
+import StateTextFieldsComponent from '../components/text-fields/StateTextFields';
+import StateTextFieldsRaw from '../components/text-fields/StateTextFields.tsx?raw';
+import ComposedTextFieldComponent from '../components/text-fields/ComposedTextField';
+import ComposedTextFieldRaw from '../components/text-fields/ComposedTextField.tsx?raw';
+import InputsComponent from '../components/text-fields/Inputs';
+import InputsRaw from '../components/text-fields/Inputs.tsx?raw';
+import ColorTextFieldsComponent from '../components/text-fields/ColorTextFields';
+import ColorTextFieldsRaw from '../components/text-fields/ColorTextFields.tsx?raw';
+import CustomizedInputsStyledComponent from '../components/text-fields/CustomizedInputsStyled';
+import CustomizedInputsStyledRaw from '../components/text-fields/CustomizedInputsStyled.tsx?raw';
+import CustomizedInputsStyleOverridesComponent from '../components/text-fields/CustomizedInputsStyleOverrides';
+import CustomizedInputsStyleOverridesRaw from '../components/text-fields/CustomizedInputsStyleOverrides.tsx?raw';
+import CustomizedInputBaseComponent from '../components/text-fields/CustomizedInputBase';
+import CustomizedInputBaseRaw from '../components/text-fields/CustomizedInputBase.tsx?raw';
+import UseFormControlComponent from '../components/text-fields/UseFormControl';
+import UseFormControlRaw from '../components/text-fields/UseFormControl.tsx?raw';
+import HelperTextMisalignedComponent from '../components/text-fields/HelperTextMisaligned';
+import HelperTextMisalignedRaw from '../components/text-fields/HelperTextMisaligned.tsx?raw';
+import HelperTextAlignedComponent from '../components/text-fields/HelperTextAligned';
+import HelperTextAlignedRaw from '../components/text-fields/HelperTextAligned.tsx?raw';
+import FormattedInputsComponent from '../components/text-fields/FormattedInputs';
+import FormattedInputsRaw from '../components/text-fields/FormattedInputs.tsx?raw';
+                   
                    function TextFieldsDoc(props) {
                      return (
                        
@@ -37,8 +81,8 @@ It comes with three variants: outlined (default), filled, and standard.</Typogra
                     name="BasicTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/BasicTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/BasicTextFields.tsx')}
+                    component={BasicTextFieldsComponent} 
+                    raw={BasicTextFieldsRaw}
                     /></Typography>
 <div className="border border-1 p-16 rounded-16 my-12">
 
@@ -53,8 +97,8 @@ but Material UI will continue to support it.</Typography>
                     name="FormPropsTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/FormPropsTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/FormPropsTextFields.tsx')}
+                    component={FormPropsTextFieldsComponent} 
+                    raw={FormPropsTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Validation</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`error`}</code> prop toggles the error state.
@@ -63,8 +107,8 @@ The <code>{`helperText`}</code> prop can then be used to provide feedback to the
                     name="ValidationTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/ValidationTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/ValidationTextFields.tsx')}
+                    component={ValidationTextFieldsComponent} 
+                    raw={ValidationTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Multiline</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`multiline`}</code> prop transforms the text field into a <a href="/material-ui/react-textarea-autosize/">TextareaAutosize</a> element.
@@ -74,8 +118,8 @@ You can use the <code>{`minRows`}</code> and <code>{`maxRows`}</code> props to b
                     name="MultilineTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/MultilineTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/MultilineTextFields.tsx')}
+                    component={MultilineTextFieldsComponent} 
+                    raw={MultilineTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Select</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`select`}</code> prop makes the text field use the <a href="/material-ui/react-select/">Select</a> component internally.</Typography>
@@ -83,8 +127,8 @@ You can use the <code>{`minRows`}</code> and <code>{`maxRows`}</code> props to b
                     name="SelectTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/SelectTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/SelectTextFields.tsx')}
+                    component={SelectTextFieldsComponent} 
+                    raw={SelectTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Icons</Typography>
 <Typography className="text-14 mb-32" component="div">There are multiple ways to display an icon with a text field.</Typography>
@@ -92,8 +136,8 @@ You can use the <code>{`minRows`}</code> and <code>{`maxRows`}</code> props to b
                     name="InputWithIcon.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/InputWithIcon.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/InputWithIcon.tsx')}
+                    component={InputWithIconComponent} 
+                    raw={InputWithIconRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Input Adornments</Typography>
 <Typography className="text-14 mb-32" component="div">The main way is with an <code>{`InputAdornment`}</code>.
@@ -103,8 +147,8 @@ For instance, you can use an icon button to hide or reveal the password.</Typogr
                     name="InputAdornments.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/InputAdornments.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/InputAdornments.tsx')}
+                    component={InputAdornmentsComponent} 
+                    raw={InputAdornmentsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Sizes</Typography>
 <Typography className="text-14 mb-32" component="div">Fancy smaller inputs? Use the <code>{`size`}</code> prop.</Typography>
@@ -112,16 +156,16 @@ For instance, you can use an icon button to hide or reveal the password.</Typogr
                     name="TextFieldSizes.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/TextFieldSizes.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/TextFieldSizes.tsx')}
+                    component={TextFieldSizesComponent} 
+                    raw={TextFieldSizesRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`filled`}</code> variant input height can be further reduced by rendering the label outside of it.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="TextFieldHiddenLabel.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/TextFieldHiddenLabel.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/TextFieldHiddenLabel.tsx')}
+                    component={TextFieldHiddenLabelComponent} 
+                    raw={TextFieldHiddenLabelRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Margin</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`margin`}</code> prop can be used to alter the vertical spacing of the text field.
@@ -130,8 +174,8 @@ Using <code>{`none`}</code> (default) doesn&#39;t apply margins to the <code>{`F
                     name="LayoutTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/LayoutTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/LayoutTextFields.tsx')}
+                    component={LayoutTextFieldsComponent} 
+                    raw={LayoutTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Full width</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`fullWidth`}</code> can be used to make the input take up the full width of its container.</Typography>
@@ -139,8 +183,8 @@ Using <code>{`none`}</code> (default) doesn&#39;t apply margins to the <code>{`F
                     name="FullWidthTextField.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/FullWidthTextField.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/FullWidthTextField.tsx')}
+                    component={FullWidthTextFieldComponent} 
+                    raw={FullWidthTextFieldRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Uncontrolled vs. Controlled</Typography>
 <Typography className="text-14 mb-32" component="div">The component can be controlled or uncontrolled.</Typography>
@@ -159,8 +203,8 @@ Using <code>{`none`}</code> (default) doesn&#39;t apply margins to the <code>{`F
                     name="StateTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/StateTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/StateTextFields.tsx')}
+                    component={StateTextFieldsComponent} 
+                    raw={StateTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Components</Typography>
 <Typography className="text-14 mb-32" component="div"><code>{`TextField`}</code> is composed of smaller components (
@@ -179,16 +223,16 @@ Then, it&#39;s up to the user to use the underlying component shown in the follo
                     name="ComposedTextField.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/ComposedTextField.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/ComposedTextField.tsx')}
+                    component={ComposedTextFieldComponent} 
+                    raw={ComposedTextFieldRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Inputs</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="Inputs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/Inputs.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/Inputs.tsx')}
+                    component={InputsComponent} 
+                    raw={InputsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Color</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`color`}</code> prop changes the highlight color of the text field when focused.</Typography>
@@ -196,8 +240,8 @@ Then, it&#39;s up to the user to use the underlying component shown in the follo
                     name="ColorTextFields.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/ColorTextFields.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/ColorTextFields.tsx')}
+                    component={ColorTextFieldsComponent} 
+                    raw={ColorTextFieldsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
 <Typography className="text-14 mb-32" component="div">Here are some examples of customizing the component.
@@ -207,8 +251,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedInputsStyled.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/CustomizedInputsStyled.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/CustomizedInputsStyled.tsx')}
+                    component={CustomizedInputsStyledComponent} 
+                    raw={CustomizedInputsStyledRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Using the theme style overrides API</Typography>
 <Typography className="text-14 mb-32" component="div">Use the <code>{`styleOverrides`}</code> key to change any style injected by Material UI into the DOM.
@@ -217,8 +261,8 @@ See the <a href="/material-ui/customization/theme-components/#theme-style-overri
                     name="CustomizedInputsStyleOverrides.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/CustomizedInputsStyleOverrides.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/CustomizedInputsStyleOverrides.tsx')}
+                    component={CustomizedInputsStyleOverridesComponent} 
+                    raw={CustomizedInputsStyleOverridesRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">Customization does not stop at CSS.
 You can use composition to build custom components and give your app a unique feel.
@@ -227,10 +271,10 @@ Below is an example using the <a href="/material-ui/api/input-base/"><code>{`Inp
                     name="CustomizedInputBase.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/CustomizedInputBase.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/CustomizedInputBase.tsx')}
+                    component={CustomizedInputBaseComponent} 
+                    raw={CustomizedInputBaseRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/styles/text-field/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/textField-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2"><code>{`useFormControl`}</code></Typography>
 <Typography className="text-14 mb-32" component="div">For advanced customization use cases, a <code>{`useFormControl()`}</code> hook is exposed.
 This hook returns the context value of the parent <code>{`FormControl`}</code> component.</Typography>
@@ -266,15 +310,49 @@ import { useFormControl } from '@mui/material/FormControl';
                     name="UseFormControl.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/UseFormControl.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/UseFormControl.tsx')}
+                    component={UseFormControlComponent} 
+                    raw={UseFormControlRaw}
                     /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Performance</Typography>
+<Typography className="text-14 mb-32" component="div">Global styles for the auto-fill keyframes are injected and removed on each mount and unmount, respectively.
+If you are loading a large number of Text Field components at once, it might be a good idea to change this default behavior by enabling <a href="/material-ui/api/input-base/#InputBase-prop-disableInjectingGlobalStyles"><code>{`disableInjectingGlobalStyles`}</code></a> in <code>{`MuiInputBase`}</code>.
+Make sure to inject <code>{`GlobalStyles`}</code> for the auto-fill keyframes at the top of your application.</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
+{` 
+import { GlobalStyles, createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  components: {
+    MuiInputBase: {
+      defaultProps: {
+        disableInjectingGlobalStyles: true,
+      },
+    },
+  },
+});
+
+export default function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles
+        styles={{
+          '@keyframes mui-auto-fill': { from: { display: 'block' } },
+          '@keyframes mui-auto-fill-cancel': { from: { display: 'block' } },
+        
+      />
+      ...
+    </ThemeProvider>
+  );
+}
+`}
+</FuseHighlight>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Shrink</Typography>
 <Typography className="text-14 mb-32" component="div">The input label &quot;shrink&quot; state isn&#39;t always correct.
 The input label is supposed to shrink as soon as the input is displaying something.
 In some circumstances, we can&#39;t determine the &quot;shrink&quot; state (number input, datetime input, Stripe input). You might notice an overlap.</Typography>
-<Typography className="text-14 mb-32" component="div"> src="/material-ui-static/images/text-fields/shrink.png" alt="shrink/></Typography>
+<Typography className="text-14 mb-32" component="div"><img src="/material-ui-static/images/text-fields/shrink.png" alt="shrink"/></Typography>
 <Typography className="text-14 mb-32" component="div">To workaround the issue, you can force the &quot;shrink&quot; state of the label.</Typography>
 
 <FuseHighlight component="pre" className="language-jsx">
@@ -294,36 +372,32 @@ In some circumstances, we can&#39;t determine the &quot;shrink&quot; state (numb
 It won&#39;t impact the layout of the page.
 Make sure that the input is larger than the label to display correctly.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">type=&quot;number&quot;</Typography>
-<Typography className="text-14 mb-32" component="div">Inputs of type=&quot;number&quot; have potential usability issues:</Typography>
+<Typography className="text-14 mb-32" component="div">:::warning
+We do not recommend using <code>{`type="number"`}</code> with a Text Field due to potential usability issues:</Typography>
 <ul className="space-y-16">
-<li>Allowing certain non-numeric characters (&#39;e&#39;, &#39;+&#39;, &#39;-&#39;, &#39;.&#39;) and silently discarding others</li>
-<li>The functionality of scrolling to increment/decrement the number can cause accidental and hard-to-notice changes</li>
+<li>it allows certain non-numeric characters (&#39;e&#39;, &#39;+&#39;, &#39;-&#39;, &#39;.&#39;) and silently discards others</li>
+<li>the functionality of scrolling to increment/decrement the number can cause accidental and hard-to-notice changes</li>
+<li>and more—see <a href="https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/">Why the GOV.UK Design System team changed the input type for numbers</a> for a more detailed explanation of the limitations of <code>{`<input type="number">`}</code>
+:::</li>
 </ul>
-<Typography className="text-14 mb-32" component="div">and more - see <a href="https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/">this article</a> by the GOV.UK Design System team for a more detailed explanation.</Typography>
-<Typography className="text-14 mb-32" component="div">For number validation, one viable alternative is to use the default input type=&quot;text&quot; with the <em>pattern</em> attribute, for example:</Typography>
-
-<FuseHighlight component="pre" className="language-jsx">
-{` 
-<TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-`}
-</FuseHighlight>
-<Typography className="text-14 mb-32" component="div">In the future, we might provide a <a href="https://github.com/mui/material-ui/issues/19154">number input component</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">If you need a text field with number validation, you can use Base UI&#39;s <a href="/base-ui/react-number-input/">Number Input</a> instead.</Typography>
+<Typography className="text-14 mb-32" component="div">You can follow <a href="https://github.com/mui/material-ui/issues/19154">this GitHub issue</a> to track the progress of introducing the Number Input component to Material UI.</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Helper text</Typography>
 <Typography className="text-14 mb-32" component="div">The helper text prop affects the height of the text field. If two text fields are placed side by side, one with a helper text and one without, they will have different heights. For example:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="HelperTextMisaligned.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/HelperTextMisaligned.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/HelperTextMisaligned.tsx')}
+                    component={HelperTextMisalignedComponent} 
+                    raw={HelperTextMisalignedRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">This can be fixed by passing a space character to the <code>{`helperText`}</code> prop:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="HelperTextAligned.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/HelperTextAligned.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/HelperTextAligned.tsx')}
+                    component={HelperTextAlignedComponent} 
+                    raw={HelperTextAlignedRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Integration with 3rd party input libraries</Typography>
 <Typography className="text-14 mb-32" component="div">You can use third-party libraries to format an input.
@@ -333,8 +407,8 @@ You have to provide a custom implementation of the <code>{`<input>`}</code> elem
                     name="FormattedInputs.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/text-fields/FormattedInputs.tsx').default} 
-                    raw={require('!raw-loader!../components/text-fields/FormattedInputs.tsx')}
+                    component={FormattedInputsComponent} 
+                    raw={FormattedInputsRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">The provided input component should expose a ref with a value that implements the following interface:</Typography>
 

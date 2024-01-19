@@ -1,21 +1,38 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { lighten } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { selectSelectedItem, setSelectedItem } from './store/itemsSlice';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import _ from '@lodash';
 import ItemIcon from './ItemIcon';
+import { resetSelectedItemId, selectSelectedItemId } from './store/selectedItemIdSlice';
+import { FileManagerItem } from './FileManagerApi';
 
+type DetailSidebarContentProps = {
+	items: FileManagerItem[];
+};
 /**
  * The detail sidebar content.
  */
-function DetailSidebarContent() {
-	const dispatch = useAppDispatch();
+function DetailSidebarContent(props: DetailSidebarContentProps) {
+	const { items } = props;
 
-	const item = useAppSelector(selectSelectedItem);
+	const location = useLocation();
+	const { pathname } = location;
+
+	const dispatch = useAppDispatch();
+	const selectedItemId = useSelector(selectSelectedItemId);
+	const item = _.find(items, { id: selectedItemId });
+
+	useEffect(() => {
+		dispatch(resetSelectedItemId());
+	}, [pathname]);
 
 	if (!item) {
 		return null;
@@ -30,7 +47,7 @@ function DetailSidebarContent() {
 			<div className="flex items-center justify-end w-full">
 				<IconButton
 					size="large"
-					onClick={() => dispatch(setSelectedItem(null))}
+					onClick={() => dispatch(resetSelectedItemId())}
 				>
 					<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
 				</IconButton>

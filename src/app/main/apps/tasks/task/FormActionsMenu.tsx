@@ -3,11 +3,10 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useAppDispatch } from 'app/store';
 import { useNavigate } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useState, MouseEvent } from 'react';
-import { removeTask } from '../store/taskSlice';
+import { useDeleteTasksItemMutation } from '../TasksApi';
 
 type FormActionsMenuProps = {
 	taskId: string;
@@ -18,9 +17,8 @@ type FormActionsMenuProps = {
  */
 function FormActionsMenu(props: FormActionsMenuProps) {
 	const { taskId } = props;
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-
+	const [removeTask] = useDeleteTasksItemMutation();
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const open = Boolean(anchorEl);
 
@@ -33,9 +31,11 @@ function FormActionsMenu(props: FormActionsMenuProps) {
 	};
 
 	function handleRemoveTask() {
-		dispatch(removeTask(taskId)).then(() => {
-			navigate('/apps/tasks');
-		});
+		removeTask(taskId)
+			.unwrap()
+			.then(() => {
+				navigate('/apps/tasks');
+			});
 	}
 
 	return (

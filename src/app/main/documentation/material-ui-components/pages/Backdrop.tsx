@@ -5,7 +5,9 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import SimpleBackdropComponent from '../components/backdrop/SimpleBackdrop';
+import SimpleBackdropRaw from '../components/backdrop/SimpleBackdrop.tsx?raw';
+                   
                    function BackdropDoc(props) {
                      return (
                        
@@ -38,8 +40,8 @@ After clicking <strong>Show Backdrop</strong>, you can click anywhere on the pag
                     name="SimpleBackdrop.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/backdrop/SimpleBackdrop.tsx').default} 
-                    raw={require('!raw-loader!../components/backdrop/SimpleBackdrop.tsx')}
+                    component={SimpleBackdropComponent} 
+                    raw={SimpleBackdropRaw}
                     /></Typography>
 
                 </>

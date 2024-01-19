@@ -1,32 +1,30 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import * as yup from 'yup';
 import _ from '@lodash';
 import Paper from '@mui/material/Paper';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	name: yup.string().required('You must enter your name'),
-	password: yup
+const schema = z.object({
+	name: z.string().nonempty('You must enter your name'),
+	password: z
 		.string()
-		.required('Please enter your password.')
-		.min(8, 'Password is too short - should be 8 chars minimum.'),
-	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
+		.nonempty('Please enter your password.')
+		.min(8, 'Password is too short - should be 8 chars minimum.')
 });
 
 const defaultValues = {
 	name: 'Brian Hughes',
-	password: '',
-	passwordConfirm: ''
+	password: ''
 };
 
 /**
@@ -36,7 +34,7 @@ function ModernUnlockSessionPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

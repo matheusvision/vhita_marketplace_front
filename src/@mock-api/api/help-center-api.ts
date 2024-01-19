@@ -1,9 +1,7 @@
 import _ from '@lodash';
 import mockApi from '../mock-api.json';
-import mock from '../mock';
-import { FaqCategoryType } from '../../app/main/apps/help-center/types/FaqCategoryType';
-import { GuideCategoryType } from '../../app/main/apps/help-center/types/GuideCategoryType';
-import { Params } from '../ExtendedMockAdapter';
+import { FaqCategory, GuideCategory } from '../../app/main/apps/help-center/HelpCenterApi';
+import ExtendedMockAdapter, { Params } from '../ExtendedMockAdapter';
 
 const faqsDB = mockApi.components.examples.help_center_faqs.value;
 const faqCategoriesDB = mockApi.components.examples.help_center_faq_categories.value;
@@ -12,39 +10,48 @@ const guidesDB = mockApi.components.examples.help_center_guides.value;
 const guideCategoriesDB = mockApi.components.examples.help_center_guide_categories.value;
 const guideContent = mockApi.components.examples.help_center_guide_content.value;
 
-mock.onGet('/api/help-center/faqs').reply(() => {
-	return [200, faqsDB];
-});
-mock.onGet('/api/help-center/faqs/:categorySlug').reply((config) => {
-	const { categorySlug } = config.params as Params;
+export const helpCenterApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/help-center/faqs').reply(() => {
+		return [200, faqsDB];
+	});
 
-	const category = _.find(faqCategoriesDB, { slug: categorySlug }) as FaqCategoryType;
+	mock.onGet('/help-center/faqs/categories').reply(() => {
+		return [200, faqCategoriesDB];
+	});
 
-	return [200, _.filter(faqsDB, { categoryId: category.id })];
-});
+	mock.onGet('/help-center/faqs/:categorySlug').reply((config) => {
+		const { categorySlug } = config.params as Params;
 
-mock.onGet('/api/help-center/faqs/categories').reply(() => {
-	return [200, faqCategoriesDB];
-});
+		const category = _.find(faqCategoriesDB, { slug: categorySlug }) as FaqCategory;
 
-mock.onGet('/api/help-center/guides').reply(() => {
-	return [200, guidesDB];
-});
+		return [200, _.filter(faqsDB, { categoryId: category.id })];
+	});
 
-mock.onGet('/api/help-center/guides/:categorySlug').reply((config) => {
-	const { categorySlug } = config.params as Params;
+	mock.onGet('/help-center/guides').reply(() => {
+		return [200, guidesDB];
+	});
 
-	const category = _.find(guideCategoriesDB, { slug: categorySlug }) as GuideCategoryType;
+	mock.onGet('/help-center/guides/categories').reply(() => {
+		return [200, guideCategoriesDB];
+	});
 
-	return [200, _.filter(guidesDB, { categoryId: category.id })];
-});
+	mock.onGet('/help-center/guides/:categorySlug').reply((config) => {
+		const { categorySlug } = config.params as Params;
 
-mock.onGet('/api/help-center/guides/:categorySlug/:guideSlug').reply((config) => {
-	// eslint-disable-next-line unused-imports/no-unused-vars
-	const { categorySlug, guideSlug } = config.params as Params;
-	return [200, { ..._.find(guidesDB, { slug: guideSlug }), content: guideContent }];
-});
+		const category = _.find(guideCategoriesDB, { slug: categorySlug }) as GuideCategory;
 
-mock.onGet('/api/help-center/guides/categories').reply(() => {
-	return [200, guideCategoriesDB];
-});
+		return [200, _.filter(guidesDB, { categoryId: category.id })];
+	});
+
+	mock.onGet('/help-center/guides/:categorySlug/:guideSlug').reply((config) => {
+		// eslint-disable-next-line unused-imports/no-unused-vars
+		const { categorySlug, guideSlug } = config.params as Params;
+		return [
+			200,
+			{
+				..._.find(guidesDB, { slug: guideSlug }),
+				content: guideContent
+			}
+		];
+	});
+};

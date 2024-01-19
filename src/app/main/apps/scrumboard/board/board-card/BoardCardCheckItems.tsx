@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Chip from '@mui/material/Chip';
 import _ from '@lodash';
-import { CardType } from '../../types/CardType';
+import { ScrumboardCard } from '../../ScrumboardApi';
 
 type BoardCardCheckItemsProps = {
-	card: CardType;
+	card: ScrumboardCard;
 };
 
 /**
@@ -17,11 +17,11 @@ function BoardCardCheckItems(props: BoardCardCheckItemsProps) {
 	const checkItemsChecked = getCheckItemsChecked(card);
 	const checkItems = getCheckItems(card);
 
-	function getCheckItemsChecked(_card: CardType) {
+	function getCheckItemsChecked(_card: ScrumboardCard) {
 		return _.sum(_card.checklists.map((list) => _.sum(list.checkItems.map((x) => (x.checked ? 1 : 0)))));
 	}
 
-	function getCheckItems(_card: CardType) {
+	function getCheckItems(_card: ScrumboardCard) {
 		return _.sum(_card.checklists.map((x) => x.checkItems.length));
 	}
 

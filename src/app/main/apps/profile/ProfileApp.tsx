@@ -38,7 +38,7 @@ function ProfileApp() {
 	return (
 		<Root
 			header={
-				<div className="flex flex-col">
+				<div className="flex flex-col w-full">
 					<img
 						className="h-160 lg:h-320 object-cover w-full"
 						src="assets/images/pages/profile/cover.jpg"

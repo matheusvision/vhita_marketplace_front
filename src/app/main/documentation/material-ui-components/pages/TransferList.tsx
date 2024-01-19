@@ -5,7 +5,11 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import TransferListComponent from '../components/transfer-list/TransferList';
+import TransferListRaw from '../components/transfer-list/TransferList.tsx?raw';
+import SelectAllTransferListComponent from '../components/transfer-list/SelectAllTransferList';
+import SelectAllTransferListRaw from '../components/transfer-list/SelectAllTransferList.tsx?raw';
+                   
                    function TransferListDoc(props) {
                      return (
                        
@@ -37,17 +41,17 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="TransferList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transfer-list/TransferList.tsx').default} 
-                    raw={require('!raw-loader!../components/transfer-list/TransferList.tsx')}
+                    component={TransferListComponent} 
+                    raw={TransferListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Enhanced transfer list</Typography>
-<Typography className="text-14 mb-32" component="div">This example exchanges the &quot;move all&quot; buttons for a &quot;select all / select none&quot; checkbox, and adds a counter.</Typography>
+<Typography className="text-14 mb-32" component="div">This example exchanges the &quot;move all&quot; buttons for a &quot;select all / select none&quot; checkbox and adds a counter.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="SelectAllTransferList.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/transfer-list/SelectAllTransferList.tsx').default} 
-                    raw={require('!raw-loader!../components/transfer-list/SelectAllTransferList.tsx')}
+                    component={SelectAllTransferListComponent} 
+                    raw={SelectAllTransferListRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-14 mb-32" component="div">The component comes with a couple of limitations:</Typography>

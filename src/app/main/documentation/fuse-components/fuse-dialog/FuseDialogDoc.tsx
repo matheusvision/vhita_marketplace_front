@@ -5,8 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store';
-import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
+import { useAppDispatch } from 'app/store/store';
+import { closeDialog, openDialog } from '@fuse/core/FuseDialog/store/fuseDialogSlice';
 
 /**
  * FuseDialog Doc

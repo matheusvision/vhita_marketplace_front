@@ -1,29 +1,24 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import ListItem from '@mui/material/ListItem';
 import clsx from 'clsx';
-import * as yup from 'yup';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
 import { useDebounce } from '@fuse/hooks';
 import _ from '@lodash';
-import { useAppDispatch } from 'app/store';
-import { removeLabel, updateLabel } from '../../store/labelsSlice';
-import { LabelType } from '../../types/LabelType';
-
-/**
- * Form Validation Schema
- */
-const schema = yup.object().shape({
-	id: yup.string().required(),
-	title: yup.string().required('You must enter a label title')
-});
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import {
+	NotesLabel,
+	useDeleteNotesLabelMutation,
+	useGetNotesLabelsQuery,
+	useUpdateNotesLabelMutation
+} from '../../NotesApi';
 
 type LabelFormProps = {
-	label: LabelType;
+	label: NotesLabel;
 };
 
 /**
@@ -31,36 +26,61 @@ type LabelFormProps = {
  */
 function NewLabelForm(props: LabelFormProps) {
 	const { label } = props;
-	const dispatch = useAppDispatch();
+	const { data: labels } = useGetNotesLabelsQuery();
 
-	const { control, formState, reset, watch } = useForm<LabelType>({
-		mode: 'onChange',
-		defaultValues: label,
-		resolver: yupResolver(schema)
+	const [updateLabel] = useUpdateNotesLabelMutation();
+	const [removeLabel] = useDeleteNotesLabelMutation();
+
+	/**
+	 * Form Validation Schema
+	 */
+	const schema = z.object({
+		id: z.string().nonempty(),
+		title: z
+			.string()
+			.nonempty('You must enter a label title')
+			.refine(
+				(title) => {
+					// Check if title exists in labelListArray
+					return !labels.some((label) => label.title === title);
+				},
+				{
+					message: 'This label title already exists'
+				}
+			)
 	});
 
-	const { errors } = formState;
-	const form = watch();
+	const { control, formState, reset, watch } = useForm<NotesLabel>({
+		mode: 'onChange',
+		defaultValues: label,
+		resolver: zodResolver(schema)
+	});
+
+	const { errors, dirtyFields, isValid } = formState;
+	const watchedLabelForm = watch();
 
 	useEffect(() => {
 		reset(label);
 	}, [label, reset]);
 
-	const handleOnChange = useDebounce((_label: LabelType, _form: LabelType) => {
-		if (!_label) {
-			return;
-		}
-		if (form && !_.isEqual(_form, _label)) {
-			dispatch(updateLabel(_form));
-		}
-	}, 300);
+	/**
+	 * On Change Handler
+	 */
+	const handleOnChange = useDebounce((_label: NotesLabel) => {
+		updateLabel(_label);
+	}, 600);
 
+	/**
+	 * Update Note
+	 */
 	useEffect(() => {
-		handleOnChange(label, form);
-	}, [handleOnChange, label, form]);
+		if (isValid && !_.isEmpty(dirtyFields) && !_.isEqual(label, watchedLabelForm)) {
+			handleOnChange(watchedLabelForm);
+		}
+	}, [watchedLabelForm, label, handleOnChange, dirtyFields]);
 
 	function handleOnRemove() {
-		dispatch(removeLabel(label.id));
+		removeLabel(label.id);
 	}
 
 	return (

@@ -5,7 +5,8 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   
+                   
                    function CssBaselineDoc(props) {
                      return (
                        
@@ -77,7 +78,7 @@ export default function MyApp() {
 <li>The margin in all browsers is removed.</li>
 <li>The default Material Design background color is applied.
 It&#39;s using <a href="/material-ui/customization/default-theme/?expand-path=$.palette.background"><code>{`theme.palette.background.default`}</code></a> for standard devices and a white background for print devices.</li>
-<li>If <code>{`enableColorScheme`}</code> is provided to <code>{`CssBaseline`}</code>, native components color will be set by applying <a href="https://web.dev/color-scheme/"><code>{`color-scheme`}</code></a> on <code>{`<html>`}</code>.
+<li>If <code>{`enableColorScheme`}</code> is provided to <code>{`CssBaseline`}</code>, native components color will be set by applying <a href="https://web.dev/articles/color-scheme"><code>{`color-scheme`}</code></a> on <code>{`<html>`}</code>.
 The value used is provided by the theme property <code>{`theme.palette.mode`}</code>.</li>
 </ul>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Layout</Typography>

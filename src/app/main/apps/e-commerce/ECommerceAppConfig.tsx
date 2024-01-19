@@ -1,9 +1,7 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
 
-const ECommerceApp = lazyWithReducer('eCommerceApp', () => import('./ECommerceApp'), reducer);
+const ECommerceApp = lazy(() => import('./ECommerceApp'));
 const Product = lazy(() => import('./product/Product'));
 const Products = lazy(() => import('./products/Products'));
 const Order = lazy(() => import('./order/Order'));

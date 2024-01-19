@@ -1,9 +1,11 @@
 import mockApi from '../mock-api.json';
-import mock from '../mock';
-import { CountriesType } from '../../app/main/apps/contacts/types/CountryType';
+import { Country } from '../../app/main/apps/contacts/ContactsApi';
+import ExtendedMockAdapter from '../ExtendedMockAdapter';
 
-const countriesApi = mockApi.components.examples.countries.value as CountriesType;
+const countriesApi = mockApi.components.examples.countries.value as Country[];
 
-mock.onGet('/api/countries').reply(() => {
-	return [200, countriesApi];
-});
+export const countriesApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/countries').reply(() => {
+		return [200, countriesApi];
+	});
+};

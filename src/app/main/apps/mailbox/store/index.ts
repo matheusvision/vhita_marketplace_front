@@ -1,19 +1,17 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import filters from './filtersSlice';
-import folders from './foldersSlice';
-import labels from './labelsSlice';
-import mail from './mailSlice';
-import mails from './mailsSlice';
+import { RootStateType } from 'app/store/types';
+import searchText, { searchTextSliceType } from './searchTextSlice';
+import selectedMailIds, { selectedMailIdsSliceType } from './selectedMailIdsSlice';
+import { MailboxApiType } from '../MailboxApi';
 
 /**
  * The Mailbox App reducer.
  */
 const reducer = combineReducers({
-	mails,
-	mail,
-	folders,
-	labels,
-	filters
+	selectedMailIds,
+	searchText
 });
+
+export type AppRootStateType = RootStateType<[searchTextSliceType, selectedMailIdsSliceType]> & MailboxApiType;
 
 export default reducer;

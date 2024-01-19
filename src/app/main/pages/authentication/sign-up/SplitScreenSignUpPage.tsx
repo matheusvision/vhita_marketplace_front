@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -7,7 +6,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import * as yup from 'yup';
 import _ from '@lodash';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
@@ -15,19 +13,27 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import FormHelperText from '@mui/material/FormHelperText';
 
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	name: yup.string().required('You must enter your name'),
-	email: yup.string().email('You must enter a valid email').required('You must enter a email'),
-	password: yup
-		.string()
-		.required('Please enter your password.')
-		.min(8, 'Password is too short - should be 8 chars minimum.'),
-	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
-	acceptTermsConditions: yup.boolean().oneOf([true], 'The terms and conditions must be accepted.')
-});
+const schema = z
+	.object({
+		name: z.string().nonempty('You must enter your name'),
+		email: z.string().email('You must enter a valid email').nonempty('You must enter an email'),
+		password: z
+			.string()
+			.nonempty('Please enter your password.')
+			.min(8, 'Password is too short - should be 8 chars minimum.'),
+		passwordConfirm: z.string().nonempty('Password confirmation is required'),
+		acceptTermsConditions: z.boolean().refine((val) => val === true, 'The terms and conditions must be accepted.')
+	})
+	.refine((data) => data.password === data.passwordConfirm, {
+		message: 'Passwords must match',
+		path: ['passwordConfirm']
+	});
 
 const defaultValues = {
 	name: '',
@@ -44,7 +50,7 @@ function SplitScreenSignUpPage() {
 	const { control, formState, handleSubmit, reset } = useForm({
 		mode: 'onChange',
 		defaultValues,
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

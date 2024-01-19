@@ -1,7 +1,6 @@
-import lazyWithReducer from 'app/store/lazyWithReducer';
-import reducer from './store';
+import { lazy } from 'react';
 
-const NotesApp = lazyWithReducer('notesApp', () => import('./NotesApp'), reducer);
+const NotesApp = lazy(() => import('./NotesApp'));
 
 /**
  * The notes app config.

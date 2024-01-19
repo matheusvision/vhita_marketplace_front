@@ -5,15 +5,13 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import Popover from '@mui/material/Popover';
 import { useState, MouseEvent } from 'react';
-import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ListItemButton from '@mui/material/ListItemButton';
-import { selectLabels } from '../store/labelsSlice';
-import { NoteType } from '../types/NoteType';
+import { NotesNote, useGetNotesLabelsQuery } from '../NotesApi';
 
 type NoteFormLabelMenuProps = {
-	note: NoteType;
-	onChange: (T: NoteType['labels']) => void;
+	note: NotesNote;
+	onChange: (T: NotesNote['labels']) => void;
 };
 
 /**
@@ -21,7 +19,7 @@ type NoteFormLabelMenuProps = {
  */
 function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
 	const { note, onChange } = props;
-	const labels = useAppSelector(selectLabels);
+	const { data: labels } = useGetNotesLabelsQuery();
 
 	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
 

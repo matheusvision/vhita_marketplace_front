@@ -4,10 +4,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, MouseEvent } from 'react';
-import { useAppSelector } from 'app/store';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useParams } from 'react-router-dom';
 import ToolbarMenu from './ToolbarMenu';
-import { selectLabels } from '../../../../store/labelsSlice';
+import { useGetScrumboardBoardLabelsQuery } from '../../../../ScrumboardApi';
 
 type LabelsMenuProps = {
 	labels: string[];
@@ -20,7 +20,10 @@ type LabelsMenuProps = {
 function LabelsMenu(props: LabelsMenuProps) {
 	const { labels, onToggleLabel } = props;
 
-	const labelsArr = useAppSelector(selectLabels);
+	const routeParams = useParams();
+	const { boardId } = routeParams;
+
+	const { data: labelsArr } = useGetScrumboardBoardLabelsQuery(boardId);
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null);
 

@@ -5,7 +5,33 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import CircularIndeterminateComponent from '../components/progress/CircularIndeterminate';
+import CircularIndeterminateRaw from '../components/progress/CircularIndeterminate.tsx?raw';
+import CircularColorComponent from '../components/progress/CircularColor';
+import CircularColorRaw from '../components/progress/CircularColor.tsx?raw';
+import CircularDeterminateComponent from '../components/progress/CircularDeterminate';
+import CircularDeterminateRaw from '../components/progress/CircularDeterminate.tsx?raw';
+import CircularIntegrationComponent from '../components/progress/CircularIntegration';
+import CircularIntegrationRaw from '../components/progress/CircularIntegration.tsx?raw';
+import CircularWithValueLabelComponent from '../components/progress/CircularWithValueLabel';
+import CircularWithValueLabelRaw from '../components/progress/CircularWithValueLabel.tsx?raw';
+import LinearIndeterminateComponent from '../components/progress/LinearIndeterminate';
+import LinearIndeterminateRaw from '../components/progress/LinearIndeterminate.tsx?raw';
+import LinearColorComponent from '../components/progress/LinearColor';
+import LinearColorRaw from '../components/progress/LinearColor.tsx?raw';
+import LinearDeterminateComponent from '../components/progress/LinearDeterminate';
+import LinearDeterminateRaw from '../components/progress/LinearDeterminate.tsx?raw';
+import LinearBufferComponent from '../components/progress/LinearBuffer';
+import LinearBufferRaw from '../components/progress/LinearBuffer.tsx?raw';
+import LinearWithValueLabelComponent from '../components/progress/LinearWithValueLabel';
+import LinearWithValueLabelRaw from '../components/progress/LinearWithValueLabel.tsx?raw';
+import CustomizedProgressBarsComponent from '../components/progress/CustomizedProgressBars';
+import CustomizedProgressBarsRaw from '../components/progress/CustomizedProgressBars.tsx?raw';
+import DelayingAppearanceComponent from '../components/progress/DelayingAppearance';
+import DelayingAppearanceRaw from '../components/progress/DelayingAppearance.tsx?raw';
+import CircularUnderLoadComponent from '../components/progress/CircularUnderLoad';
+import CircularUnderLoadRaw from '../components/progress/CircularUnderLoad.tsx?raw';
+                   
                    function ProgressDoc(props) {
                      return (
                        
@@ -41,40 +67,40 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="CircularIndeterminate.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CircularIndeterminate.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CircularIndeterminate.tsx')}
+                    component={CircularIndeterminateComponent} 
+                    raw={CircularIndeterminateRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Circular color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CircularColor.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CircularColor.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CircularColor.tsx')}
+                    component={CircularColorComponent} 
+                    raw={CircularColorRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Circular determinate</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CircularDeterminate.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CircularDeterminate.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CircularDeterminate.tsx')}
+                    component={CircularDeterminateComponent} 
+                    raw={CircularDeterminateRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Interactive integration</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CircularIntegration.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CircularIntegration.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CircularIntegration.tsx')}
+                    component={CircularIntegrationComponent} 
+                    raw={CircularIntegrationRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Circular with label</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CircularWithValueLabel.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CircularWithValueLabel.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CircularWithValueLabel.tsx')}
+                    component={CircularWithValueLabelComponent} 
+                    raw={CircularWithValueLabelRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Linear</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Linear indeterminate</Typography>
@@ -82,40 +108,40 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="LinearIndeterminate.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/LinearIndeterminate.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/LinearIndeterminate.tsx')}
+                    component={LinearIndeterminateComponent} 
+                    raw={LinearIndeterminateRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Linear color</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="LinearColor.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/LinearColor.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/LinearColor.tsx')}
+                    component={LinearColorComponent} 
+                    raw={LinearColorRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Linear determinate</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="LinearDeterminate.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/LinearDeterminate.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/LinearDeterminate.tsx')}
+                    component={LinearDeterminateComponent} 
+                    raw={LinearDeterminateRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Linear buffer</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="LinearBuffer.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/LinearBuffer.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/LinearBuffer.tsx')}
+                    component={LinearBufferComponent} 
+                    raw={LinearBufferRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Linear with label</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="LinearWithValueLabel.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/LinearWithValueLabel.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/LinearWithValueLabel.tsx')}
+                    component={LinearWithValueLabelComponent} 
+                    raw={LinearWithValueLabelRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Non-standard ranges</Typography>
 <Typography className="text-14 mb-32" component="div">The progress components accept a value in the range 0 - 100. This simplifies things for screen-reader users, where these are the default min / max values. Sometimes, however, you might be working with a data source where the values fall outside this range. Here&#39;s how you can easily transform a value in any range to a scale of 0 - 100:</Typography>
@@ -145,8 +171,8 @@ You can learn more about this in the <a href="/material-ui/customization/how-to-
                     name="CustomizedProgressBars.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CustomizedProgressBars.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CustomizedProgressBars.tsx')}
+                    component={CustomizedProgressBarsComponent} 
+                    raw={CustomizedProgressBarsRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Delaying appearance</Typography>
 <Typography className="text-14 mb-32" component="div">There are <a href="https://www.nngroup.com/articles/response-times-3-important-limits/">3 important limits</a> to know around response time.
@@ -157,22 +183,22 @@ After 1.0 second, you can display a loader to keep user&#39;s flow of thought un
                     name="DelayingAppearance.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/DelayingAppearance.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/DelayingAppearance.tsx')}
+                    component={DelayingAppearanceComponent} 
+                    raw={DelayingAppearanceRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Limitations</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">High CPU load</Typography>
 <Typography className="text-14 mb-32" component="div">Under heavy load, you might lose the stroke dash animation or see random <code>{`CircularProgress`}</code> ring widths.
 You should run processor intensive operations in a web worker or by batch in order not to block the main rendering thread.</Typography>
-<Typography className="text-14 mb-32" component="div"> src="/material-ui-static/images/progress/heavy-load.gif" alt="heavy load/></Typography>
+<Typography className="text-14 mb-32" component="div"><img src="/material-ui-static/images/progress/heavy-load.gif" alt="heavy load"/></Typography>
 <Typography className="text-14 mb-32" component="div">When it&#39;s not possible, you can leverage the <code>{`disableShrink`}</code> prop to mitigate the issue.
 See <a href="https://github.com/mui/material-ui/issues/10327">this issue</a>.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="CircularUnderLoad.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/progress/CircularUnderLoad.tsx').default} 
-                    raw={require('!raw-loader!../components/progress/CircularUnderLoad.tsx')}
+                    component={CircularUnderLoadComponent} 
+                    raw={CircularUnderLoadRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">High frequency updates</Typography>
 <Typography className="text-14 mb-32" component="div">The <code>{`LinearProgress`}</code> uses a transition on the CSS transform property to provide a smooth update between different values.

@@ -1,30 +1,30 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState, MouseEvent } from 'react';
-import * as yup from 'yup';
 import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import ToolbarMenu from './ToolbarMenu';
 import ChecklistModel from '../../../../models/ChecklistModel';
-import { ChecklistType } from '../../../../types/ChecklistType';
+import { ScrumboardChecklist } from '../../../../ScrumboardApi';
 
 type FormType = {
-	name: ChecklistType['name'];
+	name: ScrumboardChecklist['name'];
 };
 
 /**
  * Form Validation Schema
  */
-const schema = yup.object().shape({
-	name: yup.string().required('You must enter a title')
+const schema = z.object({
+	name: z.string().nonempty('You must enter a title')
 });
 
 type CheckListMenuProps = {
 	name?: string;
-	onAddCheckList: (checklist: ChecklistType) => void;
+	onAddCheckList: (checklist: ScrumboardChecklist) => void;
 };
 
 /**
@@ -40,7 +40,7 @@ function CheckListMenu(props: CheckListMenuProps) {
 		defaultValues: {
 			name
 		},
-		resolver: yupResolver(schema)
+		resolver: zodResolver(schema)
 	});
 
 	const { isValid, dirtyFields, errors } = formState;

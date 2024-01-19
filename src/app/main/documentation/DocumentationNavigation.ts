@@ -131,12 +131,6 @@ const DocumentationNavigation: FuseNavItemType = {
 					title: 'IDEs (Webstorm, VsCode)',
 					type: 'item',
 					url: '/documentation/development/ides-vscode-webstorm'
-				},
-				{
-					id: 'fuse-react-heroku-notes-doc',
-					title: 'HEROKU Notes',
-					type: 'item',
-					url: '/documentation/development/heroku-notes'
 				}
 			]
 		},

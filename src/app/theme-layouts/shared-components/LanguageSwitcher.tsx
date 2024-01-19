@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeLanguage, LanguageType, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
-import { useAppDispatch } from 'app/store';
+import { useAppDispatch } from 'app/store/store';
 
 /**
  * The language switcher.

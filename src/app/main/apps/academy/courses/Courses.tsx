@@ -12,17 +12,15 @@ import Switch from '@mui/material/Switch';
 import { FormControlLabel } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { Theme } from '@mui/material/styles';
-import { selectCategories } from '../store/categoriesSlice';
-import { getCourses, selectCourses } from '../store/coursesSlice';
+import FuseLoading from '@fuse/core/FuseLoading';
 import CourseCard from './CourseCard';
-import CourseType from '../types/CourseType';
+import { Course, useGetAcademyCategoriesQuery, useGetAcademyCoursesQuery } from '../AcademyApi';
 
 const container = {
 	show: {
 		transition: {
-			staggerChildren: 0.1
+			staggerChildren: 0.04
 		}
 	}
 };
@@ -30,7 +28,7 @@ const container = {
 const item = {
 	hidden: {
 		opacity: 0,
-		y: 20
+		y: 10
 	},
 	show: {
 		opacity: 1,
@@ -42,23 +40,19 @@ const item = {
  * The Courses page.
  */
 function Courses() {
-	const dispatch = useAppDispatch();
-	const courses = useAppSelector(selectCourses);
-	const categories = useAppSelector(selectCategories);
+	const { data: courses, isLoading } = useGetAcademyCoursesQuery();
+	const { data: categories } = useGetAcademyCategoriesQuery();
+
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	const [filteredData, setFilteredData] = useState<CourseType[]>([]);
+	const [filteredData, setFilteredData] = useState<Course[]>(courses);
 	const [searchText, setSearchText] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
 	const [hideCompleted, setHideCompleted] = useState(false);
 
 	useEffect(() => {
-		dispatch(getCourses());
-	}, [dispatch]);
-
-	useEffect(() => {
 		function getFilteredArray() {
-			if (searchText.length === 0 && selectedCategory === 'all' && !hideCompleted) {
+			if (courses && searchText.length === 0 && selectedCategory === 'all' && !hideCompleted) {
 				return courses;
 			}
 
@@ -87,6 +81,11 @@ function Courses() {
 	function handleSearchText(event: ChangeEvent<HTMLInputElement>) {
 		setSearchText(event.target.value);
 	}
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
 	return (
 		<FusePageSimple
 			header={
@@ -181,7 +180,7 @@ function Courses() {
 									<MenuItem value="all">
 										<em> All </em>
 									</MenuItem>
-									{categories.map((category) => (
+									{categories?.map((category) => (
 										<MenuItem
 											value={category.slug}
 											key={category.id}
@@ -223,7 +222,7 @@ function Courses() {
 					{filteredData &&
 						(filteredData.length > 0 ? (
 							<motion.div
-								className="flex grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 mt-32 sm:mt-40"
+								className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 mt-32 sm:mt-40"
 								variants={container}
 								initial="hidden"
 								animate="show"

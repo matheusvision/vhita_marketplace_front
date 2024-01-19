@@ -1,98 +1,102 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
 import mockApi from '../mock-api.json';
-import mock from '../mock';
-import { NoteType, NotesType } from '../../app/main/apps/notes/types/NoteType';
-import { LabelsType, LabelType } from '../../app/main/apps/notes/types/LabelType';
-import { Params } from '../ExtendedMockAdapter';
+import ExtendedMockAdapter, { Params } from '../ExtendedMockAdapter';
+import { NotesLabel, NotesNote } from '../../app/main/apps/notes/NotesApi';
 
-const notesDB = mockApi.components.examples.notes_notes.value as NotesType;
-const labelsDB = mockApi.components.examples.notes_labels.value as LabelsType;
+const notesDB = mockApi.components.examples.notes_notes.value as NotesNote[];
+const labelsDB = mockApi.components.examples.notes_labels.value as NotesLabel[];
 
-mock.onGet('/api/notes').reply(() => {
-	return [200, _.filter(notesDB, { archived: false })];
-});
+export const notesApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/notes').reply(() => {
+		return [200, _.filter(notesDB, { archived: false })];
+	});
 
-mock.onPost('/api/notes').reply(({ data }) => {
-	const newNote = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as NoteType;
+	mock.onPost('/notes').reply(({ data }) => {
+		const newNote = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as NotesNote;
 
-	notesDB.push(newNote);
+		notesDB.push(newNote);
 
-	return [200, newNote];
-});
+		return [200, newNote];
+	});
 
-mock.onGet('/api/notes/archive').reply(() => {
-	return [200, _.filter(notesDB, { archived: true })];
-});
+	mock.onGet('/notes/archive').reply(() => {
+		return [200, _.filter(notesDB, { archived: true })];
+	});
 
-mock.onGet('/api/notes/reminders').reply(() => {
-	return [200, _.filter(notesDB, (item) => item.reminder && !item.archived)];
-});
+	mock.onGet('/notes/reminders').reply(() => {
+		return [200, _.filter(notesDB, (item) => item.reminder && !item.archived)];
+	});
 
-mock.onGet('/api/notes/labels').reply(() => {
-	return [200, labelsDB];
-});
+	mock.onGet('/notes/labels').reply(() => {
+		return [200, labelsDB];
+	});
 
-mock.onPost('/api/notes/labels').reply(({ data }) => {
-	const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as LabelType;
+	mock.onPost('/notes/labels').reply(({ data }) => {
+		const newLabel = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as NotesLabel;
 
-	labelsDB.push(newLabel);
+		labelsDB.push(newLabel);
 
-	return [200, newLabel];
-});
+		return [200, newLabel];
+	});
 
-mock.onDelete('/api/notes/labels/:id').reply((config) => {
-	const { id } = config.params as Params;
+	mock.onDelete('/notes/labels/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	_.remove(labelsDB, { id });
+		_.remove(labelsDB, { id });
 
-	return [200, id];
-});
+		return [200, id];
+	});
 
-mock.onPut('/api/notes/labels/:id').reply((config) => {
-	const { id } = config.params as Params;
+	mock.onPut('/notes/labels/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	_.assign(_.find(labelsDB, { id }), JSON.parse(config.data as string));
+		const data = JSON.parse(config.data as string) as NotesLabel;
 
-	return [200, _.find(labelsDB, { id })];
-});
+		_.assign(_.find(labelsDB, { id }), data);
 
-mock.onGet('/api/notes/labels/:id').reply((config) => {
-	const { id } = config.params as Params;
+		return [200, data];
+	});
 
-	const response = _.filter(notesDB, (item) => item.labels.includes(id) && !item.archived);
+	mock.onGet('/notes/labels/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	if (response) {
-		return [200, response];
-	}
+		const response = _.filter(notesDB, (item) => item.labels.includes(id) && !item.archived);
 
-	return [404, 'Requested notes do not exist.'];
-});
+		if (response) {
+			return [200, response];
+		}
 
-mock.onGet('/api/notes/:id').reply((config) => {
-	const { id } = config.params as Params;
+		return [404, 'Requested notes do not exist.'];
+	});
 
-	const note = _.find(notesDB, { id });
+	mock.onGet('/notes/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	if (note) {
-		return [200, note];
-	}
+		const note = _.find(notesDB, { id });
 
-	return [404, 'Requested task do not exist.'];
-});
+		if (note) {
+			return [200, note];
+		}
 
-mock.onPut('/api/notes/:id').reply((config) => {
-	const { id } = config.params as Params;
+		return [404, 'Requested task do not exist.'];
+	});
 
-	_.assign(_.find(notesDB, { id }), JSON.parse(config.data as string));
+	mock.onPut('/notes/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	return [200, _.find(notesDB, { id })];
-});
+		const data = JSON.parse(config.data as string) as NotesNote;
 
-mock.onDelete('/api/notes/:id').reply((config) => {
-	const { id } = config.params as Params;
+		_.assign(_.find(notesDB, { id }), data);
 
-	_.remove(notesDB, { id });
+		return [200, data];
+	});
 
-	return [200, id];
-});
+	mock.onDelete('/notes/:id').reply((config) => {
+		const { id } = config.params as Params;
+
+		_.remove(notesDB, { id });
+
+		return [200, id];
+	});
+};

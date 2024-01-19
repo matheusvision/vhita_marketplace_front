@@ -1,93 +1,105 @@
 import _ from '@lodash';
 import FuseUtils from '@fuse/utils';
-import { ProductType, ProductsType } from '../../app/main/apps/e-commerce/types/ProductType';
 import mockApi from '../mock-api.json';
-import mock from '../mock';
-import { OrderType, OrdersType } from '../../app/main/apps/e-commerce/types/OrderType';
-import { Params } from '../ExtendedMockAdapter';
+import ExtendedMockAdapter, { Params } from '../ExtendedMockAdapter';
+import { EcommerceOrder, EcommerceProduct } from '../../app/main/apps/e-commerce/ECommerceApi';
 
-let productsDB = mockApi.components.examples.ecommerce_products.value as ProductsType;
-let ordersDB = mockApi.components.examples.ecommerce_orders.value as OrdersType;
+let productsDB = mockApi.components.examples.ecommerce_products.value as EcommerceProduct[];
+let ordersDB = mockApi.components.examples.ecommerce_orders.value as EcommerceOrder[];
 
-mock.onGet('/api/ecommerce/products').reply(() => {
-	return [200, productsDB];
-});
+export const eCommerceApiMocks = (mock: ExtendedMockAdapter) => {
+	mock.onGet('/ecommerce/products').reply(() => {
+		return [200, productsDB];
+	});
 
-mock.onPost('/api/ecommerce/products').reply(({ data }) => {
-	const newProduct = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as ProductType;
+	mock.onPost('/ecommerce/products').reply(({ data }) => {
+		const newProduct = { id: FuseUtils.generateGUID(), ...JSON.parse(data as string) } as EcommerceProduct;
 
-	productsDB.push(newProduct);
+		productsDB.unshift(newProduct);
 
-	return [200, newProduct];
-});
+		return [200, newProduct];
+	});
 
-mock.onDelete('/api/ecommerce/products').reply(({ data }) => {
-	const ids = JSON.parse(data as string) as string[];
+	mock.onDelete('/ecommerce/products').reply(({ data }) => {
+		const ids = JSON.parse(data as string) as string[];
 
-	productsDB = productsDB.filter((item) => ids.includes(item.id));
+		productsDB = productsDB.filter((item) => !ids.includes(item.id));
 
-	return [200, productsDB];
-});
+		return [200, productsDB];
+	});
 
-mock.onGet('/api/ecommerce/products/:id').reply((config) => {
-	const { id } = config.params as Params;
+	mock.onGet('/ecommerce/products/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	return [200, _.find(productsDB, { id })];
-});
+		const product = _.find(productsDB, { id });
 
-mock.onPut('/api/ecommerce/products/:id').reply((config) => {
-	const { id } = config.params as Params;
+		if (product) {
+			return [200, product];
+		}
 
-	_.assign(_.find(productsDB, { id }), JSON.parse(config.data as string));
+		return [404, 'Requested product do not exist.'];
+	});
 
-	return [200, _.find(productsDB, { id })];
-});
+	mock.onPut('/ecommerce/products/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-mock.onDelete('/api/ecommerce/products/:id').reply((config) => {
-	const { id } = config.params as Params;
+		_.assign(_.find(productsDB, { id }), JSON.parse(config.data as string));
 
-	_.remove(productsDB, { id });
+		return [200, _.find(productsDB, { id })];
+	});
 
-	return [200, id];
-});
+	mock.onDelete('/ecommerce/products/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-mock.onGet('/api/ecommerce/orders').reply(() => {
-	return [200, ordersDB];
-});
+		_.remove(productsDB, { id });
 
-mock.onPost('/api/ecommerce/orders').reply((config) => {
-	const newOrder = { id: FuseUtils.generateGUID(), ...JSON.parse(config.data as string) } as OrderType;
+		return [200, id];
+	});
 
-	ordersDB.push(newOrder);
+	mock.onGet('/ecommerce/orders').reply(() => {
+		return [200, ordersDB];
+	});
 
-	return [200, newOrder];
-});
+	mock.onPost('/ecommerce/orders').reply((config) => {
+		const newOrder = { id: FuseUtils.generateGUID(), ...JSON.parse(config.data as string) } as EcommerceOrder;
 
-mock.onDelete('/api/ecommerce/orders').reply((config) => {
-	const ids = JSON.parse(config.data as string) as string[];
-	ordersDB = ordersDB.filter((item) => ids.includes(item.id));
+		ordersDB.push(newOrder);
 
-	return [200, ordersDB];
-});
+		return [200, newOrder];
+	});
 
-mock.onGet('/api/ecommerce/orders/:id').reply((config) => {
-	const { id } = config.params as Params;
+	mock.onDelete('/ecommerce/orders').reply((config) => {
+		const ids = JSON.parse(config.data as string) as string[];
+		ordersDB = ordersDB.filter((item) => !ids.includes(item.id));
 
-	return [200, _.find(ordersDB, { id })];
-});
+		return [200, ordersDB];
+	});
 
-mock.onPut('/api/ecommerce/orders/:id').reply((config) => {
-	const { id } = config.params as Params;
+	mock.onGet('/ecommerce/orders/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	_.assign(_.find(ordersDB, { id }), JSON.parse(config.data as string) as OrderType);
+		const order = _.find(ordersDB, { id });
 
-	return [200, _.find(ordersDB, { id })];
-});
+		if (order) {
+			return [200, order];
+		}
 
-mock.onDelete('/api/ecommerce/orders/:id').reply((config) => {
-	const { id } = config.params as Params;
+		return [404, 'Requested order do not exist.'];
+	});
 
-	_.remove(ordersDB, { id });
+	mock.onPut('/ecommerce/orders/:id').reply((config) => {
+		const { id } = config.params as Params;
 
-	return [200, id];
-});
+		_.assign(_.find(ordersDB, { id }), JSON.parse(config.data as string) as EcommerceOrder);
+
+		return [200, _.find(ordersDB, { id })];
+	});
+
+	mock.onDelete('/ecommerce/orders/:id').reply((config) => {
+		const { id } = config.params as Params;
+
+		_.remove(ordersDB, { id });
+
+		return [200, id];
+	});
+};

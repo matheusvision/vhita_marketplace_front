@@ -5,7 +5,23 @@ import FuseExample from '@fuse/core/FuseExample';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
 				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
-                  
+                   import BasicCardComponent from '../components/cards/BasicCard';
+import BasicCardRaw from '../components/cards/BasicCard.tsx?raw';
+import OutlinedCardComponent from '../components/cards/OutlinedCard';
+import OutlinedCardRaw from '../components/cards/OutlinedCard.tsx?raw';
+import RecipeReviewCardComponent from '../components/cards/RecipeReviewCard';
+import RecipeReviewCardRaw from '../components/cards/RecipeReviewCard.tsx?raw';
+import MediaCardComponent from '../components/cards/MediaCard';
+import MediaCardRaw from '../components/cards/MediaCard.tsx?raw';
+import ImgMediaCardComponent from '../components/cards/ImgMediaCard';
+import ImgMediaCardRaw from '../components/cards/ImgMediaCard.tsx?raw';
+import ActionAreaCardComponent from '../components/cards/ActionAreaCard';
+import ActionAreaCardRaw from '../components/cards/ActionAreaCard.tsx?raw';
+import MultiActionAreaCardComponent from '../components/cards/MultiActionAreaCard';
+import MultiActionAreaCardRaw from '../components/cards/MultiActionAreaCard.tsx?raw';
+import MediaControlCardComponent from '../components/cards/MediaControlCard';
+import MediaControlCardRaw from '../components/cards/MediaControlCard.tsx?raw';
+                   
                    function CardsDoc(props) {
                      return (
                        
@@ -29,25 +45,45 @@ import FuseExample from '@fuse/core/FuseExample';
                      <Typography className="text-32 my-16 font-700" component="h1">Card</Typography>
 <Typography className="description">Cards contain content and actions about a single subject.</Typography>
 
-<Typography className="text-14 mb-32" component="div">Cards are surfaces that display content and actions on a single topic.</Typography>
-<Typography className="text-14 mb-32" component="div">They should be easy to scan for relevant and actionable information. Elements, like text and images, should be placed on them in a way that clearly indicates hierarchy.</Typography>
-<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Basic card</Typography>
-<Typography className="text-14 mb-32" component="div">Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are entry points to more complex and detailed information.</Typography>
+
+
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Introduction</Typography>
+<Typography className="text-14 mb-32" component="div">Cards are surfaces that display content and actions on a single topic.
+The Material UI Card component includes several complementary utility components to handle various use cases:</Typography>
+<ul className="space-y-16">
+<li>Card: a surface-level container for grouping related components.</li>
+<li>Card Content: the wrapper for the Card content.</li>
+<li>Card Header: an optional wrapper for the Card header.</li>
+<li>Card Media: an optional container for displaying background images and gradient layers behind the Card Content.</li>
+<li>Card Actions: an optional wrapper that groups a set of buttons.</li>
+<li>Card Action Area: an optional wrapper that allows users to interact with the specified area of the Card.</li>
+</ul>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="BasicCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/BasicCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/BasicCard.tsx')}
+                    component={BasicCardComponent} 
+                    raw={BasicCardRaw}
                     /></Typography>
+<Typography className="text-24 mt-24 mb-10 font-700" component="h2">Basics</Typography>
+
+<FuseHighlight component="pre" className="language-jsx">
+{` 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+`}
+</FuseHighlight>
+<Typography className="text-14 mb-32" component="div">:::success
+Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are meant to be entry points to more complex and detailed information.
+:::</Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Outlined Card</Typography>
 <Typography className="text-14 mb-32" component="div">Set <code>{`variant="outlined"`}</code> to render an outlined card.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="OutlinedCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/OutlinedCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/OutlinedCard.tsx')}
+                    component={OutlinedCardComponent} 
+                    raw={OutlinedCardRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Complex Interaction</Typography>
 <Typography className="text-14 mb-32" component="div">On desktop, card content can expand. (Click the downward chevron to view the recipe.)</Typography>
@@ -55,8 +91,8 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="RecipeReviewCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/RecipeReviewCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/RecipeReviewCard.tsx')}
+                    component={RecipeReviewCardComponent} 
+                    raw={RecipeReviewCardRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Media</Typography>
 <Typography className="text-14 mb-32" component="div">Example of a card using an image to reinforce the content.</Typography>
@@ -64,16 +100,16 @@ import FuseExample from '@fuse/core/FuseExample';
                     name="MediaCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/MediaCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/MediaCard.tsx')}
+                    component={MediaCardComponent} 
+                    raw={MediaCardRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">By default, we use the combination of a <code>{`<div>`}</code> element and a <em>background image</em> to display the media. It can be problematic in some situations, for example, you might want to display a video or a responsive image. Use the <code>{`component`}</code> prop for these use cases:</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="ImgMediaCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/ImgMediaCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/ImgMediaCard.tsx')}
+                    component={ImgMediaCardComponent} 
+                    raw={ImgMediaCardRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">:::warning
 When <code>{`component="img"`}</code>, CardMedia relies on <code>{`object-fit`}</code> for centering the image. It&#39;s not supported by IE11.
@@ -84,16 +120,16 @@ When <code>{`component="img"`}</code>, CardMedia relies on <code>{`object-fit`}<
                     name="ActionAreaCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/ActionAreaCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/ActionAreaCard.tsx')}
+                    component={ActionAreaCardComponent} 
+                    raw={ActionAreaCardRaw}
                     /></Typography>
 <Typography className="text-14 mb-32" component="div">A card can also offer supplemental actions which should stand detached from the main action area in order to avoid event overlap.</Typography>
 <Typography className="text-14 mb-32" component="div"><FuseExample
                     name="MultiActionAreaCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/MultiActionAreaCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/MultiActionAreaCard.tsx')}
+                    component={MultiActionAreaCardComponent} 
+                    raw={MultiActionAreaCardRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">UI Controls</Typography>
 <Typography className="text-14 mb-32" component="div">Supplemental actions within the card are explicitly called out using icons, text, and UI controls, typically placed at the bottom of the card.</Typography>
@@ -102,10 +138,10 @@ When <code>{`component="img"`}</code>, CardMedia relies on <code>{`object-fit`}<
                     name="MediaControlCard.js"
                     className="my-16"
                     iframe={false}
-                    component={require('../components/cards/MediaControlCard.tsx').default} 
-                    raw={require('!raw-loader!../components/cards/MediaControlCard.tsx')}
+                    component={MediaControlCardComponent} 
+                    raw={MediaControlCardRaw}
                     /></Typography>
-<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/components/card/">MUI Treasury&#39;s customization examples</a>.</Typography>
+<Typography className="text-14 mb-32" component="div">🎨 If you are looking for inspiration, you can check <a href="https://mui-treasury.com/?path=/docs/card-introduction--docs">MUI Treasury&#39;s customization examples</a>.</Typography>
 
                 </>
     

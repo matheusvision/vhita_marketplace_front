@@ -1,43 +1,38 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from 'app/store';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
-import { useDeepCompareEffect } from '@fuse/hooks';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { getBoard, reorderCard, reorderList, resetBoard, selectBoard } from '../store/boardSlice';
+import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { useDispatch } from 'react-redux';
 import BoardAddList from './board-list/BoardAddList';
 import BoardList from './board-list/BoardList';
 import BoardCardDialog from './dialogs/card/BoardCardDialog';
 import BoardSettingsSidebar from './sidebars/settings/BoardSettingsSidebar';
-import { getCards } from '../store/cardsSlice';
-import { getLists } from '../store/listsSlice';
-import { getLabels } from '../store/labelsSlice';
 import BoardHeader from './BoardHeader';
+import {
+	useUpdateScrumboardBoardListOrderMutation,
+	useGetScrumboardBoardQuery,
+	useUpdateScrumboardBoardCardOrderMutation
+} from '../ScrumboardApi';
 
 /**
  * The board component.
  */
 function Board() {
-	const dispatch = useAppDispatch();
-	const { data: board } = useAppSelector(selectBoard);
+	const dispatch = useDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();
-	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const { boardId } = routeParams;
 
-	useDeepCompareEffect(() => {
-		dispatch(getBoard(boardId));
-		dispatch(getCards(boardId));
-		dispatch(getLists(boardId));
-		dispatch(getLabels(boardId));
+	const { data: board } = useGetScrumboardBoardQuery(boardId);
 
-		return () => {
-			dispatch(resetBoard());
-		};
-	}, [dispatch, routeParams]);
+	const [reorderList] = useUpdateScrumboardBoardListOrderMutation();
+	const [reorderCard] = useUpdateScrumboardBoardCardOrderMutation();
+
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 
 	function onDragEnd(result: DropResult) {
 		const { source, destination } = result;
@@ -54,12 +49,44 @@ function Board() {
 
 		// reordering list
 		if (result.type === 'list') {
-			dispatch(reorderList(result));
+			reorderList({
+				orderResult: result,
+				board
+			})
+				.unwrap()
+				.then(() => {
+					dispatch(
+						showMessage({
+							message: 'List Order Saved',
+							autoHideDuration: 2000,
+							anchorOrigin: {
+								vertical: 'top',
+								horizontal: 'right'
+							}
+						})
+					);
+				});
 		}
 
 		// reordering card
 		if (result.type === 'card') {
-			dispatch(reorderCard(result));
+			reorderCard({
+				orderResult: result,
+				board
+			})
+				.unwrap()
+				.then(() => {
+					dispatch(
+						showMessage({
+							message: 'Card Order Saved',
+							autoHideDuration: 2000,
+							anchorOrigin: {
+								vertical: 'top',
+								horizontal: 'right'
+							}
+						})
+					);
+				});
 		}
 	}
 
@@ -87,6 +114,7 @@ function Board() {
 										>
 											{board?.lists.map((list, index) => (
 												<BoardList
+													boardId={boardId}
 													key={list.id}
 													listId={list.id}
 													cardIds={list.cards}

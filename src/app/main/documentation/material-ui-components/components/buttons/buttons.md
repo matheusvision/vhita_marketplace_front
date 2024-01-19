@@ -112,6 +112,12 @@ Use `color` prop to apply theme color palette to component.
 
 {{"demo": "IconButtonColors.js"}}
 
+## File upload
+
+To create a file upload button, turn the button into a label using `component="label"` and then create a visually-hidden input with type `file`.
+
+{{"demo": "InputFileUpload.js"}}
+
 ## Customization
 
 Here are some examples of customizing the component.
@@ -119,7 +125,7 @@ You can learn more about this in the [overrides documentation page](/material-ui
 
 {{"demo": "CustomizedButtons.js", "defaultCodeOpen": false}}
 
-🎨 If you are looking for inspiration, you can check [MUI Treasury's customization examples](https://mui-treasury.com/styles/button/).
+🎨 If you are looking for inspiration, you can check [MUI Treasury's customization examples](https://mui-treasury.com/?path=/docs/button-introduction--docs).
 
 ## Complex button
 
