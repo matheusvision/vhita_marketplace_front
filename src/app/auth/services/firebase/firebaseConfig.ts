@@ -1,36 +1,19 @@
-const prodConfig = {
-	apiKey: 'AIzaSyC3dTEzlmsam_nCeQ3hkiPPRzwoAbo7JR8',
-	authDomain: 'fuse-react.firebaseapp.com',
-	databaseURL: 'https://fuse-react.firebaseio.com',
-	projectId: 'fuse-react',
-	storageBucket: 'fuse-react.appspot.com',
-	messagingSenderId: '864155729955',
-	appId: '1:864155729955:web:c5e88e2570821ff4943196'
-	// apiKey           : "YOUR_API_KEY",
-	// authDomain       : "your-app.firebaseapp.com",
-	// databaseURL      : "https://your-app.firebaseio.com",
-	// projectId        : "your-app",
-	// storageBucket    : "your-app.appspot.com",
-	// messagingSenderId: "YOUR_MESSAGING_SENDER_ID"
+type FirebaseConfig = {
+	apiKey: string;
+	authDomain: string;
+	databaseURL: string;
+	projectId: string;
+	storageBucket: string;
+	messagingSenderId: string;
 };
 
-const devConfig = {
-	apiKey: 'AIzaSyC3dTEzlmsam_nCeQ3hkiPPRzwoAbo7JR8',
-	authDomain: 'fuse-react.firebaseapp.com',
-	databaseURL: 'https://fuse-react.firebaseio.com',
-	projectId: 'fuse-react',
-	storageBucket: 'fuse-react.appspot.com',
-	messagingSenderId: '864155729955',
-	appId: '1:864155729955:web:c5e88e2570821ff4943196'
-
-	// apiKey           : "YOUR_API_KEY",
-	// authDomain       : "your-app.firebaseapp.com",
-	// databaseURL      : "https://your-app.firebaseio.com",
-	// projectId        : "your-app",
-	// storageBucket    : "your-app.appspot.com",
-	// messagingSenderId: "YOUR_MESSAGING_SENDER_ID"
+const firebaseConfig: FirebaseConfig = {
+	apiKey: import.meta.env.VITE_API_KEY,
+	authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+	databaseURL: import.meta.env.VITE_DATABASE_URL,
+	projectId: import.meta.env.VITE_PROJECT_ID,
+	storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+	messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID
 };
-
-const firebaseConfig = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
 export default firebaseConfig;
