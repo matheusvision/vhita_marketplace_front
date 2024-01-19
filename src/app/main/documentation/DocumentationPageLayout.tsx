@@ -45,7 +45,7 @@ function DocumentationPageLayout() {
 	return (
 		<Root
 			header={
-				<div className="flex items-center justify-center py-12 px-4 md:px-12 max-w-3xl h-full w-full">
+				<div className="flex items-center justify-center py-12 px-4 md:px-12 max-w-full w-3xl h-full">
 					<IconButton
 						onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
 						aria-label="toggle left sidebar"
