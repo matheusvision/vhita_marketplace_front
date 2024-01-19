@@ -9,19 +9,19 @@ import FuseExample from '@fuse/core/FuseExample';
 import TypesRaw from '../components/typography/Types.tsx?raw';
 import TypographyThemeComponent from '../components/typography/TypographyTheme';
 import TypographyThemeRaw from '../components/typography/TypographyTheme.tsx?raw';
-                   
+
                    function TypographyDoc(props) {
                      return (
-                       
+
                 <>
 					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
 					  <DocumentationPageBreadcrumb />
-					  <Button 
+					  <Button
 							className="normal-case"
 							variant="contained"
                             color="secondary"
-							component="a" 
-							href="https://mui.com/components/typography" 
+							component="a"
+							href="https://mui.com/components/typography"
 							target="_blank"
 							role="button"
 							size="small"
@@ -38,8 +38,6 @@ import TypographyThemeRaw from '../components/typography/TypographyTheme.tsx?raw
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Roboto font</Typography>
 <Typography className="text-14 mb-32" component="div">Material UI uses the <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> font by default.
 Add it to your project via Fontsource, or with the Google Fonts CDN.</Typography>
-<codeblock storageKey="package-manager">
-
 
 <FuseHighlight component="pre" className="language-bash npm">
 {` 
@@ -58,7 +56,6 @@ yarn add @fontsource/roboto
 pnpm add @fontsource/roboto
 `}
 </FuseHighlight>
-</codeblock>
 
 <Typography className="text-14 mb-32" component="div">Then you can import it in your entry point like this:</Typography>
 
@@ -95,7 +92,7 @@ import '@fontsource/roboto/700.css';
                     name="Types.js"
                     className="my-16"
                     iframe={false}
-                    component={TypesComponent} 
+                    component={TypesComponent}
                     raw={TypesRaw}
                     /></Typography>
 <Typography className="text-16 mt-20 mb-10 font-700" component="h3">Theme keys</Typography>
@@ -105,7 +102,7 @@ Hopefully, you might be able to take advantage of the <a href="/material-ui/cust
                     name="TypographyTheme.js"
                     className="my-16"
                     iframe={false}
-                    component={TypographyThemeComponent} 
+                    component={TypographyThemeComponent}
                     raw={TypographyThemeRaw}
                     /></Typography>
 <Typography className="text-24 mt-24 mb-10 font-700" component="h2">Customization</Typography>
@@ -167,9 +164,8 @@ For example, here&#39;s how you&#39;d add a margin-top:</Typography>
 </ul>
 
                 </>
-    
+
                      );
                    }
-                   
+
                    export default TypographyDoc;
-                   
