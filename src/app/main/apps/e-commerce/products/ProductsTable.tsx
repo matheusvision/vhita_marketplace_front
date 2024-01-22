@@ -125,7 +125,6 @@ function ProductsTable(props: ProductsTableProps) {
 		);
 	}
 
-	console.info(products);
 	return (
 		<div className="w-full flex flex-col min-h-full">
 			<FuseScrollbars className="grow overflow-x-auto">
