@@ -4,7 +4,7 @@ import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import AppContext from 'app/AppContext';
 import clsx from 'clsx';
-import { ReactNode, memo, useContext } from 'react';
+import { ReactNode, memo, useContext, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
@@ -79,8 +79,11 @@ function Layout2(props: Layout2Props) {
 					</div>
 
 					<div className="relative z-10 flex min-h-0 flex-auto flex-col">
-						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
+
+						<Suspense>
+							<FuseDialog />
+						</Suspense>
 						{children}
 					</div>
 

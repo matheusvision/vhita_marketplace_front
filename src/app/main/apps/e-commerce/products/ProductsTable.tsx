@@ -143,22 +143,7 @@ function ProductsTable(props: ProductsTableProps) {
 					/>
 
 					<TableBody>
-						{_.orderBy(
-							products,
-							[
-								(o: EcommerceProduct) => {
-									switch (o.id) {
-										case 'categories': {
-											return o.categories[0];
-										}
-										default: {
-											return o.id;
-										}
-									}
-								}
-							],
-							[tableOrder.direction] as Many<boolean | 'asc' | 'desc'>
-						)
+						{_.orderBy(products, [tableOrder.id], [tableOrder.direction] as Many<boolean | 'asc' | 'desc'>)
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((n: EcommerceProduct) => {
 								const isSelected = selected.indexOf(n.id) !== -1;

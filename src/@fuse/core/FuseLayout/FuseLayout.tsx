@@ -8,7 +8,7 @@ import {
 	setSettings,
 	fuseSettingsSlice
 } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
-import { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { useAppDispatch } from 'app/store/store';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
@@ -16,7 +16,7 @@ import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 import { PartialDeep } from 'type-fest';
 import { useSelector } from 'react-redux';
 import withSlices from 'app/store/withSlices';
-import FuseSuspense from '../FuseSuspense';
+import FuseLoading from '../FuseLoading';
 
 export type FuseRouteObjectType = RouteObject & {
 	settings?: FuseSettingsConfigType;
@@ -100,22 +100,23 @@ function FuseLayout(props: FuseLayoutProps) {
 		window.scrollTo(0, 0);
 	}, [pathname]);
 
-	const Layout: React.ComponentType<{ children?: React.ReactNode }> = useMemo(
-		() => layouts[layoutStyle],
-		[layouts, layoutStyle]
-	);
-
 	return useMemo(() => {
 		if (!_.isEqual(currentSettings, settings)) {
-			return null;
+			return <FuseLoading />;
 		}
 
-		return (
-			<FuseSuspense>
-				<Layout>{children}</Layout>
-			</FuseSuspense>
-		);
-	}, [Layout, children, currentSettings, settings]);
+		return Object.entries(layouts).map(([key, Layout]) => {
+			if (key === layoutStyle) {
+				return (
+					<React.Fragment key={key}>
+						<Layout>{children}</Layout>
+					</React.Fragment>
+				);
+			}
+
+			return null;
+		});
+	}, [layouts, layoutStyle, children, currentSettings, settings]);
 }
 
 export default withSlices<FuseLayoutProps>([fuseSettingsSlice])(FuseLayout);
