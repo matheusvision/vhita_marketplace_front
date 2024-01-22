@@ -9,6 +9,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import routes from 'app/configs/routesConfig';
 import { useMemo } from 'react';
 import { Provider } from 'react-redux';
+import ErrorBoundary from '@fuse/utils/ErrorBoundary';
 import AppContext from './AppContext';
 import store from './store/store';
 
@@ -35,15 +36,17 @@ function withAppProviders(Component: React.ComponentType<ComponentProps>) {
 		);
 
 		return (
-			<AppContext.Provider value={val}>
-				<LocalizationProvider dateAdapter={AdapterDateFns}>
-					<Provider store={store}>
-						<StyledEngineProvider injectFirst>
-							<Component {...props} />
-						</StyledEngineProvider>
-					</Provider>
-				</LocalizationProvider>
-			</AppContext.Provider>
+			<ErrorBoundary>
+				<AppContext.Provider value={val}>
+					<LocalizationProvider dateAdapter={AdapterDateFns}>
+						<Provider store={store}>
+							<StyledEngineProvider injectFirst>
+								<Component {...props} />
+							</StyledEngineProvider>
+						</Provider>
+					</LocalizationProvider>
+				</AppContext.Provider>
+			</ErrorBoundary>
 		);
 	}
 
