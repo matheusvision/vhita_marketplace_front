@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import clsx from 'clsx';
-import { memo, ReactNode, useContext } from 'react';
+import { memo, ReactNode, Suspense, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import AppContext from 'app/AppContext';
@@ -81,8 +81,11 @@ function Layout3(props: Layout3Props) {
 					</div>
 
 					<div className="relative z-10 flex min-h-0 flex-auto flex-col">
-						<FuseDialog />
 						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
+
+						<Suspense>
+							<FuseDialog />
+						</Suspense>
 						{children}
 					</div>
 
