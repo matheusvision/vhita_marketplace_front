@@ -11,6 +11,7 @@ import {
 	setNavigation,
 	updateNavigationItem
 } from 'app/theme-layouts/shared-components/navigation/store/navigationSlice';
+
 /**
  * FuseNavigation Doc
  * This document provides information on how to use the FuseNavigation.

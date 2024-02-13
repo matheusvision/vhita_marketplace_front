@@ -30,6 +30,7 @@ export const academyApiMocks = (mock: ExtendedMockAdapter) => {
 		if (!course) {
 			return [404, 'Requested data do not exist.'];
 		}
+
 		return [200, course];
 	});
 

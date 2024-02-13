@@ -69,6 +69,7 @@ const schema = z.object({
 					const { title, content, image, tasks } = this.parent;
 					return title || content || image || (tasks && tasks.length > 0);
 				}
+
 				return true;
 			},
 			{
@@ -177,6 +178,7 @@ function NoteForm(props: NoteFormProps) {
 							if (!value || value === '') {
 								return <span />;
 							}
+
 							return (
 								<div className="relative">
 									<img
@@ -241,6 +243,7 @@ function NoteForm(props: NoteFormProps) {
 							if ((value?.length === 0 && !showList) || (!value && !showList)) {
 								return <span />;
 							}
+
 							return (
 								<div className="px-16">
 									<NoteFormList
@@ -272,6 +275,7 @@ function NoteForm(props: NoteFormProps) {
 									if (!value) {
 										return <span />;
 									}
+
 									return (
 										<>
 											{value.map((id) => (

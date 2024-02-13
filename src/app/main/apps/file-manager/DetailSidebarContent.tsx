@@ -17,6 +17,7 @@ import { FileManagerItem } from './FileManagerApi';
 type DetailSidebarContentProps = {
 	items: FileManagerItem[];
 };
+
 /**
  * The detail sidebar content.
  */

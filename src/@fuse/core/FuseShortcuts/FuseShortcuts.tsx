@@ -64,6 +64,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 			);
 			return;
 		}
+
 		setSearchResults([]);
 	}
 

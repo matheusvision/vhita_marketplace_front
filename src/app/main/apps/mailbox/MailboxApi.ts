@@ -270,5 +270,6 @@ export const selectMailsTitle = (routeParams: RouteParams) =>
 		if (routeParams.filterHandle) {
 			title = _.find(filters, { slug: routeParams.filterHandle })?.title;
 		}
+
 		return title;
 	});

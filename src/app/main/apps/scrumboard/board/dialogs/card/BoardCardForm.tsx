@@ -206,6 +206,7 @@ function BoardCardForm() {
 								if (typeof option === 'string') {
 									return option;
 								}
+
 								return option?.title;
 							}}
 							value={cardForm.labels.map((id) => _.find(labels, { id }))}
@@ -267,6 +268,7 @@ function BoardCardForm() {
 									if (typeof option === 'string') {
 										return <span />;
 									}
+
 									return (
 										<Chip
 											label={option.name}

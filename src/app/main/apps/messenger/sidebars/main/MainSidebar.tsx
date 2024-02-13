@@ -106,6 +106,7 @@ function MainSidebar() {
 							if (_searchText.length === 0) {
 								return arr;
 							}
+
 							return FuseUtils.filterArrayByString(arr, _searchText);
 						}
 

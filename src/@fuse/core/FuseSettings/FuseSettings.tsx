@@ -133,6 +133,7 @@ function FuseSettings() {
 			if (settings.layout.style !== newSettings.layout.style) {
 				_.set(newSettings, 'layout.config', themeLayoutConfigs[newSettings?.layout?.style]?.defaults);
 			}
+
 			handleUpdate(newSettings);
 		}
 	}, [dispatch, form, formChanged, handleUpdate, prevForm, prevSettings, reset, settings, settingsChanged, user]);

@@ -59,6 +59,7 @@ function Course() {
 		if (course && (index > course.totalSteps || index < 0)) {
 			return;
 		}
+
 		updateCourse({ courseId, data: { progress: { currentStep: index } } });
 	}
 

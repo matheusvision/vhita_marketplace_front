@@ -52,6 +52,7 @@ const useFirebaseAuth = <T,>(props: FirebaseAuthProps<T>): FirebaseAuth<T> | nul
 						setIsAuthenticated(false);
 						onSignedOut?.();
 					}
+
 					setIsLoading(false);
 					isInitialCheck = false;
 				},

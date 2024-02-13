@@ -45,6 +45,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 		if (!response) {
 			return [404, 'Requested mail do not exist.'];
 		}
+
 		return [200, response];
 	});
 
@@ -81,6 +82,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 			);
 			return [200, true];
 		}
+
 		if (type === 'label') {
 			_.assign(
 				mailsDB,
@@ -95,6 +97,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 			);
 			return [200, true];
 		}
+
 		if (type === 'folder') {
 			_.assign(
 				mailsDB,
@@ -139,6 +142,7 @@ export const mailBoxApiMocks = (mock: ExtendedMockAdapter) => {
 			);
 			return [200, true];
 		}
+
 		if (type === 'unread') {
 			_.assign(
 				mailsDB,

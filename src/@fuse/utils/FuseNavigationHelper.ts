@@ -8,12 +8,14 @@ class FuseNavigationHelper {
 	static selectById(nav: FuseNavItemType[], id: string): FuseNavItemType | undefined {
 		for (let i = 0; i < nav.length; i += 1) {
 			const item = nav[i];
+
 			if (item.id === id) {
 				return item;
 			}
 
 			if (item.children) {
 				const childItem = this.selectById(item.children, id);
+
 				if (childItem) {
 					return childItem;
 				}
@@ -31,15 +33,18 @@ class FuseNavigationHelper {
 		if (!parentId) {
 			return [...nav, item];
 		}
+
 		return nav.map((node) => {
 			if (node.id === parentId) {
 				const newNode = { ...node };
 				newNode.children = [...(node.children || []), item];
 				return newNode;
 			}
+
 			if (node.children) {
 				return { ...node, children: this.appendNavItem(node.children, item, parentId) };
 			}
+
 			return { ...node };
 		});
 	}
@@ -52,15 +57,18 @@ class FuseNavigationHelper {
 		if (!parentId) {
 			return [item, ...nav];
 		}
+
 		return nav.map((node) => {
 			if (node.id === parentId) {
 				const newNode = { ...node };
 				newNode.children = [item, ...(node.children || [])];
 				return newNode;
 			}
+
 			if (node.children) {
 				return { ...node, children: this.prependNavItem(node.children, item, parentId) };
 			}
+
 			return { ...node };
 		});
 	}
@@ -95,6 +103,7 @@ class FuseNavigationHelper {
 					acc.push(node);
 				}
 			}
+
 			return acc;
 		}, [] as FuseNavItemType[]);
 	}
@@ -107,12 +116,14 @@ class FuseNavigationHelper {
 			if (node.id === id) {
 				return _.merge({}, node, item); // merge original node data with updated item data
 			}
+
 			if (node.children) {
 				return {
 					...node,
 					children: this.updateNavItem(node.children, id, item)
 				};
 			}
+
 			return node;
 		});
 	}
@@ -195,6 +206,7 @@ class FuseNavigationHelper {
 			if (item.order.includes('.')) {
 				const parentOrder = item.order.substring(0, item.order.lastIndexOf('.'));
 				const parent = navigation.find((navItem) => navItem.order === parentOrder);
+
 				if (parent) {
 					itemMap[parent.id].children.push(itemMap[item.id]);
 				}

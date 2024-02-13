@@ -232,6 +232,7 @@ export const selectFilteredProducts = (products: EcommerceProduct[]) =>
 		if (searchText.length === 0) {
 			return products;
 		}
+
 		return FuseUtils.filterArrayByString<EcommerceProduct>(products, searchText);
 	});
 
@@ -243,5 +244,6 @@ export const selectFilteredOrders = (orders: EcommerceOrder[]) =>
 		if (searchText.length === 0) {
 			return orders;
 		}
+
 		return FuseUtils.filterArrayByString<EcommerceOrder>(orders, searchText);
 	});

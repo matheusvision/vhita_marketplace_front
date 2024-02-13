@@ -122,6 +122,7 @@ function ContactForm() {
 		if (!contact) {
 			return;
 		}
+
 		deleteContact(contact.id).then(() => {
 			navigate('/apps/contacts');
 		});
@@ -191,9 +192,11 @@ function ContactForm() {
 														function readFileAsync() {
 															return new Promise((resolve, reject) => {
 																const file = e?.target?.files?.[0];
+
 																if (!file) {
 																	return;
 																}
+
 																const reader: FileReader = new FileReader();
 
 																reader.onload = () => {

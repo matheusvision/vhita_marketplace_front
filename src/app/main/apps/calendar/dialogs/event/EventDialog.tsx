@@ -123,6 +123,7 @@ function EventDialog() {
 		} else {
 			updateEvent({ ...eventDialog.data, ...data });
 		}
+
 		closeComposeDialog();
 	}
 

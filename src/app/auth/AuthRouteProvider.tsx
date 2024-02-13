@@ -232,11 +232,14 @@ function AuthRoute(props: AuthProviderProps) {
 
 function useAuth(): AuthContext {
 	const context = useContext(AuthContext);
+
 	if (!context) {
 		throw new Error('useAuth must be used within a AuthRouteProvider');
 	}
+
 	return context;
 }
+
 const AuthRouteProvider = withReducer<AuthProviderProps>('user', userSlice.reducer)(AuthRoute);
 
 export { useAuth, AuthRouteProvider };

@@ -93,6 +93,7 @@ function GenderWidget() {
 	if (awaitRender) {
 		return null;
 	}
+
 	return (
 		<Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden p-24">
 			<div className="flex flex-col sm:flex-row items-start justify-between">

@@ -131,6 +131,7 @@ function Chat(props: ChatPropsType) {
 		if (!chatRef.current) {
 			return;
 		}
+
 		chatRef.current.scrollTo({
 			top: chatRef.current.scrollHeight,
 			behavior: 'smooth'
@@ -151,6 +152,7 @@ function Chat(props: ChatPropsType) {
 
 	function onMessageSubmit(ev: React.FormEvent<HTMLFormElement>) {
 		ev.preventDefault();
+
 		if (message === '') {
 			return;
 		}

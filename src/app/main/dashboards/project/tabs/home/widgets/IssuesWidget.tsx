@@ -16,6 +16,7 @@ function IssuesWidget() {
 	if (!widget) {
 		return null;
 	}
+
 	const { data, title } = widget;
 
 	return (

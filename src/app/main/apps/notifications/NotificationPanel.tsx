@@ -61,6 +61,7 @@ function NotificationPanel() {
 	function handleDismiss(id: string) {
 		deleteNotification(id);
 	}
+
 	function handleDismissAll() {
 		deleteAllNotifications();
 	}

@@ -157,6 +157,7 @@ export const authApiMocks = (mock: ExtendedMockAdapter) => {
 
 			return [200, response];
 		}
+
 		return [200, { error }];
 	});
 
@@ -174,6 +175,7 @@ export const authApiMocks = (mock: ExtendedMockAdapter) => {
 			if (uid === _user.uid) {
 				updatedUser = _.assign({}, _user, user);
 			}
+
 			return _user;
 		});
 

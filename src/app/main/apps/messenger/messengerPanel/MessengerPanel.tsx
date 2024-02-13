@@ -159,10 +159,12 @@ function MessengerPanel() {
 		if (state) {
 			document.addEventListener('click', handleDocumentClick, true);
 		}
+
 		return () => {
 			if (!state) {
 				return;
 			}
+
 			document.removeEventListener('click', handleDocumentClick, true);
 		};
 	}, [state, dispatch]);

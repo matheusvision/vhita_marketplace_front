@@ -20,6 +20,7 @@ function NewNote() {
 		if (!formOpen) {
 			return;
 		}
+
 		setFormOpen(false);
 		document.removeEventListener('keydown', escFunction, false);
 	}
@@ -33,9 +34,11 @@ function NewNote() {
 	function handleClickAway(event: MouseEvent | TouchEvent) {
 		const preventCloseElements = document.querySelector('.prevent-add-close');
 		const preventClose = preventCloseElements ? preventCloseElements.contains(event.target as Node) : false;
+
 		if (preventClose) {
 			return;
 		}
+
 		handleFormClose();
 	}
 

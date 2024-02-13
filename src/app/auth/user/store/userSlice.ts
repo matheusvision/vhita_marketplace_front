@@ -56,6 +56,7 @@ export const userSlice = createSlice({
 			if (_.isEqual(oldState, newUser)) {
 				return undefined;
 			}
+
 			return newUser;
 		},
 		/**
@@ -68,6 +69,7 @@ export const userSlice = createSlice({
 			if (_.isEqual(oldState, newUser)) {
 				return undefined;
 			}
+
 			return newUser;
 		},
 		/**
@@ -81,6 +83,7 @@ export const userSlice = createSlice({
 			if (_.isEqual(oldState, newUser)) {
 				return undefined;
 			}
+
 			return newUser as User;
 		},
 		userSignOut: () => initialState
@@ -93,12 +96,14 @@ export const userSlice = createSlice({
 			if (_.isEqual(state, newUser)) {
 				return undefined;
 			}
+
 			return action.payload;
 		});
 		builder.addCase(resetUser.fulfilled, (state) => {
 			if (!_.isEqual(state, initialState)) {
 				return initialState;
 			}
+
 			return undefined;
 		});
 	}

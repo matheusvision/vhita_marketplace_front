@@ -96,6 +96,7 @@ function TaskForm() {
 			if (taskType === 'section') {
 				reset(SectionModel({}));
 			}
+
 			if (taskType === 'task') {
 				reset(TaskModel({}));
 			}

@@ -30,6 +30,7 @@ function ContactsHeader() {
 	if (isLoading) {
 		return null;
 	}
+
 	return (
 		<div className="p-24 sm:p-32 w-full border-b-1">
 			<div className="flex flex-col">

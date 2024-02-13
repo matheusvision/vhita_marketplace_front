@@ -328,9 +328,11 @@ function FuseSearch(props: FuseSearchProps) {
 	) {
 		event.preventDefault();
 		event.stopPropagation();
+
 		if (!suggestion.url) {
 			return;
 		}
+
 		navigate(suggestion.url);
 		hideSearch();
 	}
