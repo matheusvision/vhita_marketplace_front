@@ -101,7 +101,7 @@ const removeFile = async (filePath: string) => {
 	try {
 		const ifExists = await checkExistence(filePath);
 
-		if(!ifExists) {
+		if (!ifExists) {
 			return true;
 		}
 
@@ -110,27 +110,25 @@ const removeFile = async (filePath: string) => {
 		console.log('Successfully deleted the file.');
 	} catch (error) {
 		if (error) {
-			console.log('File does not exist.',filePath)
+			console.log('File does not exist.', filePath);
 		}
 	}
 };
 
-const renameFilePath = async (filePath: string, newPath:string) => {
+const renameFilePath = async (filePath: string, newPath: string) => {
 	try {
-
-		if (fsp.access(filePath)){
+		if (fsp.access(filePath)) {
 			await fsp.rename(filePath, newPath);
 			console.log('Successfully renamed the file.', newPath);
 		}
-
 	} catch (error) {
 		if (error) {
-			console.log('Cannot be renamed.', filePath)
+			console.log('Cannot be renamed.', filePath);
 		}
 	}
 };
 
-async function checkExistence(dirPath:string) {
+async function checkExistence(dirPath: string) {
 	try {
 		await fsp.access(dirPath);
 		// If the promise resolves, the file or directory exists
@@ -140,11 +138,12 @@ async function checkExistence(dirPath:string) {
 		return false;
 	}
 }
+
 const rmDir = async (dirPath: string) => {
 	try {
 		const isExist = await checkExistence(dirPath);
 
-		if(!isExist){
+		if (!isExist) {
 			return true;
 		}
 
@@ -174,7 +173,6 @@ const rmDir = async (dirPath: string) => {
 		await fsp.rmdir(dirPath);
 		// Remove the directory itself
 		// await rmDir(dirPath);
-
 	} catch (error) {
 		if (error) {
 			console.log(error);
@@ -209,16 +207,16 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 	);
 
 	let contentsArr = getContents(markdownSource);
-	let importPathList = [];
+	const importPathList = [];
 	contentsArr = contentsArr.map((content) => {
 		const match = content.match(demoRegexp);
-        const isMuiYou = content.match(/MaterialYouPlayground/);
+		const isMuiYou = content.match(/MaterialYouPlayground/);
 
 		if (match && !isMuiYou) {
 			const demoOptions = JSON.parse(`{${content}}`) as { demo: string; iframe?: boolean };
 			const name = demoOptions.demo; // example: SimpleZoom.js
 			const nameWithoutExt = path.basename(name, path.extname(name)); // example: SimpleZoom
-			let filePath = path.resolve(fileDir, name);
+			const filePath = path.resolve(fileDir, name);
 
 			const tsxFilePath = path.resolve(fileDir, `${nameWithoutExt}.tsx`);
 			const tsFilePath = path.resolve(fileDir, `${nameWithoutExt}.ts`);
@@ -228,30 +226,27 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 			let fileType = '';
 
 			// if has tsx file remove others if exists
-			if(fs.existsSync(tsxFilePath)){
-					removeFile(tsFilePath);
-					removeFile(jsFilePath);
-					removeFile(jsxFilePath);
-					fileType = 'tsx';
-			}else if (fs.existsSync(tsFilePath)){
-
-					removeFile(jsFilePath);
-					removeFile(jsxFilePath);
-					renameFilePath(tsFilePath, tsxFilePath);
-					fileType = 'ts';
-			}else if (fs.existsSync(jsFilePath) && fs.existsSync(jsxFilePath)){
-
-					removeFile(jsFilePath)
-					fileType = 'jsx';
-			}else if (fs.existsSync(jsFilePath)){
-
-					renameFilePath(jsFilePath, jsxFilePath);
-					fileType = 'jsx';
-			}else{
+			if (fs.existsSync(tsxFilePath)) {
+				removeFile(tsFilePath);
+				removeFile(jsFilePath);
+				removeFile(jsxFilePath);
+				fileType = 'tsx';
+			} else if (fs.existsSync(tsFilePath)) {
+				removeFile(jsFilePath);
+				removeFile(jsxFilePath);
+				renameFilePath(tsFilePath, tsxFilePath);
+				fileType = 'ts';
+			} else if (fs.existsSync(jsFilePath) && fs.existsSync(jsxFilePath)) {
+				removeFile(jsFilePath);
+				fileType = 'jsx';
+			} else if (fs.existsSync(jsFilePath)) {
+				renameFilePath(jsFilePath, jsxFilePath);
+				fileType = 'jsx';
+			} else {
 				return '';
 			}
 
-			if(fileType !== '') {
+			if (fileType !== '') {
 				const selectedFileName = path.basename(filePath);
 				const importPath = `../components/${folderName}/${selectedFileName}`;
 				const componentPath = `../components/${folderName}/${nameWithoutExt}`;
@@ -306,6 +301,7 @@ function eraseMdSection(content: string, folderName: string, requestedDir: strin
 	if (folderName !== requestedDir) {
 		return content;
 	}
+
 	const regex = new RegExp(`## ${title}[\\s\\S]*?(?=##)`, 'g');
 	return content.replace(regex, '');
 }
@@ -316,6 +312,7 @@ function readDir(dir: string) {
 			if (err) {
 				reject(err);
 			}
+
 			resolve({
 				dir,
 				list
@@ -496,6 +493,7 @@ function filewalker(dir: string) {
 							.then((__res) => {
 								results = results.concat(__res);
 								pending -= 1;
+
 								if (!pending) {
 									resolve(results);
 								}
@@ -504,6 +502,7 @@ function filewalker(dir: string) {
 					} else {
 						results.push(file);
 						pending -= 1;
+
 						if (!pending) {
 							resolve(results);
 						}
@@ -561,7 +560,7 @@ async function removeExcludedComponents() {
 async function removeUnnecessaryFiles() {
 	return await filewalker(demoDir)
 		.then((list) => {
-			return list.forEach( async (file) => {
+			return list.forEach(async (file) => {
 				const extToRemove = [
 					'.preview',
 					'.tsx.preview',
@@ -576,7 +575,7 @@ async function removeUnnecessaryFiles() {
 					'-zh.md'
 				];
 
-				extToRemove.forEach(async(str) => {
+				extToRemove.forEach(async (str) => {
 					if (file.endsWith(str)) {
 						await removeFile(file);
 					}
@@ -593,17 +592,15 @@ async function removeUnnecessaryFiles() {
 async function componentFileTypeCorrection() {
 	filewalker(examplesDirectory)
 		.then(async (list) => {
-			list.forEach( async (filePath) => {
-
-				if(path.extname(filePath) === '.js'){
-					const newFilePath = filePath.replace('.js','.jsx');
+			list.forEach(async (filePath) => {
+				if (path.extname(filePath) === '.js') {
+					const newFilePath = filePath.replace('.js', '.jsx');
 
 					await renameFilePath(filePath, newFilePath);
 					// console.log(`Renamed ${filePath} to ${newFilePath}`);
 
 					await removeFile(filePath);
 				}
-
 			});
 		})
 		.catch((err) => {
@@ -614,12 +611,11 @@ async function componentFileTypeCorrection() {
 }
 
 async function build() {
-
 	console.log('Start building...');
 
 	await rmDir(pagesDirectory);
 
-	console.log('PagesDirectory removed.')
+	console.log('PagesDirectory removed.');
 
 	await removeExcludedComponents();
 
@@ -645,7 +641,6 @@ async function build() {
 
 	readDir(examplesDirectory).then(({ dir: _dir, list }) => {
 		writePages(_dir, list).then((pages) => {
-
 			writeRouteFile(pages);
 
 			console.log('Route file created.');
@@ -657,7 +652,6 @@ async function build() {
 			const eslintPath = path.resolve(projectDir, './node_modules/.bin/eslint');
 
 			process.chdir(projectDir);
-
 
 			const promises = [
 				// runCommand(eslintPath, ['--fix', pagesDirectory]),
@@ -687,6 +681,7 @@ function runCommand(command: string, args: string[]) {
 				reject(new Error(`Command "${command}" exited with code ${code}`));
 				return;
 			}
+
 			resolve();
 		});
 	});

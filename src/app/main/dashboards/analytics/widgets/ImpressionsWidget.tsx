@@ -8,6 +8,7 @@ import { ApexOptions } from 'apexcharts';
 import { useSelector } from 'react-redux';
 import ImressionsWidgetType from './types/ImpressionsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
+
 /**
  * Impressions widget.
  */

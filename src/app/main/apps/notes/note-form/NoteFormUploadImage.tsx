@@ -14,9 +14,11 @@ function NoteFormUploadImage(props: NoteFormUploadImageProps) {
 
 	function handleChange(e: ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files[0];
+
 		if (!file) {
 			return;
 		}
+
 		const reader = new FileReader();
 
 		reader.readAsBinaryString(file);

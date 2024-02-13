@@ -48,15 +48,19 @@ function HeaderFullScreenToggle(props: HeaderFullScreenToggleProps) {
 		if (typeof doc.fullscreenElement !== 'undefined') {
 			return 'fullscreenElement';
 		}
+
 		if (typeof doc.mozFullScreenElement !== 'undefined') {
 			return 'mozFullScreenElement';
 		}
+
 		if (typeof doc.msFullscreenElement !== 'undefined') {
 			return 'msFullscreenElement';
 		}
+
 		if (typeof doc.webkitFullscreenElement !== 'undefined') {
 			return 'webkitFullscreenElement';
 		}
+
 		throw new Error('fullscreenElement is not supported by this browser');
 	}
 

@@ -97,6 +97,7 @@ function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 
 	function handleChildItemClick() {
 		setPanelOpen(false);
+
 		if (isMobile) {
 			dispatch(navbarCloseMobile());
 		}

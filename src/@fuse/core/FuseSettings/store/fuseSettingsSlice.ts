@@ -197,6 +197,7 @@ export const selectContrastMainTheme = (bgColor: string) => {
 	function isDark(color: string) {
 		return getContrastRatio(color, '#ffffff') >= 3;
 	}
+
 	return isDark(bgColor) ? selectMainThemeDark : selectMainThemeLight;
 };
 

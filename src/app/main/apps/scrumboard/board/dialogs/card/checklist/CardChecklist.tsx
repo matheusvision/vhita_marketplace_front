@@ -41,6 +41,7 @@ function CardChecklist(props: CardChecklistProps) {
 
 	function handleOpenNameForm(ev: React.MouseEvent<HTMLElement>) {
 		handleMenuClose();
+
 		if (checkListNameRef.current) {
 			checkListNameRef.current.openForm(ev);
 		}
@@ -61,6 +62,7 @@ function CardChecklist(props: CardChecklistProps) {
 	if (!form) {
 		return null;
 	}
+
 	return (
 		<div className="mb-24">
 			<div className="flex items-center justify-between mt-16 mb-12">

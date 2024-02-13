@@ -94,6 +94,7 @@ function TaskDistributionWidget() {
 	if (awaitRender) {
 		return null;
 	}
+
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden h-full">
 			<div className="flex flex-col sm:flex-row items-start justify-between">

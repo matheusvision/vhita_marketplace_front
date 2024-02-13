@@ -24,4 +24,5 @@ function CardModel(data: PartialDeep<ScrumboardCard>): ScrumboardCard {
 		activities: []
 	});
 }
+
 export default CardModel;

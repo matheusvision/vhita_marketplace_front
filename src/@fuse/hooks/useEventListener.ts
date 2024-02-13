@@ -28,6 +28,7 @@ function useEventListener<T extends Event>(
 			// Add event listener
 			element.addEventListener(eventName, eventListener);
 		}
+
 		// Clean up event listener on component unmount
 		return () => {
 			if (isSupported) {

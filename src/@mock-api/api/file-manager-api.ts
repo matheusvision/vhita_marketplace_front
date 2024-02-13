@@ -31,6 +31,7 @@ export const fileManagerApiMocks = (mock: ExtendedMockAdapter) => {
 		while (currentFolder?.folderId) {
 			// eslint-disable-next-line no-loop-func
 			currentFolder = pathItems.find((item) => item.id === currentFolder?.folderId);
+
 			if (currentFolder) {
 				path.unshift(currentFolder);
 			}

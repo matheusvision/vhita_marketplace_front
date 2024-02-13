@@ -12,6 +12,7 @@ import { useGetTasksQuery, useReorderTasksMutation } from './TasksApi';
 function TasksList() {
 	const { data: tasks, isLoading } = useGetTasksQuery();
 	const [reorderList] = useReorderTasksMutation();
+
 	if (isLoading) {
 		return <FuseLoading />;
 	}
@@ -48,6 +49,7 @@ function TasksList() {
 			endIndex: destinationIndex
 		});
 	}
+
 	return (
 		<List className="w-full m-0 p-0">
 			<DragDropContext onDragEnd={onDragEnd}>

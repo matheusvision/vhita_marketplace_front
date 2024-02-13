@@ -148,6 +148,7 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				containerRef.current = el;
+
 				if (typeof ref === 'function') {
 					ref(el);
 				} else if (ref) {

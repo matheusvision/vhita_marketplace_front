@@ -32,6 +32,7 @@ export const reorderQuoteMap = (
 			if (list.id === source.droppableId) {
 				list.cards = reordered;
 			}
+
 			return list;
 		});
 	}
@@ -48,9 +49,11 @@ export const reorderQuoteMap = (
 		if (list.id === source.droppableId) {
 			return current;
 		}
+
 		if (list.id === destination?.droppableId) {
 			return next;
 		}
+
 		return list;
 	});
 };

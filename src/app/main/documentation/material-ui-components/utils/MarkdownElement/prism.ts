@@ -15,6 +15,7 @@ let styleNode: HTMLStyleElement | undefined;
 if (process.browser) {
 	styleNode = document.createElement('style');
 	styleNode.setAttribute('data-prism', 'true');
+
 	if (document.head) {
 		document.head.appendChild(styleNode);
 	}

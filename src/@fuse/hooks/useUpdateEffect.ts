@@ -12,6 +12,7 @@ const useUpdateEffect = (effect: EffectCallback, deps?: DependencyList) => {
 		if (isInitialMount.current) {
 			isInitialMount.current = false;
 		}
+
 		return effect();
 	}, deps);
 };

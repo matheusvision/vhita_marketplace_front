@@ -161,6 +161,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 				return false;
 			}
 		}
+
 		return false;
 	}, []);
 
@@ -172,6 +173,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 	useEffect(() => {
 		const attemptAutoLogin = async () => {
 			const accessToken = getAccessToken();
+
 			if (isTokenValid(accessToken)) {
 				try {
 					setIsLoading(true);
@@ -315,6 +317,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 				setSession(accessToken);
 				return accessToken;
 			}
+
 			return null;
 		} catch (error) {
 			const axiosError = error as AxiosError;
@@ -338,6 +341,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 					if (newAccessToken) {
 						setSession(newAccessToken);
 					}
+
 					return response;
 				},
 				(error) => {
@@ -348,6 +352,7 @@ const useJwtAuth = <User, SignInPayload, SignUpPayload>(
 						// eslint-disable-next-line no-console
 						console.warn('Unauthorized request. User was signed out.');
 					}
+
 					return Promise.reject(axiosError);
 				}
 			);

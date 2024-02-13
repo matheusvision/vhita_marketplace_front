@@ -30,6 +30,7 @@ function MailList() {
 			if (searchText.length === 0) {
 				return mails;
 			}
+
 			return FuseUtils.filterArrayByString<MailboxMail>(mails, searchText);
 		}
 

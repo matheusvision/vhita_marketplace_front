@@ -18,6 +18,7 @@ class EventEmitter {
 		if (typeof this.events[eventName] === 'undefined') {
 			this.events[eventName] = new Set();
 		}
+
 		return this.events[eventName];
 	}
 

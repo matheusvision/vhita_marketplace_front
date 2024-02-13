@@ -202,6 +202,7 @@ export const selectFilteredContactList = (contacts: Contact[]) =>
 		if (searchText.length === 0) {
 			return contacts;
 		}
+
 		return FuseUtils.filterArrayByString<Contact>(contacts, searchText);
 	});
 

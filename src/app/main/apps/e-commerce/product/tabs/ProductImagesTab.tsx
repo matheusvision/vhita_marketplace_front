@@ -80,9 +80,11 @@ function ProductImagesTab() {
 									function readFileAsync() {
 										return new Promise((resolve, reject) => {
 											const file = e?.target?.files?.[0];
+
 											if (!file) {
 												return;
 											}
+
 											const reader = new FileReader();
 
 											reader.onload = () => {

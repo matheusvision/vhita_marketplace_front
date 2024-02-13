@@ -79,9 +79,11 @@ function PaletteSelector(props: PaletteSelectorProps) {
 		if (formType === 'light' && isDark(colorVal)) {
 			return 'Must be a light color';
 		}
+
 		if (formType === 'dark' && !isDark(colorVal)) {
 			return 'Must be a dark color';
 		}
+
 		return true;
 	};
 

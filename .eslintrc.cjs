@@ -60,6 +60,13 @@ module.exports = {
                 "avoidEscape": true
             }
         ],
+        "padding-line-between-statements": [
+            "warn",
+            { "blankLine": "always", "prev": "function", "next": "*" },
+            { "blankLine": "always", "prev": "*", "next": "if" },
+            { "blankLine": "always", "prev": "if", "next": "*" },
+            { "blankLine": "always", "prev": "*", "next": "function" }
+        ],
         // Disabling because this rule is extremely slow.
         "import/no-cycle": "off",
         // Disabling because this rule is slow and not a common violation.

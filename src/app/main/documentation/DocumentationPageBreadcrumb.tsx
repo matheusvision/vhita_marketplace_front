@@ -19,14 +19,17 @@ const getPathTree = (departmentTree: FuseNavItemType, url: string) => {
 			// eslint-disable-next-line no-restricted-syntax
 			for (const child of node.children) {
 				const childPath = findPath(child, _url) as FuseNavItemType[] | boolean;
+
 				if (Array.isArray(childPath)) {
 					childPath.unshift(child);
 					return childPath;
 				}
 			}
 		}
+
 		return false;
 	}
+
 	const response = findPath(departmentTree, url) as FuseNavItemType[];
 
 	return response || [];

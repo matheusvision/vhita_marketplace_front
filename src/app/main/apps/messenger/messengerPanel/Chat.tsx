@@ -117,6 +117,7 @@ function Chat(props: ChatProps) {
 		if (!chatScroll.current) {
 			return;
 		}
+
 		chatScroll.current.scrollTo({
 			top: chatScroll.current.scrollHeight,
 			behavior: 'instant'
@@ -198,6 +199,7 @@ function Chat(props: ChatProps) {
 			{useMemo(() => {
 				const onMessageSubmit = (ev: FormEvent) => {
 					ev.preventDefault();
+
 					if (messageText === '') {
 						return;
 					}

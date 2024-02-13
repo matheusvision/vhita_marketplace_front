@@ -58,6 +58,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 		if (_.isEmpty(boardSettingsForm) || !board?.settings) {
 			return;
 		}
+
 		if (!_.isEqual(board.settings, boardSettingsForm)) {
 			updateBoardData({ settings: boardSettingsForm });
 		}
@@ -67,6 +68,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 		if (!board) {
 			return;
 		}
+
 		reset(board.settings);
 	}, [board, reset]);
 

@@ -31,6 +31,7 @@ function FuseCountdown(props: FuseCountdownProps) {
 		if (intervalRef.current) {
 			window.clearInterval(intervalRef.current);
 		}
+
 		if (onComplete) {
 			onComplete();
 		}
@@ -39,10 +40,12 @@ function FuseCountdown(props: FuseCountdownProps) {
 	const tick = useCallback(() => {
 		const currDate = moment();
 		const diff = endDateVal.diff(currDate, 'seconds');
+
 		if (diff < 0) {
 			complete();
 			return;
 		}
+
 		const timeLeft = moment.duration(diff, 'seconds');
 		setCountdown({
 			days: Number(timeLeft.asDays().toFixed(0)),

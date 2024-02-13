@@ -92,9 +92,11 @@ class FuseUtils {
 
 		searchText = searchText.toLowerCase();
 		const filtered = mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
+
 		if (filtered.length === mainArr.length) {
 			return mainArr; // If the filtered array is identical, return the original
 		}
+
 		return filtered;
 	}
 
@@ -166,6 +168,7 @@ class FuseUtils {
 					return true;
 				}
 			}
+
 			return false;
 		});
 		return false;
@@ -281,6 +284,7 @@ class FuseUtils {
 				foundNode = this.findById(item.children, idToFind);
 				return foundNode; // If foundNode is truthy, _.some will stop iterating
 			}
+
 			return false; // Continue iterating
 		});
 
@@ -388,13 +392,16 @@ class FuseUtils {
 			? null
 			: data.reduce((list: unknown[], entry: { children?: [] }) => {
 					let clone: unknown = null;
+
 					if (predicate(entry)) {
 						// if the object matches the filter, clone it as it is
 						clone = { ...entry };
 					}
+
 					if (entry.children != null) {
 						// if the object has childrens, filter the list of children
 						const children = this.filterRecursive(entry.children, predicate);
+
 						if (children && children?.length > 0) {
 							// if any of the children matches, clone the parent object, overwrite
 							// the children list with the filtered list
@@ -406,6 +413,7 @@ class FuseUtils {
 					if (clone) {
 						list.push(clone);
 					}
+
 					return list;
 				}, []);
 	}
