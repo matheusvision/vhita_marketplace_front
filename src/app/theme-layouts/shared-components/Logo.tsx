@@ -26,10 +26,31 @@ function Logo() {
 				src="assets/images/logo/logo.svg"
 				alt="logo"
 			/>
-			<div className="flex space-x-8 items-center">
+			<div className="flex space-x-6 px-8 items-center">
 				<div
-					className="badge flex items-center rounded px-8 py-4"
-					style={{ backgroundColor: '#121212', color: '#61DAFB' }}
+					className="badge flex items-end justify-end rounded-4 w-24 h-24 px-3"
+					style={{
+						backgroundColor: '#2e79c7',
+						color: '#ffffff'
+					}}
+				>
+					<span className="react-text text-12 font-semibold">TS</span>
+				</div>
+				<div
+					className="badge flex items-end justify-end rounded-4 w-24 h-24 px-3"
+					style={{
+						backgroundColor: '#f0dc4e',
+						color: '#2f2f2c'
+					}}
+				>
+					<span className="react-text text-12 font-semibold">JS</span>
+				</div>
+				<div
+					className="badge flex items-center rounded-4 space-x-8 px-8 py-4"
+					style={{
+						backgroundColor: '#23272f',
+						color: '#149eca'
+					}}
 				>
 					<img
 						className="react-badge"
@@ -37,13 +58,7 @@ function Logo() {
 						alt="react"
 						width="16"
 					/>
-					<span className="react-text mx-4 text-12">React</span>
-				</div>
-				<div
-					className="badge flex items-center rounded px-8 py-4"
-					style={{ backgroundColor: 'rgb(48,120,198)', color: '#ffffff' }}
-				>
-					<span className="react-text mx-4 text-12">TypeScript</span>
+					<span className="react-text text-12 font-semibold">React</span>
 				</div>
 			</div>
 		</Root>
