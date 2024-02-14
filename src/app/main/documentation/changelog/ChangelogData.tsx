@@ -18,12 +18,9 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
-		version: '10.0.1',
-		date: '2024-01-22',
-		fixedChanges: [
-			'Some icons are not visible on development mode due to lazy loading.',
-			'Ecommerce App: Products sort not working.'
-		]
+		version: '10.1.0',
+		date: '2024-02-14',
+		newChanges: ['Js versions added.']
 	},
 	{
 		version: '10.0.0',

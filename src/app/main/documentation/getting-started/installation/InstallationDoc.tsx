@@ -98,9 +98,9 @@ function InstallationDoc() {
 				</Typography>
 
 				<Typography component="div">
-					When you unzip the .zip file you have downloaded from Themeforest, you will find 2 additional .zip
-					files along with other files. One of those .zip files is the Demo version, and the other one is the
-					Skeleton version:
+					When you unzip the .zip file you have downloaded from Themeforest, you will find 4 additional .zip
+					files along with other files. You can choose TS or JS versions and both versions has demo and
+					skeleton options.
 				</Typography>
 
 				<ul className="list-disc mx-16">
@@ -109,7 +109,9 @@ function InstallationDoc() {
 							className="mt-12"
 							component="div"
 						>
-							Demo <b>Fuse-react-x.x.x-demo.zip</b>
+							Demo TS <b>Fuse-react-x.x.x-ts-demo.zip</b>
+							<br />
+							Demo JS <b>Fuse-react-x.x.x-js-demo.zip</b>
 						</Typography>
 						<Typography
 							className="mt-12"
@@ -134,7 +136,9 @@ function InstallationDoc() {
 							className="mt-12"
 							component="div"
 						>
-							Skeleton <b>Fuse-react-x.x.x-skeleton.zip</b>
+							Skeleton TS <b>Fuse-react-x.x.x-ts-skeleton.zip</b>
+							<br />
+							Skeleton JS <b>Fuse-react-x.x.x-js-skeleton.zip</b>
 						</Typography>
 						<Typography
 							className="mt-12"
