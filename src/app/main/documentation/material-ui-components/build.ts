@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, no-console */
 import fs from 'fs';
 import fsp from 'fs/promises';
 import { spawn } from 'child_process';
@@ -33,7 +33,7 @@ marked.Lexer.prototype.lex = function lex(src) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 	this.blockTokens(src, this.tokens);
 
-	let next;
+	let next: { src: string; tokens: { type: string; raw: string }[] };
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
@@ -113,6 +113,7 @@ const removeFile = async (filePath: string) => {
 			console.log('File does not exist.', filePath);
 		}
 	}
+	return true;
 };
 
 const renameFilePath = async (filePath: string, newPath: string) => {
@@ -178,6 +179,7 @@ const rmDir = async (dirPath: string) => {
 			console.log(error);
 		}
 	}
+	return true;
 };
 
 function allReplace(str: string, obj: Record<string, string>): string {
@@ -203,7 +205,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 	markdownSource = markdownSource.replace(
 		/:::info([\s\S]*?):::/g,
-		'<div className="border border-1 p-16 rounded-16 my-12">\n$1\n</div>'
+		'<div className="border-1 p-16 rounded-16 my-12">\n$1\n</div>'
 	);
 
 	let contentsArr = getContents(markdownSource);
@@ -216,7 +218,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 			const demoOptions = JSON.parse(`{${content}}`) as { demo: string; iframe?: boolean };
 			const name = demoOptions.demo; // example: SimpleZoom.js
 			const nameWithoutExt = path.basename(name, path.extname(name)); // example: SimpleZoom
-			const filePath = path.resolve(fileDir, name);
+			// const filePath = path.resolve(fileDir, name);
 
 			const tsxFilePath = path.resolve(fileDir, `${nameWithoutExt}.tsx`);
 			const tsFilePath = path.resolve(fileDir, `${nameWithoutExt}.ts`);
@@ -247,8 +249,8 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 			}
 
 			if (fileType !== '') {
-				const selectedFileName = path.basename(filePath);
-				const importPath = `../components/${folderName}/${selectedFileName}`;
+				// const selectedFileName = path.basename(filePath);
+				// const importPath = `../components/${folderName}/${selectedFileName}`;
 				const componentPath = `../components/${folderName}/${nameWithoutExt}`;
 
 				const iframe = !!demoOptions.iframe;
@@ -551,14 +553,14 @@ async function removeExcludedComponents() {
 	];
 
 	try {
-		excludedComponents.forEach(async (_path) => await rmDir(_path));
+		excludedComponents.forEach(async (_path) => rmDir(_path));
 	} catch (writeErr) {
 		console.log(writeErr);
 	}
 }
 
 async function removeUnnecessaryFiles() {
-	return await filewalker(demoDir)
+	return filewalker(demoDir)
 		.then((list) => {
 			return list.forEach(async (file) => {
 				const extToRemove = [
@@ -589,7 +591,7 @@ async function removeUnnecessaryFiles() {
 		});
 }
 
-async function componentFileTypeCorrection() {
+/* async function componentFileTypeCorrection() {
 	filewalker(examplesDirectory)
 		.then(async (list) => {
 			list.forEach(async (filePath) => {
@@ -608,7 +610,7 @@ async function componentFileTypeCorrection() {
 				throw err;
 			}
 		});
-}
+} */
 
 async function build() {
 	console.log('Start building...');
