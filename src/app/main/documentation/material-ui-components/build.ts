@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies, no-console */
 import fs from 'fs';
 import fsp from 'fs/promises';
 import { spawn } from 'child_process';
@@ -107,10 +106,10 @@ const removeFile = async (filePath: string) => {
 
 		await fsp.unlink(filePath);
 
-		console.log('Successfully deleted the file.');
+		log('Successfully deleted the file.');
 	} catch (error) {
 		if (error) {
-			console.log('File does not exist.', filePath);
+			log('File does not exist.', filePath);
 		}
 	}
 	return true;
@@ -120,11 +119,11 @@ const renameFilePath = async (filePath: string, newPath: string) => {
 	try {
 		if (fsp.access(filePath)) {
 			await fsp.rename(filePath, newPath);
-			console.log('Successfully renamed the file.', newPath);
+			log('Successfully renamed the file.', newPath);
 		}
 	} catch (error) {
 		if (error) {
-			console.log('Cannot be renamed.', filePath);
+			log('Cannot be renamed.', filePath);
 		}
 	}
 };
@@ -176,7 +175,7 @@ const rmDir = async (dirPath: string) => {
 		// await rmDir(dirPath);
 	} catch (error) {
 		if (error) {
-			console.log(error);
+			log(error);
 		}
 	}
 	return true;
@@ -554,8 +553,8 @@ async function removeExcludedComponents() {
 
 	try {
 		excludedComponents.forEach(async (_path) => rmDir(_path));
-	} catch (writeErr) {
-		console.log(writeErr);
+	} catch (writeErr: unknown) {
+		log(writeErr);
 	}
 }
 
@@ -599,7 +598,7 @@ async function removeUnnecessaryFiles() {
 					const newFilePath = filePath.replace('.js', '.jsx');
 
 					await renameFilePath(filePath, newFilePath);
-					// console.log(`Renamed ${filePath} to ${newFilePath}`);
+					// log(`Renamed ${filePath} to ${newFilePath}`);
 
 					await removeFile(filePath);
 				}
@@ -613,43 +612,43 @@ async function removeUnnecessaryFiles() {
 } */
 
 async function build() {
-	console.log('Start building...');
+	log('Start building...');
 
 	await rmDir(pagesDirectory);
 
-	console.log('PagesDirectory removed.');
+	log('PagesDirectory removed.');
 
 	await removeExcludedComponents();
 
-	console.log('Exclude components removed.');
+	log('Exclude components removed.');
 
 	await removeFile(path.resolve(examplesDirectory, './.eslintrc.js'));
 
-	console.log('Eslint file removed.');
+	log('Eslint file removed.');
 
 	await removeUnnecessaryFiles();
 
-	console.log('Unnecessary files removed.');
+	log('Unnecessary files removed.');
 
 	// componentFileTypeCorrection();
 
 	await replaceInExamples();
 
-	console.log('Replace in examples done.');
+	log('Replace in examples done.');
 
 	fs.mkdirSync(pagesDirectory);
 
-	console.log('PagesDirectory created.');
+	log('PagesDirectory created.');
 
 	readDir(examplesDirectory).then(({ dir: _dir, list }) => {
 		writePages(_dir, list).then((pages) => {
 			writeRouteFile(pages);
 
-			console.log('Route file created.');
+			log('Route file created.');
 
 			writeNavigationFile(pages);
 
-			console.log('Navigation file created.');
+			log('Navigation file created.');
 
 			const eslintPath = path.resolve(projectDir, './node_modules/.bin/eslint');
 
@@ -663,12 +662,12 @@ async function build() {
 
 			Promise.all(promises)
 				.then(() => {
-					console.log('Linting done.');
-					console.log(`Done`);
+					log('Linting done.');
+					log(`Done`);
 				})
 				.catch((err) => {
 					if (err) {
-						console.error(err);
+						log(err);
 					}
 				});
 		});
@@ -687,6 +686,11 @@ function runCommand(command: string, args: string[]) {
 			resolve();
 		});
 	});
+}
+
+function log(message: unknown) {
+	// eslint-disable-next-line no-console
+	console.log(message);
 }
 
 build();

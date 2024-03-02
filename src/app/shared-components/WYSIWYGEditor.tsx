@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-argument */
-
 import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { convertToRaw, EditorState } from 'draft-js';
@@ -43,7 +41,7 @@ function WYSIWYGEditorComponent(props: WYSIWYGEditorComponentProps, ref: React.F
 	/**
 	 * The function to call when the editor state changes.
 	 */
-	function onEditorStateChange(_editorState) {
+	function onEditorStateChange(_editorState: EditorState) {
 		setEditorState(_editorState);
 
 		return onChange(draftToHtml(convertToRaw(_editorState.getCurrentContent())));

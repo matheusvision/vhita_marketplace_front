@@ -4,8 +4,6 @@ import enLangRaw from 'src/app/main/apps/mailbox/i18n/en.ts?raw';
 import appConfigRaw from 'src/app/main/apps/mailbox/MailboxAppConfig.tsx?raw';
 import i18Raw from 'src/i18n.ts?raw';
 
-/* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
-
 /**
  * Theme Layouts Doc
  * This document provides information on how to use theme layouts.

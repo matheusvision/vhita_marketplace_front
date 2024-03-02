@@ -87,7 +87,6 @@ function BuySellForm() {
 	const amountTypeValue = watch('amountType');
 
 	function onSubmit(_data: FormType) {
-		// eslint-disable-next-line no-console
 		reset();
 	}
 

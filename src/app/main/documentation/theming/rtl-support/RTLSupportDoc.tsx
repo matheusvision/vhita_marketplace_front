@@ -2,9 +2,6 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-/* eslint import/no-webpack-loader-syntax: off */
-/* eslint import/extensions: off */
-
 /**
  * RTL Support Doc
  * This document provides information on how to use RTL support.

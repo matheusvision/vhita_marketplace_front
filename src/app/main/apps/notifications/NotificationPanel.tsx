@@ -52,7 +52,6 @@ function NotificationPanel() {
 		if (state) {
 			dispatch(closeNotificationPanel());
 		}
-		// eslint-disable-next-line
 	}, [location, dispatch]);
 
 	function handleClose() {

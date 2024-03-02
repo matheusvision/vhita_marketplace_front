@@ -172,26 +172,36 @@ const Root = styled('div')(({ theme }) => ({
 		maxWidth: '100%'
 	}
 }));
-/*
-eslint-disable @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,no-cond-assign,@typescript-eslint/no-unsafe-return
-*/
-marked.Lexer.prototype.lex = function lex(src) {
+
+interface LexerThisType {
+	tokens: marked.TokensList;
+	inlineQueue: { src: string; tokens: marked.TokensList }[];
+	blockTokens(src: string, tokens: marked.TokensList): void;
+	inlineTokens(src: string, tokens: marked.TokensList): void;
+}
+
+function lex(src: string): marked.TokensList {
 	src = src
 		.replace(/\r\n|\r/g, '\n')
 		.replace(/\t/g, '    ')
 		.replace(/\u2424/g, '\n');
-	this.blockTokens(src, this.tokens);
+
+	const self = this as LexerThisType;
+
+	self.blockTokens(src, self.tokens);
 
 	let next;
 
-	// eslint-disable-next-line no-cond-assign,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	while ((next = this.inlineQueue.shift() as { src: string; tokens: { type: 'space'; raw: string }[] })) {
-		this.inlineTokens(next.src, next.tokens);
+	// eslint-disable-next-line no-cond-assign
+	while ((next = self?.inlineQueue?.shift()) !== undefined) {
+		// eslint-disable-next-line  @typescript-eslint/no-unsafe-member-access
+		self?.inlineTokens(next?.src as string, next?.tokens as marked.TokensList);
 	}
 
-	return this.tokens;
-};
+	return self.tokens;
+}
+
+marked.Lexer.prototype.lex = lex;
 
 const renderer = new marked.Renderer();
 
@@ -263,12 +273,10 @@ function MarkdownElement(props: MarkdownElementProps) {
 	return (
 		<Root
 			className={clsx('markdown-body', className)}
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 			dangerouslySetInnerHTML={{ __html: marked(text) }}
 			{...other}
 		/>
 	);
-	/* eslint-enable */
 }
 
 MarkdownElement.propTypes = {

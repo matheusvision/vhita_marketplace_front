@@ -6,7 +6,6 @@ type FontSizeMapping = {
 	};
 };
 
-// eslint-disable-next-line no-unused-vars
 type setDescriptionStyleType = (sentence: string, refEl: HTMLElement | null, enabled: boolean) => void;
 
 // 2. Constants and Implementations

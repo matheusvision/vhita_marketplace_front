@@ -9,6 +9,7 @@ import themeLayouts from 'app/theme-layouts/themeLayouts';
 import { selectMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import MockAdapterProvider from '@mock-api/MockAdapterProvider';
 import { useAppSelector } from 'app/store/hooks';
+import { useSelector } from 'react-redux';
 import withAppProviders from './withAppProviders';
 import { AuthRouteProvider } from './auth/AuthRouteProvider';
 
@@ -45,7 +46,7 @@ function App() {
 	/**
 	 * The main theme from the Redux store.
 	 */
-	const mainTheme = useAppSelector(selectMainTheme);
+	const mainTheme = useSelector(selectMainTheme);
 
 	return (
 		<MockAdapterProvider>

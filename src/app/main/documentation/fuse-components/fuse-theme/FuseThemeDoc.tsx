@@ -2,7 +2,6 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import AppRaw from 'src/app/App.tsx?raw';
-/* eslint-disable import/no-webpack-loader-syntax, import/extensions, global-require, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
 /**
  * Theme Layouts Doc

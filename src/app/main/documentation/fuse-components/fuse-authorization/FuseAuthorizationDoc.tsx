@@ -7,8 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import AdminRoleExampleConfigRaw from 'src/app/main/auth/admin-role-example/AdminRoleExampleConfig.tsx?raw';
-/* eslint import/no-webpack-loader-syntax: off */
-/* eslint import/extensions: off */
 
 /**
  * FuseAuthorization Doc
@@ -175,7 +173,6 @@ function FuseAuthorizationDoc() {
 				component="pre"
 				className="language-jsx"
 			>
-				{/* eslint-disable-next-line global-require */}
 				{AdminRoleExampleConfigRaw}
 			</FuseHighlight>
 
