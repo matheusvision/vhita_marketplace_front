@@ -5,7 +5,7 @@ import apiService from './apiService';
 import { userSlice } from '../auth/user/store/userSlice';
 
 // eslint-disable-next-line
-// @ts-expect-error
+// @ts-ignore
 export interface LazyLoadedSlices {}
 
 // `combineSlices` automatically combines the reducers using
