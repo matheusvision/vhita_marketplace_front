@@ -1,6 +1,6 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import { labelColorDefs } from './labelColors';
 import { selectLabelById } from '../MailboxApi';
 
@@ -14,7 +14,7 @@ type MailLabelProps = {
  */
 function MailLabel(props: MailLabelProps) {
 	const { labelId, className = '' } = props;
-	const label = useSelector(selectLabelById(labelId));
+	const label = useAppSelector(selectLabelById(labelId));
 
 	if (!label) {
 		return null;

@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
-import { useDispatch } from 'react-redux';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import { useAppDispatch } from 'app/store/hooks';
 import BoardAddList from './board-list/BoardAddList';
 import BoardList from './board-list/BoardList';
 import BoardCardDialog from './dialogs/card/BoardCardDialog';
@@ -21,7 +21,7 @@ import {
  * The board component.
  */
 function Board() {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 	const routeParams = useParams();

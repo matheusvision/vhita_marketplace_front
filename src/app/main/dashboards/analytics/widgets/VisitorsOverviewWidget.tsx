@@ -4,12 +4,12 @@ import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
-import { selectContrastMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectContrastMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
 // eslint-disable-next-line camelcase
 import { private_safeDarken } from '@mui/system/colorManipulator';
+import { useAppSelector } from 'app/store/hooks';
 import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -18,8 +18,8 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function VisitorsOverviewWidget() {
 	const theme = useTheme();
-	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.dark));
-	const widget = useSelector(selectWidget<VisitorsOverviewWidgetType>('visitors'));
+	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.dark));
+	const widget = useAppSelector(selectWidget<VisitorsOverviewWidgetType>('visitors'));
 
 	if (!widget) {
 		return null;

@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { RootStateType } from 'app/store/types';
-import searchText, { searchTextSliceType } from './searchTextSlice';
-import { ECommerceApiType } from '../ECommerceApi';
+import searchText, { searchTextSliceType } from './eCommerceAppSlice';
+import { ECommerceApiType } from './ECommerceApi';
 
 /**
  * The E-Commerce store reducer.

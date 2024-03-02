@@ -10,11 +10,11 @@ import _ from '@lodash';
 import Typography from '@mui/material/Typography';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import WalletsType from '../types/WalletsType';
 import PricesType from '../types/PricesType';
 import CoinTypes from '../types/CoinTypes';
-import { selectWidget } from '../CryptoDashboardApi';
+import { useGetCryptoDashboardWidgetsQuery } from '../CryptoDashboardApi';
 
 const actionValues = [
 	{ title: 'Buy', value: 'buy' },
@@ -61,8 +61,14 @@ const schema = z.object({
  * The buy sell form.
  */
 function BuySellForm() {
-	const wallets = useSelector(selectWidget<WalletsType>('wallets'));
-	const prices = useSelector(selectWidget<PricesType>('prices'));
+	const { data: widgets, isLoading } = useGetCryptoDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const wallets = widgets?.wallets as WalletsType;
+	const prices = widgets?.prices as PricesType;
 
 	if (!wallets || !prices) {
 		return null;

@@ -14,7 +14,7 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { Many } from 'lodash';
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import OrdersStatus from '../order/OrdersStatus';
 import OrdersTableHead from './OrdersTableHead';
 import { EcommerceOrder, selectFilteredOrders, useGetECommerceOrdersQuery } from '../ECommerceApi';
@@ -31,7 +31,7 @@ function OrdersTable(props: OrdersTableProps) {
 
 	const { data, isLoading } = useGetECommerceOrdersQuery();
 
-	const orders = useSelector(selectFilteredOrders(data));
+	const orders = useAppSelector(selectFilteredOrders(data));
 
 	const [selected, setSelected] = useState<string[]>([]);
 

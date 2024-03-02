@@ -6,7 +6,7 @@ import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import NewVsReturningWidgetType from './types/NewVsReturningWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  * New vs. returning widget.
  */
 function NewVsReturningWidget() {
-	const widget = useSelector(selectWidget<NewVsReturningWidgetType>('newVsReturning'));
+	const widget = useAppSelector(selectWidget<NewVsReturningWidgetType>('newVsReturning'));
 
 	if (!widget) {
 		return null;

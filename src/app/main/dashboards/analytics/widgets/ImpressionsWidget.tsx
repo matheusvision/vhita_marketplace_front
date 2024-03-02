@@ -5,7 +5,7 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import ImressionsWidgetType from './types/ImpressionsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function Impressions() {
 	const theme = useTheme();
-	const widget = useSelector(selectWidget<ImressionsWidgetType>('impressions'));
+	const widget = useAppSelector(selectWidget<ImressionsWidgetType>('impressions'));
 
 	if (!widget) {
 		return null;

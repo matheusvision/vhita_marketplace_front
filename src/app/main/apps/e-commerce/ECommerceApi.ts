@@ -2,7 +2,7 @@ import { apiService as api } from 'app/store/apiService';
 import { createSelector } from '@reduxjs/toolkit';
 import FuseUtils from '@fuse/utils';
 import { PartialDeep } from 'type-fest';
-import { selectSearchText } from './store/searchTextSlice';
+import { selectSearchText } from './eCommerceAppSlice';
 import ProductModel from './product/models/ProductModel';
 
 export const addTagTypes = ['eCommerce_products', 'eCommerce_product', 'eCommerce_orders', 'eCommerce_order'] as const;

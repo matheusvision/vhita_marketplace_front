@@ -1,4 +1,14 @@
+import { createSelector, WithSlice } from '@reduxjs/toolkit';
 import { apiService as api } from 'app/store/apiService';
+import BudgetWidgetType from '../finance/widgets/types/BudgetWidgetType';
+import BudgetDistributionDataType from './tabs/budget/widgets/types/BudgetDistributionDataType';
+import ExpensesDataType from './tabs/budget/widgets/types/ExpensesDataType';
+import BudgetDetailsDataType from './tabs/budget/widgets/types/BudgetDetailsDataType';
+import WidgetDataType from './tabs/home/widgets/types/WidgetDataType';
+import GithubIssuesDataType from './tabs/home/widgets/types/GithubIssuesDataType';
+import ScheduleDataType from './tabs/home/widgets/types/ScheduleDataType';
+import TaskDistributionDataType from './tabs/home/widgets/types/TaskDistributionDataType';
+import TeamMemberType from './tabs/team/widgets/types/TeamMemberType';
 
 export const addTagTypes = ['project_dashboard_widgets', 'project_dashboard_projects'] as const;
 const ProjectDashboardApi = api
@@ -26,7 +36,18 @@ const ProjectDashboardApi = api
 	});
 export default ProjectDashboardApi;
 
-export type GetProjectDashboardWidgetsApiResponse = /** status 200 OK */ object;
+export type GetProjectDashboardWidgetsApiResponse = {
+	[key: string]:
+		| BudgetWidgetType
+		| BudgetDetailsDataType
+		| BudgetDistributionDataType
+		| ExpensesDataType
+		| WidgetDataType
+		| GithubIssuesDataType
+		| ScheduleDataType
+		| TaskDistributionDataType
+		| TeamMemberType[];
+};
 export type GetProjectDashboardWidgetsApiArg = void;
 
 export type GetProjectDashboardProjectsApiResponse = /** status 200 OK */ ProjectType[];
@@ -43,9 +64,19 @@ export type ProjectDashboardApiType = {
 	[ProjectDashboardApi.reducerPath]: ReturnType<typeof ProjectDashboardApi.reducer>;
 };
 
-export const selectWidget =
-	<T>(id: string) =>
-	(state: ProjectDashboardApiType) => {
-		const widgets = ProjectDashboardApi.endpoints.getProjectDashboardWidgets.select()(state)?.data;
+/**
+ * Lazy load
+ * */
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof ProjectDashboardApi> {}
+}
+
+export const selectProjectDashboardWidgets = createSelector(
+	ProjectDashboardApi.endpoints.getProjectDashboardWidgets.select(),
+	(results) => results.data
+);
+
+export const selectWidget = <T>(id: string) =>
+	createSelector(selectProjectDashboardWidgets, (widgets) => {
 		return widgets?.[id] as T;
-	};
+	});

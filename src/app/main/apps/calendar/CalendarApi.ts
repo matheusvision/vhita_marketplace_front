@@ -1,8 +1,8 @@
 import { apiService as api } from 'app/store/apiService';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import { createSelector } from '@reduxjs/toolkit';
 import { Dictionary } from '@fullcalendar/core/internal';
-import { selectSelectedLabels, setSelectedLabels } from './store/selectedLabelsSlice';
+import { selectSelectedLabels, setSelectedLabels } from './calendarAppSlice';
 
 export const addTagTypes = ['calendar_events', 'calendar_event', 'calendar_labels', 'calendar_label'] as const;
 

@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
-import { useDispatch } from 'react-redux';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { toggleChatPanel } from './store/stateSlice';
+import { useAppDispatch } from 'app/store/hooks';
+import { toggleChatPanel } from './messengerPanelSlice';
 
 type ChatPanelToggleButtonProps = {
 	children?: React.ReactNode;
@@ -12,7 +12,7 @@ type ChatPanelToggleButtonProps = {
  */
 function MessengerPanelToggleButton(props: ChatPanelToggleButtonProps) {
 	const { children } = props;
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	return (
 		<IconButton

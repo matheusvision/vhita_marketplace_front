@@ -3,14 +3,16 @@ import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import FuseThemeSelector from '@fuse/core/FuseThemeSelector/FuseThemeSelector';
-import { changeFuseTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { changeFuseTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { styled, useTheme } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import { forwardRef } from 'react';
 import Slide from '@mui/material/Slide';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch } from 'app/store/hooks';
 import { SwipeableHandlers } from 'react-swipeable';
 import themeOptions from 'app/configs/themeOptions';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import { FuseThemeOption } from '@fuse/core/FuseThemeSelector/ThemePreview';
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
 	'& .MuiDialog-paper': {
@@ -64,6 +66,12 @@ function ThemesPanel(props: ThemesPanelProps) {
 
 	const dispatch = useAppDispatch();
 
+	function handleThemeSelect(_theme: FuseThemeOption) {
+		dispatch(changeFuseTheme(_theme?.section)).then(() => {
+			dispatch(showMessage({ message: 'User theme selection saved with the api' }));
+		});
+	}
+
 	return (
 		<StyledDialog
 			TransitionComponent={Transition}
@@ -103,9 +111,7 @@ function ThemesPanel(props: ThemesPanelProps) {
 
 				<FuseThemeSelector
 					options={themeOptions}
-					onSelect={(_theme) => {
-						dispatch(changeFuseTheme(_theme.section));
-					}}
+					onSelect={handleThemeSelect}
 				/>
 			</FuseScrollbars>
 		</StyledDialog>

@@ -10,8 +10,8 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/system/Box';
 import format from 'date-fns/format';
 import _ from '@lodash';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
-import { useDispatch } from 'react-redux';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import { useAppDispatch } from 'app/store/hooks';
 import { useGetContactsItemQuery, useGetContactsCountriesQuery, useGetContactsTagsQuery } from '../ContactsApi';
 
 /**
@@ -29,7 +29,7 @@ function ContactView() {
 	} = useGetContactsItemQuery(contactId, {
 		skip: !contactId
 	});
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	function getCountryByIso(iso: string) {

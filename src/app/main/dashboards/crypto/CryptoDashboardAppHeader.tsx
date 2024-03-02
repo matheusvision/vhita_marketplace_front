@@ -5,10 +5,10 @@ import IconButton from '@mui/material/IconButton';
 import clsx from 'clsx';
 import Divider from '@mui/material/Divider';
 import { MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import ValueSectionSmall from './widgets/ValueSectionSmall';
 import BTCWidgetType from './types/BTCWidgetType';
-import { selectWidget } from './CryptoDashboardApi';
+import { useGetCryptoDashboardWidgetsQuery } from './CryptoDashboardApi';
 
 type CryptoDashboardAppHeaderProps = {
 	onToggleLeftSidebar: (ev: MouseEvent) => void;
@@ -19,7 +19,13 @@ type CryptoDashboardAppHeaderProps = {
  */
 function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 	const { onToggleLeftSidebar } = props;
-	const btc = useSelector(selectWidget<BTCWidgetType>('btc'));
+	const { data: widgets, isLoading } = useGetCryptoDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const btc = widgets?.btc as BTCWidgetType;
 
 	if (!btc) {
 		return null;

@@ -1,8 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { RootStateType } from 'app/store/types';
-import { appSelector } from 'app/store/store';
-
-type AppRootStateType = RootStateType<navbarSliceType>;
+import { createSlice, type WithSlice } from '@reduxjs/toolkit';
+import { rootReducer } from 'app/store/lazyLoadedSlices';
 
 /**
  * The type definition for the initial state of the navbar slice.
@@ -56,8 +53,20 @@ export const navbarSlice = createSlice({
 		navbarToggle: (state) => {
 			state.open = !state.open;
 		}
+	},
+	selectors: {
+		selectFuseNavbar: (navbar) => navbar
 	}
 });
+
+/**
+ * Lazy loading
+ */
+rootReducer.inject(navbarSlice);
+const injectedSlice = navbarSlice.injectInto(rootReducer);
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof navbarSlice> {}
+}
 
 export const {
 	navbarToggleFolded,
@@ -71,7 +80,7 @@ export const {
 	navbarToggleMobile
 } = navbarSlice.actions;
 
-export const selectFuseNavbar = appSelector(({ navbar }: AppRootStateType) => navbar);
+export const { selectFuseNavbar } = injectedSlice.selectors;
 
 export type navbarSliceType = typeof navbarSlice;
 

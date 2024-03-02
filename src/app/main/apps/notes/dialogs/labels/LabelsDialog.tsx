@@ -1,11 +1,10 @@
 import Dialog from '@mui/material/Dialog';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import { useSelector } from 'react-redux';
 import NewLabelForm from './NewLabelForm';
 import LabelItemForm from './LabelItemForm';
-import { closeLabelsDialog, selectLabelsDialogOpen } from '../../store/dialogsSlice';
+import { closeLabelsDialog, selectLabelsDialogOpen } from '../../notesAppSlice';
 import { useGetNotesLabelsQuery } from '../../NotesApi';
 
 /**
@@ -13,7 +12,7 @@ import { useGetNotesLabelsQuery } from '../../NotesApi';
  */
 function LabelsDialog() {
 	const dispatch = useAppDispatch();
-	const labelsDialogOpen = useSelector(selectLabelsDialogOpen);
+	const labelsDialogOpen = useAppSelector(selectLabelsDialogOpen);
 	const { data: labels } = useGetNotesLabelsQuery();
 
 	return (

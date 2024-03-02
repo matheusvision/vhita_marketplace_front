@@ -1,9 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'app/store/types';
-import { appSelector } from 'app/store/store';
+import { createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
+import { rootReducer } from 'app/store/lazyLoadedSlices';
 import { ReactElement } from 'react';
-
-type AppRootStateType = RootStateType<messageSliceType>;
 
 /**
  * The type definition for the initial state of the message slice.
@@ -54,14 +51,25 @@ export const fuseMessageSlice = createSlice({
 		hideMessage(state) {
 			state.state = false;
 		}
+	},
+	selectors: {
+		selectFuseMessageState: (fuseMessage) => fuseMessage.state,
+		selectFuseMessageOptions: (fuseMessage) => fuseMessage.options
 	}
 });
 
+/**
+ * Lazy load
+ * */
+rootReducer.inject(fuseMessageSlice);
+const injectedSlice = fuseMessageSlice.injectInto(rootReducer);
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof fuseMessageSlice> {}
+}
+
 export const { hideMessage, showMessage } = fuseMessageSlice.actions;
 
-export const selectFuseMessageState = appSelector((state: AppRootStateType) => state.fuseMessage.state);
-
-export const selectFuseMessageOptions = appSelector((state: AppRootStateType) => state.fuseMessage.options);
+export const { selectFuseMessageOptions, selectFuseMessageState } = injectedSlice.selectors;
 
 export type messageSliceType = typeof fuseMessageSlice;
 

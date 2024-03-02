@@ -3,12 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import withReducer from 'app/store/withReducer';
 import ContactsHeader from './ContactsHeader';
 import ContactsList from './ContactsList';
 import { useGetContactsListQuery, useGetContactsCountriesQuery, useGetContactsTagsQuery } from './ContactsApi';
 import ContactsSidebarContent from './ContactsSidebarContent';
-import reducer from './store';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -47,4 +45,4 @@ function ContactsApp() {
 	);
 }
 
-export default withReducer('contactsApp', reducer)(ContactsApp);
+export default ContactsApp;

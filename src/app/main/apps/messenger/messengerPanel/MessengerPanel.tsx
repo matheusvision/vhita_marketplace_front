@@ -9,15 +9,11 @@ import keycode from 'keycode';
 import { useCallback, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch } from 'app/store/store';
-import withReducer from 'app/store/withReducer';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import _ from '@lodash';
-import { useSelector } from 'react-redux';
 import Chat from './Chat';
 import ContactList from './ContactList';
-import { selectSelectedContactId } from './store/selectedContactIdSlice';
-import { closeChatPanel, openChatPanel, selectChatPanelState } from './store/stateSlice';
-import reducer from './store';
+import { selectSelectedContactId, selectChatPanelOpen, closeChatPanel, openChatPanel } from './messengerPanelSlice';
 import { useGetMessengerContactsQuery } from '../MessengerApi';
 
 const Root = styled('div')<{ opened: number }>(({ theme, opened }) => ({
@@ -109,17 +105,17 @@ function MessengerPanel() {
 	const theme = useTheme();
 	const ref = useRef<HTMLDivElement>(null);
 
-	const selectedContactId = useSelector(selectSelectedContactId);
+	const selectedContactId = useAppSelector(selectSelectedContactId);
 	const { data: contacts } = useGetMessengerContactsQuery();
 	const selectedContact = _.find(contacts, { id: selectedContactId });
-	const state = useSelector(selectChatPanelState);
+	const open = useAppSelector(selectChatPanelOpen);
 
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
-			return state && theme.direction === 'rtl' && dispatch(closeChatPanel());
+			return open && theme.direction === 'rtl' && dispatch(closeChatPanel());
 		},
 		onSwipedRight: () => {
-			return state && theme.direction === 'ltr' && dispatch(closeChatPanel());
+			return open && theme.direction === 'ltr' && dispatch(closeChatPanel());
 		}
 	});
 
@@ -139,12 +135,12 @@ function MessengerPanel() {
 	}, [dispatch, handleDocumentKeyDown]);
 
 	useEffect(() => {
-		if (state) {
+		if (open) {
 			document.addEventListener('keydown', handleDocumentKeyDown);
 		} else {
 			document.removeEventListener('keydown', handleDocumentKeyDown);
 		}
-	}, [handleDocumentKeyDown, state]);
+	}, [handleDocumentKeyDown, open]);
 
 	/**
 	 * Click Away Listener
@@ -156,22 +152,22 @@ function MessengerPanel() {
 			}
 		}
 
-		if (state) {
+		if (open) {
 			document.addEventListener('click', handleDocumentClick, true);
 		}
 
 		return () => {
-			if (!state) {
+			if (!open) {
 				return;
 			}
 
 			document.removeEventListener('click', handleDocumentClick, true);
 		};
-	}, [state, dispatch]);
+	}, [open, dispatch]);
 
 	return (
 		<Root
-			opened={state ? 1 : 0}
+			opened={open ? 1 : 0}
 			{...handlers}
 		>
 			<div
@@ -183,7 +179,7 @@ function MessengerPanel() {
 					className="shadow-md"
 				>
 					<Toolbar className="px-4">
-						{(!state || selectedContactId === '') && (
+						{(!open || selectedContactId === '') && (
 							<div className="flex flex-1 items-center px-8 space-x-12">
 								<IconButton
 									className=""
@@ -203,7 +199,7 @@ function MessengerPanel() {
 								)}
 							</div>
 						)}
-						{state && selectedContact && (
+						{open && selectedContact && (
 							<div className="flex flex-1 items-center px-12">
 								<Avatar src={selectedContact.avatar} />
 								<Typography
@@ -228,7 +224,7 @@ function MessengerPanel() {
 				<Paper className="flex flex-1 flex-row min-h-px shadow-0">
 					<ContactList className="flex shrink-0" />
 
-					{state && selectedContact ? (
+					{open && selectedContact ? (
 						<Chat className="flex flex-1 z-10" />
 					) : (
 						<div className="flex flex-col flex-1 items-center justify-center p-24">
@@ -252,4 +248,4 @@ function MessengerPanel() {
 	);
 }
 
-export default withReducer('chatPanel', reducer)(MessengerPanel);
+export default MessengerPanel;

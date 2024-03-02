@@ -3,10 +3,9 @@ import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import clsx from 'clsx';
 import { memo, useEffect, useState } from 'react';
-import { useAppDispatch } from 'app/store/store';
-import { useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseNavigation from '@fuse/core/FuseNavigation';
-import { selectContrastMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectContrastMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { useLocation } from 'react-router-dom';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
@@ -14,7 +13,7 @@ import { Location } from 'history';
 import { Theme } from '@mui/system';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import { selectNavigation } from 'app/theme-layouts/shared-components/navigation/store/navigationSlice';
-import { navbarCloseMobile } from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
+import { navbarCloseMobile } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
 
 const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
@@ -56,12 +55,12 @@ type NavbarStyle3ContentProps = { className?: string; dense?: number };
 function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 	const { className = '', dense = false } = props;
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
-	const navigation = useSelector(selectNavigation);
+	const navigation = useAppSelector(selectNavigation);
 	const [selectedNavigation, setSelectedNavigation] = useState<FuseNavItemType[]>([]);
 	const [panelOpen, setPanelOpen] = useState(false);
 	const theme = useTheme();
 	const dispatch = useAppDispatch();
-	const contrastTheme = useSelector(selectContrastMainTheme(theme.palette.primary.main));
+	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.main));
 	const location = useLocation();
 
 	useEffect(() => {

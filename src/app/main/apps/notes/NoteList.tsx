@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
 import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import NoteListItem from './NoteListItem';
 import { NotesNote, RouteParams, useGetNotesListQuery } from './NotesApi';
-import { selectSearchText } from './store/searchTextSlice';
+import { selectSearchText } from './notesAppSlice';
 
 /**
  * The note list.
@@ -16,7 +16,7 @@ function NoteList() {
 	const routeParams = useParams<RouteParams>();
 	const { data: notes } = useGetNotesListQuery(routeParams);
 
-	const searchText = useSelector(selectSearchText);
+	const searchText = useAppSelector(selectSearchText);
 
 	const [filteredData, setFilteredData] = useState<NotesNote[]>([]);
 

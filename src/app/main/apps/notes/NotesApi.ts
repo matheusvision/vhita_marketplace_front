@@ -1,5 +1,5 @@
 import { apiService as api } from 'app/store/apiService';
-import { AppRootStateType } from './store';
+import { createSelector } from '@reduxjs/toolkit';
 
 export const addTagTypes = [
 	'notes_list',
@@ -204,5 +204,5 @@ export type NotesApiType = {
 	[NotesApi.reducerPath]: ReturnType<typeof NotesApi.reducer>;
 };
 
-export const selectNoteList = (routeParams: RouteParams) => (state: AppRootStateType) =>
-	NotesApi.endpoints.getNotesList.select(routeParams)(state)?.data ?? [];
+export const selectNoteList = (routeParams: RouteParams) =>
+	createSelector(NotesApi.endpoints.getNotesList.select(routeParams), (list) => list || []);

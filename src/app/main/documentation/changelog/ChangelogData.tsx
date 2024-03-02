@@ -18,6 +18,14 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '10.2.0',
+		date: '2024-02-02',
+		newChanges: ['@reduxjs/toolkit updated to v2.2.1'],
+		breakingChanges: [
+			'Redux slices and RTK-Query have been enhanced by leveraging the latest version of the Redux Toolkit for optimized lazy loading.'
+		]
+	},
+	{
 		version: '10.1.0',
 		date: '2024-02-14',
 		newChanges: ['Js versions added.']

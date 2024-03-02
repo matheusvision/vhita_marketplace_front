@@ -16,7 +16,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Many } from 'lodash';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import ProductsTableHead from './ProductsTableHead';
 import { EcommerceProduct, selectFilteredProducts, useGetECommerceProductsQuery } from '../ECommerceApi';
 
@@ -31,7 +31,7 @@ function ProductsTable(props: ProductsTableProps) {
 	const { navigate } = props;
 
 	const { data, isLoading } = useGetECommerceProductsQuery();
-	const products = useSelector(selectFilteredProducts(data));
+	const products = useAppSelector(selectFilteredProducts(data));
 
 	const [selected, setSelected] = useState<EcommerceProduct['id'][]>([]);
 

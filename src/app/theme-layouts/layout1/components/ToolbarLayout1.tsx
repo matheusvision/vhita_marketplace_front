@@ -4,12 +4,12 @@ import Hidden from '@mui/material/Hidden';
 import Toolbar from '@mui/material/Toolbar';
 import clsx from 'clsx';
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import NotificationPanelToggleButton from 'src/app/main/apps/notifications/NotificationPanelToggleButton';
 import NavbarToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarToggleButton';
-import { selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
+import { selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
+import { useAppSelector } from 'app/store/hooks';
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
@@ -27,9 +27,9 @@ type ToolbarLayout1Props = {
  */
 function ToolbarLayout1(props: ToolbarLayout1Props) {
 	const { className } = props;
-	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
-	const navbar = useSelector(selectFuseNavbar);
-	const toolbarTheme = useSelector(selectToolbarTheme);
+	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
+	const navbar = useAppSelector(selectFuseNavbar);
+	const toolbarTheme = useAppSelector(selectToolbarTheme);
 
 	return (
 		<ThemeProvider theme={toolbarTheme}>

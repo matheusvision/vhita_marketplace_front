@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import { selectMailsTitle } from '../MailboxApi';
 
 /**
@@ -8,7 +8,7 @@ import { selectMailsTitle } from '../MailboxApi';
  */
 function MailListTitle() {
 	const routeParams = useParams();
-	const title = useSelector(selectMailsTitle(routeParams));
+	const title = useAppSelector(selectMailsTitle(routeParams));
 
 	return <Typography className="hidden sm:flex font-semibold uppercase mx-8">{title}</Typography>;
 }

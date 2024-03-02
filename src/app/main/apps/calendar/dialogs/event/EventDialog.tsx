@@ -10,11 +10,10 @@ import { MouseEvent, useCallback, useEffect } from 'react';
 import _ from '@lodash';
 import { Popover } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useSelector } from 'react-redux';
-import { closeEditEventDialog, closeNewEventDialog, selectEventDialog } from '../../store/eventDialogSlice';
+import { closeEditEventDialog, closeNewEventDialog, selectEventDialog } from '../../calendarAppSlice';
 import EventLabelSelect, { EventLabelSelectProps } from '../../EventLabelSelect';
 import EventModel from '../../models/EventModel';
 import {
@@ -49,7 +48,7 @@ const schema = z.object({
  */
 function EventDialog() {
 	const dispatch = useAppDispatch();
-	const eventDialog = useSelector(selectEventDialog);
+	const eventDialog = useAppSelector(selectEventDialog);
 	const { data: labels } = useGetCalendarLabelsQuery();
 	const firstLabelId = labels ? labels[0]?.id : null;
 	const [createEvent] = useCreateCalendarEventMutation();

@@ -7,9 +7,9 @@ import { memo, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import Box from '@mui/material/Box';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import GithubIssuesDataType from './types/GithubIssuesDataType';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
 /**
  * The GithubIssuesWidget widget.
@@ -19,7 +19,13 @@ function GithubIssuesWidget() {
 	const [awaitRender, setAwaitRender] = useState(true);
 	const [tabValue, setTabValue] = useState(0);
 
-	const widget = useSelector(selectWidget<GithubIssuesDataType>('githubIssues'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets.githubIssues as GithubIssuesDataType;
 
 	if (!widget) {
 		return null;

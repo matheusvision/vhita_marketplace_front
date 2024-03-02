@@ -10,15 +10,21 @@ import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import ScheduleDataType from './types/ScheduleDataType';
 
 /**
  * The ScheduleWidget widget.
  */
 function ScheduleWidget() {
-	const widget = useSelector(selectWidget<ScheduleDataType>('schedule'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	const widget = widgets.schedule as ScheduleDataType;
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
 
 	if (!widget) {
 		return null;

@@ -223,7 +223,7 @@ function JwtAuthDoc() {
 					function AuthProvider({ children }) {
 						const [waitAuthCheck, setWaitAuthCheck] = useState(true);
 						const [isAuthenticated, setIsAuthenticated] = useState(undefined);
-						const dispatch = useDispatch();
+						const dispatch = useAppDispatch();
 
 						useEffect(() => {
 							jwtService.onAutoLogin(success, pass);
@@ -418,7 +418,7 @@ function JwtAuthDoc() {
 			function AuthProvider({ children }) {
 				const [waitAuthCheck, setWaitAuthCheck] = useState(true);
 				const [isAuthenticated, setIsAuthenticated] = useState(undefined);
-				const dispatch = useDispatch();
+				const dispatch = useAppDispatch();
 
 				useEffect(() => {
 					const idToken = localStorage.getItem('idToken');

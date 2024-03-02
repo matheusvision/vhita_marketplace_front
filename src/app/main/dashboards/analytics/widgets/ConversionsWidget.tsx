@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import ConversionsWidgetType from './types/ConversionsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -14,7 +14,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function ConversionsWidget() {
 	const theme = useTheme();
-	const widget = useSelector(selectWidget<ConversionsWidgetType>('conversions'));
+	const widget = useAppSelector(selectWidget<ConversionsWidgetType>('conversions'));
 
 	if (!widget) {
 		return null;

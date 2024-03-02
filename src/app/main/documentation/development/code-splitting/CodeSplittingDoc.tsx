@@ -1,5 +1,4 @@
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
 
 /**
  * Code Splitting Doc
@@ -28,36 +27,44 @@ function CodeSplittingDoc() {
 				className="text-20 mt-20 mb-10 font-700"
 				variant="h5"
 			>
-				Route-based code splitting
+				Comprehensive Guide
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				We utilize the <b>React.lazy</b> function within our <b>HOCs</b> to dynamically import both the
-				component and its associated lazy-loaded reducer.
+				For comprehensive guidance, please refer to our documentation on usage guidelines. Discover the
+				intricacies of lazy-loaded slices by exploring the Redux-Toolkit documentation available at{' '}
+				<a
+					href="https://redux-toolkit.js.org/api/combineSlices#withlazyloadedslices"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Redux-Toolkit Lazy Loaded Slices
+				</a>
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-24 font-700"
-				variant="h5"
-			>
-				Check out the usages:
-			</Typography>
-
-			<Typography
-				className="mb-16 space-y-8"
+				className="mb-16"
 				component="p"
 			>
-				<li>
-					<Link to="/documentation/development/code-splitting/with-reducers">
-						Code Splitting with Reducers (default)
-					</Link>
-				</li>
-				<li>
-					<Link to="/documentation/development/code-splitting/with-slices">Code Splitting with Slices</Link>
-				</li>
+				Additionally, delve into the specifics of code splitting for RTK-Query at{' '}
+				<a
+					href="https://redux-toolkit.js.org/rtk-query/usage/code-splitting"
+					target="_blank"
+					rel="noreferrer"
+				>
+					RTK-Query Code Splitting
+				</a>
+			</Typography>
+
+			<Typography
+				className="mb-16"
+				component="p"
+			>
+				In all Fuse React applications, we employ lazy-loaded slices and RTK-Query to enhance performance and
+				efficiency.
 			</Typography>
 		</>
 	);

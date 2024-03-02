@@ -7,15 +7,21 @@ import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import TaskDistributionDataType from './types/TaskDistributionDataType';
 
 /**
  * The TaskDistributionWidget widget.
  */
 function TaskDistributionWidget() {
-	const widget = useSelector(selectWidget<TaskDistributionDataType>('taskDistribution'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	const widget = widgets.taskDistribution as TaskDistributionDataType;
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
 
 	if (!widget) {
 		return null;

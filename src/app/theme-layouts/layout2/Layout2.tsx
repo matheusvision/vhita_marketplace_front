@@ -5,10 +5,10 @@ import FuseSuspense from '@fuse/core/FuseSuspense';
 import AppContext from 'app/AppContext';
 import clsx from 'clsx';
 import { ReactNode, memo, useContext, Suspense } from 'react';
-import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
-import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Layout2ConfigDefaultsType } from 'app/theme-layouts/layout2/Layout2Config';
+import { useAppSelector } from 'app/store/hooks';
 import FooterLayout2 from './components/FooterLayout2';
 import LeftSideLayout2 from './components/LeftSideLayout2';
 import NavbarWrapperLayout2 from './components/NavbarWrapperLayout2';
@@ -42,7 +42,7 @@ type Layout2Props = {
 function Layout2(props: Layout2Props) {
 	const { children } = props;
 
-	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout2ConfigDefaultsType;
+	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout2ConfigDefaultsType;
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 

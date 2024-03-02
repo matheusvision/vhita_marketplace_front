@@ -1,8 +1,8 @@
 import { darken, styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { useSelector } from 'react-redux';
 import { selectUser } from 'src/app/auth/user/store/userSlice';
+import { useAppSelector } from 'app/store/hooks';
 
 const Root = styled('div')(({ theme }) => ({
 	'& .username, & .email': {
@@ -29,7 +29,7 @@ const Root = styled('div')(({ theme }) => ({
  * The user navbar header.
  */
 function UserNavbarHeader() {
-	const user = useSelector(selectUser);
+	const user = useAppSelector(selectUser);
 
 	return (
 		<Root className="user relative flex flex-col items-center justify-center p-16 pb-14 shadow-0">

@@ -5,17 +5,14 @@ import {
 	generateSettings,
 	selectFuseCurrentSettings,
 	selectFuseDefaultSettings,
-	setSettings,
-	fuseSettingsSlice
-} from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+	setSettings
+} from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 import { PartialDeep } from 'type-fest';
-import { useSelector } from 'react-redux';
-import withSlices from 'app/store/withSlices';
 import FuseLoading from '../FuseLoading';
 
 export type FuseRouteObjectType = RouteObject & {
@@ -40,8 +37,8 @@ type FuseLayoutProps = {
 function FuseLayout(props: FuseLayoutProps) {
 	const { layouts, children } = props;
 	const dispatch = useAppDispatch();
-	const settings = useSelector(selectFuseCurrentSettings);
-	const defaultSettings = useSelector(selectFuseDefaultSettings);
+	const settings = useAppSelector(selectFuseCurrentSettings);
+	const defaultSettings = useAppSelector(selectFuseDefaultSettings);
 
 	const layoutStyle = settings.layout.style;
 
@@ -119,4 +116,4 @@ function FuseLayout(props: FuseLayoutProps) {
 	}, [layouts, layoutStyle, children, currentSettings, settings]);
 }
 
-export default withSlices<FuseLayoutProps>([fuseSettingsSlice])(FuseLayout);
+export default FuseLayout;

@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { selectIsUserGuest, selectUserShortcuts, setUserShortcuts } from 'src/app/auth/user/store/userSlice';
 import { usePrevious } from '@fuse/hooks';
@@ -20,10 +19,10 @@ type NavigationShortcutsProps = {
 function NavigationShortcuts(props: NavigationShortcutsProps) {
 	const { variant, className } = props;
 	const dispatch = useAppDispatch();
-	const navigation = useSelector(selectFlatNavigation);
+	const navigation = useAppSelector(selectFlatNavigation);
 
-	const userShortcuts = useSelector(selectUserShortcuts) || [];
-	const isUserGuest = useSelector(selectIsUserGuest);
+	const userShortcuts = useAppSelector(selectUserShortcuts) || [];
+	const isUserGuest = useAppSelector(selectIsUserGuest);
 	const prevUserShortcuts = usePrevious(userShortcuts);
 
 	const { updateUser: updateUserService } = useAuth();

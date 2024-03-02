@@ -1,4 +1,8 @@
 import { apiService as api } from 'app/store/apiService';
+import { WithSlice } from '@reduxjs/toolkit';
+import BTCWidgetType from './types/BTCWidgetType';
+import WalletsType from './types/WalletsType';
+import WatchlistType from './types/WatchlistType';
 
 export const addTagTypes = ['crypto_dashboard_widgets'] as const;
 
@@ -20,18 +24,11 @@ const CryptoDashboardApi = api
 	});
 export default CryptoDashboardApi;
 
-export type GetCryptoDashboardWidgetsApiResponse = /** status 200 OK */ object;
+export type GetCryptoDashboardWidgetsApiResponse = { [key: string]: BTCWidgetType | WalletsType | WatchlistType };
 export type GetCryptoDashboardWidgetsApiArg = void;
 
 export const { useGetCryptoDashboardWidgetsQuery } = CryptoDashboardApi;
 
-export type CryptoDashboardApiType = {
-	[CryptoDashboardApi.reducerPath]: ReturnType<typeof CryptoDashboardApi.reducer>;
-};
-
-export const selectWidget =
-	<T>(id: string) =>
-	(state: CryptoDashboardApiType) => {
-		const widgets = CryptoDashboardApi.endpoints.getCryptoDashboardWidgets.select()(state)?.data;
-		return widgets?.[id] as T;
-	};
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof CryptoDashboardApi> {}
+}

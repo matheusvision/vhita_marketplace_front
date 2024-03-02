@@ -3,9 +3,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import clsx from 'clsx';
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectFooterTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFooterTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import DemoLayoutFooterContent from 'app/theme-layouts/shared-components/DemoLayoutFooterContent';
+import { useAppSelector } from 'app/store/hooks';
 
 type FooterLayout3Props = {
 	className?: string;
@@ -17,7 +17,7 @@ type FooterLayout3Props = {
 function FooterLayout3(props: FooterLayout3Props) {
 	const { className = '' } = props;
 
-	const footerTheme = useSelector(selectFooterTheme);
+	const footerTheme = useAppSelector(selectFooterTheme);
 
 	return (
 		<ThemeProvider theme={footerTheme}>

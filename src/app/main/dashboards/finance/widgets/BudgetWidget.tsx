@@ -5,15 +5,21 @@ import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import LinearProgress from '@mui/material/LinearProgress';
 import IconButton from '@mui/material/IconButton';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import BudgetWidgetType from './types/BudgetWidgetType';
-import { selectWidget } from '../FinanceDashboardApi';
+import { useGetFinanceDashboardWidgetsQuery } from '../FinanceDashboardApi';
 
 /**
  * The BudgetWidget widget.
  */
 function BudgetWidget() {
-	const widget = useSelector(selectWidget<BudgetWidgetType>('budget'));
+	const { data: widgets, isLoading } = useGetFinanceDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets?.budget as BudgetWidgetType;
 
 	if (!widget) {
 		return null;

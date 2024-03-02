@@ -91,22 +91,8 @@ const DocumentationNavigation: FuseNavItemType = {
 				{
 					id: 'fuse-react-code-splitting-doc',
 					title: 'Code Splitting',
-					type: 'collapse',
-					url: '/documentation/development/code-splitting',
-					children: [
-						{
-							id: 'fuse-react-code-splitting-with-reducers-doc',
-							title: 'With Reducers (default)',
-							type: 'item',
-							url: '/documentation/development/code-splitting/with-reducers'
-						},
-						{
-							id: 'fuse-react-code-splitting-with-slices-doc',
-							title: 'With Slices',
-							type: 'item',
-							url: '/documentation/development/code-splitting/with-slices'
-						}
-					]
+					type: 'item',
+					url: '/documentation/development/code-splitting'
 				},
 				{
 					id: 'fuse-react-multi-language-doc',

@@ -3,10 +3,8 @@ import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import withReducer from 'app/store/withReducer';
 import MailboxAppSidebarContent from './MailboxAppSidebarContent';
 import Mails from './mails/Mails';
-import reducer from './store';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-rightSidebar': {
@@ -66,4 +64,4 @@ function MailboxApp() {
 	);
 }
 
-export default withReducer('mailboxApp', reducer)(MailboxApp);
+export default MailboxApp;

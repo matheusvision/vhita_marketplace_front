@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch } from 'app/store/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
@@ -15,7 +15,7 @@ import Checkbox from '@mui/material/Checkbox/Checkbox';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import IconButton from '@mui/material/IconButton';
 import { useDeepCompareEffect } from '@fuse/hooks';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import TaskPrioritySelector from './TaskPrioritySelector';

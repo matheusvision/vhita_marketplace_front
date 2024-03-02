@@ -1,111 +1,32 @@
-import i18n from 'app/store/i18nSlice';
-import apiService from 'app/store/apiService';
-import {
-	ReducersMapObject,
-	configureStore,
-	Store,
-	combineSlices,
-	buildCreateSlice,
-	asyncThunkCreator,
-	Middleware
-} from '@reduxjs/toolkit';
-import { createDynamicMiddleware } from '@reduxjs/toolkit/react';
-import { AppDispatchType } from 'app/store/types';
-import { useDispatch } from 'react-redux';
+import { Action, Middleware, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { createLogger } from 'redux-logger';
+import apiService from 'app/store/apiService';
+import { rootReducer } from './lazyLoadedSlices';
+import { dynamicMiddleware } from './middleware';
 
-/**
- * The dynamic middleware instance.
- */
-const dynamicInstance = createDynamicMiddleware();
-
-export const { middleware: dynamicMiddleware } = dynamicInstance;
-
-export const addAppMiddleware = dynamicInstance.addMiddleware.withTypes<Config>();
+// Infer the `RootState` type from the root reducer
+export type RootState = ReturnType<typeof rootReducer>;
 
 const middlewares: Middleware[] = [apiService.middleware, dynamicMiddleware];
 
-if (process.env.NODE_ENV === 'development') {
-	const logger = createLogger({ collapsed: (getState, action, logEntry) => (logEntry ? !logEntry.error : true) });
-	middlewares.push(logger);
-}
-
-/**
- * The type definition for the lazy loaded slices.
- */
-export interface LazyLoadedSlices {}
-
-/**
- * The static reducers.
- */
-const staticReducers: ReducersMapObject = {
-	i18n,
-	[apiService.reducerPath]: apiService.reducer
-};
-
-/**
- * The root reducer.
- */
-export const rootReducer = combineSlices(staticReducers).withLazyLoadedSlices<LazyLoadedSlices>();
-
-/**
- * The type definition for the root state.
- */
-export type RootState = ReturnType<typeof rootReducer>;
-
-/**
- * Configures the app store.
- */
-export function configureAppStore(initialState?: RootState) {
+export const makeStore = (preloadedState?: Partial<RootState>) => {
 	const store = configureStore({
 		reducer: rootReducer,
-		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares)
-	}) as Store<RootState>;
-
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+		preloadedState
+	});
+	// configure listeners using the provided defaults
+	// optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
 	setupListeners(store.dispatch);
-
 	return store;
-}
-
-/**
- * The type definition for the app store.
- */
-export type AppStore = typeof store;
-
-/**
- * The type definition for the app dispatch.
- */
-export type AppDispatch = AppStore['dispatch'];
-
-/**
- * Typed hook to get the dispatch function from the Redux store.
- */
-export const useAppDispatch: () => AppDispatchType = useDispatch;
-
-/**
- * Shortage for the root state selector.
- */
-export const appSelector = rootReducer.selector;
-
-/**
- * createAppSlice is a wrapper around createSlice that adds support for asyncThunkCreator.
- */
-export const createAppSlice = buildCreateSlice({
-	creators: { asyncThunk: asyncThunkCreator }
-});
-
-/**
- * The type definition for the config object passed to `withAppMiddleware`.
- */
-type Config = {
-	state: RootState;
-	dispatch: AppDispatch;
 };
 
-export const withAppMiddleware = dynamicInstance.withMiddleware.withTypes<Config>();
+export const store = makeStore();
 
-const store = configureAppStore();
+// Infer the type of `store`
+export type AppStore = typeof store;
+// Infer the `AppDispatch` type from the store itself
+export type AppDispatch = AppStore['dispatch'];
+export type AppThunk<ThunkReturnType = void> = ThunkAction<ThunkReturnType, RootState, unknown, Action>;
 
 export default store;

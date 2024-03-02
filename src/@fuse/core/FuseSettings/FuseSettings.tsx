@@ -12,14 +12,13 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectFuseCurrentSettings, setDefaultSettings } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFuseCurrentSettings, setDefaultSettings } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { selectUser } from 'src/app/auth/user/store/userSlice';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { Palette } from '@mui/material/styles/createPalette';
 import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
 import { PartialDeep } from 'type-fest';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
 
@@ -90,8 +89,8 @@ export type FuseSettingsConfigType = {
  */
 function FuseSettings() {
 	const dispatch = useAppDispatch();
-	const user = useSelector(selectUser);
-	const settings = useSelector(selectFuseCurrentSettings);
+	const user = useAppSelector(selectUser);
+	const settings = useAppSelector(selectFuseCurrentSettings);
 	const { reset, watch, control } = useForm({
 		mode: 'onChange',
 		defaultValues: settings

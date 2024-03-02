@@ -5,17 +5,16 @@ import MenuItem from '@mui/material/MenuItem';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeLanguage, LanguageType, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 
 /**
  * The language switcher.
  */
 function LanguageSwitcher() {
-	const currentLanguage = useSelector(selectCurrentLanguage);
-	const languages = useSelector(selectLanguages);
+	const currentLanguage = useAppSelector(selectCurrentLanguage);
+	const languages = useAppSelector(selectLanguages);
 	const [menu, setMenu] = useState<null | HTMLElement>(null);
 	const dispatch = useAppDispatch();
 

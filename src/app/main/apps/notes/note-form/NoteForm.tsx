@@ -17,7 +17,7 @@ import { useDebounce } from '@fuse/hooks';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import NoteFormList from './tasks/NoteFormList';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormReminder from './NoteFormReminder';
@@ -31,7 +31,7 @@ import {
 	useDeleteNotesItemMutation,
 	useUpdateNotesItemMutation
 } from '../NotesApi';
-import { selectDialogNote } from '../store/dialogsSlice';
+import { selectDialogNote } from '../notesAppSlice';
 
 /**
  * Form Validation Schema
@@ -96,7 +96,7 @@ function NoteForm(props: NoteFormProps) {
 	const [removeNote] = useDeleteNotesItemMutation();
 	const [createNote] = useCreateNotesItemMutation();
 
-	const note = useSelector(selectDialogNote(routeParams));
+	const note = useAppSelector(selectDialogNote(routeParams));
 
 	const { formState, handleSubmit, getValues, watch, reset, setValue, control } = useForm<NotesNote>({
 		mode: 'onChange',

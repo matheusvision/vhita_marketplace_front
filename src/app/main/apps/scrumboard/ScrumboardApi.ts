@@ -2,10 +2,10 @@ import { apiService as api } from 'app/store/apiService';
 import { DropResult } from 'react-beautiful-dnd';
 import { PartialDeep } from 'type-fest';
 import _ from '@lodash';
+import { createSelector } from '@reduxjs/toolkit';
 import BoardModel from './models/BoardModel';
-import { AppRootStateType } from './store';
 import CardModel from './models/CardModel';
-import reorder, { reorderQuoteMap } from './store/reorder';
+import reorder, { reorderQuoteMap } from './reorder';
 
 export const addTagTypes = [
 	'scrumboard_members',
@@ -515,20 +515,20 @@ export const {
 	useUpdateScrumboardBoardCardOrderMutation
 } = ScrumboardApi;
 
-export const selectListById = (boardId: string, listId: string) => (state: AppRootStateType) => {
-	const lists = ScrumboardApi.endpoints.getScrumboardBoardLists.select(boardId)(state)?.data ?? [];
+export const selectListById = (boardId: string, listId: string) =>
+	createSelector(
+		(ScrumboardApi.endpoints.getScrumboardBoardLists.select(boardId),
+		(lists) => _.find(lists, { id: listId }) as ScrumboardCheckListItem)
+	);
 
-	return _.find(lists, { id: listId });
-};
+export const selectMemberById = (id: string) =>
+	createSelector(
+		(ScrumboardApi.endpoints.getScrumboardMembers.select(),
+		(members) => _.find(members, { id }) as ScrumboardMember)
+	);
 
-export const selectMemberById = (id: string) => (state: AppRootStateType) => {
-	const members = ScrumboardApi.endpoints.getScrumboardMembers.select()(state)?.data ?? [];
-
-	return _.find(members, { id });
-};
-
-export const selectLabelById = (boardId: string, id: string) => (state: AppRootStateType) => {
-	const labels = ScrumboardApi.endpoints.getScrumboardBoardLabels.select(boardId)(state)?.data ?? [];
-
-	return _.find(labels, { id });
-};
+export const selectLabelById = (boardId: string, id: string) =>
+	createSelector(
+		(ScrumboardApi.endpoints.getScrumboardBoardLabels.select(boardId),
+		(labels) => _.find(labels, { id }) as ScrumboardLabel)
+	);

@@ -1,6 +1,6 @@
 import Tooltip from '@mui/material/Tooltip';
 import Chip from '@mui/material/Chip';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import { selectLabelById } from '../../ScrumboardApi';
 
 type BoardCardLabelProps = {
@@ -14,7 +14,7 @@ type BoardCardLabelProps = {
 function BoardCardLabel(props: BoardCardLabelProps) {
 	const { boardId, id } = props;
 
-	const label = useSelector(selectLabelById(boardId, id));
+	const label = useAppSelector(selectLabelById(boardId, id));
 
 	if (!label) {
 		return null;

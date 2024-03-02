@@ -1,4 +1,4 @@
-import { memo, lazy, Suspense } from 'react';
+import { lazy, memo, Suspense } from 'react';
 
 const QuickPanel = lazy(() => import('app/theme-layouts/shared-components/quickPanel/QuickPanel'));
 const MessengerPanel = lazy(() => import('src/app/main/apps/messenger/messengerPanel/MessengerPanel'));

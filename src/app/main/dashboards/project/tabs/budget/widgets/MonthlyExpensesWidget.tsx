@@ -5,15 +5,21 @@ import ReactApexChart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import ExpensesDataType from './types/ExpensesDataType';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
 /**
  * The MonthlyExpensesWidget widget.
  */
 function MonthlyExpensesWidget() {
-	const widget = useSelector(selectWidget<ExpensesDataType>('monthlyExpenses'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets.monthlyExpenses as ExpensesDataType;
 
 	if (!widget) {
 		return null;

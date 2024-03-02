@@ -6,9 +6,9 @@ import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { usePrevious } from '@fuse/hooks';
 import _ from '@lodash';
-import { useSelector } from 'react-redux';
 import SettingsPanel from 'app/theme-layouts/shared-components/configurator/SettingsPanel';
 import ThemesPanel from 'app/theme-layouts/shared-components/configurator/ThemesPanel';
+import { useAppSelector } from 'app/store/hooks';
 import { selectIsUserGuest, selectUserSettings } from '../../../auth/user/store/userSlice';
 import { useAuth } from '../../../auth/AuthRouteProvider';
 
@@ -56,8 +56,8 @@ const Root = styled('div')(({ theme }) => ({
 function Configurator() {
 	const theme = useTheme();
 	const [open, setOpen] = useState('');
-	const isUserGuest = useSelector(selectIsUserGuest);
-	const userSettings = useSelector(selectUserSettings);
+	const isUserGuest = useAppSelector(selectIsUserGuest);
+	const userSettings = useAppSelector(selectUserSettings);
 	const prevUserSettings = usePrevious(userSettings);
 
 	const { updateUser } = useAuth();

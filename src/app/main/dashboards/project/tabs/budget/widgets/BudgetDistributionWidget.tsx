@@ -4,15 +4,21 @@ import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import BudgetDistributionDataType from './types/BudgetDistributionDataType';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
 /**
  * The BudgetDistributionWidget widget.
  */
 function BudgetDistributionWidget() {
-	const widget = useSelector(selectWidget<BudgetDistributionDataType>('budgetDistribution'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets.budgetDistribution as BudgetDistributionDataType;
 
 	if (!widget) {
 		return null;

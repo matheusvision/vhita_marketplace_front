@@ -6,18 +6,18 @@ import MenuItem from '@mui/material/MenuItem';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectUser } from 'src/app/auth/user/store/userSlice';
 import { useAuth } from 'src/app/auth/AuthRouteProvider';
 import { darken } from '@mui/material/styles';
+import { useAppSelector } from 'app/store/hooks';
 
 /**
  * The user menu.
  */
 function UserMenu() {
-	const user = useSelector(selectUser);
+	const user = useAppSelector(selectUser);
 	const { signOut } = useAuth();
 	const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
 

@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { toggleQuickPanel } from './store/stateSlice';
+import { toggleQuickPanel } from './quickPanelSlice';
 
 type QuickPanelToggleButtonProps = {
 	children?: React.ReactNode;

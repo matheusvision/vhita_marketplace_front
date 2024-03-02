@@ -12,13 +12,9 @@ import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import format from 'date-fns/format';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import withReducer from 'app/store/withReducer';
-import reducer from './store';
-import { selectQuickPanelData } from './store/dataSlice';
-import { selectQuickPanelState, toggleQuickPanel } from './store/stateSlice';
+import { selectQuickPanelData, selectQuickPanelOpen, toggleQuickPanel } from './quickPanelSlice';
 
 const StyledSwipeableDrawer = styled(SwipeableDrawer)(() => ({
 	'& .MuiDrawer-paper': {
@@ -31,9 +27,8 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(() => ({
  */
 function QuickPanel() {
 	const dispatch = useAppDispatch();
-
-	const data = useSelector(selectQuickPanelData);
-	const state = useSelector(selectQuickPanelState);
+	const data = useAppSelector(selectQuickPanelData);
+	const open = useAppSelector(selectQuickPanelOpen);
 
 	const [checked, setChecked] = useState<string[]>(['notifications']);
 
@@ -52,7 +47,7 @@ function QuickPanel() {
 
 	return (
 		<StyledSwipeableDrawer
-			open={state}
+			open={open}
 			anchor="right"
 			onOpen={() => {}}
 			onClose={() => dispatch(toggleQuickPanel())}
@@ -163,4 +158,4 @@ function QuickPanel() {
 	);
 }
 
-export default withReducer('quickPanel', reducer)(QuickPanel);
+export default QuickPanel;

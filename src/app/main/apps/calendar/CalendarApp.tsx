@@ -6,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch } from 'app/store/hooks';
 import {
 	DateSelectArg,
 	DatesSetArg,
@@ -18,14 +18,12 @@ import {
 	EventRemoveArg
 } from '@fullcalendar/core';
 import FuseLoading from '@fuse/core/FuseLoading';
-import withReducer from 'app/store/withReducer';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
-import { openEditEventDialog, openNewEventDialog } from './store/eventDialogSlice';
+import { openEditEventDialog, openNewEventDialog } from './calendarAppSlice';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
 import { Event, useGetCalendarEventsQuery, useUpdateCalendarEventMutation } from './CalendarApi';
-import reducer from './store';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& a': {
@@ -217,4 +215,4 @@ function CalendarApp() {
 	);
 }
 
-export default withReducer('calendarApp', reducer)(CalendarApp);
+export default CalendarApp;

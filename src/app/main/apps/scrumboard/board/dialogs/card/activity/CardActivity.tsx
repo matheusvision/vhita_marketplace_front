@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Box from '@mui/material/Box';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import { ScrumboardComment, selectMemberById } from '../../../../ScrumboardApi';
 
 type CardActivityProps = {
@@ -17,7 +17,7 @@ type CardActivityProps = {
 function CardActivity(props: CardActivityProps) {
 	const { item } = props;
 
-	const user = useSelector(selectMemberById(item.idMember));
+	const user = useAppSelector(selectMemberById(item.idMember));
 
 	switch (item.type) {
 		case 'comment': {

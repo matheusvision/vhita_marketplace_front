@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import { useSelector } from 'react-redux';
 import FuseLoading from '@fuse/core/FuseLoading';
+import { useAppSelector } from 'app/store/hooks';
 import ContactListItem from './ContactListItem';
 import {
 	Contact,
@@ -18,8 +18,8 @@ import {
  */
 function ContactsList() {
 	const { data, isLoading } = useGetContactsListQuery();
-	const filteredData = useSelector(selectFilteredContactList(data));
-	const groupedFilteredContacts = useSelector(selectGroupedFilteredContacts(filteredData));
+	const filteredData = useAppSelector(selectFilteredContactList(data));
+	const groupedFilteredContacts = useAppSelector(selectGroupedFilteredContacts(filteredData));
 
 	if (isLoading) {
 		return <FuseLoading />;

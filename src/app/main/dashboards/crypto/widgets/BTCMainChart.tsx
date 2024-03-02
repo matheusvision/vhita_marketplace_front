@@ -3,9 +3,9 @@ import ReactApexChart from 'react-apexcharts';
 import sub from 'date-fns/sub';
 import format from 'date-fns/format';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import BTCWidgetType from '../types/BTCWidgetType';
-import { selectWidget } from '../CryptoDashboardApi';
+import { useGetCryptoDashboardWidgetsQuery } from '../CryptoDashboardApi';
 
 /**
  * The BTC main chart.
@@ -13,7 +13,13 @@ import { selectWidget } from '../CryptoDashboardApi';
 function BtcMainChart() {
 	const theme = useTheme();
 
-	const btc = useSelector(selectWidget<BTCWidgetType>('btc'));
+	const { data: widgets, isLoading } = useGetCryptoDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const btc = widgets?.btc as BTCWidgetType;
 
 	if (!btc) {
 		return null;

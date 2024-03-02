@@ -5,16 +5,17 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Typography from '@mui/material/Typography';
 import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
-import withReducer from 'app/store/withReducer';
 import FuseLoading from '@fuse/core/FuseLoading';
 import NotificationCard from './NotificationCard';
-import { closeNotificationPanel, selectNotificationPanelState, toggleNotificationPanel } from './store/stateSlice';
-import reducer from './store';
+import {
+	closeNotificationPanel,
+	selectNotificationPanelState,
+	toggleNotificationPanel
+} from './notificationPanelSlice';
 import {
 	useCreateNotificationMutation,
 	useDeleteAllNotificationsMutation,
@@ -37,7 +38,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
 function NotificationPanel() {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
-	const state = useSelector(selectNotificationPanelState);
+	const state = useAppSelector(selectNotificationPanelState);
 
 	const [deleteNotification] = useDeleteNotificationMutation();
 	const [deleteAllNotifications] = useDeleteAllNotificationsMutation();
@@ -152,4 +153,4 @@ function NotificationPanel() {
 	);
 }
 
-export default withReducer('notificationPanel', reducer)(NotificationPanel);
+export default NotificationPanel;

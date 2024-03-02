@@ -1,11 +1,10 @@
 import Hidden from '@mui/material/Hidden';
 import { styled } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { useAppDispatch } from 'app/store/store';
-import { useSelector } from 'react-redux';
-import { navbarCloseMobile, selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { navbarCloseMobile, selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Theme } from '@mui/system/createTheme';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import clsx from 'clsx';
@@ -113,8 +112,8 @@ type NavbarStyle3Props = {
 function NavbarStyle3(props: NavbarStyle3Props) {
 	const { className = '', dense = false } = props;
 	const dispatch = useAppDispatch();
-	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
-	const navbar = useSelector(selectFuseNavbar);
+	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
+	const navbar = useAppSelector(selectFuseNavbar);
 	const { folded } = config.navbar;
 
 	return (

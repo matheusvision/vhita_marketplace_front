@@ -16,8 +16,8 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import history from '@history';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
-import { useDispatch } from 'react-redux';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import { useAppDispatch } from 'app/store/hooks';
 import ContactEmailSelector from './email-selector/ContactEmailSelector';
 import PhoneNumberSelector from './phone-number-selector/PhoneNumberSelector';
 import {
@@ -72,7 +72,7 @@ const schema = z.object({
  */
 function ContactForm() {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const routeParams = useParams();
 	const { id: contactId } = routeParams as { id: string };

@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { darken } from '@mui/material/styles';
-import { useSelector } from 'react-redux';
 import { selectUser } from 'src/app/auth/user/store/userSlice';
+import { useAppSelector } from 'app/store/hooks';
 import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 
 /**
@@ -18,7 +18,7 @@ import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 function ProjectDashboardAppHeader() {
 	const { data: projects, isLoading } = useGetProjectDashboardProjectsQuery();
 
-	const user = useSelector(selectUser);
+	const user = useAppSelector(selectUser);
 
 	const [selectedProject, setSelectedProject] = useState<{ id: number; menuEl: HTMLElement | null }>({
 		id: 1,

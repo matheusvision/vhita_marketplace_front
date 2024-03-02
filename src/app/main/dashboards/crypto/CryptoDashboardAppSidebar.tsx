@@ -1,15 +1,21 @@
 import Paper from '@mui/material/Paper';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import WatchlistItem from './widgets/WatchlistItem';
 import BuySellForm from './widgets/BuySellForm';
 import WatchlistType from './types/WatchlistType';
-import { selectWidget } from './CryptoDashboardApi';
+import { useGetCryptoDashboardWidgetsQuery } from './CryptoDashboardApi';
 
 /**
  * The crypto dashboard app sidebar.
  */
 function CryptoDashboardAppSidebar() {
-	const watchlist = useSelector(selectWidget<WatchlistType>('watchlist'));
+	const { data: widgets, isLoading } = useGetCryptoDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const watchlist = widgets.watchlist as WatchlistType;
 
 	if (!watchlist) {
 		return null;

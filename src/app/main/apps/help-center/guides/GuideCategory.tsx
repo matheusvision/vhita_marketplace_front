@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import GuideListMenu from './GuideListMenu';
 import { selectGuideCategoryBySlug, useGetHelpCenterGuidesByCategoryQuery } from '../HelpCenterApi';
 
@@ -16,7 +16,7 @@ function GuideCategory() {
 	const { data: guides } = useGetHelpCenterGuidesByCategoryQuery({
 		categorySlug
 	});
-	const category = useSelector(selectGuideCategoryBySlug(categorySlug));
+	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
 
 	const handleGoBack = () => {
 		navigate(-1);

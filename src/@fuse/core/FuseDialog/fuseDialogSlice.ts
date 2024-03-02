@@ -1,9 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateType } from 'src/app/store/types';
-import { appSelector } from 'src/app/store/store';
+import { createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
+import { rootReducer } from 'app/store/lazyLoadedSlices';
 import { ReactElement } from 'react';
-
-type AppRootStateType = RootStateType<dialogSliceType>;
 
 type InitialStateProps = {
 	open: boolean;
@@ -30,14 +27,25 @@ export const fuseDialogSlice = createSlice({
 			state.children = action.payload.children;
 		},
 		closeDialog: () => initialState
+	},
+	selectors: {
+		selectFuseDialogState: (fuseDialog) => fuseDialog.open,
+		selectFuseDialogProps: (fuseDialog) => fuseDialog
 	}
 });
 
+/**
+ * Lazy load
+ * */
+rootReducer.inject(fuseDialogSlice);
+const injectedSlice = fuseDialogSlice.injectInto(rootReducer);
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof fuseDialogSlice> {}
+}
+
 export const { closeDialog, openDialog } = fuseDialogSlice.actions;
 
-export const selectFuseDialogState = appSelector((state: AppRootStateType) => state.fuseDialog.open);
-
-export const selectFuseDialogProps = appSelector((state: AppRootStateType) => state.fuseDialog);
+export const { selectFuseDialogState, selectFuseDialogProps } = injectedSlice.selectors;
 
 export type dialogSliceType = typeof fuseDialogSlice;
 

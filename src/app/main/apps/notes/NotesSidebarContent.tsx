@@ -4,11 +4,11 @@ import { styled } from '@mui/material/styles';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
 import { PartialDeep } from 'type-fest';
-import { openLabelsDialog } from './store/dialogsSlice';
+import { openLabelsDialog } from './notesAppSlice';
 import { useGetNotesLabelsQuery } from './NotesApi';
 
 const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & PartialDeep<NavLinkAdapterPropsType>>(

@@ -9,15 +9,21 @@ import { memo } from 'react';
 import format from 'date-fns/format';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import RecentTransactionsWidgetType from './types/RecentTransactionsWidgetType';
-import { selectWidget } from '../FinanceDashboardApi';
+import { useGetFinanceDashboardWidgetsQuery } from '../FinanceDashboardApi';
 
 /**
  * The RecentTransactionsWidget widget.
  */
 function RecentTransactionsWidget() {
-	const widget = useSelector(selectWidget<RecentTransactionsWidgetType>('recentTransactions'));
+	const { data: widgets, isLoading } = useGetFinanceDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets?.recentTransactions as RecentTransactionsWidgetType;
 
 	if (!widget) {
 		return null;

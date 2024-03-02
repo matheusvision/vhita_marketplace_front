@@ -3,15 +3,21 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import CurrentStatementWidgetType from './types/CurrentStatementWidgetType';
-import { selectWidget } from '../FinanceDashboardApi';
+import { useGetFinanceDashboardWidgetsQuery } from '../FinanceDashboardApi';
 
 /**
  * The CurrentStatementWidget widget.
  */
 function CurrentStatementWidget() {
-	const widget = useSelector(selectWidget<CurrentStatementWidgetType>('currentStatement'));
+	const { data: widgets, isLoading } = useGetFinanceDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets?.currentStatement as CurrentStatementWidgetType;
 
 	if (!widget) {
 		return null;

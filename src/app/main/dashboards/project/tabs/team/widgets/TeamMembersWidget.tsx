@@ -3,15 +3,21 @@ import { memo } from 'react';
 import Paper from '@mui/material/Paper';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import TeamMemberType from './types/TeamMemberType';
 
 /**
  * The TeamMembersWidget widget.
  */
 function TeamMembersWidget() {
-	const members = useSelector(selectWidget<TeamMemberType[]>('teamMembers'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const members = widgets.teamMembers as TeamMemberType[];
 
 	if (!members) {
 		return null;

@@ -7,8 +7,8 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
-import { selectSelectedContactId } from './store/selectedContactIdSlice';
+import { useAppSelector } from 'app/store/hooks';
+import { selectSelectedContactId } from './messengerPanelSlice';
 import {
 	Message,
 	useGetMessengerChatQuery,
@@ -99,7 +99,7 @@ type ChatProps = {
  */
 function Chat(props: ChatProps) {
 	const { className } = props;
-	const selectedContactId = useSelector(selectSelectedContactId);
+	const selectedContactId = useAppSelector(selectSelectedContactId);
 
 	const { data: chat } = useGetMessengerChatQuery(selectedContactId);
 	const { data: user } = useGetMessengerUserProfileQuery();

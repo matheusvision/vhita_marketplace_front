@@ -3,15 +3,13 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import * as React from 'react';
-import { useSelector } from 'react-redux';
 import _ from '@lodash';
-import withReducer from 'app/store/withReducer';
+import { useAppSelector } from 'app/store/hooks';
 import DetailSidebarContent from './DetailSidebarContent';
 import FileManagerHeader from './FileManagerHeader';
 import FileManagerList from './FileManagerList';
 import { useGetFileManagerFolderQuery } from './FileManagerApi';
-import { selectSelectedItemId } from './store/selectedItemIdSlice';
-import reducer from './store';
+import { selectSelectedItemId } from './fileManagerAppSlice';
 
 /**
  * The file manager app.
@@ -24,7 +22,7 @@ function FileManagerApp() {
 
 	const { data, isLoading } = useGetFileManagerFolderQuery(folderId);
 
-	const selectedItemId = useSelector(selectSelectedItemId);
+	const selectedItemId = useAppSelector(selectSelectedItemId);
 	const selectedItem = _.find(data?.items, { id: selectedItemId });
 
 	const folders = _.filter(data?.items, { type: 'folder' });
@@ -63,4 +61,4 @@ function FileManagerApp() {
 	);
 }
 
-export default withReducer('fileManagerApp', reducer)(FileManagerApp);
+export default FileManagerApp;

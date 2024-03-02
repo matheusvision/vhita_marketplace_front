@@ -3,17 +3,16 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { resetSearchText, selectSearchText, setSearchText } from '../store/searchTextSlice';
+import { resetSearchText, selectSearchText, setSearchText } from '../eCommerceAppSlice';
 
 /**
  * The orders header.
  */
 function OrdersHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useSelector(selectSearchText);
+	const searchText = useAppSelector(selectSearchText);
 
 	useEffect(() => {
 		return () => {

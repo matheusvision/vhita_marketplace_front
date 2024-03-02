@@ -2,9 +2,8 @@ import Hidden from '@mui/material/Hidden';
 import { styled, ThemeProvider } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { memo, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'app/store/store';
-import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { selectFuseCurrentLayoutConfig, selectNavbarTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Layout3ConfigDefaultsType } from 'app/theme-layouts/layout3/Layout3Config';
 import { useLocation } from 'react-router';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
@@ -12,7 +11,7 @@ import {
 	navbarCloseMobile,
 	navbarSlice,
 	selectFuseNavbar
-} from 'app/theme-layouts/shared-components/navbar/store/navbarSlice';
+} from 'app/theme-layouts/shared-components/navbar/navbarSlice';
 import NavbarToggleFab from 'app/theme-layouts/shared-components/navbar/NavbarToggleFab';
 import withSlices from 'app/store/withSlices';
 import NavbarLayout3 from './NavbarLayout3';
@@ -43,9 +42,9 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	const { className = '' } = props;
 
 	const dispatch = useAppDispatch();
-	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
-	const navbarTheme = useSelector(selectNavbarTheme);
-	const navbar = useSelector(selectFuseNavbar);
+	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
+	const navbarTheme = useAppSelector(selectNavbarTheme);
+	const navbar = useAppSelector(selectFuseNavbar);
 	const location = useLocation();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const { pathname } = location;

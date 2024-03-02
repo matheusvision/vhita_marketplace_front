@@ -1,7 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import i18n from 'src/i18n';
 import { AppThunk, RootStateType } from 'app/store/types';
-import { setDefaultSettings, settingsSliceType } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { setDefaultSettings, settingsSliceType } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 
 /**
  * Changes the language of the application and updates the settings if necessary.

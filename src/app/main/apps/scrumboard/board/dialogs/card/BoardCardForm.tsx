@@ -17,14 +17,13 @@ import getUnixTime from 'date-fns/getUnixTime';
 import format from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { SyntheticEvent, useEffect } from 'react';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
-import { useSelector } from 'react-redux';
-import { closeCardDialog, selectCardData } from '../../../store/cardDialogSlice';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import { closeCardDialog, selectCardDialogData } from '../../../scrumboardSlice';
 import CardActivity from './activity/CardActivity';
 import CardAttachment from './attachment/CardAttachment';
 import CardChecklist from './checklist/CardChecklist';
@@ -62,7 +61,7 @@ function BoardCardForm() {
 	const { data: listItems, isLoading: isListItemsLoading } = useGetScrumboardBoardListsQuery(boardId);
 	const loading = isBoardLoading || isMembersLoading || isLabelsLoading || isListItemsLoading;
 
-	const card = useSelector(selectCardData);
+	const card = useAppSelector(selectCardDialogData);
 
 	const [updateCard] = useUpdateScrumboardBoardCardMutation();
 	const [removeCard] = useDeleteScrumboardBoardCardMutation();

@@ -3,15 +3,21 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import WidgetDataType from './types/WidgetDataType';
 
 /**
  * The IssuesWidget widget.
  */
 function IssuesWidget() {
-	const widget = useSelector(selectWidget<WidgetDataType>('issues'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	const widget = widgets.issues as WidgetDataType;
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
 
 	if (!widget) {
 		return null;

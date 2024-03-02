@@ -2,9 +2,8 @@ import { motion } from 'framer-motion';
 import { Checkbox } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store/store';
-import { useSelector } from 'react-redux';
-import { selectSelectedLabels, toggleSelectedLabels } from './store/selectedLabelsSlice';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { selectSelectedLabels, toggleSelectedLabels } from './calendarAppSlice';
 import { useGetCalendarLabelsQuery } from './CalendarApi';
 import LabelsDialog from './dialogs/labels/LabelsDialog';
 
@@ -12,7 +11,7 @@ import LabelsDialog from './dialogs/labels/LabelsDialog';
  * The calendar app sidebar.
  */
 function CalendarAppSidebar() {
-	const selectedLabels = useSelector(selectSelectedLabels);
+	const selectedLabels = useAppSelector(selectSelectedLabels);
 	const dispatch = useAppDispatch();
 	const { data: labels } = useGetCalendarLabelsQuery();
 

@@ -1,6 +1,6 @@
 import _ from '@lodash';
 import { DraggableLocation, DropResult } from 'react-beautiful-dnd';
-import { ScrumboardBoardList } from '../ScrumboardApi';
+import { ScrumboardBoardList } from './ScrumboardApi';
 
 // a little function to help us with reordering the result
 const reorder = (list: string[], startIndex: DraggableLocation['index'], endIndex: DraggableLocation['index']) => {

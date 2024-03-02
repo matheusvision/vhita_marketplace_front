@@ -3,11 +3,10 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
 import NotesSearch from './NotesSearch';
-import { selectVariateDescSize, toggleVariateDescSize } from './store/variateDescSlice';
+import { selectVariateDescSize, toggleVariateDescSize } from './notesAppSlice';
 
 type NotesHeaderProps = {
 	onSetSidebarOpen: (open: boolean) => void;
@@ -20,7 +19,7 @@ function NotesHeader(props: NotesHeaderProps) {
 	const { onSetSidebarOpen } = props;
 
 	const dispatch = useAppDispatch();
-	const variateDescSize = useSelector(selectVariateDescSize);
+	const variateDescSize = useAppSelector(selectVariateDescSize);
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between p-8 sm:p-24 sm:px-32 relative">

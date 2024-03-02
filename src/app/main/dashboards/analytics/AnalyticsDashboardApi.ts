@@ -1,5 +1,14 @@
 import { apiService as api } from 'app/store/apiService';
-import { appSelector } from 'app/store/store';
+import { rootReducer } from 'app/store/lazyLoadedSlices';
+import { WithSlice } from '@reduxjs/toolkit';
+import AgeWidgetType from './widgets/types/AgeWidgetType';
+import ConversionsWidgetType from './widgets/types/ConversionsWidgetType';
+import GenderWidgetType from './widgets/types/GenderWidgetType';
+import ImpressionsWidgetType from './widgets/types/ImpressionsWidgetType';
+import LanguageWidgetType from './widgets/types/LanguageWidgetType';
+import NewVsReturningWidgetType from './widgets/types/NewVsReturningWidgetType';
+import VisitsWidgetType from './widgets/types/VisitsWidgetType';
+import VisitorsVsPageViewsType from './widgets/types/VisitorsVsPageViewsType';
 
 export const addTagTypes = ['analytics_dashboard_widgets'] as const;
 
@@ -21,17 +30,27 @@ const AnalyticsDashboardApi = api
 	});
 export default AnalyticsDashboardApi;
 
-export type GetAnalyticsDashboardWidgetsApiResponse = object;
+export type GetAnalyticsDashboardWidgetsApiResponse = {
+	[key: string]:
+		| AgeWidgetType
+		| ConversionsWidgetType
+		| GenderWidgetType
+		| ImpressionsWidgetType
+		| LanguageWidgetType
+		| NewVsReturningWidgetType
+		| VisitsWidgetType
+		| VisitorsVsPageViewsType;
+};
 export type GetAnalyticsDashboardWidgetsApiArg = void;
 
 export const { useGetAnalyticsDashboardWidgetsQuery } = AnalyticsDashboardApi;
 
-export type AnalyticsDashboardApiType = {
-	[AnalyticsDashboardApi.reducerPath]: ReturnType<typeof AnalyticsDashboardApi.reducer>;
-};
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof AnalyticsDashboardApi> {}
+}
 
 export const selectWidget = <T>(id: string) =>
-	appSelector((state: AnalyticsDashboardApiType) => {
+	rootReducer.selector((state) => {
 		const widgets = AnalyticsDashboardApi.endpoints.getAnalyticsDashboardWidgets.select()(state)?.data;
 		return widgets?.[id] as T;
 	});

@@ -1,14 +1,14 @@
 import FuseLayout from '@fuse/core/FuseLayout';
 import FuseTheme from '@fuse/core/FuseTheme';
 import { SnackbarProvider } from 'notistack';
-import { useSelector } from 'react-redux';
 import rtlPlugin from 'stylis-plugin-rtl';
 import createCache, { Options } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
 import themeLayouts from 'app/theme-layouts/themeLayouts';
-import { selectMainTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import MockAdapterProvider from '@mock-api/MockAdapterProvider';
+import { useAppSelector } from 'app/store/hooks';
 import withAppProviders from './withAppProviders';
 import { AuthRouteProvider } from './auth/AuthRouteProvider';
 
@@ -40,12 +40,12 @@ function App() {
 	/**
 	 * The language direction from the Redux store.
 	 */
-	const langDirection = useSelector(selectCurrentLanguageDirection);
+	const langDirection = useAppSelector(selectCurrentLanguageDirection);
 
 	/**
 	 * The main theme from the Redux store.
 	 */
-	const mainTheme = useSelector(selectMainTheme);
+	const mainTheme = useAppSelector(selectMainTheme);
 
 	return (
 		<MockAdapterProvider>

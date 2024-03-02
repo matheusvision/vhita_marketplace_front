@@ -1,8 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { apiService as api } from 'app/store/apiService';
 import FuseUtils from '@fuse/utils';
-import { selectSearchText } from './store/searchTextSlice';
-import { AppRootStateType } from './store';
+import { selectSearchText } from './contactsAppSlice';
 
 export const addTagTypes = ['contacts_item', 'contacts', 'contacts_tag', 'contacts_tags', 'countries'] as const;
 
@@ -186,9 +185,6 @@ export const {
 export type ContactsApiType = {
 	[ContactsApi.reducerPath]: ReturnType<typeof ContactsApi.reducer>;
 };
-
-export const selectContactList = (state: AppRootStateType) =>
-	ContactsApi.endpoints.getContactsList.select()(state)?.data ?? [];
 
 /**
  * Select filtered contacts

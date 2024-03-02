@@ -7,9 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import MailListItem from './MailListItem';
-import { selectSearchText } from '../store/searchTextSlice';
+import { selectSearchText } from '../mailboxAppSlice';
 import { MailboxMail, useGetMailboxMailsQuery } from '../MailboxApi';
 
 /**
@@ -18,7 +18,7 @@ import { MailboxMail, useGetMailboxMailsQuery } from '../MailboxApi';
 function MailList() {
 	const routeParams = useParams();
 
-	const searchText = useSelector(selectSearchText);
+	const searchText = useAppSelector(selectSearchText);
 	const { data: mails } = useGetMailboxMailsQuery(routeParams);
 
 	const [filteredData, setFilteredData] = useState<MailboxMail[]>([]);

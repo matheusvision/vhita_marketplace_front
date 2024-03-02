@@ -1,12 +1,11 @@
 import IconButton from '@mui/material/IconButton';
-import { useAppDispatch } from 'app/store/store';
-import { selectFuseCurrentSettings, setDefaultSettings } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { selectFuseCurrentSettings, setDefaultSettings } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import _ from '@lodash';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
-import { useSelector } from 'react-redux';
-import { navbarToggle, navbarToggleMobile } from './store/navbarSlice';
+import { navbarToggle, navbarToggleMobile } from './navbarSlice';
 
 type NavbarToggleButtonProps = {
 	className?: string;
@@ -31,7 +30,7 @@ function NavbarToggleButton(props: NavbarToggleButtonProps) {
 
 	const dispatch = useAppDispatch();
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
-	const settings: FuseSettingsConfigType = useSelector(selectFuseCurrentSettings);
+	const settings: FuseSettingsConfigType = useAppSelector(selectFuseCurrentSettings);
 	const { config } = settings.layout;
 
 	return (

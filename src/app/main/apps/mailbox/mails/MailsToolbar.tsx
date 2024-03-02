@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ChangeEvent, MouseEvent, useMemo, useState } from 'react';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -13,7 +13,7 @@ import { OutlinedInput } from '@mui/material';
 import Hidden from '@mui/material/Hidden';
 import { useParams } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
-import { useSelector } from 'react-redux';
+import _ from '@lodash';
 import MailListTitle from './MailListTitle';
 import {
 	useApplyMailboxMailActionMutation,
@@ -21,9 +21,13 @@ import {
 	useGetMailboxLabelsQuery,
 	useGetMailboxMailsQuery
 } from '../MailboxApi';
-import { selectSearchText, setSearchText } from '../store/searchTextSlice';
-import { deselectAllMails, selectSelectedMailIds, setSelectedMailIds } from '../store/selectedMailIdsSlice';
-import _ from '../../../../../@lodash/@lodash';
+import {
+	selectSearchText,
+	setSearchText,
+	deselectAllMails,
+	selectSelectedMailIds,
+	setSelectedMailIds
+} from '../mailboxAppSlice';
 
 type MailToolbarProps = {
 	onToggleLeftSidebar: () => void;
@@ -51,11 +55,11 @@ function MailToolbar(props: MailToolbarProps) {
 
 	const [setActionToMails] = useApplyMailboxMailActionMutation();
 
-	const searchText = useSelector(selectSearchText);
+	const searchText = useAppSelector(selectSearchText);
 
 	const { t } = useTranslation('mailboxApp');
 
-	const selectedMailIds = useSelector(selectSelectedMailIds);
+	const selectedMailIds = useAppSelector(selectSelectedMailIds);
 
 	const trashFolderId = useMemo(() => _.find(folders, { slug: 'trash' })?.id, [folders]);
 

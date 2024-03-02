@@ -4,8 +4,8 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import React, { forwardRef, useEffect, useRef, ReactNode, useCallback, useState } from 'react';
 import history from '@history';
-import { selectCustomScrollbarsEnabled } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
-import { useSelector } from 'react-redux';
+import { selectCustomScrollbarsEnabled } from '@fuse/core/FuseSettings/fuseSettingsSlice';
+import { useAppSelector } from 'app/store/hooks';
 
 const Root = styled('div')(() => ({
 	overscrollBehavior: 'contain',
@@ -65,7 +65,7 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 	const psRef = useRef<PerfectScrollbar | null>(null);
 	const handlerByEvent = useRef<Map<string, EventListener>>(new Map());
 	const [style, setStyle] = useState({});
-	const customScrollbars = useSelector(selectCustomScrollbarsEnabled);
+	const customScrollbars = useAppSelector(selectCustomScrollbarsEnabled);
 
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {

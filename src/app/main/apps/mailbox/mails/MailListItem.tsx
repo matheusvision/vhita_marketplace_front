@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import withRouter from '@fuse/core/withRouter';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -11,8 +11,7 @@ import format from 'date-fns/format';
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
-import { useSelector } from 'react-redux';
-import { selectSelectedMailIds, toggleInSelectedMails } from '../store/selectedMailIdsSlice';
+import { selectSelectedMailIds, toggleInSelectedMails } from '../mailboxAppSlice';
 import { MailboxMail } from '../MailboxApi';
 
 const StyledListItem = styled(ListItemButton)<ListItemButtonProps & NavLinkAdapterPropsType & { unread: number }>(
@@ -48,7 +47,7 @@ type MailListItemProps = WithRouterProps & {
  */
 function MailListItem(props: MailListItemProps) {
 	const dispatch = useAppDispatch();
-	const selectedMailIds = useSelector(selectSelectedMailIds);
+	const selectedMailIds = useAppSelector(selectSelectedMailIds);
 
 	const { mail } = props;
 	const checked = selectedMailIds.length > 0 && selectedMailIds.find((id) => id === mail.id) !== undefined;

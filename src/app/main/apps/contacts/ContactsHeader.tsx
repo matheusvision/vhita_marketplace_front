@@ -5,10 +5,9 @@ import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from 'app/store/store';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { ChangeEvent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { setSearchText, resetSearchText, selectSearchText } from './store/searchTextSlice';
+import { setSearchText, resetSearchText, selectSearchText } from './contactsAppSlice';
 import { selectFilteredContactList, useGetContactsListQuery } from './ContactsApi';
 
 /**
@@ -16,10 +15,10 @@ import { selectFilteredContactList, useGetContactsListQuery } from './ContactsAp
  */
 function ContactsHeader() {
 	const dispatch = useAppDispatch();
-	const searchText = useSelector(selectSearchText);
+	const searchText = useAppSelector(selectSearchText);
 	const { data, isLoading } = useGetContactsListQuery();
 
-	const filteredData = useSelector(selectFilteredContactList(data));
+	const filteredData = useAppSelector(selectFilteredContactList(data));
 
 	useEffect(() => {
 		return () => {

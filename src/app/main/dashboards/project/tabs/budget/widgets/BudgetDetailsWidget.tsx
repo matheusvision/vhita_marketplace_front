@@ -7,15 +7,21 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import Chip from '@mui/material/Chip';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import BudgetDetailsDataType from './types/BudgetDetailsDataType';
-import { selectWidget } from '../../../ProjectDashboardApi';
 
 /**
  * The BudgetDetailsWidget widget.
  */
 function BudgetDetailsWidget() {
-	const widget = useSelector(selectWidget<BudgetDetailsDataType>('budgetDetails'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets.budgetDetails as BudgetDetailsDataType;
 
 	if (!widget) {
 		return null;

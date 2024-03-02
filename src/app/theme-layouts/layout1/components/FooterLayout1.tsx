@@ -2,10 +2,10 @@ import AppBar from '@mui/material/AppBar';
 import { ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectFooterTheme } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFooterTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import clsx from 'clsx';
 import DemoLayoutFooterContent from 'app/theme-layouts/shared-components/DemoLayoutFooterContent';
+import { useAppSelector } from 'app/store/hooks';
 
 type FooterLayout1Props = { className?: string };
 
@@ -15,7 +15,7 @@ type FooterLayout1Props = { className?: string };
 function FooterLayout1(props: FooterLayout1Props) {
 	const { className } = props;
 
-	const footerTheme = useSelector(selectFooterTheme);
+	const footerTheme = useAppSelector(selectFooterTheme);
 
 	return (
 		<ThemeProvider theme={footerTheme}>

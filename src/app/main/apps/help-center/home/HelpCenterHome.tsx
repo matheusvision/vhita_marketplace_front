@@ -2,13 +2,13 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import Box from '@mui/material/Box';
 import { lighten, ThemeProvider } from '@mui/material/styles';
-import { selectMainThemeDark } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectMainThemeDark } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { OutlinedInput } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'app/store/hooks';
 import FaqList from '../faqs/FaqList';
 import { useGetHelpCenterMostlyFaqsQuery } from '../HelpCenterApi';
 
@@ -16,7 +16,7 @@ import { useGetHelpCenterMostlyFaqsQuery } from '../HelpCenterApi';
  * The help center home.
  */
 function HelpCenterHome() {
-	const mainThemeDark = useSelector(selectMainThemeDark);
+	const mainThemeDark = useAppSelector(selectMainThemeDark);
 	const { data: faqsMost } = useGetHelpCenterMostlyFaqsQuery();
 
 	return (

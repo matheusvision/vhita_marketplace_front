@@ -205,7 +205,7 @@ function IconListPage(props: IconListPageProps) {
 							</Paper>
 						))}
 
-						{filteredData.length === 0 && (
+						{filteredData?.length === 0 && (
 							<div className="col-span-6 flex flex-auto items-center justify-center w-full h-full p-32 md:p-128">
 								<Typography
 									color="text.secondary"

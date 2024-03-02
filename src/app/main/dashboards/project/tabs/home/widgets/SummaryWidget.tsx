@@ -5,15 +5,21 @@ import Typography from '@mui/material/Typography';
 import { memo, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useSelector } from 'react-redux';
-import { selectWidget } from '../../../ProjectDashboardApi';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import WidgetDataType, { RangeType } from './types/WidgetDataType';
 
 /**
  * The SummaryWidget widget.
  */
 function SummaryWidget() {
-	const widget = useSelector(selectWidget<WidgetDataType>('summary'));
+	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
+
+	const widget = widgets.summary as WidgetDataType;
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
 
 	if (!widget) {
 		return null;

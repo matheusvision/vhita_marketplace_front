@@ -4,11 +4,11 @@ import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import clsx from 'clsx';
 import { memo, ReactNode, Suspense, useContext } from 'react';
-import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import AppContext from 'app/AppContext';
-import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/store/fuseSettingsSlice';
+import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import Configurator from 'app/theme-layouts/shared-components/configurator/Configurator';
+import { useAppSelector } from 'app/store/hooks';
 import FooterLayout3 from './components/FooterLayout3';
 import LeftSideLayout3 from './components/LeftSideLayout3';
 import NavbarWrapperLayout3 from './components/NavbarWrapperLayout3';
@@ -42,7 +42,7 @@ type Layout3Props = {
 function Layout3(props: Layout3Props) {
 	const { children } = props;
 
-	const config = useSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
+	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
 
 	const appContext = useContext(AppContext);
 

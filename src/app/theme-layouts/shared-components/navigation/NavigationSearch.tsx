@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
 import FuseSearch from '@fuse/core/FuseSearch';
 import withSlices from 'app/store/withSlices';
+import { useAppSelector } from 'app/store/hooks';
 import { navigationSlice, selectFlatNavigation } from './store/navigationSlice';
 
 type NavigationSearchProps = {
@@ -14,7 +14,7 @@ type NavigationSearchProps = {
 function NavigationSearch(props: NavigationSearchProps) {
 	const { variant, className } = props;
 
-	const navigation = useSelector(selectFlatNavigation);
+	const navigation = useAppSelector(selectFlatNavigation);
 
 	return (
 		<FuseSearch

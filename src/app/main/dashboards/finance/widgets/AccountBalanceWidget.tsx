@@ -4,9 +4,9 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { useSelector } from 'react-redux';
+import FuseLoading from '@fuse/core/FuseLoading';
 import AccountBalanceWidgetType from './types/AccountBalanceWidgetType';
-import { selectWidget } from '../FinanceDashboardApi';
+import { useGetFinanceDashboardWidgetsQuery } from '../FinanceDashboardApi';
 
 /**
  * The AccountBalanceWidget widget.
@@ -14,7 +14,13 @@ import { selectWidget } from '../FinanceDashboardApi';
 function AccountBalanceWidget() {
 	const theme = useTheme();
 
-	const widget = useSelector(selectWidget<AccountBalanceWidgetType>('accountBalance'));
+	const { data: widgets, isLoading } = useGetFinanceDashboardWidgetsQuery();
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	const widget = widgets?.accountBalance as AccountBalanceWidgetType;
 
 	if (!widget) {
 		return null;

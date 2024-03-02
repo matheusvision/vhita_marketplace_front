@@ -1,6 +1,6 @@
 import { apiService as api } from 'app/store/apiService';
 import { createSelector } from '@reduxjs/toolkit';
-import { showMessage } from '@fuse/core/FuseMessage/store/fuseMessageSlice';
+import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 
 export const addTagTypes = ['tasks_list', 'tasks_item', 'tasks_tags'] as const;
 
