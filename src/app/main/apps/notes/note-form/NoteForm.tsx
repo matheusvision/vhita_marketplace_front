@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -29,9 +29,10 @@ import {
 	NotesNote,
 	useCreateNotesItemMutation,
 	useDeleteNotesItemMutation,
+	useGetNotesListQuery,
 	useUpdateNotesItemMutation
 } from '../NotesApi';
-import { selectDialogNote } from '../notesAppSlice';
+import { selectNoteDialogId } from '../notesAppSlice';
 
 /**
  * Form Validation Schema
@@ -96,7 +97,10 @@ function NoteForm(props: NoteFormProps) {
 	const [removeNote] = useDeleteNotesItemMutation();
 	const [createNote] = useCreateNotesItemMutation();
 
-	const note = useAppSelector(selectDialogNote(routeParams));
+	const { data: notes } = useGetNotesListQuery(routeParams);
+	const noteId = useAppSelector(selectNoteDialogId);
+
+	const note = useMemo(() => _.find(notes, { id: noteId }), [noteId, notes]);
 
 	const { formState, handleSubmit, getValues, watch, reset, setValue, control } = useForm<NotesNote>({
 		mode: 'onChange',

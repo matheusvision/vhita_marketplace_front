@@ -4,8 +4,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
-import { useAppSelector } from 'app/store/hooks';
-import { selectGuideCategoryBySlug, useGetHelpCenterGuideByCategoryQuery } from '../HelpCenterApi';
+import { useMemo } from 'react';
+import { useGetHelpCenterGuideByCategoryQuery, useGetHelpCenterGuideCategoriesQuery } from '../HelpCenterApi';
+import _ from '../../../../../@lodash/@lodash';
 
 /**
  * The help center guide.
@@ -14,7 +15,10 @@ function HelpCenterGuide() {
 	const navigate = useNavigate();
 	const routeParams = useParams();
 	const { guideSlug, categorySlug } = routeParams;
-	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
+
+	const { data: categories } = useGetHelpCenterGuideCategoriesQuery();
+	const category = useMemo(() => _.find(categories, { slug: categorySlug }), [categories, categorySlug]);
+
 	const { data: guide } = useGetHelpCenterGuideByCategoryQuery({
 		categorySlug,
 		guideSlug

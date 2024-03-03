@@ -11,19 +11,17 @@ import {
 import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
-import { RootStateType } from 'app/store/types';
 import { FuseSettingsConfigType, FuseThemesType, FuseThemeType } from '@fuse/core/FuseSettings/FuseSettings';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
 import { PartialDeep } from 'type-fest';
+import { RootState } from 'app/store/store';
 import { resetUser, setUser, setUserSettings } from '../../../app/auth/user/store/userSlice';
 // import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
-
-type AppRootStateType = RootStateType<settingsSliceType>;
 
 export const changeFuseTheme = createAsyncThunk(
 	'fuseSettings/changeFuseTheme',
 	async (theme: FuseThemesType, { dispatch, getState }) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState() as RootState;
 		const settings = AppState.fuseSettings;
 
 		const { navbar, footer, toolbar, main } = theme;
@@ -103,7 +101,7 @@ const initialState: initialStateProps = {
 export const setDefaultSettings = createAsyncThunk(
 	'fuseSettings/setDefaultSettings',
 	async (val: PartialDeep<FuseSettingsConfigType>, { dispatch, getState }) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState() as RootState;
 
 		const settings = AppState.fuseSettings;
 

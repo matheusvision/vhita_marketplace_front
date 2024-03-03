@@ -1,5 +1,4 @@
 import { apiService as api } from 'app/store/apiService';
-import { createSelector } from '@reduxjs/toolkit';
 
 export const addTagTypes = [
 	'notes_list',
@@ -203,6 +202,3 @@ export const {
 export type NotesApiType = {
 	[NotesApi.reducerPath]: ReturnType<typeof NotesApi.reducer>;
 };
-
-export const selectNoteList = (routeParams: RouteParams) =>
-	createSelector(NotesApi.endpoints.getNotesList.select(routeParams), (list) => list || []);

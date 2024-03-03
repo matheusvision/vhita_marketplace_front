@@ -1,4 +1,4 @@
-import { Action, Middleware, ThunkAction, configureStore } from '@reduxjs/toolkit';
+import { Action, Middleware, ThunkAction, configureStore, createSelector } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import apiService from 'app/store/apiService';
 import { rootReducer } from './lazyLoadedSlices';
@@ -25,8 +25,10 @@ export const store = makeStore();
 
 // Infer the type of `store`
 export type AppStore = typeof store;
-// Infer the `AppDispatch` type from the store itself
 export type AppDispatch = AppStore['dispatch'];
 export type AppThunk<ThunkReturnType = void> = ThunkAction<ThunkReturnType, RootState, unknown, Action>;
+export type AppAction<R = Promise<void>> = Action<string> | ThunkAction<R, RootState, unknown, Action<string>>;
+
+export const createAppSelector = createSelector.withTypes<RootState>();
 
 export default store;

@@ -1,16 +1,15 @@
-import { createEntityAdapter, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk, RootStateType } from 'app/store/types';
+import { createEntityAdapter, createSelector, createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
+import { AppThunk, RootState } from 'app/store/store';
 import { PartialDeep } from 'type-fest';
 import { FuseFlatNavItemType, FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
-import { selectUserRole, userSliceType } from 'src/app/auth/user/store/userSlice';
+import { selectUserRole } from 'src/app/auth/user/store/userSlice';
 import FuseNavigationHelper from '@fuse/utils/FuseNavigationHelper';
 import i18next from 'i18next';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import FuseUtils from '@fuse/utils';
 import navigationConfig from 'app/configs/navigationConfig';
 import { selectCurrentLanguageId } from 'app/store/i18nSlice';
-
-type AppRootStateType = RootStateType<[navigationSliceType, userSliceType]>;
+import { rootReducer } from 'app/store/lazyLoadedSlices';
 
 const navigationAdapter = createEntityAdapter<FuseFlatNavItemType>();
 
@@ -30,7 +29,7 @@ const initialState = navigationAdapter.upsertMany(
 export const appendNavigationItem =
 	(item: FuseNavItemType, parentId?: string | null): AppThunk =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = FuseNavigationHelper.unflattenNavigation(selectNavigationAll(AppState));
 
 		dispatch(setNavigation(FuseNavigationHelper.appendNavItem(navigation, FuseNavItemModel(item), parentId)));
@@ -44,7 +43,7 @@ export const appendNavigationItem =
 export const prependNavigationItem =
 	(item: FuseNavItemType, parentId?: string | null): AppThunk =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = FuseNavigationHelper.unflattenNavigation(selectNavigationAll(AppState));
 
 		dispatch(setNavigation(FuseNavigationHelper.prependNavItem(navigation, FuseNavItemModel(item), parentId)));
@@ -58,7 +57,7 @@ export const prependNavigationItem =
 export const updateNavigationItem =
 	(id: string, item: PartialDeep<FuseNavItemType>): AppThunk =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = FuseNavigationHelper.unflattenNavigation(selectNavigationAll(AppState));
 
 		dispatch(setNavigation(FuseNavigationHelper.updateNavItem(navigation, id, item)));
@@ -72,7 +71,7 @@ export const updateNavigationItem =
 export const removeNavigationItem =
 	(id: string): AppThunk =>
 	async (dispatch, getState) => {
-		const AppState = getState() as AppRootStateType;
+		const AppState = getState();
 		const navigation = FuseNavigationHelper.unflattenNavigation(selectNavigationAll(AppState));
 
 		dispatch(setNavigation(FuseNavigationHelper.removeNavItem(navigation, id)));
@@ -84,7 +83,7 @@ export const {
 	selectAll: selectNavigationAll,
 	selectIds: selectNavigationIds,
 	selectById: selectNavigationItemById
-} = navigationAdapter.getSelectors((state: AppRootStateType) => state.navigation);
+} = navigationAdapter.getSelectors<RootState>((state) => state.navigation);
 
 /**
  * The navigation slice
@@ -99,6 +98,15 @@ export const navigationSlice = createSlice({
 		resetNavigation: () => initialState
 	}
 });
+
+/**
+ * Lazy load
+ * */
+rootReducer.inject(navigationSlice);
+navigationSlice.injectInto(rootReducer);
+declare module 'app/store/lazyLoadedSlices' {
+	export interface LazyLoadedSlices extends WithSlice<typeof navigationSlice> {}
+}
 
 export const { setNavigation, resetNavigation } = navigationSlice.actions;
 

@@ -688,9 +688,9 @@ function runCommand(command: string, args: string[]) {
 	});
 }
 
-function log(message: unknown) {
+function log(message: unknown, message2?: unknown) {
 	// eslint-disable-next-line no-console
-	console.log(message);
+	console.info(message, message2);
 }
 
 build();

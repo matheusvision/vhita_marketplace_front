@@ -1,9 +1,10 @@
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useAppSelector } from 'app/store/hooks';
+import { useMemo } from 'react';
 import GuideListMenu from './GuideListMenu';
-import { selectGuideCategoryBySlug, useGetHelpCenterGuidesByCategoryQuery } from '../HelpCenterApi';
+import { useGetHelpCenterGuideCategoriesQuery, useGetHelpCenterGuidesByCategoryQuery } from '../HelpCenterApi';
+import _ from '../../../../../@lodash/@lodash';
 
 /**
  * The guide category.
@@ -13,10 +14,12 @@ function GuideCategory() {
 	const routeParams = useParams();
 	const { categorySlug } = routeParams;
 
+	const { data: categories } = useGetHelpCenterGuideCategoriesQuery();
+	const category = useMemo(() => _.find(categories, { slug: categorySlug }), [categories, categorySlug]);
+
 	const { data: guides } = useGetHelpCenterGuidesByCategoryQuery({
 		categorySlug
 	});
-	const category = useAppSelector(selectGuideCategoryBySlug(categorySlug));
 
 	const handleGoBack = () => {
 		navigate(-1);

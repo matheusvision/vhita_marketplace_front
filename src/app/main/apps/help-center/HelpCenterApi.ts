@@ -1,7 +1,4 @@
-import { createSelector } from '@reduxjs/toolkit';
 import apiService from 'app/store/apiService';
-import _ from '@lodash';
-import { RootStateType } from 'app/store/types';
 
 export const addTagTypes = [
 	'help_center_guides',
@@ -151,24 +148,3 @@ export const {
 	useGetHelpCenterMostlyFaqsQuery,
 	useGetHelpCenterFaqCategoriesQuery
 } = HelpCenterApi;
-
-export const selectGroupedGuides = createSelector(
-	[
-		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuides.select()(state)?.data || [],
-		(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuideCategories.select()(state)?.data || []
-	],
-	(guides, categories) => {
-		return categories.map((category) => ({
-			...category,
-			guides: _.filter(guides, { categoryId: category.id })
-		}));
-	}
-);
-
-export const selectGuideCategoryBySlug = (slug: GuideCategory['slug']) =>
-	createSelector(
-		[(state: RootStateType) => HelpCenterApi.endpoints.getHelpCenterGuideCategories.select()(state)?.data || []],
-		(categories) => {
-			return _.find(categories, { slug });
-		}
-	);

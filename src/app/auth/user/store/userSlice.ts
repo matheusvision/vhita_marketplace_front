@@ -1,13 +1,11 @@
 /* eslint import/no-extraneous-dependencies: off */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import settingsConfig from 'app/configs/settingsConfig';
-import { RootStateType } from 'app/store/types';
 import { User } from 'src/app/auth/user';
 import { PartialDeep } from 'type-fest';
 import _ from '@lodash';
+import { RootState } from 'app/store/store';
 import userModel from '../models/UserModel';
-
-type AppRootStateType = RootStateType<userSliceType>;
 
 function updateRedirectUrl(user: PartialDeep<User>) {
 	/*
@@ -111,19 +109,19 @@ export const userSlice = createSlice({
 
 export const { userSignOut, updateUser, setUserShortcuts, setUserSettings } = userSlice.actions;
 
-export const selectUser = (state: AppRootStateType) => state?.user;
+export const selectUser = (state: RootState) => state?.user;
 
-export const selectUserRole = (state: AppRootStateType) => state?.user?.role;
+export const selectUserRole = (state: RootState) => state?.user?.role;
 
-export const selectIsUserGuest = (state: AppRootStateType) => {
+export const selectIsUserGuest = (state: RootState) => {
 	const userRole = state?.user?.role;
 
 	return !userRole || userRole?.length === 0;
 };
 
-export const selectUserShortcuts = (state: AppRootStateType) => state.user?.data?.shortcuts;
+export const selectUserShortcuts = (state: RootState) => state.user?.data?.shortcuts;
 
-export const selectUserSettings = (state: AppRootStateType) => state.user?.data?.settings;
+export const selectUserSettings = (state: RootState) => state.user?.data?.settings;
 
 export type userSliceType = typeof userSlice;
 

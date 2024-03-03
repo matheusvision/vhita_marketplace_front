@@ -515,18 +515,6 @@ export const {
 	useUpdateScrumboardBoardCardOrderMutation
 } = ScrumboardApi;
 
-export const selectListById = (boardId: string, listId: string) =>
-	createSelector(
-		(ScrumboardApi.endpoints.getScrumboardBoardLists.select(boardId),
-		(lists) => _.find(lists, { id: listId }) as ScrumboardCheckListItem)
-	);
-
-export const selectMemberById = (id: string) =>
-	createSelector(
-		(ScrumboardApi.endpoints.getScrumboardMembers.select(),
-		(members) => _.find(members, { id }) as ScrumboardMember)
-	);
-
 export const selectLabelById = (boardId: string, id: string) =>
 	createSelector(
 		(ScrumboardApi.endpoints.getScrumboardBoardLabels.select(boardId),

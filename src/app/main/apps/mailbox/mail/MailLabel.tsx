@@ -1,8 +1,9 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import { useAppSelector } from 'app/store/hooks';
+import { useMemo } from 'react';
+import _ from '@lodash';
 import { labelColorDefs } from './labelColors';
-import { selectLabelById } from '../MailboxApi';
+import { useGetMailboxLabelsQuery } from '../MailboxApi';
 
 type MailLabelProps = {
 	className?: string;
@@ -14,7 +15,9 @@ type MailLabelProps = {
  */
 function MailLabel(props: MailLabelProps) {
 	const { labelId, className = '' } = props;
-	const label = useAppSelector(selectLabelById(labelId));
+	const { data: labels } = useGetMailboxLabelsQuery();
+
+	const label = useMemo(() => _.find(labels, { id: labelId }), [labels, labelId]);
 
 	if (!label) {
 		return null;

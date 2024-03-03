@@ -5,9 +5,9 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppSelector } from 'app/store/hooks';
 import CommentModel from '../../../../models/CommentModel';
-import { ScrumboardComment, selectMemberById } from '../../../../ScrumboardApi';
+import { ScrumboardComment } from '../../../../ScrumboardApi';
+import useSelectMember from '../../../../hooks/useSelectMember';
 
 type FormType = {
 	message: ScrumboardComment['message'];
@@ -34,8 +34,7 @@ type CardCommentProps = {
  */
 function CardComment(props: CardCommentProps) {
 	const { onCommentAdd } = props;
-
-	const user = useAppSelector(selectMemberById(defaultValues.idMember));
+	const user = useSelectMember(defaultValues.idMember);
 
 	const { control, formState, handleSubmit, reset } = useForm<FormType>({
 		mode: 'onChange',

@@ -1,7 +1,5 @@
-import { WithSlice, createSelector, createSlice } from '@reduxjs/toolkit';
-import _ from '@lodash';
+import { WithSlice, createSlice } from '@reduxjs/toolkit';
 import { rootReducer } from 'app/store/lazyLoadedSlices';
-import { NotesNote, RouteParams, selectNoteList } from './NotesApi';
 
 const initialState: {
 	dialogs: {
@@ -80,11 +78,6 @@ export const {
 
 export const { selectNoteDialogId, selectLabelsDialogOpen, selectSearchText, selectVariateDescSize } =
 	injectedSlice.selectors;
-
-export const selectDialogNote = (routeParams: RouteParams) =>
-	createSelector([selectNoteDialogId, selectNoteList(routeParams)], (noteId: string, notes: NotesNote[]) => {
-		return _.find(notes, { id: noteId });
-	});
 
 export type notesAppSliceType = typeof notesAppSlice;
 

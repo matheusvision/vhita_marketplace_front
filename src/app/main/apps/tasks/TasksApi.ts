@@ -1,5 +1,4 @@
 import { apiService as api } from 'app/store/apiService';
-import { createSelector } from '@reduxjs/toolkit';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 
 export const addTagTypes = ['tasks_list', 'tasks_item', 'tasks_tags'] as const;
@@ -144,9 +143,3 @@ export const {
 export type TasksApiType = {
 	[TasksApi.reducerPath]: ReturnType<typeof TasksApi.reducer>;
 };
-
-export const selectTasksList = (state: TasksApiType) => TasksApi.endpoints.getTasks.select()(state)?.data ?? [];
-
-export const selectRemainingTasks = createSelector([selectTasksList], (tasks) => {
-	return tasks.filter((item) => item.type === 'task' && !item.completed).length;
-});

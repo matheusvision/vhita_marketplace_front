@@ -1,8 +1,5 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
 import { rootReducer } from 'app/store/lazyLoadedSlices';
-import { RootStateType } from 'app/store/types';
-
-export type AppRootStateType = RootStateType<contactsSliceType>;
 
 const initialState: {
 	selectedContactId: string;

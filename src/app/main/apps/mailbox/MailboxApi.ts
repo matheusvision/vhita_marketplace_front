@@ -1,7 +1,4 @@
 import { apiService as api } from 'app/store/apiService';
-import { createSelector } from '@reduxjs/toolkit';
-import _ from '@lodash';
-import { RootStateType } from 'app/store/types';
 import { LabelColorsType } from './mail/labelColors';
 
 export const addTagTypes = [
@@ -103,7 +100,7 @@ const MailboxApi = api
 
 export default MailboxApi;
 
-type RouteParams = {
+export type RouteParams = {
 	folderHandle?: string;
 	labelHandle?: string;
 	filterHandle?: string;
@@ -237,38 +234,3 @@ export const {
 export type MailboxApiType = {
 	[MailboxApi.reducerPath]: ReturnType<typeof MailboxApi.reducer>;
 };
-
-export const selectMails = (routeParams: RouteParams) => (state: RootStateType) =>
-	MailboxApi.endpoints.getMailboxMails.select(routeParams)(state)?.data ?? [];
-
-export const selectFolders = (state: RootStateType) =>
-	MailboxApi.endpoints.getMailboxFolders.select()(state)?.data ?? [];
-
-export const selectLabels = (state: RootStateType) => MailboxApi.endpoints.getMailboxLabels.select()(state)?.data ?? [];
-
-export const selectLabelById = (id: string) =>
-	createSelector([selectLabels], (labels) => {
-		return _.find(labels, { id });
-	});
-
-export const selectFilters = (state: RootStateType) =>
-	MailboxApi.endpoints.getMailboxLabels.select()(state)?.data ?? [];
-
-export const selectMailsTitle = (routeParams: RouteParams) =>
-	createSelector([selectFolders, selectLabels, selectFilters], (folders, labels, filters) => {
-		let title = '';
-
-		if (routeParams.folderHandle) {
-			title = _.find(folders, { slug: routeParams.folderHandle })?.title;
-		}
-
-		if (routeParams.labelHandle) {
-			title = _.find(labels, { slug: routeParams.labelHandle })?.title;
-		}
-
-		if (routeParams.filterHandle) {
-			title = _.find(filters, { slug: routeParams.filterHandle })?.title;
-		}
-
-		return title;
-	});
