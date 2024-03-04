@@ -1,5 +1,4 @@
-import FusePageCarded from '@fuse/core/FusePageCarded';
-import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import GlobalStyles from '@mui/material/GlobalStyles';
 import OrdersHeader from './OrdersHeader';
 import OrdersTable from './OrdersTable';
 
@@ -7,14 +6,20 @@ import OrdersTable from './OrdersTable';
  * The orders page.
  */
 function Orders() {
-	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
-
 	return (
-		<FusePageCarded
-			header={<OrdersHeader />}
-			content={<OrdersTable />}
-			scroll={isMobile ? 'normal' : 'content'}
-		/>
+		<>
+			<GlobalStyles
+				styles={() => ({
+					'#root': {
+						maxHeight: '100vh'
+					}
+				})}
+			/>
+			<div className="w-full h-full container flex flex-col">
+				<OrdersHeader />
+				<OrdersTable />
+			</div>
+		</>
 	);
 }
 

@@ -1,5 +1,4 @@
-import FusePageCarded from '@fuse/core/FusePageCarded';
-import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import GlobalStyles from '@mui/material/GlobalStyles';
 import ProductsHeader from './ProductsHeader';
 import ProductsTable from './ProductsTable';
 
@@ -7,14 +6,20 @@ import ProductsTable from './ProductsTable';
  * The products page.
  */
 function Products() {
-	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
-
 	return (
-		<FusePageCarded
-			header={<ProductsHeader />}
-			content={<ProductsTable />}
-			scroll={isMobile ? 'normal' : 'content'}
-		/>
+		<>
+			<GlobalStyles
+				styles={() => ({
+					'#root': {
+						maxHeight: '100vh'
+					}
+				})}
+			/>
+			<div className="w-full h-full container flex flex-col">
+				<ProductsHeader />
+				<ProductsTable />
+			</div>
+		</>
 	);
 }
 

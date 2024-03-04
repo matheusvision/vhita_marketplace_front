@@ -1,8 +1,5 @@
 import { apiService as api } from 'app/store/apiService';
-import { createSelector } from '@reduxjs/toolkit';
-import FuseUtils from '@fuse/utils';
 import { PartialDeep } from 'type-fest';
-import { selectSearchText } from './eCommerceAppSlice';
 import ProductModel from './product/models/ProductModel';
 
 export const addTagTypes = ['eCommerce_products', 'eCommerce_product', 'eCommerce_orders', 'eCommerce_order'] as const;
@@ -220,30 +217,3 @@ export const {
 export type ECommerceApiType = {
 	[ECommerceApi.reducerPath]: ReturnType<typeof ECommerceApi.reducer>;
 };
-
-/**
- * Select products
- */
-/**
- * Select filtered products
- */
-export const selectFilteredProducts = (products: EcommerceProduct[]) =>
-	createSelector([selectSearchText], (searchText) => {
-		if (searchText.length === 0) {
-			return products;
-		}
-
-		return FuseUtils.filterArrayByString<EcommerceProduct>(products, searchText);
-	});
-
-/**
- * Select filtered orders
- */
-export const selectFilteredOrders = (orders: EcommerceOrder[]) =>
-	createSelector([selectSearchText], (searchText) => {
-		if (searchText.length === 0) {
-			return orders;
-		}
-
-		return FuseUtils.filterArrayByString<EcommerceOrder>(orders, searchText);
-	});

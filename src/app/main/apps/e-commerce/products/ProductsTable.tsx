@@ -1,284 +1,184 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
+/* eslint-disable react/no-unstable-nested-components */
+import { useMemo } from 'react';
+import { type MRT_ColumnDef } from 'material-react-table';
+import DataTable from 'app/shared-components/data-table/DataTable';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { Chip, ListItemIcon, MenuItem, Paper } from '@mui/material';
+import * as React from 'react';
 import _ from '@lodash';
-import Checkbox from '@mui/material/Checkbox';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import { ChangeEvent, MouseEvent, useState } from 'react';
-import withRouter from '@fuse/core/withRouter';
-import FuseLoading from '@fuse/core/FuseLoading';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { Many } from 'lodash';
-import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
-import * as React from 'react';
-import { useAppSelector } from 'app/store/hooks';
-import ProductsTableHead from './ProductsTableHead';
-import { EcommerceProduct, selectFilteredProducts, useGetECommerceProductsQuery } from '../ECommerceApi';
+import Button from '@mui/material/Button';
+import { EcommerceProduct, useDeleteECommerceProductsMutation, useGetECommerceProductsQuery } from '../ECommerceApi';
 
-type ProductsTableProps = WithRouterProps & {
-	navigate: (path: string) => void;
-};
+function ProductsTable() {
+	const { data: products, isLoading } = useGetECommerceProductsQuery();
+	const [removeProducts] = useDeleteECommerceProductsMutation();
 
-/**
- * The products table.
- */
-function ProductsTable(props: ProductsTableProps) {
-	const { navigate } = props;
-
-	const { data, isLoading } = useGetECommerceProductsQuery();
-	const products = useAppSelector(selectFilteredProducts(data));
-
-	const [selected, setSelected] = useState<EcommerceProduct['id'][]>([]);
-
-	const [page, setPage] = useState(0);
-	const [rowsPerPage, setRowsPerPage] = useState(10);
-	const [tableOrder, setTableOrder] = useState<{
-		direction: 'asc' | 'desc';
-		id: string;
-	}>({
-		direction: 'asc',
-		id: ''
-	});
-
-	function handleRequestSort(event: MouseEvent<HTMLSpanElement>, property: string) {
-		const newOrder: {
-			direction: 'asc' | 'desc';
-			id: string;
-		} = { id: property, direction: 'desc' };
-
-		if (tableOrder.id === property && tableOrder.direction === 'desc') {
-			newOrder.direction = 'asc';
-		}
-
-		setTableOrder(newOrder);
-	}
-
-	function handleSelectAllClick(event: ChangeEvent<HTMLInputElement>) {
-		if (event.target.checked) {
-			setSelected(products.map((n) => n.id));
-			return;
-		}
-
-		setSelected([]);
-	}
-
-	function handleDeselect() {
-		setSelected([]);
-	}
-
-	function handleClick(item: EcommerceProduct) {
-		navigate(`/apps/e-commerce/products/${item.id}/${item.handle}`);
-	}
-
-	function handleCheck(event: ChangeEvent<HTMLInputElement>, id: string) {
-		const selectedIndex = selected.indexOf(id);
-		let newSelected: string[] = [];
-
-		if (selectedIndex === -1) {
-			newSelected = newSelected.concat(selected, id);
-		} else if (selectedIndex === 0) {
-			newSelected = newSelected.concat(selected.slice(1));
-		} else if (selectedIndex === selected.length - 1) {
-			newSelected = newSelected.concat(selected.slice(0, -1));
-		} else if (selectedIndex > 0) {
-			newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-		}
-
-		setSelected(newSelected);
-	}
-
-	function handleChangePage(event: React.MouseEvent<HTMLButtonElement> | null, page: number) {
-		setPage(+page);
-	}
-
-	function handleChangeRowsPerPage(event: React.ChangeEvent<HTMLInputElement>) {
-		setRowsPerPage(+event.target.value);
-	}
+	const columns = useMemo<MRT_ColumnDef<EcommerceProduct>[]>(
+		() => [
+			{
+				accessorFn: (row) => row.featuredImageId,
+				id: 'featuredImageId',
+				header: '',
+				enableColumnFilter: false,
+				enableColumnDragging: false,
+				size: 64,
+				enableSorting: false,
+				Cell: ({ row }) => (
+					<div className="flex items-center justify-center">
+						{row.original?.images?.length > 0 && row.original.featuredImageId ? (
+							<img
+								className="w-full max-h-40 max-w-40 block rounded"
+								src={_.find(row.original.images, { id: row.original.featuredImageId })?.url}
+								alt={row.original.name}
+							/>
+						) : (
+							<img
+								className="w-full max-h-40 max-w-40 block rounded"
+								src="assets/images/apps/ecommerce/product-image-placeholder.png"
+								alt={row.original.name}
+							/>
+						)}
+					</div>
+				)
+			},
+			{
+				accessorKey: 'name',
+				header: 'Name',
+				Cell: ({ row }) => (
+					<Typography
+						component={Link}
+						to={`/apps/e-commerce/products/${row.original.id}/${row.original.handle}`}
+						className="underline"
+						color="secondary"
+						role="button"
+					>
+						{row.original.name}
+					</Typography>
+				)
+			},
+			{
+				accessorKey: 'categories',
+				header: 'Category',
+				accessorFn: (row) => (
+					<div className="flex flex-wrap space-x-2">
+						{row.categories.map((item) => (
+							<Chip
+								key={item}
+								className="text-11"
+								size="small"
+								color="default"
+								label={item}
+							/>
+						))}
+					</div>
+				)
+			},
+			{
+				accessorKey: 'priceTaxIncl',
+				header: 'Price',
+				accessorFn: (row) => `$${row.priceTaxIncl}`
+			},
+			{
+				accessorKey: 'quantity',
+				header: 'Quantity',
+				accessorFn: (row) => (
+					<div className="flex items-center space-x-8">
+						<span>{row.quantity}</span>
+						<i
+							className={clsx(
+								'inline-block w-8 h-8 rounded',
+								row.quantity <= 5 && 'bg-red',
+								row.quantity > 5 && row.quantity <= 25 && 'bg-orange',
+								row.quantity > 25 && 'bg-green'
+							)}
+						/>
+					</div>
+				)
+			},
+			{
+				accessorKey: 'active',
+				header: 'Active',
+				accessorFn: (row) => (
+					<div className="flex items-center">
+						{row.active ? (
+							<FuseSvgIcon
+								className="text-green"
+								size={20}
+							>
+								heroicons-outline:check-circle
+							</FuseSvgIcon>
+						) : (
+							<FuseSvgIcon
+								className="text-red"
+								size={20}
+							>
+								heroicons-outline:minus-circle
+							</FuseSvgIcon>
+						)}
+					</div>
+				)
+			}
+		],
+		[]
+	);
 
 	if (isLoading) {
-		return (
-			<div className="flex items-center justify-center h-full">
-				<FuseLoading />
-			</div>
-		);
-	}
-
-	if (products?.length === 0) {
-		return (
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1, transition: { delay: 0.1 } }}
-				className="flex flex-1 items-center justify-center h-full"
-			>
-				<Typography
-					color="text.secondary"
-					variant="h5"
-				>
-					There are no products!
-				</Typography>
-			</motion.div>
-		);
+		return <FuseLoading />;
 	}
 
 	return (
-		<div className="w-full flex flex-col min-h-full">
-			<FuseScrollbars className="grow overflow-x-auto">
-				<Table
-					stickyHeader
-					className="min-w-xl"
-					aria-labelledby="tableTitle"
-				>
-					<ProductsTableHead
-						selectedProductIds={selected}
-						tableOrder={tableOrder}
-						onSelectAllClick={handleSelectAllClick}
-						onRequestSort={handleRequestSort}
-						rowCount={products.length}
-						onMenuItemClick={handleDeselect}
-					/>
+		<Paper
+			className="flex flex-col flex-auto shadow-3 rounded-t-16 overflow-hidden rounded-b-0 w-full h-full"
+			elevation={0}
+		>
+			<DataTable
+				data={products}
+				columns={columns}
+				renderRowActionMenuItems={({ closeMenu, row, table }) => [
+					<MenuItem
+						key={0}
+						onClick={() => {
+							removeProducts([row.original.id]);
+							closeMenu();
+							table.resetRowSelection();
+						}}
+					>
+						<ListItemIcon>
+							<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
+						</ListItemIcon>
+						Delete
+					</MenuItem>
+				]}
+				renderTopToolbarCustomActions={({ table }) => {
+					const { rowSelection } = table.getState();
 
-					<TableBody>
-						{_.orderBy(products, [tableOrder.id], [tableOrder.direction] as Many<boolean | 'asc' | 'desc'>)
-							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((n: EcommerceProduct) => {
-								const isSelected = selected.indexOf(n.id) !== -1;
-								return (
-									<TableRow
-										className="h-72 cursor-pointer"
-										hover
-										role="checkbox"
-										aria-checked={isSelected}
-										tabIndex={-1}
-										key={n.id}
-										selected={isSelected}
-										onClick={() => handleClick(n)}
-									>
-										<TableCell
-											className="w-40 md:w-64 text-center"
-											padding="none"
-										>
-											<Checkbox
-												checked={isSelected}
-												onClick={(event) => event.stopPropagation()}
-												onChange={(event) => handleCheck(event, n.id)}
-											/>
-										</TableCell>
+					if (Object.keys(rowSelection).length === 0) {
+						return null;
+					}
 
-										<TableCell
-											className="w-52 px-4 md:px-0"
-											component="th"
-											scope="row"
-											padding="none"
-										>
-											{n?.images?.length > 0 && n.featuredImageId ? (
-												<img
-													className="w-full block rounded"
-													src={_.find(n.images, { id: n.featuredImageId })?.url}
-													alt={n.name}
-												/>
-											) : (
-												<img
-													className="w-full block rounded"
-													src="assets/images/apps/ecommerce/product-image-placeholder.png"
-													alt={n.name}
-												/>
-											)}
-										</TableCell>
-
-										<TableCell
-											className="p-4 md:p-16"
-											component="th"
-											scope="row"
-										>
-											{n.name}
-										</TableCell>
-
-										<TableCell
-											className="p-4 md:p-16 truncate"
-											component="th"
-											scope="row"
-										>
-											{n.categories.join(', ')}
-										</TableCell>
-
-										<TableCell
-											className="p-4 md:p-16"
-											component="th"
-											scope="row"
-											align="right"
-										>
-											<span>$</span>
-											{n.priceTaxIncl}
-										</TableCell>
-
-										<TableCell
-											className="p-4 md:p-16"
-											component="th"
-											scope="row"
-											align="right"
-										>
-											{n.quantity}
-											<i
-												className={clsx(
-													'inline-block w-8 h-8 rounded mx-8',
-													n.quantity <= 5 && 'bg-red',
-													n.quantity > 5 && n.quantity <= 25 && 'bg-orange',
-													n.quantity > 25 && 'bg-green'
-												)}
-											/>
-										</TableCell>
-
-										<TableCell
-											className="p-4 md:p-16"
-											component="th"
-											scope="row"
-											align="right"
-										>
-											{n.active ? (
-												<FuseSvgIcon
-													className="text-green"
-													size={20}
-												>
-													heroicons-outline:check-circle
-												</FuseSvgIcon>
-											) : (
-												<FuseSvgIcon
-													className="text-red"
-													size={20}
-												>
-													heroicons-outline:minus-circle
-												</FuseSvgIcon>
-											)}
-										</TableCell>
-									</TableRow>
-								);
-							})}
-					</TableBody>
-				</Table>
-			</FuseScrollbars>
-
-			<TablePagination
-				className="shrink-0 border-t-1"
-				component="div"
-				count={products.length}
-				rowsPerPage={rowsPerPage}
-				page={page}
-				backIconButtonProps={{
-					'aria-label': 'Previous Page'
+					return (
+						<Button
+							variant="contained"
+							size="small"
+							onClick={() => {
+								const selectedRows = table.getSelectedRowModel().rows;
+								removeProducts(selectedRows.map((row) => row.original.id));
+								table.resetRowSelection();
+							}}
+							color="secondary"
+							startIcon={<FuseSvgIcon size={16}>heroicons-outline:trash</FuseSvgIcon>}
+						>
+							Delete selected items
+						</Button>
+					);
 				}}
-				nextIconButtonProps={{
-					'aria-label': 'Next Page'
-				}}
-				onPageChange={handleChangePage}
-				onRowsPerPageChange={handleChangeRowsPerPage}
 			/>
-		</div>
+		</Paper>
 	);
 }
 
-export default withRouter(ProductsTable);
+export default ProductsTable;

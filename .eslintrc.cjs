@@ -116,7 +116,7 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "off",
         "react/jsx-wrap-multilines": "off",
-        "react/prop-types": "warn",
+        "react/prop-types": "off",
         "react/require-default-props": "off",
         "react/no-unescaped-entities": "off",
         "no-underscore-dangle": "off",
@@ -125,6 +125,8 @@ module.exports = {
         "react/no-array-index-key": "off",
         "no-restricted-exports": ["off", { "restrictedNamedExports": ["default"] }],
         "import/no-import-module-exports": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "camelcase": "off",
+        "react/jsx-pascal-case": "off",
     },
 }
