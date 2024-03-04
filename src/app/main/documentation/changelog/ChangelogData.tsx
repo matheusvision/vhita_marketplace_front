@@ -19,8 +19,12 @@ export type ChangelogItemType = {
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '10.2.0',
-		date: '2024-02-02',
-		newChanges: ['@reduxjs/toolkit updated to v2.2.1'],
+		date: '2024-02-04',
+		newChanges: [
+			'material-react-table library added',
+			'E-commerce products and orders page tables changed with material-react-table',
+			'@reduxjs/toolkit updated to v2.2.1'
+		],
 		breakingChanges: [
 			'Redux slices and RTK-Query have been enhanced by leveraging the latest version of the Redux Toolkit for optimized lazy loading.'
 		]
