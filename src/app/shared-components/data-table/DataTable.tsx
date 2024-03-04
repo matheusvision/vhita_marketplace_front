@@ -18,7 +18,14 @@ const tableIcons: Partial<MRT_Icons> = {
 	DensityLargeIcon: () => <FuseSvgIcon size={20}>heroicons-outline:menu-alt-4</FuseSvgIcon>, // Adjusted, closest match
 	DensityMediumIcon: () => <FuseSvgIcon size={20}>heroicons-outline:menu</FuseSvgIcon>, // Adjusted, closest match
 	DensitySmallIcon: () => <FuseSvgIcon size={20}>heroicons-outline:view-list</FuseSvgIcon>, // Adjusted, closest match
-	DragHandleIcon: () => <FuseSvgIcon size={20}>heroicons-outline:switch-vertical</FuseSvgIcon>, // Adjusted, closest match
+	DragHandleIcon: () => (
+		<FuseSvgIcon
+			className="rotate-45"
+			size={16}
+		>
+			heroicons-outline:arrows-expand
+		</FuseSvgIcon>
+	), // Adjusted, closest match
 	FilterListIcon: (props) => (
 		<FuseSvgIcon
 			size={16}
@@ -78,8 +85,10 @@ function DataTable<TData>(props: MaterialReactTableProps<TData>) {
 					},
 					pagination: {
 						pageSize: 15
-					}
+					},
+					enableFullScreenToggle: false
 				},
+				enableFullScreenToggle: false,
 				enableColumnFilterModes: true,
 				enableColumnOrdering: true,
 				enableGrouping: true,
