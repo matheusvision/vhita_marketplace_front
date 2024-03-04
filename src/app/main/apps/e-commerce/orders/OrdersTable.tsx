@@ -121,10 +121,11 @@ function OrdersTable() {
 								removeOrders(selectedRows.map((row) => row.original.id));
 								table.resetRowSelection();
 							}}
+							className="flex shrink min-w-40 ltr:mr-8 rtl:ml-8"
 							color="secondary"
-							startIcon={<FuseSvgIcon size={16}>heroicons-outline:trash</FuseSvgIcon>}
 						>
-							Delete selected items
+							<FuseSvgIcon size={16}>heroicons-outline:trash</FuseSvgIcon>
+							<span className="hidden sm:flex mx-8">Delete selected items</span>
 						</Button>
 					);
 				}}
