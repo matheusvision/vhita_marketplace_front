@@ -25,7 +25,7 @@ type State = AppContextType & {
 };
 
 function isUserGuest(role: string[] | string) {
-	return !role || (Array.isArray(role) && role.length === 0);
+	return !role || (Array.isArray(role) && role?.length === 0);
 }
 
 /**
@@ -109,7 +109,7 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 		User is guest
 		Redirect to Login Page
 		*/
-		if (!userRole || userRole.length === 0) {
+		if (isUserGuest(userRole)) {
 			setTimeout(() => history.push('/sign-in'), 0);
 		} else {
 			/*
