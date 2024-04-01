@@ -66,8 +66,11 @@ function MailListItem(props: MailListItemProps) {
 				tabIndex={-1}
 				disableRipple
 				checked={checked}
-				onChange={() => dispatch(toggleInSelectedMails(mail.id))}
-				onClick={(ev) => ev.stopPropagation()}
+				onClick={(ev) => {
+					ev.preventDefault();
+					ev.stopPropagation();
+					dispatch(toggleInSelectedMails(mail.id));
+				}}
 				size="small"
 			/>
 
