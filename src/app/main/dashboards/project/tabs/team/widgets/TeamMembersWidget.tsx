@@ -17,7 +17,7 @@ function TeamMembersWidget() {
 		return <FuseLoading />;
 	}
 
-	const members = widgets.teamMembers as TeamMemberType[];
+	const members = widgets?.teamMembers as TeamMemberType[];
 
 	if (!members) {
 		return null;

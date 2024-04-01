@@ -15,7 +15,7 @@ function CryptoDashboardAppSidebar() {
 		return <FuseLoading />;
 	}
 
-	const watchlist = widgets.watchlist as WatchlistType;
+	const watchlist = widgets?.watchlist as WatchlistType;
 
 	if (!watchlist) {
 		return null;

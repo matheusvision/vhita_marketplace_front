@@ -19,7 +19,7 @@ function YearlyExpensesWidget() {
 		return <FuseLoading />;
 	}
 
-	const widget = widgets.yearlyExpenses as ExpensesDataType;
+	const widget = widgets?.yearlyExpenses as ExpensesDataType;
 
 	if (!widget) {
 		return null;

@@ -17,7 +17,7 @@ import TaskDistributionDataType from './types/TaskDistributionDataType';
 function TaskDistributionWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
 
-	const widget = widgets.taskDistribution as TaskDistributionDataType;
+	const widget = widgets?.taskDistribution as TaskDistributionDataType;
 
 	if (isLoading) {
 		return <FuseLoading />;

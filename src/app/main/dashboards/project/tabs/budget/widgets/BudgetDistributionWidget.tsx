@@ -18,7 +18,7 @@ function BudgetDistributionWidget() {
 		return <FuseLoading />;
 	}
 
-	const widget = widgets.budgetDistribution as BudgetDistributionDataType;
+	const widget = widgets?.budgetDistribution as BudgetDistributionDataType;
 
 	if (!widget) {
 		return null;

@@ -15,7 +15,7 @@ import WidgetDataType, { RangeType } from './types/WidgetDataType';
 function SummaryWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
 
-	const widget = widgets.summary as WidgetDataType;
+	const widget = widgets?.summary as WidgetDataType;
 
 	if (isLoading) {
 		return <FuseLoading />;

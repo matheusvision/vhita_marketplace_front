@@ -25,7 +25,7 @@ function GithubIssuesWidget() {
 		return <FuseLoading />;
 	}
 
-	const widget = widgets.githubIssues as GithubIssuesDataType;
+	const widget = widgets?.githubIssues as GithubIssuesDataType;
 
 	if (!widget) {
 		return null;

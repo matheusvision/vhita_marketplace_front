@@ -21,7 +21,7 @@ function BudgetDetailsWidget() {
 		return <FuseLoading />;
 	}
 
-	const widget = widgets.budgetDetails as BudgetDetailsDataType;
+	const widget = widgets?.budgetDetails as BudgetDetailsDataType;
 
 	if (!widget) {
 		return null;

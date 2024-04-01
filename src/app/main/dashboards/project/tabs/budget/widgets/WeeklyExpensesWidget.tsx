@@ -19,7 +19,7 @@ function WeeklyExpensesWidget() {
 		return <FuseLoading />;
 	}
 
-	const widget = widgets.weeklyExpenses as ExpensesDataType;
+	const widget = widgets?.weeklyExpenses as ExpensesDataType;
 
 	if (!widget) {
 		return null;

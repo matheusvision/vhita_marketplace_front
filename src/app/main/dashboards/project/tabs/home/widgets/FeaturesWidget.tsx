@@ -17,7 +17,7 @@ function FeaturesWidget() {
 		return <FuseLoading />;
 	}
 
-	const widget = widgets.features as WidgetDataType;
+	const widget = widgets?.features as WidgetDataType;
 
 	if (!widget) {
 		return null;

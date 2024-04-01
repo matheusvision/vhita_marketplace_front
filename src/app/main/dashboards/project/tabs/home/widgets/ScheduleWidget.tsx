@@ -20,7 +20,7 @@ import ScheduleDataType from './types/ScheduleDataType';
 function ScheduleWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
 
-	const widget = widgets.schedule as ScheduleDataType;
+	const widget = widgets?.schedule as ScheduleDataType;
 
 	if (isLoading) {
 		return <FuseLoading />;

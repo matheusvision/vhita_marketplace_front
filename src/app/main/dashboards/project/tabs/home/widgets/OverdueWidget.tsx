@@ -13,7 +13,7 @@ import WidgetDataType from './types/WidgetDataType';
 function OverdueWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
 
-	const widget = widgets.overdue as WidgetDataType;
+	const widget = widgets?.overdue as WidgetDataType;
 
 	if (isLoading) {
 		return <FuseLoading />;
