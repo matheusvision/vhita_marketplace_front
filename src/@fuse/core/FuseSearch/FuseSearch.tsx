@@ -70,7 +70,10 @@ function renderInputComponent(props: RenderInputComponentProps) {
 				<>
 					<TextField
 						fullWidth
+						autoComplete="off"
 						InputProps={{
+							name: 'auto-complete-search',
+							role: 'search',
 							inputRef: (node: HTMLInputElement) => {
 								ref?.(node);
 								inputRef(node);
@@ -129,7 +132,7 @@ function renderSuggestion(suggestion: FuseFlatNavItemType, { query, isHighlighte
 				)}
 			</ListItemIcon>
 			<ListItemText
-				primary={parts.map((part: { text: string; highlight?: boolean }, index: number) =>
+				primary={parts?.map((part: { text: string; highlight?: boolean }, index: number) =>
 					part.highlight ? (
 						<span
 							key={index}
@@ -381,6 +384,7 @@ function FuseSearch(props: FuseSearchProps) {
 							// @ts-ignore
 							variant,
 							placeholder,
+							role: 'search',
 							value: state.searchText,
 							onChange: handleChange,
 							onFocus: showSearch,
@@ -396,7 +400,7 @@ function FuseSearch(props: FuseSearchProps) {
 						}}
 						renderSuggestionsContainer={(options) => (
 							<Popper
-								anchorEl={popperAnchor.current}
+								anchorEl={popperNode.current}
 								open={Boolean(options.children) || state.noSuggestions}
 								className="z-9999"
 							>
