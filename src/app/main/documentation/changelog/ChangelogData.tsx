@@ -19,7 +19,7 @@ export type ChangelogItemType = {
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '10.3.0',
-		date: '2024-03-03',
+		date: '2024-04-03',
 		newChanges: ['Aws Amplify authentication service example added.', 'Dependency packages updated'],
 		fixedChanges: [
 			"Mailbox: MailItem checkbox's click event cannot stop propagation on Firefox",
@@ -29,7 +29,7 @@ const changelogData: ChangelogItemType[] = [
 	},
 	{
 		version: '10.2.0',
-		date: '2024-02-04',
+		date: '2024-03-04',
 		newChanges: [
 			'material-react-table library added',
 			'E-commerce products and orders page tables changed with material-react-table',
