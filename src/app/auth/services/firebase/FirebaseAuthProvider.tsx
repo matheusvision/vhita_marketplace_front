@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback, useContext, useMemo } from 'react';
+import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { firebaseInitialized } from './initializeFirebase';
@@ -56,16 +56,6 @@ const defaultAuthContext: FirebaseAuthContextType = {
 };
 
 export const FirebaseAuthContext = createContext<FirebaseAuthContextType>(defaultAuthContext);
-
-export const useFirebaseAuth = () => {
-	const context = useContext(FirebaseAuthContext);
-
-	if (context === undefined) {
-		throw new Error('FirebaseAuthContext must be used within a FirebaseAuthProvider');
-	}
-
-	return context;
-};
 
 export type FirebaseAuthProviderProps = {
 	children: React.ReactNode;
