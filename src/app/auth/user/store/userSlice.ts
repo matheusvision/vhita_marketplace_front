@@ -111,6 +111,8 @@ export const { userSignOut, updateUser, setUserShortcuts, setUserSettings } = us
 
 export const selectUser = (state: RootState) => state?.user;
 
+export const selectUserId = (state: RootState) => state?.user?.uid;
+
 export const selectUserRole = (state: RootState) => state?.user?.role;
 
 export const selectIsUserGuest = (state: RootState) => {

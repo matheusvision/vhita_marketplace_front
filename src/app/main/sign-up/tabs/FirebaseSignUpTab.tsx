@@ -9,8 +9,8 @@ import _ from '@lodash';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import firebase from 'firebase/compat/app';
-import { SignUpPayload, useAuth } from '../../../auth/AuthRouteProvider';
-
+import useFirebaseAuth from '../../../auth/services/firebase/useFirebaseAuth';
+import { SignUpPayload } from '../../../auth/services/firebase/FirebaseAuthProvider';
 /**
  * Form Validation Schema
  */
@@ -39,7 +39,7 @@ const defaultValues = {
 };
 
 function FirebaseSignUpTab() {
-	const { firebaseService } = useAuth();
+	const { signUp } = useFirebaseAuth();
 
 	const { control, formState, handleSubmit, setError } = useForm({
 		mode: 'onChange',
@@ -51,7 +51,11 @@ function FirebaseSignUpTab() {
 
 	function onSubmit(formData: SignUpPayload) {
 		const { displayName, email, password } = formData;
-		firebaseService?.signUp(email, password, displayName).catch((_error) => {
+		signUp({
+			email,
+			password,
+			displayName
+		}).catch((_error) => {
 			const error = _error as firebase.auth.Error;
 
 			const usernameErrorCodes = ['auth/operation-not-allowed', 'auth/user-not-found', 'auth/user-disabled'];

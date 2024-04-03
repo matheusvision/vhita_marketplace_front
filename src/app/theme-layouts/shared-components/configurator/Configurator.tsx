@@ -9,8 +9,9 @@ import _ from '@lodash';
 import SettingsPanel from 'app/theme-layouts/shared-components/configurator/SettingsPanel';
 import ThemesPanel from 'app/theme-layouts/shared-components/configurator/ThemesPanel';
 import { useAppSelector } from 'app/store/hooks';
-import { selectIsUserGuest, selectUserSettings } from '../../../auth/user/store/userSlice';
-import { useAuth } from '../../../auth/AuthRouteProvider';
+import { User } from 'src/app/auth/user';
+import { selectIsUserGuest, selectUser, selectUserSettings } from '../../../auth/user/store/userSlice';
+import useAuth from '../../../auth/useAuth';
 
 const Root = styled('div')(({ theme }) => ({
 	position: 'absolute',
@@ -57,6 +58,7 @@ function Configurator() {
 	const theme = useTheme();
 	const [open, setOpen] = useState('');
 	const isUserGuest = useAppSelector(selectIsUserGuest);
+	const user = useAppSelector(selectUser);
 	const userSettings = useAppSelector(selectUserSettings);
 	const prevUserSettings = usePrevious(userSettings);
 
@@ -64,7 +66,7 @@ function Configurator() {
 
 	useEffect(() => {
 		if (!isUserGuest && prevUserSettings && !_.isEqual(userSettings, prevUserSettings)) {
-			updateUser({ data: { settings: userSettings } });
+			updateUser(_.setIn(user, 'data.settings', userSettings) as User);
 		}
 	}, [isUserGuest, userSettings]);
 

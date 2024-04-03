@@ -10,10 +10,9 @@ import Tab from '@mui/material/Tab';
 import CardContent from '@mui/material/CardContent';
 import _ from '@lodash';
 import Alert from '@mui/material/Alert';
-import Button from '@mui/material/Button';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import JwtLoginTab from './tabs/JwtSignInTab';
 import FirebaseSignInTab from './tabs/FirebaseSignInTab';
+import AwsSignInTab from './tabs/AwsSignInTab';
 
 const tabs = [
 	{
@@ -26,6 +25,12 @@ const tabs = [
 		id: 'firebase',
 		title: 'Firebase',
 		logo: 'assets/images/logo/firebase.svg',
+		logoClass: 'h-40'
+	},
+	{
+		id: 'aws',
+		title: 'AWS',
+		logo: 'assets/images/logo/aws-amplify.svg',
 		logoClass: 'h-40'
 	}
 ];
@@ -97,53 +102,7 @@ function SignInPage() {
 
 					{selectedTabId === 'jwt' && <JwtLoginTab />}
 					{selectedTabId === 'firebase' && <FirebaseSignInTab />}
-
-					<div className="mt-32 flex items-center">
-						<div className="mt-px flex-auto border-t" />
-						<Typography
-							className="mx-8"
-							color="text.secondary"
-						>
-							Or continue with
-						</Typography>
-						<div className="mt-px flex-auto border-t" />
-					</div>
-
-					<div className="mt-32 flex items-center space-x-16">
-						<Button
-							variant="outlined"
-							className="flex-auto"
-						>
-							<FuseSvgIcon
-								size={20}
-								color="action"
-							>
-								feather:facebook
-							</FuseSvgIcon>
-						</Button>
-						<Button
-							variant="outlined"
-							className="flex-auto"
-						>
-							<FuseSvgIcon
-								size={20}
-								color="action"
-							>
-								feather:twitter
-							</FuseSvgIcon>
-						</Button>
-						<Button
-							variant="outlined"
-							className="flex-auto"
-						>
-							<FuseSvgIcon
-								size={20}
-								color="action"
-							>
-								feather:github
-							</FuseSvgIcon>
-						</Button>
-					</div>
+					{selectedTabId === 'aws' && <AwsSignInTab />}
 				</CardContent>
 			</Paper>
 

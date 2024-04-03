@@ -8,9 +8,11 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'src/app/auth/AuthRouteProvider';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import useJwtAuth from 'src/app/auth/services/jwt/useJwtAuth';
+import Typography from '@mui/material/Typography';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * Form Validation Schema
@@ -36,7 +38,7 @@ const defaultValues = {
 };
 
 function jwtSignInTab() {
-	const { jwtService } = useAuth();
+	const { signIn } = useJwtAuth();
 
 	const { control, formState, handleSubmit, setValue, setError } = useForm<FormType>({
 		mode: 'onChange',
@@ -54,30 +56,28 @@ function jwtSignInTab() {
 	function onSubmit(formData: FormType) {
 		const { email, password } = formData;
 
-		jwtService
-			.signIn({
-				email,
-				password
-			})
-			.catch(
-				(
-					error: AxiosError<
-						{
-							type: 'email' | 'password' | 'remember' | `root.${string}` | 'root';
-							message: string;
-						}[]
-					>
-				) => {
-					const errorData = error.response.data;
+		signIn({
+			email,
+			password
+		}).catch(
+			(
+				error: AxiosError<
+					{
+						type: 'email' | 'password' | 'remember' | `root.${string}` | 'root';
+						message: string;
+					}[]
+				>
+			) => {
+				const errorData = error.response.data;
 
-					errorData.forEach((err) => {
-						setError(err.type, {
-							type: 'manual',
-							message: err.message
-						});
+				errorData.forEach((err) => {
+					setError(err.type, {
+						type: 'manual',
+						message: err.message
 					});
-				}
-			);
+				});
+			}
+		);
 	}
 
 	return (
@@ -164,6 +164,53 @@ function jwtSignInTab() {
 					Sign in
 				</Button>
 			</form>
+
+			<div className="mt-32 flex items-center">
+				<div className="mt-px flex-auto border-t" />
+				<Typography
+					className="mx-8"
+					color="text.secondary"
+				>
+					Or continue with
+				</Typography>
+				<div className="mt-px flex-auto border-t" />
+			</div>
+
+			<div className="mt-32 flex items-center space-x-16">
+				<Button
+					variant="outlined"
+					className="flex-auto"
+				>
+					<FuseSvgIcon
+						size={20}
+						color="action"
+					>
+						feather:facebook
+					</FuseSvgIcon>
+				</Button>
+				<Button
+					variant="outlined"
+					className="flex-auto"
+				>
+					<FuseSvgIcon
+						size={20}
+						color="action"
+					>
+						feather:twitter
+					</FuseSvgIcon>
+				</Button>
+				<Button
+					variant="outlined"
+					className="flex-auto"
+				>
+					<FuseSvgIcon
+						size={20}
+						color="action"
+					>
+						feather:github
+					</FuseSvgIcon>
+				</Button>
+			</div>
 		</div>
 	);
 }

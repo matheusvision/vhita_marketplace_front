@@ -10,6 +10,7 @@ import { useState } from 'react';
 import _ from '../../../@lodash/@lodash';
 import JwtSignUpTab from './tabs/JwSignUpTab';
 import FirebaseSignUpTab from './tabs/FirebaseSignUpTab';
+import AwsSignUpTab from './tabs/AwsSignUpTab';
 
 const tabs = [
 	{
@@ -22,6 +23,12 @@ const tabs = [
 		id: 'firebase',
 		title: 'Firebase',
 		logo: 'assets/images/logo/firebase.svg',
+		logoClass: 'h-40'
+	},
+	{
+		id: 'aws',
+		title: 'AWS',
+		logo: 'assets/images/logo/aws-amplify.svg',
 		logoClass: 'h-40'
 	}
 ];
@@ -84,6 +91,7 @@ function SignUpPage() {
 
 					{selectedTabId === 'jwt' && <JwtSignUpTab />}
 					{selectedTabId === 'firebase' && <FirebaseSignUpTab />}
+					{selectedTabId === 'aws' && <AwsSignUpTab />}
 				</div>
 			</Paper>
 

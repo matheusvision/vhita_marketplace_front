@@ -11,7 +11,7 @@ import MockAdapterProvider from '@mock-api/MockAdapterProvider';
 import { useAppSelector } from 'app/store/hooks';
 import { useSelector } from 'react-redux';
 import withAppProviders from './withAppProviders';
-import { AuthRouteProvider } from './auth/AuthRouteProvider';
+import AuthenticationProvider from './auth/AuthenticationProvider';
 
 // import axios from 'axios';
 /**
@@ -55,7 +55,7 @@ function App() {
 					theme={mainTheme}
 					direction={langDirection}
 				>
-					<AuthRouteProvider>
+					<AuthenticationProvider>
 						<SnackbarProvider
 							maxSnack={5}
 							anchorOrigin={{
@@ -68,7 +68,7 @@ function App() {
 						>
 							<FuseLayout layouts={themeLayouts} />
 						</SnackbarProvider>
-					</AuthRouteProvider>
+					</AuthenticationProvider>
 				</FuseTheme>
 			</CacheProvider>
 		</MockAdapterProvider>

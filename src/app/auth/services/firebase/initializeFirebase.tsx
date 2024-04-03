@@ -1,7 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
-import firebaseConfig from './firebaseConfig';
+import firebaseConfig from './firebaseAuthConfig';
 
 /**
  * Initialize Firebase

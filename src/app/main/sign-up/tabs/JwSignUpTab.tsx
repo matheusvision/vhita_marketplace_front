@@ -8,7 +8,8 @@ import Button from '@mui/material/Button';
 import _ from '@lodash';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { SignUpPayload, useAuth } from '../../../auth/AuthRouteProvider';
+import useJwtAuth from 'src/app/auth/services/jwt/useJwtAuth';
+import { SignUpPayload } from '../../../auth/services/jwt/JwtAuthProvider';
 
 /**
  * Form Validation Schema
@@ -38,7 +39,7 @@ const defaultValues = {
 };
 
 function JwtSignUpTab() {
-	const { jwtService } = useAuth();
+	const { signUp } = useJwtAuth();
 
 	const { control, formState, handleSubmit, setError } = useForm({
 		mode: 'onChange',
@@ -50,12 +51,11 @@ function JwtSignUpTab() {
 
 	function onSubmit(formData: SignUpPayload) {
 		const { displayName, email, password } = formData;
-		jwtService
-			.signUp({
-				displayName,
-				password,
-				email
-			})
+		signUp({
+			displayName,
+			password,
+			email
+		})
 			.then(() => {
 				// No need to do anything, registered user data will be set at app/auth/AuthRouteProvider
 			})

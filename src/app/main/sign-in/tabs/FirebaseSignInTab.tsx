@@ -7,12 +7,12 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'src/app/auth/AuthRouteProvider';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAppDispatch } from 'app/store/hooks';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import firebase from 'firebase/compat/app';
+import useFirebaseAuth from '../../../auth/services/firebase/useFirebaseAuth';
 
 /**
  * Form Validation Schema
@@ -38,7 +38,7 @@ const defaultValues = {
 };
 
 function FirebaseSignInTab() {
-	const { firebaseService } = useAuth();
+	const { signIn } = useFirebaseAuth();
 	const dispatch = useAppDispatch();
 
 	const { control, formState, handleSubmit, setValue, setError } = useForm<FormType>({
@@ -57,7 +57,10 @@ function FirebaseSignInTab() {
 	function onSubmit(formData: FormType) {
 		const { email, password } = formData;
 
-		firebaseService?.signIn(email, password).catch((_error) => {
+		signIn({
+			email,
+			password
+		}).catch((_error) => {
 			const error = _error as firebase.auth.Error;
 
 			const errors: {
