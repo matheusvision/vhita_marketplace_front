@@ -194,16 +194,9 @@ const DocumentationNavigation: FuseNavItemType = {
 		{
 			id: 'authentication',
 			title: 'Authentication',
-			type: 'collapse',
+			type: 'item',
 			icon: 'verified_user',
-			children: [
-				{
-					id: 'jwt-auth-doc',
-					title: 'JWT Authentication Service',
-					type: 'item',
-					url: '/documentation/authentication/jwt'
-				}
-			]
+			url: '/documentation/authentication'
 		},
 		FuseComponentsNavigation,
 		MaterialUIComponentsNavigation,

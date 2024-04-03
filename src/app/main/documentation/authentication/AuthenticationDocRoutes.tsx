@@ -1,14 +1,14 @@
 import { lazy } from 'react';
 
-const JwtAuthDoc = lazy(() => import('./jwt/jwtAuthDoc'));
+const AuthenticationDoc = lazy(() => import('./AuthenticationDoc'));
 
 /**
  * The authentication doc routes.
  */
 const AuthenticationDocRoutes = [
 	{
-		path: 'authentication/jwt',
-		element: <JwtAuthDoc />
+		path: 'authentication',
+		element: <AuthenticationDoc />
 	}
 ];
 
