@@ -18,6 +18,16 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '10.3.0',
+		date: '2024-03-03',
+		newChanges: ['Aws Amplify authentication service example added.', 'Dependency packages updated'],
+		fixedChanges: [
+			"Mailbox: MailItem checkbox's click event cannot stop propagation on Firefox",
+			'FuseSearch: Misaligned popper issue resolved in horizontal layouts.'
+		],
+		breakingChanges: ['Authentication system refactored.']
+	},
+	{
 		version: '10.2.0',
 		date: '2024-02-04',
 		newChanges: [
