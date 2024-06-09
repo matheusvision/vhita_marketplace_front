@@ -18,6 +18,26 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '10.4.0',
+		date: '2024-06-10',
+		newChanges: [
+			'React version updated to v18.3.1.',
+			'Mui updated to v5.15.19.',
+			'Tailwindcss updated to v3.4.4.',
+			'All dependency packages updated.',
+			'new date-fns version imports updated due to ts type detection.',
+			'.eslintrc.cjs updated.',
+			'Minor lint fixes.',
+			'NotificationPanelButton animation added, triggers when a new notification is received.',
+			'Notification list default order changed to time desc.',
+			'All .defaultProps definitions removed due to will be deprecated on next major react release.',
+			'DateTimePicker controllers updated.',
+			'AWS Auth Social Login Google example added. '
+		],
+		fixedChanges: [],
+		breakingChanges: []
+	},
+	{
 		version: '10.3.0',
 		date: '2024-04-03',
 		newChanges: ['Aws Amplify authentication service example added.', 'Dependency packages updated'],
