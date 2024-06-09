@@ -90,7 +90,7 @@ function FirebaseAuthProvider(props: FirebaseAuthProviderProps) {
 
 					setIsLoading(false);
 				},
-				(error) => {
+				(_error) => {
 					setAuthStatus('unauthenticated');
 					setIsLoading(false);
 				}
@@ -105,7 +105,7 @@ function FirebaseAuthProvider(props: FirebaseAuthProviderProps) {
 		return firebase.auth().signInWithEmailAndPassword(email, password);
 	}, []);
 
-	const signUp = useCallback(({ email, password, displayName }: SignUpPayload) => {
+	const signUp = useCallback(({ email, password }: SignUpPayload) => {
 		const signUpResponse = new Promise<firebase.auth.UserCredential>((resolve, reject) => {
 			firebase
 				.auth()

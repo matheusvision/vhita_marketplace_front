@@ -3,7 +3,7 @@ import _ from '@lodash';
 import { rootReducer } from 'app/store/lazyLoadedSlices';
 import { DeepPartial } from 'react-hook-form';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
-import formatISO from 'date-fns/formatISO';
+import { formatISO } from 'date-fns/formatISO';
 import { Event } from './CalendarApi';
 
 export const dateFormat = 'YYYY-MM-DDTHH:mm:ss.sssZ';

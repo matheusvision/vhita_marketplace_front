@@ -11,7 +11,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { useDebounce } from '@fuse/hooks';
 import FuseLoading from '@fuse/core/FuseLoading';

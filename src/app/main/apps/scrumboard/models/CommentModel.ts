@@ -1,7 +1,7 @@
 import FuseUtils from '@fuse/utils';
-import getUnixTime from 'date-fns/getUnixTime';
 import _ from '@lodash';
 import { PartialDeep } from 'type-fest';
+import { getUnixTime } from 'date-fns/getUnixTime';
 import { ScrumboardComment } from '../ScrumboardApi';
 
 /**

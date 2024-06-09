@@ -5,7 +5,7 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { IconButton } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import Typography from '@mui/material/Typography';
 import { Draggable } from 'react-beautiful-dnd';
 import clsx from 'clsx';

@@ -2,7 +2,7 @@ import { lighten, styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
 import { useContext, useEffect, useRef, useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import Paper from '@mui/material/Paper';

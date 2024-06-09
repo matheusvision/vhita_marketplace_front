@@ -121,7 +121,7 @@ function JwtAuthProvider(props: JwtAuthProviderProps) {
 	/**
 	 * Handle error
 	 */
-	const handleError = useCallback((error: AxiosError) => {
+	const handleError = useCallback((_error: AxiosError) => {
 		resetSession();
 		setIsAuthenticated(false);
 		setUser(null);

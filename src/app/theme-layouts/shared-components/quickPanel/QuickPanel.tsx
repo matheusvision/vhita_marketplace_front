@@ -10,7 +10,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';

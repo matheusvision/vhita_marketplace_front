@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
 import { MouseEvent } from 'react';
 import { useAppSelector } from 'app/store/hooks.ts';
 import { selectContrastMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice.ts';

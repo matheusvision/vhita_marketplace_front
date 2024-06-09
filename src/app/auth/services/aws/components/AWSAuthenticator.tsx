@@ -1,5 +1,5 @@
 import { Authenticator, ThemeProvider } from '@aws-amplify/ui-react';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { AuthenticatorProps } from '@aws-amplify/ui-react/dist/types/components/Authenticator/Authenticator';
 import '@aws-amplify/ui-react/styles.css';
 import { styled } from '@mui/material/styles';

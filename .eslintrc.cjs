@@ -67,6 +67,7 @@ module.exports = {
             { "blankLine": "always", "prev": "if", "next": "*" },
             { "blankLine": "always", "prev": "*", "next": "function" }
         ],
+        "no-console": ["error", { "allow": ["error"] }],
         // Disabling because this rule is extremely slow.
         "import/no-cycle": "off",
         // Disabling because this rule is slow and not a common violation.

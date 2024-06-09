@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';

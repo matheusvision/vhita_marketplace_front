@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import Box from '@mui/material/Box';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';

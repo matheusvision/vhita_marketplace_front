@@ -1,4 +1,4 @@
-import sub from 'date-fns/sub';
+import { sub } from 'date-fns/sub';
 import ActivityItemType from './ActivityItemType';
 
 /**

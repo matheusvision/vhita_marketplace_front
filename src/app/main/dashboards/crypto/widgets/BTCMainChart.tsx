@@ -1,7 +1,7 @@
 import { darken, useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
-import sub from 'date-fns/sub';
-import format from 'date-fns/format';
+import { sub } from 'date-fns/sub';
+import { format } from 'date-fns/format';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from '@lodash';

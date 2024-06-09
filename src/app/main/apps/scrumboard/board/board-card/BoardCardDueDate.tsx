@@ -1,8 +1,8 @@
 import Chip from '@mui/material/Chip';
 import clsx from 'clsx';
-import getUnixTime from 'date-fns/getUnixTime';
-import format from 'date-fns/format';
-import fromUnixTime from 'date-fns/fromUnixTime';
+import { getUnixTime } from 'date-fns/getUnixTime';
+import { format } from 'date-fns/format';
+import { fromUnixTime } from 'date-fns/fromUnixTime';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 type BoardCardDueDateProps = {

@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
 import FuseLoading from '@fuse/core/FuseLoading';

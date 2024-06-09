@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import withRouter from '@fuse/core/withRouter';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';

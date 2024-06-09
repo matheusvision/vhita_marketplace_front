@@ -3,7 +3,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import { Link } from 'react-router-dom';
 import { lighten } from '@mui/material/styles';
 import ActivityItemType from './ActivityItemType';

@@ -1,4 +1,3 @@
-import React from 'react';
 import AwsAuthenticator from '../../../auth/services/aws/components/AWSAuthenticator';
 
 function AwsSignInTab() {

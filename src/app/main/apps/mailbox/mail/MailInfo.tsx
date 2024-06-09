@@ -3,7 +3,7 @@ import Menu from '@mui/material/Menu';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import { MouseEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetMailboxMailQuery } from '../MailboxApi';

@@ -12,9 +12,9 @@ import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Autocomplete from '@mui/material/Autocomplete';
-import fromUnixTime from 'date-fns/fromUnixTime';
-import getUnixTime from 'date-fns/getUnixTime';
-import format from 'date-fns/format';
+import { fromUnixTime } from 'date-fns/fromUnixTime';
+import { getUnixTime } from 'date-fns/getUnixTime';
+import { format } from 'date-fns/format';
 import { Controller, useForm } from 'react-hook-form';
 import { SyntheticEvent, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
@@ -209,7 +209,7 @@ function BoardCardForm() {
 								return option?.title;
 							}}
 							value={cardForm.labels.map((id) => _.find(labels, { id }))}
-							onChange={(event: SyntheticEvent<Element, Event>, value: (string | ScrumboardLabel)[]) => {
+							onChange={(_event: SyntheticEvent<Element, Event>, value: (string | ScrumboardLabel)[]) => {
 								const ids = value
 									.filter((item): item is ScrumboardLabel => typeof item !== 'string')
 									.map((item) => item.id);
@@ -256,7 +256,10 @@ function BoardCardForm() {
 								return typeof member === 'string' ? member : member?.name;
 							}}
 							value={cardForm.memberIds.map((id) => _.find(members, { id }))}
-							onChange={(event: SyntheticEvent<Element, Event>, value: (string | ScrumboardMember)[]) => {
+							onChange={(
+								_event: SyntheticEvent<Element, Event>,
+								value: (string | ScrumboardMember)[]
+							) => {
 								const ids = value
 									.filter((item): item is ScrumboardMember => typeof item !== 'string')
 									.map((item) => item.id);

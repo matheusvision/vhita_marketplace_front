@@ -1,8 +1,8 @@
 import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
-import fromUnixTime from 'date-fns/fromUnixTime';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { fromUnixTime } from 'date-fns/fromUnixTime';
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
 import Box from '@mui/material/Box';
 import { ScrumboardComment } from '../../../../ScrumboardApi';
 import useSelectMember from '../../../../hooks/useSelectMember';
