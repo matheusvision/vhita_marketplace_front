@@ -267,7 +267,7 @@ function SimpleFormExample() {
 								freeSolo
 								options={options}
 								value={value}
-								onChange={(event, newValue) => {
+								onChange={(_event, newValue) => {
 									onChange(newValue);
 								}}
 								renderInput={(params) => (
@@ -299,7 +299,9 @@ function SimpleFormExample() {
 						render={({ field: { onChange, value } }) => (
 							<DateTimePicker
 								value={new Date(value)}
-								onChange={onChange}
+								onChange={(val) => {
+									onChange(val.toISOString());
+								}}
 								slotProps={{
 									textField: {
 										id: 'birthday',

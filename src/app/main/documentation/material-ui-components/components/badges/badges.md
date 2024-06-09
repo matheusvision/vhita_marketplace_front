@@ -71,4 +71,3 @@ You can't rely on the content of the badge to be announced correctly.
 You should provide a full description, for instance, with `aria-label`:
 
 {{"demo": "AccessibleBadges.js"}}
-

@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
+import _ from '@lodash';
 import AccountBalanceWidgetType from './types/AccountBalanceWidgetType';
 import { useGetFinanceDashboardWidgetsQuery } from '../FinanceDashboardApi';
 
@@ -126,7 +127,7 @@ function AccountBalanceWidget() {
 				<ReactApexChart
 					className="flex-auto w-full h-full"
 					options={chartOptions}
-					series={series}
+					series={_.cloneDeep(series)}
 					type={chartOptions?.chart?.type}
 					height={chartOptions?.chart?.height}
 				/>

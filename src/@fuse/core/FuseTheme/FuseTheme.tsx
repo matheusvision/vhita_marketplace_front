@@ -2,6 +2,8 @@ import { alpha, ThemeProvider } from '@mui/material/styles';
 import { memo, ReactNode, useEffect, useLayoutEffect } from 'react';
 import { Theme } from '@mui/material/styles/createTheme';
 import GlobalStyles from '@mui/material/GlobalStyles';
+import { useAppSelector } from 'app/store/hooks.ts';
+import { selectCurrentLanguageDirection } from 'app/store/i18nSlice.ts';
 
 /**
  * The useEnhancedEffect function is used to conditionally use the useLayoutEffect hook if the window object is defined.
@@ -11,8 +13,8 @@ const useEnhancedEffect = typeof window === 'undefined' ? useEffect : useLayoutE
 
 type FuseThemeProps = {
 	children: ReactNode;
-	direction: string;
 	theme: Theme;
+	root?: boolean;
 };
 
 const inputGlobalStyles = (
@@ -89,23 +91,29 @@ const inputGlobalStyles = (
  * The component is memoized to prevent unnecessary re-renders.
  */
 function FuseTheme(props: FuseThemeProps) {
-	const { direction, theme, children } = props;
+	const { theme, children, root = false } = props;
 	const { mode } = theme.palette;
 
+	const langDirection = useAppSelector(selectCurrentLanguageDirection);
+
 	useEnhancedEffect(() => {
-		document.body.dir = direction;
-	}, [direction]);
+		if (root) {
+			document.body.dir = langDirection;
+		}
+	}, [langDirection]);
 
 	useEffect(() => {
-		document.body.classList.add(mode === 'light' ? 'light' : 'dark');
-		document.body.classList.remove(mode === 'light' ? 'dark' : 'light');
-	}, [mode]);
+		if (root) {
+			document.body.classList.add(mode === 'light' ? 'light' : 'dark');
+			document.body.classList.remove(mode === 'light' ? 'dark' : 'light');
+		}
+	}, [mode, root]);
 
 	// console.warn('FuseTheme:: rendered',mainTheme);
 	return (
 		<ThemeProvider theme={theme}>
 			{children}
-			{inputGlobalStyles}
+			{root && inputGlobalStyles}
 		</ThemeProvider>
 	);
 }

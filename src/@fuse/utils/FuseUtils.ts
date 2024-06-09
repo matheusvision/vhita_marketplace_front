@@ -86,11 +86,11 @@ class FuseUtils {
 	 */
 
 	static filterArrayByString<T>(mainArr: T[], searchText: string): T[] {
-		if (searchText?.length === 0 || !searchText) {
+		if (!searchText || searchText?.length === 0 || !searchText) {
 			return mainArr; // Return the original array
 		}
 
-		searchText = searchText.toLowerCase();
+		searchText = searchText?.toLowerCase();
 		const filtered = mainArr.filter((itemObj) => this.searchInObj(itemObj, searchText));
 
 		if (filtered.length === mainArr.length) {

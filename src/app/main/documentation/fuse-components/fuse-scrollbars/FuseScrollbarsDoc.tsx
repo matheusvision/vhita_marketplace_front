@@ -60,7 +60,7 @@ function FuseScrollbarsDoc() {
 				className="language-jsx"
 			>
 				{`
-                                FuseScrollbars.defaultProps = {
+                               {
                                     className               : '',
                                     enable                  : true,
                                     scrollToTopOnChildChange: false,

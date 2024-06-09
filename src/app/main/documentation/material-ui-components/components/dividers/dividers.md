@@ -14,13 +14,9 @@ materialDesign: https://m2.material.io/components/dividers
 
 ## Introduction
 
-The Material UI Divider component renders as a dark gray `<hr>` by default, and features several useful props for quick style adjustments.
+The Material UI Divider component renders as a dark gray `<hr>` by default, and features several useful props for quick style adjustments.
 
 {{"demo": "IntroDivider.js", "bg": true}}
-
-:::success
-Use the handy `light` prop to make the Divider slightly lighter.
-:::
 
 ## Basics
 
@@ -94,4 +90,3 @@ The Divider component is composed of a root `<hr>`.
   <!-- Divider children goes here -->
 </hr>
 ```
-

@@ -1,6 +1,6 @@
 import IconButton from '@mui/material/IconButton';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppDispatch } from 'app/store/hooks';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { toggleChatPanel } from './messengerPanelSlice';
 
 type ChatPanelToggleButtonProps = {
@@ -11,7 +11,7 @@ type ChatPanelToggleButtonProps = {
  * The chat panel toggle button.
  */
 function MessengerPanelToggleButton(props: ChatPanelToggleButtonProps) {
-	const { children } = props;
+	const { children = <FuseSvgIcon>heroicons-outline:chat</FuseSvgIcon> } = props;
 	const dispatch = useAppDispatch();
 
 	return (
@@ -24,9 +24,5 @@ function MessengerPanelToggleButton(props: ChatPanelToggleButtonProps) {
 		</IconButton>
 	);
 }
-
-MessengerPanelToggleButton.defaultProps = {
-	children: <FuseSvgIcon>heroicons-outline:chat</FuseSvgIcon>
-};
 
 export default MessengerPanelToggleButton;

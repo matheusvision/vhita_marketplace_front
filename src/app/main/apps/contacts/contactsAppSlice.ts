@@ -15,7 +15,7 @@ export const contactsAppSlice = createSlice({
 				state.searchText = action.payload as string;
 			},
 			prepare: (event: React.ChangeEvent<HTMLInputElement>) => ({
-				payload: `${event?.target?.value}` || initialState,
+				payload: `${event?.target?.value}` || '',
 				meta: undefined,
 				error: null
 			})

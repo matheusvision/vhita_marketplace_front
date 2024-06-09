@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
+import _ from '@lodash';
 import ExpensesDataType from './types/ExpensesDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
@@ -93,7 +94,7 @@ function MonthlyExpensesWidget() {
 					<ReactApexChart
 						className="flex-auto w-full h-64"
 						options={chartOptions}
-						series={series}
+						series={_.cloneDeep(series)}
 						type={chartOptions?.chart?.type}
 						height={chartOptions?.chart?.height}
 					/>

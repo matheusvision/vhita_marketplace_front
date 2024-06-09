@@ -5,6 +5,7 @@ import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
+import _ from '@lodash';
 import BudgetDistributionDataType from './types/BudgetDistributionDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
@@ -99,7 +100,7 @@ function BudgetDistributionWidget() {
 				<ReactApexChart
 					className="flex-auto w-full h-320"
 					options={chartOptions}
-					series={series}
+					series={_.cloneDeep(series)}
 					type={chartOptions?.chart?.type}
 					height={chartOptions?.chart?.height}
 				/>

@@ -34,7 +34,7 @@ type PhoneNumberInputProps = {
  * The phone number input.
  */
 function PhoneNumberInput(props: PhoneNumberInputProps) {
-	const { value, hideRemove, onChange, onRemove } = props;
+	const { value, hideRemove = false, onChange, onRemove } = props;
 
 	const { control, formState, handleSubmit, reset } = useForm<ContactPhoneNumber>({
 		mode: 'all',
@@ -120,9 +120,5 @@ function PhoneNumberInput(props: PhoneNumberInputProps) {
 		</form>
 	);
 }
-
-PhoneNumberInput.defaultProps = {
-	hideRemove: false
-};
 
 export default PhoneNumberInput;

@@ -197,14 +197,16 @@ function EventDialog() {
 									<DateTimePicker
 										className="mt-8 mb-16 w-full"
 										value={new Date(value)}
-										onChange={onChange}
+										onChange={(val) => {
+											onChange(val.toISOString());
+										}}
 										slotProps={{
 											textField: {
 												label: 'Start',
 												variant: 'outlined'
 											}
 										}}
-										maxDate={end}
+										maxDate={new Date(end)}
 									/>
 								)}
 							/>
@@ -216,14 +218,16 @@ function EventDialog() {
 									<DateTimePicker
 										className="mt-8 mb-16 w-full"
 										value={new Date(value)}
-										onChange={onChange}
+										onChange={(val) => {
+											onChange(val.toISOString());
+										}}
 										slotProps={{
 											textField: {
 												label: 'End',
 												variant: 'outlined'
 											}
 										}}
-										minDate={start}
+										minDate={new Date(start)}
 									/>
 								)}
 							/>

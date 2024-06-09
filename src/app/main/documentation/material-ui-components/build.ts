@@ -545,7 +545,6 @@ async function removeExcludedComponents() {
 		path.resolve(examplesDirectory, './about-the-lab'),
 		path.resolve(examplesDirectory, './material-icons'),
 		path.resolve(examplesDirectory, './icons'),
-		path.resolve(examplesDirectory, './click-away-listener'),
 		path.resolve(examplesDirectory, './portal'),
 		path.resolve(examplesDirectory, './textarea-autosize'),
 		path.resolve(examplesDirectory, './no-ssr')
@@ -577,7 +576,7 @@ async function removeUnnecessaryFiles() {
 				];
 
 				extToRemove.forEach(async (str) => {
-					if (file.endsWith(str)) {
+					if (str && file?.endsWith(str)) {
 						await removeFile(file);
 					}
 				});
@@ -590,14 +589,21 @@ async function removeUnnecessaryFiles() {
 		});
 }
 
-/* async function componentFileTypeCorrection() {
-	filewalker(examplesDirectory)
+async function componentFileTypeCorrection() {
+	return filewalker(examplesDirectory)
 		.then(async (list) => {
 			list.forEach(async (filePath) => {
 				if (path.extname(filePath) === '.js') {
-					const newFilePath = filePath.replace('.js', '.jsx');
+					/** if there is tsx version of the file, remove js file */
+					const newFilePath = filePath.replace('.js', '.tsx');
 
-					await renameFilePath(filePath, newFilePath);
+					if (fs.existsSync(newFilePath)) {
+						await removeFile(filePath);
+						log(`Removed ${filePath}`);
+					}
+					// const newFilePath = filePath.replace('.js', '.jsx');
+
+					// await renameFilePath(filePath, newFilePath);
 					// log(`Renamed ${filePath} to ${newFilePath}`);
 
 					await removeFile(filePath);
@@ -609,7 +615,7 @@ async function removeUnnecessaryFiles() {
 				throw err;
 			}
 		});
-} */
+}
 
 async function build() {
 	log('Start building...');
@@ -630,7 +636,7 @@ async function build() {
 
 	log('Unnecessary files removed.');
 
-	// componentFileTypeCorrection();
+	await componentFileTypeCorrection();
 
 	await replaceInExamples();
 
@@ -655,9 +661,9 @@ async function build() {
 			process.chdir(projectDir);
 
 			const promises = [
-				// runCommand(eslintPath, ['--fix', pagesDirectory]),
-				runCommand(eslintPath, ['--fix', routesFilePath]),
-				runCommand(eslintPath, ['--fix', navigationFilePath])
+				runCommand(eslintPath, ['--no-ignore', '--fix', pagesDirectory]),
+				runCommand(eslintPath, ['--no-ignore', '--fix', routesFilePath]),
+				runCommand(eslintPath, ['--no-ignore', '--fix', navigationFilePath])
 			];
 
 			Promise.all(promises)
@@ -669,6 +675,9 @@ async function build() {
 					if (err) {
 						log(err);
 					}
+				})
+				.finally(() => {
+					log('Eslint format completed.');
 				});
 		});
 	});

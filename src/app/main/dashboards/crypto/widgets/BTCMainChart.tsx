@@ -4,6 +4,7 @@ import sub from 'date-fns/sub';
 import format from 'date-fns/format';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
+import _ from '@lodash';
 import BTCWidgetType from '../types/BTCWidgetType';
 import { useGetCryptoDashboardWidgetsQuery } from '../CryptoDashboardApi';
 
@@ -24,6 +25,8 @@ function BtcMainChart() {
 	if (!btc) {
 		return null;
 	}
+
+	const series = _.cloneDeep(btc?.price?.series) || [];
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -142,7 +145,7 @@ function BtcMainChart() {
 		<div className="flex flex-col flex-auto h-full">
 			<ReactApexChart
 				options={chartOptions}
-				series={btc?.price?.series || []}
+				series={series}
 				type={chartOptions?.chart?.type}
 				height={chartOptions?.chart?.height}
 			/>

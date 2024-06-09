@@ -239,7 +239,9 @@ function TaskForm() {
 							<DateTimePicker
 								className="w-full"
 								value={new Date(value)}
-								onChange={onChange}
+								onChange={(val) => {
+									onChange(val.toISOString());
+								}}
 								slotProps={{
 									textField: {
 										id: 'due-date',

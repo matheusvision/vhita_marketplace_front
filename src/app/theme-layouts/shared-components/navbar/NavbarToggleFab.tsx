@@ -86,6 +86,4 @@ function NavbarToggleFab(props: NavbarToggleFabProps) {
 	);
 }
 
-NavbarToggleFab.defaultProps = {};
-
 export default NavbarToggleFab;

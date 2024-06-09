@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
+import _ from '@lodash';
 import { WatchListItemType } from '../types/WatchlistType';
 
 type WatchlistItemProps = {
@@ -95,7 +96,7 @@ function WatchlistItem(props: WatchlistItemProps) {
 			<ReactApexChart
 				className="flex-auto w-full h-40"
 				options={chartOptions}
-				series={item.series}
+				series={_.cloneDeep(item.series)}
 				type={chartOptions?.chart?.type}
 				height={chartOptions?.chart?.height}
 			/>

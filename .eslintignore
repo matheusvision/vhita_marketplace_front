@@ -2,12 +2,32 @@
 node_modules/
 .yarn/
 
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 # production
 build/
 public/
-
-# ide
-.vscode/
+dist
+dist-ssr
+*.local
 
 # external docs
 src/app/main/documentation/material-ui-components/components/*

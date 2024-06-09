@@ -8,6 +8,7 @@ import ReactApexChart from 'react-apexcharts';
 import Box from '@mui/material/Box';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
+import _ from '@lodash';
 import GithubIssuesDataType from './types/GithubIssuesDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
@@ -32,6 +33,7 @@ function GithubIssuesWidget() {
 	}
 
 	const { overview, series, ranges, labels } = widget;
+
 	const currentRange = Object.keys(ranges)[tabValue];
 
 	const chartOptions: ApexOptions = {
@@ -125,7 +127,7 @@ function GithubIssuesWidget() {
 				<div className="mt-12 sm:mt-0 sm:ml-8">
 					<Tabs
 						value={tabValue}
-						onChange={(ev, value: number) => setTabValue(value)}
+						onChange={(_ev, value: number) => setTabValue(value)}
 						indicatorColor="secondary"
 						textColor="inherit"
 						variant="scrollable"
@@ -164,7 +166,7 @@ function GithubIssuesWidget() {
 						<ReactApexChart
 							className="flex-auto w-full"
 							options={chartOptions}
-							series={series[currentRange]}
+							series={_.cloneDeep(series[currentRange])}
 							height={320}
 						/>
 					</div>

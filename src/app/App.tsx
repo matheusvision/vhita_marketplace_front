@@ -53,7 +53,7 @@ function App() {
 			<CacheProvider value={createCache(emotionCacheOptions[langDirection] as Options)}>
 				<FuseTheme
 					theme={mainTheme}
-					direction={langDirection}
+					root
 				>
 					<AuthenticationProvider>
 						<SnackbarProvider

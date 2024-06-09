@@ -10,6 +10,7 @@ import { ApexOptions } from 'apexcharts';
 // eslint-disable-next-line camelcase
 import { private_safeDarken } from '@mui/system/colorManipulator';
 import { useAppSelector } from 'app/store/hooks';
+import _ from '@lodash';
 import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -157,7 +158,7 @@ function VisitorsOverviewWidget() {
 					<div className="mt-12 sm:mt-0 sm:ml-8">
 						<Tabs
 							value={tabValue}
-							onChange={(ev, value: number) => setTabValue(value)}
+							onChange={(_ev, value: number) => setTabValue(value)}
 							indicatorColor="secondary"
 							textColor="inherit"
 							variant="scrollable"
@@ -191,7 +192,7 @@ function VisitorsOverviewWidget() {
 				<div className="flex flex-col flex-auto h-320">
 					<ReactApexChart
 						options={chartOptions}
-						series={series[currentRange]}
+						series={_.cloneDeep(series[currentRange])}
 						type={chartOptions?.chart?.type}
 						height={chartOptions?.chart?.height}
 					/>

@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store/hooks';
+import _ from '@lodash';
 import VisitsWidgetType from './types/VisitsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -88,7 +89,7 @@ function Impressions() {
 			<div className="flex flex-col flex-auto h-80">
 				<ReactApexChart
 					options={chartOptions}
-					series={series}
+					series={_.cloneDeep(series)}
 					type={chartOptions?.chart?.type}
 					height={chartOptions?.chart?.height}
 				/>

@@ -6,7 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import { useEffect } from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import PhoneNumberInput from '../phone-number-selector/PhoneNumberInput';
 import { ContactEmail } from '../../ContactsApi';
 
 const schema = z.object({
@@ -30,7 +29,7 @@ type EmailInputProps = {
  * The email input.
  */
 function EmailInput(props: EmailInputProps) {
-	const { value, hideRemove, onChange, onRemove } = props;
+	const { value, hideRemove = false, onChange, onRemove } = props;
 
 	const { control, formState, handleSubmit, reset } = useForm<ContactEmail>({
 		mode: 'all',
@@ -109,9 +108,5 @@ function EmailInput(props: EmailInputProps) {
 		</form>
 	);
 }
-
-PhoneNumberInput.defaultProps = {
-	hideRemove: false
-};
 
 export default EmailInput;

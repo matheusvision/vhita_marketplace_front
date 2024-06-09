@@ -17,7 +17,6 @@ import { memo, useEffect, useReducer, useRef, ReactNode } from 'react';
 import Autosuggest, { RenderInputComponentProps, RenderSuggestionParams, ChangeEvent } from 'react-autosuggest';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
-import { PopperOwnProps } from '@mui/base/Popper';
 import FuseSvgIcon from '../FuseSvgIcon';
 import { FuseFlatNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 
@@ -59,12 +58,16 @@ type RenderInputComponentType = {
 	variant?: 'basic' | 'standard';
 	inputRef?: (node: HTMLInputElement) => void;
 	ref?: (node: HTMLInputElement) => void;
+	key?: string;
 };
 
 function renderInputComponent(props: RenderInputComponentProps) {
-	const { variant, ref, inputRef = () => {}, ...other } = props as RenderInputComponentType;
+	const { variant, ref, inputRef = () => {}, key, ...other } = props as RenderInputComponentType;
 	return (
-		<div className="relative w-full">
+		<div
+			className="relative w-full"
+			key={key}
+		>
 			{variant === 'basic' ? (
 				// Outlined
 				<>
@@ -291,7 +294,6 @@ function FuseSearch(props: FuseSearchProps) {
 	const navigate = useNavigate();
 
 	const suggestionsNode = useRef<HTMLDivElement>(null);
-	const popperAnchor = useRef<PopperOwnProps['anchorEl']>(null);
 	const popperNode = useRef<HTMLDivElement>(null);
 	const buttonNode = useRef(null);
 
@@ -346,7 +348,7 @@ function FuseSearch(props: FuseSearchProps) {
 		});
 	}
 
-	function handleChange(event: React.FormEvent<HTMLElement>, { newValue }: ChangeEvent) {
+	function handleChange(_event: React.FormEvent<HTMLElement>, { newValue }: ChangeEvent) {
 		dispatch({
 			type: 'setSearchText',
 			value: newValue
@@ -398,28 +400,34 @@ function FuseSearch(props: FuseSearchProps) {
 							suggestionsList: 'FuseSearch-suggestionsList',
 							suggestion: 'FuseSearch-suggestion'
 						}}
-						renderSuggestionsContainer={(options) => (
-							<Popper
-								anchorEl={popperNode.current}
-								open={Boolean(options.children) || state.noSuggestions}
-								className="z-9999"
-							>
-								<div ref={suggestionsNode}>
-									<Paper
-										{...options.containerProps}
-										style={{
-											width: popperNode.current ? popperNode.current.clientWidth : ''
-										}}
-										className="overflow-hidden rounded-8 shadow-lg"
-									>
-										{options.children}
-										{state.noSuggestions && (
-											<Typography className="px-16 py-12">{noResults}</Typography>
-										)}
-									</Paper>
-								</div>
-							</Popper>
-						)}
+						renderSuggestionsContainer={(options) => {
+							const { containerProps } = options;
+							const { key, ...restContainerProps } = containerProps;
+
+							return (
+								<Popper
+									anchorEl={popperNode.current}
+									open={Boolean(options.children) || state.noSuggestions}
+									className="z-9999"
+								>
+									<div ref={suggestionsNode}>
+										<Paper
+											key={key}
+											{...restContainerProps}
+											style={{
+												width: popperNode.current ? popperNode.current.clientWidth : ''
+											}}
+											className="overflow-hidden rounded-8 shadow-lg"
+										>
+											{options.children}
+											{state.noSuggestions && (
+												<Typography className="px-16 py-12">{noResults}</Typography>
+											)}
+										</Paper>
+									</div>
+								</Popper>
+							);
+						}}
 					/>
 				</div>
 			);
@@ -477,31 +485,39 @@ function FuseSearch(props: FuseSearchProps) {
 											suggestionsList: 'FuseSearch-suggestionsList',
 											suggestion: 'FuseSearch-suggestion'
 										}}
-										renderSuggestionsContainer={(options) => (
-											<Popper
-												anchorEl={popperNode.current}
-												open={Boolean(options.children) || state.noSuggestions}
-												className="z-9999"
-											>
-												<div ref={suggestionsNode}>
-													<Paper
-														square
-														{...options.containerProps}
-														className="shadow-lg"
-														style={{
-															width: popperNode.current
-																? popperNode.current.clientWidth
-																: 'auto'
-														}}
-													>
-														{options.children}
-														{state.noSuggestions && (
-															<Typography className="px-16 py-12">{noResults}</Typography>
-														)}
-													</Paper>
-												</div>
-											</Popper>
-										)}
+										renderSuggestionsContainer={(options) => {
+											const { containerProps } = options;
+											const { key, ...restContainerProps } = containerProps;
+
+											return (
+												<Popper
+													anchorEl={popperNode.current}
+													open={Boolean(options.children) || state.noSuggestions}
+													className="z-9999"
+												>
+													<div ref={suggestionsNode}>
+														<Paper
+															square
+															key={key}
+															{...restContainerProps}
+															className="shadow-lg"
+															style={{
+																width: popperNode.current
+																	? popperNode.current.clientWidth
+																	: 'auto'
+															}}
+														>
+															{options.children}
+															{state.noSuggestions && (
+																<Typography className="px-16 py-12">
+																	{noResults}
+																</Typography>
+															)}
+														</Paper>
+													</div>
+												</Popper>
+											);
+										}}
 									/>
 									<IconButton
 										onClick={hideSearch}

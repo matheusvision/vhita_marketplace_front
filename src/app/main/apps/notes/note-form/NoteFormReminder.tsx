@@ -19,7 +19,9 @@ function NoteFormReminder(props: NoteFormReminderProps) {
 			<DateTimePicker
 				disablePast
 				value={reminder ? new Date(reminder) : null}
-				onChange={(val) => onChange(val.toString())}
+				onChange={(val) => {
+					onChange(val.toISOString());
+				}}
 				defaultValue={new Date(Date.now())}
 				sx={{
 					'& .MuiInputAdornment-root': {

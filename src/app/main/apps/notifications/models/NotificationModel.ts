@@ -12,8 +12,7 @@ export type NotificationModelType = {
 	description?: string;
 	time?: string;
 	read?: boolean;
-	variant?: string;
-	useRouter?: boolean;
+	variant?: 'success' | 'info' | 'error' | 'warning' | 'alert' | 'primary' | 'secondary';
 	link?: string;
 	image?: string;
 	children?: ReactNode;

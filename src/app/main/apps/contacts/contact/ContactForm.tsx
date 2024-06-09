@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from '@lodash';
 import { Controller, useForm } from 'react-hook-form';
@@ -106,17 +106,17 @@ function ContactForm() {
 	/**
 	 * Form Submit
 	 */
-	function onSubmit(data: Contact) {
+	const onSubmit = useCallback(() => {
 		if (contactId === 'new') {
-			createContact({ contact: data })
+			createContact({ contact: form })
 				.unwrap()
 				.then((action) => {
 					navigate(`/apps/contacts/${action.id}`);
 				});
 		} else {
-			updateContact({ id: contact.id, ...data });
+			updateContact({ id: contact.id, ...form });
 		}
-	}
+	}, [form]);
 
 	function handleRemoveContact() {
 		if (!contact) {
@@ -303,7 +303,7 @@ function ContactForm() {
 								</li>
 							)}
 							value={value ? value?.map((id) => _.find(tags, { id })) : ([] as Tag[])}
-							onChange={(event, newValue) => {
+							onChange={(_event, newValue) => {
 								onChange(newValue?.map((item) => item?.id));
 							}}
 							fullWidth
@@ -426,7 +426,7 @@ function ContactForm() {
 						<DateTimePicker
 							value={new Date(value)}
 							onChange={(val) => {
-								onChange(val?.toString());
+								onChange(val?.toISOString());
 							}}
 							className="mt-32 mb-16 w-full"
 							slotProps={{

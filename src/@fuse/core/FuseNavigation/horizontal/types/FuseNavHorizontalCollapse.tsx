@@ -191,8 +191,6 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 	);
 }
 
-FuseNavHorizontalCollapse.defaultProps = {};
-
 const NavHorizontalCollapse = withRouter(memo(FuseNavHorizontalCollapse));
 
 export default NavHorizontalCollapse;

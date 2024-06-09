@@ -7,6 +7,7 @@ import { Tooltip } from '@mui/material';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'app/store/hooks';
+import _ from '@lodash';
 import VisitorsVsPageViewsType from './types/VisitorsVsPageViewsType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -200,7 +201,7 @@ function VisitorsVsPageViewsWidget() {
 				<ReactApexChart
 					className="flex-auto w-full h-full"
 					options={chartOptions}
-					series={series}
+					series={_.cloneDeep(series)}
 					type={chartOptions?.chart?.type}
 					height={chartOptions?.chart?.height}
 				/>

@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import FuseLoading from '@fuse/core/FuseLoading';
+import _ from '@lodash';
 import NotificationCard from './NotificationCard';
 import {
 	closeNotificationPanel,
@@ -53,6 +54,33 @@ function NotificationPanel() {
 			dispatch(closeNotificationPanel());
 		}
 	}, [location, dispatch]);
+
+	useEffect(() => {
+		const item = NotificationModel({
+			title: 'New Fuse React version is released! ',
+			description: ' Checkout the release notes for more information. 🚀 ',
+			link: '/documentation/changelog',
+			icon: 'heroicons-solid:fire',
+			variant: 'secondary'
+		});
+
+		setTimeout(() => {
+			addNotification(item);
+
+			enqueueSnackbar(item.title, {
+				key: item.id,
+				autoHideDuration: 6000,
+				content: (
+					<NotificationTemplate
+						item={item}
+						onClose={() => {
+							closeSnackbar(item.id);
+						}}
+					/>
+				)
+			});
+		}, 2000);
+	}, []);
 
 	function handleClose() {
 		dispatch(closeNotificationPanel());
@@ -119,7 +147,7 @@ function NotificationPanel() {
 								dismiss all
 							</Typography>
 						</div>
-						{notifications.map((item) => (
+						{_.orderBy(notifications, ['time'], ['desc']).map((item) => (
 							<NotificationCard
 								key={item.id}
 								className="mb-16"

@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-css';
 import { useDeleteNotificationMutation, useGetAllNotificationsQuery } from './NotificationApi';
 import NotificationCard from './NotificationCard';
 import NotificationsAppHeader from './NotificationsAppHeader';
+import _ from '../../../../@lodash/@lodash.ts';
 
 function NotificationsApp() {
 	const [deleteNotification] = useDeleteNotificationMutation();
@@ -34,7 +35,7 @@ function NotificationsApp() {
 						className="my-masonry-grid flex w-full"
 						columnClassName="my-masonry-grid_column flex flex-col p-8"
 					>
-						{notifications?.map((notification) => (
+						{_.orderBy(notifications, ['time'], ['desc']).map((notification) => (
 							<NotificationCard
 								key={notification.id}
 								className="mb-16"
