@@ -51,7 +51,6 @@ function TypographyDoc(props) {
 				Material UI uses the <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> font by default. Add
 				it to your project via Fontsource, or with the Google Fonts CDN.
 			</Typography>
-			<codeblock storageKey="package-manager">
 				<FuseHighlight
 					component="pre"
 					className="language-bash npm"
@@ -78,7 +77,6 @@ yarn add @fontsource/roboto
 pnpm add @fontsource/roboto
 `}
 				</FuseHighlight>
-			</codeblock>
 
 			<Typography
 				className="text-14 mb-32"
