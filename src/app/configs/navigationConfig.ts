@@ -5,6 +5,7 @@ import en from './navigation-i18n/en';
 import tr from './navigation-i18n/tr';
 import { authRoles } from '../auth';
 import DocumentationNavigation from '../main/documentation/DocumentationNavigation';
+import SettingsAppNavigation from '../main/apps/settings/SettingsAppNavigation';
 
 i18next.addResourceBundle('en', 'navigation', en);
 i18next.addResourceBundle('tr', 'navigation', tr);
@@ -227,6 +228,13 @@ const navigationConfig: FuseNavItemType[] = [
 				type: 'item',
 				icon: 'heroicons-outline:bell',
 				url: '/apps/notifications'
+			},
+			{
+				...SettingsAppNavigation,
+				type: 'item',
+				badge: {
+					title: 'NEW'
+				}
 			}
 		]
 	},

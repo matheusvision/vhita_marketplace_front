@@ -1,5 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * The changelog item type.
@@ -17,6 +18,17 @@ export type ChangelogItemType = {
  * The changelog data.
  */
 const changelogData: ChangelogItemType[] = [
+	{
+		version: '10.5.0',
+		date: '2024-07-03',
+		newChanges: [
+			<>
+				<Link to="/apps/settings">Settings App/Page</Link> created.
+			</>
+		],
+		fixedChanges: [],
+		breakingChanges: []
+	},
 	{
 		version: '10.4.0',
 		date: '2024-06-10',

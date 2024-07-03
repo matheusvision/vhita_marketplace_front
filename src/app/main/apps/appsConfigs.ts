@@ -12,6 +12,7 @@ import ProfileAppConfig from './profile/profileAppConfig';
 import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 import TasksAppConfig from './tasks/TasksAppConfig';
 import NotificationsAppConfig from './notifications/NotificationsAppConfig';
+import SettingsAppConfig from './settings/SettingsAppConfig';
 
 /**
  * The list of application configurations.
@@ -29,7 +30,8 @@ const appsConfigs: FuseRouteConfigsType = [
 	ProfileAppConfig,
 	ScrumboardAppConfig,
 	TasksAppConfig,
-	NotificationsAppConfig
+	NotificationsAppConfig,
+	SettingsAppConfig
 ];
 
 export default appsConfigs;
