@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { firebaseInitialized } from './initializeFirebase';
 import { User } from '../../user';
+import UserModel from '../../user/models/UserModel';
 
 export type FirebaseAuthStatus = 'configuring' | 'authenticated' | 'unauthenticated';
 
@@ -111,6 +112,16 @@ function FirebaseAuthProvider(props: FirebaseAuthProviderProps) {
 				.auth()
 				.createUserWithEmailAndPassword(email, password)
 				.then((userCredential) => {
+					updateUser(
+						UserModel({
+							uid: userCredential.user.uid,
+							data: {
+								displayName: userCredential.user?.displayName,
+								email: userCredential.user?.email
+							},
+							role: ['admin']
+						})
+					);
 					resolve(userCredential);
 				})
 				.catch((_error) => {

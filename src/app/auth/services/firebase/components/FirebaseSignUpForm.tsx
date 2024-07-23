@@ -55,48 +55,52 @@ function FirebaseSignUpForm() {
 			email,
 			password,
 			displayName
-		}).catch((_error) => {
-			const error = _error as firebase.auth.Error;
+		})
+			.then((res) => {
+				// No need to do anything, registered user data will be set at app/auth/AuthRouteProvider
+			})
+			.catch((_error) => {
+				const error = _error as firebase.auth.Error;
 
-			const usernameErrorCodes = ['auth/operation-not-allowed', 'auth/user-not-found', 'auth/user-disabled'];
+				const usernameErrorCodes = ['auth/operation-not-allowed', 'auth/user-not-found', 'auth/user-disabled'];
 
-			const emailErrorCodes = ['auth/email-already-in-use', 'auth/invalid-email'];
+				const emailErrorCodes = ['auth/email-already-in-use', 'auth/invalid-email'];
 
-			const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
+				const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
 
-			const errors: {
-				type: 'displayName' | 'email' | 'password' | `root.${string}` | 'root';
-				message: string;
-			}[] = [];
+				const errors: {
+					type: 'displayName' | 'email' | 'password' | `root.${string}` | 'root';
+					message: string;
+				}[] = [];
 
-			if (usernameErrorCodes.includes(error.code)) {
-				errors.push({
-					type: 'displayName',
-					message: error.message
-				});
-			}
+				if (usernameErrorCodes.includes(error.code)) {
+					errors.push({
+						type: 'displayName',
+						message: error.message
+					});
+				}
 
-			if (emailErrorCodes.includes(error.code)) {
-				errors.push({
-					type: 'email',
-					message: error.message
-				});
-			}
+				if (emailErrorCodes.includes(error.code)) {
+					errors.push({
+						type: 'email',
+						message: error.message
+					});
+				}
 
-			if (passwordErrorCodes.includes(error.code)) {
-				errors.push({
-					type: 'password',
-					message: error.message
-				});
-			}
+				if (passwordErrorCodes.includes(error.code)) {
+					errors.push({
+						type: 'password',
+						message: error.message
+					});
+				}
 
-			errors.forEach((err) => {
-				setError(err.type, {
-					type: 'manual',
-					message: err.message
+				errors.forEach((err) => {
+					setError(err.type, {
+						type: 'manual',
+						message: err.message
+					});
 				});
 			});
-		});
 	}
 
 	return (
