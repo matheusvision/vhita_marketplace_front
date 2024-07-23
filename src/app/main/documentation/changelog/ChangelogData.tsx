@@ -19,6 +19,12 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '10.5.1',
+		date: '2024-07-23',
+		fixedChanges: ['Fixed Firebase authentication redirect issue after registration.'],
+		breakingChanges: []
+	},
+	{
 		version: '10.5.0',
 		date: '2024-07-03',
 		newChanges: [
