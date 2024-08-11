@@ -225,20 +225,17 @@ function JwtAuthProvider(props: JwtAuthProviderProps) {
 			const axiosError = error as AxiosError;
 
 			handleFailure(axiosError);
-
-			return axiosError;
+			throw axiosError;
 		}
 	};
 
-	// Refactor signIn function
 	const signIn = (credentials: SignInPayload) => {
 		return handleRequest(config.signInUrl, credentials, handleSignInSuccess, handleSignInFailure);
 	};
 
-	// Refactor signUp function
-	const signUp = useCallback((data: SignUpPayload) => {
+	const signUp = (data: SignUpPayload) => {
 		return handleRequest(config.signUpUrl, data, handleSignUpSuccess, handleSignUpFailure);
-	}, []);
+	};
 
 	/**
 	 * Sign out

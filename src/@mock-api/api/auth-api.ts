@@ -158,7 +158,7 @@ export const authApiMocks = (mock: ExtendedMockAdapter) => {
 			return [200, response];
 		}
 
-		return [200, { error }];
+		return [400, error];
 	});
 
 	mock.onPut('/auth/user').reply((config) => {
