@@ -1,24 +1,16 @@
-import { useDebounce, usePrevious } from '@fuse/hooks';
 import { styled } from '@mui/material/styles';
 import { Controller, useForm } from 'react-hook-form';
 import themeLayoutConfigs, { themeLayoutDefaultsProps } from 'app/theme-layouts/themeLayoutConfigs';
 import _ from '@lodash';
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import Switch from '@mui/material/Switch';
-import Typography from '@mui/material/Typography';
-import { memo, useCallback, useEffect, useMemo } from 'react';
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Switch, Typography } from '@mui/material';
+import { memo, useEffect, useMemo } from 'react';
 import { selectFuseCurrentSettings, setDefaultSettings } from '@fuse/core/FuseSettings/fuseSettingsSlice';
-import { selectUser } from 'src/app/auth/user/store/userSlice';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { Palette } from '@mui/material/styles/createPalette';
-import ThemeFormConfigTypes from '@fuse/core/FuseSettings/ThemeFormConfigTypes';
 import { PartialDeep } from 'type-fest';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import FuseLayoutConfigs from '@fuse/core/FuseSettings/FuseLayoutConfigs';
+import usePrevious from '@fuse/hooks/usePrevious';
 import PaletteSelector from './palette-generator/PaletteSelector';
 import SectionPreview from './palette-generator/SectionPreview';
 
@@ -30,13 +22,8 @@ const Root = styled('div')(({ theme }) => ({
 	'& .FuseSettings-formControl': {
 		margin: '6px 0',
 		width: '100%',
-		'&:last-child': {
-			marginBottom: 0
-		}
+		'&:last-child': { marginBottom: 0 }
 	},
-
-	'& .FuseSettings-group': {},
-
 	'& .FuseSettings-formGroupTitle': {
 		position: 'absolute',
 		top: -10,
@@ -45,38 +32,23 @@ const Root = styled('div')(({ theme }) => ({
 		padding: '0 4px',
 		backgroundColor: theme.palette.background.paper
 	},
-
 	'& .FuseSettings-formGroup': {
 		position: 'relative',
 		border: `1px solid ${theme.palette.divider}`,
 		borderRadius: 2,
 		padding: '12px 12px 0 12px',
 		margin: '24px 0 16px 0',
-		'&:first-of-type': {
-			marginTop: 16
-		}
+		'&:first-of-type': { marginTop: 16 }
 	}
 }));
 
-export type FuseThemeType = {
-	palette: PartialDeep<Palette>;
-};
-
+export type FuseThemeType = { palette: PartialDeep<Palette> };
 export type FuseThemesType = { [key: string]: FuseThemeType };
-
 export type FuseSettingsConfigType = {
-	layout: {
-		style?: string;
-		config?: PartialDeep<themeLayoutDefaultsProps>;
-	};
+	layout: { style?: string; config?: PartialDeep<themeLayoutDefaultsProps> };
 	customScrollbars?: boolean;
 	direction: 'rtl' | 'ltr';
-	theme: {
-		main: FuseThemeType;
-		navbar: FuseThemeType;
-		toolbar: FuseThemeType;
-		footer: FuseThemeType;
-	};
+	theme: { main: FuseThemeType; navbar: FuseThemeType; toolbar: FuseThemeType; footer: FuseThemeType };
 	defaultAuth?: string[];
 	loginRedirectUrl: string;
 };
@@ -89,34 +61,36 @@ export type FuseSettingsConfigType = {
  */
 function FuseSettings() {
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
 	const settings = useAppSelector(selectFuseCurrentSettings);
-	const { reset, watch, control } = useForm({
-		mode: 'onChange',
-		defaultValues: settings
-	});
+	const { reset, watch, control } = useForm({ mode: 'onChange', defaultValues: settings });
+
 	const form = watch();
-	const formConfigs = themeLayoutConfigs[form.layout.style].form;
+	const formLayoutStyle = watch('layout.style');
+
+	const layoutFormConfigs = useMemo(() => themeLayoutConfigs[formLayoutStyle].form, [formLayoutStyle]);
+
 	const prevForm = usePrevious(form ? _.merge({}, form) : null);
 	const prevSettings = usePrevious(settings ? _.merge({}, settings) : null);
-	const formChanged = !_.isEqual(form, prevForm);
-	const settingsChanged = !_.isEqual(settings, prevSettings);
 
-	const handleUpdate = useDebounce((newSettings: FuseSettingsConfigType) => {
+	const formChanged = useMemo(() => !_.isEqual(form, prevForm), [form, prevForm]);
+	const settingsChanged = useMemo(() => !_.isEqual(settings, prevSettings), [settings, prevSettings]);
+
+	const handleUpdate = (newSettings: FuseSettingsConfigType) => {
 		dispatch(setDefaultSettings(newSettings)).then(() => {
 			dispatch(showMessage({ message: 'User settings saved with the api' }));
 		});
-	}, 300);
+	};
+
+	useEffect(() => {
+		// reset form if settings change and not same with form
+		if (!_.isEqual(settings, form)) {
+			reset(settings);
+		}
+	}, [settings]);
 
 	useEffect(() => {
 		// Skip initial changes
 		if (!prevForm && !prevSettings) {
-			return;
-		}
-
-		// If theme settings changed update form data
-		if (settingsChanged) {
-			reset(settings);
 			return;
 		}
 
@@ -135,130 +109,7 @@ function FuseSettings() {
 
 			handleUpdate(newSettings);
 		}
-	}, [dispatch, form, formChanged, handleUpdate, prevForm, prevSettings, reset, settings, settingsChanged, user]);
-
-	const getForm = useCallback(
-		(_formConfigs: ThemeFormConfigTypes, prefix: string) =>
-			Object.entries(_formConfigs).map(([key, formControl]) => {
-				const target = prefix ? `${prefix}.${key}` : key;
-				switch (formControl.type) {
-					case 'radio': {
-						return (
-							<Controller
-								key={target}
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-ignore
-								name={target}
-								control={control}
-								render={({ field }) => (
-									<FormControl
-										component="fieldset"
-										className="FuseSettings-formControl"
-									>
-										<FormLabel
-											component="legend"
-											className="text-14"
-										>
-											{formControl.title}
-										</FormLabel>
-										<RadioGroup
-											{...field}
-											aria-label={formControl.title}
-											className="FuseSettings-group"
-											row={formControl.options.length < 4}
-										>
-											{formControl.options.map((opt: { value: string; name: string }) => (
-												<FormControlLabel
-													key={opt.value}
-													value={opt.value}
-													control={<Radio />}
-													label={opt.name}
-												/>
-											))}
-										</RadioGroup>
-									</FormControl>
-								)}
-							/>
-						);
-					}
-					case 'switch': {
-						return (
-							<Controller
-								key={target}
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-ignore
-								name={target}
-								control={control}
-								render={({ field: { onChange, value } }) => (
-									<FormControl
-										component="fieldset"
-										className="FuseSettings-formControl"
-									>
-										<FormLabel
-											component="legend"
-											className="text-14"
-										>
-											{formControl.title}
-										</FormLabel>
-										<Switch
-											checked={value as boolean}
-											onChange={(ev) => onChange(ev.target.checked)}
-											aria-label={formControl.title}
-										/>
-									</FormControl>
-								)}
-							/>
-						);
-					}
-					case 'number': {
-						return (
-							<div
-								key={target}
-								className="FuseSettings-formControl"
-							>
-								<Controller
-									// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-									// @ts-ignore
-									name={target}
-									control={control}
-									render={({ field }) => (
-										<TextField
-											{...field}
-											label={formControl.title}
-											type="number"
-											InputLabelProps={{
-												shrink: true
-											}}
-											variant="outlined"
-										/>
-									)}
-								/>
-							</div>
-						);
-					}
-					case 'group': {
-						return (
-							<div
-								key={target}
-								className="FuseSettings-formGroup"
-							>
-								<Typography
-									className="FuseSettings-formGroupTitle"
-									color="text.secondary"
-								>
-									{formControl.title}
-								</Typography>
-								{getForm(formControl.children, target)}
-							</div>
-						);
-					}
-					default: {
-						return '';
-					}
-				}
-			}),
-		[control]
-	);
+	}, [dispatch, form, formChanged, handleUpdate, prevForm, prevSettings, reset, settings, settingsChanged]);
 
 	return (
 		<Root>
@@ -302,7 +153,16 @@ function FuseSettings() {
 					)}
 				/>
 
-				{useMemo(() => getForm(formConfigs, 'layout.config'), [formConfigs, getForm])}
+				{useMemo(
+					() => (
+						<FuseLayoutConfigs
+							value={layoutFormConfigs}
+							prefix="layout.config"
+							control={control}
+						/>
+					),
+					[form, control]
+				)}
 
 				<Typography
 					className="my-16 text-12 italic"
@@ -342,7 +202,6 @@ function FuseSettings() {
 							/>
 						)}
 					/>
-
 					<Controller
 						name="theme.navbar"
 						control={control}
@@ -364,7 +223,6 @@ function FuseSettings() {
 							/>
 						)}
 					/>
-
 					<Controller
 						name="theme.toolbar"
 						control={control}
@@ -386,7 +244,6 @@ function FuseSettings() {
 							/>
 						)}
 					/>
-
 					<Controller
 						name="theme.footer"
 						control={control}
@@ -410,7 +267,6 @@ function FuseSettings() {
 					/>
 				</div>
 			</div>
-
 			<Controller
 				name="customScrollbars"
 				control={control}
@@ -433,7 +289,6 @@ function FuseSettings() {
 					</FormControl>
 				)}
 			/>
-
 			<Controller
 				name="direction"
 				control={control}

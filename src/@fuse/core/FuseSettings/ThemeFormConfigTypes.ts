@@ -14,6 +14,8 @@ type RadioFieldType = FormFieldBaseType & {
 
 type NumberFieldType = FormFieldBaseType & {
 	type: 'number';
+	min?: number;
+	max?: number;
 };
 
 type SwitchFieldType = FormFieldBaseType & {
@@ -33,7 +35,7 @@ type GroupFieldType = FormFieldBaseType & {
 	children: GroupFieldChildrenType;
 };
 
-type AnyFormFieldType = RadioFieldType | SwitchFieldType | NumberFieldType | GroupFieldType;
+export type AnyFormFieldType = RadioFieldType | SwitchFieldType | NumberFieldType | GroupFieldType;
 
 /**
  * The ThemeFormConfigTypes type is an object where the keys are strings and the values are AnyFormFieldType objects.

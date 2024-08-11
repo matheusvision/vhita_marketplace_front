@@ -49,7 +49,8 @@ const Layout3Config = {
 		},
 		containerWidth: {
 			title: 'Container Width (px)',
-			type: 'number'
+			type: 'number',
+			min: 1024
 		},
 		navbar: {
 			type: 'group',

@@ -49,7 +49,8 @@ const Layout1Config = {
 		},
 		containerWidth: {
 			title: 'Container Width (px)',
-			type: 'number'
+			type: 'number',
+			min: 1024
 		},
 
 		navbar: {
