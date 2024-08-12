@@ -91,6 +91,24 @@ export const defaultThemeOptions = {
 		fontWeightMedium: 500
 	},
 	components: {
+		MuiSvgIcon: {
+			defaultProps: {},
+			styleOverrides: {
+				root: {},
+				sizeSmall: {
+					width: 16,
+					height: 16
+				},
+				sizeMedium: {
+					width: 20,
+					height: 20
+				},
+				sizeLarge: {
+					width: 24,
+					height: 24
+				}
+			}
+		},
 		MuiAppBar: {
 			defaultProps: {
 				enableColorOnDark: true
@@ -269,12 +287,12 @@ export const defaultThemeOptions = {
 export const mustHaveThemeOptions = {
 	typography: {
 		htmlFontSize: 10,
-		fontSize: 14,
+		fontSize: 13,
 		body1: {
-			fontSize: '1.4rem'
+			fontSize: '1.3rem'
 		},
 		body2: {
-			fontSize: '1.4rem'
+			fontSize: '1.3rem'
 		}
 	}
 };

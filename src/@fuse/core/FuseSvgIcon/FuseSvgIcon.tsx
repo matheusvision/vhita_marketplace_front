@@ -16,7 +16,7 @@ type FuseSvgIconProps = BoxProps & {
  * The Root styled component is used to style the root div of the FuseSvgIcon component.
  * It uses the styled function from the MUI styles library to create a styled component.
  */
-const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 24, color = 'inherit' }) => ({
+const Root = styled(Box)<FuseSvgIconProps>(({ theme, size = 20, color = 'inherit' }) => ({
 	width: size,
 	height: size,
 	minWidth: size,

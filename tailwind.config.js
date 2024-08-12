@@ -1533,7 +1533,7 @@ module.exports = {
 			typography: ({ theme }) => ({
 				DEFAULT: {
 					css: {
-						fontSize: '1.4rem'
+						fontSize: '1.3rem'
 					}
 				},
 				sm: {
@@ -1543,7 +1543,7 @@ module.exports = {
 				},
 				lg: {
 					css: {
-						fontSize: '1.6rem'
+						fontSize: '1.4rem'
 					}
 				}
 			})
