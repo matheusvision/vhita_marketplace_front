@@ -103,7 +103,7 @@ function ScheduleWidget() {
 												size={20}
 												color="disabled"
 											>
-												heroicons-solid:location-marker
+												heroicons-solid:map-pin
 											</FuseSvgIcon>
 											<Typography
 												component="span"

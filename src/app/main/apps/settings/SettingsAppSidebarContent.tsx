@@ -57,7 +57,7 @@ function SettingsAppSidebarContent(props: SettingsAppSidebarContentProps) {
 						aria-label="close left sidebar"
 						size="small"
 					>
-						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 					</IconButton>
 				</Hidden>
 			</div>

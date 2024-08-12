@@ -22,7 +22,7 @@ function Marker(props: MarkerProps) {
 			}
 			placement="top"
 		>
-			<FuseSvgIcon className="text-red">heroicons-outline:location-marker</FuseSvgIcon>
+			<FuseSvgIcon className="text-red">heroicons-outline:map-pin</FuseSvgIcon>
 		</Tooltip>
 	);
 }

@@ -16,6 +16,7 @@ function NotificationIcon(props: NotificationIconProps) {
 				<FuseSvgIcon
 					className="mr-8 opacity-75"
 					color="inherit"
+					size={20}
 				>
 					heroicons-outline:minus-circle
 				</FuseSvgIcon>
@@ -26,6 +27,7 @@ function NotificationIcon(props: NotificationIconProps) {
 				<FuseSvgIcon
 					className="mr-8 opacity-75"
 					color="inherit"
+					size={20}
 				>
 					heroicons-outline:check-circle
 				</FuseSvgIcon>
@@ -36,6 +38,7 @@ function NotificationIcon(props: NotificationIconProps) {
 				<FuseSvgIcon
 					className="mr-8 opacity-75"
 					color="inherit"
+					size={20}
 				>
 					heroicons-outline:exclamation-circle
 				</FuseSvgIcon>
@@ -46,6 +49,7 @@ function NotificationIcon(props: NotificationIconProps) {
 				<FuseSvgIcon
 					className="mr-8 opacity-75"
 					color="inherit"
+					size={20}
 				>
 					heroicons-outline:information-circle
 				</FuseSvgIcon>

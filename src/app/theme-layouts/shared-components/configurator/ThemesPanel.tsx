@@ -91,7 +91,7 @@ function ThemesPanel(props: ThemesPanelProps) {
 					onClick={onClose}
 					size="large"
 				>
-					<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+					<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 				</IconButton>
 
 				<Typography

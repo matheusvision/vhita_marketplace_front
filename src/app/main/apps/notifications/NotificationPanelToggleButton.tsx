@@ -5,6 +5,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useTheme } from '@mui/material';
+import { alpha } from '@mui/system/colorManipulator';
 import { toggleNotificationPanel } from './notificationPanelSlice';
 import { useGetAllNotificationsQuery } from './NotificationApi';
 
@@ -17,7 +18,19 @@ type NotificationPanelToggleButtonProps = {
  */
 
 function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps) {
-	const { children = <FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon> } = props;
+	const {
+		children = (
+			<FuseSvgIcon
+				size={20}
+				sx={{
+					color: (theme) =>
+						theme.palette.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary
+				}}
+			>
+				heroicons-outline:bell
+			</FuseSvgIcon>
+		)
+	} = props;
 	const { data: notifications } = useGetAllNotificationsQuery();
 	const [animate, setAnimate] = useState(false);
 	const prevNotificationCount = useRef(notifications?.length);
@@ -34,7 +47,11 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 				transition: { duration: 0.2, repeat: 5 }
 			});
 		} else {
-			controls.start({ rotate: 0, scale: 1, color: theme.palette.text.secondary });
+			controls.start({
+				rotate: 0,
+				scale: 1,
+				color: theme.palette.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary
+			});
 		}
 	}, [animate, controls]);
 
@@ -51,9 +68,19 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 
 	return (
 		<IconButton
-			className="h-40 w-40"
 			onClick={() => dispatch(toggleNotificationPanel())}
-			size="large"
+			sx={{
+				borderRadius: '8px',
+				width: 40,
+				height: 40,
+				border: (theme) => `1px solid ${theme.palette.divider}`,
+				'&:hover, &:focus': {
+					backgroundColor: (theme) =>
+						theme.palette.mode === 'dark'
+							? alpha(theme.palette.divider, 0.1)
+							: alpha(theme.palette.divider, 0.6)
+				}
+			}}
 		>
 			<Badge
 				color="secondary"

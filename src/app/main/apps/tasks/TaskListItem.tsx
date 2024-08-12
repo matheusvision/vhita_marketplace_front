@@ -71,12 +71,12 @@ function TaskListItem(props: TaskListItemProps) {
 							<div>
 								{data.priority === 0 && (
 									<FuseSvgIcon className="text-green icon-size-16 mx-12">
-										heroicons-outline:arrow-narrow-down
+										heroicons-outline:arrow-small-down
 									</FuseSvgIcon>
 								)}
 								{data.priority === 2 && (
 									<FuseSvgIcon className="text-red icon-size-16 mx-12">
-										heroicons-outline:arrow-narrow-up
+										heroicons-outline:arrow-small-up
 									</FuseSvgIcon>
 								)}
 							</div>

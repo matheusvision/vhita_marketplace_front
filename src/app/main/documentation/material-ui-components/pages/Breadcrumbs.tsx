@@ -2,7 +2,6 @@ import FuseExample from '@fuse/core/FuseExample';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
 import BasicBreadcrumbsComponent from '../components/breadcrumbs/BasicBreadcrumbs';
 import BasicBreadcrumbsRaw from '../components/breadcrumbs/BasicBreadcrumbs.tsx?raw';
 import ActiveLastBreadcrumbComponent from '../components/breadcrumbs/ActiveLastBreadcrumb';
@@ -19,22 +18,19 @@ import CustomizedBreadcrumbsRaw from '../components/breadcrumbs/CustomizedBreadc
 function BreadcrumbsDoc(props) {
 	return (
 		<>
-			<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
-				<DocumentationPageBreadcrumb />
-				<Button
-					className="normal-case"
-					variant="contained"
-					color="secondary"
-					component="a"
-					href="https://mui.com/components/breadcrumbs"
-					target="_blank"
-					role="button"
-					size="small"
-					startIcon={<FuseSvgIcon size={20}>heroicons-outline:external-link</FuseSvgIcon>}
-				>
-					Reference
-				</Button>
-			</div>
+			<Button
+				className="normal-case absolute right-0"
+				variant="contained"
+				color="secondary"
+				component="a"
+				href="https://mui.com/components/breadcrumbs"
+				target="_blank"
+				role="button"
+				size="small"
+				startIcon={<FuseSvgIcon size={16}>heroicons-outline:arrow-top-right-on-square</FuseSvgIcon>}
+			>
+				Reference
+			</Button>
 			<Typography
 				className="text-32 my-16 font-700"
 				component="h1"

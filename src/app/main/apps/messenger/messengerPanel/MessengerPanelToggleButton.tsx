@@ -11,7 +11,7 @@ type ChatPanelToggleButtonProps = {
  * The chat panel toggle button.
  */
 function MessengerPanelToggleButton(props: ChatPanelToggleButtonProps) {
-	const { children = <FuseSvgIcon>heroicons-outline:chat</FuseSvgIcon> } = props;
+	const { children = <FuseSvgIcon>heroicons-outline:chat-bubble-left-right</FuseSvgIcon> } = props;
 	const dispatch = useAppDispatch();
 
 	return (

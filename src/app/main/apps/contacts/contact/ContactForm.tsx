@@ -360,7 +360,7 @@ function ContactForm() {
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position="start">
-										<FuseSvgIcon size={20}>heroicons-solid:office-building</FuseSvgIcon>
+										<FuseSvgIcon size={20}>heroicons-solid:building-office-2</FuseSvgIcon>
 									</InputAdornment>
 								)
 							}}
@@ -412,7 +412,7 @@ function ContactForm() {
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position="start">
-										<FuseSvgIcon size={20}>heroicons-solid:location-marker</FuseSvgIcon>
+										<FuseSvgIcon size={20}>heroicons-solid:map-pin</FuseSvgIcon>
 									</InputAdornment>
 								)
 							}}
@@ -475,7 +475,7 @@ function ContactForm() {
 										className="mt-16"
 										position="start"
 									>
-										<FuseSvgIcon size={20}>heroicons-solid:menu-alt-2</FuseSvgIcon>
+										<FuseSvgIcon size={20}>heroicons-solid:bars-3-bottom-left</FuseSvgIcon>
 									</InputAdornment>
 								)
 							}}

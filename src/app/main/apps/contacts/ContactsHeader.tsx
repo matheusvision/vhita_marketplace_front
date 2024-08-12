@@ -65,7 +65,7 @@ function ContactsHeader() {
 						color="action"
 						size={20}
 					>
-						heroicons-outline:search
+						heroicons-outline:magnifying-glass
 					</FuseSvgIcon>
 
 					<Input

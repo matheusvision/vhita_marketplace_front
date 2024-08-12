@@ -88,8 +88,8 @@ function Order() {
 							>
 								<FuseSvgIcon size={20}>
 									{theme.direction === 'ltr'
-										? 'heroicons-outline:arrow-sm-left'
-										: 'heroicons-outline:arrow-sm-right'}
+										? 'heroicons-outline:arrow-small-left'
+										: 'heroicons-outline:arrow-small-right'}
 								</FuseSvgIcon>
 								<span className="mx-4 font-medium">Orders</span>
 							</Typography>

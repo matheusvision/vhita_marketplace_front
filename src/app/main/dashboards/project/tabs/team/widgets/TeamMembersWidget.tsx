@@ -71,7 +71,7 @@ function TeamMembersWidget() {
 								size={20}
 								color="action"
 							>
-								heroicons-solid:mail
+								heroicons-solid:envelope
 							</FuseSvgIcon>
 							<Typography className="ml-8">Email</Typography>
 						</a>

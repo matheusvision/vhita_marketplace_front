@@ -24,7 +24,7 @@ const priorityList: priorityListType[] = [
 	{
 		value: 0,
 		title: 'Low',
-		icon: 'heroicons-solid:arrow-narrow-down',
+		icon: 'heroicons-solid:arrow-small-down',
 		textColor: 'rgb(76 175 80)',
 		bgColor: 'rgba(76,175,80,0.3)'
 	},
@@ -38,7 +38,7 @@ const priorityList: priorityListType[] = [
 	{
 		value: 2,
 		title: 'High',
-		icon: 'heroicons-solid:arrow-narrow-up',
+		icon: 'heroicons-solid:arrow-small-up',
 		textColor: 'rgb(244 67 54)',
 		bgColor: 'rgba(244,67,54,0.3)'
 	}

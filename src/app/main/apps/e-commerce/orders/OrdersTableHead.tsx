@@ -150,7 +150,7 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 								onClick={openSelectedOrdersMenu}
 								size="large"
 							>
-								<FuseSvgIcon>heroicons-outline:dots-horizontal</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:ellipsis-horizontal</FuseSvgIcon>
 							</IconButton>
 							<Menu
 								id="selectedOrdersMenu"

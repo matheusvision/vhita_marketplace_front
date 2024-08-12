@@ -58,7 +58,7 @@ function FuseExample(props: FuseExampleProps) {
 					{raw && (
 						<Tab
 							classes={{ root: 'min-w-64' }}
-							icon={<FuseSvgIcon>heroicons-outline:code</FuseSvgIcon>}
+							icon={<FuseSvgIcon>heroicons-outline:code-bracket</FuseSvgIcon>}
 						/>
 					)}
 				</Tabs>

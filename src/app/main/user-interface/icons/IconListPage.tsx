@@ -112,7 +112,7 @@ function IconListPage(props: IconListPageProps) {
 								href={referenceUrl}
 								target="_blank"
 								role="button"
-								startIcon={<FuseSvgIcon>heroicons-solid:external-link</FuseSvgIcon>}
+								startIcon={<FuseSvgIcon>heroicons-solid:arrow-top-right-on-square</FuseSvgIcon>}
 							>
 								Official docs
 							</Button>

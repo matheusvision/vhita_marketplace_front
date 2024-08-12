@@ -88,7 +88,7 @@ function CardChecklist(props: CardChecklistProps) {
 						onClick={handleMenuOpen}
 						size="small"
 					>
-						<FuseSvgIcon size={20}>heroicons-outline:dots-vertical</FuseSvgIcon>
+						<FuseSvgIcon size={20}>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 					<Menu
 						id="actions-menu"

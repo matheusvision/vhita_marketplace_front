@@ -23,13 +23,15 @@ function FinanceDashboardAppHeader() {
 				<div className="flex items-center mt-24 sm:mt-0 sm:mx-8 space-x-12">
 					<Button
 						className="whitespace-nowrap"
-						startIcon={<FuseSvgIcon size={20}>heroicons-solid:document-report</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon size={20}>heroicons-solid:document-chart-bar</FuseSvgIcon>}
+						variant="outlined"
 					>
 						Reports
 					</Button>
 					<Button
 						className="whitespace-nowrap"
-						startIcon={<FuseSvgIcon size={20}>heroicons-solid:cog</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon size={20}>heroicons-solid:cog-6-tooth</FuseSvgIcon>}
+						variant="outlined"
 					>
 						Settings
 					</Button>
@@ -37,7 +39,7 @@ function FinanceDashboardAppHeader() {
 						className="whitespace-nowrap"
 						variant="contained"
 						color="secondary"
-						startIcon={<FuseSvgIcon size={20}>heroicons-solid:save</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-up-tray</FuseSvgIcon>}
 					>
 						Export
 					</Button>

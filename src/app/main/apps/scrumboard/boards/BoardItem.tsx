@@ -34,8 +34,8 @@ function BoardItem(props: BoardItemProps) {
 			<div className="flex flex-col flex-auto justify-start items-start w-full">
 				<Box
 					sx={{
-						backgroundColor: 'secondary.light',
-						color: 'secondary.dark'
+						backgroundColor: 'divider',
+						color: 'secondary.main'
 					}}
 					className="flex items-center justify-center p-16 rounded-full"
 				>

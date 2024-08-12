@@ -34,7 +34,7 @@ function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
 				onClick={handleMoreMenuClick}
 				size="large"
 			>
-				<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+				<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 			</IconButton>
 			<Menu
 				id="chats-more-menu"

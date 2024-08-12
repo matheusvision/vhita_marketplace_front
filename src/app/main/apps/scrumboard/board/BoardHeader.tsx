@@ -25,7 +25,7 @@ function BoardHeader(props: BoardHeaderProps) {
 					component={NavLinkAdapter}
 					to="/apps/scrumboard/boards/"
 				>
-					<FuseSvgIcon size={20}>heroicons-outline:view-boards</FuseSvgIcon>
+					<FuseSvgIcon size={20}>heroicons-outline:view-columns</FuseSvgIcon>
 					<span className="hidden sm:flex mx-8">Boards</span>
 				</Button>
 
@@ -35,7 +35,7 @@ function BoardHeader(props: BoardHeaderProps) {
 					color="secondary"
 					onClick={() => onSetSidebarOpen(true)}
 				>
-					<FuseSvgIcon size={20}>heroicons-outline:cog</FuseSvgIcon>
+					<FuseSvgIcon size={20}>heroicons-outline:cog-6-tooth</FuseSvgIcon>
 					<span className="hidden sm:flex mx-8">Settings</span>
 				</Button>
 			</div>

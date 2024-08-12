@@ -47,7 +47,7 @@ function FormActionsMenu(props: FormActionsMenuProps) {
 				aria-expanded={open ? 'true' : undefined}
 				onClick={handleClick}
 			>
-				<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+				<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 			</IconButton>
 			<Menu
 				id="basic-menu"

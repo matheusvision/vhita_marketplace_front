@@ -48,7 +48,7 @@ function ClassicSearchPage() {
 								'aria-label': 'Search'
 							}}
 						/>
-						<FuseSvgIcon color="action">heroicons-outline:search</FuseSvgIcon>
+						<FuseSvgIcon color="action">heroicons-outline:magnifying-glass</FuseSvgIcon>
 					</Paper>
 				</div>
 			}

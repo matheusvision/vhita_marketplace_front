@@ -18,7 +18,7 @@ const DocumentationNavigation: FuseNavItemType = {
 			id: 'changelog',
 			title: 'Changelog',
 			type: 'item',
-			icon: 'heroicons-outline:speakerphone',
+			icon: 'heroicons-outline:megaphone',
 			url: '/documentation/changelog',
 			badge: {
 				title: fuseReactLatestVersion,

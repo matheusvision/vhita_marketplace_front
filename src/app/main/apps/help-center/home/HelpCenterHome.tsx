@@ -66,12 +66,13 @@ function HelpCenterHome() {
 							animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 						>
 							<OutlinedInput
-								className="flex flex-1 items-center px-16 mx-8 rounded-full h-44 w-full max-w-320 sm:max-w-480 mt-40 sm:mt-80"
+								sx={{ backgroundColor: 'transparent' }}
+								className="flex flex-1 items-center px-16 mx-8 rounded-full h-44 max-w-full w-320 sm:w-sm mt-40 sm:mt-80"
 								placeholder="Enter a question, topic or keyword"
 								fullWidth
 								startAdornment={
 									<InputAdornment position="start">
-										<FuseSvgIcon color="disabled">heroicons-solid:search</FuseSvgIcon>
+										<FuseSvgIcon color="disabled">heroicons-solid:magnifying-glass</FuseSvgIcon>
 									</InputAdornment>
 								}
 								inputProps={{
@@ -146,7 +147,7 @@ function HelpCenterHome() {
 								size={20}
 								color="secondary"
 							>
-								heroicons-solid:arrow-narrow-right
+								heroicons-solid:arrow-small-right
 							</FuseSvgIcon>
 						</Box>
 					</Card>
@@ -185,7 +186,7 @@ function HelpCenterHome() {
 								size={20}
 								color="secondary"
 							>
-								heroicons-solid:arrow-narrow-right
+								heroicons-solid:arrow-small-right
 							</FuseSvgIcon>
 						</Box>
 					</Card>
@@ -224,7 +225,7 @@ function HelpCenterHome() {
 								size={20}
 								color="secondary"
 							>
-								heroicons-solid:arrow-narrow-right
+								heroicons-solid:arrow-small-right
 							</FuseSvgIcon>
 						</Box>
 					</Card>

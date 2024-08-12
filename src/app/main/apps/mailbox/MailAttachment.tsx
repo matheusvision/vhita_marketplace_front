@@ -51,7 +51,7 @@ function MailAttachment(props: MailAttachmentProps) {
 				</Typography>
 			</div>
 			<IconButton size="large">
-				<FuseSvgIcon size={16}>heroicons-outline:x</FuseSvgIcon>
+				<FuseSvgIcon size={16}>heroicons-outline:x-mark</FuseSvgIcon>
 			</IconButton>
 		</Root>
 	);

@@ -93,7 +93,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 						color="inherit"
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 					</IconButton>
 					<Typography
 						className="px-4 font-medium text-16"
@@ -108,7 +108,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 			<List className="py-24">
 				<ListItem>
 					<ListItemIcon className="min-w-40">
-						<FuseSvgIcon>heroicons-outline:photograph</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:photo</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Card Cover Images" />
 					<ListItemSecondaryAction>
@@ -127,26 +127,28 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 					</ListItemSecondaryAction>
 				</ListItem>
 
-				<ListItem>
-					<ListItemIcon className="min-w-40">
-						<FuseSvgIcon>heroicons-outline:eye-off</FuseSvgIcon>
-					</ListItemIcon>
-					<ListItemText primary="Subscribe" />
-					<ListItemSecondaryAction>
-						<Controller
-							name="subscribed"
-							control={control}
-							render={({ field: { onChange, value } }) => (
+				<Controller
+					name="subscribed"
+					control={control}
+					render={({ field: { onChange, value } }) => (
+						<ListItem>
+							<ListItemIcon className="min-w-40">
+								<FuseSvgIcon>
+									{value ? 'heroicons-outline:eye' : 'heroicons-outline:eye-slash'}
+								</FuseSvgIcon>
+							</ListItemIcon>
+							<ListItemText primary="Subscribe" />
+							<ListItemSecondaryAction>
 								<Switch
 									onChange={(ev) => {
 										onChange(ev.target.checked);
 									}}
 									checked={value}
 								/>
-							)}
-						/>
-					</ListItemSecondaryAction>
-				</ListItem>
+							</ListItemSecondaryAction>
+						</ListItem>
+					)}
+				/>
 
 				<ListItemButton
 					onClick={() => {

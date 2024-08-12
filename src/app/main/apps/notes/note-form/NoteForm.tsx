@@ -350,7 +350,7 @@ function NoteForm(props: NoteFormProps) {
 							onClick={() => setShowList(!showList)}
 							size="large"
 						>
-							<FuseSvgIcon size={20}>heroicons-outline:pencil-alt</FuseSvgIcon>
+							<FuseSvgIcon size={20}>heroicons-outline:pencil-square</FuseSvgIcon>
 						</IconButton>
 					</Tooltip>
 
@@ -389,7 +389,7 @@ function NoteForm(props: NoteFormProps) {
 										size="large"
 									>
 										<FuseSvgIcon size={20}>
-											{value ? 'heroicons-solid:archive' : 'heroicons-outline:archive'}
+											{value ? 'heroicons-solid:archive-box' : 'heroicons-outline:archive-box'}
 										</FuseSvgIcon>
 									</IconButton>
 								</div>

@@ -11,62 +11,62 @@ const tableIcons: Partial<MRT_Icons> = {
 			size={20}
 			{...props}
 		>
-			heroicons-outline:arrow-down
+			heroicons-outline:arrow-down-circle
 		</FuseSvgIcon>
 	),
-	ClearAllIcon: () => <FuseSvgIcon size={20}>heroicons-outline:menu-alt-3</FuseSvgIcon>, // Adjusted, closest match
-	DensityLargeIcon: () => <FuseSvgIcon size={20}>heroicons-outline:menu-alt-4</FuseSvgIcon>, // Adjusted, closest match
-	DensityMediumIcon: () => <FuseSvgIcon size={20}>heroicons-outline:menu</FuseSvgIcon>, // Adjusted, closest match
-	DensitySmallIcon: () => <FuseSvgIcon size={20}>heroicons-outline:view-list</FuseSvgIcon>, // Adjusted, closest match
+	ClearAllIcon: () => <FuseSvgIcon size={20}>heroicons-outline:adjustments-horizontal</FuseSvgIcon>,
+	DensityLargeIcon: () => <FuseSvgIcon size={20}>heroicons-outline:bars-3-bottom-left</FuseSvgIcon>,
+	DensityMediumIcon: () => <FuseSvgIcon size={20}>heroicons-outline:bars-3</FuseSvgIcon>,
+	DensitySmallIcon: () => <FuseSvgIcon size={20}>heroicons-outline:bars-2</FuseSvgIcon>,
 	DragHandleIcon: () => (
 		<FuseSvgIcon
 			className="rotate-45"
-			size={16}
+			size={14}
 		>
-			heroicons-outline:arrows-expand
+			heroicons-outline:arrows-pointing-out
 		</FuseSvgIcon>
-	), // Adjusted, closest match
+	),
 	FilterListIcon: (props) => (
 		<FuseSvgIcon
 			size={16}
 			{...props}
 		>
-			heroicons-outline:filter
+			heroicons-outline:funnel
 		</FuseSvgIcon>
 	),
-	FilterListOffIcon: () => <FuseSvgIcon size={20}>heroicons-outline:filter</FuseSvgIcon>, // Heroicons may not have a direct match for "off" state; consider custom handling
-	FullscreenExitIcon: () => <FuseSvgIcon size={20}>heroicons-outline:arrows-expand</FuseSvgIcon>, // Adjusted, closest match
-	FullscreenIcon: () => <FuseSvgIcon size={20}>heroicons-outline:arrows-expand</FuseSvgIcon>,
+	FilterListOffIcon: () => <FuseSvgIcon size={20}>heroicons-outline:funnel</FuseSvgIcon>,
+	FullscreenExitIcon: () => <FuseSvgIcon size={20}>heroicons-outline:arrows-pointing-in</FuseSvgIcon>,
+	FullscreenIcon: () => <FuseSvgIcon size={20}>heroicons-outline:arrows-pointing-out</FuseSvgIcon>,
 	SearchIcon: (props) => (
 		<FuseSvgIcon
 			color="action"
 			size={20}
 			{...props}
 		>
-			heroicons-outline:search
+			heroicons-outline:magnifying-glass
 		</FuseSvgIcon>
 	),
-	SearchOffIcon: () => <FuseSvgIcon size={20}>heroicons-outline:search</FuseSvgIcon>, // Heroicons may not have a direct match for "off" state; consider custom handling
-	ViewColumnIcon: () => <FuseSvgIcon size={20}>heroicons-outline:view-boards</FuseSvgIcon>,
-	MoreVertIcon: () => <FuseSvgIcon size={20}>heroicons-outline:dots-vertical</FuseSvgIcon>,
-	MoreHorizIcon: () => <FuseSvgIcon size={20}>heroicons-outline:dots-horizontal</FuseSvgIcon>,
+	SearchOffIcon: () => <FuseSvgIcon size={20}>heroicons-outline:magnifying-glass</FuseSvgIcon>,
+	ViewColumnIcon: () => <FuseSvgIcon size={20}>heroicons-outline:view-columns</FuseSvgIcon>,
+	MoreVertIcon: () => <FuseSvgIcon size={20}>heroicons-outline:ellipsis-vertical</FuseSvgIcon>,
+	MoreHorizIcon: () => <FuseSvgIcon size={20}>heroicons-outline:ellipsis-horizontal</FuseSvgIcon>,
 	SortIcon: (props) => (
 		<FuseSvgIcon
 			size={20}
 			{...props}
 		>
-			heroicons-outline:sort-ascending
+			heroicons-outline:arrows-up-down
 		</FuseSvgIcon>
-	), // Adjusted, closest match
+	),
 	PushPinIcon: (props) => (
 		<FuseSvgIcon
 			size={20}
 			{...props}
 		>
-			heroicons-outline:thumb-tack
+			heroicons-outline:bookmark
 		</FuseSvgIcon>
-	), // Adjusted, closest match
-	VisibilityOffIcon: () => <FuseSvgIcon size={20}>heroicons-outline:eye-off</FuseSvgIcon>
+	),
+	VisibilityOffIcon: () => <FuseSvgIcon size={20}>heroicons-outline:eye-slash</FuseSvgIcon>
 };
 
 function DataTable<TData>(props: MaterialReactTableProps<TData>) {
@@ -171,7 +171,11 @@ function DataTable<TData>(props: MaterialReactTableProps<TData>) {
 							flex: 1,
 							justifyContent: 'space-between'
 						},
-						'& .Mui-TableHeadCell-Content-Actions': {},
+						'& .Mui-TableHeadCell-Content-Actions': {
+							'& > button': {
+								marginX: '2px'
+							}
+						},
 						'& .MuiFormHelperText-root': {
 							textAlign: 'center',
 							marginX: 0,

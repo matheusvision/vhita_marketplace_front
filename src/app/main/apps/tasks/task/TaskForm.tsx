@@ -164,7 +164,7 @@ function TaskForm() {
 							to="/apps/tasks"
 							size="large"
 						>
-							<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+							<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 						</IconButton>
 					</div>
 				</div>
@@ -285,7 +285,7 @@ function TaskForm() {
 										className="mt-16"
 										position="start"
 									>
-										<FuseSvgIcon size={20}>heroicons-solid:menu-alt-2</FuseSvgIcon>
+										<FuseSvgIcon size={20}>heroicons-solid:bars-3-bottom-left</FuseSvgIcon>
 									</InputAdornment>
 								)
 							}}

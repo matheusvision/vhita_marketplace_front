@@ -107,8 +107,8 @@ function Course() {
 							>
 								<FuseSvgIcon>
 									{theme.direction === 'ltr'
-										? 'heroicons-outline:arrow-sm-left'
-										: 'heroicons-outline:arrow-sm-right'}
+										? 'heroicons-outline:arrow-left'
+										: 'heroicons-outline:arrow-right'}
 								</FuseSvgIcon>
 							</IconButton>
 
@@ -149,7 +149,7 @@ function Course() {
 								<Button
 									className="min-h-56 rounded-full"
 									size="large"
-									startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
+									startIcon={<FuseSvgIcon>heroicons-outline:arrow-left</FuseSvgIcon>}
 									onClick={handleBack}
 								>
 									Prev
@@ -161,7 +161,7 @@ function Course() {
 								<Button
 									className="min-h-56 rounded-full"
 									size="large"
-									endIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-right</FuseSvgIcon>}
+									endIcon={<FuseSvgIcon>heroicons-outline:arrow-right</FuseSvgIcon>}
 									onClick={handleNext}
 								>
 									Next
@@ -180,7 +180,7 @@ function Course() {
 								aria-label="open left sidebar"
 								size="large"
 							>
-								<FuseSvgIcon>heroicons-outline:view-list</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 							</IconButton>
 
 							<Typography className="mx-8">{`${activeStep}/${course.totalSteps}`}</Typography>
@@ -191,11 +191,11 @@ function Course() {
 							/>
 
 							<IconButton onClick={handleBack}>
-								<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>
 							</IconButton>
 
 							<IconButton onClick={handleNext}>
-								<FuseSvgIcon>heroicons-outline:arrow-narrow-right</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:arrow-small-right</FuseSvgIcon>
 							</IconButton>
 						</Box>
 					</Hidden>
@@ -218,8 +218,8 @@ function Course() {
 							startIcon={
 								<FuseSvgIcon size={20}>
 									{theme.direction === 'ltr'
-										? 'heroicons-outline:arrow-sm-left'
-										: 'heroicons-outline:arrow-sm-right'}
+										? 'heroicons-outline:arrow-small-left'
+										: 'heroicons-outline:arrow-small-right'}
 								</FuseSvgIcon>
 							}
 						>

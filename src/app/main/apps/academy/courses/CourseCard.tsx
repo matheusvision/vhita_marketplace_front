@@ -51,7 +51,7 @@ function CourseCard(props: CourseCardProps) {
 					className="px-16 min-w-128"
 					color="secondary"
 					variant="contained"
-					endIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-sm-right</FuseSvgIcon>}
+					endIcon={<FuseSvgIcon size={20}>heroicons-outline:arrow-small-right</FuseSvgIcon>}
 				>
 					{buttonStatus()}
 				</Button>

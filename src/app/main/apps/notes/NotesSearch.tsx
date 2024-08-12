@@ -24,7 +24,7 @@ function NotesSearch() {
 				fullWidth
 				startAdornment={
 					<InputAdornment position="start">
-						<FuseSvgIcon color="disabled">heroicons-solid:search</FuseSvgIcon>
+						<FuseSvgIcon color="disabled">heroicons-solid:magnifying-glass</FuseSvgIcon>
 					</InputAdornment>
 				}
 				inputProps={{

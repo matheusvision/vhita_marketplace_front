@@ -83,7 +83,7 @@ function AboutTab() {
 											size={16}
 											color="action"
 										>
-											heroicons-outline:location-marker
+											heroicons-outline:map-pin
 										</FuseSvgIcon>
 									</div>
 								))}
@@ -273,7 +273,7 @@ function AboutTab() {
 										/>
 										<ListItemSecondaryAction>
 											<IconButton size="large">
-												<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+												<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 											</IconButton>
 										</ListItemSecondaryAction>
 									</ListItem>

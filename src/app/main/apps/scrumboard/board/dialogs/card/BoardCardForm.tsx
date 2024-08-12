@@ -347,7 +347,7 @@ function BoardCardForm() {
 
 				<div className="mb-24">
 					<div className="flex items-center mt-16 mb-12">
-						<FuseSvgIcon size={20}>heroicons-outline:chat-alt</FuseSvgIcon>
+						<FuseSvgIcon size={20}>heroicons-outline:chat-bubble-left-right</FuseSvgIcon>
 						<Typography className="font-semibold text-16 mx-8">Comment</Typography>
 					</div>
 					<div>
@@ -368,7 +368,7 @@ function BoardCardForm() {
 							{value.length > 0 && (
 								<div className="mb-24">
 									<div className="flex items-center mt-16">
-										<FuseSvgIcon size={20}>heroicons-outline:clipboard-list</FuseSvgIcon>
+										<FuseSvgIcon size={20}>heroicons-outline:clipboard-document-list</FuseSvgIcon>
 										<Typography className="font-semibold text-16 mx-8">Activity</Typography>
 									</div>
 									<List>
@@ -397,7 +397,7 @@ function BoardCardForm() {
 						onClick={() => dispatch(closeCardDialog())}
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 					</IconButton>
 					<div className="flex flex-row items-center sm:items-start sm:flex-col flex-1">
 						<Controller

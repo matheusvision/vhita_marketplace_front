@@ -65,7 +65,7 @@ function MonthlyExpensesWidget() {
 				<div className="text-lg font-medium tracking-tight leading-6 truncate">Monthly Expenses</div>
 				<div className="ml-8 -mt-8 -mr-12">
 					<IconButton>
-						<FuseSvgIcon size={20}>heroicons-solid:dots-vertical</FuseSvgIcon>
+						<FuseSvgIcon size={20}>heroicons-solid:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 				</div>
 			</div>

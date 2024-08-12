@@ -52,7 +52,7 @@ function BudgetWidget() {
 						aria-label="more"
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 				</div>
 			</div>
@@ -94,7 +94,7 @@ function BudgetWidget() {
 								size={16}
 								className="text-green-600"
 							>
-								heroicons-solid:arrow-narrow-down
+								heroicons-solid:arrow-small-down
 							</FuseSvgIcon>
 						</div>
 					</div>
@@ -130,7 +130,7 @@ function BudgetWidget() {
 								size={16}
 								className="text-red-600 ml-4"
 							>
-								heroicons-solid:arrow-narrow-up
+								heroicons-solid:arrow-small-up
 							</FuseSvgIcon>
 						</div>
 					</div>
@@ -166,7 +166,7 @@ function BudgetWidget() {
 								size={16}
 								className="text-red-600 ml-4"
 							>
-								heroicons-solid:arrow-narrow-up
+								heroicons-solid:arrow-small-up
 							</FuseSvgIcon>
 						</div>
 					</div>

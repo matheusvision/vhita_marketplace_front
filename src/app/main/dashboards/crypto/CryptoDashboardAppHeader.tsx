@@ -74,8 +74,8 @@ function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 							)}
 						>
 							{btc.trend.dir === 'up'
-								? 'heroicons-solid:arrow-narrow-up'
-								: 'heroicons-solid:arrow-narrow-down'}
+								? 'heroicons-solid:arrow-small-up'
+								: 'heroicons-solid:arrow-small-down'}
 						</FuseSvgIcon>
 
 						<Typography

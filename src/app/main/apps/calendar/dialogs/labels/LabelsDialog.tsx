@@ -33,7 +33,7 @@ function LabelsDialog() {
 					color="secondary"
 					size={20}
 				>
-					heroicons-solid:pencil-alt
+					heroicons-solid:pencil-square
 				</FuseSvgIcon>
 			</IconButton>
 			<Dialog

@@ -156,7 +156,7 @@ function EventDialog() {
 						className="hidden sm:inline-flex mt-16"
 						color="action"
 					>
-						heroicons-outline:pencil-alt
+						heroicons-outline:pencil-square
 					</FuseSvgIcon>
 					<Controller
 						name="title"
@@ -280,7 +280,7 @@ function EventDialog() {
 						className="hidden sm:inline-flex mt-16"
 						color="action"
 					>
-						heroicons-outline:menu-alt-2
+						heroicons-outline:bars-3-bottom-left
 					</FuseSvgIcon>
 
 					<Controller

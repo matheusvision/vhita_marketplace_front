@@ -16,7 +16,7 @@ function MessengerFirstScreen() {
 				className="icon-size-128 mb-16"
 				color="disabled"
 			>
-				heroicons-outline:chat
+				heroicons-outline:chat-bubble-left-right
 			</FuseSvgIcon>
 			<Typography
 				className="hidden lg:flex text-20 font-semibold tracking-tight text-secondary"

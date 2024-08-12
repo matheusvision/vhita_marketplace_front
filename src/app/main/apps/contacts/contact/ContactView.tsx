@@ -93,7 +93,7 @@ function ContactView() {
 								component={NavLinkAdapter}
 								to="edit"
 							>
-								<FuseSvgIcon size={20}>heroicons-outline:pencil-alt</FuseSvgIcon>
+								<FuseSvgIcon size={20}>heroicons-outline:pencil-square</FuseSvgIcon>
 								<span className="mx-8">Edit</span>
 							</Button>
 						</div>
@@ -124,14 +124,14 @@ function ContactView() {
 
 						{contact.company && (
 							<div className="flex items-center">
-								<FuseSvgIcon>heroicons-outline:office-building</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:building-office-2</FuseSvgIcon>
 								<div className="ml-24 leading-6">{contact.company}</div>
 							</div>
 						)}
 
 						{contact?.emails?.length && contact.emails.some((item) => item.email?.length > 0) && (
 							<div className="flex">
-								<FuseSvgIcon>heroicons-outline:mail</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:envelope</FuseSvgIcon>
 								<div className="min-w-0 ml-24 space-y-4">
 									{contact.emails.map(
 										(item) =>
@@ -212,7 +212,7 @@ function ContactView() {
 
 						{contact.address && (
 							<div className="flex items-center">
-								<FuseSvgIcon>heroicons-outline:location-marker</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:map-pin</FuseSvgIcon>
 								<div className="ml-24 leading-6">{contact.address}</div>
 							</div>
 						)}
@@ -226,7 +226,7 @@ function ContactView() {
 
 						{contact.notes && (
 							<div className="flex">
-								<FuseSvgIcon>heroicons-outline:menu-alt-2</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:bars-3-bottom-left</FuseSvgIcon>
 								<div
 									className="max-w-none ml-24 prose dark:prose-invert"
 									// eslint-disable-next-line react/no-danger

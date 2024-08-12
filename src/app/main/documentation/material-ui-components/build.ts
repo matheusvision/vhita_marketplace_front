@@ -355,10 +355,8 @@ function writePage(fileDir: string) {
 
 	const contentJSX = `
                 <>
-					<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
-					  <DocumentationPageBreadcrumb />
 					  <Button 
-							className="normal-case"
+							className="normal-case absolute right-0"
 							variant="contained"
                             color="secondary"
 							component="a" 
@@ -366,11 +364,10 @@ function writePage(fileDir: string) {
 							target="_blank"
 							role="button"
 							size="small"
-							startIcon={<FuseSvgIcon size={20}>heroicons-outline:external-link</FuseSvgIcon>}
+							startIcon={<FuseSvgIcon size={16}>heroicons-outline:arrow-top-right-on-square</FuseSvgIcon>}
 							>
 							Reference
 						</Button>
-					</div>
                      ${htmlCode}
                 </>
     `;
@@ -383,7 +380,6 @@ function writePage(fileDir: string) {
                    import Button from '@mui/material/Button';
                    import Icon from '@mui/material/Icon';
                    import Typography from '@mui/material/Typography';
-				   import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
                    ${importPaths}
                    
                    function ${fileName}Doc(props) {

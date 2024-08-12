@@ -75,7 +75,7 @@ function MainSidebar() {
 								color="action"
 								size={20}
 							>
-								heroicons-solid:search
+								heroicons-solid:magnifying-glass
 							</FuseSvgIcon>
 
 							<Input

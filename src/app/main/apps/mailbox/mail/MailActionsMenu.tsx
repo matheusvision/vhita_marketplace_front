@@ -54,7 +54,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 				aria-expanded={open ? 'true' : undefined}
 				onClick={handleClick}
 			>
-				<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+				<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 			</IconButton>
 			<Menu
 				id="basic-menu"
@@ -72,7 +72,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 					}}
 				>
 					<ListItemIcon className="min-w-40">
-						<FuseSvgIcon>heroicons-outline:mail</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:envelope</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Mark as unread" />
 				</MenuItem>
@@ -84,7 +84,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 					}}
 				>
 					<ListItemIcon className="min-w-40">
-						<FuseSvgIcon>heroicons-outline:exclamation</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:exclamation-triangle</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Spam" />
 				</MenuItem>

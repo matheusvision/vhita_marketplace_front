@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { alpha } from '@mui/system/colorManipulator';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
@@ -117,10 +118,21 @@ function HeaderFullScreenToggle(props: HeaderFullScreenToggleProps) {
 		>
 			<IconButton
 				onClick={toggleFullScreen}
-				className={clsx('h-40 w-40', className, isFullScreen && 'text-red-500')}
-				size="large"
+				className={clsx(className, isFullScreen && 'text-red-500')}
+				sx={{
+					borderRadius: '8px',
+					width: 40,
+					height: 40,
+					border: (theme) => `1px solid ${theme.palette.divider}`,
+					'&:hover, &:focus': {
+						backgroundColor: (theme) =>
+							theme.palette.mode === 'dark'
+								? alpha(theme.palette.divider, 0.1)
+								: alpha(theme.palette.divider, 0.6)
+					}
+				}}
 			>
-				<FuseSvgIcon>heroicons-outline:arrows-expand</FuseSvgIcon>
+				<FuseSvgIcon size={20}>heroicons-outline:arrows-pointing-out</FuseSvgIcon>
 			</IconButton>
 		</Tooltip>
 	);

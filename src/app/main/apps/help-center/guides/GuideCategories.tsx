@@ -33,7 +33,7 @@ function GuideCategories() {
 					<Button
 						onClick={handleGoBack}
 						color="secondary"
-						startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>}
 					>
 						Back to Help Center
 					</Button>

@@ -41,7 +41,7 @@ function PostItem(props: PostProps) {
 						aria-label="more"
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 				}
 				title={
@@ -176,7 +176,7 @@ function PostItem(props: PostProps) {
 										/>
 									</ListItem>
 									<div className="flex items-center mx-52 mb-8">
-										<Button endIcon={<FuseSvgIcon size={14}>heroicons-outline:reply</FuseSvgIcon>}>
+										<Button endIcon={<FuseSvgIcon size={14}>heroicons-outline:arrow-uturn-left</FuseSvgIcon>}>
 											Reply
 										</Button>
 									</div>

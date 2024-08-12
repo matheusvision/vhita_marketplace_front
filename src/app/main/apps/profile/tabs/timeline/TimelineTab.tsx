@@ -106,13 +106,13 @@ function TimelineTab() {
 						>
 							<div className="flex flex-1 items-center">
 								<IconButton aria-label="Add photo">
-									<FuseSvgIcon size={20}>heroicons-solid:photograph</FuseSvgIcon>
+									<FuseSvgIcon size={20}>heroicons-solid:photo</FuseSvgIcon>
 								</IconButton>
 								<IconButton aria-label="Mention somebody">
 									<FuseSvgIcon size={20}>heroicons-solid:user</FuseSvgIcon>
 								</IconButton>
 								<IconButton aria-label="Add location">
-									<FuseSvgIcon size={20}>heroicons-solid:location-marker</FuseSvgIcon>
+									<FuseSvgIcon size={20}>heroicons-solid:map-pin</FuseSvgIcon>
 								</IconButton>
 							</div>
 

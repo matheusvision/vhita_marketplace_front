@@ -53,7 +53,7 @@ const navigationData: FuseNavItemType[] = [
 				id: '2.1',
 				title: 'All tasks',
 				type: 'item',
-				icon: 'heroicons-outline:clipboard-list',
+				icon: 'heroicons-outline:clipboard-document-list',
 				badge: {
 					title: '49',
 					classes: 'px-2 bg-primary text-on-primary rounded-full'
@@ -95,7 +95,7 @@ const navigationData: FuseNavItemType[] = [
 				id: '3.1',
 				title: 'General',
 				type: 'collapse',
-				icon: 'heroicons-outline:cog',
+				icon: 'heroicons-outline:cog-6-tooth',
 				children: [
 					{
 						id: '3.1.1',

@@ -116,7 +116,7 @@ function MailDetails() {
 							<Button
 								className="m-8"
 								color="secondary"
-								startIcon={<FuseSvgIcon size={20}>heroicons-solid:reply</FuseSvgIcon>}
+								startIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-uturn-left</FuseSvgIcon>}
 								variant="outlined"
 							>
 								Reply
@@ -124,7 +124,7 @@ function MailDetails() {
 							<Button
 								className="m-8"
 								color="secondary"
-								startIcon={<FuseSvgIcon size={20}>heroicons-solid:reply</FuseSvgIcon>}
+								startIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-uturn-left</FuseSvgIcon>}
 								variant="outlined"
 							>
 								Reply All

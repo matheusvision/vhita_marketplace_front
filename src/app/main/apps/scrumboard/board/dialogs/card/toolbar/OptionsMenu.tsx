@@ -30,7 +30,7 @@ function OptionsMenu(props: OptionsMenuProps) {
 				onClick={handleMenuOpen}
 				size="large"
 			>
-				<FuseSvgIcon>heroicons-outline:dots-horizontal</FuseSvgIcon>
+				<FuseSvgIcon>heroicons-outline:ellipsis-horizontal</FuseSvgIcon>
 			</IconButton>
 			<ToolbarMenu
 				state={anchorEl}

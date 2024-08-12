@@ -91,7 +91,7 @@ function ProjectDashboardAppHeader() {
 						className="whitespace-nowrap"
 						variant="contained"
 						color="primary"
-						startIcon={<FuseSvgIcon size={20}>heroicons-solid:mail</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon size={20}>heroicons-solid:envelope</FuseSvgIcon>}
 					>
 						Messages
 					</Button>
@@ -99,7 +99,7 @@ function ProjectDashboardAppHeader() {
 						className="whitespace-nowrap"
 						variant="contained"
 						color="secondary"
-						startIcon={<FuseSvgIcon size={20}>heroicons-solid:cog</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon size={20}>heroicons-solid:cog-6-tooth</FuseSvgIcon>}
 					>
 						Settings
 					</Button>

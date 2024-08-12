@@ -66,8 +66,8 @@ function ProductHeader() {
 					>
 						<FuseSvgIcon size={20}>
 							{theme.direction === 'ltr'
-								? 'heroicons-outline:arrow-sm-left'
-								: 'heroicons-outline:arrow-sm-right'}
+								? 'heroicons-outline:arrow-small-left'
+								: 'heroicons-outline:arrow-small-right'}
 						</FuseSvgIcon>
 						<span className="flex mx-4 font-medium">Products</span>
 					</Typography>

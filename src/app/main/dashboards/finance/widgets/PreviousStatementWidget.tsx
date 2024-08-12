@@ -44,7 +44,7 @@ function PreviousStatementWidget() {
 						aria-label="more"
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 				</div>
 			</div>

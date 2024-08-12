@@ -48,7 +48,7 @@ function TypographyUI() {
 							href="https://mui.com/components/typography"
 							target="_blank"
 							role="button"
-							startIcon={<FuseSvgIcon>heroicons-solid:external-link</FuseSvgIcon>}
+							startIcon={<FuseSvgIcon>heroicons-solid:arrow-top-right-on-square</FuseSvgIcon>}
 						>
 							Official docs
 						</Button>

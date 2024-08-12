@@ -3,7 +3,6 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import DocumentationPageBreadcrumb from '../../DocumentationPageBreadcrumb';
 import ComboBoxComponent from '../components/autocomplete/ComboBox';
 import ComboBoxRaw from '../components/autocomplete/ComboBox.tsx?raw';
 import PlaygroundComponent from '../components/autocomplete/Playground';
@@ -60,22 +59,19 @@ import VirtualizeRaw from '../components/autocomplete/Virtualize.tsx?raw';
 function AutocompleteDoc(props) {
 	return (
 		<>
-			<div className="flex flex-1 sm:flex-row flex-col items-start justify-center grow-0 md:items-center md:justify-end md:space-between">
-				<DocumentationPageBreadcrumb />
-				<Button
-					className="normal-case"
-					variant="contained"
-					color="secondary"
-					component="a"
-					href="https://mui.com/components/autocomplete"
-					target="_blank"
-					role="button"
-					size="small"
-					startIcon={<FuseSvgIcon size={20}>heroicons-outline:external-link</FuseSvgIcon>}
-				>
-					Reference
-				</Button>
-			</div>
+			<Button
+				className="normal-case absolute right-0"
+				variant="contained"
+				color="secondary"
+				component="a"
+				href="https://mui.com/components/autocomplete"
+				target="_blank"
+				role="button"
+				size="small"
+				startIcon={<FuseSvgIcon size={16}>heroicons-outline:arrow-top-right-on-square</FuseSvgIcon>}
+			>
+				Reference
+			</Button>
 			<Typography
 				className="text-32 my-16 font-700"
 				component="h1"

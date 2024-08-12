@@ -141,7 +141,7 @@ function MailToolbar(props: MailToolbarProps) {
 					onChange={(ev: ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(ev))}
 					startAdornment={
 						<InputAdornment position="start">
-							<FuseSvgIcon color="disabled">heroicons-solid:search</FuseSvgIcon>
+							<FuseSvgIcon color="disabled">heroicons-solid:magnifying-glass</FuseSvgIcon>
 						</InputAdornment>
 					}
 					inputProps={{
@@ -322,7 +322,7 @@ function MailToolbar(props: MailToolbarProps) {
 								aria-label="Mark as unread"
 								size="small"
 							>
-								<FuseSvgIcon>heroicons-outline:mail</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:envelope</FuseSvgIcon>
 							</IconButton>
 						</Tooltip>
 

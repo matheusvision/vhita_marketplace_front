@@ -49,7 +49,7 @@ function DetailSidebarContent(props: DetailSidebarContentProps) {
 					size="large"
 					onClick={() => dispatch(resetSelectedItemId())}
 				>
-					<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+					<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 				</IconButton>
 			</div>
 

@@ -41,8 +41,8 @@ function MailToolbar() {
 			>
 				<FuseSvgIcon>
 					{theme.direction === 'ltr'
-						? 'heroicons-outline:arrow-narrow-left'
-						: 'heroicons-outline:arrow-narrow-right'}
+						? 'heroicons-outline:arrow-small-left'
+						: 'heroicons-outline:arrow-small-right'}
 				</FuseSvgIcon>
 			</IconButton>
 

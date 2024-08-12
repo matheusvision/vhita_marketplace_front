@@ -100,7 +100,7 @@ function Configurator() {
 					disableRipple
 				>
 					<span>
-						<FuseSvgIcon size={20}>heroicons-solid:cog</FuseSvgIcon>
+						<FuseSvgIcon size={20}>heroicons-solid:cog-6-tooth</FuseSvgIcon>
 					</span>
 				</Button>
 
@@ -111,7 +111,7 @@ function Configurator() {
 					color="inherit"
 					disableRipple
 				>
-					<FuseSvgIcon size={20}>heroicons-outline:color-swatch</FuseSvgIcon>
+					<FuseSvgIcon size={20}>heroicons-outline:swatch</FuseSvgIcon>
 				</Button>
 			</Root>
 

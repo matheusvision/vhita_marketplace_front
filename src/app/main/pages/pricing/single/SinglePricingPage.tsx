@@ -98,19 +98,19 @@ function SinglePricingPage() {
 					</div>
 					<div className="mt-48 grid w-full grid-cols-1 gap-x-24 gap-y-48 sm:mt-64 sm:grid-cols-2 lg:grid-cols-3 lg:gap-64">
 						<SinglePricingFeatureItem
-							icon="heroicons-outline:pencil-alt"
+							icon="heroicons-outline:pencil-square"
 							title="Create and Edit Projects"
 							subtitle="Create and edit projects, upload images via drag drop, add categories, add custom
                 fields, create interactive forms and more."
 						/>
 						<SinglePricingFeatureItem
-							icon="heroicons-outline:filter"
+							icon="heroicons-outline:funnel"
 							title="Search and Filter"
 							subtitle="Search and filter within the projects, categories and custom fields. Save search and
                 filter details for easy access."
 						/>
 						<SinglePricingFeatureItem
-							icon="heroicons-outline:refresh"
+							icon="heroicons-outline:arrow-path"
 							title="Real Time Updates"
 							subtitle="Real time updates that doesn't require page reload. Lean back and watch the changes
                 happen in real time."
@@ -127,7 +127,7 @@ function SinglePricingPage() {
                 and other accessibility tools."
 						/>
 						<SinglePricingFeatureItem
-							icon="heroicons-outline:chart-square-bar"
+							icon="heroicons-outline:chart-bar-square"
 							title="Simple Analytics"
 							subtitle="Simple analytics with no unnecessary data flow or weight. More readable results with
                 less data consumption."

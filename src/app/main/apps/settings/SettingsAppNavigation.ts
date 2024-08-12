@@ -4,7 +4,7 @@ const SettingsAppNavigation: FuseNavItemType = {
 	id: 'apps.settings',
 	title: 'Settings',
 	type: 'collapse',
-	icon: 'heroicons-outline:cog',
+	icon: 'heroicons-outline:cog-6-tooth',
 	url: '/apps/settings',
 	children: [
 		{

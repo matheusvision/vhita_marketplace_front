@@ -21,7 +21,7 @@ function StaffRoleExample() {
 						variant="contained"
 						color="secondary"
 						to="/sign-out"
-						startIcon={<FuseSvgIcon>heroicons-outline:logout</FuseSvgIcon>}
+						startIcon={<FuseSvgIcon>heroicons-outline:arrow-right-on-rectangle</FuseSvgIcon>}
 					>
 						Sign out
 					</Button>

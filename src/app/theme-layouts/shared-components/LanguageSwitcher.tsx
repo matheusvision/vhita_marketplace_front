@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { changeLanguage, LanguageType, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { alpha } from '@mui/system/colorManipulator';
 
 /**
  * The language switcher.
@@ -35,8 +36,19 @@ function LanguageSwitcher() {
 	return (
 		<>
 			<Button
-				className="h-40 w-64"
 				onClick={langMenuClick}
+				sx={{
+					borderRadius: '8px',
+					width: 64,
+					height: 40,
+					border: (theme) => `1px solid ${theme.palette.divider}`,
+					'&:hover, &:focus': {
+						backgroundColor: (theme) =>
+							theme.palette.mode === 'dark'
+								? alpha(theme.palette.divider, 0.1)
+								: alpha(theme.palette.divider, 0.6)
+					}
+				}}
 			>
 				<img
 					className="mx-4 min-w-20"
@@ -45,8 +57,11 @@ function LanguageSwitcher() {
 				/>
 
 				<Typography
-					className="mx-4 font-semibold uppercase"
-					color="text.secondary"
+					className="mx-4 font-semibold text-12 uppercase"
+					sx={{
+						color: (theme) =>
+							theme.palette.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary
+					}}
 				>
 					{currentLanguage.id}
 				</Typography>

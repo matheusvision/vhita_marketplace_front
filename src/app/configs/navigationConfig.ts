@@ -27,7 +27,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'dashboards.project',
 				title: 'Project',
 				type: 'item',
-				icon: 'heroicons-outline:clipboard-check',
+				icon: 'heroicons-outline:clipboard-document-check',
 				url: '/dashboards/project'
 			},
 			{
@@ -41,7 +41,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'dashboards.finance',
 				title: 'Finance',
 				type: 'item',
-				icon: 'heroicons-outline:cash',
+				icon: 'heroicons-outline:banknotes',
 				url: '/dashboards/finance'
 			},
 			{
@@ -82,7 +82,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'apps.messenger',
 				title: 'Messenger',
 				type: 'item',
-				icon: 'heroicons-outline:chat-alt',
+				icon: 'heroicons-outline:chat-bubble-bottom-center',
 				url: '/apps/messenger',
 				translate: 'MESSENGER'
 			},
@@ -148,7 +148,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'apps.help-center',
 				title: 'Help Center',
 				type: 'collapse',
-				icon: 'heroicons-outline:support',
+				icon: 'heroicons-outline:information-circle',
 				url: '/apps/help-center',
 				children: [
 					{
@@ -182,7 +182,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'apps.mailbox',
 				title: 'Mailbox',
 				type: 'item',
-				icon: 'heroicons-outline:mail',
+				icon: 'heroicons-outline:envelope',
 				url: '/apps/mailbox',
 				translate: 'MAIL',
 				badge: {
@@ -194,7 +194,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'apps.notes',
 				title: 'Notes',
 				type: 'item',
-				icon: 'heroicons-outline:pencil-alt',
+				icon: 'heroicons-outline:pencil-square',
 				url: '/apps/notes',
 				translate: 'NOTES'
 			},
@@ -202,7 +202,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'apps.scrumboard',
 				title: 'Scrumboard',
 				type: 'item',
-				icon: 'heroicons-outline:view-boards',
+				icon: 'heroicons-outline:view-columns',
 				url: '/apps/scrumboard',
 				translate: 'SCRUMBOARD'
 			},
@@ -249,7 +249,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'pages.activities',
 				title: 'Activities',
 				type: 'item',
-				icon: 'heroicons-outline:menu-alt-2',
+				icon: 'heroicons-outline:bars-3-bottom-left',
 				url: '/pages/activities'
 			},
 			{
@@ -705,14 +705,14 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'pages.maintenance',
 				title: 'Maintenance',
 				type: 'item',
-				icon: 'heroicons-outline:exclamation',
+				icon: 'heroicons-outline:exclamation-triangle',
 				url: '/pages/maintenance'
 			},
 			{
 				id: 'pages.pricing',
 				title: 'Pricing',
 				type: 'collapse',
-				icon: 'heroicons-outline:cash',
+				icon: 'heroicons-outline:banknotes',
 				children: [
 					{
 						id: 'pages.pricing.modern',
@@ -780,7 +780,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'user-interface.icons',
 				title: 'Icons',
 				type: 'collapse',
-				icon: 'heroicons-outline:lightning-bolt',
+				icon: 'heroicons-outline:bolt',
 				children: [
 					{
 						id: 'user-interface.icons.heroicons-outline',
@@ -824,7 +824,7 @@ const navigationConfig: FuseNavItemType[] = [
 				id: 'user-interface.page-layouts',
 				title: 'Page Layouts',
 				type: 'collapse',
-				icon: 'heroicons-outline:template',
+				icon: 'heroicons-outline:rectangle-group',
 				children: [
 					{
 						id: 'user-interface.page-layouts.overview',

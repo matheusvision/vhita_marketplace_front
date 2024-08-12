@@ -183,7 +183,7 @@ function Chat(props: ChatProps) {
 								size={128}
 								color="disabled"
 							>
-								heroicons-outline:chat
+								heroicons-outline:chat-bubble-left-right
 							</FuseSvgIcon>
 						</div>
 						<Typography
@@ -228,12 +228,12 @@ function Chat(props: ChatProps) {
 									value={messageText}
 								/>
 								<IconButton
-									className="absolute ltr:right-0 rtl:left-0 top-0"
+									className="absolute ltr:right-0 rtl:left-0 top-4"
 									type="submit"
 									size="large"
 								>
 									<FuseSvgIcon
-										className="rotate-90"
+										className=""
 										color="action"
 									>
 										heroicons-outline:paper-airplane

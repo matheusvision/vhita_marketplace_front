@@ -210,7 +210,9 @@ function PageLayoutOverview(props: PageLayoutOverviewProps) {
 								variant="contained"
 								component={Link}
 								to={options[selectedOption].link}
-								startIcon={<FuseSvgIcon size={20}>heroicons-solid:external-link</FuseSvgIcon>}
+								startIcon={
+									<FuseSvgIcon size={20}>heroicons-solid:arrow-top-right-on-square</FuseSvgIcon>
+								}
 							>
 								View
 							</Button>

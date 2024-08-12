@@ -110,7 +110,7 @@ function ProductImagesTab() {
 								size={32}
 								color="action"
 							>
-								heroicons-outline:upload
+								heroicons-outline:arrow-up-on-square
 							</FuseSvgIcon>
 						</Box>
 					)}

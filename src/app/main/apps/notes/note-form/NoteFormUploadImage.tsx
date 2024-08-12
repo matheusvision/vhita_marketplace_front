@@ -49,7 +49,7 @@ function NoteFormUploadImage(props: NoteFormUploadImageProps) {
 				component="span"
 				size="large"
 			>
-				<FuseSvgIcon size={20}>heroicons-outline:photograph</FuseSvgIcon>
+				<FuseSvgIcon size={20}>heroicons-outline:photo</FuseSvgIcon>
 			</IconButton>
 		</label>
 	);

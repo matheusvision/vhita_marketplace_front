@@ -61,7 +61,7 @@ function UserSidebar() {
 			>
 				<Toolbar className="flex items-center px-24 border-b-1">
 					<IconButton onClick={() => setUserSidebarOpen(false)}>
-						<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>
 					</IconButton>
 					<Typography className="px-8 font-semibold text-20">Profile</Typography>
 				</Toolbar>
@@ -120,7 +120,7 @@ function UserSidebar() {
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position="start">
-										<FuseSvgIcon size={20}>heroicons-solid:mail</FuseSvgIcon>
+										<FuseSvgIcon size={20}>heroicons-solid:envelope</FuseSvgIcon>
 									</InputAdornment>
 								)
 							}}

@@ -126,8 +126,8 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 											className="arrow-icon"
 										>
 											{theme.direction === 'ltr'
-												? 'heroicons-outline:arrow-sm-right'
-												: 'heroicons-outline:arrow-sm-left'}
+												? 'heroicons-outline:arrow-small-right'
+												: 'heroicons-outline:arrow-small-left'}
 										</FuseSvgIcon>
 									</IconButton>
 								</Root>

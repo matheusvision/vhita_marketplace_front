@@ -272,7 +272,7 @@ function Chat(props: ChatPropsType) {
 										className="text-24"
 										color="action"
 									>
-										heroicons-outline:emoji-happy
+										heroicons-outline:face-smile
 									</FuseSvgIcon>
 								</IconButton>
 
@@ -301,12 +301,7 @@ function Chat(props: ChatPropsType) {
 									type="submit"
 									size="large"
 								>
-									<FuseSvgIcon
-										className="rotate-90"
-										color="action"
-									>
-										heroicons-outline:paper-airplane
-									</FuseSvgIcon>
+									<FuseSvgIcon color="action">heroicons-outline:paper-airplane</FuseSvgIcon>
 								</IconButton>
 							</div>
 						</Paper>

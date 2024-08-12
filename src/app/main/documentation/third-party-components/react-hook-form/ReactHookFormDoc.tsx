@@ -22,7 +22,7 @@ function ReactHookFormDoc() {
 					href="http://react-hook-form.com"
 					target="_blank"
 					role="button"
-					startIcon={<FuseSvgIcon>heroicons-outline:external-link</FuseSvgIcon>}
+					startIcon={<FuseSvgIcon>heroicons-outline:arrow-top-right-on-square</FuseSvgIcon>}
 				>
 					Reference
 				</Button>

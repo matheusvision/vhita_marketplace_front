@@ -12,7 +12,7 @@ function SelectMailMessage() {
 				color="disabled"
 				size={24}
 			>
-				heroicons-outline:mail-open
+				heroicons-outline:envelope
 			</FuseSvgIcon>
 			<Typography
 				className="mt-16 text-2xl font-semibold tracking-tight"

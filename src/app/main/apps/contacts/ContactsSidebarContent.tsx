@@ -16,7 +16,7 @@ function ContactsSidebarContent() {
 				to="/apps/contacts"
 				size="large"
 			>
-				<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+				<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 			</IconButton>
 
 			<Outlet />

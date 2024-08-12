@@ -27,7 +27,9 @@ function ActivityTimelineItem(props: ActivityTimelineItemProps) {
 					className="mt-0 flex h-40  w-40 items-center justify-center p-0"
 				>
 					{item.image && <Avatar src={item.image} />}
-					{!item.image && <FuseSvgIcon>{item.icon ? item.icon : 'heroicons-solid:star'}</FuseSvgIcon>}
+					{!item.image && (
+						<FuseSvgIcon size={20}>{item.icon ? item.icon : 'heroicons-solid:star'}</FuseSvgIcon>
+					)}
 				</TimelineDot>
 
 				{!last && <TimelineConnector />}

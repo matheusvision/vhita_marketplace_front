@@ -28,7 +28,6 @@ const inputGlobalStyles = (
 				backgroundColor: theme.palette.background.default,
 				color: theme.palette.text.primary
 			},
-
 			/*  'code:not([class*="language-"])': {
         color: theme.palette.secondary.dark,
         backgroundColor:
@@ -37,6 +36,9 @@ const inputGlobalStyles = (
         borderRadius: 2,
         lineHeight: 1.7,
       }, */
+			'& .MuiOutlinedInput-root': {
+				backgroundColor: theme.palette.background.paper
+			},
 			'table.simple tbody tr th': {
 				borderColor: theme.palette.divider
 			},

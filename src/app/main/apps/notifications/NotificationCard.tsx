@@ -87,6 +87,7 @@ function NotificationCard(props: NotificationCardProps) {
 						<FuseSvgIcon
 							className="opacity-75"
 							color="inherit"
+							size={20}
 						>
 							{item.icon}
 						</FuseSvgIcon>
@@ -134,7 +135,7 @@ function NotificationCard(props: NotificationCardProps) {
 						className="opacity-75"
 						color="inherit"
 					>
-						heroicons-solid:x
+						heroicons-solid:x-mark
 					</FuseSvgIcon>
 				</IconButton>
 				{item.children}

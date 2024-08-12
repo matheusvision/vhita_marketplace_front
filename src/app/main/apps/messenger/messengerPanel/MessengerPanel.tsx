@@ -187,7 +187,7 @@ function MessengerPanel() {
 									onClick={() => dispatch(openChatPanel())}
 									size="large"
 								>
-									<FuseSvgIcon size={24}>heroicons-outline:chat-alt-2</FuseSvgIcon>
+									<FuseSvgIcon size={24}>heroicons-outline:chat-bubble-left-right</FuseSvgIcon>
 								</IconButton>
 								{selectedContactId === '' && (
 									<Typography
@@ -216,7 +216,7 @@ function MessengerPanel() {
 								color="inherit"
 								size="large"
 							>
-								<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 							</IconButton>
 						</div>
 					</Toolbar>
@@ -232,7 +232,7 @@ function MessengerPanel() {
 								size={128}
 								color="disabled"
 							>
-								heroicons-outline:chat
+								heroicons-outline:chat-bubble-left-right
 							</FuseSvgIcon>
 							<Typography
 								className="px-16 pb-24 mt-24 text-center"

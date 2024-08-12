@@ -125,7 +125,7 @@ function BoardCard(props: BoardCardProps) {
 						</div>
 
 						<div className="flex justify-between h-48 px-16">
-							<div className="flex items-center space-x-4">
+							<div className="flex items-center space-x-6">
 								{card?.subscribed && (
 									<FuseSvgIcon
 										size={16}
@@ -161,7 +161,7 @@ function BoardCard(props: BoardCardProps) {
 											size={16}
 											color="action"
 										>
-											heroicons-outline:chat
+											heroicons-outline:chat-bubble-left-right
 										</FuseSvgIcon>
 
 										<Typography color="text.secondary">{commentsCount}</Typography>

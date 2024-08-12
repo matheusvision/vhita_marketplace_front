@@ -42,7 +42,7 @@ function GuideListMenu(props: GuideListMenuProps) {
 					component={Link}
 					to={categorySlug}
 					className="text-12 font-medium py-2 px-12 min-h-0 h-24 mt-20"
-					endIcon={<FuseSvgIcon size={20}>heroicons-outline:arrow-narrow-right</FuseSvgIcon>}
+					endIcon={<FuseSvgIcon size={20}>heroicons-outline:arrow-small-right</FuseSvgIcon>}
 					variant="contained"
 					sx={{
 						color: 'text.secondary',

@@ -45,7 +45,7 @@ function ContactSidebar() {
 						color="inherit"
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 					</IconButton>
 					<Typography
 						className="px-4 font-medium text-16"

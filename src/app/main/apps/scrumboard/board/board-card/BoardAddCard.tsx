@@ -98,7 +98,7 @@ function BoardAddCard(props: BoardAddCardProps) {
 													onClick={handleCloseForm}
 													size="large"
 												>
-													<FuseSvgIcon size={18}>heroicons-outline:x</FuseSvgIcon>
+													<FuseSvgIcon size={18}>heroicons-outline:x-mark</FuseSvgIcon>
 												</IconButton>
 											</InputAdornment>
 										)

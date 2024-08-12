@@ -64,7 +64,7 @@ function NotesSidebarContent() {
 							className="list-item-icon"
 							color="disabled"
 						>
-							heroicons-outline:pencil-alt
+							heroicons-outline:pencil-square
 						</FuseSvgIcon>
 						<ListItemText
 							className="truncate"
@@ -99,7 +99,7 @@ function NotesSidebarContent() {
 							className="list-item-icon"
 							color="disabled"
 						>
-							heroicons-outline:archive
+							heroicons-outline:archive-box
 						</FuseSvgIcon>
 						<ListItemText
 							className="truncate"

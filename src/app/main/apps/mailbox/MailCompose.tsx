@@ -240,15 +240,15 @@ function MailCompose(props: MailComposeProps) {
 							</IconButton>
 
 							<IconButton>
-								<FuseSvgIcon size={20}>heroicons-solid:link</FuseSvgIcon>
+								<FuseSvgIcon size={20}>heroicons-solid:arrow-top-right-on-square</FuseSvgIcon>
 							</IconButton>
 
 							<IconButton>
-								<FuseSvgIcon size={20}>heroicons-solid:emoji-happy</FuseSvgIcon>
+								<FuseSvgIcon size={20}>heroicons-outline:face-smile</FuseSvgIcon>
 							</IconButton>
 
 							<IconButton>
-								<FuseSvgIcon size={20}>heroicons-solid:photograph</FuseSvgIcon>
+								<FuseSvgIcon size={20}>heroicons-solid:photo</FuseSvgIcon>
 							</IconButton>
 						</div>
 

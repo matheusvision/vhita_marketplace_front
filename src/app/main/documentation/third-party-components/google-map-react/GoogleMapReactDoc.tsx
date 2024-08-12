@@ -22,7 +22,7 @@ function GoogleMapReactDoc() {
 					href="https://github.com/google-map-react/google-map-react"
 					target="_blank"
 					role="button"
-					startIcon={<FuseSvgIcon>heroicons-outline:external-link</FuseSvgIcon>}
+					startIcon={<FuseSvgIcon>heroicons-outline:arrow-top-right-on-square</FuseSvgIcon>}
 				>
 					Reference
 				</Button>

@@ -67,7 +67,7 @@ function EmailInput(props: EmailInputProps) {
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
-									<FuseSvgIcon size={20}>heroicons-solid:mail</FuseSvgIcon>
+									<FuseSvgIcon size={20}>heroicons-solid:envelope</FuseSvgIcon>
 								</InputAdornment>
 							)
 						}}

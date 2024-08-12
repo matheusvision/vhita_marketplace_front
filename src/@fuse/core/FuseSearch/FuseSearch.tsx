@@ -17,6 +17,7 @@ import { memo, useEffect, useReducer, useRef, ReactNode } from 'react';
 import Autosuggest, { RenderInputComponentProps, RenderSuggestionParams, ChangeEvent } from 'react-autosuggest';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
+import { alpha } from '@mui/system/colorManipulator';
 import FuseSvgIcon from '../FuseSvgIcon';
 import { FuseFlatNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 
@@ -92,8 +93,9 @@ function renderInputComponent(props: RenderInputComponentProps) {
 					<FuseSvgIcon
 						className="pointer-events-none absolute top-0 h-40 w-48 p-12 ltr:right-0 rtl:left-0 md:h-48"
 						color="action"
+						size={20}
 					>
-						heroicons-outline:search
+						heroicons-outline:magnifying-glass
 					</FuseSvgIcon>
 				</>
 			) : (
@@ -282,10 +284,20 @@ function FuseSearch(props: FuseSearchProps) {
 		noResults = 'No results..',
 		trigger = (
 			<IconButton
-				className="h-40 w-40"
-				size="large"
+				sx={{
+					borderRadius: '8px',
+					width: 40,
+					height: 40,
+					border: (theme) => `1px solid ${theme.palette.divider}`,
+					'&:hover, &:focus': {
+						backgroundColor: (theme) =>
+							theme.palette.mode === 'dark'
+								? alpha(theme.palette.divider, 0.1)
+								: alpha(theme.palette.divider, 0.6)
+					}
+				}}
 			>
-				<FuseSvgIcon>heroicons-outline:search</FuseSvgIcon>
+				<FuseSvgIcon size={20}>heroicons-outline:magnifying-glass</FuseSvgIcon>
 			</IconButton>
 		)
 	} = props;
@@ -524,7 +536,7 @@ function FuseSearch(props: FuseSearchProps) {
 										className="mx-8"
 										size="large"
 									>
-										<FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
+										<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 									</IconButton>
 								</div>
 							</Paper>

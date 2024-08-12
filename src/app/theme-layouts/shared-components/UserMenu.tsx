@@ -12,6 +12,7 @@ import { selectUser } from 'src/app/auth/user/store/userSlice';
 import useAuth from 'src/app/auth/useAuth';
 import { darken } from '@mui/material/styles';
 import { useAppSelector } from 'app/store/hooks';
+import { alpha } from '@mui/system/colorManipulator';
 
 /**
  * The user menu.
@@ -36,19 +37,28 @@ function UserMenu() {
 	return (
 		<>
 			<Button
-				className="min-h-40 min-w-40 p-0 md:px-16 md:py-6"
+				className="min-h-40 min-w-40 px-4 border border-solid rounded-8 space-x-4"
+				sx={{
+					borderColor: (theme) => theme.palette.divider,
+					'&:hover, &:focus': {
+						backgroundColor: (theme) =>
+							theme.palette.mode === 'dark'
+								? alpha(theme.palette.divider, 0.1)
+								: alpha(theme.palette.divider, 0.6)
+					}
+				}}
 				onClick={userMenuClick}
 				color="inherit"
 			>
-				<div className="mx-4 hidden flex-col items-end md:flex">
+				<div className="mx-4 hidden flex-col items-end md:flex max-w-96">
 					<Typography
 						component="span"
-						className="flex font-semibold"
+						className="flex font-semibold text-13 capitalize truncate  tracking-tight leading-none mb-4"
 					>
 						{user.data.displayName}
 					</Typography>
 					<Typography
-						className="text-11 font-medium capitalize"
+						className="text-11 font-medium capitalize tracking-tighter leading-none"
 						color="text.secondary"
 					>
 						{user.role?.toString()}
@@ -62,7 +72,7 @@ function UserMenu() {
 							background: (theme) => theme.palette.background.default,
 							color: (theme) => theme.palette.text.secondary
 						}}
-						className="md:mx-4"
+						className="w-36 h-36"
 						alt="user photo"
 						src={user.data.photoURL}
 					/>
@@ -138,7 +148,7 @@ function UserMenu() {
 							role="button"
 						>
 							<ListItemIcon className="min-w-40">
-								<FuseSvgIcon>heroicons-outline:mail-open</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:envelope</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Inbox" />
 						</MenuItem>
@@ -148,7 +158,7 @@ function UserMenu() {
 							}}
 						>
 							<ListItemIcon className="min-w-40">
-								<FuseSvgIcon>heroicons-outline:logout</FuseSvgIcon>
+								<FuseSvgIcon>heroicons-outline:arrow-right-on-rectangle</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Sign out" />
 						</MenuItem>

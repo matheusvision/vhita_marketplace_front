@@ -25,7 +25,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: 'b91ccb58-b06c-413b-b389-87010e03a120',
-		icon: 'heroicons-solid:mail',
+		icon: 'heroicons-solid:envelope',
 		description: 'You have 15 unread mails across 3 mailboxes',
 		date: sub(new Date(), { hours: 3 }),
 		linkedContent: 'Mailbox',
@@ -34,7 +34,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: '541416c9-84a7-408a-8d74-27a43c38d797',
-		icon: 'heroicons-solid:refresh',
+		icon: 'heroicons-solid:arrow-path',
 		description: 'Your <strong>Docker container</strong> is ready to publish',
 		date: sub(new Date(), { hours: 5 }),
 		linkedContent: 'Download the container',
@@ -56,7 +56,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: 'b85c2338-cc98-4140-bbf8-c226ce4e395e',
-		icon: 'heroicons-solid:mail',
+		icon: 'heroicons-solid:envelope',
 		description: 'You have 3 new mails',
 		date: sub(new Date(), { days: 1 }),
 		extraContent: `<ol class="list-decimal list-inside space-y-2">
@@ -86,7 +86,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: '30af917b-7a6a-45d1-822f-9e7ad7f8bf69',
-		icon: 'heroicons-solid:refresh',
+		icon: 'heroicons-solid:arrow-path',
 		description: 'Your Vagrant container is ready to download',
 		date: sub(new Date(), { days: 4 })
 	}

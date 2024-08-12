@@ -14,7 +14,7 @@ function BoardModel(data: PartialDeep<ScrumboardBoard>): ScrumboardBoard {
 		id: _.uniqueId(),
 		title: 'Untitled Board',
 		description: '',
-		icon: 'heroicons-outline:template',
+		icon: 'heroicons-outline:rectangle-group',
 		lastActivity: new Date(),
 		members: [],
 		settings: {

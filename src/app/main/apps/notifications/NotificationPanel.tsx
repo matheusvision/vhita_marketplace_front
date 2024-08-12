@@ -131,7 +131,7 @@ function NotificationPanel() {
 				onClick={handleClose}
 				size="large"
 			>
-				<FuseSvgIcon color="action">heroicons-outline:x</FuseSvgIcon>
+				<FuseSvgIcon color="action">heroicons-outline:x-mark</FuseSvgIcon>
 			</IconButton>
 
 			<FuseScrollbars className="flex flex-col p-16 h-full">

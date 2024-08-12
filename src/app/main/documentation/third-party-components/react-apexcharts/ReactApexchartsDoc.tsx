@@ -38,7 +38,7 @@ function ReactApexchartsDoc() {
 					href="https://github.com/apexcharts/react-apexcharts"
 					target="_blank"
 					role="button"
-					startIcon={<FuseSvgIcon>heroicons-outline:external-link</FuseSvgIcon>}
+					startIcon={<FuseSvgIcon>heroicons-outline:arrow-top-right-on-square</FuseSvgIcon>}
 				>
 					Reference
 				</Button>
