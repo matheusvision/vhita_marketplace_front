@@ -1,9 +1,8 @@
+import React, { useEffect, useState, useCallback } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import { Controller, useForm } from 'react-hook-form';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
@@ -15,6 +14,7 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseLoading from '@fuse/core/FuseLoading';
 import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { useGetIconsListQuery } from './IconsApi';
+import IconListItem from './IconListItem';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -25,22 +25,15 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	}
 }));
 
-/**
- * IconListPageProps
- */
 type IconListPageProps = {
 	pageTitle: string;
 	referenceUrl?: string;
 	apiUrl: string;
-	iconName: string;
+	iconSet: string;
 };
 
-/**
- *  IconListPage component that renders a list of icons.
- */
-function IconListPage(props: IconListPageProps) {
-	const { pageTitle, referenceUrl, apiUrl, iconName } = props;
-
+const IconListPage = React.memo((props: IconListPageProps) => {
+	const { pageTitle, referenceUrl, apiUrl, iconSet } = props;
 	const { data: listData, isLoading } = useGetIconsListQuery(apiUrl);
 
 	const [selectedIcon, setSelectedIcon] = useState('');
@@ -52,7 +45,6 @@ function IconListPage(props: IconListPageProps) {
 	});
 
 	const { watch, control } = methods;
-
 	const form = watch();
 	const searchText = watch('searchText');
 
@@ -61,18 +53,14 @@ function IconListPage(props: IconListPageProps) {
 	}, [listData]);
 
 	useEffect(() => {
-		setFilteredData(
-			searchText.length > 0
-				? listData.filter((item) => {
-						if (item.includes(searchText)) {
-							return true;
-						}
-
-						return false;
-					})
-				: listData
-		);
+		if (listData) {
+			setFilteredData(searchText.length > 0 ? listData.filter((item) => item.includes(searchText)) : listData);
+		}
 	}, [listData, searchText]);
+
+	const handleSelect = useCallback((icon: string) => {
+		setSelectedIcon(icon);
+	}, []);
 
 	if (isLoading) {
 		return <FuseLoading />;
@@ -117,15 +105,16 @@ function IconListPage(props: IconListPageProps) {
 					<FuseHighlight
 						component="pre"
 						className="language-jsx my-24"
+						copy
 					>
 						{`
-              <FuseSvgIcon className="text-48" size={${form.size}} color="action">${iconName}:${selectedIcon}</FuseSvgIcon>
+              <FuseSvgIcon className="text-48" size={${form.size}} color="action">${iconSet}:${selectedIcon}</FuseSvgIcon>
             `}
 					</FuseHighlight>
 
 					<Typography className="text-18 font-700 mt-32 mb-16">Icons</Typography>
 
-					<div className="flex flex-col md:flex-row justify-center md:items-end my-24 xs:flex-col md:space-x-24">
+					<div className="flex flex-col md:flex-row justify-center md:items-end my-24 xs:flex-col md:space-x-16">
 						<div className="flex flex-1">
 							<Controller
 								name="searchText"
@@ -173,26 +162,15 @@ function IconListPage(props: IconListPageProps) {
 
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-12 sm:gap-32 py-24">
 						{filteredData?.map((icon) => (
-							<Paper
+							<IconListItem
 								key={icon}
-								className="flex flex-col items-center justify-center p-16 border-2 min-h-120 rounded cursor-pointer"
-								elevation={0}
-								onClick={() => setSelectedIcon(icon)}
+								icon={icon}
+								size={form.size}
+								selectedIcon={selectedIcon}
+								iconSet={iconSet}
+								onIconSelect={handleSelect}
 								sx={{ borderColor: icon === selectedIcon && 'secondary.main' }}
-							>
-								<div className="flex items-center justify-center mb-12">
-									<FuseSvgIcon
-										className="text-48"
-										size={form.size}
-										color="action"
-									>{`${iconName}:${icon}`}</FuseSvgIcon>
-								</div>
-
-								<Typography
-									className="text-sm text-center break-all"
-									color="text.secondary"
-								>{`${iconName}:${icon}`}</Typography>
-							</Paper>
+							/>
 						))}
 
 						{filteredData?.length === 0 && (
@@ -210,6 +188,6 @@ function IconListPage(props: IconListPageProps) {
 			}
 		/>
 	);
-}
+});
 
 export default IconListPage;

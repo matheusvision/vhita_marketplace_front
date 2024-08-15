@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useCallback, useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from '@lodash';
@@ -13,7 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import Autocomplete from '@mui/material/Autocomplete/Autocomplete';
 import Checkbox from '@mui/material/Checkbox/Checkbox';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import history from '@history';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
@@ -496,8 +495,9 @@ function ContactForm() {
 					</Button>
 				)}
 				<Button
+					component={Link}
 					className="ml-auto"
-					onClick={() => history.back()}
+					to="apps/contacts"
 				>
 					Cancel
 				</Button>

@@ -33,7 +33,7 @@ const iconsUIConfig = {
 								<IconListPage
 									pageTitle="Heroicons Outline"
 									referenceUrl="https://heroicons.com/"
-									iconName="heroicons-outline"
+									iconSet="heroicons-outline"
 									apiUrl="/mock-api/ui/icons/heroicons"
 								/>
 							)
@@ -44,7 +44,7 @@ const iconsUIConfig = {
 								<IconListPage
 									pageTitle="Heroicons Solid"
 									referenceUrl="https://heroicons.com/"
-									iconName="heroicons-solid"
+									iconSet="heroicons-solid"
 									apiUrl="/mock-api/ui/icons/heroicons"
 								/>
 							)
@@ -63,7 +63,7 @@ const iconsUIConfig = {
 							element: (
 								<IconListPage
 									pageTitle="Material Outline"
-									iconName="material-outline"
+									iconSet="material-outline"
 									apiUrl="/mock-api/ui/icons/material"
 								/>
 							)
@@ -73,7 +73,7 @@ const iconsUIConfig = {
 							element: (
 								<IconListPage
 									pageTitle="Material Solid"
-									iconName="material-solid"
+									iconSet="material-solid"
 									apiUrl="/mock-api/ui/icons/material"
 								/>
 							)
@@ -83,7 +83,7 @@ const iconsUIConfig = {
 							element: (
 								<IconListPage
 									pageTitle="Material Twotone"
-									iconName="material-twotone"
+									iconSet="material-twotone"
 									apiUrl="/mock-api/ui/icons/material"
 								/>
 							)
@@ -95,7 +95,7 @@ const iconsUIConfig = {
 					element: (
 						<IconListPage
 							pageTitle="Feather"
-							iconName="feather"
+							iconSet="feather"
 							apiUrl="/mock-api/ui/icons/feather"
 						/>
 					)
