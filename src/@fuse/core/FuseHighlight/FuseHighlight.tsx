@@ -1,14 +1,18 @@
 import * as Prism from 'prismjs';
 import { ElementType, forwardRef, memo, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import './prism-languages';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import clsx from 'clsx';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import FuseSvgIcon from '../FuseSvgIcon';
 
 type FuseHighlightProps = {
 	async?: boolean;
 	children: string | { default?: string };
 	component?: ElementType;
 	className: string;
+	copy?: boolean;
 };
 
 /**
@@ -16,9 +20,10 @@ type FuseHighlightProps = {
  * Highlight language-specific syntax with Prism.js
  */
 const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref) => {
-	const { async = false, children, className, component: Wrapper = 'code' } = props;
+	const { copy = true, async = false, children, className, component: Wrapper = 'code' } = props;
 	const innerRef = useRef<HTMLDivElement>(null);
 	useImperativeHandle(ref, () => innerRef.current, [innerRef]);
+	const [open, setOpen] = useState(false);
 
 	const [source, setSource] = useState(trimCode(children));
 
@@ -30,19 +35,51 @@ const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref
 
 	useEffect(() => {
 		setSource(trimCode(children));
-	}, [trimCode]);
+	}, [trimCode, children]);
 
 	useEffect(() => {
 		highlight();
 	}, [highlight, source]);
 
+	function handleCopy() {
+		navigator.clipboard.writeText(source);
+		setOpen(true);
+		setTimeout(() => {
+			setOpen(false);
+		}, 800);
+	}
+
 	return (
-		<Wrapper
-			ref={innerRef}
-			className={clsx('border', className)}
-		>
-			{source}
-		</Wrapper>
+		<div className={clsx('border relative', className)}>
+			{copy && (
+				<Tooltip
+					title="Copied!"
+					open={open}
+					slotProps={{ popper: { placement: 'top' } }}
+					arrow
+				>
+					<Button
+						variant="contained"
+						onClick={handleCopy}
+						size="small"
+						color="secondary"
+						className="absolute top-0 right-0 m-6 z-10 rounded-4 p-0 text-12 min-h-0 h-auto w-auto min-w-0 px-8 py-4"
+						classes={{ startIcon: 'mr-4' }}
+						sx={{
+							backgroundColor: (theme) => alpha(theme.palette.secondary.main, 0.6),
+							'&:hover, &:focus': {
+								backgroundColor: (theme) => alpha(theme.palette.secondary.main, 1)
+							}
+						}}
+						startIcon={<FuseSvgIcon size={16}>heroicons-outline:clipboard</FuseSvgIcon>}
+					>
+						Copy
+					</Button>
+				</Tooltip>
+			)}
+
+			<Wrapper ref={innerRef}>{source}</Wrapper>
+		</div>
 	);
 });
 
