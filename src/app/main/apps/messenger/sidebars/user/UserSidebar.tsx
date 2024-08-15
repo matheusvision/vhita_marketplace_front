@@ -63,7 +63,7 @@ function UserSidebar() {
 					<IconButton onClick={() => setUserSidebarOpen(false)}>
 						<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>
 					</IconButton>
-					<Typography className="px-8 font-semibold text-20">Profile</Typography>
+					<Typography className="px-8 font-semibold text-18">Profile</Typography>
 				</Toolbar>
 			</Box>
 

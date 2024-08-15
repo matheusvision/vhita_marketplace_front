@@ -37,7 +37,7 @@ function ReactHookFormDoc() {
 			<hr />
 
 			<Typography
-				className="text-16 mt-32 mb-16"
+				className="text-15 mt-32 mb-16"
 				component="h4"
 			>
 				Example usage with Material-UI elements and form validation
@@ -50,7 +50,7 @@ function ReactHookFormDoc() {
 			/>
 
 			<Typography
-				className="text-32 mt-32 mb-8"
+				className="text-28 mt-32 mb-8"
 				component="h2"
 			>
 				Examples

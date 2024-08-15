@@ -60,17 +60,17 @@ function AboutTab() {
 
 						<CardContent className="px-32 py-24">
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Gender</Typography>
+								<Typography className="font-semibold mb-4 text-14">Gender</Typography>
 								<Typography>{general.gender}</Typography>
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Birthday</Typography>
+								<Typography className="font-semibold mb-4 text-14">Birthday</Typography>
 								<Typography>{general.birthday}</Typography>
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Locations</Typography>
+								<Typography className="font-semibold mb-4 text-14">Locations</Typography>
 
 								{general.locations.map((location) => (
 									<div
@@ -90,7 +90,7 @@ function AboutTab() {
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">About Me</Typography>
+								<Typography className="font-semibold mb-4 text-14">About Me</Typography>
 								<Typography>{general.about}</Typography>
 							</div>
 						</CardContent>
@@ -107,17 +107,17 @@ function AboutTab() {
 
 						<CardContent className="px-32 py-24">
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Occupation</Typography>
+								<Typography className="font-semibold mb-4 text-14">Occupation</Typography>
 								<Typography>{work.occupation}</Typography>
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Skills</Typography>
+								<Typography className="font-semibold mb-4 text-14">Skills</Typography>
 								<Typography>{work.skills}</Typography>
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Jobs</Typography>
+								<Typography className="font-semibold mb-4 text-14">Jobs</Typography>
 								<table>
 									<tbody>
 										{work.jobs.map((job) => (
@@ -147,12 +147,12 @@ function AboutTab() {
 
 						<CardContent className="px-32 py-24">
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Address</Typography>
+								<Typography className="font-semibold mb-4 text-14">Address</Typography>
 								<Typography>{contact.address}</Typography>
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Tel.</Typography>
+								<Typography className="font-semibold mb-4 text-14">Tel.</Typography>
 
 								{contact.tel.map((tel) => (
 									<div
@@ -165,7 +165,7 @@ function AboutTab() {
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Website</Typography>
+								<Typography className="font-semibold mb-4 text-14">Website</Typography>
 
 								{contact.websites.map((website) => (
 									<div
@@ -178,7 +178,7 @@ function AboutTab() {
 							</div>
 
 							<div className="mb-24">
-								<Typography className="font-semibold mb-4 text-15">Emails</Typography>
+								<Typography className="font-semibold mb-4 text-14">Emails</Typography>
 
 								{contact.emails.map((email) => (
 									<div
@@ -216,7 +216,7 @@ function AboutTab() {
 							{friends.map((friend) => (
 								<Avatar
 									key={friend.id}
-									className="w-64 h-64 rounded-12 m-4"
+									className="w-64 h-64 rounded-8 m-4"
 									src={friend.avatar}
 									alt={friend.name}
 								/>
@@ -227,7 +227,7 @@ function AboutTab() {
 					<Card
 						component={motion.div}
 						variants={item}
-						className="w-full mb-32 rounded-16 shadow"
+						className="w-full mb-32 rounded-xl shadow"
 					>
 						<div className="px-32 pt-24 flex items-center">
 							<Typography className="flex flex-1 text-2xl font-semibold leading-tight">

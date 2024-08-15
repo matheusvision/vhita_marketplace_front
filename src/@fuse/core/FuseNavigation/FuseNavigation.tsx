@@ -21,8 +21,8 @@ const inputGlobalStyles = (
 			'.popper-navigation-list': {
 				'& .fuse-list-item': {
 					padding: '8px 12px 8px 12px',
-					height: 40,
-					minHeight: 40,
+					height: 36,
+					minHeight: 36,
 					'& .fuse-list-item-text': {
 						padding: '0 0 0 8px'
 					}

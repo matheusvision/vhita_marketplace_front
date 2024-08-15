@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import _ from '@lodash';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { useGetTasksQuery } from './TasksApi';
 
 /**
@@ -15,41 +16,57 @@ function TasksHeader() {
 	const remainingTasks = _.filter(tasks, (item) => item.type === 'task' && !item.completed).length;
 
 	return (
-		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 p-24 sm:p-32 w-full border-b-1 justify-between">
+		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 p-24 sm:p-32 w-full justify-between">
 			<div className="flex flex-col sm:flex-row sm:items-center sm:space-x-12">
-				<motion.span
-					initial={{ x: -20 }}
-					animate={{ x: 0, transition: { delay: 0.2 } }}
-				>
-					<Typography className="text-24 md:text-32 font-extrabold tracking-tight leading-none">
-						Tasks
-					</Typography>
-				</motion.span>
+				<div>
+					<PageBreadcrumb />
 
-				<motion.span
-					initial={{ y: -20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
-				>
-					<Typography
-						className="text-14 font-medium ml-2"
-						color="text.secondary"
+					<motion.span
+						initial={{ x: -20 }}
+						animate={{
+							x: 0,
+							transition: { delay: 0.2 }
+						}}
 					>
-						{`${remainingTasks} remaining tasks`}
-					</Typography>
-				</motion.span>
+						<Typography className="text-20 md:text-24 font-extrabold tracking-tight leading-none">
+							Tasks
+						</Typography>
+					</motion.span>
+
+					<motion.span
+						initial={{
+							y: -20,
+							opacity: 0
+						}}
+						animate={{
+							y: 0,
+							opacity: 1,
+							transition: { delay: 0.2 }
+						}}
+					>
+						<Typography
+							className="text-13 font-medium ml-2"
+							color="text.secondary"
+						>
+							{`${remainingTasks} remaining tasks`}
+						</Typography>
+					</motion.span>
+				</div>
 			</div>
 
-			<div className="flex items-center -mx-8">
+			<div className="flex items-center space-x-8">
 				<Button
-					className="mx-8 whitespace-nowrap"
+					className="whitespace-nowrap"
 					component={NavLinkAdapter}
 					to="new/section"
+					color="primary"
+					variant="contained"
 				>
 					<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>
 					<span className="mx-8">Add Section</span>
 				</Button>
 				<Button
-					className="mx-8 whitespace-nowrap"
+					className="whitespace-nowrap"
 					variant="contained"
 					color="secondary"
 					component={NavLinkAdapter}

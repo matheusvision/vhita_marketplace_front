@@ -37,7 +37,7 @@ function UserMenu() {
 	return (
 		<>
 			<Button
-				className="min-h-40 min-w-40 px-4 border border-solid rounded-8 space-x-4"
+				className="min-h-36 min-w-36 px-4 border border-solid rounded-8 space-x-4"
 				sx={{
 					borderColor: (theme) => theme.palette.divider,
 					'&:hover, &:focus': {
@@ -53,7 +53,7 @@ function UserMenu() {
 				<div className="mx-4 hidden flex-col items-end md:flex max-w-96">
 					<Typography
 						component="span"
-						className="flex font-semibold text-13 capitalize truncate  tracking-tight leading-none mb-4"
+						className="flex font-semibold text-12 capitalize truncate  tracking-tight leading-none mb-4"
 					>
 						{user.data.displayName}
 					</Typography>
@@ -112,7 +112,7 @@ function UserMenu() {
 							to="/sign-in"
 							role="button"
 						>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>heroicons-outline:lock-closed</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Sign In" />
@@ -122,8 +122,8 @@ function UserMenu() {
 							to="/sign-up"
 							role="button"
 						>
-							<ListItemIcon className="min-w-40">
-								<FuseSvgIcon>heroicons-outline:user-add </FuseSvgIcon>
+							<ListItemIcon className="min-w-36">
+								<FuseSvgIcon>heroicons-outline:user-plus</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Sign up" />
 						</MenuItem>
@@ -136,7 +136,7 @@ function UserMenu() {
 							onClick={userMenuClose}
 							role="button"
 						>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>heroicons-outline:user-circle</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="My Profile" />
@@ -147,7 +147,7 @@ function UserMenu() {
 							onClick={userMenuClose}
 							role="button"
 						>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>heroicons-outline:envelope</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Inbox" />
@@ -157,7 +157,7 @@ function UserMenu() {
 								signOut();
 							}}
 						>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>heroicons-outline:arrow-right-on-rectangle</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Sign out" />

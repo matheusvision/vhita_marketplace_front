@@ -1,52 +1,49 @@
+// Dynamically import all *ConfigConfig.tsx files from the app folder
 import FuseUtils from '@fuse/utils';
-import FuseLoading from '@fuse/core/FuseLoading';
-import { Navigate } from 'react-router-dom';
+import { FuseRouteConfigType, FuseRoutesType } from '@fuse/utils/FuseUtils';
 import settingsConfig from 'app/configs/settingsConfig';
-import { FuseRouteConfigsType, FuseRoutesType } from '@fuse/utils/FuseUtils';
-import SignInConfig from '../main/sign-in/SignInConfig';
-import SignUpConfig from '../main/sign-up/SignUpConfig';
-import SignOutConfig from '../main/sign-out/SignOutConfig';
+import { Navigate } from 'react-router-dom';
+import FuseLoading from '@fuse/core/FuseLoading';
+import { layoutConfigOnlyMain } from 'app/configs/layoutConfigTemplates';
+import App from '../App';
 import Error404Page from '../main/404/Error404Page';
-import PagesConfigs from '../main/pages/pagesConfigs';
-import DashboardsConfigs from '../main/dashboards/dashboardsConfigs';
-import AppsConfigs from '../main/apps/appsConfigs';
-import UserInterfaceConfigs from '../main/user-interface/UserInterfaceConfigs';
-import DocumentationConfig from '../main/documentation/DocumentationConfig';
-import authRoleExamplesConfigs from '../main/auth/authRoleExamplesConfigs';
 
-const routeConfigs: FuseRouteConfigsType = [
-	SignOutConfig,
-	SignInConfig,
-	SignUpConfig,
-	DocumentationConfig,
-	...PagesConfigs,
-	...UserInterfaceConfigs,
-	...DashboardsConfigs,
-	...AppsConfigs,
-	...authRoleExamplesConfigs
-];
+const configModules: Record<string, unknown> = import.meta.glob('/src/app/main/**/*Config.tsx', { eager: true });
 
-/**
- * The routes of the application.
- */
+const configs: FuseRouteConfigType[] = Object.keys(configModules)
+	.map((modulePath) => {
+		const moduleConfigs = (configModules[modulePath] as { default: FuseRouteConfigType | FuseRouteConfigType[] })
+			.default;
+		return Array.isArray(moduleConfigs) ? moduleConfigs : [moduleConfigs];
+	})
+	.flat();
+
 const routes: FuseRoutesType = [
-	...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
 	{
 		path: '/',
-		element: <Navigate to="/dashboards/project" />,
-		auth: settingsConfig.defaultAuth
-	},
-	{
-		path: 'loading',
-		element: <FuseLoading />
-	},
-	{
-		path: '404',
-		element: <Error404Page />
+		element: <App />,
+		settings: settingsConfig,
+		children: [
+			{
+				path: '/',
+				element: <Navigate to="/dashboards/project" />
+			},
+			...FuseUtils.generateRoutesFromConfigs(configs, settingsConfig.defaultAuth),
+			{
+				path: 'loading',
+				element: <FuseLoading />,
+				settings: { layout: layoutConfigOnlyMain }
+			},
+			{
+				settings: { layout: layoutConfigOnlyMain },
+				path: '404',
+				element: <Error404Page />
+			}
+		]
 	},
 	{
 		path: '*',
-		element: <Navigate to="404" />
+		element: <Navigate to="/404" />
 	}
 ];
 

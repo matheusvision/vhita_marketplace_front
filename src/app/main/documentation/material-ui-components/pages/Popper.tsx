@@ -32,7 +32,7 @@ function PopperDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Popper
@@ -42,7 +42,7 @@ function PopperDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Some important features of the <code>Popper</code> component:
@@ -83,13 +83,13 @@ function PopperDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic popper
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -101,13 +101,13 @@ function PopperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Transitions
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The open/close state of the popper can be animated with a render prop child and a transition component.
@@ -124,14 +124,14 @@ function PopperDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Popper has built-in support for{' '}
 				<a href="https://github.com/reactjs/react-transition-group">react-transition-group</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -143,13 +143,13 @@ function PopperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Alternatively, you can use <a href="https://github.com/pmndrs/react-spring">react-spring</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -161,13 +161,13 @@ function PopperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Positioned popper
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -179,19 +179,19 @@ function PopperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Scroll playground
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Virtual element
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The value of the <code>anchorEl</code> prop can be a reference to a fake DOM element. You need to create
@@ -202,13 +202,13 @@ function PopperDoc(props) {
 				.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Highlight part of the text to see the popper:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -220,25 +220,25 @@ function PopperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Complementary projects
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				For more advanced use cases you might be able to take advantage of:
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				material-ui-popup-state
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<img
@@ -251,7 +251,7 @@ function PopperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The package{' '}
@@ -261,7 +261,7 @@ function PopperDoc(props) {
 				that takes care of popper state for you in most cases.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample

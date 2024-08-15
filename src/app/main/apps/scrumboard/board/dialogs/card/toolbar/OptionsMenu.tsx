@@ -27,6 +27,7 @@ function OptionsMenu(props: OptionsMenuProps) {
 	return (
 		<div>
 			<IconButton
+				className="rounded-0"
 				onClick={handleMenuOpen}
 				size="large"
 			>

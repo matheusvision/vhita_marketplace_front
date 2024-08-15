@@ -107,7 +107,7 @@ function FullScreenReversedConfirmationRequiredPage() {
 				</div>
 			</Box>
 
-			<Paper className="ltr:border-l-1 rtl:border-r-1 w-full px-16 py-32 sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:justify-end md:rounded-none md:p-64 md:pt-96 md:shadow-none">
+			<Paper className="ltr:border-l-1 rtl:border-r-1 w-full px-16 py-32 sm:w-auto sm:rounded-xl sm:p-48 sm:shadow md:flex md:h-full md:justify-end md:rounded-none md:p-64 md:pt-96 md:shadow-none">
 				<div className="max-w-320 sm:w-320 mx-auto w-full sm:mx-0">
 					<img
 						className="w-48"

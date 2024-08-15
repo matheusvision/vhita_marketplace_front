@@ -10,6 +10,7 @@ import Tab from '@mui/material/Tab';
 import CardContent from '@mui/material/CardContent';
 import _ from '@lodash';
 import Alert from '@mui/material/Alert';
+import * as React from 'react';
 import JwtLoginTab from './tabs/JwtSignInTab';
 import FirebaseSignInTab from './tabs/FirebaseSignInTab';
 import AwsSignInTab from './tabs/AwsSignInTab';
@@ -19,19 +20,19 @@ const tabs = [
 		id: 'jwt',
 		title: 'JWT',
 		logo: 'assets/images/logo/jwt.svg',
-		logoClass: 'h-40 p-4 bg-black rounded-12'
+		logoClass: 'h-36 p-4 bg-black rounded-8'
 	},
 	{
 		id: 'firebase',
 		title: 'Firebase',
 		logo: 'assets/images/logo/firebase.svg',
-		logoClass: 'h-40'
+		logoClass: 'h-36'
 	},
 	{
 		id: 'aws',
 		title: 'AWS',
 		logo: 'assets/images/logo/aws-amplify.svg',
-		logoClass: 'h-40'
+		logoClass: 'h-36'
 	}
 ];
 
@@ -47,7 +48,7 @@ function SignInPage() {
 
 	return (
 		<div className="flex min-w-0 flex-1 flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">
-			<Paper className="h-full w-full px-16 py-8 ltr:border-r-1 rtl:border-l-1 sm:h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:justify-end md:rounded-none md:p-64 md:shadow-none">
+			<Paper className="h-full w-full px-16 py-8 ltr:border-r-1 rtl:border-l-1 sm:h-auto sm:w-auto sm:rounded-xl sm:p-48 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:justify-end md:rounded-none md:p-64 md:shadow-none">
 				<CardContent className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 					<img
 						className="w-48"
@@ -71,7 +72,7 @@ function SignInPage() {
 					<Alert
 						icon={false}
 						severity="info"
-						className="mt-24 px-16 text-13 leading-relaxed"
+						className="mt-24 px-16 text-12 leading-relaxed"
 					>
 						You are browsing <b>Fuse React Demo</b>. Click on the "Sign in" button to access the Demo and
 						Documentation.
@@ -81,10 +82,21 @@ function SignInPage() {
 						value={_.findIndex(tabs, { id: selectedTabId })}
 						variant="fullWidth"
 						className="w-full mt-24 mb-32"
-						indicatorColor="secondary"
+						classes={{
+							indicator: 'flex justify-center bg-transparent w-full h-full'
+						}}
+						TabIndicatorProps={{
+							children: (
+								<Box
+									sx={{ borderColor: (theme) => theme.palette.secondary.main }}
+									className="border-1 border-solid w-full h-full rounded-8"
+								/>
+							)
+						}}
 					>
 						{tabs.map((item) => (
 							<Tab
+								disableRipple
 								onClick={() => handleSelectTab(item.id)}
 								key={item.id}
 								icon={

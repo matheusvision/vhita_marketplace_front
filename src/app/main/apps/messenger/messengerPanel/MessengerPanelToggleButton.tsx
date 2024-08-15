@@ -14,15 +14,7 @@ function MessengerPanelToggleButton(props: ChatPanelToggleButtonProps) {
 	const { children = <FuseSvgIcon>heroicons-outline:chat-bubble-left-right</FuseSvgIcon> } = props;
 	const dispatch = useAppDispatch();
 
-	return (
-		<IconButton
-			className="w-40 h-40"
-			onClick={() => dispatch(toggleChatPanel())}
-			size="large"
-		>
-			{children}
-		</IconButton>
-	);
+	return <IconButton onClick={() => dispatch(toggleChatPanel())}>{children}</IconButton>;
 }
 
 export default MessengerPanelToggleButton;

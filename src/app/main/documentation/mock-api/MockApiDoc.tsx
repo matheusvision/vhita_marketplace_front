@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { RedocRawOptions } from 'redoc/typings/services/RedocNormalizedOptions';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import mockApiJson from 'src/@mock-api/mock-api.json';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 
 const Root = styled('div')(() => ({
 	'& .menu-content': {
@@ -25,20 +25,8 @@ function MockApiDoc() {
 	return (
 		<Root className="w-full">
 			<div className="flex flex-col flex-0 p-24 sm:py-32 sm:px-40 w-full">
-				<Typography
-					className="flex items-center sm:mb-12"
-					component={Link}
-					role="button"
-					to="/documentation"
-					color="inherit"
-				>
-					<FuseSvgIcon size={20}>
-						{theme.direction === 'ltr'
-							? 'heroicons-outline:arrow-small-left'
-							: 'heroicons-outline:arrow-small-right'}
-					</FuseSvgIcon>
-					<span className="flex mx-4 font-medium">Documentation</span>
-				</Typography>
+				<PageBreadcrumb />
+
 				<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
 					Mock API Definitions (OpenAPI 3.0)
 				</Typography>

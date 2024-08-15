@@ -36,7 +36,7 @@ function NoteFormListItem(props: NoteFormListItemProps) {
 
 	return (
 		<ListItem
-			className="p-0"
+			className="px-12"
 			key={item.id}
 			dense
 		>
@@ -48,19 +48,21 @@ function NoteFormListItem(props: NoteFormListItemProps) {
 				name="completed"
 				onChange={handleChange}
 				color="default"
+				size="small"
 			/>
 			<Input
-				className={clsx('flex flex-1 mx-8', item.completed && 'line-through opacity-50')}
+				className={clsx('flex flex-1', item.completed && 'line-through opacity-50')}
 				name="content"
 				value={item.content}
 				onChange={handleChange}
 				disableUnderline
+				size="small"
 			/>
 			<IconButton
-				className="w-32 h-32 mx-4 p-0"
+				className=""
 				aria-label="Delete"
 				onClick={() => onListItemRemove(item.id)}
-				size="large"
+				size="small"
 			>
 				<FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>
 			</IconButton>

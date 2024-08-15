@@ -35,7 +35,7 @@ function SkeletonDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Skeleton
@@ -46,7 +46,7 @@ function SkeletonDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The data for your components might not be immediately available. You can improve the perceived
@@ -55,13 +55,13 @@ function SkeletonDoc(props) {
 				<a href="https://www.lukew.com/ff/entry.asp?1797">Avoid The Spinner</a>).
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Usage
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The component is designed to be used <strong>directly in your components</strong>. For instance:
@@ -89,13 +89,13 @@ function SkeletonDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Variants
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The component supports 4 shape variants:
@@ -111,7 +111,7 @@ function SkeletonDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -123,19 +123,19 @@ function SkeletonDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Animations
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				By default, the skeleton pulsates, but you can change the animation to a wave or disable it entirely.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -147,13 +147,13 @@ function SkeletonDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Pulsate example
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -165,13 +165,13 @@ function SkeletonDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Wave example
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -183,20 +183,20 @@ function SkeletonDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Inferring dimensions
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				In addition to accepting <code>width</code> and <code>height</code> props, the component can also infer
 				the dimensions.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				It works well when it comes to typography as its height is set using <code>em</code> units.
@@ -211,7 +211,7 @@ function SkeletonDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -223,7 +223,7 @@ function SkeletonDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				But when it comes to other components, you may not want to repeat the width and height. In these
@@ -245,7 +245,7 @@ loading ? (
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -257,20 +257,20 @@ loading ? (
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Color
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The color of the component can be customized by changing its <code>background-color</code> CSS property.
 				This is especially useful when on a black background (as the skeleton will otherwise be invisible).
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -282,45 +282,45 @@ loading ? (
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Skeleton screens provide an alternative to the traditional spinner method. Rather than showing an
 				abstract widget, skeleton screens create anticipation of what is to come and reduce cognitive load.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The background color of the skeleton uses the least amount of luminance to be visible in good conditions
 				(good ambient light, good screen, no visual impairments).
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				ARIA
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				None.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Keyboard
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The skeleton is not focusable.

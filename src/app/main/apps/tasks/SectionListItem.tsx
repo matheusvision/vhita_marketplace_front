@@ -43,11 +43,11 @@ function SectionListItem(props: SectionListItemProps) {
 								sx={{ color: 'text.disabled' }}
 								size={20}
 							>
-								heroicons-solid:menu
+								heroicons-solid:bars-3
 							</FuseSvgIcon>
 						</div>
 						<ListItemText
-							classes={{ root: 'm-0', primary: 'font-semibold text-16 truncate' }}
+							classes={{ root: 'm-0', primary: 'font-semibold text-15 truncate' }}
 							primary={data.title}
 						/>
 					</ListItem>

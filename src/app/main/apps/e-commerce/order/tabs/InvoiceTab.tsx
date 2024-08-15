@@ -56,7 +56,7 @@ function InvoiceTab(props: InvoiceTabProps) {
 	});
 
 	return (
-		<Root className="grow shrink-0 p-0">
+		<Root className="w-full max-w-5xl  grow shrink-0 p-0 border-1 rounded-lg">
 			{order && (
 				<Card className="w-xl mx-auto shadow-0">
 					<CardContent className="p-88 print:p-0">

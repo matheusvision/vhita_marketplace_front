@@ -67,7 +67,7 @@ function BoardList(props: BoardListProps) {
 						}}
 						className={clsx(
 							snapshot.isDragging ? 'shadow-lg' : 'shadow-0',
-							'w-256 sm:w-320 mx-8 max-h-full flex flex-col rounded-xl border'
+							'w-256 sm:w-320 mx-8 max-h-full flex flex-col rounded-lg border'
 						)}
 						square
 					>
@@ -106,7 +106,7 @@ function BoardList(props: BoardListProps) {
 							</Droppable>
 						</CardContent>
 
-						<div className="p-12">
+						<div className="p-12 pt-0">
 							<BoardAddCard
 								boardId={boardId}
 								listId={listId}

@@ -48,9 +48,10 @@ function FuseLayout(props: FuseLayoutProps) {
 	const location = useLocation();
 	const { pathname } = location;
 
-	const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatchType[] | null;
-
-	const matched = matchedRoutes?.[0] || false;
+	const matched = useMemo(() => {
+		const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatchType[] | null;
+		return matchedRoutes?.[matchedRoutes.length - 1] || false;
+	}, [routes, pathname]);
 
 	const newSettings = useRef<PartialDeep<FuseSettingsConfigType>>(settings);
 

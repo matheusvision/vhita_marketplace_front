@@ -34,8 +34,8 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 		padding: '0 0 0 16px'
 	},
 	'&.level-0': {
-		minHeight: 44,
-		borderRadius: 4,
+		minHeight: 36,
+		borderRadius: 8,
 		'&:hover': {
 			background: 'transparent'
 		}
@@ -116,7 +116,7 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 								<ListItemText
 									className="fuse-list-item-text"
 									primary={item.title}
-									classes={{ primary: 'text-13 truncate' }}
+									classes={{ primary: 'text-12 truncate' }}
 								/>
 
 								{nestedLevel > 0 && (
@@ -124,15 +124,14 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 										disableRipple
 										className="h-16 w-16 p-0 ltr:ml-4 rtl:mr-4"
 										color="inherit"
-										size="large"
 									>
 										<FuseSvgIcon
 											size={16}
 											className="arrow-icon"
 										>
 											{theme.direction === 'ltr'
-												? 'heroicons-outline:arrow-small-right'
-												: 'heroicons-outline:arrow-small-left'}
+												? 'heroicons-outline:chevron-right'
+												: 'heroicons-outline:chevron-left'}
 										</FuseSvgIcon>
 									</IconButton>
 								)}
@@ -159,7 +158,7 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 										style={{ transformOrigin: '0 0 0' }}
 									>
 										<Paper
-											className="rounded-8"
+											className="rounded-4"
 											onMouseEnter={() => handleToggle(true)}
 											onMouseLeave={() => handleToggle(false)}
 										>

@@ -40,7 +40,7 @@ function PaletteSelector(props: PaletteSelectorProps) {
 		triggerElement = (
 			<div className="m-8 flex w-128 flex-col items-center space-y-8">
 				<SectionPreview />
-				<Typography className="mb-24 flex-1 text-16 font-bold">Edit Palette</Typography>
+				<Typography className="mb-24 flex-1 text-15 font-bold">Edit Palette</Typography>
 			</div>
 		)
 	} = props;
@@ -281,7 +281,7 @@ function PaletteSelector(props: PaletteSelectorProps) {
 
 						<div className="flex flex-col items-center justify-center p-48">
 							<Typography
-								className="-mt-48 mb-16 text-16 font-semibold"
+								className="-mt-48 mb-16 text-15 font-semibold"
 								color="text.secondary"
 							>
 								Preview

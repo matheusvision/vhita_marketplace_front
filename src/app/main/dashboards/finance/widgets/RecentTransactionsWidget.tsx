@@ -32,9 +32,9 @@ function RecentTransactionsWidget() {
 	const { columns, rows } = widget;
 
 	return (
-		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">
+		<Paper className="flex flex-col flex-auto p-24 shadow rounded-xl overflow-hidden">
 			<div>
-				<Typography className="mr-16 text-lg font-medium tracking-tight leading-6 truncate">
+				<Typography className="text-lg font-medium tracking-tight leading-6 truncate">
 					Recent transactions
 				</Typography>
 				<Typography
@@ -46,7 +46,7 @@ function RecentTransactionsWidget() {
 			</div>
 
 			<div className="table-responsive mt-24">
-				<Table className="simple w-full min-w-full">
+				<Table className="table simple w-full min-w-full">
 					<TableHead>
 						<TableRow>
 							{columns.map((column, index) => (

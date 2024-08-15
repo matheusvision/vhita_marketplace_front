@@ -105,33 +105,33 @@ const navigationConfig: FuseNavItemType[] = [
 						id: 'e-commerce-products',
 						title: 'Products',
 						type: 'item',
-						url: 'apps/e-commerce/products',
+						url: '/apps/e-commerce/products',
 						end: true
 					},
 					{
 						id: 'e-commerce-product-detail',
 						title: 'Product Detail',
 						type: 'item',
-						url: 'apps/e-commerce/products/1/a-walk-amongst-friends-canvas-print'
+						url: '/apps/e-commerce/products/1/a-walk-amongst-friends-canvas-print'
 					},
 					{
 						id: 'e-commerce-new-product',
 						title: 'New Product',
 						type: 'item',
-						url: 'apps/e-commerce/products/new'
+						url: '/apps/e-commerce/products/new'
 					},
 					{
 						id: 'e-commerce-orders',
 						title: 'Orders',
 						type: 'item',
-						url: 'apps/e-commerce/orders',
+						url: '/apps/e-commerce/orders',
 						end: true
 					},
 					{
 						id: 'e-commerce-order-detail',
 						title: 'Order Detail',
 						type: 'item',
-						url: 'apps/e-commerce/orders/1'
+						url: '/apps/e-commerce/orders/1'
 					}
 				]
 			},
@@ -203,7 +203,7 @@ const navigationConfig: FuseNavItemType[] = [
 				title: 'Scrumboard',
 				type: 'item',
 				icon: 'heroicons-outline:view-columns',
-				url: '/apps/scrumboard',
+				url: '/apps/scrumboard/boards',
 				translate: 'SCRUMBOARD'
 			},
 			{
@@ -750,13 +750,13 @@ const navigationConfig: FuseNavItemType[] = [
 						id: 'pages.search.classic-search',
 						title: 'Classic Search',
 						type: 'item',
-						url: 'pages/search/classic'
+						url: '/pages/search/classic'
 					},
 					{
 						id: 'pages.search.modern-search',
 						title: 'Modern Search',
 						type: 'item',
-						url: 'pages/search/modern'
+						url: '/pages/search/modern'
 					}
 				]
 			}
@@ -767,7 +767,7 @@ const navigationConfig: FuseNavItemType[] = [
 		title: 'User Interface',
 		subtitle: 'Building blocks of the UI & UX',
 		type: 'group',
-		icon: 'heroicons-outline:collection',
+		icon: 'heroicons-outline:square-3-stack-3d',
 		children: [
 			{
 				id: 'user-interface.tailwindcss',
@@ -1000,7 +1000,7 @@ const navigationConfig: FuseNavItemType[] = [
 		id: 'auth',
 		title: 'Auth',
 		type: 'group',
-		icon: 'verified_user',
+		icon: 'heroicons-outline:shield-check',
 		children: [
 			{
 				id: 'sign-in',
@@ -1082,7 +1082,7 @@ const navigationConfig: FuseNavItemType[] = [
 		title: 'Navigation features',
 		subtitle: 'Collapsable levels & badge styles',
 		type: 'group',
-		icon: 'heroicons-outline:menu',
+		icon: 'heroicons-outline:bars-3',
 		children: [
 			{
 				id: 'navigation-features.level.0',

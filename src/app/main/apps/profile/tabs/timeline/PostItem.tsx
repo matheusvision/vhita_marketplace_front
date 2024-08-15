@@ -176,7 +176,11 @@ function PostItem(props: PostProps) {
 										/>
 									</ListItem>
 									<div className="flex items-center mx-52 mb-8">
-										<Button endIcon={<FuseSvgIcon size={14}>heroicons-outline:arrow-uturn-left</FuseSvgIcon>}>
+										<Button
+											endIcon={
+												<FuseSvgIcon size={14}>heroicons-outline:arrow-uturn-left</FuseSvgIcon>
+											}
+										>
 											Reply
 										</Button>
 									</div>
@@ -195,7 +199,7 @@ function PostItem(props: PostProps) {
 						<Paper className="w-full mb-16 shadow-0 border-1  overflow-hidden">
 							<Input
 								className="p-12 w-full"
-								classes={{ root: 'text-13' }}
+								classes={{ root: 'text-12' }}
 								placeholder="Add a comment.."
 								multiline
 								rows="6"

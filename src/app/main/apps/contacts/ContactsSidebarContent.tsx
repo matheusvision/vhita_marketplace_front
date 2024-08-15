@@ -14,7 +14,6 @@ function ContactsSidebarContent() {
 				sx={{ color: 'white' }}
 				component={NavLinkAdapter}
 				to="/apps/contacts"
-				size="large"
 			>
 				<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 			</IconButton>

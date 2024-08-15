@@ -317,10 +317,7 @@ function EventDialog() {
 				) : (
 					<div className="flex items-center space-x-8">
 						<div className="flex flex-1" />
-						<IconButton
-							onClick={handleRemove}
-							size="large"
-						>
+						<IconButton onClick={handleRemove}>
 							<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 						</IconButton>
 						<Button

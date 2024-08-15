@@ -32,7 +32,6 @@ function MainSidebarMoreMenu(props: MainSidebarMoreMenuProps) {
 			<IconButton
 				aria-haspopup="true"
 				onClick={handleMoreMenuClick}
-				size="large"
 			>
 				<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 			</IconButton>

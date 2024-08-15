@@ -65,21 +65,26 @@ function OrderDetailsTab() {
 	}
 
 	return (
-		<div>
-			<div className="pb-48">
-				<div className="pb-16 flex items-center">
-					<FuseSvgIcon color="action">heroicons-outline:user-circle</FuseSvgIcon>
+		<div className="w-full max-w-3xl  space-y-48">
+			<div className="space-y-16">
+				<div className="flex items-center border-b-1 space-x-8 pb-8">
+					<FuseSvgIcon
+						color="action"
+						size={24}
+					>
+						heroicons-outline:user-circle
+					</FuseSvgIcon>
 					<Typography
-						className="h2 mx-12 font-medium"
+						className="text-18"
 						color="text.secondary"
 					>
 						Customer
 					</Typography>
 				</div>
 
-				<div className="mb-24">
-					<div className="table-responsive mb-48">
-						<table className="simple">
+				<div className="space-y-16">
+					<div className="table-responsive border rounded-md">
+						<table className="table dense simple">
 							<thead>
 								<tr>
 									<th>
@@ -120,21 +125,21 @@ function OrderDetailsTab() {
 						</table>
 					</div>
 
-					<div className="space-y-12">
+					<div className="space-y-16">
 						<Accordion
 							className="border-0 shadow-0 overflow-hidden"
 							expanded={map === 'shipping'}
 							onChange={() => setMap(map !== 'shipping' ? 'shipping' : '')}
-							sx={{ backgroundColor: 'background.default', borderRadius: '12px!important' }}
+							sx={{ backgroundColor: 'background.default', borderRadius: '8px!important' }}
 						>
 							<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 								<Typography className="font-semibold">Shipping Address</Typography>
 							</AccordionSummary>
 							<AccordionDetails className="flex flex-col md:flex-row">
-								<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-16">
+								<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-15">
 									{order.customer.shippingAddress.address}
 								</Typography>
-								<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
+								<div className="w-full h-320 rounded-xl overflow-hidden mx-8">
 									<GoogleMap
 										bootstrapURLKeys={{
 											key: mapKey
@@ -159,16 +164,16 @@ function OrderDetailsTab() {
 							className="border-0 shadow-0 overflow-hidden"
 							expanded={map === 'invoice'}
 							onChange={() => setMap(map !== 'invoice' ? 'invoice' : '')}
-							sx={{ backgroundColor: 'background.default', borderRadius: '12px!important' }}
+							sx={{ backgroundColor: 'background.default', borderRadius: '8px!important' }}
 						>
 							<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 								<Typography className="font-semibold">Invoice Address</Typography>
 							</AccordionSummary>
 							<AccordionDetails className="flex flex-col md:flex-row -mx-8">
-								<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-16">
+								<Typography className="w-full md:max-w-256 mb-16 md:mb-0 mx-8 text-15">
 									{order.customer.invoiceAddress.address}
 								</Typography>
-								<div className="w-full h-320 rounded-16 overflow-hidden mx-8">
+								<div className="w-full h-320 rounded-xl overflow-hidden mx-8">
 									<GoogleMap
 										bootstrapURLKeys={{
 											key: mapKey
@@ -192,18 +197,23 @@ function OrderDetailsTab() {
 				</div>
 			</div>
 
-			<div className="pb-48">
-				<div className="pb-16 flex items-center">
-					<FuseSvgIcon color="action">heroicons-outline:clock</FuseSvgIcon>
+			<div className="space-y-16">
+				<div className="flex items-center border-b-1 space-x-8 pb-8">
+					<FuseSvgIcon
+						color="action"
+						size={24}
+					>
+						heroicons-outline:clock
+					</FuseSvgIcon>
 					<Typography
-						className="h2 mx-12 font-medium"
+						className="text-18"
 						color="text.secondary"
 					>
 						Order Status
 					</Typography>
 				</div>
 
-				<div className="table-responsive">
+				<div className="table-responsive border rounded-md">
 					<Table className="simple">
 						<TableHead>
 							<TableRow>
@@ -229,18 +239,23 @@ function OrderDetailsTab() {
 				</div>
 			</div>
 
-			<div className="pb-48">
-				<div className="pb-16 flex items-center">
-					<FuseSvgIcon color="action">heroicons-outline:currency-dollar</FuseSvgIcon>
+			<div className="space-y-16">
+				<div className="flex items-center border-b-1 space-x-8 pb-8">
+					<FuseSvgIcon
+						color="action"
+						size={24}
+					>
+						heroicons-outline:currency-dollar
+					</FuseSvgIcon>
 					<Typography
-						className="h2 mx-12 font-medium"
+						className="text-18"
 						color="text.secondary"
 					>
 						Payment
 					</Typography>
 				</div>
 
-				<div className="table-responsive">
+				<div className="table-responsive border rounded-md">
 					<table className="simple">
 						<thead>
 							<tr>
@@ -278,19 +293,24 @@ function OrderDetailsTab() {
 				</div>
 			</div>
 
-			<div className="pb-48">
-				<div className="pb-16 flex items-center">
-					<FuseSvgIcon color="action">heroicons-outline:truck</FuseSvgIcon>
+			<div className="space-y-16">
+				<div className="flex items-center border-b-1 space-x-8 pb-8">
+					<FuseSvgIcon
+						color="action"
+						size={24}
+					>
+						heroicons-outline:truck
+					</FuseSvgIcon>
 					<Typography
-						className="h2 mx-12 font-medium"
+						className="text-18"
 						color="text.secondary"
 					>
 						Shipping
 					</Typography>
 				</div>
 
-				<div className="table-responsive">
-					<table className="simple">
+				<div className="table-responsive border rounded-md">
+					<table className="simple dense">
 						<thead>
 							<tr>
 								<th>

@@ -31,7 +31,7 @@ function FuseAuthorizationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -49,9 +49,9 @@ function FuseAuthorizationDoc() {
 				<Table>
 					<TableHead>
 						<TableRow>
-							<TableCell className="font-semibold text-14">Prop Name</TableCell>
-							<TableCell className="font-semibold text-14">Type</TableCell>
-							<TableCell className="font-semibold text-14">Description</TableCell>
+							<TableCell className="font-semibold text-13">Prop Name</TableCell>
+							<TableCell className="font-semibold text-13">Type</TableCell>
+							<TableCell className="font-semibold text-13">Description</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -134,14 +134,14 @@ function FuseAuthorizationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Configuration
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Route Configuration:
@@ -188,7 +188,7 @@ function FuseAuthorizationDoc() {
 				<Table>
 					<TableHead>
 						<TableRow>
-							<TableCell className="font-semibold text-14">Authorization Role (auth) options</TableCell>
+							<TableCell className="font-semibold text-13">Authorization Role (auth) options</TableCell>
 							<TableCell />
 						</TableRow>
 					</TableHead>
@@ -270,7 +270,7 @@ function FuseAuthorizationDoc() {
 				<Table>
 					<TableHead>
 						<TableRow>
-							<TableCell className="font-semibold text-14">User Role options</TableCell>
+							<TableCell className="font-semibold text-13">User Role options</TableCell>
 							<TableCell />
 						</TableRow>
 					</TableHead>

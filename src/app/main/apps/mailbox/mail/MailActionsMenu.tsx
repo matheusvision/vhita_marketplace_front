@@ -71,7 +71,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 						handleClose();
 					}}
 				>
-					<ListItemIcon className="min-w-40">
+					<ListItemIcon className="min-w-36">
 						<FuseSvgIcon>heroicons-outline:envelope</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Mark as unread" />
@@ -83,7 +83,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 						handleClose();
 					}}
 				>
-					<ListItemIcon className="min-w-40">
+					<ListItemIcon className="min-w-36">
 						<FuseSvgIcon>heroicons-outline:exclamation-triangle</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Spam" />
@@ -96,7 +96,7 @@ function MailActionsMenu(props: MailActionsMenuProps) {
 						handleClose();
 					}}
 				>
-					<ListItemIcon className="min-w-40">
+					<ListItemIcon className="min-w-36">
 						<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Delete" />

@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 function ModernSignOutPage() {
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center md:p-32">
-			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-2xl sm:shadow md:w-full md:max-w-6xl">
+			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-xl sm:shadow md:w-full md:max-w-6xl">
 				<div className="flex w-full items-center px-16 py-32 ltr:border-r-1 rtl:border-l-1 sm:w-auto sm:p-48 md:p-64">
 					<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 						<img

@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import { Checkbox } from '@mui/material';
+import { Checkbox, FormLabel } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { selectSelectedLabels, toggleSelectedLabels } from './calendarAppSlice';
 import { useGetCalendarLabelsQuery } from './CalendarApi';
 import LabelsDialog from './dialogs/labels/LabelsDialog';
@@ -16,7 +17,9 @@ function CalendarAppSidebar() {
 	const { data: labels } = useGetCalendarLabelsQuery();
 
 	return (
-		<div className="flex flex-col flex-auto min-h-full p-32">
+		<div className="flex flex-col flex-auto min-h-full py-24 px-16">
+			<PageBreadcrumb />
+
 			<motion.span
 				initial={{ x: -20 }}
 				animate={{ x: 0, transition: { delay: 0.2 } }}
@@ -27,7 +30,7 @@ function CalendarAppSidebar() {
 
 			<div className="group flex items-center justify-between mb-12">
 				<Typography
-					className="text-15 font-600 leading-none"
+					className="text-14 font-600 leading-none"
 					color="secondary.main"
 				>
 					LABELS
@@ -37,12 +40,14 @@ function CalendarAppSidebar() {
 			</div>
 
 			{labels?.map((label) => (
-				<div
+				<FormLabel
+					htmlFor={label.id}
 					key={label.id}
-					className="group flex items-center mt-8 space-x-8 h-24 w-full"
+					className="group flex items-center mt-8 space-x-8 h-24 w-full cursor-pointer"
 				>
 					<Checkbox
-						color="default"
+						id={label.id}
+						color="secondary"
 						className="p-0"
 						checked={selectedLabels.includes(label.id)}
 						onChange={() => {
@@ -56,7 +61,7 @@ function CalendarAppSidebar() {
 					/>
 
 					<Typography className="flex flex-1 leading-none">{label.title}</Typography>
-				</div>
+				</FormLabel>
 			))}
 		</div>
 	);

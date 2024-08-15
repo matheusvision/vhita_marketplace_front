@@ -271,7 +271,7 @@ function NotificationsTab() {
 					</div>
 				</div>
 				<Divider className="mb-40 mt-44 border-t" />
-				<div className="flex items-center justify-end space-x-16">
+				<div className="flex items-center justify-end space-x-8">
 					<Button
 						variant="outlined"
 						disabled={_.isEmpty(dirtyFields)}

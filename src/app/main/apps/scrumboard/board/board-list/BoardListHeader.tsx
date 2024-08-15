@@ -139,7 +139,7 @@ function BoardListHeader(props: BoardListHeaderProps) {
 						</ClickAwayListener>
 					) : (
 						<Typography
-							className="text-14 font-medium cursor-pointer"
+							className="text-13 font-medium cursor-pointer"
 							onClick={handleOpenForm}
 						>
 							{list.title}
@@ -178,13 +178,13 @@ function BoardListHeader(props: BoardListHeaderProps) {
 								});
 							}}
 						>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Remove List" />
 						</MenuItem>
 						<MenuItem onClick={handleOpenForm}>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>heroicons-outline:pencil</FuseSvgIcon>
 							</ListItemIcon>
 							<ListItemText primary="Rename List" />

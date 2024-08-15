@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import MailCompose from './MailCompose';
 import { useGetMailboxFiltersQuery, useGetMailboxFoldersQuery, useGetMailboxLabelsQuery } from './MailboxApi';
 
@@ -19,6 +20,8 @@ function MailboxAppSidebarContent() {
 	return (
 		<div className="flex-auto border-l-1">
 			<div className="mb-24 mt-40 mx-24">
+				<PageBreadcrumb maxItems={3} />
+
 				<motion.div
 					initial={{ x: 20, opacity: 0 }}
 					animate={{ x: 0, opacity: 1, transition: { delay: 0.2 } }}

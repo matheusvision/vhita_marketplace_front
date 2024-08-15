@@ -115,7 +115,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="text-16 font-bold">{item.title[0]}</div>
+									item.title && <div className="text-15 font-bold">{item.title[0]}</div>
 								)}
 								{item.badge && (
 									<FuseNavBadge
@@ -137,7 +137,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="text-20 font-bold">{item.title[0]}</div>
+									item.title && <div className="text-18 font-bold">{item.title[0]}</div>
 								)}
 								{item.badge && (
 									<FuseNavBadge

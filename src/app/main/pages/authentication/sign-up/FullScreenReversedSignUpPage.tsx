@@ -157,7 +157,7 @@ function FullScreenReversedSignUpPage() {
 				</div>
 			</Box>
 
-			<Paper className="h-full w-full px-16 py-32 ltr:border-l-1 rtl:border-r-1 sm:h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow md:flex md:h-full md:rounded-none md:p-64 md:pt-96 md:shadow-none">
+			<Paper className="h-full w-full px-16 py-32 ltr:border-l-1 rtl:border-r-1 sm:h-auto sm:w-auto sm:rounded-xl sm:p-48 sm:shadow md:flex md:h-full md:rounded-none md:p-64 md:pt-96 md:shadow-none">
 				<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 					<img
 						className="w-48"
@@ -261,12 +261,9 @@ function FullScreenReversedSignUpPage() {
 							name="acceptTermsConditions"
 							control={control}
 							render={({ field }) => (
-								<FormControl
-									className="items-center"
-									error={!!errors.acceptTermsConditions}
-								>
+								<FormControl error={!!errors.acceptTermsConditions}>
 									<FormControlLabel
-										label="I agree to the Terms of Service and Privacy Policy"
+										label="I agree with Terms and Privacy Policy"
 										control={
 											<Checkbox
 												size="small"

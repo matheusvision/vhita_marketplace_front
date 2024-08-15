@@ -38,9 +38,8 @@ function LanguageSwitcher() {
 			<Button
 				onClick={langMenuClick}
 				sx={{
-					borderRadius: '8px',
 					width: 64,
-					height: 40,
+					height: 36,
 					border: (theme) => `1px solid ${theme.palette.divider}`,
 					'&:hover, &:focus': {
 						backgroundColor: (theme) =>
@@ -88,7 +87,7 @@ function LanguageSwitcher() {
 						key={lng.id}
 						onClick={() => handleLanguageChange(lng)}
 					>
-						<ListItemIcon className="min-w-40">
+						<ListItemIcon className="min-w-36">
 							<img
 								className="min-w-20"
 								src={`assets/images/flags/${lng.flag}.svg`}

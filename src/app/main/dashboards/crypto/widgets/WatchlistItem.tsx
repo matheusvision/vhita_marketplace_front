@@ -94,7 +94,7 @@ function WatchlistItem(props: WatchlistItemProps) {
 				</div>
 			</div>
 			<ReactApexChart
-				className="flex-auto w-full h-40"
+				className="flex-auto w-full h-36"
 				options={chartOptions}
 				series={_.cloneDeep(item.series)}
 				type={chartOptions?.chart?.type}

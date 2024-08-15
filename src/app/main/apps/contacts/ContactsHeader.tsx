@@ -7,6 +7,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { ChangeEvent, useEffect } from 'react';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { setSearchText, resetSearchText, selectSearchText } from './contactsAppSlice';
 import { selectFilteredContactList, useGetContactsListQuery } from './ContactsApi';
 
@@ -31,13 +32,15 @@ function ContactsHeader() {
 	}
 
 	return (
-		<div className="p-24 sm:p-32 w-full border-b-1">
+		<div className="p-24 sm:p-32 w-full">
+			<PageBreadcrumb />
+
 			<div className="flex flex-col">
 				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
 				>
-					<Typography className="text-24 md:text-32 font-extrabold tracking-tight leading-none">
+					<Typography className="text-20 md:text-24 font-extrabold tracking-tight leading-none">
 						Contacts
 					</Typography>
 				</motion.span>
@@ -47,30 +50,25 @@ function ContactsHeader() {
 				>
 					<Typography
 						component={motion.span}
-						className="text-14 font-medium ml-2"
+						className="text-13 font-medium ml-2"
 						color="text.secondary"
 					>
 						{`${filteredData?.length} contacts`}
 					</Typography>
 				</motion.span>
 			</div>
-			<div className="flex flex-1 items-center mt-16 -mx-8">
+			<div className="flex flex-1 items-center mt-16 space-x-8">
 				<Box
 					component={motion.div}
 					initial={{ y: -20, opacity: 0 }}
 					animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
-					className="flex flex-1 w-full sm:w-auto items-center px-16 mx-8 border-1 rounded-full"
+					className="flex flex-1 w-full sm:w-auto items-center px-12 border-1 rounded-lg h-36"
 				>
-					<FuseSvgIcon
-						color="action"
-						size={20}
-					>
-						heroicons-outline:magnifying-glass
-					</FuseSvgIcon>
+					<FuseSvgIcon color="action">heroicons-outline:magnifying-glass</FuseSvgIcon>
 
 					<Input
 						placeholder="Search contacts"
-						className="flex flex-1 px-16"
+						className="flex flex-1"
 						disableUnderline
 						fullWidth
 						value={searchText}
@@ -81,7 +79,7 @@ function ContactsHeader() {
 					/>
 				</Box>
 				<Button
-					className="mx-8"
+					className=""
 					variant="contained"
 					color="secondary"
 					component={NavLinkAdapter}

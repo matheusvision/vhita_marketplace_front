@@ -51,7 +51,7 @@ function CardAttachment(props: CardAttachmentProps) {
 					</div>
 					<div className="flex flex-auto flex-col justify-center items-start min-w-0 px-16">
 						<div className="flex items-center w-full">
-							<Typography className="text-16 font-semibold truncate shrink">{item.name}</Typography>
+							<Typography className="text-15 font-semibold truncate shrink">{item.name}</Typography>
 							{card.attachmentCoverId === item.id && (
 								<FuseSvgIcon
 									className="text-orange-300 mx-4"
@@ -124,7 +124,7 @@ function CardAttachment(props: CardAttachmentProps) {
 						<Typography className="font-semibold">LINK</Typography>
 					</Paper>
 					<div className="flex flex-auto flex-col justify-center items-start min-w-0 px-16">
-						<Typography className="text-16 font-semibold truncate w-full">{item.url}</Typography>
+						<Typography className="text-15 font-semibold truncate w-full">{item.url}</Typography>
 						<Typography
 							className="truncate w-full mb-12"
 							color="text.secondary"

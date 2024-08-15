@@ -55,7 +55,7 @@ function ProductImagesTab() {
 
 	return (
 		<Root>
-			<div className="flex justify-center sm:justify-start flex-wrap -mx-16">
+			<div className="flex justify-center sm:justify-start flex-wrap -mx-12">
 				<Controller
 					name="images"
 					control={control}
@@ -69,7 +69,7 @@ function ProductImagesTab() {
 							}}
 							component="label"
 							htmlFor="button-file"
-							className="productImageUpload flex items-center justify-center relative w-128 h-128 rounded-16 mx-12 mb-24 overflow-hidden cursor-pointer shadow hover:shadow-lg"
+							className="productImageUpload flex items-center justify-center relative w-128 h-128 rounded-lg mx-12 mb-24 overflow-hidden cursor-pointer shadow hover:shadow-lg"
 						>
 							<input
 								accept="image/*"
@@ -129,7 +129,7 @@ function ProductImagesTab() {
 										role="button"
 										tabIndex={0}
 										className={clsx(
-											'productImageItem flex items-center justify-center relative w-128 h-128 rounded-16 mx-12 mb-24 overflow-hidden cursor-pointer outline-none shadow hover:shadow-lg',
+											'productImageItem flex items-center justify-center relative w-128 h-128 rounded-lg mx-12 mb-24 overflow-hidden cursor-pointer outline-none shadow hover:shadow-lg',
 											media.id === value && 'featured'
 										)}
 										key={media.id}

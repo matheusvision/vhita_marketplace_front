@@ -68,7 +68,7 @@ function PhotosVideosTab() {
 										<ImageListItem
 											component={motion.div}
 											variants={item}
-											className="w-full rounded-16 shadow overflow-hidden"
+											className="w-full rounded-xl shadow overflow-hidden"
 										>
 											<img
 												src={media.preview}

@@ -10,7 +10,6 @@ import { selectMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import MockAdapterProvider from '@mock-api/MockAdapterProvider';
 import { useAppSelector } from 'app/store/hooks';
 import { useSelector } from 'react-redux';
-import withAppProviders from './withAppProviders';
 import AuthenticationProvider from './auth/AuthenticationProvider';
 
 // import axios from 'axios';
@@ -66,6 +65,7 @@ function App() {
 								containerRoot: 'bottom-0 right-0 mb-52 md:mb-68 mr-8 lg:mr-80 z-99'
 							}}
 						>
+							{/* <Layout1/> */}
 							<FuseLayout layouts={themeLayouts} />
 						</SnackbarProvider>
 					</AuthenticationProvider>
@@ -75,4 +75,5 @@ function App() {
 	);
 }
 
-export default withAppProviders(App);
+export default App;
+// export default withAppProviders(App);

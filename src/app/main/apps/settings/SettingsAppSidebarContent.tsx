@@ -29,11 +29,11 @@ const Root = styled('div')(({ theme }) => ({
 		}
 	},
 	'&  .fuse-list-item-text-primary': {
-		fontSize: 14,
+		fontSize: 13,
 		fontWeight: '500'
 	},
 	'&  .fuse-list-item-text-secondary': {
-		fontSize: 14,
+		fontSize: 12,
 		whiteSpace: 'normal',
 		fontWeight: '400'
 	}

@@ -15,11 +15,11 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & Partia
 	({ theme }) => ({
 		color: 'inherit!important',
 		textDecoration: 'none!important',
-		height: 40,
+		height: 36,
 		width: '100%',
-		borderRadius: 20,
-		paddingLeft: 16,
-		paddingRight: 16,
+		borderRadius: 8,
+		paddingLeft: 12,
+		paddingRight: 12,
 		marginBottom: 8,
 		fontWeight: 500,
 		'&.active': {
@@ -31,7 +31,7 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps & Partia
 			}
 		},
 		'& .list-item-icon': {
-			marginRight: 16
+			marginRight: 12
 		}
 	})
 );
@@ -48,7 +48,7 @@ function NotesSidebarContent() {
 	}
 
 	return (
-		<div className="px-16 py-24">
+		<div className="px-16 py-24 w-240 sm:w-auto max-w-full ">
 			<motion.div
 				initial={{ y: 20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}

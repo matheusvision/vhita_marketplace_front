@@ -40,7 +40,7 @@ function ToolbarLayout3(props: ToolbarLayout3Props) {
 				<Toolbar className="container min-h-48 p-0 md:min-h-64 lg:px-24">
 					{config.navbar.display && (
 						<Hidden lgUp>
-							<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
+							<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
 						</Hidden>
 					)}
 
@@ -59,7 +59,7 @@ function ToolbarLayout3(props: ToolbarLayout3Props) {
 						</Hidden>
 					</div>
 
-					<div className="flex h-full items-center overflow-x-auto px-8 md:px-0">
+					<div className="flex h-full items-center overflow-x-auto px-8 space-x-6">
 						<Hidden smUp>
 							<NavigationSearch />
 						</Hidden>

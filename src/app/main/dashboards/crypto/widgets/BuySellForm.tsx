@@ -104,7 +104,7 @@ function BuySellForm() {
 							fullWidth
 						>
 							<FormLabel
-								className="font-medium text-14"
+								className="font-medium text-13"
 								component="legend"
 							>
 								Action
@@ -141,7 +141,7 @@ function BuySellForm() {
 							fullWidth
 						>
 							<FormLabel
-								className="font-medium text-14"
+								className="font-medium text-13"
 								component="legend"
 							>
 								Wallet

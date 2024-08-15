@@ -35,7 +35,7 @@ function DividersDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Divider
@@ -46,20 +46,20 @@ function DividersDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Material UI Divider component renders as a dark gray <code>{`<hr>`}</code> by default, and features
 				several useful props for quick style adjustments.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -71,7 +71,7 @@ function DividersDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -86,20 +86,20 @@ import Divider from '@mui/material/Divider';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Variants
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Divider component supports three variants: <code>fullWidth</code> (default), <code>inset</code>, and{' '}
 				<code>middle</code>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -111,19 +111,19 @@ import Divider from '@mui/material/Divider';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Orientation
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>orientation</code> prop to change the Divider from horizontal to vertical.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -135,19 +135,19 @@ import Divider from '@mui/material/Divider';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Flex item
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>flexItem</code> prop to display the Divider when it&#39;s being used in a flex container.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -159,19 +159,19 @@ import Divider from '@mui/material/Divider';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				With children
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>textAlign</code> prop to align elements that are wrapped by the Divider.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -183,26 +183,26 @@ import Divider from '@mui/material/Divider';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Use with a List
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				When using the Divider to separate items in a List, use the <code>component</code> prop to render it as
 				an <code>{`<li>`}</code>—otherwise it won&#39;t be a valid HTML element.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -214,20 +214,20 @@ import Divider from '@mui/material/Divider';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Icon grouping
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The demo below shows how to combine the props <code>{`variant="middle"`}</code> and{' '}
 				<code>{`orientation="vertical"`}</code>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -239,13 +239,13 @@ import Divider from '@mui/material/Divider';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Due to its implicit role of <code>separator</code>, the Divider, which is a <code>{`<hr>`}</code>{' '}
@@ -253,7 +253,7 @@ import Divider from '@mui/material/Divider';
 				you&#39;re using the <code>orientation</code> prop).
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you&#39;re using it as a purely stylistic element, we recommend setting{' '}
@@ -269,7 +269,7 @@ import Divider from '@mui/material/Divider';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you&#39;re using the Divider to wrap other elements, such as text or chips, we recommend changing its
@@ -289,13 +289,13 @@ import Divider from '@mui/material/Divider';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Divider component is composed of a root <code>{`<hr>`}</code>.

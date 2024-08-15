@@ -75,7 +75,7 @@ function FaqList(props: FaqListProps) {
 							</AccordionSummary>
 
 							<AccordionDetails>
-								<Typography className="text-14 px-32 pb-8 -mt-8">{faq.answer}</Typography>
+								<Typography className="text-13 px-32 pb-8 -mt-8">{faq.answer}</Typography>
 							</AccordionDetails>
 						</StyledAccordion>
 					</motion.div>

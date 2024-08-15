@@ -67,3 +67,43 @@ table.simple.borderless tbody tr td{
 table.simple.borderless thead tr th{
     border: none;
 }
+
+/* Dense Table Styles */
+table.dense {
+    width: 100%;
+    border: none;
+    border-spacing: 0;
+    text-align: left;
+}
+
+table.dense thead tr th {
+    padding: 8px 4px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+}
+
+table.dense thead tr th:first-child {
+    padding-left: 12px;
+}
+
+table.dense thead tr th:last-child {
+    padding-right: 12px;
+}
+
+table.dense tbody tr td {
+    padding: 6px 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+table.dense tbody tr td:first-child {
+    padding-left: 12px;
+}
+
+table.dense tbody tr td:last-child {
+    padding-right: 12px;
+}
+
+table.dense tbody tr:last-child td {
+    border-bottom: none;
+}

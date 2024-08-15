@@ -60,7 +60,7 @@ function DemoHeader(props: DemoHeaderProps) {
 							onClick={leftSidebarToggle}
 							aria-label="toggle sidebar"
 						>
-							<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
+							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 						</IconButton>
 					</div>
 				)}
@@ -76,7 +76,7 @@ function DemoHeader(props: DemoHeaderProps) {
 							onClick={rightSidebarToggle}
 							aria-label="toggle sidebar"
 						>
-							<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
+							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 						</IconButton>
 					</div>
 				)}

@@ -40,6 +40,7 @@ const Root = styled('div')<FusePageCardedProps>(({ theme, ...props }) => ({
 	flex: '1 1 auto',
 	width: '100%',
 	height: 'auto',
+	padding: '0 16px',
 	backgroundColor: theme.palette.background.default,
 
 	'& .FusePageCarded-scroll-content': {
@@ -249,7 +250,7 @@ const FusePageCarded = forwardRef<
 			>
 				{header && <FusePageCardedHeader header={header} />}
 
-				<div className="container relative z-10 flex h-full flex-auto flex-col overflow-hidden rounded-t-16 shadow-1">
+				<div className="container relative z-10 flex h-full flex-auto flex-col overflow-hidden rounded-t-lg shadow-1">
 					<div className="FusePageCarded-wrapper">
 						{leftSidebarContent && (
 							<FusePageCardedSidebar

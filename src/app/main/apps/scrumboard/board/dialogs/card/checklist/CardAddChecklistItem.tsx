@@ -49,7 +49,7 @@ function CardAddChecklistItem(props: CardAddChecklistItemProps) {
 				className="px-0"
 				dense
 			>
-				<span className="w-40" />
+				<span className="w-36" />
 				<Controller
 					name="name"
 					control={control}

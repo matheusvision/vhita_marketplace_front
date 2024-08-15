@@ -19,7 +19,7 @@ function NotesSearch() {
 			animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 		>
 			<OutlinedInput
-				className="flex flex-1 items-center px-16 rounded-full h-40 w-full sm:max-w-256"
+				className="flex flex-1 items-center w-full sm:max-w-256 rounded-8"
 				placeholder="Search note"
 				fullWidth
 				startAdornment={

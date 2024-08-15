@@ -94,7 +94,7 @@ function PlanBillingTab() {
 					<Typography className="text-xl">Change your plan</Typography>
 					<Typography color="text.secondary">Upgrade or downgrade your current plan.</Typography>
 				</div>
-				<div className="mt-32 grid w-full gap-24 sm:grid-cols-3">
+				<div className="mt-32 grid w-full gap-16 sm:grid-cols-3">
 					<div className="sm:col-span-3">
 						<Alert severity="info">
 							Changing the plan will take effect immediately. You will be charged for the rest of the
@@ -315,7 +315,7 @@ function PlanBillingTab() {
 				</div>
 
 				<Divider className="mb-40 mt-44 border-t" />
-				<div className="flex items-center justify-end space-x-16">
+				<div className="flex items-center justify-end space-x-8">
 					<Button
 						variant="outlined"
 						disabled={_.isEmpty(dirtyFields)}

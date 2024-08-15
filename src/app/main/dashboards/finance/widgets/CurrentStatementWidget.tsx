@@ -26,9 +26,9 @@ function CurrentStatementWidget() {
 	const { status, date, limit, spent, minimum } = widget;
 
 	return (
-		<Paper className="relative flex flex-col flex-auto p-24 pr-12 pb-12 rounded-2xl shadow overflow-hidden">
-			<div className="flex items-center justify-between">
-				<div className="flex flex-col">
+		<Paper className="relative flex flex-col flex-auto rounded-xl shadow overflow-hidden">
+			<div className="flex items-center justify-between px-8 pt-8">
+				<div className="px-8 flex flex-col">
 					<Typography className="text-lg font-medium tracking-tight leading-6 truncate">
 						Current Statement
 					</Typography>
@@ -39,17 +39,14 @@ function CurrentStatementWidget() {
 						<Typography className="text-red-600 font-medium text-sm">Must be paid before {date}</Typography>
 					)}
 				</div>
-				<div className="-mt-8">
-					<IconButton
-						aria-label="more"
-						size="large"
-					>
+				<div className="">
+					<IconButton aria-label="more">
 						<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 				</div>
 			</div>
-			<div className="flex flex-row flex-wrap mt-16 -mx-24">
-				<div className="flex flex-col mx-24 my-12">
+			<div className="flex flex-row flex-wrap p-16 space-x-12">
+				<div className="flex flex-col my-12">
 					<Typography
 						color="text.secondary"
 						className="text-sm font-medium leading-none"
@@ -63,7 +60,7 @@ function CurrentStatementWidget() {
 						})}
 					</Typography>
 				</div>
-				<div className="flex flex-col mx-24 my-12">
+				<div className="flex flex-col my-12">
 					<Typography
 						color="text.secondary"
 						className="text-sm font-medium leading-none"
@@ -77,7 +74,7 @@ function CurrentStatementWidget() {
 						})}
 					</Typography>
 				</div>
-				<div className="flex flex-col mx-24 my-12">
+				<div className="flex flex-col my-12">
 					<Typography
 						color="text.secondary"
 						className="text-sm font-medium leading-none"

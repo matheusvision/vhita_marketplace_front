@@ -1,6 +1,7 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -21,20 +22,11 @@ function TailwindCssUI() {
 				<div className="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-24 sm:py-32 sm:px-40">
 					<div className="flex-1 min-w-0">
 						<div className="flex flex-wrap items-center font-medium">
-							<div>
-								<Typography
-									className="whitespace-nowrap"
-									color="secondary.main"
-								>
-									User Interface
-								</Typography>
-							</div>
+							<PageBreadcrumb />
 						</div>
-						<div className="mt-8">
-							<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-								TailwindCSS
-							</Typography>
-						</div>
+						<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+							TailwindCSS
+						</Typography>
 					</div>
 				</div>
 			}
@@ -52,7 +44,7 @@ function TailwindCssUI() {
 							includes and uses Tailwind by default and it can be used in any part of the theme.
 						</Typography>
 
-						<Typography className="text-20 font-700 mt-32 mb-16">Styling in Material-UI</Typography>
+						<Typography className="text-18 font-700 mt-32 mb-16">Styling in Material-UI</Typography>
 
 						<Typography
 							className="mb-16"
@@ -82,7 +74,7 @@ function TailwindCssUI() {
 
 					<div>
 						<Typography
-							className="text-20 font-700 mt-32 mb-16"
+							className="text-18 font-700 mt-32 mb-16"
 							variant="h5"
 						>
 							Helper Classes with TailwindCSS
@@ -115,7 +107,7 @@ function TailwindCssUI() {
 						</Typography>
 					</div>
 
-					<Typography className="text-20 font-700 mt-32 mb-16">Official docs</Typography>
+					<Typography className="text-18 font-700 mt-32 mb-16">Official docs</Typography>
 
 					<Typography className="my-16">
 						Official Tailwind CSS documentation:

@@ -191,7 +191,7 @@ function MessengerPanel() {
 								</IconButton>
 								{selectedContactId === '' && (
 									<Typography
-										className="text-16"
+										className="text-15"
 										color="inherit"
 									>
 										Team Chat
@@ -203,7 +203,7 @@ function MessengerPanel() {
 							<div className="flex flex-1 items-center px-12">
 								<Avatar src={selectedContact.avatar} />
 								<Typography
-									className="mx-16 text-16"
+									className="mx-16 text-15"
 									color="inherit"
 								>
 									{selectedContact.name}

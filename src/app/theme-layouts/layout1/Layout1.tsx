@@ -1,8 +1,7 @@
 import { styled } from '@mui/material/styles';
 import FuseMessage from '@fuse/core/FuseMessage';
-import AppContext from 'app/AppContext';
-import { lazy, memo, ReactNode, Suspense, useContext } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { lazy, memo, ReactNode, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import Configurator from 'app/theme-layouts/shared-components/configurator/Configurator';
@@ -42,8 +41,6 @@ type Layout1Props = {
 function Layout1(props: Layout1Props) {
 	const { children } = props;
 	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
-	const appContext = useContext(AppContext);
-	const { routes } = appContext;
 
 	return (
 		<Root
@@ -69,7 +66,9 @@ function Layout1(props: Layout1Props) {
 					</div>
 
 					<div className="relative z-10 flex min-h-0 flex-auto flex-col">
-						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
+						<FuseSuspense>
+							<Outlet />
+						</FuseSuspense>
 
 						<Suspense>
 							<FuseDialog />

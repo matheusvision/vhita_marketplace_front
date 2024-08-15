@@ -20,7 +20,7 @@ function CssBaselineDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				CSS Baseline
@@ -30,13 +30,13 @@ function CssBaselineDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Global reset
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You might be familiar with <a href="https://github.com/necolas/normalize.css">normalize.css</a>, a
@@ -62,13 +62,13 @@ export default function MyApp() {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Scoping on children
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				However, you might be progressively migrating a website to Material UI, using a global reset might not
@@ -96,26 +96,26 @@ export default function MyApp() {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				⚠️ Make sure you import <code>ScopedCssBaseline</code> first to avoid box-sizing conflicts as in the
 				above example.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Approach
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Page
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>{`<html>`}</code> and <code>{`<body>`}</code> elements are updated to provide better page-wide
@@ -141,7 +141,7 @@ export default function MyApp() {
 				</li>
 			</ul>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Layout
@@ -155,19 +155,19 @@ export default function MyApp() {
 				</li>
 			</ul>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Scrollbars
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::error This API is deprecated. Consider using <a href="#color-scheme">color-scheme</a> instead. :::
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The colors of the scrollbars can be customized to improve the contrast (especially on Windows). Add this
@@ -193,20 +193,20 @@ const theme = createTheme({
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Be aware, however, that using this utility (and customizing <code>-webkit-scrollbar</code>) forces macOS
 				to always show the scrollbar.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Color scheme
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				This API is introduced in @mui/material (v5.1.0) for switching between <code>{`"light"`}</code> and{' '}
@@ -230,7 +230,7 @@ const theme = createTheme({
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Typography
@@ -252,13 +252,13 @@ const theme = createTheme({
 				<li>Custom font-smoothing is enabled for better display of the Roboto font.</li>
 			</ul>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Head to the{' '}

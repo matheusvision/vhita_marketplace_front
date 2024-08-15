@@ -6,6 +6,7 @@ import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import { useAppDispatch } from 'app/store/hooks';
+import { styled } from '@mui/material/styles';
 import BoardAddList from './board-list/BoardAddList';
 import BoardList from './board-list/BoardList';
 import BoardCardDialog from './dialogs/card/BoardCardDialog';
@@ -16,6 +17,18 @@ import {
 	useGetScrumboardBoardQuery,
 	useUpdateScrumboardBoardCardOrderMutation
 } from '../ScrumboardApi';
+
+const Root = styled(FusePageSimple)(({ theme }) => ({
+	'& .container': {
+		maxWidth: '100%!important'
+	},
+	'& .FusePageSimple-header': {
+		backgroundColor: theme.palette.background.paper,
+		borderBottomWidth: 1,
+		borderStyle: 'solid',
+		borderColor: theme.palette.divider
+	}
+}));
 
 /**
  * The board component.
@@ -96,7 +109,7 @@ function Board() {
 
 	return (
 		<>
-			<FusePageSimple
+			<Root
 				header={<BoardHeader onSetSidebarOpen={setSidebarOpen} />}
 				content={
 					board?.lists ? (

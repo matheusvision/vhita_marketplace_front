@@ -43,16 +43,16 @@ function NoteListItem(props: NoteListItemProps) {
 				)}
 
 				{note.title && note.title !== '' && (
-					<Typography className="px-20 my-16 text-14 font-semibold">{note.title}</Typography>
+					<Typography className="px-16 my-12 text-13 font-semibold">{note.title}</Typography>
 				)}
 
 				{note.content && note.content !== '' && (
 					<Typography
-						className="px-20 my-16 "
+						className="px-16 my-12 "
 						component="div"
 					>
 						<div
-							className={clsx('w-full break-words', variateDescSize ? 'font-500' : 'text-14')}
+							className={clsx('w-full break-words', variateDescSize ? 'font-500' : 'text-13')}
 							ref={(el) => {
 								setTimeout(() => setDescriptionStyle(note.content, el, Boolean(variateDescSize)));
 							}}
@@ -63,7 +63,7 @@ function NoteListItem(props: NoteListItemProps) {
 				)}
 
 				{note.tasks && note.tasks.length > 0 && (
-					<ul className="px-20 my-16 flex flex-wrap list-reset">
+					<ul className="px-16 my-12 flex flex-wrap">
 						{note.tasks.map((item) => (
 							<li
 								key={item.id}
@@ -71,12 +71,12 @@ function NoteListItem(props: NoteListItemProps) {
 							>
 								<FuseSvgIcon
 									color={item.completed ? 'secondary' : 'disabled'}
-									size={20}
+									size={16}
 								>
-									heroicons-outline:check-circle
+									heroicons-solid:check-circle
 								</FuseSvgIcon>
 								<Typography
-									className={clsx('truncate mx-8', item.completed && 'line-through')}
+									className={clsx('truncate text-12 mx-8', item.completed && 'line-through')}
 									color={item.completed ? 'text.secondary' : 'inherit'}
 								>
 									{item.content}
@@ -87,7 +87,7 @@ function NoteListItem(props: NoteListItemProps) {
 				)}
 
 				{(note.labels.length > 0 || note.reminder) && (
-					<div className="px-20 my-16 flex flex-wrap w-full -mx-2">
+					<div className="px-16 my-12 flex flex-wrap w-full -mx-2">
 						{note.reminder && (
 							<NoteReminderLabel
 								className="mt-4 mx-2 max-w-full"

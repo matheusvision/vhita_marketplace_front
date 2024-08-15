@@ -1,4 +1,3 @@
-import BrowserRouter from '@fuse/core/BrowserRouter';
 import FuseAuthorization from '@fuse/core/FuseAuthorization/FuseAuthorization';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
@@ -159,16 +158,10 @@ function Authentication(props: AuthenticationProps) {
 			);
 		}
 	}, [inProgress, authenticated, amplifyUser, jwtUser, firebaseUser, isLoading]);
-
+	// return children;
 	return useMemo(
 		() =>
-			isLoading ? (
-				<FuseSplashScreen />
-			) : (
-				<BrowserRouter>
-					<FuseAuthorization userRole={userRole}>{children}</FuseAuthorization>
-				</BrowserRouter>
-			),
+			isLoading ? <FuseSplashScreen /> : <FuseAuthorization userRole={userRole}>{children}</FuseAuthorization>,
 		[userRole, children, isLoading]
 	);
 }

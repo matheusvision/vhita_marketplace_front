@@ -48,10 +48,10 @@ function TaskListItem(props: TaskListItemProps) {
 								sx={{ color: 'text.disabled' }}
 								size={20}
 							>
-								heroicons-solid:menu
+								heroicons-solid:bars-3
 							</FuseSvgIcon>
 						</div>
-						<ListItemIcon className="min-w-40 -ml-10 mr-8">
+						<ListItemIcon className="min-w-36 -ml-10 mr-8">
 							<IconButton
 								sx={{ color: data.completed ? 'secondary.main' : 'text.disabled' }}
 								onClick={(ev) => {

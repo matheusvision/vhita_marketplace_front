@@ -1,5 +1,5 @@
 import { Controller, useForm } from 'react-hook-form';
-import { darken } from '@mui/material/styles';
+import { alpha, darken } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
@@ -71,7 +71,7 @@ function BoardAddList() {
 	return (
 		<div>
 			<Card
-				className="w-320 mx-8 sm:mx-12 rounded-xl shadow-0"
+				className="w-320 mx-8 sm:mx-12 rounded-lg shadow-0"
 				square
 				sx={{
 					backgroundColor: (theme) =>
@@ -90,18 +90,18 @@ function BoardAddList() {
 								render={({ field }) => (
 									<TextField
 										{...field}
-										className="mb-16"
+										className="mb-8"
 										required
 										fullWidth
-										variant="filled"
-										label="List title"
+										variant="outlined"
+										placeholder="List title*"
 										autoFocus
 										InputProps={{
 											endAdornment: (
 												<InputAdornment position="end">
 													<IconButton
 														onClick={handleCloseForm}
-														size="large"
+														size="small"
 													>
 														<FuseSvgIcon size={18}>heroicons-outline:x-mark</FuseSvgIcon>
 													</IconButton>
@@ -132,7 +132,13 @@ function BoardAddList() {
 							root: 'font-medium w-full rounded-lg p-24 justify-start'
 						}}
 						startIcon={<FuseSvgIcon>heroicons-outline:plus-circle</FuseSvgIcon>}
-						sx={{ color: 'text.secondary' }}
+						sx={{
+							backgroundColor: 'divider',
+							'&:hover, &:focus': {
+								backgroundColor: (theme) => alpha(theme.palette.divider, 0.8)
+							},
+							color: 'text.secondary'
+						}}
 					>
 						Add another list
 					</Button>

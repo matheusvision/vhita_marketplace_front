@@ -19,9 +19,6 @@ function QuickPanelToggleButton(props: QuickPanelToggleButtonProps) {
 		<IconButton
 			onClick={() => dispatch(toggleQuickPanel())}
 			sx={{
-				borderRadius: '8px',
-				width: 40,
-				height: 40,
 				border: (theme) => `1px solid ${theme.palette.divider}`,
 				'&:hover, &:focus': {
 					backgroundColor: (theme) =>

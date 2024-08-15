@@ -35,10 +35,10 @@ function CourseInfo(props: CourseInfoProps) {
 				)}
 			</div>
 
-			<Typography className="text-16 font-medium">{course.title}</Typography>
+			<Typography className="text-15 font-medium">{course.title}</Typography>
 
 			<Typography
-				className="text-13 mt-2 line-clamp-2"
+				className="text-12 mt-2 line-clamp-2"
 				color="text.secondary"
 			>
 				{course.description}
@@ -50,7 +50,7 @@ function CourseInfo(props: CourseInfoProps) {
 			/>
 
 			<Typography
-				className="flex items-center space-x-6 text-13"
+				className="flex items-center space-x-6 text-12"
 				color="text.secondary"
 			>
 				<FuseSvgIcon
@@ -62,7 +62,7 @@ function CourseInfo(props: CourseInfoProps) {
 				<span className="whitespace-nowrap leading-none">{`${course.duration} minutes`}</span>
 			</Typography>
 			<Typography
-				className="flex items-center space-x-6 text-13 mt-8"
+				className="flex items-center space-x-6 text-12 mt-8"
 				color="text.secondary"
 			>
 				<FuseSvgIcon

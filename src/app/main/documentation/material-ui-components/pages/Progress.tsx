@@ -47,7 +47,7 @@ function ProgressDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Progress
@@ -58,7 +58,7 @@ function ProgressDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Progress indicators inform users about the status of ongoing processes, such as loading an app,
@@ -73,26 +73,26 @@ function ProgressDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The animations of the components rely on CSS as much as possible to work even before the JavaScript is
 				loaded.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Circular
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Circular indeterminate
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -104,13 +104,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Circular color
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -122,13 +122,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Circular determinate
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -140,13 +140,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Interactive integration
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -158,13 +158,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Circular with label
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -176,19 +176,19 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Linear
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Linear indeterminate
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -200,13 +200,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Linear color
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -218,13 +218,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Linear determinate
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -236,13 +236,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Linear buffer
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -254,13 +254,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Linear with label
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -272,13 +272,13 @@ function ProgressDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Non-standard ranges
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The progress components accept a value in the range 0 - 100. This simplifies things for screen-reader
@@ -309,20 +309,20 @@ function Progress(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Here are some examples of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -334,13 +334,13 @@ function Progress(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Delaying appearance
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				There are{' '}
@@ -351,7 +351,7 @@ function Progress(props) {
 				user&#39;s flow of thought uninterrupted.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -363,19 +363,19 @@ function Progress(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				High CPU load
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Under heavy load, you might lose the stroke dash animation or see random <code>CircularProgress</code>{' '}
@@ -383,7 +383,7 @@ function Progress(props) {
 				block the main rendering thread.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<img
@@ -392,14 +392,14 @@ function Progress(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				When it&#39;s not possible, you can leverage the <code>disableShrink</code> prop to mitigate the issue.
 				See <a href="https://github.com/mui/material-ui/issues/10327">this issue</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -411,13 +411,13 @@ function Progress(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				High frequency updates
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>LinearProgress</code> uses a transition on the CSS transform property to provide a smooth
@@ -426,7 +426,7 @@ function Progress(props) {
 				between the re-render and the progress bar fully updated.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you need to perform 30 re-renders per second or more, we recommend disabling the transition:
@@ -443,13 +443,13 @@ function Progress(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				IE 11
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The circular progress component animation on IE 11 is degraded. The stroke dash animation is not working

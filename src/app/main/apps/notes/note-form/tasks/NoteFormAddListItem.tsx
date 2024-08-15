@@ -1,5 +1,4 @@
 import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
 import { Controller, useForm } from 'react-hook-form';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
@@ -49,9 +48,18 @@ function NoteFormAddListItem(props: NoteFormAddListItemProps) {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<ListItem
-				className="p-0"
+				className="px-12"
 				dense
 			>
+				<IconButton
+					className="p-0"
+					aria-label="Add"
+					type="submit"
+					disabled={_.isEmpty(dirtyFields) || !isValid}
+					size="small"
+				>
+					<FuseSvgIcon size={16}>heroicons-outline:plus</FuseSvgIcon>
+				</IconButton>
 				<Controller
 					name="content"
 					control={control}
@@ -65,22 +73,10 @@ function NoteFormAddListItem(props: NoteFormAddListItemProps) {
 							variant="standard"
 							autoFocus
 							hiddenLabel
+							size="small"
 							InputProps={{
 								disableUnderline: true,
-								className: 'px-2',
-								startAdornment: (
-									<InputAdornment position="start">
-										<IconButton
-											className="w-32 h-32 p-0 -mx-6"
-											aria-label="Add"
-											type="submit"
-											disabled={_.isEmpty(dirtyFields) || !isValid}
-											size="large"
-										>
-											<FuseSvgIcon size={20}>heroicons-outline:plus</FuseSvgIcon>
-										</IconButton>
-									</InputAdornment>
-								)
+								className: ''
 							}}
 						/>
 					)}

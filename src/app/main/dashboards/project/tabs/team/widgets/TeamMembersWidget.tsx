@@ -47,7 +47,7 @@ function TeamMembersWidget() {
 				<Paper
 					component={motion.div}
 					variants={item}
-					className="flex flex-col flex-auto items-center shadow rounded-2xl overflow-hidden"
+					className="flex flex-col flex-auto items-center shadow rounded-xl overflow-hidden"
 					key={member.id}
 				>
 					<div className="flex flex-col flex-auto w-full p-32 text-center">

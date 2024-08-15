@@ -108,7 +108,7 @@ const CardChecklistName = forwardRef<CardChecklistHandle, CardChecklistNameProps
 		</ClickAwayListener>
 	) : (
 		<Typography
-			className="text-16 font-semibold cursor-pointer mx-8"
+			className="text-15 font-semibold cursor-pointer mx-8"
 			onClick={handleOpenForm}
 		>
 			{name}

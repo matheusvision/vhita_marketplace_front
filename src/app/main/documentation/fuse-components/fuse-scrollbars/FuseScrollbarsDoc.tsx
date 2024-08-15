@@ -49,7 +49,7 @@ function FuseScrollbarsDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Props

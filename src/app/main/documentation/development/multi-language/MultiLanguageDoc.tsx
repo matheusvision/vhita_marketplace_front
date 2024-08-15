@@ -34,7 +34,7 @@ function MultiLanguageDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16 p-16 border-1 bg-yellow-50 rounded-16 text-gray-800"
+				className="mb-16 p-16 border-1 bg-yellow-50 rounded-xl text-gray-800"
 				component="p"
 			>
 				Although most people don't require multi-language capabilities for their apps, we have chosen NOT to
@@ -45,7 +45,7 @@ function MultiLanguageDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -112,7 +112,7 @@ function MultiLanguageDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Default Language
@@ -141,7 +141,7 @@ function MultiLanguageDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Changing Language

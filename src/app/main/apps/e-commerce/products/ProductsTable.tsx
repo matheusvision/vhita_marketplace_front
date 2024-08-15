@@ -31,13 +31,13 @@ function ProductsTable() {
 					<div className="flex items-center justify-center">
 						{row.original?.images?.length > 0 && row.original.featuredImageId ? (
 							<img
-								className="w-full max-h-40 max-w-40 block rounded"
+								className="w-full max-h-36 max-w-36 block rounded"
 								src={_.find(row.original.images, { id: row.original.featuredImageId })?.url}
 								alt={row.original.name}
 							/>
 						) : (
 							<img
-								className="w-full max-h-40 max-w-40 block rounded"
+								className="w-full max-h-36 max-w-36 block rounded"
 								src="assets/images/apps/ecommerce/product-image-placeholder.png"
 								alt={row.original.name}
 							/>
@@ -132,7 +132,7 @@ function ProductsTable() {
 
 	return (
 		<Paper
-			className="flex flex-col flex-auto shadow-3 rounded-t-16 overflow-hidden rounded-b-0 w-full h-full"
+			className="flex flex-col flex-auto shadow-1 rounded-t-lg overflow-hidden rounded-b-0 w-full h-full"
 			elevation={0}
 		>
 			<DataTable
@@ -169,7 +169,7 @@ function ProductsTable() {
 								removeProducts(selectedRows.map((row) => row.original.id));
 								table.resetRowSelection();
 							}}
-							className="flex shrink min-w-40 ltr:mr-8 rtl:ml-8"
+							className="flex shrink min-w-36 ltr:mr-8 rtl:ml-8"
 							color="secondary"
 						>
 							<FuseSvgIcon size={16}>heroicons-outline:trash</FuseSvgIcon>

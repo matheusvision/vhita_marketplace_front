@@ -3,7 +3,8 @@ import './styles/app-base.css';
 import './styles/app-components.css';
 import './styles/app-utilities.css';
 import { createRoot } from 'react-dom/client';
-import App from './app/App';
+import withAppProviders from './app/withAppProviders';
+import MainRouter from './app/MainRouter';
 
 // import * as serviceWorker from './serviceWorker';
 // import reportWebVitals from './reportWebVitals';
@@ -21,6 +22,8 @@ if (!container) {
  * The root component of the application.
  */
 const root = createRoot(container);
+
+const App = withAppProviders(MainRouter);
 
 root.render(<App />);
 

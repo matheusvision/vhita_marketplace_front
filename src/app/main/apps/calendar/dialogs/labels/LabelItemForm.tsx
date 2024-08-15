@@ -146,16 +146,11 @@ function NewLabelForm(props: NewLabelFormProps) {
 								<InputAdornment position="end">
 									<IconButton
 										onClick={handleOnRemove}
-										className="w-32 h-32 p-0"
+										className="p-0"
 										aria-label="Delete"
-										size="large"
+										size="small"
 									>
-										<FuseSvgIcon
-											color="action"
-											size={20}
-										>
-											heroicons-outline:trash
-										</FuseSvgIcon>
+										<FuseSvgIcon color="action">heroicons-outline:trash</FuseSvgIcon>
 									</IconButton>
 								</InputAdornment>
 							)

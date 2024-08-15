@@ -85,7 +85,7 @@ function NewLabelForm(props: LabelFormProps) {
 
 	return (
 		<ListItem
-			className="p-0 mb-16"
+			className="p-0 mb-12"
 			dense
 		>
 			<Controller
@@ -102,23 +102,23 @@ function NewLabelForm(props: LabelFormProps) {
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
-									<FuseSvgIcon color="action">heroicons-outline:tag</FuseSvgIcon>
+									<FuseSvgIcon
+										color="action"
+										size={16}
+									>
+										heroicons-outline:tag
+									</FuseSvgIcon>
 								</InputAdornment>
 							),
 							endAdornment: (
 								<InputAdornment position="end">
 									<IconButton
 										onClick={handleOnRemove}
-										className="w-32 h-32 p-0"
+										className="p-0"
 										aria-label="Delete"
-										size="large"
+										size="small"
 									>
-										<FuseSvgIcon
-											color="action"
-											size={20}
-										>
-											heroicons-outline:trash
-										</FuseSvgIcon>
+										<FuseSvgIcon color="action">heroicons-outline:trash</FuseSvgIcon>
 									</IconButton>
 								</InputAdornment>
 							)

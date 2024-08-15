@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import TablePricingFeatureItem from './TablePricingFeatureItem';
 import TablePricingTable from './TablePricingTable';
 
@@ -52,7 +53,7 @@ function TablePricingPage() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1, transition: { delay: 0.05 } }}
 					>
-						<h2 className="text-xl font-semibold">PRICING</h2>
+						<PageBreadcrumb />
 					</motion.div>
 
 					<motion.div
@@ -89,7 +90,7 @@ function TablePricingPage() {
 							<Box
 								component="button"
 								className={clsx(
-									'h-40 cursor-pointer items-center rounded-full px-16 font-medium',
+									'h-36 cursor-pointer items-center rounded-full px-16 font-medium',
 									period === 'year' && 'shadow'
 								)}
 								onClick={() => setPeriod('year')}
@@ -102,7 +103,7 @@ function TablePricingPage() {
 							<Box
 								component="button"
 								className={clsx(
-									'h-40 cursor-pointer items-center rounded-full px-16 font-medium',
+									'h-36 cursor-pointer items-center rounded-full px-16 font-medium',
 									period === 'month' && 'shadow'
 								)}
 								onClick={() => setPeriod('month')}

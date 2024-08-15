@@ -53,7 +53,7 @@ function SelectsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Select
@@ -63,19 +63,19 @@ function SelectsDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic select
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Menus are positioned under their emitting elements, unless they are close to the bottom of the viewport.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -87,19 +87,19 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Advanced features
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Select component is meant to be interchangeable with a native <code>{`<select>`}</code> element.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you are looking for more advanced features, like combobox, multiselect, autocomplete, async or
@@ -111,13 +111,13 @@ function SelectsDoc(props) {
 				packages.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Props
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Select component is implemented as a custom <code>{`<input>`}</code> element of the{' '}
@@ -129,13 +129,13 @@ function SelectsDoc(props) {
 				respective component&#39;s API page for details.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Filled and standard variants
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -147,13 +147,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Labels and helper text
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -165,7 +165,7 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning Note that when using FormControl with the outlined variant of the Select, you need to provide
@@ -173,13 +173,13 @@ function SelectsDoc(props) {
 				component (see the above demo). :::
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Auto width
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -191,13 +191,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Small Size
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -209,13 +209,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Other props
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -227,20 +227,20 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Native select
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				As the user experience can be improved on mobile using the native select of the platform, we allow such
 				pattern.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -252,13 +252,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				TextField
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>TextField</code> wrapper component is a complete form control including a label, input and
@@ -266,20 +266,20 @@ function SelectsDoc(props) {
 				<a href="/material-ui/react-text-field/#select">in this section</a>.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Here are some examples of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The first step is to style the <code>InputBase</code> component. Once it&#39;s styled, you can either
@@ -288,7 +288,7 @@ function SelectsDoc(props) {
 				since it does not wrap the contents in a <code>fieldset</code>/<code>legend</code> markup.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -300,7 +300,7 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				🎨 If you are looking for inspiration, you can check{' '}
@@ -310,33 +310,33 @@ function SelectsDoc(props) {
 				.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Multiple select
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>Select</code> component can handle multiple selections. It&#39;s enabled with the{' '}
 				<code>multiple</code> prop.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Like with the single selection, you can pull out the new value by accessing{' '}
 				<code>event.target.value</code> in the <code>onChange</code> callback. It&#39;s always an array.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Default
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -348,13 +348,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Checkmarks
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -366,13 +366,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Chip
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -384,13 +384,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Placeholder
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -402,13 +402,13 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Native
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -420,20 +420,20 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Controlling the open state
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You can control the open state of the select with the <code>open</code> prop. Alternatively, it is also
 				possible to set the initial (uncontrolled) open state of the component with the <code>defaultOpen</code>{' '}
 				prop.
 			</Typography>
-			<div className="border-1 p-16 rounded-16 my-12">
+			<div className="border-1 p-16 rounded-xl my-12">
 				<ul className="space-y-16">
 					<li>
 						A component is <strong>controlled</strong> when it&#39;s managed by its parent using props.
@@ -443,7 +443,7 @@ function SelectsDoc(props) {
 					</li>
 				</ul>
 				<Typography
-					className="text-14 mb-32"
+					className="text-13 mb-32"
 					component="div"
 				>
 					Learn more about controlled and uncontrolled components in the{' '}
@@ -455,7 +455,7 @@ function SelectsDoc(props) {
 			</div>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -467,19 +467,19 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				With a dialog
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				While it&#39;s discouraged by the Material Design guidelines, you can use a select inside a dialog.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -491,20 +491,20 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Grouping
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Display categories with the <code>ListSubheader</code> component or the native{' '}
 				<code>{`<optgroup>`}</code> element.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -516,14 +516,14 @@ function SelectsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning If you wish to wrap the ListSubheader in a custom component, you&#39;ll have to annotate it
 				so Material UI can handle it properly when determining focusable elements.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You have two options for solving this: Option 1: Define a static boolean field called{' '}
@@ -557,7 +557,7 @@ return (
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Option 2: Place a <code>muiSkipListHighlight</code> prop on each instance of your component. The prop
@@ -593,26 +593,26 @@ return (
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				We recommend the first option as it doesn&#39;t require updating all the usage sites of the component.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Keep in mind this is <strong>only necessary</strong> if you wrap the ListSubheader in a custom
 				component. If you use the ListSubheader directly, <strong>no additional code is required</strong>. :::
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				To properly label your <code>Select</code> input you need an extra element with an <code>id</code> that
@@ -633,7 +633,7 @@ return (
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Alternatively a <code>TextField</code> with an <code>id</code> and <code>label</code> creates the proper
@@ -652,7 +652,7 @@ return (
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				For a <a href="#native-select">native select</a>, you should mention a label by giving the value of the{' '}

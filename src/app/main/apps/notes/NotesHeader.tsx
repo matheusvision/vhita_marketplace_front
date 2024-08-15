@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import NotesSearch from './NotesSearch';
 import { selectVariateDescSize, toggleVariateDescSize } from './notesAppSlice';
 
@@ -22,7 +23,7 @@ function NotesHeader(props: NotesHeaderProps) {
 	const variateDescSize = useAppSelector(selectVariateDescSize);
 
 	return (
-		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between p-8 sm:p-24 sm:px-32 relative">
+		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between py-8 sm:py-24 relative">
 			<div className="flex shrink items-center sm:w-224 w-full">
 				<Hidden lgUp>
 					<IconButton
@@ -30,7 +31,7 @@ function NotesHeader(props: NotesHeaderProps) {
 						aria-label="open left sidebar"
 						size="large"
 					>
-						<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 					</IconButton>
 				</Hidden>
 
@@ -39,21 +40,22 @@ function NotesHeader(props: NotesHeaderProps) {
 						initial={{ x: -20 }}
 						animate={{ x: 0, transition: { delay: 0.2 } }}
 					>
-						<Typography className="text-24 md:text-32 font-extrabold tracking-tight leading-none">
-							Notes
-						</Typography>
+						<div>
+							<PageBreadcrumb />
+
+							<Typography className="text-20 md:text-24 font-extrabold tracking-tight leading-none">
+								Notes
+							</Typography>
+						</div>
 					</motion.span>
 				</div>
 			</div>
 
 			<div className="flex flex-1 w-full sm:w-auto items-center justify-end space-x-12">
 				<Tooltip title="Toggle Variate Description Size">
-					<IconButton
-						onClick={() => dispatch(toggleVariateDescSize())}
-						size="large"
-					>
+					<IconButton onClick={() => dispatch(toggleVariateDescSize())}>
 						<FuseSvgIcon color={variateDescSize ? 'action' : 'disabled'}>
-							heroicons-solid:switch-vertical
+							heroicons-solid:arrows-up-down
 						</FuseSvgIcon>
 					</IconButton>
 				</Tooltip>

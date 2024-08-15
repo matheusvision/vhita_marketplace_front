@@ -1,6 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import FuseLoading from '@fuse/core/FuseLoading';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import BoardItem from './BoardItem';
 import NewBoardItem from './NewBoardItem';
 import { useGetScrumboardBoardsQuery } from '../ScrumboardApi';
@@ -34,9 +35,12 @@ function Boards() {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1, transition: { delay: 0.1 } }}
 			>
-				<Typography className="mt-16 md:mt-96 text-3xl md:text-6xl font-extrabold tracking-tight leading-7 sm:leading-10 text-center">
-					Scrumboard Boards
-				</Typography>
+				<div className="flex flex-col mt-16 md:mt-96">
+					<PageBreadcrumb className="justify-center" />
+					<Typography className="text-3xl md:text-6xl font-extrabold tracking-tight leading-7 sm:leading-10 text-center">
+						Scrumboard Boards
+					</Typography>
+				</div>
 			</motion.div>
 
 			<motion.div

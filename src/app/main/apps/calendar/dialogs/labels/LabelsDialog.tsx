@@ -43,7 +43,7 @@ function LabelsDialog() {
 				onClose={handleCloseDialog}
 				open={openDialog}
 			>
-				<Typography className="text-20 mb-24 font-semibold">Edit Labels</Typography>
+				<Typography className="text-18 mb-16 font-semibold">Edit Labels</Typography>
 
 				<List dense>
 					<NewLabelForm />

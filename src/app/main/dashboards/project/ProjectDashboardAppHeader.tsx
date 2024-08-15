@@ -6,10 +6,10 @@ import { useState } from 'react';
 import _ from '@lodash';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import FuseLoading from '@fuse/core/FuseLoading';
 import { darken } from '@mui/material/styles';
 import { selectUser } from 'src/app/auth/user/store/userSlice';
 import { useAppSelector } from 'app/store/hooks';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 
 /**
@@ -46,26 +46,23 @@ function ProjectDashboardAppHeader() {
 		});
 	}
 
-	if (isLoading) {
-		return <FuseLoading />;
-	}
-
 	return (
 		<div className="flex flex-col w-full px-24 sm:px-32">
 			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-32 sm:my-48">
-				<div className="flex flex-auto items-center min-w-0">
+				<div className="flex flex-auto items-start min-w-0">
 					<Avatar
 						sx={{
 							background: (theme) => darken(theme.palette.background.default, 0.05),
 							color: (theme) => theme.palette.text.secondary
 						}}
-						className="flex-0 w-64 h-64"
+						className="flex-0 w-64 h-64 mt-4"
 						alt="user photo"
 						src={user?.data?.photoURL}
 					>
 						{user?.data?.displayName?.[0]}
 					</Avatar>
 					<div className="flex flex-col min-w-0 mx-16">
+						<PageBreadcrumb />
 						<Typography className="text-2xl md:text-5xl font-semibold tracking-tight leading-7 md:leading-snug truncate">
 							{`Welcome back, ${user.data.displayName}!`}
 						</Typography>
@@ -86,7 +83,7 @@ function ProjectDashboardAppHeader() {
 						</div>
 					</div>
 				</div>
-				<div className="flex items-center mt-24 sm:mt-0 sm:mx-8 space-x-12">
+				<div className="flex items-center mt-24 sm:mt-0 sm:mx-8 space-x-8">
 					<Button
 						className="whitespace-nowrap"
 						variant="contained"
@@ -108,14 +105,14 @@ function ProjectDashboardAppHeader() {
 			<div className="flex items-center">
 				<Button
 					onClick={handleOpenProjectMenu}
-					className="flex items-center border border-solid border-b-0 rounded-t-xl rounded-b-0 h-40 px-16 text-13 sm:text-16"
+					className="flex items-center border border-solid border-b-0 rounded-b-0 h-36 px-16 text-12 sm:text-13"
 					sx={{
-						backgroundColor: (theme) => theme.palette.background.default,
+						backgroundColor: (theme) => `${theme.palette.background.default}!important`,
 						borderColor: (theme) => theme.palette.divider
 					}}
 					endIcon={
 						<FuseSvgIcon
-							size={20}
+							size={16}
 							color="action"
 						>
 							heroicons-solid:chevron-down

@@ -3,7 +3,6 @@ import { matchRoutes } from 'react-router-dom';
 import FuseUtils from '@fuse/utils';
 import AppContext, { AppContextType } from 'app/AppContext';
 import withRouter from '@fuse/core/withRouter';
-import history from '@history';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import {
@@ -11,7 +10,7 @@ import {
 	resetSessionRedirectUrl,
 	setSessionRedirectUrl
 } from '@fuse/core/FuseAuthorization/sessionRedirectUrl';
-import FuseLoading from '@fuse/core/FuseLoading';
+import FuseLoading from '../FuseLoading';
 
 type FuseAuthorizationProps = {
 	children: ReactNode;
@@ -67,10 +66,10 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 	}
 
 	static getDerivedStateFromProps(props: FuseAuthorizationProps, state: State) {
-		const { location, userRole } = props;
+		const { location, navigate, userRole } = props;
 		const { pathname } = location;
 		const matchedRoutes = matchRoutes(state.routes, pathname);
-		const matched = matchedRoutes ? matchedRoutes[0] : false;
+		const matched = matchedRoutes?.[matchedRoutes.length - 1] || false;
 
 		const isGuest = isUserGuest(userRole);
 
@@ -102,7 +101,7 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 	}
 
 	redirectRoute() {
-		const { userRole, loginRedirectUrl = '/' } = this.props;
+		const { userRole, navigate, loginRedirectUrl = '/' } = this.props;
 		const redirectUrl = getSessionRedirectUrl() || loginRedirectUrl;
 
 		/*
@@ -110,14 +109,14 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 		Redirect to Login Page
 		*/
 		if (isUserGuest(userRole)) {
-			setTimeout(() => history.push('/sign-in'), 0);
+			setTimeout(() => navigate('/sign-in'), 0);
 		} else {
 			/*
 		  User is member
 		  User must be on unAuthorized page or just logged in
 		  Redirect to dashboard or loginRedirectUrl
 			*/
-			setTimeout(() => history.push(redirectUrl), 0);
+			setTimeout(() => navigate(redirectUrl), 0);
 			resetSessionRedirectUrl();
 		}
 	}

@@ -206,14 +206,14 @@ function NoteForm(props: NoteFormProps) {
 						}}
 					/>
 
-					<div className="px-20 my-16">
+					<div className="px-4 my-6">
 						<Controller
 							name="title"
 							control={control}
 							render={({ field }) => (
 								<Input
 									{...field}
-									className="font-semibold text-14"
+									className="font-semibold text-13"
 									placeholder="Title"
 									type="text"
 									disableUnderline
@@ -222,7 +222,7 @@ function NoteForm(props: NoteFormProps) {
 							)}
 						/>
 					</div>
-					<div className="px-20 my-16">
+					<div className="px-4 my-6">
 						<Controller
 							name="content"
 							control={control}
@@ -249,7 +249,7 @@ function NoteForm(props: NoteFormProps) {
 							}
 
 							return (
-								<div className="px-16">
+								<div className="px-4">
 									<NoteFormList
 										tasks={value || []}
 										onCheckListChange={(val) => onChange(val)}
@@ -260,7 +260,7 @@ function NoteForm(props: NoteFormProps) {
 					/>
 
 					{(watchedNoteForm.labels || watchedNoteForm.reminder || watchedNoteForm.createdAt) && (
-						<div className="flex flex-wrap w-full px-20 my-16 -mx-4">
+						<div className="flex flex-wrap w-full px-16 mb-12 -mx-4">
 							{watchedNoteForm.reminder && (
 								<NoteReminderLabel
 									className="mt-4 mx-4"
@@ -309,24 +309,17 @@ function NoteForm(props: NoteFormProps) {
 			</FuseScrollbars>
 
 			<div className="flex flex-auto justify-between items-center px-16 pb-12">
-				<div className="flex items-center">
-					<Tooltip
-						title="Remind me"
-						placement="bottom"
-					>
-						<div>
-							<Controller
-								name="reminder"
-								control={control}
-								render={({ field: { onChange, value } }) => (
-									<NoteFormReminder
-										reminder={value}
-										onChange={onChange}
-									/>
-								)}
+				<div className="flex items-center  space-x-4">
+					<Controller
+						name="reminder"
+						control={control}
+						render={({ field: { onChange, value } }) => (
+							<NoteFormReminder
+								reminder={value}
+								onChange={onChange}
 							/>
-						</div>
-					</Tooltip>
+						)}
+					/>
 
 					<Tooltip
 						title="Add image"
@@ -346,11 +339,11 @@ function NoteForm(props: NoteFormProps) {
 						placement="bottom"
 					>
 						<IconButton
-							className="w-32 h-32 mx-4 p-0"
+							className="p-0"
 							onClick={() => setShowList(!showList)}
-							size="large"
+							size="small"
 						>
-							<FuseSvgIcon size={20}>heroicons-outline:pencil-square</FuseSvgIcon>
+							<FuseSvgIcon>heroicons-outline:pencil-square</FuseSvgIcon>
 						</IconButton>
 					</Tooltip>
 
@@ -375,33 +368,30 @@ function NoteForm(props: NoteFormProps) {
 								title={value ? 'Unarchive' : 'Archive'}
 								placement="bottom"
 							>
-								<div>
-									<IconButton
-										className="w-32 h-32 mx-4 p-0"
-										// disabled={newFormButtonDisabled()}
-										onClick={() => {
-											onChange(!value);
+								<IconButton
+									// disabled={newFormButtonDisabled()}
+									onClick={() => {
+										onChange(!value);
 
-											if (variant === 'new') {
-												setTimeout(() => handleNewNote(getValues()));
-											}
-										}}
-										size="large"
-									>
-										<FuseSvgIcon size={20}>
-											{value ? 'heroicons-solid:archive-box' : 'heroicons-outline:archive-box'}
-										</FuseSvgIcon>
-									</IconButton>
-								</div>
+										if (variant === 'new') {
+											setTimeout(() => handleNewNote(getValues()));
+										}
+									}}
+									size="small"
+								>
+									<FuseSvgIcon>
+										{value ? 'heroicons-solid:archive-box' : 'heroicons-outline:archive-box'}
+									</FuseSvgIcon>
+								</IconButton>
 							</Tooltip>
 						)}
 					/>
 				</div>
 
-				<div className="flex items-center">
+				<div className="flex items-center space-x-4">
 					{variant === 'new' ? (
 						<Button
-							className="m-4 p-8"
+							className=""
 							type="submit"
 							variant="contained"
 							color="secondary"
@@ -418,15 +408,15 @@ function NoteForm(props: NoteFormProps) {
 								placement="bottom"
 							>
 								<IconButton
-									className="w-32 h-32 mx-4 p-0"
+									className="p-0"
 									onClick={handleOnRemove}
-									size="large"
+									size="small"
 								>
-									<FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>
+									<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 								</IconButton>
 							</Tooltip>
 							<Button
-								className="m-4"
+								className=""
 								onClick={onClose}
 								variant="text"
 							>

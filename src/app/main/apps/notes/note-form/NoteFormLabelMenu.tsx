@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import Popover from '@mui/material/Popover';
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, forwardRef } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import { NotesNote, useGetNotesLabelsQuery } from '../NotesApi';
@@ -14,14 +14,11 @@ type NoteFormLabelMenuProps = {
 	onChange: (T: NotesNote['labels']) => void;
 };
 
-/**
- * The note form label menu.
- */
-function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
+const NoteFormLabelMenu = forwardRef<HTMLDivElement, NoteFormLabelMenuProps>((props, ref) => {
 	const { note, onChange } = props;
 	const { data: labels } = useGetNotesLabelsQuery();
 
-	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
 	function handleMenuClick(event: MouseEvent<HTMLElement>) {
 		event.stopPropagation();
@@ -37,11 +34,12 @@ function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
 	}
 
 	return (
-		<div>
+		<div ref={ref}>
 			<IconButton
-				className="w-32 h-32 mx-4 p-0"
+				className=""
 				onClick={handleMenuClick}
-				size="large"
+				size="small"
+				component="div"
 			>
 				<FuseSvgIcon size={20}>heroicons-outline:tag</FuseSvgIcon>
 			</IconButton>
@@ -92,6 +90,6 @@ function NoteFormLabelMenu(props: NoteFormLabelMenuProps) {
 			</Popover>
 		</div>
 	);
-}
+});
 
 export default NoteFormLabelMenu;

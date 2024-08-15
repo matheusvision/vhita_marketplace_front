@@ -45,10 +45,7 @@ function DetailSidebarContent(props: DetailSidebarContentProps) {
 			className="file-details p-24 sm:p-32"
 		>
 			<div className="flex items-center justify-end w-full">
-				<IconButton
-					size="large"
-					onClick={() => dispatch(resetSelectedItemId())}
-				>
+				<IconButton onClick={() => dispatch(resetSelectedItemId())}>
 					<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 				</IconButton>
 			</div>
@@ -70,9 +67,9 @@ function DetailSidebarContent(props: DetailSidebarContentProps) {
 				</motion.div>
 			</Box>
 
-			<Typography className="text-18 font-medium">{item.name}</Typography>
+			<Typography className="text-17 font-medium">{item.name}</Typography>
 
-			<div className="text-16 font-medium mt-32">Information</div>
+			<div className="text-15 font-medium mt-32">Information</div>
 			<div className="flex flex-col mt-16 border-t border-b divide-y font-medium">
 				<div className="flex items-center justify-between py-12">
 					<Typography color="text.secondary">Created By</Typography>
@@ -100,7 +97,7 @@ function DetailSidebarContent(props: DetailSidebarContentProps) {
 
 			{item.description && (
 				<>
-					<div className="text-16 font-medium mt-32 pb-16 border-b">Description</div>
+					<div className="text-15 font-medium mt-32 pb-16 border-b">Description</div>
 					<Typography className="py-12">{item.description}</Typography>
 				</>
 			)}

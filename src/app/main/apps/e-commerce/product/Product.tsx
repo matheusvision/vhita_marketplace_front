@@ -1,8 +1,6 @@
 import FuseLoading from '@fuse/core/FuseLoading';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import Button from '@mui/material/Button';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { SyntheticEvent, useEffect, useState } from 'react';
@@ -13,6 +11,8 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import * as React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import FuseTabs from 'app/shared-components/tabs/FuseTabs';
+import FuseTab from 'app/shared-components/tabs/FuseTab';
 import ProductHeader from './ProductHeader';
 import BasicInfoTab from './tabs/BasicInfoTab';
 import InventoryTab from './tabs/InventoryTab';
@@ -47,7 +47,7 @@ function Product() {
 		skip: !productId || productId === 'new'
 	});
 
-	const [tabValue, setTabValue] = useState(0);
+	const [tabValue, setTabValue] = useState('basic-info');
 
 	const methods = useForm({
 		mode: 'onChange',
@@ -74,7 +74,7 @@ function Product() {
 	/**
 	 * Tab Change
 	 */
-	function handleTabChange(event: SyntheticEvent, value: number) {
+	function handleTabChange(event: SyntheticEvent, value: string) {
 		setTabValue(value);
 	}
 
@@ -123,59 +123,54 @@ function Product() {
 			<FusePageCarded
 				header={<ProductHeader />}
 				content={
-					<>
-						<Tabs
+					<div className="p-16 sm:p-24 max-w-3xl space-y-24">
+						<FuseTabs
 							value={tabValue}
 							onChange={handleTabChange}
-							indicatorColor="secondary"
-							textColor="secondary"
-							variant="scrollable"
-							scrollButtons="auto"
-							classes={{ root: 'w-full h-64 border-b-1' }}
 						>
-							<Tab
-								className="h-64"
+							<FuseTab
+								value="basic-info"
 								label="Basic Info"
 							/>
-							<Tab
-								className="h-64"
+							<FuseTab
+								value="product-images"
 								label="Product Images"
 							/>
-							<Tab
-								className="h-64"
+							<FuseTab
+								value="pricing"
 								label="Pricing"
 							/>
-							<Tab
-								className="h-64"
+							<FuseTab
+								value="inventory"
 								label="Inventory"
 							/>
-							<Tab
-								className="h-64"
+							<FuseTab
+								value="shipping"
 								label="Shipping"
 							/>
-						</Tabs>
-						<div className="p-16 sm:p-24 max-w-3xl">
-							<div className={tabValue !== 0 ? 'hidden' : ''}>
+						</FuseTabs>
+						<div className="">
+							<div className={tabValue !== 'basic-info' ? 'hidden' : ''}>
 								<BasicInfoTab />
 							</div>
 
-							<div className={tabValue !== 1 ? 'hidden' : ''}>
+							<div className={tabValue !== 'product-images' ? 'hidden' : ''}>
 								<ProductImagesTab />
 							</div>
 
-							<div className={tabValue !== 2 ? 'hidden' : ''}>
+							<div className={tabValue !== 'pricing' ? 'hidden' : ''}>
 								<PricingTab />
 							</div>
 
-							<div className={tabValue !== 3 ? 'hidden' : ''}>
+							<div className={tabValue !== 'inventory' ? 'hidden' : ''}>
 								<InventoryTab />
 							</div>
 
-							<div className={tabValue !== 4 ? 'hidden' : ''}>
+							<div className={tabValue !== 'shipping' ? 'hidden' : ''}>
 								<ShippingTab />
 							</div>
 						</div>
-					</>
+					</div>
 				}
 				scroll={isMobile ? 'normal' : 'content'}
 			/>

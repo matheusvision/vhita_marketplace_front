@@ -53,9 +53,9 @@ function MailDetails() {
 				sx={{ backgroundColor: 'background.default' }}
 				className="flex flex-col flex-auto shrink-0 lg:shrink p-12 lg:overflow-y-auto"
 			>
-				<Paper className="flex flex-col flex-0 w-full shadow rounded-2xl overflow-hidden">
+				<Paper className="flex flex-col flex-0 w-full shadow rounded-xl overflow-hidden">
 					<div className="flex flex-col py-32 px-24">
-						<div className="flex items-center w-full">
+						<div className="flex items-start w-full">
 							<Avatar src={mail.from.avatar} />
 
 							<div className="ml-16 min-w-0">
@@ -63,7 +63,7 @@ function MailDetails() {
 									{mail.from.contact.split('<')[0].trim()}
 								</Typography>
 
-								<div className="flex items-center mt-8 leading-5">
+								<div className="flex items-center mt-2 leading-5">
 									<div>to</div>
 									<div className="mx-4 font-semibold">me</div>
 									{(mail.cc?.length ?? 0) + (mail.bcc?.length ?? 0) > 0 && (
@@ -112,29 +112,32 @@ function MailDetails() {
 						className="flex w-full p-24 border-t"
 						sx={{ backgroundColor: 'background.default' }}
 					>
-						<div className="flex flex-wrap w-full -m-8">
+						<div className="flex flex-wrap w-full -m-4">
 							<Button
-								className="m-8"
+								className="m-4"
 								color="secondary"
-								startIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-uturn-left</FuseSvgIcon>}
+								startIcon={<FuseSvgIcon size={18}>heroicons-solid:arrow-uturn-left</FuseSvgIcon>}
 								variant="outlined"
+								size="small"
 							>
 								Reply
 							</Button>
 							<Button
-								className="m-8"
+								className="m-4"
 								color="secondary"
-								startIcon={<FuseSvgIcon size={20}>heroicons-solid:arrow-uturn-left</FuseSvgIcon>}
+								startIcon={<FuseSvgIcon size={18}>heroicons-solid:arrow-uturn-left</FuseSvgIcon>}
 								variant="outlined"
+								size="small"
 							>
 								Reply All
 							</Button>
 
 							<Button
-								className="m-8"
+								className="m-4"
 								color="secondary"
-								startIcon={<FuseSvgIcon size={20}>heroicons-solid:chevron-double-right</FuseSvgIcon>}
+								startIcon={<FuseSvgIcon size={18}>heroicons-solid:chevron-double-right</FuseSvgIcon>}
 								variant="outlined"
+								size="small"
 							>
 								Forward
 							</Button>

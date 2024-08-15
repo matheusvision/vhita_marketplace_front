@@ -54,7 +54,7 @@ function ReactApexchartsDoc() {
 			<hr />
 
 			<Typography
-				className="text-32 mt-32 mb-8"
+				className="text-28 mt-32 mb-8"
 				component="h2"
 			>
 				Example Usages
@@ -97,7 +97,7 @@ function ReactApexchartsDoc() {
 			/>
 
 			<Typography
-				className="text-32 mt-32 mb-8"
+				className="text-28 mt-32 mb-8"
 				component="h2"
 			>
 				Demos

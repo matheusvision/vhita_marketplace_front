@@ -33,7 +33,7 @@ const navigationData: FuseNavItemType[] = [
 				id: '1.4',
 				title: 'Create user',
 				type: 'item',
-				icon: 'heroicons-outline:user-add'
+				icon: 'heroicons-outline:user-plus'
 			},
 			{
 				id: '1.5',

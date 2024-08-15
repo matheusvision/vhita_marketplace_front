@@ -23,9 +23,9 @@ const Root = styled(List)<ListComponentProps>(({ theme, ...props }) => ({
 	padding: 0,
 	'&.open': {},
 	'& > .fuse-list-item': {
-		minHeight: 44,
+		minHeight: 36,
 		width: '100%',
-		borderRadius: '6px',
+		borderRadius: '8px',
 		margin: '0 0 4px 0',
 		paddingRight: 16,
 		paddingLeft: props.itempadding > 80 ? 80 : props.itempadding,
@@ -111,7 +111,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 						primary={item.title}
 						secondary={item.subtitle}
 						classes={{
-							primary: 'text-13 font-medium fuse-list-item-text-primary truncate',
+							primary: 'text-12 font-medium fuse-list-item-text-primary truncate',
 							secondary: 'text-11 font-medium fuse-list-item-text-secondary leading-normal truncate'
 						}}
 					/>

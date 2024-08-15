@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -23,21 +24,10 @@ function TypographyUI() {
 			header={
 				<div className="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-24 sm:py-32 sm:px-40">
 					<div className="flex-1 min-w-0">
-						<div className="flex flex-wrap items-center font-medium">
-							<div>
-								<Typography
-									className="whitespace-nowrap"
-									color="secondary.main"
-								>
-									User Interface
-								</Typography>
-							</div>
-						</div>
-						<div className="mt-8">
-							<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-								Typography
-							</Typography>
-						</div>
+						<PageBreadcrumb />
+						<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+							Typography
+						</Typography>
 					</div>
 					<div>
 						<Button

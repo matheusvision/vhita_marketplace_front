@@ -43,12 +43,11 @@ function ContactSidebar() {
 					<IconButton
 						onClick={() => setContactSidebarOpen(false)}
 						color="inherit"
-						size="large"
 					>
 						<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 					</IconButton>
 					<Typography
-						className="px-4 font-medium text-16"
+						className="px-4 font-medium text-15"
 						color="inherit"
 						variant="subtitle1"
 					>
@@ -62,11 +61,11 @@ function ContactSidebar() {
 					className="w-160 h-160 text-64"
 					user={contact}
 				/>
-				<Typography className="mt-16 text-16 font-medium">{contact.name}</Typography>
+				<Typography className="mt-16 text-15 font-medium">{contact.name}</Typography>
 
 				<Typography
 					color="text.secondary"
-					className="mt-2 text-13"
+					className="mt-2 text-12"
 				>
 					{contact.about}
 				</Typography>
@@ -74,7 +73,7 @@ function ContactSidebar() {
 			<div className="w-full p-24">
 				{contact.attachments?.media && (
 					<>
-						<Typography className="mt-16 text-16 font-medium">Media</Typography>
+						<Typography className="mt-16 text-15 font-medium">Media</Typography>
 						<div className="grid grid-cols-4 gap-4 mt-16">
 							{contact.attachments?.media.map((url, index) => (
 								<img
@@ -88,11 +87,11 @@ function ContactSidebar() {
 					</>
 				)}
 
-				<Typography className="mt-40 text-16 font-medium">Details</Typography>
+				<Typography className="mt-40 text-15 font-medium">Details</Typography>
 
 				<div className="mt-16">
 					<Typography
-						className="text-14 font-medium"
+						className="text-13 font-medium"
 						color="text.secondary"
 					>
 						Emails
@@ -119,7 +118,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-14 font-medium"
+						className="text-13 font-medium"
 						color="text.secondary"
 					>
 						Phone numbers
@@ -146,7 +145,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-14 font-medium"
+						className="text-13 font-medium"
 						color="text.secondary"
 					>
 						Title
@@ -157,7 +156,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-14 font-medium"
+						className="text-13 font-medium"
 						color="text.secondary"
 					>
 						Company
@@ -168,7 +167,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-14 font-medium"
+						className="text-13 font-medium"
 						color="text.secondary"
 					>
 						Birthday
@@ -179,7 +178,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-14 font-medium"
+						className="text-13 font-medium"
 						color="text.secondary"
 					>
 						Address

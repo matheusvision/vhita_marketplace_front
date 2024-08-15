@@ -3,9 +3,8 @@ import { styled } from '@mui/material/styles';
 import FuseMessage from '@fuse/core/FuseMessage';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import clsx from 'clsx';
-import { memo, ReactNode, Suspense, useContext } from 'react';
-import { useRoutes } from 'react-router-dom';
-import AppContext from 'app/AppContext';
+import { memo, ReactNode, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import Configurator from 'app/theme-layouts/shared-components/configurator/Configurator';
 import { useAppSelector } from 'app/store/hooks';
@@ -44,10 +43,6 @@ function Layout3(props: Layout3Props) {
 
 	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout3ConfigDefaultsType;
 
-	const appContext = useContext(AppContext);
-
-	const { routes } = appContext;
-
 	return (
 		<Root
 			id="fuse-layout"
@@ -81,8 +76,9 @@ function Layout3(props: Layout3Props) {
 					</div>
 
 					<div className="relative z-10 flex min-h-0 flex-auto flex-col">
-						<FuseSuspense>{useRoutes(routes)}</FuseSuspense>
-
+						<FuseSuspense>
+							<Outlet />
+						</FuseSuspense>
 						<Suspense>
 							<FuseDialog />
 						</Suspense>

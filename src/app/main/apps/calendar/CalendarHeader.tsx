@@ -41,7 +41,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 						aria-label="open left sidebar"
 						size="small"
 					>
-						<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
+						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 					</IconButton>
 
 					<Typography className="hidden sm:flex text-2xl font-semibold tracking-tight whitespace-nowrap mx-16">
@@ -84,7 +84,6 @@ function CalendarHeader(props: CalendarHeaderProps) {
 								<IconButton
 									aria-label="today"
 									onClick={() => calendarApi().today()}
-									size="large"
 								>
 									<FuseSvgIcon>heroicons-outline:calendar</FuseSvgIcon>
 								</IconButton>

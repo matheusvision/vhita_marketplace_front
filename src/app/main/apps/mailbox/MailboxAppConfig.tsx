@@ -31,7 +31,6 @@ const MailboxAppConfig = {
 				{
 					path: ':folderHandle',
 					element: <MailboxApp />,
-
 					children: [
 						{ path: '', element: <SelectMailMessage /> },
 						{ path: ':mailId', element: <MailDetails /> }

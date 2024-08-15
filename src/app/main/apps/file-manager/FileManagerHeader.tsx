@@ -5,6 +5,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { FileManagerItem, FileManagerPath } from './FileManagerApi';
 
 type FileManagerHeaderProps = {
@@ -20,8 +21,10 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 	const { path, folders, files } = props;
 
 	return (
-		<div className="p-24 sm:p-32 w-full flex  space-y-8 sm:space-y-0 items-center justify-between">
+		<div className="py-24 sm:py-32 w-full flex  space-y-8 sm:space-y-0 items-center justify-between">
 			<div className="flex flex-col space-y-8 sm:space-y-0">
+				<PageBreadcrumb />
+
 				<motion.span
 					className="flex items-end"
 					initial={{ x: -20 }}
@@ -30,11 +33,12 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 					<Typography
 						component={Link}
 						to="/apps/file-manager"
-						className="text-20 md:text-32 font-extrabold tracking-tight leading-none"
+						className="text-18 md:text-28 font-extrabold tracking-tight leading-none"
 						role="button"
 					>
 						File Manager
 					</Typography>
+
 					{path && path?.length > 0 && (
 						<Breadcrumbs
 							aria-label="breadcrumb"
@@ -63,7 +67,7 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 					animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 				>
 					<Typography
-						className="text-14 font-medium mx-2"
+						className="text-13 font-medium mx-2"
 						color="text.secondary"
 					>
 						{`${folders.length} folders, ${files.length} files`}
@@ -71,9 +75,9 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 				</motion.span>
 			</div>
 
-			<div className="flex items-center -mx-8">
+			<div className="flex items-center">
 				<Button
-					className="mx-8 whitespace-nowrap"
+					className="whitespace-nowrap"
 					variant="contained"
 					color="secondary"
 				>

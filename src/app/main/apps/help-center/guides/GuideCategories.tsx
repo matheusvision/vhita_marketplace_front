@@ -1,9 +1,8 @@
-import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import _ from '@lodash';
 import { useMemo } from 'react';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import GuideListMenu from './GuideListMenu';
 import { useGetHelpCenterGuidesQuery, useGetHelpCenterGuideCategoriesQuery } from '../HelpCenterApi';
 
@@ -30,13 +29,7 @@ function GuideCategories() {
 		<div className="flex flex-col items-center p-24 sm:p-40 container">
 			<div className="flex flex-col w-full max-w-4xl">
 				<div className="sm:mt-32">
-					<Button
-						onClick={handleGoBack}
-						color="secondary"
-						startIcon={<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>}
-					>
-						Back to Help Center
-					</Button>
+					<PageBreadcrumb />
 				</div>
 				<div className="mt-8 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight">
 					Guides & Resources

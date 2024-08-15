@@ -39,7 +39,7 @@ function FileManagerList(props: FileManagerListProps) {
 		<div className="p-32">
 			{folders?.length > 0 && (
 				<Box
-					className="p-16 w-full rounded-16 mb-24 border"
+					className="p-16 w-full rounded-xl mb-24 border"
 					sx={{
 						backgroundColor: (theme) =>
 							theme.palette.mode === 'light'
@@ -62,7 +62,7 @@ function FileManagerList(props: FileManagerListProps) {
 
 			{files.length > 0 && (
 				<Box
-					className="p-16 w-full rounded-16 mb-24 border"
+					className="p-16 w-full rounded-xl mb-24 border"
 					sx={{
 						backgroundColor: (theme) =>
 							theme.palette.mode === 'light'

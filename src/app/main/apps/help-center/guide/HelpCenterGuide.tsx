@@ -1,10 +1,10 @@
-import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
 import { useMemo } from 'react';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { useGetHelpCenterGuideByCategoryQuery, useGetHelpCenterGuideCategoriesQuery } from '../HelpCenterApi';
 import _ from '../../../../../@lodash/@lodash';
 
@@ -36,13 +36,15 @@ function HelpCenterGuide() {
 		<div className="flex flex-col items-center p-24 sm:p-40 container">
 			<div className="flex flex-col w-full max-w-4xl">
 				<div className="sm:mt-32">
-					<Button
+					<PageBreadcrumb />
+
+					{/* 	<Button
 						onClick={handleGoBack}
 						color="secondary"
 						startIcon={<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>}
 					>
 						{`Back to ${category?.title}`}
-					</Button>
+					</Button> */}
 				</div>
 
 				<Typography className="mt-8 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight">
@@ -85,7 +87,7 @@ function HelpCenterGuide() {
 					</div>
 				</div>
 
-				<Card className="mt-32 flex items-center justify-between p-24 sm:px-40 rounded-2xl shadow hover:shadow-lg transition-shadow ease-in-out duration-150">
+				<Card className="mt-32 flex items-center justify-between p-24 sm:px-40 rounded-xl shadow hover:shadow-lg transition-shadow ease-in-out duration-150">
 					<div>
 						<Typography color="text.secondary">Next</Typography>
 						<Typography className="text-lg font-semibold">Removing a media from a project</Typography>

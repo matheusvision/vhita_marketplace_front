@@ -61,7 +61,7 @@ function ModernReversedSignUpPage() {
 
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center md:p-32">
-			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-2xl sm:shadow md:w-full md:max-w-6xl">
+			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-xl sm:shadow md:w-full md:max-w-6xl">
 				<Box
 					className="relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex lg:px-112"
 					sx={{ backgroundColor: 'primary.main' }}
@@ -262,12 +262,9 @@ function ModernReversedSignUpPage() {
 								name="acceptTermsConditions"
 								control={control}
 								render={({ field }) => (
-									<FormControl
-										className="items-center"
-										error={!!errors.acceptTermsConditions}
-									>
+									<FormControl error={!!errors.acceptTermsConditions}>
 										<FormControlLabel
-											label="I agree to the Terms of Service and Privacy Policy"
+											label="I agree with Terms and Privacy Policy"
 											control={
 												<Checkbox
 													size="small"

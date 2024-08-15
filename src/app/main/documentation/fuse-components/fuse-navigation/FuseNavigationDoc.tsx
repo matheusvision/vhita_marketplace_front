@@ -37,7 +37,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				[navigation]
@@ -53,7 +53,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				[layout]
@@ -67,7 +67,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				[active]
@@ -82,7 +82,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				[dense]
@@ -96,7 +96,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				[checkPermission]
@@ -110,7 +110,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -137,7 +137,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Group
@@ -167,7 +167,7 @@ function FuseNavigationDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Collapse
@@ -196,7 +196,7 @@ function FuseNavigationDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Item
@@ -216,13 +216,13 @@ function FuseNavigationDoc() {
         `}
 			</FuseHighlight>
 			<Typography
-				className="text-20 mt-24 mb-8 font-medium"
+				className="text-18 mt-24 mb-8 font-medium"
 				component="h2"
 			>
 				end: bool
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				When true, the active class/style will only be applied if the location is exactly matched.
@@ -243,7 +243,7 @@ function FuseNavigationDoc() {
                                 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Link
@@ -264,7 +264,7 @@ function FuseNavigationDoc() {
          `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Divider
@@ -300,21 +300,21 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				setNavigation
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				Use <code>setNavigation(navigation{'<Array>'})</code> action to set/change whole navigation.
 			</Typography>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, whole navigation is changed.
@@ -431,21 +431,21 @@ function FuseNavigationDoc() {
 			</div>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				resetNavigation
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				Use <code>resetNavigation()</code> action to reset navigation to initial state.
 			</Typography>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, navigation is returned to config defaults.
@@ -480,13 +480,13 @@ function FuseNavigationDoc() {
 			</div>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				updateNavigationItem
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				Use
@@ -496,9 +496,9 @@ function FuseNavigationDoc() {
 				action to update a navigation item.
 			</Typography>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With clicking the button below, a badge will be added into the 'Project' dashboard navigation item.
@@ -546,21 +546,21 @@ function FuseNavigationDoc() {
 			</div>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				removeNavigationItem
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				Use <code>removeNavigationItem(id)</code> action to remove a navigation item.
 			</Typography>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, "Calendar" navigation item is removed.
@@ -595,13 +595,13 @@ function FuseNavigationDoc() {
 			</div>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				prependNavigationItem
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				Use
@@ -611,9 +611,9 @@ function FuseNavigationDoc() {
 				action to prepend a navigation item into the navigation array.
 			</Typography>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, "fusetheme.com" navigation item is added at the top of the navigation array.
@@ -665,9 +665,9 @@ function FuseNavigationDoc() {
 				</FuseHighlight>
 			</div>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, "fusetheme.com" navigation item is added into the top of the "Dashboards"
@@ -724,13 +724,13 @@ function FuseNavigationDoc() {
 			</div>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				appendNavigationItem
 			</Typography>
 			<Typography
-				className="text-16 mb-8"
+				className="text-15 mb-8"
 				component="h2"
 			>
 				Use
@@ -740,9 +740,9 @@ function FuseNavigationDoc() {
 				action to append a navigation item into the navigation array.
 			</Typography>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, "fusetheme.com" navigation item is added at the bottom of the array.
@@ -793,9 +793,9 @@ function FuseNavigationDoc() {
 				</FuseHighlight>
 			</div>
 
-			<div className="border-1 rounded-16 p-16 my-16">
+			<div className="border-1 rounded-xl p-16 my-16">
 				<Typography
-					className="text-16 mb-24"
+					className="text-15 mb-24"
 					component="h2"
 				>
 					With the button below, "fusetheme.com" navigation item is added into the bottom of the "Dashboards"

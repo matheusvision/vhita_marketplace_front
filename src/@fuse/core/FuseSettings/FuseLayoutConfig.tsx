@@ -40,7 +40,7 @@ function FuseLayoutConfig(props: FuseSettingsControllerProps) {
 						>
 							<FormLabel
 								component="legend"
-								className="text-14"
+								className="text-13"
 							>
 								{item.title}
 							</FormLabel>
@@ -76,7 +76,7 @@ function FuseLayoutConfig(props: FuseSettingsControllerProps) {
 						>
 							<FormLabel
 								component="legend"
-								className="text-14"
+								className="text-13"
 							>
 								{item.title}
 							</FormLabel>

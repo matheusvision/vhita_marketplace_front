@@ -6,11 +6,7 @@ const CalendarApp = lazy(() => import('./CalendarApp'));
  * The Calendar App Config.
  */
 const CalendarAppConfig = {
-	settings: {
-		layout: {
-			config: {}
-		}
-	},
+	settings: {},
 	routes: [
 		{
 			path: 'apps/calendar',

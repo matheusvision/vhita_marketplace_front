@@ -17,14 +17,14 @@ function IDEsDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mb-10 font-700"
+				className="text-18 mb-10 font-700"
 				variant="h5"
 			>
 				Webstorm
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Using Prettier with ESLint
@@ -43,14 +43,14 @@ function IDEsDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Visual Studio Code (VSCode)
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Using Prettier with ESLint

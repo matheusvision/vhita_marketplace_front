@@ -1,7 +1,5 @@
 import Paper from '@mui/material/Paper';
 import { lighten, useTheme } from '@mui/material/styles';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { memo, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
@@ -9,6 +7,8 @@ import Box from '@mui/material/Box';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from '@lodash';
+import FuseTabs from 'app/shared-components/tabs/FuseTabs';
+import FuseTab from 'app/shared-components/tabs/FuseTab';
 import GithubIssuesDataType from './types/GithubIssuesDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 
@@ -119,39 +119,24 @@ function GithubIssuesWidget() {
 	}
 
 	return (
-		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">
+		<Paper className="flex flex-col flex-auto p-24 shadow rounded-xl overflow-hidden">
 			<div className="flex flex-col sm:flex-row items-start justify-between">
-				<Typography className="text-lg font-medium tracking-tight leading-6 truncate">
+				<Typography className="text-xl font-medium tracking-tight leading-6 truncate">
 					Github Issues Summary
 				</Typography>
-				<div className="mt-12 sm:mt-0 sm:ml-8">
-					<Tabs
+				<div className="mt-12 sm:mt-0">
+					<FuseTabs
 						value={tabValue}
 						onChange={(_ev, value: number) => setTabValue(value)}
-						indicatorColor="secondary"
-						textColor="inherit"
-						variant="scrollable"
-						scrollButtons={false}
-						className="-mx-4 min-h-40"
-						classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
-						TabIndicatorProps={{
-							children: (
-								<Box
-									sx={{ bgcolor: 'text.disabled' }}
-									className="w-full h-full rounded-full opacity-20"
-								/>
-							)
-						}}
 					>
-						{Object.entries(ranges).map(([key, label]) => (
-							<Tab
-								className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12"
-								disableRipple
+						{Object.entries(ranges).map(([key, label], index) => (
+							<FuseTab
 								key={key}
+								value={index}
 								label={label}
 							/>
 						))}
-					</Tabs>
+					</FuseTabs>
 				</div>
 			</div>
 			<div className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-24 w-full mt-32 sm:mt-16">
@@ -179,13 +164,13 @@ function GithubIssuesWidget() {
 						Overview
 					</Typography>
 					<div className="flex-auto grid grid-cols-4 gap-16 mt-24">
-						<div className="col-span-2 flex flex-col items-center justify-center py-32 px-4 rounded-2xl bg-indigo-50 text-indigo-800">
+						<div className="col-span-2 flex flex-col items-center justify-center py-32 px-4 rounded-xl bg-indigo-50 text-indigo-800">
 							<Typography className="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
 								{overview[currentRange]['new-issues']}
 							</Typography>
 							<Typography className="mt-4 text-sm sm:text-lg font-medium">New Issues</Typography>
 						</div>
-						<div className="col-span-2 flex flex-col items-center justify-center py-32 px-4 rounded-2xl bg-green-50 text-green-800">
+						<div className="col-span-2 flex flex-col items-center justify-center py-32 px-4 rounded-xl bg-green-50 text-green-800">
 							<Typography className="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
 								{overview[currentRange]['closed-issues']}
 							</Typography>
@@ -198,7 +183,7 @@ function GithubIssuesWidget() {
 										? lighten(theme.palette.background.default, 0.4)
 										: lighten(theme.palette.background.default, 0.02)
 							}}
-							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-2xl"
+							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-xl"
 						>
 							<Typography className="text-5xl font-semibold leading-none tracking-tight">
 								{overview[currentRange].fixed}
@@ -212,7 +197,7 @@ function GithubIssuesWidget() {
 										? lighten(theme.palette.background.default, 0.4)
 										: lighten(theme.palette.background.default, 0.02)
 							}}
-							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-2xl"
+							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-xl"
 						>
 							<Typography className="text-5xl font-semibold leading-none tracking-tight">
 								{overview[currentRange]['wont-fix']}
@@ -226,7 +211,7 @@ function GithubIssuesWidget() {
 										? lighten(theme.palette.background.default, 0.4)
 										: lighten(theme.palette.background.default, 0.02)
 							}}
-							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-2xl"
+							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-xl"
 						>
 							<Typography className="text-5xl font-semibold leading-none tracking-tight">
 								{overview[currentRange]['re-opened']}
@@ -240,7 +225,7 @@ function GithubIssuesWidget() {
 										? lighten(theme.palette.background.default, 0.4)
 										: lighten(theme.palette.background.default, 0.02)
 							}}
-							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-2xl"
+							className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-32 px-4 rounded-xl"
 						>
 							<Typography className="text-5xl font-semibold leading-none tracking-tight">
 								{overview[currentRange]['needs-triage']}

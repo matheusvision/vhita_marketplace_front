@@ -3,6 +3,8 @@ import * as colors from '@mui/material/colors';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
 import { User } from 'src/app/auth/user';
+import { DeepPartial } from 'react-hook-form';
+import { PartialDeep } from 'type-fest';
 import EventEmitter from './EventEmitter';
 
 type TreeNode = {
@@ -15,7 +17,8 @@ type TreeNode = {
  */
 export type FuseRouteItemType = RouteObject & {
 	auth?: string[] | [];
-	settings?: unknown;
+	settings?: DeepPartial<FuseSettingsConfigType>;
+	children?: FuseRouteItemType[];
 };
 
 /**
@@ -29,7 +32,7 @@ export type FuseRoutesType = FuseRouteItemType[];
  */
 export type FuseRouteConfigType = {
 	routes: FuseRoutesType;
-	settings?: unknown;
+	settings?: PartialDeep<FuseSettingsConfigType>;
 	auth?: string[] | [];
 };
 
@@ -230,20 +233,32 @@ class FuseUtils {
 		config: FuseRouteConfigType,
 		defaultAuth: FuseSettingsConfigType['defaultAuth'] = undefined
 	): FuseRouteItemType[] {
-		let routes = [...config.routes];
+		let routes: FuseRouteItemType[] = [];
 
-		routes = routes.map((route) => {
-			let auth = config.auth || config.auth === null ? config.auth : defaultAuth || null;
+		if (config?.routes) {
+			routes = [...config.routes];
+		}
 
-			auth = route.auth || route.auth === null ? route.auth : auth;
-
+		const applyAuth = (route: FuseRouteItemType, parentAuth: string[] | null) => {
+			const auth = route.auth || route.auth === null ? route.auth : parentAuth;
 			const settings = _.merge({}, config.settings, route.settings);
 
-			return {
+			const newRoute = {
 				...route,
 				settings,
 				auth
 			};
+
+			if (route.children) {
+				newRoute.children = route.children.map((childRoute) => applyAuth(childRoute, auth));
+			}
+
+			return newRoute;
+		};
+
+		routes = routes.map((route) => {
+			const auth = config.auth || config.auth === null ? config.auth : defaultAuth || null;
+			return applyAuth(route, auth);
 		}) as FuseRouteItemType[];
 
 		return [...routes];

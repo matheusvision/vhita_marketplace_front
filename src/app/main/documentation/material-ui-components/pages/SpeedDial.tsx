@@ -30,7 +30,7 @@ function SpeedDialDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Speed Dial
@@ -41,25 +41,25 @@ function SpeedDialDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If more than six actions are needed, something other than a FAB should be used to present them.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic speed dial
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The floating action button can display related actions.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -71,13 +71,13 @@ function SpeedDialDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Playground
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -89,20 +89,20 @@ function SpeedDialDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Controlled speed dial
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The open state of the component can be controlled with the <code>open</code>/<code>onOpen</code>/
 				<code>onClose</code> props.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -114,20 +114,20 @@ function SpeedDialDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Custom close icon
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You can provide an alternate icon for the closed and open states using the <code>icon</code> and{' '}
 				<code>openIcon</code> props of the <code>SpeedDialIcon</code> component.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -139,27 +139,27 @@ function SpeedDialDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Persistent action tooltips
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The SpeedDialActions tooltips can be displayed persistently so that users don&#39;t have to long-press
 				to see the tooltip on touch devices.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				It is enabled here across all devices for demo purposes, but in production it could use the{' '}
 				<code>isTouch</code> logic to conditionally set the prop.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -171,19 +171,19 @@ function SpeedDialDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				ARIA
 			</Typography>
 			<Typography
-				className="text-14 mt-12 mb-10"
+				className="text-13 mt-12 mb-10"
 				component="h4"
 			>
 				Required
@@ -197,7 +197,7 @@ function SpeedDialDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mt-12 mb-10"
+				className="text-13 mt-12 mb-10"
 				component="h4"
 			>
 				Provided
@@ -217,7 +217,7 @@ function SpeedDialDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Keyboard

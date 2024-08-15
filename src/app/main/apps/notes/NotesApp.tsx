@@ -29,7 +29,7 @@ function NotesApp() {
 			content={
 				<div className="flex flex-col w-full items-center p-24">
 					<Box
-						className="w-full rounded-16 border p-12 flex flex-col items-center"
+						className="w-full rounded-xl border p-12 flex flex-col items-center"
 						sx={{
 							backgroundColor: (theme) =>
 								theme.palette.mode === 'light'

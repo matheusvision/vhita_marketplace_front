@@ -50,9 +50,6 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 				aria-haspopup="true"
 				onClick={handleClick}
 				sx={{
-					borderRadius: '8px',
-					width: 40,
-					height: 40,
 					border: (theme) => `1px solid ${theme.palette.divider}`,
 					'&:hover, &:focus': {
 						backgroundColor: (theme) =>
@@ -81,7 +78,7 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 				}}
 			>
 				<div className="px-24 py-12">
-					<Typography className="mb-8 flex items-center justify-center text-16 font-semibold">
+					<Typography className="mb-8 flex items-center justify-center text-15 font-semibold">
 						<FuseSvgIcon
 							color="action"
 							className="mr-4"

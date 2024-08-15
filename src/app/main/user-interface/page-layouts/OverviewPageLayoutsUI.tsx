@@ -1,6 +1,7 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -20,21 +21,10 @@ function OverviewPageLayoutsUI() {
 			header={
 				<div className="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-24 sm:py-32 sm:px-40">
 					<div className="flex-1 min-w-0">
-						<div className="flex flex-wrap items-center font-medium">
-							<div>
-								<Typography
-									className="whitespace-nowrap"
-									color="secondary.main"
-								>
-									User Interface
-								</Typography>
-							</div>
-						</div>
-						<div className="mt-8">
-							<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-								Overview
-							</Typography>
-						</div>
+						<PageBreadcrumb />
+						<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+							Overview
+						</Typography>
 					</div>
 					<div />
 				</div>
@@ -42,7 +32,7 @@ function OverviewPageLayoutsUI() {
 			content={
 				<div className="flex-auto p-24 sm:p-40">
 					<div className="prose prose-sm dark:prose-invert">
-						<Typography className="text-20 font-700 mb-16">Introduction</Typography>
+						<Typography className="text-18 font-700 mb-16">Introduction</Typography>
 						<Typography>
 							Page layouts are set of pre-made layouts that can be used as the starter on any page/app
 							design. While they provide some styling by default, it's very minimal and can be easily

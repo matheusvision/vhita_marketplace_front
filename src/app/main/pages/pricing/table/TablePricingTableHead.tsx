@@ -74,7 +74,7 @@ function TablePricingTableHead(props: TablePricingTableHeadProps) {
 				</Typography>
 
 				<Button
-					className="mt-12 h-32 min-h-32 w-full lg:mt-24 lg:h-40 lg:min-h-40"
+					className="mt-12 h-32 min-h-32 w-full lg:mt-24 lg:h-36 lg:min-h-36"
 					variant={isPopular ? 'contained' : 'outlined'}
 					color={isPopular ? 'secondary' : 'inherit'}
 				>

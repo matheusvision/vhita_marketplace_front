@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import ModernPricingCard from './ModernPricingCard';
 import ModernPricingFeatureItem from './ModernPricingFeatureItem';
 import ModernPricingItemType from './ModernPricingItemType';
@@ -66,7 +67,7 @@ function ModernPricingPage() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1, transition: { delay: 0.05 } }}
 					>
-						<h2 className="text-xl font-semibold">PRICING</h2>
+						<PageBreadcrumb />
 					</motion.div>
 
 					<motion.div
@@ -103,7 +104,7 @@ function ModernPricingPage() {
 							<Box
 								component="button"
 								className={clsx(
-									'h-40 cursor-pointer items-center rounded-full px-16 font-medium',
+									'h-36 cursor-pointer items-center rounded-full px-16 font-medium',
 									period === 'year' && 'shadow'
 								)}
 								onClick={() => setPeriod('year')}
@@ -116,7 +117,7 @@ function ModernPricingPage() {
 							<Box
 								component="button"
 								className={clsx(
-									'h-40 cursor-pointer items-center rounded-full px-16 font-medium',
+									'h-36 cursor-pointer items-center rounded-full px-16 font-medium',
 									period === 'month' && 'shadow'
 								)}
 								onClick={() => setPeriod('month')}

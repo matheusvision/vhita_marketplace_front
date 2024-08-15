@@ -1,12 +1,12 @@
 import { styled } from '@mui/material/styles';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { useAppDispatch } from 'app/store/hooks';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import {
 	DateSelectArg,
 	DatesSetArg,
@@ -20,12 +20,15 @@ import {
 import FuseLoading from '@fuse/core/FuseLoading';
 import CalendarHeader from './CalendarHeader';
 import EventDialog from './dialogs/event/EventDialog';
-import { openEditEventDialog, openNewEventDialog } from './calendarAppSlice';
+import { openEditEventDialog, openNewEventDialog, selectSelectedLabels } from './calendarAppSlice';
 import CalendarAppSidebar from './CalendarAppSidebar';
 import CalendarAppEventContent from './CalendarAppEventContent';
 import { Event, useGetCalendarEventsQuery, useUpdateCalendarEventMutation } from './CalendarApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
+	'& .container': {
+		maxWidth: '100%!important'
+	},
 	'& a': {
 		color: `${theme.palette.text.primary}!important`,
 		textDecoration: 'none!important'
@@ -103,7 +106,12 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function CalendarApp() {
 	const [currentDate, setCurrentDate] = useState<DatesSetArg>();
 	const dispatch = useAppDispatch();
-	const { data: events, isLoading } = useGetCalendarEventsQuery();
+	const { data, isLoading } = useGetCalendarEventsQuery();
+	const selectedLabels = useAppSelector(selectSelectedLabels);
+	const events = useMemo(
+		() => data?.filter?.((item) => selectedLabels.includes(item?.extendedProps?.label as string)),
+		[data, selectedLabels]
+	);
 	const calendarRef = useRef<FullCalendar>(null);
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);
@@ -207,7 +215,7 @@ function CalendarApp() {
 				leftSidebarContent={<CalendarAppSidebar />}
 				leftSidebarOpen={leftSidebarOpen}
 				leftSidebarOnClose={() => setLeftSidebarOpen(false)}
-				leftSidebarWidth={240}
+				leftSidebarWidth={256}
 				scroll="content"
 			/>
 			<EventDialog />

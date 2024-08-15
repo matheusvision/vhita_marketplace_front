@@ -1,6 +1,8 @@
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import React, { useState, useRef } from 'react';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useMemo } from 'react';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { NotesNote } from '../NotesApi';
 
 type NoteFormReminderProps = {
@@ -13,45 +15,47 @@ type NoteFormReminderProps = {
  */
 function NoteFormReminder(props: NoteFormReminderProps) {
 	const { reminder, onChange } = props;
+	const [open, setOpen] = useState(false);
+	const buttonRef = useRef(null);
 
-	return useMemo(
-		() => (
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
+
+	return (
+		<>
+			<Tooltip title="Set Reminder">
+				<IconButton
+					className="p-0"
+					size="small"
+					onClick={handleOpen}
+					ref={buttonRef}
+				>
+					<FuseSvgIcon>heroicons-outline:bell</FuseSvgIcon>
+				</IconButton>
+			</Tooltip>
+
 			<DateTimePicker
 				disablePast
 				value={reminder ? new Date(reminder) : null}
 				onChange={(val) => {
-					onChange(val.toISOString());
+					onChange(val?.toISOString() || '');
+					handleClose();
 				}}
-				defaultValue={new Date(Date.now())}
-				sx={{
-					'& .MuiInputAdornment-root': {
-						minWidth: 40,
-						minHeight: 40,
-						m: 0
-					},
-					'& .MuiOutlinedInput-notchedOutline': {
-						display: 'none'
-					},
-					'& .MuiOutlinedInput-root': {
-						padding: 0
-					},
-					'& .MuiInputBase-input': {
-						position: 'absolute',
-						pointerEvents: 'none',
-						visibility: 'hidden'
-					}
-				}}
+				open={open}
+				onClose={handleClose}
 				slotProps={{
+					textField: {
+						className: 'hidden'
+					},
 					actionBar: {
 						actions: ['clear', 'today']
+					},
+					popper: {
+						anchorEl: () => buttonRef.current as HTMLButtonElement
 					}
 				}}
-				slots={{
-					openPickerIcon: () => <FuseSvgIcon size={20}>heroicons-outline:bell</FuseSvgIcon>
-				}}
 			/>
-		),
-		[reminder]
+		</>
 	);
 }
 

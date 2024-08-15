@@ -24,7 +24,7 @@ function ActivityTimelineItem(props: ActivityTimelineItemProps) {
 			<TimelineSeparator>
 				<TimelineDot
 					color="primary"
-					className="mt-0 flex h-40  w-40 items-center justify-center p-0"
+					className="mt-0 flex h-36  w-36 items-center justify-center p-0"
 				>
 					{item.image && <Avatar src={item.image} />}
 					{!item.image && (
@@ -41,7 +41,7 @@ function ActivityTimelineItem(props: ActivityTimelineItemProps) {
 
 				<div className="mt-8 flex flex-col text-md leading-5 sm:mt-4 sm:flex-row sm:items-center sm:space-x-8">
 					<Typography
-						className="text-13"
+						className="text-12"
 						color="text.secondary"
 					>
 						{format(new Date(item.date), 'MMM dd, h:mm a')}

@@ -73,7 +73,7 @@ function AutocompleteDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Autocomplete
@@ -83,7 +83,7 @@ function AutocompleteDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The widget is useful for setting the value of a single-line textbox in one of two types of scenarios:
@@ -100,26 +100,26 @@ function AutocompleteDoc(props) {
 				</li>
 			</ol>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				It&#39;s meant to be an improved version of the &quot;react-select&quot; and &quot;downshift&quot;
 				packages.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Combo box
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The value must be chosen from a predefined set of allowed values.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -131,13 +131,13 @@ function AutocompleteDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Options structure
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				By default, the component accepts the following options structures:
@@ -156,7 +156,7 @@ type AutocompleteOption = string;
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				for instance:
@@ -176,25 +176,25 @@ const options = ['The Godfather', 'Pulp Fiction'];
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				However, you can use different structures by providing a <code>getOptionLabel</code> prop.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Playground
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Each of the following examples demonstrates one feature of the Autocomplete component.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -206,19 +206,19 @@ const options = ['The Godfather', 'Pulp Fiction'];
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Country select
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Choose one of the 248 countries.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -230,13 +230,13 @@ const options = ['The Godfather', 'Pulp Fiction'];
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Controlled states
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The component has two states that can be controlled:
@@ -253,12 +253,12 @@ const options = ['The Godfather', 'Pulp Fiction'];
 				</li>
 			</ol>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				These two states are isolated, and should be controlled independently.
 			</Typography>
-			<div className="border-1 p-16 rounded-16 my-12">
+			<div className="border-1 p-16 rounded-xl my-12">
 				<ul className="space-y-16">
 					<li>
 						A component is <strong>controlled</strong> when it&#39;s managed by its parent using props.
@@ -268,7 +268,7 @@ const options = ['The Godfather', 'Pulp Fiction'];
 					</li>
 				</ul>
 				<Typography
-					className="text-14 mb-32"
+					className="text-13 mb-32"
 					component="div"
 				>
 					Learn more about controlled and uncontrolled components in the{' '}
@@ -280,7 +280,7 @@ const options = ['The Godfather', 'Pulp Fiction'];
 			</div>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -292,13 +292,13 @@ const options = ['The Godfather', 'Pulp Fiction'];
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you control the <code>value</code>, make sure it&#39;s referentially stable between renders. In other
@@ -322,39 +322,39 @@ return <Autocomplete multiple value={selectedValues} />;
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				In the first example, <code>allValues.filter</code> is called and returns <strong>a new array</strong>{' '}
 				every render. The fix includes memoizing the value, so it changes only when needed. :::
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Free solo
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Set <code>freeSolo</code> to true so the textbox can contain any arbitrary value.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Search input
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The prop is designed to cover the primary use case of a <strong>search input</strong> with suggestions,
 				for example Google search or react-autowhatever.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -366,27 +366,27 @@ return <Autocomplete multiple value={selectedValues} />;
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning Be careful when using the free solo mode with non-string options, as it may cause type
 				mismatch.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The value created by typing into the textbox is always a string, regardless of the type of the options.
 				:::
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Creatable
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you intend to use this mode for a <a href="#combo-box">combo box</a> like experience (an enhanced
@@ -408,7 +408,7 @@ return <Autocomplete multiple value={selectedValues} />;
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -420,13 +420,13 @@ return <Autocomplete multiple value={selectedValues} />;
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You could also display a dialog when the user wants to add a new value.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -438,13 +438,13 @@ return <Autocomplete multiple value={selectedValues} />;
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Grouped
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You can group the options with the <code>groupBy</code> prop. If you do so, make sure that the options
@@ -452,7 +452,7 @@ return <Autocomplete multiple value={selectedValues} />;
 				headers.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -464,7 +464,7 @@ return <Autocomplete multiple value={selectedValues} />;
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				To control how the groups are rendered, provide a custom <code>renderGroup</code> prop. This is a
@@ -479,14 +479,14 @@ return <Autocomplete multiple value={selectedValues} />;
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The following demo shows how to use this prop to define custom markup and override the styles of the
 				default groups:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -498,13 +498,13 @@ return <Autocomplete multiple value={selectedValues} />;
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Disabled options
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -516,13 +516,13 @@ return <Autocomplete multiple value={selectedValues} />;
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				<code>useAutocomplete</code>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				For advanced customization use cases, a headless <code>useAutocomplete()</code> hook is exposed. It
@@ -539,7 +539,7 @@ import { useAutocomplete } from '@mui/base/useAutocomplete';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>useAutocomplete</code> hook is also reexported from @mui/material for convenience and backward
@@ -555,7 +555,7 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -567,13 +567,13 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Customized hook
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -585,20 +585,20 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Head to the <a href="#customization">customization</a> section for an example with the{' '}
 				<code>Autocomplete</code> component instead of the hook.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Asynchronous requests
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The component supports two different asynchronous use-cases:
@@ -613,19 +613,19 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				</li>
 			</ul>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Load on open
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				It displays a progress state as long as the network request is pending.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -637,20 +637,20 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Search as you type
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If your logic is fetching new options on each keystroke and using the current value of the textbox to
 				filter on the server, you may want to consider throttling requests.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Additionally, you will need to disable the built-in filtering of the <code>Autocomplete</code> component
@@ -666,13 +666,13 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Google Maps place
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				A customized UI for Google Maps Places Autocomplete. For this demo, we need to load the{' '}
@@ -684,7 +684,7 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				API.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -696,26 +696,26 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::error Before you can start using the Google Maps JavaScript API and Places API, you need to get your
 				own <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">API key</a>. :::
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Multiple values
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Also known as tags, the user is allowed to enter more than one value.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -727,20 +727,20 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Fixed options
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				In the event that you need to lock certain tags so that they can&#39;t be removed, you can set the chips
 				disabled.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -752,13 +752,13 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Checkboxes
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -770,19 +770,19 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Limit tags
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You can use the <code>limitTags</code> prop to limit the number of displayed options when not focused.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -794,19 +794,19 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Sizes
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Fancy smaller inputs? Use the <code>size</code> prop.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -818,19 +818,19 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Custom input
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>renderInput</code> prop allows you to customize the rendered input. The first argument of this
@@ -838,14 +838,14 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				<code>inputProps</code> keys.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning If you&#39;re using a custom input component inside the Autocomplete, make sure that you
 				forward the ref to the underlying DOM element. :::
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -857,13 +857,13 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Globally Customized Options
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				To globally customize the Autocomplete options for all components in your app, you can use the{' '}
@@ -875,7 +875,7 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				options for each Autocomplete component while keeping the options styling consistent.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -887,19 +887,19 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				GitHub&#39;s picker
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				This demo reproduces GitHub&#39;s label picker:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -911,27 +911,27 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Head to the <a href="#customized-hook">Customized hook</a> section for a customization example with the{' '}
 				<code>useAutocomplete</code> hook instead of the component.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Hint
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The following demo shows how to add a hint feature to the Autocomplete using the{' '}
 				<code>renderInput</code> and <code>filterOptions</code> props:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -943,13 +943,13 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Highlights
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The following demo relies on{' '}
@@ -957,7 +957,7 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				utility for highlighting text in autosuggest and autocomplete components.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -969,13 +969,13 @@ import useAutocomplete from '@mui/material/useAutocomplete';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Custom filter
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The component exposes a factory to create a filter method that can be provided to the{' '}
@@ -991,13 +991,13 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				<code>{`createFilterOptions(config) => filterOptions`}</code>
 			</Typography>
 			<Typography
-				className="text-14 mt-12 mb-10"
+				className="text-13 mt-12 mb-10"
 				component="h4"
 			>
 				Arguments
@@ -1036,13 +1036,13 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mt-12 mb-10"
+				className="text-13 mt-12 mb-10"
 				component="h4"
 			>
 				Returns
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<code>filterOptions</code>: the returned filter method can be provided directly to the{' '}
@@ -1050,7 +1050,7 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 				name for the hook.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				In the following demo, the options need to start with the query prefix:
@@ -1070,7 +1070,7 @@ const filterOptions = createFilterOptions({
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -1082,13 +1082,13 @@ const filterOptions = createFilterOptions({
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Advanced
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				For richer filtering mechanisms, like fuzzy matching, it&#39;s recommended to look at{' '}
@@ -1108,20 +1108,20 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Virtualization
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Search within 10,000 randomly generated options. The list is virtualized thanks to{' '}
 				<a href="https://github.com/bvaughn/react-window">react-window</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -1133,13 +1133,13 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Events
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you would like to prevent the default key handler behavior, you can set the event&#39;s{' '}
@@ -1163,26 +1163,26 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				autocomplete/autofill
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Browsers have heuristics to help the user fill in form inputs. However, this can harm the UX of the
 				component.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				By default, the component disables the input <strong>autocomplete</strong> feature (remembering what the
@@ -1192,7 +1192,7 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				workaround is to remove the <code>id</code> to have the component generate a random one.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				In addition to remembering past entered values, the browser might also propose <strong>autofill</strong>{' '}
@@ -1202,7 +1202,7 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 			<ul className="space-y-16">
 				<li>
 					<Typography
-						className="text-14 mb-32"
+						className="text-13 mb-32"
 						component="div"
 					>
 						Name the input without leaking any information the browser can use. For example{' '}
@@ -1212,7 +1212,7 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				</li>
 				<li>
 					<Typography
-						className="text-14 mb-32"
+						className="text-13 mb-32"
 						component="div"
 					>
 						Set <code>{`autoComplete="new-password"`}</code> (some browsers will suggest a strong password
@@ -1236,7 +1236,7 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Read{' '}
@@ -1246,26 +1246,26 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				for more details.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				iOS VoiceOver
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				VoiceOver on iOS Safari doesn&#39;t support the <code>aria-owns</code> attribute very well. You can work
 				around the issue with the <code>disablePortal</code> prop.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				ListboxComponent
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you provide a custom <code>ListboxComponent</code> prop, you need to make sure that the intended
@@ -1273,13 +1273,13 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				correct behavior of the scroll, for example when using the keyboard to navigate.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				(WAI-ARIA:{' '}
@@ -1289,7 +1289,7 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				)
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				We encourage the usage of a label for the textbox. The component implements the WAI-ARIA authoring

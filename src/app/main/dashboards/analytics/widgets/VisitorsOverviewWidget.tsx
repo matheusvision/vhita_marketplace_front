@@ -1,9 +1,7 @@
 import { alpha, ThemeProvider, useTheme } from '@mui/material/styles';
 import ReactApexChart from 'react-apexcharts';
 import { useState } from 'react';
-import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
 import { selectContrastMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
@@ -11,6 +9,8 @@ import { ApexOptions } from 'apexcharts';
 import { private_safeDarken } from '@mui/system/colorManipulator';
 import { useAppSelector } from 'app/store/hooks';
 import _ from '@lodash';
+import FuseTabs from 'app/shared-components/tabs/FuseTabs';
+import FuseTab from 'app/shared-components/tabs/FuseTab';
 import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
 
@@ -130,13 +130,13 @@ function VisitorsOverviewWidget() {
 	return (
 		<ThemeProvider theme={contrastTheme}>
 			<Box
-				className="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto shadow rounded-2xl overflow-hidden"
+				className="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto shadow rounded-xl overflow-hidden"
 				sx={{
 					background: private_safeDarken(contrastTheme.palette.primary.main, 0.1),
 					color: contrastTheme.palette.primary.contrastText
 				}}
 			>
-				<div className="flex items-center justify-between mt-40 ml-40 mr-24 sm:mr-40">
+				<div className="flex justify-between mt-24 mx-24">
 					<div className="flex flex-col">
 						<Typography
 							sx={{
@@ -155,37 +155,18 @@ function VisitorsOverviewWidget() {
 							Number of unique visitors
 						</Typography>
 					</div>
-					<div className="mt-12 sm:mt-0 sm:ml-8">
-						<Tabs
+					<div className="mt-12 sm:mt-0">
+						<FuseTabs
 							value={tabValue}
 							onChange={(_ev, value: number) => setTabValue(value)}
-							indicatorColor="secondary"
-							textColor="inherit"
-							variant="scrollable"
-							scrollButtons={false}
-							className="-mx-4 min-h-40"
-							classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
-							TabIndicatorProps={{
-								children: (
-									<Box
-										sx={{ backgroundColor: contrastTheme.palette.primary.contrastText }}
-										className="w-full h-full rounded-full opacity-10"
-									/>
-								)
-							}}
 						>
 							{Object.entries(ranges).map(([key, label]) => (
-								<Tab
-									className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12"
-									disableRipple
-									sx={{
-										color: contrastTheme.palette.primary.contrastText
-									}}
+								<FuseTab
 									key={key}
 									label={label}
 								/>
 							))}
-						</Tabs>
+						</FuseTabs>
 					</div>
 				</div>
 

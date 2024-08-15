@@ -82,7 +82,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 			className={clsx('flex flex-shrink overflow-hidden', variant === 'vertical' && 'flex-col', className)}
 			sx={{
 				borderRadius: '8px',
-				height: 40,
+				minHeight: 40,
 				border: (theme) => `1px solid ${theme.palette.divider}`
 			}}
 		>
@@ -105,7 +105,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 												{_item.icon ? (
 													<FuseSvgIcon size={20}>{_item.icon}</FuseSvgIcon>
 												) : (
-													<span className="text-20 font-semibold uppercase">
+													<span className="text-18 font-semibold uppercase">
 														{_item.title[0]}
 													</span>
 												)}
@@ -232,11 +232,11 @@ function ShortcutMenuItem(props: {
 			role="button"
 		>
 			<MenuItem key={item.id}>
-				<ListItemIcon className="min-w-40">
+				<ListItemIcon className="min-w-36">
 					{item.icon ? (
 						<FuseSvgIcon>{item.icon}</FuseSvgIcon>
 					) : (
-						<span className="text-center text-20 font-semibold uppercase">{item.title[0]}</span>
+						<span className="text-center text-18 font-semibold uppercase">{item.title[0]}</span>
 					)}
 				</ListItemIcon>
 				<ListItemText primary={item.title} />

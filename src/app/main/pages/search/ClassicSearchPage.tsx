@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Pagination } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import exampleSearchResponse from './exampleSearchResponse';
 import SearchItemType from './SearchItemType';
 
@@ -38,8 +39,10 @@ function ClassicSearchPage() {
 	return (
 		<FusePageSimple
 			header={
-				<div className="flex w-full max-w-md flex-1 items-center p-24 sm:p-32">
-					<Paper className="flex h-44 w-full items-center rounded-16 px-16 shadow">
+				<div className="flex flex-col w-full max-w-md flex-1 px-24 pt-24 sm:pt-32 sm:px-32">
+					<PageBreadcrumb />
+
+					<Paper className="flex h-44 w-full items-center rounded-lg shadow">
 						<Input
 							placeholder="Search..."
 							disableUnderline
@@ -48,7 +51,12 @@ function ClassicSearchPage() {
 								'aria-label': 'Search'
 							}}
 						/>
-						<FuseSvgIcon color="action">heroicons-outline:magnifying-glass</FuseSvgIcon>
+						<FuseSvgIcon
+							className="mx-12"
+							color="action"
+						>
+							heroicons-outline:magnifying-glass
+						</FuseSvgIcon>
 					</Paper>
 				</div>
 			}
@@ -64,7 +72,7 @@ function ClassicSearchPage() {
 								<motion.div variants={item}>
 									<Typography
 										color="text.secondary"
-										className="mb-24 text-13"
+										className="mx-12 my-12 text-12"
 									>
 										{data.length} results
 									</Typography>
@@ -77,7 +85,7 @@ function ClassicSearchPage() {
 										key={_item.id}
 									>
 										<Typography
-											className="cursor-pointer text-18"
+											className="cursor-pointer text-17"
 											sx={{
 												color: blue[800]
 											}}
@@ -91,7 +99,7 @@ function ClassicSearchPage() {
 										>
 											{_item.url}
 										</Typography>
-										<Typography className="text-13">{_item.excerpt}</Typography>
+										<Typography className="text-12">{_item.excerpt}</Typography>
 									</motion.div>
 								))}
 							</motion.div>

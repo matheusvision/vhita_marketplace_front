@@ -124,7 +124,7 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 			<TableRow className="h-48 sm:h-64">
 				<TableCell
 					padding="none"
-					className="w-40 md:w-64 text-center z-99"
+					className="w-36 md:w-64 text-center z-99"
 					sx={{
 						backgroundColor: (theme) =>
 							darken(theme.palette.background.paper, theme.palette.mode === 'light' ? 0.02 : 0.2)
@@ -148,7 +148,6 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 							<IconButton
 								aria-haspopup="true"
 								onClick={openSelectedOrdersMenu}
-								size="large"
 							>
 								<FuseSvgIcon>heroicons-outline:ellipsis-horizontal</FuseSvgIcon>
 							</IconButton>
@@ -166,7 +165,7 @@ function OrdersTableHead(props: OrdersTableHeadProps) {
 											closeSelectedOrdersMenu();
 										}}
 									>
-										<ListItemIcon className="min-w-40">
+										<ListItemIcon className="min-w-36">
 											<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 										</ListItemIcon>
 										<ListItemText primary="Remove" />

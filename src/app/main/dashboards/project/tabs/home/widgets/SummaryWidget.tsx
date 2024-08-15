@@ -34,10 +34,10 @@ function SummaryWidget() {
 	}
 
 	return (
-		<Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden">
-			<div className="flex items-center justify-between px-8 pt-12">
+		<Paper className="flex flex-col flex-auto shadow rounded-xl overflow-hidden">
+			<div className="flex items-center justify-between px-8 pt-8">
 				<Select
-					className="mx-16"
+					className=""
 					classes={{ select: 'py-0 flex items-center' }}
 					value={currentRange}
 					onChange={handleChangeRange}
@@ -45,7 +45,6 @@ function SummaryWidget() {
 						name: 'currentRange'
 					}}
 					variant="filled"
-					size="small"
 				>
 					{Object.entries(ranges).map(([key, n]) => {
 						return (
@@ -58,25 +57,22 @@ function SummaryWidget() {
 						);
 					})}
 				</Select>
-				<IconButton
-					aria-label="more"
-					size="large"
-				>
+				<IconButton aria-label="more">
 					<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 				</IconButton>
 			</div>
-			<div className="text-center mt-8">
+			<div className="text-center mt-16">
 				<Typography className="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">
 					{data.count[currentRange]}
 				</Typography>
 				<Typography className="text-lg font-medium text-blue-600 dark:text-blue-500">{data.name}</Typography>
 			</div>
 			<Typography
-				className="flex items-baseline justify-center w-full mt-20 mb-24"
+				className="flex items-baseline justify-center w-full mt-20 mb-24 space-x-8"
 				color="text.secondary"
 			>
-				<span className="truncate">{data.extra.name}</span>:
-				<b className="px-8">{data.extra.count[currentRange]}</b>
+				<span className="truncate">{data.extra.name}:</span>
+				<b>{data.extra.count[currentRange]}</b>
 			</Typography>
 		</Paper>
 	);

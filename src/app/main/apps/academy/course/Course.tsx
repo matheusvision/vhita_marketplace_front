@@ -112,7 +112,7 @@ function Course() {
 								</FuseSvgIcon>
 							</IconButton>
 
-							<Typography className="text-13 font-medium tracking-tight mx-10">{course.title}</Typography>
+							<Typography className="text-12 font-medium tracking-tight mx-10">{course.title}</Typography>
 						</Paper>
 					</Hidden>
 
@@ -126,7 +126,7 @@ function Course() {
 								className="flex justify-center p-16 pb-64 sm:p-24 sm:pb-64 md:p-48 md:pb-64"
 								key={index}
 							>
-								<Paper className="w-full max-w-lg mx-auto sm:my-8 lg:mt-16 p-24 sm:p-40 sm:py-48 rounded-16 shadow overflow-hidden">
+								<Paper className="w-full max-w-lg mx-auto sm:my-8 lg:mt-16 p-24 sm:p-40 sm:py-48 rounded-xl shadow overflow-hidden">
 									<div
 										className="prose prose-sm dark:prose-invert w-full max-w-full"
 										// eslint-disable-next-line react/no-danger
@@ -147,21 +147,16 @@ function Course() {
 								color="secondary"
 							>
 								<Button
-									className="min-h-56 rounded-full"
-									size="large"
-									startIcon={<FuseSvgIcon>heroicons-outline:arrow-left</FuseSvgIcon>}
+									className="rounded-full"
+									startIcon={<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>}
 									onClick={handleBack}
 								>
 									Prev
 								</Button>
+								<Button className="pointer-events-none">{`${activeStep}/${course.totalSteps}`}</Button>
 								<Button
-									className="pointer-events-none min-h-56"
-									size="large"
-								>{`${activeStep}/${course.totalSteps}`}</Button>
-								<Button
-									className="min-h-56 rounded-full"
-									size="large"
-									endIcon={<FuseSvgIcon>heroicons-outline:arrow-right</FuseSvgIcon>}
+									className="rounded-full"
+									endIcon={<FuseSvgIcon>heroicons-outline:arrow-small-right</FuseSvgIcon>}
 									onClick={handleNext}
 								>
 									Next

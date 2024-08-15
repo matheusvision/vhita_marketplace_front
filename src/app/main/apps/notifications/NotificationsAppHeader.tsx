@@ -2,6 +2,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useSnackbar } from 'notistack';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { useCreateNotificationMutation, useDeleteAllNotificationsMutation } from './NotificationApi';
 import NotificationModel from './models/NotificationModel';
 import NotificationTemplate from './NotificationTemplate';
@@ -42,6 +43,8 @@ function NotificationsAppHeader() {
 		<div className="flex w-full container">
 			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 p-24 md:p-32 pb-0 md:pb-0">
 				<div className="flex flex-col flex-auto">
+					<PageBreadcrumb />
+
 					<Typography className="text-3xl font-semibold tracking-tight leading-8">Notifications</Typography>
 					<Typography
 						className="font-medium tracking-tight"
@@ -50,10 +53,12 @@ function NotificationsAppHeader() {
 						Lists all notifications
 					</Typography>
 				</div>
-				<div className="flex items-center mt-24 sm:mt-0 sm:mx-8 space-x-12">
+				<div className="flex items-center mt-24 sm:mt-0 sm:mx-8 space-x-8">
 					<Button
 						className="whitespace-nowrap"
 						onClick={demoNotification}
+						variant="contained"
+						color="primary"
 					>
 						Example notification
 					</Button>

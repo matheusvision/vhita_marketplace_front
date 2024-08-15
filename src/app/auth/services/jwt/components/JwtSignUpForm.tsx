@@ -154,12 +154,9 @@ function JwtSignUpForm() {
 				name="acceptTermsConditions"
 				control={control}
 				render={({ field }) => (
-					<FormControl
-						className="items-center"
-						error={!!errors.acceptTermsConditions}
-					>
+					<FormControl error={!!errors.acceptTermsConditions}>
 						<FormControlLabel
-							label="I agree to the Terms of Service and Privacy Policy"
+							label="I agree with Terms and Privacy Policy"
 							control={
 								<Checkbox
 									size="small"

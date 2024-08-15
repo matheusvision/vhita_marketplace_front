@@ -35,7 +35,7 @@ function AccordionDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Accordion
@@ -45,13 +45,13 @@ function AccordionDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Material UI Accordion component includes several complementary utility components to handle various
@@ -67,7 +67,7 @@ function AccordionDoc(props) {
 				<li>Accordion Actions: an optional wrapper that groups a set of buttons.</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -78,9 +78,9 @@ function AccordionDoc(props) {
 					raw={AccordionUsageRaw}
 				/>
 			</Typography>
-			<div className="border-1 p-16 rounded-16 my-12">
+			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-14 mb-32"
+					className="text-13 mb-32"
 					component="div"
 				>
 					This component is no longer documented in the{' '}
@@ -90,7 +90,7 @@ function AccordionDoc(props) {
 			</div>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -107,20 +107,20 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Expand icon
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>expandIcon</code> prop on the Accordion Summary component to change the expand indicator
 				icon. The component handles the turning upside-down transition automatically.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -132,19 +132,19 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Expanded by default
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>defaultExpanded</code> prop on the Accordion component to have it opened by default.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -156,20 +156,20 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Transition
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>slots.transition</code> and <code>slotProps.transition</code> props to change the
 				Accordion&#39;s default transition.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -181,19 +181,19 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Disabled item
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>disabled</code> prop on the Accordion component to disable interaction and focus.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -205,19 +205,19 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Controlled Accordion
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Accordion component can be controlled or uncontrolled.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -228,7 +228,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 					raw={ControlledAccordionsRaw}
 				/>
 			</Typography>
-			<div className="border-1 p-16 rounded-16 my-12">
+			<div className="border-1 p-16 rounded-xl my-12">
 				<ul className="space-y-16">
 					<li>
 						A component is <strong>controlled</strong> when it&#39;s managed by its parent using props.
@@ -238,7 +238,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 					</li>
 				</ul>
 				<Typography
-					className="text-14 mb-32"
+					className="text-13 mb-32"
 					component="div"
 				>
 					Learn more about controlled and uncontrolled components in the{' '}
@@ -250,26 +250,26 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 			</div>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Only one expanded at a time
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>expanded</code> prop with React&#39;s <code>useState</code> hook to allow only one
 				Accordion item to be expanded at a time. The demo below also shows a bit of visual customziation.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -281,20 +281,20 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Performance
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Accordion content is mounted by default even if it&#39;s not expanded. This default behavior has
 				server-side rendering and SEO in mind.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you render the Accordion Details with a big component tree nested inside, or if you have many
@@ -311,13 +311,13 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">WAI-ARIA guidelines for accordions</a>{' '}
@@ -342,13 +342,13 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The Accordion component is composed of a root <code>{`<div>`}</code> that houses interior elements like

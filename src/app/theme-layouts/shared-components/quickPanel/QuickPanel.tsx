@@ -58,26 +58,26 @@ function QuickPanel() {
 
 				<div className="mb-0 px-24 py-16">
 					<Typography
-						className="mb-12 text-32"
+						className="mb-12 text-28"
 						color="text.secondary"
 					>
 						{format(new Date(), 'eeee')}
 					</Typography>
 					<div className="flex">
 						<Typography
-							className="text-32 leading-none"
+							className="text-28 leading-none"
 							color="text.secondary"
 						>
 							{format(new Date(), 'dd')}
 						</Typography>
 						<Typography
-							className="text-16 leading-none"
+							className="text-15 leading-none"
 							color="text.secondary"
 						>
 							th
 						</Typography>
 						<Typography
-							className="text-32 leading-none"
+							className="text-28 leading-none"
 							color="text.secondary"
 						>
 							{format(new Date(), 'MMMM')}
@@ -114,7 +114,7 @@ function QuickPanel() {
 				<List>
 					<ListSubheader component="div">Quick Settings</ListSubheader>
 					<ListItem>
-						<ListItemIcon className="min-w-40">
+						<ListItemIcon className="min-w-36">
 							<FuseSvgIcon>material-outline:notifications</FuseSvgIcon>
 						</ListItemIcon>
 						<ListItemText primary="Notifications" />
@@ -127,7 +127,7 @@ function QuickPanel() {
 						</ListItemSecondaryAction>
 					</ListItem>
 					<ListItem>
-						<ListItemIcon className="min-w-40">
+						<ListItemIcon className="min-w-36">
 							<FuseSvgIcon>material-outline:cloud</FuseSvgIcon>
 						</ListItemIcon>
 						<ListItemText primary="Cloud Sync" />
@@ -140,7 +140,7 @@ function QuickPanel() {
 						</ListItemSecondaryAction>
 					</ListItem>
 					<ListItem>
-						<ListItemIcon className="min-w-40">
+						<ListItemIcon className="min-w-36">
 							<FuseSvgIcon>material-outline:brightness_high</FuseSvgIcon>
 						</ListItemIcon>
 						<ListItemText primary="Retro Thrusters" />

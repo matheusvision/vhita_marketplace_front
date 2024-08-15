@@ -7,11 +7,13 @@ import NavigationShortcuts from '../../shared-components/navigation/NavigationSh
  */
 function LeftSideLayout3() {
 	return (
-		<FuseSidePanel>
-			<NavigationShortcuts
-				className="px-8 py-16"
-				variant="vertical"
-			/>
+		<FuseSidePanel className="flex flex-col justify-star items-center py-12 space-y-8">
+			<div>
+				<NavigationShortcuts
+					className="flex shrink"
+					variant="vertical"
+				/>
+			</div>
 		</FuseSidePanel>
 	);
 }

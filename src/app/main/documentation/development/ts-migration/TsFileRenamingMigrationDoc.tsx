@@ -21,7 +21,7 @@ function TsFileRenamingMigrationDoc() {
 				File extension renaming helper ( .js to .ts/.tsx )
 			</Typography>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Introduction
@@ -36,7 +36,7 @@ function TsFileRenamingMigrationDoc() {
 				identifying files that need to be renamed based on their content and then renaming them accordingly.
 			</Typography>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				How the Script Works
@@ -65,7 +65,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Prerequisites
@@ -123,7 +123,7 @@ function TsFileRenamingMigrationDoc() {
 				</Paper>
 			</Box>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -149,7 +149,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Why Use This Script for Migration?
@@ -175,7 +175,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Important Considerations
@@ -207,7 +207,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Conclusion

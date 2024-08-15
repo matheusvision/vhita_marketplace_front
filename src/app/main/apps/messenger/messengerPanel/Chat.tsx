@@ -23,49 +23,49 @@ const StyledMessageRow = styled('div')(({ theme }) => ({
 			color: theme.palette.secondary.contrastText,
 			borderTopLeftRadius: 5,
 			borderBottomLeftRadius: 5,
-			borderTopRightRadius: 20,
-			borderBottomRightRadius: 20,
+			borderTopRightRadius: 8,
+			borderBottomRightRadius: 8,
 			'& .time': {
 				marginLeft: 12
 			}
 		},
 		'&.first-of-group': {
 			'& .bubble': {
-				borderTopLeftRadius: 20
+				borderTopLeftRadius: 8
 			}
 		},
 		'&.last-of-group': {
 			'& .bubble': {
-				borderBottomLeftRadius: 20
+				borderBottomLeftRadius: 8
 			}
 		}
 	},
 	'&.me': {
-		paddingLeft: 40,
+		paddingLeft: 36,
 
 		'& .bubble': {
 			marginLeft: 'auto',
 			backgroundColor: lighten(theme.palette.primary.main, 0.1),
 			color: theme.palette.primary.contrastText,
-			borderTopLeftRadius: 20,
-			borderBottomLeftRadius: 20,
-			borderTopRightRadius: 5,
-			borderBottomRightRadius: 5,
+			borderTopLeftRadius: 12,
+			borderBottomLeftRadius: 12,
+			borderTopRightRadius: 4,
+			borderBottomRightRadius: 4,
 			'& .time': {
 				justifyContent: 'flex-end',
 				right: 0,
-				marginRight: 12
+				paddingRight: 12
 			}
 		},
 		'&.first-of-group': {
 			'& .bubble': {
-				borderTopRightRadius: 20
+				borderTopRightRadius: 12
 			}
 		},
 
 		'&.last-of-group': {
 			'& .bubble': {
-				borderBottomRightRadius: 20
+				borderBottomRightRadius: 12
 			}
 		}
 	},
@@ -75,14 +75,14 @@ const StyledMessageRow = styled('div')(({ theme }) => ({
 	},
 	'&.first-of-group': {
 		'& .bubble': {
-			borderTopLeftRadius: 20,
-			paddingTop: 13
+			borderTopLeftRadius: 12,
+			paddingTop: 8
 		}
 	},
 	'&.last-of-group': {
 		'& .bubble': {
-			borderBottomLeftRadius: 20,
-			paddingBottom: 13,
+			borderBottomLeftRadius: 12,
+			paddingBottom: 8,
 			'& .time': {
 				display: 'flex'
 			}
@@ -157,13 +157,15 @@ function Chat(props: ChatProps) {
 												item.contactId === user.id ? 'me' : 'contact',
 												{ 'first-of-group': isFirstMessageOfGroup(item, i) },
 												{ 'last-of-group': isLastMessageOfGroup(item, i) },
-												i + 1 === chat.length && 'pb-72'
+												i + 1 === chat.length && 'pb-40'
 											)}
 										>
-											<div className="bubble flex relative items-center justify-center p-12 max-w-full">
-												<div className="leading-tight whitespace-pre-wrap">{item.value}</div>
+											<div className="bubble flex relative items-center justify-center px-12 py-8 max-w-full">
+												<Typography className=" whitespace-pre-wrap text-12">
+													{item.value}
+												</Typography>
 												<Typography
-													className="time absolute hidden w-full text-11 mt-8 -mb-24 ltr:left-0 rtl:right-0 bottom-0 whitespace-nowrap"
+													className="time absolute hidden w-full text-11 -mb-20 ltr:left-0 rtl:right-0 bottom-0 whitespace-nowrap"
 													color="text.secondary"
 												>
 													{formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
@@ -218,19 +220,18 @@ function Chat(props: ChatProps) {
 							onSubmit={onMessageSubmit}
 							className="pb-16 px-8 absolute bottom-0 left-0 right-0"
 						>
-							<Paper className="rounded-24 flex items-center relative shadow">
+							<Paper className="flex items-center relative shadow">
 								<InputBase
 									autoFocus={false}
 									id="message-input"
-									className="flex flex-1 grow shrink-0 mx-16 ltr:mr-48 rtl:ml-48 my-8"
+									className="flex flex-1 grow shrink-0 ltr:mr-48 rtl:ml-48"
 									placeholder="Type your message"
 									onChange={onInputChange}
 									value={messageText}
 								/>
 								<IconButton
-									className="absolute ltr:right-0 rtl:left-0 top-4"
+									className="absolute ltr:right-0 rtl:left-0"
 									type="submit"
-									size="large"
 								>
 									<FuseSvgIcon
 										className=""

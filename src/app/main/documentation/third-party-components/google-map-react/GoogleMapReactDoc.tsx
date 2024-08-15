@@ -37,7 +37,7 @@ function GoogleMapReactDoc() {
 			<hr />
 
 			<Typography
-				className="text-32 mt-32 mb-8"
+				className="text-28 mt-32 mb-8"
 				component="h2"
 			>
 				Example Usages
@@ -49,7 +49,7 @@ function GoogleMapReactDoc() {
 			/>
 
 			<Typography
-				className="text-32 mt-32 mb-8"
+				className="text-28 mt-32 mb-8"
 				component="h2"
 			>
 				Demos

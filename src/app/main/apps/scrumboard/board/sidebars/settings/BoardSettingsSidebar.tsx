@@ -96,7 +96,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 						<FuseSvgIcon>heroicons-outline:x-mark</FuseSvgIcon>
 					</IconButton>
 					<Typography
-						className="px-4 font-medium text-16"
+						className="px-4 font-medium text-15"
 						color="inherit"
 						variant="subtitle1"
 					>
@@ -107,7 +107,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 
 			<List className="py-24">
 				<ListItem>
-					<ListItemIcon className="min-w-40">
+					<ListItemIcon className="min-w-36">
 						<FuseSvgIcon>heroicons-outline:photo</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Card Cover Images" />
@@ -132,7 +132,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 					control={control}
 					render={({ field: { onChange, value } }) => (
 						<ListItem>
-							<ListItemIcon className="min-w-40">
+							<ListItemIcon className="min-w-36">
 								<FuseSvgIcon>
 									{value ? 'heroicons-outline:eye' : 'heroicons-outline:eye-slash'}
 								</FuseSvgIcon>
@@ -159,7 +159,7 @@ function BoardSettingsSidebar(props: BoardSettingsSidebarProps) {
 							});
 					}}
 				>
-					<ListItemIcon className="min-w-40">
+					<ListItemIcon className="min-w-36">
 						<FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>
 					</ListItemIcon>
 					<ListItemText primary="Delete Board" />

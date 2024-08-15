@@ -138,7 +138,7 @@ function NotificationPanel() {
 				{notifications.length > 0 ? (
 					<div className="flex flex-auto flex-col">
 						<div className="mb-36 flex items-end justify-between pt-136">
-							<Typography className="text-28 font-semibold leading-none">Notifications</Typography>
+							<Typography className="text-26 font-semibold leading-none">Notifications</Typography>
 							<Typography
 								className="cursor-pointer text-12 underline"
 								color="secondary"
@@ -159,7 +159,7 @@ function NotificationPanel() {
 				) : (
 					<div className="flex flex-1 items-center justify-center p-16">
 						<Typography
-							className="text-center text-24"
+							className="text-center text-22"
 							color="text.secondary"
 						>
 							There are no notifications for now.

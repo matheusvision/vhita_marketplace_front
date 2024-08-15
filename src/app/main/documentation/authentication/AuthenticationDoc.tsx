@@ -43,7 +43,7 @@ function AuthenticationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Entry Point: AuthenticationProvider
@@ -59,7 +59,7 @@ function AuthenticationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-15 mb-8 font-500"
+				className="text-14 mb-8 font-500"
 				variant="h6"
 			>
 				Integration in App.js
@@ -80,7 +80,7 @@ function AuthenticationDoc() {
 				`}
 			</FuseHighlight>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Authentication Services Directory
@@ -92,7 +92,7 @@ function AuthenticationDoc() {
 				component integrations.
 			</Typography>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Service Configurations
@@ -133,7 +133,7 @@ function AuthenticationDoc() {
 			</ol>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Service Authentication Form Components
@@ -144,7 +144,7 @@ function AuthenticationDoc() {
 				are located under the components directory of each service folder.
 			</Typography>
 			<Typography
-				className="text-15 mb-8 font-500"
+				className="text-14 mb-8 font-500"
 				variant="h6"
 			>
 				Example: JWT Authentication Service Form Components:
@@ -164,7 +164,7 @@ function AuthenticationDoc() {
 				</li>
 			</ol>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Adding a New Authentication Service
@@ -192,7 +192,7 @@ function AuthenticationDoc() {
 				integration process more intuitive.
 			</Typography>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Steps to Add a New Authentication Provider:
@@ -200,7 +200,7 @@ function AuthenticationDoc() {
 			<ol className="list-decimal pl-16 mb-16 space-y-16 leading-loose">
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Create Your Authentication Service:
@@ -213,7 +213,7 @@ function AuthenticationDoc() {
 				</li>
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Configure Your Service:
@@ -227,7 +227,7 @@ function AuthenticationDoc() {
 				</li>
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Integrate Your Service into AuthenticationProvider:
@@ -239,7 +239,7 @@ function AuthenticationDoc() {
 						injecting your service into the React context, making it accessible throughout the application.
 					</Typography>
 
-					<Typography className="text-13 my-8 font-600">
+					<Typography className="text-12 my-8 font-600">
 						Example Integration in AuthenticationProvider:
 					</Typography>
 
@@ -263,7 +263,7 @@ function AuthenticationDoc() {
 				</li>
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Utilize the Service's Context Hook:
@@ -273,7 +273,7 @@ function AuthenticationDoc() {
 						(e.g., user information, authentication status). This hook will be used within the{' '}
 						<code>Authentication</code> component to monitor changes in the authentication state.
 					</Typography>
-					<Typography className="text-13 my-8 font-600">
+					<Typography className="text-12 my-8 font-600">
 						Example: JWT Authentication Service Auth Hook
 					</Typography>
 
@@ -288,7 +288,7 @@ const { user: jwtUser, authStatus: jwtAuthStatus } = useJwtAuth();
 				</li>
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Handle Sign-In and User State:
@@ -300,7 +300,7 @@ const { user: jwtUser, authStatus: jwtAuthStatus } = useJwtAuth();
 				</li>
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Implement Sign-Out and Update User Operations{' '}
@@ -310,7 +310,7 @@ const { user: jwtUser, authStatus: jwtAuthStatus } = useJwtAuth();
 						signing out and updating user information from anywhere within the application.{' '}
 					</Typography>
 
-					<Typography className="text-13 my-8 font-600">Example: Sign Out Using useAuth Hook</Typography>
+					<Typography className="text-12 my-8 font-600">Example: Sign Out Using useAuth Hook</Typography>
 
 					<FuseHighlight
 						component="pre"
@@ -323,7 +323,7 @@ const { signOut } = useAuth();
 				</li>
 				<li>
 					<Typography
-						className="text-15 mb-8 font-500"
+						className="text-14 mb-8 font-500"
 						variant="h6"
 					>
 						Test Your Integration:
@@ -337,7 +337,7 @@ const { signOut } = useAuth();
 				</li>
 			</ol>
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Example Services as a Blueprint

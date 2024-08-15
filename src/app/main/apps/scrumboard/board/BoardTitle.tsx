@@ -103,7 +103,7 @@ function BoardTitle() {
 			) : (
 				<div className="flex items-center justify-center space-x-12">
 					<Typography
-						className="text-18  sm:text-24 md:text-32 font-extrabold tracking-tight leading-none cursor-pointer"
+						className="text-17  sm:text-20 md:text-24 font-extrabold tracking-tight leading-none cursor-pointer"
 						onClick={handleOpenForm}
 						color="inherit"
 					>

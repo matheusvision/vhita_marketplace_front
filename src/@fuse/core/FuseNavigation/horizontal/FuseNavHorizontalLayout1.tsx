@@ -13,11 +13,10 @@ const StyledList = styled(List)(({ theme }) => ({
 			backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0,0,0,.05)'
 		},
 		padding: '8px 12px 8px 12px',
-		height: 40,
-		minHeight: 40,
+		height: 36,
+		minHeight: 36,
 		'&.level-0': {
-			minHeight: 44,
-			minminHeight: 44
+			minHeight: 36
 		},
 		'& .fuse-list-item-text': {
 			padding: '0 0 0 8px'

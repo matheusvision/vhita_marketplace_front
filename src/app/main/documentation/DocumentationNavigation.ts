@@ -11,7 +11,7 @@ const DocumentationNavigation: FuseNavItemType = {
 	id: 'documentation',
 	title: 'Documentation',
 	subtitle: 'Everything you need to know about Fuse',
-	icon: 'heroicons-outline:support',
+	icon: 'heroicons-outline:book-open',
 	type: 'group',
 	children: [
 		{

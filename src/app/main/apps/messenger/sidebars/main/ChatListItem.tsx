@@ -43,7 +43,7 @@ function ChatListItem(props: ChatListItemProps) {
 			<ListItemText
 				classes={{
 					root: 'min-w-px px-16',
-					primary: 'font-medium text-14',
+					primary: 'font-medium text-13',
 					secondary: 'truncate'
 				}}
 				primary={item.name}

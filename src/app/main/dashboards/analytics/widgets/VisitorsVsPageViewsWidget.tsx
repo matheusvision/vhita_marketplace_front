@@ -102,9 +102,9 @@ function VisitorsVsPageViewsWidget() {
 	};
 
 	return (
-		<Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden">
+		<Paper className="flex flex-col flex-auto shadow rounded-xl overflow-hidden">
 			<div className="flex items-start justify-between m-24 mb-0">
-				<Typography className="text-lg font-medium tracking-tight leading-6 truncate">
+				<Typography className="text-xl font-medium tracking-tight leading-6 truncate">
 					Visitors vs. Page Views
 				</Typography>
 				<div className="ml-8">

@@ -126,7 +126,7 @@ function MailToolbar(props: MailToolbarProps) {
 							aria-label="open left sidebar"
 							size="small"
 						>
-							<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
+							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 						</IconButton>
 					</Hidden>
 
@@ -134,7 +134,7 @@ function MailToolbar(props: MailToolbarProps) {
 				</div>
 
 				<OutlinedInput
-					className="flex flex-1 items-center px-16 rounded-full"
+					className="flex flex-1 items-center"
 					fullWidth
 					placeholder={t('SEARCH_PLACEHOLDER')}
 					value={searchText}

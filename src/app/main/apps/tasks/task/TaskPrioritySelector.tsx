@@ -110,7 +110,7 @@ const TaskPrioritySelector = forwardRef<HTMLButtonElement, TaskPrioritySelectorP
 					>
 						<ListItemText primary={item.title} />
 						<ListItemIcon
-							className="min-w-40 justify-end"
+							className="min-w-36 justify-end"
 							sx={{ color: item.textColor }}
 						>
 							<FuseSvgIcon size={16}>{item.icon}</FuseSvgIcon>

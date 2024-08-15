@@ -16,7 +16,7 @@ function InstallationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mb-10 font-700"
+				className="text-18 mb-10 font-700"
 				variant="h5"
 			>
 				Prerequisites
@@ -30,7 +30,7 @@ function InstallationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-16 mb-10 font-700"
+				className="text-15 mt-16 mb-10 font-700"
 				variant="h6"
 			>
 				Node.js
@@ -53,14 +53,14 @@ function InstallationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-20 mt-20 mb-10 font-700"
+				className="text-18 mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Installation
 			</Typography>
 
 			<Typography
-				className="text-16 mt-24 mb-10 font-700"
+				className="text-15 mt-24 mb-10 font-700"
 				variant="h6"
 			>
 				A. Installing Prerequisites
@@ -79,7 +79,7 @@ function InstallationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-16 mt-24 mb-10 font-700"
+				className="text-15 mt-24 mb-10 font-700"
 				variant="h6"
 			>
 				B. Installing Fuse React
@@ -91,7 +91,7 @@ function InstallationDoc() {
 
 			<div className="mx-16 my-32">
 				<Typography
-					className="flex text-15 mb-10 font-700"
+					className="flex text-14 mb-10 font-700"
 					variant="h6"
 				>
 					B.1. Choose which version you want to install
@@ -152,7 +152,7 @@ function InstallationDoc() {
 				</ul>
 
 				<Typography
-					className="flex text-15 mt-32 mb-10 font-700"
+					className="flex text-14 mt-32 mb-10 font-700"
 					variant="h6"
 				>
 					B.2. Unzip
@@ -165,7 +165,7 @@ function InstallationDoc() {
 			</div>
 
 			<Typography
-				className="text-16 mt-24 mb-10 font-700"
+				className="text-15 mt-24 mb-10 font-700"
 				variant="h6"
 			>
 				C. Run the installation command

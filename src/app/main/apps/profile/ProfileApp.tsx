@@ -1,13 +1,12 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { SyntheticEvent, useState } from 'react';
-import Box from '@mui/material/Box';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import FuseTabs from 'app/shared-components/tabs/FuseTabs';
+import FuseTab from 'app/shared-components/tabs/FuseTab';
 import AboutTab from './tabs/about/AboutTab';
 import PhotosVideosTab from './tabs/photos-videos/PhotosVideosTab';
 import TimelineTab from './tabs/timeline/TimelineTab';
@@ -28,10 +27,10 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
  * The profile page.
  */
 function ProfileApp() {
-	const [selectedTab, setSelectedTab] = useState(0);
+	const [selectedTab, setSelectedTab] = useState('timeline');
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-	function handleTabChange(event: SyntheticEvent, value: number) {
+	function handleTabChange(event: SyntheticEvent, value: string) {
 		setSelectedTab(value);
 	}
 
@@ -89,49 +88,32 @@ function ProfileApp() {
 						</div>
 
 						<div className="flex flex-1 justify-end my-16 lg:my-0">
-							<Tabs
+							<FuseTabs
 								value={selectedTab}
 								onChange={handleTabChange}
-								indicatorColor="primary"
-								textColor="inherit"
-								variant="scrollable"
-								scrollButtons={false}
-								className="-mx-4 min-h-40"
-								classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
-								TabIndicatorProps={{
-									children: (
-										<Box
-											sx={{ bgcolor: 'text.disabled' }}
-											className="w-full h-full rounded-full opacity-20"
-										/>
-									)
-								}}
 							>
-								<Tab
-									className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12 "
-									disableRipple
+								<FuseTab
 									label="Timeline"
+									value="timeline"
 								/>
-								<Tab
-									className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12 "
-									disableRipple
+								<FuseTab
 									label="About"
+									value="about"
 								/>
-								<Tab
-									className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12 "
-									disableRipple
+								<FuseTab
 									label="Photos & Videos"
+									value="photos-videos"
 								/>
-							</Tabs>
+							</FuseTabs>
 						</div>
 					</div>
 				</div>
 			}
 			content={
 				<div className="flex flex-auto justify-center w-full max-w-5xl mx-auto p-24 sm:p-32">
-					{selectedTab === 0 && <TimelineTab />}
-					{selectedTab === 1 && <AboutTab />}
-					{selectedTab === 2 && <PhotosVideosTab />}
+					{selectedTab === 'timeline' && <TimelineTab />}
+					{selectedTab === 'about' && <AboutTab />}
+					{selectedTab === 'photos-videos' && <PhotosVideosTab />}
 				</div>
 			}
 			scroll={isMobile ? 'normal' : 'page'}

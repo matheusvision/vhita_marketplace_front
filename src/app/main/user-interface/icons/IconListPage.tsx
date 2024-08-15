@@ -13,6 +13,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseLoading from '@fuse/core/FuseLoading';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import { useGetIconsListQuery } from './IconsApi';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
@@ -86,21 +87,10 @@ function IconListPage(props: IconListPageProps) {
 			header={
 				<div className="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-24 sm:py-32 sm:px-40">
 					<div className="flex-1 min-w-0">
-						<div className="flex flex-wrap items-center font-medium">
-							<div>
-								<Typography
-									className="whitespace-nowrap"
-									color="secondary"
-								>
-									User Interface
-								</Typography>
-							</div>
-						</div>
-						<div className="mt-8">
-							<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-								{pageTitle}
-							</Typography>
-						</div>
+						<PageBreadcrumb />
+						<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+							{pageTitle}
+						</Typography>
 					</div>
 					<div>
 						{referenceUrl && (
@@ -122,7 +112,7 @@ function IconListPage(props: IconListPageProps) {
 			}
 			content={
 				<div className="flex-auto p-24 sm:p-40">
-					<Typography className="text-20 font-700 mb-16">Usage</Typography>
+					<Typography className="text-18 font-700 mb-16">Usage</Typography>
 
 					<FuseHighlight
 						component="pre"
@@ -133,7 +123,7 @@ function IconListPage(props: IconListPageProps) {
             `}
 					</FuseHighlight>
 
-					<Typography className="text-20 font-700 mt-32 mb-16">Icons</Typography>
+					<Typography className="text-18 font-700 mt-32 mb-16">Icons</Typography>
 
 					<div className="flex flex-col md:flex-row justify-center md:items-end my-24 xs:flex-col md:space-x-24">
 						<div className="flex flex-1">

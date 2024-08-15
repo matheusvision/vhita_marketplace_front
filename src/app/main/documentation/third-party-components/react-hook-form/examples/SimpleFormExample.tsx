@@ -89,7 +89,7 @@ function SimpleFormExample() {
 				onSubmit={handleSubmit((_data) => console.info(_data))}
 			>
 				<div className="mt-48 mb-16">
-					<Typography className="mb-24 font-medium text-14">Native Input:</Typography>
+					<Typography className="mb-24 font-medium text-13">Native Input:</Typography>
 
 					<input
 						className={clsx('border-1 outline-none rounded-8 p-8', !!errors.Native && 'border-red')}
@@ -99,7 +99,7 @@ function SimpleFormExample() {
 
 					{!!errors.Native && (
 						<Typography
-							className="px-4 py-8 font-medium text-14"
+							className="px-4 py-8 font-medium text-13"
 							color="error"
 						>
 							{errors?.Native?.message}
@@ -117,7 +117,7 @@ function SimpleFormExample() {
 								required
 							>
 								<FormLabel
-									className="font-medium text-14"
+									className="font-medium text-13"
 									component="legend"
 								>
 									MUI Checkbox
@@ -148,7 +148,7 @@ function SimpleFormExample() {
 								required
 							>
 								<FormLabel
-									className="font-medium text-14"
+									className="font-medium text-13"
 									component="legend"
 								>
 									Radio Group
@@ -204,7 +204,7 @@ function SimpleFormExample() {
 								fullWidth
 							>
 								<FormLabel
-									className="font-medium text-14"
+									className="font-medium text-13"
 									component="legend"
 								>
 									MUI Select
@@ -236,7 +236,7 @@ function SimpleFormExample() {
 								error={!!errors.Switch}
 							>
 								<FormLabel
-									className="font-medium text-14"
+									className="font-medium text-13"
 									component="legend"
 								>
 									MUI Switch
@@ -255,7 +255,7 @@ function SimpleFormExample() {
 				</div>
 
 				<div className="mt-48 mb-16">
-					<Typography className="mb-24 font-medium text-14">Autocomplete</Typography>
+					<Typography className="mb-24 font-medium text-13">Autocomplete</Typography>
 					<Controller
 						name="Autocomplete"
 						control={control}
@@ -291,7 +291,7 @@ function SimpleFormExample() {
 				</div>
 
 				<div className="mt-48 mb-16">
-					<Typography className="mb-24 font-medium text-14">DateTimePicker</Typography>
+					<Typography className="mb-24 font-medium text-13">DateTimePicker</Typography>
 
 					<Controller
 						name="DateTimePicker"

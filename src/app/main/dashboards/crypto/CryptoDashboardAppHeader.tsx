@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import Divider from '@mui/material/Divider';
 import { MouseEvent } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import ValueSectionSmall from './widgets/ValueSectionSmall';
 import BTCWidgetType from './types/BTCWidgetType';
 import { useGetCryptoDashboardWidgetsQuery } from './CryptoDashboardApi';
@@ -33,16 +34,20 @@ function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 
 	return (
 		<div className="flex flex-wrap w-full items-center px-8 py-12 md:px-16 border-b">
-			<Hidden lgUp>
-				<IconButton
-					onClick={(ev) => onToggleLeftSidebar(ev)}
-					aria-label="open left sidebar"
-					size="small"
-				>
-					<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
-				</IconButton>
-			</Hidden>
-			<div className="flex flex-col flex-auto my-12 mx-8">
+			<div className="w-full flex items-center space-x-8">
+				<Hidden lgUp>
+					<IconButton
+						onClick={(ev) => onToggleLeftSidebar(ev)}
+						aria-label="open left sidebar"
+						size="small"
+					>
+						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
+					</IconButton>
+				</Hidden>
+				<PageBreadcrumb />
+			</div>
+
+			<div className="flex flex-col flex-auto mb-12">
 				<div className="flex items-center space-x-8">
 					<Typography
 						className="font-medium text-2xl"
@@ -94,7 +99,8 @@ function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 					</div>
 				</div>
 			</div>
-			<div className="hidden sm:flex items-center my-12 mx-8 rounded-xl border">
+
+			<div className="hidden sm:flex items-center my-12 mx-8 rounded-lg border">
 				<ValueSectionSmall
 					title="Market Cap"
 					unit="B"

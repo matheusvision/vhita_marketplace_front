@@ -15,8 +15,8 @@ function ProductsTab() {
 	});
 
 	return (
-		<div className="table-responsive">
-			<table className="simple">
+		<div className="w-full max-w-3xl  table-responsive border rounded-md">
+			<table className="simple dense">
 				<thead>
 					<tr>
 						<th>

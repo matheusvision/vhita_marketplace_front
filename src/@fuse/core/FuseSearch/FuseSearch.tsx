@@ -83,7 +83,7 @@ function renderInputComponent(props: RenderInputComponentProps) {
 								inputRef(node);
 							},
 							classes: {
-								input: 'FuseSearch-input py-0 px-16 h-40 md:h-48 ltr:pr-48 rtl:pl-48',
+								input: 'FuseSearch-input py-0 px-16 h-36 md:h-36 ltr:pr-36 rtl:pl-36',
 								notchedOutline: 'rounded-8'
 							}
 						}}
@@ -91,7 +91,7 @@ function renderInputComponent(props: RenderInputComponentProps) {
 						{...other}
 					/>
 					<FuseSvgIcon
-						className="pointer-events-none absolute top-0 h-40 w-48 p-12 ltr:right-0 rtl:left-0 md:h-48"
+						className="pointer-events-none absolute top-0 h-36 w-36 p-8 ltr:right-0 rtl:left-0"
 						color="action"
 						size={20}
 					>
@@ -109,7 +109,7 @@ function renderInputComponent(props: RenderInputComponentProps) {
 							inputRef(node);
 						},
 						classes: {
-							input: 'FuseSearch-input py-0 px-16 h-48 md:h-64'
+							input: 'FuseSearch-input py-0 px-16 h-36'
 						}
 					}}
 					variant="standard"
@@ -129,11 +129,11 @@ function renderSuggestion(suggestion: FuseFlatNavItemType, { query, isHighlighte
 			selected={Boolean(isHighlighted)}
 			component="div"
 		>
-			<ListItemIcon className="min-w-40">
+			<ListItemIcon className="min-w-36">
 				{suggestion.icon ? (
 					<FuseSvgIcon>{suggestion.icon}</FuseSvgIcon>
 				) : (
-					<span className="w-24 text-center text-20 font-semibold uppercase">{suggestion.title[0]}</span>
+					<span className="w-24 text-center text-18 font-semibold uppercase">{suggestion.title[0]}</span>
 				)}
 			</ListItemIcon>
 			<ListItemText
@@ -285,9 +285,6 @@ function FuseSearch(props: FuseSearchProps) {
 		trigger = (
 			<IconButton
 				sx={{
-					borderRadius: '8px',
-					width: 40,
-					height: 40,
 					border: (theme) => `1px solid ${theme.palette.divider}`,
 					'&:hover, &:focus': {
 						backgroundColor: (theme) =>

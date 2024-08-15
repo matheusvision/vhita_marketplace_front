@@ -7,8 +7,8 @@ import Statuses from './Statuses';
 import { Contact } from './MessengerApi';
 
 const StyledBadge = styled(Badge)<{ statuscolor: string }>(({ theme, ...props }) => ({
-	width: 40,
-	height: 40,
+	width: 36,
+	height: 36,
 	fontSize: 20,
 	'& .MuiAvatar-root': {
 		fontSize: 'inherit',

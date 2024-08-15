@@ -32,12 +32,12 @@ function CourseCard(props: CourseCardProps) {
 
 	return (
 		<Card className="flex flex-col h-384 shadow">
-			<CardContent className="flex flex-col flex-auto p-24">
+			<CardContent className="flex flex-col flex-auto p-16">
 				<CourseInfo course={course} />
 			</CardContent>
 			<CourseProgress course={course} />
 			<CardActions
-				className="items-center justify-end py-16 px-24"
+				className="items-center justify-end py-16 px-16"
 				sx={{
 					backgroundColor: (theme) =>
 						theme.palette.mode === 'light'
@@ -48,10 +48,11 @@ function CourseCard(props: CourseCardProps) {
 				<Button
 					to={`/apps/academy/courses/${course.id}/${course.slug}`}
 					component={Link}
-					className="px-16 min-w-128"
+					className="px-12"
 					color="secondary"
 					variant="contained"
-					endIcon={<FuseSvgIcon size={20}>heroicons-outline:arrow-small-right</FuseSvgIcon>}
+					size="small"
+					endIcon={<FuseSvgIcon size={16}>heroicons-outline:arrow-small-right</FuseSvgIcon>}
 				>
 					{buttonStatus()}
 				</Button>

@@ -27,7 +27,7 @@ function SimplePricingCard(props: SimplePricingCardProps) {
 	return (
 		<Paper
 			className={clsx(
-				'max-w-sm flex-col items-center p-32  text-center sm:px-40 sm:py-48 md:max-w-none lg:rounded-2xl',
+				'max-w-sm flex-col items-center p-32  text-center sm:px-40 sm:py-48 md:max-w-none lg:rounded-xl',
 				className
 			)}
 		>

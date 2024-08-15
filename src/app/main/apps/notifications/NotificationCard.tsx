@@ -66,7 +66,7 @@ function NotificationCard(props: NotificationCardProps) {
 		<FuseTheme theme={contrastTheme}>
 			<Card
 				className={clsx(
-					'relative flex min-h-64 w-full items-center space-x-8 rounded-16 p-20 shadow',
+					'relative flex min-h-64 w-full items-center space-x-8 rounded-xl p-20 shadow',
 					className
 				)}
 				sx={{

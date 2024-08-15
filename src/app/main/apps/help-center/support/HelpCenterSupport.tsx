@@ -1,6 +1,4 @@
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { Controller, useForm } from 'react-hook-form';
@@ -8,6 +6,7 @@ import _ from '@lodash';
 import TextField from '@mui/material/TextField';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 
 type formValuesType = { name: string; email: string; subject: string; message: string };
 
@@ -46,20 +45,13 @@ function HelpCenterSupport() {
 		<div className="flex flex-col items-center p-24 sm:p-40 container">
 			<div className="flex flex-col w-full max-w-4xl">
 				<div className="sm:mt-32">
-					<Button
-						component={Link}
-						to="/apps/help-center"
-						color="secondary"
-						startIcon={<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>}
-					>
-						Back to Help Center
-					</Button>
+					<PageBreadcrumb />
 				</div>
 				<div className="mt-8 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight">
 					Contact support
 				</div>
 
-				<Paper className="mt-32 sm:mt-48 p-24 pb-28 sm:p-40 sm:pb-28 rounded-2xl">
+				<Paper className="mt-32 sm:mt-48 p-24 pb-28 sm:p-40 sm:pb-28 rounded-xl">
 					<form
 						onSubmit={handleSubmit(onSubmit)}
 						className="px-0 sm:px-24"

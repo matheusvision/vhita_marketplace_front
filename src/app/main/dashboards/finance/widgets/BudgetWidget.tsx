@@ -34,7 +34,7 @@ function BudgetWidget() {
 	}
 
 	return (
-		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">
+		<Paper className="flex flex-col flex-auto p-24 shadow rounded-xl overflow-hidden">
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<Typography className="mr-16 text-lg font-medium tracking-tight leading-6 truncate">
@@ -48,10 +48,7 @@ function BudgetWidget() {
 					</Typography>
 				</div>
 				<div className="-mt-8">
-					<IconButton
-						aria-label="more"
-						size="large"
-					>
+					<IconButton aria-label="more">
 						<FuseSvgIcon>heroicons-outline:ellipsis-vertical</FuseSvgIcon>
 					</IconButton>
 				</div>
@@ -75,7 +72,7 @@ function BudgetWidget() {
 							>
 								Expenses
 							</Typography>
-							<Typography className="font-medium text-20">
+							<Typography className="font-medium text-18">
 								{expenses.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD'
@@ -102,7 +99,7 @@ function BudgetWidget() {
 				<div className="flex flex-col">
 					<div className="flex items-center space-x-16">
 						<div className="flex items-center justify-center w-56 h-56 rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-600 dark:text-indigo-50">
-							<FuseSvgIcon className="text-current">heroicons-outline:cash</FuseSvgIcon>
+							<FuseSvgIcon className="text-current">heroicons-outline:banknotes</FuseSvgIcon>
 						</div>
 						<div className="flex-auto leading-none">
 							<Typography
@@ -111,7 +108,7 @@ function BudgetWidget() {
 							>
 								Savings
 							</Typography>
-							<Typography className="font-medium text-20">
+							<Typography className="font-medium text-18">
 								{savings.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD'
@@ -147,7 +144,7 @@ function BudgetWidget() {
 							>
 								Bills
 							</Typography>
-							<Typography className="font-medium text-20">
+							<Typography className="font-medium text-18">
 								{bills.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD'

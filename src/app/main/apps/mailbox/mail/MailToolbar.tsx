@@ -37,7 +37,7 @@ function MailToolbar() {
 		>
 			<IconButton
 				onClick={handleGoBack}
-				className="lg:hidden md:-mx-8"
+				className="lg:hidden md:-mx-4"
 			>
 				<FuseSvgIcon>
 					{theme.direction === 'ltr'
@@ -52,12 +52,12 @@ function MailToolbar() {
 					onChange={(value) => {
 						setActionToMails({ type: 'labels', value, ids: [mail.id] });
 					}}
-					className="mx-4"
+					className="mx-2"
 				/>
 
 				<Tooltip title="Set important">
 					<IconButton
-						className="mx-4"
+						className="mx-2"
 						onClick={() => setActionToMails({ type: 'important', value: !mail.important, ids: [mail.id] })}
 					>
 						<FuseSvgIcon className={clsx(mail.important && 'text-red-600 dark:text-red-500')}>
@@ -68,7 +68,7 @@ function MailToolbar() {
 
 				<Tooltip title="Set starred">
 					<IconButton
-						className="mx-4"
+						className="mx-2"
 						onClick={() => setActionToMails({ type: 'starred', value: !mail.starred, ids: [mail.id] })}
 					>
 						<FuseSvgIcon className={clsx(mail.starred && 'text-orange-500 dark:text-red-400')}>

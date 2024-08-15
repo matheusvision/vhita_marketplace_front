@@ -51,7 +51,7 @@ function Grid2Doc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-32 my-16 font-700"
+				className="text-28 my-16 font-700"
 				component="h1"
 			>
 				Grid version 2
@@ -61,20 +61,20 @@ function Grid2Doc(props) {
 			</Typography>
 
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>Grid</code> component works well for a layout with a known number of columns. The columns can
 				be configured with multiple breakpoints to specify the column span of each child.
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				What&#39;s changed
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				We built the <code>Grid</code> component from scratch in order to:
@@ -95,7 +95,7 @@ function Grid2Doc(props) {
 				<li>Set negative margins of equal size on all sides of the grid container by default.</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Since the new implementation is considered a breaking change, we introduced it as{' '}
@@ -103,15 +103,15 @@ function Grid2Doc(props) {
 				major release of Material UI.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				We encourage everyone to try the new version of the <code>Grid</code> by visiting the{' '}
 				<a href="/material-ui/migration/migration-grid-v2/">Grid v2 migration guide</a>.
 			</Typography>
-			<div className="border-1 p-16 rounded-16 my-12">
+			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-14 mb-32"
+					className="text-13 mb-32"
 					component="div"
 				>
 					From now on, the <code>Grid</code> v1 and <code>Grid</code> v2 refer to the import as:
@@ -129,13 +129,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 			</div>
 
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				How it works
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The grid system is implemented with the <code>Grid</code> component:
@@ -184,7 +184,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning The <code>Grid</code> component is a <em>layout</em> grid, not a <em>data</em> grid. If you
@@ -195,40 +195,40 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				. :::
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Fluid grids
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Fluid grids use columns that scale and resize content. A fluid grid&#39;s layout can use breakpoints to
 				determine if the layout needs to change dramatically.
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Basic grid
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				In order to create a grid layout, you need a container. Use the <code>container</code> prop to create a
 				grid container that wraps the grid items (the <code>Grid</code> is always an item).
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Column widths are integer values between 1 and 12. They can be applied at any breakpoint to indicate how
 				many columns are occupied by the component.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				A value given to a breakpoint applies to all the other wider breakpoints unless overridden—see{' '}
@@ -236,7 +236,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				<code>{`xs={12}`}</code> occupies the whole viewport width regardless of its size.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -248,20 +248,20 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Multiple breakpoints
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Components may have multiple widths defined, causing the layout to change at the defined breakpoint.
 				Width values given to larger breakpoints override those given to smaller breakpoints.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				For example, a component with <code>{`xs={12} sm={6}`}</code> occupies the entire viewport width when
@@ -271,7 +271,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				rather than 12.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -283,13 +283,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Spacing
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>spacing</code> prop to control the space between children. The spacing value can be any
@@ -300,13 +300,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				helper.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The following demo illustrates the use of the <code>spacing</code> prop:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -318,13 +318,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Row and column spacing
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The <code>rowSpacing</code> and <code>columnSpacing</code> props let you specify row and column gaps
@@ -332,7 +332,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				<code>column-gap</code> properties of <a href="/system/grid/#row-gap-amp-column-gap">CSS Grid</a>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -344,13 +344,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Responsive values
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You can set prop values to change when a given breakpoint is active. For instance, we can implement
@@ -359,7 +359,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				layout grid, as seen in the following demo:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -371,7 +371,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Responsive values are supported by:
@@ -397,20 +397,20 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				</li>
 			</ul>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Auto-layout
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The auto-layout feature gives equal space to all items present. When you set the width of one item, the
 				others will automatically resize to match it.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -422,13 +422,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Variable width content
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				When a breakpoint&#39;s value is given as <code>{`"auto"`}</code> instead of <code>true</code> or a
@@ -436,7 +436,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				below shows how this works:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -448,13 +448,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Nested grid
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The grid container that renders as a <strong>direct child</strong> inside another grid container is a
@@ -469,13 +469,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				from the top level. It will also inherit the props of the top-level grid if it receives those props.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::success
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Note that a nested grid container should be a direct child of another grid container. If there are
@@ -494,26 +494,26 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Inheriting spacing
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				A nested grid container will inherits the row and column spacing from its parent unless the{' '}
 				<code>spacing</code> prop is specified to the instance.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -525,20 +525,20 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Inheriting columns
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				A nested grid container will inherits the columns from its parent unless the <code>columns</code> prop
 				is specified to the instance.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -550,20 +550,20 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Columns
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Use the <code>columns</code> prop to change the default number of columns (12) in the grid, as shown
 				below:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -575,13 +575,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Offset
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Offset props (such as <code>smOffset</code>, <code>mdOffset</code>) push an item to the right side of
@@ -597,13 +597,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				</li>
 			</ul>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The demo below illustrates how to use the offset props:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -615,13 +615,13 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Custom breakpoints
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you specify custom breakpoints in the theme, you can use those names as grid item props in responsive
@@ -661,9 +661,9 @@ function Demo() {
 }
 `}
 			</FuseHighlight>
-			<div className="border-1 p-16 rounded-16 my-12">
+			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-14 mb-32"
+					className="text-13 mb-32"
 					component="div"
 				>
 					Custom breakpoints affect both size and offset props:
@@ -681,13 +681,13 @@ function Demo() {
 			</div>
 
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				TypeScript
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				You have to set module augmentation on the theme breakpoints interface. Properties set to{' '}
@@ -718,33 +718,33 @@ declare module '@mui/system' {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Disable the scrollbar
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				If you use grid as a container in a small viewport, you might see a horizontal scrollbar because the
 				negative margin is applied on all sides of the grid container.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				To disable this scrollbar, set the <code>disableEqualOverflow</code> prop to <code>true</code>. This
 				removes the negative margins from the bottom and right sides of the grid to prevent overflow.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The demo below shows how this works:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -756,7 +756,7 @@ declare module '@mui/system' {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning You should avoid adding borders and backgrounds to the grid when{' '}
@@ -764,19 +764,19 @@ declare module '@mui/system' {
 				top and left sides) causes the grid to be visually misaligned. :::
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Centered elements
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				To center a grid item&#39;s content, specify <code>{`display="flex"`}</code> directly on the item. Then
@@ -784,7 +784,7 @@ declare module '@mui/system' {
 				shown below:
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -796,20 +796,20 @@ declare module '@mui/system' {
 				/>
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				:::warning Using the <code>container</code> prop does not work in this situation because the grid
 				container is designed exclusively to wrap grid items. It cannot wrap other elements. :::
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Full border
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -821,13 +821,13 @@ declare module '@mui/system' {
 				/>
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Half border
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -839,19 +839,19 @@ declare module '@mui/system' {
 				/>
 			</Typography>
 			<Typography
-				className="text-24 mt-24 mb-10 font-700"
+				className="text-22 mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
 			</Typography>
 			<Typography
-				className="text-16 mt-20 mb-10 font-700"
+				className="text-15 mt-20 mb-10 font-700"
 				component="h3"
 			>
 				Column direction and reversing
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				The column width (<code>xs</code>, ..., <code>xl</code>) and offset props are <em>not</em> supported
@@ -859,7 +859,7 @@ declare module '@mui/system' {
 				<code>{`direction="column-reverse"`}</code>.
 			</Typography>
 			<Typography
-				className="text-14 mb-32"
+				className="text-13 mb-32"
 				component="div"
 			>
 				Size and offset props define the number of columns the component will use for a given breakpoint. They

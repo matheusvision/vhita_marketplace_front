@@ -90,11 +90,11 @@ function NewLabelForm() {
 								endAdornment: (
 									<InputAdornment position="end">
 										<IconButton
-											className="w-32 h-32 p-0"
+											className="p-0"
 											aria-label="Delete"
 											disabled={_.isEmpty(dirtyFields) || !isValid}
 											type="submit"
-											size="large"
+											size="small"
 										>
 											<FuseSvgIcon
 												color="action"

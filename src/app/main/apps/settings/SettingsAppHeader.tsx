@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import SettingsAppNavigation from './SettingsAppNavigation';
 
 type SettingsAppHeaderProps = {
@@ -25,12 +26,16 @@ function SettingsAppHeader(props: SettingsAppHeaderProps) {
 					aria-label="open left sidebar"
 					size="large"
 				>
-					<FuseSvgIcon>heroicons-outline:menu</FuseSvgIcon>
+					<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 				</IconButton>
 			</Hidden>
-			<Typography className=" text-3xl font-bold leading-none tracking-tight lg:ml-0">
-				{currentNavigation?.title}
-			</Typography>
+			<div>
+				<PageBreadcrumb />
+
+				<Typography className=" text-3xl font-bold leading-none tracking-tight lg:ml-0">
+					{currentNavigation?.title}
+				</Typography>
+			</div>
 		</div>
 	);
 }

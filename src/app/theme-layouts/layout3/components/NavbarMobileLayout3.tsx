@@ -50,7 +50,7 @@ function NavbarMobileLayout3(props: NavbarMobileLayout3Props) {
 					<Logo />
 				</div>
 
-				<NavbarToggleButton className="h-40 w-40 p-0" />
+				<NavbarToggleButton className="h-36 w-36 p-0" />
 			</div>
 
 			<StyledContent

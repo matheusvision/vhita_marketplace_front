@@ -59,7 +59,7 @@ function NewLabelForm() {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<ListItem
-				className="p-0 mb-16"
+				className="p-0 mb-12"
 				dense
 			>
 				<Controller
@@ -76,24 +76,24 @@ function NewLabelForm() {
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position="start">
-										<FuseSvgIcon color="action">heroicons-outline:tag</FuseSvgIcon>
+										<FuseSvgIcon
+											color="action"
+											size={16}
+										>
+											heroicons-outline:tag
+										</FuseSvgIcon>
 									</InputAdornment>
 								),
 								endAdornment: (
 									<InputAdornment position="end">
 										<IconButton
-											className="w-32 h-32 p-0"
+											className="p-0"
 											aria-label="Delete"
 											disabled={_.isEmpty(dirtyFields) || !isValid}
 											type="submit"
-											size="large"
+											size="small"
 										>
-											<FuseSvgIcon
-												color="action"
-												size={20}
-											>
-												heroicons-outline:check
-											</FuseSvgIcon>
+											<FuseSvgIcon color="action">heroicons-outline:check</FuseSvgIcon>
 										</IconButton>
 									</InputAdornment>
 								)

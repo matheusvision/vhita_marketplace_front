@@ -16,7 +16,7 @@ function CompactInvoicePage() {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ bounceDamping: 0 }}
 			>
-				<Card className="mx-auto w-xl rounded-2xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
+				<Card className="mx-auto w-xl rounded-xl p-64 shadow print:w-auto print:rounded-none print:bg-transparent print:shadow-none">
 					<CardContent>
 						<div className="flex items-start justify-between">
 							<div className="grid grid-cols-2 gap-x-16 gap-y-1">
@@ -214,7 +214,7 @@ function CompactInvoicePage() {
 							</Typography>
 							<div className="mt-16 flex items-start">
 								<img
-									className="flex-0 mt-8 w-40"
+									className="flex-0 mt-8 w-36"
 									src="assets/images/logo/logo.svg"
 									alt="logo"
 								/>

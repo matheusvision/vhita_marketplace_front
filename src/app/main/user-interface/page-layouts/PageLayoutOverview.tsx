@@ -1,8 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { darken, lighten, styled } from '@mui/material/styles';
-import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
 import { SyntheticEvent, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import _ from '@lodash';
@@ -10,6 +8,9 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import GlobalStyles from '@mui/material/GlobalStyles';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
+import FuseTabs from 'app/shared-components/tabs/FuseTabs';
+import FuseTab from 'app/shared-components/tabs/FuseTab';
 import { LayoutOptionType } from './types/OverviewsType';
 
 const Root = styled('div')(() => ({
@@ -75,6 +76,8 @@ function PageLayoutOverview(props: PageLayoutOverviewProps) {
 			/>
 			<Root className={`scroll-${selectedOption}`}>
 				<div className="flex flex-col p-24 sm:py-32 sm:px-40">
+					<PageBreadcrumb />
+
 					<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight">{title}</Typography>
 					<Typography
 						className="text-lg md:text-xl"
@@ -84,37 +87,21 @@ function PageLayoutOverview(props: PageLayoutOverviewProps) {
 					</Typography>
 
 					<div className="mt-24 md:mt-32">
-						<Tabs
+						<FuseTabs
 							value={availableOptions.indexOf(_.find(availableOptions, { value: selectedOption }))}
 							onChange={handleTabChange}
-							indicatorColor="primary"
-							textColor="inherit"
-							variant="scrollable"
-							scrollButtons={false}
-							className="-mx-4 min-h-40"
-							classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
-							TabIndicatorProps={{
-								children: (
-									<Box
-										sx={{ bgcolor: 'text.disabled' }}
-										className="w-full h-full rounded-full opacity-20"
-									/>
-								)
-							}}
 						>
 							{availableOptions.map((option) => (
-								<Tab
+								<FuseTab
 									key={option.value}
-									className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12 "
-									disableRipple
 									label={option.title}
 								/>
 							))}
-						</Tabs>
+						</FuseTabs>
 					</div>
 				</div>
 				<div className="px-24 sm:px-40 w-full">
-					<Paper className="preview-wrapper z-20 relative h-3xl w-full rounded-2xl shadow-xl flex flex-auto min-h-full overflow-hidden border">
+					<Paper className="preview-wrapper z-20 relative h-3xl w-full rounded-xl shadow-xl flex flex-auto min-h-full overflow-hidden border">
 						<Box
 							className="preview-navbar hidden md:block sticky top-0 flex-0 min-w-224 h-768 border-r z-20"
 							sx={{

@@ -71,7 +71,7 @@ function NoteList() {
 					<NoteListItem
 						key={note.id}
 						note={note}
-						className="w-full rounded-20 shadow mb-16"
+						className="w-full rounded-lg shadow mb-16"
 					/>
 				))}
 			</Masonry>

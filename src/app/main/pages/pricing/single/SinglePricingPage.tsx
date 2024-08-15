@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { motion } from 'framer-motion';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import SinglePricingFeatureItem from './SinglePricingFeatureItem';
 import SinglePricingCard from './SinglePricingCard';
 
@@ -46,7 +47,7 @@ function SinglePricingPage() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1, transition: { delay: 0.05 } }}
 					>
-						<h2 className="text-xl font-semibold">PRICING</h2>
+						<PageBreadcrumb />
 					</motion.div>
 
 					<motion.div

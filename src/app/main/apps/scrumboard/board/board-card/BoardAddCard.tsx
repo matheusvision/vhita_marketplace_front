@@ -10,6 +10,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PartialDeep } from 'type-fest';
+import { alpha } from '@mui/system/colorManipulator';
 import { ScrumboardCard, useCreateScrumboardBoardCardMutation } from '../../ScrumboardApi';
 
 type FormType = PartialDeep<ScrumboardCard>;
@@ -84,50 +85,62 @@ function BoardAddCard(props: BoardAddCardProps) {
 							control={control}
 							render={({ field }) => (
 								<TextField
-									className="mb-16"
+									sx={{
+										'& .MuiOutlinedInput-root': {
+											padding: 0
+										}
+									}}
 									required
 									fullWidth
-									variant="filled"
-									label="Card title"
+									variant="outlined"
+									placeholder="Card title*"
 									autoFocus
 									InputProps={{
 										...field,
 										endAdornment: (
-											<InputAdornment position="end">
+											<InputAdornment
+												className="space-x-8 px-4"
+												position="end"
+											>
 												<IconButton
 													onClick={handleCloseForm}
-													size="large"
+													size="small"
 												>
-													<FuseSvgIcon size={18}>heroicons-outline:x-mark</FuseSvgIcon>
+													<FuseSvgIcon size={16}>heroicons-outline:x-mark</FuseSvgIcon>
 												</IconButton>
+												<Button
+													className="rounded-4 min-h-28 max-h-28 p-0"
+													variant="contained"
+													color="secondary"
+													type="submit"
+													disabled={_.isEmpty(dirtyFields) || !isValid}
+													size="small"
+												>
+													Add
+												</Button>
 											</InputAdornment>
 										)
 									}}
 								/>
 							)}
 						/>
-
-						<div className="flex justify-between items-center">
-							<Button
-								variant="contained"
-								color="secondary"
-								type="submit"
-								disabled={_.isEmpty(dirtyFields) || !isValid}
-								size="small"
-							>
-								Add
-							</Button>
-						</div>
 					</form>
 				</ClickAwayListener>
 			) : (
 				<Button
+					variant="contained"
 					onClick={handleOpenForm}
 					classes={{
 						root: 'font-medium w-full rounded-lg p-24 justify-start'
 					}}
 					startIcon={<FuseSvgIcon>heroicons-outline:plus-circle</FuseSvgIcon>}
-					sx={{ color: 'text.secondary' }}
+					sx={{
+						backgroundColor: 'divider',
+						'&:hover, &:focus': {
+							backgroundColor: (theme) => alpha(theme.palette.divider, 0.8)
+						},
+						color: 'text.secondary'
+					}}
 				>
 					Add another card
 				</Button>

@@ -44,8 +44,8 @@ function DevelopmentServerDoc() {
 				running on <b>http://localhost:3000</b> although it could change depending on your setup.
 			</Typography>
 
-			<div className="my-24 px-24 py-16 border-1 border-red rounded-16">
-				<Typography className="mb-8 font-500 text-16 text-red">Important:</Typography>
+			<div className="my-24 px-24 py-16 border-1 border-red rounded-xl">
+				<Typography className="mb-8 font-500 text-15 text-red">Important:</Typography>
 				<Typography component="div">
 					In case of runtime errors on first run, make sure you are running an LTS release of Node.js. Delete
 					node_modules and try again.

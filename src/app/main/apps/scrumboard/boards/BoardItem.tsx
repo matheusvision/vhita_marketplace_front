@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { formatDistance } from 'date-fns';
 import _ from '@lodash';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
+import { alpha } from '@mui/system/colorManipulator';
 import { ScrumboardBoard, useGetScrumboardMembersQuery } from '../ScrumboardApi';
 
 type BoardItemProps = {
@@ -34,7 +35,7 @@ function BoardItem(props: BoardItemProps) {
 			<div className="flex flex-col flex-auto justify-start items-start w-full">
 				<Box
 					sx={{
-						backgroundColor: 'divider',
+						backgroundColor: (theme) => alpha(theme.palette.secondary.main, 0.08),
 						color: 'secondary.main'
 					}}
 					className="flex items-center justify-center p-16 rounded-full"

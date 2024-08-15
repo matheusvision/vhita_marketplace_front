@@ -61,7 +61,7 @@ function ModernSignUpPage() {
 
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center md:p-32">
-			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-2xl sm:shadow md:w-full md:max-w-6xl">
+			<Paper className="flex min-h-full w-full overflow-hidden rounded-0 sm:min-h-auto sm:w-auto sm:rounded-xl sm:shadow md:w-full md:max-w-6xl">
 				<div className="w-full px-16 py-32 ltr:border-r-1 rtl:border-l-1 sm:w-auto sm:p-48 md:p-64">
 					<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 						<img
@@ -166,12 +166,9 @@ function ModernSignUpPage() {
 								name="acceptTermsConditions"
 								control={control}
 								render={({ field }) => (
-									<FormControl
-										className="items-center"
-										error={!!errors.acceptTermsConditions}
-									>
+									<FormControl error={!!errors.acceptTermsConditions}>
 										<FormControlLabel
-											label="I agree to the Terms of Service and Privacy Policy"
+											label="I agree with Terms and Privacy Policy"
 											control={
 												<Checkbox
 													size="small"

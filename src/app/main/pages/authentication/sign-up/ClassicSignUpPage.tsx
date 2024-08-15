@@ -57,7 +57,7 @@ function ClassicSignUpPage() {
 
 	return (
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:justify-center">
-			<Paper className="min-h-full w-full rounded-0 px-16 py-32 sm:min-h-auto sm:w-auto sm:rounded-2xl sm:p-48 sm:shadow">
+			<Paper className="min-h-full w-full rounded-0 px-16 py-32 sm:min-h-auto sm:w-auto sm:rounded-xl sm:p-48 sm:shadow">
 				<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 					<img
 						className="w-48"
@@ -161,12 +161,9 @@ function ClassicSignUpPage() {
 							name="acceptTermsConditions"
 							control={control}
 							render={({ field }) => (
-								<FormControl
-									className="items-center"
-									error={!!errors.acceptTermsConditions}
-								>
+								<FormControl error={!!errors.acceptTermsConditions}>
 									<FormControlLabel
-										label="I agree to the Terms of Service and Privacy Policy"
+										label="I agree with Terms and Privacy Policy"
 										control={
 											<Checkbox
 												size="small"

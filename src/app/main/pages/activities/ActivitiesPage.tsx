@@ -2,6 +2,7 @@ import FusePageSimple from '@fuse/core/FusePageSimple';
 import Typography from '@mui/material/Typography';
 import Timeline from '@mui/lab/Timeline';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import exampleActivitiesData from './exampleActivitiesData';
 import ActivityTimelineItem from './ActivityTimelineItem';
 
@@ -15,6 +16,7 @@ function ActivitiesPage() {
 		<FusePageSimple
 			content={
 				<div className="flex flex-auto flex-col px-24 py-40 sm:px-64 sm:pb-80 sm:pt-72">
+					<PageBreadcrumb />
 					<Typography className="text-4xl font-extrabold leading-none tracking-tight">
 						All Activities
 					</Typography>

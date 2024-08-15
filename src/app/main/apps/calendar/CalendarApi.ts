@@ -1,8 +1,7 @@
 import { apiService as api } from 'app/store/apiService';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
-import { createSelector } from '@reduxjs/toolkit';
 import { Dictionary } from '@fullcalendar/core/internal';
-import { selectSelectedLabels, setSelectedLabels } from './calendarAppSlice';
+import { setSelectedLabels } from './calendarAppSlice';
 
 export const addTagTypes = ['calendar_events', 'calendar_event', 'calendar_labels', 'calendar_label'] as const;
 
@@ -135,8 +134,3 @@ export default CalendarApi;
 export type CalendarApiType = {
 	[CalendarApi.reducerPath]: ReturnType<typeof CalendarApi.reducer>;
 };
-
-export const selectFilteredEvents = (events: Event[]) =>
-	createSelector([selectSelectedLabels], (selectedLabels) => {
-		return events.filter((item) => selectedLabels.includes(item?.extendedProps?.label as string));
-	});

@@ -9,6 +9,7 @@ import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store/hooks';
+import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import FaqList from '../faqs/FaqList';
 import { useGetHelpCenterMostlyFaqsQuery } from '../HelpCenterApi';
 
@@ -34,18 +35,14 @@ function HelpCenterHome() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1, transition: { delay: 0 } }}
 						>
-							<Typography
-								color="inherit"
-								className="text-18 font-semibold"
-							>
-								HELP CENTER
-							</Typography>
+							<PageBreadcrumb />
 						</motion.div>
+
 						<motion.div
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1, transition: { delay: 0 } }}
 						>
-							<Typography className="mt-4 text-32 sm:text-48 font-extrabold tracking-tight leading-tight text-center">
+							<Typography className="mt-4 text-28 sm:text-48 font-extrabold tracking-tight leading-tight text-center">
 								How can we help you today?
 							</Typography>
 						</motion.div>
@@ -55,7 +52,7 @@ function HelpCenterHome() {
 						>
 							<Typography
 								color="text.secondary"
-								className="mt-12 sm:text-20 text-center tracking-tight"
+								className="mt-12 sm:text-18 text-center tracking-tight"
 							>
 								Search for a topic or question, check out our FAQs and guides, contact us for detailed
 								support
@@ -117,7 +114,7 @@ function HelpCenterHome() {
 						component={Link}
 						to="faqs"
 						role="button"
-						className="relative flex flex-col rounded-2xl shadow hover:shadow-lg overflow-hidden transition-shadow ease-in-out duration-150"
+						className="relative flex flex-col shadow hover:shadow-lg overflow-hidden transition-shadow ease-in-out duration-150"
 					>
 						<div className="flex flex-col flex-auto items-center justify-center p-32 text-center">
 							<div className="text-2xl font-semibold">FAQs</div>
@@ -156,7 +153,7 @@ function HelpCenterHome() {
 						component={Link}
 						to="guides"
 						role="button"
-						className="relative flex flex-col rounded-2xl shadow hover:shadow-lg overflow-hidden transition-shadow ease-in-out duration-150"
+						className="relative flex flex-col shadow hover:shadow-lg overflow-hidden transition-shadow ease-in-out duration-150"
 					>
 						<div className="flex flex-col flex-auto items-center justify-center p-32 text-center">
 							<div className="text-2xl font-semibold">Guides</div>
@@ -195,7 +192,7 @@ function HelpCenterHome() {
 						component={Link}
 						to="support"
 						role="button"
-						className="relative flex flex-col rounded-2xl shadow hover:shadow-lg overflow-hidden transition-shadow ease-in-out duration-150"
+						className="relative flex flex-col shadow hover:shadow-lg overflow-hidden transition-shadow ease-in-out duration-150"
 					>
 						<div className="flex flex-col flex-auto items-center justify-center p-32 text-center">
 							<div className="text-2xl font-semibold">Support</div>

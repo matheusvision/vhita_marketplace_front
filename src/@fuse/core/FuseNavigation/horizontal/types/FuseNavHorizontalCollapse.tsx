@@ -106,7 +106,7 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 									<ListItemText
 										className="fuse-list-item-text"
 										primary={item.title}
-										classes={{ primary: 'text-13 truncate' }}
+										classes={{ primary: 'text-12 truncate' }}
 									/>
 
 									{item.badge && (
@@ -117,17 +117,16 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 									)}
 									<IconButton
 										disableRipple
-										className="h-16 w-16 p-0 ltr:ml-4 rtl:mr-4"
+										className="h-12 w-12 p-0 ltr:ml-4 rtl:mr-4"
 										color="inherit"
-										size="large"
 									>
 										<FuseSvgIcon
-											size={16}
+											size={12}
 											className="arrow-icon"
 										>
 											{theme.direction === 'ltr'
-												? 'heroicons-outline:arrow-small-right'
-												: 'heroicons-outline:arrow-small-left'}
+												? 'heroicons-outline:chevron-right'
+												: 'heroicons-outline:chevron-left'}
 										</FuseSvgIcon>
 									</IconButton>
 								</Root>
@@ -153,7 +152,7 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 											style={{ transformOrigin: '0 0 0' }}
 										>
 											<Paper
-												className="rounded-8"
+												className="rounded-4"
 												onMouseEnter={() => handleToggle(true)}
 												onMouseLeave={() => handleToggle(false)}
 											>

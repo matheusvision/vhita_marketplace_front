@@ -70,17 +70,12 @@ function MainSidebar() {
 
 				{useMemo(
 					() => (
-						<Paper className="flex p-4 items-center w-full px-16 py-4 border-1 h-40 rounded-full shadow-none">
-							<FuseSvgIcon
-								color="action"
-								size={20}
-							>
-								heroicons-solid:magnifying-glass
-							</FuseSvgIcon>
+						<Paper className="flex p-4 items-center w-full px-8 py-4 border-1 rounded-lg h-36 shadow-none">
+							<FuseSvgIcon color="action">heroicons-solid:magnifying-glass</FuseSvgIcon>
 
 							<Input
 								placeholder="Search or start new chat"
-								className="flex flex-1 px-8"
+								className="flex flex-1"
 								disableUnderline
 								fullWidth
 								value={searchText}
@@ -145,7 +140,7 @@ function MainSidebar() {
 								{filteredChatList.length > 0 && (
 									<motion.div variants={item}>
 										<Typography
-											className="font-medium text-20 px-32 py-24"
+											className="font-medium text-18 px-32 py-24"
 											color="secondary.main"
 										>
 											Chats
@@ -167,7 +162,7 @@ function MainSidebar() {
 								{filteredContacts.length > 0 && (
 									<motion.div variants={item}>
 										<Typography
-											className="font-medium text-20 px-32 py-24"
+											className="font-medium text-18 px-32 py-24"
 											color="secondary.main"
 										>
 											Contacts

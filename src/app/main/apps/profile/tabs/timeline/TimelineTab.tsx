@@ -88,7 +88,7 @@ function TimelineTab() {
 					>
 						<Input
 							className="p-24 w-full"
-							classes={{ root: 'text-14' }}
+							classes={{ root: 'text-13' }}
 							placeholder="Write something.."
 							multiline
 							rows="6"

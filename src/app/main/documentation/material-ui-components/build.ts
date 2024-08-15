@@ -61,23 +61,23 @@ renderer.heading = (text, level) => {
 	let className = '';
 	switch (level) {
 		case 1:
-			className = 'text-32 my-16 font-700';
+			className = 'text-28 my-16 font-700';
 			break;
 		case 2:
-			className = 'text-24 mt-24 mb-10 font-700';
+			className = 'text-22 mt-24 mb-10 font-700';
 			break;
 		case 3:
-			className = 'text-16 mt-20 mb-10 font-700';
+			className = 'text-15 mt-20 mb-10 font-700';
 			break;
 		default:
-			className = 'text-14 mt-12 mb-10';
+			className = 'text-13 mt-12 mb-10';
 	}
 
 	return `<Typography className="${className}" component="h${level}">${text}</Typography>\n`;
 };
 
 renderer.paragraph = (text) => {
-	return `<Typography className="text-14 mb-32" component="div">${text}</Typography>\n`;
+	return `<Typography className="text-13 mb-32" component="div">${text}</Typography>\n`;
 };
 
 renderer.code = (code, lang) => {
@@ -204,7 +204,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 	markdownSource = markdownSource.replace(
 		/:::info([\s\S]*?):::/g,
-		'<div className="border-1 p-16 rounded-16 my-12">\n$1\n</div>'
+		'<div className="border-1 p-16 rounded-xl my-12">\n$1\n</div>'
 	);
 
 	let contentsArr = getContents(markdownSource);

@@ -35,7 +35,7 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 		<ThemeProvider theme={toolbarTheme}>
 			<AppBar
 				id="fuse-toolbar"
-				className={clsx('relative z-20 flex shadow', className)}
+				className={clsx('relative z-20 flex border', className)}
 				color="default"
 				sx={{
 					backgroundColor: (theme) =>
@@ -52,16 +52,16 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 							<>
 								<Hidden lgDown>
 									{(config.navbar.style === 'style-3' || config.navbar.style === 'style-3-dense') && (
-										<NavbarToggleButton className="mx-0 h-40 w-40 p-0" />
+										<NavbarToggleButton className="mx-0 h-36 w-36 p-0" />
 									)}
 
 									{config.navbar.style === 'style-1' && !navbar.open && (
-										<NavbarToggleButton className="mx-0 h-40 w-40 p-0" />
+										<NavbarToggleButton className="mx-0 h-36 w-36 p-0" />
 									)}
 								</Hidden>
 
 								<Hidden lgUp>
-									<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
+									<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
 								</Hidden>
 							</>
 						)}
@@ -84,11 +84,11 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 					{config.navbar.display && config.navbar.position === 'right' && (
 						<>
 							<Hidden lgDown>
-								{!navbar.open && <NavbarToggleButton className="mx-0 h-40 w-40 p-0" />}
+								{!navbar.open && <NavbarToggleButton className="mx-0 h-36 w-36 p-0" />}
 							</Hidden>
 
 							<Hidden lgUp>
-								<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
+								<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
 							</Hidden>
 						</>
 					)}

@@ -76,7 +76,7 @@ function FuseNavHorizontalItem(props: FuseNavHorizontalItemProps) {
 				<ListItemText
 					className="fuse-list-item-text"
 					primary={item.title}
-					classes={{ primary: 'text-13 fuse-list-item-text-primary truncate' }}
+					classes={{ primary: 'text-12 fuse-list-item-text-primary truncate' }}
 				/>
 
 				{item.badge && (
