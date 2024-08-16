@@ -93,7 +93,7 @@ function ProductHeader() {
 						initial={{ x: -20 }}
 						animate={{ x: 0, transition: { delay: 0.3 } }}
 					>
-						<Typography className="text-15 sm:text-18 truncate font-semibold">
+						<Typography className="text-15 sm:text-2xl truncate font-semibold">
 							{name || 'New Product'}
 						</Typography>
 						<Typography

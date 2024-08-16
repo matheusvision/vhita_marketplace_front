@@ -109,7 +109,7 @@ function BoardAddCard(props: BoardAddCardProps) {
 													<FuseSvgIcon size={16}>heroicons-outline:x-mark</FuseSvgIcon>
 												</IconButton>
 												<Button
-													className="rounded-4 min-h-28 max-h-28 p-0"
+													className="rounded min-h-28 max-h-28 p-0"
 													variant="contained"
 													color="secondary"
 													type="submit"

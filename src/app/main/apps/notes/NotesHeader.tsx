@@ -43,7 +43,7 @@ function NotesHeader(props: NotesHeaderProps) {
 						<div>
 							<PageBreadcrumb />
 
-							<Typography className="text-20 md:text-24 font-extrabold tracking-tight leading-none">
+							<Typography className="text-2xl md:text-4xl font-extrabold tracking-tight leading-none">
 								Notes
 							</Typography>
 						</div>

@@ -59,7 +59,7 @@ function SliderDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Slider
@@ -69,26 +69,26 @@ function SliderDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Sliders reflect a range of values along a bar, from which users may select a single value. They are
 				ideal for adjusting settings such as volume, brightness, or applying image filters.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Continuous sliders
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Continuous sliders allow users to select a value along a subjective range.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -100,19 +100,19 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Sizes
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For smaller slider, use the prop <code>{`size="small"`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -124,20 +124,20 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Discrete sliders
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Discrete sliders can be adjusted to a specific value by referencing its value indicator. You can
 				generate a mark for each step with <code>{`marks={true}`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -155,7 +155,7 @@ function SliderDoc(props) {
 				Small steps
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can change the default step increment. Make sure to adjust the <code>shiftStep</code> prop (the
@@ -163,7 +163,7 @@ function SliderDoc(props) {
 				divadable with the <code>step</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -181,13 +181,13 @@ function SliderDoc(props) {
 				Custom marks
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can have custom marks by providing a rich array to the <code>marks</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -205,14 +205,14 @@ function SliderDoc(props) {
 				Restricted values
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can restrict the selectable values to those provided with the <code>marks</code> prop with{' '}
 				<code>{`step={null}`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -230,13 +230,13 @@ function SliderDoc(props) {
 				Label always visible
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can force the thumb label to be always visible with <code>{`valueLabelDisplay="on"`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -248,20 +248,20 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Range slider
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The slider can be used to set the start and end of a range by supplying an array of values to the{' '}
 				<code>value</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -279,7 +279,7 @@ function SliderDoc(props) {
 				Minimum distance
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can enforce a minimum distance between values in the <code>onChange</code> event handler. By
@@ -289,7 +289,7 @@ function SliderDoc(props) {
 				parameter in <code>onChange</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -301,19 +301,19 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Slider with input field
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In this example, an input allows a discrete value to be set.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -325,13 +325,13 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Color
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -343,20 +343,20 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here are some examples of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -374,7 +374,7 @@ function SliderDoc(props) {
 				Music player
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -386,13 +386,13 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Vertical sliders
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -404,7 +404,7 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<strong>WARNING</strong>: Chrome, Safari and newer Edge versions that is any browser based on WebKit
@@ -413,7 +413,7 @@ function SliderDoc(props) {
 				applying <code>-webkit-appearance: slider-vertical;</code> the slider is exposed as vertical.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				However, by applying <code>-webkit-appearance: slider-vertical;</code> keyboard navigation for
@@ -425,7 +425,7 @@ function SliderDoc(props) {
 				truly vertical slider. This might be less confusing to users compared to a change in direction.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -437,19 +437,19 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Marks placement
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can customize your slider by adding and repositioning marks for minimum and maximum values.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -461,13 +461,13 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Track
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The track shows the range available for user selection.
@@ -479,13 +479,13 @@ function SliderDoc(props) {
 				Removed track
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The track can be turned off with <code>{`track={false}`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -503,13 +503,13 @@ function SliderDoc(props) {
 				Inverted track
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The track can be inverted with <code>{`track="inverted"`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -521,26 +521,26 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Non-linear scale
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can use the <code>scale</code> prop to represent the <code>value</code> on a different scale.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In the following demo, the value <em>x</em> represents the value <em>2^x</em>. Increasing <em>x</em> by
 				one increases the represented value by factor <em>2</em>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -552,13 +552,13 @@ function SliderDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				(WAI-ARIA:{' '}
@@ -568,7 +568,7 @@ function SliderDoc(props) {
 				)
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The component handles most of the work necessary to make it accessible. However, you need to make sure
@@ -586,7 +586,7 @@ function SliderDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
@@ -598,7 +598,7 @@ function SliderDoc(props) {
 				IE 11
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The slider&#39;s value label is not centered in IE 11. The alignment is not handled to make

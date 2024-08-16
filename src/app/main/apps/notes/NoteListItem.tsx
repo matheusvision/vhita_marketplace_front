@@ -43,7 +43,7 @@ function NoteListItem(props: NoteListItemProps) {
 				)}
 
 				{note.title && note.title !== '' && (
-					<Typography className="px-16 my-12 text-13 font-semibold">{note.title}</Typography>
+					<Typography className="px-16 my-12 text-base font-semibold">{note.title}</Typography>
 				)}
 
 				{note.content && note.content !== '' && (
@@ -52,7 +52,7 @@ function NoteListItem(props: NoteListItemProps) {
 						component="div"
 					>
 						<div
-							className={clsx('w-full break-words', variateDescSize ? 'font-500' : 'text-13')}
+							className={clsx('w-full break-words', variateDescSize ? 'font-500' : 'text-base')}
 							ref={(el) => {
 								setTimeout(() => setDescriptionStyle(note.content, el, Boolean(variateDescSize)));
 							}}
@@ -76,7 +76,7 @@ function NoteListItem(props: NoteListItemProps) {
 									heroicons-solid:check-circle
 								</FuseSvgIcon>
 								<Typography
-									className={clsx('truncate text-12 mx-8', item.completed && 'line-through')}
+									className={clsx('truncate text-md mx-8', item.completed && 'line-through')}
 									color={item.completed ? 'text.secondary' : 'inherit'}
 								>
 									{item.content}

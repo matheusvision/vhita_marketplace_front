@@ -111,7 +111,7 @@ function Courses() {
 						>
 							<Typography
 								color="inherit"
-								className="text-center text-28 sm:text-48 font-extrabold tracking-tight mt-4"
+								className="text-center text-5xl sm:text-48 font-extrabold tracking-tight mt-4"
 							>
 								What do you want to learn today?
 							</Typography>
@@ -122,7 +122,7 @@ function Courses() {
 						>
 							<Typography
 								color="inherit"
-								className="text-15 sm:text-18 mt-16 sm:mt-24 opacity-75 tracking-tight max-w-md text-center"
+								className="text-15 sm:text-2xl mt-16 sm:mt-24 opacity-75 tracking-tight max-w-md text-center"
 							>
 								Our courses will step you through the process of a building small applications, or
 								adding new features to existing applications.
@@ -239,7 +239,7 @@ function Courses() {
 							<div className="flex flex-1 items-center justify-center">
 								<Typography
 									color="text.secondary"
-									className="text-22 my-24"
+									className="text-3xl my-24"
 								>
 									No courses found!
 								</Typography>

@@ -21,7 +21,7 @@ const FuseTabs = styled((props: StyledTabsProps) => (
 			children: (
 				<Box
 					sx={{ bgcolor: 'text.disabled' }}
-					className="w-full h-full rounded-8 opacity-20"
+					className="w-full h-full rounded-lg opacity-20"
 				/>
 			)
 		}}

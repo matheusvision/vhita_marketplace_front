@@ -388,7 +388,7 @@ function BoardCardForm() {
 
 			<div className="flex order-first sm:order-last items-start sticky top-0">
 				<Box
-					className="flex flex-row sm:flex-col items-center rounded-8 w-full overflow-hidden"
+					className="flex flex-row sm:flex-col items-center rounded-lg w-full overflow-hidden"
 					sx={{ backgroundColor: 'background.default' }}
 				>
 					<IconButton

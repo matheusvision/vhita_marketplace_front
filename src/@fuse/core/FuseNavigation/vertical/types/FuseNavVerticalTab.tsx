@@ -137,7 +137,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="text-18 font-bold">{item.title[0]}</div>
+									item.title && <div className="text-2xl font-bold">{item.title[0]}</div>
 								)}
 								{item.badge && (
 									<FuseNavBadge
@@ -152,7 +152,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 								primary={item.title}
 								classes={{
 									primary:
-										'text-12 font-medium fuse-list-item-text-primary truncate text-center truncate'
+										'text-md font-medium fuse-list-item-text-primary truncate text-center truncate'
 								}}
 							/>
 						</>

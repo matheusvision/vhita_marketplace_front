@@ -23,7 +23,7 @@ function LabelsDialog() {
 			onClose={() => dispatch(closeLabelsDialog())}
 			open={Boolean(labelsDialogOpen)}
 		>
-			<Typography className="text-18 mb-16 font-semibold">Edit Labels</Typography>
+			<Typography className="text-2xl mb-16 font-semibold">Edit Labels</Typography>
 
 			<List dense>
 				<NewLabelForm />

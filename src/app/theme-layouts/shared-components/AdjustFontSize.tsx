@@ -88,7 +88,7 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 						Font Size
 					</Typography>
 					<Slider
-						classes={{ markLabel: 'text-12 font-semibold' }}
+						classes={{ markLabel: 'text-md font-semibold' }}
 						value={fontSize}
 						track={false}
 						aria-labelledby="discrete-slider-small-steps"

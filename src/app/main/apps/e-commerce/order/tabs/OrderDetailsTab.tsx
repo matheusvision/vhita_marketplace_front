@@ -75,7 +75,7 @@ function OrderDetailsTab() {
 						heroicons-outline:user-circle
 					</FuseSvgIcon>
 					<Typography
-						className="text-18"
+						className="text-2xl"
 						color="text.secondary"
 					>
 						Customer
@@ -206,7 +206,7 @@ function OrderDetailsTab() {
 						heroicons-outline:clock
 					</FuseSvgIcon>
 					<Typography
-						className="text-18"
+						className="text-2xl"
 						color="text.secondary"
 					>
 						Order Status
@@ -248,7 +248,7 @@ function OrderDetailsTab() {
 						heroicons-outline:currency-dollar
 					</FuseSvgIcon>
 					<Typography
-						className="text-18"
+						className="text-2xl"
 						color="text.secondary"
 					>
 						Payment
@@ -302,7 +302,7 @@ function OrderDetailsTab() {
 						heroicons-outline:truck
 					</FuseSvgIcon>
 					<Typography
-						className="text-18"
+						className="text-2xl"
 						color="text.secondary"
 					>
 						Shipping

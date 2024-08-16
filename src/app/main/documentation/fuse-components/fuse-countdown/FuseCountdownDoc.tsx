@@ -25,7 +25,7 @@ function FuseCountdownDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -41,7 +41,7 @@ function FuseCountdownDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Preview
@@ -53,7 +53,7 @@ function FuseCountdownDoc() {
 			/>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Demos

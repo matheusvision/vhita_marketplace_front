@@ -44,7 +44,7 @@ function TailwindCssUI() {
 							includes and uses Tailwind by default and it can be used in any part of the theme.
 						</Typography>
 
-						<Typography className="text-18 font-700 mt-32 mb-16">Styling in Material-UI</Typography>
+						<Typography className="text-2xl font-700 mt-32 mb-16">Styling in Material-UI</Typography>
 
 						<Typography
 							className="mb-16"
@@ -74,7 +74,7 @@ function TailwindCssUI() {
 
 					<div>
 						<Typography
-							className="text-18 font-700 mt-32 mb-16"
+							className="text-2xl font-700 mt-32 mb-16"
 							variant="h5"
 						>
 							Helper Classes with TailwindCSS
@@ -107,7 +107,7 @@ function TailwindCssUI() {
 						</Typography>
 					</div>
 
-					<Typography className="text-18 font-700 mt-32 mb-16">Official docs</Typography>
+					<Typography className="text-2xl font-700 mt-32 mb-16">Official docs</Typography>
 
 					<Typography className="my-16">
 						Official Tailwind CSS documentation:

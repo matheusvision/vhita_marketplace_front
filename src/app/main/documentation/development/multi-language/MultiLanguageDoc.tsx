@@ -45,7 +45,7 @@ function MultiLanguageDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -112,7 +112,7 @@ function MultiLanguageDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Default Language
@@ -141,7 +141,7 @@ function MultiLanguageDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Changing Language

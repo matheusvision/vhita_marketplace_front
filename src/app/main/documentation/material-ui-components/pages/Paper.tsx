@@ -29,7 +29,7 @@ function PaperDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Paper
@@ -39,20 +39,20 @@ function PaperDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In Material Design, surface components and shadow styles are heavily influenced by their real-world
 				physical counterparts.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Material UI implements this concept with the Paper component, a container-like surface that features the{' '}
@@ -62,7 +62,7 @@ function PaperDoc(props) {
 				prop for pulling box-shadow values from the theme.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::success The Paper component is ideally suited for designs that follow{' '}
@@ -72,7 +72,7 @@ function PaperDoc(props) {
 				, which is meant to replicate how light casts shadows in the physical world.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you just need a generic container, you may prefer to use the{' '}
@@ -80,7 +80,7 @@ function PaperDoc(props) {
 				components. :::
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -92,7 +92,7 @@ function PaperDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Component
@@ -107,7 +107,7 @@ import Paper from '@mui/material/Paper';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
@@ -119,7 +119,7 @@ import Paper from '@mui/material/Paper';
 				Elevation
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the <code>elevation</code> prop to establish hierarchy through the use of shadows. The Paper
@@ -127,14 +127,14 @@ import Paper from '@mui/material/Paper';
 				to <code>24</code>. The higher the number, the further away the Paper appears to be from its background.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In dark mode, increasing the elevation also makes the background color lighter. This is done by applying
 				a semi-transparent gradient with the <code>background-image</code> CSS property.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning The aforementioned dark mode behavior can lead to confusion when overriding the Paper
@@ -143,7 +143,7 @@ import Paper from '@mui/material/Paper';
 				<code>background-color</code> and <code>background-image</code>. :::
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -161,14 +161,14 @@ import Paper from '@mui/material/Paper';
 				Variants
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Set the <code>variant</code> prop to <code>{`"outlined"`}</code> for a flat, outlined Paper with no
 				shadows:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -186,14 +186,14 @@ import Paper from '@mui/material/Paper';
 				Corners
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Paper component features rounded corners by default. Add the <code>square</code> prop for square
 				corners:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -205,13 +205,13 @@ import Paper from '@mui/material/Paper';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Paper component is composed of a single root <code>{`<div>`}</code> that wraps around its contents:

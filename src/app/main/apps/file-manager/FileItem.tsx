@@ -31,10 +31,10 @@ function FileItem(props: FileItemProps) {
 				<ItemIcon type={item.type} />
 			</div>
 			<div className="flex shrink flex-col justify-center text-center">
-				<Typography className="truncate text-12 font-medium">{item.name}</Typography>
+				<Typography className="truncate text-md font-medium">{item.name}</Typography>
 				{item.contents && (
 					<Typography
-						className="truncate text-12 font-medium"
+						className="truncate text-md font-medium"
 						color="text.secondary"
 					>
 						{item.contents}

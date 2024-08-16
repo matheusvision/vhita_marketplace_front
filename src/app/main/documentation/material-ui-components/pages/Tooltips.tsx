@@ -53,7 +53,7 @@ function TooltipsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Tooltip
@@ -63,20 +63,20 @@ function TooltipsDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				When activated, Tooltips display a text label identifying an element, such as a description of its
 				function.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic tooltip
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -88,20 +88,20 @@ function TooltipsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Positioned tooltips
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>Tooltip</code> has 12 <strong>placement</strong> choices. They don&#39;t have directional
 				arrows; instead, they rely on motion emanating from the source to convey direction.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -113,20 +113,20 @@ function TooltipsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here are some examples of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -138,20 +138,20 @@ function TooltipsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Arrow tooltips
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can use the <code>arrow</code> prop to give your tooltip an arrow indicating which element it refers
 				to.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -163,20 +163,20 @@ function TooltipsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Distance from anchor
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				To adjust the distance between the tooltip and its anchor, you can use the <code>slotProps</code> prop
 				to modify the <a href="https://popper.js.org/docs/v2/modifiers/offset/">offset</a> of the popper.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -188,13 +188,13 @@ function TooltipsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Alternatively, you can use the <code>slotProps</code> prop to customize the margin of the popper.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -206,13 +206,13 @@ function TooltipsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Custom child element
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The tooltip needs to apply DOM event listeners to its child element. If the child is a custom React
@@ -241,14 +241,14 @@ const MyComponent = React.forwardRef(function MyComponent(props, ref) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can find a similar concept in the{' '}
 				<a href="/material-ui/guides/composition/#wrapping-components">wrapping components</a> guide.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If using a class component as a child, you&#39;ll also need to ensure that the ref is forwarded to the
@@ -285,26 +285,26 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Triggers
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can define the types of events that cause a tooltip to show.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The touch action requires a long press due to the <code>enterTouchDelay</code> prop being set to{' '}
 				<code>700</code>ms by default.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -316,20 +316,20 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Controlled tooltips
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can use the <code>open</code>, <code>onOpen</code> and <code>onClose</code> props to control the
 				behavior of the tooltip.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -341,19 +341,19 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Variable width
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>Tooltip</code> wraps long text by default to make it readable.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -365,13 +365,13 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Interactive
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Tooltips are interactive by default (to pass{' '}
@@ -381,7 +381,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				level AA) by passing <code>disableInteractive</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -393,13 +393,13 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Disabled elements
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				By default disabled elements like <code>{`<button>`}</code> do not trigger user interactions so a{' '}
@@ -407,14 +407,14 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				add a simple wrapper element, such as a <code>span</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning In order to work with Safari, you need at least one display block or flex item below the
 				tooltip wrapper. :::
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -426,7 +426,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning If you&#39;re not wrapping a Material UI component that inherits from <code>ButtonBase</code>
@@ -449,19 +449,19 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Transitions
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use a different transition.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -473,19 +473,19 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Follow cursor
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can enable the tooltip to follow the cursor by setting <code>{`followCursor={true}`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -497,13 +497,13 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Virtual element
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In the event you need to implement a custom placement, you can use the <code>anchorEl</code> prop: The
@@ -515,7 +515,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -527,13 +527,13 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Showing and hiding
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The tooltip is normally shown immediately when the user&#39;s mouse hovers over the element, and hides
@@ -541,14 +541,14 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				through the <code>enterDelay</code> and <code>leaveDelay</code> props.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				On mobile, the tooltip is displayed when the user longpresses the element and hides after a delay of
 				1500ms. You can disable this feature with the <code>disableTouchListener</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -560,13 +560,13 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				(WAI-ARIA:{' '}
@@ -576,7 +576,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				)
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				By default, the tooltip only labels its child element. This is notably different from <code>title</code>{' '}
@@ -593,7 +593,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				the <code>title</code> acts as an accessible description. If you want the tooltip to act as an
@@ -606,7 +606,7 @@ const WrappedMyComponent = React.forwardRef(function WrappedMyComponent(props, r
 				.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

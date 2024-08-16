@@ -50,7 +50,7 @@ function CalendarViewMenu(props: CalendarViewMenuProps) {
 		<div className={className}>
 			<Button
 				sx={{ minWidth: 120 }}
-				className="rounded-6 justify-between"
+				className="rounded-md justify-between"
 				id="view-select-button"
 				aria-controls="view-select-menu"
 				aria-haspopup="true"

@@ -28,9 +28,9 @@ function Logo() {
 				alt="logo"
 			/>
 			<div className="logo-text flex space-x-6 items-center">
-				<Typography className="text-18 tracking-light font-semibold">FUSE</Typography>
+				<Typography className="text-2xl tracking-light font-semibold">FUSE</Typography>
 				<div
-					className="badge flex items-center rounded-4 space-x-8 px-8 py-4"
+					className="badge flex items-center rounded space-x-8 px-8 py-4"
 					style={{
 						backgroundColor: '#23272f',
 						color: '#149eca'
@@ -42,7 +42,7 @@ function Logo() {
 						alt="react"
 						width="16"
 					/>
-					<span className="react-text text-12 font-semibold">React</span>
+					<span className="react-text text-md font-semibold">React</span>
 				</div>
 			</div>
 		</Root>

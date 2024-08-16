@@ -26,7 +26,7 @@ function LinksDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Links
@@ -37,20 +37,20 @@ function LinksDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic links
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Link component is built on top of the <a href="/material-ui/api/typography/">Typography</a>{' '}
 				component, meaning that you can use its props.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -62,7 +62,7 @@ function LinksDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				However, the Link component has some different default props than the Typography component:
@@ -77,20 +77,20 @@ function LinksDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Underline
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>underline</code> prop can be used to set the underline behavior. The default is{' '}
 				<code>always</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -102,13 +102,13 @@ function LinksDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Security
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				When you use <code>{`target="_blank"`}</code> with Links, it is{' '}
@@ -128,13 +128,13 @@ function LinksDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Third-party routing library
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				One frequent use case is to perform navigation on the client only, without an HTTP round-trip to the
@@ -142,13 +142,13 @@ function LinksDoc(props) {
 				case. Here is a <a href="/material-ui/integrations/routing/#link">more detailed guide</a>.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				(WAI-ARIA:{' '}
@@ -179,7 +179,7 @@ function LinksDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

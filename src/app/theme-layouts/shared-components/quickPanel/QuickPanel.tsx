@@ -58,14 +58,14 @@ function QuickPanel() {
 
 				<div className="mb-0 px-24 py-16">
 					<Typography
-						className="mb-12 text-28"
+						className="mb-12 text-5xl"
 						color="text.secondary"
 					>
 						{format(new Date(), 'eeee')}
 					</Typography>
 					<div className="flex">
 						<Typography
-							className="text-28 leading-none"
+							className="text-5xl leading-none"
 							color="text.secondary"
 						>
 							{format(new Date(), 'dd')}
@@ -77,7 +77,7 @@ function QuickPanel() {
 							th
 						</Typography>
 						<Typography
-							className="text-28 leading-none"
+							className="text-5xl leading-none"
 							color="text.secondary"
 						>
 							{format(new Date(), 'MMMM')}

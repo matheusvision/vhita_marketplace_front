@@ -131,7 +131,7 @@ function FuseSettings() {
 						>
 							<FormLabel
 								component="legend"
-								className="text-13"
+								className="text-base"
 							>
 								Style
 							</FormLabel>
@@ -165,7 +165,7 @@ function FuseSettings() {
 				)}
 
 				<Typography
-					className="my-16 text-12 italic"
+					className="my-16 text-md italic"
 					color="text.secondary"
 				>
 					*Not all option combinations are available
@@ -194,7 +194,7 @@ function FuseSettings() {
 											className="transition-shadow group-hover:shadow-lg"
 											section="main"
 										/>
-										<Typography className="mb-24 flex-1 text-13 font-semibold opacity-80 group-hover:opacity-100">
+										<Typography className="mb-24 flex-1 text-base font-semibold opacity-80 group-hover:opacity-100">
 											Main Palette
 										</Typography>
 									</div>
@@ -215,7 +215,7 @@ function FuseSettings() {
 											className="transition-shadow group-hover:shadow-lg"
 											section="navbar"
 										/>
-										<Typography className="mb-24 flex-1 text-13 font-semibold opacity-80 group-hover:opacity-100">
+										<Typography className="mb-24 flex-1 text-base font-semibold opacity-80 group-hover:opacity-100">
 											Navbar Palette
 										</Typography>
 									</div>
@@ -236,7 +236,7 @@ function FuseSettings() {
 											className="transition-shadow group-hover:shadow-lg"
 											section="toolbar"
 										/>
-										<Typography className="mb-24 flex-1 text-13 font-semibold opacity-80 group-hover:opacity-100">
+										<Typography className="mb-24 flex-1 text-base font-semibold opacity-80 group-hover:opacity-100">
 											Toolbar Palette
 										</Typography>
 									</div>
@@ -257,7 +257,7 @@ function FuseSettings() {
 											className="transition-shadow group-hover:shadow-lg"
 											section="footer"
 										/>
-										<Typography className="mb-24 flex-1 text-13 font-semibold opacity-80 group-hover:opacity-100">
+										<Typography className="mb-24 flex-1 text-base font-semibold opacity-80 group-hover:opacity-100">
 											Footer Palette
 										</Typography>
 									</div>
@@ -277,7 +277,7 @@ function FuseSettings() {
 					>
 						<FormLabel
 							component="legend"
-							className="text-13"
+							className="text-base"
 						>
 							Custom Scrollbars
 						</FormLabel>
@@ -299,7 +299,7 @@ function FuseSettings() {
 					>
 						<FormLabel
 							component="legend"
-							className="text-13"
+							className="text-base"
 						>
 							Direction
 						</FormLabel>

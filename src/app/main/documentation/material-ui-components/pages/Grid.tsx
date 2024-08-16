@@ -47,7 +47,7 @@ function GridDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Grid
@@ -58,7 +58,7 @@ function GridDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <a href="https://m2.material.io/design/layout/responsive-layout-grid.html">grid</a> creates visual
@@ -66,7 +66,7 @@ function GridDoc(props) {
 				Design&#39;s responsive UI is based on a 12-column grid layout.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning The <code>Grid</code> component shouldn&#39;t be confused with a data grid; it is closer to a
@@ -77,13 +77,13 @@ function GridDoc(props) {
 				. :::
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				How it works
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The grid system is implemented with the <code>Grid</code> component:
@@ -109,20 +109,20 @@ function GridDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you are <strong>new to or unfamiliar with flexbox</strong>, we encourage you to read this{' '}
 				<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS-Tricks flexbox</a> guide.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Fluid grids
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Fluid grids use columns that scale and resize content. A fluid grid&#39;s layout can use breakpoints to
@@ -135,14 +135,14 @@ function GridDoc(props) {
 				Basic grid
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Column widths are integer values between 1 and 12; they apply at any breakpoint and indicate how many
 				columns are occupied by the component.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				A value passed to any given breakpoint also applies to all wider breakpoints (if they have no values
@@ -150,7 +150,7 @@ function GridDoc(props) {
 				its parent container, regardless of the viewport size.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -168,14 +168,14 @@ function GridDoc(props) {
 				Grid with multiple breakpoints
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Components may have multiple widths defined, causing the layout to change at the defined breakpoint.
 				Width values given to larger breakpoints override those given to smaller breakpoints.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For example, <code>{`xs={12} sm={6}`}</code> sizes a component to occupy half of the viewport width (6
@@ -184,7 +184,7 @@ function GridDoc(props) {
 				smaller viewports, the component fills all 12 available columns.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -196,13 +196,13 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Spacing
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				To control space between children, use the <code>spacing</code> prop. The spacing value can be any
@@ -213,7 +213,7 @@ function GridDoc(props) {
 				helper.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -231,7 +231,7 @@ function GridDoc(props) {
 				Row &amp; column spacing
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>rowSpacing</code> and <code>columnSpacing</code> props allow for specifying the row and column
@@ -239,7 +239,7 @@ function GridDoc(props) {
 				of <a href="/system/grid/#row-gap-amp-column-gap">CSS Grid</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -251,13 +251,13 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Responsive values
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can switch the props&#39; value based on the active breakpoint. For instance, we can implement the{' '}
@@ -265,7 +265,7 @@ function GridDoc(props) {
 				responsive layout grid of Material Design.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -277,7 +277,7 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Responsive values is supported by:
@@ -303,7 +303,7 @@ function GridDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning When using a responsive <code>columns</code> prop, each grid item needs its corresponding
@@ -321,25 +321,25 @@ function GridDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Interactive
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Below is an interactive demo that lets you explore the visual results of the different settings:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -351,20 +351,20 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Auto-layout
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Auto-layout makes the <em>items</em> equitably share the available space. That also means you can
 				set the width of one <em>item</em> and the others will automatically resize around it.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -382,14 +382,14 @@ function GridDoc(props) {
 				Variable width content
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Set one of the size breakpoint props to <code>{`"auto"`}</code> instead of <code>true</code> / a{' '}
 				<code>number</code> to size a column based on the natural width of its content.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -401,20 +401,20 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Complex Grid
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The following demo doesn&#39;t follow the Material Design guidelines, but illustrates how the grid can
 				be used to build complex layouts.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -426,13 +426,13 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Nested Grid
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>container</code> and <code>item</code> props are two independent booleans; they can be
@@ -440,7 +440,7 @@ function GridDoc(props) {
 			</Typography>
 			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-13 mb-32"
+					className="text-base mb-32"
 					component="div"
 				>
 					A flex <strong>container</strong> is the box generated by an element with a computed display of{' '}
@@ -450,7 +450,7 @@ function GridDoc(props) {
 			</div>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<a href="https://www.w3.org/TR/css-flexbox-1/#box-model">
@@ -458,7 +458,7 @@ function GridDoc(props) {
 				</a>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -470,7 +470,7 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				⚠️ Defining an explicit width to a Grid element that is flex container, flex item, and has spacing at
@@ -486,25 +486,25 @@ function GridDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you need to do such, remove one of the props.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Columns
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can change the default number of columns (12) with the <code>columns</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -516,7 +516,7 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
@@ -528,7 +528,7 @@ function GridDoc(props) {
 				Negative margin
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The spacing between items is implemented with a negative margin. This might lead to unexpected
@@ -542,7 +542,7 @@ function GridDoc(props) {
 				white-space: nowrap
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The initial setting on flex items is <code>min-width: auto</code>. This causes a positioning conflict
@@ -559,7 +559,7 @@ function GridDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In order for the item to stay within the container you need to set <code>min-width: 0</code>. In
@@ -576,7 +576,7 @@ function GridDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -594,7 +594,7 @@ function GridDoc(props) {
 				direction: column | column-reverse
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code> props are{' '}
@@ -602,7 +602,7 @@ function GridDoc(props) {
 				<code>{`direction="column-reverse"`}</code> containers.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				They define the number of grids the component will use for a given breakpoint. They are intended to
@@ -611,20 +611,20 @@ function GridDoc(props) {
 				on the height of the <code>Grid</code> item elements.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				CSS Grid Layout
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>Grid</code> component is using CSS flexbox internally. But as seen below, you can easily use{' '}
 				<a href="/system/grid/">MUI System</a> and CSS Grid to layout your pages.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -636,13 +636,13 @@ function GridDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				System props
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				As a CSS utility component, the <code>Grid</code> supports all{' '}

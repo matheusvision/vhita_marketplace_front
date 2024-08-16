@@ -174,7 +174,7 @@ function BoardCard(props: BoardCardProps) {
 									<div className="flex justify-start">
 										<AvatarGroup
 											max={3}
-											classes={{ avatar: 'w-24 h-24 text-12' }}
+											classes={{ avatar: 'w-24 h-24 text-md' }}
 										>
 											{card.memberIds.map((id) => {
 												const member = _.find(members, { id });

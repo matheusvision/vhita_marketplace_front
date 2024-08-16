@@ -106,7 +106,7 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 									<ListItemText
 										className="fuse-list-item-text"
 										primary={item.title}
-										classes={{ primary: 'text-12 truncate' }}
+										classes={{ primary: 'text-md truncate' }}
 									/>
 
 									{item.badge && (
@@ -152,7 +152,7 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 											style={{ transformOrigin: '0 0 0' }}
 										>
 											<Paper
-												className="rounded-4"
+												className="rounded"
 												onMouseEnter={() => handleToggle(true)}
 												onMouseLeave={() => handleToggle(false)}
 											>

@@ -41,7 +41,7 @@ function RadioButtonsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Radio Group
@@ -51,7 +51,7 @@ function RadioButtonsDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use radio buttons when the user needs to see all available options. If available options can be
@@ -59,26 +59,26 @@ function RadioButtonsDoc(props) {
 				less space.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Radio buttons should have the most commonly used option selected by default.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Radio group
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<code>RadioGroup</code> is a helpful wrapper used to group <code>Radio</code> components that provides
 				an easier API, and proper keyboard accessibility to the group.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -96,13 +96,13 @@ function RadioButtonsDoc(props) {
 				Direction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				To lay out the buttons horizontally, set the <code>row</code> prop:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -120,13 +120,13 @@ function RadioButtonsDoc(props) {
 				Controlled
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can control the radio with the <code>value</code> and <code>onChange</code> props:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -138,19 +138,19 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Standalone radio buttons
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<code>Radio</code> can also be used standalone, without the RadioGroup wrapper.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -162,20 +162,20 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Size
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the <code>size</code> prop or customize the font size of the svg icons to change the size of the
 				radios.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -187,13 +187,13 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Color
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -205,20 +205,20 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Label placement
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can change the placement of the label with the <code>FormControlLabel</code> component&#39;s{' '}
 				<code>labelPlacement</code> prop:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -230,20 +230,20 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Show error
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In general, radio buttons should have a value selected by default. If this is not the case, you can
 				display an error if no value is selected when the form is submitted:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -255,20 +255,20 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here is an example of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -280,13 +280,13 @@ function RadioButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				<code>useRadioGroup</code>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For advanced customization use cases, a <code>useRadioGroup()</code> hook is exposed. It returns the
@@ -308,13 +308,13 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mt-12 mb-10"
+				className="text-base mt-12 mb-10"
 				component="h4"
 			>
 				Returns
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<code>value</code> (<em>object</em>):
@@ -333,13 +333,13 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mt-12 mb-10"
+				className="text-base mt-12 mb-10"
 				component="h4"
 			>
 				Example
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -351,7 +351,7 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				When to use
@@ -364,13 +364,13 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
 				</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				(WAI-ARIA:{' '}
@@ -382,7 +382,7 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
 			<ul className="space-y-16">
 				<li>
 					<Typography
-						className="text-13 mb-32"
+						className="text-base mb-32"
 						component="div"
 					>
 						All form controls should have labels, and this includes radio buttons, checkboxes, and switches.
@@ -392,7 +392,7 @@ import { useRadioGroup } from '@mui/material/RadioGroup';
 				</li>
 				<li>
 					<Typography
-						className="text-13 mb-32"
+						className="text-base mb-32"
 						component="div"
 					>
 						When a label can&#39;t be used, it&#39;s necessary to add an attribute directly to the input

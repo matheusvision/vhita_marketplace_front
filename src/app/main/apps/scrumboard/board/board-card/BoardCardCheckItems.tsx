@@ -33,7 +33,7 @@ function BoardCardCheckItems(props: BoardCardCheckItemsProps) {
 		<Chip
 			size="small"
 			className={clsx(
-				'flex items-center font-semibold text-12 mx-4 mb-6',
+				'flex items-center font-semibold text-md mx-4 mb-6',
 				checkItemsChecked === checkItems ? 'bg-green text-white' : 'bg-grey-500 text-white'
 			)}
 			sx={{

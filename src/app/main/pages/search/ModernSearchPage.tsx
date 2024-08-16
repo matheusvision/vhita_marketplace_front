@@ -72,7 +72,7 @@ function ModernSearchPage() {
 								<motion.div variants={item}>
 									<Typography
 										color="text.secondary"
-										className="mx-12 my-12 text-12"
+										className="mx-12 my-12 text-md"
 									>
 										{data.length} results
 									</Typography>

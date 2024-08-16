@@ -29,7 +29,7 @@ function FuseMessageDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -66,7 +66,7 @@ function FuseMessageDoc() {
 			</FuseHighlight>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Example

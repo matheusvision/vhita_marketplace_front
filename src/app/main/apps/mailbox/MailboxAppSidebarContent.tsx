@@ -43,7 +43,7 @@ function MailboxAppSidebarContent() {
 				animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
 			>
 				<Typography
-					className="px-28 py-10 uppercase text-12 font-600"
+					className="px-28 py-10 uppercase text-md font-600"
 					color="secondary.main"
 				>
 					{t('FOLDERS')}
@@ -64,7 +64,7 @@ function MailboxAppSidebarContent() {
 				animate={{ y: 0, opacity: 1, transition: { delay: 0.1 } }}
 			>
 				<Typography
-					className="px-28 py-10 uppercase text-12 font-600"
+					className="px-28 py-10 uppercase text-md font-600"
 					color="secondary.main"
 				>
 					{t('FILTERS')}
@@ -85,7 +85,7 @@ function MailboxAppSidebarContent() {
 				animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 			>
 				<Typography
-					className="px-28 py-10 uppercase text-12 font-600"
+					className="px-28 py-10 uppercase text-md font-600"
 					color="secondary.main"
 				>
 					{t('LABELS')}

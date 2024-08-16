@@ -20,7 +20,7 @@ const tabs = [
 		id: 'jwt',
 		title: 'JWT',
 		logo: 'assets/images/logo/jwt.svg',
-		logoClass: 'h-36 p-4 bg-black rounded-8'
+		logoClass: 'h-36 p-4 bg-black rounded-lg'
 	},
 	{
 		id: 'firebase',
@@ -72,7 +72,7 @@ function SignInPage() {
 					<Alert
 						icon={false}
 						severity="info"
-						className="mt-24 px-16 text-12 leading-relaxed"
+						className="mt-24 px-16 text-md leading-relaxed"
 					>
 						You are browsing <b>Fuse React Demo</b>. Click on the "Sign in" button to access the Demo and
 						Documentation.
@@ -89,7 +89,7 @@ function SignInPage() {
 							children: (
 								<Box
 									sx={{ borderColor: (theme) => theme.palette.secondary.main }}
-									className="border-1 border-solid w-full h-full rounded-8"
+									className="border-1 border-solid w-full h-full rounded-lg"
 								/>
 							)
 						}}

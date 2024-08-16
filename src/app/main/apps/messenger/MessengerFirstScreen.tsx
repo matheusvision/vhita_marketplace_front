@@ -19,7 +19,7 @@ function MessengerFirstScreen() {
 				heroicons-outline:chat-bubble-left-right
 			</FuseSvgIcon>
 			<Typography
-				className="hidden lg:flex text-16 font-medium tracking-tight text-secondary"
+				className="hidden lg:flex text-xl font-medium tracking-tight text-secondary"
 				color="text.secondary"
 			>
 				Select a conversation or start a new chat

@@ -41,7 +41,7 @@ function SteppersDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Stepper
@@ -51,7 +51,7 @@ function SteppersDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Steppers display progress through a sequence of logical and numbered steps. They may also be used for
@@ -67,7 +67,7 @@ function SteppersDoc(props) {
 			</ul>
 			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-13 mb-32"
+					className="text-base mb-32"
 					component="div"
 				>
 					This component is no longer documented in the{' '}
@@ -77,19 +77,19 @@ function SteppersDoc(props) {
 			</div>
 
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Horizontal stepper
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Horizontal steppers are ideal when the contents of one step depend on an earlier step.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Avoid using long step names in horizontal steppers.
@@ -101,13 +101,13 @@ function SteppersDoc(props) {
 				Linear
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				A linear stepper allows the user to complete the steps in sequence.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>Stepper</code> can be controlled by passing the current step index (zero-based) as the{' '}
@@ -115,7 +115,7 @@ function SteppersDoc(props) {
 				prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example also shows the use of an optional step by placing the <code>optional</code> prop on the
@@ -125,7 +125,7 @@ function SteppersDoc(props) {
 				optional step, it&#39;s not actually complete.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -143,20 +143,20 @@ function SteppersDoc(props) {
 				Non-linear
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Non-linear steppers allow the user to enter a multi-step flow at any point.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example is similar to the regular horizontal stepper, except steps are no longer automatically set
 				to <code>{`disabled={true}`}</code> based on the <code>activeStep</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The use of the <code>StepButton</code> here demonstrates clickable step labels, as well as setting the{' '}
@@ -165,7 +165,7 @@ function SteppersDoc(props) {
 				implementation to determine when all steps are completed (or even if they need to be completed).
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -183,14 +183,14 @@ function SteppersDoc(props) {
 				Alternative label
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Labels can be placed below the step icon by setting the <code>alternativeLabel</code> prop on the{' '}
 				<code>Stepper</code> component.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -208,7 +208,7 @@ function SteppersDoc(props) {
 				Error step
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -226,14 +226,14 @@ function SteppersDoc(props) {
 				Customized horizontal stepper
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here is an example of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -245,20 +245,20 @@ function SteppersDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Vertical stepper
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Vertical steppers are designed for narrow screen sizes. They are ideal for mobile. All the features of
 				the horizontal stepper can be implemented.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -276,7 +276,7 @@ function SteppersDoc(props) {
 				Performance
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The content of a step is unmounted when closed. If you need to make the content available to search
@@ -293,13 +293,13 @@ function SteppersDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Mobile stepper
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This component implements a compact stepper suitable for a mobile device. It has more limited
@@ -308,7 +308,7 @@ function SteppersDoc(props) {
 				its inspiration.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The mobile stepper supports three variants to display progress through the available steps: text, dots,
@@ -321,13 +321,13 @@ function SteppersDoc(props) {
 				Text
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The current step and total number of steps are displayed as text.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -345,7 +345,7 @@ function SteppersDoc(props) {
 				Text with carousel effect
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This demo uses
@@ -353,7 +353,7 @@ function SteppersDoc(props) {
 				a carousel.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -371,13 +371,13 @@ function SteppersDoc(props) {
 				Dots
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use dots when the number of steps is small.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -395,14 +395,14 @@ function SteppersDoc(props) {
 				Progress
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use a progress bar when there are many steps, or if there are steps that need to be inserted during the
 				process (based on responses to earlier steps).
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

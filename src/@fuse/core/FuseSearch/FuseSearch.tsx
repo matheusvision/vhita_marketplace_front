@@ -84,7 +84,7 @@ function renderInputComponent(props: RenderInputComponentProps) {
 							},
 							classes: {
 								input: 'FuseSearch-input py-0 px-16 h-36 md:h-36 ltr:pr-36 rtl:pl-36',
-								notchedOutline: 'rounded-8'
+								notchedOutline: 'rounded-lg'
 							}
 						}}
 						variant="outlined"
@@ -133,7 +133,7 @@ function renderSuggestion(suggestion: FuseFlatNavItemType, { query, isHighlighte
 				{suggestion.icon ? (
 					<FuseSvgIcon>{suggestion.icon}</FuseSvgIcon>
 				) : (
-					<span className="w-24 text-center text-18 font-semibold uppercase">{suggestion.title[0]}</span>
+					<span className="w-24 text-center text-2xl font-semibold uppercase">{suggestion.title[0]}</span>
 				)}
 			</ListItemIcon>
 			<ListItemText
@@ -426,7 +426,7 @@ function FuseSearch(props: FuseSearchProps) {
 											style={{
 												width: popperNode.current ? popperNode.current.clientWidth : ''
 											}}
-											className="overflow-hidden rounded-8 shadow-lg"
+											className="overflow-hidden rounded-lg shadow-lg"
 										>
 											{options.children}
 											{state.noSuggestions && (

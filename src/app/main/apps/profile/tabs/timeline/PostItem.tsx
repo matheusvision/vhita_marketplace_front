@@ -78,12 +78,12 @@ function PostItem(props: PostProps) {
 					<img
 						src={item.media.preview}
 						alt="post"
-						className="rounded-8"
+						className="rounded-lg"
 					/>
 				)}
 
 				{item.article && (
-					<div className="border-1 rounded-8 overflow-hidden">
+					<div className="border-1 rounded-lg overflow-hidden">
 						<img
 							className="w-full border-b-1"
 							src={item.article.media.preview}
@@ -199,7 +199,7 @@ function PostItem(props: PostProps) {
 						<Paper className="w-full mb-16 shadow-0 border-1  overflow-hidden">
 							<Input
 								className="p-12 w-full"
-								classes={{ root: 'text-12' }}
+								classes={{ root: 'text-md' }}
 								placeholder="Add a comment.."
 								multiline
 								rows="6"

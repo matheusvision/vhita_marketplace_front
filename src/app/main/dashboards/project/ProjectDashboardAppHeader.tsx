@@ -105,7 +105,7 @@ function ProjectDashboardAppHeader() {
 			<div className="flex items-center">
 				<Button
 					onClick={handleOpenProjectMenu}
-					className="flex items-center border border-solid border-b-0 rounded-b-0 h-36 px-16 text-12 sm:text-13"
+					className="flex items-center border border-solid border-b-0 rounded-b-0 h-36 px-16 text-md sm:text-base"
 					sx={{
 						backgroundColor: (theme) => `${theme.palette.background.default}!important`,
 						borderColor: (theme) => theme.palette.divider

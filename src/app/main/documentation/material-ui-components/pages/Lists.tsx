@@ -49,7 +49,7 @@ function ListsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Lists
@@ -57,27 +57,27 @@ function ListsDoc(props) {
 			<Typography className="description">Lists are continuous, vertical indexes of text or images.</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Lists are a continuous group of text or images. They are composed of items containing primary and
 				supplemental actions, which are represented by icons and text.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Lists present information in a concise, easy-to-follow format through a continuous, vertical index of
 				text or images.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Material UI Lists are implemented using a collection of related components:
@@ -98,7 +98,7 @@ function ListsDoc(props) {
 				<li>List Subheader: a label for a nested list.</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -110,7 +110,7 @@ function ListsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The last item of the previous demo shows how you can render a link:
@@ -127,7 +127,7 @@ function ListsDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can find a{' '}
@@ -135,7 +135,7 @@ function ListsDoc(props) {
 				the documentation.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -151,13 +151,13 @@ import ListItem from '@mui/material/ListItem';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Nested List
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -169,13 +169,13 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Folder List
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -187,19 +187,19 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Interactive
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Below is an interactive demo that lets you explore the visual results of the different settings:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -211,13 +211,13 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Selected ListItem
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -229,13 +229,13 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Align list items
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				When displaying three lines or more, the avatar is not aligned at the top. You should set the{' '}
@@ -243,7 +243,7 @@ import ListItem from '@mui/material/ListItem';
 				Design guidelines:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -255,7 +255,7 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				List Controls
@@ -267,20 +267,20 @@ import ListItem from '@mui/material/ListItem';
 				Checkbox
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				A checkbox can either be a primary action or a secondary action.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The checkbox is the primary action and the state indicator for the list item. The comment button is a
 				secondary action and a separate target.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -292,13 +292,13 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The checkbox is the secondary action for the list item and a separate target.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -316,13 +316,13 @@ import ListItem from '@mui/material/ListItem';
 				Switch
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The switch is the secondary action and a separate target.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -334,20 +334,20 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Sticky subheader
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Upon scrolling, subheaders remain pinned to the top of the screen until pushed off screen by the next
 				subheader. This feature relies on CSS sticky positioning. (⚠️ no IE 11 support)
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -359,20 +359,20 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Inset List Item
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>inset</code> prop enables a list item that does not have a leading icon or avatar to align
 				correctly with items that do.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -384,20 +384,20 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Gutterless list
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				When rendering a list within a component that defines its own gutters, <code>ListItem</code> gutters can
 				be disabled with <code>disableGutters</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -409,13 +409,13 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Virtualized List
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In the following example, we demonstrate how to use{' '}
@@ -423,7 +423,7 @@ import ListItem from '@mui/material/ListItem';
 				It renders 200 rows and can easily handle more. Virtualization helps with performance issues.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -435,7 +435,7 @@ import ListItem from '@mui/material/ListItem';
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The use of <a href="https://github.com/bvaughn/react-window">react-window</a> when possible is
@@ -443,20 +443,20 @@ import ListItem from '@mui/material/ListItem';
 				<a href="https://github.com/petyosi/react-virtuoso">react-virtuoso</a>.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here are some examples of customizing the component. You can learn more about this in the
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

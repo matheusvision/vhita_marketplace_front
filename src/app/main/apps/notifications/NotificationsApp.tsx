@@ -47,7 +47,7 @@ function NotificationsApp() {
 					{notifications.length === 0 && (
 						<div className="flex flex-1 items-center justify-center p-16">
 							<Typography
-								className="text-center text-22"
+								className="text-center text-3xl"
 								color="text.secondary"
 							>
 								There are no notifications for now.

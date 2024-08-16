@@ -52,7 +52,7 @@ function ContactsList() {
 					>
 						<Typography
 							color="text.secondary"
-							className="px-32 py-4 text-13 font-medium"
+							className="px-32 py-4 text-base font-medium"
 						>
 							{key}
 						</Typography>

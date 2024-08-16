@@ -41,7 +41,7 @@ function BudgetDetailsWidget() {
 								<TableCell key={index}>
 									<Typography
 										color="text.secondary"
-										className="font-semibold text-12 whitespace-nowrap"
+										className="font-semibold text-md whitespace-nowrap"
 									>
 										{column}
 									</Typography>

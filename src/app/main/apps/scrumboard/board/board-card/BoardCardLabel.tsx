@@ -24,7 +24,7 @@ function BoardCardLabel(props: BoardCardLabelProps) {
 			key={id}
 		>
 			<Chip
-				className="font-semibold text-12 mx-4 mb-6"
+				className="font-semibold text-md mx-4 mb-6"
 				label={label.title}
 				size="small"
 			/>

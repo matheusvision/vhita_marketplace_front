@@ -40,7 +40,7 @@ function PoweredByLinks() {
 					rel="noreferrer noopener"
 					role="button"
 				>
-					<span className="react-text text-12 font-semibold">TS</span>
+					<span className="react-text text-md font-semibold">TS</span>
 				</IconButton>
 			</Tooltip>
 			<Tooltip
@@ -60,7 +60,7 @@ function PoweredByLinks() {
 					rel="noreferrer noopener"
 					role="button"
 				>
-					<span className="react-text text-12 font-semibold">JS</span>
+					<span className="react-text text-md font-semibold">JS</span>
 				</IconButton>
 			</Tooltip>
 			<Tooltip

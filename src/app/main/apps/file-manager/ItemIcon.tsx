@@ -44,7 +44,7 @@ function ItemIcon(props: ItemIconProps) {
 			</FuseSvgIcon>
 			<TypeBadge
 				color={type}
-				className="absolute left-0 bottom-0 px-6 rounded text-12 font-semibold leading-20 text-white"
+				className="absolute left-0 bottom-0 px-6 rounded text-md font-semibold leading-20 text-white"
 			>
 				{type}
 			</TypeBadge>

@@ -105,7 +105,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 												{_item.icon ? (
 													<FuseSvgIcon size={20}>{_item.icon}</FuseSvgIcon>
 												) : (
-													<span className="text-18 font-semibold uppercase">
+													<span className="text-2xl font-semibold uppercase">
 														{_item.title[0]}
 													</span>
 												)}
@@ -236,7 +236,7 @@ function ShortcutMenuItem(props: {
 					{item.icon ? (
 						<FuseSvgIcon>{item.icon}</FuseSvgIcon>
 					) : (
-						<span className="text-center text-18 font-semibold uppercase">{item.title[0]}</span>
+						<span className="text-center text-2xl font-semibold uppercase">{item.title[0]}</span>
 					)}
 				</ListItemIcon>
 				<ListItemText primary={item.title} />

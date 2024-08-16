@@ -39,7 +39,7 @@ function AlertDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Alert
@@ -49,26 +49,26 @@ function AlertDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Alerts give users brief and potentially time-sensitive information in an unobtrusive manner.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Material UI Alert component includes several props for quickly customizing its styles to provide
 				immediate visual cues about its contents.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -81,7 +81,7 @@ function AlertDoc(props) {
 			</Typography>
 			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-13 mb-32"
+					className="text-base mb-32"
 					component="div"
 				>
 					This component is no longer documented in the{' '}
@@ -97,7 +97,7 @@ function AlertDoc(props) {
 				Usage
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				A key trait of the alert pattern is that{' '}
@@ -110,7 +110,7 @@ function AlertDoc(props) {
 				<a href="https://mui.com/material-ui/react-dialog/">Dialog</a> component if you need this behavior.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -125,7 +125,7 @@ import Alert from '@mui/material/Alert';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Alert component wraps around its content, and stretches to fill its enclosing container.
@@ -137,7 +137,7 @@ import Alert from '@mui/material/Alert';
 				Severity
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>severity</code> prop accepts four values representing different states—
@@ -145,7 +145,7 @@ import Alert from '@mui/material/Alert';
 				corresponding icon and color combinations for each:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -163,20 +163,20 @@ import Alert from '@mui/material/Alert';
 				Variants
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Alert component comes with two alternative style options—<code>filled</code> and{' '}
 				<code>outlined</code>—which you can set using the <code>variant</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mt-12 mb-10"
+				className="text-base mt-12 mb-10"
 				component="h4"
 			>
 				Filled
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -188,13 +188,13 @@ import Alert from '@mui/material/Alert';
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mt-12 mb-10"
+				className="text-base mt-12 mb-10"
 				component="h4"
 			>
 				Outlined
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -206,7 +206,7 @@ import Alert from '@mui/material/Alert';
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning When using an outlined Alert with the <a href="/material-ui/react-snackbar/">Snackbar</a>{' '}
@@ -227,7 +227,7 @@ import Alert from '@mui/material/Alert';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Check out the <a href="/material-ui/react-snackbar/#customization">Snackbar—customization</a> doc for an
@@ -240,7 +240,7 @@ import Alert from '@mui/material/Alert';
 				Color
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the <code>color</code> prop to override the default color for the specified{' '}
@@ -250,7 +250,7 @@ import Alert from '@mui/material/Alert';
 				—for instance, to apply <code>warning</code> colors to a <code>success</code> Alert:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -268,7 +268,7 @@ import Alert from '@mui/material/Alert';
 				Actions
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Add an action to your Alert with the <code>action</code> prop. This lets you insert any element—an HTML
@@ -276,14 +276,14 @@ import Alert from '@mui/material/Alert';
 				justified to the right.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you provide an <code>onClose</code> callback to the Alert without setting the <code>action</code>{' '}
 				prop, the component will display a close icon (&#x2715;) by default.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -301,7 +301,7 @@ import Alert from '@mui/material/Alert';
 				Icons
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the <code>icon</code> prop to override an Alert&#39;s icon. As with the{' '}
@@ -312,7 +312,7 @@ import Alert from '@mui/material/Alert';
 				<code>false</code> to remove the icon altogether.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you need to override all instances of an icon for a given{' '}
@@ -327,7 +327,7 @@ import Alert from '@mui/material/Alert';
 				for details.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -339,7 +339,7 @@ import Alert from '@mui/material/Alert';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
@@ -351,7 +351,7 @@ import Alert from '@mui/material/Alert';
 				Titles
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				To add a title to an Alert, import the Alert Title component:
@@ -366,14 +366,14 @@ import AlertTitle from '@mui/material/AlertTitle';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can nest this component above the message in your Alert for a neatly styled and properly aligned
 				title, as shown below:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -391,7 +391,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 				Transitions
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can use <a href="/material-ui/transitions/">Transition components</a> like{' '}
@@ -399,7 +399,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 				exit.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -411,13 +411,13 @@ import AlertTitle from '@mui/material/AlertTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here are some factors to consider to ensure that your Alert is accessible:
@@ -456,13 +456,13 @@ import AlertTitle from '@mui/material/AlertTitle';
 				</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Alert component is composed of a root <a href="/material-ui/react-paper/">Paper</a> component (which

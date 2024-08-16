@@ -140,7 +140,7 @@ function MainSidebar() {
 								{filteredChatList.length > 0 && (
 									<motion.div variants={item}>
 										<Typography
-											className="font-medium text-18 px-32 py-24"
+											className="font-medium text-2xl px-32 py-24"
 											color="secondary.main"
 										>
 											Chats
@@ -162,7 +162,7 @@ function MainSidebar() {
 								{filteredContacts.length > 0 && (
 									<motion.div variants={item}>
 										<Typography
-											className="font-medium text-18 px-32 py-24"
+											className="font-medium text-2xl px-32 py-24"
 											color="secondary.main"
 										>
 											Contacts

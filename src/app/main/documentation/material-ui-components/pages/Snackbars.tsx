@@ -39,7 +39,7 @@ function SnackbarsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Snackbar
@@ -50,13 +50,13 @@ function SnackbarsDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Snackbar component appears temporarily and floats above the UI to provide users with (non-critical)
@@ -64,7 +64,7 @@ function SnackbarsDoc(props) {
 				a text element and two actions:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -82,7 +82,7 @@ function SnackbarsDoc(props) {
 				Usage
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Snackbars differ from <a href="/material-ui/react-alert/">Alerts</a> in that Snackbars have a fixed
@@ -91,7 +91,7 @@ function SnackbarsDoc(props) {
 				<a href="#use-with-alerts">used as children of a Snackbar</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Snackbars also from differ from <a href="/material-ui/react-dialog/">Dialogs</a> in that Snackbars are
@@ -99,7 +99,7 @@ function SnackbarsDoc(props) {
 				the app; Dialogs, by contrast, require input from the user in order to be dismissed.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -126,13 +126,13 @@ import Snackbar from '@mui/material/Snackbar';
 				Position
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the <code>anchorOrigin</code> prop to control the Snackbar&#39;s position on the screen.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -159,13 +159,13 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the Snackbar Content component to add text and actions to the Snackbar.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -183,14 +183,14 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				Automatic dismiss
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the <code>autoHideDuration</code> prop to automatically trigger the Snackbar&#39;s{' '}
 				<code>onClose</code> function after a set period of time (in milliseconds).
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Make sure to{' '}
@@ -198,7 +198,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				the user to process the information displayed on it.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -216,7 +216,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				Transitions
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can use the <code>TransitionComponent</code> prop to change the transition of the Snackbar from{' '}
@@ -224,7 +224,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				<a href="/material-ui/transitions/#slide">Slide</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -236,7 +236,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
@@ -248,13 +248,13 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				Use with Alerts
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use an Alert inside a Snackbar for messages that communicate a certain severity.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -272,14 +272,14 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				Use with Floating Action Buttons
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you&#39;re using a <a href="/material-ui/react-floating-action-button/">Floating Action Button</a> on
 				mobile, Material Design recommends positioning snackbars directly above it, as shown in the demo below:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -291,7 +291,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Common examples
@@ -303,14 +303,14 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				Consecutive Snackbars
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This demo shows how to display multiple Snackbars without stacking them by using a consecutive
 				animation.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -322,7 +322,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Third-party integrations
@@ -334,7 +334,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				notistack
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<img
@@ -347,7 +347,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				With an imperative API, <a href="https://github.com/iamhosseindhv/notistack">notistack</a> lets you
@@ -355,7 +355,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				this is discouraged in the Material Design guidelines, it is still a common pattern.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -367,7 +367,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning Note that notistack prevents Snackbars from being{' '}
@@ -377,13 +377,13 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				. :::
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The user should be able to dismiss Snackbars by pressing <kbd className="key">Escape</kbd>. If there are
@@ -417,13 +417,13 @@ export default function MyComponent() {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Snackbar component is composed of a root <code>{`<div>`}</code> that houses interior elements like

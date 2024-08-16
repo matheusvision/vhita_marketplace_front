@@ -49,7 +49,7 @@ function ButtonsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Button
@@ -59,7 +59,7 @@ function ButtonsDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Buttons communicate actions that users can take. They are typically placed throughout your UI, in places
@@ -72,19 +72,19 @@ function ButtonsDoc(props) {
 				<li>Toolbars</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic button
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The <code>Button</code> comes with three variants: text (default), contained, and outlined.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -102,7 +102,7 @@ function ButtonsDoc(props) {
 				Text button
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<a href="https://m2.material.io/components/buttons#text-button">Text buttons</a>
@@ -110,7 +110,7 @@ function ButtonsDoc(props) {
 				text buttons help maintain an emphasis on card content.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -128,7 +128,7 @@ function ButtonsDoc(props) {
 				Contained button
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<a href="https://m2.material.io/components/buttons#contained-button">Contained buttons</a>
@@ -136,7 +136,7 @@ function ButtonsDoc(props) {
 				primary to your app.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -148,13 +148,13 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can remove the elevation with the <code>disableElevation</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -172,7 +172,7 @@ function ButtonsDoc(props) {
 				Outlined button
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<a href="https://m2.material.io/components/buttons#outlined-button">Outlined buttons</a> are
@@ -180,14 +180,14 @@ function ButtonsDoc(props) {
 				app.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Outlined buttons are also a lower emphasis alternative to contained buttons, or a higher emphasis
 				alternative to text buttons.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -199,13 +199,13 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Handling clicks
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				All components accept an <code>onClick</code> handler that is applied to the root DOM element.
@@ -226,20 +226,20 @@ function ButtonsDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Note that the documentation <a href="/material-ui/guides/api/#native-properties">avoids</a> mentioning
 				native props (there are a lot) in the API section of the components.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Color
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -251,7 +251,7 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				In addition to using the default button colors, you can add custom ones, or disable any you don&#39;t
@@ -259,19 +259,19 @@ function ButtonsDoc(props) {
 				for more info.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Sizes
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For larger or smaller buttons, use the <code>size</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -283,13 +283,13 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Buttons with icons and label
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Sometimes you might want to have icons for certain buttons to enhance the UX of the application as we
@@ -297,7 +297,7 @@ function ButtonsDoc(props) {
 				with a dustbin icon.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -309,26 +309,26 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Icon button
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Icon buttons are commonly found in app bars and toolbars.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Icons are also appropriate for toggle buttons that allow a single choice to be selected or deselected,
 				such as adding or removing a star to an item.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -346,13 +346,13 @@ function ButtonsDoc(props) {
 				Sizes
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For larger or smaller icon buttons, use the <code>size</code> prop.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -370,13 +370,13 @@ function ButtonsDoc(props) {
 				Colors
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use <code>color</code> prop to apply theme color palette to component.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -388,20 +388,20 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				File upload
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				To create a file upload button, turn the button into a label using <code>{`component="label"`}</code>{' '}
 				and then create a visually-hidden input with type <code>file</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -413,20 +413,20 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here are some examples of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -438,7 +438,7 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				🎨 If you are looking for inspiration, you can check{' '}
@@ -448,13 +448,13 @@ function ButtonsDoc(props) {
 				.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Complex button
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Text Buttons, Contained Buttons, Floating Action Buttons and Icon Buttons are built on top of the
@@ -462,7 +462,7 @@ function ButtonsDoc(props) {
 				build custom interactions.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -474,13 +474,13 @@ function ButtonsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Third-party routing library
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				One frequent use case is to perform navigation on the client only, without an HTTP round-trip to the
@@ -488,7 +488,7 @@ function ButtonsDoc(props) {
 				use case. Here is a <a href="/material-ui/integrations/routing/#button">more detailed guide</a>.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
@@ -500,14 +500,14 @@ function ButtonsDoc(props) {
 				Cursor not-allowed
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The ButtonBase component sets <code>pointer-events: none;</code> on disabled buttons, which prevents the
 				appearance of a disabled cursor.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If you wish to use <code>not-allowed</code>, you have two options:
@@ -531,7 +531,7 @@ function ButtonsDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				However:
@@ -565,7 +565,7 @@ function ButtonsDoc(props) {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This has the advantage of supporting any element, for instance, a link <code>{`<a>`}</code> element.

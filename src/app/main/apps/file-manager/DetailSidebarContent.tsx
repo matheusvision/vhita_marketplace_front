@@ -51,7 +51,7 @@ function DetailSidebarContent(props: DetailSidebarContentProps) {
 			</div>
 
 			<Box
-				className=" w-full rounded-8 border preview h-128 sm:h-256 file-icon flex items-center justify-center my-32"
+				className=" w-full rounded-lg border preview h-128 sm:h-256 file-icon flex items-center justify-center my-32"
 				sx={{
 					backgroundColor: (theme) =>
 						theme.palette.mode === 'light'

@@ -38,7 +38,7 @@ function MasonryDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Masonry
@@ -49,7 +49,7 @@ function MasonryDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Masonry maintains a list of content blocks with a consistent width but different height. The contents
@@ -57,20 +57,20 @@ function MasonryDoc(props) {
 				starts another row, and it is added to the shortest column in order to optimize the use of space.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic masonry
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				A simple example of a <code>Masonry</code>. <code>Masonry</code> is a container for one or more items.
 				It can receive any element including <code>{`<div />`}</code> and <code>{`<img //>`}</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -82,13 +82,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Image masonry
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example demonstrates the use of <code>Masonry</code> for images. <code>Masonry</code> orders its
@@ -96,7 +96,7 @@ function MasonryDoc(props) {
 				<a href="/material-ui/react-image-list/#masonry-image-list">ImageList</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -108,13 +108,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Items with variable height
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example demonstrates the use of <code>Masonry</code> for items with variable height. Items can move
@@ -122,7 +122,7 @@ function MasonryDoc(props) {
 				hence optimize the use of space.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -134,20 +134,20 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Columns
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example demonstrates the use of the <code>columns</code> to configure the number of columns of a{' '}
 				<code>Masonry</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -159,13 +159,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<code>columns</code> accepts responsive values:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -177,13 +177,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Spacing
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example demonstrates the use of the <code>spacing</code> to configure the spacing between items. It
@@ -191,7 +191,7 @@ function MasonryDoc(props) {
 				theme&#39;s spacing field.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -203,13 +203,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<code>spacing</code> accepts responsive values:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -221,13 +221,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Sequential
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example demonstrates the use of the <code>sequential</code> to configure the sequential order. With{' '}
@@ -235,7 +235,7 @@ function MasonryDoc(props) {
 				shortest column.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -247,13 +247,13 @@ function MasonryDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Server-side rendering
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This example demonstrates the use of the <code>defaultHeight</code>, <code>defaultColumns</code> and{' '}
@@ -261,7 +261,7 @@ function MasonryDoc(props) {
 			</Typography>
 			<div className="border-1 p-16 rounded-xl my-12">
 				<Typography
-					className="text-13 mb-32"
+					className="text-base mb-32"
 					component="div"
 				>
 					<code>defaultHeight</code> should be large enough to render all rows. Also, it is worth mentioning
@@ -270,7 +270,7 @@ function MasonryDoc(props) {
 			</div>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

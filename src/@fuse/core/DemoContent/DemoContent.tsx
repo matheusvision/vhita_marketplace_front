@@ -15,7 +15,7 @@ function DemoContent() {
 					maxWidth: '640px',
 					width: '100%'
 				}}
-				className="rounded-6"
+				className="rounded-md"
 			/>
 			<h1 className="py-16 font-semibold">Early Sunrise</h1>
 			<h4 className="pb-12 font-medium">Demo Content</h4>

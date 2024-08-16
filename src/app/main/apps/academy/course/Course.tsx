@@ -112,7 +112,7 @@ function Course() {
 								</FuseSvgIcon>
 							</IconButton>
 
-							<Typography className="text-12 font-medium tracking-tight mx-10">{course.title}</Typography>
+							<Typography className="text-md font-medium tracking-tight mx-10">{course.title}</Typography>
 						</Paper>
 					</Hidden>
 

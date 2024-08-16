@@ -104,7 +104,7 @@ function BuySellForm() {
 							fullWidth
 						>
 							<FormLabel
-								className="font-medium text-13"
+								className="font-medium text-base"
 								component="legend"
 							>
 								Action
@@ -141,7 +141,7 @@ function BuySellForm() {
 							fullWidth
 						>
 							<FormLabel
-								className="font-medium text-13"
+								className="font-medium text-base"
 								component="legend"
 							>
 								Wallet
@@ -169,13 +169,13 @@ function BuySellForm() {
 							<FormHelperText className="flex items-center space-x-4">
 								<Typography
 									component="span"
-									className="text-12"
+									className="text-md"
 								>
 									USD:
 								</Typography>
 								<Typography
 									component="span"
-									className="font-mono font-medium text-12"
+									className="font-mono font-medium text-md"
 								>
 									{(
 										wallets[field.value as CoinTypes] * prices[field.value as CoinTypes]
@@ -212,13 +212,13 @@ function BuySellForm() {
 											<>
 												<Typography
 													component="span"
-													className="text-12"
+													className="text-md"
 												>
 													You will receive:
 												</Typography>
 												<Typography
 													component="span"
-													className="font-mono font-medium text-12 mx-4"
+													className="font-mono font-medium text-md mx-4"
 												>
 													{(value / prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
@@ -236,13 +236,13 @@ function BuySellForm() {
 											<>
 												<Typography
 													component="span"
-													className="text-12"
+													className="text-md"
 												>
 													it will cost:
 												</Typography>
 												<Typography
 													component="span"
-													className="font-mono font-medium text-12 mx-4"
+													className="font-mono font-medium text-md mx-4"
 												>
 													{(value * prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
@@ -259,13 +259,13 @@ function BuySellForm() {
 											<>
 												<Typography
 													component="span"
-													className="text-12"
+													className="text-md"
 												>
 													You will sell:
 												</Typography>
 												<Typography
 													component="span"
-													className="font-mono font-medium text-12 mx-4"
+													className="font-mono font-medium text-md mx-4"
 												>
 													{(value / prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',
@@ -283,13 +283,13 @@ function BuySellForm() {
 											<>
 												<Typography
 													component="span"
-													className="text-12"
+													className="text-md"
 												>
 													You will receive:
 												</Typography>
 												<Typography
 													component="span"
-													className="font-mono font-medium text-12 mx-4"
+													className="font-mono font-medium text-md mx-4"
 												>
 													{(value * prices[walletValue as CoinTypes]).toLocaleString(
 														'en-US',

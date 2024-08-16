@@ -72,7 +72,7 @@ function ClassicSearchPage() {
 								<motion.div variants={item}>
 									<Typography
 										color="text.secondary"
-										className="mx-12 my-12 text-12"
+										className="mx-12 my-12 text-md"
 									>
 										{data.length} results
 									</Typography>
@@ -99,7 +99,7 @@ function ClassicSearchPage() {
 										>
 											{_item.url}
 										</Typography>
-										<Typography className="text-12">{_item.excerpt}</Typography>
+										<Typography className="text-md">{_item.excerpt}</Typography>
 									</motion.div>
 								))}
 							</motion.div>

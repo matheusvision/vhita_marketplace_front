@@ -100,7 +100,7 @@ const IconListPage = React.memo((props: IconListPageProps) => {
 			}
 			content={
 				<div className="flex-auto p-24 sm:p-40">
-					<Typography className="text-18 font-700 mb-16">Usage</Typography>
+					<Typography className="text-2xl font-700 mb-16">Usage</Typography>
 
 					<FuseHighlight
 						component="pre"
@@ -112,7 +112,7 @@ const IconListPage = React.memo((props: IconListPageProps) => {
             `}
 					</FuseHighlight>
 
-					<Typography className="text-18 font-700 mt-32 mb-16">Icons</Typography>
+					<Typography className="text-2xl font-700 mt-32 mb-16">Icons</Typography>
 
 					<div className="flex flex-col md:flex-row justify-center md:items-end my-24 xs:flex-col md:space-x-16">
 						<div className="flex flex-1">

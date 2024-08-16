@@ -18,7 +18,7 @@ const tabs = [
 		id: 'jwt',
 		title: 'JWT',
 		logo: 'assets/images/logo/jwt.svg',
-		logoClass: 'h-36 p-4 bg-black rounded-8'
+		logoClass: 'h-36 p-4 bg-black rounded-lg'
 	},
 	{
 		id: 'firebase',
@@ -78,7 +78,7 @@ function SignUpPage() {
 							children: (
 								<Box
 									sx={{ borderColor: (theme) => theme.palette.secondary.main }}
-									className="border-1 border-solid w-full h-full rounded-8"
+									className="border-1 border-solid w-full h-full rounded-lg"
 								/>
 							)
 						}}

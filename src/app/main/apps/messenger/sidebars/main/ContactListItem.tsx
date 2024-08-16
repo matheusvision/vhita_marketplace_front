@@ -39,7 +39,7 @@ function ContactListItem(props: ContactListItemProps) {
 			<ListItemText
 				classes={{
 					root: 'min-w-px px-16',
-					primary: 'font-medium text-13',
+					primary: 'font-medium text-base',
 					secondary: 'truncate'
 				}}
 				primary={item.name}

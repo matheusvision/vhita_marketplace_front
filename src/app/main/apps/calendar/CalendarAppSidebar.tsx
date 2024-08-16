@@ -30,7 +30,7 @@ function CalendarAppSidebar() {
 
 			<div className="group flex items-center justify-between mb-12">
 				<Typography
-					className="text-14 font-600 leading-none"
+					className="text-lg font-600 leading-none"
 					color="secondary.main"
 				>
 					LABELS

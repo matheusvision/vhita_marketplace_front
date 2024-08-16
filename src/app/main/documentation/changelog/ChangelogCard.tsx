@@ -45,13 +45,13 @@ function ChangelogCard(props: ChangelogCardProps) {
 			<div className="flex items-center">
 				{version && (
 					<Typography
-						className="text-22 font-700"
+						className="text-3xl font-700"
 						component="h2"
 					>{`v${version}`}</Typography>
 				)}
 				{date && (
 					<Typography
-						className="text-16 mx-8 font-600"
+						className="text-xl mx-8 font-600"
 						color="text.secondary"
 						component="h3"
 					>

@@ -43,7 +43,7 @@ function ChatListItem(props: ChatListItemProps) {
 			<ListItemText
 				classes={{
 					root: 'min-w-px px-16',
-					primary: 'font-medium text-13',
+					primary: 'font-medium text-base',
 					secondary: 'truncate'
 				}}
 				primary={item.name}
@@ -54,7 +54,7 @@ function ChatListItem(props: ChatListItemProps) {
 				<div className="flex flex-col justify-center items-end">
 					{item?.lastMessageAt && (
 						<Typography
-							className="whitespace-nowrap mb-8 font-medium text-12"
+							className="whitespace-nowrap mb-8 font-medium text-md"
 							color="text.secondary"
 						>
 							{format(new Date(item.lastMessageAt), 'PP')}

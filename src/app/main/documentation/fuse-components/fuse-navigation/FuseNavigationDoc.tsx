@@ -110,7 +110,7 @@ function FuseNavigationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Usage
@@ -132,7 +132,7 @@ function FuseNavigationDoc() {
 				Navigation item types
 			</Typography>
 
-			<Typography className="mt-32 p-8 rounded-4 bg-yellow-100 border-1 border-yellow-700 text-black mb-8">
+			<Typography className="mt-32 p-8 rounded bg-yellow-100 border-1 border-yellow-700 text-black mb-8">
 				It is mandatory to give a unique id to all of your navigation items.
 			</Typography>
 
@@ -216,7 +216,7 @@ function FuseNavigationDoc() {
         `}
 			</FuseHighlight>
 			<Typography
-				className="text-18 mt-24 mb-8 font-medium"
+				className="text-2xl mt-24 mb-8 font-medium"
 				component="h2"
 			>
 				end: bool

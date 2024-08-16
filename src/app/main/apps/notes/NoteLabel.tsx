@@ -51,7 +51,7 @@ function NoteLabel(props: NoteLabelProps) {
 			label={label.title}
 			classes={{
 				root: clsx('h-24 border-0', className),
-				label: 'px-12 py-4 text-11 font-medium leading-none',
+				label: 'px-12 py-4 text-sm font-medium leading-none',
 				deleteIcon: 'w-16',
 				...classes
 			}}

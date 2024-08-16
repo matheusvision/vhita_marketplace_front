@@ -29,7 +29,7 @@ function PopoverDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Popover
@@ -39,7 +39,7 @@ function PopoverDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Things to know when using the <code>Popover</code> component:
@@ -61,13 +61,13 @@ function PopoverDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basic Popover
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -79,13 +79,13 @@ function PopoverDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anchor playground
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the radio buttons to adjust the <code>anchorOrigin</code> and <code>transformOrigin</code>{' '}
@@ -95,20 +95,20 @@ function PopoverDoc(props) {
 				position of the popover.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Mouse over interaction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				This demo demonstrates how to use the <code>Popover</code> component and the mouseover event to achieve
 				popover behavior.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -120,13 +120,13 @@ function PopoverDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Virtual element
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The value of the <code>anchorEl</code> prop can be a reference to a fake DOM element. You need to
@@ -145,13 +145,13 @@ interface PopoverVirtualElement {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Highlight part of the text to see the popover:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -163,7 +163,7 @@ interface PopoverVirtualElement {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For more information on the virtual element&#39;s properties, see the following resources:
@@ -182,7 +182,7 @@ interface PopoverVirtualElement {
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				:::warning The usage of a virtual element for the Popover component requires the <code>nodeType</code>{' '}
@@ -197,13 +197,13 @@ interface PopoverVirtualElement {
 				components, both of which don&#39;t require the property. :::
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Complementary projects
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For more advanced use cases, you might be able to take advantage of:
@@ -215,7 +215,7 @@ interface PopoverVirtualElement {
 				material-ui-popup-state
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<img
@@ -228,7 +228,7 @@ interface PopoverVirtualElement {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The package{' '}
@@ -238,7 +238,7 @@ interface PopoverVirtualElement {
 				that takes care of popover state for you in most cases.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

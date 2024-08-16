@@ -61,23 +61,23 @@ renderer.heading = (text, level) => {
 	let className = '';
 	switch (level) {
 		case 1:
-			className = 'text-28 my-16 font-700';
+			className = 'text-5xl my-16 font-700';
 			break;
 		case 2:
-			className = 'text-22 mt-24 mb-10 font-700';
+			className = 'text-3xl mt-24 mb-10 font-700';
 			break;
 		case 3:
 			className = 'text-15 mt-20 mb-10 font-700';
 			break;
 		default:
-			className = 'text-13 mt-12 mb-10';
+			className = 'text-base mt-12 mb-10';
 	}
 
 	return `<Typography className="${className}" component="h${level}">${text}</Typography>\n`;
 };
 
 renderer.paragraph = (text) => {
-	return `<Typography className="text-13 mb-32" component="div">${text}</Typography>\n`;
+	return `<Typography className="text-base mb-32" component="div">${text}</Typography>\n`;
 };
 
 renderer.code = (code, lang) => {

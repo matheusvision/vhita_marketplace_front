@@ -139,7 +139,7 @@ function BoardListHeader(props: BoardListHeaderProps) {
 						</ClickAwayListener>
 					) : (
 						<Typography
-							className="text-13 font-medium cursor-pointer"
+							className="text-base font-medium cursor-pointer"
 							onClick={handleOpenForm}
 						>
 							{list.title}

@@ -28,7 +28,7 @@ function ThemePreview(props: ThemePreviewProps) {
 		<div className={clsx(className, 'w-full ')}>
 			<button
 				className={clsx(
-					'flex min-h-full relative w-full cursor-pointer overflow-hidden rounded-6 text-left font-500 shadow transition-all hover:shadow-lg items-stretch hover:scale-105 duration-200 ease-in-out',
+					'flex min-h-full relative w-full cursor-pointer overflow-hidden rounded-md text-left font-500 shadow transition-all hover:shadow-lg items-stretch hover:scale-105 duration-200 ease-in-out',
 					{
 						'bg-white': id === 'default',
 						'bg-gray-700': id !== 'default'
@@ -50,7 +50,7 @@ function ThemePreview(props: ThemePreviewProps) {
 						color: navbar.palette.text.primary
 					}}
 				>
-					<span className="text-11">Navbar</span>
+					<span className="text-sm">Navbar</span>
 				</div>
 
 				<div className="flex flex-col w-3/4">
@@ -61,7 +61,7 @@ function ThemePreview(props: ThemePreviewProps) {
 							color: toolbar.palette.text.primary
 						}}
 					>
-						<span className="text-12">Toolbar</span>
+						<span className="text-md">Toolbar</span>
 					</div>
 
 					<div className="flex flex-col w-full">
@@ -72,7 +72,7 @@ function ThemePreview(props: ThemePreviewProps) {
 								color: main.palette.primary.contrastText
 							}}
 						>
-							<span className="text-12">Header (Primary)</span>
+							<span className="text-md">Header (Primary)</span>
 
 							<div
 								className="absolute bottom-0 right-0 -mb-8 mr-16 flex h-36 w-36 items-center justify-center rounded-full text-10 shadow-1 z-10"
@@ -87,18 +87,18 @@ function ThemePreview(props: ThemePreviewProps) {
 
 						<div className="-mt-24 w-full pl-8 pr-28">
 							<div
-								className="relative h-120 w-full rounded-4 p-8 shadow-1"
+								className="relative h-120 w-full rounded p-8 shadow-1"
 								style={{
 									backgroundColor: main.palette.background.paper,
 									color: main.palette.text.primary
 								}}
 							>
-								<span className="text-12">Paper</span>
+								<span className="text-md">Paper</span>
 							</div>
 						</div>
 
 						<div className="w-full p-8">
-							<span className="text-12">Background</span>
+							<span className="text-md">Background</span>
 						</div>
 					</div>
 
@@ -109,7 +109,7 @@ function ThemePreview(props: ThemePreviewProps) {
 							color: footer.palette.text.primary
 						}}
 					>
-						<span className="text-12">Footer</span>
+						<span className="text-md">Footer</span>
 					</div>
 				</div>
 			</button>

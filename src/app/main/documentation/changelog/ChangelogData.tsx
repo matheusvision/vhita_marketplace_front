@@ -106,7 +106,7 @@ const changelogData: ChangelogItemType[] = [
 			'fuse, auth, navigation, settings slices lazy loaded from its own components with HOC'
 		],
 		notes: (
-			<div className="text-13 p-24 border-2 rounded-xl w-full max-w-lg mt-40 mb-24">
+			<div className="text-base p-24 border-2 rounded-xl w-full max-w-lg mt-40 mb-24">
 				<ul className="list-disc">
 					<Typography
 						component="li"
@@ -154,7 +154,7 @@ const changelogData: ChangelogItemType[] = [
 			'Some APIs and interfaces have changed due to the conversion to TypeScript'
 		],
 		notes: (
-			<div className="text-13 p-24 border-2 rounded-xl w-full max-w-lg mt-40 mb-24">
+			<div className="text-base p-24 border-2 rounded-xl w-full max-w-lg mt-40 mb-24">
 				<ul className="list-disc">
 					<Typography
 						component="li"
@@ -323,7 +323,7 @@ const changelogData: ChangelogItemType[] = [
 		breakingChanges: ['craco replaced with react-app-rewired.', 'firebase, auth0 service examples deprecated.'],
 		fixedChanges: [],
 		notes: (
-			<div className="text-13 p-24 border-2 border-red rounded-xl w-full max-w-lg mt-40 mb-24">
+			<div className="text-base p-24 border-2 border-red rounded-xl w-full max-w-lg mt-40 mb-24">
 				<ul className="list-disc">
 					<Typography
 						component="li"
@@ -400,7 +400,7 @@ const changelogData: ChangelogItemType[] = [
 			'FuseAnimate, FuseGroupAnimate, FuseChipSelect Components are deprecated.'
 		],
 		notes: (
-			<div className="text-13 p-24 border-2 rounded-xl w-full max-w-lg mt-40 mb-24">
+			<div className="text-base p-24 border-2 rounded-xl w-full max-w-lg mt-40 mb-24">
 				<ul className="list-disc">
 					<Typography
 						component="li"
@@ -608,13 +608,13 @@ const changelogData: ChangelogItemType[] = [
 		notes: (
 			<>
 				<Typography
-					className="text-13 p-12 border-2 rounded-xl w-full max-w-lg mt-16"
+					className="text-base p-12 border-2 rounded-xl w-full max-w-lg mt-16"
 					component="div"
 				>
 					Migrating to the new major version (v5.0.0) can be difficult because of redux-toolkit integration.
 				</Typography>
 				<Typography
-					className="text-13 p-12 border-2 rounded-xl w-full max-w-lg mt-16 leading-loose"
+					className="text-base p-12 border-2 rounded-xl w-full max-w-lg mt-16 leading-loose"
 					component="div"
 				>
 					Some of the benefits of the redux-toolkit,
@@ -951,7 +951,7 @@ const changelogData: ChangelogItemType[] = [
 		],
 		notes: (
 			<Typography
-				className="text-13 p-12 border-2 rounded-xl w-full max-w-lg mt-16"
+				className="text-base p-12 border-2 rounded-xl w-full max-w-lg mt-16"
 				component="div"
 			>
 				Migrating to the new major version (<b>v3.0.0</b>) can be difficult because of the hooks support and
@@ -1067,7 +1067,7 @@ const changelogData: ChangelogItemType[] = [
 		],
 		notes: (
 			<Typography
-				className="text-13 p-12 border-2 rounded-xl w-full max-w-lg mt-16"
+				className="text-base p-12 border-2 rounded-xl w-full max-w-lg mt-16"
 				component="div"
 			>
 				Migrating to the new major version (v2.0.0) can be difficult because of the project structure and layout

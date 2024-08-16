@@ -42,7 +42,7 @@ function HelpCenterHome() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1, transition: { delay: 0 } }}
 						>
-							<Typography className="mt-4 text-28 sm:text-48 font-extrabold tracking-tight leading-tight text-center">
+							<Typography className="mt-4 text-5xl sm:text-48 font-extrabold tracking-tight leading-tight text-center">
 								How can we help you today?
 							</Typography>
 						</motion.div>
@@ -52,7 +52,7 @@ function HelpCenterHome() {
 						>
 							<Typography
 								color="text.secondary"
-								className="mt-12 sm:text-18 text-center tracking-tight"
+								className="mt-12 sm:text-2xl text-center tracking-tight"
 							>
 								Search for a topic or question, check out our FAQs and guides, contact us for detailed
 								support

@@ -35,7 +35,7 @@ function IntroductionDoc() {
 				Fuse React:
 			</Typography>
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Google's Material Design
@@ -54,7 +54,7 @@ function IntroductionDoc() {
 				</a>
 			</Typography>
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				React
@@ -74,7 +74,7 @@ function IntroductionDoc() {
 				recommend checking the React before start doing anything with Fuse.
 			</Typography>
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Material-UI
@@ -93,7 +93,7 @@ function IntroductionDoc() {
 				is a react UI library that implements Google's Material Design specification.
 			</Typography>
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				TailwindCSS
@@ -113,7 +113,7 @@ function IntroductionDoc() {
 				available.
 			</Typography>
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				ViteJS (CLI)

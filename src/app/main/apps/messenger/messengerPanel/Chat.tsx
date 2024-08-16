@@ -161,11 +161,11 @@ function Chat(props: ChatProps) {
 											)}
 										>
 											<div className="bubble flex relative items-center justify-center px-12 py-8 max-w-full">
-												<Typography className=" whitespace-pre-wrap text-12">
+												<Typography className=" whitespace-pre-wrap text-md">
 													{item.value}
 												</Typography>
 												<Typography
-													className="time absolute hidden w-full text-11 -mb-20 ltr:left-0 rtl:right-0 bottom-0 whitespace-nowrap"
+													className="time absolute hidden w-full text-sm -mb-20 ltr:left-0 rtl:right-0 bottom-0 whitespace-nowrap"
 													color="text.secondary"
 												>
 													{formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}

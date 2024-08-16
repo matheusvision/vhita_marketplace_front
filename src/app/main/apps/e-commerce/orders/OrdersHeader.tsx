@@ -17,7 +17,7 @@ function OrdersHeader() {
 			>
 				<div>
 					<PageBreadcrumb />
-					<Typography className="flex text-20 md:text-24 font-extrabold tracking-tight">Orders</Typography>
+					<Typography className="flex text-2xl md:text-4xl font-extrabold tracking-tight">Orders</Typography>
 				</div>
 			</motion.span>
 

@@ -67,12 +67,12 @@ function BudgetWidget() {
 						</div>
 						<div className="flex-auto leading-none">
 							<Typography
-								className="text-12 font-medium"
+								className="text-md font-medium"
 								color="text.secondary"
 							>
 								Expenses
 							</Typography>
-							<Typography className="font-medium text-18">
+							<Typography className="font-medium text-2xl">
 								{expenses.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD'
@@ -103,12 +103,12 @@ function BudgetWidget() {
 						</div>
 						<div className="flex-auto leading-none">
 							<Typography
-								className="text-12 font-medium"
+								className="text-md font-medium"
 								color="text.secondary"
 							>
 								Savings
 							</Typography>
-							<Typography className="font-medium text-18">
+							<Typography className="font-medium text-2xl">
 								{savings.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD'
@@ -139,12 +139,12 @@ function BudgetWidget() {
 						</div>
 						<div className="flex-auto leading-none">
 							<Typography
-								className="text-12 font-medium"
+								className="text-md font-medium"
 								color="text.secondary"
 							>
 								Bills
 							</Typography>
-							<Typography className="font-medium text-18">
+							<Typography className="font-medium text-2xl">
 								{bills.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD'

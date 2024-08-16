@@ -120,7 +120,7 @@ function CardAttachment(props: CardAttachmentProps) {
 					className="flex w-full sm:w-1/2 mb-16 px-16"
 					key={item.id}
 				>
-					<Paper className="min-w-128 w-128 h-128 flex items-center justify-center rounded-4 overflow-hidden shadow">
+					<Paper className="min-w-128 w-128 h-128 flex items-center justify-center rounded overflow-hidden shadow">
 						<Typography className="font-semibold">LINK</Typography>
 					</Paper>
 					<div className="flex flex-auto flex-col justify-center items-start min-w-0 px-16">

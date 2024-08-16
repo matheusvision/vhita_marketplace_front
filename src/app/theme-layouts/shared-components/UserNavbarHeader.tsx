@@ -39,18 +39,18 @@ function UserNavbarHeader() {
 						backgroundColor: (theme) => `${theme.palette.background.paper} !important`,
 						color: 'text.secondary'
 					}}
-					className="avatar uppercase h-96 w-96 text-28 font-bold"
+					className="avatar uppercase h-96 w-96 text-5xl font-bold"
 					src={user.data.photoURL}
 					alt={user.data.displayName}
 				>
 					{user?.data?.displayName?.charAt(0)}
 				</Avatar>
 			</div>
-			<Typography className="username whitespace-nowrap text-13 font-medium">
+			<Typography className="username whitespace-nowrap text-base font-medium">
 				{user?.data?.displayName}
 			</Typography>
 			<Typography
-				className="email whitespace-nowrap text-12 font-medium"
+				className="email whitespace-nowrap text-md font-medium"
 				color="text.secondary"
 			>
 				{user.data.email}

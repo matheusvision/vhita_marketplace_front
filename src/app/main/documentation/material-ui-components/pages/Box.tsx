@@ -27,7 +27,7 @@ function BoxDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Box
@@ -37,13 +37,13 @@ function BoxDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Box component is a generic container for grouping other components. It&#39;s a fundamental building
@@ -61,7 +61,7 @@ function BoxDoc(props) {
 				Usage
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Box component differs from other containers available in Material UI in that its usage is intended
@@ -72,7 +72,7 @@ function BoxDoc(props) {
 				and Paper for elevated surfaces.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -87,7 +87,7 @@ import Box from '@mui/material/Box';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Box component renders as a <code>{`<div>`}</code> by default, but you can swap in any other valid
@@ -95,7 +95,7 @@ import Box from '@mui/material/Box';
 				<code>{`<div>`}</code> with a <code>{`<section>`}</code> element:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -107,7 +107,7 @@ import Box from '@mui/material/Box';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
@@ -119,14 +119,14 @@ import Box from '@mui/material/Box';
 				With MUI System props
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				As a CSS utility component, the Box supports all <a href="/system/properties/">MUI System properties</a>
 				. You can use them as props directly on the component.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -144,7 +144,7 @@ import Box from '@mui/material/Box';
 				With the sx prop
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use the{' '}
@@ -156,7 +156,7 @@ import Box from '@mui/material/Box';
 				from the theme using this prop:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -168,13 +168,13 @@ import Box from '@mui/material/Box';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Box component is composed of a single root <code>{`<div>`}</code> element:

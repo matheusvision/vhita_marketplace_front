@@ -33,7 +33,7 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 					<Typography
 						component={Link}
 						to="/apps/file-manager"
-						className="text-18 md:text-28 font-extrabold tracking-tight leading-none"
+						className="text-2xl md:text-5xl font-extrabold tracking-tight leading-none"
 						role="button"
 					>
 						File Manager
@@ -67,7 +67,7 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 					animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
 				>
 					<Typography
-						className="text-13 font-medium mx-2"
+						className="text-base font-medium mx-2"
 						color="text.secondary"
 					>
 						{`${folders.length} folders, ${files.length} files`}

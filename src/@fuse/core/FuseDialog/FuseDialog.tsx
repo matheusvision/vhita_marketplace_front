@@ -16,7 +16,7 @@ function FuseDialog() {
 			onClose={() => dispatch(closeDialog())}
 			aria-labelledby="fuse-dialog-title"
 			classes={{
-				paper: 'rounded-8'
+				paper: 'rounded-lg'
 			}}
 			{...options}
 		/>

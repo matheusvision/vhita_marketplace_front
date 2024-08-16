@@ -22,7 +22,7 @@ function BackdropDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Backdrop
@@ -32,7 +32,7 @@ function BackdropDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The Backdrop signals a state change within the application and can be used for creating loaders,
@@ -40,13 +40,13 @@ function BackdropDoc(props) {
 				application.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Example
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The demo below shows a basic Backdrop with a Circular Progress component in the foreground to indicate a
@@ -54,7 +54,7 @@ function BackdropDoc(props) {
 				close it.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample

@@ -17,7 +17,7 @@ function IDEsDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mb-10 font-700"
+				className="text-2xl mb-10 font-700"
 				variant="h5"
 			>
 				Webstorm
@@ -43,7 +43,7 @@ function IDEsDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Visual Studio Code (VSCode)

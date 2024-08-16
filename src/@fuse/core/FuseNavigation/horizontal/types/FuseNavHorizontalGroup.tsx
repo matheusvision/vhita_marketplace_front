@@ -116,7 +116,7 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 								<ListItemText
 									className="fuse-list-item-text"
 									primary={item.title}
-									classes={{ primary: 'text-12 truncate' }}
+									classes={{ primary: 'text-md truncate' }}
 								/>
 
 								{nestedLevel > 0 && (
@@ -158,7 +158,7 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 										style={{ transformOrigin: '0 0 0' }}
 									>
 										<Paper
-											className="rounded-4"
+											className="rounded"
 											onMouseEnter={() => handleToggle(true)}
 											onMouseLeave={() => handleToggle(false)}
 										>

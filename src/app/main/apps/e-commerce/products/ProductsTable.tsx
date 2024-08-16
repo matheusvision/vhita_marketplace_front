@@ -68,7 +68,7 @@ function ProductsTable() {
 						{row.categories.map((item) => (
 							<Chip
 								key={item}
-								className="text-11"
+								className="text-sm"
 								size="small"
 								color="default"
 								label={item}

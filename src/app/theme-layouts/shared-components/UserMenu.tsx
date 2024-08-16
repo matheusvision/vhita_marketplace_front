@@ -47,7 +47,7 @@ function UserMenu(props: UserMenuProps) {
 	return (
 		<>
 			<Button
-				className={clsx('shrink-0  min-h-56 h-56 rounded-8 p-8 space-x-12', className)}
+				className={clsx('shrink-0  min-h-56 h-56 rounded-lg p-8 space-x-12', className)}
 				sx={{
 					borderColor: (theme) => theme.palette.divider,
 					'&:hover, &:focus': {
@@ -66,7 +66,7 @@ function UserMenu(props: UserMenuProps) {
 							background: (theme) => theme.palette.background.default,
 							color: (theme) => theme.palette.text.secondary
 						}}
-						className="w-40 h-40 rounded-8"
+						className="w-40 h-40 rounded-lg"
 						alt="user photo"
 						src={user.data.photoURL}
 						variant="rounded"
@@ -85,12 +85,12 @@ function UserMenu(props: UserMenuProps) {
 				<div className="flex flex-col flex-1 space-y-8">
 					<Typography
 						component="span"
-						className="flex font-semibold text-13 capitalize truncate  tracking-tight leading-none"
+						className="flex font-semibold text-base capitalize truncate  tracking-tight leading-none"
 					>
 						{user.data.displayName}
 					</Typography>
 					<Typography
-						className="flex text-12 font-medium tracking-tighter leading-none"
+						className="flex text-md font-medium tracking-tighter leading-none"
 						color="text.secondary"
 					>
 						{user.data.email}

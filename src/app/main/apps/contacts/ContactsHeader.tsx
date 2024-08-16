@@ -40,7 +40,7 @@ function ContactsHeader() {
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
 				>
-					<Typography className="text-20 md:text-24 font-extrabold tracking-tight leading-none">
+					<Typography className="text-2xl md:text-4xl font-extrabold tracking-tight leading-none">
 						Contacts
 					</Typography>
 				</motion.span>
@@ -50,7 +50,7 @@ function ContactsHeader() {
 				>
 					<Typography
 						component={motion.span}
-						className="text-13 font-medium ml-2"
+						className="text-base font-medium ml-2"
 						color="text.secondary"
 					>
 						{`${filteredData?.length} contacts`}

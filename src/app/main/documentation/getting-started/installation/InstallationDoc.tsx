@@ -16,7 +16,7 @@ function InstallationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mb-10 font-700"
+				className="text-2xl mb-10 font-700"
 				variant="h5"
 			>
 				Prerequisites
@@ -53,7 +53,7 @@ function InstallationDoc() {
 			</Typography>
 
 			<Typography
-				className="text-18 mt-20 mb-10 font-700"
+				className="text-2xl mt-20 mb-10 font-700"
 				variant="h5"
 			>
 				Installation
@@ -91,7 +91,7 @@ function InstallationDoc() {
 
 			<div className="mx-16 my-32">
 				<Typography
-					className="flex text-14 mb-10 font-700"
+					className="flex text-lg mb-10 font-700"
 					variant="h6"
 				>
 					B.1. Choose which version you want to install
@@ -152,7 +152,7 @@ function InstallationDoc() {
 				</ul>
 
 				<Typography
-					className="flex text-14 mt-32 mb-10 font-700"
+					className="flex text-lg mt-32 mb-10 font-700"
 					variant="h6"
 				>
 					B.2. Unzip

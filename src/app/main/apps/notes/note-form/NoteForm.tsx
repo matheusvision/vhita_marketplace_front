@@ -213,7 +213,7 @@ function NoteForm(props: NoteFormProps) {
 							render={({ field }) => (
 								<Input
 									{...field}
-									className="font-semibold text-13"
+									className="font-semibold text-base"
 									placeholder="Title"
 									type="text"
 									disableUnderline
@@ -298,7 +298,7 @@ function NoteForm(props: NoteFormProps) {
 							{watchedNoteForm.createdAt && (
 								<Typography
 									color="text.secondary"
-									className="text-12 mt-8 mx-4"
+									className="text-md mt-8 mx-4"
 								>
 									Edited: {format(new Date(watchedNoteForm.createdAt), 'MMM dd yy, h:mm')}
 								</Typography>

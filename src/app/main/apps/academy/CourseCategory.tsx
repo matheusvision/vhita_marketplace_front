@@ -23,7 +23,7 @@ function CourseCategory(props: CourseCategoryProps) {
 
 	return (
 		<Chip
-			className="font-semibold text-12"
+			className="font-semibold text-md"
 			label={category?.title}
 			sx={{
 				color: (theme) =>

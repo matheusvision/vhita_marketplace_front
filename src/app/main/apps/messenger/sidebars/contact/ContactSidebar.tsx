@@ -65,7 +65,7 @@ function ContactSidebar() {
 
 				<Typography
 					color="text.secondary"
-					className="mt-2 text-12"
+					className="mt-2 text-md"
 				>
 					{contact.about}
 				</Typography>
@@ -91,7 +91,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-13 font-medium"
+						className="text-base font-medium"
 						color="text.secondary"
 					>
 						Emails
@@ -118,7 +118,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-13 font-medium"
+						className="text-base font-medium"
 						color="text.secondary"
 					>
 						Phone numbers
@@ -145,7 +145,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-13 font-medium"
+						className="text-base font-medium"
 						color="text.secondary"
 					>
 						Title
@@ -156,7 +156,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-13 font-medium"
+						className="text-base font-medium"
 						color="text.secondary"
 					>
 						Company
@@ -167,7 +167,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-13 font-medium"
+						className="text-base font-medium"
 						color="text.secondary"
 					>
 						Birthday
@@ -178,7 +178,7 @@ function ContactSidebar() {
 
 				<div className="mt-16">
 					<Typography
-						className="text-13 font-medium"
+						className="text-base font-medium"
 						color="text.secondary"
 					>
 						Address

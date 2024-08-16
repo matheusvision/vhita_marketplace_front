@@ -87,7 +87,7 @@ function Order() {
 							animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
 							className="flex flex-col min-w-0"
 						>
-							<Typography className="text-18 truncate font-semibold">
+							<Typography className="text-2xl truncate font-semibold">
 								{`Order ${order.reference}`}
 							</Typography>
 							<Typography

@@ -27,10 +27,10 @@ function CalendarAppEventContent(props: CalendarAppEventContentProps) {
 				backgroundColor: label?.color,
 				color: label && theme.palette.getContrastText(label?.color)
 			}}
-			className={clsx('flex items-center w-full rounded-4 px-8 py-2 h-22 text-white')}
+			className={clsx('flex items-center w-full rounded px-8 py-2 h-22 text-white')}
 		>
-			<Typography className="text-12 font-semibold">{eventInfo.timeText}</Typography>
-			<Typography className="text-12 px-4 truncate">{eventInfo.event.title}</Typography>
+			<Typography className="text-md font-semibold">{eventInfo.timeText}</Typography>
+			<Typography className="text-md px-4 truncate">{eventInfo.event.title}</Typography>
 		</Box>
 	);
 }

@@ -41,7 +41,7 @@ function ActivityTimelineItem(props: ActivityTimelineItemProps) {
 
 				<div className="mt-8 flex flex-col text-md leading-5 sm:mt-4 sm:flex-row sm:items-center sm:space-x-8">
 					<Typography
-						className="text-12"
+						className="text-md"
 						color="text.secondary"
 					>
 						{format(new Date(item.date), 'MMM dd, h:mm a')}

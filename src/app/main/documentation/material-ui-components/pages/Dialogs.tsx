@@ -45,7 +45,7 @@ function DialogsDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-28 my-16 font-700"
+				className="text-5xl my-16 font-700"
 				component="h1"
 			>
 				Dialog
@@ -56,7 +56,7 @@ function DialogsDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				A Dialog is a type of <a href="/material-ui/react-modal/">modal</a> window that appears in front of app
@@ -64,19 +64,19 @@ function DialogsDoc(props) {
 				when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Dialogs are purposefully interruptive, so they should be used sparingly.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Dialogs are implemented using a collection of related components:
@@ -95,7 +95,7 @@ function DialogsDoc(props) {
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -107,7 +107,7 @@ function DialogsDoc(props) {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Basics
@@ -123,19 +123,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Alerts
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Alerts are urgent interruptions, requiring acknowledgement, that inform the user about a situation.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Most alerts don&#39;t need titles. They summarize a decision in a sentence or two by either:
@@ -145,14 +145,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 				<li>Making a statement related to the action buttons</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Use title bar alerts only for high-risk situations, such as the potential loss of connectivity. Users
 				should be able to understand the choices based on the title and button text alone.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				If a title is required:
@@ -167,7 +167,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -179,19 +179,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Transitions
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can also swap out the transition, the next example uses <code>Slide</code>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -203,13 +203,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Form dialogs
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Form dialogs allow users to fill out form fields within a dialog. For example, if your site prompts for
@@ -217,7 +217,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 				&#39;Submit&#39;.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -229,26 +229,26 @@ import DialogTitle from '@mui/material/DialogTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Here is an example of customizing the component. You can learn more about this in the{' '}
 				<a href="/material-ui/customization/how-to-customize/">overrides documentation page</a>.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The dialog has a close button added to aid usability.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -260,13 +260,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Full-screen dialogs
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -278,13 +278,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Optional sizes
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can set a dialog maximum width by using the <code>maxWidth</code> enumerable in combination with the{' '}
@@ -292,7 +292,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 				based on the <code>maxWidth</code> value.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -304,13 +304,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Responsive full-screen
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You may make a dialog responsively full screen using{' '}
@@ -336,7 +336,7 @@ function MyComponent() {
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -348,13 +348,13 @@ function MyComponent() {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Confirmation dialogs
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Confirmation dialogs require users to explicitly confirm their choice before an option is committed. For
@@ -362,14 +362,14 @@ function MyComponent() {
 				&quot;OK&quot;.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Touching &quot;Cancel&quot; in a confirmation dialog, or pressing Back, cancels the action, discards any
 				changes, and closes the dialog.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -381,13 +381,13 @@ function MyComponent() {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Non-modal dialog
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Dialogs can also be non-modal, meaning they don&#39;t interrupt user interaction behind it. Visit{' '}
@@ -395,13 +395,13 @@ function MyComponent() {
 				for more in-depth guidance about modal vs. non-modal dialog usage.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The demo below shows a persistent cookie banner, a common non-modal dialog use case.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -413,13 +413,13 @@ function MyComponent() {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Draggable dialog
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				You can create a draggable dialog by using{' '}
@@ -428,7 +428,7 @@ function MyComponent() {
 				<code>Dialog</code> component. This will make the entire dialog draggable.
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -440,13 +440,13 @@ function MyComponent() {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Scrolling long content
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				When dialogs become too long for the user&#39;s viewport or device, they scroll.
@@ -460,13 +460,13 @@ function MyComponent() {
 				</li>
 			</ul>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Try the demo below to see what we mean:
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<FuseExample
@@ -478,37 +478,37 @@ function MyComponent() {
 				/>
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Performance
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Follow the <a href="/material-ui/react-modal/#performance">Modal performance section</a>.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Limitations
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Follow the <a href="/material-ui/react-modal/#limitations">Modal limitations section</a>.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Complementary projects
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				For more advanced use cases you might be able to take advantage of:
@@ -520,7 +520,7 @@ function MyComponent() {
 				material-ui-confirm
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				<img
@@ -533,7 +533,7 @@ function MyComponent() {
 				/>
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				The package{' '}
@@ -543,13 +543,13 @@ function MyComponent() {
 				provides dialogs for confirming user actions without writing boilerplate code.
 			</Typography>
 			<Typography
-				className="text-22 mt-24 mb-10 font-700"
+				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-13 mb-32"
+				className="text-base mb-32"
 				component="div"
 			>
 				Follow the <a href="/material-ui/react-modal/#accessibility">Modal accessibility section</a>.
