@@ -67,8 +67,8 @@ function NavbarStyle1Content(props: NavbarStyle1ContentProps) {
 
 			<Divider />
 
-			<div className="p-16 w-full">
-				<UserMenu />
+			<div className="p-4 md:p-16 w-full">
+				<UserMenu className="w-full" />
 			</div>
 		</Root>
 	);

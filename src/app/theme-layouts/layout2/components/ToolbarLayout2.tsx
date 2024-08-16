@@ -39,39 +39,40 @@ function ToolbarLayout2(props: ToolbarLayout2Props) {
 				style={{ backgroundColor: toolbarTheme.palette.background.paper }}
 			>
 				<Toolbar className="container min-h-48 p-0 md:min-h-64 lg:px-24">
-					{config.navbar.display && (
-						<Hidden lgUp>
-							<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
-						</Hidden>
-					)}
-
-					<div className="flex flex-1">
+					<div className="flex flex-1 px-8 md:px-16 space-x-8 ">
+						{config.navbar.display && (
+							<Hidden lgUp>
+								<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
+							</Hidden>
+						)}
 						<Hidden lgDown>
 							<NavigationShortcuts />
 						</Hidden>
 					</div>
 
-					<div className="flex h-full items-center overflow-x-auto px-8 space-x-6">
+					<div className="flex items-center overflow-x-auto px-8 md:px-16 space-x-6">
 						<LanguageSwitcher />
 						<AdjustFontSize />
 						<FullScreenToggle />
 						<NavigationSearch />
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
-						<UserMenu
-							className="border border-solid"
-							arrowIcon="heroicons-outline:chevron-down"
-							popoverProps={{
-								anchorOrigin: {
-									vertical: 'bottom',
-									horizontal: 'center'
-								},
-								transformOrigin: {
-									vertical: 'top',
-									horizontal: 'center'
-								}
-							}}
-						/>
+						<Hidden lgDown>
+							<UserMenu
+								className="border border-solid"
+								arrowIcon="heroicons-outline:chevron-down"
+								popoverProps={{
+									anchorOrigin: {
+										vertical: 'bottom',
+										horizontal: 'center'
+									},
+									transformOrigin: {
+										vertical: 'top',
+										horizontal: 'center'
+									}
+								}}
+							/>
+						</Hidden>
 					</div>
 				</Toolbar>
 			</AppBar>

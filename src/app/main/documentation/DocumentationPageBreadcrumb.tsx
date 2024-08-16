@@ -50,7 +50,7 @@ function DocumentationPageBreadcrumb(props: DocumentationPageBreadcrumbProps) {
 	const pathArr: FuseNavItemType[] = getPathTree(DocumentationNavigation, pathname);
 
 	return (
-		<div className={clsx('flex-1 mb-16 sm:mb-0', className)}>
+		<div className={clsx('flex-1', className)}>
 			<Breadcrumbs aria-label="breadcrumb">
 				<Link
 					className="font-semibold hover:underline"

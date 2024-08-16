@@ -38,17 +38,16 @@ function ToolbarLayout3(props: ToolbarLayout3Props) {
 				style={{ backgroundColor: toolbarTheme.palette.background.paper }}
 			>
 				<Toolbar className="container min-h-48 p-0 md:min-h-64 lg:px-24">
-					{config.navbar.display && (
-						<Hidden lgUp>
-							<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
-						</Hidden>
-					)}
-
-					<Hidden lgDown>
-						<div className={clsx('flex shrink-0 items-center')}>
+					<div className={clsx('flex shrink-0 items-center')}>
+						{config.navbar.display && (
+							<Hidden lgUp>
+								<NavbarToggleButton className="mx-0 h-36 w-36 p-0 sm:mx-8" />
+							</Hidden>
+						)}
+						<Hidden lgDown>
 							<Logo />
-						</div>
-					</Hidden>
+						</Hidden>
+					</div>
 
 					<div className="flex flex-1">
 						<Hidden smDown>
@@ -59,7 +58,7 @@ function ToolbarLayout3(props: ToolbarLayout3Props) {
 						</Hidden>
 					</div>
 
-					<div className="flex h-full items-center overflow-x-auto px-8 space-x-6">
+					<div className="flex items-center overflow-x-auto px-8 md:px-16 space-x-6">
 						<Hidden smUp>
 							<NavigationSearch />
 						</Hidden>
@@ -68,20 +67,22 @@ function ToolbarLayout3(props: ToolbarLayout3Props) {
 						<FullScreenToggle />
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
-						<UserMenu
-							className="border border-solid"
-							arrowIcon="heroicons-outline:chevron-down"
-							popoverProps={{
-								anchorOrigin: {
-									vertical: 'bottom',
-									horizontal: 'center'
-								},
-								transformOrigin: {
-									vertical: 'top',
-									horizontal: 'center'
-								}
-							}}
-						/>
+						<Hidden lgDown>
+							<UserMenu
+								className="border border-solid"
+								arrowIcon="heroicons-outline:chevron-down"
+								popoverProps={{
+									anchorOrigin: {
+										vertical: 'bottom',
+										horizontal: 'center'
+									},
+									transformOrigin: {
+										vertical: 'top',
+										horizontal: 'center'
+									}
+								}}
+							/>
+						</Hidden>
 					</div>
 				</Toolbar>
 			</AppBar>

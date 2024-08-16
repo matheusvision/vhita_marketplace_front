@@ -2,7 +2,6 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { memo } from 'react';
-import NavbarToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarToggleButton';
 import { Divider } from '@mui/material';
 import UserMenu from 'app/theme-layouts/shared-components/UserMenu';
 import Logo from '../../shared-components/Logo';
@@ -50,8 +49,6 @@ function NavbarMobileLayout2(props: NavbarMobileLayout2Props) {
 				<div className="mx-4 flex flex-1">
 					<Logo />
 				</div>
-
-				<NavbarToggleButton className="h-36 w-36 p-0" />
 			</div>
 
 			<StyledContent
@@ -71,8 +68,8 @@ function NavbarMobileLayout2(props: NavbarMobileLayout2Props) {
 
 			<Divider />
 
-			<div className="p-16 w-full">
-				<UserMenu />
+			<div className="p-4 md:p-16 w-full">
+				<UserMenu className="w-full" />
 			</div>
 		</Root>
 	);

@@ -28,7 +28,7 @@ function Logo() {
 				src="assets/images/logo/logo.svg"
 				alt="logo"
 			/>
-			<div className="logo-text flex space-x-6 items-center">
+			<div className="logo-text flex space-x-8 items-center">
 				<Typography className="text-2xl tracking-light font-semibold">FUSE</Typography>
 				<Box
 					className="badge flex items-center rounded space-x-6 px-8 py-4"
