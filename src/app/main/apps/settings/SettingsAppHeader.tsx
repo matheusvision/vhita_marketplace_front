@@ -19,9 +19,10 @@ function SettingsAppHeader(props: SettingsAppHeaderProps) {
 	const currentNavigation = _.find(SettingsAppNavigation.children, { url: pathname });
 
 	return (
-		<div className={clsx('flex space-x-8 -mx-12 md:mx-0', className)}>
+		<div className={clsx('flex space-x-12 -mx-12 md:mx-0', className)}>
 			<Hidden lgUp>
 				<IconButton
+					className="border border-divider"
 					onClick={() => onSetSidebarOpen(true)}
 					aria-label="open left sidebar"
 				>
