@@ -45,7 +45,7 @@ function ModernConfirmationRequiredPage() {
 
 				<Box
 					className="relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex lg:px-112"
-					sx={{ backgroundColor: 'primary.main' }}
+					sx={{ backgroundColor: 'primary.dark', color: 'primary.contrastText' }}
 				>
 					<svg
 						className="pointer-events-none absolute inset-0"
@@ -57,8 +57,7 @@ function ModernConfirmationRequiredPage() {
 					>
 						<Box
 							component="g"
-							sx={{ color: 'primary.light' }}
-							className="opacity-20"
+							className="opacity-5"
 							fill="none"
 							stroke="currentColor"
 							strokeWidth="100"

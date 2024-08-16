@@ -73,7 +73,7 @@ function SinglePricingCard() {
 			</div>
 
 			<Box
-				sx={{ backgroundColor: 'primary.main' }}
+				sx={{ backgroundColor: 'primary.dark', color: 'primary.contrastText' }}
 				className="flex flex-col items-center p-8 lg:min-w-320 lg:px-40 lg:py-48"
 			>
 				<div className="flex items-center whitespace-nowrap">

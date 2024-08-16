@@ -33,7 +33,7 @@ function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 	}
 
 	return (
-		<div className="flex flex-wrap w-full items-center px-8 py-12 md:px-16 border-b">
+		<div className="flex flex-wrap w-full items-center px-8 py-16 md:px-16">
 			<div className="w-full flex items-center space-x-8">
 				<Hidden lgUp>
 					<IconButton
@@ -100,7 +100,7 @@ function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 				</div>
 			</div>
 
-			<div className="hidden sm:flex items-center my-12 mx-8 rounded-lg border">
+			<div className="hidden sm:flex items-center mx-8 rounded-lg border">
 				<ValueSectionSmall
 					title="Market Cap"
 					unit="B"

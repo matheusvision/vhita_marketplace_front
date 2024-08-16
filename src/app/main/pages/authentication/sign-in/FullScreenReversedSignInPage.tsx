@@ -58,7 +58,7 @@ function FullScreenReversedSignInPage() {
 		<div className="flex min-w-0 flex-auto flex-col items-center sm:flex-row sm:justify-center md:items-start md:justify-start">
 			<Box
 				className="relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex lg:px-112 "
-				sx={{ backgroundColor: 'primary.main' }}
+				sx={{ backgroundColor: 'primary.dark', color: 'primary.contrastText' }}
 			>
 				<svg
 					className="pointer-events-none absolute inset-0"
@@ -70,8 +70,7 @@ function FullScreenReversedSignInPage() {
 				>
 					<Box
 						component="g"
-						sx={{ color: 'primary.light' }}
-						className="opacity-20"
+						className="opacity-5"
 						fill="none"
 						stroke="currentColor"
 						strokeWidth="100"

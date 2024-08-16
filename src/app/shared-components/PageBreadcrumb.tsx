@@ -58,7 +58,7 @@ function PageBreadcrumb(props: PageBreadcrumbProps) {
 		<Breadcrumbs
 			className={clsx('flex w-full mb-8', className)}
 			aria-label="breadcrumb"
-			color="secondary"
+			color="primary"
 			{...rest}
 		>
 			{crumbs.map(
@@ -68,7 +68,7 @@ function PageBreadcrumb(props: PageBreadcrumbProps) {
 							component={item?.url ? Link : 'span'}
 							to={item?.url}
 							key={index}
-							className="block capitalize max-w-128 truncate"
+							className="block font-medium tracking-tight capitalize max-w-128 truncate"
 							role="button"
 						>
 							{item?.title}

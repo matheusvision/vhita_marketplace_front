@@ -27,65 +27,72 @@ export const themesConfig: FuseThemesType = {
 	default: {
 		palette: {
 			mode: 'light',
-			divider: '#e2e8f0',
-			text: lightPaletteText,
+			divider: '#D6D6D6',
+			text: {
+				primary: '#212121',
+				secondary: '#5F6368'
+			},
 			common: {
-				black: 'rgb(17, 24, 39)',
-				white: 'rgb(255, 255, 255)'
+				black: '#000000',
+				white: '#FFFFFF'
 			},
 			primary: {
-				light: '#64748b',
-				main: '#1e293b',
-				dark: '#0f172a',
-				contrastText: darkPaletteText.primary
+				light: '#536D89',
+				main: '#0A74DA',
+				dark: '#00418A',
+				contrastText: '#FFFFFF'
 			},
 			secondary: {
-				light: '#818cf8',
-				main: '#4f46e5',
-				dark: '#3730a3',
-				contrastText: darkPaletteText.primary
+				light: '#6BC9F7',
+				main: '#00A4EF',
+				dark: '#0078D7',
+				contrastText: '#FFFFFF'
 			},
 			background: {
-				paper: '#FFFFFF',
-				default: '#f1f5f9'
+				paper: '#F4F4F4',
+				default: '#E8E8E8'
 			},
 			error: {
-				light: '#ffcdd2',
-				main: '#f44336',
-				dark: '#b71c1c',
-				contrastText: darkPaletteText.primary
+				light: '#FFCDD2',
+				main: '#D32F2F',
+				dark: '#B71C1C',
+				contrastText: '#FFFFFF'
 			}
 		}
 	},
 	defaultDark: {
 		palette: {
 			mode: 'dark',
-			divider: 'rgba(241,245,249,.12)',
-			text: darkPaletteText,
+			divider: '#4F4F4F',
+			text: {
+				primary: '#E0E0E0',
+				secondary: '#B0BEC5'
+			},
 			common: {
-				black: 'rgb(17, 24, 39)',
-				white: 'rgb(255, 255, 255)'
+				black: '#000000',
+				white: '#FFFFFF'
 			},
 			primary: {
-				light: '#64748b',
-				main: '#334155',
-				dark: '#0f172a',
-				contrastText: darkPaletteText.primary
+				light: '#536D89',
+				main: '#0A74DA',
+				dark: '#00418A',
+				contrastText: '#FFFFFF'
 			},
 			secondary: {
-				light: '#818cf8',
-				main: '#4f46e5',
-				dark: '#3730a3',
-				contrastText: darkPaletteText.primary
+				light: '#6BC9F7',
+				main: '#00A4EF',
+				dark: '#0078D7',
+				contrastText: '#FFFFFF'
 			},
 			background: {
-				paper: '#1e293b',
-				default: '#111827'
+				paper: '#1E1E1E',
+				default: '#121212'
 			},
 			error: {
-				light: '#ffcdd2',
-				main: '#f44336',
-				dark: '#b71c1c'
+				light: '#FFCDD2',
+				main: '#D32F2F',
+				dark: '#B71C1C',
+				contrastText: '#FFFFFF'
 			}
 		}
 	},

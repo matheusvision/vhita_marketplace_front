@@ -44,11 +44,11 @@ function NotificationCard(props: NotificationCardProps) {
 	let bgColor: string = (variantBgColors[item.variant] as string) || defaultBgColor;
 
 	if (item.variant === 'primary') {
-		bgColor = theme.palette.primary.main;
+		bgColor = theme.palette.primary.dark;
 	}
 
 	if (item.variant === 'secondary') {
-		bgColor = theme.palette.secondary.main;
+		bgColor = theme.palette.secondary.dark;
 	}
 
 	const contrastTheme = useAppSelector(selectContrastMainTheme(bgColor));
@@ -114,10 +114,7 @@ function NotificationCard(props: NotificationCardProps) {
 					)}
 
 					{item.time && (
-						<Typography
-							className="mt-8 text-sm leading-none "
-							color="text.secondary"
-						>
+						<Typography className="mt-8 text-sm leading-none opacity-60">
 							{formatDistanceToNow(new Date(item.time), { addSuffix: true })}
 						</Typography>
 					)}

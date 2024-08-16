@@ -35,7 +35,7 @@ function HelpCenterHome() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1, transition: { delay: 0 } }}
 						>
-							<PageBreadcrumb />
+							<PageBreadcrumb color="secondary" />
 						</motion.div>
 
 						<motion.div
@@ -88,7 +88,7 @@ function HelpCenterHome() {
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<g
-							className="text-gray-700 opacity-25"
+							className="opacity-5"
 							fill="none"
 							stroke="currentColor"
 							strokeWidth="100"

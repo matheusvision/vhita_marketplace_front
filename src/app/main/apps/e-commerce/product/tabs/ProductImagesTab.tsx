@@ -64,7 +64,7 @@ function ProductImagesTab() {
 							sx={{
 								backgroundColor: (theme) =>
 									theme.palette.mode === 'light'
-										? lighten(theme.palette.background.default, 0.4)
+										? lighten(theme.palette.background.default, 0.2)
 										: lighten(theme.palette.background.default, 0.02)
 							}}
 							component="label"
@@ -123,7 +123,13 @@ function ProductImagesTab() {
 						return (
 							<>
 								{images.map((media) => (
-									<div
+									<Box
+										sx={{
+											backgroundColor: (theme) =>
+												theme.palette.mode === 'light'
+													? lighten(theme.palette.background.default, 0.2)
+													: lighten(theme.palette.background.default, 0.02)
+										}}
 										onClick={() => onChange(media.id)}
 										onKeyDown={() => onChange(media.id)}
 										role="button"
@@ -142,7 +148,7 @@ function ProductImagesTab() {
 											src={media.url}
 											alt="product"
 										/>
-									</div>
+									</Box>
 								))}
 							</>
 						);

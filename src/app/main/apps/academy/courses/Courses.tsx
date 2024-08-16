@@ -20,7 +20,7 @@ import { Course, useGetAcademyCategoriesQuery, useGetAcademyCoursesQuery } from 
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
-		backgroundColor: theme.palette.primary.main,
+		backgroundColor: theme.palette.primary.dark,
 		color: theme.palette.getContrastText(theme.palette.primary.main)
 	}
 }));
@@ -103,7 +103,7 @@ function Courses() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1, transition: { delay: 0 } }}
 						>
-							<PageBreadcrumb />
+							<PageBreadcrumb color="secondary" />
 						</motion.div>
 						<motion.div
 							initial={{ opacity: 0 }}
@@ -139,7 +139,7 @@ function Courses() {
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<g
-							className="text-gray-700 opacity-25"
+							className="opacity-5"
 							fill="none"
 							stroke="currentColor"
 							strokeWidth="100"
