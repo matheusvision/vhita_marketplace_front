@@ -408,8 +408,8 @@ function ModernPricingPage() {
 						Boost your productivity.
 					</Typography>
 					<Typography
-						className="mt-8 text-3xl font-extrabold leading-6 sm:text-5xl sm:leading-10"
-						color="text.secondary"
+						className="mt-8 text-3xl font-extrabold leading-6 sm:text-5xl sm:leading-10 opacity-75"
+						color="primary.contrastText"
 					>
 						Start using Fuse today.
 					</Typography>

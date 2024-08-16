@@ -19,18 +19,17 @@ function SettingsAppHeader(props: SettingsAppHeaderProps) {
 	const currentNavigation = _.find(SettingsAppNavigation.children, { url: pathname });
 
 	return (
-		<div className={clsx('flex items-center -mx-12 md:mx-0', className)}>
+		<div className={clsx('flex space-x-8 -mx-12 md:mx-0', className)}>
 			<Hidden lgUp>
 				<IconButton
 					onClick={() => onSetSidebarOpen(true)}
 					aria-label="open left sidebar"
-					size="large"
 				>
 					<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 				</IconButton>
 			</Hidden>
 			<div>
-				<PageBreadcrumb />
+				<PageBreadcrumb className="mb-8" />
 
 				<Typography className=" text-3xl font-bold leading-none tracking-tight lg:ml-0">
 					{currentNavigation?.title}

@@ -16,18 +16,18 @@ function ActivitiesPage() {
 		<FusePageSimple
 			content={
 				<div className="flex flex-auto flex-col px-24 py-40 sm:px-64 sm:pb-80 sm:pt-72">
-					<PageBreadcrumb />
-					<Typography className="text-4xl font-extrabold leading-none tracking-tight">
+					<PageBreadcrumb className="mb-8" />
+					<Typography className="text-4xl font-extrabold leading-none tracking-tight mb-4">
 						All Activities
 					</Typography>
 					<Typography
-						className="mt-6 text-lg"
+						className="text-lg"
 						color="text.secondary"
 					>
 						Application wide activities are listed here as individual items, starting with the most recent.
 					</Typography>
 					<Timeline
-						className="py-48"
+						className="py-48 px-0"
 						position="right"
 						sx={{
 							'& .MuiTimelineItem-root:before': {

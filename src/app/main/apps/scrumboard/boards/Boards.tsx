@@ -36,7 +36,7 @@ function Boards() {
 				animate={{ opacity: 1, transition: { delay: 0.1 } }}
 			>
 				<div className="flex flex-col mt-16 md:mt-96">
-					<PageBreadcrumb className="justify-center" />
+					<PageBreadcrumb className="justify-center mb-8" />
 					<Typography className="text-3xl md:text-6xl font-extrabold tracking-tight leading-7 sm:leading-10 text-center">
 						Scrumboard Boards
 					</Typography>

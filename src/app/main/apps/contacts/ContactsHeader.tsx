@@ -33,14 +33,14 @@ function ContactsHeader() {
 
 	return (
 		<div className="p-24 sm:p-32 w-full">
-			<PageBreadcrumb />
+			<PageBreadcrumb className="mb-8" />
 
-			<div className="flex flex-col">
+			<div className="flex flex-col space-y-4">
 				<motion.span
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
 				>
-					<Typography className="text-2xl md:text-4xl font-extrabold tracking-tight leading-none">
+					<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none">
 						Contacts
 					</Typography>
 				</motion.span>

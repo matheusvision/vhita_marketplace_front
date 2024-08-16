@@ -50,14 +50,15 @@ function CalendarViewMenu(props: CalendarViewMenuProps) {
 		<div className={className}>
 			<Button
 				sx={{ minWidth: 120 }}
-				className="rounded-md justify-between"
+				className="border border-divider justify-between"
 				id="view-select-button"
 				aria-controls="view-select-menu"
 				aria-haspopup="true"
 				aria-expanded={open ? 'true' : undefined}
 				onClick={handleClick}
 				variant="outlined"
-				endIcon={<FuseSvgIcon size={16}>heroicons-outline:chevron-down</FuseSvgIcon>}
+				size="small"
+				endIcon={<FuseSvgIcon size={13}>heroicons-outline:chevron-down</FuseSvgIcon>}
 			>
 				{currentDate &&
 					currentDate.view &&

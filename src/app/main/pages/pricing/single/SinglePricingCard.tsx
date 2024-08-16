@@ -85,14 +85,14 @@ function SinglePricingCard() {
 					</Typography>
 					<Typography
 						className="ml-2 text-2xl font-semibold"
-						color="text.secondary"
+						color="primary.contrastText"
 					>
 						USD
 					</Typography>
 				</div>
 				<Typography
 					className="text-center font-medium"
-					color="text.secondary"
+					color="primary.contrastText"
 				>
 					No monthly subscription,
 					<br />

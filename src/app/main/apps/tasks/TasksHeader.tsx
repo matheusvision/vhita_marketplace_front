@@ -19,7 +19,7 @@ function TasksHeader() {
 		<div className="flex flex-col sm:flex-row space-y-16 sm:space-y-0 p-24 sm:p-32 w-full justify-between">
 			<div className="flex flex-col sm:flex-row sm:items-center sm:space-x-12">
 				<div>
-					<PageBreadcrumb />
+					<PageBreadcrumb className="mb-8" />
 
 					<motion.span
 						initial={{ x: -20 }}
@@ -28,7 +28,7 @@ function TasksHeader() {
 							transition: { delay: 0.2 }
 						}}
 					>
-						<Typography className="text-2xl md:text-4xl font-extrabold tracking-tight leading-none">
+						<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none mb-4">
 							Tasks
 						</Typography>
 					</motion.span>

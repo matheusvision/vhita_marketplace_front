@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { memo } from 'react';
 import Navigation from 'app/theme-layouts/shared-components/navigation/Navigation';
-import NavbarToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarToggleButton';
 import UserMenu from 'app/theme-layouts/shared-components/UserMenu';
 import { Divider } from '@mui/material';
 import Logo from '../../../../shared-components/Logo';
@@ -49,8 +48,6 @@ function NavbarStyle1Content(props: NavbarStyle1ContentProps) {
 				<div className="mx-4 flex flex-1">
 					<Logo />
 				</div>
-
-				<NavbarToggleButton className="h-36 w-36 p-0" />
 			</div>
 
 			<StyledContent

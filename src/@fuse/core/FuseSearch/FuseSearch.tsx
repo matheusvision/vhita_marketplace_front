@@ -17,7 +17,6 @@ import { memo, useEffect, useReducer, useRef, ReactNode } from 'react';
 import Autosuggest, { RenderInputComponentProps, RenderSuggestionParams, ChangeEvent } from 'react-autosuggest';
 import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
-import { alpha } from '@mui/system/colorManipulator';
 import FuseSvgIcon from '../FuseSvgIcon';
 import { FuseFlatNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 
@@ -283,17 +282,7 @@ function FuseSearch(props: FuseSearchProps) {
 		placeholder = 'Search',
 		noResults = 'No results..',
 		trigger = (
-			<IconButton
-				sx={{
-					border: (theme) => `1px solid ${theme.palette.divider}`,
-					'&:hover, &:focus': {
-						backgroundColor: (theme) =>
-							theme.palette.mode === 'dark'
-								? alpha(theme.palette.divider, 0.1)
-								: alpha(theme.palette.divider, 0.6)
-					}
-				}}
-			>
+			<IconButton className="border border-divider">
 				<FuseSvgIcon size={20}>heroicons-outline:magnifying-glass</FuseSvgIcon>
 			</IconButton>
 		)

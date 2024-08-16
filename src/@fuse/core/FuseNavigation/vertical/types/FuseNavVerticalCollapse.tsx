@@ -131,7 +131,6 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 							ev.stopPropagation();
 							setOpen(!open);
 						}}
-						size="large"
 					>
 						<FuseSvgIcon
 							size={13}

@@ -17,7 +17,7 @@ function BoardHeader(props: BoardHeaderProps) {
 	return (
 		<div className="p-24 sm:p-32 w-full flex items-center sm:justify-between">
 			<div className="flex flex-col">
-				<PageBreadcrumb />
+				<PageBreadcrumb className="mb-8" />
 				<BoardTitle />
 			</div>
 

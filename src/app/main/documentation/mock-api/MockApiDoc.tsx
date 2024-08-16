@@ -25,15 +25,12 @@ function MockApiDoc() {
 	return (
 		<Root className="w-full">
 			<div className="flex flex-col flex-0 p-24 sm:py-32 sm:px-40 w-full">
-				<PageBreadcrumb />
+				<PageBreadcrumb className="mb-8" />
 
 				<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
 					Mock API Definitions (OpenAPI 3.0)
 				</Typography>
-				<Typography
-					className="mt-12"
-					component="p"
-				>
+				<Typography component="p">
 					These definitions are used while creating
 					<Link
 						className="link mx-8"

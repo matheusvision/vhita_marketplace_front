@@ -75,18 +75,20 @@ function PageLayoutOverview(props: PageLayoutOverviewProps) {
 				})}
 			/>
 			<Root className={`scroll-${selectedOption}`}>
-				<div className="flex flex-col p-24 sm:py-32 sm:px-40">
-					<PageBreadcrumb />
+				<div className="flex flex-col p-24">
+					<PageBreadcrumb className="mb-8" />
 
-					<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight">{title}</Typography>
+					<Typography className="text-4xl font-extrabold leading-none tracking-tight mb-4">
+						{title}
+					</Typography>
 					<Typography
-						className="text-lg md:text-xl"
+						className="text-lg"
 						color="text.secondary"
 					>
 						{description}
 					</Typography>
 
-					<div className="mt-24 md:mt-32">
+					<div className="mt-24">
 						<FuseTabs
 							value={availableOptions.indexOf(_.find(availableOptions, { value: selectedOption }))}
 							onChange={handleTabChange}
@@ -100,7 +102,7 @@ function PageLayoutOverview(props: PageLayoutOverviewProps) {
 						</FuseTabs>
 					</div>
 				</div>
-				<div className="px-24 sm:px-40 w-full">
+				<div className="px-24 w-full">
 					<Paper className="preview-wrapper z-20 relative h-3xl w-full rounded-xl shadow-xl flex flex-auto min-h-full overflow-hidden border">
 						<Box
 							className="preview-navbar hidden md:block sticky top-0 flex-0 min-w-224 h-768 border-r z-20"

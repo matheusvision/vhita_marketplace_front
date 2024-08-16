@@ -5,11 +5,12 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useTheme } from '@mui/material';
-import { alpha } from '@mui/system/colorManipulator';
+import clsx from 'clsx';
 import { toggleNotificationPanel } from './notificationPanelSlice';
 import { useGetAllNotificationsQuery } from './NotificationApi';
 
 type NotificationPanelToggleButtonProps = {
+	className?: string;
 	children?: ReactNode;
 };
 
@@ -19,6 +20,7 @@ type NotificationPanelToggleButtonProps = {
 
 function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps) {
 	const {
+		className = '',
 		children = (
 			<FuseSvgIcon
 				size={20}
@@ -69,15 +71,7 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 	return (
 		<IconButton
 			onClick={() => dispatch(toggleNotificationPanel())}
-			sx={{
-				border: (theme) => `1px solid ${theme.palette.divider}`,
-				'&:hover, &:focus': {
-					backgroundColor: (theme) =>
-						theme.palette.mode === 'dark'
-							? alpha(theme.palette.divider, 0.1)
-							: alpha(theme.palette.divider, 0.6)
-				}
-			}}
+			className={clsx('border border-divider', className)}
 		>
 			<Badge
 				color="secondary"

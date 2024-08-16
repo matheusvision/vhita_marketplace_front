@@ -185,7 +185,7 @@ function Chat(props: ChatProps) {
 						<IconButton
 							aria-label="Open drawer"
 							onClick={() => setMainSidebarOpen(true)}
-							className="flex lg:hidden"
+							className="border border-divider flex lg:hidden"
 						>
 							<FuseSvgIcon>heroicons-outline:chat-bubble-left-right</FuseSvgIcon>
 						</IconButton>

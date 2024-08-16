@@ -20,7 +20,7 @@ function MailboxAppSidebarContent() {
 	return (
 		<div className="flex-auto border-l-1">
 			<div className="mb-24 mt-40 mx-24">
-				<PageBreadcrumb maxItems={3} />
+				<PageBreadcrumb maxItems={3} className="mb-8" />
 
 				<motion.div
 					initial={{ x: 20, opacity: 0 }}
@@ -33,7 +33,7 @@ function MailboxAppSidebarContent() {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1, transition: { delay: 0.1 } }}
 				>
-					<MailCompose className="mt-32" />
+					<MailCompose className="mt-24" />
 				</motion.div>
 			</div>
 

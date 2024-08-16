@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { changeLanguage, LanguageType, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import { alpha } from '@mui/system/colorManipulator';
 
 /**
  * The language switcher.
@@ -36,18 +35,8 @@ function LanguageSwitcher() {
 	return (
 		<>
 			<Button
+				className="border border-divider"
 				onClick={langMenuClick}
-				sx={{
-					width: 64,
-					height: 36,
-					border: (theme) => `1px solid ${theme.palette.divider}`,
-					'&:hover, &:focus': {
-						backgroundColor: (theme) =>
-							theme.palette.mode === 'dark'
-								? alpha(theme.palette.divider, 0.1)
-								: alpha(theme.palette.divider, 0.6)
-					}
-				}}
 			>
 				<img
 					className="mx-4 min-w-20"

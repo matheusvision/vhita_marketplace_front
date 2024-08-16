@@ -34,28 +34,31 @@ function CalendarHeader(props: CalendarHeaderProps) {
 
 	return (
 		<div className="flex flex-col md:flex-row w-full p-12 justify-between z-10 container">
-			<div className="flex items-center justify-between">
-				<div className="flex items-center">
+			<div className="flex items-center justify-between space-x-8">
+				<div className="flex items-center space-x-8">
 					<IconButton
 						onClick={() => onToggleLeftSidebar()}
 						aria-label="open left sidebar"
+						className="border border-divider"
 						size="small"
 					>
-						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
+						<FuseSvgIcon size={16}>heroicons-outline:bars-3</FuseSvgIcon>
 					</IconButton>
 
-					<Typography className="hidden sm:flex text-2xl font-semibold tracking-tight whitespace-nowrap mx-16">
+					<Typography className="hidden sm:flex text-2xl font-semibold tracking-tight whitespace-nowrap">
 						{currentDate?.view.title}
 					</Typography>
 				</div>
 
-				<div className="flex items-center">
+				<div className="flex items-center space-x-8">
 					<Tooltip title="Previous">
 						<IconButton
 							aria-label="Previous"
 							onClick={() => calendarApi().prev()}
+							className="border border-divider"
+							size="small"
 						>
-							<FuseSvgIcon size={20}>
+							<FuseSvgIcon size={16}>
 								{mainTheme.direction === 'ltr'
 									? 'heroicons-solid:chevron-left'
 									: 'heroicons-solid:chevron-right'}
@@ -66,8 +69,10 @@ function CalendarHeader(props: CalendarHeaderProps) {
 						<IconButton
 							aria-label="Next"
 							onClick={() => calendarApi().next()}
+							className="border border-divider"
+							size="small"
 						>
-							<FuseSvgIcon size={20}>
+							<FuseSvgIcon size={16}>
 								{mainTheme.direction === 'ltr'
 									? 'heroicons-solid:chevron-right'
 									: 'heroicons-solid:chevron-left'}
@@ -84,8 +89,10 @@ function CalendarHeader(props: CalendarHeaderProps) {
 								<IconButton
 									aria-label="today"
 									onClick={() => calendarApi().today()}
+									className="border border-divider"
+									size="small"
 								>
-									<FuseSvgIcon>heroicons-outline:calendar</FuseSvgIcon>
+									<FuseSvgIcon size={16}>heroicons-outline:calendar</FuseSvgIcon>
 								</IconButton>
 							</motion.div>
 						</div>
@@ -94,12 +101,13 @@ function CalendarHeader(props: CalendarHeaderProps) {
 			</div>
 
 			<motion.div
-				className="flex items-center justify-end md:justify-center"
+				className="flex items-center justify-end md:justify-center space-x-8"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1, transition: { delay: 0.3 } }}
 			>
 				<IconButton
-					className="mx-8"
+					className="border border-divider"
+					size="small"
 					aria-label="add"
 					onClick={(ev) =>
 						dispatch(

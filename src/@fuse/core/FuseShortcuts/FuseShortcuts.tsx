@@ -78,17 +78,15 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	}
 
 	return (
-		<Box
-			className={clsx('flex flex-shrink overflow-hidden', variant === 'vertical' && 'flex-col', className)}
-			sx={{
-				borderRadius: '8px',
-				minHeight: 40,
-				border: (theme) => `1px solid ${theme.palette.divider}`
-			}}
-		>
+		<Box className={clsx('flex flex-shrink overflow-hidden', variant === 'vertical' ? 'flex-col' : '', className)}>
 			{useMemo(() => {
 				return (
-					<div className={clsx('flex flex-1 items-center', variant === 'vertical' && 'flex-col')}>
+					<Box
+						className={clsx(
+							'flex flex-1 items-center border rounded-lg',
+							variant === 'vertical' ? 'flex-col' : 'max-h-36'
+						)}
+					>
 						{shortcutItems.map(
 							(_item) =>
 								_item && (
@@ -132,7 +130,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 								</FuseSvgIcon>
 							</IconButton>
 						</Tooltip>
-					</div>
+					</Box>
 				);
 			}, [addMenu, variant, shortcutItems])}
 

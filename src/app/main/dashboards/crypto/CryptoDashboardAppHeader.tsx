@@ -34,11 +34,12 @@ function CryptoDashboardAppHeader(props: CryptoDashboardAppHeaderProps) {
 
 	return (
 		<div className="flex flex-wrap w-full items-center px-8 py-16 md:px-16">
-			<div className="w-full flex items-center space-x-8">
+			<div className="w-full flex items-center space-x-8 mb-4">
 				<Hidden lgUp>
 					<IconButton
 						onClick={(ev) => onToggleLeftSidebar(ev)}
 						aria-label="open left sidebar"
+						className="border border-divider"
 						size="small"
 					>
 						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>

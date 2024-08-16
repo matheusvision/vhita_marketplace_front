@@ -136,7 +136,7 @@ function VisitorsOverviewWidget() {
 					color: contrastTheme.palette.primary.contrastText
 				}}
 			>
-				<div className="flex justify-between mt-24 mx-24">
+				<div className="flex justify-between mt-16 mx-16 md:mt-24 md:mx-24">
 					<div className="flex flex-col">
 						<Typography
 							sx={{

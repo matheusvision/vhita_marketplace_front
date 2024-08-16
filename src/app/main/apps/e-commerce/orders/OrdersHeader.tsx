@@ -7,7 +7,7 @@ import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
  */
 function OrdersHeader() {
 	return (
-		<div className="flex grow-0 space-y-12 sm:space-y-0 flex-1 w-full items-center justify-between py-8 sm:py-16">
+		<div className="flex grow-0  flex-1 w-full items-center justify-between  space-y-8 sm:space-y-0 py-24 sm:py-32">
 			<motion.span
 				initial={{ x: -20 }}
 				animate={{
@@ -16,8 +16,8 @@ function OrdersHeader() {
 				}}
 			>
 				<div>
-					<PageBreadcrumb />
-					<Typography className="flex text-2xl md:text-4xl font-extrabold tracking-tight">Orders</Typography>
+					<PageBreadcrumb className="mb-8" />
+					<Typography className="flex text-4xl font-extrabold leading-none tracking-tight">Orders</Typography>
 				</div>
 			</motion.span>
 

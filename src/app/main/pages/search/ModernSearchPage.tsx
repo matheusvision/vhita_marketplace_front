@@ -40,7 +40,7 @@ function ModernSearchPage() {
 		<FusePageSimple
 			header={
 				<div className="flex flex-col w-full max-w-md flex-1 px-24 pt-24 sm:pt-32 sm:px-32">
-					<PageBreadcrumb />
+					<PageBreadcrumb className="mb-12" />
 
 					<Paper className="flex h-44 w-full items-center rounded-lg shadow">
 						<Input

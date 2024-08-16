@@ -106,7 +106,7 @@ function BoardList(props: BoardListProps) {
 							</Droppable>
 						</CardContent>
 
-						<div className="p-12 pt-0">
+						<div className="p-12">
 							<BoardAddCard
 								boardId={boardId}
 								listId={listId}

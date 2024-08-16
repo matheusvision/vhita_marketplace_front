@@ -3,19 +3,20 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { alpha } from '@mui/system/colorManipulator';
 import { FuseThemeOption } from '@fuse/core/FuseThemeSelector/ThemePreview';
 import { changeFuseTheme, selectMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { useAppDispatch } from 'app/store/hooks';
 import { useSelector } from 'react-redux';
+import clsx from 'clsx';
 
 type LightDarkModeToggleProps = {
+	className?: string;
 	lightTheme: FuseThemeOption;
 	darkTheme: FuseThemeOption;
 };
 
 function LightDarkModeToggle(props: LightDarkModeToggleProps) {
-	const { lightTheme, darkTheme } = props;
+	const { className = '', lightTheme, darkTheme } = props;
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const dispatch = useAppDispatch();
 
@@ -46,24 +47,16 @@ function LightDarkModeToggle(props: LightDarkModeToggleProps) {
 	return (
 		<>
 			<IconButton
-				aria-controls="simple-menu"
+				aria-controls="light-dark-toggle-menu"
 				aria-haspopup="true"
 				onClick={handleClick}
-				sx={{
-					border: (theme) => `1px solid ${theme.palette.divider}`,
-					'&:hover, &:focus': {
-						backgroundColor: (theme) =>
-							theme.palette.mode === 'dark'
-								? alpha(theme.palette.divider, 0.1)
-								: alpha(theme.palette.divider, 0.6)
-					}
-				}}
+				className={clsx('border border-divider', className)}
 			>
 				{mainTheme.palette.mode === 'light' && <FuseSvgIcon>heroicons-outline:sun</FuseSvgIcon>}
 				{mainTheme.palette.mode === 'dark' && <FuseSvgIcon>heroicons-outline:moon</FuseSvgIcon>}
 			</IconButton>
 			<Menu
-				id="simple-menu"
+				id="light-dark-toggle-menu"
 				anchorEl={anchorEl}
 				keepMounted
 				open={Boolean(anchorEl)}

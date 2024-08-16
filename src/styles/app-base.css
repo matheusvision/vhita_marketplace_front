@@ -5,6 +5,26 @@
  * Custom base styles
  */
 
+
+*:not([class^="Mui"]), *:not([class*=" Mui"]),
+::before:not([class^="Mui"]), ::before:not([class*=" Mui"]),
+::after:not([class^="Mui"]), ::after:not([class*=" Mui"])
+{
+    border-width: 0;
+    border-style: solid;
+}
+
+[class^="MuiBox"], [class*="MuiBox"],
+[class^="MuiPaper"], [class*="MuiPaper"]{
+    border-width: 0;
+    border-style: solid;
+}
+
+[class^="border"], [class*="border"]{
+    border-style: solid;
+    border-width: 0;
+}
+
 * {
     /* Text rendering */
     text-rendering: optimizeLegibility;

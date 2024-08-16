@@ -5,6 +5,7 @@ import _ from '@lodash';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
+import clsx from 'clsx';
 import { navbarToggle, navbarToggleMobile } from './navbarSlice';
 
 type NavbarToggleButtonProps = {
@@ -35,9 +36,7 @@ function NavbarToggleButton(props: NavbarToggleButtonProps) {
 
 	return (
 		<IconButton
-			className={className}
-			color="inherit"
-			size="small"
+			className={clsx('border border-divider', className)}
 			onClick={() => {
 				if (isMobile) {
 					dispatch(navbarToggleMobile());

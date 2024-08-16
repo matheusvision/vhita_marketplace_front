@@ -19,12 +19,12 @@ const Root = styled('div')(({ theme }) => ({
 		alignItems: 'start',
 		borderBottom: `1px solid ${theme.palette.divider}`,
 		'&.active': {
-			backgroundColor: `${alpha(theme.palette.secondary.main, 0.1)}!important`,
+			backgroundColor: `${alpha(theme.palette.primary.main, 0.1)}!important`,
 			'&  .fuse-list-item-icon': {
-				color: `${theme.palette.secondary.main}!important`
+				color: `${theme.palette.primary.main}!important`
 			},
 			'&  .fuse-list-item-text-primary': {
-				color: `${theme.palette.secondary.main}!important`
+				color: `${theme.palette.primary.main}!important`
 			}
 		}
 	},

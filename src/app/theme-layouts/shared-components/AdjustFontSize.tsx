@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { alpha } from '@mui/system/colorManipulator';
+import clsx from 'clsx';
 
 const marks = [
 	{ value: 0.7, label: '70%' },
@@ -45,19 +45,10 @@ function AdjustFontSize(props: AdjustFontSizeProps) {
 	return (
 		<div>
 			<IconButton
-				className={className}
+				className={clsx('border border-divider', className)}
 				aria-controls="font-size-menu"
 				aria-haspopup="true"
 				onClick={handleClick}
-				sx={{
-					border: (theme) => `1px solid ${theme.palette.divider}`,
-					'&:hover, &:focus': {
-						backgroundColor: (theme) =>
-							theme.palette.mode === 'dark'
-								? alpha(theme.palette.divider, 0.1)
-								: alpha(theme.palette.divider, 0.6)
-					}
-				}}
 			>
 				<FuseSvgIcon size={20}>material-outline:format_size</FuseSvgIcon>
 			</IconButton>

@@ -1,11 +1,3 @@
-
-/**
- * HEY HO
- */
-
-/*! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
- */
-
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -17,7 +9,7 @@
     box-sizing: border-box; /* 1 */
     border-width: 0; /* 2 */
     border-style: solid; /* 2 */
-    border-color: #EEEEEE; /* 2 */
+    /*border-color: #EEEEEE; !* 2 *!*/
 }
 
 ::before,
@@ -25,18 +17,30 @@
     --tw-content: '';
 }
 
+[class^="border"], [class*="border"]{
+    border-style: solid; /* 2 */
+}
+
 /*
 1. Use a consistent sensible line-height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
 */
 
-html {
+html,
+:host {
     line-height: 1.5; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */ /* 3 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    -moz-tab-size: 4; /* 3 */
     tab-size: 4; /* 3 */
-    font-family: Inter var, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+    font-family: Inter var, Roboto,  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+    font-feature-settings: normal; /* 5 */
+    font-variation-settings: normal; /* 6 */
+    -webkit-tap-highlight-color: transparent; /* 7 */
 }
 
 /*
@@ -102,8 +106,10 @@ strong {
 }
 
 /*
-1. Use the user's configured `mono` font family by default.
-2. Correct the odd `em` font sizing in all browsers.
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
 */
 
 code,
@@ -166,9 +172,12 @@ optgroup,
 select,
 textarea {
     font-family: inherit; /* 1 */
+    font-feature-settings: inherit; /* 1 */
+    font-variation-settings: inherit; /* 1 */
     font-size: 100%; /* 1 */
+    font-weight: inherit; /* 1 */
     line-height: inherit; /* 1 */
-    color: inherit; /* 1 */
+    /*color: inherit; !* 1 *!*/
     margin: 0; /* 2 */
     padding: 0; /* 3 */
 }
@@ -188,9 +197,9 @@ select {
 */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
     -webkit-appearance: button; /* 1 */
     background-color: transparent; /* 2 */
     background-image: none; /* 2 */
@@ -303,6 +312,13 @@ menu {
 }
 
 /*
+Reset default styling for dialogs.
+*/
+dialog {
+    padding: 0;
+}
+
+/*
 Prevent resizing textareas horizontally by default.
 */
 
@@ -318,7 +334,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
     opacity: 1; /* 1 */
-    color: #BDBDBD; /* 2 */
+    /*color: theme('colors.gray.400', #9ca3af); !* 2 *!*/
 }
 
 /*
@@ -333,7 +349,6 @@ button,
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
-
 :disabled {
     cursor: default;
 }
@@ -366,55 +381,7 @@ video {
     height: auto;
 }
 
-/*
-Ensure the default browser behavior of the `hidden` attribute.
-*/
-
+/* Make elements with the HTML hidden attribute stay hidden by default */
 [hidden] {
     display: none;
-}
-
-*, ::before, ::after {
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
-    --tw-rotate: 0;
-    --tw-skew-x: 0;
-    --tw-skew-y: 0;
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    --tw-pan-x: '';
-    --tw-pan-y: '';
-    --tw-pinch-zoom: '';
-    --tw-scroll-snap-strictness: proximity;
-    --tw-ordinal: '';
-    --tw-slashed-zero: '';
-    --tw-numeric-figure: '';
-    --tw-numeric-spacing: '';
-    --tw-numeric-fraction: '';
-    --tw-ring-inset: '';
-    --tw-ring-offset-width: 0px;
-    --tw-ring-offset-color: #fff;
-    --tw-ring-color: rgb(33 150 243 / 0.5);
-    --tw-ring-offset-shadow: 0 0 #0000;
-    --tw-ring-shadow: 0 0 #0000;
-    --tw-shadow: 0 0 #0000;
-    --tw-shadow-colored: 0 0 #0000;
-    --tw-blur: '';
-    --tw-brightness: '';
-    --tw-contrast: '';
-    --tw-grayscale: '';
-    --tw-hue-rotate: '';
-    --tw-invert: '';
-    --tw-saturate: '';
-    --tw-sepia: '';
-    --tw-drop-shadow: '';
-    --tw-backdrop-blur: '';
-    --tw-backdrop-brightness: '';
-    --tw-backdrop-contrast: '';
-    --tw-backdrop-grayscale: '';
-    --tw-backdrop-hue-rotate: '';
-    --tw-backdrop-invert: '';
-    --tw-backdrop-opacity: '';
-    --tw-backdrop-saturate: '';
-    --tw-backdrop-sepia: '';
 }

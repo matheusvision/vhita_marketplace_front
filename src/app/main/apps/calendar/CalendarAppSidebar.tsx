@@ -18,7 +18,7 @@ function CalendarAppSidebar() {
 
 	return (
 		<div className="flex flex-col flex-auto min-h-full py-24 px-16">
-			<PageBreadcrumb />
+			<PageBreadcrumb className="mb-8" />
 
 			<motion.span
 				initial={{ x: -20 }}

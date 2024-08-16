@@ -23,7 +23,7 @@ function FileManagerHeader(props: FileManagerHeaderProps) {
 	return (
 		<div className="py-24 sm:py-32 w-full flex  space-y-8 sm:space-y-0 items-center justify-between">
 			<div className="flex flex-col space-y-8 sm:space-y-0">
-				<PageBreadcrumb />
+				<PageBreadcrumb className="mb-8" />
 
 				<motion.span
 					className="flex items-end"

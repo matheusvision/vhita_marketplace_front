@@ -65,7 +65,7 @@ function ProductHeader() {
 						transition: { delay: 0.3 }
 					}}
 				>
-					<PageBreadcrumb />
+					<PageBreadcrumb className="mb-8" />
 				</motion.div>
 
 				<div className="flex items-center max-w-full">

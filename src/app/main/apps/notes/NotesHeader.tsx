@@ -24,31 +24,28 @@ function NotesHeader(props: NotesHeaderProps) {
 
 	return (
 		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between py-8 sm:py-24 relative">
-			<div className="flex shrink items-center sm:w-224 w-full">
-				<Hidden lgUp>
-					<IconButton
-						onClick={() => onSetSidebarOpen(true)}
-						aria-label="open left sidebar"
-						size="large"
-					>
-						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
-					</IconButton>
-				</Hidden>
-
-				<div className="flex items-center">
-					<motion.span
-						initial={{ x: -20 }}
-						animate={{ x: 0, transition: { delay: 0.2 } }}
-					>
-						<div>
-							<PageBreadcrumb />
-
-							<Typography className="text-2xl md:text-4xl font-extrabold tracking-tight leading-none">
-								Notes
-							</Typography>
-						</div>
-					</motion.span>
+			<div className="flex flex-col shrink">
+				<div className="flex items-center mb-8">
+					<Hidden lgUp>
+						<IconButton
+							onClick={() => onSetSidebarOpen(true)}
+							aria-label="open left sidebar"
+						>
+							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
+						</IconButton>
+					</Hidden>
+					<PageBreadcrumb />
 				</div>
+				<motion.span
+					initial={{ x: -20 }}
+					animate={{ x: 0, transition: { delay: 0.2 } }}
+				>
+					<div>
+						<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none">
+							Notes
+						</Typography>
+					</div>
+				</motion.span>
 			</div>
 
 			<div className="flex flex-1 w-full sm:w-auto items-center justify-end space-x-12">

@@ -203,7 +203,7 @@ const navigationConfig: FuseNavItemType[] = [
 				title: 'Scrumboard',
 				type: 'item',
 				icon: 'heroicons-outline:view-columns',
-				url: '/apps/scrumboard/boards',
+				url: '/apps/scrumboard',
 				translate: 'SCRUMBOARD'
 			},
 			{

@@ -24,8 +24,8 @@ function TypographyUI() {
 			header={
 				<div className="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-24 sm:py-32 sm:px-40">
 					<div className="flex-1 min-w-0">
-						<PageBreadcrumb />
-						<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+						<PageBreadcrumb className="mb-8" />
+						<Typography className="text-4xl font-extrabold leading-none tracking-tight mb-4">
 							Typography
 						</Typography>
 					</div>
@@ -46,8 +46,8 @@ function TypographyUI() {
 				</div>
 			}
 			content={
-				<div className="flex-auto p-24 sm:p-40 w-full">
-					<div className="flex flex-wrap mb-16">
+				<div className="flex-auto p-24 sm:p-40 w-full space-y-48">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="h1">Display 4</Typography>
 						</div>
@@ -62,7 +62,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="h2">Display 3</Typography>
 						</div>
@@ -77,7 +77,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="h3">Display 2</Typography>
 						</div>
@@ -92,7 +92,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="h4">Display 1</Typography>
 						</div>
@@ -107,7 +107,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="h5">Headline</Typography>
 						</div>
@@ -122,7 +122,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="h6">Title</Typography>
 						</div>
@@ -137,7 +137,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="subtitle1">Subheading</Typography>
 						</div>
@@ -152,7 +152,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="body1">Body 2</Typography>
 						</div>
@@ -167,7 +167,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="body2">Body 1</Typography>
 						</div>
@@ -182,7 +182,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="caption">Caption</Typography>
 						</div>
@@ -197,7 +197,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography
 								gutterBottom
@@ -220,7 +220,7 @@ function TypographyUI() {
 							</FuseHighlight>
 						</div>
 					</div>
-					<div className="flex flex-wrap mb-16">
+					<div className="flex flex-wrap">
 						<div className="flex w-full sm:w-1/2">
 							<Typography variant="button">Button</Typography>
 						</div>

@@ -56,7 +56,7 @@ function PageBreadcrumb(props: PageBreadcrumbProps) {
 	}, []);
 	return (
 		<Breadcrumbs
-			className={clsx('flex w-full mb-8', className)}
+			className={clsx('flex w-full', className)}
 			aria-label="breadcrumb"
 			color="primary"
 			{...rest}

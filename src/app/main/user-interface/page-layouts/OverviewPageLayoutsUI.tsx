@@ -21,8 +21,8 @@ function OverviewPageLayoutsUI() {
 			header={
 				<div className="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-24 sm:py-32 sm:px-40">
 					<div className="flex-1 min-w-0">
-						<PageBreadcrumb />
-						<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+						<PageBreadcrumb className="mb-8" />
+						<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none">
 							Overview
 						</Typography>
 					</div>

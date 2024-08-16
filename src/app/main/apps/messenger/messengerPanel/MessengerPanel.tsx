@@ -180,9 +180,9 @@ function MessengerPanel() {
 				>
 					<Toolbar className="px-4">
 						{(!open || selectedContactId === '') && (
-							<div className="flex flex-1 items-center px-8 space-x-12">
+							<div className="flex flex-1 items-center px-3 space-x-12">
 								<IconButton
-									className=""
+									className="w-56 h-56"
 									color="inherit"
 									onClick={() => dispatch(openChatPanel())}
 									size="large"

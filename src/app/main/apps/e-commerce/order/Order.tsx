@@ -79,7 +79,7 @@ function Order() {
 							initial={{ x: 20, opacity: 0 }}
 							animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
 						>
-							<PageBreadcrumb />
+							<PageBreadcrumb className="mb-8" />
 						</motion.div>
 
 						<motion.div
