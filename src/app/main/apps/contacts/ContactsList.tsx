@@ -42,7 +42,7 @@ function ContactsList() {
 		<motion.div
 			initial={{ y: 20, opacity: 0 }}
 			animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
-			className="flex flex-col flex-auto w-full max-h-full"
+			className="flex flex-col flex-auto w-full max-h-full border-x-1"
 		>
 			{Object.entries(groupedFilteredContacts).map(([key, group]: [string, GroupedContacts]) => {
 				return (

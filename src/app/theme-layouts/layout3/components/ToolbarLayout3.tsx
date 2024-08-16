@@ -68,7 +68,20 @@ function ToolbarLayout3(props: ToolbarLayout3Props) {
 						<FullScreenToggle />
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
-						<UserMenu />
+						<UserMenu
+							className="border border-solid"
+							arrowIcon="heroicons-outline:chevron-down"
+							popoverProps={{
+								anchorOrigin: {
+									vertical: 'bottom',
+									horizontal: 'center'
+								},
+								transformOrigin: {
+									vertical: 'top',
+									horizontal: 'center'
+								}
+							}}
+						/>
 					</div>
 				</Toolbar>
 			</AppBar>

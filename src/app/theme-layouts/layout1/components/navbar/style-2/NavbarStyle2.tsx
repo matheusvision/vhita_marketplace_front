@@ -152,7 +152,7 @@ function NavbarStyle2() {
 		>
 			<Hidden lgDown>
 				<StyledNavbar
-					className="flex-auto flex-col"
+					className="sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col overflow-hidden shadow"
 					position={config?.navbar?.position}
 					folded={folded ? 1 : 0}
 					foldedandopened={foldedandopened ? 1 : 0}

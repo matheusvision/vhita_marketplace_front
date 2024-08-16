@@ -134,7 +134,7 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 						size="large"
 					>
 						<FuseSvgIcon
-							size={16}
+							size={13}
 							className="arrow-icon"
 							color="inherit"
 						>

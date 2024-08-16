@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 const Root = styled('div')(({ theme }) => ({
 	'& > .logo-icon': {
@@ -20,31 +21,14 @@ const Root = styled('div')(({ theme }) => ({
  */
 function Logo() {
 	return (
-		<Root className="flex items-center">
+		<Root className="flex items-center space-x-8">
 			<img
 				className="logo-icon h-32 w-32"
 				src="assets/images/logo/logo.svg"
 				alt="logo"
 			/>
-			<div className="flex space-x-6 px-8 items-center">
-				<div
-					className="badge flex items-end justify-end rounded-4 w-24 h-24 px-3"
-					style={{
-						backgroundColor: '#2e79c7',
-						color: '#ffffff'
-					}}
-				>
-					<span className="react-text text-12 font-semibold">TS</span>
-				</div>
-				<div
-					className="badge flex items-end justify-end rounded-4 w-24 h-24 px-3"
-					style={{
-						backgroundColor: '#f0dc4e',
-						color: '#2f2f2c'
-					}}
-				>
-					<span className="react-text text-12 font-semibold">JS</span>
-				</div>
+			<div className="logo-text flex space-x-6 items-center">
+				<Typography className="text-18 tracking-light font-semibold">FUSE</Typography>
 				<div
 					className="badge flex items-center rounded-4 space-x-8 px-8 py-4"
 					style={{

@@ -25,7 +25,7 @@ const Root = styled('div')<{ opened: number }>(({ theme, opened }) => ({
 	minWidth: 70,
 	height: '100vh',
 	zIndex: 1000,
-
+	borderLeft: `1px solid ${theme.palette.divider}`,
 	[theme.breakpoints.down('lg')]: {
 		position: 'fixed',
 		height: '100%',

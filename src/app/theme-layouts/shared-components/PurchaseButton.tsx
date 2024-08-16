@@ -19,12 +19,15 @@ function PurchaseButton(props: PurchaseButtonProps) {
 			target="_blank"
 			rel="noreferrer noopener"
 			role="button"
-			className={clsx('', className)}
+			className={clsx('space-x-4', className)}
 			variant="contained"
 			color="secondary"
 			startIcon={<FuseSvgIcon size={16}>heroicons-outline:shopping-cart</FuseSvgIcon>}
 		>
-			Purchase FUSE React
+			<span>Purchase</span>
+			<span className="flex items-center space-x-4">
+				<span>FUSE React</span>
+			</span>
 		</Button>
 	);
 }

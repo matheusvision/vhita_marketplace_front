@@ -2,7 +2,7 @@ import themesConfig from 'app/configs/themesConfig';
 
 const themeOptions = [
 	{
-		id: 'Default ',
+		id: 'Default',
 		section: {
 			main: themesConfig.default,
 			navbar: themesConfig.defaultDark,

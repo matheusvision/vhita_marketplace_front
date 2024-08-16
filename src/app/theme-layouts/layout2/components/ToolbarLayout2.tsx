@@ -58,7 +58,20 @@ function ToolbarLayout2(props: ToolbarLayout2Props) {
 						<NavigationSearch />
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
-						<UserMenu />
+						<UserMenu
+							className="border border-solid"
+							arrowIcon="heroicons-outline:chevron-down"
+							popoverProps={{
+								anchorOrigin: {
+									vertical: 'bottom',
+									horizontal: 'center'
+								},
+								transformOrigin: {
+									vertical: 'top',
+									horizontal: 'center'
+								}
+							}}
+						/>
 					</div>
 				</Toolbar>
 			</AppBar>

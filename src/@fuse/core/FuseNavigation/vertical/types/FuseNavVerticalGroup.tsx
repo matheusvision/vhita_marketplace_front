@@ -14,6 +14,9 @@ const Root = styled(ListItem)<ListItemButtonComponentProps>(({ theme, ...props }
 	width: '100%',
 	borderRadius: '8px',
 	margin: '28px 0 0 0',
+	'&:first-of-type': {
+		marginTop: 0
+	},
 	paddingRight: 16,
 	paddingLeft: props.itempadding > 80 ? 80 : props.itempadding,
 	paddingTop: 10,

@@ -10,7 +10,6 @@ function SelectMailMessage() {
 			<FuseSvgIcon
 				className="icon-size-128 mb-16"
 				color="disabled"
-				size={24}
 			>
 				heroicons-outline:envelope
 			</FuseSvgIcon>

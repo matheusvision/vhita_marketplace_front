@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
-import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -13,11 +12,22 @@ import useAuth from 'src/app/auth/useAuth';
 import { darken } from '@mui/material/styles';
 import { useAppSelector } from 'app/store/hooks';
 import { alpha } from '@mui/system/colorManipulator';
+import Tooltip from '@mui/material/Tooltip';
+import clsx from 'clsx';
+import Popover, { PopoverProps } from '@mui/material/Popover/Popover';
+import { Partial } from 'react-spring';
+
+type UserMenuProps = {
+	className?: string;
+	popoverProps?: Partial<PopoverProps>;
+	arrowIcon?: string;
+};
 
 /**
  * The user menu.
  */
-function UserMenu() {
+function UserMenu(props: UserMenuProps) {
+	const { className, popoverProps, arrowIcon = 'heroicons-outline:chevron-up' } = props;
 	const user = useAppSelector(selectUser);
 	const { signOut } = useAuth();
 	const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
@@ -37,7 +47,7 @@ function UserMenu() {
 	return (
 		<>
 			<Button
-				className="min-h-36 min-w-36 px-4 border border-solid rounded-8 space-x-4"
+				className={clsx('w-full  min-h-56 h-56 rounded-8 p-8 space-x-12', className)}
 				sx={{
 					borderColor: (theme) => theme.palette.divider,
 					'&:hover, &:focus': {
@@ -50,31 +60,16 @@ function UserMenu() {
 				onClick={userMenuClick}
 				color="inherit"
 			>
-				<div className="mx-4 hidden flex-col items-end md:flex max-w-96">
-					<Typography
-						component="span"
-						className="flex font-semibold text-12 capitalize truncate  tracking-tight leading-none mb-4"
-					>
-						{user.data.displayName}
-					</Typography>
-					<Typography
-						className="text-11 font-medium capitalize tracking-tighter leading-none"
-						color="text.secondary"
-					>
-						{user.role?.toString()}
-						{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
-					</Typography>
-				</div>
-
 				{user.data.photoURL ? (
 					<Avatar
 						sx={{
 							background: (theme) => theme.palette.background.default,
 							color: (theme) => theme.palette.text.secondary
 						}}
-						className="w-36 h-36"
+						className="w-40 h-40 rounded-8"
 						alt="user photo"
 						src={user.data.photoURL}
+						variant="rounded"
 					/>
 				) : (
 					<Avatar
@@ -87,6 +82,31 @@ function UserMenu() {
 						{user?.data?.displayName?.[0]}
 					</Avatar>
 				)}
+				<div className="flex flex-col flex-1 space-y-8">
+					<Typography
+						component="span"
+						className="flex font-semibold text-13 capitalize truncate  tracking-tight leading-none"
+					>
+						{user.data.displayName}
+					</Typography>
+					<Typography
+						className="flex text-12 font-medium tracking-tighter leading-none"
+						color="text.secondary"
+					>
+						{user.data.email}
+					</Typography>
+				</div>
+				<Tooltip
+					title={
+						<>
+							{user.role?.toString()}
+							{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
+						</>
+					}
+				>
+					<FuseSvgIcon size={20}>heroicons-outline:information-circle</FuseSvgIcon>
+				</Tooltip>
+				<FuseSvgIcon size={13}>{arrowIcon}</FuseSvgIcon>
 			</Button>
 
 			<Popover
@@ -94,16 +114,17 @@ function UserMenu() {
 				anchorEl={userMenu}
 				onClose={userMenuClose}
 				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'center'
-				}}
-				transformOrigin={{
 					vertical: 'top',
 					horizontal: 'center'
 				}}
-				classes={{
-					paper: 'py-8'
+				transformOrigin={{
+					vertical: 'bottom',
+					horizontal: 'center'
 				}}
+				classes={{
+					paper: 'py-8 min-w-256'
+				}}
+				{...popoverProps}
 			>
 				{!user.role || user.role.length === 0 ? (
 					<>

@@ -10,12 +10,14 @@ import NotificationPanelToggleButton from 'src/app/main/apps/notifications/Notif
 import NavbarToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarToggleButton';
 import { selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
 import { useAppSelector } from 'app/store/hooks';
+import LightDarkModeToggle from 'app/shared-components/LightDarkModeToggle';
+import themeOptions from 'app/configs/themeOptions';
+import _ from '@lodash';
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
 import NavigationShortcuts from '../../shared-components/navigation/NavigationShortcuts';
 import NavigationSearch from '../../shared-components/navigation/NavigationSearch';
-import UserMenu from '../../shared-components/UserMenu';
 import QuickPanelToggleButton from '../../shared-components/quickPanel/QuickPanelToggleButton';
 
 type ToolbarLayout1Props = {
@@ -75,10 +77,13 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 						<LanguageSwitcher />
 						<AdjustFontSize />
 						<FullScreenToggle />
+						<LightDarkModeToggle
+							lightTheme={_.find(themeOptions, { id: 'Default' })}
+							darkTheme={_.find(themeOptions, { id: 'Default Dark' })}
+						/>
 						<NavigationSearch />
 						<QuickPanelToggleButton />
 						<NotificationPanelToggleButton />
-						<UserMenu />
 					</div>
 
 					{config.navbar.display && config.navbar.position === 'right' && (

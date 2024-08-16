@@ -37,7 +37,8 @@ const StyledPanel = styled(FuseScrollbars)<StyledPanelProps>(({ theme, opened })
 	...(opened && {
 		opacity: 1,
 		pointerEvents: 'initial'
-	})
+	}),
+	minHeight: 0
 }));
 
 /**
@@ -137,7 +138,7 @@ function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 					<StyledPanel
 						id="fuse-navbar-panel"
 						opened={panelOpen}
-						className={clsx('overflow-y-auto overflow-x-hidden shadow')}
+						className={clsx('overflow-y-auto overflow-x-hidden shadow pt-16')}
 						option={{ suppressScrollX: true, wheelPropagation: false }}
 					>
 						<FuseNavigation
