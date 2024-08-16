@@ -41,11 +41,11 @@ function NotificationsAppHeader() {
 
 	return (
 		<div className="flex w-full container">
-			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 p-24 md:p-32 pb-0 md:pb-0">
+			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 p-24 pb-0">
 				<div className="flex flex-col flex-auto">
 					<PageBreadcrumb className="mb-8" />
 
-					<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none mb-4">
+					<Typography className="text-4xl font-extrabold leading-none tracking-tight mb-4">
 						Notifications
 					</Typography>
 					<Typography

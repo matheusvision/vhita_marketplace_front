@@ -27,43 +27,6 @@ function PoweredByLinks() {
 			className="flex items-center space-x-6"
 		>
 			<Tooltip
-				title="TypeScript"
-				placement="top"
-			>
-				<IconButton
-					className="h-36 w-36 px-4 py-1 flex items-end justify-end "
-					sx={{ backgroundColor: '#2e79c7!important', color: '#ffffff!important' }}
-					component={motion.a}
-					variants={item}
-					href="https://www.typescriptlang.org/"
-					target="_blank"
-					rel="noreferrer noopener"
-					role="button"
-				>
-					<span className="react-text text-md font-semibold">TS</span>
-				</IconButton>
-			</Tooltip>
-			<Tooltip
-				title="JavaScript"
-				placement="top"
-			>
-				<IconButton
-					className="h-36 w-36 px-4 py-1 flex items-end justify-end "
-					sx={{
-						backgroundColor: '#f0dc4e!important',
-						color: '#2f2f2c!important'
-					}}
-					component={motion.a}
-					variants={item}
-					href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-					target="_blank"
-					rel="noreferrer noopener"
-					role="button"
-				>
-					<span className="react-text text-md font-semibold">JS</span>
-				</IconButton>
-			</Tooltip>
-			<Tooltip
 				title="React"
 				placement="top"
 			>
@@ -179,6 +142,44 @@ function PoweredByLinks() {
 						alt="vite"
 						className="h-18"
 					/>
+				</IconButton>
+			</Tooltip>
+
+			<Tooltip
+				title="TypeScript"
+				placement="top"
+			>
+				<IconButton
+					className="h-36 w-36 px-4 py-1 flex items-end justify-end "
+					sx={{ backgroundColor: '#2e79c7!important', color: '#ffffff!important' }}
+					component={motion.a}
+					variants={item}
+					href="https://www.typescriptlang.org/"
+					target="_blank"
+					rel="noreferrer noopener"
+					role="button"
+				>
+					<span className="react-text text-md font-semibold">TS</span>
+				</IconButton>
+			</Tooltip>
+			<Tooltip
+				title="JavaScript"
+				placement="top"
+			>
+				<IconButton
+					className="h-36 w-36 px-4 py-1 flex items-end justify-end "
+					sx={{
+						backgroundColor: '#f0dc4e!important',
+						color: '#2f2f2c!important'
+					}}
+					component={motion.a}
+					variants={item}
+					href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+					target="_blank"
+					rel="noreferrer noopener"
+					role="button"
+				>
+					<span className="react-text text-md font-semibold">JS</span>
 				</IconButton>
 			</Tooltip>
 		</motion.div>

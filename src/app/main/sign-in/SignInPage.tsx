@@ -9,8 +9,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import CardContent from '@mui/material/CardContent';
 import _ from '@lodash';
-import Alert from '@mui/material/Alert';
 import * as React from 'react';
+import { alpha } from '@mui/material/styles';
 import JwtLoginTab from './tabs/JwtSignInTab';
 import FirebaseSignInTab from './tabs/FirebaseSignInTab';
 import AwsSignInTab from './tabs/AwsSignInTab';
@@ -69,14 +69,16 @@ function SignInPage() {
 						</Link>
 					</div>
 
-					<Alert
-						icon={false}
-						severity="info"
-						className="mt-24 px-16 text-md leading-relaxed"
+					<Box
+						className="mt-24 text-md leading-relaxed rounded-lg py-8 px-16"
+						sx={{
+							backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.2),
+							color: 'primary.dark'
+						}}
 					>
 						You are browsing <b>Fuse React Demo</b>. Click on the "Sign in" button to access the Demo and
 						Documentation.
-					</Alert>
+					</Box>
 
 					<Tabs
 						value={_.findIndex(tabs, { id: selectedTabId })}

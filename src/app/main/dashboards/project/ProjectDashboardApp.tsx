@@ -38,7 +38,7 @@ function ProjectDashboardApp() {
 		<Root
 			header={<ProjectDashboardAppHeader />}
 			content={
-				<div className="w-full p-12 pt-16 sm:pt-24">
+				<div className="w-full pt-16 sm:pt-24">
 					<div className="w-full px-24">
 						<FuseTabs
 							value={tabValue}

@@ -89,7 +89,7 @@ function ProductHeader() {
 						)}
 					</motion.div>
 					<motion.div
-						className="flex flex-col min-w-0 mx-8 sm:mx-16"
+						className="flex flex-col min-w-0"
 						initial={{ x: -20 }}
 						animate={{ x: 0, transition: { delay: 0.3 } }}
 					>

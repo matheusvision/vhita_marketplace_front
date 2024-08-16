@@ -47,7 +47,7 @@ function Boards() {
 				variants={container}
 				initial="hidden"
 				animate="show"
-				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 mt-32 md:mt-64"
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-24 mt-32 md:mt-64"
 			>
 				{boards?.map((board) => (
 					<motion.div

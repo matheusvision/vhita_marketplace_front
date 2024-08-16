@@ -781,6 +781,7 @@ const navigationConfig: FuseNavItemType[] = [
 				title: 'Icons',
 				type: 'collapse',
 				icon: 'heroicons-outline:bolt',
+				url: '/ui/icons',
 				children: [
 					{
 						id: 'user-interface.icons.heroicons-outline',

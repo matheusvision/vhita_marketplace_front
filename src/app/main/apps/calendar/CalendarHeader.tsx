@@ -33,7 +33,7 @@ function CalendarHeader(props: CalendarHeaderProps) {
 	}
 
 	return (
-		<div className="flex flex-col md:flex-row w-full p-12 justify-between z-10 container">
+		<div className="flex w-full p-12 justify-between z-10 container">
 			<div className="flex items-center justify-between space-x-8">
 				<div className="flex items-center space-x-8">
 					<IconButton

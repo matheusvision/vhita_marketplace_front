@@ -40,9 +40,7 @@ function ContactsHeader() {
 					initial={{ x: -20 }}
 					animate={{ x: 0, transition: { delay: 0.2 } }}
 				>
-					<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none">
-						Contacts
-					</Typography>
+					<Typography className="text-4xl font-extrabold leading-none tracking-tight">Contacts</Typography>
 				</motion.span>
 				<motion.span
 					initial={{ y: -20, opacity: 0 }}

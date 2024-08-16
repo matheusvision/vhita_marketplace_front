@@ -136,7 +136,7 @@ function VisitorsOverviewWidget() {
 					color: contrastTheme.palette.primary.contrastText
 				}}
 			>
-				<div className="flex justify-between mt-16 mx-16 md:mt-24 md:mx-24">
+				<div className="flex justify-between mt-12 mx-12 md:mt-24 md:mx-24">
 					<div className="flex flex-col">
 						<Typography
 							sx={{
@@ -155,7 +155,7 @@ function VisitorsOverviewWidget() {
 							Number of unique visitors
 						</Typography>
 					</div>
-					<div className="mt-12 sm:mt-0">
+					<div className="">
 						<FuseTabs
 							value={tabValue}
 							onChange={(_ev, value: number) => setTabValue(value)}

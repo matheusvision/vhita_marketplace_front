@@ -125,6 +125,7 @@ function MailToolbar(props: MailToolbarProps) {
 							onClick={() => onToggleLeftSidebar()}
 							aria-label="open left sidebar"
 							size="small"
+							className="border border-divider"
 						>
 							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 						</IconButton>

@@ -24,7 +24,7 @@ function NotificationsApp() {
 		<FusePageSimple
 			header={<NotificationsAppHeader />}
 			content={
-				<div className="flex flex-col w-full p-24 mt-24">
+				<div className="flex flex-col w-full p-16 mt-0 sm:mt-8">
 					<Masonry
 						breakpointCols={{
 							default: 4,

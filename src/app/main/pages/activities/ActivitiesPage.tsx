@@ -15,7 +15,7 @@ function ActivitiesPage() {
 	return (
 		<FusePageSimple
 			content={
-				<div className="flex flex-auto flex-col px-24 py-40 sm:px-64 sm:pb-80 sm:pt-72">
+				<div className="flex flex-col w-full p-24">
 					<PageBreadcrumb className="mb-8" />
 					<Typography className="text-4xl font-extrabold leading-none tracking-tight mb-4">
 						All Activities

@@ -36,7 +36,7 @@ function FileManagerList(props: FileManagerListProps) {
 	}
 
 	return (
-		<div className="p-32">
+		<div className="p-16 md:p-32">
 			{folders?.length > 0 && (
 				<Box
 					className="p-16 w-full rounded-xl mb-24 border"

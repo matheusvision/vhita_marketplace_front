@@ -28,7 +28,7 @@ function TasksHeader() {
 							transition: { delay: 0.2 }
 						}}
 					>
-						<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none mb-4">
+						<Typography className="text-4xl font-extrabold leading-none tracking-tight mb-4">
 							Tasks
 						</Typography>
 					</motion.span>

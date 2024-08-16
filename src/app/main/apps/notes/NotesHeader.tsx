@@ -23,34 +23,35 @@ function NotesHeader(props: NotesHeaderProps) {
 	const variateDescSize = useAppSelector(selectVariateDescSize);
 
 	return (
-		<div className="flex flex-col sm:flex-row flex-1 items-center justify-between py-8 sm:py-24 relative">
-			<div className="flex flex-col shrink">
-				<div className="flex items-center mb-8">
-					<Hidden lgUp>
-						<IconButton
-							onClick={() => onSetSidebarOpen(true)}
-							aria-label="open left sidebar"
-						>
-							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
-						</IconButton>
-					</Hidden>
-					<PageBreadcrumb />
+		<div className="flex  flex-1 flex-col sm:flex-row sm:items-center justify-between py-8 sm:py-24 relative">
+			<motion.span
+				initial={{ x: -20 }}
+				animate={{
+					x: 0,
+					transition: { delay: 0.2 }
+				}}
+			>
+				<div className="flex flex-col mb-12 sm:mb-0">
+					<PageBreadcrumb className="mb-4" />
+					<Typography className="text-4xl font-extrabold leading-none tracking-tight">Notes</Typography>
 				</div>
-				<motion.span
-					initial={{ x: -20 }}
-					animate={{ x: 0, transition: { delay: 0.2 } }}
-				>
-					<div>
-						<Typography className="text-4xl font-extrabold leading-none tracking-tight leading-none">
-							Notes
-						</Typography>
-					</div>
-				</motion.span>
-			</div>
+			</motion.span>
 
-			<div className="flex flex-1 w-full sm:w-auto items-center justify-end space-x-12">
+			<div className="flex flex-1 w-full sm:w-auto items-center justify-end space-x-8">
+				<Hidden lgUp>
+					<IconButton
+						onClick={() => onSetSidebarOpen(true)}
+						aria-label="open left sidebar"
+						className="border border-divider"
+					>
+						<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
+					</IconButton>
+				</Hidden>
 				<Tooltip title="Toggle Variate Description Size">
-					<IconButton onClick={() => dispatch(toggleVariateDescSize())}>
+					<IconButton
+						className="border border-divider"
+						onClick={() => dispatch(toggleVariateDescSize())}
+					>
 						<FuseSvgIcon color={variateDescSize ? 'action' : 'disabled'}>
 							heroicons-solid:arrows-up-down
 						</FuseSvgIcon>

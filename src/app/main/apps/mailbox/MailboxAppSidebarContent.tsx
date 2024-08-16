@@ -20,7 +20,10 @@ function MailboxAppSidebarContent() {
 	return (
 		<div className="flex-auto border-l-1">
 			<div className="mb-24 mt-40 mx-24">
-				<PageBreadcrumb maxItems={3} className="mb-8" />
+				<PageBreadcrumb
+					maxItems={3}
+					className="mb-8"
+				/>
 
 				<motion.div
 					initial={{ x: 20, opacity: 0 }}
