@@ -3,8 +3,9 @@ import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { memo } from 'react';
 import NavbarToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarToggleButton';
+import { Divider } from '@mui/material';
+import UserMenu from 'app/theme-layouts/shared-components/UserMenu';
 import Navigation from '../../shared-components/navigation/Navigation';
-import UserNavbarHeader from '../../shared-components/UserNavbarHeader';
 import Logo from '../../shared-components/Logo';
 
 const Root = styled('div')(({ theme }) => ({
@@ -57,8 +58,6 @@ function NavbarMobileLayout3(props: NavbarMobileLayout3Props) {
 				className="flex min-h-0 flex-1 flex-col"
 				option={{ suppressScrollX: true, wheelPropagation: false }}
 			>
-				<UserNavbarHeader />
-
 				<Navigation layout="vertical" />
 
 				<div className="flex-0 flex items-center justify-center py-48 opacity-10">
@@ -69,6 +68,12 @@ function NavbarMobileLayout3(props: NavbarMobileLayout3Props) {
 					/>
 				</div>
 			</StyledContent>
+
+			<Divider />
+
+			<div className="p-16 w-full">
+				<UserMenu />
+			</div>
 		</Root>
 	);
 }

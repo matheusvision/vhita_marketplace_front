@@ -47,7 +47,7 @@ function UserMenu(props: UserMenuProps) {
 	return (
 		<>
 			<Button
-				className={clsx('w-full  min-h-56 h-56 rounded-8 p-8 space-x-12', className)}
+				className={clsx('shrink-0  min-h-56 h-56 rounded-8 p-8 space-x-12', className)}
 				sx={{
 					borderColor: (theme) => theme.palette.divider,
 					'&:hover, &:focus': {

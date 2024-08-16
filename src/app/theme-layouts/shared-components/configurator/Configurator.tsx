@@ -98,6 +98,7 @@ function Configurator() {
 					variant="text"
 					color="inherit"
 					disableRipple
+					disableFocusRipple
 				>
 					<span>
 						<FuseSvgIcon size={20}>heroicons-solid:cog-6-tooth</FuseSvgIcon>
