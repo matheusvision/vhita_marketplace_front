@@ -1,25 +1,23 @@
-import { Component, ReactNode } from 'react';
-import { matchRoutes } from 'react-router-dom';
-import FuseUtils from '@fuse/utils';
-import AppContext, { AppContextType } from 'app/AppContext';
-import withRouter from '@fuse/core/withRouter';
-import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
-import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
+import React, { Component } from 'react';
+import withRouter, { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import {
 	getSessionRedirectUrl,
 	resetSessionRedirectUrl,
 	setSessionRedirectUrl
 } from '@fuse/core/FuseAuthorization/sessionRedirectUrl';
+import { getFuseRouteParamUtil } from '@fuse/hooks/useFuseRouteParameter';
+import FuseUtils from '@fuse/utils/FuseUtils';
+import { FuseRouteObjectType } from '@fuse/core/FuseLayout/FuseLayout';
 import FuseLoading from '../FuseLoading';
 
 type FuseAuthorizationProps = {
-	children: ReactNode;
+	children: React.ReactNode;
 	location: Location;
 	userRole: string[] | string;
 	loginRedirectUrl?: string;
 } & WithRouterProps;
 
-type State = AppContextType & {
+type State = {
 	accessGranted: boolean;
 };
 
@@ -32,14 +30,11 @@ function isUserGuest(role: string[] | string) {
  * It checks the provided Auth property from FuseRouteItemType (auth property) against the current logged-in user role.
  */
 class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
-	constructor(props: FuseAuthorizationProps, context: AppContextType) {
+	constructor(props: FuseAuthorizationProps) {
 		super(props);
 
-		const { routes } = context;
-
 		this.state = {
-			accessGranted: true,
-			routes
+			accessGranted: true
 		};
 	}
 
@@ -65,25 +60,21 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 		}
 	}
 
-	static getDerivedStateFromProps(props: FuseAuthorizationProps, state: State) {
-		const { location, navigate, userRole } = props;
+	static getDerivedStateFromProps(props: FuseAuthorizationProps) {
+		const { location, userRole } = props;
 		const { pathname } = location;
-		const matchedRoutes = matchRoutes(state.routes, pathname);
-		const matched = matchedRoutes?.[matchedRoutes.length - 1] || false;
 
-		const isGuest = isUserGuest(userRole);
-
-		if (!matched) {
-			return { accessGranted: true };
-		}
-
-		const { route }: { route: FuseRouteItemType } = matched;
-
-		const userHasPermission = FuseUtils.hasPermission(route.auth, userRole);
+		const auth = getFuseRouteParamUtil<FuseRouteObjectType['auth']>(pathname, 'auth', false);
 
 		const ignoredPaths = ['/', '/callback', '/sign-in', '/sign-out', '/logout', '/404'];
 
-		if (matched && !userHasPermission && !ignoredPaths.includes(pathname)) {
+		// is auth is empy array
+		const isOnlyGuestAllowed = Array.isArray(auth) && auth.length === 0;
+		const isGuest = isUserGuest(userRole);
+
+		const userHasPermission = FuseUtils.hasPermission(auth, userRole);
+
+		if (auth && !userHasPermission && !ignoredPaths.includes(pathname)) {
 			setSessionRedirectUrl(pathname);
 		}
 
@@ -92,11 +83,15 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 		 * redirected to main route '/'
 		 */
 		if (!userHasPermission && !isGuest && !ignoredPaths.includes(pathname)) {
-			setSessionRedirectUrl('/');
+			if (isOnlyGuestAllowed) {
+				setSessionRedirectUrl('401');
+			} else {
+				setSessionRedirectUrl('/');
+			}
 		}
 
 		return {
-			accessGranted: matched ? userHasPermission : true
+			accessGranted: auth ? userHasPermission : true
 		};
 	}
 
@@ -124,11 +119,8 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 	render() {
 		const { accessGranted } = this.state;
 		const { children } = this.props;
-
 		return accessGranted ? children : <FuseLoading />;
 	}
 }
-
-FuseAuthorization.contextType = AppContext;
 
 export default withRouter(FuseAuthorization);

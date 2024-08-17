@@ -3,8 +3,8 @@ import './styles/app-base.css';
 import './styles/app-components.css';
 import './styles/app-utilities.css';
 import { createRoot } from 'react-dom/client';
-import withAppProviders from './app/withAppProviders';
-import MainRouter from './app/MainRouter';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import routes from 'app/configs/routesConfig';
 
 // import * as serviceWorker from './serviceWorker';
 // import reportWebVitals from './reportWebVitals';
@@ -23,9 +23,9 @@ if (!container) {
  */
 const root = createRoot(container);
 
-const App = withAppProviders(MainRouter);
+const router = createBrowserRouter(routes);
 
-root.render(<App />);
+root.render(<RouterProvider router={router} />);
 
 // reportWebVitals();
 

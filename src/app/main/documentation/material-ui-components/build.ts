@@ -14,7 +14,7 @@ const demoDir = 'src/app/main/documentation/material-ui-components/components';
 const rootDirectory = path.resolve(__dirname);
 const examplesDirectory = path.resolve(rootDirectory, './components');
 const pagesDirectory = path.resolve(rootDirectory, './pages');
-const routesFilePath = path.resolve(rootDirectory, './MaterialUIComponentsRoutes.tsx');
+const routesFilePath = path.resolve(rootDirectory, './MaterialUIComponentsRoute.tsx');
 const navigationFilePath = path.resolve(rootDirectory, './MaterialUIComponentsNavigation.ts');
 const projectDir = path.resolve(rootDirectory, '..', '..', '..', '..', '..');
 
@@ -404,7 +404,7 @@ function writeRouteFile(pages: string[]) {
 		return importPath.replace(/%s/g, componentName);
 	});
 
-	const routeObject = "{ path : 'material-ui-components/%s', element: <%p />}";
+	const routeObject = "{ path : '%s', element: <%p />}";
 	const routes = pages.map((page) => {
 		const componentName = _.upperFirst(_.camelCase(page));
 
@@ -417,12 +417,24 @@ function writeRouteFile(pages: string[]) {
 
 	const content = `
 		import { lazy } from 'react';
+		import { Navigate } from 'react-router-dom';
+		import DocumentationPageLayout from '../DocumentationPageLayout';
         
         ${imports.join('')}
         
-        const MaterialUIComponentsRoutes =  [${routes.join()}];
+        const MaterialUIComponentsRoute =  {
+			path: 'documentation/material-ui-components',
+			element: <DocumentationPageLayout />,
+			children:[
+				{
+					path: '',
+					element: <Navigate to="accordion" />
+					},
+					${routes.join()}
+				]
+		};
         
-        export default MaterialUIComponentsRoutes;
+        export default MaterialUIComponentsRoute;
         
         `;
 	fs.writeFileSync(path.resolve(routesFilePath), content);

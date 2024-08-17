@@ -1,6 +1,6 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
-import configSampleRaw from 'src/app/main/apps/mailbox/MailboxAppConfig.tsx?raw';
+import configSampleRaw from '../../../apps/mailbox/MailboxAppRoute.tsx?raw';
 
 /**
  * Theme Layouts Doc

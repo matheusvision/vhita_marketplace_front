@@ -1,16 +1,17 @@
 // Dynamically import all *ConfigConfig.tsx files from the app folder
-import FuseUtils from '@fuse/utils';
 import { FuseRouteConfigType, FuseRoutesType } from '@fuse/utils/FuseUtils';
 import settingsConfig from 'app/configs/settingsConfig';
 import { Navigate } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { layoutConfigOnlyMain } from 'app/configs/layoutConfigTemplates';
+import ErrorBoundary from '@fuse/utils/ErrorBoundary';
 import App from '../App';
 import Error404Page from '../main/404/Error404Page';
+import Error401Page from '../main/401/Error401Page';
 
-const configModules: Record<string, unknown> = import.meta.glob('/src/app/main/**/*Config.tsx', { eager: true });
+const configModules: Record<string, unknown> = import.meta.glob('/src/app/main/**/*Route.tsx', { eager: true });
 
-const configs: FuseRouteConfigType[] = Object.keys(configModules)
+const mainRoutes: FuseRouteConfigType[] = Object.keys(configModules)
 	.map((modulePath) => {
 		const moduleConfigs = (configModules[modulePath] as { default: FuseRouteConfigType | FuseRouteConfigType[] })
 			.default;
@@ -23,23 +24,28 @@ const routes: FuseRoutesType = [
 		path: '/',
 		element: <App />,
 		settings: settingsConfig,
+		auth: settingsConfig.defaultAuth,
+		errorElement: <ErrorBoundary />,
 		children: [
 			{
 				path: '/',
 				element: <Navigate to="/dashboards/project" />
 			},
-			...FuseUtils.generateRoutesFromConfigs(configs, settingsConfig.defaultAuth),
+			...mainRoutes,
 			{
 				path: 'loading',
 				element: <FuseLoading />,
 				settings: { layout: layoutConfigOnlyMain }
 			},
 			{
-				settings: { layout: layoutConfigOnlyMain },
-				path: '404',
-				element: <Error404Page />
+				path: '401',
+				element: <Error401Page />
 			}
 		]
+	},
+	{
+		path: '404',
+		element: <Error404Page />
 	},
 	{
 		path: '*',

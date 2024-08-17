@@ -64,8 +64,8 @@ function getInitialSettings(): FuseSettingsConfigType {
  * Generates the settings object by merging the default settings with the new settings.
  */
 export function generateSettings(
-	_defaultSettings: PartialDeep<FuseSettingsConfigType>,
-	_newSettings: FuseSettingsConfigType
+	_defaultSettings: FuseSettingsConfigType,
+	_newSettings: PartialDeep<FuseSettingsConfigType>
 ) {
 	return _.merge(
 		{},

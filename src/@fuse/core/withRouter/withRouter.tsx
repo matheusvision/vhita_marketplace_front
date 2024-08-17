@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { ComponentType } from 'react';
+import { ComponentType, memo } from 'react';
 
 export type WithRouterProps = {
 	location?: ReturnType<typeof useLocation>;
@@ -13,7 +13,7 @@ export type WithRouterProps = {
  * The component is memoized to prevent unnecessary re-renders.
  */
 const withRouter = <Props extends WithRouterProps>(Component: ComponentType<Props>) =>
-	function WithRouterWrapper(props: Omit<Props, keyof WithRouterProps>) {
+	memo(function WithRouterWrapper(props: Omit<Props, keyof WithRouterProps>) {
 		const location = useLocation();
 		const params = useParams();
 		const navigate = useNavigate();
@@ -26,6 +26,6 @@ const withRouter = <Props extends WithRouterProps>(Component: ComponentType<Prop
 				navigate={navigate}
 			/>
 		);
-	};
+	});
 
 export default withRouter;

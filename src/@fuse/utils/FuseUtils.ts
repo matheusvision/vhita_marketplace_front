@@ -374,7 +374,7 @@ class FuseUtils {
 			return true;
 		}
 
-		if (authArr.length === 0) {
+		if (Array.isArray(authArr) && authArr?.length === 0) {
 			/**
 			 * if auth array is empty means,
 			 * allow only user role is guest (null or empty[])
@@ -392,10 +392,11 @@ class FuseUtils {
 			return authArr.some((r: string) => userRole.indexOf(r) >= 0);
 		}
 
-		/*
-            Check if user role is string,
-            */
-		return authArr.includes(userRole as string);
+		if (typeof userRole === 'string' && Array.isArray(authArr)) {
+			return authArr?.includes?.(userRole);
+		}
+
+		return false;
 	}
 
 	/**

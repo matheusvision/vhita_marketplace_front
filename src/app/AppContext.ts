@@ -10,7 +10,7 @@ export type AppContextType = {
 	/**
 	 * The routes to be used in the app.
 	 */
-	routes: RouteObject[];
+	routes?: RouteObject[];
 };
 
 /**

@@ -661,6 +661,12 @@ const navigationConfig: FuseNavItemType[] = [
 				icon: 'heroicons-outline:exclamation-circle',
 				children: [
 					{
+						id: 'pages.error.401',
+						title: '401',
+						type: 'item',
+						url: '/pages/error/401'
+					},
+					{
 						id: 'pages.error.404',
 						title: '404',
 						type: 'item',

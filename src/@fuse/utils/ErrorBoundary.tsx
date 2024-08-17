@@ -1,7 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 
 interface ErrorBoundaryProps {
-	children: ReactNode;
+	children?: ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	}
 
 	render() {
-		const { children } = this.props;
+		const { children = null } = this.props;
 		const { error, errorInfo, hasError } = this.state;
 
 		if (hasError) {

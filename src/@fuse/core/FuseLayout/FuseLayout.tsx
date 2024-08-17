@@ -1,22 +1,23 @@
 import { useDeepCompareEffect } from '@fuse/hooks';
 import _ from '@lodash';
-import AppContext from 'app/AppContext';
 import {
 	generateSettings,
 	selectFuseCurrentSettings,
 	selectFuseDefaultSettings,
 	setSettings
 } from '@fuse/core/FuseSettings/fuseSettingsSlice';
-import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import { matchRoutes, useLocation, RouteMatch, RouteObject } from 'react-router-dom';
+import { useLocation, RouteMatch, RouteObject } from 'react-router-dom';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'app/theme-layouts/themeLayouts';
 import { PartialDeep } from 'type-fest';
+import { getFuseRouteParamUtil } from '@fuse/hooks/useFuseRouteParameter';
 import FuseLoading from '../FuseLoading';
 
 export type FuseRouteObjectType = RouteObject & {
 	settings?: FuseSettingsConfigType;
+	auth?: string[] | [] | null | undefined;
 };
 
 export type FuseRouteMatchType = RouteMatch & {
@@ -41,19 +42,11 @@ function FuseLayout(props: FuseLayoutProps) {
 	const defaultSettings = useAppSelector(selectFuseDefaultSettings);
 
 	const layoutStyle = settings.layout.style;
-
-	const appContext = useContext(AppContext);
-	const { routes } = appContext;
-
 	const location = useLocation();
 	const { pathname } = location;
 
-	const matched = useMemo(() => {
-		const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatchType[] | null;
-		return matchedRoutes?.[matchedRoutes.length - 1] || false;
-	}, [routes, pathname]);
-
 	const newSettings = useRef<PartialDeep<FuseSettingsConfigType>>(settings);
+	const matchedSettings = getFuseRouteParamUtil<FuseRouteObjectType['settings']>(pathname, 'settings', true);
 
 	const shouldAwaitRender = useCallback(() => {
 		let _newSettings: FuseSettingsConfigType;
@@ -62,14 +55,12 @@ function FuseLayout(props: FuseLayoutProps) {
 		 * On Path changed
 		 */
 		// if (prevPathname !== pathname) {
-		if (typeof matched !== 'boolean') {
+		if (matchedSettings) {
 			/**
 			 * if matched route has settings
 			 */
 
-			const routeSettings = matched.route.settings;
-
-			_newSettings = generateSettings(defaultSettings, routeSettings);
+			_newSettings = generateSettings(defaultSettings, matchedSettings);
 		} else if (!_.isEqual(newSettings.current, defaultSettings)) {
 			/**
 			 * Reset to default settings on the new path
@@ -82,7 +73,7 @@ function FuseLayout(props: FuseLayoutProps) {
 		if (!_.isEqual(newSettings.current, _newSettings)) {
 			newSettings.current = _newSettings;
 		}
-	}, [defaultSettings, matched]);
+	}, [defaultSettings, matchedSettings]);
 
 	shouldAwaitRender();
 

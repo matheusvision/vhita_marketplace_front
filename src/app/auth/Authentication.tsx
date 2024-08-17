@@ -18,7 +18,6 @@ type AuthenticationProps = {
 function Authentication(props: AuthenticationProps) {
 	const { children } = props;
 	const { setAuthProvider, resetAuthProvider } = useAuth();
-
 	const userRole = useAppSelector(selectUserRole);
 	const dispatch = useAppDispatch();
 

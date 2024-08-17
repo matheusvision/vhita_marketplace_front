@@ -1,5 +1,6 @@
 import FuseNavigation from '@fuse/core/FuseNavigation';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
+import Typography from '@mui/material/Typography';
 
 /**
  * Navigation data
@@ -150,12 +151,13 @@ const navigationData: FuseNavItemType[] = [
  */
 function DemoSidebar() {
 	return (
-		<div className="px-12 py-24 min-h-6xl">
-			<div className="mx-12 text-3xl font-bold tracking-tighter">Demo Sidebar</div>
-
+		<div className="py-24 min-h-6xl">
+			<div className="px-24 pb-16">
+				<Typography className="text-3xl font-bold tracking-tighter">Demo Sidebar</Typography>
+			</div>
 			<FuseNavigation
 				navigation={navigationData}
-				className="px-0"
+				className=""
 			/>
 		</div>
 	);
