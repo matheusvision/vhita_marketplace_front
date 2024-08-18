@@ -10,6 +10,7 @@ import { selectMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import MockAdapterProvider from '@mock-api/MockAdapterProvider';
 import { useAppSelector } from 'app/store/hooks';
 import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 import AuthenticationProvider from './auth/AuthenticationProvider';
 import withAppProviders from './withAppProviders';
 
@@ -38,19 +39,17 @@ const emotionCacheOptions = {
  * The main App component.
  */
 function App() {
-	/**
-	 * The language direction from the Redux store.
-	 */
 	const langDirection = useAppSelector(selectCurrentLanguageDirection);
-
-	/**
-	 * The main theme from the Redux store.
-	 */
 	const mainTheme = useSelector(selectMainTheme);
+
+	const cacheProviderValue = useMemo(
+		() => createCache(emotionCacheOptions[langDirection] as Options),
+		[langDirection]
+	);
 
 	return (
 		<MockAdapterProvider>
-			<CacheProvider value={createCache(emotionCacheOptions[langDirection] as Options)}>
+			<CacheProvider value={cacheProviderValue}>
 				<FuseTheme
 					theme={mainTheme}
 					root

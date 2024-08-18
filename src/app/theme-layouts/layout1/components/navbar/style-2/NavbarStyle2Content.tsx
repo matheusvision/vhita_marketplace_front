@@ -5,7 +5,8 @@ import { memo } from 'react';
 import Navigation from 'app/theme-layouts/shared-components/navigation/Navigation';
 import NavbarToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarToggleButton';
 import UserMenu from 'app/theme-layouts/shared-components/UserMenu';
-import { Divider } from '@mui/material';
+import { Divider, Hidden } from '@mui/material';
+import NavbarPinToggleButton from 'app/theme-layouts/shared-components/navbar/NavbarPinToggleButton';
 import Logo from '../../../../shared-components/Logo';
 
 const Root = styled('div')(({ theme }) => ({
@@ -49,8 +50,12 @@ function NavbarStyle2Content(props: NavbarStyle2ContentProps) {
 				<div className="mx-4 flex flex-1">
 					<Logo />
 				</div>
-
-				<NavbarToggleButton className="h-36 w-36 p-0" />
+				<Hidden lgDown>
+					<NavbarPinToggleButton className="h-32 w-32 p-0" />
+				</Hidden>
+				<Hidden lgUp>
+					<NavbarToggleButton className="h-32 w-32 p-0" />
+				</Hidden>
 			</div>
 
 			<StyledContent

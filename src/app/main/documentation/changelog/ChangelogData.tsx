@@ -37,6 +37,7 @@ const changelogData: ChangelogItemType[] = [
 			'Updated default font and icon sizes.',
 			'Replaced Hero-icon SVGs with the latest version.',
 			'Created FuseLayoutConfig components to simplify FuseSettings code and added number input validation for layoutConfig.containerWidth.',
+			'Performance improvements.',
 			'Dependencies updated.'
 		],
 		fixedChanges: [

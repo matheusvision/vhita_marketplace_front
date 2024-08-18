@@ -6,12 +6,10 @@ import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import clsx from 'clsx';
+import { IconButtonProps } from '@mui/material/IconButton/IconButton';
 import { navbarToggle, navbarToggleMobile } from './navbarSlice';
 
-type NavbarToggleButtonProps = {
-	className?: string;
-	children?: React.ReactNode;
-};
+export type NavbarToggleButtonProps = IconButtonProps & {};
 
 /**
  * The navbar toggle button.
@@ -26,7 +24,8 @@ function NavbarToggleButton(props: NavbarToggleButtonProps) {
 			>
 				heroicons-outline:bars-3
 			</FuseSvgIcon>
-		)
+		),
+		...rest
 	} = props;
 
 	const dispatch = useAppDispatch();
@@ -36,7 +35,6 @@ function NavbarToggleButton(props: NavbarToggleButtonProps) {
 
 	return (
 		<IconButton
-			className={clsx('border border-divider', className)}
 			onClick={() => {
 				if (isMobile) {
 					dispatch(navbarToggleMobile());
@@ -50,6 +48,8 @@ function NavbarToggleButton(props: NavbarToggleButtonProps) {
 					dispatch(navbarToggle());
 				}
 			}}
+			{...rest}
+			className={clsx('border border-divider', className)}
 		>
 			{children}
 		</IconButton>
