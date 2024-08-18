@@ -1,4 +1,3 @@
-import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import FuseUtils from '@fuse/utils';
 import Input from '@mui/material/Input';
 import List from '@mui/material/List';
@@ -38,9 +37,9 @@ function MainSidebar() {
 	}
 
 	return (
-		<div className="flex flex-col flex-auto h-full">
+		<div className="flex flex-col flex-auto">
 			<Box
-				className="py-16 px-32 border-b-1"
+				className="py-16 px-32 border-b-1 flex flex-col flex-shrink-0 sticky top-0 z-10"
 				sx={{
 					backgroundColor: (theme) =>
 						theme.palette.mode === 'light'
@@ -90,7 +89,7 @@ function MainSidebar() {
 				)}
 			</Box>
 
-			<FuseScrollbars className="flex-1">
+			<div className="flex-auto">
 				<List className="w-full">
 					{useMemo(() => {
 						if (!contacts || !chats) {
@@ -184,7 +183,7 @@ function MainSidebar() {
 						);
 					}, [contacts, chats, searchText])}
 				</List>
-			</FuseScrollbars>
+			</div>
 		</div>
 	);
 }

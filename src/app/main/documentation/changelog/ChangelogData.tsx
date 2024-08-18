@@ -19,6 +19,69 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '11.0.0',
+		date: '2024-08-18',
+		newChanges: [
+			'Created a 401 error page.',
+			'Added useFuseRouteParameter.tsx for managing route parameters.',
+			'Added a copy button to the FuseHighlight component.',
+			'Enhanced the Icon List page to allow automatic copying of icon names on click.',
+			'Created PageBreadcrumb component and integrated it across various pages and apps.',
+			'Automated route configuration generation, eliminating manual imports in routesConfig.tsx.',
+			'Added FuseTabs and FuseTab components for improved tab appearance.',
+			'Refined main theme styles for better enterprise and modern usage.',
+			'Updated default theme colors.',
+			'Created LightDarkModeToggle component.',
+			'Restyled the User Menu and moved it to the Navbar footer.',
+			'Updated tailwindconfig.js for additional customization.',
+			'Updated default font and icon sizes.',
+			'Replaced Hero-icon SVGs with the latest version.',
+			'Created FuseLayoutConfig components to simplify FuseSettings code and added number input validation for layoutConfig.containerWidth.',
+			'Dependencies updated.'
+		],
+		fixedChanges: [
+			'Resolved an issue with error handling in JWT SignIn/SignUp forms.',
+			'Updated mobile styles across the application.'
+		],
+		breakingChanges: [
+			'Renamed all *Config.tsx files to *Route.tsx.',
+			'Removed @history package.',
+			'Re-configured the router to support React Router v6’s new data APIs.'
+		],
+		notes: (
+			<div className="text-base p-24 border-2 border-red rounded-xl w-full max-w-lg mt-40 mb-24">
+				<ul className="list-disc">
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						The routing system has been updated to support React Router v6’s new data APIs.
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						With the new routing system, all *Config.tsx files have been renamed to *Route.tsx.
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						You don’t need to manually import routes anymore. The new routing system automatically populates
+						all routes in routesConfig.tsx.
+					</Typography>
+					<Typography
+						component="li"
+						className="leading-loose"
+					>
+						Checkout the documentation at <Link to="/documentation/configuration/routing">Routing</Link> for
+						more.
+					</Typography>
+				</ul>
+			</div>
+		)
+	},
+	{
 		version: '10.5.1',
 		date: '2024-07-23',
 		fixedChanges: ['Fixed Firebase authentication redirect issue after registration.'],

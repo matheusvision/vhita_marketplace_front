@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import Box from '@mui/material/Box';
-import { darken, lighten } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { alpha, lighten } from '@mui/material/styles';
 
 /**
  * Props for SectionPreview component
@@ -20,21 +19,13 @@ function SectionPreview(props: SectionPreviewProps) {
 		<div className={clsx('flex h-80 w-128 overflow-hidden rounded-md border-1 hover:opacity-80', className)}>
 			<Box
 				sx={{
-					backgroundColor:
+					backgroundColor: (theme) =>
 						section === 'navbar'
-							? red['100']
-							: (theme) =>
-									theme.palette.mode === 'light'
-										? lighten(theme.palette.background.default, 0.4)
-										: lighten(theme.palette.background.default, 0.02),
+							? alpha(theme.palette.secondary.main, 0.3)
+							: lighten(theme.palette.background.default, theme.palette.mode === 'light' ? 0.4 : 0.02),
 					'& > div': {
-						backgroundColor:
-							section === 'navbar'
-								? red['200']
-								: (theme) =>
-										theme.palette.mode === 'light'
-											? darken(theme.palette.background.default, 0.1)
-											: lighten(theme.palette.background.default, 0.1)
+						backgroundColor: (theme) =>
+							section === 'navbar' ? alpha(theme.palette.secondary.main, 0.3) : theme.palette.divider
 					}
 				}}
 				className="w-32 space-y-1 px-6 pt-12"
@@ -48,21 +39,16 @@ function SectionPreview(props: SectionPreviewProps) {
 			<div className="flex flex-auto flex-col border-l">
 				<Box
 					sx={{
-						backgroundColor:
+						backgroundColor: (theme) =>
 							section === 'toolbar'
-								? red['100']
-								: (theme) =>
-										theme.palette.mode === 'light'
-											? lighten(theme.palette.background.default, 0.4)
-											: lighten(theme.palette.background.default, 0.02),
+								? alpha(theme.palette.secondary.main, 0.3)
+								: lighten(
+										theme.palette.background.default,
+										theme.palette.mode === 'light' ? 0.4 : 0.02
+									),
 						'& > div': {
-							backgroundColor:
-								section === 'toolbar'
-									? red['200']
-									: (theme) =>
-											theme.palette.mode === 'light'
-												? darken(theme.palette.background.default, 0.1)
-												: lighten(theme.palette.background.default, 0.1)
+							backgroundColor: (theme) =>
+								section === 'toolbar' ? alpha(theme.palette.secondary.main, 0.3) : theme.palette.divider
 						}
 					}}
 					className={clsx('flex h-12 items-center justify-end pr-6')}
@@ -73,33 +59,25 @@ function SectionPreview(props: SectionPreviewProps) {
 				</Box>
 				<Box
 					sx={{
-						backgroundColor:
+						backgroundColor: (theme) =>
 							section === 'main'
-								? red['100']
-								: (theme) =>
-										theme.palette.mode === 'light'
-											? lighten(theme.palette.background.default, 0.4)
-											: lighten(theme.palette.background.default, 0.02)
+								? alpha(theme.palette.secondary.main, 0.3)
+								: lighten(theme.palette.background.default, theme.palette.mode === 'light' ? 0.4 : 0.02)
 					}}
 					className={clsx('flex flex-auto border-y')}
 				/>
 				<Box
 					sx={{
-						backgroundColor:
+						backgroundColor: (theme) =>
 							section === 'footer'
-								? red['100']
-								: (theme) =>
-										theme.palette.mode === 'light'
-											? lighten(theme.palette.background.default, 0.4)
-											: lighten(theme.palette.background.default, 0.02),
+								? alpha(theme.palette.secondary.main, 0.3)
+								: lighten(
+										theme.palette.background.default,
+										theme.palette.mode === 'light' ? 0.4 : 0.02
+									),
 						'& > div': {
-							backgroundColor:
-								section === 'footer'
-									? red['200']
-									: (theme) =>
-											theme.palette.mode === 'light'
-												? darken(theme.palette.background.default, 0.1)
-												: lighten(theme.palette.background.default, 0.1)
+							backgroundColor: (theme) =>
+								section === 'footer' ? alpha(theme.palette.secondary.main, 0.3) : theme.palette.divider
 						}
 					}}
 					className={clsx('flex h-12 items-center pr-6')}

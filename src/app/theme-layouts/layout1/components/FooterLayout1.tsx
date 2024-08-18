@@ -21,7 +21,7 @@ function FooterLayout1(props: FooterLayout1Props) {
 		<ThemeProvider theme={footerTheme}>
 			<AppBar
 				id="fuse-footer"
-				className={clsx('relative z-20 shadow', className)}
+				className={clsx('relative z-20 border-t', className)}
 				color="default"
 				sx={{
 					backgroundColor: (theme) =>

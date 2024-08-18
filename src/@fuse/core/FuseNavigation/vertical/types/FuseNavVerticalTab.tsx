@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useMemo } from 'react';
 import Box from '@mui/material/Box';
 import { ListItemButton } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 import { FuseNavigationProps } from '../../FuseNavigation';
@@ -18,10 +19,10 @@ const Root = styled(Box)(({ theme }) => ({
 		width: 100,
 		borderRadius: 12,
 		margin: '0 0 4px 0',
-		color: alpha(theme.palette.text.primary, 0.7),
 		cursor: 'pointer',
 		textDecoration: 'none!important',
 		padding: 0,
+		color: alpha(theme.palette.text.primary, 0.7),
 		'&.dense': {
 			minHeight: 52,
 			height: 52,
@@ -32,8 +33,7 @@ const Root = styled(Box)(({ theme }) => ({
 			height: 2,
 			minHeight: 2,
 			margin: '12px 0',
-			backgroundColor:
-				theme.palette.mode === 'light' ? 'rgba(0, 0, 0, .05)!important' : 'rgba(255, 255, 255, .1)!important',
+			backgroundColor: theme.palette.divider,
 			pointerEvents: 'none'
 		},
 		'&:hover': {
@@ -115,7 +115,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="text-15 font-bold">{item.title[0]}</div>
+									item.title && <Typography className="text-15 font-bold">{item.title[0]}</Typography>
 								)}
 								{item.badge && (
 									<FuseNavBadge
@@ -137,7 +137,9 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 										{item.icon}
 									</FuseSvgIcon>
 								) : (
-									item.title && <div className="text-2xl font-bold">{item.title[0]}</div>
+									item.title && (
+										<Typography className="text-2xl font-bold">{item.title[0]}</Typography>
+									)
 								)}
 								{item.badge && (
 									<FuseNavBadge
@@ -148,7 +150,7 @@ function FuseNavVerticalTab(props: FuseNavVerticalTabProps) {
 							</div>
 
 							<ListItemText
-								className="fuse-list-item-text w-full grow-0"
+								className="fuse-list-item-text w-full grow-0 px-8"
 								primary={item.title}
 								classes={{
 									primary:

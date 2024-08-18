@@ -1,11 +1,14 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Typography from '@mui/material/Typography';
-import configSampleRaw from '../../../apps/mailbox/MailboxAppRoute.tsx?raw';
+import signInPageRouteRaw from '../../../sign-in/SignInPageRoute.tsx?raw';
 
 /**
- * Theme Layouts Doc
- * This document provides information on how to use theme layouts.
+ * Routing Documentation
+ *
+ * This document provides detailed information on how to effectively use the routing system in Fuse React.
+ * It covers modular route configuration, customization options, and automatic route management.
  */
+
 function RoutingDoc() {
 	return (
 		<>
@@ -13,95 +16,86 @@ function RoutingDoc() {
 				variant="h4"
 				className="mb-40 font-700"
 			>
-				Routing
+				Routing Overview
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				Fuse React utilizes a custom routing system based on the popular packages
+				Fuse React utilizes a custom routing system based on the popular{'  '}
 				<a
 					href="https://reacttraining.com/react-router/"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					react-router
-				</a>{' '}
-				and{' '}
-				<a
-					href="https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					react-router-config
-				</a>{' '}
-				It follows a modular approach and is based on route settings determined from config files.
+					React Router v6
+				</a>
+				. This system is designed to support a modular, flexible approach to defining and managing routes in
+				your application.
+			</Typography>
+
+			<Typography
+				variant="h6"
+				className="mb-12"
+			>
+				Dynamic Route Imports
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				Fuse React follows a modular approach and is based on route settings determined from config files.
+				All routes are automatically populated in <code>app/configs/routesConfig</code>, eliminating the need
+				for manual route imports and helping maintain clean and organized routing logic.
 			</Typography>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				For example, have a look at the code in <code>MailboxAppConfig.tsx</code>. Here you can override all
-				settings for a particular route.
+				You can easily customize settings or authorization for any route, ensuring that your application meets
+				specific requirements.
+			</Typography>
+
+			<Typography
+				variant="h6"
+				className="mb-12"
+			>
+				Example Usage
+			</Typography>
+			<Typography
+				className="mb-16"
+				component="p"
+			>
+				For instance, take a look at the code in <code>SignInPageRoute.tsx</code>. This is a route configuration
+				file for the sign-in page where we disable layout components like the toolbar, footer, and navbar, and
+				set authorization roles to prevent logged-in users from accessing the page.
 			</Typography>
 
 			<FuseHighlight
 				component="pre"
 				className="language-jsx mb-24"
 			>
-				{configSampleRaw}
+				{signInPageRouteRaw}
 			</FuseHighlight>
 
 			<Typography
 				className="mb-16"
 				component="p"
 			>
-				The routes are then generated in <code>app/configs/routesConfig</code>, as seen in the code snippet
-				below:
+				In the example above, the sign-in page is configured with a simple and clear route definition. Notice
+				how the <code>auth</code> property is set to <code>[]</code> to allow access for unauthenticated users,
+				and the <code>layout</code> settings disable certain UI components for this route.
 			</Typography>
 
-			<FuseHighlight
-				component="pre"
-				className="language-jsx mb-32"
+			<Typography
+				className="mb-16"
+				component="p"
 			>
-				{`
-          import {appsRoutes} from '../main/apps/mailbox/MailboxAppConfig.tsx';
-          import FuseUtils from '@fuse/utils';
-          import { Navigate } from 'react-router-dom';
-
-          const routeConfigs = [
-              MailAppConfig
-          ];
-          
-          const routes = [
-            ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
-            {
-              path: '/',
-              element: <Navigate to="dashboards/analytics" />,
-              auth: settingsConfig.defaultAuth,
-            },
-            {
-              path: 'loading',
-              element: <FuseLoading />,
-            },
-            {
-              path: '*',
-              element: <Navigate to="pages/error/404" />,
-            },
-          ];
-          
-          export default routes;
-      `}
-			</FuseHighlight>
+				By following this modular approach, you can ensure that each route in your application is tailored to
+				your specific needs, without unnecessary complexity.
+			</Typography>
 		</>
 	);
 }

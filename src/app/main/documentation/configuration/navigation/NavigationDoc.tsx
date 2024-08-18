@@ -19,7 +19,7 @@ function NavigationDoc() {
 				className="mb-24"
 				variant="h5"
 			>
-				Default Configuration
+				Default Navigation Configuration
 			</Typography>
 
 			<Typography
@@ -49,7 +49,7 @@ function NavigationDoc() {
 				className="mb-16"
 				component="p"
 			>
-				For more information on FuseNavigation components, redux actions, and item types, check out the section
+				For more information on FuseNavigation components, redux actions, and item types, check out the section{' '}
 				<Link to="/documentation/fuse-components/fuse-navigation">FuseNavigation Docs</Link>
 			</Typography>
 		</>

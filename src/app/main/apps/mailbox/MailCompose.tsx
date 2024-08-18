@@ -109,7 +109,7 @@ function MailCompose(props: MailComposeProps) {
 			>
 				<AppBar
 					position="static"
-					color="secondary"
+					color="primary"
 					elevation={0}
 				>
 					<Toolbar className="flex w-full">

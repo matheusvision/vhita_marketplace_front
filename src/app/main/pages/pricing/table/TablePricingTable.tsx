@@ -103,7 +103,7 @@ function TablePricingTable(props: TablePricingTableProps) {
 
 	return (
 		<div className="mt-40 flex justify-center sm:mt-80">
-			<Paper className="w-full flex-col overflow-x-auto overflow-y-hidden lg:max-w-7xl lg:flex-row">
+			<Paper className="w-full flex-col overflow-x-auto overflow-y-hidden container lg:flex-row">
 				<div className="grid min-w-max grid-flow-col divide-x lg:min-w-0 lg:grid-flow-row lg:divide-x-0 lg:divide-y">
 					<div className="sticky left-0 grid grid-flow-row auto-rows-fr divide-y overflow-hidden rounded-l border-r shadow-lg lg:max-w-none lg:auto-cols-fr lg:grid-flow-col lg:divide-x lg:divide-y-0 lg:rounded-l-none lg:border-r-0 lg:shadow-none">
 						<Box

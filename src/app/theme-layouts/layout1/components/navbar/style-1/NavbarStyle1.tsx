@@ -33,6 +33,13 @@ const StyledNavBar = styled('div')<StyledNavBarProps>(({ theme, open, position }
 		})
 	}),
 	...(open && {
+		...(position === 'left' && {
+			borderRight: `1px solid ${theme.palette.divider}`
+		}),
+		...(position === 'right' && {
+			borderLeft: `1px solid ${theme.palette.divider}`
+		}),
+
 		transition: theme.transitions.create('margin', {
 			easing: theme.transitions.easing.easeOut,
 			duration: theme.transitions.duration.enteringScreen

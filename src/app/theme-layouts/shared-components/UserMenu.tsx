@@ -47,7 +47,10 @@ function UserMenu(props: UserMenuProps) {
 	return (
 		<>
 			<Button
-				className={clsx('shrink-0  min-h-56 h-56 rounded-lg p-8 space-x-12', className)}
+				className={clsx(
+					'user-menu flex justify-start shrink-0  min-h-56 h-56 rounded-lg p-8 space-x-12',
+					className
+				)}
 				sx={{
 					borderColor: (theme) => theme.palette.divider,
 					'&:hover, &:focus': {
@@ -66,7 +69,7 @@ function UserMenu(props: UserMenuProps) {
 							background: (theme) => theme.palette.background.default,
 							color: (theme) => theme.palette.text.secondary
 						}}
-						className="w-40 h-40 rounded-lg"
+						className="avatar w-40 h-40 rounded-lg"
 						alt="user photo"
 						src={user.data.photoURL}
 						variant="rounded"
@@ -77,36 +80,48 @@ function UserMenu(props: UserMenuProps) {
 							background: (theme) => darken(theme.palette.background.default, 0.05),
 							color: (theme) => theme.palette.text.secondary
 						}}
-						className="md:mx-4"
+						className="avatar md:mx-4"
 					>
 						{user?.data?.displayName?.[0]}
 					</Avatar>
 				)}
-				<div className="flex flex-col flex-1 space-y-8">
+				<div className="flex flex-col flex-auto space-y-8">
 					<Typography
 						component="span"
-						className="flex font-semibold text-base capitalize truncate  tracking-tight leading-none"
+						className="title flex font-semibold text-base capitalize truncate  tracking-tight leading-none"
 					>
 						{user.data.displayName}
 					</Typography>
 					<Typography
-						className="flex text-md font-medium tracking-tighter leading-none"
+						className="subtitle flex text-md font-medium tracking-tighter leading-none"
 						color="text.secondary"
 					>
 						{user.data.email}
 					</Typography>
 				</div>
-				<Tooltip
-					title={
-						<>
-							{user.role?.toString()}
-							{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
-						</>
-					}
-				>
-					<FuseSvgIcon size={20}>heroicons-outline:information-circle</FuseSvgIcon>
-				</Tooltip>
-				<FuseSvgIcon size={13}>{arrowIcon}</FuseSvgIcon>
+				<div className="flex flex-shrink-0 items-center space-x-8">
+					<Tooltip
+						title={
+							<>
+								{user.role?.toString()}
+								{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
+							</>
+						}
+					>
+						<FuseSvgIcon
+							className="info-icon"
+							size={20}
+						>
+							heroicons-outline:information-circle
+						</FuseSvgIcon>
+					</Tooltip>
+					<FuseSvgIcon
+						className="arrow"
+						size={13}
+					>
+						{arrowIcon}
+					</FuseSvgIcon>
+				</div>
 			</Button>
 
 			<Popover

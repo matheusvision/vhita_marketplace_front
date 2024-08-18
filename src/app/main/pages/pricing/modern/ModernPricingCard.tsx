@@ -30,9 +30,14 @@ function ModernPricingCard(props: ModernPricingCardProps) {
 		<Paper
 			className={clsx(
 				'relative max-w-sm flex-col p-24 sm:px-40 sm:py-48 md:max-w-none',
-				isPopular && 'ring-primary ring-2',
+				isPopular && '',
 				className
 			)}
+			sx={{
+				...(isPopular && {
+					border: (theme) => `1px solid ${theme.palette.secondary.main}!important`
+				})
+			}}
 		>
 			{isPopular && (
 				<div className="absolute inset-x-0 -top-16 flex items-center justify-center">

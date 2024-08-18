@@ -25,7 +25,7 @@ const settingsConfig: FuseSettingsConfigType = {
 	/**
 	 * The customScrollbars property defines whether or not to use custom scrollbars in the application.
 	 */
-	customScrollbars: false,
+	customScrollbars: true,
 
 	/**
 	 * The direction property defines the text direction for the application.

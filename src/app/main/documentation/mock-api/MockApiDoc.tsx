@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { RedocStandalone } from 'redoc';
 import { Link } from 'react-router-dom';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { RedocRawOptions } from 'redoc/typings/services/RedocNormalizedOptions';
 import mockApiJson from 'src/@mock-api/mock-api.json';
@@ -20,11 +20,9 @@ const Root = styled('div')(() => ({
  * This document provides information on how to use the mock API.
  */
 function MockApiDoc() {
-	const theme = useTheme();
-
 	return (
 		<Root className="w-full">
-			<div className="flex flex-col flex-0 p-24 sm:py-32 sm:px-40 w-full">
+			<div className="flex flex-col flex-0 p-24 w-full">
 				<PageBreadcrumb className="mb-8" />
 
 				<Typography className="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">

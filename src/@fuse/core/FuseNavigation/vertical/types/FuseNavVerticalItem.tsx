@@ -40,7 +40,7 @@ const Root = styled(ListItemButton)<ListItemButtonStyleProps>(({ theme, ...props
 			color: 'inherit'
 		}
 	},
-	'& >.fuse-list-item-icon': {
+	'& > .fuse-list-item-icon': {
 		marginRight: 16,
 		color: 'inherit'
 	},

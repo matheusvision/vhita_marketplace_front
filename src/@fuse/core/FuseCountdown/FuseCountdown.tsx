@@ -47,6 +47,7 @@ function FuseCountdown(props: FuseCountdownProps) {
 		}
 
 		const timeLeft = moment.duration(diff, 'seconds');
+
 		setCountdown({
 			days: Number(timeLeft.asDays().toFixed(0)),
 			hours: timeLeft.hours(),
@@ -57,6 +58,7 @@ function FuseCountdown(props: FuseCountdownProps) {
 
 	useEffect(() => {
 		intervalRef.current = window.setInterval(tick, 1000);
+		tick();
 		return () => {
 			if (intervalRef.current) {
 				clearInterval(intervalRef.current);

@@ -31,7 +31,7 @@ function DirectoryStructureDoc() {
 				│   ├── ContactListItem.tsx
 				│   ├── ContactsApi.ts
 				│   ├── ContactsApp.tsx
-				│   ├── ContactsAppConfig.tsx
+				│   ├── ContactsAppRoute.tsx
 				│   ├── ContactsHeader.tsx
 				│   ├── ContactsList.tsx
 				│   ├── ContactsSidebarContent.tsx
@@ -117,8 +117,8 @@ function DirectoryStructureDoc() {
 				className="mb-16"
 				component="p"
 			>
-				<strong>Config files:</strong> named in PascalCase and use the name of the feature they represent,
-				followed by `Config`. Example: ` ContactAppConfig.tsx`.
+				<strong>Route files:</strong> named in PascalCase and use the name of the feature they represent,
+				followed by `Route`. Example: ` ContactAppRoute.tsx`.
 			</Typography>
 			<Typography
 				className="mb-16"

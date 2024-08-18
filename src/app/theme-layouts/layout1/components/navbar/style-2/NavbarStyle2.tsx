@@ -60,10 +60,12 @@ const StyledNavbar = styled('div')<StyledNavBarProps>(
 		}),
 
 		...(position === 'left' && {
+			borderRight: `1px solid ${theme.palette.divider}`,
 			left: 0
 		}),
 
 		...(position === 'right' && {
+			borderLight: `1px solid ${theme.palette.divider}`,
 			right: 0
 		}),
 
@@ -111,6 +113,21 @@ const StyledNavbar = styled('div')<StyledNavBarProps>(
 				},
 				'& .collapse-children': {
 					display: 'none'
+				},
+				'& .user-menu': {
+					minWidth: 56,
+					'& .title': {
+						opacity: 0
+					},
+					'& .subtitle': {
+						opacity: 0
+					},
+					'& .info-icon': {
+						opacity: 0
+					},
+					'& .arrow': {
+						opacity: 0
+					}
 				}
 			}
 		})
@@ -148,7 +165,7 @@ function NavbarStyle2() {
 			folded={folded ? 1 : 0}
 			open={navbar.open}
 			id="fuse-navbar"
-			className="sticky top-0 z-20 h-screen shrink-0 shadow"
+			className="sticky top-0 z-20 h-screen shrink-0"
 		>
 			<Hidden lgDown>
 				<StyledNavbar

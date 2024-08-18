@@ -1,4 +1,7 @@
-export const layoutConfigOnlyMain = {
+import { DeepPartial } from 'react-hook-form';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
+
+export const layoutConfigOnlyMain: DeepPartial<FuseSettingsConfigType>['layout'] = {
 	config: {
 		navbar: {
 			display: false
@@ -18,8 +21,15 @@ export const layoutConfigOnlyMain = {
 	}
 };
 
-export const layoutNoContainer = {
+export const layoutConfigOnlyMainFullWidth: DeepPartial<FuseSettingsConfigType>['layout'] = {
 	config: {
-		containerWidth: 'fullwidth'
+		...layoutConfigOnlyMain.config,
+		mode: 'fullwidth'
+	}
+};
+
+export const layoutNoContainer: DeepPartial<FuseSettingsConfigType>['layout'] = {
+	config: {
+		mode: 'fullwidth'
 	}
 };

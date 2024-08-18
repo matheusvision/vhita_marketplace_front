@@ -26,7 +26,7 @@ const SignInPageRoute: FuseRouteItemType = {
 			}
 		}
 	},
-	auth: authRoles.onlyGuest
+	auth: authRoles.onlyGuest // []
 };
 
 export default SignInPageRoute;

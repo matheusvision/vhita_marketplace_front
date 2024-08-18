@@ -18,10 +18,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	},
 	'& .FusePageCarded-wrapper': {},
 	'& .FusePageCarded-leftSidebar': {},
-	'& .description': {
-		fontSize: 16,
-		marginBottom: 24
-	}
+	'& .description': {}
 }));
 
 /**
@@ -46,11 +43,10 @@ function DocumentationPageLayout() {
 		<Root
 			header={
 				<div>
-					<div className="flex items-center justify-center pt-12 px-4 md:px-12 max-w-full w-3xl h-full mb-16 sm:mb-0">
+					<div className="flex items-center justify-center pt-12 px-4 md:px-12 max-w-full h-full mb-16 sm:mb-0">
 						<IconButton
 							onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
 							aria-label="toggle left sidebar"
-							size="large"
 						>
 							<FuseSvgIcon>heroicons-outline:bars-3</FuseSvgIcon>
 						</IconButton>
@@ -60,7 +56,7 @@ function DocumentationPageLayout() {
 				</div>
 			}
 			content={
-				<div className="p-16 md:p-24 max-w-3xl min-h-full flex flex-auto flex-col">
+				<div className="p-16 md:p-24 min-h-full flex flex-auto flex-col">
 					<div className="flex flex-col flex-1 relative pb-32">
 						<FuseSuspense>
 							<Outlet />

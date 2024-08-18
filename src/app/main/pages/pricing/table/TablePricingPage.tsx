@@ -120,7 +120,7 @@ function TablePricingPage() {
 			</div>
 
 			<Paper className="flex flex-col items-center px-24 py-40 sm:px-64 sm:pb-80 sm:pt-72">
-				<div className="w-full max-w-7xl">
+				<div className="container">
 					<div>
 						<Typography className="text-4xl font-extrabold leading-tight tracking-tight">
 							Everything you need to build efficiently
@@ -177,13 +177,13 @@ function TablePricingPage() {
 				sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }}
 				className="px-24 py-40 sm:px-64 sm:py-48"
 			>
-				<div className="mx-auto flex w-full max-w-7xl flex-col items-center text-center">
+				<div className="mx-auto flex container flex-col items-center text-center">
 					<Typography className="text-3xl font-extrabold leading-6 sm:text-5xl sm:leading-10">
 						Boost your productivity.
 					</Typography>
 					<Typography
 						className="mt-8 text-3xl font-extrabold leading-6 sm:text-5xl sm:leading-10 opacity-75"
-						color="primary.contrastText"
+						color="primary.dark"
 					>
 						Start using Fuse today.
 					</Typography>
@@ -199,7 +199,7 @@ function TablePricingPage() {
 			</Box>
 
 			<div className="flex flex-col items-center px-24 pb-32 pt-12 sm:px-64 sm:pb-80 sm:pt-72">
-				<div className="w-full max-w-7xl">
+				<div className="container">
 					<div>
 						<Typography className="text-4xl font-extrabold leading-tight tracking-tight">
 							Frequently asked questions

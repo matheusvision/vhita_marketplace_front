@@ -23,6 +23,9 @@ export const ChatAppContext = createContext<ChatAppContextType>({
 });
 
 const Root = styled(FusePageSimple)(() => ({
+	'& .container': {
+		maxWidth: '100%!important'
+	},
 	'& .FusePageSimple-content': {
 		display: 'flex',
 		flexDirection: 'column',

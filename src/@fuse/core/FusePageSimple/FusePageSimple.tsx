@@ -290,6 +290,7 @@ const FusePageSimple = forwardRef<
 								<FuseScrollbars
 									enable={scroll === 'content'}
 									className={clsx('FusePageSimple-content container')}
+									scrollToTopOnRouteChange
 								>
 									{content}
 								</FuseScrollbars>

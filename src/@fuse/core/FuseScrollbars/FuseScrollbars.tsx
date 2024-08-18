@@ -15,9 +15,7 @@ const Root = styled('div')(() => ({
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
 
-type EventHandlerMap = { [key: string]: string };
-
-const handlerNameByEvent: EventHandlerMap = {
+const handlerNameByEvent = Object.freeze({
 	'ps-scroll-y': 'onScrollY',
 	'ps-scroll-x': 'onScrollX',
 	'ps-scroll-up': 'onScrollUp',
@@ -28,39 +26,34 @@ const handlerNameByEvent: EventHandlerMap = {
 	'ps-y-reach-end': 'onYReachEnd',
 	'ps-x-reach-start': 'onXReachStart',
 	'ps-x-reach-end': 'onXReachEnd'
-};
-
-Object.freeze(handlerNameByEvent);
+});
 
 type FuseScrollbarsProps = {
 	id?: string;
 	className?: string;
 	children: ReactNode;
 	enable?: boolean;
-	scrollToTopOnChildChange?: () => void;
-	scrollToTopOnRouteChange?: () => void;
+	scrollToTopOnChildChange?: boolean;
+	scrollToTopOnRouteChange?: boolean;
 	option?: {
 		wheelPropagation?: boolean;
 		suppressScrollX?: boolean;
 	};
 };
 
-/**
- * FuseScrollbars Component for app-level scrollbar
- * Unlike normal scrollbars, this component supports mobile device as well
- */
 const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, ref) => {
 	const {
 		className = '',
 		children,
 		id = '',
-		scrollToTopOnChildChange = false,
+		scrollToTopOnChildChange = true,
 		scrollToTopOnRouteChange = false,
 		enable = true,
 		option = {
 			wheelPropagation: true
 		}
 	} = props;
+
 	const containerRef = useRef<HTMLDivElement>(null);
 	const psRef = useRef<PerfectScrollbar | null>(null);
 	const handlerByEvent = useRef<Map<string, EventListener>>(new Map());
@@ -68,6 +61,7 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 	const customScrollbars = useAppSelector(selectCustomScrollbarsEnabled);
 	const location = useLocation();
 	const { pathname } = location;
+
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {
 			const callback = props[handlerNameByEvent[key] as keyof FuseScrollbarsProps] as (T: HTMLDivElement) => void;
@@ -76,21 +70,21 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 				const handler: EventListener = () => callback(containerRef.current);
 				handlerByEvent.current.set(key, handler);
 
-				if ('current' in containerRef && containerRef.current instanceof HTMLDivElement) {
+				if (containerRef.current) {
 					containerRef.current.addEventListener(key, handler, false);
 				}
 			}
 		});
-	}, [ref]);
+	}, [props]);
 
 	const unHookUpEvents = useCallback(() => {
 		handlerByEvent.current.forEach((value, key) => {
-			if ('current' in containerRef && containerRef.current instanceof HTMLDivElement) {
+			if (containerRef.current) {
 				containerRef.current.removeEventListener(key, value, false);
 			}
 		});
 		handlerByEvent.current.clear();
-	}, [ref]);
+	}, []);
 
 	useEffect(() => {
 		if (customScrollbars && containerRef.current && !isMobile) {
@@ -105,13 +99,13 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 				unHookUpEvents();
 			}
 		};
-	}, [customScrollbars]);
+	}, [customScrollbars, hookUpEvents, option, unHookUpEvents]);
 
 	const scrollToTop = useCallback(() => {
-		if (ref && containerRef.current) {
+		if (containerRef.current) {
 			containerRef.current.scrollTop = 0;
 		}
-	}, [ref]);
+	}, []);
 
 	useEffect(() => {
 		if (scrollToTopOnChildChange) {
@@ -134,7 +128,11 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 		} else {
 			setStyle({});
 		}
-	}, [customScrollbars, enable, isMobile]);
+	}, [customScrollbars, enable]);
+
+	if (isMobile) {
+		return children;
+	}
 
 	return (
 		<Root
@@ -142,8 +140,6 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 			className={className}
 			style={style}
 			ref={(el) => {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
 				containerRef.current = el;
 
 				if (typeof ref === 'function') {

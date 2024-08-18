@@ -1,11 +1,10 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import { styled, ThemeProvider, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import clsx from 'clsx';
 import { memo, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import FuseNavigation from '@fuse/core/FuseNavigation';
-import { selectContrastMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { useLocation } from 'react-router-dom';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
@@ -14,6 +13,8 @@ import { Theme } from '@mui/system';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import { selectNavigation } from 'app/theme-layouts/shared-components/navigation/store/navigationSlice';
 import { navbarCloseMobile } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
+import { Divider } from '@mui/material';
+import UserMenu from 'app/theme-layouts/shared-components/UserMenu';
 
 const Root = styled('div')(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
@@ -59,9 +60,7 @@ function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 	const navigation = useAppSelector(selectNavigation);
 	const [selectedNavigation, setSelectedNavigation] = useState<FuseNavItemType[]>([]);
 	const [panelOpen, setPanelOpen] = useState(false);
-	const theme = useTheme();
 	const dispatch = useAppDispatch();
-	const contrastTheme = useAppSelector(selectContrastMainTheme(theme.palette.primary.main));
 	const location = useLocation();
 
 	useEffect(() => {
@@ -106,33 +105,39 @@ function NavbarStyle3Content(props: NavbarStyle3ContentProps) {
 	return (
 		<ClickAwayListener onClickAway={() => setPanelOpen(false)}>
 			<Root className={clsx('flex h-full flex-auto', className)}>
-				<ThemeProvider theme={contrastTheme}>
-					<div
-						id="fuse-navbar-side-panel"
-						className="flex shrink-0 flex-col items-center"
-					>
-						<img
-							className="my-32 w-44"
-							src="assets/images/logo/logo.svg"
-							alt="logo"
-						/>
+				<div
+					id="fuse-navbar-side-panel"
+					className="flex shrink-0 flex-col items-center h-full"
+				>
+					<img
+						className="my-32 w-44"
+						src="assets/images/logo/logo.svg"
+						alt="logo"
+					/>
 
-						<FuseScrollbars
-							className="flex min-h-0 w-full flex-1 justify-center overflow-y-auto overflow-x-hidden"
-							option={{ suppressScrollX: true, wheelPropagation: false }}
-						>
-							<FuseNavigation
-								className={clsx('navigation')}
-								navigation={navigation}
-								layout="vertical-2"
-								onItemClick={handleParentItemClick}
-								firstLevel
-								selectedId={selectedNavigation[0]?.id}
-								dense={Boolean(dense)}
-							/>
-						</FuseScrollbars>
+					<FuseScrollbars
+						className="flex flex-col min-h-0 w-full flex-1 justify-start overflow-y-auto overflow-x-hidden"
+						option={{
+							suppressScrollX: true,
+							wheelPropagation: false
+						}}
+					>
+						<FuseNavigation
+							className={clsx('navigation shrink-0 justify-center min-h-full')}
+							navigation={navigation}
+							layout="vertical-2"
+							onItemClick={handleParentItemClick}
+							firstLevel
+							selectedId={selectedNavigation[0]?.id}
+							dense={Boolean(dense)}
+						/>
+					</FuseScrollbars>
+					<Divider />
+
+					<div className="flex shrink-0 justify-center w-full py-16">
+						<UserMenu className="" />
 					</div>
-				</ThemeProvider>
+				</div>
 
 				{selectedNavigation.length > 0 && (
 					<StyledPanel

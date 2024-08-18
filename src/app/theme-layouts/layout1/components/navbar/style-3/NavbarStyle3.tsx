@@ -29,6 +29,14 @@ const StyledNavBar = styled('div')<StyledNavBarProps>(({ theme, dense, open, fol
 	width: navbarWidth,
 	maxWidth: navbarWidth,
 
+	...(position === 'left' && {
+		borderRight: `1px solid ${theme.palette.divider}`
+	}),
+
+	...(position === 'right' && {
+		borderLight: `1px solid ${theme.palette.divider}`
+	}),
+
 	...(dense && {
 		minWidth: navbarWidthDense,
 		width: navbarWidthDense,
@@ -85,7 +93,24 @@ const StyledNavBar = styled('div')<StyledNavBarProps>(({ theme, dense, open, fol
 			easing: theme.transitions.easing.easeOut,
 			duration: theme.transitions.duration.enteringScreen
 		})
-	})
+	}),
+
+	'& .user-menu': {
+		minWidth: 56,
+		width: 56,
+		'& .title': {
+			opacity: 0
+		},
+		'& .subtitle': {
+			opacity: 0
+		},
+		'& .info-icon': {
+			opacity: 0
+		},
+		'& .arrow': {
+			opacity: 0
+		}
+	}
 }));
 
 const StyledNavBarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(() => ({
@@ -97,6 +122,22 @@ const StyledNavBarMobile = styled(SwipeableDrawer)<StyledNavBarProps>(() => ({
 		'& #fuse-navbar-panel': {
 			opacity: '1!important',
 			pointerEvents: 'initial!important'
+		}
+	},
+	'& .user-menu': {
+		minWidth: 56,
+		width: 56,
+		'& .title': {
+			opacity: 0
+		},
+		'& .subtitle': {
+			opacity: 0
+		},
+		'& .info-icon': {
+			opacity: 0
+		},
+		'& .arrow': {
+			opacity: 0
 		}
 	}
 }));
@@ -128,6 +169,12 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 					'& #fuse-navbar-panel': {
 						maxWidth: '100%',
 						width: panelWidth,
+						...(config.navbar.position === 'left' && {
+							borderRight: `1px solid ${theme.palette.divider}!important`
+						}),
+						...(config.navbar.position === 'right' && {
+							borderLeft: `1px solid ${theme.palette.divider}!important`
+						}),
 						[theme.breakpoints.up('lg')]: {
 							minWidth: panelWidth,
 							maxWidth: 'initial'
@@ -135,17 +182,19 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 					}
 				})}
 			/>
+
 			<Hidden lgDown>
 				<StyledNavBar
 					open={navbar.open}
 					dense={dense ? 1 : 0}
 					folded={folded ? 1 : 0}
 					position={config.navbar.position}
-					className={clsx('sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col shadow', className)}
+					className={clsx('sticky top-0 z-20 h-screen flex-auto shrink-0 flex-col', className)}
 				>
 					<NavbarStyle3Content dense={dense ? 1 : 0} />
 				</StyledNavBar>
 			</Hidden>
+
 			<Hidden lgUp>
 				<StyledNavBarMobile
 					classes={{

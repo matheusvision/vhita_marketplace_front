@@ -60,37 +60,41 @@ function ThemeShemesDoc() {
 				*/
 				export const themesConfig: FuseThemesType = {
 					default: {
-							palette: {
+						palette: {
 							mode: 'light',
-							divider: '#e2e8f0',
-							text: lightPaletteText,
-							common: {
-							black: 'rgb(17, 24, 39)',
-							white: 'rgb(255, 255, 255)'
+							divider: '#D6D6D6',
+						text: {
+							primary: '#212121',
+							secondary: '#5F6368'
 						},
-							primary: {
-							light: '#64748b',
-							main: '#1e293b',
-							dark: '#0f172a',
-							contrastText: darkPaletteText.primary
+						common: {
+							black: '#000000',
+							white: '#FFFFFF'
 						},
-							secondary: {
-							light: '#818cf8',
-							main: '#4f46e5',
-							dark: '#3730a3',
-							contrastText: darkPaletteText.primary
+						primary: {
+							light: '#536D89',
+							main: '#0A74DA',
+							dark: '#00418A',
+							contrastText: '#FFFFFF'
 						},
-							background: {
-							paper: '#FFFFFF',
-							default: '#f1f5f9'
+						secondary: {
+							light: '#6BC9F7',
+							main: '#00A4EF',
+							dark: '#0078D7',
+							contrastText: '#FFFFFF'
 						},
-							error: {
-							light: '#ffcdd2',
-							main: '#f44336',
-							dark: '#b71c1c',
-							contrastText: darkPaletteText.primary
+						background: {
+							paper: '#F4F4F4',
+							default: '#E8E8E8'
+						},
+						error: {
+							light: '#FFCDD2',
+							main: '#D32F2F',
+							dark: '#B71C1C',
+							contrastText: '#FFFFFF'
+							}
 						}
-					}
+					},
 				}`}
 			</FuseHighlight>
 		</>
