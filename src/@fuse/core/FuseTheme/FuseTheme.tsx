@@ -102,7 +102,7 @@ function FuseTheme(props: FuseThemeProps) {
 
 	useEnhancedEffect(() => {
 		if (root) {
-			document.body.dir = langDirection;
+			document.documentElement.dir = langDirection;
 		}
 	}, [langDirection]);
 

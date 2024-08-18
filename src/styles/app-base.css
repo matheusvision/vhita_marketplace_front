@@ -103,6 +103,16 @@ h6, .h6 {
     z-index: 99;
 }
 
+[dir="rtl"] .ps__thumb-y {
+    right: auto !important;
+    left: 2px!important;
+}
+
+[dir="rtl"] .ps > .ps__rail-y {
+    left: 0 !important;
+    right: auto !important;
+}
+
 a[role=button] {
     text-decoration: none;
 }

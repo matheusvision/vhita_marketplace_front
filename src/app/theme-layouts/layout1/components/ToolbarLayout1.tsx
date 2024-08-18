@@ -87,7 +87,21 @@ function ToolbarLayout1(props: ToolbarLayout1Props) {
 					</div>
 
 					{config.navbar.display && config.navbar.position === 'right' && (
-						<NavbarToggleButton className="h-36 w-36" />
+						<>
+							<Hidden lgDown>
+								{(config.navbar.style === 'style-3' || config.navbar.style === 'style-3-dense') && (
+									<NavbarToggleButton className="mx-0 h-40 w-40 p-0" />
+								)}
+
+								{config.navbar.style === 'style-1' && !navbar.open && (
+									<NavbarToggleButton className="mx-0 h-40 w-40 p-0" />
+								)}
+							</Hidden>
+
+							<Hidden lgUp>
+								<NavbarToggleButton className="mx-0 h-40 w-40 p-0 sm:mx-8" />
+							</Hidden>
+						</>
 					)}
 				</Toolbar>
 			</AppBar>

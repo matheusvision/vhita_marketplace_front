@@ -42,7 +42,8 @@ const changelogData: ChangelogItemType[] = [
 		],
 		fixedChanges: [
 			'Resolved an issue with error handling in JWT SignIn/SignUp forms.',
-			'Updated mobile styles across the application.'
+			'Updated mobile styles across the application.',
+			'Multiple RTL support fixes.'
 		],
 		breakingChanges: [
 			'Renamed all *Config.tsx files to *Route.tsx.',
