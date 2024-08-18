@@ -2,12 +2,17 @@ import Hidden from '@mui/material/Hidden';
 import { styled } from '@mui/material/styles';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import { navbarCloseMobile, selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
+import {
+	navbarCloseMobile,
+	resetNavbar,
+	selectFuseNavbar
+} from 'app/theme-layouts/shared-components/navbar/navbarSlice';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Theme } from '@mui/system/createTheme';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
 import clsx from 'clsx';
+import { useEffect } from 'react';
 import NavbarStyle3Content from './NavbarStyle3Content';
 
 const navbarWidth = 120;
@@ -156,6 +161,12 @@ function NavbarStyle3(props: NavbarStyle3Props) {
 	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const navbar = useAppSelector(selectFuseNavbar);
 	const { folded } = config.navbar;
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetNavbar());
+		};
+	}, [dispatch]);
 
 	return (
 		<>

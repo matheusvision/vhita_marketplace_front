@@ -52,7 +52,8 @@ export const navbarSlice = createSlice({
 		},
 		navbarToggle: (state) => {
 			state.open = !state.open;
-		}
+		},
+		resetNavbar: () => initialState
 	},
 	selectors: {
 		selectFuseNavbar: (navbar) => navbar
@@ -77,7 +78,8 @@ export const {
 	navbarToggle,
 	navbarOpenMobile,
 	navbarCloseMobile,
-	navbarToggleMobile
+	navbarToggleMobile,
+	resetNavbar
 } = navbarSlice.actions;
 
 export const { selectFuseNavbar } = injectedSlice.selectors;

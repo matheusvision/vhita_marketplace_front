@@ -5,7 +5,12 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
-import { navbarCloseMobile, selectFuseNavbar } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
+import {
+	navbarCloseMobile,
+	resetNavbar,
+	selectFuseNavbar
+} from 'app/theme-layouts/shared-components/navbar/navbarSlice';
+import { useEffect } from 'react';
 import NavbarStyle1Content from './NavbarStyle1Content';
 
 const navbarWidth = 280;
@@ -62,6 +67,12 @@ function NavbarStyle1() {
 	const dispatch = useAppDispatch();
 	const config = useAppSelector(selectFuseCurrentLayoutConfig) as Layout1ConfigDefaultsType;
 	const navbar = useAppSelector(selectFuseNavbar);
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetNavbar());
+		};
+	}, [dispatch]);
 
 	return (
 		<>

@@ -5,12 +5,14 @@ import {
 	navbarCloseFolded,
 	navbarCloseMobile,
 	navbarOpenFolded,
+	resetNavbar,
 	selectFuseNavbar
 } from 'app/theme-layouts/shared-components/navbar/navbarSlice';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { selectFuseCurrentLayoutConfig } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { Theme } from '@mui/system/createTheme';
 import { Layout1ConfigDefaultsType } from 'app/theme-layouts/layout1/Layout1Config';
+import { useEffect } from 'react';
 import NavbarStyle2Content from './NavbarStyle2Content';
 
 const navbarWidth = 280;
@@ -159,6 +161,12 @@ function NavbarStyle2() {
 	const folded = config.navbar?.folded;
 	const foldedandclosed = folded && !navbar.foldedOpen;
 	const foldedandopened = folded && navbar.foldedOpen;
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetNavbar());
+		};
+	}, [dispatch]);
 
 	return (
 		<Root
