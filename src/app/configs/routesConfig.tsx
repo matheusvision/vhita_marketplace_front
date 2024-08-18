@@ -43,13 +43,14 @@ const routes: FuseRoutesType = [
 			{
 				path: '404',
 				element: <Error404Page />,
-				settings: { layout: layoutConfigOnlyMain }
+				settings: { layout: layoutConfigOnlyMain },
+				auth: null
 			}
 		]
 	},
 	{
 		path: '*',
-		element: <Navigate to="/404" />
+		element: <Navigate to="404" />
 	}
 ];
 

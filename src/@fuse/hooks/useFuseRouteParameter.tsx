@@ -27,9 +27,13 @@ export function getFuseRouteParamUtil<T>(
 		? matchedRoutes.reduce((acc, match) => {
 				const routeParam = match.route[key] as T;
 
-				if (routeParam != null) {
+				if (routeParam !== undefined) {
 					if (useMerge) {
-						acc = _.merge(acc || {}, routeParam);
+						if (routeParam === null) {
+							acc = routeParam;
+						} else {
+							acc = _.merge(acc || {}, routeParam);
+						}
 					} else {
 						acc = routeParam;
 					}
