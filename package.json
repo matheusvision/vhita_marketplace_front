@@ -1,6 +1,6 @@
 {
     "name": "fuse-react-app",
-    "version": "10.5.1",
+    "version": "11.0.0",
     "private": true,
     "type": "module",
     "dependencies": {
