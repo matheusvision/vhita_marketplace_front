@@ -25,4 +25,6 @@ function NavigationSearch(props: NavigationSearchProps) {
 	);
 }
 
-export default withSlices<NavigationSearchProps>([navigationSlice])(NavigationSearch);
+const NavigationSearchWithSlices = withSlices<NavigationSearchProps>([navigationSlice])(NavigationSearch);
+
+export default NavigationSearchWithSlices;

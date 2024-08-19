@@ -4,7 +4,7 @@ import { useAppDispatch } from 'app/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { useTheme } from '@mui/material';
+import { Theme, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { toggleNotificationPanel } from './notificationPanelSlice';
 import { useGetAllNotificationsQuery } from './NotificationApi';
@@ -25,7 +25,7 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 			<FuseSvgIcon
 				size={20}
 				sx={{
-					color: (theme) =>
+					color: (theme: Theme) =>
 						theme.palette.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary
 				}}
 			>

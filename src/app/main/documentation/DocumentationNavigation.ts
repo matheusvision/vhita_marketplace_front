@@ -1,8 +1,8 @@
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
-import { fuseReactLatestVersion } from './changelog/ChangelogDoc';
 import FuseComponentsNavigation from './fuse-components/FuseComponentsNavigation';
 import MaterialUIComponentsNavigation from './material-ui-components/MaterialUIComponentsNavigation';
 import ThirdPartyComponentsNavigation from './third-party-components/ThirdPartyComponentsNavigation';
+import fuseReactLatestVersion from './changelog/constants/fuseReactLatestVersion';
 
 /**
  * Documentation Navigation

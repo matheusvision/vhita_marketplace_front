@@ -63,4 +63,4 @@ function DemoFrame(props: DemoFrameProps) {
 	);
 }
 
-export default React.memo(DemoFrame);
+export default DemoFrame;

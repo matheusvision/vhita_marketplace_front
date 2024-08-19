@@ -2,7 +2,6 @@ import { styled } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { memo, useMemo } from 'react';
-import withRouter from '@fuse/core/withRouter';
 import { Link, ListItemButton, ListItemButtonProps } from '@mui/material';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import FuseNavBadge from '../../FuseNavBadge';
@@ -92,6 +91,6 @@ function FuseNavHorizontalLink(props: FuseNavHorizontalLinkProps) {
 	);
 }
 
-const NavHorizontalLink = withRouter(memo(FuseNavHorizontalLink));
+const NavHorizontalLinkWithMemo = memo(FuseNavHorizontalLink);
 
-export default NavHorizontalLink;
+export default NavHorizontalLinkWithMemo;

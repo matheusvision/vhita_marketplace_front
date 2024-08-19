@@ -41,16 +41,16 @@ const schema = z.object({
 });
 
 function NotificationsTab() {
-	const { data: notificationSettings, isError } = useGetNotificationSettingsQuery();
+	const { data: notificationSettings } = useGetNotificationSettingsQuery();
 	const [updateNotificationSettings] = useUpdateNotificationSettingsMutation();
 
-	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
+	const { control, reset, handleSubmit, formState } = useForm<FormType>({
 		defaultValues,
 		mode: 'all',
 		resolver: zodResolver(schema)
 	});
 
-	const { isValid, dirtyFields, errors } = formState;
+	const { isValid, dirtyFields } = formState;
 
 	useEffect(() => {
 		reset(notificationSettings);

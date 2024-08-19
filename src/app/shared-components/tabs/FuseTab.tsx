@@ -9,7 +9,7 @@ const FuseTab = styled((props: StyledTabProps) => (
 		disableRipple
 		{...props}
 	/>
-))(({ theme }) => ({
+))(() => ({
 	height: 36,
 	maxHeight: 36,
 	minHeight: 'auto!important',

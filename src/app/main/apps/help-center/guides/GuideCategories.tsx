@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import _ from '@lodash';
 import { useMemo } from 'react';
@@ -10,7 +10,6 @@ import { useGetHelpCenterGuidesQuery, useGetHelpCenterGuideCategoriesQuery } fro
  * The guide categories.
  */
 function GuideCategories() {
-	const navigate = useNavigate();
 	const { data: guides } = useGetHelpCenterGuidesQuery();
 	const { data: categories } = useGetHelpCenterGuideCategoriesQuery();
 
@@ -20,10 +19,6 @@ function GuideCategories() {
 			guides: _.filter(guides, { categoryId: category.id })
 		}));
 	}, [categories, guides]);
-
-	const handleGoBack = () => {
-		navigate(-1);
-	};
 
 	return (
 		<div className="flex flex-col items-center p-24 sm:p-40 container">

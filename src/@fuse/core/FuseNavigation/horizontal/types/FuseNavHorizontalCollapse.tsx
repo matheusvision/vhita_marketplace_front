@@ -9,10 +9,10 @@ import clsx from 'clsx';
 import { memo, useMemo, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
-import withRouter from '@fuse/core/withRouter';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import { Location } from 'history';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
+import { useLocation } from 'react-router-dom';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
@@ -48,8 +48,10 @@ type FuseNavHorizontalCollapseProps = FuseNavItemComponentProps & {
  * Used in FuseNavVerticalItems and FuseNavHorizontalItems
  */
 function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
+	const { item, nestedLevel, dense, checkPermission } = props;
 	const [opened, setOpened] = useState(false);
-	const { item, nestedLevel, dense, location, checkPermission } = props;
+	const location = useLocation();
+	const { pathname } = location;
 	const theme = useTheme();
 
 	const handleToggle = useDebounce((open: boolean) => {
@@ -85,7 +87,7 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 									className={clsx(
 										'fuse-list-item',
 										opened && 'open',
-										isUrlInChildren(item, location.pathname) && 'active'
+										isUrlInChildren(item, pathname) && 'active'
 									)}
 									onMouseEnter={() => handleToggle(true)}
 									onMouseLeave={() => handleToggle(false)}
@@ -186,10 +188,10 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 				</Manager>
 			</ul>
 		),
-		[dense, handleToggle, item, nestedLevel, opened, location.pathname, theme.direction]
+		[dense, handleToggle, item, nestedLevel, opened, pathname, theme.direction]
 	);
 }
 
-const NavHorizontalCollapse = withRouter(memo(FuseNavHorizontalCollapse));
+const NavHorizontalCollapseWithMemo = memo(FuseNavHorizontalCollapse);
 
-export default NavHorizontalCollapse;
+export default NavHorizontalCollapseWithMemo;

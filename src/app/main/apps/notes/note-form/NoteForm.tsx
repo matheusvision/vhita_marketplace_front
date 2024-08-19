@@ -9,7 +9,6 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { format } from 'date-fns/format';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
@@ -430,4 +429,4 @@ function NoteForm(props: NoteFormProps) {
 	);
 }
 
-export default withRouter(NoteForm);
+export default NoteForm;

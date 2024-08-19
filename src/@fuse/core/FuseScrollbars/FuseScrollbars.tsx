@@ -130,10 +130,6 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 		}
 	}, [customScrollbars, enable]);
 
-	if (isMobile) {
-		return children;
-	}
-
 	return (
 		<Root
 			id={id}

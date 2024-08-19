@@ -56,7 +56,7 @@ function FirebaseSignUpForm() {
 			password,
 			displayName
 		})
-			.then((res) => {
+			.then((_res) => {
 				// No need to do anything, registered user data will be set at app/auth/AuthRouteProvider
 			})
 			.catch((_error) => {

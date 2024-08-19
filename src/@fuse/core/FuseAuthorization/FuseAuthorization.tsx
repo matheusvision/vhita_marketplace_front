@@ -122,4 +122,6 @@ class FuseAuthorization extends Component<FuseAuthorizationProps, State> {
 	}
 }
 
-export default withRouter(FuseAuthorization);
+const FuseAuthorizationWIthRouter = withRouter(FuseAuthorization);
+
+export default FuseAuthorizationWIthRouter;

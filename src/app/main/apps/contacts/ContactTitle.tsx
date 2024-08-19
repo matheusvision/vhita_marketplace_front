@@ -6,11 +6,7 @@ type ContactTitleProps = {
 
 function ContactTitle(props: ContactTitleProps) {
 	const { contactId } = props;
-	const {
-		data: contact,
-		isLoading,
-		isError
-	} = useGetContactsItemQuery(contactId, {
+	const { data: contact } = useGetContactsItemQuery(contactId, {
 		skip: !contactId
 	});
 

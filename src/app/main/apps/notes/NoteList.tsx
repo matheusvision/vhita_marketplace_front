@@ -2,7 +2,6 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import withRouter from '@fuse/core/withRouter';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from 'app/store/hooks';
 import NoteListItem from './NoteListItem';
@@ -79,4 +78,4 @@ function NoteList() {
 	);
 }
 
-export default withRouter(NoteList);
+export default NoteList;

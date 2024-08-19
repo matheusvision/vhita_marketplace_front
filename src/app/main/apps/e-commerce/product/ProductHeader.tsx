@@ -1,5 +1,4 @@
 import Button from '@mui/material/Button';
-import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useFormContext } from 'react-hook-form';
@@ -29,7 +28,6 @@ function ProductHeader() {
 	const { formState, watch, getValues } = methods;
 	const { isValid, dirtyFields } = formState;
 
-	const theme = useTheme();
 	const navigate = useNavigate();
 
 	const { name, images, featuredImageId } = watch() as EcommerceProduct;
@@ -68,7 +66,7 @@ function ProductHeader() {
 					<PageBreadcrumb className="mb-8" />
 				</motion.div>
 
-				<div className="flex items-center max-w-full">
+				<div className="flex items-center max-w-full space-x-12">
 					<motion.div
 						className="hidden sm:flex"
 						initial={{ scale: 0 }}

@@ -44,10 +44,11 @@ function NotificationsApp() {
 							/>
 						))}
 					</Masonry>
+
 					{notifications.length === 0 && (
-						<div className="flex flex-1 items-center justify-center p-16">
+						<div className="flex flex-1 items-center justify-center p-64">
 							<Typography
-								className="text-center text-3xl"
+								className="text-center text-xl"
 								color="text.secondary"
 							>
 								There are no notifications for now.

@@ -314,4 +314,6 @@ const FusePageSimple = forwardRef<
 	);
 });
 
-export default memo(styled(FusePageSimple)``);
+const StyledFusePageSimple = memo(styled(FusePageSimple)``);
+
+export default StyledFusePageSimple;

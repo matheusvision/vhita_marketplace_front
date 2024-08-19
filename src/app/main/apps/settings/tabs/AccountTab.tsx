@@ -41,10 +41,10 @@ const schema = z.object({
 });
 
 function AccountTab() {
-	const { data: accountSettings, isError } = useGetAccountSettingsQuery();
+	const { data: accountSettings } = useGetAccountSettingsQuery();
 	const [updateAccountSettings] = useUpdateAccountSettingsMutation();
 
-	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
+	const { control, reset, handleSubmit, formState } = useForm<FormType>({
 		defaultValues,
 		mode: 'all',
 		resolver: zodResolver(schema)

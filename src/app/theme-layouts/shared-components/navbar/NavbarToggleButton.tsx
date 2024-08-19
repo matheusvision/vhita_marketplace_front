@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { IconButtonProps } from '@mui/material/IconButton/IconButton';
 import { navbarToggle, navbarToggleMobile } from './navbarSlice';
 
-export type NavbarToggleButtonProps = IconButtonProps & {};
+export type NavbarToggleButtonProps = IconButtonProps;
 
 /**
  * The navbar toggle button.

@@ -1,6 +1,5 @@
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import Button from '@mui/material/Button';
-import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -31,7 +30,6 @@ function Order() {
 		skip: !orderId
 	});
 
-	const theme = useTheme();
 	const isMobile = useThemeMediaQuery((_theme) => _theme.breakpoints.down('lg'));
 
 	const [tabValue, setTabValue] = useState('details');

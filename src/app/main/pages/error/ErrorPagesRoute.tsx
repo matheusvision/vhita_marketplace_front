@@ -20,7 +20,6 @@ const ErrorPagesRoute: FuseRouteItemType = {
 			path: '401',
 			element: <Error401Page />
 		},
-		,
 		{
 			path: '404',
 			element: <Error404Page />

@@ -55,4 +55,6 @@ function NavigationShortcuts(props: NavigationShortcutsProps) {
 	);
 }
 
-export default withSlices<NavigationShortcutsProps>([navigationSlice])(NavigationShortcuts);
+const NavigationShortcutsWithSlices = withSlices<NavigationShortcutsProps>([navigationSlice])(NavigationShortcuts);
+
+export default NavigationShortcutsWithSlices;

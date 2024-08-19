@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import withRouter from '@fuse/core/withRouter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useAppSelector } from 'app/store/hooks';
 import MailListItem from './MailListItem';
@@ -79,4 +78,4 @@ function MailList() {
 	);
 }
 
-export default withRouter(MailList);
+export default MailList;

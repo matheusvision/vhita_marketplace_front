@@ -231,6 +231,11 @@ export const defaultThemeOptions = {
 				}
 			}
 		},
+		MuiDrawer: {
+			styleOverrides: {
+				paper: {}
+			}
+		},
 		MuiDialog: {
 			styleOverrides: {
 				paper: {

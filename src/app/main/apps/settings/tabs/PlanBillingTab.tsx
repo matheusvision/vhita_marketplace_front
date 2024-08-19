@@ -65,10 +65,10 @@ const schema = z.object({
 });
 
 function PlanBillingTab() {
-	const { data: planBillingSettings, isError } = useGetPlanBillingSettingsQuery();
+	const { data: planBillingSettings } = useGetPlanBillingSettingsQuery();
 	const [updatePlanBillingSettings] = useUpdatePlanBillingSettingsMutation();
 
-	const { control, watch, reset, handleSubmit, formState } = useForm<FormType>({
+	const { control, reset, handleSubmit, formState } = useForm<FormType>({
 		defaultValues,
 		mode: 'all',
 		resolver: zodResolver(schema)

@@ -1,13 +1,5 @@
 import { FuseNavItemType } from './types/FuseNavItemType';
-
-const components: { [key: string]: React.FC<unknown> } = {};
-
-/**
- * Register a component to FuseNavItem.
- */
-export function registerComponent<T = unknown>(name: string, Component: React.FC<T>) {
-	components[name] = Component as React.FC<unknown>;
-}
+import components from './utils/components';
 
 export type FuseNavItemComponentProps = {
 	type: string;
@@ -21,10 +13,12 @@ export type FuseNavItemComponentProps = {
 /**
 Component to render NavItem depending on its type.
 */
-export default function FuseNavItem(props: FuseNavItemComponentProps) {
+function FuseNavItem(props: FuseNavItemComponentProps) {
 	const { type } = props;
 
 	const C = components[type];
 
 	return C ? <C {...(props as object)} /> : null;
 }
+
+export default FuseNavItem;

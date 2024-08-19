@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {
-	DropdownOption,
 	MRT_GlobalFilterTextField,
 	MRT_LinearProgressBar,
 	MRT_RowData,
@@ -11,6 +10,7 @@ import {
 	MRT_ToolbarDropZone,
 	MRT_ToolbarInternalButtons
 } from 'material-react-table';
+import parseFromValuesOrFunc from 'app/shared-components/data-table/utils/parseFromValuesOrFunc';
 
 export interface MRT_TopToolbarProps<TData extends MRT_RowData> {
 	table: MRT_TableInstance<TData>;
@@ -126,25 +126,5 @@ function DataTableTopToolbar<TData extends MRT_RowData>({ table }: MRT_TopToolba
 		</div>
 	);
 }
-
-export const parseFromValuesOrFunc = <T, U>(fn: ((arg: U) => T) | T | undefined, arg: U): T | undefined =>
-	fn instanceof Function ? fn(arg) : fn;
-
-export const getValueAndLabel = (option?: DropdownOption): { label: string; value: string } => {
-	let label: string = '';
-	let value: string = '';
-
-	if (option) {
-		if (typeof option !== 'object') {
-			label = option;
-			value = option;
-		} else {
-			label = (option.label ?? option.text ?? option.value) as string;
-			value = (option.value ?? label) as string;
-		}
-	}
-
-	return { label, value };
-};
 
 export default DataTableTopToolbar;

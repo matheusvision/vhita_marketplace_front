@@ -1,6 +1,5 @@
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
-import withRouter from '@fuse/core/withRouter';
 import Box from '@mui/material/Box';
 import { useNavigate, useParams } from 'react-router-dom';
 import clsx from 'clsx';
@@ -83,4 +82,4 @@ function MailToolbar() {
 	);
 }
 
-export default withRouter(MailToolbar);
+export default MailToolbar;

@@ -1,5 +1,4 @@
 import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
 import FaqList from './FaqList';
@@ -9,8 +8,6 @@ import { useGetHelpCenterFaqCategoriesQuery, useGetHelpCenterFaqsQuery } from '.
  * The help center faqs page.
  */
 function HelpCenterFaqs() {
-	const navigate = useNavigate();
-
 	const { data: faqs } = useGetHelpCenterFaqsQuery();
 	const { data: categories } = useGetHelpCenterFaqCategoriesQuery();
 	const groupedFaqs = useMemo(() => {
@@ -19,10 +16,6 @@ function HelpCenterFaqs() {
 			faqs: faqs?.filter((faq) => faq.categoryId === category.id)
 		}));
 	}, [faqs, categories]);
-
-	const handleGoBack = () => {
-		navigate(-1);
-	};
 
 	return (
 		<div className="flex flex-col items-center p-24 sm:p-40">

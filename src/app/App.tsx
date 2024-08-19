@@ -74,4 +74,6 @@ function App() {
 	);
 }
 
-export default withAppProviders(App);
+const AppWithProviders = withAppProviders(App);
+
+export default AppWithProviders;

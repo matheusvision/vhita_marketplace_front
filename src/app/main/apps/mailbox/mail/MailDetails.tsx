@@ -1,7 +1,6 @@
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { useParams } from 'react-router-dom';
-import withRouter from '@fuse/core/withRouter';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -149,4 +148,4 @@ function MailDetails() {
 	);
 }
 
-export default withRouter(MailDetails);
+export default MailDetails;

@@ -1,32 +1,22 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
-import { useMemo } from 'react';
 import PageBreadcrumb from 'app/shared-components/PageBreadcrumb';
-import { useGetHelpCenterGuideByCategoryQuery, useGetHelpCenterGuideCategoriesQuery } from '../HelpCenterApi';
-import _ from '../../../../../@lodash/@lodash';
+import { useGetHelpCenterGuideByCategoryQuery } from '../HelpCenterApi';
 
 /**
  * The help center guide.
  */
 function HelpCenterGuide() {
-	const navigate = useNavigate();
 	const routeParams = useParams();
 	const { guideSlug, categorySlug } = routeParams;
-
-	const { data: categories } = useGetHelpCenterGuideCategoriesQuery();
-	const category = useMemo(() => _.find(categories, { slug: categorySlug }), [categories, categorySlug]);
 
 	const { data: guide } = useGetHelpCenterGuideByCategoryQuery({
 		categorySlug,
 		guideSlug
 	});
-
-	const handleGoBack = () => {
-		navigate(-1);
-	};
 
 	if (!guide) {
 		return null;
@@ -37,14 +27,6 @@ function HelpCenterGuide() {
 			<div className="flex flex-col w-full max-w-4xl">
 				<div className="sm:mt-32">
 					<PageBreadcrumb />
-
-					{/* 	<Button
-						onClick={handleGoBack}
-						color="secondary"
-						startIcon={<FuseSvgIcon>heroicons-outline:arrow-small-left</FuseSvgIcon>}
-					>
-						{`Back to ${category?.title}`}
-					</Button> */}
 				</div>
 
 				<Typography className="mt-8 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight">

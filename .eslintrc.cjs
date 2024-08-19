@@ -10,6 +10,7 @@ module.exports = {
         "@typescript-eslint",
         "prettier",
         "unused-imports",
+        "react-refresh"
     ],
     "extends": [
         "airbnb",
@@ -129,5 +130,6 @@ module.exports = {
         "import/no-extraneous-dependencies": "off",
         "camelcase": "off",
         "react/jsx-pascal-case": "off",
+        "react-refresh/only-export-components": "warn"
     },
 }

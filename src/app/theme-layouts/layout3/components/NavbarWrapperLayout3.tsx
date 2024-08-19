@@ -87,4 +87,6 @@ function NavbarWrapperLayout3(props: NavbarWrapperLayout3Props) {
 	);
 }
 
-export default withSlices<NavbarWrapperLayout3Props>([navbarSlice])(memo(NavbarWrapperLayout3));
+const NavbarWithSlices = withSlices<NavbarWrapperLayout3Props>([navbarSlice])(memo(NavbarWrapperLayout3));
+
+export default NavbarWithSlices;

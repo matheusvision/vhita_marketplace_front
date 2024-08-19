@@ -4,7 +4,6 @@ import Avatar from '@mui/material/Avatar';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import withRouter from '@fuse/core/withRouter';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { format } from 'date-fns/format';
@@ -46,10 +45,10 @@ type MailListItemProps = WithRouterProps & {
  * The mail list item.
  */
 function MailListItem(props: MailListItemProps) {
+	const { mail } = props;
 	const dispatch = useAppDispatch();
 	const selectedMailIds = useAppSelector(selectSelectedMailIds);
 
-	const { mail } = props;
 	const checked = selectedMailIds.length > 0 && selectedMailIds.find((id) => id === mail.id) !== undefined;
 
 	return (
@@ -137,4 +136,4 @@ function MailListItem(props: MailListItemProps) {
 	);
 }
 
-export default withRouter(MailListItem);
+export default MailListItem;

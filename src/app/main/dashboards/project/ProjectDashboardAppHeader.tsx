@@ -16,7 +16,7 @@ import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
  * The ProjectDashboardAppHeader page.
  */
 function ProjectDashboardAppHeader() {
-	const { data: projects, isLoading } = useGetProjectDashboardProjectsQuery();
+	const { data: projects } = useGetProjectDashboardProjectsQuery();
 
 	const user = useAppSelector(selectUser);
 

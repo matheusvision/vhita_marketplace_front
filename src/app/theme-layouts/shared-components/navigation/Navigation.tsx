@@ -44,4 +44,6 @@ function Navigation(props: NavigationProps) {
 	}, [dispatch, isMobile, navigation, active, className, dense, layout]);
 }
 
-export default withSlices<NavigationProps>([navigationSlice])(Navigation);
+const NavigationWIthSlices = withSlices<NavigationProps>([navigationSlice])(Navigation);
+
+export default NavigationWIthSlices;

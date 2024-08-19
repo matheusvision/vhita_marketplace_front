@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
-import withRouter from '@fuse/core/withRouter';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
@@ -156,4 +155,4 @@ function Board() {
 	);
 }
 
-export default withRouter(Board);
+export default Board;

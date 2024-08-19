@@ -39,7 +39,7 @@ function MainSidebar() {
 	return (
 		<div className="flex flex-col flex-auto">
 			<Box
-				className="py-16 px-32 border-b-1 flex flex-col flex-shrink-0 sticky top-0 z-10"
+				className="py-16 px-24 border-b-1 flex flex-col flex-shrink-0 sticky top-0 z-10"
 				sx={{
 					backgroundColor: (theme) =>
 						theme.palette.mode === 'light'
@@ -139,7 +139,7 @@ function MainSidebar() {
 								{filteredChatList.length > 0 && (
 									<motion.div variants={item}>
 										<Typography
-											className="font-medium text-2xl px-32 py-24"
+											className="font-medium text-2xl px-24 pt-16"
 											color="secondary.main"
 										>
 											Chats
@@ -161,7 +161,7 @@ function MainSidebar() {
 								{filteredContacts.length > 0 && (
 									<motion.div variants={item}>
 										<Typography
-											className="font-medium text-2xl px-32 py-24"
+											className="font-medium text-2xl px-24 pt-16"
 											color="secondary.main"
 										>
 											Contacts

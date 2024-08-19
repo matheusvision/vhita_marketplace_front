@@ -12,8 +12,8 @@ import FuseNavVerticalCollapse from './vertical/types/FuseNavVerticalCollapse';
 import FuseNavVerticalGroup from './vertical/types/FuseNavVerticalGroup';
 import FuseNavVerticalItem from './vertical/types/FuseNavVerticalItem';
 import FuseNavVerticalLink from './vertical/types/FuseNavVerticalLink';
-import { registerComponent } from './FuseNavItem';
 import { FuseNavItemType } from './types/FuseNavItemType';
+import { registerComponent } from './utils/registerComponent';
 
 const inputGlobalStyles = (
 	<GlobalStyles

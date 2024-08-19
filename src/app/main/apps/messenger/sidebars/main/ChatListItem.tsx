@@ -33,7 +33,7 @@ function ChatListItem(props: ChatListItemProps) {
 	return (
 		<StyledListItem
 			component={NavLinkAdapter}
-			className="px-32 py-12 min-h-80"
+			className="px-24 py-12 min-h-80"
 			to={`/apps/messenger/${item.id}`}
 			end
 			activeClassName="active"

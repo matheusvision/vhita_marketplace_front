@@ -13,7 +13,7 @@ type IconItemProps = PaperProps & {
 };
 
 const IconListItem = React.memo((props: IconItemProps) => {
-	const { icon, iconSet, selectedIcon, onIconSelect, size, ...rest } = props;
+	const { icon, iconSet, onIconSelect, size, ...rest } = props;
 	const [open, setOpen] = useState(false);
 
 	const handleCopy = useCallback((copyText: string) => {

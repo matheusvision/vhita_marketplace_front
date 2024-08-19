@@ -27,6 +27,4 @@ function ChangelogDoc() {
 	);
 }
 
-export const fuseReactLatestVersion = changelogData[0].version;
-
 export default ChangelogDoc;

@@ -19,6 +19,16 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '11.1.0',
+		date: '2024-08-19',
+		newChanges: [
+			'vite.config.mts configured to expose the host to the local network by default.',
+			'Components validated to be compatible with Fast Refresh.',
+			'eslint-plugin-react-refresh ESLint plugin installed.'
+		],
+		fixedChanges: ['ESLint warnings resolved.', 'Mobile scroll issues fixed.']
+	},
+	{
 		version: '11.0.0',
 		date: '2024-08-18',
 		newChanges: [

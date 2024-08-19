@@ -159,7 +159,7 @@ function NotificationPanel() {
 				) : (
 					<div className="flex flex-1 items-center justify-center p-16">
 						<Typography
-							className="text-center text-3xl"
+							className="text-center text-xl"
 							color="text.secondary"
 						>
 							There are no notifications for now.

@@ -27,7 +27,7 @@ const FuseTabs = styled((props: StyledTabsProps) => (
 		}}
 		{...props}
 	/>
-))(({ theme }) => ({
+))(() => ({
 	minHeight: 36,
 	'& .MuiTabs-flexContainer': {
 		height: 36

@@ -9,11 +9,11 @@ import clsx from 'clsx';
 import { memo, useMemo, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
-import withRouter from '@fuse/core/withRouter';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import * as PopperJS from '@popperjs/core';
+import { useLocation } from 'react-router-dom';
 import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
 
@@ -50,8 +50,10 @@ type FuseNavHorizontalGroupProps = FuseNavItemComponentProps & WithRouterProps;
  * It shows the list item as well as its children with a flyout effect.
  */
 function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
+	const { item, nestedLevel, dense, checkPermission } = props;
 	const [opened, setOpened] = useState(false);
-	const { item, nestedLevel, dense, location, checkPermission } = props;
+	const location = useLocation();
+	const { pathname } = location;
 	const theme = useTheme();
 
 	const handleToggle = useDebounce((open: boolean) => {
@@ -95,7 +97,7 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 									'fuse-list-item',
 									'relative',
 									`level-${nestedLevel}`,
-									isUrlInChildren(item, location.pathname) && 'active'
+									isUrlInChildren(item, pathname) && 'active'
 								)}
 								onMouseEnter={() => handleToggle(true)}
 								onMouseLeave={() => handleToggle(false)}
@@ -187,9 +189,9 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 				)}
 			</Manager>
 		);
-	}, [dense, handleToggle, item, nestedLevel, opened, props.location.pathname, theme.direction]);
+	}, [dense, handleToggle, item, nestedLevel, opened, pathname, theme.direction]);
 }
 
-const NavHorizontalGroup = withRouter(memo(FuseNavHorizontalGroup));
+const NavHorizontalGroupWithMemo = memo(FuseNavHorizontalGroup);
 
-export default NavHorizontalGroup;
+export default NavHorizontalGroupWithMemo;

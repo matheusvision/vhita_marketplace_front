@@ -1,5 +1,5 @@
 import * as Prism from 'prismjs';
-import { ElementType, forwardRef, memo, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { ElementType, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import './prism-languages';
 import { alpha, styled } from '@mui/material/styles';
 import clsx from 'clsx';
@@ -123,4 +123,6 @@ function trimCode(children: FuseHighlightProps['children']) {
 	return sourceRaw;
 }
 
-export default memo(styled(FuseHighlight)``);
+const StyledFuseHighlight = styled(FuseHighlight)``;
+
+export default StyledFuseHighlight;
