@@ -1,3 +1,0 @@
-[submodule "dev-nextjs"]
-	path = dev-nextjs
-	url = https://github.com/withinpixels/fuse-react.git
