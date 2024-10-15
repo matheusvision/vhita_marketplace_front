@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'app/store/lazyLoadedSlices';
+import { rootReducer } from 'src/store/lazyLoadedSlices';
 import { ReactElement } from 'react';
 
 /**
@@ -63,7 +63,7 @@ export const fuseMessageSlice = createSlice({
  * */
 rootReducer.inject(fuseMessageSlice);
 const injectedSlice = fuseMessageSlice.injectInto(rootReducer);
-declare module 'app/store/lazyLoadedSlices' {
+declare module 'src/store/lazyLoadedSlices' {
 	export interface LazyLoadedSlices extends WithSlice<typeof fuseMessageSlice> {}
 }
 

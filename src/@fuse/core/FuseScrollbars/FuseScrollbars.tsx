@@ -2,18 +2,17 @@ import { styled } from '@mui/material/styles';
 import MobileDetect from 'mobile-detect';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import React, { forwardRef, useEffect, useRef, ReactNode, useCallback, useState } from 'react';
-import { selectCustomScrollbarsEnabled } from '@fuse/core/FuseSettings/fuseSettingsSlice';
-import { useAppSelector } from 'app/store/hooks';
-import { useLocation } from 'react-router-dom';
+import React, { forwardRef, useEffect, useRef, ReactNode, useCallback, useState, useMemo } from 'react';
+import usePathname from '@fuse/hooks/usePathname';
+import useFuseSettings from '@fuse/core/FuseSettings/hooks/useFuseSettings';
 
 const Root = styled('div')(() => ({
 	overscrollBehavior: 'contain',
 	minHeight: '100%'
 }));
 
-const md = new MobileDetect(window.navigator.userAgent);
-const isMobile = md.mobile();
+const md = typeof window !== 'undefined' ? new MobileDetect(window.navigator.userAgent) : null;
+const isMobile = md?.mobile();
 
 const handlerNameByEvent = Object.freeze({
 	'ps-scroll-y': 'onScrollY',
@@ -28,7 +27,7 @@ const handlerNameByEvent = Object.freeze({
 	'ps-x-reach-end': 'onXReachEnd'
 });
 
-type FuseScrollbarsProps = {
+export type FuseScrollbarsProps = {
 	id?: string;
 	className?: string;
 	children: ReactNode;
@@ -46,7 +45,7 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 		className = '',
 		children,
 		id = '',
-		scrollToTopOnChildChange = true,
+		scrollToTopOnChildChange = false,
 		scrollToTopOnRouteChange = false,
 		enable = true,
 		option = {
@@ -58,9 +57,10 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 	const psRef = useRef<PerfectScrollbar | null>(null);
 	const handlerByEvent = useRef<Map<string, EventListener>>(new Map());
 	const [style, setStyle] = useState({});
-	const customScrollbars = useAppSelector(selectCustomScrollbarsEnabled);
-	const location = useLocation();
-	const { pathname } = location;
+	const { data: settings } = useFuseSettings();
+	const customScrollbars = useMemo(() => settings.customScrollbars, [settings.customScrollbars]);
+
+	const pathname = usePathname();
 
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {
@@ -129,6 +129,20 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 			setStyle({});
 		}
 	}, [customScrollbars, enable]);
+
+	useEffect(() => {
+		if (customScrollbars && !isMobile) {
+			const hash = window.location.hash.slice(1); // Remove the leading '#'
+
+			if (hash) {
+				const element = document.getElementById(hash);
+
+				if (element) {
+					element.scrollIntoView();
+				}
+			}
+		}
+	}, [customScrollbars, pathname]);
 
 	return (
 		<Root

@@ -1,8 +1,9 @@
-import { useLocation, matchRoutes, RouteMatch } from 'react-router-dom';
+import { matchRoutes, RouteMatch } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
-import _ from '@lodash';
+import _ from 'lodash';
 import { FuseRouteObjectType } from '@fuse/core/FuseLayout/FuseLayout';
-import routes from 'app/configs/routesConfig';
+import routes from 'src/configs/routesConfig';
+import usePathname from '@fuse/hooks/usePathname';
 
 export type FuseRouteMatchType = RouteMatch & {
 	route: FuseRouteObjectType;
@@ -51,8 +52,7 @@ export function getFuseRouteParamUtil<T>(
  * @returns The merged parameter data of type T
  */
 function useFuseRouteParameter<T>(key: keyof FuseRouteObjectType, useMerge: boolean = true): T {
-	const location = useLocation();
-	const { pathname } = location;
+	const pathname = usePathname();
 
 	const getParameter = useCallback(() => {
 		return getFuseRouteParamUtil<T>(pathname, key, useMerge);

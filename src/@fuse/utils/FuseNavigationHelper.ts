@@ -1,7 +1,7 @@
-import { User } from 'src/app/auth/user';
+import { User } from '@auth/user';
 import { FuseFlatNavItemType, FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
-import _ from '@lodash';
+import _ from 'lodash';
 import { PartialDeep } from 'type-fest';
 
 class FuseNavigationHelper {
@@ -180,7 +180,11 @@ class FuseNavigationHelper {
 	}
 
 	static flattenNavigation(navigation: FuseNavItemType[], parentOrder: string = ''): FuseFlatNavItemType[] {
-		return navigation.flatMap((item, index) => {
+		if (!navigation) {
+			return [];
+		}
+
+		return navigation?.flatMap((item, index) => {
 			const order = parentOrder ? `${parentOrder}.${index + 1}` : `${index + 1}`;
 			let flattened: FuseFlatNavItemType[] = [
 				{ ...item, order, children: item.children?.map((child) => child.id) }

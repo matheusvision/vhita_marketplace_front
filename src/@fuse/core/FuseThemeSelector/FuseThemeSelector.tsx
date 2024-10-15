@@ -16,11 +16,11 @@ function FuseThemeSelector(props: FuseThemeSchemesProps) {
 
 	return (
 		<div>
-			<div className="flex flex-col w-full">
+			<div className="w-full grid grid-cols-2 gap-12">
 				{options.map((item) => (
 					<ThemePreview
 						key={item.id}
-						className="mb-24"
+						className=""
 						theme={item}
 						onSelect={onSelect}
 					/>

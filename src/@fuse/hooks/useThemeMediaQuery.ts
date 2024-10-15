@@ -9,38 +9,39 @@ import { Theme } from '@mui/system/createTheme/createTheme';
  */
 function useThemeMediaQuery(themeCallbackFunc: (theme: Theme) => string) {
 	const theme = useTheme();
-
 	const query = themeCallbackFunc(theme).replace('@media ', '');
 
-	/**
-	 * The getMatches function checks if the current screen matches the specified media query.
-	 * It takes in a media query string as a parameter and returns a boolean indicating whether the screen matches the query.
-	 *
-	 */
-	function getMatches(q: string) {
-		return window.matchMedia(q).matches;
-	}
+	// State to track whether the component has mounted
+	const [hasMounted, setHasMounted] = useState(false);
+	const [matches, setMatches] = useState(false);
 
-	const [matches, setMatches] = useState(getMatches(query));
+	useEffect(() => {
+		// After mounting, we can safely access the `window` object and evaluate the media query
+		setHasMounted(true);
+	}, []);
 
-	useEffect(
-		() => {
+	useEffect(() => {
+		if (hasMounted) {
 			const mediaQuery = window.matchMedia(query);
 
 			// Update the state with the current value
-			setMatches(getMatches(query));
+			setMatches(mediaQuery.matches);
 
-			// Create an event listener
+			// Create an event listener to update state when the query matches change
 			const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
-
-			// Attach the event listener to know when the matches value changes
 			mediaQuery.addEventListener('change', handler);
 
-			// Remove the event listener on cleanup
+			// Cleanup event listener on unmount
 			return () => mediaQuery.removeEventListener('change', handler);
-		},
-		[query] // Empty array ensures effect is only run on mount and unmount
-	);
+		}
+
+		return undefined;
+	}, [query, hasMounted]);
+
+	// Prevent rendering mismatched content by ensuring consistent SSR and client behavior
+	if (!hasMounted) {
+		return false; // Prevents server-client mismatch by avoiding media queries until client-side render
+	}
 
 	return matches;
 }

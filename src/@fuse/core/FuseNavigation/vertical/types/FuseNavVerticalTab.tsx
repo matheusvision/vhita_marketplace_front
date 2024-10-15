@@ -41,17 +41,17 @@ const Root = styled(Box)(({ theme }) => ({
 		},
 		'&.active': {
 			color: theme.palette.text.primary,
-			backgroundColor:
-				theme.palette.mode === 'light' ? 'rgba(0, 0, 0, .05)!important' : 'rgba(255, 255, 255, .1)!important',
-
-			// pointerEvents: 'none',
+			backgroundColor: 'rgba(255, 255, 255, .1)!important',
 			transition: 'border-radius .15s cubic-bezier(0.4,0.0,0.2,1)',
 			'& .fuse-list-item-text-primary': {
 				color: 'inherit'
 			},
 			'& .fuse-list-item-icon': {
 				color: 'inherit'
-			}
+			},
+			...theme.applyStyles('light', {
+				backgroundColor: 'rgba(0, 0, 0, .05)!important'
+			})
 		},
 		'& .fuse-list-item-icon': {
 			color: 'inherit'

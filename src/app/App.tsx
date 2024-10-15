@@ -1,79 +1,68 @@
 import FuseLayout from '@fuse/core/FuseLayout';
-import FuseTheme from '@fuse/core/FuseTheme';
 import { SnackbarProvider } from 'notistack';
-import rtlPlugin from 'stylis-plugin-rtl';
-import createCache, { Options } from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
-import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
-import themeLayouts from 'app/theme-layouts/themeLayouts';
-import { selectMainTheme } from '@fuse/core/FuseSettings/fuseSettingsSlice';
-import MockAdapterProvider from '@mock-api/MockAdapterProvider';
-import { useAppSelector } from 'app/store/hooks';
-import { useSelector } from 'react-redux';
+import themeLayouts from 'src/components/theme-layouts/themeLayouts';
+import { Provider } from 'react-redux';
+import FuseSettingsProvider from '@fuse/core/FuseSettings/FuseSettingsProvider';
+import { I18nProvider } from '@i18n/I18nProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
+import { enUS } from 'date-fns/locale/en-US';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useMemo } from 'react';
-import AuthenticationProvider from './auth/AuthenticationProvider';
-import withAppProviders from './withAppProviders';
-
-// import axios from 'axios';
-/**
- * Axios HTTP Request defaults
- */
-// axios.defaults.baseURL = "";
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-// axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
-
-const emotionCacheOptions = {
-	rtl: {
-		key: 'muirtl',
-		stylisPlugins: [rtlPlugin],
-		insertionPoint: document.getElementById('emotion-insertion-point')
-	},
-	ltr: {
-		key: 'muiltr',
-		stylisPlugins: [],
-		insertionPoint: document.getElementById('emotion-insertion-point')
-	}
-};
+import ErrorBoundary from '@fuse/utils/ErrorBoundary';
+import Authentication from '@auth/Authentication';
+import MainThemeProvider from '../contexts/MainThemeProvider';
+import store from '@/store/store';
+import routes from '@/configs/routesConfig';
+import AppContext from '@/contexts/AppContext';
 
 /**
  * The main App component.
  */
 function App() {
-	const langDirection = useAppSelector(selectCurrentLanguageDirection);
-	const mainTheme = useSelector(selectMainTheme);
-
-	const cacheProviderValue = useMemo(
-		() => createCache(emotionCacheOptions[langDirection] as Options),
-		[langDirection]
+	const val = useMemo(
+		() => ({
+			routes
+		}),
+		[routes]
 	);
 
 	return (
-		<MockAdapterProvider>
-			<CacheProvider value={cacheProviderValue}>
-				<FuseTheme
-					theme={mainTheme}
-					root
+		<ErrorBoundary>
+			<AppContext.Provider value={val}>
+				{/* Date Picker Localization Provider */}
+				<LocalizationProvider
+					dateAdapter={AdapterDateFns}
+					adapterLocale={enUS}
 				>
-					<AuthenticationProvider>
-						<SnackbarProvider
-							maxSnack={5}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'right'
-							}}
-							classes={{
-								containerRoot: 'bottom-0 right-0 mb-52 md:mb-68 mr-8 lg:mr-80 z-99'
-							}}
-						>
-							<FuseLayout layouts={themeLayouts} />
-						</SnackbarProvider>
-					</AuthenticationProvider>
-				</FuseTheme>
-			</CacheProvider>
-		</MockAdapterProvider>
+					{/* Redux Store Provider */}
+					<Provider store={store}>
+						<Authentication>
+							<FuseSettingsProvider>
+								<I18nProvider>
+									{/* Theme Provider */}
+									<MainThemeProvider>
+										{/* Notistack Notification Provider */}
+										<SnackbarProvider
+											maxSnack={5}
+											anchorOrigin={{
+												vertical: 'bottom',
+												horizontal: 'right'
+											}}
+											classes={{
+												containerRoot: 'bottom-0 right-0 mb-52 md:mb-68 mr-8 lg:mr-80 z-99'
+											}}
+										>
+											<FuseLayout layouts={themeLayouts} />
+										</SnackbarProvider>
+									</MainThemeProvider>
+								</I18nProvider>
+							</FuseSettingsProvider>
+						</Authentication>
+					</Provider>
+				</LocalizationProvider>
+			</AppContext.Provider>
+		</ErrorBoundary>
 	);
 }
 
-const AppWithProviders = withAppProviders(App);
-
-export default AppWithProviders;
+export default App;

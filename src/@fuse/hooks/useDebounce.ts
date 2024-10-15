@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import _ from '@lodash';
+import _ from 'lodash';
 
 /**
  * Debounce hook.

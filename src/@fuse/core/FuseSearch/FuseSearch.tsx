@@ -12,11 +12,11 @@ import Typography from '@mui/material/Typography';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import clsx from 'clsx';
-import _ from '@lodash';
+import _ from 'lodash';
 import { memo, useEffect, useReducer, useRef, ReactNode } from 'react';
 import Autosuggest, { RenderInputComponentProps, RenderSuggestionParams, ChangeEvent } from 'react-autosuggest';
-import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
+import useNavigate from '@fuse/hooks/useNavigate';
 import FuseSvgIcon from '../FuseSvgIcon';
 import { FuseFlatNavItemType } from '../FuseNavigation/types/FuseNavItemType';
 
@@ -24,7 +24,6 @@ const Root = styled('div')(({ theme }) => ({
 	'& .FuseSearch-container': {
 		position: 'relative'
 	},
-
 	'& .FuseSearch-suggestionsContainerOpen': {
 		position: 'absolute',
 		zIndex: 1,
@@ -32,17 +31,14 @@ const Root = styled('div')(({ theme }) => ({
 		left: 0,
 		right: 0
 	},
-
 	'& .FuseSearch-suggestion': {
 		display: 'block'
 	},
-
 	'& .FuseSearch-suggestionsList': {
 		margin: 0,
 		padding: 0,
 		listStyleType: 'none'
 	},
-
 	'& .FuseSearch-input': {
 		transition: theme.transitions.create(['background-color'], {
 			easing: theme.transitions.easing.easeInOut,
@@ -287,9 +283,9 @@ function FuseSearch(props: FuseSearchProps) {
 			</IconButton>
 		)
 	} = props;
+	const navigate = useNavigate();
 
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const navigate = useNavigate();
 
 	const suggestionsNode = useRef<HTMLDivElement>(null);
 	const popperNode = useRef<HTMLDivElement>(null);
@@ -336,8 +332,9 @@ function FuseSearch(props: FuseSearchProps) {
 			return;
 		}
 
-		navigate(suggestion.url);
 		hideSearch();
+
+		navigate(suggestion.url);
 	}
 
 	function handleSuggestionsClearRequested() {

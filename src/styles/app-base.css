@@ -1,28 +1,18 @@
-
-/*@tailwind base;*/
+@import url('preflight.css');
 
 /**
  * Custom base styles
  */
 
-
 *:not([class^="Mui"]), *:not([class*=" Mui"]),
 ::before:not([class^="Mui"]), ::before:not([class*=" Mui"]),
 ::after:not([class^="Mui"]), ::after:not([class*=" Mui"])
 {
-    border-width: 0;
     border-style: solid;
 }
 
-[class^="MuiBox"], [class*="MuiBox"],
-[class^="MuiPaper"], [class*="MuiPaper"]{
-    border-width: 0;
-    border-style: solid;
-}
-
-[class^="border"], [class*="border"]{
-    border-style: solid;
-    border-width: 0;
+#root [class^="border"], #root [class*="border"]{
+    border-style: solid!important;
 }
 
 * {
@@ -67,7 +57,7 @@ html, body {
     flex: 1 1 auto;
 }
 
-#root {
+#root, #app {
     display: flex;
     flex: 1 1 auto;
     width: 100%;

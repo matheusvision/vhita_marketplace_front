@@ -1,5 +1,4 @@
 import { useTimeout } from '@fuse/hooks';
-import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import clsx from 'clsx';
 import Box from '@mui/material/Box';
@@ -24,16 +23,10 @@ function FuseLoading(props: FuseLoadingProps) {
 		<div
 			className={clsx(
 				className,
-				'flex flex-1 h-full w-full self-center flex-col items-center justify-center p-24',
+				'flex flex-1 min-h-full h-full w-full self-center flex-col items-center justify-center p-24',
 				!showLoading ? 'hidden' : ''
 			)}
 		>
-			<Typography
-				className="-mb-16 text-md font-medium sm:text-xl"
-				color="text.secondary"
-			>
-				Loading
-			</Typography>
 			<Box
 				id="spinner"
 				sx={{

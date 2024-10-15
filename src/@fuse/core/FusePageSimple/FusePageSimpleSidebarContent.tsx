@@ -21,7 +21,9 @@ function FusePageSimpleSidebarContent(props: FusePageSimpleSidebarContentProps) 
 
 	return (
 		<FuseScrollbars enable={innerScroll}>
-			<div className="FusePageSimple-sidebarContent min-w-320 lg:min-w-0">{children}</div>
+			<div className="FusePageSimple-sidebarContent flex flex-col min-h-full min-w-320 lg:min-w-0">
+				{children}
+			</div>
 		</FuseScrollbars>
 	);
 }

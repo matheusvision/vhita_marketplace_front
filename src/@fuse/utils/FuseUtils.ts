@@ -1,8 +1,8 @@
-import _ from '@lodash';
+import _ from 'lodash';
 import * as colors from '@mui/material/colors';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { RouteObject } from 'react-router-dom';
-import { User } from 'src/app/auth/user';
+import { User } from '@auth/user';
 import { DeepPartial } from 'react-hook-form';
 import { PartialDeep } from 'type-fest';
 import EventEmitter from './EventEmitter';
@@ -12,8 +12,7 @@ type TreeNode = {
 	children?: TreeNode[];
 };
 /**
- * The FuseRouteItemType type is a custom type that extends the RouteObject type from react-router-dom.
- * It adds an optional auth property and an optional settings property.
+ * The FuseRouteItemType type
  */
 export type FuseRouteItemType = RouteObject & {
 	auth?: string[] | [];

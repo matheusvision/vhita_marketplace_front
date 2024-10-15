@@ -1,10 +1,10 @@
 import Drawer from '@mui/material/Drawer';
-import Hidden from '@mui/material/Hidden';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import clsx from 'clsx';
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useState, ReactNode } from 'react';
 import { SwipeableDrawerProps } from '@mui/material/SwipeableDrawer/SwipeableDrawer';
 import FusePageCardedSidebarContent from './FusePageCardedSidebarContent';
+import useThemeMediaQuery from '../../hooks/useThemeMediaQuery';
 
 /**
  * Props for the FusePageCardedSidebar component.
@@ -23,6 +23,7 @@ type FusePageCardedSidebarProps = {
 const FusePageCardedSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }, FusePageCardedSidebarProps>(
 	(props, ref) => {
 		const { open = true, position, variant, onClose = () => {} } = props;
+		const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
 		const [isOpen, setIsOpen] = useState(open);
 
@@ -40,7 +41,7 @@ const FusePageCardedSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }
 
 		return (
 			<>
-				<Hidden lgUp={variant === 'permanent'}>
+				{((variant === 'permanent' && isMobile) || variant !== 'permanent') && (
 					<SwipeableDrawer
 						variant="temporary"
 						anchor={position}
@@ -68,27 +69,25 @@ const FusePageCardedSidebar = forwardRef<{ toggleSidebar: (T: boolean) => void }
 					>
 						<FusePageCardedSidebarContent {...props} />
 					</SwipeableDrawer>
-				</Hidden>
-				{variant === 'permanent' && (
-					<Hidden lgDown>
-						<Drawer
-							variant="permanent"
-							anchor={position}
-							className={clsx(
-								'FusePageCarded-sidebarWrapper',
-								variant,
-								isOpen ? 'opened' : 'closed',
-								position === 'left' ? 'FusePageCarded-leftSidebar' : 'FusePageCarded-rightSidebar'
-							)}
-							open={isOpen}
-							onClose={onClose}
-							classes={{
-								paper: clsx('FusePageCarded-sidebar', variant)
-							}}
-						>
-							<FusePageCardedSidebarContent {...props} />
-						</Drawer>
-					</Hidden>
+				)}
+				{variant === 'permanent' && !isMobile && (
+					<Drawer
+						variant="permanent"
+						anchor={position}
+						className={clsx(
+							'FusePageCarded-sidebarWrapper',
+							variant,
+							isOpen ? 'opened' : 'closed',
+							position === 'left' ? 'FusePageCarded-leftSidebar' : 'FusePageCarded-rightSidebar'
+						)}
+						open={isOpen}
+						onClose={onClose}
+						classes={{
+							paper: clsx('FusePageCarded-sidebar', variant)
+						}}
+					>
+						<FusePageCardedSidebarContent {...props} />
+					</Drawer>
 				)}
 			</>
 		);

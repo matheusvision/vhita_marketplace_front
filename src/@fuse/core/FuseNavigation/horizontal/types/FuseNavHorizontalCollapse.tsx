@@ -6,13 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import clsx from 'clsx';
-import { memo, useMemo, useState } from 'react';
+import { memo, useMemo, useState, useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Manager, Popper, Reference } from 'react-popper';
 import { ListItemButton, ListItemButtonProps } from '@mui/material';
 import { Location } from 'history';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
-import { useLocation } from 'react-router-dom';
+import usePathname from '@fuse/hooks/usePathname';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
@@ -24,15 +24,12 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	'&.active, &.active:hover, &.active:focus': {
 		backgroundColor: `${theme.palette.secondary.main}!important`,
 		color: `${theme.palette.secondary.contrastText}!important`,
-
 		'&.open': {
 			backgroundColor: 'rgba(0,0,0,.08)'
 		},
-
 		'& > .fuse-list-item-text': {
 			padding: '0 0 0 16px'
 		},
-
 		'& .fuse-list-item-icon': {
 			color: 'inherit'
 		}
@@ -50,8 +47,9 @@ type FuseNavHorizontalCollapseProps = FuseNavItemComponentProps & {
 function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 	const { item, nestedLevel, dense, checkPermission } = props;
 	const [opened, setOpened] = useState(false);
-	const location = useLocation();
-	const { pathname } = location;
+	const [isMounted, setIsMounted] = useState(false);
+
+	const pathname = usePathname();
 	const theme = useTheme();
 
 	const handleToggle = useDebounce((open: boolean) => {
@@ -67,13 +65,18 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 			disabled: item.disabled,
 			to: item.url,
 			end: item.end,
-			role: 'button'
+			role: 'button',
+			exact: item?.exact
 		};
 	}
 
 	if (checkPermission && !item?.hasPermission) {
 		return null;
 	}
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	return useMemo(
 		() => (
@@ -135,56 +138,57 @@ function FuseNavHorizontalCollapse(props: FuseNavHorizontalCollapseProps) {
 							</div>
 						)}
 					</Reference>
-					{ReactDOM.createPortal(
-						<Popper placement={theme.direction === 'ltr' ? 'right' : 'left'}>
-							{({ ref, style, placement }) =>
-								opened && (
-									<div
-										ref={ref}
-										style={{
-											...style,
-											zIndex: 999 + nestedLevel + 1
-										}}
-										data-placement={placement}
-										className={clsx('z-999', !opened && 'pointer-events-none')}
-									>
-										<Grow
-											in={opened}
-											id="menu-fuse-list-grow"
-											style={{ transformOrigin: '0 0 0' }}
+					{isMounted &&
+						ReactDOM.createPortal(
+							<Popper placement={theme.direction === 'ltr' ? 'right' : 'left'}>
+								{({ ref, style, placement }) =>
+									opened && (
+										<div
+											ref={ref}
+											style={{
+												...style,
+												zIndex: 999 + nestedLevel + 1
+											}}
+											data-placement={placement}
+											className={clsx('z-999', !opened && 'pointer-events-none')}
 										>
-											<Paper
-												className="rounded"
-												onMouseEnter={() => handleToggle(true)}
-												onMouseLeave={() => handleToggle(false)}
+											<Grow
+												in={opened}
+												id="menu-fuse-list-grow"
+												style={{ transformOrigin: '0 0 0' }}
 											>
-												{item.children && (
-													<ul
-														className={clsx(
-															'popper-navigation-list',
-															dense && 'dense',
-															'px-0'
-														)}
-													>
-														{item.children.map((_item) => (
-															<FuseNavItem
-																key={_item.id}
-																type={`horizontal-${_item.type}`}
-																item={_item}
-																nestedLevel={nestedLevel + 1}
-																dense={dense}
-															/>
-														))}
-													</ul>
-												)}
-											</Paper>
-										</Grow>
-									</div>
-								)
-							}
-						</Popper>,
-						document.querySelector('#root')
-					)}
+												<Paper
+													className="rounded"
+													onMouseEnter={() => handleToggle(true)}
+													onMouseLeave={() => handleToggle(false)}
+												>
+													{item.children && (
+														<ul
+															className={clsx(
+																'popper-navigation-list',
+																dense && 'dense',
+																'px-0'
+															)}
+														>
+															{item.children.map((_item) => (
+																<FuseNavItem
+																	key={_item.id}
+																	type={`horizontal-${_item.type}`}
+																	item={_item}
+																	nestedLevel={nestedLevel + 1}
+																	dense={dense}
+																/>
+															))}
+														</ul>
+													)}
+												</Paper>
+											</Grow>
+										</div>
+									)
+								}
+							</Popper>,
+							document.querySelector('#root')
+						)}
 				</Manager>
 			</ul>
 		),

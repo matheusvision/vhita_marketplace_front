@@ -5,11 +5,10 @@ import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 import clsx from 'clsx';
 import { useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import List, { ListProps } from '@mui/material/List';
 import isUrlInChildren from '@fuse/core/FuseNavigation/isUrlInChildren';
-import type { Location } from 'history';
 import { ListItemButton } from '@mui/material';
+import usePathname from '@fuse/hooks/usePathname';
 import FuseNavBadge from '../../FuseNavBadge';
 import FuseNavItem, { FuseNavItemComponentProps } from '../../FuseNavItem';
 import FuseSvgIcon from '../../../FuseSvgIcon';
@@ -42,28 +41,29 @@ const Root = styled(List)<ListComponentProps>(({ theme, ...props }) => ({
 	}
 }));
 
-function needsToBeOpened(location: Location, item: FuseNavItemType) {
-	return location && isUrlInChildren(item, location.pathname);
+function needsToBeOpened(pathname: string, item: FuseNavItemType) {
+	return pathname && isUrlInChildren(item, pathname);
 }
 
 /**
  * FuseNavVerticalCollapse component used for vertical navigation items with collapsible children.
  */
 function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
-	const location = useLocation();
+	const pathname = usePathname();
+
 	const { item, nestedLevel = 0, onItemClick, checkPermission } = props;
 
-	const [open, setOpen] = useState(() => needsToBeOpened(location, item));
+	const [open, setOpen] = useState(() => needsToBeOpened(pathname, item));
 
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
 
 	useEffect(() => {
-		if (needsToBeOpened(location, item)) {
+		if (needsToBeOpened(pathname, item)) {
 			if (!open) {
 				setOpen(true);
 			}
 		}
-	}, [location, item]);
+	}, [pathname, item]);
 
 	const component = item.url ? NavLinkAdapter : 'li';
 
@@ -74,7 +74,8 @@ function FuseNavVerticalCollapse(props: FuseNavItemComponentProps) {
 			disabled: item.disabled,
 			to: item.url,
 			end: item.end,
-			role: 'button'
+			role: 'button',
+			exact: item?.exact
 		};
 	}
 

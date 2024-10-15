@@ -6,7 +6,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import { hideMessage, selectFuseMessageOptions, selectFuseMessageState } from '@fuse/core/FuseMessage/fuseMessageSlice';
-import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import FuseSvgIcon from '../FuseSvgIcon';
 
 export type FuseMessageVariantType = 'success' | 'error' | 'warning' | 'info';
@@ -15,28 +15,54 @@ type StyledSnackbarProps = {
 	variant?: FuseMessageVariantType;
 };
 
-const StyledSnackbar = styled(Snackbar)<StyledSnackbarProps>(({ theme, variant }) => ({
-	'& .FuseMessage-content': {
-		...(variant === 'success' && {
-			backgroundColor: green[600],
-			color: '#FFFFFF'
-		}),
-
-		...(variant === 'error' && {
-			backgroundColor: theme.palette.error.dark,
-			color: theme.palette.getContrastText(theme.palette.error.dark)
-		}),
-
-		...(variant === 'info' && {
-			backgroundColor: blue[600],
-			color: '#FFFFFF'
-		}),
-
-		...(variant === 'warning' && {
-			backgroundColor: amber[600],
-			color: '#FFFFFF'
-		})
-	}
+const StyledSnackbar = styled(Snackbar)<StyledSnackbarProps>(({ theme }) => ({
+	'& .FuseMessage-content': {},
+	variants: [
+		{
+			props: {
+				variant: 'success'
+			},
+			style: {
+				'& .FuseMessage-content': {
+					backgroundColor: green[600],
+					color: '#FFFFFF'
+				}
+			}
+		},
+		{
+			props: {
+				variant: 'error'
+			},
+			style: {
+				'& .FuseMessage-content': {
+					backgroundColor: theme.palette.error.dark,
+					color: theme.palette.getContrastText(theme.palette.error.dark)
+				}
+			}
+		},
+		{
+			props: {
+				variant: 'info'
+			},
+			style: {
+				'& .FuseMessage-content': {
+					backgroundColor: blue[600],
+					color: '#FFFFFF'
+				}
+			}
+		},
+		{
+			props: {
+				variant: 'warning'
+			},
+			style: {
+				'& .FuseMessage-content': {
+					backgroundColor: amber[600],
+					color: '#FFFFFF'
+				}
+			}
+		}
+	]
 }));
 
 const variantIcon = {

@@ -15,7 +15,6 @@ const Root = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
 	'&.active': {
 		backgroundColor: `${theme.palette.secondary.main}!important`,
 		color: `${theme.palette.secondary.contrastText}!important`,
-		pointerEvents: 'none',
 		'& .fuse-list-item-text-primary': {
 			color: 'inherit'
 		},
@@ -46,9 +45,10 @@ function FuseNavHorizontalLink(props: FuseNavHorizontalLinkProps) {
 	if (typeof component !== 'string') {
 		itemProps = {
 			disabled: item.disabled,
-			href: item.url,
+			to: item.url,
 			role: 'button',
-			target: item.target ? item.target : '_blank'
+			target: item.target ? item.target : '_blank',
+			exact: item?.exact
 		};
 	}
 

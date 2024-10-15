@@ -1,30 +1,31 @@
-import { NavLink, NavLinkProps, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CSSProperties, forwardRef, ReactNode } from 'react';
 
-export type NavLinkAdapterPropsType = NavLinkProps & {
+export type NavLinkAdapterPropsType = {
 	activeClassName?: string;
 	activeStyle?: CSSProperties;
 	children?: ReactNode;
+	to?: string;
+	href?: string;
+	className?: string;
+	style?: CSSProperties;
+	role?: string;
+	exact?: boolean;
 };
 
 /**
- * The NavLinkAdapter component is a wrapper around the React Router NavLink component.
- * It adds the ability to navigate programmatically using the useNavigate hook.
+ * The NavLinkAdapter component is a wrapper around the Next.js Link component.
+ * It adds the ability to navigate programmatically using the useRouter hook.
  * The component is memoized to prevent unnecessary re-renders.
  */
 const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((props, ref) => {
-	const { activeClassName = 'active', activeStyle, role = 'button', ..._props } = props;
-	const navigate = useNavigate();
+	const { activeClassName = 'active', activeStyle, role = 'button', to, href, exact = false, ..._props } = props;
+	const targetUrl = to || href;
 
 	return (
 		<NavLink
-			ref={ref}
 			role={role}
-			{..._props}
-			onClick={(e) => {
-				e.preventDefault();
-				navigate(_props.to);
-			}}
+			to={targetUrl}
 			className={({ isActive }) =>
 				[_props.className, isActive ? activeClassName : null].filter(Boolean).join(' ')
 			}
@@ -32,6 +33,7 @@ const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((p
 				..._props.style,
 				...(isActive ? activeStyle : null)
 			})}
+			{..._props}
 		>
 			{props.children}
 		</NavLink>

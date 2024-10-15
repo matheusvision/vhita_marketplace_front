@@ -5,8 +5,10 @@ import { forwardRef, memo, ReactNode, useImperativeHandle, useRef } from 'react'
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx';
 import { Theme } from '@mui/system';
+import { PartialDeep } from 'type-fest/source/partial-deep';
 import FusePageSimpleHeader from './FusePageSimpleHeader';
 import FusePageSimpleSidebar from './FusePageSimpleSidebar';
+import { FuseScrollbarsProps } from '../FuseScrollbars/FuseScrollbars';
 
 const headerHeight = 120;
 const toolbarHeight = 64;
@@ -29,6 +31,7 @@ type FusePageSimpleProps = SystemStyleObject<Theme> & {
 	rightSidebarWidth?: number;
 	rightSidebarOnClose?: () => void;
 	leftSidebarOnClose?: () => void;
+	contentScrollbarsProps?: PartialDeep<FuseScrollbarsProps>;
 };
 
 /**
@@ -103,10 +106,16 @@ const Root = styled('div')<FusePageSimpleProps>(({ theme, ...props }) => ({
 
 	'& .FusePageSimple-content': {
 		display: 'flex',
+		flexDirection: 'column',
 		flex: '1 1 auto',
 		alignItems: 'start',
 		minHeight: 0,
-		overflowY: 'auto'
+		overflowY: 'auto',
+		'& > .container': {
+			display: 'flex',
+			flexDirection: 'column',
+			minHeight: '100%'
+		}
 	},
 
 	'& .FusePageSimple-sidebarWrapper': {
@@ -218,7 +227,8 @@ const FusePageSimple = forwardRef<
 		leftSidebarVariant = 'permanent',
 		rightSidebarVariant = 'permanent',
 		rightSidebarOnClose,
-		leftSidebarOnClose
+		leftSidebarOnClose,
+		contentScrollbarsProps = {}
 	} = props;
 
 	const leftSidebarRef = useRef<{ toggleSidebar: (T: boolean) => void }>(null);
@@ -289,10 +299,11 @@ const FusePageSimple = forwardRef<
 							{content && (
 								<FuseScrollbars
 									enable={scroll === 'content'}
-									className={clsx('FusePageSimple-content container')}
+									className={clsx('FusePageSimple-content')}
 									scrollToTopOnRouteChange
+									{...contentScrollbarsProps}
 								>
-									{content}
+									<div className="container">{content}</div>
 								</FuseScrollbars>
 							)}
 						</div>
@@ -314,6 +325,6 @@ const FusePageSimple = forwardRef<
 	);
 });
 
-const StyledFusePageSimple = memo(styled(FusePageSimple)``);
+const StyledFusePageSimple: typeof FusePageSimple = memo(styled(FusePageSimple)``);
 
 export default StyledFusePageSimple;

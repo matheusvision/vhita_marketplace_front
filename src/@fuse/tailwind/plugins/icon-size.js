@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const plugin = require('tailwindcss/plugin');
+import plugin from 'tailwindcss/plugin';
 
 /**
  * The iconSize function is a Tailwind CSS plugin that generates utility classes for setting the size of icons.
@@ -42,4 +42,4 @@ const iconSize = plugin(
 	}
 );
 
-module.exports = iconSize;
+export default iconSize;

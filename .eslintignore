@@ -30,9 +30,9 @@ dist-ssr
 *.local
 
 # external docs
-src/app/main/documentation/material-ui-components/components/*
-src/app/main/documentation/material-ui-components/pages/*
-src/app/main/documentation/third-party-components/*/examples/*
+src/app/(control-panel)/documentation/material-ui-components/components/*
+src/app/(control-panel)/documentation/material-ui-components/doc/*
+src/app/(control-panel)/documentation/third-party-components/*/examples/*
 
 src/@fake-db/db/*
 **/*.{js,jsx}

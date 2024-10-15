@@ -2,8 +2,7 @@ import { alpha, ThemeProvider } from '@mui/material/styles';
 import { memo, ReactNode, useEffect, useLayoutEffect } from 'react';
 import { Theme } from '@mui/material/styles/createTheme';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { useAppSelector } from 'app/store/hooks';
-import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
+import CssBaseline from '@mui/material/CssBaseline';
 
 /**
  * The useEnhancedEffect function is used to conditionally use the useLayoutEffect hook if the window object is defined.
@@ -97,8 +96,7 @@ const inputGlobalStyles = (
 function FuseTheme(props: FuseThemeProps) {
 	const { theme, children, root = false } = props;
 	const { mode } = theme.palette;
-
-	const langDirection = useAppSelector(selectCurrentLanguageDirection);
+	const langDirection = theme.direction;
 
 	useEnhancedEffect(() => {
 		if (root) {
@@ -116,6 +114,7 @@ function FuseTheme(props: FuseThemeProps) {
 	// console.warn('FuseTheme:: rendered',mainTheme);
 	return (
 		<ThemeProvider theme={theme}>
+			<CssBaseline />
 			{children}
 			{root && inputGlobalStyles}
 		</ThemeProvider>

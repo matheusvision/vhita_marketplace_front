@@ -1,18 +1,29 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
+     "@auth/*": [
+        "./src/@auth/*"
+      ],
+      "@i18n": [
+        "./src/@i18n/index"
+      ],
+      "@i18n/*": [
+        "./src/@i18n/*"
+      ],
       "@fuse/*": ["./src/@fuse/*"],
-      "@history*": ["./src/@history"],
-      "@lodash": ["./src/@lodash"],
-      "@mock-api/*": ["./src/@mock-api/*"],
-      "@schema": ["./src/@schema"],
-      "app/store": ["./src/app/store/index"],
-      "app/store/*": ["./src/app/store/*"],
-      "app/shared-components/*": ["./src/app/shared-components/*"],
-      "app/configs/*": ["./src/app/configs/*"],
-      "app/theme-layouts/*": ["./src/app/theme-layouts/*"],
-      "app/AppContext": ["./src/app/AppContext"]
+      "@history*": [
+        "./src/@history"
+      ],
+      "@mock-utils/*": [
+        "./src/@mock-utils/*"
+      ],
+      "@schema": [
+        "./src/@schema"
+      ],
+    "@/*": [
+      "./src/*"
+    ]
     },
     "declaration": true,
     "target": "esnext",
@@ -39,8 +50,8 @@
     "jsx": "react-jsx"
   },
   "exclude": [
-    "src/app/main/documentation/material-ui-components/components/**/*",
-    "src/app/main/documentation/material-ui-components/pages/**/*",
+    "src/app/(public)/documentation/material-ui-components/components/**/*",
+    "src/app/(public)/documentation/material-ui-components/doc/**/*",
     "node_modules"
   ],
   "include": [

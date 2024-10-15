@@ -49,6 +49,7 @@ const defaultTheme = {
 export const defaultSettings = {
 	customScrollbars: true,
 	direction: 'ltr',
+	layout: {},
 	theme: {
 		main: defaultTheme,
 		navbar: defaultTheme,
@@ -61,8 +62,12 @@ export const defaultSettings = {
  * The getParsedQuerySettings function parses the query string to retrieve the default settings for the Fuse application.
  * It returns a FuseSettingsConfigType object that can be used to configure the application.
  */
-export function getParsedQuerySettings() {
-	const parsedQueryString = qs.parse(window.location.search, { ignoreQueryPrefix: true });
+export function getParsedQuerySettings(): FuseSettingsConfigType | {} {
+	if (typeof window === 'undefined') {
+		return null;
+	}
+
+	const parsedQueryString = qs.parse(window?.location?.search, { ignoreQueryPrefix: true });
 
 	const { defaultSettings = {} } = parsedQueryString;
 

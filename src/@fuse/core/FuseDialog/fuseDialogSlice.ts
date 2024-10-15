@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'app/store/lazyLoadedSlices';
+import { rootReducer } from 'src/store/lazyLoadedSlices';
 import { ReactElement } from 'react';
 
 type InitialStateProps = {
@@ -39,7 +39,7 @@ export const fuseDialogSlice = createSlice({
  * */
 rootReducer.inject(fuseDialogSlice);
 const injectedSlice = fuseDialogSlice.injectInto(rootReducer);
-declare module 'app/store/lazyLoadedSlices' {
+declare module 'src/store/lazyLoadedSlices' {
 	export interface LazyLoadedSlices extends WithSlice<typeof fuseDialogSlice> {}
 }
 

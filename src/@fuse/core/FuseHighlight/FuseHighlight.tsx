@@ -78,7 +78,12 @@ const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref
 				</Tooltip>
 			)}
 
-			<Wrapper ref={innerRef}>{source}</Wrapper>
+			<Wrapper
+				className="m-0"
+				ref={innerRef}
+			>
+				{source}
+			</Wrapper>
 		</div>
 	);
 });
@@ -87,7 +92,11 @@ function trimCode(children: FuseHighlightProps['children']) {
 	const sourceString = typeof children === 'string' ? children : children?.default;
 
 	// Split the source into lines
-	const sourceLines = sourceString.split('\n');
+	const sourceLines = sourceString?.split('\n');
+
+	if (!sourceLines) {
+		return '';
+	}
 
 	// Remove the first and the last line of the source
 	// code if they are blank lines. This way, the html
@@ -123,6 +132,6 @@ function trimCode(children: FuseHighlightProps['children']) {
 	return sourceRaw;
 }
 
-const StyledFuseHighlight = styled(FuseHighlight)``;
+const StyledFuseHighlight = styled(FuseHighlight)`` as unknown as typeof FuseHighlight;
 
 export default StyledFuseHighlight;
