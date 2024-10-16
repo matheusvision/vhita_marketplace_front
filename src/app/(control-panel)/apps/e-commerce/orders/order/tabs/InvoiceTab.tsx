@@ -69,26 +69,26 @@ function InvoiceTab(props: InvoiceTabProps) {
 							<div>
 								<table className="mb-16">
 									<tbody>
-									<tr>
-										<td className="pb-4">
-											<Typography
-												className="font-light"
-												variant="h6"
-												color="text.secondary"
-											>
-												INVOICE
-											</Typography>
-										</td>
-										<td className="pb-4 px-8">
-											<Typography
-												className="font-light"
-												variant="h6"
-												color="inherit"
-											>
-												{order.reference}
-											</Typography>
-										</td>
-									</tr>
+										<tr>
+											<td className="pb-4">
+												<Typography
+													className="font-light"
+													variant="h6"
+													color="text.secondary"
+												>
+													INVOICE
+												</Typography>
+											</td>
+											<td className="pb-4 px-8">
+												<Typography
+													className="font-light"
+													variant="h6"
+													color="inherit"
+												>
+													{order.reference}
+												</Typography>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 

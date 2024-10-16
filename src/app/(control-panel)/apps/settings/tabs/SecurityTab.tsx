@@ -24,7 +24,6 @@ const defaultValues: FormType = {
 	askPasswordChange: false
 };
 
-
 /**
  * Form Validation Schema
  */
