@@ -7,13 +7,11 @@ import MultiLanguageDoc from './multi-language/MultiLanguageDoc';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 import ApiConfigurationDoc from './api-integration/api-configuration/ApiConfigurationDoc';
-import MockApiDoc from '@/app/(public)/documentation/development/api-integration/mock-api/MockApiDoc';
 
 const DevelopmentServerDoc = lazy(() => import('./development-server/DevelopmentServerDoc'));
 const ProductionDoc = lazy(() => import('./production/ProductionDoc'));
 const DeploymentDoc = lazy(() => import('./deployment/DeploymentDoc'));
 const DirectoryStructureDoc = lazy(() => import('./directory-structure/DirectoryStructureDoc'));
-const ApiCallsDoc = lazy(() => import('./api-calls/ApiCallsDoc'));
 const UpdatingFuseReactDoc = lazy(() => import('./updating-fuse-react/UpdatingFuseReactDoc'));
 const IDEsDoc = lazy(() => import('./ides-vscode-webstorm/IDEsDoc'));
 
@@ -55,20 +53,8 @@ const DevelopmentDocRoute: FuseRouteItemType = {
 				{
 					path: 'api-configuration',
 					element: <ApiConfigurationDoc />
-				},
-				{
-					path: 'mock-api',
-					element: <MockApiDoc />
 				}
 			]
-		},
-		{
-			path: 'api-calls',
-			element: <ApiCallsDoc />
-		},
-		{
-			path: 'api-calls',
-			element: <ApiCallsDoc />
 		},
 		{
 			path: 'code-splitting',

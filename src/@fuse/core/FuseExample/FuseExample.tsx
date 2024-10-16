@@ -32,7 +32,7 @@ function FuseExample(props: FuseExampleProps) {
 	}
 
 	return (
-		<Card className={clsx(className, 'shadow')}>
+		<Card className={clsx(className, 'shadow not-prose')}>
 			<Box
 				sx={{
 					backgroundColor: (theme) =>

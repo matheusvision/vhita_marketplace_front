@@ -50,7 +50,7 @@ const FuseHighlight = forwardRef<HTMLDivElement, FuseHighlightProps>((props, ref
 	}
 
 	return (
-		<div className={clsx('relative', className)}>
+		<div className={clsx('relative not-prose', className)}>
 			{copy && (
 				<Tooltip
 					title="Copied!"

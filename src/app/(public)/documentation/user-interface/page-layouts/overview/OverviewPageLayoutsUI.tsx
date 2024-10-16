@@ -1,4 +1,3 @@
-
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
