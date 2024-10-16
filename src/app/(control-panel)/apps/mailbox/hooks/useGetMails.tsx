@@ -23,7 +23,7 @@ function useGetMails() {
 		return useGetMailboxMailsQuery({ labels: labelId });
 	}
 
-	return useGetMailboxMailsQuery();
+	return useGetMailboxMailsQuery({});
 }
 
 export default useGetMails;

@@ -196,8 +196,13 @@ function getContents(markdown: string) {
 		.filter((content) => !emptyRegExp.test(content)); // Remove empty lines
 }
 
+const excludedDemos = [
+	'ComboBox.js'
+	// Add other demo filenames you want to exclude
+];
+
 function getHtmlCode(markdownSource: string, fileDir: string) {
-	const folderName = path.basename(fileDir); // example: simple-zoom
+	const folderName = path.basename(fileDir);
 
 	markdownSource = eraseMdSection(markdownSource, folderName, 'breadcrumbs', 'Integration with react-router');
 	markdownSource = eraseMdSection(markdownSource, folderName, 'pagination', 'Router integration');
@@ -215,9 +220,14 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 		if (match && !isMuiYou) {
 			const demoOptions = JSON.parse(`{${content}}`) as { demo: string; iframe?: boolean };
-			const name = demoOptions.demo; // example: SimpleZoom.js
-			const nameWithoutExt = path.basename(name, path.extname(name)); // example: SimpleZoom
-			// const filePath = path.resolve(fileDir, name);
+			const name = demoOptions.demo;
+
+			// Check if the demo is in the excluded list
+			if (excludedDemos.includes(name)) {
+				return ''; // Skip rendering this demo
+			}
+
+			const nameWithoutExt = path.basename(name, path.extname(name));
 
 			const tsxFilePath = path.resolve(fileDir, `${nameWithoutExt}.tsx`);
 			const tsFilePath = path.resolve(fileDir, `${nameWithoutExt}.ts`);
@@ -226,7 +236,6 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 			let fileType = '';
 
-			// if has tsx file remove others if exists
 			if (fs.existsSync(tsxFilePath)) {
 				removeFile(tsFilePath);
 				removeFile(jsFilePath);
@@ -248,8 +257,6 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 			}
 
 			if (fileType !== '') {
-				// const selectedFileName = path.basename(filePath);
-				// const importPath = `../components/${folderName}/${selectedFileName}`;
 				const componentPath = `../components/${folderName}/${nameWithoutExt}`;
 
 				const iframe = !!demoOptions.iframe;
@@ -286,14 +293,15 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		.replace(/}"/g, '}')
 		.replace(/(<\s*\/?\s*)p(\s*([^>]*)?\s*>)/g, '$1Typography$2')
 		.replace(/class=/g, 'className=')
-		// .replace(/<img([^>]+)(\s*[^/])>/gm, '$1/>')
 		.replace(/<img([^>]+)>/gi, '<img$1/>')
 		.replace(/<br>/g, '<br/>')
 		.replace(/\/static\//g, '/material-ui-static/')
-		.replace(/<!-- #default-branch-switch -->/g, '')
 		.replace(/<ul>/g, '<ul className="space-y-16">')
 		.replace(/<ul start="(\d+)">/g, '<ul className="space-y-16" start={$1}>')
-		.replace(/<ol start="(\d+)">/g, '<ol start={$1}>');
+		.replace(/<ol start="(\d+)">/g, '<ol start={$1}>')
+		.replace(/<codeblock[\s\S]*?>/g, '<div className="space-y-12">')
+		.replace(/<\/codeblock>/g, '</div>')
+		.replace(/<!--[\s\S]*?-->/g, '');
 
 	return { htmlCode, importPaths: importPathList.join('\n') };
 }
@@ -531,11 +539,26 @@ async function replaceInExamples() {
 
 		fileSource.then((result) => {
 			result = result
-				.replace('docs/src/modules/components/HighlightedCode', '../../utils/HighlightedCode')
-				.replace('@mui/docs/HighlightedCode', '../../utils/HighlightedCode')
-				.replace(/docs\/src\/modules\/utils\/compose/g, '../../compose')
-				.replace(/docs\/src\/modules\/components\/MarkdownElement/g, '../../utils/MarkdownElement')
-				.replace(/docs\/src\/modules\/components\/HighlightedCode/g, '../../utils/HighlightedCode')
+				.replace(
+					'docs/src/modules/components/HighlightedCode',
+					'@/app/(public)/documentation/material-ui-components/utils/HighlightedCode'
+				)
+				.replace(
+					'@mui/docs/HighlightedCode',
+					'@/app/(public)/documentation/material-ui-components/utils/HighlightedCode'
+				)
+				.replace(
+					/docs\/src\/modules\/utils\/compose/g,
+					'@/app/(public)/documentation/material-ui-components/utils/compose'
+				)
+				.replace(
+					/docs\/src\/modules\/components\/MarkdownElement/g,
+					'@/app/(public)/documentation/material-ui-components/utils/MarkdownElement'
+				)
+				.replace(
+					/docs\/src\/modules\/components\/HighlightedCode/g,
+					'@/app/(public)/documentation/material-ui-components/utils/HighlightedCode'
+				)
 				.replace(/\/static\//g, '/material-ui-static/')
 				.replace(/## Experimental API[\s\S]*$/, ''); // Remove experimental API
 

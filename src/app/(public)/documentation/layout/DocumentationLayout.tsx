@@ -32,7 +32,6 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
  * Documentation Layout
  */
 function DocumentationLayout() {
-	console.info('++DocumentationLayout');
 	const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 	const pathname = usePathname();
 	const [leftSidebarOpen, setLeftSidebarOpen] = useState(!isMobile);

@@ -397,11 +397,11 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 				{` 
 <div className="MuiAccordion-root">
   <div className="MuiButtonBase-root MuiAccordionSummary-root" role="button" aria-expanded="">
-      <!-- Accordion header button goes here -->
+      
   </div>
   <div className="MuiAccordion-region" role="region">
     <div className="MuiAccordionDetails-root">
-      <!-- Accordion content goes here -->
+      
     </div>
   </div>
 </div>

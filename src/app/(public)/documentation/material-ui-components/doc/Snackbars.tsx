@@ -438,7 +438,7 @@ export default function MyComponent() {
 <div role="presentation" className="MuiSnackbar-root">
   <div className="MuiPaper-root MuiSnackbarContent-root" role="alert">
     <div className="MuiSnackbarContent-message">
-      <!-- Snackbar content goes here -->
+      
     </div>
   </div>
 </div>

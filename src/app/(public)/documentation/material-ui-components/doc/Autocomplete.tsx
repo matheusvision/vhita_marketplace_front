@@ -3,8 +3,6 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ComboBoxComponent from '../components/autocomplete/ComboBox';
-import ComboBoxRaw from '../components/autocomplete/ComboBox.tsx?raw';
 import PlaygroundComponent from '../components/autocomplete/Playground';
 import PlaygroundRaw from '../components/autocomplete/Playground.tsx?raw';
 import CountrySelectComponent from '../components/autocomplete/CountrySelect';
@@ -117,18 +115,6 @@ function AutocompleteDoc(props) {
 				component="div"
 			>
 				The value must be chosen from a predefined set of allowed values.
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				<FuseExample
-					name="ComboBox.js"
-					className="my-16"
-					iframe={false}
-					component={ComboBoxComponent}
-					raw={ComboBoxRaw}
-				/>
 			</Typography>
 			<Typography
 				className="text-15 mt-20 mb-10 font-700"

@@ -310,7 +310,7 @@ import Divider from '@mui/material/Divider';
 			>
 				{` 
 <hr className="MuiDivider-root">
-  <!-- Divider children goes here -->
+  
 </hr>
 `}
 			</FuseHighlight>

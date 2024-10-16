@@ -5,6 +5,7 @@ import FuseNavigation from '@fuse/core/FuseNavigation';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
 import { useMemo } from 'react';
+import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import MailCompose from './MailCompose';
 import { useGetMailboxFiltersQuery, useGetMailboxFoldersQuery, useGetMailboxLabelsQuery } from '../MailboxApi';
 
@@ -78,7 +79,7 @@ function MailboxAppSidebarContent() {
 					</Typography>
 
 					<FuseNavigation
-						navigation={navigationItems[section.toLowerCase()]}
+						navigation={navigationItems[section.toLowerCase()] as FuseNavItemType[]}
 						className="px-12"
 					/>
 				</motion.div>

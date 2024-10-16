@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
-import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 
 const MockApiDoc = lazy(() => import('./MockApiDoc'));
@@ -10,7 +9,6 @@ const MockApiDoc = lazy(() => import('./MockApiDoc'));
  */
 const MockApiDocRoute: FuseRouteItemType = {
 	path: 'documentation/development/api-integration/mock-api',
-	// element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
 	children: [
 		{

@@ -223,7 +223,7 @@ import Paper from '@mui/material/Paper';
 			>
 				{` 
 <div className="MuiPaper-root">
-  <!-- Paper contents -->
+  
 </div>
 `}
 			</FuseHighlight>

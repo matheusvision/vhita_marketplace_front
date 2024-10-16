@@ -74,7 +74,7 @@ export default MailboxApi;
 export type RouteParams = Record<string, unknown>;
 
 export type GetMailboxMailsApiResponse = /** status 200 OK */ MailboxMail[];
-export type GetMailboxMailsApiArg = RouteParams | void;
+export type GetMailboxMailsApiArg = RouteParams;
 
 export type UpdateMailboxMailsApiResponse = unknown;
 export type UpdateMailboxMailsApiArg = Partial<MailboxMail>[];

@@ -447,7 +447,7 @@ function App() {
 			>
 				{` 
 <div className="MuiStack-root">
-  <!-- Stack contents -->
+  
 </div>
 `}
 			</FuseHighlight>

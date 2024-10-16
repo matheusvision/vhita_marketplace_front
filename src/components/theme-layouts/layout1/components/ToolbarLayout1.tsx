@@ -8,10 +8,10 @@ import { selectFuseNavbar } from 'src/components/theme-layouts/components/navbar
 import { useAppSelector } from 'src/store/hooks';
 import themeOptions from 'src/configs/themeOptions';
 import _ from 'lodash';
-import NotificationPanelToggleButton from '@/app/(control-panel)/apps/notifications/NotificationPanelToggleButton';
 import LightDarkModeToggle from 'src/components/LightDarkModeToggle';
 import { useFuseLayoutSettings } from '@fuse/core/FuseLayout/FuseLayout';
 import { useToolbarTheme } from '@fuse/core/FuseSettings/hooks/fuseThemeHooks';
+import NotificationPanelToggleButton from '@/app/(control-panel)/apps/notifications/NotificationPanelToggleButton';
 import AdjustFontSize from '../../components/AdjustFontSize';
 import FullScreenToggle from '../../components/FullScreenToggle';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
