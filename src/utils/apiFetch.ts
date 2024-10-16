@@ -1,6 +1,6 @@
-export const BASE_URL = import.meta.env.DEV
-	? `http://localhost:${import.meta.env.VITE_PORT}`
-	: import.meta.env.BASE_URL || '/';
+export const API_BASE_URL = (
+	import.meta.env.DEV ? `http://localhost:${import.meta.env.VITE_PORT}` : import.meta.env.VITE_API_BASE_URL || '/'
+) as string;
 
 // Define the types for options and configuration
 type FetchOptions = RequestInit;
@@ -46,7 +46,7 @@ const apiFetch = async <T>(endpoint: string, options: FetchOptions = {}) => {
 	};
 
 	try {
-		const response = await fetch(`${BASE_URL}${endpoint}`, config);
+		const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
 
 		if (!response.ok) {
 			throw new FetchApiError(response.status, await response.json());
