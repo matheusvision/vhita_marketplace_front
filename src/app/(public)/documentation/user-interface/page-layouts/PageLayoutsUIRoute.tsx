@@ -1,29 +1,31 @@
-import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import EmptyExampleComponent from './empty/EmptyExampleComponent';
-import PageLayoutOverview from './PageLayoutOverview';
-import SimpleWithSidebarsNormalScrollComponent from './simple/with-sidebars/SimpleWithSidebarsNormalScrollComponent';
-import SimpleWithSidebarsPageScrollComponent from './simple/with-sidebars/SimpleWithSidebarsPageScrollComponent';
-import SimpleWithSidebarsContentScrollComponent from './simple/with-sidebars/SimpleWithSidebarsContentScrollComponent';
-import SimpleFullWidthNormalScrollComponent from './simple/full-width/SimpleFullWidthNormalScrollComponent';
-import SimpleFullWidthPageScrollComponent from './simple/full-width/SimpleFullWidthPageScrollComponent';
-import SimpleFullWidthContentScrollComponent from './simple/full-width/SimpleFullWidthContentScrollComponent';
-import CardedFullWidthNormalScrollComponent from './carded/full-width/CardedFullWidthNormalScrollComponent';
-import CardedFullWidthPageScrollComponent from './carded/full-width/CardedFullWidthPageScrollComponent';
-import CardedFullWidthContentScrollComponent from './carded/full-width/CardedFullWidthContentScrollComponent';
-import CardedWithSidebarsNormalScrollComponent from './carded/with-sidebars/CardedWithSidebarsNormalScrollComponent';
-import CardedWithSidebarsPageScrollComponent from './carded/with-sidebars/CardedWithSidebarsPageScrollComponent';
-import CardedWithSidebarsContentScrollComponent from './carded/with-sidebars/CardedWithSidebarsContentScrollComponent';
+import SimpleWithSidebarsNormalScrollComponent from './simple/with-sidebars/normal-scroll/SimpleWithSidebarsNormalScrollComponent';
+import SimpleWithSidebarsPageScrollComponent from './simple/with-sidebars/page-scroll/SimpleWithSidebarsPageScrollComponent';
+import SimpleWithSidebarsContentScrollComponent from './simple/with-sidebars/content-scroll/SimpleWithSidebarsContentScrollComponent';
+import SimpleFullWidthNormalScrollComponent from './simple/full-width/normal-scroll/SimpleFullWidthNormalScrollComponent';
+import SimpleFullWidthPageScrollComponent from './simple/full-width/page-scroll/SimpleFullWidthPageScrollComponent';
+import SimpleFullWidthContentScrollComponent from './simple/full-width/content-scroll/SimpleFullWidthContentScrollComponent';
+import CardedFullWidthNormalScrollComponent from './carded/full-width/normal-scroll/CardedFullWidthNormalScrollComponent';
+import CardedFullWidthPageScrollComponent from './carded/full-width/page-scroll/CardedFullWidthPageScrollComponent';
+import CardedFullWidthContentScrollComponent from './carded/full-width/content-scroll/CardedFullWidthContentScrollComponent';
+import CardedWithSidebarsNormalScrollComponent from './carded/with-sidebars/normal-scroll/CardedWithSidebarsNormalScrollComponent';
+import CardedWithSidebarsPageScrollComponent from './carded/with-sidebars/page-scroll/CardedWithSidebarsPageScrollComponent';
+import CardedWithSidebarsContentScrollComponent from './carded/with-sidebars/content-scroll/CardedWithSidebarsContentScrollComponent';
 import overviews from './constants/overviews';
-
-const OverviewPageLayoutsUI = lazy(() => import('./OverviewPageLayoutsUI'));
+import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
+import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
+import PageLayoutOverview from './components/PageLayoutOverview';
+import OverviewPageLayoutsUI from './overview/OverviewPageLayoutsUI';
 
 /**
  * The UI configuration for the page layouts.
  */
 const PageLayoutsUIRoute: FuseRouteItemType = {
-	path: 'ui/page-layouts',
+	path: 'documentation/user-interface/page-layouts',
+	element: <DocumentationLayout />,
+	settings: documentationLayoutSettings,
 	children: [
 		{
 			path: '',

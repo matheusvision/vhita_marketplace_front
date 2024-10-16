@@ -19,6 +19,12 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '12.0.0',
+		date: '2024-10-17',
+		newChanges: [],
+		fixedChanges: []
+	},
+	{
 		version: '11.1.0',
 		date: '2024-08-19',
 		newChanges: [

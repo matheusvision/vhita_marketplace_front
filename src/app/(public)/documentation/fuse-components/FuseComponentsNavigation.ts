@@ -8,12 +8,6 @@ const FuseComponentsNavigation = {
 	icon: 'widgets',
 	children: [
 		{
-			id: 'fuse-auth',
-			title: 'FuseAuthorization',
-			type: 'item',
-			url: '/documentation/fuse-components/fuse-authorization'
-		},
-		{
 			id: 'fuse-theme',
 			title: 'FuseTheme',
 			type: 'item',

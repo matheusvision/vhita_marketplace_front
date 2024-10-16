@@ -5,7 +5,6 @@ import documentationLayoutSettings from '@/app/(public)/documentation/layout/doc
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 
 const FuseThemeDoc = lazy(() => import('./fuse-theme/FuseThemeDoc'));
-const FuseAuthorizationDoc = lazy(() => import('./fuse-authorization/FuseAuthorizationDoc'));
 const FuseLayoutDoc = lazy(() => import('./fuse-layout/FuseLayoutDoc'));
 const FusePageCardedDoc = lazy(() => import('./fuse-page-carded/FusePageCardedDoc'));
 const FusePageSimpleDoc = lazy(() => import('./fuse-page-simple/FusePageSimpleDoc'));
@@ -31,10 +30,6 @@ const FuseComponentsRoute: FuseRouteItemType = {
 		{
 			path: 'fuse-theme',
 			element: <FuseThemeDoc />
-		},
-		{
-			path: 'fuse-authorization',
-			element: <FuseAuthorizationDoc />
 		},
 		{
 			path: 'fuse-layout',

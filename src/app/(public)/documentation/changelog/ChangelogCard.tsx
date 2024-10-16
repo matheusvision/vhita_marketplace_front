@@ -45,7 +45,7 @@ function ChangelogCard(props: ChangelogCardProps) {
 			<div className="flex items-center">
 				{version && (
 					<Typography
-						className="text-3xl font-700"
+						className="text-3xl font-700 m-0"
 						component="h2"
 					>{`v${version}`}</Typography>
 				)}

@@ -6,6 +6,8 @@ import CodeSplittingDoc from './code-splitting/CodeSplittingDoc';
 import MultiLanguageDoc from './multi-language/MultiLanguageDoc';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
+import ApiConfigurationDoc from './api-integration/api-configuration/ApiConfigurationDoc';
+import MockApiDoc from '@/app/(public)/documentation/development/api-integration/mock-api/MockApiDoc';
 
 const DevelopmentServerDoc = lazy(() => import('./development-server/DevelopmentServerDoc'));
 const ProductionDoc = lazy(() => import('./production/ProductionDoc'));
@@ -42,6 +44,27 @@ const DevelopmentDocRoute: FuseRouteItemType = {
 		{
 			path: 'directory-structure',
 			element: <DirectoryStructureDoc />
+		},
+		{
+			path: 'api-integration',
+			children: [
+				{
+					path: '',
+					element: <Navigate to="api-configuration" />
+				},
+				{
+					path: 'api-configuration',
+					element: <ApiConfigurationDoc />
+				},
+				{
+					path: 'mock-api',
+					element: <MockApiDoc />
+				}
+			]
+		},
+		{
+			path: 'api-calls',
+			element: <ApiCallsDoc />
 		},
 		{
 			path: 'api-calls',
