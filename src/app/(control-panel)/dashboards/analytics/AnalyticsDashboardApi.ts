@@ -1,6 +1,6 @@
 import { apiService as api } from 'src/store/apiService';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
 import { WithSlice } from '@reduxjs/toolkit';
+import rootReducer from '@/store/rootReducer';
 import AgeWidgetType from './widgets/types/AgeWidgetType';
 import ConversionsWidgetType from './widgets/types/ConversionsWidgetType';
 import GenderWidgetType from './widgets/types/GenderWidgetType';
@@ -47,7 +47,7 @@ export type GetAnalyticsDashboardWidgetsApiArg = void;
 
 export const { useGetAnalyticsDashboardWidgetsQuery } = AnalyticsDashboardApi;
 
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof AnalyticsDashboardApi> {}
 }
 

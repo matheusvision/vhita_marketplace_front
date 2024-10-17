@@ -1,11 +1,10 @@
-import { createEntityAdapter, createSlice, PayloadAction, WithSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from 'src/store/store';
 import { PartialDeep } from 'type-fest';
 import { FuseFlatNavItemType, FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
 import FuseNavigationHelper from '@fuse/utils/FuseNavigationHelper';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';
 import navigationConfig from 'src/configs/navigationConfig';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
 
 const navigationAdapter = createEntityAdapter<FuseFlatNavItemType>();
 
@@ -94,15 +93,6 @@ export const navigationSlice = createSlice({
 		resetNavigation: () => initialState
 	}
 });
-
-/**
- * Lazy load
- * */
-rootReducer.inject(navigationSlice);
-navigationSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
-	export interface LazyLoadedSlices extends WithSlice<typeof navigationSlice> {}
-}
 
 export const { setNavigation, resetNavigation } = navigationSlice.actions;
 

@@ -2,11 +2,9 @@ import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import { usePrevious } from '@fuse/hooks';
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
-import withSlices from 'src/store/withSlices';
 import { User } from '@auth/user';
 import useUser from '@auth/useUser';
 import setIn from '@/utils/setIn';
-import { navigationSlice } from './store/navigationSlice';
 import useNavigation from './hooks/useNavigation';
 
 type NavigationShortcutsProps = {
@@ -45,6 +43,4 @@ function NavigationShortcuts(props: NavigationShortcutsProps) {
 	);
 }
 
-const NavigationShortcutsWithSlices = withSlices<NavigationShortcutsProps>([navigationSlice])(NavigationShortcuts);
-
-export default NavigationShortcutsWithSlices;
+export default NavigationShortcuts;

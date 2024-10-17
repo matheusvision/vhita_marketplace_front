@@ -1,9 +1,9 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
 import _ from 'lodash';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
 import { DeepPartial } from 'react-hook-form';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import { formatISO } from 'date-fns/formatISO';
+import rootReducer from '@/store/rootReducer';
 import { Event } from './CalendarApi';
 
 export const dateFormat = 'YYYY-MM-DDTHH:mm:ss.sssZ';
@@ -110,7 +110,7 @@ export const calendarAppSlice = createSlice({
  * */
 rootReducer.inject(calendarAppSlice);
 const injectedSlice = calendarAppSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof calendarAppSlice> {}
 }
 

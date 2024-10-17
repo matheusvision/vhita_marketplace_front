@@ -1,7 +1,7 @@
 import { Action, Middleware, ThunkAction, configureStore, createSelector } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import apiService from 'src/store/apiService';
-import { rootReducer } from './lazyLoadedSlices';
+import rootReducer from './rootReducer';
 import { dynamicMiddleware } from './middleware';
 
 // Infer the `RootState` type from the root reducer

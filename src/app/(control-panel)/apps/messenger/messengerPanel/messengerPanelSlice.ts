@@ -1,5 +1,5 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
+import rootReducer from '@/store/rootReducer';
 
 const initialState: {
 	selectedChatId: string;
@@ -43,7 +43,7 @@ export const messengerPanelSlice = createSlice({
  * */
 rootReducer.inject(messengerPanelSlice);
 const injectedSlice = messengerPanelSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof messengerPanelSlice> {}
 }
 

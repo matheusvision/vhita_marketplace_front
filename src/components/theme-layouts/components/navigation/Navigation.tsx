@@ -4,8 +4,6 @@ import { useMemo } from 'react';
 import { useAppDispatch } from 'src/store/hooks';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { FuseNavigationProps } from '@fuse/core/FuseNavigation/FuseNavigation';
-import withSlices from 'src/store/withSlices';
-import { navigationSlice } from './store/navigationSlice';
 import { navbarCloseMobile } from '../navbar/navbarSlice';
 import useNavigation from './hooks/useNavigation';
 
@@ -44,6 +42,4 @@ function Navigation(props: NavigationProps) {
 	}, [dispatch, isMobile, navigation, active, className, dense, layout]);
 }
 
-const NavigationWIthSlices = withSlices<NavigationProps>([navigationSlice])(Navigation);
-
-export default NavigationWIthSlices;
+export default Navigation;

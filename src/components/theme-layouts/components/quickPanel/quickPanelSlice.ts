@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
 import type { WithSlice } from '@reduxjs/toolkit';
+import rootReducer from '@/store/rootReducer';
 
 const exampleData = {
 	notes: [
@@ -70,7 +70,7 @@ export const quickPanelSlice = createSlice({
  */
 rootReducer.inject(quickPanelSlice);
 const injectedSlice = quickPanelSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof quickPanelSlice> {}
 }
 

@@ -45,7 +45,7 @@ export const { useGetFinanceDashboardWidgetsQuery } = FinanceDashboardApi;
 /**
  * Lazy load
  * */
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof FinanceDashboardApi> {}
 }
 

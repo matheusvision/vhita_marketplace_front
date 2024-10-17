@@ -1,6 +1,6 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
-import { rootReducer } from './lazyLoadedSlices';
+import rootReducer from './rootReducer';
 /**
  * A Higher Order Component that injects a reducer into the Redux store.
  */

@@ -70,7 +70,7 @@ export type ProjectDashboardApiType = {
 /**
  * Lazy load
  * */
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof ProjectDashboardApi> {}
 }
 

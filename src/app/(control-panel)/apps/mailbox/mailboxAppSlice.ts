@@ -1,6 +1,6 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
 import _ from 'lodash';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
+import rootReducer from '@/store/rootReducer';
 import { MailboxMail } from './MailboxApi';
 
 const initialState: {
@@ -50,7 +50,7 @@ export const mailboxAppSlice = createSlice({
  * */
 rootReducer.inject(mailboxAppSlice);
 const injectedSlice = mailboxAppSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof mailboxAppSlice> {}
 }
 

@@ -1,5 +1,5 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
+import rootReducer from '@/store/rootReducer';
 
 type initialStateType = boolean;
 
@@ -26,7 +26,7 @@ export const notificationPanelSlice = createSlice({
  * */
 rootReducer.inject(notificationPanelSlice);
 const injectedSlice = notificationPanelSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof notificationPanelSlice> {}
 }
 

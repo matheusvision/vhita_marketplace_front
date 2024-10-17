@@ -32,6 +32,6 @@ export type GetCryptoDashboardWidgetsApiArg = void;
 
 export const { useGetCryptoDashboardWidgetsQuery } = CryptoDashboardApi;
 
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof CryptoDashboardApi> {}
 }

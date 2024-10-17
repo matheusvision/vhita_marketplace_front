@@ -1,5 +1,6 @@
 import { combineSlices } from '@reduxjs/toolkit';
 import apiService from './apiService';
+import { navigationSlice } from '@/components/theme-layouts/components/navigation/store/navigationSlice';
 
 // eslint-disable-next-line
 // @ts-ignore
@@ -11,11 +12,13 @@ export const rootReducer = combineSlices(
 	/**
 	 * Static slices
 	 */
-	// ---->>> You can add static slices here
+	navigationSlice,
 	/**
-	 * Dynamic slices
+	 * Lazy loaded slices
 	 */
 	{
 		[apiService.reducerPath]: apiService.reducer
 	}
 ).withLazyLoadedSlices<LazyLoadedSlices>();
+
+export default rootReducer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Reducer, Slice } from '@reduxjs/toolkit';
 import generateReducersFromSlices from './generateReducersFromSlices';
-import { rootReducer } from './lazyLoadedSlices';
+import rootReducer from './rootReducer';
 import store from './store';
 
 export type SlicesType = Slice[];

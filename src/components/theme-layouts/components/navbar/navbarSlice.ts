@@ -1,5 +1,5 @@
 import { createSlice, type WithSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
+import rootReducer from '@/store/rootReducer';
 
 /**
  * The type definition for the initial state of the navbar slice.
@@ -65,7 +65,7 @@ export const navbarSlice = createSlice({
  */
 rootReducer.inject(navbarSlice);
 const injectedSlice = navbarSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof navbarSlice> {}
 }
 

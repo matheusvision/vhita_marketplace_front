@@ -1,5 +1,5 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
+import rootReducer from '@/store/rootReducer';
 
 const initialState = { searchText: '' };
 
@@ -35,7 +35,7 @@ export const contactsAppSlice = createSlice({
 rootReducer.inject(contactsAppSlice);
 const injectedSlice = contactsAppSlice.injectInto(rootReducer);
 
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof contactsAppSlice> {}
 }
 

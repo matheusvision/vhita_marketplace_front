@@ -1,5 +1,5 @@
 import { WithSlice, createSlice } from '@reduxjs/toolkit';
-import { rootReducer } from 'src/store/lazyLoadedSlices';
+import rootReducer from '@/store/rootReducer';
 
 const initialState: {
 	dialogs: {
@@ -63,7 +63,7 @@ export const notesAppSlice = createSlice({
  * */
 rootReducer.inject(notesAppSlice);
 const injectedSlice = notesAppSlice.injectInto(rootReducer);
-declare module 'src/store/lazyLoadedSlices' {
+declare module '@/store/rootReducer' {
 	export interface LazyLoadedSlices extends WithSlice<typeof notesAppSlice> {}
 }
 

@@ -4,8 +4,6 @@ import usePathname from '@fuse/hooks/usePathname';
 
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
-import withSlices from 'src/store/withSlices';
-import { navigationSlice } from 'src/components/theme-layouts/components/navigation/store/navigationSlice';
 import Link from '@fuse/core/Link';
 import useNavigation from './theme-layouts/components/navigation/hooks/useNavigation';
 
@@ -77,6 +75,4 @@ function PageBreadcrumb(props: PageBreadcrumbProps) {
 	);
 }
 
-const PageBreadcrumbWithNavigationSlices = withSlices<PageBreadcrumbProps>([navigationSlice])(PageBreadcrumb);
-
-export default PageBreadcrumbWithNavigationSlices;
+export default PageBreadcrumb;
