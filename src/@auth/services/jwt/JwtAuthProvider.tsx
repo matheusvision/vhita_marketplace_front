@@ -250,7 +250,11 @@ const JwtAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, o
 		};
 	}, [setTokenStorageValue, signOut]);
 
-	interceptFetch();
+	useEffect(() => {
+		if (authState.isAuthenticated) {
+			interceptFetch();
+		}
+	}, [authState.isAuthenticated]);
 
 	return <JwtAuthContext.Provider value={authContextValue}>{children}</JwtAuthContext.Provider>;
 });

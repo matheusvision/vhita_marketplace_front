@@ -14,7 +14,6 @@ import { authCreateDbUser, authGetDbUserByEmail, authUpdateDbUser } from '@auth/
 import { PartialDeep } from 'type-fest';
 import { initializeFirebase } from './initializeFirebase';
 import { User } from '../../user';
-import UserModel from '../../user/models/UserModel';
 
 export type FirebaseSignInPayload = {
 	email: string;
@@ -22,7 +21,6 @@ export type FirebaseSignInPayload = {
 };
 
 export type FirebaseSignUpPayload = {
-	displayName: string;
 	email: string;
 	password: string;
 };
@@ -175,26 +173,11 @@ const FirebaseAuthProvider: FuseAuthProviderComponentType = forwardRef(({ childr
 	 * Sign up with email and password
 	 */
 	const signUp: FirebaseAuthContextType['signUp'] = useCallback(
-		({ email, password }) => {
+		async ({ email, password }) => {
 			try {
-				return firebase
-					.auth()
-					.createUserWithEmailAndPassword(email, password)
-					.then((userCredential) => {
-						updateUser(
-							UserModel({
-								id: userCredential.user.uid,
-								displayName: userCredential.user?.displayName,
-								email: userCredential.user?.email,
-								role: ['admin']
-							})
-						);
-						return userCredential;
-					})
-					.catch((error) => {
-						console.error('Error signing up:', error);
-						throw error;
-					});
+				const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+
+				return userCredential;
 			} catch (error) {
 				console.error('Error during sign up:', error);
 				return Promise.reject(error);

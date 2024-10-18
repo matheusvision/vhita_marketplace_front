@@ -16,7 +16,6 @@ import { FirebaseSignUpPayload } from '../FirebaseAuthProvider';
  */
 const schema = z
 	.object({
-		displayName: z.string().nonempty('You must enter your name'),
 		email: z.string().email('You must enter a valid email').nonempty('You must enter an email'),
 		password: z
 			.string()
@@ -31,7 +30,6 @@ const schema = z
 	});
 
 const defaultValues = {
-	displayName: '',
 	email: '',
 	password: '',
 	passwordConfirm: '',
@@ -50,11 +48,10 @@ function FirebaseSignUpForm() {
 	const { isValid, dirtyFields, errors } = formState;
 
 	function onSubmit(formData: FirebaseSignUpPayload) {
-		const { displayName, email, password } = formData;
+		const { email, password } = formData;
 		signUp({
 			email,
-			password,
-			displayName
+			password
 		})
 			.then((_res) => {
 				// No need to do anything, registered user data will be set at app/auth/AuthRouteProvider
@@ -62,23 +59,14 @@ function FirebaseSignUpForm() {
 			.catch((_error) => {
 				const error = _error as firebase.auth.Error;
 
-				const usernameErrorCodes = ['auth/operation-not-allowed', 'auth/user-not-found', 'auth/user-disabled'];
-
 				const emailErrorCodes = ['auth/email-already-in-use', 'auth/invalid-email'];
 
 				const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
 
 				const errors: {
-					type: 'displayName' | 'email' | 'password' | `root.${string}` | 'root';
+					type: 'email' | 'password' | `root.${string}` | 'root';
 					message: string;
 				}[] = [];
-
-				if (usernameErrorCodes.includes(error.code)) {
-					errors.push({
-						type: 'displayName',
-						message: error.message
-					});
-				}
 
 				if (emailErrorCodes.includes(error.code)) {
 					errors.push({
@@ -110,24 +98,6 @@ function FirebaseSignUpForm() {
 			className="mt-32 flex w-full flex-col justify-center"
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<Controller
-				name="displayName"
-				control={control}
-				render={({ field }) => (
-					<TextField
-						{...field}
-						className="mb-24"
-						label="Display name"
-						autoFocus
-						error={!!errors.displayName}
-						helperText={errors?.displayName?.message}
-						variant="outlined"
-						required
-						fullWidth
-					/>
-				)}
-			/>
-
 			<Controller
 				name="email"
 				control={control}
