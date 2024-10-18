@@ -8,16 +8,18 @@ import { getFuseRouteParamUtil } from '@fuse/hooks/useFuseRouteParameter';
 import withRouter, { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import withUser from '@auth/withUser';
 import { User } from '@auth/user';
+import { PartialDeep } from 'type-fest';
 
 type FuseSettingsProviderState = {
-	initialData: FuseSettingsConfigType;
+	userSettings?: PartialDeep<FuseSettingsConfigType>;
 	data: FuseSettingsConfigType;
+	defaults: FuseSettingsConfigType;
+	initial: FuseSettingsConfigType;
 };
 
 // FuseSettingsContext type
 export type FuseSettingsContextType = FuseSettingsProviderState & {
-	setSettings: (newSettings: Partial<FuseSettingsConfigType>) => void;
-	changeTheme: (newTheme: FuseThemesType) => void;
+	setSettings: (newSettings: Partial<FuseSettingsConfigType>) => FuseSettingsConfigType;
 };
 
 // Context with a default value of undefined
@@ -38,35 +40,49 @@ const initialSettings = getInitialSettings();
 interface FuseSettingsProviderProps extends WithRouterProps {
 	children: ReactNode;
 	data: User;
-	isGuest: boolean;
 }
 
+const generateSettings = (
+	_defaultSettings: FuseSettingsConfigType,
+	_newSettings: PartialDeep<FuseSettingsConfigType>
+) => {
+	return _.merge(
+		{},
+		_defaultSettings,
+		{ layout: { config: themeLayoutConfigs[_newSettings?.layout?.style]?.defaults } },
+		_newSettings
+	);
+};
 class FuseSettingsProvider extends Component<FuseSettingsProviderProps, FuseSettingsProviderState> {
 	constructor(props: FuseSettingsProviderProps) {
 		super(props);
 
-		const initialData = _.merge({}, initialSettings, props?.data?.settings);
+		const userSettings = props?.data?.settings;
+
+		const initial = _.merge({}, initialSettings, userSettings);
 
 		this.state = {
-			initialData,
-			data: initialData
+			initial,
+			defaults: _.merge({}, initial),
+			data: _.merge({}, initial),
+			userSettings
 		};
 	}
 
 	static getDerivedStateFromProps(nextProps: FuseSettingsProviderProps, prevState: FuseSettingsProviderState) {
-		const { data: user, isGuest, location } = nextProps;
-		const userSettings = user?.settings || {};
+		const { data: user, location } = nextProps;
+
+		const userSettingsChanged = !_.isEqual(user?.settings, prevState.userSettings);
+
+		const defaults = userSettingsChanged
+			? generateSettings(prevState.defaults, user?.settings)
+			: prevState.defaults;
+
 		const matchedSettings = getFuseRouteParamUtil(location.pathname, 'settings', true);
 
-		const newSettings = isGuest
-			? _.merge({}, prevState.initialData, matchedSettings)
-			: (_.merge({}, prevState.initialData, userSettings, matchedSettings) as FuseSettingsConfigType);
+		const newSettings = _.merge({}, defaults, matchedSettings);
 
-		if (!_.isEqual(prevState.data, newSettings)) {
-			return { data: newSettings };
-		}
-
-		return prevState;
+		return { ...prevState, data: newSettings, userSettings: user?.settings };
 	}
 
 	shouldComponentUpdate(nextProps: FuseSettingsProviderProps, nextState: { data: FuseSettingsConfigType }) {
@@ -75,49 +91,35 @@ class FuseSettingsProvider extends Component<FuseSettingsProviderProps, FuseSett
 	}
 
 	setSettings = (newSettings: Partial<FuseSettingsConfigType>) => {
+		const { defaults } = this.state;
+		const newDefaults = generateSettings(defaults, newSettings);
+
 		this.setState((prevState) => {
-			const _settings = _.merge({}, prevState.initialData, newSettings);
-
-			if (_.isEqual(_settings, prevState.data)) {
-				return prevState;
-			}
-
-			return { ...prevState, initialData: _settings, data: _settings };
-		});
-	};
-
-	changeTheme = (newTheme: FuseThemesType) => {
-		this.setState((prevState) => {
-			const { navbar, footer, toolbar, main } = newTheme;
-
-			const _settings = {
-				...prevState.data,
-				theme: { main, navbar, toolbar, footer }
-			};
-
 			return {
 				...prevState,
-				initialData: _settings,
-				data: _settings
+				defaults: newDefaults
 			};
 		});
+
+		return newDefaults;
 	};
 
 	render() {
 		const { children } = this.props;
-		const { data, initialData } = this.state;
-		const { setSettings, changeTheme } = this;
+		const { data, initial, defaults } = this.state;
+		const { setSettings } = this;
 
 		// eslint-disable-next-line react/jsx-no-constructed-context-values
 		const contextValue: FuseSettingsContextType = {
 			data,
-			initialData,
+			initial,
+			defaults,
 			setSettings,
-			changeTheme
 		};
 
 		return <FuseSettingsContext.Provider value={contextValue}>{children}</FuseSettingsContext.Provider>;
 	}
 }
 const FuseSettingsProviderWithRouterUser = withRouter(withUser(FuseSettingsProvider));
+
 export default FuseSettingsProviderWithRouterUser;

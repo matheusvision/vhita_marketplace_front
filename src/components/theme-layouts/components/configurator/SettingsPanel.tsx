@@ -69,15 +69,15 @@ function SettingsPanel(props: SettingsPanelProps) {
 
 	const { data: settings, setSettings } = useFuseSettings();
 
-	const handleSettingsChange = (newSettings: Partial<FuseSettingsConfigType>) => {
-		setSettings(newSettings);
+	const handleSettingsChange = async (newSettings: Partial<FuseSettingsConfigType>) => {
+		const _newSettings = setSettings(newSettings);
 
 		if (!isGuest) {
-			updateUserSettings(newSettings).then((val) => {
-				if (val) {
-					dispatch(showMessage({ message: 'User settings saved.' }));
-				}
-			});
+			const updatedUserData = await updateUserSettings(_newSettings);
+
+			if (updatedUserData) {
+				dispatch(showMessage({ message: 'User settings saved.' }));
+			}
 		}
 	};
 

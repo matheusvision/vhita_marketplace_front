@@ -36,8 +36,8 @@ function useUser(): useUser {
 			return undefined;
 		}
 
-		const updatedUser = (await updateUser(newUser)) as unknown as User;
-
+		const response = await updateUser(newUser);
+		const updatedUser = (await response?.json()) as User;
 		return updatedUser?.settings;
 	}
 

@@ -7,7 +7,6 @@ import React, {
 	forwardRef,
 	useImperativeHandle
 } from 'react';
-import { PartialDeep } from 'type-fest';
 import { FuseAuthProviderComponentType, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import useLocalStorage from '@fuse/hooks/useLocalStorage';
 import { authRefreshToken, authSignIn, authSignInWithToken, authSignUp, authUpdateDbUser } from '@auth/authApi';
@@ -181,7 +180,7 @@ const JwtAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, o
 	/**
 	 * Update user
 	 */
-	const updateUser: JwtAuthContextType['updateUser'] = useCallback(async (_user: PartialDeep<User>) => {
+	const updateUser: JwtAuthContextType['updateUser'] = useCallback(async (_user) => {
 		try {
 			return await authUpdateDbUser(_user);
 		} catch (error) {

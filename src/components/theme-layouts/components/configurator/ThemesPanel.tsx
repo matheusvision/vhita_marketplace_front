@@ -11,10 +11,10 @@ import { SwipeableHandlers } from 'react-swipeable';
 import themeOptions from 'src/configs/themeOptions';
 import { FuseThemeOption } from '@fuse/core/FuseThemeSelector/ThemePreview';
 import useUser from '@auth/useUser';
-import { User } from '@auth/user';
 import useFuseSettings from '@fuse/core/FuseSettings/hooks/useFuseSettings';
 
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { useAppDispatch } from '@/store/hooks';
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
@@ -66,21 +66,19 @@ type ThemesPanelProps = {
 
 function ThemesPanel(props: ThemesPanelProps) {
 	const { schemesHandlers, onClose, open } = props;
-	const { changeTheme } = useFuseSettings();
+	const { setSettings } = useFuseSettings();
 	const { isGuest, updateUserSettings } = useUser();
 	const dispatch = useAppDispatch();
 
-	function handleThemeSelect(_theme: FuseThemeOption) {
-		changeTheme(_theme?.section);
+	async function handleThemeSelect(_theme: FuseThemeOption) {
+		const _newSettings = setSettings({ theme: { ..._theme?.section } } as Partial<FuseSettingsConfigType>);
 
 		if (!isGuest) {
-			updateUserSettings({
-				theme: { ..._theme?.section }
-			} as User['settings']).then((val) => {
-				if (val) {
-					dispatch(showMessage({ message: 'User theme selection saved.' }));
-				}
-			});
+			const updatedUserData = await updateUserSettings(_newSettings);
+
+			if (updatedUserData) {
+				dispatch(showMessage({ message: 'User settings saved.' }));
+			}
 		}
 	}
 
