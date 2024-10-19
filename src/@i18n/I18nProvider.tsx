@@ -40,9 +40,15 @@ export function I18nProvider(props: I18nProviderProps) {
 	};
 
 	useEffect(() => {
-		i18n.changeLanguage(languageId);
+		if (languageId !== i18n.options.lng) {
+			i18n.changeLanguage(languageId);
+		}
+
 		const langDirection = i18n.dir(languageId);
-		setSettings({ ...settings, direction: langDirection });
+
+		if (settings.direction !== langDirection) {
+			setSettings({ direction: langDirection });
+		}
 	}, [languageId]);
 
 	return (
