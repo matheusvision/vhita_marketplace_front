@@ -83,7 +83,7 @@ function DocumentationLayout() {
 			}
 			content={
 				<div className="p-16 md:p-24 min-h-full flex flex-auto flex-col">
-					<div className="flex flex-col flex-1 relative pb-32 prose max-w-4xl">
+					<div className="flex flex-col flex-1 relative pb-32 prose max-w-4xl dark:prose-invert">
 						<Outlet />
 					</div>
 				</div>
