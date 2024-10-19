@@ -1,6 +1,8 @@
 import Typography from '@mui/material/Typography';
 import { ReactNode } from 'react';
-import Link from '@fuse/core/Link';
+import Link from '@mui/material/Link';
+import { Alert, Button } from '@mui/material';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**
  * The changelog item type.
@@ -20,9 +22,85 @@ export type ChangelogItemType = {
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '12.0.0',
-		date: '2024-10-17',
-		newChanges: [],
-		fixedChanges: []
+		date: '2024-10-20',
+		newChanges: [
+			'🚀 Fuse React Nextjs version launched!',
+			'🎨 Material-UI (MUI) updated to v6+.',
+			'📚 Documentation layout updated with improved navigation and additional pages for better user experience.',
+			'🔐 Vitejs version: Authentication system refactored for easier configuration and better multi provider support.',
+			'🛠️ Mock Service Worker (MSW) integrated to simulate API requests, facilitating easier development and testing.'
+		],
+		breakingChanges: [
+			'🏗️ Mock API specifications restructured to align with improved database architecture.',
+			"🔄 Axios library removed in favor of native 'fetch' API for more lightweight and standardized HTTP requests.",
+			"🔧 Axios mock adapter replaced with 'msw' for more flexible and powerful request mocking.",
+			"📦 '@lodash' package removed, now using standard 'lodash' library for utility functions.",
+			'🔀 Redux slices (FuseSettingsSlice, userSlice, i18nSlice) replaced with React Context Providers for better state management.',
+			'@hello-pangea/dnd removed, replaced with @hello-pangea/dnd.',
+			<span>
+				ViteJs "JS" version is no longer supported. You can use the TypeScript compiler (tsc) to compile your
+				TypeScript code into JavaScript. For more information on how to use the TypeScript compiler, refer to
+				the official TypeScript documentation:{' '}
+				<Link
+					href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"
+					target="_blank"
+				>
+					https://www.typescriptlang.org/docs/handbook/compiler-options.html
+				</Link>
+			</span>
+		],
+		notes: (
+			<Alert
+				classes={{
+					root: 'flex flex-col sm:flex-row justify-center items-center sm:justify-start',
+					action: 'flex sm:items-center justify-center w-full sm:w-auto'
+				}}
+				severity="info"
+				className="mb-6"
+				icon={<>🚀</>}
+				action={
+					<Button
+						component={Link}
+						href="https://fuse-react-nextjs.fusetheme.com"
+						target="_blank"
+						variant="outlined"
+						color="inherit"
+						size="small"
+						role="button"
+						startIcon={
+							<div className="flex items-center">
+								<img
+									src="/assets/images/logo/nextjs.svg"
+									alt="Nextjs Logo"
+									className="h-24 dark:hidden"
+								/>
+								<img
+									src="/assets/images/logo/nextjs-dark.svg"
+									alt="Nextjs Logo"
+									className="h-24 hidden dark:block"
+								/>
+							</div>
+						}
+						endIcon={<FuseSvgIcon size={16}>heroicons-outline:arrow-right</FuseSvgIcon>}
+					>
+						Go to the demo
+					</Button>
+				}
+			>
+				<Typography
+					variant="h6"
+					className="font-extrabold text-center"
+				>
+					Fuse React Nextjs version launched!
+				</Typography>
+				<Typography
+					variant="body1"
+					className="font-medium text-center mt-1"
+				>
+					Bringing server-side rendering capabilities with Nextjs.
+				</Typography>
+			</Alert>
+		)
 	},
 	{
 		version: '11.1.0',

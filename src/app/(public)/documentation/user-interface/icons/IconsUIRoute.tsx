@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
+import documentationAuth from '@/app/(public)/documentation/layout/documentationAuth';
 
 const IconListPage = lazy(() => import('./components/IconListPage'));
 
@@ -13,6 +14,7 @@ const IconsUIRoute: FuseRouteItemType = {
 	path: 'documentation/user-interface/icons',
 	element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
+	auth: documentationAuth,
 	children: [
 		{
 			path: '',
