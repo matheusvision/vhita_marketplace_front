@@ -8,6 +8,7 @@ import documentationLayoutSettings from '@/app/(public)/documentation/layout/doc
  */
 const DocumentationRoute: FuseRouteItemType = {
 	path: 'documentation',
+	auth: null,
 	element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
 	children: [

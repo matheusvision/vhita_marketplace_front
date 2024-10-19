@@ -3,6 +3,7 @@ import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import { Navigate } from 'react-router-dom';
 import DocumentationLayout from '../layout/DocumentationLayout';
 import documentationLayoutSettings from '../layout/documentationLayoutSettings';
+import documentationAuth from '@/app/(public)/documentation/layout/documentationAuth';
 
 const IntroductionDoc = lazy(() => import('./introduction/IntroductionDoc'));
 const InstallationDoc = lazy(() => import('./installation/InstallationDoc'));
@@ -15,6 +16,7 @@ const GettingStartedDocRoute: FuseRouteItemType = {
 	path: 'documentation/getting-started',
 	element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
+	auth: documentationAuth,
 	children: [
 		{
 			path: '',

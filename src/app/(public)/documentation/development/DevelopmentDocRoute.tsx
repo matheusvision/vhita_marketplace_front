@@ -7,6 +7,7 @@ import MultiLanguageDoc from './multi-language/MultiLanguageDoc';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 import ApiConfigurationDoc from './api-integration/api-configuration/ApiConfigurationDoc';
+import documentationAuth from '@/app/(public)/documentation/layout/documentationAuth';
 
 const DevelopmentServerDoc = lazy(() => import('./development-server/DevelopmentServerDoc'));
 const ProductionDoc = lazy(() => import('./production/ProductionDoc'));
@@ -22,6 +23,7 @@ const DevelopmentDocRoute: FuseRouteItemType = {
 	path: 'documentation/development',
 	element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
+	auth: documentationAuth,
 	children: [
 		{
 			path: '',

@@ -3,6 +3,7 @@ import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import { Navigate } from 'react-router-dom';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
+import documentationAuth from '@/app/(public)/documentation/layout/documentationAuth';
 
 const FuseThemeDoc = lazy(() => import('./fuse-theme/FuseThemeDoc'));
 const FuseLayoutDoc = lazy(() => import('./fuse-layout/FuseLayoutDoc'));
@@ -22,6 +23,7 @@ const FuseComponentsRoute: FuseRouteItemType = {
 	path: 'documentation/fuse-components',
 	element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
+	auth: documentationAuth,
 	children: [
 		{
 			path: '',
