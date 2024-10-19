@@ -7,7 +7,7 @@ import setIn from '@/utils/setIn';
 type useUser = {
 	data: User | null;
 	isGuest: boolean;
-	updateUser: (updates: Partial<User>) => Promise<Response>;
+	updateUser: (updates: Partial<User>) => Promise<User | undefined>;
 	updateUserSettings: (newSettings: User['settings']) => Promise<User['settings'] | undefined>;
 	signOut: () => void;
 };
@@ -22,7 +22,15 @@ function useUser(): useUser {
 	 * Uses current auth provider's updateUser method
 	 */
 	async function handleUpdateUser(_data: Partial<User>) {
-		return updateUser(_data);
+		const response = await updateUser(_data);
+
+		if (!response.ok) {
+			throw new Error('Failed to update user');
+		}
+
+		const updatedUser = (await response.json()) as User;
+
+		return updatedUser;
 	}
 
 	/**
@@ -36,8 +44,8 @@ function useUser(): useUser {
 			return undefined;
 		}
 
-		const response = await updateUser(newUser);
-		const updatedUser = (await response?.json()) as User;
+		const updatedUser = await handleUpdateUser(newUser);
+
 		return updatedUser?.settings;
 	}
 
