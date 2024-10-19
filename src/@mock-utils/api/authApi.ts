@@ -97,13 +97,11 @@ const authApi = [
 		if (error.length === 0) {
 			const newUser = UserModel({
 				role: ['admin'],
-				data: {
-					displayName,
-					photoURL: '/assets/images/avatars/Abbott.jpg',
-					email,
-					shortcuts: [],
-					settings: {}
-				}
+				displayName,
+				photoURL: '/assets/images/avatars/Abbott.jpg',
+				email,
+				shortcuts: [],
+				settings: {}
 			});
 
 			newUser.id = FuseUtils.generateGUID();
