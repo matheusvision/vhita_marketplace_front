@@ -99,7 +99,7 @@ const authApi = [
 				role: ['admin'],
 				data: {
 					displayName,
-					photoURL: 'assets/images/avatars/Abbott.jpg',
+					photoURL: '/assets/images/avatars/Abbott.jpg',
 					email,
 					shortcuts: [],
 					settings: {}

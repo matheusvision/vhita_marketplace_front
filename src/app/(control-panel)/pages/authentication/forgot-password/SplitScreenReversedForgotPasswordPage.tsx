@@ -122,10 +122,10 @@ function SplitScreenReversedForgotPasswordPage() {
 								}
 							}}
 						>
-							<Avatar src="assets/images/avatars/female-18.jpg" />
-							<Avatar src="assets/images/avatars/female-11.jpg" />
-							<Avatar src="assets/images/avatars/male-09.jpg" />
-							<Avatar src="assets/images/avatars/male-16.jpg" />
+							<Avatar src="/assets/images/avatars/female-18.jpg" />
+							<Avatar src="/assets/images/avatars/female-11.jpg" />
+							<Avatar src="/assets/images/avatars/male-09.jpg" />
+							<Avatar src="/assets/images/avatars/male-16.jpg" />
 						</AvatarGroup>
 
 						<div className="ml-16 font-medium tracking-tight text-gray-400">
@@ -139,7 +139,7 @@ function SplitScreenReversedForgotPasswordPage() {
 				<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 					<img
 						className="w-48"
-						src="assets/images/logo/logo.svg"
+						src="/assets/images/logo/logo.svg"
 						alt="logo"
 					/>
 

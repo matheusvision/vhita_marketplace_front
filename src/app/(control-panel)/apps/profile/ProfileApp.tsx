@@ -40,7 +40,7 @@ function ProfileApp() {
 				<div className="flex flex-col w-full">
 					<img
 						className="h-160 lg:h-320 object-cover w-full"
-						src="assets/images/pages/profile/cover.jpg"
+						src="/assets/images/pages/profile/cover.jpg"
 						alt="Profile Cover"
 					/>
 
@@ -53,7 +53,7 @@ function ProfileApp() {
 								<Avatar
 									sx={{ borderColor: 'background.paper' }}
 									className="w-128 h-128 border-4"
-									src="assets/images/avatars/male-04.jpg"
+									src="/assets/images/avatars/male-04.jpg"
 									alt="User avatar"
 								/>
 							</motion.div>

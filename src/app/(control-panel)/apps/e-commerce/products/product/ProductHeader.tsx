@@ -82,7 +82,7 @@ function ProductHeader() {
 						) : (
 							<img
 								className="w-32 sm:w-48 rounded"
-								src="assets/images/apps/ecommerce/product-image-placeholder.png"
+								src="/assets/images/apps/ecommerce/product-image-placeholder.png"
 								alt={name}
 							/>
 						)}

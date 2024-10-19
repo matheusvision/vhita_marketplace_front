@@ -13,7 +13,7 @@ function DocumentationSidebarHeader(props: DocumentationSidebarHeaderProps) {
 		<div className={clsx('flex items-center space-x-8', className)}>
 			<img
 				className="logo-icon h-32 w-32"
-				src="assets/images/logo/logo.svg"
+				src="/assets/images/logo/logo.svg"
 				alt="logo"
 			/>
 			<div className="logo-text flex flex-col flex-auto">

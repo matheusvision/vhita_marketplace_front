@@ -38,7 +38,7 @@ function ProductsTable() {
 						) : (
 							<img
 								className="w-full max-h-36 max-w-36 block rounded"
-								src="assets/images/apps/ecommerce/product-image-placeholder.png"
+								src="/assets/images/apps/ecommerce/product-image-placeholder.png"
 								alt={row.original.name}
 							/>
 						)}

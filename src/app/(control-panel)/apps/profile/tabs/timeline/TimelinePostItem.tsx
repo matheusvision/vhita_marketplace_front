@@ -189,7 +189,7 @@ function TimelinePostItem(props: PostProps) {
 				<div className="flex flex-auto -mx-4">
 					<Avatar
 						className="mx-4"
-						src="assets/images/avatars/profile.jpg"
+						src="/assets/images/avatars/profile.jpg"
 					/>
 					<div className="flex flex-col flex-1 mx-4 items-end">
 						<Paper className="w-full mb-16 shadow-0 border-1  overflow-hidden">

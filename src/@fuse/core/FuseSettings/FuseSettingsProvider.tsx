@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { defaultSettings, getParsedQuerySettings } from '@fuse/default-settings';
 import settingsConfig from 'src/configs/settingsConfig';
 import themeLayoutConfigs from 'src/components/theme-layouts/themeLayoutConfigs';
-import { FuseSettingsConfigType, FuseThemesType } from '@fuse/core/FuseSettings/FuseSettings';
+import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { getFuseRouteParamUtil } from '@fuse/hooks/useFuseRouteParameter';
 import withRouter, { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import withUser from '@auth/withUser';
@@ -114,7 +114,7 @@ class FuseSettingsProvider extends Component<FuseSettingsProviderProps, FuseSett
 			data,
 			initial,
 			defaults,
-			setSettings,
+			setSettings
 		};
 
 		return <FuseSettingsContext.Provider value={contextValue}>{children}</FuseSettingsContext.Provider>;

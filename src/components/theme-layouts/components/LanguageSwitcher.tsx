@@ -38,7 +38,7 @@ function LanguageSwitcher() {
 			>
 				<img
 					className="mx-4 min-w-20"
-					src={`assets/images/flags/${language.flag}.svg`}
+					src={`/assets/images/flags/${language.flag}.svg`}
 					alt={language.title}
 				/>
 
@@ -78,7 +78,7 @@ function LanguageSwitcher() {
 						<ListItemIcon className="min-w-36">
 							<img
 								className="min-w-20"
-								src={`assets/images/flags/${lng.flag}.svg`}
+								src={`/assets/images/flags/${lng.flag}.svg`}
 								alt={lng.title}
 							/>
 						</ListItemIcon>

@@ -21,7 +21,7 @@ function MailAttachment(props: MailAttachmentProps) {
 			{attachment?.type.startsWith('image/') && (
 				<img
 					className="w-36 h-36 rounded-md overflow-hidden"
-					src={`assets/images/apps/mailbox/${attachment.preview}`}
+					src={`/assets/images/apps/mailbox/${attachment.preview}`}
 					alt="attachment"
 				/>
 			)}

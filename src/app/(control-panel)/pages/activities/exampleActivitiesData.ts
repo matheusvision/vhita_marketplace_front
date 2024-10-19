@@ -15,7 +15,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: '6e3e97e5-effc-4fb7-b730-52a151f0b641',
-		image: 'assets/images/avatars/male-04.jpg',
+		image: '/assets/images/avatars/male-04.jpg',
 		description:
 			'<strong>Leo Gill</strong> added you to <strong>Top Secret Project</strong> group and assigned you as a <strong>Project Manager</strong>',
 		date: sub(new Date(), { minutes: 50 }),
@@ -43,14 +43,14 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: 'ef7b95a7-8e8b-4616-9619-130d9533add9',
-		image: 'assets/images/avatars/male-06.jpg',
+		image: '/assets/images/avatars/male-06.jpg',
 		description: '<strong>Roger Murray</strong> accepted your friend request',
 		date: sub(new Date(), { hours: 7 }),
 		extraContent: `You have <span class="font-semibold">8</span> mutual friends.`
 	},
 	{
 		id: 'eb8aa470-635e-461d-88e1-23d9ea2a5665',
-		image: 'assets/images/avatars/female-04.jpg',
+		image: '/assets/images/avatars/female-04.jpg',
 		description: '<strong>Sophie Stone</strong> sent you a direct message',
 		date: sub(new Date(), { hours: 9 })
 	},
@@ -70,7 +70,7 @@ const exampleActivitiesData: ActivityItemType[] = [
 	},
 	{
 		id: 'fd0f01b4-f3de-4333-add5-cd86850279f8',
-		image: 'assets/images/avatars/female-02.jpg',
+		image: '/assets/images/avatars/female-02.jpg',
 		description: '<strong>Tina Harris</strong> started a chat with you',
 		date: sub(new Date(), { days: 1 }),
 		linkedContent: 'Go to Chat (Tina Harris)',

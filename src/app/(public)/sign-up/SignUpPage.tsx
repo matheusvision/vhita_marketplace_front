@@ -17,19 +17,19 @@ const tabs = [
 	{
 		id: 'jwt',
 		title: 'JWT',
-		logo: 'assets/images/logo/jwt.svg',
+		logo: '/assets/images/logo/jwt.svg',
 		logoClass: 'h-36 p-4 bg-black rounded-lg'
 	},
 	{
 		id: 'firebase',
 		title: 'Firebase',
-		logo: 'assets/images/logo/firebase.svg',
+		logo: '/assets/images/logo/firebase.svg',
 		logoClass: 'h-36'
 	},
 	{
 		id: 'aws',
 		title: 'AWS',
-		logo: 'assets/images/logo/aws-amplify.svg',
+		logo: '/assets/images/logo/aws-amplify.svg',
 		logoClass: 'h-36'
 	}
 ];
@@ -50,7 +50,7 @@ function SignUpPage() {
 				<div className="mx-auto w-full max-w-320 sm:mx-0 sm:w-320">
 					<img
 						className="w-48"
-						src="assets/images/logo/logo.svg"
+						src="/assets/images/logo/logo.svg"
 						alt="logo"
 					/>
 
@@ -189,10 +189,10 @@ function SignUpPage() {
 								}
 							}}
 						>
-							<Avatar src="assets/images/avatars/female-18.jpg" />
-							<Avatar src="assets/images/avatars/female-11.jpg" />
-							<Avatar src="assets/images/avatars/male-09.jpg" />
-							<Avatar src="assets/images/avatars/male-16.jpg" />
+							<Avatar src="/assets/images/avatars/female-18.jpg" />
+							<Avatar src="/assets/images/avatars/female-11.jpg" />
+							<Avatar src="/assets/images/avatars/male-09.jpg" />
+							<Avatar src="/assets/images/avatars/male-16.jpg" />
 						</AvatarGroup>
 
 						<div className="ml-16 font-medium tracking-tight text-gray-400">
