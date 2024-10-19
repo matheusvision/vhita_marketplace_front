@@ -32,6 +32,7 @@ const languages: LanguageType[] = [
 export function I18nProvider(props: I18nProviderProps) {
 	const { children } = props;
 	const { data: settings, setSettings } = useFuseSettings();
+	const settingsThemeDirection = useMemo(() => settings.direction, [settings]);
 	const [languageId, setLanguageId] = useState(i18n.options.lng);
 
 	const changeLanguage = async (languageId: string) => {
@@ -46,10 +47,10 @@ export function I18nProvider(props: I18nProviderProps) {
 
 		const langDirection = i18n.dir(languageId);
 
-		if (settings.direction !== langDirection) {
+		if (settingsThemeDirection !== langDirection) {
 			setSettings({ direction: langDirection });
 		}
-	}, [languageId]);
+	}, [languageId, settingsThemeDirection]);
 
 	return (
 		<I18nContext.Provider
