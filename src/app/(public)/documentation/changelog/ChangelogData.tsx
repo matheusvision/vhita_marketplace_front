@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { ReactNode } from 'react';
-import Link from '@mui/material/Link';
+import Link from '@fuse/core/Link';
 import { Alert, Button } from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
@@ -41,12 +41,13 @@ const changelogData: ChangelogItemType[] = [
 				ViteJs "JS" version is no longer supported. You can use the TypeScript compiler (tsc) to compile your
 				TypeScript code into JavaScript. For more information on how to use the TypeScript compiler, refer to
 				the official TypeScript documentation:{' '}
-				<Link
+				<a
 					href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"
 					target="_blank"
+					rel="noreferrer"
 				>
 					https://www.typescriptlang.org/docs/handbook/compiler-options.html
-				</Link>
+				</a>
 			</span>
 		],
 		notes: (
@@ -60,7 +61,7 @@ const changelogData: ChangelogItemType[] = [
 				icon={<>🚀</>}
 				action={
 					<Button
-						component={Link}
+						component="a"
 						href="https://fuse-react-nextjs.fusetheme.com"
 						target="_blank"
 						variant="outlined"
