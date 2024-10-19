@@ -17,7 +17,7 @@ import { useGetProjectDashboardProjectsQuery } from './ProjectDashboardApi';
 function ProjectDashboardAppHeader() {
 	const { data: projects } = useGetProjectDashboardProjectsQuery();
 
-	const user = useUser();
+	const { data: user, isGuest } = useUser();
 
 	const [selectedProject, setSelectedProject] = useState<{ id: number; menuEl: HTMLElement | null }>({
 		id: 1,
@@ -56,14 +56,14 @@ function ProjectDashboardAppHeader() {
 						})}
 						className="flex-0 w-64 h-64 mt-4"
 						alt="user photo"
-						src={user?.data?.photoURL}
+						src={user?.photoURL}
 					>
-						{user?.data?.displayName?.[0]}
+						{user?.displayName?.[0]}
 					</Avatar>
 					<div className="flex flex-col min-w-0 mx-16">
 						<PageBreadcrumb />
 						<Typography className="text-2xl md:text-5xl font-semibold tracking-tight leading-7 md:leading-snug truncate">
-							{`Welcome back, ${user?.data?.displayName || user?.data?.email}!`}
+							{isGuest ? 'Hi Guest!' : `Welcome back, ${user?.displayName || user?.email}!`}
 						</Typography>
 
 						<div className="flex items-center">
