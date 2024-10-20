@@ -12,7 +12,6 @@ import { alpha } from '@mui/system/colorManipulator';
 import Tooltip from '@mui/material/Tooltip';
 import clsx from 'clsx';
 import Popover, { PopoverProps } from '@mui/material/Popover/Popover';
-import { Partial } from 'react-spring';
 import useUser from '@auth/useUser';
 
 type UserMenuProps = {
