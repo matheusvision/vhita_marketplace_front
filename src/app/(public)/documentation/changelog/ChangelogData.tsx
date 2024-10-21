@@ -22,7 +22,7 @@ export type ChangelogItemType = {
 const changelogData: ChangelogItemType[] = [
 	{
 		version: '12.0.0',
-		date: '2024-10-20',
+		date: '2024-10-21',
 		newChanges: [
 			'🚀 Fuse React Nextjs version launched!',
 			'🎨 Material-UI (MUI) updated to v6+.',
@@ -62,7 +62,7 @@ const changelogData: ChangelogItemType[] = [
 				action={
 					<Button
 						component="a"
-						href="https://fuse-react-nextjs.fusetheme.com"
+						href="https://fuse-react-nextjs-demo.fusetheme.com"
 						target="_blank"
 						variant="outlined"
 						color="inherit"
