@@ -98,8 +98,8 @@ function InstallationDoc() {
 				</Typography>
 
 				<Typography component="div">
-					When you unzip the .zip file you have downloaded from Themeforest, you will find 6 additional .zip
-					files along with other files. You can choose TS (Vite), JS or Next.js versions and both versions has
+					When you unzip the .zip file you have downloaded from Themeforest, you will find 4 additional .zip
+					files along with other files. You can choose React (Vite) or Next.js versions and both versions has
 					demo and skeleton options.
 				</Typography>
 
@@ -110,13 +110,10 @@ function InstallationDoc() {
 							component="div"
 						>
 							<li>
-								Demo TS (Vite) <b>Fuse-react-x.x.x-ts-demo.zip</b>
+								Fuse React ViteJs Demo Project <b>Fuse-React-vx.x.x-vitejs-demo.zip</b>
 							</li>
 							<li>
-								Demo JS (Vite) <b>Fuse-react-x.x.x-js-demo.zip</b>
-							</li>
-							<li>
-								Next.js Demo <b>Fuse-nextjs-x.x.x-demo.zip</b>
+								Fuse React NextJs Demo Project <b>Fuse-React-vx.x.x-nextjs-demo.zip </b>
 							</li>
 						</Typography>
 						<Typography
@@ -143,13 +140,10 @@ function InstallationDoc() {
 							component="div"
 						>
 							<li>
-								Skeleton TS <b>Fuse-react-x.x.x-ts-skeleton.zip</b>
+								Fuse React ViteJs Skeleton Project <b>Fuse-React-vx.x.x-vitejs-skeleton.zip</b>
 							</li>
 							<li>
-								Skeleton JS <b>Fuse-react-x.x.x-js-skeleton.zip</b>
-							</li>
-							<li>
-								Next.js Skeleton <b>Fuse-nextjs-x.x.x-skeleton.zip</b>
+								Fuse React NextJs Skeleton Project <b>Fuse-React-vx.x.x-nextjs-skeleton.zip</b>
 							</li>
 						</Typography>
 						<Typography
