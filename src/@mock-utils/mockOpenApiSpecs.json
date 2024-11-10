@@ -5843,6 +5843,37 @@
         }
       }
     },
+    "/ai-image-generator/presets/{id}": {
+      "delete": {
+        "summary": "Delete AI Image Generator preset",
+        "operationId": "deleteAiImageGenPreset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "description": "Delete an existing preset.",
+        "x-stoplight": {
+          "id": "klrm73h6k1iuj"
+        },
+        "tags": [
+          "aiImageGen_presets"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/ai-image-generator/items": {
       "get": {
         "summary": "Get AI Image Generator items",

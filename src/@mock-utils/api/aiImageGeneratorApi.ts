@@ -23,6 +23,21 @@ const aiImageGeneratorApi = [
 	}),
 
 	/**
+	 * DELETE api/mock/ai-image-generator/presets/:id
+	 */
+	http.delete('/api/mock/ai-image-generator/presets/:id', async ({ params, request }) => {
+		const api = mockApi('ai_image_generator_presets');
+		const { id } = params as Record<string, string>;
+		const result = await api.delete([id]);
+
+		if (!result.success) {
+			return HttpResponse.json({ message: 'Item not found' }, { status: 404 });
+		}
+
+		return HttpResponse.json({ message: 'Deleted successfully' });
+	}),
+
+	/**
 	 * GET api/mock/ai-image-generator/items
 	 */
 	http.get('/api/mock/ai-image-generator/items', async ({ params, request }) => {

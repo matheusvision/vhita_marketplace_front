@@ -1,6 +1,7 @@
 import { apiService as api } from '@/store/apiService';
 
 export const addTagTypes = ['aiImageGen_presets', 'aiImageGen_items', 'aiImageGen_item'] as const;
+
 const injectedRtkApi = api
 	.enhanceEndpoints({
 		addTagTypes
@@ -16,6 +17,13 @@ const injectedRtkApi = api
 					url: `/api/mock/ai-image-generator/presets`,
 					method: 'POST',
 					body: aiImageGenPreset
+				}),
+				invalidatesTags: ['aiImageGen_presets']
+			}),
+			deleteAiImageGenPreset: build.mutation<DeleteAiImageGenPresetApiResponse, DeleteAiImageGenPresetApiArg>({
+				query: (id) => ({
+					url: `/api/mock/ai-image-generator/presets/${id}`,
+					method: 'DELETE'
 				}),
 				invalidatesTags: ['aiImageGen_presets']
 			}),
@@ -60,6 +68,10 @@ export type GetAiImageGenPresetsApiResponse = /** status 200 OK */ AiImageGenPre
 export type GetAiImageGenPresetsApiArg = void;
 export type CreateAiImageGenPresetApiResponse = /** status 200 OK */ AiImageGenPreset;
 export type CreateAiImageGenPresetApiArg = AiImageGenPreset;
+
+export type DeleteAiImageGenPresetApiResponse = unknown;
+export type DeleteAiImageGenPresetApiArg = string;
+
 export type GetAiImageGenItemsApiResponse = /** status 200 OK */ AiImageGenItem[];
 export type GetAiImageGenItemsApiArg = void;
 export type CreateAiImageGenItemApiResponse = /** status 200 OK */ AiImageGenItem;
@@ -104,6 +116,7 @@ export type AiImageGenItem = {
 export const {
 	useGetAiImageGenPresetsQuery,
 	useCreateAiImageGenPresetMutation,
+	useDeleteAiImageGenPresetMutation,
 	useGetAiImageGenItemsQuery,
 	useCreateAiImageGenItemMutation,
 	useGetAiImageGenItemQuery,

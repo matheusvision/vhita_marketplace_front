@@ -1,6 +1,5 @@
 import { Paper, ButtonGroup } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import {
@@ -17,7 +16,7 @@ type AiImageGenListItemProps = {
 
 function AiImageGenListItem(props: AiImageGenListItemProps) {
 	const { item, className = '' } = props;
-	const { setSelectedItem, selectedItem } = useAiImageGenAppContext();
+	const { setSelectedItem } = useAiImageGenAppContext();
 
 	const [remove] = useDeleteAiImageGenItemMutation();
 	const [update] = useUpdateAiImageGenItemMutation();
@@ -27,7 +26,6 @@ function AiImageGenListItem(props: AiImageGenListItemProps) {
 	}
 
 	function handleRemove() {
-		console.info('remove', item.id);
 		remove(item.id);
 	}
 
@@ -44,7 +42,7 @@ function AiImageGenListItem(props: AiImageGenListItemProps) {
 	}
 
 	return (
-		<Paper className={clsx('relative group', className)}>
+		<Paper className={clsx('relative group min-h-200', className)}>
 			{item.favorite && (
 				<FuseSvgIcon className="absolute top-8 right-8 text-red-500">heroicons-solid:heart</FuseSvgIcon>
 			)}
@@ -75,7 +73,6 @@ function AiImageGenListItem(props: AiImageGenListItemProps) {
 					</IconButton>
 				</ButtonGroup>
 			</div>
-			<Typography className="mt-8 text-sm truncate">{item.formData?.prompt}</Typography>
 		</Paper>
 	);
 }

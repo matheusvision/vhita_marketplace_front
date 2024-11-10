@@ -1,4 +1,5 @@
 import { FormControl, InputLabel, Select, MenuItem, Typography } from '@mui/material';
+import { forwardRef, ForwardedRef } from 'react';
 
 const sizeOptions = [
 	{ value: '1024x1024', label: '1024 x 1024' },
@@ -10,13 +11,14 @@ type SizeFormControllerProps = {
 	onChange: (value: string) => void;
 };
 
-function SizeFormController(props: SizeFormControllerProps) {
+const SizeFormController = forwardRef((props: SizeFormControllerProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { value, onChange } = props;
 
 	return (
 		<FormControl fullWidth>
 			<InputLabel>Size</InputLabel>
 			<Select
+				ref={ref}
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 				label="Size"
@@ -41,6 +43,6 @@ function SizeFormController(props: SizeFormControllerProps) {
 			</Select>
 		</FormControl>
 	);
-}
+});
 
 export default SizeFormController;

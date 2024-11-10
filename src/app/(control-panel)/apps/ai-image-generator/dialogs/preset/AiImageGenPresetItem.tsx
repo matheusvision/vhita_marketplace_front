@@ -1,8 +1,8 @@
 import { Typography, IconButton, Chip, lighten, Button } from '@mui/material';
 import { format } from 'date-fns';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { MouseEventHandler } from 'react';
-import { AiImageGenPreset } from '../../AiImageGenApi';
+import { MouseEventHandler, MouseEvent } from 'react';
+import { AiImageGenPreset, useDeleteAiImageGenPresetMutation } from '../../AiImageGenApi';
 
 type AiImageGenPresetItemProps = {
 	preset: AiImageGenPreset;
@@ -11,6 +11,12 @@ type AiImageGenPresetItemProps = {
 
 function AiImageGenPresetItem(props: AiImageGenPresetItemProps) {
 	const { preset, onClick } = props;
+	const [removePreset] = useDeleteAiImageGenPresetMutation();
+
+	function handleRemovePreset(ev: MouseEvent<HTMLButtonElement>) {
+		ev.stopPropagation();
+		removePreset(preset.id);
+	}
 
 	return (
 		<Button
@@ -39,10 +45,7 @@ function AiImageGenPresetItem(props: AiImageGenPresetItemProps) {
 					</Typography>
 					<IconButton
 						size="small"
-						onClick={(e) => {
-							e.stopPropagation();
-							// Implement delete preset logic
-						}}
+						onClick={handleRemovePreset}
 					>
 						<FuseSvgIcon size={16}>heroicons-solid:trash</FuseSvgIcon>
 					</IconButton>
