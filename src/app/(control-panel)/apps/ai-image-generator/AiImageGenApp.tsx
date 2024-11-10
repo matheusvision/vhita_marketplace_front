@@ -29,6 +29,12 @@ function AiImageGenApp() {
 		setLeftSidebarOpen(!isMobile);
 	}, [isMobile]);
 
+	useEffect(() => {
+		if (isMobile && loading) {
+			setLeftSidebarOpen(false);
+		}
+	}, [isMobile, loading]);
+
 	const contextValue = useMemo(
 		() => ({
 			apiKey,

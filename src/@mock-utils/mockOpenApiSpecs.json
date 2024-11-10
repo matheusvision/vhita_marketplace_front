@@ -35044,7 +35044,76 @@
               "data": [
                 {
                   "revised_prompt": "A captivating visual of an underwater mystical world, filled with bioluminescent coral reefs and unique, exotic sea creatures in a surreal, radiant environment. The scene is depicted in a painterly style with soft and gentle brush strokes that resonate with digital artistic themes. The mood of the scene is ethereal; sparks of soft bioluminescent lighting coming off the sea flora and fauna contribute to a dreamlike, mysterious feel. There are no traces of humans, boats, or pollution in this beautiful underwater tableau.",
-                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-11WrUZC5UNIaofXjCTEJw3E0/image-gen-demo/img-fnxNrbFKTaPGc06qkYhwVrLB.png?st=2024-11-09T22%3A17%3A57Z&se=2024-11-10T00%3A17%3A57Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-11-09T09%3A15%3A55Z&ske=2024-11-10T09%3A15%3A55Z&sks=b&skv=2024-08-04&sig=7oqLVoh9DhZgX7%2BjDscVBb86i1VKed4%2BWpehsTQ2pmI%3D"
+                  "url": "/assets/images/apps/ai-image-generator/mock-storage/img-fnxNrbFKTaPGc06qkYhwVrLB.png"
+                }
+              ]
+            }
+          },
+          {
+            "id": "40dce929-4fe3-4b77-9cf5-96ed754750eb",
+            "formData": {
+              "prompt": "Retro-style arcade with vintage gaming machines",
+              "negativePrompt": "modern technology, outdoor scenes",
+              "size": "1024x1024",
+              "style": "natural",
+              "quality": "standard",
+              "artStyle": "pixel_art",
+              "mood": "nostalgic",
+              "lighting": "neon_glow"
+            },
+            "favorite": false,
+            "response": {
+              "created": 1731222401,
+              "data": [
+                {
+                  "revised_prompt": "A retro-style arcade filled with vintage gaming machines. The scene features a nostalgic and sentimental atmosphere with soft lighting, emitting a sense of history and cherished memories. The arcade is illuminated by vivid neon lights, casting colorful glows on the machines and giving off an urban vibe. The overall art style is reminiscent of the retro 8-bit or 16-bit era, with a pixelated, grid-based look that's representative of classic video games. The machines are covered with dust and scuffs, but still function, showcasing decades-old games that were once the height of technology.",
+                  "url": "/assets/images/apps/ai-image-generator/mock-storage/img-0VSR40G0dwjWBL3XjAHB4vPu.png"
+                }
+              ]
+            }
+          },
+          {
+            "id": "e49df1dd-f7bd-435e-9f25-538aa54f7462",
+            "formData": {
+              "prompt": "8-bit style haunted mansion at midnight",
+              "negativePrompt": "realistic textures, smooth gradients",
+              "size": "1024x1024",
+              "style": "natural",
+              "quality": "standard",
+              "artStyle": "pixel_art",
+              "mood": "dark_fantasy",
+              "lighting": "spotlight"
+            },
+            "favorite": false,
+            "response": {
+              "created": 1731222509,
+              "data": [
+                {
+                  "revised_prompt": "Create an image of a haunted mansion. The house should be depicted in a retro 8-bit or 16-bit style, giving it a pixelated, grid-based look, akin to classic video games. It is midnight, and the surrounding scene should be dark and mysterious, however, the structure remains a focal point through dramatic illumination, appearing brightly lit against the darker background. Despite the haunted theme, imbue the scene with a sense of fantasy. Please refrain from using realistic textures and smooth gradients as this is intended to be a retro-themed image.",
+                  "url": "/assets/images/apps/ai-image-generator/mock-storage/img-RrCHzYKMxl4G2ye1E77P0kxG.png"
+                }
+              ]
+            }
+          },
+          {
+            "id": "93802ca9-2404-423f-a6cf-1eea56d57c32",
+            "formData": {
+              "prompt": "Misty forest waterfall in autumn colors",
+              "negativePrompt": "people, buildings, vehicles",
+              "size": "1024x1024",
+              "style": "natural",
+              "quality": "hd",
+              "artStyle": "watercolor",
+              "mood": "serene",
+              "lighting": "soft_ambient"
+            },
+            "favorite": false,
+            "response": {
+              "created": 1731222950,
+              "data": [
+                {
+                  "revised_prompt": "Imagine a serene and tranquil scene of a misty forest waterfall. The ambiance is enhanced by the colorful hues of autumn. The waterfall cascades down gently in the midst of the fog, offering a sense of calmness. Render this image in the style characterized by soft and fluid brush strokes with translucent layers of color blending. The lighting in this composition should be gentle and diffused, with minimum shadows to add to its dreamy aesthetic. This image should not include any people, buildings or vehicles.",
+                  "url": "/assets/images/apps/ai-image-generator/mock-storage/img-f4stVCcfCySKLns6bPly61Al.png"
                 }
               ]
             }
