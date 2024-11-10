@@ -1,4 +1,14 @@
-import { Button, Typography, IconButton, Tooltip, OutlinedInput, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import {
+	Button,
+	Typography,
+	IconButton,
+	Tooltip,
+	OutlinedInput,
+	ToggleButton,
+	ToggleButtonGroup,
+	Box,
+	alpha
+} from '@mui/material';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -270,12 +280,15 @@ function ImageGeneratorForm() {
 
 				<FormSection>
 					<div className="flex justify-center mb-32">
-						<div
-							className="border-2 border-dashed border-gray-300 rounded flex items-center justify-center bg-gray-50"
-							style={{
+						<Box
+							sx={{
+								backgroundColor: (theme) => alpha(theme.palette.background.default, 0.7),
+								color: (theme) => theme.palette.text.secondary,
+								border: (theme) => `1px dashed ${theme.palette.divider}`,
 								width: '150px',
 								aspectRatio: formData.size.replace('x', '/')
 							}}
+							className="rounded flex items-center justify-center"
 						>
 							<Typography
 								variant="caption"
@@ -283,7 +296,7 @@ function ImageGeneratorForm() {
 							>
 								{formData.size}
 							</Typography>
-						</div>
+						</Box>
 					</div>
 
 					<div className="space-y-24">

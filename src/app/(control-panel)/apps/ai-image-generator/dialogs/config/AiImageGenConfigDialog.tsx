@@ -16,7 +16,6 @@ function AiImageGenConfigDialog() {
 	};
 
 	const handleSave = useCallback(() => {
-		console.info(apiKeyInputValue);
 		setApiKey(apiKeyInputValue);
 		handleClose();
 	}, [apiKeyInputValue, handleClose, setApiKey]);
