@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material';
+import _ from 'lodash';
 import { AiImageGenItem } from '@/app/(control-panel)/apps/ai-image-generator/AiImageGenApi';
 import AiImageGenListItem from './AiImageGenListItem';
 
@@ -19,13 +20,15 @@ function AiImageGenList(props: AiImageGenListProps) {
 
 	return (
 		<div className="w-full mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-			{items?.map((image) => (
-				<AiImageGenListItem
-					className="w-full flex col-span-1"
-					key={image.id}
-					item={image}
-				/>
-			))}
+			{_.sortBy(items, (item) => item?.response?.created)
+				.reverse()
+				.map((image) => (
+					<AiImageGenListItem
+						className="w-full flex col-span-1"
+						key={image.id}
+						item={image}
+					/>
+				))}
 		</div>
 	);
 }
