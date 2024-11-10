@@ -42,15 +42,16 @@ function AiImageGenListItem(props: AiImageGenListItemProps) {
 	}
 
 	return (
-		<Paper className={clsx('relative group min-h-200', className)}>
+		<Paper
+			className={clsx('relative group min-h-120 lg:min-h-200', className)}
+			sx={{
+				aspectRatio: item.formData?.size.replace('x', '/'),
+				background: `url(${item.response?.data[0]?.url}) no-repeat center center / cover`
+			}}
+		>
 			{item.favorite && (
 				<FuseSvgIcon className="absolute top-8 right-8 text-red-500">heroicons-solid:heart</FuseSvgIcon>
 			)}
-			<img
-				src={item.response?.data[0]?.url}
-				alt={item.formData?.prompt}
-				className="w-full h-auto rounded-lg"
-			/>
 			<div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-200 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100">
 				<ButtonGroup
 					variant="contained"
