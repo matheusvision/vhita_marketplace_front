@@ -2,7 +2,6 @@ import { lazy } from 'react';
 import { Navigate } from 'react-router';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
-import documentationAuth from '@/app/(public)/documentation/layout/documentationAuth';
 
 const Accordion = lazy(() => import('./doc/Accordion'));
 const Alert = lazy(() => import('./doc/Alert'));
@@ -63,7 +62,6 @@ const MaterialUIComponentsRoute = {
 	path: 'documentation/material-ui-components',
 	element: <DocumentationLayout />,
 	settings: documentationLayoutSettings,
-	auth: documentationAuth,
 	children: [
 		{
 			path: '',

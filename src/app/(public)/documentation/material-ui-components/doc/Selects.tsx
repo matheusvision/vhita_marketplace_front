@@ -617,7 +617,7 @@ return (
 			>
 				To properly label your <code>Select</code> input you need an extra element with an <code>id</code> that
 				contains a label. That <code>id</code> needs to match the <code>labelId</code> of the{' '}
-				<code>Select</code> e.g.
+				<code>Select</code>, for example:
 			</Typography>
 
 			<FuseHighlight

@@ -200,7 +200,7 @@ interface PopoverVirtualElement {
 				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
-				Complementary projects
+				Supplementary projects
 			</Typography>
 			<Typography
 				className="text-base mb-32"

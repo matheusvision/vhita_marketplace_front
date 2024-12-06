@@ -13,7 +13,7 @@ type FuseHighlightProps = {
 	component?: ElementType;
 	className: string;
 	copy?: boolean;
-	ref: React.RefObject<HTMLDivElement>;
+	ref?: React.RefObject<HTMLDivElement>;
 };
 
 /**

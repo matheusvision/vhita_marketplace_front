@@ -99,11 +99,11 @@ function Grid2Doc(props) {
 					<a href="/material-ui/customization/breakpoints/#default-breakpoints">breakpoint constraints</a>.
 				</li>
 				<li>
-					It uses negative margins and padding to create gaps between children, which behave similarly to{' '}
+					It uses{' '}
 					<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">
 						the <code>gap</code> CSS property
-					</a>
-					.
+					</a>{' '}
+					to add spacing between items.
 				</li>
 				<li>
 					It does <em>not</em> support row spanning. Children elements cannot span multiple rows. We recommend
@@ -441,7 +441,7 @@ function Grid2Doc(props) {
 				className="text-base mb-32"
 				component="div"
 			>
-				A nested grid container will inherits the row and column spacing from its parent unless the{' '}
+				A nested grid container inherits the row and column spacing from its parent unless the{' '}
 				<code>spacing</code> prop is specified to the instance.
 			</Typography>
 			<Typography
@@ -466,8 +466,8 @@ function Grid2Doc(props) {
 				className="text-base mb-32"
 				component="div"
 			>
-				A nested grid container will inherits the columns from its parent unless the <code>columns</code> prop
-				is specified to the instance.
+				A nested grid container inherits the columns from its parent unless the <code>columns</code> prop is
+				specified to the instance.
 			</Typography>
 			<Typography
 				className="text-base mb-32"

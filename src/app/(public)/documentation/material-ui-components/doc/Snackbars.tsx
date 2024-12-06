@@ -325,7 +325,7 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
-				Third-party integrations
+				Supplementary components
 			</Typography>
 			<Typography
 				className="text-15 mt-20 mb-10 font-700"

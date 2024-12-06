@@ -335,8 +335,8 @@ function MenusDoc(props) {
 				className="text-base mb-32"
 				component="div"
 			>
-				There is <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=327437">a flexbox bug</a> that
-				prevents <code>text-overflow: ellipsis</code> from working in a flexbox layout. You can use the{' '}
+				There is <a href="https://issues.chromium.org/issues/40344463">a flexbox bug</a> that prevents{' '}
+				<code>text-overflow: ellipsis</code> from working in a flexbox layout. You can use the{' '}
 				<code>Typography</code> component with <code>noWrap</code> to workaround this issue:
 			</Typography>
 			<Typography
@@ -403,7 +403,7 @@ function MenusDoc(props) {
 				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
-				Complementary projects
+				Supplementary projects
 			</Typography>
 			<Typography
 				className="text-base mb-32"

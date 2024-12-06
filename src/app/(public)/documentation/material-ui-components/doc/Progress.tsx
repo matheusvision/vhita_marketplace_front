@@ -29,8 +29,6 @@ import CustomizedProgressBarsComponent from '../components/progress/CustomizedPr
 import CustomizedProgressBarsRaw from '../components/progress/CustomizedProgressBars.tsx?raw';
 import DelayingAppearanceComponent from '../components/progress/DelayingAppearance';
 import DelayingAppearanceRaw from '../components/progress/DelayingAppearance.tsx?raw';
-import CircularUnderLoadComponent from '../components/progress/CircularUnderLoad';
-import CircularUnderLoadRaw from '../components/progress/CircularUnderLoad.tsx?raw';
 
 function ProgressDoc(props) {
 	return (
@@ -382,86 +380,6 @@ function Progress(props) {
 					raw={DelayingAppearanceRaw}
 				/>
 			</Typography>
-			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
-				component="h2"
-			>
-				Limitations
-			</Typography>
-			<Typography
-				className="text-15 mt-20 mb-10 font-700"
-				component="h3"
-			>
-				High CPU load
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				Under heavy load, you might lose the stroke dash animation or see random <code>CircularProgress</code>{' '}
-				ring widths. You should run processor intensive operations in a web worker or by batch in order not to
-				block the main rendering thread.
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				<img
-					src="/material-ui-static/images/progress/heavy-load.gif"
-					alt="heavy load"
-				/>
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				When it&#39;s not possible, you can leverage the <code>disableShrink</code> prop to mitigate the issue.
-				See <a href="https://github.com/mui/material-ui/issues/10327">this issue</a>.
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				<FuseExample
-					name="CircularUnderLoad.js"
-					className="my-16"
-					iframe={false}
-					component={CircularUnderLoadComponent}
-					raw={CircularUnderLoadRaw}
-				/>
-			</Typography>
-			<Typography
-				className="text-15 mt-20 mb-10 font-700"
-				component="h3"
-			>
-				High frequency updates
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				The <code>LinearProgress</code> uses a transition on the CSS transform property to provide a smooth
-				update between different values. The default transition duration is 200ms. In the event a parent
-				component updates the <code>value</code> prop too quickly, you will at least experience a 200ms delay
-				between the re-render and the progress bar fully updated.
-			</Typography>
-			<Typography
-				className="text-base mb-32"
-				component="div"
-			>
-				If you need to perform 30 re-renders per second or more, we recommend disabling the transition:
-			</Typography>
-
-			<FuseHighlight
-				component="pre"
-				className="language-css"
-			>
-				{` 
-.MuiLinearProgress-bar {
-  transition: none;
-}
-`}
-			</FuseHighlight>
 		</>
 	);
 }

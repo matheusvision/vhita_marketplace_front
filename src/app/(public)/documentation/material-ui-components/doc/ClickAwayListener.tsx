@@ -47,7 +47,7 @@ function ClickAwayListenerDoc(props) {
 			>
 				Click-Away Listener is a part of the standalone <a href="/base-ui/">Base UI</a> component library. It is
 				currently re-exported from <code>@mui/material</code> for your convenience, but it will be removed from
-				this package in a future major version, after <code>@mui/base</code> gets a stable release. :::
+				this package in a future major version after Base UI gets a stable release. :::
 			</Typography>
 		</>
 	);

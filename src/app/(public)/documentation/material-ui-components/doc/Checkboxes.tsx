@@ -209,6 +209,12 @@ function CheckboxesDoc(props) {
 				className="text-base mb-32"
 				component="div"
 			>
+				You can change the indeterminate icon using the <code>indeterminateIcon</code> prop.
+			</Typography>
+			<Typography
+				className="text-base mb-32"
+				component="div"
+			>
 				<FuseExample
 					name="IndeterminateCheckbox.js"
 					className="my-16"

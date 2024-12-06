@@ -1197,8 +1197,8 @@ const filterOptions = (options, { inputValue }) => matchSorter(options, inputVal
 				By default, the component disables the input <strong>autocomplete</strong> feature (remembering what the
 				user has typed for a given field in a previous session) with the <code>{`autoComplete="off"`}</code>{' '}
 				attribute. Google Chrome does not currently support this attribute setting (
-				<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=587466">Issue 587466</a>). A possible
-				workaround is to remove the <code>id</code> to have the component generate a random one.
+				<a href="https://issues.chromium.org/issues/41239842">Issue 41239842</a>). A possible workaround is to
+				remove the <code>id</code> to have the component generate a random one.
 			</Typography>
 			<Typography
 				className="text-base mb-32"

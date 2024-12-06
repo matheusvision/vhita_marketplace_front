@@ -45,7 +45,7 @@ function PopperDoc(props) {
 				className="text-base mb-32"
 				component="div"
 			>
-				Some important features of the <code>Popper</code> component:
+				Some important features of the Popper component:
 			</Typography>
 			<ul className="space-y-16">
 				<li>
@@ -54,28 +54,17 @@ function PopperDoc(props) {
 				</li>
 				<li>💄 It&#39;s an alternative API to react-popper. It aims for simplicity.</li>
 				<li>
-					The children is{' '}
-					<a href="/material-ui/react-portal/">
-						<code>Portal</code>
-					</a>{' '}
-					to the body of the document to avoid rendering problems. You can disable this behavior with{' '}
-					<code>disablePortal</code>.
+					Its child element is a <a href="/base-ui/react-portal/">Base UI Portal</a> on the body of the
+					document to avoid rendering problems. You can disable this behavior with <code>disablePortal</code>.
 				</li>
 				<li>
-					The scroll isn&#39;t blocked like with the{' '}
-					<a href="/material-ui/react-popover/">
-						<code>Popover</code>
-					</a>{' '}
+					The scroll isn&#39;t blocked like with the <a href="/material-ui/react-popover/">Popover</a>{' '}
 					component. The placement of the popper updates with the available area in the viewport.
 				</li>
 				<li>
-					Clicking away does not hide the <code>Popper</code> component. If you need this behavior, you can
-					use{' '}
-					<a href="/material-ui/react-click-away-listener/">
-						<code>ClickAwayListener</code>
-					</a>{' '}
-					- see the example in the{' '}
-					<a href="/material-ui/react-menu/#menulist-composition">menu documentation section</a>.
+					Clicking away does not hide the Popper component. If you need this behavior, you can use the{' '}
+					<a href="/base-ui/react-click-away-listener/">Base UI Click-Away Listener</a> - see the example in
+					the <a href="/material-ui/react-menu/#menulist-composition">menu documentation section</a>.
 				</li>
 				<li>
 					The <code>anchorEl</code> is passed as the reference object to create a new <code>Popper.js</code>{' '}
@@ -86,7 +75,7 @@ function PopperDoc(props) {
 				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
-				Basic popper
+				Basic Popper
 			</Typography>
 			<Typography
 				className="text-base mb-32"
@@ -223,7 +212,7 @@ function PopperDoc(props) {
 				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
-				Complementary projects
+				Supplementary projects
 			</Typography>
 			<Typography
 				className="text-base mb-32"

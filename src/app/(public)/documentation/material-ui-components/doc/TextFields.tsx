@@ -178,11 +178,10 @@ function TextFieldsDoc(props) {
 				className="text-base mb-32"
 				component="div"
 			>
-				The <code>multiline</code> prop transforms the text field into a{' '}
-				<a href="/material-ui/react-textarea-autosize/">TextareaAutosize</a> element. Unless the{' '}
-				<code>rows</code> prop is set, the height of the text field dynamically matches its content (using{' '}
-				<a href="/material-ui/react-textarea-autosize/">TextareaAutosize</a>). You can use the{' '}
-				<code>minRows</code> and <code>maxRows</code> props to bound it.
+				The <code>multiline</code> prop transforms the Text Field into a{' '}
+				<a href="/base-ui/react-textarea-autosize/">Base UI Textarea Autosize</a> element. Unless the{' '}
+				<code>rows</code> prop is set, the height of the text field dynamically matches its content. You can use
+				the <code>minRows</code> and <code>maxRows</code> props to bound it.
 			</Typography>
 			<Typography
 				className="text-base mb-32"
@@ -812,7 +811,7 @@ export default function App() {
 				className="language-jsx"
 			>
 				{` 
-<TextField InputLabelProps={{ shrink: true }} />
+<TextField slotProps={{ inputLabel: { shrink: true } }} />
 `}
 			</FuseHighlight>
 			<Typography
@@ -1026,10 +1025,12 @@ const MyInputComponent = React.forwardRef((props, ref) => {
 
 // usage
 <TextField
-  InputProps={{
-    inputComponent: MyInputComponent,
-    inputProps: {
-      component: SomeThirdPartyComponent,
+  slotProps={{
+    input: {
+      inputComponent: MyInputComponent,
+      inputProps: {
+        component: SomeThirdPartyComponent,
+      },
     },
   
 />;
@@ -1087,8 +1088,9 @@ const MyInputComponent = React.forwardRef((props, ref) => {
 				className="text-3xl mt-24 mb-10 font-700"
 				component="h2"
 			>
-				Complementary projects
+				Supplementary projects
 			</Typography>
+
 			<Typography
 				className="text-base mb-32"
 				component="div"
@@ -1097,11 +1099,8 @@ const MyInputComponent = React.forwardRef((props, ref) => {
 			</Typography>
 			<ul className="space-y-16">
 				<li>
-					<a href="https://react-hook-form.com/">react-hook-form</a>: React hook for form validation.
-				</li>
-				<li>
-					<a href="https://github.com/dohomi/react-hook-form-mui">react-hook-form-mui</a>: Material UI and
-					react-hook-form combined.
+					<a href="https://github.com/dohomi/react-hook-form-mui">react-hook-form-mui</a>: Material UI and{' '}
+					<a href="https://react-hook-form.com/">react-hook-form</a> combined.
 				</li>
 				<li>
 					<a href="https://github.com/stackworx/formik-mui">formik-material-ui</a>: Bindings for using
@@ -1115,13 +1114,6 @@ const MyInputComponent = React.forwardRef((props, ref) => {
 					<a href="https://www.npmjs.com/package/@ui-schema/ds-material">@ui-schema/ds-material</a> Bindings
 					for using Material UI with <a href="https://github.com/ui-schema/ui-schema">UI Schema</a>. JSON
 					Schema compatible.
-				</li>
-				<li>
-					<a href="https://www.data-driven-forms.org/provided-mappers/mui-component-mapper">
-						@data-driven-forms/mui-component-mapper
-					</a>
-					: Bindings for using Material UI with{' '}
-					<a href="https://github.com/data-driven-forms/react-forms">Data Driven Forms</a>.
 				</li>
 			</ul>
 		</>
