@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import usePathname from '@fuse/hooks/usePathname';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import MainSidebar from './sidebars/main/MainSidebar';
 import ContactSidebar from './sidebars/contact/ContactSidebar';
 import UserSidebar from './sidebars/user/UserSidebar';

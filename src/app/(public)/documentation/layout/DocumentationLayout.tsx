@@ -11,7 +11,7 @@ import { Button } from '@mui/material';
 import Link from '@fuse/core/Link';
 import PurchaseButton from 'src/components/theme-layouts/components/PurchaseButton';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import DocumentationNavigation from '../DocumentationNavigation';
 import DocumentationSidebarHeader from './DocumentationSidebarHeader';
 

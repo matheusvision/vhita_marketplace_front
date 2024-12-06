@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import { CSSProperties, forwardRef, ReactNode } from 'react';
 
 export type NavLinkAdapterPropsType = {

@@ -1,6 +1,6 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { styled } from '@mui/material/styles';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import useNavigate from '@fuse/hooks/useNavigate';

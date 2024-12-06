@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { lazy } from 'react';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import ar from './i18n/ar';

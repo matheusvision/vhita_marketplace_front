@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 import Paper from '@mui/material/Paper';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';

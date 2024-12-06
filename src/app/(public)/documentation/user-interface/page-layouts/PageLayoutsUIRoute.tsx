@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import EmptyExampleComponent from './empty/EmptyExampleComponent';
 import SimpleWithSidebarsNormalScrollComponent from './simple/with-sidebars/normal-scroll/SimpleWithSidebarsNormalScrollComponent';

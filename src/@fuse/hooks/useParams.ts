@@ -1,4 +1,4 @@
-import { useParams as _useParams } from 'react-router-dom';
+import { useParams as _useParams } from 'react-router';
 
 function useParams() {
 	return _useParams();

@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
 import BoardItem from './BoardItem';

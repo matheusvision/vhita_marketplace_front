@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Typography from '@mui/material/Typography';
 import FuseNavigation from '@fuse/core/FuseNavigation';
 import FuseNavItemModel from '@fuse/core/FuseNavigation/models/FuseNavItemModel';

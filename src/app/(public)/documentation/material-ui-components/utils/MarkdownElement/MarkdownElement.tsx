@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { marked } from 'marked';
-import PropTypes from 'prop-types';
 import { Grammar } from 'prismjs';
 import prism from './prism';
 
@@ -264,7 +263,7 @@ marked.setOptions({
 
 type MarkdownElementProps = {
 	className?: string;
-	text: string;
+	text?: string;
 };
 
 function MarkdownElement(props: MarkdownElementProps) {
@@ -278,10 +277,5 @@ function MarkdownElement(props: MarkdownElementProps) {
 		/>
 	);
 }
-
-MarkdownElement.propTypes = {
-	className: PropTypes.string,
-	text: PropTypes.string
-};
 
 export default MarkdownElement;

@@ -1,6 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Box from '@mui/material/Box';
 
 /**

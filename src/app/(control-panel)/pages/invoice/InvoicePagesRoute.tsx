@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import CompactInvoicePage from './printable/CompactInvoicePage';
 import ModernInvoicePage from './printable/ModernInvoicePage';

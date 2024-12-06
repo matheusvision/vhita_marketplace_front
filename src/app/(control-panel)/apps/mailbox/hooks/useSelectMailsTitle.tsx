@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import _ from 'lodash';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useGetMailboxFiltersQuery, useGetMailboxFoldersQuery, useGetMailboxLabelsQuery } from '../MailboxApi';
 
 function useSelectMailsTitle() {

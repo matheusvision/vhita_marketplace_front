@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useMemo } from 'react';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
 import _ from 'lodash';

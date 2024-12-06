@@ -57,6 +57,7 @@
   "include": [
     "src",
     "tailwind.config.js",
+    "tailwind.config.ts",
     "vite.config.mts",
     "vite-env.d.ts"
   ],

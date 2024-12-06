@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import Link from '@fuse/core/Link';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useCallback, useEffect } from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from 'lodash';

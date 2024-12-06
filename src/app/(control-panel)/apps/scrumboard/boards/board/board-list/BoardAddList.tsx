@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import { useEffect, useState, MouseEvent } from 'react';
 import _ from 'lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ScrumboardList, useCreateScrumboardBoardListMutation } from '../../../ScrumboardApi';

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { PartialObjectDeep } from 'type-fest/source/partial-deep';
 import { ScrumboardBoard, useGetScrumboardBoardQuery, useUpdateScrumboardBoardMutation } from '../ScrumboardApi';
 

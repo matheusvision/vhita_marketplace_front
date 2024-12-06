@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import FusePageCarded from '@fuse/core/FusePageCarded';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 
 /**
  * AdminRoleExample component renders the page for admin users.

@@ -5,7 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, MouseEvent } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import ToolbarMenu from './ToolbarMenu';
 import { useGetScrumboardBoardLabelsQuery } from '../../../../../ScrumboardApi';
 

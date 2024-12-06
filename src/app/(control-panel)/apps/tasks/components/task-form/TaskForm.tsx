@@ -17,7 +17,7 @@ import { useDeepCompareEffect } from '@fuse/hooks';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import useNavigate from '@fuse/hooks/useNavigate';
 import TaskPrioritySelector from './TaskPrioritySelector';
 import FormActionsMenu from './FormActionsMenu';

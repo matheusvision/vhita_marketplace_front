@@ -1,4 +1,6 @@
-import path  from 'path';
+import iconSize from './src/@fuse/tailwind/plugins/icon-size';
+import typography from '@tailwindcss/typography';
+import aspectRatio from '@tailwindcss/aspect-ratio';
 
 export default {
 	important: "#root",
@@ -1588,10 +1590,8 @@ export default {
 		"disabled",
 	],
 	plugins: [
-		// eslint-disable-next-line import/no-dynamic-require
-		require("./src/@fuse/tailwind/plugins/icon-size"),
-		// Other third party and/or custom plugins
-		require("@tailwindcss/typography")({ modifiers: ["sm", "lg"] }),
-		require("@tailwindcss/aspect-ratio"),
+		iconSize,
+		typography({ modifiers: ["sm", "lg"] }),
+		aspectRatio,
 	],
 };

@@ -10,7 +10,7 @@ import { format } from 'date-fns/format';
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 import { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import { NavLinkAdapterPropsType } from '@fuse/core/NavLinkAdapter/NavLinkAdapter';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { selectSelectedMailIds, toggleInSelectedMails } from '../mailboxAppSlice';
 import { MailboxMail } from '../MailboxApi';
 

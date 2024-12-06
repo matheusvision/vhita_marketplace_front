@@ -1,5 +1,5 @@
 import { forwardRef, ComponentType } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router';
 
 export type WithRouterProps = {
 	location: ReturnType<typeof useLocation>;

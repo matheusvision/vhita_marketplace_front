@@ -424,7 +424,7 @@ function writeRouteFile(pages: string[]) {
 
 	const content = `
 		import { lazy } from 'react';
-		import { Navigate } from 'react-router-dom';
+		import { Navigate } from 'react-router';
 		import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 		import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 

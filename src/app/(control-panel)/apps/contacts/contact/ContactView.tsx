@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import FuseLoading from '@fuse/core/FuseLoading';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';

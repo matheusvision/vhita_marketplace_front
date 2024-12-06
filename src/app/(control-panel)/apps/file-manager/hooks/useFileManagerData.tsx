@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import _ from 'lodash';
 import { useAppSelector } from 'src/store/hooks';
 import { useMemo } from 'react';

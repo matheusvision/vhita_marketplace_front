@@ -1,6 +1,6 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router';
 import { styled } from '@mui/material/styles';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import TasksSidebarContent from './components/TasksSidebarContent';

@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 const NotesApp = lazy(() => import('./NotesApp'));
 

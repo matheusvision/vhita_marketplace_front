@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import TsFileRenamingMigrationDoc from './ts-migration/TsFileRenamingMigrationDoc';
 import CodeSplittingDoc from './code-splitting/CodeSplittingDoc';
 import MultiLanguageDoc from './multi-language/MultiLanguageDoc';

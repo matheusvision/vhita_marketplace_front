@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import FuseMessage from '@fuse/core/FuseMessage';
 import { lazy, memo, ReactNode, Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { Layout1ConfigDefaultsType } from 'src/components/theme-layouts/layout1/Layout1Config';
 import Configurator from 'src/components/theme-layouts/components/configurator/Configurator';
 import { useFuseLayoutSettings } from '@fuse/core/FuseLayout/FuseLayout';

@@ -1,5 +1,5 @@
 import FuseLoading from '@fuse/core/FuseLoading';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useGetProfilePostsQuery } from '../../ProfileApi';
 import TimelinePostItem from './TimelinePostItem';
 

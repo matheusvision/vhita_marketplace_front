@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import { useAppDispatch } from 'src/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation } from 'motion/react';
 import { useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { toggleNotificationPanel } from './notificationPanelSlice';

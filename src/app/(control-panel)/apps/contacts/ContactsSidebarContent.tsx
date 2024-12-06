@@ -1,6 +1,6 @@
 import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import IconButton from '@mui/material/IconButton';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 
 /**

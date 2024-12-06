@@ -2,7 +2,7 @@ import FuseHighlight from '@fuse/core/FuseHighlight';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 
 /**

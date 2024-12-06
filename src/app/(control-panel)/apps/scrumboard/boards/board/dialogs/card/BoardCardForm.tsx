@@ -20,7 +20,7 @@ import { SyntheticEvent, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { showMessage } from '@fuse/core/FuseMessage/fuseMessageSlice';
 import { closeCardDialog, selectCardDialogData } from '../../../../scrumboardSlice';

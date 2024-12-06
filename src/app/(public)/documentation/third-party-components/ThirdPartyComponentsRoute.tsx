@@ -1,12 +1,12 @@
 import { lazy } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
 import documentationAuth from '@/app/(public)/documentation/layout/documentationAuth';
 
 const ReactHookFormDoc = lazy(() => import('./react-hook-form/ReactHookFormDoc'));
-const GoogleMapReactDoc = lazy(() => import('./google-map-react/GoogleMapReactDoc'));
+const ReactGoogleMapsApiDoc = lazy(() => import('./react-google-maps-api/ReactGoogleMapsApiDoc'));
 const ReactApexchartsDoc = lazy(() => import('./react-apexcharts/ReactApexchartsDoc'));
 
 /**
@@ -27,8 +27,8 @@ const ThirdPartyComponentsRoute: FuseRouteItemType = {
 			element: <ReactHookFormDoc />
 		},
 		{
-			path: 'google-map-react',
-			element: <GoogleMapReactDoc />
+			path: 'react-google-maps-api',
+			element: <ReactGoogleMapsApiDoc />
 		},
 		{
 			path: 'react-apexcharts',

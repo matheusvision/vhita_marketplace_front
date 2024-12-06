@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import DocumentationLayout from './layout/DocumentationLayout';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';

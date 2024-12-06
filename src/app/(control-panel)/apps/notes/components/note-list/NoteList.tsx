@@ -2,7 +2,7 @@ import FuseUtils from '@fuse/utils';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useAppSelector } from 'src/store/hooks';
 import FuseLoading from '@fuse/core/FuseLoading';
 import NoteListItem from './NoteListItem';

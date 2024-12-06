@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import Link from '@fuse/core/Link';
-import { useGetECommerceOrderQuery } from '../../../ECommerceApi';
+import { useGetECommerceOrderQuery } from '../../../../ECommerceApi';
 
 /**
  * The products tab.

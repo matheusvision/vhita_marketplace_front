@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import documentationLayoutSettings from '@/app/(public)/documentation/layout/documentationLayoutSettings';
 import DocumentationLayout from '@/app/(public)/documentation/layout/DocumentationLayout';
