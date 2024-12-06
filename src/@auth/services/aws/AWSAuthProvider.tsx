@@ -1,19 +1,11 @@
-import React, {
-	useEffect,
-	useCallback,
-	forwardRef,
-	useImperativeHandle,
-	useState,
-	createContext,
-	useMemo
-} from 'react';
+import React, { useEffect, useCallback, useImperativeHandle, useState, createContext, useMemo } from 'react';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { fetchUserAttributes } from '@aws-amplify/auth';
 import { User } from '@auth/user';
 import { PartialDeep } from 'type-fest';
-import { FuseAuthProviderComponentType, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
+import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { authCreateDbUser, authGetDbUserByEmail, authUpdateDbUser } from '@auth/authApi';
 import awsAuthConfig from './awsAuthConfig';
 
@@ -35,7 +27,9 @@ const defaultAuthContext: AWSAuthContextType = {
 
 export const AWSAuthContext = createContext<AWSAuthContextType>(defaultAuthContext);
 
-const AWSAuthProviderContent: FuseAuthProviderComponentType = forwardRef(({ children, onAuthStateChanged }, ref) => {
+function AWSAuthProviderContent(props: FuseAuthProviderComponentProps) {
+	const { children, onAuthStateChanged, ref } = props;
+
 	const { user: _awsUser, signOut, authStatus: awsAuthStatus } = useAuthenticator();
 
 	/**
@@ -154,9 +148,11 @@ const AWSAuthProviderContent: FuseAuthProviderComponentType = forwardRef(({ chil
 	);
 
 	return <AWSAuthContext.Provider value={authContextValue}>{children}</AWSAuthContext.Provider>;
-});
+}
 
-const AWSAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, onAuthStateChanged }, ref) => {
+function AWSAuthProvider(props: FuseAuthProviderComponentProps) {
+	const { ref, children, onAuthStateChanged } = props;
+
 	return (
 		<Authenticator.Provider>
 			<AWSAuthProviderContent
@@ -167,6 +163,6 @@ const AWSAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, o
 			</AWSAuthProviderContent>
 		</Authenticator.Provider>
 	);
-});
+}
 
 export default AWSAuthProvider;

@@ -1,11 +1,10 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
-import { forwardRef, memo, ReactNode, useImperativeHandle, useRef } from 'react';
+import { memo, ReactNode, RefObject, useImperativeHandle, useRef } from 'react';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { SystemStyleObject } from '@mui/system/styleFunctionSx/styleFunctionSx';
 import { Theme } from '@mui/system';
-import { PartialDeep } from 'type-fest/source/partial-deep';
 import FusePageSimpleHeader from './FusePageSimpleHeader';
 import FusePageSimpleSidebar from './FusePageSimpleSidebar';
 import { FuseScrollbarsProps } from '../FuseScrollbars/FuseScrollbars';
@@ -31,7 +30,8 @@ type FusePageSimpleProps = SystemStyleObject<Theme> & {
 	rightSidebarWidth?: number;
 	rightSidebarOnClose?: () => void;
 	leftSidebarOnClose?: () => void;
-	contentScrollbarsProps?: PartialDeep<FuseScrollbarsProps>;
+	contentScrollbarsProps?: FuseScrollbarsProps;
+	ref?: RefObject<{ toggleLeftSidebar: (val: boolean) => void; toggleRightSidebar: (val: boolean) => void }>;
 };
 
 /**
@@ -209,10 +209,7 @@ const Root = styled('div')<FusePageSimpleProps>(({ theme, ...props }) => ({
  * The FusePageSimple component is a layout component that provides a simple page layout with a header, left sidebar, right sidebar, and content area.
  * It is designed to be used as a top-level component for an application or as a sub-component within a larger layout.
  */
-const FusePageSimple = forwardRef<
-	{ toggleLeftSidebar: (T: boolean) => void; toggleRightSidebar: (T: boolean) => void },
-	FusePageSimpleProps
->((props, ref) => {
+function FusePageSimple(props: FusePageSimpleProps) {
 	const {
 		scroll = 'page',
 		className,
@@ -228,7 +225,8 @@ const FusePageSimple = forwardRef<
 		rightSidebarVariant = 'permanent',
 		rightSidebarOnClose,
 		leftSidebarOnClose,
-		contentScrollbarsProps = {}
+		contentScrollbarsProps,
+		ref
 	} = props;
 
 	const leftSidebarRef = useRef<{ toggleSidebar: (T: boolean) => void }>(null);
@@ -323,8 +321,8 @@ const FusePageSimple = forwardRef<
 			</Root>
 		</>
 	);
-});
+}
 
-const StyledFusePageSimple: typeof FusePageSimple = memo(styled(FusePageSimple)``);
+const StyledFusePageSimple = memo(styled(FusePageSimple)``);
 
 export default StyledFusePageSimple;

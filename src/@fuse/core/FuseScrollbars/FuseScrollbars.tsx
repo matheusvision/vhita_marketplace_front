@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import MobileDetect from 'mobile-detect';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import React, { forwardRef, useEffect, useRef, ReactNode, useCallback, useState, useMemo } from 'react';
+import React, { useEffect, useRef, ReactNode, useCallback, useState, useMemo } from 'react';
 import usePathname from '@fuse/hooks/usePathname';
 import useFuseSettings from '@fuse/core/FuseSettings/hooks/useFuseSettings';
 
@@ -38,9 +38,10 @@ export type FuseScrollbarsProps = {
 		wheelPropagation?: boolean;
 		suppressScrollX?: boolean;
 	};
+	ref?: React.Ref<HTMLDivElement>;
 };
 
-const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, ref) => {
+function FuseScrollbars(props: FuseScrollbarsProps) {
 	const {
 		className = '',
 		children,
@@ -50,7 +51,8 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 		enable = true,
 		option = {
 			wheelPropagation: true
-		}
+		},
+		ref
 	} = props;
 
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -64,6 +66,7 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {
+			// eslint-disable-next-line react/destructuring-assignment
 			const callback = props[handlerNameByEvent[key] as keyof FuseScrollbarsProps] as (T: HTMLDivElement) => void;
 
 			if (callback) {
@@ -162,6 +165,6 @@ const FuseScrollbars = forwardRef<HTMLDivElement, FuseScrollbarsProps>((props, r
 			{children}
 		</Root>
 	);
-});
+}
 
 export default FuseScrollbars;

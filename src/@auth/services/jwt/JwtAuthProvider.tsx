@@ -1,13 +1,5 @@
-import React, {
-	createContext,
-	useState,
-	useEffect,
-	useCallback,
-	useMemo,
-	forwardRef,
-	useImperativeHandle
-} from 'react';
-import { FuseAuthProviderComponentType, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
+import React, { createContext, useState, useEffect, useCallback, useMemo, useImperativeHandle } from 'react';
+import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import useLocalStorage from '@fuse/hooks/useLocalStorage';
 import { authRefreshToken, authSignIn, authSignInWithToken, authSignUp, authUpdateDbUser } from '@auth/authApi';
 import { User } from '../../user';
@@ -46,7 +38,9 @@ const defaultAuthContext: JwtAuthContextType = {
 
 export const JwtAuthContext = createContext<JwtAuthContextType>(defaultAuthContext);
 
-const JwtAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, onAuthStateChanged }, ref) => {
+function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
+	const { ref, children, onAuthStateChanged } = props;
+
 	const {
 		value: tokenStorageValue,
 		setValue: setTokenStorageValue,
@@ -257,6 +251,6 @@ const JwtAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, o
 	}, [authState.isAuthenticated]);
 
 	return <JwtAuthContext.Provider value={authContextValue}>{children}</JwtAuthContext.Provider>;
-});
+}
 
 export default JwtAuthProvider;

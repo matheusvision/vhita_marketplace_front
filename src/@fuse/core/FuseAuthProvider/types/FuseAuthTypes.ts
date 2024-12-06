@@ -7,12 +7,12 @@ export type FuseAuthProviderMethods = {
 	updateUser: (U: PartialDeep<FuseAuthUser>) => Promise<Response>;
 };
 
-export type FuseAuthProviderComponentType = React.ForwardRefExoticComponent<
-	React.PropsWithChildren<{
-		onAuthStateChanged?: (T: FuseAuthProviderState) => void;
-	}> &
-		React.RefAttributes<FuseAuthProviderMethods>
->;
+export type FuseAuthProviderComponentProps = React.PropsWithChildren<{
+	onAuthStateChanged?: (T: FuseAuthProviderState) => void;
+}> &
+	React.RefAttributes<FuseAuthProviderMethods>;
+
+export type FuseAuthProviderComponentType = React.ForwardRefExoticComponent<FuseAuthProviderComponentProps>;
 
 export type FuseAuthProviderState<T = Record<string, unknown>> = {
 	authStatus: 'configuring' | 'authenticated' | 'unauthenticated';

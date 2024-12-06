@@ -1,15 +1,7 @@
-import React, {
-	createContext,
-	useState,
-	useEffect,
-	useCallback,
-	useMemo,
-	forwardRef,
-	useImperativeHandle
-} from 'react';
+import React, { createContext, useState, useEffect, useCallback, useMemo, useImperativeHandle } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { FuseAuthProviderComponentType, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
+import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { authCreateDbUser, authGetDbUserByEmail, authUpdateDbUser } from '@auth/authApi';
 import { PartialDeep } from 'type-fest';
 import { initializeFirebase } from './initializeFirebase';
@@ -44,7 +36,9 @@ const defaultAuthContext: FirebaseAuthContextType = {
 
 export const FirebaseAuthContext = createContext<FirebaseAuthContextType>(defaultAuthContext);
 
-const FirebaseAuthProvider: FuseAuthProviderComponentType = forwardRef(({ children, onAuthStateChanged }, ref) => {
+function FirebaseAuthProvider(props: FuseAuthProviderComponentProps) {
+	const { ref, children, onAuthStateChanged } = props;
+
 	/**
 	 * Fuse Auth Provider State
 	 */
@@ -218,6 +212,6 @@ const FirebaseAuthProvider: FuseAuthProviderComponentType = forwardRef(({ childr
 	);
 
 	return <FirebaseAuthContext.Provider value={authContextValue}>{children}</FirebaseAuthContext.Provider>;
-});
+}
 
 export default FirebaseAuthProvider;

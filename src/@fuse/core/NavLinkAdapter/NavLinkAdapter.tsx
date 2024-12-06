@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router';
-import { CSSProperties, forwardRef, ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export type NavLinkAdapterPropsType = {
 	activeClassName?: string;
@@ -11,6 +11,7 @@ export type NavLinkAdapterPropsType = {
 	style?: CSSProperties;
 	role?: string;
 	exact?: boolean;
+	ref?: React.RefObject<HTMLAnchorElement>;
 };
 
 /**
@@ -18,8 +19,19 @@ export type NavLinkAdapterPropsType = {
  * It adds the ability to navigate programmatically using the useRouter hook.
  * The component is memoized to prevent unnecessary re-renders.
  */
-const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((props, ref) => {
-	const { activeClassName = 'active', activeStyle, role = 'button', to, href, exact = false, ..._props } = props;
+function NavLinkAdapter(props: NavLinkAdapterPropsType) {
+	const {
+		children,
+		activeClassName = 'active',
+		activeStyle,
+		role = 'button',
+		to,
+		href,
+		exact = false,
+		ref,
+		..._props
+	} = props;
+
 	const targetUrl = to || href;
 
 	return (
@@ -35,9 +47,9 @@ const NavLinkAdapter = forwardRef<HTMLAnchorElement, NavLinkAdapterPropsType>((p
 			})}
 			{..._props}
 		>
-			{props.children}
+			{children}
 		</NavLink>
 	);
-});
+}
 
 export default NavLinkAdapter;

@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import FuseThemeSelector from '@fuse/core/FuseThemeSelector/FuseThemeSelector';
 import { styled, useTheme } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
-import { forwardRef } from 'react';
 import Slide from '@mui/material/Slide';
 import { SwipeableHandlers } from 'react-swipeable';
 import themeOptions from 'src/configs/themeOptions';
@@ -36,10 +35,11 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 
 type TransitionProps = {
 	children?: React.ReactElement;
+	ref?: React.RefObject<HTMLDivElement>;
 };
 
-const Transition = forwardRef((props: TransitionProps, ref) => {
-	const { children, ...other } = props;
+function Transition(props: TransitionProps) {
+	const { children, ref, ...other } = props;
 
 	const theme = useTheme();
 
@@ -56,7 +56,7 @@ const Transition = forwardRef((props: TransitionProps, ref) => {
 			{children}
 		</Slide>
 	);
-});
+}
 
 type ThemesPanelProps = {
 	schemesHandlers: SwipeableHandlers;
