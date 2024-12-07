@@ -22,5 +22,7 @@ export type FuseAuthProviderState<T = Record<string, unknown>> = {
 
 export type FuseAuthProviderType = {
 	name: string;
-	Provider: FuseAuthProviderComponentType;
+	Provider:
+		| React.ComponentType<FuseAuthProviderComponentProps>
+		| React.ForwardRefExoticComponent<FuseAuthProviderComponentProps>;
 };
