@@ -58,6 +58,7 @@ function Course() {
 				data: { ...course, progress: { currentStep: 1, completed: 0 } }
 			});
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [course]);
 
 	useEffect(() => {
