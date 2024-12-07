@@ -60,8 +60,7 @@ function GithubIssuesWidget() {
 		states: {
 			hover: {
 				filter: {
-					type: 'darken',
-					value: 0.75
+					type: 'darken'
 				}
 			}
 		},
