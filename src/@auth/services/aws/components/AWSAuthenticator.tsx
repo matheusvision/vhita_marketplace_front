@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { AuthenticatorProps } from '@aws-amplify/ui-react/dist/types/components/Authenticator/Authenticator';
 import '@aws-amplify/ui-react/styles.css';
 import { styled } from '@mui/material/styles';
-import { useAuthenticator } from '@aws-amplify/ui-react-core';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import FuseLoading from '@fuse/core/FuseLoading';
 
 const Root = styled('div')(({ theme }) => ({
