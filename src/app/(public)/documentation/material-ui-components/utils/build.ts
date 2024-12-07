@@ -10,13 +10,14 @@ import path, { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const demoDir = 'src/app/(public)/documentation/material-ui-components/components';
-const rootDirectory = 'src/app/(public)/documentation/material-ui-components';
+const demoDir = './src/app/(public)/documentation/material-ui-components/components';
+const rootDirectory = './src/app/(public)/documentation/material-ui-components';
 const examplesDirectory = path.resolve(rootDirectory, './components');
 const pagesDirectory = path.resolve(rootDirectory, './doc');
 const routesFilePath = path.resolve(rootDirectory, './MaterialUIComponentsRoute.tsx');
 const navigationFilePath = path.resolve(rootDirectory, './MaterialUIComponentsNavigation.ts');
 const projectDir = path.resolve(rootDirectory, '..', '..', '..', '..', '..');
+const nodeModulesDir = path.resolve(projectDir, 'node_modules');
 
 const demoRegexp = /^"demo": "(.*)"/;
 const componentRegexp = /^"component": "(.*)"/;
@@ -106,7 +107,7 @@ const removeFile = async (filePath: string) => {
 		log('Successfully deleted the file.');
 	} catch (error) {
 		if (error) {
-			log('File does not exist.', filePath);
+			// log('File does not exist.', filePath);
 		}
 	}
 	return true;
@@ -130,8 +131,8 @@ async function checkExistence(dirPath: string) {
 		await fsp.access(dirPath);
 		// If the promise resolves, the file or directory exists
 		return true;
-	} catch (error) {
-		log(error);
+	} catch (_error) {
+		// log(_error);
 		// If the promise is rejected, the file or directory does not exist
 		return false;
 	}
@@ -688,13 +689,44 @@ async function build() {
 			log('Navigation file created.');
 
 			const eslintPath = path.resolve(projectDir, './node_modules/.bin/eslint');
+			const eslintConfigPath = path.resolve(projectDir, './eslint.config.mjs');
+
+			const tempConfigPath = path.join(nodeModulesDir, '.temp-eslint.mjs');
+
+			async function createEslintConfig() {
+				const configContent = `
+					import baseConfig from '${eslintConfigPath}';
+					
+					export default baseConfig.map(config => {
+						return {
+							...config,
+							ignores: [],
+							rules: {
+								...config.rules,
+								'@typescript-eslint/no-unused-vars': 'off',
+								'no-irregular-whitespace': 'off',
+								'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+								'react/jsx-boolean-value': ['error', 'never']
+							}
+						};
+					});
+				`;
+
+				await fsp.writeFile(tempConfigPath, configContent);
+			}
+
+			createEslintConfig();
 
 			process.chdir(projectDir);
 
+			async function runEslintCommand(filesDir: string) {
+				return runCommand(eslintPath, [`${filesDir}`, '--fix', '--config', tempConfigPath]);
+			}
+
 			const promises = [
-				runCommand(eslintPath, ['--no-ignore', '--fix', pagesDirectory]),
-				runCommand(eslintPath, ['--no-ignore', '--fix', routesFilePath]),
-				runCommand(eslintPath, ['--no-ignore', '--fix', navigationFilePath])
+				runEslintCommand(pagesDirectory),
+				runEslintCommand(routesFilePath),
+				runEslintCommand(navigationFilePath)
 			];
 
 			Promise.all(promises)
@@ -707,8 +739,9 @@ async function build() {
 						log(err);
 					}
 				})
-				.finally(() => {
+				.finally(async () => {
 					log('Eslint format completed.');
+					await removeFile(tempConfigPath);
 				});
 		});
 	});
@@ -717,6 +750,15 @@ async function build() {
 function runCommand(command: string, args: string[]) {
 	return new Promise((resolve, reject) => {
 		const process = spawn(command, args);
+
+		process.stdout.on('data', (data) => {
+			log(`stdout: ${data}`);
+		});
+
+		process.stderr.on('data', (data) => {
+			log(`stderr: ${data}`);
+		});
+
 		process.on('close', (code) => {
 			if (code !== 0) {
 				reject(new Error(`Command "${command}" exited with code ${code}`));
