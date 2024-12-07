@@ -139,7 +139,7 @@ function AWSAuthProviderContent(props: FuseAuthProviderComponentProps) {
 }
 
 function AWSAuthProvider(props: FuseAuthProviderComponentProps) {
-	const { ref, children, onAuthStateChanged } = props;
+	const { children, onAuthStateChanged, ref } = props;
 
 	return (
 		<Authenticator.Provider>

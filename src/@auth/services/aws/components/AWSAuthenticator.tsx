@@ -97,7 +97,8 @@ function AwsAuthenticator(props: AuthenticatorProps) {
 		if (initialState === 'signIn') {
 			toSignIn();
 		}
-	}, [initialState, toSignIn, toSignUp]);
+		// eslint-disable-next-line
+	}, []);
 
 	if (authStatus === 'authenticated') {
 		return (
