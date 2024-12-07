@@ -5,7 +5,7 @@ const tasksApi = [
 	/**
 	 * GET api/mock/tasks/items
 	 */
-	http.get('/api/mock/tasks/items', async ({ params, request }) => {
+	http.get('/api/mock/tasks/items', async ({ request }) => {
 		const api = mockApi('tasks_items');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const tasksApi = [
 	/**
 	 * POST api/mock/tasks/items
 	 */
-	http.post('/api/mock/tasks/items', async ({ params, request }) => {
+	http.post('/api/mock/tasks/items', async ({ request }) => {
 		const api = mockApi('tasks_items');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const tasksApi = [
 	/**
 	 * PUT api/mock/tasks/items
 	 */
-	http.put('/api/mock/tasks/items', async ({ params, request }) => {
+	http.put('/api/mock/tasks/items', async ({ request }) => {
 		const api = mockApi('tasks_items');
 		const data = (await request.json()) as { id: string }[];
 		const result = await api.updateMany(data);
@@ -35,7 +35,7 @@ const tasksApi = [
 	/**
 	 * GET api/mock/tasks/items/:id
 	 */
-	http.get('/api/mock/tasks/items/:id', async ({ params, request }) => {
+	http.get('/api/mock/tasks/items/:id', async ({ params }) => {
 		const api = mockApi('tasks_items');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -50,7 +50,7 @@ const tasksApi = [
 	/**
 	 * DELETE api/mock/tasks/items/:id
 	 */
-	http.delete('/api/mock/tasks/items/:id', async ({ params, request }) => {
+	http.delete('/api/mock/tasks/items/:id', async ({ params }) => {
 		const api = mockApi('tasks_items');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -81,7 +81,7 @@ const tasksApi = [
 	/**
 	 * GET api/mock/tasks/tags
 	 */
-	http.get('/api/mock/tasks/tags', async ({ params, request }) => {
+	http.get('/api/mock/tasks/tags', async ({ request }) => {
 		const api = mockApi('tasks_tags');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -91,7 +91,7 @@ const tasksApi = [
 	/**
 	 * POST api/mock/tasks/tags
 	 */
-	http.post('/api/mock/tasks/tags', async ({ params, request }) => {
+	http.post('/api/mock/tasks/tags', async ({ request }) => {
 		const api = mockApi('tasks_tags');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);

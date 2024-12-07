@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback, useMemo, useImperativeHandle } from 'react';
+import { useState, useEffect, useCallback, useMemo, useImperativeHandle } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
@@ -6,6 +6,8 @@ import { authCreateDbUser, authGetDbUserByEmail, authUpdateDbUser } from '@auth/
 import { PartialDeep } from 'type-fest';
 import { initializeFirebase } from './initializeFirebase';
 import { User } from '../../user';
+import { FirebaseAuthContextType } from './FirebaseAuthContext';
+import FirebaseAuthContext from './FirebaseAuthContext';
 
 export type FirebaseSignInPayload = {
 	email: string;
@@ -16,25 +18,6 @@ export type FirebaseSignUpPayload = {
 	email: string;
 	password: string;
 };
-
-export type FirebaseAuthContextType = FuseAuthProviderState<User> & {
-	updateUser: (U: User) => Promise<Response>;
-	signIn?: (credentials: FirebaseSignInPayload) => Promise<firebase.auth.UserCredential>;
-	signUp?: (U: FirebaseSignUpPayload) => Promise<firebase.auth.UserCredential>;
-	signOut?: () => void;
-};
-
-const defaultAuthContext: FirebaseAuthContextType = {
-	authStatus: 'configuring',
-	isAuthenticated: false,
-	user: null,
-	updateUser: null,
-	signIn: null,
-	signUp: null,
-	signOut: null
-};
-
-export const FirebaseAuthContext = createContext<FirebaseAuthContextType>(defaultAuthContext);
 
 function FirebaseAuthProvider(props: FuseAuthProviderComponentProps) {
 	const { ref, children, onAuthStateChanged } = props;
@@ -90,7 +73,9 @@ function FirebaseAuthProvider(props: FuseAuthProviderComponentProps) {
 						const userResponse = await authGetDbUserByEmail(userAttributes.email);
 						userDbData = (await userResponse.json()) as User;
 					} catch (error) {
-						// If user data does not exist in db, create a new user record
+						console.error(error);
+
+						// If user data doess not exist in db, create a new user record
 						const newUserResponse = await authCreateDbUser({
 							email: userAttributes.email,
 							role: ['admin'],
@@ -166,19 +151,16 @@ function FirebaseAuthProvider(props: FuseAuthProviderComponentProps) {
 	/**
 	 * Sign up with email and password
 	 */
-	const signUp: FirebaseAuthContextType['signUp'] = useCallback(
-		async ({ email, password }) => {
-			try {
-				const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+	const signUp: FirebaseAuthContextType['signUp'] = useCallback(async ({ email, password }) => {
+		try {
+			const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
 
-				return userCredential;
-			} catch (error) {
-				console.error('Error during sign up:', error);
-				return Promise.reject(error);
-			}
-		},
-		[updateUser]
-	);
+			return userCredential;
+		} catch (error) {
+			console.error('Error during sign up:', error);
+			return Promise.reject(error);
+		}
+	}, []);
 
 	/**
 	 * Sign out
@@ -211,7 +193,7 @@ function FirebaseAuthProvider(props: FuseAuthProviderComponentProps) {
 		[authState, signIn, signUp, handleSignOut, updateUser]
 	);
 
-	return <FirebaseAuthContext.Provider value={authContextValue}>{children}</FirebaseAuthContext.Provider>;
+	return <FirebaseAuthContext value={authContextValue}>{children}</FirebaseAuthContext>;
 }
 
 export default FirebaseAuthProvider;

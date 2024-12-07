@@ -7,7 +7,6 @@ import Paper from '@mui/material/Paper';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useState } from 'react';
-import * as React from 'react';
 import _ from 'lodash';
 import JwtSignUpTab from './tabs/JwSignUpTab';
 import FirebaseSignUpTab from './tabs/FirebaseSignUpTab';

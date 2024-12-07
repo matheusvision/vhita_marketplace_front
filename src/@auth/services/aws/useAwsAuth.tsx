@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AWSAuthContext } from './AWSAuthProvider';
+import AWSAuthContext from './AWSAuthContext';
 
 export const useAwsAuth = () => {
 	const context = useContext(AWSAuthContext);

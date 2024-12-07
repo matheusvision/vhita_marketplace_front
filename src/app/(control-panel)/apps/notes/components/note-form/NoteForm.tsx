@@ -57,7 +57,6 @@ const schema = z.object({
 		.boolean()
 		.optional()
 		.refine(
-			// eslint-disable-next-line func-names
 			function (
 				this: {
 					parent: NotesNote;
@@ -125,6 +124,7 @@ function NoteForm(props: NoteFormProps) {
 				)
 			);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [variant, routeParams, note]);
 
 	useEffect(() => {

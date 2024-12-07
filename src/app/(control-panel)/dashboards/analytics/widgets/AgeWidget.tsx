@@ -15,11 +15,6 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function AgeWidget() {
 	const widget = useAppSelector(selectWidget<AgeWidgetModelType>('age'));
-
-	if (!widget) {
-		return null;
-	}
-
 	const { series, labels, uniqueVisitors } = widget;
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
@@ -91,6 +86,10 @@ function AgeWidget() {
 	}, []);
 
 	if (awaitRender) {
+		return null;
+	}
+
+	if (!widget) {
 		return null;
 	}
 

@@ -36,7 +36,6 @@ function useFileManagerData() {
 		}
 
 		while (currentFolder?.folderId) {
-			// eslint-disable-next-line no-loop-func
 			currentFolder = folderItems.find((item) => item.id === currentFolder?.folderId);
 
 			if (currentFolder) {
@@ -44,6 +43,7 @@ function useFileManagerData() {
 			}
 		}
 		return path;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [folderItems, folderId]);
 
 	const selectedItemId = useAppSelector(selectSelectedItemId);

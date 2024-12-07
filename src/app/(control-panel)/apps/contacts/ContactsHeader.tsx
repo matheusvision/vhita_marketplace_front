@@ -25,7 +25,7 @@ function ContactsHeader() {
 		return () => {
 			dispatch(resetSearchText());
 		};
-	}, []);
+	}, [dispatch]);
 
 	if (isLoading) {
 		return null;

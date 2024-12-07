@@ -52,40 +52,33 @@ type FuseNavHorizontalGroupProps = FuseNavItemComponentProps & WithRouterProps;
 function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 	const { item, nestedLevel, dense, checkPermission } = props;
 	const [opened, setOpened] = useState(false);
-
 	const pathname = usePathname();
-
 	const theme = useTheme();
+	const component = item.url ? NavLinkAdapter : 'li';
 
+	const itemProps = useMemo(
+		() => ({
+			...(component !== 'li' && {
+				disabled: item.disabled,
+				to: item.url,
+				end: item.end,
+				role: 'button',
+				exact: item?.exact
+			})
+		}),
+		[item, component]
+	);
 	const handleToggle = useDebounce((open: boolean) => {
 		setOpened(open);
 	}, 150);
 
-	return useMemo(() => {
+	const memoizedContent = useMemo(() => {
 		let popperPlacement: PopperJS.Placement;
 
 		if (nestedLevel === 0) {
 			popperPlacement = theme.direction === 'ltr' ? 'bottom-start' : 'bottom-end';
 		} else {
 			popperPlacement = theme.direction === 'ltr' ? 'right' : 'left';
-		}
-
-		const component = item.url ? NavLinkAdapter : 'li';
-
-		let itemProps;
-
-		if (typeof component !== 'string') {
-			itemProps = {
-				disabled: item.disabled,
-				to: item.url,
-				end: item.end,
-				role: 'button',
-				exact: item?.exact
-			};
-		}
-
-		if (checkPermission && !item?.hasPermission) {
-			return null;
 		}
 
 		return (
@@ -191,7 +184,13 @@ function FuseNavHorizontalGroup(props: FuseNavHorizontalGroupProps) {
 				)}
 			</Manager>
 		);
-	}, [dense, handleToggle, item, nestedLevel, opened, pathname, theme.direction]);
+	}, [component, dense, handleToggle, item, itemProps, nestedLevel, opened, pathname, theme.direction]);
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
+	}
+
+	return memoizedContent;
 }
 
 const NavHorizontalGroupWithMemo = memo(FuseNavHorizontalGroup);

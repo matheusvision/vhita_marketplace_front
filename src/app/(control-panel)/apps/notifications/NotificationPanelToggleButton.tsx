@@ -41,6 +41,7 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 	const theme = useTheme();
 	const dispatch = useAppDispatch();
 	const controls = useAnimation();
+
 	useEffect(() => {
 		if (animate) {
 			controls.start({
@@ -55,6 +56,7 @@ function NotificationPanelToggleButton(props: NotificationPanelToggleButtonProps
 				color: theme.palette.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary
 			});
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [animate, controls]);
 
 	useEffect(() => {

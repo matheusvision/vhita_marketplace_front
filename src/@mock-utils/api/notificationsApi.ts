@@ -5,7 +5,7 @@ const notificationsApi = [
 	/**
 	 * GET api/mock/notifications
 	 */
-	http.get('/api/mock/notifications', async ({ params, request }) => {
+	http.get('/api/mock/notifications', async ({ request }) => {
 		const api = mockApi('notifications');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const notificationsApi = [
 	/**
 	 * POST api/mock/notifications
 	 */
-	http.post('/api/mock/notifications', async ({ params, request }) => {
+	http.post('/api/mock/notifications', async ({ request }) => {
 		const api = mockApi('notifications');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const notificationsApi = [
 	/**
 	 * DELETE api/mock/notifications
 	 */
-	http.delete('/api/mock/notifications', async ({ params, request }) => {
+	http.delete('/api/mock/notifications', async ({ request }) => {
 		const api = mockApi('notifications');
 		const data = (await request.json()) as string[];
 		const result = await api.delete(data);
@@ -35,7 +35,7 @@ const notificationsApi = [
 	/**
 	 * GET api/mock/notifications/:id
 	 */
-	http.get('/api/mock/notifications/:id', async ({ params, request }) => {
+	http.get('/api/mock/notifications/:id', async ({ params }) => {
 		const api = mockApi('notifications');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -50,7 +50,7 @@ const notificationsApi = [
 	/**
 	 * DELETE api/mock/notifications/:id
 	 */
-	http.delete('/api/mock/notifications/:id', async ({ params, request }) => {
+	http.delete('/api/mock/notifications/:id', async ({ params }) => {
 		const api = mockApi('notifications');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);

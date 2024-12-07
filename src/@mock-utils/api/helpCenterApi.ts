@@ -5,7 +5,7 @@ const helpCenterApi = [
 	/**
 	 * GET api/mock/help-center/guides
 	 */
-	http.get('/api/mock/help-center/guides', async ({ params, request }) => {
+	http.get('/api/mock/help-center/guides', async ({ request }) => {
 		const api = mockApi('help_center_guides');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const helpCenterApi = [
 	/**
 	 * GET api/mock/help-center/guides/:id
 	 */
-	http.get('/api/mock/help-center/guides/:id', async ({ params, request }) => {
+	http.get('/api/mock/help-center/guides/:id', async ({ params }) => {
 		const api = mockApi('help_center_guides');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -30,7 +30,7 @@ const helpCenterApi = [
 	/**
 	 * GET api/mock/help-center/guide-categories
 	 */
-	http.get('/api/mock/help-center/guide-categories', async ({ params, request }) => {
+	http.get('/api/mock/help-center/guide-categories', async ({ request }) => {
 		const api = mockApi('help_center_guide_categories');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -40,7 +40,7 @@ const helpCenterApi = [
 	/**
 	 * GET api/mock/help-center/faqs
 	 */
-	http.get('/api/mock/help-center/faqs', async ({ params, request }) => {
+	http.get('/api/mock/help-center/faqs', async ({ request }) => {
 		const api = mockApi('help_center_faqs');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -50,7 +50,7 @@ const helpCenterApi = [
 	/**
 	 * GET api/mock/help-center/faqs-categories
 	 */
-	http.get('/api/mock/help-center/faqs-categories', async ({ params, request }) => {
+	http.get('/api/mock/help-center/faqs-categories', async ({ request }) => {
 		const api = mockApi('help_center_faqs_categories');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);

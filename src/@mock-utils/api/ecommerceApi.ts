@@ -5,7 +5,7 @@ const ecommerceApi = [
 	/**
 	 * GET api/mock/ecommerce/products
 	 */
-	http.get('/api/mock/ecommerce/products', async ({ params, request }) => {
+	http.get('/api/mock/ecommerce/products', async ({ request }) => {
 		const api = mockApi('ecommerce_products');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const ecommerceApi = [
 	/**
 	 * DELETE api/mock/ecommerce/products
 	 */
-	http.delete('/api/mock/ecommerce/products', async ({ params, request }) => {
+	http.delete('/api/mock/ecommerce/products', async ({ request }) => {
 		const api = mockApi('ecommerce_products');
 		const data = (await request.json()) as string[];
 		const result = await api.delete(data);
@@ -25,7 +25,7 @@ const ecommerceApi = [
 	/**
 	 * GET api/mock/ecommerce/products/:id
 	 */
-	http.get('/api/mock/ecommerce/products/:id', async ({ params, request }) => {
+	http.get('/api/mock/ecommerce/products/:id', async ({ params }) => {
 		const api = mockApi('ecommerce_products');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -56,7 +56,7 @@ const ecommerceApi = [
 	/**
 	 * DELETE api/mock/ecommerce/products/:id
 	 */
-	http.delete('/api/mock/ecommerce/products/:id', async ({ params, request }) => {
+	http.delete('/api/mock/ecommerce/products/:id', async ({ params }) => {
 		const api = mockApi('ecommerce_products');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -71,7 +71,7 @@ const ecommerceApi = [
 	/**
 	 * GET api/mock/ecommerce/orders
 	 */
-	http.get('/api/mock/ecommerce/orders', async ({ params, request }) => {
+	http.get('/api/mock/ecommerce/orders', async ({ request }) => {
 		const api = mockApi('ecommerce_orders');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -81,7 +81,7 @@ const ecommerceApi = [
 	/**
 	 * DELETE api/mock/ecommerce/orders
 	 */
-	http.delete('/api/mock/ecommerce/orders', async ({ params, request }) => {
+	http.delete('/api/mock/ecommerce/orders', async ({ request }) => {
 		const api = mockApi('ecommerce_orders');
 		const data = (await request.json()) as string[];
 		const result = await api.delete(data);
@@ -91,7 +91,7 @@ const ecommerceApi = [
 	/**
 	 * GET api/mock/ecommerce/orders/:id
 	 */
-	http.get('/api/mock/ecommerce/orders/:id', async ({ params, request }) => {
+	http.get('/api/mock/ecommerce/orders/:id', async ({ params }) => {
 		const api = mockApi('ecommerce_orders');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -122,7 +122,7 @@ const ecommerceApi = [
 	/**
 	 * DELETE api/mock/ecommerce/orders/:id
 	 */
-	http.delete('/api/mock/ecommerce/orders/:id', async ({ params, request }) => {
+	http.delete('/api/mock/ecommerce/orders/:id', async ({ params }) => {
 		const api = mockApi('ecommerce_orders');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);

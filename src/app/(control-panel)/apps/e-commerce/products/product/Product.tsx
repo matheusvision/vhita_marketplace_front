@@ -9,7 +9,6 @@ import Link from '@fuse/core/Link';
 import _ from 'lodash';
 import { FormProvider, useForm } from 'react-hook-form';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import * as React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import FuseTabs from 'src/components/tabs/FuseTabs';

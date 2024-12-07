@@ -5,7 +5,7 @@ const calendarApi = [
 	/**
 	 * GET api/mock/calendar/events
 	 */
-	http.get('/api/mock/calendar/events', async ({ params, request }) => {
+	http.get('/api/mock/calendar/events', async ({ request }) => {
 		const api = mockApi('calendar_events');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const calendarApi = [
 	/**
 	 * POST api/mock/calendar/events
 	 */
-	http.post('/api/mock/calendar/events', async ({ params, request }) => {
+	http.post('/api/mock/calendar/events', async ({ request }) => {
 		const api = mockApi('calendar_events');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -41,7 +41,7 @@ const calendarApi = [
 	/**
 	 * DELETE api/mock/calendar/events/:id
 	 */
-	http.delete('/api/mock/calendar/events/:id', async ({ params, request }) => {
+	http.delete('/api/mock/calendar/events/:id', async ({ params }) => {
 		const api = mockApi('calendar_events');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -56,7 +56,7 @@ const calendarApi = [
 	/**
 	 * GET api/mock/calendar/labels
 	 */
-	http.get('/api/mock/calendar/labels', async ({ params, request }) => {
+	http.get('/api/mock/calendar/labels', async ({ request }) => {
 		const api = mockApi('calendar_labels');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -66,7 +66,7 @@ const calendarApi = [
 	/**
 	 * POST api/mock/calendar/labels
 	 */
-	http.post('/api/mock/calendar/labels', async ({ params, request }) => {
+	http.post('/api/mock/calendar/labels', async ({ request }) => {
 		const api = mockApi('calendar_labels');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -92,7 +92,7 @@ const calendarApi = [
 	/**
 	 * DELETE api/mock/calendar/labels/:id
 	 */
-	http.delete('/api/mock/calendar/labels/:id', async ({ params, request }) => {
+	http.delete('/api/mock/calendar/labels/:id', async ({ params }) => {
 		const api = mockApi('calendar_labels');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
-// eslint-disable-next-line camelcase
+
 import { private_safeDarken } from '@mui/system/colorManipulator';
 import { useAppSelector } from 'src/store/hooks';
 import _ from 'lodash';
@@ -21,15 +21,13 @@ function VisitorsOverviewWidget() {
 	const theme = useTheme();
 	const contrastTheme = useContrastMainTheme(theme.palette.primary.dark);
 	const widget = useAppSelector(selectWidget<VisitorsOverviewWidgetType>('visitors'));
+	const { series, ranges } = widget;
+	const [tabValue, setTabValue] = useState(0);
+	const currentRange = Object.keys(ranges)[tabValue];
 
 	if (!widget) {
 		return null;
 	}
-
-	const { series, ranges } = widget;
-
-	const [tabValue, setTabValue] = useState(0);
-	const currentRange = Object.keys(ranges)[tabValue];
 
 	const chartOptions: ApexOptions = {
 		chart: {

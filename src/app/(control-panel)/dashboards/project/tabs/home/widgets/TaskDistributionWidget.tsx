@@ -16,8 +16,16 @@ import TaskDistributionDataType from './types/TaskDistributionDataType';
  */
 function TaskDistributionWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
-
 	const widget = widgets?.taskDistribution as TaskDistributionDataType;
+	const { overview, series, labels, ranges } = widget;
+	const [tabValue, setTabValue] = useState(0);
+	const currentRange = Object.keys(ranges)[tabValue];
+	const [awaitRender, setAwaitRender] = useState(true);
+	const theme = useTheme();
+
+	useEffect(() => {
+		setAwaitRender(false);
+	}, []);
 
 	if (isLoading) {
 		return <FuseLoading />;
@@ -26,13 +34,6 @@ function TaskDistributionWidget() {
 	if (!widget) {
 		return null;
 	}
-
-	const { overview, series, labels, ranges } = widget;
-	const [tabValue, setTabValue] = useState(0);
-	const currentRange = Object.keys(ranges)[tabValue];
-	const [awaitRender, setAwaitRender] = useState(true);
-
-	const theme = useTheme();
 
 	const chartOptions: ApexOptions = {
 		chart: {
@@ -92,10 +93,6 @@ function TaskDistributionWidget() {
 			}
 		}
 	};
-
-	useEffect(() => {
-		setAwaitRender(false);
-	}, []);
 
 	if (awaitRender) {
 		return null;

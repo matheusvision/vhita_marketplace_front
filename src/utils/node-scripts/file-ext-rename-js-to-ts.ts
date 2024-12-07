@@ -27,7 +27,6 @@ function checkAndRename(file: string, fromExt: string, toExt: string): void {
 			console.log(`Renamed ${file} to ${newPath}`);
 		}
 	} catch (error) {
-		/* eslint-disable-next-line no-console */
 		console.error(`Error processing file ${file}:`, error);
 	}
 }

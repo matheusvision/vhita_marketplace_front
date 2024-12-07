@@ -22,7 +22,7 @@ function DetailSidebarContent() {
 
 	useEffect(() => {
 		dispatch(resetSelectedItemId());
-	}, [pathname]);
+	}, [dispatch, pathname]);
 
 	if (!selectedItem) {
 		return null;

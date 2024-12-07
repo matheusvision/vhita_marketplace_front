@@ -5,7 +5,7 @@ const contactsApi = [
 	/**
 	 * GET api/mock/contacts/items
 	 */
-	http.get('/api/mock/contacts/items', async ({ params, request }) => {
+	http.get('/api/mock/contacts/items', async ({ request }) => {
 		const api = mockApi('contacts_items');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const contactsApi = [
 	/**
 	 * POST api/mock/contacts/items
 	 */
-	http.post('/api/mock/contacts/items', async ({ params, request }) => {
+	http.post('/api/mock/contacts/items', async ({ request }) => {
 		const api = mockApi('contacts_items');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const contactsApi = [
 	/**
 	 * GET api/mock/contacts/items/:id
 	 */
-	http.get('/api/mock/contacts/items/:id', async ({ params, request }) => {
+	http.get('/api/mock/contacts/items/:id', async ({ params }) => {
 		const api = mockApi('contacts_items');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -56,7 +56,7 @@ const contactsApi = [
 	/**
 	 * DELETE api/mock/contacts/items/:id
 	 */
-	http.delete('/api/mock/contacts/items/:id', async ({ params, request }) => {
+	http.delete('/api/mock/contacts/items/:id', async ({ params }) => {
 		const api = mockApi('contacts_items');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -71,7 +71,7 @@ const contactsApi = [
 	/**
 	 * GET api/mock/contacts/tags/:id
 	 */
-	http.get('/api/mock/contacts/tags/:id', async ({ params, request }) => {
+	http.get('/api/mock/contacts/tags/:id', async ({ params }) => {
 		const api = mockApi('contacts_tags');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -102,7 +102,7 @@ const contactsApi = [
 	/**
 	 * DELETE api/mock/contacts/tags/:id
 	 */
-	http.delete('/api/mock/contacts/tags/:id', async ({ params, request }) => {
+	http.delete('/api/mock/contacts/tags/:id', async ({ params }) => {
 		const api = mockApi('contacts_tags');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -117,7 +117,7 @@ const contactsApi = [
 	/**
 	 * GET api/mock/contacts/tags
 	 */
-	http.get('/api/mock/contacts/tags', async ({ params, request }) => {
+	http.get('/api/mock/contacts/tags', async ({ request }) => {
 		const api = mockApi('contacts_tags');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -127,7 +127,7 @@ const contactsApi = [
 	/**
 	 * POST api/mock/contacts/tags
 	 */
-	http.post('/api/mock/contacts/tags', async ({ params, request }) => {
+	http.post('/api/mock/contacts/tags', async ({ request }) => {
 		const api = mockApi('contacts_tags');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);

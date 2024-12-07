@@ -17,11 +17,7 @@ export type FuseRouteMatchType = RouteMatch & {
  * @param useMerge Whether to merge the parameter (using lodash merge) or replace it
  * @returns The merged or replaced parameter data of type T
  */
-export function getFuseRouteParamUtil<T>(
-	pathname: string,
-	key: keyof FuseRouteObjectType,
-	useMerge: boolean = true
-): T {
+export function getFuseRouteParamUtil<T>(pathname: string, key: keyof FuseRouteObjectType, useMerge = true): T {
 	const matchedRoutes = matchRoutes(routes, pathname) as FuseRouteMatchType[] | null;
 
 	return matchedRoutes
@@ -51,7 +47,7 @@ export function getFuseRouteParamUtil<T>(
  * @param key The key of the parameter to merge (e.g., 'settings', 'auth')
  * @returns The merged parameter data of type T
  */
-function useFuseRouteParameter<T>(key: keyof FuseRouteObjectType, useMerge: boolean = true): T {
+function useFuseRouteParameter<T>(key: keyof FuseRouteObjectType, useMerge = true): T {
 	const pathname = usePathname();
 
 	const getParameter = useCallback(() => {
@@ -66,7 +62,7 @@ function useFuseRouteParameter<T>(key: keyof FuseRouteObjectType, useMerge: bool
 		if (!_.isEqual(parameter, param)) {
 			setParameter(param);
 		}
-	}, [getParameter, parameter, pathname]);
+	}, [getParameter, parameter]);
 
 	useEffect(() => {
 		updateParameter();

@@ -15,13 +15,7 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function NewVsReturningWidget() {
 	const widget = useAppSelector(selectWidget<NewVsReturningWidgetType>('newVsReturning'));
-
-	if (!widget) {
-		return null;
-	}
-
 	const { series, labels, uniqueVisitors } = widget;
-
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
 
@@ -92,6 +86,10 @@ function NewVsReturningWidget() {
 	}, []);
 
 	if (awaitRender) {
+		return null;
+	}
+
+	if (!widget) {
 		return null;
 	}
 

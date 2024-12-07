@@ -5,7 +5,7 @@ const appAccountSettingsApi = [
 	/**
 	 * GET api/mock/app-account-settings
 	 */
-	http.get('/api/mock/app-account-settings', async ({ params, request }) => {
+	http.get('/api/mock/app-account-settings', async ({ request }) => {
 		const api = mockApi('app_account_settings');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const appAccountSettingsApi = [
 	/**
 	 * GET api/mock/app-account-settings/:id
 	 */
-	http.get('/api/mock/app-account-settings/:id', async ({ params, request }) => {
+	http.get('/api/mock/app-account-settings/:id', async ({ params }) => {
 		const api = mockApi('app_account_settings');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);

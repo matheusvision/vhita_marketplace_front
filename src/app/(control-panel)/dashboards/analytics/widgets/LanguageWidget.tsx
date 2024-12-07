@@ -15,11 +15,6 @@ import { selectWidget } from '../AnalyticsDashboardApi';
  */
 function LanguageWidget() {
 	const widget = useAppSelector(selectWidget<LanguageWidgetType>('language'));
-
-	if (!widget) {
-		return null;
-	}
-
 	const { series, labels, uniqueVisitors } = widget;
 	const [awaitRender, setAwaitRender] = useState(true);
 	const theme = useTheme();
@@ -91,6 +86,10 @@ function LanguageWidget() {
 	}, []);
 
 	if (awaitRender) {
+		return null;
+	}
+
+	if (!widget) {
 		return null;
 	}
 

@@ -51,28 +51,23 @@ const Root = styled(ListItemButton)<ListItemButtonStyleProps>(({ theme, ...props
  */
 function FuseNavVerticalItem(props: FuseNavItemComponentProps) {
 	const { item, nestedLevel = 0, onItemClick, checkPermission } = props;
-
 	const itempadding = nestedLevel > 0 ? 38 + nestedLevel * 16 : 16;
-
 	const component = item.url ? NavLinkAdapter : 'li';
 
-	let itemProps = {};
+	const itemProps = useMemo(
+		() => ({
+			...(component !== 'li' && {
+				disabled: item.disabled,
+				to: item.url || '',
+				end: item.end,
+				role: 'button',
+				exact: item?.exact
+			})
+		}),
+		[item, component]
+	);
 
-	if (typeof component !== 'string') {
-		itemProps = {
-			disabled: item.disabled,
-			to: item.url || '',
-			end: item.end,
-			role: 'button',
-			exact: item?.exact
-		};
-	}
-
-	if (checkPermission && !item?.hasPermission) {
-		return null;
-	}
-
-	return useMemo(
+	const memoizedContent = useMemo(
 		() => (
 			<Root
 				component={component}
@@ -103,8 +98,14 @@ function FuseNavVerticalItem(props: FuseNavItemComponentProps) {
 				{item.badge && <FuseNavBadge badge={item.badge} />}
 			</Root>
 		),
-		[item, itempadding, onItemClick]
+		[component, item, itemProps, itempadding, onItemClick]
 	);
+
+	if (checkPermission && !item?.hasPermission) {
+		return null;
+	}
+
+	return memoizedContent;
 }
 
 const NavVerticalItem = FuseNavVerticalItem;

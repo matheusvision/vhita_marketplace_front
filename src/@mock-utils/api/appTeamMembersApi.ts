@@ -5,7 +5,7 @@ const appTeamMembersApi = [
 	/**
 	 * GET api/mock/app-team-members
 	 */
-	http.get('/api/mock/app-team-members', async ({ params, request }) => {
+	http.get('/api/mock/app-team-members', async ({ request }) => {
 		const api = mockApi('app_team_members');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const appTeamMembersApi = [
 	/**
 	 * POST api/mock/app-team-members
 	 */
-	http.post('/api/mock/app-team-members', async ({ params, request }) => {
+	http.post('/api/mock/app-team-members', async ({ request }) => {
 		const api = mockApi('app_team_members');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const appTeamMembersApi = [
 	/**
 	 * PUT api/mock/app-team-members
 	 */
-	http.put('/api/mock/app-team-members', async ({ params, request }) => {
+	http.put('/api/mock/app-team-members', async ({ request }) => {
 		const api = mockApi('app_team_members');
 		const data = (await request.json()) as { id: string }[];
 		const result = await api.updateMany(data);
@@ -35,7 +35,7 @@ const appTeamMembersApi = [
 	/**
 	 * DELETE api/mock/app-team-members/:id
 	 */
-	http.delete('/api/mock/app-team-members/:id', async ({ params, request }) => {
+	http.delete('/api/mock/app-team-members/:id', async ({ params }) => {
 		const api = mockApi('app_team_members');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);

@@ -15,17 +15,7 @@ import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi
  */
 function YearlyExpensesWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
-
-	if (isLoading) {
-		return <FuseLoading />;
-	}
-
 	const widget = widgets?.yearlyExpenses as ExpensesDataType;
-
-	if (!widget) {
-		return null;
-	}
-
 	const { amount, series, labels } = widget;
 	const theme = useTheme();
 
@@ -59,6 +49,15 @@ function YearlyExpensesWidget() {
 			}
 		}
 	};
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	if (!widget) {
+		return null;
+	}
+
 	return (
 		<Paper className="flex flex-col flex-auto shadow rounded-xl overflow-hidden">
 			<div className="flex items-center justify-between pt-8 px-8">

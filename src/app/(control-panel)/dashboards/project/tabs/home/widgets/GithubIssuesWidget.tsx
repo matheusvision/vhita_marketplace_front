@@ -19,21 +19,9 @@ function GithubIssuesWidget() {
 	const theme = useTheme();
 	const [awaitRender, setAwaitRender] = useState(true);
 	const [tabValue, setTabValue] = useState(0);
-
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
-
-	if (isLoading) {
-		return <FuseLoading />;
-	}
-
 	const widget = widgets?.githubIssues as GithubIssuesDataType;
-
-	if (!widget) {
-		return null;
-	}
-
 	const { overview, series, ranges, labels } = widget;
-
 	const currentRange = Object.keys(ranges)[tabValue];
 
 	const chartOptions: ApexOptions = {
@@ -113,6 +101,14 @@ function GithubIssuesWidget() {
 	useEffect(() => {
 		setAwaitRender(false);
 	}, []);
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	if (!widget) {
+		return null;
+	}
 
 	if (awaitRender) {
 		return null;

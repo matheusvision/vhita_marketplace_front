@@ -5,7 +5,7 @@ const appSecuritySettingsApi = [
 	/**
 	 * GET api/mock/app-security-settings
 	 */
-	http.get('/api/mock/app-security-settings', async ({ params, request }) => {
+	http.get('/api/mock/app-security-settings', async ({ request }) => {
 		const api = mockApi('app_security_settings');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const appSecuritySettingsApi = [
 	/**
 	 * GET api/mock/app-security-settings/:id
 	 */
-	http.get('/api/mock/app-security-settings/:id', async ({ params, request }) => {
+	http.get('/api/mock/app-security-settings/:id', async ({ params }) => {
 		const api = mockApi('app_security_settings');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);

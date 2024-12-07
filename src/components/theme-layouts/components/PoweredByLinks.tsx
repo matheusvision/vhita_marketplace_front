@@ -105,7 +105,6 @@ function PoweredByLinks() {
 					role="button"
 				>
 					<span
-						// eslint-disable-next-line react/no-danger
 						dangerouslySetInnerHTML={{
 							__html: `
                                     <svg style='height: 0; width: 0; position: absolute; visibility: hidden;'>

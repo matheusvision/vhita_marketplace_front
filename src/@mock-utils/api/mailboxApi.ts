@@ -5,7 +5,7 @@ const mailboxApi = [
 	/**
 	 * GET api/mock/mailbox/mails
 	 */
-	http.get('/api/mock/mailbox/mails', async ({ params, request }) => {
+	http.get('/api/mock/mailbox/mails', async ({ request }) => {
 		const api = mockApi('mailbox_mails');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const mailboxApi = [
 	/**
 	 * POST api/mock/mailbox/mails
 	 */
-	http.post('/api/mock/mailbox/mails', async ({ params, request }) => {
+	http.post('/api/mock/mailbox/mails', async ({ request }) => {
 		const api = mockApi('mailbox_mails');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const mailboxApi = [
 	/**
 	 * PUT api/mock/mailbox/mails
 	 */
-	http.put('/api/mock/mailbox/mails', async ({ params, request }) => {
+	http.put('/api/mock/mailbox/mails', async ({ request }) => {
 		const api = mockApi('mailbox_mails');
 		const data = (await request.json()) as { id: string }[];
 		const result = await api.updateMany(data);
@@ -35,7 +35,7 @@ const mailboxApi = [
 	/**
 	 * GET api/mock/mailbox/mails/:id
 	 */
-	http.get('/api/mock/mailbox/mails/:id', async ({ params, request }) => {
+	http.get('/api/mock/mailbox/mails/:id', async ({ params }) => {
 		const api = mockApi('mailbox_mails');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -50,7 +50,7 @@ const mailboxApi = [
 	/**
 	 * GET api/mock/mailbox/filters
 	 */
-	http.get('/api/mock/mailbox/filters', async ({ params, request }) => {
+	http.get('/api/mock/mailbox/filters', async ({ request }) => {
 		const api = mockApi('mailbox_filters');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -60,7 +60,7 @@ const mailboxApi = [
 	/**
 	 * GET api/mock/mailbox/labels
 	 */
-	http.get('/api/mock/mailbox/labels', async ({ params, request }) => {
+	http.get('/api/mock/mailbox/labels', async ({ request }) => {
 		const api = mockApi('mailbox_labels');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -70,7 +70,7 @@ const mailboxApi = [
 	/**
 	 * POST api/mock/mailbox/labels
 	 */
-	http.post('/api/mock/mailbox/labels', async ({ params, request }) => {
+	http.post('/api/mock/mailbox/labels', async ({ request }) => {
 		const api = mockApi('mailbox_labels');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -96,7 +96,7 @@ const mailboxApi = [
 	/**
 	 * DELETE api/mock/mailbox/labels/:id
 	 */
-	http.delete('/api/mock/mailbox/labels/:id', async ({ params, request }) => {
+	http.delete('/api/mock/mailbox/labels/:id', async ({ params }) => {
 		const api = mockApi('mailbox_labels');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -111,7 +111,7 @@ const mailboxApi = [
 	/**
 	 * GET api/mock/mailbox/folders
 	 */
-	http.get('/api/mock/mailbox/folders', async ({ params, request }) => {
+	http.get('/api/mock/mailbox/folders', async ({ request }) => {
 		const api = mockApi('mailbox_folders');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);

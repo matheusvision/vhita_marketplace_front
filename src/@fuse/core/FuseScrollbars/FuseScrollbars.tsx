@@ -30,7 +30,7 @@ const handlerNameByEvent = Object.freeze({
 export type FuseScrollbarsProps = {
 	id?: string;
 	className?: string;
-	children: ReactNode;
+	children?: ReactNode;
 	enable?: boolean;
 	scrollToTopOnChildChange?: boolean;
 	scrollToTopOnRouteChange?: boolean;
@@ -66,7 +66,6 @@ function FuseScrollbars(props: FuseScrollbarsProps) {
 
 	const hookUpEvents = useCallback(() => {
 		Object.keys(handlerNameByEvent).forEach((key) => {
-			// eslint-disable-next-line react/destructuring-assignment
 			const callback = props[handlerNameByEvent[key] as keyof FuseScrollbarsProps] as (T: HTMLDivElement) => void;
 
 			if (callback) {

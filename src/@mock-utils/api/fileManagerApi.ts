@@ -5,7 +5,7 @@ const fileManagerApi = [
 	/**
 	 * GET api/mock/file-manager/items
 	 */
-	http.get('/api/mock/file-manager/items', async ({ params, request }) => {
+	http.get('/api/mock/file-manager/items', async ({ request }) => {
 		const api = mockApi('file_manager_items');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const fileManagerApi = [
 	/**
 	 * GET api/mock/file-manager/items/:id
 	 */
-	http.get('/api/mock/file-manager/items/:id', async ({ params, request }) => {
+	http.get('/api/mock/file-manager/items/:id', async ({ params }) => {
 		const api = mockApi('file_manager_items');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -46,7 +46,7 @@ const fileManagerApi = [
 	/**
 	 * DELETE api/mock/file-manager/items/:id
 	 */
-	http.delete('/api/mock/file-manager/items/:id', async ({ params, request }) => {
+	http.delete('/api/mock/file-manager/items/:id', async ({ params }) => {
 		const api = mockApi('file_manager_items');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);

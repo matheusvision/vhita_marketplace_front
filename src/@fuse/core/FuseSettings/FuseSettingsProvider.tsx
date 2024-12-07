@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 import _ from 'lodash';
 import { defaultSettings, getParsedQuerySettings } from '@fuse/default-settings';
 import settingsConfig from 'src/configs/settingsConfig';
@@ -9,21 +9,7 @@ import withRouter, { WithRouterProps } from '@fuse/core/withRouter/withRouter';
 import withUser from '@auth/withUser';
 import { User } from '@auth/user';
 import { PartialDeep } from 'type-fest';
-
-type FuseSettingsProviderState = {
-	userSettings?: PartialDeep<FuseSettingsConfigType>;
-	data: FuseSettingsConfigType;
-	defaults: FuseSettingsConfigType;
-	initial: FuseSettingsConfigType;
-};
-
-// FuseSettingsContext type
-export type FuseSettingsContextType = FuseSettingsProviderState & {
-	setSettings: (newSettings: Partial<FuseSettingsConfigType>) => FuseSettingsConfigType;
-};
-
-// Context with a default value of undefined
-export const FuseSettingsContext = React.createContext<FuseSettingsContextType | undefined>(undefined);
+import FuseSettingsContext, { FuseSettingsContextType, FuseSettingsProviderState } from './FuseSettingsContext';
 
 // Get initial settings
 const getInitialSettings = (): FuseSettingsConfigType => {
@@ -109,7 +95,6 @@ class FuseSettingsProvider extends Component<FuseSettingsProviderProps, FuseSett
 		const { data, initial, defaults } = this.state;
 		const { setSettings } = this;
 
-		// eslint-disable-next-line react/jsx-no-constructed-context-values
 		const contextValue: FuseSettingsContextType = {
 			data,
 			initial,
@@ -117,7 +102,7 @@ class FuseSettingsProvider extends Component<FuseSettingsProviderProps, FuseSett
 			setSettings
 		};
 
-		return <FuseSettingsContext.Provider value={contextValue}>{children}</FuseSettingsContext.Provider>;
+		return <FuseSettingsContext value={contextValue}>{children}</FuseSettingsContext>;
 	}
 }
 const FuseSettingsProviderWithRouterUser = withRouter(withUser(FuseSettingsProvider));

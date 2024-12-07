@@ -50,7 +50,7 @@ function AiImageGenApp() {
 	);
 
 	return (
-		<AiImageGenAppContext.Provider value={contextValue}>
+		<AiImageGenAppContext value={contextValue}>
 			<>
 				<Root
 					header={<AiImageGenHeader onSetSidebarOpen={setLeftSidebarOpen} />}
@@ -71,7 +71,7 @@ function AiImageGenApp() {
 					<CircularProgress color="secondary" />
 				</Backdrop>
 			</>
-		</AiImageGenAppContext.Provider>
+		</AiImageGenAppContext>
 	);
 }
 

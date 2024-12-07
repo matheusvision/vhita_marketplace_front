@@ -15,7 +15,7 @@ type StyleSelectFormControllerProps = {
 	title: string;
 	value: string;
 	onChange: (value: string) => void;
-	ref?: React.RefObject<HTMLDivElement>;
+	ref?: React.Ref<HTMLDivElement>;
 };
 
 function StyleSelectFormController(props: StyleSelectFormControllerProps) {

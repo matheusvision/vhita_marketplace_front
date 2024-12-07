@@ -12,7 +12,7 @@ import mockApi from '../mockApi';
 type UserAuthType = User & { password: string };
 
 const authApi = [
-	http.post('/api/mock/auth/refresh', async ({ params, request }) => {
+	http.post('/api/mock/auth/refresh', async ({ request }) => {
 		const newTokenResponse = await generateAccessToken(request);
 
 		if (newTokenResponse) {
@@ -26,7 +26,7 @@ const authApi = [
 		return HttpResponse.json({ error }, { status: 401 });
 	}),
 
-	http.get('/api/mock/auth/sign-in-with-token', async ({ params, request }) => {
+	http.get('/api/mock/auth/sign-in-with-token', async ({ request }) => {
 		const newTokenResponse = await generateAccessToken(request);
 
 		if (newTokenResponse) {
@@ -39,7 +39,7 @@ const authApi = [
 		return HttpResponse.json({ error }, { status: 401 });
 	}),
 
-	http.post('/api/mock/auth/sign-in', async ({ params, request }) => {
+	http.post('/api/mock/auth/sign-in', async ({ request }) => {
 		const api = mockApi('users');
 
 		const data = (await request.json()) as { email: string; password: string };
@@ -80,7 +80,7 @@ const authApi = [
 		return HttpResponse.json(error, { status: 404 });
 	}),
 
-	http.post('/api/mock/auth/sign-up', async ({ params, request }) => {
+	http.post('/api/mock/auth/sign-up', async ({ request }) => {
 		const api = mockApi('users');
 		const data = (await request.json()) as { displayName: string; password: string; email: string };
 		const { displayName, password, email } = data;
@@ -124,7 +124,7 @@ const authApi = [
 		return HttpResponse.json(error, { status: 404 });
 	}),
 
-	http.get('/api/mock/auth/user/:id', async ({ params, request }) => {
+	http.get('/api/mock/auth/user/:id', async ({ params }) => {
 		const api = mockApi('users');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -136,7 +136,7 @@ const authApi = [
 		return HttpResponse.json(item);
 	}),
 
-	http.get('/api/mock/auth/user-by-email/:email', async ({ params, request }) => {
+	http.get('/api/mock/auth/user-by-email/:email', async ({ params }) => {
 		const api = mockApi('users');
 		const { email } = params as Record<string, string>;
 		const item = await api.find({ email });

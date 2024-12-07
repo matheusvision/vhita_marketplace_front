@@ -9,7 +9,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import CardContent from '@mui/material/CardContent';
 import _ from 'lodash';
-import * as React from 'react';
 import { lighten } from '@mui/material/styles';
 import JwtLoginTab from './tabs/JwtSignInTab';
 import FirebaseSignInTab from './tabs/FirebaseSignInTab';

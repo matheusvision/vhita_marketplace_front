@@ -20,17 +20,7 @@ export type NavLinkAdapterPropsType = {
  * The component is memoized to prevent unnecessary re-renders.
  */
 function NavLinkAdapter(props: NavLinkAdapterPropsType) {
-	const {
-		children,
-		activeClassName = 'active',
-		activeStyle,
-		role = 'button',
-		to,
-		href,
-		exact = false,
-		ref,
-		..._props
-	} = props;
+	const { children, activeClassName = 'active', activeStyle, role = 'button', to, href, ref, ..._props } = props;
 
 	const targetUrl = to || href;
 
@@ -45,6 +35,7 @@ function NavLinkAdapter(props: NavLinkAdapterPropsType) {
 				..._props.style,
 				...(isActive ? activeStyle : null)
 			})}
+			ref={ref}
 			{..._props}
 		>
 			{children}

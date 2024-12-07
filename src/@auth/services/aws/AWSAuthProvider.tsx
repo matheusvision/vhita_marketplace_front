@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useImperativeHandle, useState, createContext, useMemo } from 'react';
+import { useEffect, useCallback, useImperativeHandle, useState, useMemo } from 'react';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -8,24 +8,10 @@ import { PartialDeep } from 'type-fest';
 import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { authCreateDbUser, authGetDbUserByEmail, authUpdateDbUser } from '@auth/authApi';
 import awsAuthConfig from './awsAuthConfig';
+import AWSAuthContext, { AWSAuthContextType } from './AWSAuthContext';
 
 // Configure Amplify
 Amplify.configure(awsAuthConfig);
-
-export type AWSAuthContextType = FuseAuthProviderState & {
-	updateUser: (U: User) => Promise<Response>;
-	signOut?: () => Promise<void>;
-};
-
-const defaultAuthContext: AWSAuthContextType = {
-	authStatus: 'configuring',
-	isAuthenticated: false,
-	user: null,
-	updateUser: null,
-	signOut: null
-};
-
-export const AWSAuthContext = createContext<AWSAuthContextType>(defaultAuthContext);
 
 function AWSAuthProviderContent(props: FuseAuthProviderComponentProps) {
 	const { children, onAuthStateChanged, ref } = props;
@@ -66,6 +52,8 @@ function AWSAuthProviderContent(props: FuseAuthProviderComponentProps) {
 				const userResponse = await authGetDbUserByEmail(userAttributes.email);
 				userDbData = (await userResponse.json()) as User;
 			} catch (error) {
+				console.error(error);
+
 				// If user data does not exist in db, create a new user record
 				const newUserResponse = await authCreateDbUser({
 					email: userAttributes.email,
@@ -144,10 +132,10 @@ function AWSAuthProviderContent(props: FuseAuthProviderComponentProps) {
 			signOut: handleSignOut,
 			updateUser
 		}),
-		[authState, handleSignOut]
+		[authState, handleSignOut, updateUser]
 	);
 
-	return <AWSAuthContext.Provider value={authContextValue}>{children}</AWSAuthContext.Provider>;
+	return <AWSAuthContext value={authContextValue}>{children}</AWSAuthContext>;
 }
 
 function AWSAuthProvider(props: FuseAuthProviderComponentProps) {

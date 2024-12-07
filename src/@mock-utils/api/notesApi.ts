@@ -5,7 +5,7 @@ const notesApi = [
 	/**
 	 * GET api/mock/notes/items
 	 */
-	http.get('/api/mock/notes/items', async ({ params, request }) => {
+	http.get('/api/mock/notes/items', async ({ request }) => {
 		const api = mockApi('notes_items');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const notesApi = [
 	/**
 	 * POST api/mock/notes/items
 	 */
-	http.post('/api/mock/notes/items', async ({ params, request }) => {
+	http.post('/api/mock/notes/items', async ({ request }) => {
 		const api = mockApi('notes_items');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const notesApi = [
 	/**
 	 * GET api/mock/notes/items/:id
 	 */
-	http.get('/api/mock/notes/items/:id', async ({ params, request }) => {
+	http.get('/api/mock/notes/items/:id', async ({ params }) => {
 		const api = mockApi('notes_items');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -56,7 +56,7 @@ const notesApi = [
 	/**
 	 * DELETE api/mock/notes/items/:id
 	 */
-	http.delete('/api/mock/notes/items/:id', async ({ params, request }) => {
+	http.delete('/api/mock/notes/items/:id', async ({ params }) => {
 		const api = mockApi('notes_items');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -71,7 +71,7 @@ const notesApi = [
 	/**
 	 * GET api/mock/notes/labels
 	 */
-	http.get('/api/mock/notes/labels', async ({ params, request }) => {
+	http.get('/api/mock/notes/labels', async ({ request }) => {
 		const api = mockApi('notes_labels');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -81,7 +81,7 @@ const notesApi = [
 	/**
 	 * POST api/mock/notes/labels
 	 */
-	http.post('/api/mock/notes/labels', async ({ params, request }) => {
+	http.post('/api/mock/notes/labels', async ({ request }) => {
 		const api = mockApi('notes_labels');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -91,7 +91,7 @@ const notesApi = [
 	/**
 	 * GET api/mock/notes/labels/:id
 	 */
-	http.get('/api/mock/notes/labels/:id', async ({ params, request }) => {
+	http.get('/api/mock/notes/labels/:id', async ({ params }) => {
 		const api = mockApi('notes_labels');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -122,7 +122,7 @@ const notesApi = [
 	/**
 	 * DELETE api/mock/notes/labels/:id
 	 */
-	http.delete('/api/mock/notes/labels/:id', async ({ params, request }) => {
+	http.delete('/api/mock/notes/labels/:id', async ({ params }) => {
 		const api = mockApi('notes_labels');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);

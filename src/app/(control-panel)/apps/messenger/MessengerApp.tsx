@@ -74,7 +74,7 @@ function MessengerApp() {
 	);
 
 	return (
-		<MessengerAppContext.Provider value={MessengerAppContextData}>
+		<MessengerAppContext value={MessengerAppContextData}>
 			<Root
 				content={<Outlet />}
 				leftSidebarContent={<MainSidebar />}
@@ -84,7 +84,7 @@ function MessengerApp() {
 				}}
 				leftSidebarWidth={400}
 				rightSidebarContent={<ContactSidebar />}
-				rightSidebarOpen={contactSidebarOpen}
+				rightSidebarOpen={Boolean(contactSidebarOpen)}
 				rightSidebarOnClose={() => {
 					setContactSidebarOpen(null);
 				}}
@@ -114,7 +114,7 @@ function MessengerApp() {
 			>
 				<UserSidebar />
 			</StyledSwipeableDrawer>
-		</MessengerAppContext.Provider>
+		</MessengerAppContext>
 	);
 }
 

@@ -6,7 +6,6 @@ import { SyntheticEvent, useState } from 'react';
 import { useParams } from 'react-router';
 import Link from '@fuse/core/Link';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import * as React from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
 import FuseTabs from 'src/components/tabs/FuseTabs';

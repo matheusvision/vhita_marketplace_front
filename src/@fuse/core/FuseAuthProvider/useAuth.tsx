@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FuseAuthContext, FuseAuthContextType } from './FuseAuthProvider';
+import FuseAuthContext, { FuseAuthContextType } from './FuseAuthContext';
 
 function useAuth(): FuseAuthContextType {
 	const context = useContext(FuseAuthContext);

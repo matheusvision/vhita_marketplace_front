@@ -38,7 +38,7 @@ function FuseHighlight(props: FuseHighlightProps) {
 
 	useEffect(() => {
 		setSource(trimCode(children));
-	}, [trimCode, children]);
+	}, [children]);
 
 	useEffect(() => {
 		highlight();

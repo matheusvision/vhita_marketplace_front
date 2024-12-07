@@ -2,9 +2,7 @@ import { ResourcesConfig } from 'aws-amplify';
 
 type awsAuthConfig = ResourcesConfig & {
 	[key: string]: unknown;
-	oauth: {
-		[key: string]: unknown;
-	};
+	oauth: Record<string, unknown>;
 };
 
 const awsAuthConfig: awsAuthConfig = {

@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { themeLayoutsType } from 'src/components/theme-layouts/themeLayouts';
 import usePathname from '@fuse/hooks/usePathname';
 import useFuseSettings from '@fuse/core/FuseSettings/hooks/useFuseSettings';
+import FuseLayoutSettingsContext from './FuseLayoutSettingsContext';
 
 export type FuseRouteObjectType = {
 	settings?: FuseSettingsConfigType;
@@ -12,20 +13,6 @@ export type FuseRouteObjectType = {
 export type FuseLayoutProps = {
 	layouts: themeLayoutsType;
 	children?: React.ReactNode;
-};
-
-type FuseLayoutSettingsContextType = FuseSettingsConfigType['layout'];
-
-const FuseLayoutSettingsContext = createContext<FuseLayoutSettingsContextType | undefined>(undefined);
-
-export const useFuseLayoutSettings = () => {
-	const context = useContext(FuseLayoutSettingsContext);
-
-	if (context === undefined) {
-		throw new Error('useFuseLayoutSettings must be used within a SettingsProvider');
-	}
-
-	return context;
 };
 
 /**
@@ -47,7 +34,7 @@ function FuseLayout(props: FuseLayoutProps) {
 	}, [pathname]);
 
 	return (
-		<FuseLayoutSettingsContext.Provider value={layoutSetting}>
+		<FuseLayoutSettingsContext value={layoutSetting}>
 			{useMemo(() => {
 				return Object.entries(layouts).map(([key, Layout]) => {
 					if (key === layoutStyle) {
@@ -61,7 +48,7 @@ function FuseLayout(props: FuseLayoutProps) {
 					return null;
 				});
 			}, [layoutStyle, layouts, children])}
-		</FuseLayoutSettingsContext.Provider>
+		</FuseLayoutSettingsContext>
 	);
 }
 

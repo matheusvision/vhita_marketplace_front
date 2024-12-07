@@ -29,20 +29,17 @@ marked.Lexer.prototype.lex = function lex(src) {
 		.replace(/\t/g, '    ')
 		.replace(/\u2424/g, '\n');
 
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 	this.blockTokens(src, this.tokens);
 
 	let next: { src: string; tokens: { type: string; raw: string }[] };
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	// eslint-disable-next-line no-cond-assign,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+
 	while ((next = this.inlineQueue.shift() as { src: string; tokens: { type: 'space'; raw: string }[] })) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 		this.inlineTokens(next.src, next.tokens);
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return
 	return this.tokens;
 };
 
@@ -134,6 +131,7 @@ async function checkExistence(dirPath: string) {
 		// If the promise resolves, the file or directory exists
 		return true;
 	} catch (error) {
+		log(error);
 		// If the promise is rejected, the file or directory does not exist
 		return false;
 	}
@@ -564,8 +562,8 @@ async function replaceInExamples() {
 
 			try {
 				fsp.writeFile(file, result, 'utf8');
-			} catch (writeErr) {
-				// console.error(writeErr);
+			} catch (error) {
+				log(error);
 			}
 		});
 	});

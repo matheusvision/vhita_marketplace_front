@@ -7,7 +7,6 @@ import { I18nProvider } from '@i18n/I18nProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { enUS } from 'date-fns/locale/en-US';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { useMemo } from 'react';
 import ErrorBoundary from '@fuse/utils/ErrorBoundary';
 import Authentication from '@auth/Authentication';
 import MainThemeProvider from '../contexts/MainThemeProvider';
@@ -19,16 +18,13 @@ import AppContext from '@/contexts/AppContext';
  * The main App component.
  */
 function App() {
-	const val = useMemo(
-		() => ({
-			routes
-		}),
-		[routes]
-	);
+	const AppContextValue = {
+		routes
+	};
 
 	return (
 		<ErrorBoundary>
-			<AppContext.Provider value={val}>
+			<AppContext value={AppContextValue}>
 				{/* Date Picker Localization Provider */}
 				<LocalizationProvider
 					dateAdapter={AdapterDateFns}
@@ -60,7 +56,7 @@ function App() {
 						</Authentication>
 					</Provider>
 				</LocalizationProvider>
-			</AppContext.Provider>
+			</AppContext>
 		</ErrorBoundary>
 	);
 }

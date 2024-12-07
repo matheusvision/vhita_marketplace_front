@@ -5,7 +5,7 @@ const appNotificationSettingsApi = [
 	/**
 	 * GET api/mock/app-notification-settings
 	 */
-	http.get('/api/mock/app-notification-settings', async ({ params, request }) => {
+	http.get('/api/mock/app-notification-settings', async ({ request }) => {
 		const api = mockApi('app_notification_settings');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const appNotificationSettingsApi = [
 	/**
 	 * GET api/mock/app-notification-settings/:id
 	 */
-	http.get('/api/mock/app-notification-settings/:id', async ({ params, request }) => {
+	http.get('/api/mock/app-notification-settings/:id', async ({ params }) => {
 		const api = mockApi('app_notification_settings');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);

@@ -108,7 +108,6 @@ function NotificationCard(props: NotificationCardProps) {
 					{item.description && (
 						<div
 							className="line-clamp-2"
-							// eslint-disable-next-line react/no-danger
 							dangerouslySetInnerHTML={{ __html: item.description }}
 						/>
 					)}

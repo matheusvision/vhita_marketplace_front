@@ -5,7 +5,7 @@ const uiIconsApi = [
 	/**
 	 * GET api/mock/ui-icons/feather
 	 */
-	http.get('/api/mock/ui-icons/feather', async ({ params, request }) => {
+	http.get('/api/mock/ui-icons/feather', async ({ request }) => {
 		const api = mockApi('ui_icons_feather');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const uiIconsApi = [
 	/**
 	 * GET api/mock/ui-icons/heroicons
 	 */
-	http.get('/api/mock/ui-icons/heroicons', async ({ params, request }) => {
+	http.get('/api/mock/ui-icons/heroicons', async ({ request }) => {
 		const api = mockApi('ui_icons_heroicons');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -25,7 +25,7 @@ const uiIconsApi = [
 	/**
 	 * GET api/mock/ui-icons/material
 	 */
-	http.get('/api/mock/ui-icons/material', async ({ params, request }) => {
+	http.get('/api/mock/ui-icons/material', async ({ request }) => {
 		const api = mockApi('ui_icons_material');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);

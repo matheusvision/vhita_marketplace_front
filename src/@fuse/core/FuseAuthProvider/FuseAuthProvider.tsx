@@ -1,32 +1,10 @@
-import React, { createContext, useCallback, useMemo, useState, useRef, useEffect } from 'react';
+import React, { useCallback, useMemo, useState, useRef, useEffect } from 'react';
 import { PartialDeep } from 'type-fest';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { User } from '@auth/user';
 import { FuseAuthProviderType, FuseAuthProviderMethods, FuseAuthProviderState } from './types/FuseAuthTypes';
-
-type AuthState = FuseAuthProviderState & {
-	provider: string | null;
-};
-
-const initialAuthState: AuthState = {
-	authStatus: null,
-	isAuthenticated: false,
-	user: null,
-	provider: null
-};
-
-export type FuseAuthContextType = {
-	updateUser?: (U: PartialDeep<User>) => Promise<Response>;
-	signOut?: () => void;
-	authState: FuseAuthProviderState | null;
-	providers: FuseAuthProviderType[];
-};
-
-export const FuseAuthContext = createContext<FuseAuthContextType>({
-	authState: initialAuthState,
-	providers: []
-});
-
+import FuseAuthContext from './FuseAuthContext';
+import { AuthState, initialAuthState } from './FuseAuthContext';
 const authProviderLocalStorageKey = 'fuseReactAuthProvider';
 
 type FuseAuthenticationProviderProps = {
@@ -43,8 +21,8 @@ function FuseAuthProvider(props: FuseAuthenticationProviderProps) {
 	const currentAuthStatus = useMemo(() => authState?.authStatus, [authState]);
 	const [isLoading, setIsLoading] = useState(true);
 
-	const [providerStatuses, setProviderStatuses] = useState<{ [key: string]: string }>({});
-	const providerRefs = useRef<{ [key: string]: FuseAuthProviderMethods | null }>({});
+	const [providerStatuses, setProviderStatuses] = useState<Record<string, string>>({});
+	const providerRefs = useRef<Record<string, FuseAuthProviderMethods | null>>({});
 	const currentProvider = useMemo(() => providerRefs.current[authState?.provider], [authState, providerRefs]);
 
 	const allProvidersReady = useMemo(() => {
@@ -116,7 +94,7 @@ function FuseAuthProvider(props: FuseAuthenticationProviderProps) {
 			// eslint-disable-next-line no-console
 			console.warn('No current auth provider to sign out from');
 		}
-	}, [currentProvider, resetAuthProvider, authState]);
+	}, [currentProvider, resetAuthProvider]);
 
 	const updateUser = useCallback(
 		async (_userData: PartialDeep<User>) => {
@@ -124,7 +102,6 @@ function FuseAuthProvider(props: FuseAuthenticationProviderProps) {
 				return currentProvider?.updateUser(_userData);
 			}
 
-			// eslint-disable-next-line no-console
 			throw new Error('No current auth provider to updateUser from');
 		},
 		[currentProvider]
@@ -143,6 +120,7 @@ function FuseAuthProvider(props: FuseAuthenticationProviderProps) {
 		}),
 		[authState, getAuthProvider, setAuthProvider, resetAuthProvider, providers, signOut, updateUser]
 	);
+
 	// Nest providers with handleAuthStateChange and ref
 	const nestedProviders = useMemo(
 		() =>
@@ -167,7 +145,7 @@ function FuseAuthProvider(props: FuseAuthenticationProviderProps) {
 		[providers, isLoading, handleAuthStateChange, children, authState]
 	);
 
-	return <FuseAuthContext.Provider value={contextValue}>{nestedProviders}</FuseAuthContext.Provider>;
+	return <FuseAuthContext value={contextValue}>{nestedProviders}</FuseAuthContext>;
 }
 
 export default FuseAuthProvider;

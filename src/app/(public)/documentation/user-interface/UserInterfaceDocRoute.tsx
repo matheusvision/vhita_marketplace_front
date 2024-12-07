@@ -7,7 +7,6 @@ import documentationAuth from '@/app/(public)/documentation/layout/documentation
 
 const ThemeShemesDoc = lazy(() => import('./theme-schemes/ThemeSchemesDoc'));
 const ThemeLayoutsDoc = lazy(() => import('./theme-layouts/ThemeLayoutsDoc'));
-const PageLayoutsDoc = lazy(() => import('./page-layouts/PageLayoutsDoc'));
 const RTLSupportDoc = lazy(() => import('./rtl-support/RTLSupportDoc'));
 const ChangingDefaultFontDoc = lazy(() => import('./changing-default-font/ChangingDefaultFontDoc'));
 const TypographyUI = lazy(() => import('./typography/TypographyUI'));

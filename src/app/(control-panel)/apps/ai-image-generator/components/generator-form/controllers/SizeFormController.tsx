@@ -8,7 +8,7 @@ const sizeOptions = [
 type SizeFormControllerProps = {
 	value: string;
 	onChange: (value: string) => void;
-	ref?: React.RefObject<HTMLSelectElement>;
+	ref?: React.Ref<HTMLSelectElement>;
 };
 
 function SizeFormController(props: SizeFormControllerProps) {

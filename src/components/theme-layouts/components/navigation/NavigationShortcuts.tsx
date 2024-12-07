@@ -26,7 +26,7 @@ function NavigationShortcuts(props: NavigationShortcutsProps) {
 		if (!isGuest && prevUserShortcuts && !_.isEqual(userShortcuts, prevUserShortcuts)) {
 			updateUser(setIn(user, 'shortcuts', userShortcuts) as User);
 		}
-	}, [isGuest, userShortcuts]);
+	}, [isGuest, prevUserShortcuts, updateUser, user, userShortcuts]);
 
 	function handleShortcutsChange(newShortcuts: string[]) {
 		setUserShortcuts(newShortcuts);

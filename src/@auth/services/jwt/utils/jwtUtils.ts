@@ -7,6 +7,7 @@ export const isTokenValid = (accessToken: string) => {
 			const currentTime = Date.now() / 1000;
 			return decoded.exp > currentTime;
 		} catch (error) {
+			console.error(error);
 			return false;
 		}
 	}

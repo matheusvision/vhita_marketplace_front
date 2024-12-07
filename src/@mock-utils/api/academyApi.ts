@@ -5,7 +5,7 @@ const academyApi = [
 	/**
 	 * GET api/mock/academy/courses
 	 */
-	http.get('/api/mock/academy/courses', async ({ params, request }) => {
+	http.get('/api/mock/academy/courses', async ({ request }) => {
 		const api = mockApi('academy_courses');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const academyApi = [
 	/**
 	 * GET api/mock/academy/courses/:id
 	 */
-	http.get('/api/mock/academy/courses/:id', async ({ params, request }) => {
+	http.get('/api/mock/academy/courses/:id', async ({ params }) => {
 		const api = mockApi('academy_courses');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -46,7 +46,7 @@ const academyApi = [
 	/**
 	 * DELETE api/mock/academy/courses/:id
 	 */
-	http.delete('/api/mock/academy/courses/:id', async ({ params, request }) => {
+	http.delete('/api/mock/academy/courses/:id', async ({ params }) => {
 		const api = mockApi('academy_courses');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -61,7 +61,7 @@ const academyApi = [
 	/**
 	 * GET api/mock/academy/course-steps
 	 */
-	http.get('/api/mock/academy/course-steps', async ({ params, request }) => {
+	http.get('/api/mock/academy/course-steps', async ({ request }) => {
 		const api = mockApi('academy_course_steps');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -71,7 +71,7 @@ const academyApi = [
 	/**
 	 * GET api/mock/academy/course-step-contents
 	 */
-	http.get('/api/mock/academy/course-step-contents', async ({ params, request }) => {
+	http.get('/api/mock/academy/course-step-contents', async ({ request }) => {
 		const api = mockApi('academy_course_step_contents');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -81,7 +81,7 @@ const academyApi = [
 	/**
 	 * GET api/mock/academy/course-step-contents/:id
 	 */
-	http.get('/api/mock/academy/course-step-contents/:id', async ({ params, request }) => {
+	http.get('/api/mock/academy/course-step-contents/:id', async ({ params }) => {
 		const api = mockApi('academy_course_step_contents');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -96,7 +96,7 @@ const academyApi = [
 	/**
 	 * GET api/mock/academy/categories
 	 */
-	http.get('/api/mock/academy/categories', async ({ params, request }) => {
+	http.get('/api/mock/academy/categories', async ({ request }) => {
 		const api = mockApi('academy_categories');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);

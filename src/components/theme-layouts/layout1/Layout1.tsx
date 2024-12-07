@@ -4,7 +4,7 @@ import { lazy, memo, ReactNode, Suspense } from 'react';
 import { Outlet } from 'react-router';
 import { Layout1ConfigDefaultsType } from 'src/components/theme-layouts/layout1/Layout1Config';
 import Configurator from 'src/components/theme-layouts/components/configurator/Configurator';
-import { useFuseLayoutSettings } from '@fuse/core/FuseLayout/FuseLayout';
+import useFuseLayoutSettings from '@fuse/core/FuseLayout/useFuseLayoutSettings';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import FooterLayout1 from './components/FooterLayout1';
 import LeftSideLayout1 from './components/LeftSideLayout1';

@@ -14,19 +14,8 @@ import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi
  */
 function BudgetDistributionWidget() {
 	const { data: widgets, isLoading } = useGetProjectDashboardWidgetsQuery();
-
-	if (isLoading) {
-		return <FuseLoading />;
-	}
-
 	const widget = widgets?.budgetDistribution as BudgetDistributionDataType;
-
-	if (!widget) {
-		return null;
-	}
-
 	const { categories, series } = widget;
-
 	const theme = useTheme();
 
 	const chartOptions: ApexOptions = {
@@ -90,6 +79,15 @@ function BudgetDistributionWidget() {
 			tickAmount: 7
 		}
 	};
+
+	if (isLoading) {
+		return <FuseLoading />;
+	}
+
+	if (!widget) {
+		return null;
+	}
+
 	return (
 		<Paper className="flex flex-col flex-auto p-24 shadow rounded-xl overflow-hidden h-full">
 			<Typography className="text-lg font-medium tracking-tight leading-6 truncate">

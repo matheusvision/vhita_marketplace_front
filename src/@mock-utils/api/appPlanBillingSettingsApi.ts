@@ -5,7 +5,7 @@ const appPlanBillingSettingsApi = [
 	/**
 	 * GET api/mock/app-plan-billing-settings
 	 */
-	http.get('/api/mock/app-plan-billing-settings', async ({ params, request }) => {
+	http.get('/api/mock/app-plan-billing-settings', async ({ request }) => {
 		const api = mockApi('app_plan_billing_settings');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const appPlanBillingSettingsApi = [
 	/**
 	 * GET api/mock/app-plan-billing-settings/:id
 	 */
-	http.get('/api/mock/app-plan-billing-settings/:id', async ({ params, request }) => {
+	http.get('/api/mock/app-plan-billing-settings/:id', async ({ params }) => {
 		const api = mockApi('app_plan_billing_settings');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);

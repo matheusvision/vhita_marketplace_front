@@ -1,6 +1,4 @@
-type FirebaseAuthConfig = {
-	[key: string]: unknown;
-};
+type FirebaseAuthConfig = Record<string, unknown>;
 
 const firebaseConfig: FirebaseAuthConfig = {
 	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

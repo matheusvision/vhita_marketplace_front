@@ -5,7 +5,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * GET api/mock/ai-image-generator/presets
 	 */
-	http.get('/api/mock/ai-image-generator/presets', async ({ params, request }) => {
+	http.get('/api/mock/ai-image-generator/presets', async ({ request }) => {
 		const api = mockApi('ai_image_generator_presets');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -15,7 +15,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * POST api/mock/ai-image-generator/presets
 	 */
-	http.post('/api/mock/ai-image-generator/presets', async ({ params, request }) => {
+	http.post('/api/mock/ai-image-generator/presets', async ({ request }) => {
 		const api = mockApi('ai_image_generator_presets');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -25,7 +25,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * DELETE api/mock/ai-image-generator/presets/:id
 	 */
-	http.delete('/api/mock/ai-image-generator/presets/:id', async ({ params, request }) => {
+	http.delete('/api/mock/ai-image-generator/presets/:id', async ({ params }) => {
 		const api = mockApi('ai_image_generator_presets');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
@@ -40,7 +40,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * GET api/mock/ai-image-generator/items
 	 */
-	http.get('/api/mock/ai-image-generator/items', async ({ params, request }) => {
+	http.get('/api/mock/ai-image-generator/items', async ({ request }) => {
 		const api = mockApi('ai_image_generator_items');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
@@ -50,7 +50,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * POST api/mock/ai-image-generator/items
 	 */
-	http.post('/api/mock/ai-image-generator/items', async ({ params, request }) => {
+	http.post('/api/mock/ai-image-generator/items', async ({ request }) => {
 		const api = mockApi('ai_image_generator_items');
 		const data = (await request.json()) as Record<string, unknown>;
 		const newItem = await api.create(data);
@@ -60,7 +60,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * GET api/mock/ai-image-generator/items/:id
 	 */
-	http.get('/api/mock/ai-image-generator/items/:id', async ({ params, request }) => {
+	http.get('/api/mock/ai-image-generator/items/:id', async ({ params }) => {
 		const api = mockApi('ai_image_generator_items');
 		const { id } = params as Record<string, string>;
 		const item = await api.find(id);
@@ -91,7 +91,7 @@ const aiImageGeneratorApi = [
 	/**
 	 * DELETE api/mock/ai-image-generator/items/:id
 	 */
-	http.delete('/api/mock/ai-image-generator/items/:id', async ({ params, request }) => {
+	http.delete('/api/mock/ai-image-generator/items/:id', async ({ params }) => {
 		const api = mockApi('ai_image_generator_items');
 		const { id } = params as Record<string, string>;
 		const result = await api.delete([id]);
