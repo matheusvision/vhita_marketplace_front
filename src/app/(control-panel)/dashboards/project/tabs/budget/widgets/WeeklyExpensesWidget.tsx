@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 import ExpensesDataType from './types/ExpensesDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * The MonthlyExpensesWidget widget.

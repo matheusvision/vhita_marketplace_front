@@ -10,9 +10,9 @@ import _ from 'lodash';
 import FuseTabs from 'src/components/tabs/FuseTabs';
 import FuseTab from 'src/components/tabs/FuseTab';
 import { useContrastMainTheme } from '@fuse/core/FuseSettings/hooks/fuseThemeHooks';
-import ReactApexChart from 'react-apexcharts';
 import VisitorsOverviewWidgetType from './types/VisitorsOverviewWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * The visitors overview widget.

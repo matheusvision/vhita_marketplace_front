@@ -4,8 +4,8 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import _ from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 import { WatchListItemType } from '../types/WatchlistType';
+import ReactApexChart from 'react-apexcharts';
 
 type WatchlistItemProps = {
 	item: WatchListItemType;

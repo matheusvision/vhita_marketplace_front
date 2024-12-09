@@ -42,12 +42,13 @@
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "incremental": true
   },
   "exclude": [
     "src/app/(public)/documentation/material-ui-components/components/**/*",
@@ -55,8 +56,9 @@
     "node_modules"
   ],
   "include": [
-    "src",
-    "tailwind.config.js",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/global.d.ts",
     "tailwind.config.ts",
     "vite.config.mts",
     "vite-env.d.ts"

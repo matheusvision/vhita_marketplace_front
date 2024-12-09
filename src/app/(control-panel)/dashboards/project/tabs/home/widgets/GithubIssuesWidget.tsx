@@ -8,9 +8,9 @@ import FuseLoading from '@fuse/core/FuseLoading';
 import _ from 'lodash';
 import FuseTabs from 'src/components/tabs/FuseTabs';
 import FuseTab from 'src/components/tabs/FuseTab';
-import ReactApexChart from 'react-apexcharts';
 import GithubIssuesDataType from './types/GithubIssuesDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * The GithubIssuesWidget widget.

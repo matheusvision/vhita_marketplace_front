@@ -6,9 +6,9 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'src/store/hooks';
 import _ from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 import ImressionsWidgetType from './types/ImpressionsWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * Impressions widget.

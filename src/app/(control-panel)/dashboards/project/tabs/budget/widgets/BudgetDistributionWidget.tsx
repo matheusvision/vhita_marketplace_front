@@ -5,9 +5,9 @@ import { memo } from 'react';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 import BudgetDistributionDataType from './types/BudgetDistributionDataType';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * The BudgetDistributionWidget widget.

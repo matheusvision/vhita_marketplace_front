@@ -6,9 +6,9 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'src/store/hooks';
-import ReactApexChart from 'react-apexcharts';
 import AgeWidgetModelType from './types/AgeWidgetType';
 import { selectWidget } from '../AnalyticsDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * The age widget.

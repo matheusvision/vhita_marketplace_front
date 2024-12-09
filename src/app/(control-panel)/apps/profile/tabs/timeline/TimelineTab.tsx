@@ -63,7 +63,7 @@ function TimelineTab() {
 					<Card
 						component={motion.div}
 						variants={item}
-						className="w-full overflow-hidden mb-32"
+						className="w-full overflow-hidden w-full mb-32"
 					>
 						<Input
 							className="p-24 w-full"

@@ -7,9 +7,9 @@ import { Tooltip } from '@mui/material';
 import { ApexOptions } from 'apexcharts';
 import { useAppSelector } from 'src/store/hooks';
 import _ from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 import VisitorsVsPageViewsType from './types/VisitorsVsPageViewsType';
 import { selectWidget } from '../AnalyticsDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * Visitors vs. Page Views widget.

@@ -44,12 +44,6 @@ const MaterialUIComponentsNavigation = {
 			url: '/documentation/material-ui-components/checkboxes'
 		},
 		{ id: 'chips', title: 'Chips', type: 'item', url: '/documentation/material-ui-components/chips' },
-		{
-			id: 'clickAwayListener',
-			title: 'Click Away Listener',
-			type: 'item',
-			url: '/documentation/material-ui-components/click-away-listener'
-		},
 		{ id: 'container', title: 'Container', type: 'item', url: '/documentation/material-ui-components/container' },
 		{
 			id: 'cssBaseline',

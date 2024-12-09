@@ -196,7 +196,12 @@ function getContents(markdown: string) {
 }
 
 const excludedDemos = [
-	'ComboBox.js'
+	'ComboBox.js',
+	'DashboardLayoutBasic.js',
+	'PageContainerBasic.js',
+	'PageContainerBasic.js',
+	'ToolpadDialogsNoSnap.js',
+	'ToolpadDialogs.js'
 	// Add other demo filenames you want to exclude
 ];
 
@@ -295,6 +300,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		.replace(/<img([^>]+)>/gi, '<img$1/>')
 		.replace(/<br>/g, '<br/>')
 		.replace(/\/static\//g, '/material-ui-static/')
+		.replace(/<!-- #default-branch-switch -->/g, '')
 		.replace(/<ul>/g, '<ul className="space-y-16">')
 		.replace(/<ul start="(\d+)">/g, '<ul className="space-y-16" start={$1}>')
 		.replace(/<ol start="(\d+)">/g, '<ol start={$1}>')
@@ -579,7 +585,8 @@ async function removeExcludedComponents() {
 		path.resolve(examplesDirectory, './icons'),
 		path.resolve(examplesDirectory, './portal'),
 		path.resolve(examplesDirectory, './textarea-autosize'),
-		path.resolve(examplesDirectory, './no-ssr')
+		path.resolve(examplesDirectory, './no-ssr'),
+		path.resolve(examplesDirectory, './click-away-listener')
 	];
 
 	try {
@@ -701,6 +708,14 @@ async function build() {
 						return {
 							...config,
 							ignores: [],
+							languageOptions: {
+								...config.languageOptions,
+								parserOptions: {
+									...config.languageOptions?.parserOptions,
+									project: null,
+									tsconfigRootDir: null
+								}
+							},
 							rules: {
 								...config.rules,
 								'@typescript-eslint/no-unused-vars': 'off',

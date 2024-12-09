@@ -5,9 +5,9 @@ import Typography from '@mui/material/Typography';
 import { ApexOptions } from 'apexcharts';
 import FuseLoading from '@fuse/core/FuseLoading';
 import _ from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 import AccountBalanceWidgetType from './types/AccountBalanceWidgetType';
 import { useGetFinanceDashboardWidgetsQuery } from '../FinanceDashboardApi';
+import ReactApexChart from 'react-apexcharts';
 
 /**
  * The AccountBalanceWidget widget.
