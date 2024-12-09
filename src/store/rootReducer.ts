@@ -2,7 +2,7 @@ import { combineSlices } from '@reduxjs/toolkit';
 import apiService from './apiService';
 import { navigationSlice } from '@/components/theme-layouts/components/navigation/store/navigationSlice';
 
-// @ts-expect-error Intentionally empty for declaration merging
+// @ts-ignore-next-line
 export interface LazyLoadedSlices {}
 
 // `combineSlices` automatically combines the reducers using
