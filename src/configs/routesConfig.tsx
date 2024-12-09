@@ -52,7 +52,7 @@ const routes: FuseRoutesType = [
 	},
 	{
 		path: '*',
-		element: <Navigate to="404" />
+		element: <Navigate to="/404" />
 	}
 ];
 
