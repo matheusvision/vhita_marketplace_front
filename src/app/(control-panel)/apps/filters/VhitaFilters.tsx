@@ -26,7 +26,7 @@ const VhitaFilters = ({ children }: VhitaFiltersProps) => {
 
 			<motion.div
 				variants={item}
-				className="bg-gray-50 p-16 pt-24 pb-24 sm:col-span-6 rounded-xl"
+				className="bg-gray-100 p-16 pt-24 pb-24 sm:col-span-6 rounded-xl"
 			>
 				{children}
 			</motion.div>

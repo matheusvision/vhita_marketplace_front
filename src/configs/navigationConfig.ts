@@ -22,13 +22,6 @@ const navigationConfig: FuseNavItemType[] = [
 		translate: 'DASHBOARDS',
 		children: [
 			{
-				id: 'dashboards.project',
-				title: 'Project',
-				type: 'item',
-				icon: 'heroicons-outline:clipboard-document-check',
-				url: '/dashboards/project'
-			},
-			{
 				id: 'metrics',
 				title: 'Métricas',
 				type: 'item',
