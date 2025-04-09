@@ -66,8 +66,6 @@ function NavbarStyle1Content(props: NavbarStyle1ContentProps) {
 				</div>
 			</StyledContent>
 
-			<GoToDocBox className="mx-12 my-16" />
-
 			<Divider />
 
 			<div className="p-4 md:p-16 w-full">

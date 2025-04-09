@@ -46,22 +46,12 @@ function ProjectDashboardApp() {
 							aria-label="New user tabs"
 						>
 							<FuseTab
-								value="home"
-								label="Home"
-							/>
-							<FuseTab
 								value="budget"
 								label="Budget"
 							/>
-							<FuseTab
-								value="team"
-								label="Team"
-							/>
 						</FuseTabs>
 					</div>
-					{tabValue === 'home' && <HomeTab />}
 					{tabValue === 'budget' && <BudgetTab />}
-					{tabValue === 'team' && <TeamTab />}
 				</div>
 			}
 		/>

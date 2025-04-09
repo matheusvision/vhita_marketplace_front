@@ -32,10 +32,10 @@ export default defineConfig({
 		host: '0.0.0.0',
 		open: true,
 		strictPort: false,
-		port: 3000
+		port: 3001
 	},
 	define: {
-		'import.meta.env.VITE_PORT': JSON.stringify(process.env.PORT || 3000),
+		'import.meta.env.VITE_PORT': JSON.stringify(process.env.PORT || 3001),
 		global: 'window'
 	},
 	resolve: {

@@ -20,7 +20,7 @@ function BudgetTab() {
 
 	return (
 		<motion.div
-			className="grid grid-cols-1 sm:grid-cols-6 gap-24 w-full min-w-0 py-24 px-24 md:px-32"
+			className="grid grid-cols-1 sm:grid-cols-6 gap-24 w-full min-w-0  px-24 md:px-32"
 			variants={container}
 			initial="hidden"
 			animate="show"

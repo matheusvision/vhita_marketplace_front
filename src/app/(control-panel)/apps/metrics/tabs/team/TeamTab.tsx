@@ -1,10 +1,10 @@
 import { motion } from 'motion/react';
-import BudgetDetailsWidget from './widgets/BudgetDetailsWidget';
+import TeamMembersWidget from './widgets/TeamMembersWidget';
 
 /**
- * The BudgetTab component.
+ * The TeamTab component.
  */
-function BudgetTab() {
+function TeamTab() {
 	const container = {
 		show: {
 			transition: {
@@ -20,20 +20,19 @@ function BudgetTab() {
 
 	return (
 		<motion.div
-			className="grid grid-cols-1 sm:grid-cols-6 gap-24 w-full min-w-0 py-24 px-24 md:px-32"
+			className="flex flex-wrap py-24 px-24 md:px-32"
 			variants={container}
 			initial="hidden"
 			animate="show"
 		>
-
 			<motion.div
 				variants={item}
-				className="sm:col-span-6"
+				className="widget flex w-full"
 			>
-				<BudgetDetailsWidget />
+				<TeamMembersWidget />
 			</motion.div>
 		</motion.div>
 	);
 }
 
-export default BudgetTab;
+export default TeamTab;

@@ -60,8 +60,6 @@ function NavbarStyle2Content(props: NavbarStyle2ContentProps) {
 				<Navigation layout="vertical" />
 			</StyledContent>
 
-			<GoToDocBox className="mx-12 my-16" />
-
 			<Divider />
 
 			<div className="p-4 md:p-10 w-full">
