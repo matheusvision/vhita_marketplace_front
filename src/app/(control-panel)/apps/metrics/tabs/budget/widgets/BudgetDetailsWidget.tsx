@@ -10,7 +10,7 @@ import Chip from '@mui/material/Chip';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { useGetProjectDashboardWidgetsQuery } from '../../../ProjectDashboardApi';
 import BudgetDetailsDataType from './types/BudgetDetailsDataType';
-import { getCampaignsHistory } from '../../../store/metrics.actions';
+import { getMetrics } from '../../../store/metrics.actions';
 import { useAppDispatch } from '@/store/hooks';
 
 /**
@@ -22,6 +22,7 @@ function BudgetDetailsWidget() {
 	const [init, setInit] = useState('')
     const [end, setEnd] = useState('')
     const [selectedRange, setSelectedRange] = useState("mensal");
+    const [selectedMeta, setSelectedMeta] = useState("sem_meta");
 
 	if (isLoading) {
 		return <FuseLoading />;
@@ -47,9 +48,10 @@ function BudgetDetailsWidget() {
         let filters = {
             date_init: firstDay.toISOString().split("T")[0], // Primeiro dia do mês
             date_end: today.toISOString().split("T")[0], // Dia atual
-            range: selectedRange
+            range: selectedRange,
+			meta: selectedMeta
         };
-        dispatch(getCampaignsHistory(filters));
+        dispatch(getMetrics(filters));
     }, []);
 
 	return (

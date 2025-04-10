@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 import FuseLoading from '@fuse/core/FuseLoading';
-import FuseTabs from 'src/components/tabs/FuseTabs';
-import FuseTab from 'src/components/tabs/FuseTab';
 import MetricsAppHeader from './MetricsAppHeader';
 import BudgetTab from './tabs/budget/BudgetTab';
 import { useGetProjectDashboardWidgetsQuery } from './ProjectDashboardApi';
@@ -17,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import * as Slices from './store/metricsFilterAppSlice';
 import { useAppSelector } from '@/store/hooks';
 import * as Actions from './store/metricsFilter.actions';
+import { getMetrics } from './store/metrics.actions';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -33,7 +32,9 @@ function MetricsApp() {
 
 	const dispatch = useDispatch();
 	const [init, setInit] = useState('');
+	const [originalInit, setOriginalInit] = useState('');
 	const [end, setEnd] = useState('');
+	const [originalEnd, setOriginalEnd] = useState('');
 	const [selectedMeta, setSelectedMeta] = useState('sem_meta');
 	const [selectedRange, setSelectedRange] = useState("mensal");
 	const [start, setStart] = useState('');
@@ -63,6 +64,8 @@ function MetricsApp() {
 		const formatDate = (date: Date) => date.toISOString().split('T')[0];
 		setEnd(formatDate(today));
 		setInit(formatDate(firstDay));
+		setOriginalEnd(formatDate(today));
+		setOriginalInit(formatDate(firstDay));
 
 		const filters = {
 			date_init: formatDate(firstDay),
@@ -72,22 +75,33 @@ function MetricsApp() {
 		dispatch(Slices.setInitialFilter())
 	}
 
-	async function onClick() {
-		console.log('\n\n\nfilter');
-		console.log(filter);
-	}
-
 	useEffect(() => {
-		console.log('\n\n\nfilter - useEffect');
+		console.log('filter');
 		console.log(filter);
 	}, [filter])
 
+	async function onClick() {
+		console.log('\n\n\nfilter');
+		console.log(filter);
+		dispatch(getMetrics(filter) as any)
+	}
+
 	function setInitFormatted(val: Date | string) {
-		const date = new Date(val);
+		let date: Date;
+	
+		if (typeof val === 'string') {
+			// Aqui sim pode usar 'T00:00:00' pra garantir horário local
+			date = new Date(val + 'T00:00:00');
+		} else {
+			date = val;
+		}
+	
 		const year = date.getFullYear();
 		const month = String(date.getMonth() + 1).padStart(2, '0');
 		const day = String(date.getDate()).padStart(2, '0');
+	
 		setInit(`${year}-${month}-${day}`);
+		setOriginalInit(val)
 	}
 
 	useEffect(() => {
@@ -107,11 +121,21 @@ function MetricsApp() {
 	}, [selectedMeta])
 
 	function setEndFormatted(val: Date | string) {
-		const date = new Date(val);
+		let date: Date;
+	
+		if (typeof val === 'string') {
+			// Aqui sim pode usar 'T00:00:00' pra garantir horário local
+			date = new Date(val + 'T00:00:00');
+		} else {
+			date = val;
+		}
+	
 		const year = date.getFullYear();
 		const month = String(date.getMonth() + 1).padStart(2, '0');
 		const day = String(date.getDate()).padStart(2, '0');
+	
 		setEnd(`${year}-${month}-${day}`);
+		setOriginalEnd(val)
 	}
 
 	if (isLoading) {
@@ -129,7 +153,7 @@ function MetricsApp() {
 								<div className="col-span-2">
 									<DatePicker
 										className="w-full"
-										value={new Date(init)}
+										value={new Date(originalInit)}
 										onChange={(val) => { setInitFormatted(val) }}
 										slotProps={{
 											textField: {
@@ -144,7 +168,7 @@ function MetricsApp() {
 								<div className="col-span-2 ml-10">
 									<DatePicker
 										className="w-full"
-										value={new Date(end)}
+										value={new Date(originalEnd)}
 										onChange={(val) => { setEndFormatted(val) }}
 										slotProps={{
 											textField: {
